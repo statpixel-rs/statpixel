@@ -1,0 +1,6 @@
+[workspace]
+members = [
+	"discord",
+	"database",
+	"api",
+]
