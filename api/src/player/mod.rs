@@ -6,7 +6,7 @@ use reqwest::StatusCode;
 use serde::Deserialize;
 use uuid::Uuid;
 
-use crate::{http::HTTP, DataError};
+use crate::{http::HTTP, Error};
 
 const HYPIXEL_PLAYER_API_ENDPOINT: &str = "https://api.hypixel.net/player";
 const MOJANG_USERNAME_TO_UUID_API_ENDPOINT: &str =
@@ -44,14 +44,14 @@ impl Player {
 		Self { uuid, username }
 	}
 
-	pub async fn from_username(username: &str) -> Result<Player, DataError> {
+	pub async fn from_username(username: &str) -> Result<Player, Error> {
 		let response = HTTP
 			.get(format!("{MOJANG_USERNAME_TO_UUID_API_ENDPOINT}/{username}"))
 			.send()
 			.await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(DataError::NotFound);
+			return Err(Error::NotFound);
 		}
 
 		let response = response.json::<MojangResponse>().await?;
@@ -59,14 +59,14 @@ impl Player {
 		Ok(Self::new(response.id, response.name))
 	}
 
-	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, DataError> {
+	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Error> {
 		let response = HTTP
 			.get(format!("{MOJANG_UUID_TO_USERNAME_API_ENDPOINT}/{uuid}"))
 			.send()
 			.await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(DataError::NotFound);
+			return Err(Error::NotFound);
 		}
 
 		let response = response.json::<MojangResponse>().await?;
@@ -74,7 +74,7 @@ impl Player {
 		Ok(Self::new(response.id, response.name))
 	}
 
-	pub async fn get_data(&self) -> Result<PlayerData, DataError> {
+	pub async fn get_data(&self) -> Result<PlayerData, Error> {
 		let response = HTTP
 			.get(HYPIXEL_PLAYER_API_ENDPOINT)
 			.query(&[("uuid", self.uuid)])
@@ -82,7 +82,7 @@ impl Player {
 			.await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(DataError::NotFound);
+			return Err(Error::NotFound);
 		}
 
 		let response = response.json::<PlayerResponse>().await?;
@@ -116,11 +116,14 @@ mod tests {
 
 	#[tokio::test]
 	async fn test_player_data() {
-		let uuid = Uuid::parse_str("2320b86e-ea7c-4d7c-a756-30ae86281d78").unwrap();
-		let player = Player::new(uuid, "Notch".to_string());
+		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
+		let player = Player::from_uuid(&uuid).await;
 
-		let player_data = player.get_data().await;
+		assert!(player.is_ok());
 
-		assert!(player_data.is_ok());
+		let player = player.unwrap();
+
+		assert_eq!("Technoblade".to_string(), player.username);
+		assert!(player.get_data().await.is_ok());
 	}
 }

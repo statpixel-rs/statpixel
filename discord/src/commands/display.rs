@@ -1,7 +1,7 @@
 use database::schema;
 use diesel::{ExpressionMethods, RunQueryDsl};
 
-use crate::{Context, Error};
+use crate::{util::success_embed, Context, Error};
 
 /// Changes the way responses are displayed.
 #[poise::command(slash_command)]
@@ -36,15 +36,15 @@ pub async fn display(
 			.get_result::<bool>(&mut ctx.data().pool.get()?)?
 	};
 
-	ctx.send(|b| {
-		b.embed(|e| {
-			e.title("Display changed")
-				.description(match text {
-					true => "Responses will now be sent as text.",
-					false => "Responses will now be sent as images where applicable.",
-				})
-				.colour(crate::EMBED_COLOUR)
-		})
+	ctx.send(|m| {
+		success_embed(
+			m,
+			"Display changed",
+			match text {
+				true => "Responses will now be sent as text.",
+				false => "Responses will now be sent as images where applicable.",
+			},
+		)
 	})
 	.await?;
 

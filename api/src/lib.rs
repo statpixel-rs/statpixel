@@ -1,12 +1,10 @@
-#![feature(once_cell)]
-
 use thiserror::Error;
 
 mod http;
 pub mod player;
 
 #[derive(Error, Debug)]
-pub enum DataError {
+pub enum Error {
 	#[error("reqwest error")]
 	Middleware(#[from] reqwest_middleware::Error),
 	#[error("reqwest error")]

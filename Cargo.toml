@@ -4,3 +4,6 @@ members = [
 	"database",
 	"api",
 ]
+
+[profile.release]
+debug = true
