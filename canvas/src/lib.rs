@@ -1,9 +1,6 @@
-pub mod colour;
 pub mod data;
-pub mod font;
-pub mod paint;
-pub mod text;
 
+use minecraft::colour;
 use skia_safe::{EncodedImageFormat, Surface};
 
 pub fn create_surface() -> Surface {

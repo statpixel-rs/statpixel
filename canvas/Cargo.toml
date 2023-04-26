@@ -2,9 +2,11 @@
 name = "canvas"
 version = "0.1.0"
 edition = "2021"
+license = "GPL-3.0"
 
 [dependencies]
 api = { path = "../api" }
+minecraft = { path = "../minecraft" }
 konst = { version = "0.3.4", features = ["alloc"] }
 once_cell = "1.17.1"
 skia-safe = "0.62.0"

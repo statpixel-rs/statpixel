@@ -38,6 +38,7 @@ version = "0.1.0"
 dependencies = [
  "dotenvy",
  "http-cache-reqwest",
+ "minecraft",
  "moka",
  "once_cell",
  "reqwest",
@@ -215,6 +216,7 @@ version = "0.1.0"
 dependencies = [
  "api",
  "konst",
+ "minecraft",
  "once_cell",
  "skia-safe",
 ]
@@ -1194,6 +1196,16 @@ checksum = "4192263c238a5f0d0c6bfd21f336a313a4ce1c450542449ca191bb657b4642ef"
 dependencies = [
  "mime",
  "unicase",
+]
+
+[[package]]
+name = "minecraft"
+version = "0.1.0"
+dependencies = [
+ "konst",
+ "once_cell",
+ "serde",
+ "skia-safe",
 ]
 
 [[package]]

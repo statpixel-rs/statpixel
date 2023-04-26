@@ -42,13 +42,13 @@ pub enum MinecraftFont {
 	BoldItalic,
 }
 
-impl From<MinecraftFont> for &Font {
-	fn from(font: MinecraftFont) -> Self {
-		match font {
-			MinecraftFont::Normal => &FONT_NORMAL,
-			MinecraftFont::Bold => &FONT_BOLD,
-			MinecraftFont::Italic => &FONT_ITALIC,
-			MinecraftFont::BoldItalic => &FONT_BOLD_ITALIC,
+impl MinecraftFont {
+	pub fn get_font(&self, size: f32) -> Font {
+		match self {
+			Self::Normal => FONT_NORMAL.with_size(size).unwrap(),
+			Self::Bold => FONT_BOLD.with_size(size).unwrap(),
+			Self::Italic => FONT_ITALIC.with_size(size).unwrap(),
+			Self::BoldItalic => FONT_BOLD_ITALIC.with_size(size).unwrap(),
 		}
 	}
 }

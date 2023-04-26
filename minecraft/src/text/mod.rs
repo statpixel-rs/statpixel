@@ -1,31 +1,31 @@
-pub mod rank;
 pub mod parse;
+pub mod rank;
 
 use crate::{font, paint};
 use skia_safe::TextBlob;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct MinecraftText<'a> {
-	text: &'a str,
-	paint: paint::MinecraftPaint,
-	font: font::MinecraftFont,
+	pub text: &'a str,
+	pub paint: paint::MinecraftPaint,
+	pub font: font::MinecraftFont,
 }
 
 impl MinecraftText<'_> {
-	pub fn get_blob(&self) -> Option<TextBlob> {
-		TextBlob::from_str(self.text, self.font.into())
+	pub fn get_blob(&self, size: f32) -> Option<TextBlob> {
+		TextBlob::from_str(self.text, &self.font.get_font(size))
 	}
 }
 
 pub fn draw_minecraft_text<'a>(
 	surface: &mut skia_safe::Surface,
-	text: impl Iterator<Item = &'a MinecraftText<'a>>,
+	text: impl Iterator<Item = MinecraftText<'a>>,
+	mut x: f32,
+	y: f32,
+	size: f32,
 ) {
-	let mut x = 0.0;
-	let y = 0.0;
-
 	for text in text {
-		let blob = text.get_blob();
+		let blob = text.get_blob(size);
 
 		if let Some(blob) = blob {
 			surface

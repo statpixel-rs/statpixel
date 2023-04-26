@@ -1,12 +1,10 @@
-mod data;
-
-use std::str::FromStr;
-
-pub use data::*;
+pub mod data;
+pub mod stats;
 
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
 use serde::Deserialize;
+use std::str::FromStr;
 use uuid::Uuid;
 
 use crate::{http::HTTP, Error};
@@ -23,7 +21,7 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 
 #[derive(Deserialize)]
 pub struct PlayerResponse {
-	pub player: PlayerData,
+	pub player: data::PlayerData,
 	pub success: bool,
 }
 
@@ -36,14 +34,6 @@ pub struct MojangResponse {
 pub struct Player {
 	pub uuid: Uuid,
 	pub username: String,
-}
-
-#[derive(Deserialize, Debug)]
-pub struct PlayerData {
-	#[serde(rename = "displayname")]
-	pub username: String,
-	#[serde(default)]
-	pub stats: Stats,
 }
 
 impl Player {
@@ -80,7 +70,7 @@ impl Player {
 		Ok(Self::new(response.id, response.name))
 	}
 
-	pub async fn get_data(&self) -> Result<PlayerData, Error> {
+	pub async fn get_data(&self) -> Result<data::PlayerData, Error> {
 		let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
 		url.set_query(Some(&format!("uuid={}", self.uuid)));

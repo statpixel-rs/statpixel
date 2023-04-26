@@ -27,7 +27,7 @@ pub static HTTP: Lazy<reqwest_middleware::ClientWithMiddleware> = Lazy::new(|| {
 	.with(http_cache_reqwest::Cache(HttpCache {
 		mode: CacheMode::Default,
 		manager: MokaManager::new(
-			CacheBuilder::new(10_000)
+			CacheBuilder::new(1_000)
 				.time_to_idle(Duration::from_secs(60 * 5))
 				.time_to_live(Duration::from_secs(60 * 30))
 				.build(),

@@ -113,7 +113,7 @@ const fn const_parse_minecraft_string(
 	}
 }
 
-pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText> {
+pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText<'_>> {
 	let mut prev_paint = paint::MinecraftPaint::White;
 	let mut prev_font = font::MinecraftFont::Normal;
 	let mut first = true;
@@ -169,12 +169,12 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText>
 	})
 }
 
-pub fn draw_minecraft_string(surface: &mut skia_safe::Surface, string: &str) {
+pub fn draw_minecraft_string(surface: &mut skia_safe::Surface, string: &str, size: f32) {
 	let mut x = 0.0;
 	let y = 0.0;
 
 	for text in parse_minecraft_string(string) {
-		let blob = text.get_blob();
+		let blob = text.get_blob(size);
 
 		if let Some(blob) = blob {
 			surface

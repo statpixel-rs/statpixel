@@ -1,5 +1,5 @@
-use super::MinecraftText;
-use crate::{colour::MinecraftColour, minecraft_text};
+use super::{parse::ESCAPE, MinecraftText};
+use crate::{colour::MinecraftColour, minecraft_text, paint::MinecraftPaint};
 
 use std::slice::Iter;
 
@@ -113,7 +113,7 @@ impl Rank {
 			"MVP_PLUS" if package_rank == Some("SUPERSTAR") => Self::MvpPlusPlus(
 				MinecraftColour::Red,
 				monthly_colour
-					.map(|c| c.ne(&MinecraftColour::Gold))
+					.map(|c| c == MinecraftColour::Aqua)
 					.unwrap_or(false),
 			),
 			"MVP_PLUS" => Self::MvpPlus(colour.unwrap_or(MinecraftColour::Red)),
@@ -128,13 +128,42 @@ impl Rank {
 		}
 	}
 
-	pub fn get_text(&self) -> Iter<MinecraftText> {
+	fn get_string_paint(&self, string: &str) -> MinecraftPaint {
+		if let Some(index) = string.rfind(ESCAPE) {
+			let char = string.chars().nth(index + 1);
+			let paint = char.and_then(|c| MinecraftPaint::try_from(c).ok());
+
+			paint.unwrap_or(MinecraftPaint::Gray)
+		} else {
+			MinecraftPaint::Gray
+		}
+	}
+
+	pub fn get_username_paint(&self) -> MinecraftPaint {
 		match self {
-			Self::Default => [].iter(),
-			Self::Vip => VIP.iter(),
-			Self::VipPlus => VIP_PLUS.iter(),
-			Self::Mvp => MVP.iter(),
-			Self::MvpPlus(colour) => match colour {
+			Self::Default => MinecraftPaint::Gray,
+			Self::Vip | Self::VipPlus => MinecraftPaint::Green,
+			Self::Mvp | Self::MvpPlus(_) => MinecraftPaint::Aqua,
+			Self::MvpPlusPlus(_, true) => MinecraftPaint::Aqua,
+			Self::MvpPlusPlus(_, false) => MinecraftPaint::Gold,
+			Self::YouTube => MinecraftPaint::Red,
+			Self::Mojang => MinecraftPaint::Gold,
+			Self::Events => MinecraftPaint::Gold,
+			Self::Mcp => MinecraftPaint::Red,
+			Self::Gm => MinecraftPaint::DarkGreen,
+			Self::Admin | Self::Owner => MinecraftPaint::Red,
+			Self::Custom(prefix) => self.get_string_paint(prefix),
+		}
+	}
+
+	/// `None` for Rank::Custom
+	pub fn get_text(&self) -> Option<Iter<MinecraftText<'_>>> {
+		match self {
+			Self::Default => Some([].iter()),
+			Self::Vip => Some(VIP.iter()),
+			Self::VipPlus => Some(VIP_PLUS.iter()),
+			Self::Mvp => Some(MVP.iter()),
+			Self::MvpPlus(colour) => Some(match colour {
 				MinecraftColour::Black => MVP_PLUS_BLACK.iter(),
 				MinecraftColour::DarkBlue => MVP_PLUS_DARK_BLUE.iter(),
 				MinecraftColour::DarkGreen => MVP_PLUS_DARK_GREEN.iter(),
@@ -151,8 +180,8 @@ impl Rank {
 				MinecraftColour::LightPurple => MVP_PLUS_LIGHT_PURPLE.iter(),
 				MinecraftColour::Yellow => MVP_PLUS_YELLOW.iter(),
 				MinecraftColour::White => MVP_PLUS_WHITE.iter(),
-			},
-			Self::MvpPlusPlus(colour, plain) => match (colour, plain) {
+			}),
+			Self::MvpPlusPlus(colour, plain) => Some(match (colour, plain) {
 				(MinecraftColour::Black, false) => MVP_PLUS_PLUS_BLACK.iter(),
 				(MinecraftColour::DarkBlue, false) => MVP_PLUS_PLUS_DARK_BLUE.iter(),
 				(MinecraftColour::DarkGreen, false) => MVP_PLUS_PLUS_DARK_GREEN.iter(),
@@ -185,15 +214,15 @@ impl Rank {
 				(MinecraftColour::LightPurple, true) => MVP_PLUS_PLUS_LIGHT_PURPLE_PLAIN.iter(),
 				(MinecraftColour::Yellow, true) => MVP_PLUS_PLUS_YELLOW_PLAIN.iter(),
 				(MinecraftColour::White, true) => MVP_PLUS_PLUS_WHITE_PLAIN.iter(),
-			},
-			Self::YouTube => YOUTUBE.iter(),
-			Self::Mojang => MOJANG.iter(),
-			Self::Events => EVENTS.iter(),
-			Self::Mcp => MCP.iter(),
-			Self::Gm => GM.iter(),
-			Self::Admin => ADMIN.iter(),
-			Self::Owner => OWNER.iter(),
-			Self::Custom(_text) => unimplemented!(),
+			}),
+			Self::YouTube => Some(YOUTUBE.iter()),
+			Self::Mojang => Some(MOJANG.iter()),
+			Self::Events => Some(EVENTS.iter()),
+			Self::Mcp => Some(MCP.iter()),
+			Self::Gm => Some(GM.iter()),
+			Self::Admin => Some(ADMIN.iter()),
+			Self::Owner => Some(OWNER.iter()),
+			Self::Custom(_) => None,
 		}
 	}
 }
