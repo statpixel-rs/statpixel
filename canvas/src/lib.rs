@@ -1,8 +1,8 @@
 pub mod colour;
 pub mod data;
 pub mod font;
-pub mod text;
 pub mod paint;
+pub mod text;
 
 use skia_safe::{EncodedImageFormat, Surface};
 
