@@ -5,7 +5,7 @@ use std::str::FromStr;
 pub use data::*;
 
 use once_cell::sync::Lazy;
-use reqwest::{Method, Request, StatusCode, Url};
+use reqwest::{StatusCode, Url};
 use serde::Deserialize;
 use uuid::Uuid;
 
@@ -84,8 +84,6 @@ impl Player {
 		let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
 		url.set_query(Some(&format!("uuid={}", self.uuid)));
-
-		println!("{url}");
 
 		let response = HTTP.get(url).send().await?;
 

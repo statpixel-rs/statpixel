@@ -131,6 +131,10 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText>
 	let mut prev_font = font::MinecraftFont::Normal;
 	let mut first = true;
 
+	if text.starts_with(ESCAPE) {
+		first = false;
+	}
+
 	text.split(ESCAPE).filter_map(move |s| {
 		if s.is_empty() {
 			return None;
