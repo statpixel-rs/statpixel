@@ -53,7 +53,7 @@ impl Player {
 
 	pub async fn from_username(username: &str) -> Result<Player, Error> {
 		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
-		let response = HTTP.request(Request::new(Method::GET, url)).await?;
+		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);
@@ -69,7 +69,7 @@ impl Player {
 			.join(&uuid.to_string())
 			.unwrap();
 
-		let response = HTTP.request(Request::new(Method::GET, url)).await?;
+		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);
@@ -85,7 +85,9 @@ impl Player {
 
 		url.set_query(Some(&format!("uuid={}", self.uuid)));
 
-		let response = HTTP.request(Request::new(Method::GET, url)).await?;
+		println!("{url}");
+
+		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);

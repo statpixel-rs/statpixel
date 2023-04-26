@@ -3,9 +3,14 @@ use serde::Deserialize;
 #[derive(Deserialize, Default, Debug)]
 pub struct Stats {
 	pub coins: u32,
+
+	#[serde(flatten)]
 	pub solo: SoloStats,
+	#[serde(flatten)]
 	pub double: DoubleStats,
+	#[serde(flatten)]
 	pub three: ThreeStats,
+	#[serde(flatten)]
 	pub four: FourStats,
 }
 
