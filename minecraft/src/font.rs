@@ -34,26 +34,36 @@ pub static FONT_BOLD_ITALIC: Lazy<Font> = Lazy::new(|| {
 	)
 });
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum MinecraftFont {
+#[allow(dead_code)]
+pub static FONT_ICON: Lazy<Font> = Lazy::new(|| {
+	Font::from_typeface(
+		Typeface::from_name("Material Symbols Outlined", skia_safe::FontStyle::normal()).unwrap(),
+		None,
+	)
+});
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum MinecraftFont<'a> {
 	Normal,
 	Bold,
 	Italic,
 	BoldItalic,
+	Other(&'a Font),
 }
 
-impl MinecraftFont {
+impl<'a> MinecraftFont<'a> {
 	pub fn get_font(&self, size: f32) -> Font {
 		match self {
 			Self::Normal => FONT_NORMAL.with_size(size).unwrap(),
 			Self::Bold => FONT_BOLD.with_size(size).unwrap(),
 			Self::Italic => FONT_ITALIC.with_size(size).unwrap(),
 			Self::BoldItalic => FONT_BOLD_ITALIC.with_size(size).unwrap(),
+			Self::Other(font) => font.with_size(size).unwrap(),
 		}
 	}
 }
 
-impl From<char> for MinecraftFont {
+impl<'a> From<char> for MinecraftFont<'a> {
 	fn from(c: char) -> Self {
 		match c {
 			'r' | 'R' => Self::Normal,

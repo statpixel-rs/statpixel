@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use canvas::{create_surface, data::header, to_png};
+use canvas::{create_surface, to_png};
 use poise::serenity_prelude::AttachmentType;
 
 use crate::{
@@ -34,20 +34,16 @@ pub async fn skywars(
 
 	let data = player.get_data().await?;
 	let png: Cow<[u8]> = {
-		let mut surface = create_surface();
+		let mut surface = create_surface(2);
 
-		header::apply(&mut surface, &data);
+		canvas::header::apply(&mut surface, &data);
+		canvas::skywars::apply(&mut surface, &data);
 
 		to_png(&mut surface).into()
 	};
 
 	ctx.send(move |m| {
-		success_embed(
-			m,
-			"SkyWars",
-			&format!("Nice, {} kills!", data.stats.sky_wars.solo_normal.kills),
-		)
-		.attachment(AttachmentType::Bytes {
+		m.attachment(AttachmentType::Bytes {
 			data: png,
 			filename: "canvas.png".into(),
 		})

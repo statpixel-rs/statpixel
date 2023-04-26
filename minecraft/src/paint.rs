@@ -7,7 +7,9 @@ macro_rules! paint_colour {
 			let mut paint = skia_safe::Paint::default();
 
 			paint
-				.set_color(skia_safe::Color::from_rgb($colour.0, $colour.1, $colour.2))
+				.set_color(skia_safe::Color::from_argb(
+					$colour.0, $colour.1, $colour.2, $colour.3,
+				))
 				.set_anti_alias(false);
 
 			paint
@@ -16,25 +18,25 @@ macro_rules! paint_colour {
 }
 
 // Minecraft `Paint` colours
-paint_colour!(BLACK, (0, 0, 0));
-paint_colour!(DARK_BLUE, (0, 0, 170));
-paint_colour!(DARK_GREEN, (0, 170, 0));
-paint_colour!(DARK_AQUA, (0, 170, 170));
-paint_colour!(DARK_RED, (170, 0, 0));
-paint_colour!(DARK_PURPLE, (170, 0, 170));
-paint_colour!(GOLD, (255, 170, 0));
-paint_colour!(GRAY, (170, 170, 170));
-paint_colour!(DARK_GRAY, (85, 85, 85));
-paint_colour!(BLUE, (85, 85, 255));
-paint_colour!(GREEN, (85, 255, 85));
-paint_colour!(AQUA, (85, 255, 255));
-paint_colour!(RED, (255, 85, 85));
-paint_colour!(LIGHT_PURPLE, (255, 85, 255));
-paint_colour!(YELLOW, (255, 255, 85));
-paint_colour!(WHITE, (255, 255, 255));
+paint_colour!(BLACK, (255, 0, 0, 0));
+paint_colour!(DARK_BLUE, (255, 0, 0, 170));
+paint_colour!(DARK_GREEN, (255, 0, 170, 0));
+paint_colour!(DARK_AQUA, (255, 0, 170, 170));
+paint_colour!(DARK_RED, (255, 170, 0, 0));
+paint_colour!(DARK_PURPLE, (255, 170, 0, 170));
+paint_colour!(GOLD, (255, 255, 170, 0));
+paint_colour!(GRAY, (255, 170, 170, 170));
+paint_colour!(DARK_GRAY, (255, 85, 85, 85));
+paint_colour!(BLUE, (255, 85, 85, 255));
+paint_colour!(GREEN, (255, 85, 255, 85));
+paint_colour!(AQUA, (255, 85, 255, 255));
+paint_colour!(RED, (255, 255, 85, 85));
+paint_colour!(LIGHT_PURPLE, (255, 255, 85, 255));
+paint_colour!(YELLOW, (255, 255, 255, 85));
+paint_colour!(WHITE, (255, 255, 255, 255));
 
 // Utility colours
-// paint_colour!(BACKGROUND, (31, 48, 64));
+paint_colour!(BACKGROUND, (128, 85, 85, 85));
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum MinecraftPaint {

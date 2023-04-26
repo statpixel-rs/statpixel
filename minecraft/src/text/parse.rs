@@ -55,11 +55,11 @@ const fn const_parse_minecraft_strings<const LEN: usize>(
 	Ok((result, parser))
 }
 
-const fn const_parse_minecraft_string(
-	parser: Parser<'_>,
-	prev_font: font::MinecraftFont,
+const fn const_parse_minecraft_string<'a>(
+	parser: Parser<'a>,
+	prev_font: font::MinecraftFont<'a>,
 	prev_paint: paint::MinecraftPaint,
-) -> ParseValueResult<'_, MinecraftText<'_>> {
+) -> ParseValueResult<'a, MinecraftText<'a>> {
 	if let Ok((paint, parser)) = parse_paint(parser) {
 		let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 

@@ -5,6 +5,8 @@ pub struct Stats {
 	pub coins: u32,
 
 	#[serde(flatten)]
+	pub overall: OverallStats,
+	#[serde(flatten)]
 	pub solo_normal: SoloNormalStats,
 	#[serde(flatten)]
 	pub solo_insane: SoloInsaneStats,
@@ -12,6 +14,14 @@ pub struct Stats {
 	pub team_normal: TeamNormalStats,
 	#[serde(flatten)]
 	pub team_insane: TeamInsaneStats,
+}
+
+#[derive(Deserialize, Default, Debug)]
+pub struct OverallStats {
+	pub losses: u32,
+	pub wins: u32,
+	pub kills: u32,
+	pub deaths: u32,
 }
 
 #[derive(Deserialize, Default, Debug)]
