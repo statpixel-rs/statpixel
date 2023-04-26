@@ -3,9 +3,6 @@ mod skywars;
 
 use serde::Deserialize;
 
-pub use bedwars::*;
-pub use skywars::*;
-
 #[derive(Deserialize, Default, Debug)]
 #[serde(rename_all = "PascalCase")]
 pub struct Stats {
@@ -39,7 +36,7 @@ pub struct Stats {
 	pub turbo_kart_racers: TurboKartRacersStats,
 	#[serde(skip)]
 	pub housing: HousingStats,
-	pub sky_wars: SkyWarsStats,
+	pub sky_wars: skywars::Stats,
 	#[serde(rename = "TrueCombat", skip)]
 	pub crazy_walls: CrazyWallsStats,
 	#[serde(rename = "SpeedUHC", skip)]
@@ -51,7 +48,7 @@ pub struct Stats {
 	#[serde(skip)]
 	pub prototype: PrototypeStats,
 	#[serde(rename = "Bedwars")]
-	pub bed_wars: BedWarsStats,
+	pub bed_wars: bedwars::Stats,
 	#[serde(skip)]
 	pub murder_mystery: MurderMysteryStats,
 	#[serde(skip)]

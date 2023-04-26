@@ -2,13 +2,13 @@ use database::{get_pool, PostgresPool};
 use poise::serenity_prelude::GatewayIntents;
 use thiserror::Error;
 
-mod canvas;
 mod commands;
 mod constants;
 mod util;
 
 pub use constants::*;
 
+#[derive(Debug)]
 pub struct Data {
 	pub pool: PostgresPool,
 }
@@ -17,19 +17,21 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[derive(Error, Debug)]
 pub enum Error {
-	#[error("api error")]
+	#[error("An error occurred while fetching data from the internal API.")]
 	Api(#[from] api::Error),
-	#[error("diesel error")]
+	#[error("an error occurred while interacting with Diesel.")]
 	Diesel(#[from] diesel::result::Error),
-	#[error("database error")]
+	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] r2d2::Error),
-	#[error("framework error")]
+	#[error("An internal error occurred.")]
 	Framework(#[from] poise::serenity_prelude::Error),
-	#[error("setup error")]
+	#[error("An internal error occurred during setup.")]
 	Setup,
-	#[error("not linked error")]
+	#[error("You are not linked to a Minecraft account. Use `/link` to link your account.")]
 	NotLinked,
 }
+
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[tokio::main]
 async fn main() {
@@ -39,6 +41,9 @@ async fn main() {
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {
 			commands: vec![commands::link(), commands::display(), commands::skywars()],
+			event_handler: |ctx, event, framework, user_data| {
+				Box::pin(event_handler(ctx, event, framework, user_data))
+			},
 			..Default::default()
 		})
 		.token(std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN"))
@@ -53,4 +58,23 @@ async fn main() {
 		});
 
 	framework.run_autosharded().await.unwrap();
+}
+
+async fn event_handler(
+	ctx: &poise::serenity_prelude::Context,
+	event: &poise::Event<'_>,
+	_framework: poise::FrameworkContext<'_, Data, Error>,
+	_user_data: &Data,
+) -> Result<(), Error> {
+	if let poise::Event::Ready { data_about_bot } = event {
+		println!("{} is connected!", data_about_bot.user.name);
+
+		ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
+			"Shard #{} | v{VERSION}",
+			ctx.shard_id + 1,
+		)))
+		.await;
+	}
+
+	Ok(())
 }

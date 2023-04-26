@@ -1,9 +1,7 @@
 [workspace]
 members = [
-	"discord",
-	"database",
 	"api",
+	"canvas",
+	"database",
+	"discord",
 ]
-
-[profile.release]
-debug = true

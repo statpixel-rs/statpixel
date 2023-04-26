@@ -1,3 +1,4 @@
+use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
 
 macro_rules! paint_colour {
@@ -33,8 +34,9 @@ paint_colour!(YELLOW, (255, 255, 85));
 paint_colour!(WHITE, (255, 255, 255));
 
 // Utility colours
-paint_colour!(BACKGROUND, (31, 48, 64));
+// paint_colour!(BACKGROUND, (31, 48, 64));
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum MinecraftPaint {
 	Black,
 	DarkBlue,
@@ -101,4 +103,54 @@ impl TryFrom<char> for MinecraftPaint {
 			_ => Err(()),
 		}
 	}
+}
+
+impl TryFrom<&str> for MinecraftPaint {
+	type Error = ();
+
+	fn try_from(value: &str) -> Result<Self, Self::Error> {
+		match value {
+			"BLACK" => Ok(MinecraftPaint::Black),
+			"DARK_BLUE" => Ok(MinecraftPaint::DarkBlue),
+			"DARK_GREEN" => Ok(MinecraftPaint::DarkGreen),
+			"DARK_AQUA" => Ok(MinecraftPaint::DarkAqua),
+			"DARK_RED" => Ok(MinecraftPaint::DarkRed),
+			"DARK_PURPLE" => Ok(MinecraftPaint::DarkPurple),
+			"GOLD" => Ok(MinecraftPaint::Gold),
+			"GRAY" => Ok(MinecraftPaint::Gray),
+			"DARK_GRAY" => Ok(MinecraftPaint::DarkGray),
+			"BLUE" => Ok(MinecraftPaint::Blue),
+			"GREEN" => Ok(MinecraftPaint::Green),
+			"AQUA" => Ok(MinecraftPaint::Aqua),
+			"RED" => Ok(MinecraftPaint::Red),
+			"LIGHT_PURPLE" => Ok(MinecraftPaint::LightPurple),
+			"YELLOW" => Ok(MinecraftPaint::Yellow),
+			"WHITE" => Ok(MinecraftPaint::White),
+			_ => Err(()),
+		}
+	}
+}
+
+pub const fn parse_paint(mut parser: Parser<'_>) -> ParseValueResult<'_, MinecraftPaint> {
+	let paint = parser_method! {parser, strip_prefix;
+		"0" => MinecraftPaint::Black,
+		"1" => MinecraftPaint::DarkBlue,
+		"2" => MinecraftPaint::DarkGreen,
+		"3" => MinecraftPaint::DarkAqua,
+		"4" => MinecraftPaint::DarkRed,
+		"5" => MinecraftPaint::DarkPurple,
+		"6" => MinecraftPaint::Gold,
+		"7" => MinecraftPaint::Gray,
+		"8" => MinecraftPaint::DarkGray,
+		"9" => MinecraftPaint::Blue,
+		"a" => MinecraftPaint::Green,
+		"b" => MinecraftPaint::Aqua,
+		"c" => MinecraftPaint::Red,
+		"d" => MinecraftPaint::LightPurple,
+		"e" => MinecraftPaint::Yellow,
+		"f" => MinecraftPaint::White,
+		_ => return Err(parser.into_other_error(&"could not parse paint")),
+	};
+
+	Ok((paint, parser))
 }

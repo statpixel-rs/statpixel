@@ -1,21 +1,21 @@
 use serde::Deserialize;
 
 #[derive(Deserialize, Default, Debug)]
-pub struct SkyWarsStats {
+pub struct Stats {
 	pub coins: u32,
 
 	#[serde(flatten)]
-	pub solo_normal: SkyWarsSoloNormalStats,
+	pub solo_normal: SoloNormalStats,
 	#[serde(flatten)]
-	pub solo_insane: SkyWarsSoloInsaneStats,
+	pub solo_insane: SoloInsaneStats,
 	#[serde(flatten)]
-	pub team_normal: SkyWarsTeamNormalStats,
+	pub team_normal: TeamNormalStats,
 	#[serde(flatten)]
-	pub team_insane: SkyWarsTeamInsaneStats,
+	pub team_insane: TeamInsaneStats,
 }
 
 #[derive(Deserialize, Default, Debug)]
-pub struct SkyWarsSoloNormalStats {
+pub struct SoloNormalStats {
 	#[serde(rename = "losses_solo_normal")]
 	pub losses: u32,
 	#[serde(rename = "wins_solo_normal")]
@@ -27,7 +27,7 @@ pub struct SkyWarsSoloNormalStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
-pub struct SkyWarsSoloInsaneStats {
+pub struct SoloInsaneStats {
 	#[serde(rename = "losses_solo_insane")]
 	pub losses: u32,
 	#[serde(rename = "wins_solo_insane")]
@@ -39,7 +39,7 @@ pub struct SkyWarsSoloInsaneStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
-pub struct SkyWarsTeamNormalStats {
+pub struct TeamNormalStats {
 	#[serde(rename = "losses_team_normal")]
 	pub losses: u32,
 	#[serde(rename = "wins_team_normal")]
@@ -51,7 +51,7 @@ pub struct SkyWarsTeamNormalStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
-pub struct SkyWarsTeamInsaneStats {
+pub struct TeamInsaneStats {
 	#[serde(rename = "losses_team_insane")]
 	pub losses: u32,
 	#[serde(rename = "wins_team_insane")]

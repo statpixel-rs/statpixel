@@ -1,18 +1,25 @@
 mod data;
 
+use std::str::FromStr;
+
 pub use data::*;
 
-use reqwest::StatusCode;
+use once_cell::sync::Lazy;
+use reqwest::{Method, Request, StatusCode, Url};
 use serde::Deserialize;
 use uuid::Uuid;
 
 use crate::{http::HTTP, Error};
 
-const HYPIXEL_PLAYER_API_ENDPOINT: &str = "https://api.hypixel.net/player";
-const MOJANG_USERNAME_TO_UUID_API_ENDPOINT: &str =
-	"https://api.mojang.com/users/profiles/minecraft";
-const MOJANG_UUID_TO_USERNAME_API_ENDPOINT: &str =
-	"https://sessionserver.mojang.com/session/minecraft/profile";
+static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
+
+static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://api.mojang.com/users/profiles/minecraft/").unwrap());
+
+static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
+	Url::from_str("https://sessionserver.mojang.com/session/minecraft/profile/").unwrap()
+});
 
 #[derive(Deserialize)]
 pub struct PlayerResponse {
@@ -34,7 +41,7 @@ pub struct Player {
 #[derive(Deserialize, Debug)]
 pub struct PlayerData {
 	#[serde(rename = "displayname")]
-	pub display_name: String,
+	pub username: String,
 	#[serde(default)]
 	pub stats: Stats,
 }
@@ -45,10 +52,8 @@ impl Player {
 	}
 
 	pub async fn from_username(username: &str) -> Result<Player, Error> {
-		let response = HTTP
-			.get(format!("{MOJANG_USERNAME_TO_UUID_API_ENDPOINT}/{username}"))
-			.send()
-			.await?;
+		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
+		let response = HTTP.request(Request::new(Method::GET, url)).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);
@@ -60,10 +65,11 @@ impl Player {
 	}
 
 	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Error> {
-		let response = HTTP
-			.get(format!("{MOJANG_UUID_TO_USERNAME_API_ENDPOINT}/{uuid}"))
-			.send()
-			.await?;
+		let url = MOJANG_UUID_TO_USERNAME_API_ENDPOINT
+			.join(&uuid.to_string())
+			.unwrap();
+
+		let response = HTTP.request(Request::new(Method::GET, url)).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);
@@ -75,11 +81,11 @@ impl Player {
 	}
 
 	pub async fn get_data(&self) -> Result<PlayerData, Error> {
-		let response = HTTP
-			.get(HYPIXEL_PLAYER_API_ENDPOINT)
-			.query(&[("uuid", self.uuid)])
-			.send()
-			.await?;
+		let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
+
+		url.set_query(Some(&format!("uuid={}", self.uuid)));
+
+		let response = HTTP.request(Request::new(Method::GET, url)).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::NotFound);
@@ -115,15 +121,19 @@ mod tests {
 	}
 
 	#[tokio::test]
-	async fn test_player_data() {
-		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
+	async fn test_player_from_uuid() {
+		let uuid = Uuid::parse_str("069a79f4-44e9-4726-a5be-fca90e38aaf5").unwrap();
 		let player = Player::from_uuid(&uuid).await;
 
 		assert!(player.is_ok());
+		assert_eq!("Notch".to_string(), player.unwrap().username);
+	}
 
-		let player = player.unwrap();
+	#[tokio::test]
+	async fn test_player_data() {
+		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
+		let player = Player::new(uuid, "Technoblade".to_string());
 
-		assert_eq!("Technoblade".to_string(), player.username);
 		assert!(player.get_data().await.is_ok());
 	}
 }

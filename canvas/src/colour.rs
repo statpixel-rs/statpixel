@@ -93,3 +93,29 @@ impl TryFrom<char> for MinecraftColour {
 		}
 	}
 }
+
+impl TryFrom<&str> for MinecraftColour {
+	type Error = ();
+
+	fn try_from(value: &str) -> Result<Self, Self::Error> {
+		match value {
+			"BLACK" => Ok(MinecraftColour::Black),
+			"DARK_BLUE" => Ok(MinecraftColour::DarkBlue),
+			"DARK_GREEN" => Ok(MinecraftColour::DarkGreen),
+			"DARK_AQUA" => Ok(MinecraftColour::DarkAqua),
+			"DARK_RED" => Ok(MinecraftColour::DarkRed),
+			"DARK_PURPLE" => Ok(MinecraftColour::DarkPurple),
+			"GOLD" => Ok(MinecraftColour::Gold),
+			"GRAY" => Ok(MinecraftColour::Gray),
+			"DARK_GRAY" => Ok(MinecraftColour::DarkGray),
+			"BLUE" => Ok(MinecraftColour::Blue),
+			"GREEN" => Ok(MinecraftColour::Green),
+			"AQUA" => Ok(MinecraftColour::Aqua),
+			"RED" => Ok(MinecraftColour::Red),
+			"LIGHT_PURPLE" => Ok(MinecraftColour::LightPurple),
+			"YELLOW" => Ok(MinecraftColour::Yellow),
+			"WHITE" => Ok(MinecraftColour::White),
+			_ => Err(()),
+		}
+	}
+}

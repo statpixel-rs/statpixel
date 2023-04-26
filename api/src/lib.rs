@@ -1,3 +1,5 @@
+#![feature(async_closure)]
+
 use thiserror::Error;
 
 mod http;
@@ -7,6 +9,8 @@ pub mod player;
 pub enum Error {
 	#[error("reqwest error")]
 	Middleware(#[from] reqwest_middleware::Error),
+	#[error("tower error")]
+	Tower,
 	#[error("reqwest error")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("json error")]
