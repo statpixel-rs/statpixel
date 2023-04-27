@@ -24,12 +24,12 @@ pub fn measure_minecraft_text_ref<'a, 'b>(
 where
 	'a: 'b,
 {
-	text.map(|text| text.get_blob(size).unwrap().bounds().width())
+	text.map(|text| text.font.get_font(size).measure_str(text.text, None).0)
 		.sum()
 }
 
 pub fn measure_minecraft_text<'a>(text: impl Iterator<Item = MinecraftText<'a>>, size: f32) -> f32 {
-	text.map(|text| text.get_blob(size).unwrap().bounds().width())
+	text.map(|text| text.font.get_font(size).measure_str(text.text, None).0)
 		.sum()
 }
 
@@ -48,7 +48,7 @@ pub fn draw_minecraft_text<'a>(
 				.canvas()
 				.draw_text_blob(&blob, (x, y), text.paint.into());
 
-			x += blob.bounds().width();
+			x += text.font.get_font(size).measure_str(text.text, None).0;
 		}
 	}
 }
@@ -70,7 +70,7 @@ pub fn draw_minecraft_text_ref<'a, 'b>(
 				.canvas()
 				.draw_text_blob(&blob, (x, y), text.paint.into());
 
-			x += blob.bounds().width();
+			x += text.font.get_font(size).measure_str(text.text, None).0;
 		}
 	}
 }

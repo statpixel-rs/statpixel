@@ -1,4 +1,6 @@
-use crate::{get_item_center, GAP, HEADER_LEFT_END_X, PADDING};
+use crate::{
+	get_item_center, GAP, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, PADDING,
+};
 
 pub mod header;
 pub mod skywars;
@@ -10,6 +12,22 @@ use minecraft::{
 };
 use num_format::ToFormattedString;
 use skia_safe::Surface;
+
+fn apply_label<'a, 'b>(
+	surface: &mut Surface,
+	label: impl Iterator<Item = &'b MinecraftText<'a>>,
+	width: f32,
+) where
+	'a: 'b,
+{
+	draw_minecraft_text_ref(
+		surface,
+		label,
+		PADDING + (HEADER_LEFT_END_X - PADDING - width) / 2.,
+		PADDING + HEADER_NAME_HEIGHT + GAP + HEADER_LABEL_HEIGHT / 2. + 7.,
+		20.,
+	);
+}
 
 fn apply_item(surface: &mut Surface, count: u32, icon: &str, colour: MinecraftPaint, index: u16) {
 	let text = [
@@ -67,7 +85,7 @@ fn apply_item_float(
 	)
 }
 
-pub fn apply_extras<'a, 'b>(
+fn apply_extras<'a, 'b>(
 	surface: &mut Surface,
 	lines: [impl Iterator<Item = &'b MinecraftText<'a>>; 7],
 ) where

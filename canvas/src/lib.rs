@@ -16,17 +16,40 @@ pub const ITEM_WIDTH: f32 = (WIDTH_F - PADDING * 2. - GAP * 2.) / ITEMS_PER_ROW;
 pub const ITEM_HEIGHT: f32 = 85.;
 
 pub const HEADER_HEIGHT: f32 = 175.;
+pub const HEADER_LABEL_HEIGHT: f32 = 30.;
 pub const HEADER_LEFT_END_X: f32 = PADDING + ITEM_WIDTH * 1.5 - GAP / 2.;
 pub const HEADER_MIDDLE_END_X: f32 = HEADER_LEFT_END_X + ITEM_WIDTH + GAP;
 
 pub const HEADER_NAME_HEIGHT: f32 = 60.;
 
+pub const SWORD_ICON: &str = "\u{f889}";
+pub const SKULL_ICON: &str = "\u{f89a}";
+pub const MEDAL_ICON: &str = "\u{e7af}";
+pub const BROKEN_HEART_ICON: &str = "\u{eac2}";
+pub const RATIO_ICON: &str = "\u{eaf6}";
+
 pub fn create_surface(rows: u8) -> Surface {
-	let height = (PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * rows as f32) as i32;
-	let mut surface = Surface::new_raster_n32_premul((WIDTH, height)).unwrap();
+	let height = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * rows as f32;
+	let mut surface = Surface::new_raster_n32_premul((WIDTH, height as i32)).unwrap();
 
 	let mut path = Path::new();
 	let mut rect = RRect::new();
+
+	// Background
+	rect.set_rect_radii(
+		Rect::new(0., 0., WIDTH_F, height),
+		&[
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+		],
+	);
+
+	path.add_rrect(rect, None);
+	surface.canvas().draw_path(&path, &paint::CANVAS_BACKGROUND);
+
+	path.reset();
 
 	// Header, left block top
 	rect.set_rect_radii(
@@ -46,11 +69,29 @@ pub fn create_surface(rows: u8) -> Surface {
 
 	path.add_rrect(rect, None);
 
-	// Header, left block bottom
+	// Header, left block middle
 	rect.set_rect_radii(
 		Rect::new(
 			PADDING,
 			PADDING + HEADER_NAME_HEIGHT + GAP,
+			HEADER_LEFT_END_X,
+			PADDING + HEADER_NAME_HEIGHT + GAP + HEADER_LABEL_HEIGHT,
+		),
+		&[
+			Point::new(20., 20.),
+			Point::new(20., 20.),
+			Point::new(20., 20.),
+			Point::new(20., 20.),
+		],
+	);
+
+	path.add_rrect(rect, None);
+
+	// Header, left block bottom
+	rect.set_rect_radii(
+		Rect::new(
+			PADDING,
+			PADDING + HEADER_NAME_HEIGHT + GAP * 2. + HEADER_LABEL_HEIGHT,
 			HEADER_LEFT_END_X,
 			HEADER_HEIGHT + PADDING,
 		),

@@ -36,7 +36,8 @@ paint_colour!(YELLOW, (255, 255, 255, 85));
 paint_colour!(WHITE, (255, 255, 255, 255));
 
 // Utility colours
-paint_colour!(BACKGROUND, (128, 85, 85, 85));
+paint_colour!(BACKGROUND, (255, 21, 33, 43));
+paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum MinecraftPaint {

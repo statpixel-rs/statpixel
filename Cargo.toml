@@ -18,7 +18,7 @@ api = { path = "./api" }
 canvas = { path = "./canvas" }
 database = { path = "./database" }
 minecraft = { path = "./minecraft" }
-poise = "0.5.4"
+poise = { git = "https://github.com/serenity-rs/poise", version = "0.5.4" }
 tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
 dotenvy = "0.15.7"
 diesel = { version = "2.0.4", features = ["uuid"] }

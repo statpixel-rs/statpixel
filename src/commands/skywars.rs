@@ -42,11 +42,11 @@ async fn get_game_mode(player: &Player, mode: Option<SkyWarsMode>) -> Result<Sky
 pub async fn skywars(
 	ctx: Context<'_>,
 	#[description = "The Minecraft username to view"]
-	#[max = 16]
+	#[max_length = 16]
 	username: Option<String>,
 	#[description = "The Minecraft UUID to view"]
-	#[min = 32]
-	#[max = 36]
+	#[min_length = 32]
+	#[max_length = 36]
 	uuid: Option<String>,
 	#[description = "The mode to view"] mode: Option<SkyWarsMode>,
 ) -> Result<(), Error> {
