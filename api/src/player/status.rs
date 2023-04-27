@@ -2,7 +2,7 @@ use serde::Deserialize;
 
 use crate::game::r#type::GameType;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct PlayerSession {
 	pub online: bool,
 	#[serde(rename = "gameType")]

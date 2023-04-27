@@ -1,5 +1,7 @@
 #![feature(let_chains)]
 
+use std::sync::Arc;
+
 use database::{get_pool, PostgresPool};
 use poise::serenity_prelude::GatewayIntents;
 use thiserror::Error;
@@ -19,8 +21,8 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[derive(Error, Debug)]
 pub enum Error {
-	#[error("An error occurred while fetching data from the internal API.")]
-	Api(#[from] api::Error),
+	#[error(transparent)]
+	Api(#[from] Arc<api::Error>),
 	#[error("An error occurred while interacting with Diesel.")]
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
@@ -33,6 +35,10 @@ pub enum Error {
 	NotLinked,
 	#[error("An error occurred while negotiating game mode.")]
 	GameMode,
+	#[error("The uuid `{0}` is invalid.")]
+	InvalidUuid(String),
+	#[error("The username `{0}` is invalid.")]
+	InvalidUsername(String),
 }
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
@@ -44,7 +50,12 @@ async fn main() {
 	let pool = get_pool();
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {
-			commands: vec![commands::link(), commands::display(), commands::skywars()],
+			commands: vec![
+				commands::link(),
+				commands::display(),
+				commands::skywars(),
+				commands::cache(),
+			],
 			event_handler: |ctx, event, framework, user_data| {
 				Box::pin(event_handler(ctx, event, framework, user_data))
 			},

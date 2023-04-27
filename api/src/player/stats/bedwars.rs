@@ -1,6 +1,7 @@
 use serde::Deserialize;
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
+#[serde(default)]
 pub struct Stats {
 	pub coins: u32,
 
@@ -14,7 +15,8 @@ pub struct Stats {
 	pub four: FourStats,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
+#[serde(default)]
 pub struct SoloStats {
 	#[serde(rename = "eight_one_deaths_bedwars")]
 	pub losses: u32,
@@ -26,7 +28,8 @@ pub struct SoloStats {
 	pub final_kills: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
+#[serde(default)]
 pub struct DoubleStats {
 	#[serde(rename = "eight_two_deaths_bedwars")]
 	pub losses: u32,
@@ -38,7 +41,8 @@ pub struct DoubleStats {
 	pub final_kills: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
+#[serde(default)]
 pub struct ThreeStats {
 	#[serde(rename = "four_three_deaths_bedwars")]
 	pub losses: u32,
@@ -50,7 +54,8 @@ pub struct ThreeStats {
 	pub final_kills: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
+#[serde(default)]
 pub struct FourStats {
 	#[serde(rename = "four_four_deaths_bedwars")]
 	pub losses: u32,

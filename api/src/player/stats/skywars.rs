@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Stats {
 	pub coins: u32,
@@ -17,7 +17,7 @@ pub struct Stats {
 	pub team_insane: TeamInsaneStats,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct OverallStats {
 	pub losses: u32,
@@ -26,7 +26,7 @@ pub struct OverallStats {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SoloNormalStats {
 	#[serde(rename = "losses_solo_normal")]
@@ -39,7 +39,7 @@ pub struct SoloNormalStats {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SoloInsaneStats {
 	#[serde(rename = "losses_solo_insane")]
@@ -52,7 +52,7 @@ pub struct SoloInsaneStats {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct TeamNormalStats {
 	#[serde(rename = "losses_team_normal")]
@@ -65,7 +65,7 @@ pub struct TeamNormalStats {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Default, Debug)]
+#[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct TeamInsaneStats {
 	#[serde(rename = "losses_team_insane")]

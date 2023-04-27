@@ -1,12 +1,13 @@
 use api::player::Player;
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl};
+use minecraft::username::Username;
 use poise::serenity_prelude::User;
 use poise::CreateReply;
 use std::fmt::Display;
 use uuid::Uuid;
 
-use crate::{Context, Data, Error};
+use crate::{Context, Error};
 
 pub fn success_embed<'a, 'b, S>(
 	reply: &'b mut CreateReply<'a>,
@@ -50,15 +51,23 @@ pub async fn get_player_from_input(
 	ctx: Context<'_>,
 	author: &User,
 	uuid_raw: Option<String>,
-	username: Option<String>,
+	username_raw: Option<String>,
 ) -> Result<Player, Error> {
 	match (
-		uuid_raw.and_then(|uuid| Uuid::parse_str(&uuid).ok()),
-		username,
+		uuid_raw
+			.as_ref()
+			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
+		uuid_raw,
+		username_raw
+			.as_ref()
+			.and_then(|username| Username::parse_str(username).ok()),
+		username_raw,
 	) {
-		(Some(uuid), _) => Ok(Player::from_uuid(&uuid).await?),
-		(_, Some(username)) => Ok(Player::from_username(&username).await?),
-		(None, None) => {
+		(Some(uuid), _, _, _) => Ok(Player::from_uuid(&uuid).await?),
+		(_, _, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
+		(None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
+		(_, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
+		(None, _, None, _) => {
 			let uuid: Option<Uuid> = schema::users::table
 				.filter(schema::users::id.eq(author.id.0 as i64))
 				.select(schema::users::uuid)
@@ -71,8 +80,4 @@ pub async fn get_player_from_input(
 			}
 		}
 	}
-}
-
-pub async fn error_handler(error: poise::FrameworkError<'_, Data, Error>) {
-	eprintln!("Internal error: {error:?}");
 }

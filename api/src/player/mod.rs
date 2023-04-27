@@ -5,10 +5,15 @@ pub mod status;
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
 use serde::Deserialize;
-use std::str::FromStr;
+use std::{str::FromStr, sync::Arc};
 use uuid::Uuid;
 
-use crate::{http::HTTP, Error};
+use crate::{
+	cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE},
+	http::HTTP,
+	ratelimit::{HYPIXEL_RATELIMIT, MOJANG_RATELIMIT},
+	Error,
+};
 
 use self::status::PlayerStatus;
 
@@ -31,12 +36,13 @@ pub struct PlayerResponse {
 	pub success: bool,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct MojangResponse {
 	pub name: String,
 	pub id: Uuid,
 }
 
+#[derive(Clone)]
 pub struct Player {
 	pub uuid: Uuid,
 	pub username: String,
@@ -47,44 +53,86 @@ impl Player {
 		Self { uuid, username }
 	}
 
-	pub async fn from_username(username: &str) -> Result<Player, Error> {
+	pub async fn from_username(username: &str) -> Result<Player, Arc<Error>> {
+		PLAYER_CACHE
+			.try_get_with(
+				username.to_ascii_lowercase(),
+				Self::from_username_raw(username),
+			)
+			.await
+	}
+
+	async fn from_username_raw(username: &str) -> Result<Player, Error> {
 		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
+
+		MOJANG_RATELIMIT.until_ready().await;
+
 		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::NotFound);
+			return Err(Error::UsernameNotFound(username.to_string()));
 		}
 
 		let response = response.json::<MojangResponse>().await?;
+		let player = Self::new(response.id, response.name);
 
-		Ok(Self::new(response.id, response.name))
+		// Also add the player with their uuid to the cache
+		PLAYER_CACHE
+			.insert(response.id.to_string(), player.clone())
+			.await;
+
+		Ok(player)
 	}
 
-	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Error> {
+	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Arc<Error>> {
+		PLAYER_CACHE
+			.try_get_with(uuid.to_string(), Self::from_uuid_raw(uuid))
+			.await
+	}
+
+	async fn from_uuid_raw(uuid: &Uuid) -> Result<Player, Error> {
 		let url = MOJANG_UUID_TO_USERNAME_API_ENDPOINT
 			.join(&uuid.to_string())
 			.unwrap();
 
+		MOJANG_RATELIMIT.until_ready().await;
+
 		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::NotFound);
+			return Err(Error::UuidNotFound(*uuid));
 		}
 
 		let response = response.json::<MojangResponse>().await?;
+		let lower = response.name.to_ascii_lowercase();
+		let player = Self::new(response.id, response.name);
 
-		Ok(Self::new(response.id, response.name))
+		// Also add the player to the cache with the lower-case username
+		PLAYER_CACHE.insert(lower, player.clone()).await;
+
+		Ok(player)
 	}
 
-	pub async fn get_data(&self) -> Result<data::PlayerData, Error> {
-		let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
+	pub async fn get_data(&self) -> Result<data::PlayerData, Arc<Error>> {
+		PLAYER_DATA_CACHE
+			.try_get_with_by_ref(&self.uuid, self.get_data_raw())
+			.await
+	}
 
-		url.set_query(Some(&format!("uuid={}", self.uuid)));
+	async fn get_data_raw(&self) -> Result<data::PlayerData, Error> {
+		let url = {
+			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
+
+			url.set_query(Some(&format!("uuid={}", self.uuid)));
+			url
+		};
+
+		HYPIXEL_RATELIMIT.until_ready().await;
 
 		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::NotFound);
+			return Err(Error::PlayerNotFound(self.username.clone()));
 		}
 
 		let response = response.json::<PlayerResponse>().await?;
@@ -92,15 +140,26 @@ impl Player {
 		Ok(response.player)
 	}
 
-	pub async fn get_session(&self) -> Result<status::PlayerSession, Error> {
-		let mut url = HYPIXEL_STATUS_API_ENDPOINT.clone();
+	pub async fn get_session(&self) -> Result<status::PlayerSession, Arc<Error>> {
+		PLAYER_SESSION_CACHE
+			.try_get_with_by_ref(&self.uuid, self.get_session_raw())
+			.await
+	}
 
-		url.set_query(Some(&format!("uuid={}", self.uuid)));
+	async fn get_session_raw(&self) -> Result<status::PlayerSession, Error> {
+		let url = {
+			let mut url = HYPIXEL_STATUS_API_ENDPOINT.clone();
+
+			url.set_query(Some(&format!("uuid={}", self.uuid)));
+			url
+		};
+
+		HYPIXEL_RATELIMIT.until_ready().await;
 
 		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::NotFound);
+			return Err(Error::SessionNotFound(self.username.clone()));
 		}
 
 		let response = response.json::<PlayerStatus>().await?;

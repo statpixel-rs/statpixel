@@ -111,7 +111,7 @@ impl Rank {
 			"VIP_PLUS" => Self::VipPlus,
 			"MVP" => Self::Mvp,
 			"MVP_PLUS" if package_rank == Some("SUPERSTAR") => Self::MvpPlusPlus(
-				MinecraftColour::Red,
+				colour.unwrap_or(MinecraftColour::Red),
 				monthly_colour
 					.map(|c| c == MinecraftColour::Aqua)
 					.unwrap_or(false),
