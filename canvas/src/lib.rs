@@ -9,7 +9,7 @@ pub const WIDTH: i32 = 750;
 
 pub const WIDTH_F: f32 = WIDTH as f32;
 pub const GAP: f32 = 7.;
-pub const PADDING: f32 = 20.;
+pub const PADDING: f32 = 15.;
 
 pub const ITEMS_PER_ROW: f32 = 3.;
 pub const ITEM_WIDTH: f32 = (WIDTH_F - PADDING * 2. - GAP * 2.) / ITEMS_PER_ROW;

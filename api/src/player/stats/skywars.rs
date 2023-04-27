@@ -1,6 +1,7 @@
 use serde::Deserialize;
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct Stats {
 	pub coins: u32,
 
@@ -17,6 +18,7 @@ pub struct Stats {
 }
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct OverallStats {
 	pub losses: u32,
 	pub wins: u32,
@@ -25,6 +27,7 @@ pub struct OverallStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct SoloNormalStats {
 	#[serde(rename = "losses_solo_normal")]
 	pub losses: u32,
@@ -37,6 +40,7 @@ pub struct SoloNormalStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct SoloInsaneStats {
 	#[serde(rename = "losses_solo_insane")]
 	pub losses: u32,
@@ -49,6 +53,7 @@ pub struct SoloInsaneStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct TeamNormalStats {
 	#[serde(rename = "losses_team_normal")]
 	pub losses: u32,
@@ -61,6 +66,7 @@ pub struct TeamNormalStats {
 }
 
 #[derive(Deserialize, Default, Debug)]
+#[serde(default)]
 pub struct TeamInsaneStats {
 	#[serde(rename = "losses_team_insane")]
 	pub losses: u32,

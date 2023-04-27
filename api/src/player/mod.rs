@@ -1,5 +1,6 @@
 pub mod data;
 pub mod stats;
+pub mod status;
 
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
@@ -9,8 +10,13 @@ use uuid::Uuid;
 
 use crate::{http::HTTP, Error};
 
+use self::status::PlayerStatus;
+
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
+
+static HYPIXEL_STATUS_API_ENDPOINT: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/status").unwrap());
 
 static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.mojang.com/users/profiles/minecraft/").unwrap());
@@ -84,6 +90,22 @@ impl Player {
 		let response = response.json::<PlayerResponse>().await?;
 
 		Ok(response.player)
+	}
+
+	pub async fn get_session(&self) -> Result<status::PlayerSession, Error> {
+		let mut url = HYPIXEL_STATUS_API_ENDPOINT.clone();
+
+		url.set_query(Some(&format!("uuid={}", self.uuid)));
+
+		let response = HTTP.get(url).send().await?;
+
+		if response.status() != StatusCode::OK {
+			return Err(Error::NotFound);
+		}
+
+		let response = response.json::<PlayerStatus>().await?;
+
+		Ok(response.session)
 	}
 }
 

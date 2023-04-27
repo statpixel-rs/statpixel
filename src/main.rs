@@ -1,3 +1,5 @@
+#![feature(let_chains)]
+
 use database::{get_pool, PostgresPool};
 use poise::serenity_prelude::GatewayIntents;
 use thiserror::Error;
@@ -19,7 +21,7 @@ type Context<'a> = poise::Context<'a, Data, Error>;
 pub enum Error {
 	#[error("An error occurred while fetching data from the internal API.")]
 	Api(#[from] api::Error),
-	#[error("an error occurred while interacting with Diesel.")]
+	#[error("An error occurred while interacting with Diesel.")]
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] r2d2::Error),
@@ -29,6 +31,8 @@ pub enum Error {
 	Setup,
 	#[error("You are not linked to a Minecraft account. Use `/link` to link your account.")]
 	NotLinked,
+	#[error("An error occurred while negotiating game mode.")]
+	GameMode,
 }
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");

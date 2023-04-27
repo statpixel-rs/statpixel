@@ -6,9 +6,7 @@ pub mod skywars;
 use minecraft::{
 	font::{MinecraftFont, FONT_ICON},
 	paint::{self, MinecraftPaint},
-	text::{
-		draw_minecraft_text, draw_minecraft_text_ref, measure_minecraft_text_ref, MinecraftText,
-	},
+	text::{draw_minecraft_text_ref, measure_minecraft_text_ref, MinecraftText},
 };
 use num_format::ToFormattedString;
 use skia_safe::Surface;

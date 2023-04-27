@@ -2,6 +2,7 @@
 
 use thiserror::Error;
 
+pub mod game;
 mod http;
 pub mod player;
 

@@ -551,7 +551,7 @@ dependencies = [
 
 [[package]]
 name = "discord"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "api",
  "canvas",
@@ -1207,7 +1207,7 @@ dependencies = [
 
 [[package]]
 name = "minecraft"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "konst",
  "once_cell",
