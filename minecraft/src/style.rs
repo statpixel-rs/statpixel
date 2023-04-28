@@ -88,7 +88,13 @@ impl MinecraftFont {
 			Self::Icon => STYLE_ICON.clone(),
 		};
 
-		style.set_font_size(size);
+		if self == &Self::Icon {
+			style.set_font_size(size * 0.75);
+			style.set_baseline_shift(0.);
+		} else {
+			style.set_font_size(size);
+		}
+
 		style.set_foreground_color(paint.into());
 
 		style

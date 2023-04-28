@@ -3,9 +3,9 @@ use std::borrow::Cow;
 use api::{game::r#type::GameType, player::status::PlayerSession};
 use canvas::{create_surface, to_png};
 use poise::{futures_util::future::join, serenity_prelude::AttachmentType, ChoiceParameter};
+use translate::tr;
 
 use crate::{
-	locale::tr,
 	util::{error_embed, get_player_from_input},
 	Context, Error,
 };
@@ -70,7 +70,7 @@ pub async fn skywars(
 
 		canvas::header::apply_name(&mut surface, &data);
 		canvas::header::apply_status(&mut surface, &session);
-		canvas::skywars::apply(&mut surface, &data, mode.into());
+		canvas::skywars::apply(&ctx, &mut surface, &data, mode.into());
 
 		to_png(&mut surface).into()
 	};

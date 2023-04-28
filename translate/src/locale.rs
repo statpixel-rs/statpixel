@@ -1,5 +1,8 @@
+use std::fmt::Debug;
+
 // Taken from https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 use crate::{Context, Data, Error};
+use tracing::warn;
 
 type FluentBundle = fluent::bundle::FluentBundle<
 	fluent::FluentResource,
@@ -11,22 +14,24 @@ pub struct Locale {
 	other: std::collections::HashMap<String, FluentBundle>,
 }
 
-/// Macro to retrieve a translation, optionally with arguments. Use like:
-/// - `tr!(ctx, "identifier")` (no arguments)
-/// - `tr!(ctx, "identifier", arg1: VALUE1, arg2: VALUE2)` (with arguments)
-///
-/// Doesn't support retrieving message attributes
+impl Debug for Locale {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		f.debug_struct("Locale").finish()
+	}
+}
+
+#[macro_export]
 macro_rules! tr {
 	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
 		#[allow(unused_mut)]
-		let mut args = fluent::FluentArgs::new();
+		let mut args = $crate::fluent::FluentArgs::new();
 		$( args.set(stringify!($argname), $argvalue); )*
 
-		$crate::locale::get($ctx, $id, None, Some(&args))
+		$crate::get($ctx, $id, None, Some(&args))
 	}};
 }
-pub(crate) use tr;
-use tracing::warn;
+
+pub use tr;
 
 /// Given a language file and message identifier, returns the translation
 pub fn format(
@@ -40,8 +45,12 @@ pub fn format(
 		Some(attribute) => message.get_attribute(attribute)?.value(),
 		None => message.value()?,
 	};
-	let formatted = bundle.format_pattern(pattern, args, &mut vec![]);
-	Some(formatted.into_owned())
+
+	Some(
+		bundle
+			.format_pattern(pattern, args, &mut vec![])
+			.into_owned(),
+	)
 }
 
 /// Retrieves the appropriate language file depending on user locale and calls [`format`]

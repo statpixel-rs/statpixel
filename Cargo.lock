@@ -210,6 +210,7 @@ dependencies = [
  "num-format",
  "once_cell",
  "skia-safe",
+ "translate",
 ]
 
 [[package]]
@@ -552,6 +553,7 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
+ "translate",
  "uuid",
 ]
 
@@ -2498,6 +2500,22 @@ dependencies = [
  "thread_local",
  "tracing-core",
  "tracing-log",
+]
+
+[[package]]
+name = "translate"
+version = "0.1.0"
+dependencies = [
+ "api",
+ "database",
+ "diesel",
+ "fluent",
+ "intl-memoizer",
+ "num-format",
+ "poise",
+ "r2d2",
+ "thiserror",
+ "tracing",
 ]
 
 [[package]]

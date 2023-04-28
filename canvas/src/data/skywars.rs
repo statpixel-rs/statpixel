@@ -6,6 +6,7 @@ use minecraft::{
 };
 use num_format::ToFormattedString;
 use skia_safe::Surface;
+use translate::{prelude::GetNumFormatLocale, Context};
 
 use crate::{BROKEN_HEART_ICON, MEDAL_ICON, RATIO_ICON, SKULL_ICON, SWORD_ICON};
 
@@ -25,15 +26,9 @@ const SOLO_INSANE: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Solo §c
 const TEAM_NORMAL: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Team §aNormal§f)");
 const TEAM_INSANE: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Team §cInsane§f)");
 
-type SkyWarsData<'a> = (
-	u32,            // kills
-	u32,            // deaths
-	u32,            // wins
-	u32,            // losses
-	&'a [Text<'a>], // label
-);
+type SkyWarsData<'a> = (u32, u32, u32, u32, &'a [Text<'a>]);
 
-pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
+pub fn apply(ctx: &Context<'_>, surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 	let stats = &data.stats.sky_wars;
 
 	let (kills, deaths, wins, losses, label): SkyWarsData = match mode {
@@ -76,8 +71,8 @@ pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 
 	apply_label(surface, label);
 
-	apply_item(surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
-	apply_item(surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
+	apply_item(ctx, surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
+	apply_item(ctx, surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
 	apply_item_float(
 		surface,
 		kills as f32 / if deaths == 0 { 1. } else { deaths as f32 },
@@ -85,8 +80,15 @@ pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 		MinecraftPaint::Gold,
 		2,
 	);
-	apply_item(surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
-	apply_item(surface, losses, BROKEN_HEART_ICON, MinecraftPaint::Red, 4);
+	apply_item(ctx, surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
+	apply_item(
+		ctx,
+		surface,
+		losses,
+		BROKEN_HEART_ICON,
+		MinecraftPaint::Red,
+		4,
+	);
 	apply_item_float(
 		surface,
 		wins as f32 / if losses == 0 { 1. } else { losses as f32 },
@@ -105,7 +107,9 @@ pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 					font: minecraft::style::MinecraftFont::Normal,
 				},
 				Text {
-					text: &stats.coins.to_formatted_string(&num_format::Locale::en),
+					text: &stats
+						.coins
+						.to_formatted_string(&ctx.get_num_format_locale()),
 					paint: paint::MinecraftPaint::Gold,
 					font: minecraft::style::MinecraftFont::Normal,
 				},

@@ -1,50 +1,17 @@
 #![feature(let_chains)]
 
-use std::sync::Arc;
-
-use database::{get_pool, PostgresPool};
+use database::get_pool;
 use poise::serenity_prelude::GatewayIntents;
 use thiserror::Error;
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
+use translate::{Context, Data, Error};
 
 mod commands;
 mod constants;
-mod locale;
 mod util;
 
 pub use constants::*;
-
-pub struct Data {
-	pub pool: PostgresPool,
-	pub locale: locale::Locale,
-}
-
-type Context<'a> = poise::Context<'a, Data, Error>;
-
-#[derive(Error, Debug)]
-pub enum Error {
-	#[error(transparent)]
-	Api(#[from] Arc<api::Error>),
-	#[error("An error occurred while interacting with Diesel.")]
-	Diesel(#[from] diesel::result::Error),
-	#[error("An error occurred while interacting with the database.")]
-	Database(#[from] r2d2::Error),
-	#[error("An internal error occurred.")]
-	Framework(#[from] poise::serenity_prelude::Error),
-	#[error("An internal error occurred during setup.")]
-	Setup,
-	#[error("You are not linked to a Minecraft account. Use `/link` to link your account.")]
-	NotLinked,
-	#[error("An error occurred while negotiating game mode.")]
-	GameMode,
-	#[error("The uuid `{0}` is invalid.")]
-	InvalidUuid(String),
-	#[error("The username `{0}` is invalid.")]
-	InvalidUsername(String),
-	#[error("An error occurred while handling io.")]
-	Io(#[from] std::io::Error),
-}
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
@@ -66,7 +33,7 @@ async fn main() {
 		commands::cache(),
 	];
 
-	let locale = locale::read_ftl().unwrap();
+	let locale = translate::read_ftl().unwrap();
 	locale.apply_translations(&mut commands);
 
 	let pool = get_pool();

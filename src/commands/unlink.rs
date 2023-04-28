@@ -1,9 +1,9 @@
 use database::schema;
 use diesel::{ExpressionMethods, RunQueryDsl};
+use translate::tr;
 use uuid::Uuid;
 
 use crate::{
-	locale::tr,
 	util::{error_embed, success_embed},
 	Context, Error,
 };

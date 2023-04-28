@@ -13,6 +13,7 @@ use minecraft::{
 };
 use num_format::ToFormattedString;
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
+use translate::{prelude::GetNumFormatLocale, Context};
 
 fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
 	draw(
@@ -30,10 +31,17 @@ fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
 	);
 }
 
-fn apply_item(surface: &mut Surface, value: u32, icon: &str, paint: MinecraftPaint, index: u16) {
+fn apply_item(
+	ctx: &Context<'_>,
+	surface: &mut Surface,
+	value: u32,
+	icon: &str,
+	paint: MinecraftPaint,
+	index: u16,
+) {
 	let text = [
 		Text {
-			text: &value.to_formatted_string(&num_format::Locale::en),
+			text: &value.to_formatted_string(&ctx.get_num_format_locale()),
 			paint,
 			font: MinecraftFont::Normal,
 		},

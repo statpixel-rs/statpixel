@@ -1,0 +1,18 @@
+[package]
+name = "translate"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+api = { path = "../api" }
+database = { path = "../database" }
+diesel = "2.0.4"
+fluent = "0.16.0"
+intl-memoizer = "0.5.1"
+num-format = "0.4.4"
+poise = "0.5.5"
+r2d2 = "0.8.10"
+thiserror = "1.0.40"
+tracing = "0.1.38"
