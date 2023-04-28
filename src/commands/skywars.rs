@@ -1,10 +1,11 @@
 use std::borrow::Cow;
 
-use api::{game::r#type::GameType, player::Player};
+use api::{game::r#type::GameType, player::status::PlayerSession};
 use canvas::{create_surface, to_png};
 use poise::{futures_util::future::join, serenity_prelude::AttachmentType, ChoiceParameter};
 
 use crate::{
+	locale::tr,
 	util::{error_embed, get_player_from_input},
 	Context, Error,
 };
@@ -23,22 +24,18 @@ pub enum SkyWarsMode {
 	TeamInsane,
 }
 
-async fn get_game_mode(player: &Player, mode: Option<SkyWarsMode>) -> Result<SkyWarsMode, Error> {
+fn get_game_mode(mode: Option<SkyWarsMode>, session: &PlayerSession) -> SkyWarsMode {
 	if let Some(mode) = mode {
-		Ok(mode)
+		mode
+	} else if session.game_type == Some(GameType::SkyWars) && let Some(game_mode) = session.game_mode.as_ref() {
+		SkyWarsMode::from(game_mode.as_str())
 	} else {
-		let session = player.get_session().await?;
-
-		if session.game_type == Some(GameType::SkyWars) && let Some(game_mode) = session.game_mode {
-			Ok(SkyWarsMode::from(game_mode.as_str()))
-		} else {
-			Ok(SkyWarsMode::Overall)
-		}
+		SkyWarsMode::Overall
 	}
 }
 
 /// Shows the SkyWars stats of a player.
-#[poise::command(slash_command)]
+#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
 pub async fn skywars(
 	ctx: Context<'_>,
 	#[description = "The Minecraft username to view"]
@@ -53,29 +50,26 @@ pub async fn skywars(
 	let player = match get_player_from_input(ctx, ctx.author(), uuid, username).await {
 		Ok(player) => player,
 		Err(Error::NotLinked) => {
-			ctx.send(|m| {
-				error_embed(
-					m,
-					"Missing arguments",
-					"Invalid UUID or username provided, and you are not linked.",
-				)
-			})
-			.await?;
+			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked-title"), tr!(ctx, "not-linked")))
+				.await?;
 
 			return Ok(());
 		}
 		Err(e) => return Err(e),
 	};
 
-	let (data, mode) = join(player.get_data(), get_game_mode(&player, mode)).await;
+	let (data, session) = join(player.get_data(), player.get_session()).await;
 
 	let data = data?;
-	let mode = mode?;
+	let session = session?;
+
+	let mode = get_game_mode(mode, &session);
 
 	let png: Cow<[u8]> = {
 		let mut surface = create_surface(2);
 
-		canvas::header::apply(&mut surface, &data);
+		canvas::header::apply_name(&mut surface, &data);
+		canvas::header::apply_status(&mut surface, &session);
 		canvas::skywars::apply(&mut surface, &data, mode.into());
 
 		to_png(&mut surface).into()

@@ -3,6 +3,8 @@ use serde::Deserialize;
 #[derive(Deserialize, Debug, Clone, Copy, PartialEq)]
 #[serde(try_from = "&str")]
 pub enum GameType {
+	Limbo = 0,
+	Lobby = 1,
 	Quake = 2,
 	Walls = 3,
 	Paintball = 4,
@@ -38,6 +40,8 @@ pub enum GameType {
 impl GameType {
 	pub fn as_database_name(&self) -> &str {
 		match self {
+			Self::Limbo => "Limbo",
+			Self::Lobby => "Lobby",
 			Self::Quake => "Quake",
 			Self::Walls => "Walls",
 			Self::Paintball => "Paintball",
@@ -73,6 +77,8 @@ impl GameType {
 
 	pub fn as_clean_name(&self) -> &str {
 		match self {
+			Self::Limbo => "Limbo",
+			Self::Lobby => "Lobby",
 			Self::Quake => "Quake",
 			Self::Walls => "Walls",
 			Self::Paintball => "Paintball",
@@ -112,6 +118,8 @@ impl TryFrom<&str> for GameType {
 
 	fn try_from(name: &str) -> Result<Self, Self::Error> {
 		match name {
+			"LIMBO" => Ok(Self::Limbo),
+			"LOBBY" => Ok(Self::Lobby),
 			"QUAKECRAFT" => Ok(Self::Quake),
 			"WALLS" => Ok(Self::Walls),
 			"PAINTBALL" => Ok(Self::Paintball),

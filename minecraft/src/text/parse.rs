@@ -3,10 +3,10 @@ use konst::{
 	try_, unwrap_ctx,
 };
 
-use super::MinecraftText;
+use super::Text;
 use crate::{
-	font::{self, parse_font},
 	paint::{self, parse_paint},
+	style::{self, parse_font},
 };
 
 pub const ESCAPE: &str = "§";
@@ -20,21 +20,19 @@ macro_rules! minecraft_text {
 
 pub use minecraft_text;
 
-pub const fn _const_parse_minecraft_strings<const LEN: usize>(
-	string: &str,
-) -> [MinecraftText<'_>; LEN] {
+pub const fn _const_parse_minecraft_strings<const LEN: usize>(string: &str) -> [Text<'_>; LEN] {
 	unwrap_ctx!(const_parse_minecraft_strings::<LEN>(Parser::new(string))).0
 }
 
 const fn const_parse_minecraft_strings<const LEN: usize>(
 	mut parser: Parser<'_>,
-) -> ParseValueResult<'_, [MinecraftText<'_>; LEN]> {
-	let mut font = font::MinecraftFont::Normal;
+) -> ParseValueResult<'_, [Text<'_>; LEN]> {
+	let mut font = style::MinecraftFont::Normal;
 	let mut paint = paint::MinecraftPaint::White;
-	let mut result = [MinecraftText {
+	let mut result = [Text {
 		text: "",
-		font,
-		paint,
+		font: style::MinecraftFont::Normal,
+		paint: paint::MinecraftPaint::White,
 	}; LEN];
 
 	try_!(parser.find_skip(ESCAPE));
@@ -55,29 +53,29 @@ const fn const_parse_minecraft_strings<const LEN: usize>(
 	Ok((result, parser))
 }
 
-const fn const_parse_minecraft_string<'a>(
-	parser: Parser<'a>,
-	prev_font: font::MinecraftFont<'a>,
+const fn const_parse_minecraft_string(
+	parser: Parser<'_>,
+	prev_font: style::MinecraftFont,
 	prev_paint: paint::MinecraftPaint,
-) -> ParseValueResult<'a, MinecraftText<'a>> {
+) -> ParseValueResult<'_, Text<'_>> {
 	if let Ok((paint, parser)) = parse_paint(parser) {
 		let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 
 		Ok((
-			MinecraftText {
+			Text {
 				text,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 				paint,
 			},
 			parser,
 		))
 	} else {
 		match parse_font(parser) {
-			Ok((font @ font::MinecraftFont::Normal, parser)) => {
+			Ok((font @ style::MinecraftFont::Normal, parser)) => {
 				let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 
 				Ok((
-					MinecraftText {
+					Text {
 						text,
 						font,
 						paint: paint::MinecraftPaint::White,
@@ -89,7 +87,7 @@ const fn const_parse_minecraft_string<'a>(
 				let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 
 				Ok((
-					MinecraftText {
+					Text {
 						text,
 						font,
 						paint: prev_paint,
@@ -101,7 +99,7 @@ const fn const_parse_minecraft_string<'a>(
 				let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 
 				Ok((
-					MinecraftText {
+					Text {
 						text,
 						font: prev_font,
 						paint: prev_paint,
@@ -113,9 +111,9 @@ const fn const_parse_minecraft_string<'a>(
 	}
 }
 
-pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText<'_>> {
+pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 	let mut prev_paint = paint::MinecraftPaint::White;
-	let mut prev_font = font::MinecraftFont::Normal;
+	let mut prev_font = style::MinecraftFont::Normal;
 	let mut first = true;
 
 	if text.starts_with(ESCAPE) {
@@ -138,13 +136,13 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText<
 
 		let (paint, font) = if let Ok(paint) = paint::MinecraftPaint::try_from(hex) {
 			prev_paint = paint;
-			// When the colour changes, the text effects are reset
-			prev_font = font::MinecraftFont::Normal;
+			// When the paint changes, the text effects are reset
+			prev_font = style::MinecraftFont::Normal;
 
 			(paint, prev_font)
 		} else {
-			match font::MinecraftFont::try_from(hex) {
-				Ok(font @ font::MinecraftFont::Normal) => {
+			match style::MinecraftFont::try_from(hex) {
+				Ok(font @ style::MinecraftFont::Normal) => {
 					prev_font = font;
 					prev_paint = paint::MinecraftPaint::White;
 
@@ -165,25 +163,8 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = MinecraftText<
 			return None;
 		}
 
-		Some(MinecraftText { text, paint, font })
+		Some(Text { text, paint, font })
 	})
-}
-
-pub fn draw_minecraft_string(surface: &mut skia_safe::Surface, string: &str, size: f32) {
-	let mut x = 0.0;
-	let y = 0.0;
-
-	for text in parse_minecraft_string(string) {
-		let blob = text.get_blob(size);
-
-		if let Some(blob) = blob {
-			surface
-				.canvas()
-				.draw_text_blob(&blob, (x, y), text.paint.into());
-
-			x += blob.bounds().width();
-		}
-	}
 }
 
 #[cfg(test)]
@@ -197,25 +178,25 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			vec![MinecraftText {
+			vec![Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
 
 	#[test]
-	fn test_colour_string() {
+	fn test_paint_string() {
 		let text = "§cHello, world!";
 		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
-			vec![MinecraftText {
+			vec![Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
@@ -227,25 +208,25 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			vec![MinecraftText {
+			vec![Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
-				font: font::MinecraftFont::Bold,
+				font: style::MinecraftFont::Bold,
 			}]
 		);
 	}
 
 	#[test]
-	fn test_colour_font_string() {
+	fn test_paint_font_string() {
 		let text = "§c§lHello, world!";
 		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
-			vec![MinecraftText {
+			vec![Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
-				font: font::MinecraftFont::Bold,
+				font: style::MinecraftFont::Bold,
 			}]
 		);
 	}
@@ -257,10 +238,10 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			vec![MinecraftText {
+			vec![Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::LightPurple,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
@@ -273,20 +254,20 @@ mod tests {
 		assert_eq!(
 			parsed,
 			vec![
-				MinecraftText {
+				Text {
 					text: "Hello, ",
 					paint: paint::MinecraftPaint::Red,
-					font: font::MinecraftFont::Normal,
+					font: style::MinecraftFont::Normal,
 				},
-				MinecraftText {
+				Text {
 					text: "world",
 					paint: paint::MinecraftPaint::Red,
-					font: font::MinecraftFont::Bold,
+					font: style::MinecraftFont::Bold,
 				},
-				MinecraftText {
+				Text {
 					text: "!",
 					paint: paint::MinecraftPaint::White,
-					font: font::MinecraftFont::Normal,
+					font: style::MinecraftFont::Normal,
 				},
 			]
 		);
@@ -299,24 +280,24 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			[MinecraftText {
+			[Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
 
 	#[test]
-	fn test_colour_string_macro() {
+	fn test_paint_string_macro() {
 		let parsed = minecraft_text!("§cHello, world!");
 
 		assert_eq!(
 			parsed,
-			[MinecraftText {
+			[Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
@@ -327,24 +308,24 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			[MinecraftText {
+			[Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
-				font: font::MinecraftFont::Bold,
+				font: style::MinecraftFont::Bold,
 			}]
 		);
 	}
 
 	#[test]
-	fn test_colour_font_string_macro() {
+	fn test_paint_font_string_macro() {
 		let parsed = minecraft_text!("§c§lHello, world!");
 
 		assert_eq!(
 			parsed,
-			[MinecraftText {
+			[Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
-				font: font::MinecraftFont::Bold,
+				font: style::MinecraftFont::Bold,
 			}]
 		);
 	}
@@ -355,10 +336,10 @@ mod tests {
 
 		assert_eq!(
 			parsed,
-			[MinecraftText {
+			[Text {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::LightPurple,
-				font: font::MinecraftFont::Normal,
+				font: style::MinecraftFont::Normal,
 			}]
 		);
 	}
@@ -370,20 +351,20 @@ mod tests {
 		assert_eq!(
 			parsed,
 			[
-				MinecraftText {
+				Text {
 					text: "Hello, ",
 					paint: paint::MinecraftPaint::Red,
-					font: font::MinecraftFont::Normal,
+					font: style::MinecraftFont::Normal,
 				},
-				MinecraftText {
+				Text {
 					text: "world",
 					paint: paint::MinecraftPaint::Red,
-					font: font::MinecraftFont::Bold,
+					font: style::MinecraftFont::Bold,
 				},
-				MinecraftText {
+				Text {
 					text: "!",
 					paint: paint::MinecraftPaint::White,
-					font: font::MinecraftFont::Normal,
+					font: style::MinecraftFont::Normal,
 				},
 			]
 		);

@@ -4,7 +4,7 @@ use diesel::{ExpressionMethods, RunQueryDsl};
 use crate::{util::success_embed, Context, Error};
 
 /// Changes the way responses are displayed.
-#[poise::command(slash_command)]
+#[poise::command(slash_command, required_bot_permissions = "EMBED_LINKS")]
 pub async fn display(
 	ctx: Context<'_>,
 	#[description = "Whether to display responses as text"] text: Option<bool>,

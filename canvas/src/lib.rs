@@ -178,12 +178,12 @@ pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 		.to_vec()
 }
 
-pub fn get_item_center(i: u16) -> (f32, f32) {
+pub fn get_item_rect(i: u16) -> Rect {
 	let x = i % 3;
 	let y = i / 3;
 
-	let x = PADDING + (GAP + ITEM_WIDTH) * x as f32 + ITEM_WIDTH / 2.;
-	let y = PADDING + HEADER_HEIGHT + GAP + (ITEM_HEIGHT + GAP) * y as f32 + ITEM_HEIGHT / 2.;
+	let x = PADDING + (GAP + ITEM_WIDTH) * x as f32;
+	let y = PADDING + HEADER_HEIGHT + GAP + (ITEM_HEIGHT + GAP) * y as f32;
 
-	(x, y)
+	Rect::from_xywh(x, y, ITEM_WIDTH, ITEM_HEIGHT)
 }

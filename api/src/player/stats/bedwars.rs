@@ -3,6 +3,7 @@ use serde::Deserialize;
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Stats {
+	#[serde(deserialize_with = "super::from_trunc_f32")]
 	pub coins: u32,
 
 	#[serde(flatten)]

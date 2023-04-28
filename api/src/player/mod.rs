@@ -30,7 +30,7 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 	Url::from_str("https://sessionserver.mojang.com/session/minecraft/profile/").unwrap()
 });
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct PlayerResponse {
 	pub player: data::PlayerData,
 	pub success: bool,

@@ -1,3 +1,4 @@
+use konst::{parser_method, parsing::ParseValueResult, Parser};
 use serde::Deserialize;
 
 macro_rules! colour {
@@ -72,6 +73,29 @@ impl From<MinecraftColour> for &skia_safe::Color {
 	}
 }
 
+impl From<MinecraftColour> for skia_safe::Color {
+	fn from(colour: MinecraftColour) -> Self {
+		match colour {
+			MinecraftColour::Black => BLACK,
+			MinecraftColour::DarkBlue => DARK_BLUE,
+			MinecraftColour::DarkGreen => DARK_GREEN,
+			MinecraftColour::DarkAqua => DARK_AQUA,
+			MinecraftColour::DarkRed => DARK_RED,
+			MinecraftColour::DarkPurple => DARK_PURPLE,
+			MinecraftColour::Gold => GOLD,
+			MinecraftColour::Gray => GRAY,
+			MinecraftColour::DarkGray => DARK_GRAY,
+			MinecraftColour::Blue => BLUE,
+			MinecraftColour::Green => GREEN,
+			MinecraftColour::Aqua => AQUA,
+			MinecraftColour::Red => RED,
+			MinecraftColour::LightPurple => LIGHT_PURPLE,
+			MinecraftColour::Yellow => YELLOW,
+			MinecraftColour::White => WHITE,
+		}
+	}
+}
+
 impl TryFrom<char> for MinecraftColour {
 	type Error = &'static str;
 
@@ -122,4 +146,28 @@ impl TryFrom<&str> for MinecraftColour {
 			_ => Err("invalid colour code"),
 		}
 	}
+}
+
+pub const fn parse_colour(mut parser: Parser<'_>) -> ParseValueResult<'_, MinecraftColour> {
+	let paint = parser_method! {parser, strip_prefix;
+		"0" => MinecraftColour::Black,
+		"1" => MinecraftColour::DarkBlue,
+		"2" => MinecraftColour::DarkGreen,
+		"3" => MinecraftColour::DarkAqua,
+		"4" => MinecraftColour::DarkRed,
+		"5" => MinecraftColour::DarkPurple,
+		"6" => MinecraftColour::Gold,
+		"7" => MinecraftColour::Gray,
+		"8" => MinecraftColour::DarkGray,
+		"9" => MinecraftColour::Blue,
+		"a" => MinecraftColour::Green,
+		"b" => MinecraftColour::Aqua,
+		"c" => MinecraftColour::Red,
+		"d" => MinecraftColour::LightPurple,
+		"e" => MinecraftColour::Yellow,
+		"f" => MinecraftColour::White,
+		_ => return Err(parser.into_other_error(&"could not parse paint")),
+	};
+
+	Ok((paint, parser))
 }

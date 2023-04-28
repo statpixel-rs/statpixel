@@ -60,8 +60,8 @@ pub enum MinecraftPaint {
 }
 
 impl From<MinecraftPaint> for &skia_safe::Paint {
-	fn from(colour: MinecraftPaint) -> Self {
-		match colour {
+	fn from(paint: MinecraftPaint) -> Self {
+		match paint {
 			MinecraftPaint::Black => &BLACK,
 			MinecraftPaint::DarkBlue => &DARK_BLUE,
 			MinecraftPaint::DarkGreen => &DARK_GREEN,

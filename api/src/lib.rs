@@ -12,7 +12,7 @@ pub mod player;
 
 #[derive(Error, Debug)]
 pub enum Error {
-	#[error("An internal error occurred when sending a request.")]
+	#[error("An internal error occurred when sending a request. {0:?}")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("An internal error occurred when deserializing JSON.")]
 	Json(#[from] serde_json::Error),

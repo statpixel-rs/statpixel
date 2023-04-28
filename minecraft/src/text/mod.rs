@@ -1,76 +1,77 @@
 pub mod parse;
 pub mod rank;
 
-use crate::{font, paint};
-use skia_safe::TextBlob;
+use skia_safe::{
+	textlayout::{FontCollection, ParagraphBuilder, ParagraphStyle, TextAlign},
+	FontMgr, Rect, Surface,
+};
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub struct MinecraftText<'a> {
-	pub text: &'a str,
-	pub paint: paint::MinecraftPaint,
-	pub font: font::MinecraftFont<'a>,
+use crate::{paint::MinecraftPaint, style::MinecraftFont};
+
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct Text<'t> {
+	pub text: &'t str,
+	pub font: MinecraftFont,
+	pub paint: MinecraftPaint,
 }
 
-impl MinecraftText<'_> {
-	pub fn get_blob(&self, size: f32) -> Option<TextBlob> {
-		TextBlob::from_str(self.text, &self.font.get_font(size))
+impl Default for Text<'_> {
+	fn default() -> Self {
+		Self {
+			text: "",
+			font: MinecraftFont::Normal,
+			paint: MinecraftPaint::White,
+		}
 	}
 }
 
-pub fn measure_minecraft_text_ref<'a, 'b>(
-	text: impl Iterator<Item = &'b MinecraftText<'a>>,
+pub fn draw(
+	surface: &mut Surface,
+	text: &[Text<'_>],
 	size: f32,
-) -> f32
-where
-	'a: 'b,
-{
-	text.map(|text| text.font.get_font(size).measure_str(text.text, None).0)
-		.sum()
-}
-
-pub fn measure_minecraft_text<'a>(text: impl Iterator<Item = MinecraftText<'a>>, size: f32) -> f32 {
-	text.map(|text| text.font.get_font(size).measure_str(text.text, None).0)
-		.sum()
-}
-
-pub fn draw_minecraft_text<'a>(
-	surface: &mut skia_safe::Surface,
-	text: impl Iterator<Item = MinecraftText<'a>>,
-	mut x: f32,
-	y: f32,
-	size: f32,
+	rect: impl Into<Rect>,
+	h_align: impl Into<Option<TextAlign>>,
+	v_center: bool,
 ) {
-	for text in text {
-		let blob = text.get_blob(size);
+	let style = {
+		let mut style = ParagraphStyle::new();
 
-		if let Some(blob) = blob {
-			surface
-				.canvas()
-				.draw_text_blob(&blob, (x, y), text.paint.into());
+		style.set_text_align(h_align.into().unwrap_or(TextAlign::Left));
+		style
+	};
 
-			x += text.font.get_font(size).measure_str(text.text, None).0;
+	let mut paragraph = {
+		let font = {
+			let mut manager = FontCollection::new();
+
+			manager.set_default_font_manager(FontMgr::new(), "Minecraft");
+			manager
+		};
+
+		let mut builder = ParagraphBuilder::new(&style, font);
+
+		for blob in text {
+			let style = blob.font.get_style(blob.paint, size);
+
+			builder.push_style(&style);
+			builder.add_text(blob.text);
 		}
-	}
-}
 
-pub fn draw_minecraft_text_ref<'a, 'b>(
-	surface: &mut skia_safe::Surface,
-	text: impl Iterator<Item = &'b MinecraftText<'a>>,
-	mut x: f32,
-	y: f32,
-	size: f32,
-) where
-	'a: 'b,
-{
-	for text in text {
-		let blob = text.get_blob(size);
+		builder.build()
+	};
 
-		if let Some(blob) = blob {
-			surface
-				.canvas()
-				.draw_text_blob(&blob, (x, y), text.paint.into());
+	let rect: Rect = rect.into();
 
-			x += text.font.get_font(size).measure_str(text.text, None).0;
-		}
-	}
+	paragraph.layout(rect.width());
+
+	let point = (
+		rect.left(),
+		if v_center {
+			rect.center_y() - paragraph.height() / 2.
+		} else {
+			rect.top()
+		},
+	);
+
+	paragraph.paint(surface.canvas(), point);
 }

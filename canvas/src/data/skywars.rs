@@ -1,8 +1,8 @@
 use api::player::data::PlayerData;
 use minecraft::{
 	minecraft_text,
-	paint::MinecraftPaint,
-	text::{measure_minecraft_text_ref, MinecraftText},
+	paint::{self, MinecraftPaint},
+	text::Text,
 };
 use num_format::ToFormattedString;
 use skia_safe::Surface;
@@ -19,59 +19,62 @@ pub enum SkyWarsMode {
 	TeamInsane,
 }
 
-const OVERALL: [MinecraftText; 2] = minecraft_text!("§e§lSkyWars §f(Overall)");
-const SOLO_NORMAL: [MinecraftText; 4] = minecraft_text!("§e§lSkyWars §f(Solo §aNormal§f)");
-const SOLO_INSANE: [MinecraftText; 4] = minecraft_text!("§e§lSkyWars §f(Solo §cInsane§f)");
-const TEAM_NORMAL: [MinecraftText; 4] = minecraft_text!("§e§lSkyWars §f(Team §aNormal§f)");
-const TEAM_INSANE: [MinecraftText; 4] = minecraft_text!("§e§lSkyWars §f(Team §cInsane§f)");
+const OVERALL: [Text; 3] = minecraft_text!("§b§lSky§d§lWars §f(Overall)");
+const SOLO_NORMAL: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Solo §aNormal§f)");
+const SOLO_INSANE: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Solo §cInsane§f)");
+const TEAM_NORMAL: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Team §aNormal§f)");
+const TEAM_INSANE: [Text; 5] = minecraft_text!("§b§lSky§d§lWars §f(Team §cInsane§f)");
+
+type SkyWarsData<'a> = (
+	u32,            // kills
+	u32,            // deaths
+	u32,            // wins
+	u32,            // losses
+	&'a [Text<'a>], // label
+);
 
 pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 	let stats = &data.stats.sky_wars;
 
-	let (kills, deaths, wins, losses, label, width) = match mode {
+	let (kills, deaths, wins, losses, label): SkyWarsData = match mode {
 		SkyWarsMode::Overall => (
 			stats.overall.kills,
 			stats.overall.deaths,
 			stats.overall.wins,
 			stats.overall.losses,
-			OVERALL.iter(),
-			measure_minecraft_text_ref(OVERALL.iter(), 20.),
+			&OVERALL,
 		),
 		SkyWarsMode::SoloNormal => (
 			stats.solo_normal.kills,
 			stats.solo_normal.deaths,
 			stats.solo_normal.wins,
 			stats.solo_normal.losses,
-			SOLO_NORMAL.iter(),
-			measure_minecraft_text_ref(SOLO_NORMAL.iter(), 20.),
+			&SOLO_NORMAL,
 		),
 		SkyWarsMode::SoloInsane => (
 			stats.solo_insane.kills,
 			stats.solo_insane.deaths,
 			stats.solo_insane.wins,
 			stats.solo_insane.losses,
-			SOLO_INSANE.iter(),
-			measure_minecraft_text_ref(SOLO_INSANE.iter(), 20.),
+			&SOLO_INSANE,
 		),
 		SkyWarsMode::TeamNormal => (
 			stats.team_normal.kills,
 			stats.team_normal.deaths,
 			stats.team_normal.wins,
 			stats.team_normal.losses,
-			TEAM_NORMAL.iter(),
-			measure_minecraft_text_ref(TEAM_NORMAL.iter(), 20.),
+			&TEAM_NORMAL,
 		),
 		SkyWarsMode::TeamInsane => (
 			stats.team_insane.kills,
 			stats.team_insane.deaths,
 			stats.team_insane.wins,
 			stats.team_insane.losses,
-			TEAM_INSANE.iter(),
-			measure_minecraft_text_ref(TEAM_INSANE.iter(), 20.),
+			&TEAM_INSANE,
 		),
 	};
 
-	apply_label(surface, label, width);
+	apply_label(surface, label);
 
 	apply_item(surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
 	apply_item(surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
@@ -79,7 +82,7 @@ pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 		surface,
 		kills as f32 / if deaths == 0 { 1. } else { deaths as f32 },
 		RATIO_ICON,
-		MinecraftPaint::Yellow,
+		MinecraftPaint::Gold,
 		2,
 	);
 	apply_item(surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
@@ -88,62 +91,55 @@ pub fn apply(surface: &mut Surface, data: &PlayerData, mode: SkyWarsMode) {
 		surface,
 		wins as f32 / if losses == 0 { 1. } else { losses as f32 },
 		RATIO_ICON,
-		MinecraftPaint::Yellow,
+		MinecraftPaint::Gold,
 		5,
 	);
 
 	apply_extras(
 		surface,
 		[
-			[
-				MinecraftText {
+			&[
+				Text {
 					text: "• Coins: ",
-					paint: MinecraftPaint::White,
-					font: minecraft::font::MinecraftFont::Normal,
+					paint: paint::MinecraftPaint::White,
+					font: minecraft::style::MinecraftFont::Normal,
 				},
-				MinecraftText {
+				Text {
 					text: &stats.coins.to_formatted_string(&num_format::Locale::en),
-					paint: MinecraftPaint::Gold,
-					font: minecraft::font::MinecraftFont::Normal,
+					paint: paint::MinecraftPaint::Gold,
+					font: minecraft::style::MinecraftFont::Normal,
 				},
-			]
-			.iter(),
-			[MinecraftText {
+			],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
-			[MinecraftText {
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
-			[MinecraftText {
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
-			[MinecraftText {
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
-			[MinecraftText {
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
-			[MinecraftText {
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
+			&[Text {
 				text: "A",
-				paint: MinecraftPaint::White,
-				font: minecraft::font::MinecraftFont::Normal,
-			}]
-			.iter(),
+				paint: paint::MinecraftPaint::White,
+				font: minecraft::style::MinecraftFont::Normal,
+			}],
 		],
 	)
 }

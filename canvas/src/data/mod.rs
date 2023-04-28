@@ -1,101 +1,87 @@
 use crate::{
-	get_item_center, GAP, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, PADDING,
+	GAP, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT, ITEM_WIDTH,
+	PADDING,
 };
 
 pub mod header;
 pub mod skywars;
 
 use minecraft::{
-	font::{MinecraftFont, FONT_ICON},
 	paint::{self, MinecraftPaint},
-	text::{draw_minecraft_text_ref, measure_minecraft_text_ref, MinecraftText},
+	style::MinecraftFont,
+	text::{draw, Text},
 };
 use num_format::ToFormattedString;
-use skia_safe::Surface;
+use skia_safe::{textlayout::TextAlign, Rect, Surface};
 
-fn apply_label<'a, 'b>(
-	surface: &mut Surface,
-	label: impl Iterator<Item = &'b MinecraftText<'a>>,
-	width: f32,
-) where
-	'a: 'b,
-{
-	draw_minecraft_text_ref(
+fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
+	draw(
 		surface,
 		label,
-		PADDING + (HEADER_LEFT_END_X - PADDING - width) / 2.,
-		PADDING + HEADER_NAME_HEIGHT + GAP + HEADER_LABEL_HEIGHT / 2. + 7.,
 		20.,
+		Rect::from_xywh(
+			PADDING,
+			PADDING + HEADER_NAME_HEIGHT + GAP,
+			HEADER_LEFT_END_X,
+			HEADER_LABEL_HEIGHT,
+		),
+		TextAlign::Center,
+		true,
 	);
 }
 
-fn apply_item(surface: &mut Surface, count: u32, icon: &str, colour: MinecraftPaint, index: u16) {
+fn apply_item(surface: &mut Surface, value: u32, icon: &str, paint: MinecraftPaint, index: u16) {
 	let text = [
-		MinecraftText {
-			text: &count.to_formatted_string(&num_format::Locale::en),
-			paint: colour,
+		Text {
+			text: &value.to_formatted_string(&num_format::Locale::en),
+			paint,
 			font: MinecraftFont::Normal,
 		},
-		MinecraftText {
+		Text {
 			text: icon,
-			paint: paint::MinecraftPaint::White,
-			font: MinecraftFont::Other(&FONT_ICON),
+			paint: paint::MinecraftPaint::Gray,
+			font: MinecraftFont::Icon,
 		},
 	];
 
-	let (x, y) = get_item_center(index);
+	let rect = super::get_item_rect(index);
 
-	draw_minecraft_text_ref(
-		surface,
-		text.iter(),
-		x - measure_minecraft_text_ref(text.iter(), 40.) / 2.,
-		y + 15.,
-		40.,
-	)
+	draw(surface, &text, 40., rect, TextAlign::Center, true);
 }
 
 fn apply_item_float(
 	surface: &mut Surface,
-	count: f32,
+	value: f32,
 	icon: &str,
-	colour: MinecraftPaint,
+	paint: MinecraftPaint,
 	index: u16,
 ) {
 	let text = [
-		MinecraftText {
-			text: &format!("{count:.2}"),
-			paint: colour,
+		Text {
+			text: &format!("{value:.2}"),
+			paint,
 			font: MinecraftFont::Normal,
 		},
-		MinecraftText {
+		Text {
 			text: icon,
-			paint: paint::MinecraftPaint::White,
-			font: MinecraftFont::Other(&FONT_ICON),
+			paint: paint::MinecraftPaint::Gray,
+			font: MinecraftFont::Icon,
 		},
 	];
 
-	let (x, y) = get_item_center(index);
+	let rect = super::get_item_rect(index);
 
-	draw_minecraft_text_ref(
-		surface,
-		text.iter(),
-		x - measure_minecraft_text_ref(text.iter(), 40.) / 2.,
-		y + 15.,
-		40.,
-	)
+	draw(surface, &text, 40., rect, TextAlign::Center, true);
 }
 
-fn apply_extras<'a, 'b>(
-	surface: &mut Surface,
-	lines: [impl Iterator<Item = &'b MinecraftText<'a>>; 7],
-) where
-	'a: 'b,
-{
-	let mut y = PADDING + 30.;
+fn apply_extras(surface: &mut Surface, lines: [&[Text<'_>]; 7]) {
+	let mut y = PADDING + 15.;
 	let x = HEADER_LEFT_END_X + GAP + 15.;
 
 	for line in lines {
-		draw_minecraft_text_ref(surface, line, x, y, 17.);
+		let rect = Rect::from_xywh(x, y, ITEM_WIDTH, ITEM_HEIGHT);
+
+		draw(surface, line, 17., rect, TextAlign::Left, false);
 
 		y += 21.2;
 	}

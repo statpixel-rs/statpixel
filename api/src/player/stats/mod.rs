@@ -1,7 +1,7 @@
 mod bedwars;
 mod skywars;
 
-use serde::Deserialize;
+use serde::{Deserialize, Deserializer};
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(rename_all = "PascalCase", default)]
@@ -150,3 +150,12 @@ pub struct SmpStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct WoolWarsStats;
+
+fn from_trunc_f32<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: f32 = Deserialize::deserialize(deserializer)?;
+
+	Ok(s as u32)
+}

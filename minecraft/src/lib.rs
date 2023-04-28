@@ -1,8 +1,8 @@
 use thiserror::Error;
 
 pub mod colour;
-pub mod font;
 pub mod paint;
+pub mod style;
 pub mod text;
 pub mod username;
 

@@ -7,11 +7,17 @@ use crate::{
 	Context, Error,
 };
 
+/// Links your Discord account to a Minecraft account.
 #[poise::command(slash_command)]
 pub async fn link(
 	ctx: Context<'_>,
-	#[description = "Your Minecraft UUID"] uuid: Option<String>,
-	#[description = "Your Minecraft username"] username: Option<String>,
+	#[description = "Your Minecraft UUID"]
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+	#[description = "Your Minecraft username"]
+	#[max_length = 16]
+	username: Option<String>,
 ) -> Result<(), Error> {
 	let (player, uuid, username) = match (uuid.and_then(|u| Uuid::parse_str(&u).ok()), username) {
 		(r @ Some(uuid), _) => (api::player::Player::from_uuid(&uuid).await, r, None),
