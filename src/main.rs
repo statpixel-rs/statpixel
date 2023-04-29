@@ -46,12 +46,12 @@ async fn main() {
 			..Default::default()
 		})
 		.token(std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN"))
-		.intents(GatewayIntents::non_privileged())
+		.intents(GatewayIntents::from_bits(0).unwrap())
 		.setup(move |ctx, _ready, framework| {
 			Box::pin(async move {
 				poise::builtins::register_globally(ctx, &framework.options().commands)
 					.await
-					.map_err(|_| Error::Setup)?;
+					.unwrap();
 
 				Ok(Data { pool, locale })
 			})
@@ -66,14 +66,20 @@ async fn event_handler(
 	_framework: poise::FrameworkContext<'_, Data, Error>,
 	_user_data: &Data,
 ) -> Result<(), Error> {
-	if let poise::Event::Ready { data_about_bot } = event {
-		info!("{} is connected!", data_about_bot.user.name);
+	match event {
+		poise::Event::Ready { data_about_bot } => {
+			info!(user = ?data_about_bot.user.tag(), "logged in");
 
-		ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
-			"Shard #{} | v{VERSION}",
-			ctx.shard_id + 1,
-		)))
-		.await;
+			ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
+				"Shard #{} | v{VERSION}",
+				ctx.shard_id + 1,
+			)))
+			.await;
+		}
+		poise::Event::ShardStageUpdate { update } => {
+			info!(shard = ?update, "shard stage update");
+		}
+		_ => {}
 	}
 
 	Ok(())

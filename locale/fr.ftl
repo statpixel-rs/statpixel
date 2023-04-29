@@ -1,3 +1,5 @@
+decimal-sep = ,
+
 # /display
 display = display
 	.description = Modifie la façon dont les réponses sont affichées.
@@ -47,7 +49,7 @@ opals = Opales
 heads = Têtes
 souls = Âmes
 tokens = Jetons
-most-kills = Plus de tués
+bow-accuracy = Précision à l'arc
 
 skywars = skywars
 	.description = Affiche les statistiques SkyWars d'un joueur.
@@ -62,3 +64,5 @@ skywars = skywars
 
 offline = Hors ligne
 online = En ligne
+level = Niveau
+progress = Progrès

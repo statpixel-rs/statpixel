@@ -1,5 +1,6 @@
 use thiserror::Error;
 
+pub mod calc;
 pub mod colour;
 pub mod paint;
 pub mod style;

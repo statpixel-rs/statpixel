@@ -20,7 +20,9 @@ pub const HEADER_LABEL_HEIGHT: f32 = 30.;
 pub const HEADER_LEFT_END_X: f32 = PADDING + ITEM_WIDTH * 1.5 - GAP / 2.;
 pub const HEADER_MIDDLE_END_X: f32 = HEADER_LEFT_END_X + ITEM_WIDTH + GAP;
 
-pub const HEADER_NAME_HEIGHT: f32 = 60.;
+pub const HEADER_DATA_HEIGHT: f32 =
+	HEADER_HEIGHT - HEADER_LABEL_HEIGHT - GAP * 2. - HEADER_NAME_HEIGHT;
+pub const HEADER_NAME_HEIGHT: f32 = 45.;
 
 pub const SWORD_ICON: &str = "\u{f889}";
 pub const SKULL_ICON: &str = "\u{f89a}";

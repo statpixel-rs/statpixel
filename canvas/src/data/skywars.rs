@@ -1,6 +1,6 @@
 use api::player::data::PlayerData;
 use minecraft::{
-	minecraft_text,
+	calc, minecraft_text,
 	paint::{self, MinecraftPaint},
 	text::Text,
 };
@@ -9,7 +9,7 @@ use translate::{tr, Context};
 
 use crate::{BROKEN_HEART_ICON, MEDAL_ICON, RATIO_ICON, SKULL_ICON, SWORD_ICON};
 
-use super::{apply_extras, apply_item, apply_item_float, apply_label};
+use super::{apply_data, apply_extras, apply_item, apply_item_float, apply_label};
 
 pub enum SkyWarsMode {
 	Overall,
@@ -75,18 +75,28 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 		],
 	);
 
-	apply_item(&ctx, surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
-	apply_item(&ctx, surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
+	apply_data(
+		ctx,
+		surface,
+		stats.level_fmt.as_deref().unwrap_or("§71"),
+		calc::skywars::get_level_progress(stats.xp),
+		calc::skywars::get_curr_level_xp(stats.xp),
+		calc::skywars::get_level_xp(stats.xp),
+	);
+
+	apply_item(ctx, surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
+	apply_item(ctx, surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
 	apply_item_float(
+		ctx,
 		surface,
 		kills as f32 / if deaths == 0 { 1. } else { deaths as f32 },
 		RATIO_ICON,
 		MinecraftPaint::Gold,
 		2,
 	);
-	apply_item(&ctx, surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
+	apply_item(ctx, surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
 	apply_item(
-		&ctx,
+		ctx,
 		surface,
 		losses,
 		BROKEN_HEART_ICON,
@@ -94,6 +104,7 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 		4,
 	);
 	apply_item_float(
+		ctx,
 		surface,
 		wins as f32 / if losses == 0 { 1. } else { losses as f32 },
 		RATIO_ICON,
@@ -105,32 +116,47 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 		ctx,
 		surface,
 		[
-			(tr!(ctx, "coins"), stats.coins, paint::MinecraftPaint::Gold),
+			(
+				tr!(ctx, "coins"),
+				stats.coins,
+				paint::MinecraftPaint::Gold,
+				None,
+			),
 			(
 				tr!(ctx, "loot-chests"),
 				stats.loot_chests,
 				paint::MinecraftPaint::Yellow,
+				None,
 			),
 			(
 				tr!(ctx, "opals"),
 				stats.opals as u32,
 				paint::MinecraftPaint::Blue,
+				None,
 			),
 			(
 				tr!(ctx, "heads"),
 				stats.heads,
 				paint::MinecraftPaint::DarkPurple,
+				None,
 			),
-			(tr!(ctx, "souls"), stats.souls, paint::MinecraftPaint::Aqua),
+			(
+				tr!(ctx, "souls"),
+				stats.souls,
+				paint::MinecraftPaint::Aqua,
+				None,
+			),
 			(
 				tr!(ctx, "tokens"),
 				stats.tokens,
 				paint::MinecraftPaint::DarkGreen,
+				None,
 			),
 			(
-				tr!(ctx, "most-kills"),
-				stats.highest_kill_game as u32,
+				tr!(ctx, "bow-accuracy"),
+				((stats.arrows_hit * 100) as f32 / stats.arrows_shot as f32).round() as u32,
 				paint::MinecraftPaint::Red,
+				Some('%'),
 			),
 		],
 	)

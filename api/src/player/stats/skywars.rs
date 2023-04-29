@@ -12,8 +12,15 @@ pub struct Stats {
 	pub tokens: u32,
 	#[serde(rename = "skywars_chests")]
 	pub loot_chests: u32,
-	#[serde(rename = "most_kills_game")]
-	pub highest_kill_game: u8,
+	pub arrows_shot: u32,
+	pub arrows_hit: u32,
+	#[serde(rename = "levelFormatted")]
+	pub level_fmt: Option<String>,
+	#[serde(
+		rename = "skywars_experience",
+		deserialize_with = "super::from_trunc_f32"
+	)]
+	pub xp: u32,
 
 	#[serde(flatten)]
 	pub overall: OverallStats,
