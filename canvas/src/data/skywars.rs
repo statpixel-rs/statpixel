@@ -7,8 +7,6 @@ use minecraft::{
 use skia_safe::Surface;
 use translate::{tr, Context};
 
-use crate::{BROKEN_HEART_ICON, MEDAL_ICON, RATIO_ICON, SKULL_ICON, SWORD_ICON};
-
 use super::{apply_data, apply_extras, apply_item, apply_item_float, apply_label};
 
 pub enum SkyWarsMode {
@@ -71,6 +69,7 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 				text: &format!(" ({label})"),
 				paint: paint::MinecraftPaint::White,
 				font: minecraft::style::MinecraftFont::Normal,
+				size: None,
 			},
 		],
 	);
@@ -84,30 +83,52 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 		calc::skywars::get_level_xp(stats.xp),
 	);
 
-	apply_item(ctx, surface, kills, SWORD_ICON, MinecraftPaint::Green, 0);
-	apply_item(ctx, surface, deaths, SKULL_ICON, MinecraftPaint::Red, 1);
-	apply_item_float(
+	apply_item(
 		ctx,
 		surface,
-		kills as f32 / if deaths == 0 { 1. } else { deaths as f32 },
-		RATIO_ICON,
-		MinecraftPaint::Gold,
-		2,
+		wins,
+		&tr!(ctx, "wins"),
+		MinecraftPaint::Green,
+		0,
 	);
-	apply_item(ctx, surface, wins, MEDAL_ICON, MinecraftPaint::Green, 3);
 	apply_item(
 		ctx,
 		surface,
 		losses,
-		BROKEN_HEART_ICON,
+		&tr!(ctx, "losses"),
+		MinecraftPaint::Red,
+		1,
+	);
+	apply_item_float(
+		ctx,
+		surface,
+		wins as f32 / if losses == 0 { 1. } else { losses as f32 },
+		&tr!(ctx, "wlr"),
+		MinecraftPaint::Gold,
+		2,
+	);
+
+	apply_item(
+		ctx,
+		surface,
+		kills,
+		&tr!(ctx, "kills"),
+		MinecraftPaint::Green,
+		3,
+	);
+	apply_item(
+		ctx,
+		surface,
+		deaths,
+		&tr!(ctx, "deaths"),
 		MinecraftPaint::Red,
 		4,
 	);
 	apply_item_float(
 		ctx,
 		surface,
-		wins as f32 / if losses == 0 { 1. } else { losses as f32 },
-		RATIO_ICON,
+		kills as f32 / if deaths == 0 { 1. } else { deaths as f32 },
+		&tr!(ctx, "kdr"),
 		MinecraftPaint::Gold,
 		5,
 	);

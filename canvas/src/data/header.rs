@@ -27,7 +27,7 @@ pub fn apply_name(surface: &mut Surface, data: &PlayerData) {
 	text.push(Text {
 		text: &username,
 		paint: rank.get_username_paint(),
-		font: minecraft::style::MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text::draw(
@@ -56,7 +56,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 				Text {
 					text: &tr!(ctx, "online"),
 					paint: minecraft::paint::MinecraftPaint::Green,
-					font: minecraft::style::MinecraftFont::Normal,
+					..Default::default()
 				},
 				Text {
 					text: "\n",
@@ -65,7 +65,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 				Text {
 					text: data.game_type.unwrap_or(GameType::Lobby).as_clean_name(),
 					paint: minecraft::paint::MinecraftPaint::White,
-					font: minecraft::style::MinecraftFont::Normal,
+					..Default::default()
 				},
 				Text {
 					text: "\n",
@@ -74,7 +74,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 				Text {
 					text: data.game_mode.as_deref().unwrap_or(""),
 					paint: minecraft::paint::MinecraftPaint::White,
-					font: minecraft::style::MinecraftFont::Normal,
+					..Default::default()
 				},
 			],
 			18.,
@@ -88,7 +88,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 			&[Text {
 				text: &tr!(ctx, "offline"),
 				paint: minecraft::paint::MinecraftPaint::DarkGray,
-				font: minecraft::style::MinecraftFont::Normal,
+				..Default::default()
 			}],
 			25.,
 			rect,

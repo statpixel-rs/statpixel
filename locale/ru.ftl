@@ -43,8 +43,6 @@ SoloInsane = Одиночный безумный
 TeamNormal = Командный обычный
 TeamInsane = Командный безумный
 
-coins = Монеты
-loot-chests = Лут-сундуки
 opals = Опалы
 heads = Головы
 souls = Души
@@ -60,9 +58,48 @@ skywars = skywars
 	.mode = mode
 	.mode-description = Режим SkyWars для просмотра
 
+# /bedwars
+
+Solo = Соло
+Double = Двойной
+Three = 3v3v3v3
+Four = 4v4v4v4
+
+final-kills = Финальные убийства
+final-deaths = Финальные смерти
+fkdr = FKDR
+beds-broken = Сломанные кровати
+beds-lost = Потерянные кровати
+bblr = BBLR
+
+iron-collected = Железо
+gold-collected = Золото
+diamond-collected = Алмазы
+emerald-collected = Изумруды
+items-purchased = Покупки
+
+bedwars = bedwars
+	.description = Показывает статистику BedWars игрока.
+	.username = username
+	.username-description = Имя пользователя Minecraft для просмотра
+	.uuid = uuid
+	.uuid-description = UUID Minecraft для просмотра
+	.mode = mode
+	.mode-description = Режим BedWars для просмотра
+
 # Общие надписи для холста
+
+coins = Монеты
+loot-chests = Лут-сундуки
 
 offline = Не в сети
 online = В сети
 level = Уровень
 progress = Прогресс
+
+wins = Победы
+losses = Поражения
+wlr = WLR
+kills = Убийства
+deaths = Смерти
+kdr = KDR

@@ -3,6 +3,7 @@ use crate::{
 	ITEM_WIDTH, PADDING,
 };
 
+pub mod bedwars;
 pub mod header;
 pub mod skywars;
 
@@ -29,7 +30,7 @@ fn apply_data(
 	let mut text = vec![Text {
 		text: &label,
 		paint: paint::MinecraftPaint::White,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	}];
 
 	text.extend(parse_minecraft_string(level));
@@ -42,31 +43,31 @@ fn apply_data(
 	text.push(Text {
 		text: &label,
 		paint: paint::MinecraftPaint::White,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text.push(Text {
 		text: &current,
 		paint: paint::MinecraftPaint::Aqua,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text.push(Text {
 		text: "/",
 		paint: paint::MinecraftPaint::White,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text.push(Text {
 		text: &needed,
 		paint: paint::MinecraftPaint::Green,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text.push(Text {
 		text: "\n[",
 		paint: paint::MinecraftPaint::DarkGray,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	let boxes = "■".repeat(num_boxes);
@@ -74,7 +75,7 @@ fn apply_data(
 	text.push(Text {
 		text: &boxes,
 		paint: paint::MinecraftPaint::Aqua,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	let boxes = "■".repeat(10 - num_boxes);
@@ -82,13 +83,13 @@ fn apply_data(
 	text.push(Text {
 		text: &boxes,
 		paint: paint::MinecraftPaint::Gray,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	text.push(Text {
 		text: "]",
 		paint: paint::MinecraftPaint::DarkGray,
-		font: MinecraftFont::Normal,
+		..Default::default()
 	});
 
 	draw(
@@ -126,20 +127,27 @@ fn apply_item(
 	ctx: Context<'_>,
 	surface: &mut Surface,
 	value: u32,
-	icon: &str,
+	label: &str,
 	paint: MinecraftPaint,
 	index: u16,
 ) {
 	let text = [
 		Text {
+			text: label,
+			paint,
+			font: MinecraftFont::Normal,
+			size: Some(20.),
+		},
+		Text {
+			text: "\n",
+			size: Some(20.),
+			..Default::default()
+		},
+		Text {
 			text: &value.to_formatted_string(&ctx.get_num_format_locale()),
 			paint,
 			font: MinecraftFont::Normal,
-		},
-		Text {
-			text: icon,
-			paint: paint::MinecraftPaint::Gray,
-			font: MinecraftFont::Icon,
+			size: None,
 		},
 	];
 
@@ -152,7 +160,7 @@ fn apply_item_float(
 	ctx: Context<'_>,
 	surface: &mut Surface,
 	value: f32,
-	icon: &str,
+	label: &str,
 	paint: MinecraftPaint,
 	index: u16,
 ) {
@@ -160,18 +168,24 @@ fn apply_item_float(
 
 	let text = [
 		Text {
+			text: label,
+			paint,
+			font: MinecraftFont::Normal,
+			size: Some(20.),
+		},
+		Text {
+			text: "\n",
+			size: Some(20.),
+			..Default::default()
+		},
+		Text {
 			text: &if &sep != "." {
 				format!("{value:.2}").replacen('.', &sep, 1)
 			} else {
 				format!("{value:.2}")
 			},
 			paint,
-			font: MinecraftFont::Normal,
-		},
-		Text {
-			text: icon,
-			paint: paint::MinecraftPaint::Gray,
-			font: MinecraftFont::Icon,
+			..Default::default()
 		},
 	];
 
@@ -205,17 +219,17 @@ fn apply_extras(
 				Text {
 					text: "• ",
 					paint: line.2,
-					font: MinecraftFont::Normal,
+					..Default::default()
 				},
 				Text {
 					text: &format!("{}: ", line.0),
 					paint: paint::MinecraftPaint::White,
-					font: minecraft::style::MinecraftFont::Normal,
+					..Default::default()
 				},
 				Text {
 					text: &text,
 					paint: line.2,
-					font: minecraft::style::MinecraftFont::Normal,
+					..Default::default()
 				},
 			],
 			17.,

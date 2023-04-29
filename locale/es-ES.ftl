@@ -43,8 +43,6 @@ SoloInsane = Solo Insane
 TeamNormal = Equipo Normal
 TeamInsane = Equipo Insane
 
-coins = Monedas
-loot-chests = Cofres de botín
 opals = Ópalos
 heads = Cabezas
 souls = Almas
@@ -60,9 +58,48 @@ skywars = skywars
 	.mode = mode
 	.mode-description = El modo SkyWars a ver
 
+# /bedwars
+
+Solo = Solo
+Double = Dobles
+Three = 3v3v3v3
+Four = 4v4v4v4
+
+final-kills = Asesinatos finales
+final-deaths = Muertes finales
+fkdr = FKDR
+beds-broken = Camas rotas
+beds-lost = Camas perdidas
+bblr = BBLR
+
+iron-collected = Hierro
+gold-collected = Oro
+diamond-collected = Diamantes
+emerald-collected = Esmeraldas
+items-purchased = Compras
+
+bedwars = bedwars
+	.description = Muestra las estadísticas de BedWars de un jugador.
+	.username = username
+	.username-description = El nombre de usuario de Minecraft a ver
+	.uuid = uuid
+	.uuid-description = El UUID de Minecraft a ver
+	.mode = mode
+	.mode-description = El modo BedWars a ver
+
 # Etiquetas compartidas de lienzo
+
+coins = Monedas
+loot-chests = Cofres de botín
 
 offline = Desconectado
 online = Conectado
 level = Nivel
 progress = Progreso
+
+wins = Victorias
+losses = Derrotas
+wlr = WLR
+kills = Asesinatos
+deaths = Muertes
+kdr = KDR

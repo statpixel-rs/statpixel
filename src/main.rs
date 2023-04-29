@@ -30,6 +30,7 @@ async fn main() {
 		commands::unlink(),
 		commands::display(),
 		commands::skywars(),
+		commands::bedwars(),
 		commands::cache(),
 	];
 

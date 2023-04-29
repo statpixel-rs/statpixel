@@ -43,8 +43,6 @@ SoloInsane = ソロインセイン
 TeamNormal = チームノーマル
 TeamInsane = チームインセイン
 
-coins = コイン
-loot-chests = ルートチェスト
 opals = オパール
 heads = 頭
 souls = 魂
@@ -60,9 +58,48 @@ skywars = skywars
 	.mode = mode
 	.mode-description = 表示する SkyWars モード
 
+# /bedwars
+
+Solo = ソロ
+Double = ダブル
+Three = 3v3v3v3
+Four = 4v4v4v4
+
+final-kills = 最終キル
+final-deaths = 最終デス
+fkdr = FKDR
+beds-broken = 破壊したベッド
+beds-lost = 失ったベッド
+bblr = BBLR
+
+iron-collected = 鉄
+gold-collected = 金
+diamond-collected = ダイヤモンド
+emerald-collected = エメラルド
+items-purchased = 購入
+
+bedwars = bedwars
+	.description = プレイヤーの BedWars 統計情報を表示します。
+	.username = username
+	.username-description = 表示する Minecraft ユーザー名
+	.uuid = uuid
+	.uuid-description = 表示する Minecraft UUID
+	.mode = mode
+	.mode-description = 表示する BedWars モード
+
 # Shared canvas labels
+
+coins = コイン
+loot-chests = ルートチェスト
 
 offline = オフライン
 online = オンライン
 level = レベル
 progress = 進行状況
+
+wins = 勝利
+losses = 敗北
+wlr = WLR
+kills = キル
+deaths = デス
+kdr = KDR

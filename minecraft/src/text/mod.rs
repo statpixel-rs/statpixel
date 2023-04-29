@@ -2,7 +2,7 @@ pub mod parse;
 pub mod rank;
 
 use skia_safe::{
-	textlayout::{FontCollection, ParagraphBuilder, ParagraphStyle, TextAlign},
+	textlayout::{FontCollection, ParagraphBuilder, ParagraphStyle, TextAlign, TextStyle},
 	FontMgr, Rect, Surface,
 };
 
@@ -13,6 +13,25 @@ pub struct Text<'t> {
 	pub text: &'t str,
 	pub font: MinecraftFont,
 	pub paint: MinecraftPaint,
+	pub size: Option<f32>,
+}
+
+impl<'t> Text<'t> {
+	pub fn get_style(&self, paint: MinecraftPaint, default_size: f32) -> TextStyle {
+		let size = self.size.unwrap_or(default_size);
+		let mut style = self.font.get_style(paint, size);
+
+		if self.font == MinecraftFont::Icon {
+			style.set_font_size(size * 0.75);
+			style.set_baseline_shift(0.);
+		} else {
+			style.set_font_size(size);
+		}
+
+		style.set_foreground_color(paint.into());
+
+		style
+	}
 }
 
 impl Default for Text<'_> {
@@ -21,6 +40,7 @@ impl Default for Text<'_> {
 			text: "",
 			font: MinecraftFont::Normal,
 			paint: MinecraftPaint::White,
+			size: None,
 		}
 	}
 }
@@ -51,7 +71,7 @@ pub fn draw(
 		let mut builder = ParagraphBuilder::new(&style, font);
 
 		for blob in text {
-			let style = blob.font.get_style(blob.paint, size);
+			let style = blob.get_style(blob.paint, size);
 
 			builder.push_style(&style);
 			builder.add_text(blob.text);

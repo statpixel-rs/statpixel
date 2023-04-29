@@ -33,6 +33,7 @@ const fn const_parse_minecraft_strings<const LEN: usize>(
 		text: "",
 		font: style::MinecraftFont::Normal,
 		paint: paint::MinecraftPaint::White,
+		size: None,
 	}; LEN];
 
 	try_!(parser.find_skip(ESCAPE));
@@ -66,6 +67,7 @@ const fn const_parse_minecraft_string(
 				text,
 				font: style::MinecraftFont::Normal,
 				paint,
+				size: None,
 			},
 			parser,
 		))
@@ -79,6 +81,7 @@ const fn const_parse_minecraft_string(
 						text,
 						font,
 						paint: paint::MinecraftPaint::White,
+						size: None,
 					},
 					parser,
 				))
@@ -91,6 +94,7 @@ const fn const_parse_minecraft_string(
 						text,
 						font,
 						paint: prev_paint,
+						size: None,
 					},
 					parser,
 				))
@@ -103,6 +107,7 @@ const fn const_parse_minecraft_string(
 						text,
 						font: prev_font,
 						paint: prev_paint,
+						size: None,
 					},
 					parser,
 				))
@@ -163,7 +168,12 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 			return None;
 		}
 
-		Some(Text { text, paint, font })
+		Some(Text {
+			text,
+			paint,
+			font,
+			size: None,
+		})
 	})
 }
 
@@ -182,6 +192,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -197,6 +208,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -212,6 +224,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
 				font: style::MinecraftFont::Bold,
+				size: None,
 			}]
 		);
 	}
@@ -227,6 +240,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
 				font: style::MinecraftFont::Bold,
+				size: None,
 			}]
 		);
 	}
@@ -242,6 +256,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::LightPurple,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -258,16 +273,19 @@ mod tests {
 					text: "Hello, ",
 					paint: paint::MinecraftPaint::Red,
 					font: style::MinecraftFont::Normal,
+					size: None,
 				},
 				Text {
 					text: "world",
 					paint: paint::MinecraftPaint::Red,
 					font: style::MinecraftFont::Bold,
+					size: None,
 				},
 				Text {
 					text: "!",
 					paint: paint::MinecraftPaint::White,
 					font: style::MinecraftFont::Normal,
+					size: None,
 				},
 			]
 		);
@@ -284,6 +302,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -298,6 +317,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -312,6 +332,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::White,
 				font: style::MinecraftFont::Bold,
+				size: None,
 			}]
 		);
 	}
@@ -326,6 +347,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::Red,
 				font: style::MinecraftFont::Bold,
+				size: None,
 			}]
 		);
 	}
@@ -340,6 +362,7 @@ mod tests {
 				text: "Hello, world!",
 				paint: paint::MinecraftPaint::LightPurple,
 				font: style::MinecraftFont::Normal,
+				size: None,
 			}]
 		);
 	}
@@ -355,16 +378,19 @@ mod tests {
 					text: "Hello, ",
 					paint: paint::MinecraftPaint::Red,
 					font: style::MinecraftFont::Normal,
+					size: None,
 				},
 				Text {
 					text: "world",
 					paint: paint::MinecraftPaint::Red,
 					font: style::MinecraftFont::Bold,
+					size: None,
 				},
 				Text {
 					text: "!",
 					paint: paint::MinecraftPaint::White,
 					font: style::MinecraftFont::Normal,
+					size: None,
 				},
 			]
 		);

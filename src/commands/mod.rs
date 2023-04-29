@@ -1,9 +1,11 @@
+mod bedwars;
 mod cache;
 mod display;
 mod link;
 mod skywars;
 mod unlink;
 
+pub use bedwars::*;
 pub use cache::*;
 pub use display::*;
 pub use link::*;
