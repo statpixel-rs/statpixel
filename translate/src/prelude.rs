@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use tracing::info;
+use tracing::debug;
 
 use crate::Context;
 
@@ -13,7 +13,7 @@ impl GetNumFormatLocale for Context<'_> {
 		let result = num_format::Locale::from_str(self.locale().unwrap_or("en"))
 			.unwrap_or(num_format::Locale::en);
 
-		info!("Using locale: {:?}", result);
+		debug!("Using locale {:?} for {}", result, self.author().tag());
 
 		result
 	}

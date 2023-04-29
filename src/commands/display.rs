@@ -1,14 +1,12 @@
 use database::schema;
 use diesel::{ExpressionMethods, RunQueryDsl};
+use translate::tr;
 
 use crate::{util::success_embed, Context, Error};
 
 /// Changes the way responses are displayed.
 #[poise::command(slash_command, required_bot_permissions = "EMBED_LINKS")]
-pub async fn display(
-	ctx: Context<'_>,
-	#[description = "Whether to display responses as text"] text: Option<bool>,
-) -> Result<(), Error> {
+pub async fn display(ctx: Context<'_>, text: Option<bool>) -> Result<(), Error> {
 	let u = ctx.author();
 
 	// If they provide a value, use it. Otherwise, toggle the current value.
@@ -39,10 +37,10 @@ pub async fn display(
 	ctx.send(|m| {
 		success_embed(
 			m,
-			"Display changed",
+			tr!(ctx, "display-changed"),
 			match text {
-				true => "Responses will now be sent as text.",
-				false => "Responses will now be sent as images where applicable.",
+				true => tr!(ctx, "display-changed-text-description"),
+				false => tr!(ctx, "display-changed-image-description"),
 			},
 		)
 	})

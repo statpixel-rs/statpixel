@@ -4,6 +4,7 @@ use api::{
 };
 use minecraft::text::{self, parse::parse_minecraft_string, Text};
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
+use translate::{tr, Context};
 
 use crate::{
 	GAP, HEADER_HEIGHT, HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, PADDING,
@@ -39,7 +40,7 @@ pub fn apply_name(surface: &mut Surface, data: &PlayerData) {
 	);
 }
 
-pub fn apply_status(surface: &mut Surface, data: &PlayerSession) {
+pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSession) {
 	let rect = Rect::new(
 		HEADER_MIDDLE_END_X + GAP,
 		PADDING,
@@ -53,9 +54,13 @@ pub fn apply_status(surface: &mut Surface, data: &PlayerSession) {
 			surface,
 			&[
 				Text {
-					text: "Online\n",
+					text: &tr!(ctx, "online"),
 					paint: minecraft::paint::MinecraftPaint::Green,
 					font: minecraft::style::MinecraftFont::Normal,
+				},
+				Text {
+					text: "\n",
+					..Default::default()
 				},
 				Text {
 					text: data.game_type.unwrap_or(GameType::Lobby).as_clean_name(),
@@ -81,7 +86,7 @@ pub fn apply_status(surface: &mut Surface, data: &PlayerSession) {
 		text::draw(
 			surface,
 			&[Text {
-				text: "Offline",
+				text: &tr!(ctx, "offline"),
 				paint: minecraft::paint::MinecraftPaint::DarkGray,
 				font: minecraft::style::MinecraftFont::Normal,
 			}],

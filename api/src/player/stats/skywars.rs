@@ -5,6 +5,15 @@ use serde::Deserialize;
 pub struct Stats {
 	#[serde(deserialize_with = "super::from_trunc_f32")]
 	pub coins: u32,
+	pub opals: u16,
+	pub heads: u32,
+	pub souls: u32,
+	#[serde(rename = "cosmetic_tokens")]
+	pub tokens: u32,
+	#[serde(rename = "skywars_chests")]
+	pub loot_chests: u32,
+	#[serde(rename = "most_kills_game")]
+	pub highest_kill_game: u8,
 
 	#[serde(flatten)]
 	pub overall: OverallStats,

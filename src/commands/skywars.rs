@@ -12,15 +12,10 @@ use crate::{
 
 #[derive(ChoiceParameter, Debug)]
 pub enum SkyWarsMode {
-	#[name = "Overall"]
 	Overall,
-	#[name = "Solo Normal"]
 	SoloNormal,
-	#[name = "Solo Insane"]
 	SoloInsane,
-	#[name = "Team Normal"]
 	TeamNormal,
-	#[name = "Team Insane"]
 	TeamInsane,
 }
 
@@ -38,19 +33,16 @@ fn get_game_mode(mode: Option<SkyWarsMode>, session: &PlayerSession) -> SkyWarsM
 #[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
 pub async fn skywars(
 	ctx: Context<'_>,
-	#[description = "The Minecraft username to view"]
-	#[max_length = 16]
-	username: Option<String>,
-	#[description = "The Minecraft UUID to view"]
+	#[max_length = 16] username: Option<String>,
 	#[min_length = 32]
 	#[max_length = 36]
 	uuid: Option<String>,
-	#[description = "The mode to view"] mode: Option<SkyWarsMode>,
+	mode: Option<SkyWarsMode>,
 ) -> Result<(), Error> {
 	let player = match get_player_from_input(ctx, ctx.author(), uuid, username).await {
 		Ok(player) => player,
 		Err(Error::NotLinked) => {
-			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked-title"), tr!(ctx, "not-linked")))
+			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
 				.await?;
 
 			return Ok(());
@@ -69,8 +61,8 @@ pub async fn skywars(
 		let mut surface = create_surface(2);
 
 		canvas::header::apply_name(&mut surface, &data);
-		canvas::header::apply_status(&mut surface, &session);
-		canvas::skywars::apply(&ctx, &mut surface, &data, mode.into());
+		canvas::header::apply_status(ctx, &mut surface, &session);
+		canvas::skywars::apply(ctx, &mut surface, &data, mode.into());
 
 		to_png(&mut surface).into()
 	};

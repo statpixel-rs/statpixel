@@ -84,8 +84,10 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 		let locale = locale.to_str().ok_or("invalid filename UTF-8")?;
 
 		// Load .ftl resource
-		let file_contents =
-			std::fs::read_to_string(path).map_err(|e| format!("could not read file: {e:?}"))?;
+		let file_contents = std::fs::read_to_string(path)
+			.map_err(|e| format!("could not read file: {e:?}"))?
+			.replace('\t', "    ");
+
 		let resource = fluent::FluentResource::try_new(file_contents)
 			.map_err(|(_, e)| format!("failed to parse {path:?}: {e:?}"))?;
 
@@ -93,6 +95,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 		let mut bundle = FluentBundle::new_concurrent(vec![locale
 			.parse()
 			.map_err(|e| format!("invalid locale `{locale}`: {e}"))?]);
+
 		bundle
 			.add_resource(resource)
 			.map_err(|e| format!("failed to add resource to bundle: {e:?}"))?;
@@ -112,7 +115,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 impl Locale {
 	/// Given a set of language files, fills in command strings and their localizations accordingly
 	pub fn apply_translations(&self, commands: &mut [poise::Command<Data, Error>]) {
-		for command in &mut *commands {
+		for command in commands.iter_mut() {
 			// Add localizations
 			for (locale, bundle) in &self.other {
 				// Insert localized command name and description
@@ -120,9 +123,11 @@ impl Locale {
 					Some(x) => x,
 					None => continue, // no localization entry => skip localization
 				};
+
 				command
 					.name_localizations
 					.insert(locale.clone(), localized_command_name);
+
 				command.description_localizations.insert(
 					locale.clone(),
 					format(bundle, &command.name, Some("description"), None).unwrap(),
@@ -134,6 +139,7 @@ impl Locale {
 						locale.clone(),
 						format(bundle, &command.name, Some(&parameter.name), None).unwrap(),
 					);
+
 					parameter.description_localizations.insert(
 						locale.clone(),
 						format(
@@ -161,10 +167,12 @@ impl Locale {
 
 			// Set fallback command name and description to en-US
 			let bundle = &self.main;
+
 			match format(bundle, &command.name, None, None) {
 				Some(x) => command.name = x,
 				None => continue, // no localization entry => keep hardcoded names
 			}
+
 			command.description =
 				Some(format(bundle, &command.name, Some("description"), None).unwrap());
 
@@ -172,6 +180,7 @@ impl Locale {
 				// Set fallback parameter name and description to en-US
 				parameter.name =
 					format(bundle, &command.name, Some(&parameter.name), None).unwrap();
+
 				parameter.description = Some(
 					format(
 						bundle,

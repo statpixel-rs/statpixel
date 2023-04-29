@@ -1,7 +1,4 @@
-use crate::{
-	GAP, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT, ITEM_WIDTH,
-	PADDING,
-};
+use crate::{GAP, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING};
 
 pub mod header;
 pub mod skywars;
@@ -82,14 +79,41 @@ fn apply_item_float(
 	draw(surface, &text, 40., rect, TextAlign::Center, true);
 }
 
-fn apply_extras(surface: &mut Surface, lines: [&[Text<'_>]; 7]) {
-	let mut y = PADDING + 15.;
-	let x = HEADER_LEFT_END_X + GAP + 15.;
+fn apply_extras(
+	ctx: Context<'_>,
+	surface: &mut Surface,
+	lines: [(String, impl ToFormattedString, MinecraftPaint); 7],
+) {
+	let mut y = PADDING;
+	let x = HEADER_LEFT_END_X + GAP;
 
 	for line in lines {
-		let rect = Rect::from_xywh(x, y, ITEM_WIDTH, ITEM_HEIGHT);
+		let rect = Rect::from_xywh(x, y, ITEM_WIDTH, 21.2).with_offset((17., 13.));
 
-		draw(surface, line, 17., rect, TextAlign::Left, false);
+		draw(
+			surface,
+			&[
+				Text {
+					text: "• ",
+					paint: line.2,
+					font: MinecraftFont::Normal,
+				},
+				Text {
+					text: &format!("{}: ", line.0),
+					paint: paint::MinecraftPaint::White,
+					font: minecraft::style::MinecraftFont::Normal,
+				},
+				Text {
+					text: &line.1.to_formatted_string(&ctx.get_num_format_locale()),
+					paint: line.2,
+					font: minecraft::style::MinecraftFont::Normal,
+				},
+			],
+			17.,
+			rect,
+			TextAlign::Left,
+			true,
+		);
 
 		y += 21.2;
 	}

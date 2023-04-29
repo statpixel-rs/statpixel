@@ -1,5 +1,6 @@
 use database::schema;
 use diesel::{ExpressionMethods, RunQueryDsl};
+use translate::tr;
 use uuid::Uuid;
 
 use crate::{
@@ -11,13 +12,10 @@ use crate::{
 #[poise::command(slash_command)]
 pub async fn link(
 	ctx: Context<'_>,
-	#[description = "Your Minecraft UUID"]
 	#[min_length = 32]
 	#[max_length = 36]
 	uuid: Option<String>,
-	#[description = "Your Minecraft username"]
-	#[max_length = 16]
-	username: Option<String>,
+	#[max_length = 16] username: Option<String>,
 ) -> Result<(), Error> {
 	let (player, uuid, username) = match (uuid.and_then(|u| Uuid::parse_str(&u).ok()), username) {
 		(r @ Some(uuid), _) => (api::player::Player::from_uuid(&uuid).await, r, None),
@@ -29,8 +27,8 @@ pub async fn link(
 		(None, None) => {
 			ctx.send(|m| {
 				m.embed(|e| {
-					e.title("Linking failed")
-						.description("You must provide either a UUID or a username.")
+					e.title(tr!(ctx, "linking-failed"))
+						.description(tr!(ctx, "linking-failed-description"))
 						.colour(crate::EMBED_COLOUR)
 				})
 			})
@@ -54,11 +52,8 @@ pub async fn link(
 		ctx.send(|m| {
 			success_embed(
 				m,
-				"Linking successful",
-				&format!(
-					"Your Discord account is now linked to the Minecraft account **{}**.",
-					escape_username(&player.username)
-				),
+				tr!(ctx, "linking-succeeded"),
+				tr!(ctx, "linking-succeeded-description", name: escape_username(&player.username)),
 			)
 		})
 		.await?;
@@ -66,16 +61,17 @@ pub async fn link(
 		ctx.send(|m| {
 			error_embed(
 				m,
-				"Linking failed",
-				&match (uuid, username) {
+				tr!(ctx, "linking-failed"),
+				match (uuid, username) {
 					(Some(uuid), _) => {
-						format!("The UUID `{uuid}` does not belong to a Minecraft account.")
+						tr!(ctx, "linking-failed-uuid-description", uuid: uuid.to_string())
 					}
-					(_, Some(username)) => format!(
-						"The username **{}** does not belong to a Minecraft account.",
-						escape_username(&username)
+					(_, Some(username)) => tr!(
+						ctx,
+						"linking-failed-username-description",
+						name: escape_username(&username)
 					),
-					(None, None) => "You must provide a valid UUID or a username.".to_string(),
+					(None, None) => tr!(ctx, "linking-failed-description"),
 				},
 			)
 		})

@@ -52,6 +52,7 @@ async fn main() {
 				poise::builtins::register_globally(ctx, &framework.options().commands)
 					.await
 					.map_err(|_| Error::Setup)?;
+
 				Ok(Data { pool, locale })
 			})
 		});
