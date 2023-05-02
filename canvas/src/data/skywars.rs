@@ -81,6 +81,7 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: S
 		calc::skywars::get_level_progress(stats.xp),
 		calc::skywars::get_curr_level_xp(stats.xp),
 		calc::skywars::get_level_xp(stats.xp),
+		&calc::skywars::get_colours(calc::skywars::get_level(stats.xp)),
 	);
 
 	apply_item(

@@ -10,7 +10,7 @@ pub struct Stats {
 	pub souls: u32,
 	#[serde(rename = "cosmetic_tokens")]
 	pub tokens: u32,
-	#[serde(rename = "skywars_chests")]
+	#[serde(rename = "skywars_chests", deserialize_with = "super::from_trunc_f32")]
 	pub loot_chests: u32,
 	pub arrows_shot: u32,
 	pub arrows_hit: u32,

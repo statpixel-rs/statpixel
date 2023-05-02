@@ -9,7 +9,7 @@ use crate::{
 	style::{self, parse_font},
 };
 
-pub const ESCAPE: &str = "§";
+pub const ESCAPE: char = '§';
 
 #[macro_export]
 macro_rules! minecraft_text {

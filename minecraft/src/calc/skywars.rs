@@ -1,6 +1,53 @@
+use std::cmp::min;
+
+use skia_safe::Color;
+
+use crate::colour::{
+	AQUA, BLUE, DARK_AQUA, DARK_BLUE, DARK_GREEN, DARK_PURPLE, DARK_RED, GOLD, GRAY, GREEN,
+	LIGHT_PURPLE, RED, WHITE, YELLOW,
+};
+
 const TOTAL_LEVEL_XP: [u32; 12] = [
 	0, 20, 70, 150, 250, 500, 1_000, 2_000, 3_500, 6_000, 10_000, 15_000,
 ];
+
+const LEVEL_COLOUR: [[Color; 2]; 31] = [
+	[GRAY, GRAY],
+	[WHITE, WHITE],
+	[GOLD, GOLD],
+	[AQUA, AQUA],
+	[DARK_GREEN, DARK_GREEN],
+	[DARK_AQUA, DARK_AQUA],
+	[DARK_RED, DARK_RED],
+	[LIGHT_PURPLE, LIGHT_PURPLE],
+	[BLUE, BLUE],
+	[DARK_PURPLE, DARK_PURPLE],
+	[RED, AQUA],
+	[WHITE, WHITE],
+	[RED, RED],
+	[WHITE, WHITE],
+	[GOLD, GOLD],
+	[BLUE, BLUE],
+	[AQUA, AQUA],
+	[DARK_AQUA, DARK_AQUA],
+	[DARK_AQUA, DARK_AQUA],
+	[YELLOW, YELLOW],
+	[DARK_BLUE, DARK_BLUE],
+	[DARK_RED, DARK_RED],
+	[AQUA, AQUA],
+	[GRAY, GRAY],
+	[DARK_PURPLE, DARK_PURPLE],
+	[YELLOW, YELLOW],
+	[YELLOW, YELLOW],
+	[RED, RED],
+	[RED, RED],
+	[AQUA, AQUA],
+	[RED, GREEN],
+];
+
+pub fn get_colours(level: u32) -> [Color; 2] {
+	LEVEL_COLOUR[min(level as usize / 5, LEVEL_COLOUR.len() - 1)]
+}
 
 pub fn get_level(xp: u32) -> u32 {
 	for (i, &x) in TOTAL_LEVEL_XP.iter().enumerate() {

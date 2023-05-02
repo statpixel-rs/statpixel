@@ -5,7 +5,7 @@ use serde::Deserialize;
 pub struct Stats {
 	#[serde(deserialize_with = "super::from_trunc_f32")]
 	pub coins: u32,
-	#[serde(rename = "bedwars_boxes")]
+	#[serde(rename = "bedwars_boxes", deserialize_with = "super::from_trunc_f32")]
 	pub loot_chests: u32,
 	#[serde(rename = "Experience", deserialize_with = "super::from_trunc_f32")]
 	pub xp: u32,

@@ -1,6 +1,6 @@
 use crate::{
-	GAP, HEADER_DATA_HEIGHT, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT,
-	ITEM_WIDTH, PADDING,
+	util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT, HEADER_LABEL_HEIGHT,
+	HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
 };
 
 pub mod bedwars;
@@ -13,7 +13,7 @@ use minecraft::{
 	text::{draw, parse::parse_minecraft_string, Text},
 };
 use num_format::ToFormattedString;
-use skia_safe::{textlayout::TextAlign, Rect, Surface};
+use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Paint, RRect, Rect, Surface};
 use translate::{prelude::GetNumFormatLocale, tr, Context};
 
 fn apply_data(
@@ -23,9 +23,9 @@ fn apply_data(
 	progress: f32,
 	current: u32,
 	needed: u32,
+	colors: &[Color; 2],
 ) {
 	let locale = ctx.get_num_format_locale();
-	let num_boxes = (progress * 10.).round() as usize;
 	let label = format!("{}: ", tr!(ctx, "level"));
 	let mut text = vec![Text {
 		text: &label,
@@ -64,47 +64,51 @@ fn apply_data(
 		..Default::default()
 	});
 
-	text.push(Text {
-		text: "\n[",
-		paint: paint::MinecraftPaint::DarkGray,
-		..Default::default()
-	});
-
-	let boxes = "■".repeat(num_boxes);
-
-	text.push(Text {
-		text: &boxes,
-		paint: paint::MinecraftPaint::Aqua,
-		..Default::default()
-	});
-
-	let boxes = "■".repeat(10 - num_boxes);
-
-	text.push(Text {
-		text: &boxes,
-		paint: paint::MinecraftPaint::Gray,
-		..Default::default()
-	});
-
-	text.push(Text {
-		text: "]",
-		paint: paint::MinecraftPaint::DarkGray,
-		..Default::default()
-	});
-
-	draw(
-		surface,
-		text.as_slice(),
-		20.,
-		Rect::from_xywh(
-			PADDING,
-			PADDING + HEADER_NAME_HEIGHT + GAP * 2. + HEADER_LABEL_HEIGHT,
-			HEADER_LEFT_END_X,
-			HEADER_DATA_HEIGHT,
-		),
-		TextAlign::Center,
-		true,
+	let rect = Rect::from_xywh(
+		PADDING,
+		PADDING + HEADER_NAME_HEIGHT + GAP * 2. + HEADER_LABEL_HEIGHT,
+		HEADER_LEFT_END_X - PADDING,
+		HEADER_DATA_HEIGHT,
 	);
+
+	draw(surface, text.as_slice(), 20., rect, TextAlign::Center, true);
+
+	let path = util::progress::rrect_progress(
+		RRect::new_rect_xy(
+			rect.with_inset((1.5, 1.5)),
+			HEADER_DATA_RAD,
+			HEADER_DATA_RAD,
+		),
+		progress,
+	)
+	.with_offset((
+		PADDING + 1.5,
+		PADDING + HEADER_NAME_HEIGHT + HEADER_LABEL_HEIGHT + GAP * 2. + 1.5,
+	));
+
+	let mut paint: Paint = Default::default();
+
+	paint
+		.set_stroke_width(3.)
+		.set_style(skia_safe::paint::Style::Stroke)
+		.set_stroke_cap(skia_safe::paint::Cap::Round)
+		.set_alpha(64)
+		.set_shader(gradient_shader::linear(
+			(
+				(
+					PADDING,
+					PADDING + HEADER_NAME_HEIGHT + HEADER_LABEL_HEIGHT + GAP * 2.,
+				),
+				(HEADER_LEFT_END_X, HEADER_HEIGHT),
+			),
+			colors.as_ref(),
+			None,
+			skia_safe::TileMode::Clamp,
+			None,
+			None,
+		));
+
+	surface.canvas().draw_path(&path, &paint);
 }
 
 fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {

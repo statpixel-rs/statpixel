@@ -137,10 +137,11 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: B
 	apply_data(
 		ctx,
 		surface,
-		"§71",
-		calc::skywars::get_level_progress(stats.xp),
-		calc::skywars::get_curr_level_xp(stats.xp),
-		calc::skywars::get_level_xp(stats.xp),
+		&calc::bedwars::get_level_format(calc::bedwars::get_level(stats.xp)),
+		calc::bedwars::get_level_progress(stats.xp),
+		calc::bedwars::get_curr_level_xp(stats.xp),
+		calc::bedwars::get_level_xp(stats.xp),
+		&calc::bedwars::get_colours(calc::bedwars::get_level(stats.xp)),
 	);
 
 	apply_item(

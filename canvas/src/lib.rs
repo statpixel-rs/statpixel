@@ -1,4 +1,5 @@
 mod data;
+pub mod util;
 
 pub use data::*;
 
@@ -23,6 +24,7 @@ pub const HEADER_MIDDLE_END_X: f32 = HEADER_LEFT_END_X + ITEM_WIDTH + GAP;
 pub const HEADER_DATA_HEIGHT: f32 =
 	HEADER_HEIGHT - HEADER_LABEL_HEIGHT - GAP * 2. - HEADER_NAME_HEIGHT;
 pub const HEADER_NAME_HEIGHT: f32 = 45.;
+pub const HEADER_DATA_RAD: f32 = 20.;
 
 pub const SWORD_ICON: &str = "\u{f889}";
 pub const SKULL_ICON: &str = "\u{f89a}";
@@ -98,10 +100,10 @@ pub fn create_surface(rows: u8) -> Surface {
 			HEADER_HEIGHT + PADDING,
 		),
 		&[
-			Point::new(20., 20.),
-			Point::new(20., 20.),
-			Point::new(20., 20.),
-			Point::new(20., 20.),
+			Point::new(HEADER_DATA_RAD, HEADER_DATA_RAD),
+			Point::new(HEADER_DATA_RAD, HEADER_DATA_RAD),
+			Point::new(HEADER_DATA_RAD, HEADER_DATA_RAD),
+			Point::new(HEADER_DATA_RAD, HEADER_DATA_RAD),
 		],
 	);
 
