@@ -87,6 +87,11 @@ bedwars = bedwars
 	.mode = mode
 	.mode-description = Режим BedWars для просмотра
 
+# /arena
+
+magical-keys = Магические ключи
+magical-chests = Магические сундуки
+
 # Общие надписи для холста
 
 coins = Монеты

@@ -87,6 +87,11 @@ bedwars = bedwars
 	.mode = mode
 	.mode-description = El modo BedWars a ver
 
+# /arena
+
+magical-keys = Llaves mágicas
+magical-chests = Cofres mágicos
+
 # Etiquetas compartidas de lienzo
 
 coins = Monedas

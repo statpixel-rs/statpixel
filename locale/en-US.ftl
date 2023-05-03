@@ -87,6 +87,11 @@ bedwars = bedwars
 	.mode = mode
 	.mode-description = The BedWars mode to view
 
+# /arena
+
+magical-keys = Magical Keys
+magical-chests = Magical Chests
+
 # Shared canvas labels
 
 coins = Coins

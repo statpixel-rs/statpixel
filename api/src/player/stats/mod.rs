@@ -1,3 +1,4 @@
+mod arena;
 mod bedwars;
 mod skywars;
 
@@ -23,7 +24,7 @@ pub struct Stats {
 	#[serde(skip)]
 	pub arcade: ArcadeStats,
 	#[serde(skip)]
-	pub arena: ArenaStats,
+	pub arena: arena::Stats,
 	#[serde(rename = "UHC", skip)]
 	pub uhc: UhcStats,
 	#[serde(rename = "MCGO", skip)]
@@ -90,9 +91,6 @@ pub struct MegaWallsStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct ArcadeStats;
-
-#[derive(Deserialize, Default, Debug, Clone)]
-pub struct ArenaStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct UhcStats;

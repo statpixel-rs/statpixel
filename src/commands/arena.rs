@@ -11,33 +11,32 @@ use crate::{
 };
 
 #[derive(ChoiceParameter, Debug)]
-pub enum BedWarsMode {
+pub enum ArenaMode {
 	Overall,
 	Solo,
 	Double,
-	Three,
 	Four,
 }
 
-fn get_game_mode(mode: Option<BedWarsMode>, session: &PlayerSession) -> BedWarsMode {
+fn get_game_mode(mode: Option<ArenaMode>, session: &PlayerSession) -> ArenaMode {
 	if let Some(mode) = mode {
 		mode
-	} else if session.game_type == Some(GameType::BedWars) && let Some(game_mode) = session.game_mode.as_ref() {
-		BedWarsMode::from(game_mode.as_str())
+	} else if session.game_type == Some(GameType::Arena) && let Some(game_mode) = session.game_mode.as_ref() {
+		ArenaMode::from(game_mode.as_str())
 	} else {
-		BedWarsMode::Overall
+		ArenaMode::Overall
 	}
 }
 
-/// Shows the Bed Wars stats of a player.
+/// Shows the Arena stats of a player.
 #[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
-pub async fn bedwars(
+pub async fn arena(
 	ctx: Context<'_>,
 	#[max_length = 16] username: Option<String>,
 	#[min_length = 32]
 	#[max_length = 36]
 	uuid: Option<String>,
-	mode: Option<BedWarsMode>,
+	mode: Option<ArenaMode>,
 ) -> Result<(), Error> {
 	let player = match get_player_from_input(ctx, ctx.author(), uuid, username).await {
 		Ok(player) => player,
@@ -58,11 +57,11 @@ pub async fn bedwars(
 	let mode = get_game_mode(mode, &session);
 
 	let png: Cow<[u8]> = {
-		let mut surface = create_surface(4);
+		let mut surface = create_surface(2);
 
 		canvas::header::apply_name(&mut surface, &data);
 		canvas::header::apply_status(ctx, &mut surface, &session);
-		canvas::bedwars::apply(ctx, &mut surface, &data, mode.into());
+		canvas::arena::apply(ctx, &mut surface, &data, mode.into());
 
 		to_png(&mut surface).into()
 	};
@@ -78,26 +77,24 @@ pub async fn bedwars(
 	Ok(())
 }
 
-impl From<&str> for BedWarsMode {
+impl From<&str> for ArenaMode {
 	fn from(s: &str) -> Self {
 		match s {
-			"bedwars_eight_one" => Self::Solo,
-			"bedwars_eight_two" => Self::Double,
-			"bedwars_four_three" => Self::Three,
-			"bedwars_four_four" => Self::Four,
+			"arena_1v1" => Self::Solo,
+			"arena_2v2" => Self::Double,
+			"arena_4v4" => Self::Four,
 			_ => Self::Overall,
 		}
 	}
 }
 
-impl From<BedWarsMode> for canvas::bedwars::BedWarsMode {
-	fn from(val: BedWarsMode) -> Self {
+impl From<ArenaMode> for canvas::arena::ArenaMode {
+	fn from(val: ArenaMode) -> Self {
 		match val {
-			BedWarsMode::Overall => canvas::bedwars::BedWarsMode::Overall,
-			BedWarsMode::Solo => canvas::bedwars::BedWarsMode::Solo,
-			BedWarsMode::Double => canvas::bedwars::BedWarsMode::Double,
-			BedWarsMode::Three => canvas::bedwars::BedWarsMode::Three,
-			BedWarsMode::Four => canvas::bedwars::BedWarsMode::Four,
+			ArenaMode::Overall => canvas::arena::ArenaMode::Overall,
+			ArenaMode::Solo => canvas::arena::ArenaMode::Solo,
+			ArenaMode::Double => canvas::arena::ArenaMode::Double,
+			ArenaMode::Four => canvas::arena::ArenaMode::Four,
 		}
 	}
 }

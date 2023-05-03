@@ -31,6 +31,7 @@ async fn main() {
 		commands::display(),
 		commands::skywars(),
 		commands::bedwars(),
+		commands::arena(),
 		commands::cache(),
 	];
 

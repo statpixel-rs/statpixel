@@ -87,6 +87,11 @@ bedwars = bedwars
 	.mode = mode
 	.mode-description = 表示する BedWars モード
 
+# /arena
+
+magical-keys = 魔法の鍵
+magical-chests = 魔法のチェスト
+
 # Shared canvas labels
 
 coins = コイン

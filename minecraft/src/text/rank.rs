@@ -128,8 +128,8 @@ impl Rank {
 
 	fn get_string_paint(&self, string: &str) -> MinecraftPaint {
 		if let Some(index) = string.rfind(ESCAPE) {
-			let char = string.chars().nth(index + 1);
-			let paint = char.and_then(|c| MinecraftPaint::try_from(c).ok());
+			let char = string.char_indices().rfind(|(i, _)| *i == index + 2);
+			let paint = char.and_then(|(_, c)| MinecraftPaint::try_from(c).ok());
 
 			paint.unwrap_or(MinecraftPaint::Gray)
 		} else {

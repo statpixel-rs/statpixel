@@ -1,0 +1,30 @@
+- [ ] Quakecraft
+- [ ] Walls
+- [ ] Paintball
+- [ ] Blitz Survival Games
+- [ ] TNT Games
+- [ ] VampireZ
+- [ ] Mega Walls
+- [ ] Arcade
+- [ ] Arena
+- [ ] UHC Champions
+- [ ] Cops and Crims
+- [ ] Warlords
+- [ ] Smash Heroes
+- [ ] Turbo Kart Racers
+- [ ] Housing
+- [x] SkyWars
+- [ ] Crazy Walls
+- [ ] Speed UHC
+- [ ] SkyClash
+- [ ] Classic Games
+- [ ] Prototype
+- [x] Bed Wars
+- [ ] Murder Mystery
+- [ ] Build Battle
+- [ ] Duels
+- [ ] SkyBlock
+- [ ] Pit
+- [ ] Replay
+- [ ] SMP
+- [ ] Wool Wars

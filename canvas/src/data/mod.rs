@@ -3,6 +3,7 @@ use crate::{
 	HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
 };
 
+pub mod arena;
 pub mod bedwars;
 pub mod header;
 pub mod skywars;
@@ -201,7 +202,7 @@ fn apply_item_float(
 fn apply_extras(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	lines: [(String, impl ToFormattedString, MinecraftPaint, Option<char>); 7],
+	lines: &[(String, impl ToFormattedString, MinecraftPaint, Option<char>)],
 ) {
 	let mut y = PADDING;
 	let x = HEADER_LEFT_END_X + GAP;

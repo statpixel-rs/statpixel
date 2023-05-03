@@ -87,6 +87,10 @@ bedwars = bedwars
 	.mode = mode
 	.mode-description = Der BedWars-Modus zum Anzeigen
 
+# /arena
+
+magical-keys = Magische Schlüssel
+magical-chests = Magische Truhen
 
 # Shared canvas labels
 

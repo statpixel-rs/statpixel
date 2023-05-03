@@ -247,7 +247,7 @@ pub fn apply(ctx: Context<'_>, surface: &mut Surface, data: &PlayerData, mode: B
 	apply_extras(
 		ctx,
 		surface,
-		[
+		&[
 			(
 				tr!(ctx, "coins"),
 				stats.coins,
