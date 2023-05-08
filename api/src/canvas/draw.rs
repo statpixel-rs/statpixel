@@ -1,12 +1,7 @@
-use crate::{
-	util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT, HEADER_LABEL_HEIGHT,
-	HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
+use super::{
+	label::ToFormattedLabel, util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT,
+	HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
 };
-
-pub mod arena;
-pub mod bedwars;
-pub mod header;
-pub mod skywars;
 
 use minecraft::{
 	paint::{self, MinecraftPaint},
@@ -17,13 +12,13 @@ use num_format::ToFormattedString;
 use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Paint, RRect, Rect, Surface};
 use translate::{prelude::GetNumFormatLocale, tr, Context};
 
-fn apply_data(
+pub fn apply_data(
 	ctx: Context<'_>,
 	surface: &mut Surface,
 	level: &str,
 	progress: f32,
-	current: u32,
-	needed: u32,
+	current: u64,
+	needed: u64,
 	colors: &[Color; 2],
 ) {
 	let locale = ctx.get_num_format_locale();
@@ -112,7 +107,7 @@ fn apply_data(
 	surface.canvas().draw_path(&path, &paint);
 }
 
-fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
+pub fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
 	draw(
 		surface,
 		label,
@@ -128,13 +123,13 @@ fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
 	);
 }
 
-fn apply_item(
+pub fn apply_item(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	value: u32,
+	value: impl ToFormattedLabel,
 	label: &str,
 	paint: MinecraftPaint,
-	index: u16,
+	index: usize,
 ) {
 	let text = [
 		Text {
@@ -149,7 +144,7 @@ fn apply_item(
 			..Default::default()
 		},
 		Text {
-			text: &value.to_formatted_string(&ctx.get_num_format_locale()),
+			text: &value.to_formatted_label(&ctx.get_num_format_locale(), false),
 			paint,
 			font: MinecraftFont::Normal,
 			size: None,
@@ -161,62 +156,19 @@ fn apply_item(
 	draw(surface, &text, 40., rect, TextAlign::Center, true);
 }
 
-fn apply_item_float(
+pub fn apply_extras(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	value: f32,
-	label: &str,
-	paint: MinecraftPaint,
-	index: u16,
-) {
-	let sep = tr!(ctx, "decimal-sep");
-
-	let text = [
-		Text {
-			text: label,
-			paint,
-			font: MinecraftFont::Normal,
-			size: Some(20.),
-		},
-		Text {
-			text: "\n",
-			size: Some(20.),
-			..Default::default()
-		},
-		Text {
-			text: &if &sep != "." {
-				format!("{value:.2}").replacen('.', &sep, 1)
-			} else {
-				format!("{value:.2}")
-			},
-			paint,
-			..Default::default()
-		},
-	];
-
-	let rect = super::get_item_rect(index);
-
-	draw(surface, &text, 40., rect, TextAlign::Center, true);
-}
-
-fn apply_extras(
-	ctx: Context<'_>,
-	surface: &mut Surface,
-	lines: &[(String, impl ToFormattedString, MinecraftPaint, Option<char>)],
+	lines: &[(String, impl ToFormattedLabel, MinecraftPaint, bool)],
 ) {
 	let mut y = PADDING;
 	let x = HEADER_LEFT_END_X + GAP;
 
 	for line in lines {
 		let rect = Rect::from_xywh(x, y, ITEM_WIDTH, 21.2).with_offset((17., 13.));
-		let text = if let Some(c) = line.3 {
-			format!(
-				"{}{c}",
-				line.1.to_formatted_string(&ctx.get_num_format_locale())
-			)
-		} else {
-			line.1.to_formatted_string(&ctx.get_num_format_locale())
-		};
+		let text = line
+			.1
+			.to_formatted_label(&ctx.get_num_format_locale(), line.3);
 
 		draw(
 			surface,

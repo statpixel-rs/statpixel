@@ -1,4 +1,6 @@
+use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
+use quote::quote;
 use serde::Deserialize;
 
 macro_rules! colour {
@@ -29,9 +31,10 @@ colour!(WHITE, (255, 255, 255));
 // Utility colours
 colour!(BACKGROUND, (31, 48, 64));
 
-#[derive(Deserialize, Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
 #[serde(try_from = "&str")]
-pub enum MinecraftColour {
+#[darling(default)]
+pub enum Colour {
 	Black,
 	DarkBlue,
 	DarkGreen,
@@ -47,125 +50,153 @@ pub enum MinecraftColour {
 	Red,
 	LightPurple,
 	Yellow,
+	#[default]
 	White,
 }
 
-impl From<MinecraftColour> for &skia_safe::Color {
-	fn from(colour: MinecraftColour) -> Self {
-		match colour {
-			MinecraftColour::Black => &BLACK,
-			MinecraftColour::DarkBlue => &DARK_BLUE,
-			MinecraftColour::DarkGreen => &DARK_GREEN,
-			MinecraftColour::DarkAqua => &DARK_AQUA,
-			MinecraftColour::DarkRed => &DARK_RED,
-			MinecraftColour::DarkPurple => &DARK_PURPLE,
-			MinecraftColour::Gold => &GOLD,
-			MinecraftColour::Gray => &GRAY,
-			MinecraftColour::DarkGray => &DARK_GRAY,
-			MinecraftColour::Blue => &BLUE,
-			MinecraftColour::Green => &GREEN,
-			MinecraftColour::Aqua => &AQUA,
-			MinecraftColour::Red => &RED,
-			MinecraftColour::LightPurple => &LIGHT_PURPLE,
-			MinecraftColour::Yellow => &YELLOW,
-			MinecraftColour::White => &WHITE,
+impl darling::ToTokens for Colour {
+	fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
+		tokens.extend(quote! {
+			::minecraft::colour::Colour::
+		});
+
+		match self {
+			Self::Black => tokens.extend(quote!(Black)),
+			Self::DarkBlue => tokens.extend(quote!(DarkBlue)),
+			Self::DarkGreen => tokens.extend(quote!(DarkGreen)),
+			Self::DarkAqua => tokens.extend(quote!(DarkAqua)),
+			Self::DarkRed => tokens.extend(quote!(DarkRed)),
+			Self::DarkPurple => tokens.extend(quote!(DarkPurple)),
+			Self::Gold => tokens.extend(quote!(Gold)),
+			Self::Gray => tokens.extend(quote!(Gray)),
+			Self::DarkGray => tokens.extend(quote!(DarkGray)),
+			Self::Blue => tokens.extend(quote!(Blue)),
+			Self::Green => tokens.extend(quote!(Green)),
+			Self::Aqua => tokens.extend(quote!(Aqua)),
+			Self::Red => tokens.extend(quote!(Red)),
+			Self::LightPurple => tokens.extend(quote!(LightPurple)),
+			Self::Yellow => tokens.extend(quote!(Yellow)),
+			Self::White => tokens.extend(quote!(White)),
 		}
 	}
 }
 
-impl From<MinecraftColour> for skia_safe::Color {
-	fn from(colour: MinecraftColour) -> Self {
+impl From<Colour> for &skia_safe::Color {
+	fn from(colour: Colour) -> Self {
 		match colour {
-			MinecraftColour::Black => BLACK,
-			MinecraftColour::DarkBlue => DARK_BLUE,
-			MinecraftColour::DarkGreen => DARK_GREEN,
-			MinecraftColour::DarkAqua => DARK_AQUA,
-			MinecraftColour::DarkRed => DARK_RED,
-			MinecraftColour::DarkPurple => DARK_PURPLE,
-			MinecraftColour::Gold => GOLD,
-			MinecraftColour::Gray => GRAY,
-			MinecraftColour::DarkGray => DARK_GRAY,
-			MinecraftColour::Blue => BLUE,
-			MinecraftColour::Green => GREEN,
-			MinecraftColour::Aqua => AQUA,
-			MinecraftColour::Red => RED,
-			MinecraftColour::LightPurple => LIGHT_PURPLE,
-			MinecraftColour::Yellow => YELLOW,
-			MinecraftColour::White => WHITE,
+			Colour::Black => &BLACK,
+			Colour::DarkBlue => &DARK_BLUE,
+			Colour::DarkGreen => &DARK_GREEN,
+			Colour::DarkAqua => &DARK_AQUA,
+			Colour::DarkRed => &DARK_RED,
+			Colour::DarkPurple => &DARK_PURPLE,
+			Colour::Gold => &GOLD,
+			Colour::Gray => &GRAY,
+			Colour::DarkGray => &DARK_GRAY,
+			Colour::Blue => &BLUE,
+			Colour::Green => &GREEN,
+			Colour::Aqua => &AQUA,
+			Colour::Red => &RED,
+			Colour::LightPurple => &LIGHT_PURPLE,
+			Colour::Yellow => &YELLOW,
+			Colour::White => &WHITE,
 		}
 	}
 }
 
-impl TryFrom<char> for MinecraftColour {
+impl From<Colour> for skia_safe::Color {
+	fn from(colour: Colour) -> Self {
+		match colour {
+			Colour::Black => BLACK,
+			Colour::DarkBlue => DARK_BLUE,
+			Colour::DarkGreen => DARK_GREEN,
+			Colour::DarkAqua => DARK_AQUA,
+			Colour::DarkRed => DARK_RED,
+			Colour::DarkPurple => DARK_PURPLE,
+			Colour::Gold => GOLD,
+			Colour::Gray => GRAY,
+			Colour::DarkGray => DARK_GRAY,
+			Colour::Blue => BLUE,
+			Colour::Green => GREEN,
+			Colour::Aqua => AQUA,
+			Colour::Red => RED,
+			Colour::LightPurple => LIGHT_PURPLE,
+			Colour::Yellow => YELLOW,
+			Colour::White => WHITE,
+		}
+	}
+}
+
+impl TryFrom<char> for Colour {
 	type Error = &'static str;
 
 	fn try_from(value: char) -> Result<Self, Self::Error> {
 		match value {
-			'0' => Ok(MinecraftColour::Black),
-			'1' => Ok(MinecraftColour::DarkBlue),
-			'2' => Ok(MinecraftColour::DarkGreen),
-			'3' => Ok(MinecraftColour::DarkAqua),
-			'4' => Ok(MinecraftColour::DarkRed),
-			'5' => Ok(MinecraftColour::DarkPurple),
-			'6' => Ok(MinecraftColour::Gold),
-			'7' => Ok(MinecraftColour::Gray),
-			'8' => Ok(MinecraftColour::DarkGray),
-			'9' => Ok(MinecraftColour::Blue),
-			'a' | 'A' => Ok(MinecraftColour::Green),
-			'b' | 'B' => Ok(MinecraftColour::Aqua),
-			'c' | 'C' => Ok(MinecraftColour::Red),
-			'd' | 'D' => Ok(MinecraftColour::LightPurple),
-			'e' | 'E' => Ok(MinecraftColour::Yellow),
-			'f' | 'F' => Ok(MinecraftColour::White),
+			'0' => Ok(Self::Black),
+			'1' => Ok(Self::DarkBlue),
+			'2' => Ok(Self::DarkGreen),
+			'3' => Ok(Self::DarkAqua),
+			'4' => Ok(Self::DarkRed),
+			'5' => Ok(Self::DarkPurple),
+			'6' => Ok(Self::Gold),
+			'7' => Ok(Self::Gray),
+			'8' => Ok(Self::DarkGray),
+			'9' => Ok(Self::Blue),
+			'a' | 'A' => Ok(Self::Green),
+			'b' | 'B' => Ok(Self::Aqua),
+			'c' | 'C' => Ok(Self::Red),
+			'd' | 'D' => Ok(Self::LightPurple),
+			'e' | 'E' => Ok(Self::Yellow),
+			'f' | 'F' => Ok(Self::White),
 			_ => Err("invalid colour code"),
 		}
 	}
 }
 
-impl TryFrom<&str> for MinecraftColour {
+impl TryFrom<&str> for Colour {
 	type Error = &'static str;
 
 	fn try_from(value: &str) -> Result<Self, Self::Error> {
 		match value {
-			"BLACK" => Ok(MinecraftColour::Black),
-			"DARK_BLUE" => Ok(MinecraftColour::DarkBlue),
-			"DARK_GREEN" => Ok(MinecraftColour::DarkGreen),
-			"DARK_AQUA" => Ok(MinecraftColour::DarkAqua),
-			"DARK_RED" => Ok(MinecraftColour::DarkRed),
-			"DARK_PURPLE" => Ok(MinecraftColour::DarkPurple),
-			"GOLD" => Ok(MinecraftColour::Gold),
-			"GRAY" => Ok(MinecraftColour::Gray),
-			"DARK_GRAY" => Ok(MinecraftColour::DarkGray),
-			"BLUE" => Ok(MinecraftColour::Blue),
-			"GREEN" => Ok(MinecraftColour::Green),
-			"AQUA" => Ok(MinecraftColour::Aqua),
-			"RED" => Ok(MinecraftColour::Red),
-			"LIGHT_PURPLE" => Ok(MinecraftColour::LightPurple),
-			"YELLOW" => Ok(MinecraftColour::Yellow),
-			"WHITE" => Ok(MinecraftColour::White),
+			"BLACK" => Ok(Self::Black),
+			"DARK_BLUE" => Ok(Self::DarkBlue),
+			"DARK_GREEN" => Ok(Self::DarkGreen),
+			"DARK_AQUA" => Ok(Self::DarkAqua),
+			"DARK_RED" => Ok(Self::DarkRed),
+			"DARK_PURPLE" => Ok(Self::DarkPurple),
+			"GOLD" => Ok(Self::Gold),
+			"GRAY" => Ok(Self::Gray),
+			"DARK_GRAY" => Ok(Self::DarkGray),
+			"BLUE" => Ok(Self::Blue),
+			"GREEN" => Ok(Self::Green),
+			"AQUA" => Ok(Self::Aqua),
+			"RED" => Ok(Self::Red),
+			"LIGHT_PURPLE" => Ok(Self::LightPurple),
+			"YELLOW" => Ok(Self::Yellow),
+			"WHITE" => Ok(Self::White),
 			_ => Err("invalid colour code"),
 		}
 	}
 }
 
-pub const fn parse_colour(mut parser: Parser<'_>) -> ParseValueResult<'_, MinecraftColour> {
+pub const fn parse_colour(mut parser: Parser<'_>) -> ParseValueResult<'_, Colour> {
 	let paint = parser_method! {parser, strip_prefix;
-		"0" => MinecraftColour::Black,
-		"1" => MinecraftColour::DarkBlue,
-		"2" => MinecraftColour::DarkGreen,
-		"3" => MinecraftColour::DarkAqua,
-		"4" => MinecraftColour::DarkRed,
-		"5" => MinecraftColour::DarkPurple,
-		"6" => MinecraftColour::Gold,
-		"7" => MinecraftColour::Gray,
-		"8" => MinecraftColour::DarkGray,
-		"9" => MinecraftColour::Blue,
-		"a" => MinecraftColour::Green,
-		"b" => MinecraftColour::Aqua,
-		"c" => MinecraftColour::Red,
-		"d" => MinecraftColour::LightPurple,
-		"e" => MinecraftColour::Yellow,
-		"f" => MinecraftColour::White,
+		"0" => Colour::Black,
+		"1" => Colour::DarkBlue,
+		"2" => Colour::DarkGreen,
+		"3" => Colour::DarkAqua,
+		"4" => Colour::DarkRed,
+		"5" => Colour::DarkPurple,
+		"6" => Colour::Gold,
+		"7" => Colour::Gray,
+		"8" => Colour::DarkGray,
+		"9" => Colour::Blue,
+		"a" => Colour::Green,
+		"b" => Colour::Aqua,
+		"c" => Colour::Red,
+		"d" => Colour::LightPurple,
+		"e" => Colour::Yellow,
+		"f" => Colour::White,
 		_ => return Err(parser.into_other_error(&"could not parse paint")),
 	};
 

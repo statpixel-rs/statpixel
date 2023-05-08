@@ -1,6 +1,6 @@
-mod arena;
-mod bedwars;
-mod skywars;
+pub mod arena;
+pub mod bedwars;
+pub mod skywars;
 
 use serde::{Deserialize, Deserializer};
 
@@ -37,7 +37,7 @@ pub struct Stats {
 	pub turbo_kart_racers: TurboKartRacersStats,
 	#[serde(skip)]
 	pub housing: HousingStats,
-	pub sky_wars: skywars::Stats,
+	pub sky_wars: skywars::SkyWars,
 	#[serde(rename = "TrueCombat", skip)]
 	pub crazy_walls: CrazyWallsStats,
 	#[serde(rename = "SpeedUHC", skip)]
@@ -149,11 +149,20 @@ pub struct SmpStats;
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct WoolWarsStats;
 
-fn from_trunc_f32<'de, D>(deserializer: D) -> Result<u32, D::Error>
+pub(crate) fn from_trunc_f32_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>
 where
 	D: Deserializer<'de>,
 {
 	let s: f32 = Deserialize::deserialize(deserializer)?;
 
 	Ok(s as u32)
+}
+
+pub(crate) fn from_trunc_f32_to_u64<'de, D>(deserializer: D) -> Result<u64, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: f32 = Deserialize::deserialize(deserializer)?;
+
+	Ok(s as u64)
 }

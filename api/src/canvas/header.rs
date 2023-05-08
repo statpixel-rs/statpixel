@@ -1,4 +1,4 @@
-use api::{
+use crate::{
 	game::r#type::GameType,
 	player::{data::PlayerData, status::PlayerSession},
 };
@@ -6,7 +6,7 @@ use minecraft::text::{self, parse::parse_minecraft_string, Text};
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
 use translate::{tr, Context};
 
-use crate::{
+use super::{
 	GAP, HEADER_HEIGHT, HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, PADDING,
 	WIDTH_F,
 };

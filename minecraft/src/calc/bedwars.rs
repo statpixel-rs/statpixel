@@ -2,11 +2,11 @@ use std::cmp::min;
 
 use skia_safe::Color;
 
-use crate::{colour::MinecraftColour, text::parse::ESCAPE};
+use crate::{colour::Colour, text::parse::ESCAPE};
 
-const TOTAL_LEVEL_XP: [u32; 4] = [500, 1_500, 3_500, 7_000];
-const XP_PER_PRESTIGE: u32 = 96 * 5000 + 7000;
-const XP_PER_LEVEL: u32 = 5_000;
+const TOTAL_LEVEL_XP: [u64; 4] = [500, 1_500, 3_500, 7_000];
+const XP_PER_PRESTIGE: u64 = 96 * 5000 + 7000;
+const XP_PER_LEVEL: u64 = 5_000;
 
 type Format = ((char, char), [char; 5], Option<char>);
 
@@ -45,17 +45,17 @@ const LEVEL_FORMAT: [Format; 32] = [
 	(('e', '4'), ['e', '6', '6', 'c', '4'], Some('⚝')),
 ];
 
-pub fn get_colours(level: u32) -> [Color; 2] {
+pub fn get_colours(level: u64) -> [Color; 2] {
 	let prestige = level / 100;
 	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
 
 	[
-		MinecraftColour::try_from(format.1[0]).unwrap().into(),
-		MinecraftColour::try_from(format.1[4]).unwrap().into(),
+		Colour::try_from(format.1[0]).unwrap().into(),
+		Colour::try_from(format.1[4]).unwrap().into(),
 	]
 }
 
-pub fn get_level_format(level: u32) -> String {
+pub fn get_level_format(level: u64) -> String {
 	let prestige = level / 100;
 
 	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
@@ -88,21 +88,21 @@ pub fn get_level_format(level: u32) -> String {
 	string
 }
 
-pub fn get_level(xp: u32) -> u32 {
+pub fn get_level(xp: u64) -> u64 {
 	// Level from prestiges, remaining level is from start of a prestige
 	let level = 100 * (xp / XP_PER_PRESTIGE);
 	let xp = xp % XP_PER_PRESTIGE;
 
 	match xp {
-		0..=500 => level + 1,
-		501..=1_500 => level + 2,
-		1_501..=3_500 => level + 3,
-		3_501..=7_000 => level + 4,
+		0..=500 => level,
+		501..=1_500 => level + 1,
+		1_501..=3_500 => level + 2,
+		3_501..=7_000 => level + 3,
 		_ => level + 4 + (xp - 7_000) / XP_PER_LEVEL,
 	}
 }
 
-pub fn get_xp(level: u32) -> u32 {
+pub fn get_xp(level: u64) -> u64 {
 	let prestige = level / 100;
 	let level = level % 100;
 
@@ -119,17 +119,17 @@ pub fn get_xp(level: u32) -> u32 {
 	xp
 }
 
-pub fn get_level_xp(xp: u32) -> u32 {
+pub fn get_level_xp(xp: u64) -> u64 {
 	let level = get_level(xp);
 
 	get_xp(level + 1) - get_xp(level)
 }
 
-pub fn get_curr_level_xp(xp: u32) -> u32 {
+pub fn get_curr_level_xp(xp: u64) -> u64 {
 	xp - get_xp(get_level(xp))
 }
 
-pub fn get_level_progress(xp: u32) -> f32 {
+pub fn get_level_progress(xp: u64) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
 	let next = get_xp(level + 1);

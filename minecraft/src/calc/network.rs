@@ -45,6 +45,14 @@ const LEVEL_COLOUR: [[Color; 2]; 31] = [
 	[RED, GREEN],
 ];
 
+pub fn get_level_format(level: u64) -> String {
+	if level < 12 {
+		format!("{} Level", level)
+	} else {
+		format!("Prestige {}", level - 11)
+	}
+}
+
 pub fn get_colours(level: u64) -> [Color; 2] {
 	LEVEL_COLOUR[min(level as usize / 5, LEVEL_COLOUR.len() - 1)]
 }

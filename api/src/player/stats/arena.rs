@@ -3,13 +3,13 @@ use serde::Deserialize;
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Stats {
-	#[serde(deserialize_with = "super::from_trunc_f32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	pub coins: u32,
 	#[serde(rename = "magical_chest")]
 	pub magical_chests: u32,
 	#[serde(rename = "keys")]
 	pub magical_keys: u32,
-	#[serde(deserialize_with = "super::from_trunc_f32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	pub rating: u32,
 
 	#[serde(flatten)]

@@ -1,4 +1,4 @@
-use minecraft::{colour::MinecraftColour, text::rank::Rank};
+use minecraft::{colour::Colour, text::rank::Rank};
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone)]
@@ -14,10 +14,15 @@ pub struct PlayerData {
 	#[serde(rename = "monthlyPackageRank")]
 	package_rank: Option<String>,
 	#[serde(rename = "rankPlusColor")]
-	rank_colour: Option<MinecraftColour>,
+	rank_colour: Option<Colour>,
 	#[serde(rename = "monthlyRankColor")]
-	monthly_rank_colour: Option<MinecraftColour>,
+	monthly_rank_colour: Option<Colour>,
 	pub prefix: Option<String>,
+	#[serde(
+		rename = "networkExp",
+		deserialize_with = "super::stats::from_trunc_f32_to_u64"
+	)]
+	pub xp: u64,
 }
 
 impl PlayerData {

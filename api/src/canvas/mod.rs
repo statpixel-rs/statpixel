@@ -1,7 +1,7 @@
-mod data;
-pub mod util;
-
-pub use data::*;
+pub mod draw;
+pub mod header;
+pub mod label;
+pub(crate) mod util;
 
 use minecraft::paint;
 use skia_safe::{EncodedImageFormat, Path, Point, RRect, Rect, Surface};
@@ -182,7 +182,7 @@ pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 		.to_vec()
 }
 
-pub fn get_item_rect(i: u16) -> Rect {
+pub fn get_item_rect(i: usize) -> Rect {
 	let x = i % 3;
 	let y = i / 3;
 

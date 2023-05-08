@@ -1,51 +1,73 @@
+use macros::Game;
 use serde::Deserialize;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+fn default_level_fmt() -> String {
+	"§71".to_string()
+}
+
+#[derive(Deserialize, Default, Debug, Clone, Game)]
+#[game(
+	path = "sky_wars",
+	pretty = "§b§lSky§d§lWars",
+	calc = "minecraft::calc::skywars",
+	fields(ident = "wins", colour = "green"),
+	fields(ident = "losses", colour = "red"),
+	fields(tr = "wlr", div = "wins", div = "losses", colour = "gold"),
+	fields(ident = "kills", colour = "green"),
+	fields(ident = "deaths", colour = "red"),
+	fields(tr = "kdr", div = "kills", div = "deaths", colour = "gold")
+)]
 #[serde(default)]
-pub struct Stats {
-	#[serde(deserialize_with = "super::from_trunc_f32")]
+pub struct SkyWars {
+	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[game(label(colour = "gold"))]
 	pub coins: u32,
-	pub opals: u16,
+	#[serde(
+		rename = "skywars_chests",
+		deserialize_with = "super::from_trunc_f32_to_u32"
+	)]
+	#[game(label(colour = "yellow"))]
+	pub loot_chests: u32,
+	#[game(label(colour = "blue"))]
+	pub opals: u32,
+	#[game(label(colour = "dark_purple"))]
 	pub heads: u32,
+	#[game(label(colour = "aqua"))]
 	pub souls: u32,
 	#[serde(rename = "cosmetic_tokens")]
+	#[game(label(colour = "dark_green"))]
 	pub tokens: u32,
-	#[serde(rename = "skywars_chests", deserialize_with = "super::from_trunc_f32")]
-	pub loot_chests: u32,
 	pub arrows_shot: u32,
+	#[game(label(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	pub arrows_hit: u32,
 	#[serde(rename = "levelFormatted")]
-	pub level_fmt: Option<String>,
+	#[serde(default = "default_level_fmt")]
+	#[game(level)]
+	pub level_fmt: String,
 	#[serde(
 		rename = "skywars_experience",
-		deserialize_with = "super::from_trunc_f32"
+		deserialize_with = "super::from_trunc_f32_to_u64"
 	)]
-	pub xp: u32,
+	#[game(xp)]
+	pub xp: u64,
 
 	#[serde(flatten)]
-	pub overall: OverallStats,
+	#[game(mode(hypixel = "solo_normal", tr = "SoloNormal"))]
+	pub solo_normal: SoloNormal,
 	#[serde(flatten)]
-	pub solo_normal: SoloNormalStats,
+	#[game(mode(hypixel = "solo_insane", tr = "SoloInsane"))]
+	pub solo_insane: SoloInsane,
 	#[serde(flatten)]
-	pub solo_insane: SoloInsaneStats,
+	#[game(mode(hypixel = "teams_normal", tr = "TeamNormal"))]
+	pub team_normal: TeamNormal,
 	#[serde(flatten)]
-	pub team_normal: TeamNormalStats,
-	#[serde(flatten)]
-	pub team_insane: TeamInsaneStats,
+	#[game(mode(hypixel = "teams_insane", tr = "TeamInsane"))]
+	pub team_insane: TeamInsane,
 }
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct OverallStats {
-	pub losses: u32,
-	pub wins: u32,
-	pub kills: u32,
-	pub deaths: u32,
-}
-
-#[derive(Deserialize, Default, Debug, Clone)]
-#[serde(default)]
-pub struct SoloNormalStats {
+pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
 	pub losses: u32,
 	#[serde(rename = "wins_solo_normal")]
@@ -58,7 +80,7 @@ pub struct SoloNormalStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct SoloInsaneStats {
+pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
 	pub losses: u32,
 	#[serde(rename = "wins_solo_insane")]
@@ -71,7 +93,7 @@ pub struct SoloInsaneStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct TeamNormalStats {
+pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
 	pub losses: u32,
 	#[serde(rename = "wins_team_normal")]
@@ -84,7 +106,7 @@ pub struct TeamNormalStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct TeamInsaneStats {
+pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]
 	pub losses: u32,
 	#[serde(rename = "wins_team_insane")]

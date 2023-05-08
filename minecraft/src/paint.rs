@@ -1,5 +1,7 @@
+use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
+use quote::quote;
 
 macro_rules! paint_colour {
 	($name: ident, $colour: expr) => {
@@ -39,7 +41,8 @@ paint_colour!(WHITE, (255, 255, 255, 255));
 paint_colour!(BACKGROUND, (255, 21, 33, 43));
 paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
+#[darling(default)]
 pub enum MinecraftPaint {
 	Black,
 	DarkBlue,
@@ -56,7 +59,35 @@ pub enum MinecraftPaint {
 	Red,
 	LightPurple,
 	Yellow,
+	#[default]
 	White,
+}
+
+impl darling::ToTokens for MinecraftPaint {
+	fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
+		tokens.extend(quote! {
+			::minecraft::paint::MinecraftPaint::
+		});
+
+		match self {
+			Self::Black => tokens.extend(quote!(Black)),
+			Self::DarkBlue => tokens.extend(quote!(DarkBlue)),
+			Self::DarkGreen => tokens.extend(quote!(DarkGreen)),
+			Self::DarkAqua => tokens.extend(quote!(DarkAqua)),
+			Self::DarkRed => tokens.extend(quote!(DarkRed)),
+			Self::DarkPurple => tokens.extend(quote!(DarkPurple)),
+			Self::Gold => tokens.extend(quote!(Gold)),
+			Self::Gray => tokens.extend(quote!(Gray)),
+			Self::DarkGray => tokens.extend(quote!(DarkGray)),
+			Self::Blue => tokens.extend(quote!(Blue)),
+			Self::Green => tokens.extend(quote!(Green)),
+			Self::Aqua => tokens.extend(quote!(Aqua)),
+			Self::Red => tokens.extend(quote!(Red)),
+			Self::LightPurple => tokens.extend(quote!(LightPurple)),
+			Self::Yellow => tokens.extend(quote!(Yellow)),
+			Self::White => tokens.extend(quote!(White)),
+		}
+	}
 }
 
 impl From<MinecraftPaint> for &skia_safe::Paint {
