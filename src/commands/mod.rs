@@ -16,14 +16,21 @@ pub use unlink::*;
 #[macro_export]
 macro_rules! get_data {
 	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match get_player_from_input($ctx, $ctx.author(), $uuid, $username).await {
+		let player = match $crate::util::get_player_from_input(
+			$ctx,
+			$ctx.author(),
+			$uuid,
+			$username,
+		)
+		.await
+		{
 			Ok(player) => player,
-			Err(Error::NotLinked) => {
+			Err($crate::Error::NotLinked) => {
 				$ctx.send(|m| {
-					error_embed(
+					$crate::util::error_embed(
 						m,
-						tr!($ctx, "not-linked"),
-						tr!($ctx, "not-linked-description"),
+						::translate::tr!($ctx, "not-linked"),
+						::translate::tr!($ctx, "not-linked-description"),
 					)
 				})
 				.await?;
@@ -33,7 +40,8 @@ macro_rules! get_data {
 			Err(e) => return Err(e),
 		};
 
-		let (data, session) = join(player.get_data(), player.get_session()).await;
+		let (data, session) =
+			poise::futures_util::future::join(player.get_data(), player.get_session()).await;
 
 		let data = data?;
 		let session = session?;

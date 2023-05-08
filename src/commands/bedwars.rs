@@ -2,14 +2,10 @@ use std::borrow::Cow;
 
 use api::canvas::to_png;
 use api::player::stats::bedwars::{BedWars, BedWarsMode};
-use poise::{futures_util::future::join, serenity_prelude::AttachmentType};
-use translate::tr;
+use poise::serenity_prelude::AttachmentType;
 
 use crate::get_data;
-use crate::{
-	util::{error_embed, get_player_from_input},
-	Context, Error,
-};
+use crate::{Context, Error};
 
 /// Shows the BedWars stats of a player.
 #[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]

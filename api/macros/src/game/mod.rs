@@ -1,20 +1,26 @@
+mod sum;
+mod label;
+mod tokens;
+
 use darling::{ast, FromDeriveInput, FromField, FromMeta};
 use minecraft::{paint::MinecraftPaint, text::parse::parse_minecraft_string};
-use proc_macro2::TokenStream;
+use proc_macro2::{TokenStream, Span};
 use quote::{quote, ToTokens};
+
+use crate::game::tokens::get_tr_with_fallback;
+use self::label::{map_info_field_to_extras_value, map_game_field_to_extras_value};
+
+macro_rules! ident {
+	($id: literal) => {
+		syn::Ident::new($id, Span::call_site())
+	};
+}
 
 #[derive(Debug, FromDeriveInput)]
 #[darling(attributes(game), supports(struct_named))]
 pub(crate) struct GameInputReceiver {
-	/// The struct ident.
 	pub ident: syn::Ident,
-
-	/// The type's generics. You'll need these any time your trait is expected
-	/// to work with types that declare generics.
 	pub generics: syn::Generics,
-
-	/// Receives the body of the struct or enum. We don't care about
-	/// struct fields because we previously told darling we only accept structs.
 	pub data: ast::Data<(), GameFieldReceiver>,
 
 	/// The path to the game data in the PlayerStats struct.
@@ -32,11 +38,11 @@ pub(crate) struct GameInputReceiver {
 	/// If this is empty, it is assumed that you have an
 	/// Overall mode already defined.
 	#[darling(multiple)]
-	pub fields: Vec<OverallFieldData>,
+	pub field: Vec<OverallFieldData>,
 
 	/// The additional fields to include in the info header.
 	#[darling(multiple)]
-	pub info: Vec<InfoFieldData>,
+	pub label: Vec<InfoFieldData>,
 }
 
 impl ToTokens for GameInputReceiver {
@@ -48,9 +54,12 @@ impl ToTokens for GameInputReceiver {
 			ref path,
 			ref pretty,
 			ref calc,
-			fields: ref overall_fields,
-			ref info,
+			field: ref overall_fields,
+			label: ref info,
 		} = *self;
+
+		let label_size = parse_minecraft_string(pretty).count();
+		let row_count = (overall_fields.len() + 2) as u8 / 3;
 
 		let calc = if let Some(ref calc) = calc {
 			quote! { #calc }
@@ -104,28 +113,35 @@ impl ToTokens for GameInputReceiver {
 		};
 
 		let enum_ident = syn::Ident::new(&format!("{}Mode", ident), proc_macro2::Span::call_site());
-
-		let extras = labels.iter().map(|(field, label)| {
-			let name = field.ident.as_ref().unwrap();
-			let tr = if let Some(tr) = &label.tr {
-				quote! { #tr }
-			} else {
-				let name = name.to_string().replace('_', "-");
-
-				quote! { #name }
-			};
-
-			let colour = &label.colour;
-			let percent = if label.percent == Some(true) {
+		let extras = labels.iter().map(map_game_field_to_extras_value);
+		let extras_for_mode = info.iter().map(map_info_field_to_extras_value);
+		let extras_for_overall = info.iter().map(|info| {
+			let name = &info.ident;
+			let tr = get_tr_with_fallback(info.tr.as_deref(), Some(name));
+		
+			let colour = &info.colour;
+			let percent = if info.percent == Some(true) {
 				quote! { true }
 			} else {
 				quote! { false }
 			};
+		
+			let sum = sum::sum_fields(
+				modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+				Some(&ident!("stats")),
+				name,
+			);
 
-			let value = if let Some(div) = label.div.as_ref() {
-				quote! { stats.#name * 100 / stats.#div }
+			let value = if let Some(div) = info.div.as_ref() {
+				let sum_bottom = sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					div,
+				);
+
+				quote! { #sum * 100 / #sum_bottom }
 			} else {
-				quote! { stats.#name }
+				quote! { #sum }
 			};
 
 			quote! {
@@ -160,8 +176,6 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let label_size = parse_minecraft_string(pretty).count();
-
 		let mode_match_count_rows = modes.iter().map(|mode| {
 			let ty = &mode.ty;
 
@@ -193,129 +207,31 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let apply_items = overall_fields.iter().enumerate().map(|(i, field)| {
+		let apply_items_overall = overall_fields.iter().enumerate().map(|(i, field)| {
 			let ident_parent = &field.ident;
-			let tr = if let Some(tr) = &field.tr {
-				quote! { #tr }
-			} else if let Some(ident_parent) = ident_parent {
-				let name = ident_parent.to_string().replace('_', "-");
-
-				quote! { #name }
-			} else {
-				panic!("tr required when ident is not present");
-			};
-
+			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));
 			let colour = &field.colour;
 
-			let sum = if let Some(ident_parent) = ident_parent {
-				let (first_sum, modes_field_value_sum_for_ident) = if modes.len() == 1 {
-					let rest = modes.iter().map(|mode| {
-						let ident = mode.ident.as_ref().unwrap();
-
-						quote! {
-							stats.#ident.#ident_parent
-						}
-					});
-
-					(
-						quote! {
-							#(#rest)*
-						},
-						quote! {},
-					)
-				} else {
-					let mut iter = modes.iter();
-					let first = iter.next().unwrap().ident.as_ref().unwrap();
-
-					let rest = iter.map(|mode| {
-						let ident = mode.ident.as_ref().unwrap();
-
-						quote! {
-							+ stats.#ident.#ident_parent
-						}
-					});
-
-					(
-						quote! {
-							stats.#first.#ident_parent
-						},
-						quote! {
-							#(#rest)*
-						},
-					)
-				};
-
-				quote! { #first_sum #modes_field_value_sum_for_ident }
+			let sum = if let Some(div) = field.div.as_ref() {
+				sum::sum_div_f32_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					ident_parent,
+					div,
+				)
 			} else {
-				if field.div.len() != 2 {
-					panic!("div must have exactly 2 elements");
-				}
-
-				let (top, bottom) = (field.div.get(0).unwrap(), field.div.get(1).unwrap());
-
-				let (sum_top, sum_bottom) = if modes.len() == 1 {
-					let mode = modes.first().unwrap();
-					let ident = mode.ident.as_ref().unwrap();
-
-					(
-						quote! {
-							stats.#ident.#top
-						},
-						quote! {
-							stats.#ident.#bottom
-						},
-					)
-				} else {
-					let mut iter = modes.iter();
-					let first = iter.next().unwrap().ident.as_ref().unwrap();
-
-					let rest_top = iter.map(|mode| {
-						let ident = mode.ident.as_ref().unwrap();
-
-						quote! {
-							+ stats.#ident.#top
-						}
-					});
-
-					let rest_bottom = modes.iter().skip(1).map(|mode| {
-						let ident = mode.ident.as_ref().unwrap();
-
-						quote! {
-							+ stats.#ident.#bottom
-						}
-					});
-
-					(
-						quote! {
-							stats.#first.#top #(#rest_top)*
-						},
-						quote! {
-							stats.#first.#bottom #(#rest_bottom)*
-						},
-					)
-				};
-
-				quote! {
-					{
-						let sum_top = #sum_top;
-						let sum_bottom = #sum_bottom;
-
-						if sum_bottom == 0 {
-							sum_top as f32
-						} else {
-							sum_top as f32 / sum_bottom as f32
-						}
-					}
-				}
+				sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					ident_parent,
+				)
 			};
 
 			quote! {
-				let sum = #sum;
-
 				crate::canvas::draw::apply_item(
 					ctx,
 					surface,
-					sum,
+					#sum,
 					&::translate::tr!(ctx, #tr),
 					#colour,
 					#i,
@@ -323,65 +239,41 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let row_count = (overall_fields.len() + 2) as u8 / 3;
+		let apply_items_mode = overall_fields.iter().enumerate().map(|(idx, field)| {
+			let ident = &field.ident;
+			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+
+			let colour = &field.colour;
+			let value = if let Some(div) = field.div.as_ref() {
+				sum::div_f32_single_field(&ident!("self"), None, ident, div)
+			} else  {
+				quote! { self.#ident }
+			};
+
+			quote! {
+				crate::canvas::draw::apply_item(
+					ctx,
+					surface,
+					#value,
+					&::translate::tr!(ctx, #tr),
+					#colour,
+					#idx,
+				);
+			}
+		});
 
 		let apply_all_modes = modes.iter().map(|mode| {
+			let ty = &mode.ty;
 			let tr = mode.mode.as_ref().unwrap().tr.as_ref();
 			let tr = if let Some(tr) = tr {
 				quote! { #tr }
 			} else {
-				let name = &mode.ty;
-
-				quote! { #name }
+				quote! { #ty }
 			};
-			let ty = &mode.ty;
 
-			let apply_items = overall_fields.iter().enumerate().map(|(idx, field)| {
-				let ident = field.ident.as_ref();
-				let tr = if let Some(tr) = &field.tr {
-					quote! { #tr }
-				} else if let Some(ident) = ident {
-					let name = ident.to_string().replace('_', "-");
-	
-					quote! { #name }
-				} else {
-					panic!("tr required when ident is not present");
-				};
-	
-				let colour = &field.colour;
-				let value = if let Some(ident) = ident {
-					quote! { self.#ident }
-				} else if field.div.len() == 2 {
-					let top = field.div.get(0).unwrap();
-					let bottom = field.div.get(1).unwrap();
-
-					quote! {
-						{
-							let top = self.#top;
-							let bottom = self.#bottom;
-
-							if bottom == 0 {
-								top as f32
-							} else {
-								top as f32 / bottom as f32
-							}
-						}
-					}
-				} else {
-					panic!("ident required when div len != 2");
-				};
-	
-				quote! {
-					crate::canvas::draw::apply_item(
-						ctx,
-						surface,
-						#value,
-						&::translate::tr!(ctx, #tr),
-						#colour,
-						#idx,
-					);
-				}
-			});
+			let apply_items_mode = apply_items_mode.clone();
+			let extras = extras.clone();
+			let extras_for_mode = extras_for_mode.clone();
 	
 			quote! {
 				impl #ty {
@@ -393,8 +285,9 @@ impl ToTokens for GameInputReceiver {
 						#tr
 					}
 	
-					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, data: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession) {
+					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession) {
 						let label = ::translate::tr!(ctx, Self::get_tr());
+						let stats = &player.stats.#path;
 						
 						crate::canvas::draw::apply_label(
 							surface,
@@ -411,7 +304,18 @@ impl ToTokens for GameInputReceiver {
 								.as_slice(),
 						);
 	
-						#(#apply_items)*
+						#(#apply_items_mode)*
+
+						let extras = &[
+							#(#extras)*
+							#(#extras_for_mode)*
+						];
+
+						crate::canvas::draw::apply_extras(
+							ctx,
+							surface,
+							extras,
+						);
 					}
 				}
 			}
@@ -453,8 +357,19 @@ impl ToTokens for GameInputReceiver {
 							},
 						],
 					);
+					
+					let extras = &[
+						#(#extras)*
+						#(#extras_for_overall)*
+					];
 
-					#(#apply_items)*
+					crate::canvas::draw::apply_extras(
+						ctx,
+						surface,
+						extras,
+					);
+
+					#(#apply_items_overall)*
 				}
 			}
 
@@ -534,16 +449,6 @@ impl ToTokens for GameInputReceiver {
 						&session
 					);
 
-					let extras = &[
-						#(#extras)*
-					];
-
-					crate::canvas::draw::apply_extras(
-						ctx,
-						&mut surface,
-						extras,
-					);
-
 					surface
 				}
 			}
@@ -596,10 +501,9 @@ pub(crate) struct ModeData {
 
 #[derive(Debug, FromMeta)]
 pub(crate) struct OverallFieldData {
-	ident: Option<syn::Ident>,
+	ident: syn::Ident,
 
-	#[darling(multiple)]
-	div: Vec<syn::Ident>,
+	div: Option<syn::Ident>,
 
 	tr: Option<String>,
 
@@ -616,6 +520,9 @@ pub(crate) struct InfoFieldData {
 	/// Defaults to the ident with underscores replaced with dashes.
 	tr: Option<String>,
 
+	ident: syn::Ident,
+	
 	div: Option<syn::Ident>,
+
 	percent: Option<bool>,
 }

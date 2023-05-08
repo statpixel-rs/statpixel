@@ -10,12 +10,12 @@ fn default_level_fmt() -> String {
 	path = "sky_wars",
 	pretty = "§b§lSky§d§lWars",
 	calc = "minecraft::calc::skywars",
-	fields(ident = "wins", colour = "green"),
-	fields(ident = "losses", colour = "red"),
-	fields(tr = "wlr", div = "wins", div = "losses", colour = "gold"),
-	fields(ident = "kills", colour = "green"),
-	fields(ident = "deaths", colour = "red"),
-	fields(tr = "kdr", div = "kills", div = "deaths", colour = "gold")
+	field(ident = "wins", colour = "green"),
+	field(ident = "losses", colour = "red"),
+	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
+	field(ident = "kills", colour = "green"),
+	field(ident = "deaths", colour = "red"),
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
 )]
 #[serde(default)]
 pub struct SkyWars {

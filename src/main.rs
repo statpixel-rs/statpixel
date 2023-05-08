@@ -29,8 +29,9 @@ async fn main() {
 		commands::link(),
 		commands::unlink(),
 		commands::display(),
-		commands::skywars(),
 		commands::cache(),
+		commands::skywars(),
+		commands::bedwars(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

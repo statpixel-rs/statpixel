@@ -49,7 +49,7 @@ pub struct Stats {
 	#[serde(skip)]
 	pub prototype: PrototypeStats,
 	#[serde(rename = "Bedwars")]
-	pub bed_wars: bedwars::Stats,
+	pub bed_wars: bedwars::BedWars,
 	#[serde(skip)]
 	pub murder_mystery: MurderMysteryStats,
 	#[serde(skip)]

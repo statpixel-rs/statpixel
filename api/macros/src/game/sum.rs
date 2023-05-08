@@ -1,0 +1,128 @@
+use std::iter::Peekable;
+
+use proc_macro2::TokenStream;
+use quote::quote;
+
+pub(crate) fn sum_div_f32_fields<'id>(
+	mut fields: impl Iterator<Item = &'id syn::Ident>,
+	parent: Option<&syn::Ident>,
+	top: &syn::Ident,
+	bottom: &syn::Ident,
+) -> TokenStream {
+	let first = match fields.next() {
+		Some(first) => first,
+		None => panic!("game::sum::sum_div_f32_field_stats must be called with at least one field"),
+	};
+
+	let second = match fields.next() {
+		Some(second) => second,
+		None => return div_f32_single_field(first, parent, top, bottom),
+	};
+
+	let (rest_top, rest_bottom) =
+		div_f32_multi_fields_with_leading_plus(fields, parent, top, bottom);
+
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+
+	quote! {
+		{
+			let sum_top = #parent #first.#top + #parent #second.#top #rest_top;
+			let sum_bottom = #parent #first.#bottom + #parent #second.#bottom #rest_bottom;
+
+			sum_top as f32 / if sum_bottom == 0 { 1. } else { sum_bottom as f32 }
+		}
+	}
+}
+
+pub(crate) fn sum_fields<'id>(
+	mut fields: Peekable<impl Iterator<Item = &'id syn::Ident>>,
+	parent: Option<&syn::Ident>,
+	key: &syn::Ident,
+) -> TokenStream {
+	let first = match fields.next() {
+		Some(first) => first,
+		None => panic!("game::sum::sum_field_stats must be called with at least one field"),
+	};
+
+	let second = match fields.next() {
+		Some(second) => second,
+		None => return sum_single_field(first, parent, key),
+	};
+
+	let rest = sum_multi_fields_with_leading_plus(fields, parent, key);
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+
+	quote! {
+		{ #parent #first.#key + #parent #second.#key #rest }
+	}
+}
+
+/// Returns the sums of all fields as (top, bottom)
+fn div_f32_multi_fields_with_leading_plus<'id>(
+	fields: impl Iterator<Item = &'id syn::Ident>,
+	parent: Option<&syn::Ident>,
+	top: &syn::Ident,
+	bottom: &syn::Ident,
+) -> (TokenStream, TokenStream) {
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+	let mut sum_top = TokenStream::new();
+	let mut sum_bottom = TokenStream::new();
+
+	for field in fields {
+		sum_top.extend(quote! {
+			+ #parent #field.#top
+		});
+
+		sum_bottom.extend(quote! {
+			+ #parent #field.#bottom
+		});
+	}
+
+	(sum_top, sum_bottom)
+}
+
+fn sum_multi_fields_with_leading_plus<'id>(
+	fields: impl Iterator<Item = &'id syn::Ident>,
+	parent: Option<&syn::Ident>,
+	key: &syn::Ident,
+) -> TokenStream {
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+	let mut stream = TokenStream::new();
+
+	for field in fields {
+		stream.extend(quote! {
+			+ #parent #field.#key
+		});
+	}
+
+	stream
+}
+
+pub fn div_f32_single_field(
+	field: &syn::Ident,
+	parent: Option<&syn::Ident>,
+	top: &syn::Ident,
+	bottom: &syn::Ident,
+) -> TokenStream {
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+
+	quote! {
+		{
+			let bottom = #parent #field.#bottom;
+
+			#parent #field.#top as f32 / if bottom == 0 { 1. } else { bottom as f32 }
+		}
+	}
+}
+
+pub fn sum_single_field(
+	field: &syn::Ident,
+	parent: Option<&syn::Ident>,
+	key: &syn::Ident,
+) -> TokenStream {
+	let parent = parent.map(|p| quote! { #p. }).unwrap_or(quote! {});
+
+	quote! {
+		#parent #field.#key
+	}
+}

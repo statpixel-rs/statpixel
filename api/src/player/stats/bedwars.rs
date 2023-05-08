@@ -8,28 +8,33 @@ use serde::Deserialize;
 #[derive(Deserialize, Default, Debug, Clone, Game)]
 #[serde(default)]
 #[game(
-	path = "bedwars",
+	path = "bed_wars",
 	pretty = "§c§lBed§d§lWars",
 	calc = "minecraft::calc::bedwars",
-	fields(ident = "wins", colour = "green"),
-	fields(ident = "losses", colour = "red"),
-	fields(tr = "wlr", div = "wins", div = "losses", colour = "gold"),
-	fields(ident = "kills", colour = "green"),
-	fields(ident = "deaths", colour = "red"),
-	fields(tr = "kdr", div = "kills", div = "deaths", colour = "gold"),
-	fields(ident = "final_kills", colour = "green"),
-	fields(ident = "final_deaths", colour = "red"),
-	fields(
+	field(ident = "wins", colour = "green"),
+	field(ident = "losses", colour = "red"),
+	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
+	field(ident = "kills", colour = "green"),
+	field(ident = "deaths", colour = "red"),
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
+	field(ident = "final_kills", colour = "green"),
+	field(ident = "final_deaths", colour = "red"),
+	field(
 		tr = "fkdr",
-		div = "final_kills",
+		ident = "final_kills",
 		div = "final_deaths",
 		colour = "gold"
 	),
-	fields(ident = "beds_broken", colour = "green"),
-	fields(ident = "beds_lost", colour = "red"),
-	fields(tr = "bblr", div = "beds_broken", div = "beds_lost", colour = "gold")
+	field(ident = "beds_broken", colour = "green"),
+	field(ident = "beds_lost", colour = "red"),
+	field(tr = "bblr", ident = "beds_broken", div = "beds_lost", colour = "gold"),
+	label(ident = "iron_collected", colour = "gray"),
+	label(ident = "gold_collected", colour = "gold"),
+	label(ident = "emerald_collected", colour = "dark_green"),
+	label(ident = "diamond_collected", colour = "aqua"),
+	label(ident = "items_purchased", colour = "red")
 )]
-pub struct Stats {
+pub struct BedWars {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	#[game(label(colour = "gold"))]
 	pub coins: u32,
@@ -43,21 +48,26 @@ pub struct Stats {
 		rename = "Experience",
 		deserialize_with = "super::from_trunc_f32_to_u64"
 	)]
+	#[game(xp)]
 	pub xp: u64,
 
 	#[serde(flatten)]
-	pub solo: SoloStats,
+	#[game(mode(hypixel = "bedwars_eight_one", tr = "Solo"))]
+	pub solo: Solo,
 	#[serde(flatten)]
-	pub double: DoubleStats,
+	#[game(mode(hypixel = "bedwars_eight_two", tr = "Double"))]
+	pub double: Double,
 	#[serde(flatten)]
-	pub three: ThreeStats,
+	#[game(mode(hypixel = "bedwars_four_three", tr = "Three"))]
+	pub three: Three,
 	#[serde(flatten)]
-	pub four: FourStats,
+	#[game(mode(hypixel = "bedwars_four_four", tr = "Four"))]
+	pub four: Four,
 }
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct SoloStats {
+pub struct Solo {
 	#[serde(rename = "eight_one_wins_bedwars")]
 	pub wins: u32,
 	#[serde(rename = "eight_one_losses_bedwars")]
@@ -88,7 +98,7 @@ pub struct SoloStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct DoubleStats {
+pub struct Double {
 	#[serde(rename = "eight_two_wins_bedwars")]
 	pub wins: u32,
 	#[serde(rename = "eight_two_losses_bedwars")]
@@ -119,7 +129,7 @@ pub struct DoubleStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct ThreeStats {
+pub struct Three {
 	#[serde(rename = "four_three_wins_bedwars")]
 	pub wins: u32,
 	#[serde(rename = "four_three_losses_bedwars")]
@@ -150,7 +160,7 @@ pub struct ThreeStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct FourStats {
+pub struct Four {
 	#[serde(rename = "four_four_wins_bedwars")]
 	pub wins: u32,
 	#[serde(rename = "four_four_losses_bedwars")]
