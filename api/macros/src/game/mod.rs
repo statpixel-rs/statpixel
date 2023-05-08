@@ -1,14 +1,14 @@
-mod sum;
 mod label;
+mod sum;
 mod tokens;
 
 use darling::{ast, FromDeriveInput, FromField, FromMeta};
 use minecraft::{paint::MinecraftPaint, text::parse::parse_minecraft_string};
-use proc_macro2::{TokenStream, Span};
+use proc_macro2::{Span, TokenStream};
 use quote::{quote, ToTokens};
 
+use self::label::{map_game_field_to_extras_value, map_info_field_to_extras_value};
 use crate::game::tokens::get_tr_with_fallback;
-use self::label::{map_info_field_to_extras_value, map_game_field_to_extras_value};
 
 macro_rules! ident {
 	($id: literal) => {
@@ -118,14 +118,14 @@ impl ToTokens for GameInputReceiver {
 		let extras_for_overall = info.iter().map(|info| {
 			let name = &info.ident;
 			let tr = get_tr_with_fallback(info.tr.as_deref(), Some(name));
-		
+
 			let colour = &info.colour;
 			let percent = if info.percent == Some(true) {
 				quote! { true }
 			} else {
 				quote! { false }
 			};
-		
+
 			let sum = sum::sum_fields(
 				modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
 				Some(&ident!("stats")),
@@ -184,7 +184,10 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let first_ty = modes.first().map(|mode| &mode.ty).unwrap();
+		let first_ty = modes
+			.first()
+			.map(|mode| &mode.ty)
+			.expect("there must be at least one #[game(mode(...))] attribute");
 
 		let mode_from_str_impl =
 			modes.iter().map(
@@ -246,7 +249,7 @@ impl ToTokens for GameInputReceiver {
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
 				sum::div_f32_single_field(&ident!("self"), None, ident, div)
-			} else  {
+			} else {
 				quote! { self.#ident }
 			};
 
@@ -274,7 +277,7 @@ impl ToTokens for GameInputReceiver {
 			let apply_items_mode = apply_items_mode.clone();
 			let extras = extras.clone();
 			let extras_for_mode = extras_for_mode.clone();
-	
+
 			quote! {
 				impl #ty {
 					pub fn get_row_count() -> u8 {
@@ -284,11 +287,11 @@ impl ToTokens for GameInputReceiver {
 					pub fn get_tr() -> &'static str {
 						#tr
 					}
-	
+
 					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession) {
 						let label = ::translate::tr!(ctx, Self::get_tr());
 						let stats = &player.stats.#path;
-						
+
 						crate::canvas::draw::apply_label(
 							surface,
 							[
@@ -303,7 +306,7 @@ impl ToTokens for GameInputReceiver {
 								.concat()
 								.as_slice(),
 						);
-	
+
 						#(#apply_items_mode)*
 
 						let extras = &[
@@ -357,7 +360,7 @@ impl ToTokens for GameInputReceiver {
 							},
 						],
 					);
-					
+
 					let extras = &[
 						#(#extras)*
 						#(#extras_for_overall)*
@@ -521,7 +524,7 @@ pub(crate) struct InfoFieldData {
 	tr: Option<String>,
 
 	ident: syn::Ident,
-	
+
 	div: Option<syn::Ident>,
 
 	percent: Option<bool>,

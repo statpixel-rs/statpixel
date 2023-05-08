@@ -1,28 +1,46 @@
+use macros::Game;
 use serde::Deserialize;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Default, Debug, Clone, Game)]
 #[serde(default)]
-pub struct Stats {
+#[game(
+	path = "arena",
+	pretty = "§c§lArena",
+	field(ident = "wins", colour = "green"),
+	field(ident = "losses", colour = "red"),
+	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
+	field(ident = "kills", colour = "green"),
+	field(ident = "deaths", colour = "red"),
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+)]
+pub struct Arena {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[game(label(colour = "gold"))]
 	pub coins: u32,
 	#[serde(rename = "magical_chest")]
+	#[game(label(colour = "dark_purple"))]
 	pub magical_chests: u32,
 	#[serde(rename = "keys")]
+	#[game(label(colour = "aqua"))]
 	pub magical_keys: u32,
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[game(label(colour = "green"))]
 	pub rating: u32,
 
 	#[serde(flatten)]
-	pub solo: SoloStats,
+	#[game(mode(hypixel = "_", tr = "Solo"))]
+	pub solo: Solo,
 	#[serde(flatten)]
-	pub double: DoubleStats,
+	#[game(mode(hypixel = "_", tr = "Double"))]
+	pub double: Double,
 	#[serde(flatten)]
-	pub four: FourStats,
+	#[game(mode(hypixel = "_", tr = "Three"))]
+	pub four: Four,
 }
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct SoloStats {
+pub struct Solo {
 	#[serde(rename = "wins_1v1")]
 	pub wins: u32,
 	#[serde(rename = "losses_1v1")]
@@ -35,7 +53,7 @@ pub struct SoloStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct DoubleStats {
+pub struct Double {
 	#[serde(rename = "wins_2v2")]
 	pub wins: u32,
 	#[serde(rename = "losses_2v2")]
@@ -48,7 +66,7 @@ pub struct DoubleStats {
 
 #[derive(Deserialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct FourStats {
+pub struct Four {
 	#[serde(rename = "wins_4v4")]
 	pub wins: u32,
 	#[serde(rename = "losses_4v4")]

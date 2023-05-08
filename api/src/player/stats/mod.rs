@@ -24,7 +24,7 @@ pub struct Stats {
 	#[serde(skip)]
 	pub arcade: ArcadeStats,
 	#[serde(skip)]
-	pub arena: arena::Stats,
+	pub arena: arena::Arena,
 	#[serde(rename = "UHC", skip)]
 	pub uhc: UhcStats,
 	#[serde(rename = "MCGO", skip)]
