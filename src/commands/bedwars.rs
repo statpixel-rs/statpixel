@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::canvas::to_png;
-use api::player::stats::bedwars::{BedWars, BedWarsMode};
+use api::player::stats::bed_wars::{BedWars, BedWarsMode};
 use poise::serenity_prelude::AttachmentType;
 
 use crate::get_data;

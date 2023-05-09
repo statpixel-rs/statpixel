@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::canvas::to_png;
-use api::player::stats::skywars::{SkyWars, SkyWarsMode};
+use api::player::stats::sky_wars::{SkyWars, SkyWarsMode};
 use poise::serenity_prelude::AttachmentType;
 use translate::Error;
 

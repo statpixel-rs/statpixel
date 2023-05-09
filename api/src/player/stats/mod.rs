@@ -1,6 +1,6 @@
 pub mod arena;
-pub mod bedwars;
-pub mod skywars;
+pub mod bed_wars;
+pub mod sky_wars;
 
 use serde::{Deserialize, Deserializer};
 
@@ -37,7 +37,7 @@ pub struct Stats {
 	pub turbo_kart_racers: TurboKartRacersStats,
 	#[serde(skip)]
 	pub housing: HousingStats,
-	pub sky_wars: skywars::SkyWars,
+	pub sky_wars: sky_wars::SkyWars,
 	#[serde(rename = "TrueCombat", skip)]
 	pub crazy_walls: CrazyWallsStats,
 	#[serde(rename = "SpeedUHC", skip)]
@@ -49,7 +49,7 @@ pub struct Stats {
 	#[serde(skip)]
 	pub prototype: PrototypeStats,
 	#[serde(rename = "Bedwars")]
-	pub bed_wars: bedwars::BedWars,
+	pub bed_wars: bed_wars::BedWars,
 	#[serde(skip)]
 	pub murder_mystery: MurderMysteryStats,
 	#[serde(skip)]
