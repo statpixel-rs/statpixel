@@ -52,16 +52,16 @@ pub struct SkyWars {
 	pub xp: u64,
 
 	#[serde(flatten)]
-	#[game(mode(hypixel = "solo_normal", tr = "SoloNormal"))]
+	#[game(mode(hypixel = "solo_normal"))]
 	pub solo_normal: SoloNormal,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "solo_insane", tr = "SoloInsane"))]
+	#[game(mode(hypixel = "solo_insane"))]
 	pub solo_insane: SoloInsane,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "teams_normal", tr = "TeamNormal"))]
+	#[game(mode(hypixel = "teams_normal"))]
 	pub team_normal: TeamNormal,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "teams_insane", tr = "TeamInsane"))]
+	#[game(mode(hypixel = "teams_insane"))]
 	pub team_insane: TeamInsane,
 }
 

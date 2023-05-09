@@ -28,13 +28,13 @@ pub struct Arena {
 	pub rating: u32,
 
 	#[serde(flatten)]
-	#[game(mode(hypixel = "_", tr = "Solo"))]
+	#[game(mode())]
 	pub solo: Solo,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "_", tr = "Double"))]
+	#[game(mode())]
 	pub double: Double,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "_", tr = "Three"))]
+	#[game(mode())]
 	pub four: Four,
 }
 

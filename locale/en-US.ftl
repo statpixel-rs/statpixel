@@ -1,4 +1,6 @@
-decimal-sep = .
+# General labels
+not-linked = Missing arguments
+not-linked-description = Since you're not linked, you need to provide a profile to view.
 
 # /display
 display = display
@@ -14,8 +16,6 @@ display-changed-image-description = Responses will now be sent as images where a
 unlink = unlink
 	.description = Unlinks your Discord account from a Minecraft account.
 
-not-linked = Missing arguments
-not-linked-description = Since you're not linked, you need to provide a profile to view.
 unlinking-failed = Unlinking failed
 unlinking-failed-description = You are not linked to a Minecraft account.
 unlinking-succeeded = Unlinking successful

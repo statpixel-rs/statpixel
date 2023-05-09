@@ -271,7 +271,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = if let Some(tr) = tr {
 				quote! { #tr }
 			} else {
-				quote! { #ty }
+				quote! { stringify!(#ty) }
 			};
 
 			let apply_items_mode = apply_items_mode.clone();

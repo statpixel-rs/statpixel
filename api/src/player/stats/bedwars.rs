@@ -1,10 +1,6 @@
 use macros::Game;
 use serde::Deserialize;
 
-// Todo: paint extras field (7 info lines)
-// in the mode, so we can use mode-related data in the fields
-// instead of just fields in the overall struct
-
 #[derive(Deserialize, Default, Debug, Clone, Game)]
 #[serde(default)]
 #[game(
@@ -52,16 +48,16 @@ pub struct BedWars {
 	pub xp: u64,
 
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_eight_one", tr = "Solo"))]
+	#[game(mode(hypixel = "bedwars_eight_one"))]
 	pub solo: Solo,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_eight_two", tr = "Double"))]
+	#[game(mode(hypixel = "bedwars_eight_two"))]
 	pub double: Double,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_four_three", tr = "Three"))]
+	#[game(mode(hypixel = "bedwars_four_three"))]
 	pub three: Three,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_four_four", tr = "Four"))]
+	#[game(mode(hypixel = "bedwars_four_four"))]
 	pub four: Four,
 }
 
