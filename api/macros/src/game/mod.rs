@@ -4,7 +4,7 @@ mod tokens;
 
 use darling::{ast, FromDeriveInput, FromField, FromMeta};
 use minecraft::{paint::MinecraftPaint, text::parse::parse_minecraft_string};
-use proc_macro2::{Span, TokenStream};
+use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
 
 use self::label::{map_game_field_to_extras_value, map_info_field_to_extras_value};
@@ -12,7 +12,7 @@ use crate::game::tokens::get_tr_with_fallback;
 
 macro_rules! ident {
 	($id: literal) => {
-		syn::Ident::new($id, Span::call_site())
+		::syn::Ident::new($id, ::proc_macro2::Span::call_site())
 	};
 }
 
@@ -30,7 +30,7 @@ pub(crate) struct GameInputReceiver {
 	pub pretty: String,
 
 	/// A path to the module with level calculations.
-	pub calc: Option<syn::PatPath>,
+	pub calc: Option<syn::Path>,
 
 	/// The fields to include in the Overall mode.
 	/// These must be present in all [`Mode`]s.
@@ -83,14 +83,22 @@ impl ToTokens for GameInputReceiver {
 		for field in fields {
 			if field.mode.is_some() {
 				modes.push(field);
-			} else if let Some(label) = field.label.as_ref() {
+			}
+
+			if let Some(label) = field.label.as_ref() {
 				labels.push((field, label));
-			} else if field.xp.is_some() {
+			}
+
+			if field.xp.is_some() {
 				xp_field = Some(field);
-			} else if field.level.is_some() {
+			}
+
+			if field.level.is_some() {
 				level_fmt_field = Some(field);
 			}
 		}
+
+		modes.sort_by_cached_key(|field| field.ident.as_ref().unwrap().to_string());
 
 		let (level_fmt_field, xp_field) = match (level_fmt_field, xp_field) {
 			(Some(level), Some(xp)) => {
@@ -139,7 +147,7 @@ impl ToTokens for GameInputReceiver {
 					div,
 				);
 
-				quote! { #sum * 100 / #sum_bottom }
+				quote! { #sum * 100 / if #sum_bottom == 0 { 1 } else { #sum_bottom } }
 			} else {
 				quote! { #sum }
 			};
@@ -147,7 +155,7 @@ impl ToTokens for GameInputReceiver {
 			quote! {
 				(
 					::translate::tr!(ctx, #tr),
-					#value,
+					::std::boxed::Box::new(#value),
 					#colour,
 					#percent,
 				),
@@ -214,14 +222,27 @@ impl ToTokens for GameInputReceiver {
 			let ident_parent = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));
 			let colour = &field.colour;
+			let percent = match field.percent.as_ref() {
+				Some(true) => quote! { Some(true) },
+				_ => quote! { Some(false) },
+			};
 
 			let sum = if let Some(div) = field.div.as_ref() {
-				sum::sum_div_f32_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
-					Some(&ident!("stats")),
-					ident_parent,
-					div,
-				)
+				if field.percent == Some(true) {
+					sum::sum_div_u32_fields(
+						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						Some(&ident!("stats")),
+						ident_parent,
+						div,
+					)
+				} else {
+					sum::sum_div_f32_fields(
+						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						Some(&ident!("stats")),
+						ident_parent,
+						div,
+					)
+				}
 			} else {
 				sum::sum_fields(
 					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
@@ -237,6 +258,7 @@ impl ToTokens for GameInputReceiver {
 					#sum,
 					&::translate::tr!(ctx, #tr),
 					#colour,
+					#percent,
 					#i,
 				);
 			}
@@ -246,9 +268,17 @@ impl ToTokens for GameInputReceiver {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
+			let percent = match field.percent.as_ref() {
+				Some(true) => quote! { Some(true) },
+				_ => quote! { Some(false) },
+			};
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
-				sum::div_f32_single_field(&ident!("self"), None, ident, div)
+				if field.percent == Some(true) {
+					sum::div_u32_single_field(&ident!("self"), None, ident, div)
+				} else {
+					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+				}
 			} else {
 				quote! { self.#ident }
 			};
@@ -260,6 +290,7 @@ impl ToTokens for GameInputReceiver {
 					#value,
 					&::translate::tr!(ctx, #tr),
 					#colour,
+					#percent,
 					#idx,
 				);
 			}
@@ -309,15 +340,13 @@ impl ToTokens for GameInputReceiver {
 
 						#(#apply_items_mode)*
 
-						let extras = &[
-							#(#extras)*
-							#(#extras_for_mode)*
-						];
-
 						crate::canvas::draw::apply_extras(
 							ctx,
 							surface,
-							extras,
+							&[
+								#(#extras)*
+								#(#extras_for_mode)*
+							],
 						);
 					}
 				}
@@ -361,15 +390,13 @@ impl ToTokens for GameInputReceiver {
 						],
 					);
 
-					let extras = &[
-						#(#extras)*
-						#(#extras_for_overall)*
-					];
-
 					crate::canvas::draw::apply_extras(
 						ctx,
 						surface,
-						extras,
+						&[
+							#(#extras)*
+							#(#extras_for_overall)*
+						],
 					);
 
 					#(#apply_items_overall)*
@@ -512,20 +539,20 @@ pub(crate) struct OverallFieldData {
 
 	#[darling(default)]
 	colour: MinecraftPaint,
+
+	percent: Option<bool>,
 }
 
 #[derive(Debug, FromMeta)]
 pub(crate) struct InfoFieldData {
-	#[darling(default)]
-	colour: MinecraftPaint,
-
-	/// The translation key of the label.
-	/// Defaults to the ident with underscores replaced with dashes.
-	tr: Option<String>,
-
 	ident: syn::Ident,
 
 	div: Option<syn::Ident>,
+
+	tr: Option<String>,
+
+	#[darling(default)]
+	colour: MinecraftPaint,
 
 	percent: Option<bool>,
 }

@@ -26,12 +26,16 @@ async fn main() {
 	dotenvy::dotenv().ok();
 
 	let mut commands = vec![
-		commands::link(),
-		commands::unlink(),
-		commands::display(),
-		commands::cache(),
-		commands::skywars(),
-		commands::bedwars(),
+		commands::link::link(),
+		commands::unlink::unlink(),
+		commands::display::display(),
+		commands::cache::cache(),
+		commands::skywars::skywars(),
+		commands::bedwars::bedwars(),
+		commands::arcade::arcade(),
+		commands::arena::arena(),
+		commands::blitz::blitz(),
+		commands::build_battle::buildbattle(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

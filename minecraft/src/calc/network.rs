@@ -1,82 +1,32 @@
-use std::cmp::min;
-
 use skia_safe::Color;
 
-use crate::colour::{
-	AQUA, BLUE, DARK_AQUA, DARK_BLUE, DARK_GREEN, DARK_PURPLE, DARK_RED, GOLD, GRAY, GREEN,
-	LIGHT_PURPLE, RED, WHITE, YELLOW,
-};
+use crate::{colour::Colour, text::parse::ESCAPE};
 
-const TOTAL_LEVEL_XP: [u64; 12] = [
-	0, 20, 70, 150, 250, 500, 1_000, 2_000, 3_500, 6_000, 10_000, 15_000,
-];
+const BASE: u64 = 10_000;
+const GROWTH: f32 = 2_500.;
 
-const LEVEL_COLOUR: [[Color; 2]; 31] = [
-	[GRAY, GRAY],
-	[WHITE, WHITE],
-	[GOLD, GOLD],
-	[AQUA, AQUA],
-	[DARK_GREEN, DARK_GREEN],
-	[DARK_AQUA, DARK_AQUA],
-	[DARK_RED, DARK_RED],
-	[LIGHT_PURPLE, LIGHT_PURPLE],
-	[BLUE, BLUE],
-	[DARK_PURPLE, DARK_PURPLE],
-	[RED, AQUA],
-	[WHITE, WHITE],
-	[RED, RED],
-	[WHITE, WHITE],
-	[GOLD, GOLD],
-	[BLUE, BLUE],
-	[AQUA, AQUA],
-	[DARK_AQUA, DARK_AQUA],
-	[DARK_AQUA, DARK_AQUA],
-	[YELLOW, YELLOW],
-	[DARK_BLUE, DARK_BLUE],
-	[DARK_RED, DARK_RED],
-	[AQUA, AQUA],
-	[GRAY, GRAY],
-	[DARK_PURPLE, DARK_PURPLE],
-	[YELLOW, YELLOW],
-	[YELLOW, YELLOW],
-	[RED, RED],
-	[RED, RED],
-	[AQUA, AQUA],
-	[RED, GREEN],
-];
+const HALF_GROWTH: u64 = (0.5 * GROWTH) as u64;
+
+const REVERSE_PQ_PREFIX: f32 = -(BASE as f32 - 0.5 * GROWTH) / GROWTH;
+const REVERSE_CONST: f32 = REVERSE_PQ_PREFIX * REVERSE_PQ_PREFIX;
+const GROWTH_DIVIDES_2: f32 = 2. / GROWTH;
 
 pub fn get_level_format(level: u64) -> String {
-	if level < 12 {
-		format!("{} Level", level)
-	} else {
-		format!("Prestige {}", level - 11)
-	}
+	format!("{ESCAPE}6{level}")
 }
 
-pub fn get_colours(level: u64) -> [Color; 2] {
-	LEVEL_COLOUR[min(level as usize / 5, LEVEL_COLOUR.len() - 1)]
+pub fn get_colours(_level: u64) -> [Color; 2] {
+	[Colour::Gold.into(), Colour::Gold.into()]
 }
 
 pub fn get_level(xp: u64) -> u64 {
-	for (i, &x) in TOTAL_LEVEL_XP.iter().enumerate() {
-		if x > xp {
-			return i as u64;
-		}
-	}
+	let xp = xp as f32;
 
-	let xp = xp - TOTAL_LEVEL_XP[11];
-
-	12 + (xp / 10_000)
+	(1. + REVERSE_PQ_PREFIX + (REVERSE_CONST + GROWTH_DIVIDES_2 * xp).sqrt()) as u64
 }
 
 pub fn get_xp(level: u64) -> u64 {
-	if level == 0 {
-		0
-	} else if level < 12 {
-		TOTAL_LEVEL_XP[level as usize - 1]
-	} else {
-		TOTAL_LEVEL_XP[11] + (level - 12) * 10_000
-	}
+	(HALF_GROWTH * (level - 2) + BASE) * level - 1
 }
 
 pub fn get_level_xp(xp: u64) -> u64 {

@@ -8,7 +8,6 @@ use minecraft::{
 	style::MinecraftFont,
 	text::{draw, parse::parse_minecraft_string, Text},
 };
-use num_format::ToFormattedString;
 use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Paint, RRect, Rect, Surface};
 use translate::{prelude::GetNumFormatLocale, tr, Context};
 
@@ -17,8 +16,8 @@ pub fn apply_data(
 	surface: &mut Surface,
 	level: &str,
 	progress: f32,
-	current: u64,
-	needed: u64,
+	current: impl ToFormattedLabel,
+	needed: impl ToFormattedLabel,
 	colors: &[Color; 2],
 ) {
 	let locale = ctx.get_num_format_locale();
@@ -33,8 +32,8 @@ pub fn apply_data(
 	text.reserve_exact(8);
 
 	let label = format!("\n{}: ", tr!(ctx, "progress"));
-	let current = current.to_formatted_string(&locale);
-	let needed = needed.to_formatted_string(&locale);
+	let current = current.to_formatted_label(&locale, false);
+	let needed = needed.to_formatted_label(&locale, false);
 
 	text.push(Text {
 		text: &label,
@@ -129,6 +128,7 @@ pub fn apply_item(
 	value: impl ToFormattedLabel,
 	label: &str,
 	paint: MinecraftPaint,
+	percent: Option<bool>,
 	index: usize,
 ) {
 	let text = [
@@ -144,7 +144,7 @@ pub fn apply_item(
 			..Default::default()
 		},
 		Text {
-			text: &value.to_formatted_label(&ctx.get_num_format_locale(), false),
+			text: &value.to_formatted_label(&ctx.get_num_format_locale(), percent.unwrap_or(false)),
 			paint,
 			font: MinecraftFont::Normal,
 			size: None,
@@ -159,7 +159,7 @@ pub fn apply_item(
 pub fn apply_extras(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	lines: &[(String, impl ToFormattedLabel, MinecraftPaint, bool)],
+	lines: &[(String, Box<dyn ToFormattedLabel>, MinecraftPaint, bool)],
 ) {
 	let mut y = PADDING;
 	let x = HEADER_LEFT_END_X + GAP;

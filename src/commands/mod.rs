@@ -1,16 +1,46 @@
-mod bedwars;
-mod cache;
-mod display;
-mod link;
-mod skywars;
-mod unlink;
+pub mod arcade;
+pub mod arena;
+pub mod bedwars;
+pub mod blitz;
+pub mod build_battle;
+pub mod cache;
+pub mod display;
+pub mod link;
+pub mod skywars;
+pub mod unlink;
 
-pub use bedwars::*;
-pub use cache::*;
-pub use display::*;
-pub use link::*;
-pub use skywars::*;
-pub use unlink::*;
+#[macro_export]
+macro_rules! generate_command {
+	($game: ty, $mode: ty, $fn: ident) => {
+		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		pub async fn $fn(
+			ctx: $crate::Context<'_>,
+			#[max_length = 16] username: Option<::std::string::String>,
+			#[min_length = 32]
+			#[max_length = 36]
+			uuid: Option<::std::string::String>,
+			mode: Option<$mode>,
+		) -> ::std::result::Result<(), ::translate::Error> {
+			let (_player, data, session) = $crate::get_data!(ctx, uuid, username);
+
+			let png: ::std::borrow::Cow<[u8]> = {
+				let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+
+				::api::canvas::to_png(&mut surface).into()
+			};
+
+			ctx.send(move |m| {
+				m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+					data: png,
+					filename: "canvas.png".into(),
+				})
+			})
+			.await?;
+
+			Ok(())
+		}
+	};
+}
 
 /// Generates the code needed to fetch the player, their data, and their session.
 #[macro_export]

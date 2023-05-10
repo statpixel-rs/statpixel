@@ -1,5 +1,8 @@
+pub mod arcade;
 pub mod arena;
 pub mod bed_wars;
+pub mod blitz_sg;
+pub mod build_battle;
 pub mod sky_wars;
 
 use serde::{Deserialize, Deserializer};
@@ -13,17 +16,15 @@ pub struct Stats {
 	pub walls: WallsStats,
 	#[serde(skip)]
 	pub paintball: PaintballStats,
-	#[serde(rename = "HungerGames", skip)]
-	pub blitz_sg: BlitzSgStats,
+	#[serde(rename = "HungerGames")]
+	pub blitz_sg: blitz_sg::BlitzSg,
 	#[serde(rename = "TNTGames", skip)]
 	pub tnt_games: TntGamesStats,
 	#[serde(rename = "VampireZ", skip)]
 	pub vampire_z: VampireZStats,
 	#[serde(rename = "Walls3", skip)]
 	pub mega_walls: MegaWallsStats,
-	#[serde(skip)]
-	pub arcade: ArcadeStats,
-	#[serde(skip)]
+	pub arcade: arcade::Arcade,
 	pub arena: arena::Arena,
 	#[serde(rename = "UHC", skip)]
 	pub uhc: UhcStats,
@@ -52,8 +53,8 @@ pub struct Stats {
 	pub bed_wars: bed_wars::BedWars,
 	#[serde(skip)]
 	pub murder_mystery: MurderMysteryStats,
-	#[serde(skip)]
-	pub build_battle: BuildBattleStats,
+	#[serde(rename = "BuildBattle")]
+	pub build_battle: build_battle::BuildBattle,
 	#[serde(skip)]
 	pub duels: DuelsStats,
 	#[serde(skip)]
@@ -78,9 +79,6 @@ pub struct WallsStats;
 pub struct PaintballStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
-pub struct BlitzSgStats;
-
-#[derive(Deserialize, Default, Debug, Clone)]
 pub struct TntGamesStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
@@ -88,9 +86,6 @@ pub struct VampireZStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct MegaWallsStats;
-
-#[derive(Deserialize, Default, Debug, Clone)]
-pub struct ArcadeStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct UhcStats;
@@ -127,9 +122,6 @@ pub struct PrototypeStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct MurderMysteryStats;
-
-#[derive(Deserialize, Default, Debug, Clone)]
-pub struct BuildBattleStats;
 
 #[derive(Deserialize, Default, Debug, Clone)]
 pub struct DuelsStats;

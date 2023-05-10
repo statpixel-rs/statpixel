@@ -91,6 +91,22 @@ bedwars = bedwars
 
 magical-keys = Magical Keys
 magical-chests = Magical Chests
+rating = Rating
+
+# /blitz
+
+potions-drunk = Potions Drunk
+chests-opened = Chests Opened
+time-played = Playtime
+
+# /arcade
+
+mystery-gifts = Mystery Gifts
+
+# /buildbattle
+
+votes = Votes
+most-points = Most Points
 
 # Shared canvas labels
 
@@ -108,3 +124,10 @@ wlr = WLR
 kills = Kills
 deaths = Deaths
 kdr = KDR
+games-played = Games Played
+wr = Win Rate
+damage-dealt = Damage Dealt
+damage-taken = Damage Taken
+ddtr = DDTR
+games = Games
+score = Score

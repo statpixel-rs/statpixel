@@ -14,7 +14,14 @@ macro_rules! impl_to_formatted_label_for_int {
 				if percent {
 					format!("{}%", self.to_formatted_string(locale))
 				} else {
-					self.to_formatted_string(locale)
+					if *self < 1_000_000 {
+						self.to_formatted_string(locale)
+					} else {
+						format!(
+							"{}M",
+							(*self as f32 / 1_000_000.).to_formatted_label(locale, percent)
+						)
+					}
 				}
 			}
 		}
@@ -42,14 +49,10 @@ macro_rules! impl_to_formatted_label_for_float {
 	};
 }
 
-impl_to_formatted_label_for_int!(i8);
-impl_to_formatted_label_for_int!(i16);
 impl_to_formatted_label_for_int!(i32);
 impl_to_formatted_label_for_int!(i64);
 impl_to_formatted_label_for_int!(i128);
 impl_to_formatted_label_for_int!(isize);
-impl_to_formatted_label_for_int!(u8);
-impl_to_formatted_label_for_int!(u16);
 impl_to_formatted_label_for_int!(u32);
 impl_to_formatted_label_for_int!(u64);
 impl_to_formatted_label_for_int!(u128);

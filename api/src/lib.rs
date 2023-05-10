@@ -1,5 +1,6 @@
 #![feature(let_chains)]
 
+mod extras;
 mod http;
 mod ratelimit;
 
@@ -10,4 +11,5 @@ pub mod canvas;
 pub mod game;
 pub mod player;
 
+pub use extras::*;
 pub use translate::ApiError as Error;

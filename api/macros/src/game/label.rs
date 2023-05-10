@@ -19,7 +19,7 @@ pub(crate) fn map_game_field_to_extras_value(
 	};
 
 	let value = if let Some(div) = label.div.as_ref() {
-		quote! { stats.#name * 100 / stats.#div }
+		quote! { ::std::cmp::min(100, stats.#name * 100 / if stats.#div == 0 { 1 } else { stats.#div }) }
 	} else {
 		quote! { stats.#name }
 	};
@@ -27,7 +27,7 @@ pub(crate) fn map_game_field_to_extras_value(
 	quote! {
 		(
 			::translate::tr!(ctx, #tr),
-			#value,
+			::std::boxed::Box::new(#value),
 			#colour,
 			#percent,
 		),
@@ -46,7 +46,7 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 	};
 
 	let value = if let Some(div) = info.div.as_ref() {
-		quote! { self.#name * 100 / self.#div }
+		quote! { ::std::cmp::min(100, self.#name * 100 / if self.#div == 0 { 1 } else { self.#div }) }
 	} else {
 		quote! { self.#name }
 	};
@@ -54,7 +54,7 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 	quote! {
 		(
 			::translate::tr!(ctx, #tr),
-			#value,
+			::std::boxed::Box::new(#value),
 			#colour,
 			#percent,
 		),
