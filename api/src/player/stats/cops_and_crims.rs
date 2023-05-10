@@ -1,7 +1,7 @@
 use macros::Game;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
 #[game(
 	path = "arcade",
 	pretty = "§b§lArcade",
@@ -26,7 +26,7 @@ pub struct Arcade {
 	pub party: Party,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Party {
 	#[serde(rename = "rounds_party")]

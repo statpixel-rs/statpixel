@@ -1,7 +1,7 @@
 use macros::Game;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
 #[game(
 	path = "build_battle",
 	pretty = "§b§lBuild Battle",
@@ -32,7 +32,7 @@ pub struct BuildBattle {
 	pub guess_the_build: GuessTheBuild,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "wins_solo_normal")]
@@ -43,7 +43,7 @@ pub struct SoloNormal {
 	pub votes: u32,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SoloPro {
 	#[serde(rename = "wins_solo_pro")]
@@ -54,7 +54,7 @@ pub struct SoloPro {
 	pub votes: u32,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "wins_teams_normal")]
@@ -65,7 +65,7 @@ pub struct TeamNormal {
 	pub votes: u32,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct GuessTheBuild {
 	#[serde(rename = "wins_guess_the_build")]

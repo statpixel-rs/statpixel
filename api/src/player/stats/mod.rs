@@ -5,9 +5,9 @@ pub mod blitz_sg;
 pub mod build_battle;
 pub mod sky_wars;
 
-use serde::{Deserialize, Deserializer};
+use serde::{Deserialize, Deserializer, Serialize};
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
 	#[serde(skip)]
@@ -69,76 +69,76 @@ pub struct Stats {
 	pub wool_wars: WoolWarsStats,
 }
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct QuakeStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct WallsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct PaintballStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct TntGamesStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct VampireZStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct MegaWallsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct UhcStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct CopsAndCrimsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct WarlordsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SmashHeroesStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct TurboKartRacersStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct HousingStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct CrazyWallsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SpeedUhcStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SkyClashStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct ClassicStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct PrototypeStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct MurderMysteryStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct DuelsStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SkyBlockStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct PitStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct ReplayStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SmpStats;
 
-#[derive(Deserialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct WoolWarsStats;
 
 pub(crate) fn from_trunc_f32_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>

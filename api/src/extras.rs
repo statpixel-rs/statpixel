@@ -18,6 +18,15 @@ impl<'de> Deserialize<'de> for Seconds {
 	}
 }
 
+impl serde::Serialize for Seconds {
+	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+	where
+		S: serde::Serializer,
+	{
+		serializer.serialize_u64(self.0)
+	}
+}
+
 impl Add for Seconds {
 	type Output = Self;
 
