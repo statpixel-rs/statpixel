@@ -26,7 +26,7 @@ pub fn get_level(xp: u64) -> u64 {
 }
 
 pub fn get_xp(level: u64) -> u64 {
-	(HALF_GROWTH * (level - 2) + BASE) * level - 1
+	(HALF_GROWTH * (level - 2) + BASE) * (level - 1)
 }
 
 pub fn get_level_xp(xp: u64) -> u64 {

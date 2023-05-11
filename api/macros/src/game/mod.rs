@@ -188,7 +188,15 @@ impl ToTokens for GameInputReceiver {
 			let ty = &mode.ty;
 
 			quote! {
-				Self::#ty => #ty ::get_row_count(),
+				#enum_ident ::#ty => #ty ::get_row_count(),
+			}
+		});
+
+		let mode_match_get_tr = modes.iter().map(|mode| {
+			let ty = &mode.ty;
+
+			quote! {
+				#enum_ident ::#ty => #ty ::get_tr(),
 			}
 		});
 
@@ -293,6 +301,58 @@ impl ToTokens for GameInputReceiver {
 					#percent,
 					#idx,
 				);
+			}
+		});
+
+		let modes_len = modes.len() + 1;
+
+		let mode_into_int_impl = modes.iter().enumerate().map(|(idx, mode)| {
+			// idx = 0 is for Overall
+			let idx = idx as u32 + 1;
+			let ty = &mode.ty;
+
+			quote! {
+				&#enum_ident ::#ty => #idx,
+			}
+		});
+
+		let mode_from_int_impl = modes.iter().enumerate().map(|(idx, mode)| {
+			// idx = 0 is for Overall
+			let idx = idx as u32 + 1;
+			let ty = &mode.ty;
+
+			quote! {
+				#idx => #enum_ident ::#ty,
+			}
+		});
+
+		let impl_mode_enum = if modes_len > 25 {
+			// There can only be 25 options in a ChoiceParameter, so we need to use
+			// autocomplete instead.
+			quote! {
+				// Implement the game mode enum.
+				#[derive(::std::fmt::Debug)]
+				pub enum #enum_ident {
+					Overall,
+					#(#mode_enum_rows)*
+				}
+			}
+		} else {
+			quote! {
+				// Implement the game mode enum.
+				#[derive(::std::fmt::Debug, ::poise::ChoiceParameter)]
+				pub enum #enum_ident {
+					Overall,
+					#(#mode_enum_rows)*
+				}
+			}
+		};
+
+		let static_modes_iter = modes.iter().map(|mode| {
+			let ty = &mode.ty;
+
+			quote! {
+				#enum_ident ::#ty,
 			}
 		});
 
@@ -403,16 +463,39 @@ impl ToTokens for GameInputReceiver {
 				}
 			}
 
-			// Implement the game mode enum.
-			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter)]
-			pub enum #enum_ident {
-				Overall,
-				#(#mode_enum_rows)*
+			#impl_mode_enum
+
+			impl From<&#enum_ident> for u32 {
+				fn from(value: &#enum_ident) -> u32 {
+					match value {
+						&#enum_ident ::Overall => 0,
+						#(#mode_into_int_impl)*
+					}
+				}
+			}
+
+			impl From<u32> for #enum_ident {
+				fn from(value: u32) -> Self {
+					match value {
+						0 => #enum_ident ::Overall,
+						#(#mode_from_int_impl)*
+						_ => #enum_ident ::Overall,
+					}
+				}
 			}
 
 			// Implement the default impl for the game mode enum.
 			// This should be able to get the recommended mode from the session.
 			impl #enum_ident {
+				pub fn slice() -> &'static [#enum_ident] {
+					static MODES: [#enum_ident; #modes_len] = [
+						#enum_ident ::Overall,
+						#(#static_modes_iter)*
+					];
+
+					&MODES
+				}
+
 				pub fn get_mode(mode: Option<#enum_ident>, session: &crate::player::status::PlayerSession) -> #enum_ident {
 					if let Some(mode) = mode {
 						mode
@@ -429,6 +512,13 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_match_count_rows)*
 					}
 				}
+
+				pub fn get_tr(&self) -> &'static str {
+					match self {
+						Self::Overall => Overall::get_tr(),
+						#(#mode_match_get_tr)*
+					}
+				}
 			}
 
 			impl ::std::convert::From<&str> for #enum_ident {
@@ -441,6 +531,22 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			impl #imp #ident #ty #wher {
+				pub async fn autocomplete<'a>(ctx: ::translate::Context<'a>, partial: ::std::string::String) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+					::futures::StreamExt::take(
+						::futures::StreamExt::filter_map(::futures::stream::iter(#enum_ident ::slice()), move |mode| {
+							let name = ::translate::tr!(ctx, mode.get_tr());
+
+							::futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
+								::std::option::Option::Some(::poise::AutocompleteChoice {
+									name,
+									value: mode.into(),
+								})
+							} else {
+								::std::option::Option::None
+							})
+						}), 25)
+				}
+
 				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession, mode: Option<#enum_ident>) -> ::skia_safe::Surface {
 					let stats = &player.stats.#path;
 					let xp = #xp_field;

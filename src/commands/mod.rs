@@ -4,10 +4,56 @@ pub mod bedwars;
 pub mod blitz;
 pub mod build_battle;
 pub mod cache;
+pub mod cops_and_crims;
 pub mod display;
+pub mod duels;
 pub mod link;
+pub mod mega_walls;
 pub mod skywars;
 pub mod unlink;
+
+#[macro_export]
+macro_rules! generate_large_command {
+	($game: ty, $mode: ty, $fn: ident) => {
+		async fn autocomplete_mode<'a>(
+			ctx: $crate::Context<'a>,
+			partial: &'a str,
+		) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+			let partial = partial.to_ascii_lowercase();
+
+			<$game>::autocomplete(ctx, partial).await
+		}
+
+		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		pub async fn $fn<'a>(
+			ctx: $crate::Context<'a>,
+			#[max_length = 16] username: Option<::std::string::String>,
+			#[min_length = 32]
+			#[max_length = 36]
+			uuid: Option<::std::string::String>,
+			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+		) -> ::std::result::Result<(), ::translate::Error> {
+			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
+			let (_player, data, session) = $crate::get_data!(ctx, uuid, username);
+
+			let png: ::std::borrow::Cow<[u8]> = {
+				let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+
+				::api::canvas::to_png(&mut surface).into()
+			};
+
+			ctx.send(move |m| {
+				m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+					data: png,
+					filename: "canvas.png".into(),
+				})
+			})
+			.await?;
+
+			Ok(())
+		}
+	};
+}
 
 #[macro_export]
 macro_rules! generate_command {

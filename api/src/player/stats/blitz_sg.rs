@@ -1,7 +1,7 @@
 use macros::Game;
 use serde::{Deserialize, Serialize};
 
-use crate::Seconds;
+use crate::seconds::Seconds;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
 #[serde(default)]

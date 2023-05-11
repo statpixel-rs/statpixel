@@ -24,7 +24,6 @@ async fn main() {
 	tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 
 	dotenvy::dotenv().ok();
-
 	let mut commands = vec![
 		commands::link::link(),
 		commands::unlink::unlink(),
@@ -36,6 +35,9 @@ async fn main() {
 		commands::arena::arena(),
 		commands::blitz::blitz(),
 		commands::build_battle::buildbattle(),
+		commands::cops_and_crims::copsandcrims(),
+		commands::duels::duels(),
+		commands::mega_walls::megawalls(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

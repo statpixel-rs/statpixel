@@ -86,10 +86,10 @@ pub struct Arcade {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Party {
-	#[serde(rename = "rounds_party")]
-	pub games: u32,
 	#[serde(rename = "wins_party")]
 	pub wins: u32,
+	#[serde(rename = "rounds_party")]
+	pub games: u32,
 	#[serde(rename = "kills_party")]
 	pub kills: u32,
 	#[serde(rename = "deaths_party")]
@@ -99,10 +99,10 @@ pub struct Party {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SantaSays {
-	#[serde(rename = "rounds_santa_says")]
-	pub games: u32,
 	#[serde(rename = "wins_santa_says")]
 	pub wins: u32,
+	#[serde(rename = "rounds_santa_says")]
+	pub games: u32,
 	#[serde(rename = "kills_santa_says")]
 	pub kills: u32,
 	#[serde(rename = "deaths_santa_says")]
@@ -112,10 +112,10 @@ pub struct SantaSays {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct SimonSays {
-	#[serde(rename = "rounds_simon_says")]
-	pub games: u32,
 	#[serde(rename = "wins_simon_says")]
 	pub wins: u32,
+	#[serde(rename = "rounds_simon_says")]
+	pub games: u32,
 	#[serde(rename = "kills_simon_says")]
 	pub kills: u32,
 	#[serde(rename = "deaths_simon_says")]
@@ -125,10 +125,10 @@ pub struct SimonSays {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct MiniWalls {
-	#[serde(rename = "rounds_mini_walls")]
-	pub games: u32,
 	#[serde(rename = "wins_mini_walls")]
 	pub wins: u32,
+	#[serde(rename = "rounds_mini_walls")]
+	pub games: u32,
 	#[serde(rename = "kills_mini_walls")]
 	pub kills: u32,
 	#[serde(rename = "deaths_mini_walls")]
@@ -138,10 +138,10 @@ pub struct MiniWalls {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Soccer {
-	#[serde(rename = "rounds_soccer")]
-	pub games: u32,
 	#[serde(rename = "wins_soccer")]
 	pub wins: u32,
+	#[serde(rename = "rounds_soccer")]
+	pub games: u32,
 	#[serde(rename = "kills_soccer")]
 	pub kills: u32,
 	#[serde(rename = "deaths_soccer")]
@@ -151,10 +151,10 @@ pub struct Soccer {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct OneInTheQuiver {
-	#[serde(rename = "rounds_oneinthequiver")]
-	pub games: u32,
 	#[serde(rename = "wins_oneinthequiver")]
 	pub wins: u32,
+	#[serde(rename = "rounds_oneinthequiver")]
+	pub games: u32,
 	#[serde(rename = "kills_oneinthequiver")]
 	pub kills: u32,
 	#[serde(rename = "deaths_oneinthequiver")]
@@ -164,10 +164,10 @@ pub struct OneInTheQuiver {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct EnderSpleef {
-	#[serde(rename = "rounds_ender")]
-	pub games: u32,
 	#[serde(rename = "wins_ender")]
 	pub wins: u32,
+	#[serde(rename = "rounds_ender")]
+	pub games: u32,
 	#[serde(rename = "kills_ender")]
 	pub kills: u32,
 	#[serde(rename = "deaths_ender")]
@@ -177,10 +177,10 @@ pub struct EnderSpleef {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct FarmHunt {
-	#[serde(rename = "rounds_farm_hunt")]
-	pub games: u32,
 	#[serde(rename = "wins_farm_hunt")]
 	pub wins: u32,
+	#[serde(rename = "rounds_farm_hunt")]
+	pub games: u32,
 	#[serde(rename = "kills_farm_hunt")]
 	pub kills: u32,
 	#[serde(rename = "deaths_farm_hunt")]
@@ -190,10 +190,10 @@ pub struct FarmHunt {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct DragonWars {
-	#[serde(rename = "rounds_dragonwars2")]
-	pub games: u32,
 	#[serde(rename = "wins_dragonwars2")]
 	pub wins: u32,
+	#[serde(rename = "rounds_dragonwars2")]
+	pub games: u32,
 	#[serde(rename = "kills_dragonwars2")]
 	pub kills: u32,
 	#[serde(rename = "deaths_dragonwars2")]
@@ -203,10 +203,10 @@ pub struct DragonWars {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct BlockingDead {
-	#[serde(rename = "rounds_dayone")]
-	pub games: u32,
 	#[serde(rename = "wins_dayone")]
 	pub wins: u32,
+	#[serde(rename = "rounds_dayone")]
+	pub games: u32,
 	#[serde(rename = "kills_dayone")]
 	pub kills: u32,
 	#[serde(rename = "deaths_dayone")]
@@ -216,10 +216,10 @@ pub struct BlockingDead {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Zombies {
-	#[serde(rename = "rounds_zombies")]
-	pub games: u32,
 	#[serde(rename = "wins_zombies")]
 	pub wins: u32,
+	#[serde(rename = "rounds_zombies")]
+	pub games: u32,
 	#[serde(rename = "kills_zombies")]
 	pub kills: u32,
 	#[serde(rename = "deaths_zombies")]
@@ -229,10 +229,10 @@ pub struct Zombies {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct ZombiesBadBlood {
-	#[serde(rename = "rounds_zombies_badblood")]
-	pub games: u32,
 	#[serde(rename = "wins_zombies_badblood")]
 	pub wins: u32,
+	#[serde(rename = "rounds_zombies_badblood")]
+	pub games: u32,
 	#[serde(rename = "kills_zombies_badblood")]
 	pub kills: u32,
 	#[serde(rename = "deaths_zombies_badblood")]
@@ -242,10 +242,10 @@ pub struct ZombiesBadBlood {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct ZombiesDeadEnd {
-	#[serde(rename = "rounds_zombies_deadend")]
-	pub games: u32,
 	#[serde(rename = "wins_zombies_deadend")]
 	pub wins: u32,
+	#[serde(rename = "rounds_zombies_deadend")]
+	pub games: u32,
 	#[serde(rename = "kills_zombies_deadend")]
 	pub kills: u32,
 	#[serde(rename = "deaths_zombies_deadend")]
@@ -255,10 +255,10 @@ pub struct ZombiesDeadEnd {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct PixelPainters {
-	#[serde(rename = "rounds_draw_their_thing")]
-	pub games: u32,
 	#[serde(rename = "wins_draw_their_thing")]
 	pub wins: u32,
+	#[serde(rename = "rounds_draw_their_thing")]
+	pub games: u32,
 	#[serde(rename = "kills_draw_their_thing")]
 	pub kills: u32,
 	#[serde(rename = "deaths_draw_their_thing")]
@@ -268,10 +268,10 @@ pub struct PixelPainters {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct Paintball {
-	#[serde(rename = "rounds_paintball")]
-	pub games: u32,
 	#[serde(rename = "wins_paintball")]
 	pub wins: u32,
+	#[serde(rename = "rounds_paintball")]
+	pub games: u32,
 	#[serde(rename = "kills_paintball")]
 	pub kills: u32,
 	#[serde(rename = "deaths_paintball")]
@@ -281,10 +281,10 @@ pub struct Paintball {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct HoleInTheWall {
-	#[serde(rename = "rounds_hole_in_the_wall")]
-	pub games: u32,
 	#[serde(rename = "wins_hole_in_the_wall")]
 	pub wins: u32,
+	#[serde(rename = "rounds_hole_in_the_wall")]
+	pub games: u32,
 	#[serde(rename = "kills_hole_in_the_wall")]
 	pub kills: u32,
 	#[serde(rename = "deaths_hole_in_the_wall")]
@@ -294,10 +294,10 @@ pub struct HoleInTheWall {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct ThrowOut {
-	#[serde(rename = "rounds_throw_out")]
-	pub games: u32,
 	#[serde(rename = "wins_throw_out")]
 	pub wins: u32,
+	#[serde(rename = "rounds_throw_out")]
+	pub games: u32,
 	#[serde(rename = "kills_throw_out")]
 	pub kills: u32,
 	#[serde(rename = "deaths_throw_out")]
@@ -307,10 +307,10 @@ pub struct ThrowOut {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct EasterSimulator {
-	#[serde(rename = "rounds_easter_simulator")]
-	pub games: u32,
 	#[serde(rename = "wins_easter_simulator")]
 	pub wins: u32,
+	#[serde(rename = "rounds_easter_simulator")]
+	pub games: u32,
 	#[serde(rename = "kills_easter_simulator")]
 	pub kills: u32,
 	#[serde(rename = "deaths_easter_simulator")]
@@ -320,10 +320,10 @@ pub struct EasterSimulator {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct ScubaSimulator {
-	#[serde(rename = "rounds_scuba_simulator")]
-	pub games: u32,
 	#[serde(rename = "wins_scuba_simulator")]
 	pub wins: u32,
+	#[serde(rename = "rounds_scuba_simulator")]
+	pub games: u32,
 	#[serde(rename = "kills_scuba_simulator")]
 	pub kills: u32,
 	#[serde(rename = "deaths_scuba_simulator")]
@@ -333,10 +333,10 @@ pub struct ScubaSimulator {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct HalloweenSimulator {
-	#[serde(rename = "rounds_halloween_simulator")]
-	pub games: u32,
 	#[serde(rename = "wins_halloween_simulator")]
 	pub wins: u32,
+	#[serde(rename = "rounds_halloween_simulator")]
+	pub games: u32,
 	#[serde(rename = "kills_halloween_simulator")]
 	pub kills: u32,
 	#[serde(rename = "deaths_halloween_simulator")]
@@ -346,10 +346,10 @@ pub struct HalloweenSimulator {
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
 pub struct GrinchSimulator {
-	#[serde(rename = "rounds_grinch_simulator_v2")]
-	pub games: u32,
 	#[serde(rename = "wins_grinch_simulator_v2")]
 	pub wins: u32,
+	#[serde(rename = "rounds_grinch_simulator_v2")]
+	pub games: u32,
 	#[serde(rename = "kills_grinch_simulator_v2")]
 	pub kills: u32,
 	#[serde(rename = "deaths_grinch_simulator_v2")]
