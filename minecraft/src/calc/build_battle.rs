@@ -90,5 +90,14 @@ pub fn get_level_progress(xp: u32) -> f32 {
 	let base = get_xp(level);
 	let next = get_xp(level + 1);
 
-	(xp - base) as f32 / (next - base) as f32
+	(xp - base) as f32
+		/ if next == base {
+			1.
+		} else {
+			(next - base) as f32
+		}
+}
+
+pub fn convert(xp: &u32) -> u32 {
+	*xp
 }

@@ -9,6 +9,9 @@ pub mod display;
 pub mod duels;
 pub mod link;
 pub mod mega_walls;
+pub mod murder_mystery;
+pub mod paintball;
+pub mod pit;
 pub mod skywars;
 pub mod unlink;
 

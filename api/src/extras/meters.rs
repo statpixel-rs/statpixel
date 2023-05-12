@@ -1,6 +1,7 @@
 use std::ops::Add;
 
 use serde::{Deserialize, Deserializer};
+use translate::Context;
 
 use crate::canvas::label::ToFormattedLabel;
 
@@ -42,15 +43,12 @@ impl From<Meters> for u64 {
 }
 
 impl ToFormattedLabel for Meters {
-	fn to_formatted_label(&self, locale: &num_format::Locale, _percent: bool) -> String {
+	fn to_formatted_label(&self, ctx: Context<'_>, _percent: bool) -> String {
 		let m = self.0;
 
 		match m {
-			0..1_000 => format!("{}m", m.to_formatted_label(locale, false)),
-			_ => format!(
-				"{}km",
-				(m as f32 / 1_000.).to_formatted_label(locale, false)
-			),
+			0..1_000 => format!("{}m", m.to_formatted_label(ctx, false)),
+			_ => format!("{}km", (m as f32 / 1_000.).to_formatted_label(ctx, false)),
 		}
 	}
 }

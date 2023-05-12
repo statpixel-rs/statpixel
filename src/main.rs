@@ -38,6 +38,9 @@ async fn main() {
 		commands::cops_and_crims::copsandcrims(),
 		commands::duels::duels(),
 		commands::mega_walls::megawalls(),
+		commands::murder_mystery::murdermystery(),
+		commands::paintball::paintball(),
+		commands::pit::pit(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

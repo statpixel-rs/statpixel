@@ -6,6 +6,9 @@ pub mod build_battle;
 pub mod cops_and_crims;
 pub mod duels;
 pub mod mega_walls;
+pub mod murder_mystery;
+pub mod paintball;
+pub mod pit;
 pub mod sky_wars;
 
 use serde::{Deserialize, Deserializer, Serialize};
@@ -17,8 +20,7 @@ pub struct Stats {
 	pub quake: QuakeStats,
 	#[serde(skip)]
 	pub walls: WallsStats,
-	#[serde(skip)]
-	pub paintball: PaintballStats,
+	pub paintball: paintball::Paintball,
 	#[serde(rename = "HungerGames")]
 	pub blitz_sg: blitz_sg::BlitzSg,
 	#[serde(rename = "TNTGames", skip)]
@@ -54,15 +56,13 @@ pub struct Stats {
 	pub prototype: PrototypeStats,
 	#[serde(rename = "Bedwars")]
 	pub bed_wars: bed_wars::BedWars,
-	#[serde(skip)]
-	pub murder_mystery: MurderMysteryStats,
+	pub murder_mystery: murder_mystery::MurderMystery,
 	#[serde(rename = "BuildBattle")]
 	pub build_battle: build_battle::BuildBattle,
 	pub duels: duels::Duels,
 	#[serde(skip)]
 	pub sky_block: SkyBlockStats,
-	#[serde(skip)]
-	pub pit: PitStats,
+	pub pit: pit::PitOuter,
 	#[serde(skip)]
 	pub replay: ReplayStats,
 	#[serde(rename = "SMP", skip)]
@@ -76,9 +76,6 @@ pub struct QuakeStats;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct WallsStats;
-
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
-pub struct PaintballStats;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct TntGamesStats;
@@ -117,16 +114,10 @@ pub struct ClassicStats;
 pub struct PrototypeStats;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
-pub struct MurderMysteryStats;
-
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct DuelsStats;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct SkyBlockStats;
-
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
-pub struct PitStats;
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 pub struct ReplayStats;

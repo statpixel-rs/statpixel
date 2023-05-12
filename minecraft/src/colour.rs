@@ -1,7 +1,7 @@
 use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use quote::quote;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 macro_rules! colour {
 	($name: ident, $colour: expr) => {
@@ -31,7 +31,7 @@ colour!(WHITE, (255, 255, 255));
 // Utility colours
 colour!(BACKGROUND, (31, 48, 64));
 
-#[derive(Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
+#[derive(Serialize, Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
 #[serde(try_from = "&str")]
 #[darling(default)]
 pub enum Colour {

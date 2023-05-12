@@ -136,3 +136,7 @@ pub fn get_level_progress(xp: u64) -> f32 {
 
 	(xp - base) as f32 / (next - base) as f32
 }
+
+pub fn convert(xp: &u64) -> u64 {
+	*xp
+}

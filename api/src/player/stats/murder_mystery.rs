@@ -1,10 +1,12 @@
 use macros::Game;
 use serde::{Deserialize, Serialize};
 
+use crate::seconds;
+
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
 #[game(
-	path = "arcade",
-	pretty = "§b§lArcade",
+	path = "murder_mystery",
+	pretty = "§b§lMurder Mystery",
 	field(ident = "wins", colour = "green"),
 	field(ident = "games", colour = "red"),
 	field(tr = "wr", ident = "wins", div = "games", colour = "gold", percent),
@@ -13,28 +15,88 @@ use serde::{Deserialize, Serialize};
 	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
 )]
 #[serde(default)]
-pub struct Arcade {
+pub struct MurderMystery {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	#[game(label(colour = "gold"))]
 	pub coins: u32,
-	#[serde(rename = "mystery_gifts_obtained")]
+	#[serde(
+		rename = "mm_chests",
+		deserialize_with = "super::from_trunc_f32_to_u32"
+	)]
 	#[game(label(colour = "yellow"))]
-	pub mystery_gifts: u32,
+	pub loot_chests: u32,
+	#[serde(rename = "total_time_survived_seconds")]
+	#[game(label(colour = "aqua"))]
+	pub time_survived: seconds::Seconds,
+	#[serde(rename = "murderer_wins")]
+	#[game(label(colour = "red"))]
+	pub murderer_wins: u32,
+	#[serde(rename = "detective_wins")]
+	#[game(label(colour = "green"))]
+	pub detective_wins: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]
-	pub uhc_solo: UhcSolo,
+	pub assassins: Assassins,
+	#[serde(flatten)]
+	#[game(mode())]
+	pub classic: Classic,
+	#[serde(flatten)]
+	#[game(mode())]
+	pub double_up: DoubleUp,
+	#[serde(flatten)]
+	#[game(mode())]
+	pub infection: Infection,
 }
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone)]
 #[serde(default)]
-pub struct Party {
-	#[serde(rename = "uhc_duel_wins")]
+pub struct Assassins {
+	#[serde(rename = "wins_MURDER_ASSASSINS")]
 	pub wins: u32,
-	#[serde(rename = "wins_party")]
-	pub losses: u32,
-	#[serde(rename = "kills_party")]
+	#[serde(rename = "games_MURDER_ASSASSINS")]
+	pub games: u32,
+	#[serde(rename = "kills_MURDER_ASSASSINS")]
 	pub kills: u32,
-	#[serde(rename = "deaths_party")]
+	#[serde(rename = "deaths_MURDER_ASSASSINS")]
+	pub deaths: u32,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[serde(default)]
+pub struct Classic {
+	#[serde(rename = "wins_MURDER_CLASSIC")]
+	pub wins: u32,
+	#[serde(rename = "games_MURDER_CLASSIC")]
+	pub games: u32,
+	#[serde(rename = "kills_MURDER_CLASSIC")]
+	pub kills: u32,
+	#[serde(rename = "deaths_MURDER_CLASSIC")]
+	pub deaths: u32,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[serde(default)]
+pub struct DoubleUp {
+	#[serde(rename = "wins_MURDER_DOUBLE_UP")]
+	pub wins: u32,
+	#[serde(rename = "games_MURDER_DOUBLE_UP")]
+	pub games: u32,
+	#[serde(rename = "kills_MURDER_DOUBLE_UP")]
+	pub kills: u32,
+	#[serde(rename = "deaths_MURDER_DOUBLE_UP")]
+	pub deaths: u32,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[serde(default)]
+pub struct Infection {
+	#[serde(rename = "wins_MURDER_INFECTION")]
+	pub wins: u32,
+	#[serde(rename = "games_MURDER_INFECTION")]
+	pub games: u32,
+	#[serde(rename = "kills_MURDER_INFECTION")]
+	pub kills: u32,
+	#[serde(rename = "deaths_MURDER_INFECTION")]
 	pub deaths: u32,
 }

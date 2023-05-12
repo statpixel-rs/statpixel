@@ -7,7 +7,9 @@ use minecraft::{paint::MinecraftPaint, text::parse::parse_minecraft_string};
 use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
 
-use self::label::{map_game_field_to_extras_value, map_info_field_to_extras_value};
+use self::label::{
+	map_game_field_to_extras_value, map_info_field_to_extras_value, parse_str_to_dot_path,
+};
 use crate::game::tokens::get_tr_with_fallback;
 
 macro_rules! ident {
@@ -24,7 +26,7 @@ pub(crate) struct GameInputReceiver {
 	pub data: ast::Data<(), GameFieldReceiver>,
 
 	/// The path to the game data in the PlayerStats struct.
-	pub path: syn::Ident,
+	pub path: String,
 
 	/// A pretty name for the game, coloured with Minecraft escape codes.
 	pub pretty: String,
@@ -43,6 +45,9 @@ pub(crate) struct GameInputReceiver {
 	/// The additional fields to include in the info header.
 	#[darling(multiple)]
 	pub label: Vec<InfoFieldData>,
+
+	/// The path (from `stats`) to the XP field
+	pub xp: Option<String>,
 }
 
 impl ToTokens for GameInputReceiver {
@@ -56,7 +61,10 @@ impl ToTokens for GameInputReceiver {
 			ref calc,
 			field: ref overall_fields,
 			label: ref info,
+			xp: ref xp_path,
 		} = *self;
+
+		let path = parse_str_to_dot_path(path);
 
 		let label_size = parse_minecraft_string(pretty).count();
 		let row_count = (overall_fields.len() + 2) as u8 / 3;
@@ -90,7 +98,9 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			if field.xp.is_some() {
-				xp_field = Some(field);
+				let xp_name = field.ident.as_ref().unwrap();
+
+				xp_field = Some(quote!(stats. #xp_name));
 			}
 
 			if field.level.is_some() {
@@ -98,22 +108,25 @@ impl ToTokens for GameInputReceiver {
 			}
 		}
 
+		if xp_field.is_none() && let Some(path) = xp_path.as_ref() {
+			let path = parse_str_to_dot_path(path);
+
+			xp_field = Some(quote!(player.stats.#path));
+		}
+
 		modes.sort_by_cached_key(|field| field.ident.as_ref().unwrap().to_string());
 
 		let (level_fmt_field, xp_field) = match (level_fmt_field, xp_field) {
 			(Some(level), Some(xp)) => {
 				let level_name = level.ident.as_ref().unwrap();
-				let xp_name = xp.ident.as_ref().unwrap();
 
-				(quote!(stats. #level_name), quote!(stats. #xp_name))
+				(quote!(stats. #level_name), xp)
 			}
 			(Some(_), None) => panic!("xp field required when level field is present"),
 			(_, xp_field) => (
 				quote!(#calc ::get_level_format(level)),
 				if let Some(xp_field) = xp_field {
-					let xp_name = xp_field.ident.as_ref().unwrap();
-
-					quote!(stats. #xp_name)
+					xp_field
 				} else {
 					quote!(player.xp)
 				},
@@ -134,11 +147,17 @@ impl ToTokens for GameInputReceiver {
 				quote! { false }
 			};
 
-			let sum = sum::sum_fields(
-				modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
-				Some(&ident!("stats")),
-				name,
-			);
+			let sum = if let Some(path) = info.path.as_ref() {
+				let path = parse_str_to_dot_path(path);
+
+				quote! { player.stats.#path.#name }
+			} else {
+				sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					name,
+				)
+			};
 
 			let value = if let Some(div) = info.div.as_ref() {
 				let sum_bottom = sum::sum_fields(
@@ -235,7 +254,13 @@ impl ToTokens for GameInputReceiver {
 				_ => quote! { Some(false) },
 			};
 
-			let sum = if let Some(div) = field.div.as_ref() {
+			let sum = if let Some(path) = field.path.as_ref() {
+				let path = parse_str_to_dot_path(path);
+
+				return quote! {
+					player.stats.#path.#ident_parent
+				};
+			} else if let Some(div) = field.div.as_ref() {
 				if field.percent == Some(true) {
 					sum::sum_div_u32_fields(
 						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
@@ -549,7 +574,7 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession, mode: Option<#enum_ident>) -> ::skia_safe::Surface {
 					let stats = &player.stats.#path;
-					let xp = #xp_field;
+					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
 
 					let mode = #enum_ident ::get_mode(mode, session);
@@ -647,6 +672,8 @@ pub(crate) struct OverallFieldData {
 	colour: MinecraftPaint,
 
 	percent: Option<bool>,
+
+	path: Option<String>,
 }
 
 #[derive(Debug, FromMeta)]
@@ -661,4 +688,6 @@ pub(crate) struct InfoFieldData {
 	colour: MinecraftPaint,
 
 	percent: Option<bool>,
+
+	path: Option<String>,
 }

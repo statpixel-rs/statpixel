@@ -108,6 +108,33 @@ mystery-gifts = Mystery Gifts
 votes = Votes
 most-points = Most Points
 
+# /paintball
+
+adrenaline = Adrenaline
+endurance = Endurance
+fortune = Fortune
+godfather = Godfather
+superluck = Superluck
+transfusion = Transfusion
+kill-prefix = Kill Prefix
+show-kill-prefix = Show Kill Prefix
+
+shots-fired = Shots Fired
+killstreaks = Killstreaks
+forcefield-time = Forcefield Time
+chat-messages = Chat Messages
+soups-drank = Soups Drank
+cash-earned = Cash Earned
+blocks-broken = Blocks Broken
+highest-killstreak = Best Streak
+cash = Cash
+bow-damage-dealt = Bow Damage Dealt
+bow-damage-taken = Bow Damage Taken
+bdr = BDR
+contracts-completed = Contracts Completed
+contracts-started = Contracts Started
+cr = Completion Rate
+
 # Shared canvas labels
 
 coins = Coins
@@ -131,3 +158,25 @@ damage-taken = Damage Taken
 ddtr = DDTR
 games = Games
 score = Score
+
+yes = Yes
+no = No
+
+# Colours
+
+black = Black
+dark-blue = Dark Blue
+dark-green = Dark Green
+dark-aqua = Dark Aqua
+dark-red = Dark Red
+dark-purple = Dark Purple
+gold = Gold
+gray = Gray
+dark-gray = Dark Gray
+blue = Blue
+green = Green
+aqua = Aqua
+red = Red
+light-purple = Light Purple
+yellow = Yellow
+white = White

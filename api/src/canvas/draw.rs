@@ -9,7 +9,7 @@ use minecraft::{
 	text::{draw, parse::parse_minecraft_string, Text},
 };
 use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Paint, RRect, Rect, Surface};
-use translate::{prelude::GetNumFormatLocale, tr, Context};
+use translate::{tr, Context};
 
 pub fn apply_data(
 	ctx: Context<'_>,
@@ -20,7 +20,6 @@ pub fn apply_data(
 	needed: impl ToFormattedLabel,
 	colors: &[Color; 2],
 ) {
-	let locale = ctx.get_num_format_locale();
 	let label = format!("{}: ", tr!(ctx, "level"));
 	let mut text = vec![Text {
 		text: &label,
@@ -32,8 +31,8 @@ pub fn apply_data(
 	text.reserve_exact(8);
 
 	let label = format!("\n{}: ", tr!(ctx, "progress"));
-	let current = current.to_formatted_label(&locale, false);
-	let needed = needed.to_formatted_label(&locale, false);
+	let current = current.to_formatted_label(ctx, false);
+	let needed = needed.to_formatted_label(ctx, false);
 
 	text.push(Text {
 		text: &label,
@@ -144,7 +143,7 @@ pub fn apply_item(
 			..Default::default()
 		},
 		Text {
-			text: &value.to_formatted_label(&ctx.get_num_format_locale(), percent.unwrap_or(false)),
+			text: &value.to_formatted_label(ctx, percent.unwrap_or(false)),
 			paint,
 			font: MinecraftFont::Normal,
 			size: None,
@@ -166,9 +165,7 @@ pub fn apply_extras(
 
 	for line in lines {
 		let rect = Rect::from_xywh(x, y, ITEM_WIDTH, 21.2).with_offset((17., 13.));
-		let text = line
-			.1
-			.to_formatted_label(&ctx.get_num_format_locale(), line.3);
+		let text = line.1.to_formatted_label(ctx, line.3);
 
 		draw(
 			surface,
