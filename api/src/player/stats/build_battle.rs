@@ -20,7 +20,7 @@ pub struct BuildBattle {
 	pub most_points_solo: u32,
 	#[serde(rename = "teams_most_points")]
 	#[game(label(colour = "dark_purple"))]
-	pub most_points_teams: u32,
+	pub most_points_team: u32,
 	#[serde(rename = "total_votes")]
 	#[game(label(colour = "aqua"))]
 	pub votes: u32,

@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 #[serde(default)]
 #[game(
 	path = "arena",
-	pretty = "§c§lArena",
+	pretty = "§6§lArena Brawl",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),

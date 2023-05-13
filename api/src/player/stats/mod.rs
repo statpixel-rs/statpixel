@@ -14,6 +14,12 @@ pub mod sky_wars;
 pub mod smash_heroes;
 pub mod speed_uhc;
 pub mod tnt_games;
+pub mod turbo_kart_racers;
+pub mod uhc;
+pub mod vampire_z;
+pub mod walls;
+pub mod warlords;
+pub mod wool_wars;
 
 use serde::{Deserialize, Deserializer, Serialize};
 
@@ -21,36 +27,30 @@ use serde::{Deserialize, Deserializer, Serialize};
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
 	pub quake: quake::Quake,
-	// pub walls: WallsStats,
+	pub walls: walls::Walls,
 	pub paintball: paintball::Paintball,
 	#[serde(rename = "HungerGames")]
 	pub blitz_sg: blitz_sg::BlitzSg,
 	#[serde(rename = "TNTGames")]
 	pub tnt_games: tnt_games::TntGames,
-	// #[serde(rename = "VampireZ")]
-	// pub vampire_z: VampireZStats,
+	pub vampire_z: vampire_z::VampireZ,
 	#[serde(rename = "Walls3")]
 	pub mega_walls: mega_walls::MegaWalls,
 	pub arcade: arcade::Arcade,
 	pub arena: arena::Arena,
-	// #[serde(rename = "UHC")]
-	// pub uhc: UhcStats,
+	#[serde(rename = "UHC")]
+	pub uhc: uhc::Uhc,
 	#[serde(rename = "MCGO")]
 	pub cops_and_crims: cops_and_crims::CopsAndCrims,
-	// #[serde(rename = "Battleground")]
-	// pub warlords: WarlordsStats,
+	#[serde(rename = "Battleground")]
+	pub warlords: warlords::Warlords,
 	#[serde(rename = "SuperSmash")]
 	pub smash_heroes: smash_heroes::SmashHeroes,
-	// #[serde(rename = "GingerBread")]
-	// pub turbo_kart_racers: TurboKartRacersStats,
-	// pub housing: HousingStats,
+	#[serde(rename = "GingerBread")]
+	pub turbo_kart_racers: turbo_kart_racers::TurboKartRacers,
 	pub sky_wars: sky_wars::SkyWars,
-	// #[serde(rename = "TrueCombat")]
-	// pub crazy_walls: CrazyWallsStats,
 	#[serde(rename = "SpeedUHC")]
 	pub speed_uhc: speed_uhc::SpeedUhc,
-	// #[serde(rename = "Legacy")]
-	// pub classic: ClassicStats,
 	#[serde(rename = "Bedwars")]
 	pub bed_wars: bed_wars::BedWars,
 	pub murder_mystery: murder_mystery::MurderMystery,
@@ -59,8 +59,8 @@ pub struct Stats {
 	pub duels: duels::Duels,
 	// pub sky_block: SkyBlockStats,
 	pub pit: pit::Outer,
-	// #[serde(rename = "WoolGames")]
-	// pub wool_wars: WoolWarsStats,
+	#[serde(rename = "WoolGames")]
+	pub wool_wars: wool_wars::Outer,
 }
 
 #[allow(clippy::cast_possible_truncation)]

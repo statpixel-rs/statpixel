@@ -3,43 +3,78 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
-	path = "quake",
-	pretty = "§b§lQuake",
-	field(ident = "wins", colour = "green"),
-	field(ident = "losses", colour = "red"),
-	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
-	field(ident = "kills", colour = "green"),
-	field(ident = "deaths", colour = "red"),
-	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+	path = "warlords",
+	pretty = "§b§lWarlords",
+	field(ident = "wins_blue", colour = "blue"),
+	field(ident = "wins_red", colour = "red"),
+	field(ident = "kills", colour = "gold")
 )]
 #[serde(default)]
-pub struct Quake {
+pub struct Warlords {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	#[game(label(colour = "gold"))]
 	pub coins: u32,
-	#[game(label(colour = "yellow"))]
-	pub sight: Option<Colour>,
-	#[serde(rename = "selectedKillPrefix")]
+	#[serde(rename = "damage", deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[game(label(colour = "green"))]
+	pub damage_dealt: u32,
+	#[serde(
+		rename = "damage_taken",
+		deserialize_with = "super::from_trunc_f32_to_u32"
+	)]
 	#[game(label(colour = "blue"))]
-	pub kill_prefix: Option<Colour>,
+	pub damage_taken: u32,
+	#[serde(rename = "heal", deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[game(label(colour = "red"))]
+	pub health_regenerated: u32,
+	#[game(label(colour = "aqua"))]
+	pub hide_prestige: bool,
+	#[game(label(tr = "kdr", div = "deaths", colour = "gold"))]
+	pub kills: u32,
+	pub deaths: u32,
+	#[serde(rename = "mvp_count")]
+	#[game(label(colour = "yellow"))]
+	pub mvps: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]
-	pub solo: Solo,
+	pub capture_the_flag: CaptureTheFlag,
 	#[serde(flatten)]
 	#[game(mode())]
-	pub solo: Team,
+	pub donination: Domination,
+	#[serde(flatten)]
+	#[game(mode())]
+	pub team_deathmatch: TeamDeathmatch,
 }
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
-pub struct Solo {
-	#[serde(rename = "uhc_duel_wins")]
-	pub wins: u32,
-	#[serde(rename = "wins_party")]
-	pub losses: u32,
-	#[serde(rename = "kills_party")]
+pub struct CaptureTheFlag {
+	#[serde(rename = "wins_capturetheflag_blu")]
+	pub wins_blue: u32,
+	#[serde(rename = "wins_capturetheflag_red")]
+	pub wins_red: u32,
+	#[serde(rename = "kills_capturetheflag")]
 	pub kills: u32,
-	#[serde(rename = "deaths_party")]
-	pub deaths: u32,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[serde(default)]
+pub struct Domination {
+	#[serde(rename = "wins_domination_blu")]
+	pub wins_blue: u32,
+	#[serde(rename = "wins_domination_red")]
+	pub wins_red: u32,
+	#[serde(rename = "kills_domination")]
+	pub kills: u32,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[serde(default)]
+pub struct TeamDeathmatch {
+	#[serde(rename = "wins_teamdeathmatch_blu")]
+	pub wins_blue: u32,
+	#[serde(rename = "wins_teamdeathmatch_red")]
+	pub wins_red: u32,
+	#[serde(rename = "kills_teamdeathmatch")]
+	pub kills: u32,
 }

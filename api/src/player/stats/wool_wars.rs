@@ -1,45 +1,72 @@
 use macros::{Game, Mode};
 use serde::{Deserialize, Serialize};
 
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[serde(default)]
+pub struct Progression {
+	#[serde(rename = "available_layers")]
+	pub layers: u32,
+	#[serde(
+		rename = "experience",
+		deserialize_with = "super::from_trunc_f32_to_u64"
+	)]
+	pub xp: u64,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[serde(default)]
+pub struct Outer {
+	#[serde(rename = "wool_wars")]
+	pub inner: Inner,
+	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	pub coins: u32,
+	pub progression: Progression,
+}
+
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[serde(default)]
+pub struct Inner {
+	pub stats: WoolWars,
+}
+
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
-	path = "quake",
-	pretty = "§b§lQuake",
+	path = "wool_wars.inner.stats",
+	pretty = "§b§lWool Wars",
+	calc = "minecraft::calc::wool_wars",
 	field(ident = "wins", colour = "green"),
-	field(ident = "losses", colour = "red"),
-	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
+	field(ident = "games", colour = "red"),
+	field(tr = "wr", ident = "wins", div = "games", colour = "gold", percent),
 	field(ident = "kills", colour = "green"),
 	field(ident = "deaths", colour = "red"),
-	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
+	field(ident = "assists", colour = "green"),
+	field(ident = "powerups_collected", colour = "red"),
+	field(ident = "wool_placed", colour = "gold"),
+	label(ident = "coins", path = "wool_wars", colour = "gold"),
+	label(ident = "layers", path = "wool_wars.progression", colour = "blue"),
+	xp = "wool_wars.progression.xp"
 )]
 #[serde(default)]
-pub struct Quake {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
-	#[game(label(colour = "gold"))]
-	pub coins: u32,
-	#[game(label(colour = "yellow"))]
-	pub sight: Option<Colour>,
-	#[serde(rename = "selectedKillPrefix")]
-	#[game(label(colour = "blue"))]
-	pub kill_prefix: Option<Colour>,
+pub struct WoolWars {
+	#[game(label(colour = "aqua"))]
+	pub blocks_broken: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]
-	pub solo: Solo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub solo: Team,
+	pub normal: Normal,
 }
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
-pub struct Solo {
-	#[serde(rename = "uhc_duel_wins")]
+pub struct Normal {
 	pub wins: u32,
-	#[serde(rename = "wins_party")]
-	pub losses: u32,
-	#[serde(rename = "kills_party")]
+	#[serde(rename = "games_played")]
+	pub games: u32,
 	pub kills: u32,
-	#[serde(rename = "deaths_party")]
 	pub deaths: u32,
+	pub assists: u32,
+	#[serde(rename = "powerups_gotten")]
+	pub powerups_collected: u32,
+	pub wool_placed: u32,
 }

@@ -7,7 +7,7 @@ use crate::meters::Meters;
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "quake",
-	pretty = "§b§lQuake",
+	pretty = "§5§lQuakecraft",
 	field(ident = "wins", colour = "green"),
 	field(ident = "killstreaks", colour = "red"),
 	field(ident = "distance_walked", colour = "gold"),

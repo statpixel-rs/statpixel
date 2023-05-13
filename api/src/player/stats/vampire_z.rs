@@ -1,45 +1,69 @@
 use macros::{Game, Mode};
 use serde::{Deserialize, Serialize};
 
+use crate::inverse_bool;
+
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
-	path = "quake",
-	pretty = "§b§lQuake",
-	field(ident = "wins", colour = "green"),
-	field(ident = "losses", colour = "red"),
-	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
-	field(ident = "kills", colour = "green"),
-	field(ident = "deaths", colour = "red"),
-	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+	path = "vampire_z",
+	pretty = "§c§lVampireZ",
+	field(ident = "human_wins", colour = "green"),
+	field(ident = "vampire_wins", colour = "red"),
+	field(ident = "zombie_kills", colour = "gold"),
+	field(ident = "human_kills", colour = "green"),
+	field(ident = "human_deaths", colour = "red"),
+	field(
+		tr = "kdr",
+		ident = "human_kills",
+		div = "human_deaths",
+		colour = "gold"
+	),
+	field(ident = "vampire_kills", colour = "green"),
+	field(ident = "vampire_deaths", colour = "red"),
+	field(
+		tr = "kdr",
+		ident = "vampire_kills",
+		div = "vampire_deaths",
+		colour = "gold"
+	)
 )]
 #[serde(default)]
-pub struct Quake {
+#[allow(clippy::struct_excessive_bools)]
+pub struct VampireZ {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	#[game(label(colour = "gold"))]
 	pub coins: u32,
+	#[game(label(colour = "red"))]
+	pub blood: bool,
+	#[serde(rename = "no_starting_compass")]
 	#[game(label(colour = "yellow"))]
-	pub sight: Option<Colour>,
-	#[serde(rename = "selectedKillPrefix")]
+	pub starting_compass: inverse_bool::InverseBool,
+	#[serde(rename = "no_starting_gear")]
 	#[game(label(colour = "blue"))]
-	pub kill_prefix: Option<Colour>,
+	pub starting_gear: inverse_bool::InverseBool,
+	#[serde(rename = "combatTracker")]
+	#[game(label(colour = "green"))]
+	pub tracker: bool,
+	#[serde(rename = "updated_stats")]
+	#[game(label(colour = "red"))]
+	pub updated: bool,
+	#[serde(rename = "using_old_vamp")]
+	#[game(label(colour = "aqua"))]
+	pub old_vampire: bool,
 
 	#[serde(flatten)]
 	#[game(mode())]
-	pub solo: Solo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub solo: Team,
+	pub normal: Normal,
 }
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
-pub struct Solo {
-	#[serde(rename = "uhc_duel_wins")]
-	pub wins: u32,
-	#[serde(rename = "wins_party")]
-	pub losses: u32,
-	#[serde(rename = "kills_party")]
-	pub kills: u32,
-	#[serde(rename = "deaths_party")]
-	pub deaths: u32,
+pub struct Normal {
+	pub human_wins: u32,
+	pub vampire_wins: u32,
+	pub zombie_kills: u32,
+	pub human_kills: u32,
+	pub human_deaths: u32,
+	pub vampire_kills: u32,
+	pub vampire_deaths: u32,
 }

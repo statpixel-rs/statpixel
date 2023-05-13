@@ -1,5 +1,4 @@
 use macros::{Game, Mode};
-use minecraft::colour::Colour;
 use serde::{Deserialize, Serialize};
 
 use crate::seconds::Seconds;
@@ -15,11 +14,6 @@ pub struct TntGames {
 	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
 	#[game(label(colour = "gold"))]
 	pub coins: u32,
-	#[game(label(colour = "yellow"))]
-	pub sight: Option<Colour>,
-	#[serde(rename = "selectedKillPrefix")]
-	#[game(label(colour = "blue"))]
-	pub kill_prefix: Option<Colour>,
 
 	#[serde(flatten)]
 	#[game(mode())]

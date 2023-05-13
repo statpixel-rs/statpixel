@@ -1,8 +1,8 @@
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
-	autocomplete (id) {
-		id -> Uuid,
+	autocomplete (uuid) {
+		uuid -> Uuid,
 		name -> Varchar,
 	}
 }

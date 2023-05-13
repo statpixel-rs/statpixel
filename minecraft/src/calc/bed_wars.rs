@@ -5,8 +5,8 @@ use skia_safe::Color;
 use crate::{colour::Colour, text::parse::ESCAPE};
 
 const TOTAL_LEVEL_XP: [u64; 4] = [500, 1_500, 3_500, 7_000];
-const XP_PER_PRESTIGE: u64 = 96 * 5000 + 7000;
 const XP_PER_LEVEL: u64 = 5_000;
+const XP_PER_PRESTIGE: u64 = 96 * XP_PER_LEVEL + 7_000;
 
 type Format = ((char, char), [char; 5], Option<char>);
 

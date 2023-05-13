@@ -7,7 +7,7 @@ use crate::seconds;
 #[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "paintball",
-	pretty = "§b§lPaintball",
+	pretty = "§9§lPaintball",
 	field(ident = "wins", colour = "green"),
 	field(ident = "kill_prefix", colour = "red"),
 	field(ident = "show_kill_prefix", colour = "gold"),

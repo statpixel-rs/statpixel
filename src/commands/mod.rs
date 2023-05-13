@@ -1,10 +1,10 @@
-use database::schema;
-use diesel::{ExpressionMethods, PgTextExpressionMethods, QueryDsl, RunQueryDsl};
+use database::{extend::lower, schema};
+use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl, TextExpressionMethods};
 use translate::Context;
 
 pub mod arcade;
 pub mod arena;
-pub mod bedwars;
+pub mod bed_wars;
 pub mod blitz;
 pub mod build_battle;
 pub mod cache;
@@ -18,17 +18,25 @@ pub mod paintball;
 pub mod pit;
 pub mod quake;
 pub mod ser;
-pub mod skywars;
+pub mod sky_wars;
 pub mod smash_heroes;
 pub mod speed_uhc;
 pub mod tnt_games;
+pub mod turbo_kart_racers;
+pub mod uhc;
 pub mod unlink;
+pub mod vampire_z;
+pub mod walls;
+pub mod warlords;
+pub mod wool_wars;
 
 #[allow(clippy::unused_async)]
 pub async fn autocomplete_username(
 	ctx: Context<'_>,
 	partial: &str,
 ) -> Box<dyn Iterator<Item = String> + Send> {
+	tracing::info!("Autocompleting username `{partial}`");
+
 	if let Ok(mut connection) = ctx.data().pool.get() {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::autocomplete::table
@@ -41,14 +49,27 @@ pub async fn autocomplete_username(
 				return Box::new(result.into_iter());
 			}
 		} else {
+			let start = std::time::Instant::now();
 			let result = schema::autocomplete::table
-				.filter(schema::autocomplete::name.ilike(format!("{partial}%")))
-				.filter(schema::autocomplete::name.is_not_null())
+				.filter(
+					lower(schema::autocomplete::name)
+						.like(format!("{}%", partial.to_ascii_lowercase())),
+				)
+				// No null fields will be matched by the LIKE filter, and
+				// there will be no null fields once it has all been populated.
+				// .filter(schema::autocomplete::name.is_not_null())
 				.limit(9)
 				.select(schema::autocomplete::name)
 				.get_results::<String>(&mut connection);
 
 			if let Ok(result) = result {
+				tracing::info!(
+					partial = partial,
+					"Found {} autocompletions in {}s",
+					result.len(),
+					start.elapsed().as_secs_f32()
+				);
+
 				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
 			}
 		}

@@ -1,5 +1,6 @@
 #![warn(clippy::pedantic)]
 
+pub mod extend;
 pub mod models;
 pub mod schema;
 
