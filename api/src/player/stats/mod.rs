@@ -9,20 +9,24 @@ pub mod mega_walls;
 pub mod murder_mystery;
 pub mod paintball;
 pub mod pit;
+pub mod quake;
 pub mod sky_wars;
+pub mod smash_heroes;
+pub mod speed_uhc;
+pub mod tnt_games;
 
 use serde::{Deserialize, Deserializer, Serialize};
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
-	// pub quake: QuakeStats,
+	pub quake: quake::Quake,
 	// pub walls: WallsStats,
 	pub paintball: paintball::Paintball,
 	#[serde(rename = "HungerGames")]
 	pub blitz_sg: blitz_sg::BlitzSg,
-	// #[serde(rename = "TNTGames")]
-	// pub tnt_games: TntGamesStats,
+	#[serde(rename = "TNTGames")]
+	pub tnt_games: tnt_games::TntGames,
 	// #[serde(rename = "VampireZ")]
 	// pub vampire_z: VampireZStats,
 	#[serde(rename = "Walls3")]
@@ -35,20 +39,18 @@ pub struct Stats {
 	pub cops_and_crims: cops_and_crims::CopsAndCrims,
 	// #[serde(rename = "Battleground")]
 	// pub warlords: WarlordsStats,
-	// #[serde(rename = "SuperSmash")]
-	// pub smash_heroes: SmashHeroesStats,
+	#[serde(rename = "SuperSmash")]
+	pub smash_heroes: smash_heroes::SmashHeroes,
 	// #[serde(rename = "GingerBread")]
 	// pub turbo_kart_racers: TurboKartRacersStats,
 	// pub housing: HousingStats,
 	pub sky_wars: sky_wars::SkyWars,
 	// #[serde(rename = "TrueCombat")]
 	// pub crazy_walls: CrazyWallsStats,
-	// #[serde(rename = "SpeedUHC")]
-	// pub speed_uhc: SpeedUhcStats,
-	// pub sky_clash: SkyClashStats,
+	#[serde(rename = "SpeedUHC")]
+	pub speed_uhc: speed_uhc::SpeedUhc,
 	// #[serde(rename = "Legacy")]
 	// pub classic: ClassicStats,
-	// pub prototype: PrototypeStats,
 	#[serde(rename = "Bedwars")]
 	pub bed_wars: bed_wars::BedWars,
 	pub murder_mystery: murder_mystery::MurderMystery,
@@ -57,9 +59,6 @@ pub struct Stats {
 	pub duels: duels::Duels,
 	// pub sky_block: SkyBlockStats,
 	pub pit: pit::Outer,
-	// pub replay: ReplayStats,
-	// #[serde(rename = "SMP")]
-	// pub smp: SmpStats,
 	// #[serde(rename = "WoolGames")]
 	// pub wool_wars: WoolWarsStats,
 }

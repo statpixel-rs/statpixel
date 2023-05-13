@@ -44,6 +44,10 @@ async fn main() {
 		commands::paintball::paintball(),
 		commands::pit::pit(),
 		commands::ser::ser(),
+		commands::tnt_games::tntgames(),
+		commands::quake::quake(),
+		commands::smash_heroes::smash(),
+		commands::speed_uhc::speeduhc(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

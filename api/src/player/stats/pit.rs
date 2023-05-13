@@ -1,10 +1,10 @@
-use macros::Game;
+use macros::{Game, Mode};
 use minecraft::calc::pit::Level;
 use serde::{Deserialize, Serialize};
 
 use crate::minutes;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Outer {
 	#[serde(rename = "pit_stats_ptl")]
@@ -12,7 +12,7 @@ pub struct Outer {
 	pub profile: Profile,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Profile {
 	pub cash: f32,
@@ -78,7 +78,7 @@ pub struct Pit {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Normal {
 	pub kills: u32,

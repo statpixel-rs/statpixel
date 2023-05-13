@@ -16,8 +16,12 @@ pub mod mega_walls;
 pub mod murder_mystery;
 pub mod paintball;
 pub mod pit;
+pub mod quake;
 pub mod ser;
 pub mod skywars;
+pub mod smash_heroes;
+pub mod speed_uhc;
+pub mod tnt_games;
 pub mod unlink;
 
 #[allow(clippy::unused_async)]

@@ -1,4 +1,4 @@
-use macros::Game;
+use macros::{Game, Mode};
 use minecraft::colour::Colour;
 use serde::{Deserialize, Serialize};
 
@@ -41,7 +41,7 @@ pub struct Paintball {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

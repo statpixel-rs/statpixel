@@ -1,4 +1,4 @@
-use macros::Game;
+use macros::{Game, Mode};
 use serde::{Deserialize, Serialize};
 
 use crate::{meters, minutes};
@@ -45,7 +45,7 @@ pub struct MegaWalls {
 	pub brawl: Brawl,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Normal {
 	#[serde(rename = "wins_standard")]
@@ -74,7 +74,7 @@ pub struct Normal {
 	pub treasures_found: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct FaceOff {
 	#[serde(rename = "wins_face_off")]
@@ -103,7 +103,7 @@ pub struct FaceOff {
 	pub treasures_found: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct Brawl {
 	#[serde(rename = "wins_gvg")]

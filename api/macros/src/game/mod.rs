@@ -1,6 +1,4 @@
 mod label;
-mod sum;
-mod tokens;
 
 use darling::{ast, FromDeriveInput, FromField, FromMeta};
 use minecraft::{paint::Paint, text::parse::minecraft_string};
@@ -10,7 +8,7 @@ use quote::{quote, ToTokens};
 use self::label::{
 	map_game_field_to_extras_value, map_info_field_to_extras_value, parse_str_to_dot_path,
 };
-use crate::game::tokens::get_tr_with_fallback;
+use crate::{sum, tokens::get_tr_with_fallback};
 
 macro_rules! ident {
 	($id: literal) => {
@@ -67,7 +65,8 @@ impl ToTokens for GameInputReceiver {
 		let path = parse_str_to_dot_path(path);
 
 		let label_size = minecraft_string(pretty).count();
-		let row_count = (overall_fields.len() + 2) as u8 / 3;
+		let field_count = overall_fields.len() as u8;
+		let row_count = (field_count + 2) / 3;
 
 		let calc = if let Some(ref calc) = calc {
 			quote! { #calc }
@@ -297,6 +296,7 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
+		let start_mode_apply_idx = overall_fields.len();
 		let apply_items_mode = overall_fields.iter().enumerate().map(|(idx, field)| {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
@@ -396,8 +396,12 @@ impl ToTokens for GameInputReceiver {
 
 			quote! {
 				impl #ty {
+					pub fn get_field_count() -> u8 {
+						#field_count
+					}
+
 					pub fn get_row_count() -> u8 {
-						#row_count
+						(Self::get_field_count() + Self::get_own_field_count() + 2) / 3
 					}
 
 					pub fn get_tr() -> &'static str {
@@ -424,6 +428,8 @@ impl ToTokens for GameInputReceiver {
 						);
 
 						#(#apply_items_mode)*
+
+						self.apply_own_fields(ctx, surface, player, session, stats, #start_mode_apply_idx);
 
 						crate::canvas::draw::apply_extras(
 							ctx,
@@ -509,6 +515,8 @@ impl ToTokens for GameInputReceiver {
 				}
 			}
 
+			type Stats = #ident;
+
 			// Implement the default impl for the game mode enum.
 			// This should be able to get the recommended mode from the session.
 			impl #enum_ident {
@@ -569,7 +577,7 @@ impl ToTokens for GameInputReceiver {
 							} else {
 								::std::option::Option::None
 							})
-						}), 25)
+						}), 10)
 				}
 
 				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::Data, session: &crate::player::status::Session, mode: Option<#enum_ident>) -> ::skia_safe::Surface {

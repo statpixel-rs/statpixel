@@ -126,3 +126,15 @@ impl ToFormatted for Colour {
 		}
 	}
 }
+
+impl<T> ToFormatted for Option<T>
+where
+	T: ToFormatted,
+{
+	fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
+		match self {
+			Some(value) => value.to_formatted_label(ctx, percent),
+			None => tr!(ctx, "none"),
+		}
+	}
+}

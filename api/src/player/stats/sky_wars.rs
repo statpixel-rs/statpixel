@@ -1,4 +1,4 @@
-use macros::Game;
+use macros::{Game, Mode};
 use serde::{Deserialize, Serialize};
 
 fn default_level_fmt() -> String {
@@ -65,7 +65,7 @@ pub struct SkyWars {
 	pub team_insane: TeamInsane,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
@@ -78,7 +78,7 @@ pub struct SoloNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
@@ -91,7 +91,7 @@ pub struct SoloInsane {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
@@ -104,7 +104,7 @@ pub struct TeamNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
 #[serde(default)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]

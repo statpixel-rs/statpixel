@@ -1,7 +1,7 @@
 use proc_macro2::TokenStream;
 use quote::quote;
 
-use crate::game::tokens::get_tr_with_fallback;
+use crate::tokens::get_tr_with_fallback;
 
 use super::{GameFieldReceiver, GameLabel, InfoFieldData};
 
