@@ -6,7 +6,7 @@ use skia_safe::{
 	FontArguments, FourByteTag,
 };
 
-use crate::paint::MinecraftPaint;
+use crate::paint::Paint;
 
 #[allow(dead_code)]
 pub static STYLE_NORMAL: Lazy<TextStyle> = Lazy::new(|| {
@@ -79,7 +79,7 @@ pub enum MinecraftFont {
 }
 
 impl MinecraftFont {
-	pub fn get_style(&self, paint: MinecraftPaint, size: f32) -> TextStyle {
+	pub fn get_style(&self, paint: Paint, size: f32) -> TextStyle {
 		let mut style = match self {
 			Self::Normal => STYLE_NORMAL.clone(),
 			Self::Bold => STYLE_BOLD.clone(),
@@ -104,7 +104,6 @@ impl MinecraftFont {
 impl From<char> for MinecraftFont {
 	fn from(c: char) -> Self {
 		match c {
-			'r' | 'R' => Self::Normal,
 			'l' | 'L' => Self::Bold,
 			'o' | 'O' => Self::Italic,
 			_ => Self::Normal,
@@ -112,6 +111,8 @@ impl From<char> for MinecraftFont {
 	}
 }
 
+/// # Errors
+/// Returns an error if the char is not a valid font modifier (r, l, o)
 pub const fn parse_font(mut parser: Parser<'_>) -> ParseValueResult<'_, MinecraftFont> {
 	let font = parser_method! {parser, strip_prefix;
 		"r" => MinecraftFont::Normal,

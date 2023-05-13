@@ -1,3 +1,7 @@
+use database::schema;
+use diesel::{ExpressionMethods, PgTextExpressionMethods, QueryDsl, RunQueryDsl};
+use translate::Context;
+
 pub mod arcade;
 pub mod arena;
 pub mod bedwars;
@@ -12,8 +16,42 @@ pub mod mega_walls;
 pub mod murder_mystery;
 pub mod paintball;
 pub mod pit;
+pub mod ser;
 pub mod skywars;
 pub mod unlink;
+
+#[allow(clippy::unused_async)]
+pub async fn autocomplete_username(
+	ctx: Context<'_>,
+	partial: &str,
+) -> Box<dyn Iterator<Item = String> + Send> {
+	if let Ok(mut connection) = ctx.data().pool.get() {
+		if partial.is_empty() || partial.contains('%') {
+			let result = schema::autocomplete::table
+				.filter(schema::autocomplete::name.is_not_null())
+				.limit(10)
+				.select(schema::autocomplete::name)
+				.get_results::<String>(&mut connection);
+
+			if let Ok(result) = result {
+				return Box::new(result.into_iter());
+			}
+		} else {
+			let result = schema::autocomplete::table
+				.filter(schema::autocomplete::name.ilike(format!("{partial}%")))
+				.filter(schema::autocomplete::name.is_not_null())
+				.limit(9)
+				.select(schema::autocomplete::name)
+				.get_results::<String>(&mut connection);
+
+			if let Ok(result) = result {
+				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
+			}
+		}
+	}
+
+	Box::new(std::iter::once(partial.to_string()))
+}
 
 #[macro_export]
 macro_rules! generate_large_command {
@@ -30,7 +68,9 @@ macro_rules! generate_large_command {
 		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn<'a>(
 			ctx: $crate::Context<'a>,
-			#[max_length = 16] username: Option<::std::string::String>,
+			#[max_length = 16]
+			#[autocomplete = "crate::commands::autocomplete_username"]
+			username: Option<::std::string::String>,
 			#[min_length = 32]
 			#[max_length = 36]
 			uuid: Option<::std::string::String>,
@@ -64,7 +104,9 @@ macro_rules! generate_command {
 		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
-			#[max_length = 16] username: Option<::std::string::String>,
+			#[max_length = 16]
+			#[autocomplete = "crate::commands::autocomplete_username"]
+			username: Option<::std::string::String>,
 			#[min_length = 32]
 			#[max_length = 36]
 			uuid: Option<::std::string::String>,

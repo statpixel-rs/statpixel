@@ -1,3 +1,5 @@
+#![warn(clippy::pedantic)]
+#![allow(clippy::similar_names)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 

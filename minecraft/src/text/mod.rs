@@ -6,18 +6,19 @@ use skia_safe::{
 	FontMgr, Rect, Surface,
 };
 
-use crate::{paint::MinecraftPaint, style::MinecraftFont};
+use crate::{paint::Paint, style::MinecraftFont};
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Text<'t> {
 	pub text: &'t str,
 	pub font: MinecraftFont,
-	pub paint: MinecraftPaint,
+	pub paint: Paint,
 	pub size: Option<f32>,
 }
 
 impl<'t> Text<'t> {
-	pub fn get_style(&self, paint: MinecraftPaint, default_size: f32) -> TextStyle {
+	#[must_use]
+	pub fn get_style(&self, paint: Paint, default_size: f32) -> TextStyle {
 		let size = self.size.unwrap_or(default_size);
 		let mut style = self.font.get_style(paint, size);
 
@@ -39,7 +40,7 @@ impl Default for Text<'_> {
 		Self {
 			text: "",
 			font: MinecraftFont::Normal,
-			paint: MinecraftPaint::White,
+			paint: Paint::White,
 			size: None,
 		}
 	}

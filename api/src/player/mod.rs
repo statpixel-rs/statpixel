@@ -15,7 +15,7 @@ use crate::{
 	Error,
 };
 
-use self::status::PlayerStatus;
+use self::status::Status;
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
@@ -31,8 +31,8 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 });
 
 #[derive(Deserialize, Debug)]
-pub struct PlayerResponse {
-	pub player: data::PlayerData,
+pub struct Response {
+	pub player: data::Data,
 	pub success: bool,
 }
 
@@ -49,10 +49,13 @@ pub struct Player {
 }
 
 impl Player {
+	#[must_use]
 	pub fn new(uuid: Uuid, username: String) -> Self {
 		Self { uuid, username }
 	}
 
+	/// # Errors
+	/// Returns an error if the username does not exist or if their data is invalid.
 	pub async fn from_username(username: &str) -> Result<Player, Arc<Error>> {
 		PLAYER_CACHE
 			.try_get_with(
@@ -84,6 +87,8 @@ impl Player {
 		Ok(player)
 	}
 
+	/// # Errors
+	/// Returns an error if the uuid does not exist or if their data is invalid.
 	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Arc<Error>> {
 		PLAYER_CACHE
 			.try_get_with(uuid.to_string(), Self::from_uuid_raw(uuid))
@@ -113,13 +118,15 @@ impl Player {
 		Ok(player)
 	}
 
-	pub async fn get_data(&self) -> Result<data::PlayerData, Arc<Error>> {
+	/// # Errors
+	/// Returns an error if the player does not have a profile or if their data is invalid.
+	pub async fn get_data(&self) -> Result<data::Data, Arc<Error>> {
 		PLAYER_DATA_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_data_raw())
 			.await
 	}
 
-	async fn get_data_raw(&self) -> Result<data::PlayerData, Error> {
+	async fn get_data_raw(&self) -> Result<data::Data, Error> {
 		let url = {
 			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
@@ -135,18 +142,20 @@ impl Player {
 			return Err(Error::PlayerNotFound(self.username.clone()));
 		}
 
-		let response = response.json::<PlayerResponse>().await?;
+		let response = response.json::<Response>().await?;
 
 		Ok(response.player)
 	}
 
-	pub async fn get_session(&self) -> Result<status::PlayerSession, Arc<Error>> {
+	/// # Errors
+	/// Returns an error if the player does not have a profile or if their data is invalid.
+	pub async fn get_session(&self) -> Result<status::Session, Arc<Error>> {
 		PLAYER_SESSION_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_session_raw())
 			.await
 	}
 
-	async fn get_session_raw(&self) -> Result<status::PlayerSession, Error> {
+	async fn get_session_raw(&self) -> Result<status::Session, Error> {
 		let url = {
 			let mut url = HYPIXEL_STATUS_API_ENDPOINT.clone();
 
@@ -162,7 +171,7 @@ impl Player {
 			return Err(Error::SessionNotFound(self.username.clone()));
 		}
 
-		let response = response.json::<PlayerStatus>().await?;
+		let response = response.json::<Status>().await?;
 
 		Ok(response.session)
 	}

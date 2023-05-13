@@ -1,7 +1,7 @@
 use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use quote::quote;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, Serializer};
 
 macro_rules! colour {
 	($name: ident, $colour: expr) => {
@@ -31,7 +31,7 @@ colour!(WHITE, (255, 255, 255));
 // Utility colours
 colour!(BACKGROUND, (31, 48, 64));
 
-#[derive(Serialize, Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
+#[derive(Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
 #[serde(try_from = "&str")]
 #[darling(default)]
 pub enum Colour {
@@ -179,7 +179,32 @@ impl TryFrom<&str> for Colour {
 	}
 }
 
-pub const fn parse_colour(mut parser: Parser<'_>) -> ParseValueResult<'_, Colour> {
+impl Serialize for Colour {
+	fn serialize<S: Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+		serializer.serialize_str(match self {
+			Self::Black => "BLACK",
+			Self::DarkBlue => "DARK_BLUE",
+			Self::DarkGreen => "DARK_GREEN",
+			Self::DarkAqua => "DARK_AQUA",
+			Self::DarkRed => "DARK_RED",
+			Self::DarkPurple => "DARK_PURPLE",
+			Self::Gold => "GOLD",
+			Self::Gray => "GRAY",
+			Self::DarkGray => "DARK_GRAY",
+			Self::Blue => "BLUE",
+			Self::Green => "GREEN",
+			Self::Aqua => "AQUA",
+			Self::Red => "RED",
+			Self::LightPurple => "LIGHT_PURPLE",
+			Self::Yellow => "YELLOW",
+			Self::White => "WHITE",
+		})
+	}
+}
+
+/// # Errors
+/// Returns an error if the string is not a Minecraft colour code
+pub const fn parse(mut parser: Parser<'_>) -> ParseValueResult<'_, Colour> {
 	let paint = parser_method! {parser, strip_prefix;
 		"0" => Colour::Black,
 		"1" => Colour::DarkBlue,

@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "murder_mystery",
 	pretty = "§b§lMurder Mystery",
@@ -49,7 +49,7 @@ pub struct MurderMystery {
 	pub infection: Infection,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Assassins {
 	#[serde(rename = "wins_MURDER_ASSASSINS")]
@@ -62,7 +62,7 @@ pub struct Assassins {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Classic {
 	#[serde(rename = "wins_MURDER_CLASSIC")]
@@ -75,7 +75,7 @@ pub struct Classic {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct DoubleUp {
 	#[serde(rename = "wins_MURDER_DOUBLE_UP")]
@@ -88,7 +88,7 @@ pub struct DoubleUp {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Infection {
 	#[serde(rename = "wins_MURDER_INFECTION")]

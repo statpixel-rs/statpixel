@@ -2,7 +2,7 @@ pub mod meters;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
-		#[derive(Debug, Clone, Copy, Default)]
+		#[derive(Debug, Clone, Copy, Default, PartialEq)]
 		pub struct $name(u64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
@@ -39,7 +39,7 @@ macro_rules! impl_time_unit {
 			}
 		}
 
-		impl $crate::canvas::label::ToFormattedLabel for $name {
+		impl $crate::canvas::label::ToFormatted for $name {
 			fn to_formatted_label(
 				&self,
 				_ctx: ::translate::Context<'_>,

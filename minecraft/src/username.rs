@@ -14,6 +14,8 @@ const ALLOWED_CHARS: [char; 63] = [
 ];
 
 impl Username {
+	/// # Errors
+	/// Returns an error if the username is longer than 16 characters or contains invalid characters.
 	pub fn parse_str(username: &str) -> Result<Self, Error> {
 		if username.len() > 16 {
 			return Err(Error::InvalidUsername(username.to_string()));
@@ -30,6 +32,7 @@ impl Username {
 		}
 	}
 
+	#[must_use]
 	pub fn as_str(&self) -> &str {
 		&self.username
 	}

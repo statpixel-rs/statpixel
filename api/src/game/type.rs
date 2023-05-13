@@ -2,7 +2,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone, Copy, PartialEq)]
 #[serde(try_from = "&str")]
-pub enum GameType {
+pub enum Type {
 	Limbo = 0,
 	Lobby = 1,
 	Quake = 2,
@@ -37,7 +37,8 @@ pub enum GameType {
 	WoolWars = 68,
 }
 
-impl GameType {
+impl Type {
+	#[must_use]
 	pub fn as_database_name(&self) -> &str {
 		match self {
 			Self::Limbo => "Limbo",
@@ -75,6 +76,7 @@ impl GameType {
 		}
 	}
 
+	#[must_use]
 	pub fn as_clean_name(&self) -> &str {
 		match self {
 			Self::Limbo => "Limbo",
@@ -113,7 +115,7 @@ impl GameType {
 	}
 }
 
-impl TryFrom<&str> for GameType {
+impl TryFrom<&str> for Type {
 	type Error = &'static str;
 
 	fn try_from(name: &str) -> Result<Self, Self::Error> {

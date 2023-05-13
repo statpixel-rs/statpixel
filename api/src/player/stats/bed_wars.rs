@@ -1,7 +1,7 @@
 use macros::Game;
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[serde(default)]
 #[game(
 	path = "bed_wars",
@@ -61,7 +61,7 @@ pub struct BedWars {
 	pub four: Four,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "eight_one_wins_bedwars")]
@@ -92,7 +92,7 @@ pub struct Solo {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "eight_two_wins_bedwars")]
@@ -123,7 +123,7 @@ pub struct Double {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Three {
 	#[serde(rename = "four_three_wins_bedwars")]
@@ -154,7 +154,7 @@ pub struct Three {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Four {
 	#[serde(rename = "four_four_wins_bedwars")]

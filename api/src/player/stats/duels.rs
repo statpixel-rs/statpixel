@@ -1,7 +1,7 @@
 use macros::Game;
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "duels",
 	pretty = "§b§lDuels",
@@ -124,7 +124,7 @@ pub struct Duels {
 	pub bridge_three_duel: BridgeThreeDuel,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct UhcSolo {
 	#[serde(rename = "uhc_duel_wins")]
@@ -149,7 +149,7 @@ pub struct UhcSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct OpSolo {
 	#[serde(rename = "op_duel_wins")]
@@ -174,7 +174,7 @@ pub struct OpSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct UhcDouble {
 	#[serde(rename = "uhc_doubles_wins")]
@@ -199,32 +199,32 @@ pub struct UhcDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BowSolo {
-	#[serde(rename = "bowspleef_duel_wins")]
+	#[serde(rename = "bow_duel_wins")]
 	pub wins: u32,
-	#[serde(rename = "bowspleef_duel_losses")]
+	#[serde(rename = "bow_duel_losses")]
 	pub losses: u32,
-	#[serde(rename = "bowspleef_duel_kills")]
+	#[serde(rename = "bow_duel_kills")]
 	pub kills: u32,
-	#[serde(rename = "bowspleef_duel_deaths")]
+	#[serde(rename = "bow_duel_deaths")]
 	pub deaths: u32,
-	#[serde(rename = "bowspleef_duel_melee_hits")]
+	#[serde(rename = "bow_duel_melee_hits")]
 	pub melee_hits: u32,
-	#[serde(rename = "bowspleef_duel_melee_swings")]
+	#[serde(rename = "bow_duel_melee_swings")]
 	pub melee_swings: u32,
-	#[serde(rename = "bowspleef_duel_bow_hits")]
+	#[serde(rename = "bow_duel_bow_hits")]
 	pub arrows_hit: u32,
-	#[serde(rename = "bowspleef_duel_bow_shots")]
+	#[serde(rename = "bow_duel_bow_shots")]
 	pub arrows_shot: u32,
-	#[serde(rename = "bowspleef_duel_health_regenerated")]
+	#[serde(rename = "bow_duel_health_regenerated")]
 	pub health_regenerated: u32,
-	#[serde(rename = "bowspleef_duel_damage_dealt")]
+	#[serde(rename = "bow_duel_damage_dealt")]
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct ClassicSolo {
 	#[serde(rename = "classic_duel_wins")]
@@ -249,7 +249,7 @@ pub struct ClassicSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct OpDouble {
 	#[serde(rename = "op_doubles_wins")]
@@ -274,7 +274,7 @@ pub struct OpDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct UhcFour {
 	#[serde(rename = "uhc_four_wins")]
@@ -299,7 +299,7 @@ pub struct UhcFour {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SkyWarsDouble {
 	#[serde(rename = "sw_doubles_wins")]
@@ -324,7 +324,7 @@ pub struct SkyWarsDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SumoSolo {
 	#[serde(rename = "sumo_duel_wins")]
@@ -349,7 +349,7 @@ pub struct SumoSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SkyWarsSolo {
 	#[serde(rename = "sw_duel_wins")]
@@ -374,7 +374,7 @@ pub struct SkyWarsSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeDoubleDuel {
 	#[serde(rename = "bridge_doubles_wins")]
@@ -399,7 +399,7 @@ pub struct BridgeDoubleDuel {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeFourDuel {
 	#[serde(rename = "bridge_four_wins")]
@@ -424,7 +424,7 @@ pub struct BridgeFourDuel {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeSolo {
 	#[serde(rename = "bridge_duel_wins")]
@@ -449,7 +449,7 @@ pub struct BridgeSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeThree {
 	#[serde(rename = "bridge_3v3v3v3_wins")]
@@ -474,7 +474,7 @@ pub struct BridgeThree {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeDouble {
 	#[serde(rename = "bridge_2v2v2v2_wins")]
@@ -499,7 +499,7 @@ pub struct BridgeDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct ComboSolo {
 	#[serde(rename = "combo_duel_wins")]
@@ -524,7 +524,7 @@ pub struct ComboSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SumoTournament {
 	#[serde(rename = "sumo_tournament_wins")]
@@ -549,7 +549,7 @@ pub struct SumoTournament {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SkyWarsTournament {
 	#[serde(rename = "sw_tournament_wins")]
@@ -574,7 +574,7 @@ pub struct SkyWarsTournament {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct UhcMeetup {
 	#[serde(rename = "uhc_meetup_wins")]
@@ -599,7 +599,7 @@ pub struct UhcMeetup {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct PotionSolo {
 	#[serde(rename = "potion_duel_wins")]
@@ -624,7 +624,7 @@ pub struct PotionSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BlitzSolo {
 	#[serde(rename = "blitz_duel_wins")]
@@ -649,7 +649,7 @@ pub struct BlitzSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BowSpleefSolo {
 	#[serde(rename = "bowspleef_duel_wins")]
@@ -674,7 +674,7 @@ pub struct BowSpleefSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct MegaWallsSolo {
 	#[serde(rename = "mw_duel_wins")]
@@ -699,7 +699,7 @@ pub struct MegaWallsSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BoxingSolo {
 	#[serde(rename = "boxing_duel_wins")]
@@ -724,7 +724,7 @@ pub struct BoxingSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Parkour {
 	#[serde(rename = "parkour_eight_wins")]
@@ -749,7 +749,7 @@ pub struct Parkour {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct ArenaSolo {
 	#[serde(rename = "duel_arena_wins")]
@@ -774,7 +774,7 @@ pub struct ArenaSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct CaptureThree {
 	#[serde(rename = "capture_threes_wins")]
@@ -799,7 +799,7 @@ pub struct CaptureThree {
 	pub damage_dealt: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct BridgeThreeDuel {
 	#[serde(rename = "bridge_threes_wins")]

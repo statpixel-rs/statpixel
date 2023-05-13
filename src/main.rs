@@ -1,3 +1,5 @@
+#![warn(clippy::pedantic)]
+#![allow(clippy::cast_possible_wrap)]
 #![feature(let_chains)]
 
 use database::get_pool;
@@ -41,6 +43,7 @@ async fn main() {
 		commands::murder_mystery::murdermystery(),
 		commands::paintball::paintball(),
 		commands::pit::pit(),
+		commands::ser::ser(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

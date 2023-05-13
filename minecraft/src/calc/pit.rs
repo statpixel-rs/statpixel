@@ -5,27 +5,27 @@ use skia_safe::Color;
 
 use crate::{colour::Colour, text::parse::ESCAPE};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
-pub struct PitPrestige {
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+pub struct Prestige {
 	#[serde(rename = "xp_on_prestige")]
 	pub xp: u64,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
-pub struct PitLevel {
+pub struct Level {
 	pub xp: u64,
-	pub prestiges: Vec<PitPrestige>,
+	pub prestiges: Vec<Prestige>,
 }
 
 #[derive(Debug, Clone, Copy)]
-pub struct PitLevelSimple {
+pub struct LevelSimple {
 	pub xp: u64,
 	pub prestige: usize,
 }
 
-impl From<&PitLevel> for PitLevelSimple {
-	fn from(level: &PitLevel) -> Self {
+impl From<&Level> for LevelSimple {
+	fn from(level: &Level) -> Self {
 		Self {
 			xp: level.xp,
 			prestige: level.prestiges.len(),
@@ -106,6 +106,8 @@ fn get_level_data(xp: u64) -> u64 {
 	}
 }
 
+#[must_use]
+#[allow(clippy::cast_possible_truncation)]
 pub fn get_level_format((prestige, level): (usize, u64)) -> String {
 	let bracket = PRESTIGE_COLOUR[if prestige == 0 {
 		0
@@ -114,7 +116,7 @@ pub fn get_level_format((prestige, level): (usize, u64)) -> String {
 	}];
 	let number = LEVEL_COLOUR[level as usize / 10];
 	let roman = if prestige == 0 {
-		"".to_string()
+		String::new()
 	} else {
 		format!("{}{ESCAPE}{bracket}-", ROMAN[prestige - 1])
 	};
@@ -122,12 +124,17 @@ pub fn get_level_format((prestige, level): (usize, u64)) -> String {
 	format!("{bracket}[{ESCAPE}e{roman}{number}{level}{bracket}]")
 }
 
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_sign_loss)]
 pub fn get_xp((prestige, level): (usize, u64)) -> u64 {
 	let (mul, base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 
 	(level as f64 * mul) as u64 + base
 }
 
+#[must_use]
 pub fn get_colours((prestige, _level): (usize, u64)) -> [Color; 2] {
 	let colour = match prestige {
 		0 => Colour::Gray,
@@ -146,20 +153,24 @@ pub fn get_colours((prestige, _level): (usize, u64)) -> [Color; 2] {
 	[colour.into(), colour.into()]
 }
 
-pub fn get_level_progress(level: PitLevelSimple) -> f32 {
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
+pub fn get_level_progress(level: LevelSimple) -> f32 {
 	let div = get_level_xp(level);
 
 	get_curr_level_xp(level) as f32 / if div == 0 { 1. } else { div as f32 }
 }
 
-pub fn get_curr_level_xp(level: PitLevelSimple) -> u64 {
+#[must_use]
+pub fn get_curr_level_xp(level: LevelSimple) -> u64 {
 	let prestige = level.prestige;
 	let (_, base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 
 	level.xp - base
 }
 
-pub fn get_level_xp(level: PitLevelSimple) -> u64 {
+#[must_use]
+pub fn get_level_xp(level: LevelSimple) -> u64 {
 	let prestige = level.prestige;
 	let (_, curr_base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 	let (_, base) = PRESTIGES[min(prestige + 1, PRESTIGES.len() - 1)];
@@ -167,7 +178,11 @@ pub fn get_level_xp(level: PitLevelSimple) -> u64 {
 	base - curr_base
 }
 
-pub fn get_level(level: PitLevelSimple) -> (usize, u64) {
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_sign_loss)]
+pub fn get_level(level: LevelSimple) -> (usize, u64) {
 	let prestige = level.prestige;
 	let (mul, base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 
@@ -177,6 +192,7 @@ pub fn get_level(level: PitLevelSimple) -> (usize, u64) {
 	(prestige, level)
 }
 
-pub fn convert(xp: &PitLevel) -> PitLevelSimple {
+#[must_use]
+pub fn convert(xp: &Level) -> LevelSimple {
 	xp.into()
 }

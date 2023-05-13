@@ -38,9 +38,10 @@ pub async fn display(ctx: Context<'_>, text: Option<bool>) -> Result<(), Error> 
 		success_embed(
 			m,
 			tr!(ctx, "display-changed"),
-			match text {
-				true => tr!(ctx, "display-changed-text-description"),
-				false => tr!(ctx, "display-changed-image-description"),
+			if text {
+				tr!(ctx, "display-changed-text-description")
+			} else {
+				tr!(ctx, "display-changed-image-description")
 			},
 		)
 	})

@@ -4,16 +4,16 @@ use moka::future::{Cache, CacheBuilder};
 use once_cell::sync::Lazy;
 use uuid::Uuid;
 
-use crate::player::{data::PlayerData, status::PlayerSession, Player};
+use crate::player::{data::Data, status::Session, Player};
 
-pub static PLAYER_DATA_CACHE: Lazy<Cache<Uuid, PlayerData>> = Lazy::new(|| {
+pub static PLAYER_DATA_CACHE: Lazy<Cache<Uuid, Data>> = Lazy::new(|| {
 	CacheBuilder::new(100_000)
 		.time_to_idle(Duration::from_secs(60 * 10))
 		.time_to_live(Duration::from_secs(60 * 30))
 		.build()
 });
 
-pub static PLAYER_SESSION_CACHE: Lazy<Cache<Uuid, PlayerSession>> = Lazy::new(|| {
+pub static PLAYER_SESSION_CACHE: Lazy<Cache<Uuid, Session>> = Lazy::new(|| {
 	CacheBuilder::new(100_000)
 		.time_to_live(Duration::from_secs(60 * 5))
 		.build()

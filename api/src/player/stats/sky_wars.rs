@@ -5,7 +5,7 @@ fn default_level_fmt() -> String {
 	"§71".to_string()
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "sky_wars",
 	pretty = "§b§lSky§d§lWars",
@@ -65,7 +65,7 @@ pub struct SkyWars {
 	pub team_insane: TeamInsane,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
@@ -78,7 +78,7 @@ pub struct SoloNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
@@ -91,7 +91,7 @@ pub struct SoloInsane {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
@@ -104,7 +104,7 @@ pub struct TeamNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]

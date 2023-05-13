@@ -20,7 +20,7 @@ jobs:
         with:
           toolchain: nightly
           override: true
-          components: rustfmt
+          components: rustfmt, clippy
           profile: minimal
       - name: Set up cargo cache
         uses: actions/cache@v3
@@ -39,10 +39,10 @@ jobs:
         with:
           command: fmt
           args: -- --check
-      - name: Run cargo check
+      - name: Run cargo clippy
         uses: actions-rs/cargo@v1
         with:
-          command: check
+          command: clippy
       - name: Run cargo test
         uses: actions-rs/cargo@v1
         env:

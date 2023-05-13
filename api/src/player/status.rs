@@ -1,17 +1,17 @@
 use serde::Deserialize;
 
-use crate::game::r#type::GameType;
+use crate::game::r#type::Type;
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct PlayerSession {
+pub struct Session {
 	pub online: bool,
 	#[serde(rename = "gameType")]
-	pub game_type: Option<GameType>,
+	pub game_type: Option<Type>,
 	#[serde(rename = "mode")]
 	pub game_mode: Option<String>,
 }
 
 #[derive(Deserialize, Debug)]
-pub struct PlayerStatus {
-	pub session: PlayerSession,
+pub struct Status {
+	pub session: Session,
 }

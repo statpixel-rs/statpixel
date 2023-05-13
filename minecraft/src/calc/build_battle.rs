@@ -2,6 +2,7 @@ use skia_safe::Color;
 
 use crate::{colour::Colour, text::parse::ESCAPE};
 
+#[must_use]
 pub fn get_level_format(level: u32) -> String {
 	match level {
 		0..=1 => format!("{ESCAPE}fRookie"),
@@ -20,6 +21,7 @@ pub fn get_level_format(level: u32) -> String {
 	}
 }
 
+#[must_use]
 pub fn get_colours(level: u32) -> [Color; 2] {
 	let colour = match level {
 		0..=1 => Colour::White,
@@ -40,6 +42,7 @@ pub fn get_colours(level: u32) -> [Color; 2] {
 	[colour.into(), colour.into()]
 }
 
+#[must_use]
 pub fn get_level(xp: u32) -> u32 {
 	match xp {
 		0..100 => 1,
@@ -58,6 +61,7 @@ pub fn get_level(xp: u32) -> u32 {
 	}
 }
 
+#[must_use]
 pub fn get_xp(level: u32) -> u32 {
 	match level {
 		..=1 => 0,
@@ -75,16 +79,20 @@ pub fn get_xp(level: u32) -> u32 {
 	}
 }
 
+#[must_use]
 pub fn get_level_xp(xp: u32) -> u32 {
 	let level = get_level(xp);
 
 	get_xp(level + 1) - get_xp(level)
 }
 
+#[must_use]
 pub fn get_curr_level_xp(xp: u32) -> u32 {
 	xp - get_xp(get_level(xp))
 }
 
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
 pub fn get_level_progress(xp: u32) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
@@ -98,6 +106,7 @@ pub fn get_level_progress(xp: u32) -> f32 {
 		}
 }
 
+#[must_use]
 pub fn convert(xp: &u32) -> u32 {
 	*xp
 }

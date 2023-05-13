@@ -1,33 +1,34 @@
 use super::{
-	label::ToFormattedLabel, util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT,
+	label::ToFormatted, util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT,
 	HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
 };
 
 use minecraft::{
-	paint::{self, MinecraftPaint},
+	paint::{self, Paint},
 	style::MinecraftFont,
-	text::{draw, parse::parse_minecraft_string, Text},
+	text::{draw, parse::minecraft_string, Text},
 };
-use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Paint, RRect, Rect, Surface};
+use skia_safe::{gradient_shader, textlayout::TextAlign, Color, Handle, RRect, Rect, Surface};
 use translate::{tr, Context};
 
+#[allow(clippy::needless_pass_by_value)]
 pub fn apply_data(
 	ctx: Context<'_>,
 	surface: &mut Surface,
 	level: &str,
 	progress: f32,
-	current: impl ToFormattedLabel,
-	needed: impl ToFormattedLabel,
+	current: impl ToFormatted,
+	needed: impl ToFormatted,
 	colors: &[Color; 2],
 ) {
 	let label = format!("{}: ", tr!(ctx, "level"));
 	let mut text = vec![Text {
 		text: &label,
-		paint: paint::MinecraftPaint::White,
+		paint: Paint::White,
 		..Default::default()
 	}];
 
-	text.extend(parse_minecraft_string(level));
+	text.extend(minecraft_string(level));
 	text.reserve_exact(8);
 
 	let label = format!("\n{}: ", tr!(ctx, "progress"));
@@ -36,25 +37,25 @@ pub fn apply_data(
 
 	text.push(Text {
 		text: &label,
-		paint: paint::MinecraftPaint::White,
+		paint: Paint::White,
 		..Default::default()
 	});
 
 	text.push(Text {
 		text: &current,
-		paint: paint::MinecraftPaint::Aqua,
+		paint: Paint::Aqua,
 		..Default::default()
 	});
 
 	text.push(Text {
 		text: "/",
-		paint: paint::MinecraftPaint::White,
+		paint: Paint::White,
 		..Default::default()
 	});
 
 	text.push(Text {
 		text: &needed,
-		paint: paint::MinecraftPaint::Green,
+		paint: Paint::Green,
 		..Default::default()
 	});
 
@@ -67,7 +68,7 @@ pub fn apply_data(
 
 	draw(surface, text.as_slice(), 20., rect, TextAlign::Center, true);
 
-	let path = util::progress::rrect_progress(
+	let path = util::progress::rrect(
 		RRect::new_rect_xy(
 			rect.with_inset((1.5, 1.5)),
 			HEADER_DATA_RAD,
@@ -80,7 +81,7 @@ pub fn apply_data(
 		PADDING + HEADER_NAME_HEIGHT + HEADER_LABEL_HEIGHT + GAP * 2. + 1.5,
 	));
 
-	let mut paint: Paint = Default::default();
+	let mut paint: skia_safe::Paint = Handle::default();
 
 	paint
 		.set_stroke_width(3.)
@@ -121,12 +122,13 @@ pub fn apply_label(surface: &mut Surface, label: &[Text<'_>]) {
 	);
 }
 
+#[allow(clippy::needless_pass_by_value)]
 pub fn apply_item(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	value: impl ToFormattedLabel,
+	value: impl ToFormatted,
 	label: &str,
-	paint: MinecraftPaint,
+	paint: Paint,
 	percent: Option<bool>,
 	index: usize,
 ) {
@@ -158,7 +160,7 @@ pub fn apply_item(
 pub fn apply_extras(
 	ctx: Context<'_>,
 	surface: &mut Surface,
-	lines: &[(String, Box<dyn ToFormattedLabel>, MinecraftPaint, bool)],
+	lines: &[(String, Box<dyn ToFormatted>, Paint, bool)],
 ) {
 	let mut y = PADDING;
 	let x = HEADER_LEFT_END_X + GAP;
@@ -177,7 +179,7 @@ pub fn apply_extras(
 				},
 				Text {
 					text: &format!("{}: ", line.0),
-					paint: paint::MinecraftPaint::White,
+					paint: paint::Paint::White,
 					..Default::default()
 				},
 				Text {

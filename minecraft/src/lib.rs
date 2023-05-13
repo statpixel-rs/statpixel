@@ -1,3 +1,4 @@
+#![warn(clippy::pedantic)]
 #![feature(exclusive_range_pattern)]
 
 use thiserror::Error;

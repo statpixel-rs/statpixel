@@ -1,8 +1,8 @@
 use minecraft::{colour::Colour, text::rank::Rank};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Debug, Clone)]
-pub struct PlayerData {
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+pub struct Data {
 	#[serde(rename = "displayname")]
 	pub username: String,
 	#[serde(default)]
@@ -25,7 +25,8 @@ pub struct PlayerData {
 	pub xp: u64,
 }
 
-impl PlayerData {
+impl Data {
+	#[must_use]
 	pub fn get_rank(&self) -> Rank {
 		if let Some(prefix) = self.prefix.as_ref() {
 			return Rank::Custom(prefix.to_string());

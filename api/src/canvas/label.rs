@@ -2,13 +2,13 @@ use minecraft::colour::Colour;
 use num_format::{Locale, ToFormattedString};
 use translate::{prelude::GetNumFormatLocale, tr, Context};
 
-pub trait ToFormattedLabel {
+pub trait ToFormatted {
 	fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String;
 }
 
 macro_rules! impl_to_formatted_label_for_int {
 	($int:ty) => {
-		impl ToFormattedLabel for $int
+		impl ToFormatted for $int
 		where
 			Self: ToFormattedString,
 		{
@@ -37,7 +37,7 @@ macro_rules! impl_to_formatted_label_for_int {
 
 macro_rules! impl_to_formatted_label_for_float {
 	($float:ty) => {
-		impl ToFormattedLabel for $float {
+		impl ToFormatted for $float {
 			fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
 				let locale = ctx.get_num_format_locale();
 				let sep = match locale {
@@ -59,7 +59,7 @@ macro_rules! impl_to_formatted_label_for_float {
 	};
 }
 
-impl ToFormattedLabel for u8
+impl ToFormatted for u8
 where
 	Self: ToFormattedString,
 {
@@ -82,19 +82,19 @@ impl_to_formatted_label_for_int!(usize);
 impl_to_formatted_label_for_float!(f32);
 impl_to_formatted_label_for_float!(f64);
 
-impl ToFormattedLabel for String {
+impl ToFormatted for String {
 	fn to_formatted_label(&self, _: Context<'_>, _percent: bool) -> String {
 		self.clone()
 	}
 }
 
-impl ToFormattedLabel for &str {
+impl ToFormatted for &str {
 	fn to_formatted_label(&self, _: Context<'_>, _percent: bool) -> String {
-		self.to_string()
+		(*self).to_string()
 	}
 }
 
-impl ToFormattedLabel for bool {
+impl ToFormatted for bool {
 	fn to_formatted_label(&self, ctx: Context<'_>, _percent: bool) -> String {
 		if *self {
 			tr!(ctx, "yes")
@@ -104,7 +104,7 @@ impl ToFormattedLabel for bool {
 	}
 }
 
-impl ToFormattedLabel for Colour {
+impl ToFormatted for Colour {
 	fn to_formatted_label(&self, ctx: Context<'_>, _percent: bool) -> String {
 		match self {
 			Colour::Black => tr!(ctx, "black"),

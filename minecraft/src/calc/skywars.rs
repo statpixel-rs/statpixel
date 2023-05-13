@@ -45,10 +45,13 @@ const LEVEL_COLOUR: [[Color; 2]; 31] = [
 	[RED, GREEN],
 ];
 
+#[must_use]
+#[allow(clippy::cast_possible_truncation)]
 pub fn get_colours(level: u64) -> [Color; 2] {
 	LEVEL_COLOUR[min(level as usize / 5, LEVEL_COLOUR.len() - 1)]
 }
 
+#[must_use]
 pub fn get_level(xp: u64) -> u64 {
 	for (i, &x) in TOTAL_LEVEL_XP.iter().enumerate() {
 		if x > xp {
@@ -61,6 +64,8 @@ pub fn get_level(xp: u64) -> u64 {
 	12 + (xp / 10_000)
 }
 
+#[must_use]
+#[allow(clippy::cast_possible_truncation)]
 pub fn get_xp(level: u64) -> u64 {
 	if level == 0 {
 		0
@@ -71,16 +76,20 @@ pub fn get_xp(level: u64) -> u64 {
 	}
 }
 
+#[must_use]
 pub fn get_level_xp(xp: u64) -> u64 {
 	let level = get_level(xp);
 
 	get_xp(level + 1) - get_xp(level)
 }
 
+#[must_use]
 pub fn get_curr_level_xp(xp: u64) -> u64 {
 	xp - get_xp(get_level(xp))
 }
 
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
 pub fn get_level_progress(xp: u64) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
@@ -89,6 +98,7 @@ pub fn get_level_progress(xp: u64) -> f32 {
 	(xp - base) as f32 / (next - base) as f32
 }
 
+#[must_use]
 pub fn convert(xp: &u64) -> u64 {
 	*xp
 }

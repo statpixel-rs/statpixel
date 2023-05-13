@@ -45,6 +45,9 @@ const LEVEL_FORMAT: [Format; 32] = [
 	(('e', '4'), ['e', '6', '6', 'c', '4'], Some('⚝')),
 ];
 
+#[must_use]
+/// # Panics
+/// Panics if the format contains invalid `char`s.
 pub fn get_colours(level: u64) -> [Color; 2] {
 	let prestige = level / 100;
 	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
@@ -55,6 +58,10 @@ pub fn get_colours(level: u64) -> [Color; 2] {
 	]
 }
 
+#[must_use]
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_sign_loss)]
+#[allow(clippy::cast_precision_loss)]
 pub fn get_level_format(level: u64) -> String {
 	let prestige = level / 100;
 
@@ -65,7 +72,7 @@ pub fn get_level_format(level: u64) -> String {
 
 	// char, escape, colour, + 3 for each bracket, + star if it exists
 	let mut string =
-		String::with_capacity((length * 3 + 6 + if format.2.is_some() { 1 } else { 0 }) as usize);
+		String::with_capacity((length * 3 + 6 + u8::from(format.2.is_some())) as usize);
 
 	string.push(ESCAPE);
 	string.push(format.0 .0);
@@ -88,6 +95,7 @@ pub fn get_level_format(level: u64) -> String {
 	string
 }
 
+#[must_use]
 pub fn get_level(xp: u64) -> u64 {
 	// Level from prestiges, remaining level is from start of a prestige
 	let level = 100 * (xp / XP_PER_PRESTIGE);
@@ -102,6 +110,7 @@ pub fn get_level(xp: u64) -> u64 {
 	}
 }
 
+#[must_use]
 pub fn get_xp(level: u64) -> u64 {
 	let prestige = level / 100;
 	let level = level % 100;
@@ -119,16 +128,20 @@ pub fn get_xp(level: u64) -> u64 {
 	xp
 }
 
+#[must_use]
 pub fn get_level_xp(xp: u64) -> u64 {
 	let level = get_level(xp);
 
 	get_xp(level + 1) - get_xp(level)
 }
 
+#[must_use]
 pub fn get_curr_level_xp(xp: u64) -> u64 {
 	xp - get_xp(get_level(xp))
 }
 
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
 pub fn get_level_progress(xp: u64) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
@@ -137,6 +150,7 @@ pub fn get_level_progress(xp: u64) -> f32 {
 	(xp - base) as f32 / (next - base) as f32
 }
 
+#[must_use]
 pub fn convert(xp: &u64) -> u64 {
 	*xp
 }

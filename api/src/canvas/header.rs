@@ -1,8 +1,8 @@
 use crate::{
-	game::r#type::GameType,
-	player::{data::PlayerData, status::PlayerSession},
+	game::r#type::Type,
+	player::{data::Data, status::Session},
 };
-use minecraft::text::{self, parse::parse_minecraft_string, Text};
+use minecraft::text::{self, parse::minecraft_string, Text};
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
 use translate::{tr, Context};
 
@@ -11,13 +11,13 @@ use super::{
 	WIDTH_F,
 };
 
-pub fn apply_name(surface: &mut Surface, data: &PlayerData) {
+pub fn apply_name(surface: &mut Surface, data: &Data) {
 	let rank = data.get_rank();
 
 	let mut text = if let Some(text) = rank.get_text() {
 		text.to_vec()
 	} else if let Some(prefix) = data.prefix.as_ref() {
-		parse_minecraft_string(prefix).by_ref().collect()
+		minecraft_string(prefix).by_ref().collect()
 	} else {
 		unreachable!();
 	};
@@ -40,7 +40,7 @@ pub fn apply_name(surface: &mut Surface, data: &PlayerData) {
 	);
 }
 
-pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSession) {
+pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
 	let rect = Rect::new(
 		HEADER_MIDDLE_END_X + GAP,
 		PADDING,
@@ -55,7 +55,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 			&[
 				Text {
 					text: &tr!(ctx, "online"),
-					paint: minecraft::paint::MinecraftPaint::Green,
+					paint: minecraft::paint::Paint::Green,
 					..Default::default()
 				},
 				Text {
@@ -63,8 +63,8 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 					..Default::default()
 				},
 				Text {
-					text: data.game_type.unwrap_or(GameType::Lobby).as_clean_name(),
-					paint: minecraft::paint::MinecraftPaint::White,
+					text: data.game_type.unwrap_or(Type::Lobby).as_clean_name(),
+					paint: minecraft::paint::Paint::White,
 					..Default::default()
 				},
 				Text {
@@ -73,7 +73,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 				},
 				Text {
 					text: data.game_mode.as_deref().unwrap_or(""),
-					paint: minecraft::paint::MinecraftPaint::White,
+					paint: minecraft::paint::Paint::White,
 					..Default::default()
 				},
 			],
@@ -87,7 +87,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &PlayerSessio
 			surface,
 			&[Text {
 				text: &tr!(ctx, "offline"),
-				paint: minecraft::paint::MinecraftPaint::DarkGray,
+				paint: minecraft::paint::Paint::DarkGray,
 				..Default::default()
 			}],
 			25.,

@@ -1,5 +1,5 @@
 use super::{parse::ESCAPE, Text};
-use crate::{colour::Colour, minecraft_text, paint::MinecraftPaint};
+use crate::{colour::Colour, minecraft_text, paint::Paint};
 
 pub enum Rank {
 	Default,
@@ -98,6 +98,7 @@ const ADMIN: [Text; 1] = minecraft_text!("§c[ADMIN]");
 const OWNER: [Text; 1] = minecraft_text!("§c[OWNER]");
 
 impl Rank {
+	#[must_use]
 	pub fn from_str(
 		rank: &str,
 		package_rank: Option<&str>,
@@ -110,7 +111,7 @@ impl Rank {
 			"MVP" => Self::Mvp,
 			"MVP_PLUS" if package_rank == Some("SUPERSTAR") => Self::MvpPlusPlus(
 				colour.unwrap_or(Colour::Red),
-				monthly_colour.map(|c| c == Colour::Aqua).unwrap_or(false),
+				monthly_colour.map_or(false, |c| c == Colour::Aqua),
 			),
 			"MVP_PLUS" => Self::MvpPlus(colour.unwrap_or(Colour::Red)),
 			"YOUTUBER" => Self::YouTube,
@@ -124,35 +125,32 @@ impl Rank {
 		}
 	}
 
-	fn get_string_paint(&self, string: &str) -> MinecraftPaint {
+	fn get_string_paint(string: &str) -> Paint {
 		if let Some(index) = string.rfind(ESCAPE) {
 			let char = string.char_indices().rfind(|(i, _)| *i == index + 2);
-			let paint = char.and_then(|(_, c)| MinecraftPaint::try_from(c).ok());
+			let paint = char.and_then(|(_, c)| Paint::try_from(c).ok());
 
-			paint.unwrap_or(MinecraftPaint::Gray)
+			paint.unwrap_or(Paint::Gray)
 		} else {
-			MinecraftPaint::Gray
+			Paint::Gray
 		}
 	}
 
-	pub fn get_username_paint(&self) -> MinecraftPaint {
+	#[must_use]
+	pub fn get_username_paint(&self) -> Paint {
 		match self {
-			Self::Default => MinecraftPaint::Gray,
-			Self::Vip | Self::VipPlus => MinecraftPaint::Green,
-			Self::Mvp | Self::MvpPlus(_) => MinecraftPaint::Aqua,
-			Self::MvpPlusPlus(_, true) => MinecraftPaint::Aqua,
-			Self::MvpPlusPlus(_, false) => MinecraftPaint::Gold,
-			Self::YouTube => MinecraftPaint::Red,
-			Self::Mojang => MinecraftPaint::Gold,
-			Self::Events => MinecraftPaint::Gold,
-			Self::Mcp => MinecraftPaint::Red,
-			Self::Gm => MinecraftPaint::DarkGreen,
-			Self::Admin | Self::Owner => MinecraftPaint::Red,
-			Self::Custom(prefix) => self.get_string_paint(prefix),
+			Self::Default => Paint::Gray,
+			Self::Vip | Self::VipPlus => Paint::Green,
+			Self::Mvp | Self::MvpPlus(_) | Self::MvpPlusPlus(_, true) => Paint::Aqua,
+			Self::MvpPlusPlus(_, false) | Self::Mojang | Self::Events => Paint::Gold,
+			Self::Gm => Paint::DarkGreen,
+			Self::Admin | Self::Owner | Self::Mcp | Self::YouTube => Paint::Red,
+			Self::Custom(prefix) => Self::get_string_paint(prefix),
 		}
 	}
 
-	/// `None` for Rank::Custom
+	/// `None` for `Rank::Custom`
+	#[must_use]
 	pub fn get_text(&self) -> Option<&[Text<'_>]> {
 		match self {
 			Self::Default => Some(&[]),

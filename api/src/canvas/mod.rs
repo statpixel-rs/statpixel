@@ -8,6 +8,7 @@ use skia_safe::{EncodedImageFormat, Path, Point, RRect, Rect, Surface};
 
 pub const WIDTH: i32 = 750;
 
+#[allow(clippy::cast_precision_loss)]
 pub const WIDTH_F: f32 = WIDTH as f32;
 pub const GAP: f32 = 7.;
 pub const PADDING: f32 = 15.;
@@ -32,8 +33,15 @@ pub const MEDAL_ICON: &str = "\u{e7af}";
 pub const BROKEN_HEART_ICON: &str = "\u{eac2}";
 pub const RATIO_ICON: &str = "\u{eaf6}";
 
+/// # Panics
+/// Panics if the surface cannot be created.
+#[must_use]
+#[allow(clippy::too_many_lines)]
+
 pub fn create_surface(rows: u8) -> Surface {
-	let height = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * rows as f32;
+	let height = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * f32::from(rows);
+
+	#[allow(clippy::cast_possible_truncation)]
 	let mut surface = Surface::new_raster_n32_premul((WIDTH, height as i32)).unwrap();
 
 	let mut path = Path::new();
@@ -174,6 +182,8 @@ pub fn create_surface(rows: u8) -> Surface {
 	surface
 }
 
+/// # Panics
+/// Panics if the canvas cannot be ended to a png
 pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 	surface
 		.image_snapshot()
@@ -182,6 +192,8 @@ pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 		.to_vec()
 }
 
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
 pub fn get_item_rect(i: usize) -> Rect {
 	let x = i % 3;
 	let y = i / 3;

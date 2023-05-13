@@ -1,7 +1,7 @@
 use macros::Game;
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "cops_and_crims",
 	pretty = "§b§lCops and Crims",
@@ -42,7 +42,7 @@ pub struct CopsAndCrims {
 	pub deathmatch: Deathmatch,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Defusal {
 	#[serde(rename = "game_wins")]
@@ -56,7 +56,7 @@ pub struct Defusal {
 	pub criminal_kills: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct GunGame {
 	#[serde(rename = "game_wins_gungame")]
@@ -75,7 +75,7 @@ pub struct GunGame {
 	pub criminal_kills: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Deathmatch {
 	#[serde(rename = "game_wins_deathmatch")]

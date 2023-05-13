@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
 #[game(
 	path = "paintball",
 	pretty = "§b§lPaintball",
@@ -41,7 +41,7 @@ pub struct Paintball {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

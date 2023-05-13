@@ -11,9 +11,8 @@ pub struct User {
 #[derive(Queryable)]
 pub struct History {
 	pub uuid: Uuid,
-	pub game_id: i16,
-	pub game_mode: i16,
-	pub update_frequency: Option<i16>,
+	pub data: Vec<u8>,
+
 	pub created_at: chrono::DateTime<chrono::Utc>,
 	pub updated_at: chrono::DateTime<chrono::Utc>,
 }

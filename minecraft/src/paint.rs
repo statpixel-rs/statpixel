@@ -43,7 +43,7 @@ paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
 #[derive(Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
 #[darling(default)]
-pub enum MinecraftPaint {
+pub enum Paint {
 	Black,
 	DarkBlue,
 	DarkGreen,
@@ -63,10 +63,10 @@ pub enum MinecraftPaint {
 	White,
 }
 
-impl darling::ToTokens for MinecraftPaint {
+impl darling::ToTokens for Paint {
 	fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
 		tokens.extend(quote! {
-			::minecraft::paint::MinecraftPaint::
+			::minecraft::paint::Paint::
 		});
 
 		match self {
@@ -90,99 +90,101 @@ impl darling::ToTokens for MinecraftPaint {
 	}
 }
 
-impl From<MinecraftPaint> for &skia_safe::Paint {
-	fn from(paint: MinecraftPaint) -> Self {
+impl From<Paint> for &skia_safe::Paint {
+	fn from(paint: Paint) -> Self {
 		match paint {
-			MinecraftPaint::Black => &BLACK,
-			MinecraftPaint::DarkBlue => &DARK_BLUE,
-			MinecraftPaint::DarkGreen => &DARK_GREEN,
-			MinecraftPaint::DarkAqua => &DARK_AQUA,
-			MinecraftPaint::DarkRed => &DARK_RED,
-			MinecraftPaint::DarkPurple => &DARK_PURPLE,
-			MinecraftPaint::Gold => &GOLD,
-			MinecraftPaint::Gray => &GRAY,
-			MinecraftPaint::DarkGray => &DARK_GRAY,
-			MinecraftPaint::Blue => &BLUE,
-			MinecraftPaint::Green => &GREEN,
-			MinecraftPaint::Aqua => &AQUA,
-			MinecraftPaint::Red => &RED,
-			MinecraftPaint::LightPurple => &LIGHT_PURPLE,
-			MinecraftPaint::Yellow => &YELLOW,
-			MinecraftPaint::White => &WHITE,
+			Paint::Black => &BLACK,
+			Paint::DarkBlue => &DARK_BLUE,
+			Paint::DarkGreen => &DARK_GREEN,
+			Paint::DarkAqua => &DARK_AQUA,
+			Paint::DarkRed => &DARK_RED,
+			Paint::DarkPurple => &DARK_PURPLE,
+			Paint::Gold => &GOLD,
+			Paint::Gray => &GRAY,
+			Paint::DarkGray => &DARK_GRAY,
+			Paint::Blue => &BLUE,
+			Paint::Green => &GREEN,
+			Paint::Aqua => &AQUA,
+			Paint::Red => &RED,
+			Paint::LightPurple => &LIGHT_PURPLE,
+			Paint::Yellow => &YELLOW,
+			Paint::White => &WHITE,
 		}
 	}
 }
 
-impl TryFrom<char> for MinecraftPaint {
+impl TryFrom<char> for Paint {
 	type Error = ();
 
 	fn try_from(value: char) -> Result<Self, Self::Error> {
 		match value {
-			'0' => Ok(MinecraftPaint::Black),
-			'1' => Ok(MinecraftPaint::DarkBlue),
-			'2' => Ok(MinecraftPaint::DarkGreen),
-			'3' => Ok(MinecraftPaint::DarkAqua),
-			'4' => Ok(MinecraftPaint::DarkRed),
-			'5' => Ok(MinecraftPaint::DarkPurple),
-			'6' => Ok(MinecraftPaint::Gold),
-			'7' => Ok(MinecraftPaint::Gray),
-			'8' => Ok(MinecraftPaint::DarkGray),
-			'9' => Ok(MinecraftPaint::Blue),
-			'a' | 'A' => Ok(MinecraftPaint::Green),
-			'b' | 'B' => Ok(MinecraftPaint::Aqua),
-			'c' | 'C' => Ok(MinecraftPaint::Red),
-			'd' | 'D' => Ok(MinecraftPaint::LightPurple),
-			'e' | 'E' => Ok(MinecraftPaint::Yellow),
-			'f' | 'F' => Ok(MinecraftPaint::White),
+			'0' => Ok(Paint::Black),
+			'1' => Ok(Paint::DarkBlue),
+			'2' => Ok(Paint::DarkGreen),
+			'3' => Ok(Paint::DarkAqua),
+			'4' => Ok(Paint::DarkRed),
+			'5' => Ok(Paint::DarkPurple),
+			'6' => Ok(Paint::Gold),
+			'7' => Ok(Paint::Gray),
+			'8' => Ok(Paint::DarkGray),
+			'9' => Ok(Paint::Blue),
+			'a' | 'A' => Ok(Paint::Green),
+			'b' | 'B' => Ok(Paint::Aqua),
+			'c' | 'C' => Ok(Paint::Red),
+			'd' | 'D' => Ok(Paint::LightPurple),
+			'e' | 'E' => Ok(Paint::Yellow),
+			'f' | 'F' => Ok(Paint::White),
 			_ => Err(()),
 		}
 	}
 }
 
-impl TryFrom<&str> for MinecraftPaint {
+impl TryFrom<&str> for Paint {
 	type Error = ();
 
 	fn try_from(value: &str) -> Result<Self, Self::Error> {
 		match value {
-			"BLACK" => Ok(MinecraftPaint::Black),
-			"DARK_BLUE" => Ok(MinecraftPaint::DarkBlue),
-			"DARK_GREEN" => Ok(MinecraftPaint::DarkGreen),
-			"DARK_AQUA" => Ok(MinecraftPaint::DarkAqua),
-			"DARK_RED" => Ok(MinecraftPaint::DarkRed),
-			"DARK_PURPLE" => Ok(MinecraftPaint::DarkPurple),
-			"GOLD" => Ok(MinecraftPaint::Gold),
-			"GRAY" => Ok(MinecraftPaint::Gray),
-			"DARK_GRAY" => Ok(MinecraftPaint::DarkGray),
-			"BLUE" => Ok(MinecraftPaint::Blue),
-			"GREEN" => Ok(MinecraftPaint::Green),
-			"AQUA" => Ok(MinecraftPaint::Aqua),
-			"RED" => Ok(MinecraftPaint::Red),
-			"LIGHT_PURPLE" => Ok(MinecraftPaint::LightPurple),
-			"YELLOW" => Ok(MinecraftPaint::Yellow),
-			"WHITE" => Ok(MinecraftPaint::White),
+			"BLACK" => Ok(Paint::Black),
+			"DARK_BLUE" => Ok(Paint::DarkBlue),
+			"DARK_GREEN" => Ok(Paint::DarkGreen),
+			"DARK_AQUA" => Ok(Paint::DarkAqua),
+			"DARK_RED" => Ok(Paint::DarkRed),
+			"DARK_PURPLE" => Ok(Paint::DarkPurple),
+			"GOLD" => Ok(Paint::Gold),
+			"GRAY" => Ok(Paint::Gray),
+			"DARK_GRAY" => Ok(Paint::DarkGray),
+			"BLUE" => Ok(Paint::Blue),
+			"GREEN" => Ok(Paint::Green),
+			"AQUA" => Ok(Paint::Aqua),
+			"RED" => Ok(Paint::Red),
+			"LIGHT_PURPLE" => Ok(Paint::LightPurple),
+			"YELLOW" => Ok(Paint::Yellow),
+			"WHITE" => Ok(Paint::White),
 			_ => Err(()),
 		}
 	}
 }
 
-pub const fn parse_paint(mut parser: Parser<'_>) -> ParseValueResult<'_, MinecraftPaint> {
+/// # Errors
+/// Returns an error if the string is not a Minecraft colour code
+pub const fn parse(mut parser: Parser<'_>) -> ParseValueResult<'_, Paint> {
 	let paint = parser_method! {parser, strip_prefix;
-		"0" => MinecraftPaint::Black,
-		"1" => MinecraftPaint::DarkBlue,
-		"2" => MinecraftPaint::DarkGreen,
-		"3" => MinecraftPaint::DarkAqua,
-		"4" => MinecraftPaint::DarkRed,
-		"5" => MinecraftPaint::DarkPurple,
-		"6" => MinecraftPaint::Gold,
-		"7" => MinecraftPaint::Gray,
-		"8" => MinecraftPaint::DarkGray,
-		"9" => MinecraftPaint::Blue,
-		"a" => MinecraftPaint::Green,
-		"b" => MinecraftPaint::Aqua,
-		"c" => MinecraftPaint::Red,
-		"d" => MinecraftPaint::LightPurple,
-		"e" => MinecraftPaint::Yellow,
-		"f" => MinecraftPaint::White,
+		"0" => Paint::Black,
+		"1" => Paint::DarkBlue,
+		"2" => Paint::DarkGreen,
+		"3" => Paint::DarkAqua,
+		"4" => Paint::DarkRed,
+		"5" => Paint::DarkPurple,
+		"6" => Paint::Gold,
+		"7" => Paint::Gray,
+		"8" => Paint::DarkGray,
+		"9" => Paint::Blue,
+		"a" => Paint::Green,
+		"b" => Paint::Aqua,
+		"c" => Paint::Red,
+		"d" => Paint::LightPurple,
+		"e" => Paint::Yellow,
+		"f" => Paint::White,
 		_ => return Err(parser.into_other_error(&"could not parse paint")),
 	};
 

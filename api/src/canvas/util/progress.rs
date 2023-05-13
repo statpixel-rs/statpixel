@@ -2,9 +2,9 @@ use std::f32::consts::PI;
 
 use skia_safe::{Path, RRect, Rect};
 
-/// Creates a progress bar as a RRect border, returning a Path
+/// Creates a progress bar as a `RRect` border, returning a Path
 /// with the top-left corner of the rectangle at (0, 0)
-pub fn rrect_progress(rrect: RRect, progress: f32) -> Path {
+pub fn rrect(rrect: RRect, progress: f32) -> Path {
 	let r = rrect.simple_radii();
 	let rect = Rect::from_wh(r.x * 2., r.y * 2.);
 

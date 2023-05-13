@@ -5,7 +5,7 @@ use konst::{
 
 use super::Text;
 use crate::{
-	paint::{self, parse_paint},
+	paint::{self, parse},
 	style::{self, parse_font},
 };
 
@@ -20,19 +20,20 @@ macro_rules! minecraft_text {
 
 pub use minecraft_text;
 
+#[must_use]
 pub const fn _const_parse_minecraft_strings<const LEN: usize>(string: &str) -> [Text<'_>; LEN] {
-	unwrap_ctx!(const_parse_minecraft_strings::<LEN>(Parser::new(string))).0
+	unwrap_ctx!(const_minecraft_strings::<LEN>(Parser::new(string))).0
 }
 
-const fn const_parse_minecraft_strings<const LEN: usize>(
+const fn const_minecraft_strings<const LEN: usize>(
 	mut parser: Parser<'_>,
 ) -> ParseValueResult<'_, [Text<'_>; LEN]> {
 	let mut font = style::MinecraftFont::Normal;
-	let mut paint = paint::MinecraftPaint::White;
+	let mut paint = paint::Paint::White;
 	let mut result = [Text {
 		text: "",
 		font: style::MinecraftFont::Normal,
-		paint: paint::MinecraftPaint::White,
+		paint: paint::Paint::White,
 		size: None,
 	}; LEN];
 
@@ -41,7 +42,7 @@ const fn const_parse_minecraft_strings<const LEN: usize>(
 	let mut i = 0;
 
 	while i < LEN {
-		(result[i], parser) = try_!(const_parse_minecraft_string(parser, font, paint));
+		(result[i], parser) = try_!(const_minecraft_string(parser, font, paint));
 
 		font = result[i].font;
 		paint = result[i].paint;
@@ -54,12 +55,13 @@ const fn const_parse_minecraft_strings<const LEN: usize>(
 	Ok((result, parser))
 }
 
-const fn const_parse_minecraft_string(
+#[allow(clippy::unnecessary_wraps)]
+const fn const_minecraft_string(
 	parser: Parser<'_>,
 	prev_font: style::MinecraftFont,
-	prev_paint: paint::MinecraftPaint,
+	prev_paint: paint::Paint,
 ) -> ParseValueResult<'_, Text<'_>> {
-	if let Ok((paint, parser)) = parse_paint(parser) {
+	if let Ok((paint, parser)) = parse(parser) {
 		let (text, parser) = unwrap_ctx!(parser.split(ESCAPE));
 
 		Ok((
@@ -80,7 +82,7 @@ const fn const_parse_minecraft_string(
 					Text {
 						text,
 						font,
-						paint: paint::MinecraftPaint::White,
+						paint: paint::Paint::White,
 						size: None,
 					},
 					parser,
@@ -116,8 +118,8 @@ const fn const_parse_minecraft_string(
 	}
 }
 
-pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
-	let mut prev_paint = paint::MinecraftPaint::White;
+pub fn minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
+	let mut prev_paint = paint::Paint::White;
 	let mut prev_font = style::MinecraftFont::Normal;
 	let mut first = true;
 
@@ -136,10 +138,10 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 
 			'f'
 		} else {
-			chars.next().unwrap()
+			chars.next().expect("string cannot be empty")
 		};
 
-		let (paint, font) = if let Ok(paint) = paint::MinecraftPaint::try_from(hex) {
+		let (paint, font) = if let Ok(paint) = paint::Paint::try_from(hex) {
 			prev_paint = paint;
 			// When the paint changes, the text effects are reset
 			prev_font = style::MinecraftFont::Normal;
@@ -149,7 +151,7 @@ pub fn parse_minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 			match style::MinecraftFont::try_from(hex) {
 				Ok(font @ style::MinecraftFont::Normal) => {
 					prev_font = font;
-					prev_paint = paint::MinecraftPaint::White;
+					prev_paint = paint::Paint::White;
 
 					(prev_paint, font)
 				}
@@ -184,13 +186,13 @@ mod tests {
 	#[test]
 	fn test_plain_string() {
 		let text = "Hello, world!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::White,
+				paint: paint::Paint::White,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -200,13 +202,13 @@ mod tests {
 	#[test]
 	fn test_paint_string() {
 		let text = "§cHello, world!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::Red,
+				paint: paint::Paint::Red,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -216,13 +218,13 @@ mod tests {
 	#[test]
 	fn test_font_string() {
 		let text = "§lHello, world!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::White,
+				paint: paint::Paint::White,
 				font: style::MinecraftFont::Bold,
 				size: None,
 			}]
@@ -232,13 +234,13 @@ mod tests {
 	#[test]
 	fn test_paint_font_string() {
 		let text = "§c§lHello, world!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::Red,
+				paint: paint::Paint::Red,
 				font: style::MinecraftFont::Bold,
 				size: None,
 			}]
@@ -248,13 +250,13 @@ mod tests {
 	#[test]
 	fn test_font_reset_string() {
 		let text = "§c§l§dHello, world!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::LightPurple,
+				paint: paint::Paint::LightPurple,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -264,26 +266,26 @@ mod tests {
 	#[test]
 	fn test_reset_string() {
 		let text = "§cHello, §lworld§r!";
-		let parsed = parse_minecraft_string(text).collect::<Vec<_>>();
+		let parsed = minecraft_string(text).collect::<Vec<_>>();
 
 		assert_eq!(
 			parsed,
 			vec![
 				Text {
 					text: "Hello, ",
-					paint: paint::MinecraftPaint::Red,
+					paint: paint::Paint::Red,
 					font: style::MinecraftFont::Normal,
 					size: None,
 				},
 				Text {
 					text: "world",
-					paint: paint::MinecraftPaint::Red,
+					paint: paint::Paint::Red,
 					font: style::MinecraftFont::Bold,
 					size: None,
 				},
 				Text {
 					text: "!",
-					paint: paint::MinecraftPaint::White,
+					paint: paint::Paint::White,
 					font: style::MinecraftFont::Normal,
 					size: None,
 				},
@@ -300,7 +302,7 @@ mod tests {
 			parsed,
 			[Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::White,
+				paint: paint::Paint::White,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -315,7 +317,7 @@ mod tests {
 			parsed,
 			[Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::Red,
+				paint: paint::Paint::Red,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -330,7 +332,7 @@ mod tests {
 			parsed,
 			[Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::White,
+				paint: paint::Paint::White,
 				font: style::MinecraftFont::Bold,
 				size: None,
 			}]
@@ -345,7 +347,7 @@ mod tests {
 			parsed,
 			[Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::Red,
+				paint: paint::Paint::Red,
 				font: style::MinecraftFont::Bold,
 				size: None,
 			}]
@@ -360,7 +362,7 @@ mod tests {
 			parsed,
 			[Text {
 				text: "Hello, world!",
-				paint: paint::MinecraftPaint::LightPurple,
+				paint: paint::Paint::LightPurple,
 				font: style::MinecraftFont::Normal,
 				size: None,
 			}]
@@ -376,19 +378,19 @@ mod tests {
 			[
 				Text {
 					text: "Hello, ",
-					paint: paint::MinecraftPaint::Red,
+					paint: paint::Paint::Red,
 					font: style::MinecraftFont::Normal,
 					size: None,
 				},
 				Text {
 					text: "world",
-					paint: paint::MinecraftPaint::Red,
+					paint: paint::Paint::Red,
 					font: style::MinecraftFont::Bold,
 					size: None,
 				},
 				Text {
 					text: "!",
-					paint: paint::MinecraftPaint::White,
+					paint: paint::Paint::White,
 					font: style::MinecraftFont::Normal,
 					size: None,
 				},

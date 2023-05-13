@@ -3,9 +3,9 @@ use std::ops::Add;
 use serde::{Deserialize, Deserializer};
 use translate::Context;
 
-use crate::canvas::label::ToFormattedLabel;
+use crate::canvas::label::ToFormatted;
 
-#[derive(Debug, Clone, Copy, Default)]
+#[derive(Debug, Clone, Copy, Default, PartialEq)]
 pub struct Meters(u64);
 
 impl<'de> Deserialize<'de> for Meters {
@@ -42,13 +42,15 @@ impl From<Meters> for u64 {
 	}
 }
 
-impl ToFormattedLabel for Meters {
+impl ToFormatted for Meters {
+	#[allow(clippy::cast_precision_loss)]
 	fn to_formatted_label(&self, ctx: Context<'_>, _percent: bool) -> String {
 		let m = self.0;
 
-		match m {
-			0..1_000 => format!("{}m", m.to_formatted_label(ctx, false)),
-			_ => format!("{}km", (m as f32 / 1_000.).to_formatted_label(ctx, false)),
+		if let 0..1_000 = m {
+			return format!("{}m", m.to_formatted_label(ctx, false));
 		}
+
+		format!("{}km", (m as f64 / 1_000.).to_formatted_label(ctx, false))
 	}
 }

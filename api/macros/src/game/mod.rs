@@ -3,7 +3,7 @@ mod sum;
 mod tokens;
 
 use darling::{ast, FromDeriveInput, FromField, FromMeta};
-use minecraft::{paint::MinecraftPaint, text::parse::parse_minecraft_string};
+use minecraft::{paint::Paint, text::parse::minecraft_string};
 use proc_macro2::TokenStream;
 use quote::{quote, ToTokens};
 
@@ -66,7 +66,7 @@ impl ToTokens for GameInputReceiver {
 
 		let path = parse_str_to_dot_path(path);
 
-		let label_size = parse_minecraft_string(pretty).count();
+		let label_size = minecraft_string(pretty).count();
 		let row_count = (overall_fields.len() + 2) as u8 / 3;
 
 		let calc = if let Some(ref calc) = calc {
@@ -404,7 +404,7 @@ impl ToTokens for GameInputReceiver {
 						#tr
 					}
 
-					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession) {
+					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::Data, session: &crate::player::status::Session) {
 						let label = ::translate::tr!(ctx, Self::get_tr());
 						let stats = &player.stats.#path;
 
@@ -414,7 +414,7 @@ impl ToTokens for GameInputReceiver {
 								LABEL.as_slice(),
 								&[::minecraft::text::Text {
 									text: &::std::format!(" ({label})"),
-									paint: ::minecraft::paint::MinecraftPaint::White,
+									paint: ::minecraft::paint::Paint::White,
 									font: ::minecraft::style::MinecraftFont::Normal,
 									size: ::std::option::Option::None,
 								}],
@@ -458,7 +458,7 @@ impl ToTokens for GameInputReceiver {
 					#label_size
 				}
 
-				pub fn apply(ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession) {
+				pub fn apply(ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::Data, session: &crate::player::status::Session) {
 					let stats = &player.stats.#path;
 					let label = ::translate::tr!(ctx, Self::get_tr());
 
@@ -468,7 +468,7 @@ impl ToTokens for GameInputReceiver {
 							#(#label_iter)*
 							::minecraft::text::Text {
 								text: &::std::format!(" ({label})"),
-								paint: ::minecraft::paint::MinecraftPaint::White,
+								paint: ::minecraft::paint::Paint::White,
 								font: ::minecraft::style::MinecraftFont::Normal,
 								size: ::std::option::Option::None,
 							},
@@ -521,10 +521,10 @@ impl ToTokens for GameInputReceiver {
 					&MODES
 				}
 
-				pub fn get_mode(mode: Option<#enum_ident>, session: &crate::player::status::PlayerSession) -> #enum_ident {
+				pub fn get_mode(mode: Option<#enum_ident>, session: &crate::player::status::Session) -> #enum_ident {
 					if let Some(mode) = mode {
 						mode
-					} else if session.game_type == Some(crate::game::r#type::GameType::#ident) && let Some(game_mode) = session.game_mode.as_ref() {
+					} else if session.game_type == Some(crate::game::r#type::Type::#ident) && let Some(game_mode) = session.game_mode.as_ref() {
 						#enum_ident ::from(game_mode.as_str())
 					} else {
 						#enum_ident ::Overall
@@ -572,7 +572,7 @@ impl ToTokens for GameInputReceiver {
 						}), 25)
 				}
 
-				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::PlayerData, session: &crate::player::status::PlayerSession, mode: Option<#enum_ident>) -> ::skia_safe::Surface {
+				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::Data, session: &crate::player::status::Session, mode: Option<#enum_ident>) -> ::skia_safe::Surface {
 					let stats = &player.stats.#path;
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
@@ -643,7 +643,7 @@ pub(crate) struct GameFieldReceiver {
 #[derive(Debug, FromMeta)]
 pub(crate) struct GameLabel {
 	#[darling(default)]
-	colour: MinecraftPaint,
+	colour: Paint,
 
 	/// The translation key of the label.
 	/// Defaults to the ident with underscores replaced with dashes.
@@ -669,7 +669,7 @@ pub(crate) struct OverallFieldData {
 	tr: Option<String>,
 
 	#[darling(default)]
-	colour: MinecraftPaint,
+	colour: Paint,
 
 	percent: Option<bool>,
 
@@ -685,7 +685,7 @@ pub(crate) struct InfoFieldData {
 	tr: Option<String>,
 
 	#[darling(default)]
-	colour: MinecraftPaint,
+	colour: Paint,
 
 	percent: Option<bool>,
 
