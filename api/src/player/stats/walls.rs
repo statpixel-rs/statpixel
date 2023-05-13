@@ -1,9 +1,9 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
 use crate::meters::Meters;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "walls",
 	pretty = "§e§lThe Walls",
@@ -29,16 +29,16 @@ use crate::meters::Meters;
 )]
 #[serde(default)]
 pub struct Walls {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 
 	#[serde(flatten)]
 	#[game(mode())]
 	pub standard: Standard,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Standard {
 	#[serde(rename = "wins_standard")]

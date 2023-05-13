@@ -1,7 +1,7 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "turbo_kart_racers",
 	pretty = "§a§lKart Racers",
@@ -11,9 +11,9 @@ use serde::{Deserialize, Serialize};
 )]
 #[serde(default)]
 pub struct TurboKartRacers {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[game(label(colour = "aqua"))]
 	pub box_pickups: u32,
 	#[serde(rename = "coins_picked_up")]
@@ -32,7 +32,7 @@ pub struct TurboKartRacers {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Normal {
 	#[serde(rename = "bronze_trophy")]

@@ -23,11 +23,11 @@ pub(crate) struct ModeInputReceiver {
 impl ToTokens for ModeInputReceiver {
 	fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
 		let ModeInputReceiver {
-			ref ident,
-			ref generics,
-			ref data,
-			field: ref field_data,
-		} = *self;
+			ident,
+			generics,
+			data,
+			field: field_data,
+		} = self;
 
 		let fields = data
 			.as_ref()

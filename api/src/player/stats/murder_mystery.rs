@@ -1,9 +1,9 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
 use crate::seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "murder_mystery",
 	pretty = "§b§lMurder Mystery",
@@ -16,9 +16,9 @@ use crate::seconds;
 )]
 #[serde(default)]
 pub struct MurderMystery {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[serde(
 		rename = "mm_chests",
 		deserialize_with = "super::from_trunc_f32_to_u32"
@@ -49,7 +49,7 @@ pub struct MurderMystery {
 	pub infection: Infection,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Assassins {
 	#[serde(rename = "wins_MURDER_ASSASSINS")]
@@ -62,7 +62,7 @@ pub struct Assassins {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Classic {
 	#[serde(rename = "wins_MURDER_CLASSIC")]
@@ -75,7 +75,7 @@ pub struct Classic {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct DoubleUp {
 	#[serde(rename = "wins_MURDER_DOUBLE_UP")]
@@ -88,7 +88,7 @@ pub struct DoubleUp {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Infection {
 	#[serde(rename = "wins_MURDER_INFECTION")]

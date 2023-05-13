@@ -1,7 +1,7 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[serde(default)]
 #[game(
 	path = "bed_wars",
@@ -31,9 +31,9 @@ use serde::{Deserialize, Serialize};
 	label(ident = "items_purchased", colour = "red")
 )]
 pub struct BedWars {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[serde(
 		rename = "bedwars_boxes",
 		deserialize_with = "super::from_trunc_f32_to_u32"
@@ -61,7 +61,7 @@ pub struct BedWars {
 	pub four: Four,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "eight_one_wins_bedwars")]
@@ -92,7 +92,7 @@ pub struct Solo {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "eight_two_wins_bedwars")]
@@ -123,7 +123,7 @@ pub struct Double {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Three {
 	#[serde(rename = "four_three_wins_bedwars")]
@@ -154,7 +154,7 @@ pub struct Three {
 	pub items_purchased: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Four {
 	#[serde(rename = "four_four_wins_bedwars")]

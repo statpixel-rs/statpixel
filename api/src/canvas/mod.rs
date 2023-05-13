@@ -1,3 +1,4 @@
+pub mod diff;
 pub mod draw;
 pub mod header;
 pub mod label;

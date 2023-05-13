@@ -51,16 +51,16 @@ pub(crate) struct GameInputReceiver {
 impl ToTokens for GameInputReceiver {
 	fn to_tokens(&self, tokens: &mut TokenStream) {
 		let GameInputReceiver {
-			ref ident,
-			ref generics,
-			ref data,
-			ref path,
-			ref pretty,
-			ref calc,
-			field: ref overall_fields,
-			label: ref info,
-			xp: ref xp_path,
-		} = *self;
+			ident,
+			generics,
+			data,
+			path,
+			pretty,
+			calc,
+			field: overall_fields,
+			label: info,
+			xp: xp_path,
+		} = self;
 
 		let path = parse_str_to_dot_path(path);
 

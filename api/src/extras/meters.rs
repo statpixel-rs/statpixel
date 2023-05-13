@@ -1,11 +1,12 @@
 use std::ops::Add;
 
+use macros::Diff;
 use serde::{Deserialize, Deserializer};
 use translate::Context;
 
 use crate::canvas::label::ToFormatted;
 
-#[derive(Debug, Clone, Copy, Default, PartialEq)]
+#[derive(Debug, Clone, Copy, Default, PartialEq, Diff)]
 pub struct Meters(u64);
 
 impl<'de> Deserialize<'de> for Meters {

@@ -1,4 +1,4 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
@@ -18,8 +18,8 @@ pub struct Progression {
 pub struct Outer {
 	#[serde(rename = "wool_wars")]
 	pub inner: Inner,
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
-	pub coins: u32,
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	pub coins: i32,
 	pub progression: Progression,
 }
 
@@ -29,7 +29,7 @@ pub struct Inner {
 	pub stats: WoolWars,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "wool_wars.inner.stats",
 	pretty = "§b§lWool Wars",
@@ -57,7 +57,7 @@ pub struct WoolWars {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

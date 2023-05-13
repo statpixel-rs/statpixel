@@ -1,10 +1,10 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use minecraft::colour::Colour;
 use serde::{Deserialize, Serialize};
 
 use crate::seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "paintball",
 	pretty = "§9§lPaintball",
@@ -20,9 +20,9 @@ use crate::seconds;
 )]
 #[serde(default)]
 pub struct Paintball {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[game(label(colour = "aqua"))]
 	pub adrenaline: u8,
 	#[game(label(colour = "red"))]
@@ -41,7 +41,7 @@ pub struct Paintball {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

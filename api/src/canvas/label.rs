@@ -15,6 +15,53 @@ macro_rules! impl_to_formatted_label_for_int {
 			fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
 				let locale = ctx.get_num_format_locale();
 
+				if *self >= 0 {
+					if percent {
+						format!("{}%", self.to_formatted_string(&locale))
+					} else if *self < 1_000_000 {
+						self.to_formatted_string(&locale)
+					} else if *self < 1_000_000_000 {
+						format!(
+							"{}M",
+							(*self as f32 / 1_000_000.).to_formatted_label(ctx, percent)
+						)
+					} else {
+						format!(
+							"{}B",
+							(*self as f32 / 1_000_000_000.).to_formatted_label(ctx, percent)
+						)
+					}
+				} else {
+					if percent {
+						format!("-{}%", (-*self).to_formatted_string(&locale))
+					} else if *self < -1_000_000 {
+						(-*self).to_formatted_string(&locale)
+					} else if *self < 1_000_000_000 {
+						format!(
+							"-{}M",
+							(-*self as f32 / 1_000_000.).to_formatted_label(ctx, percent)
+						)
+					} else {
+						format!(
+							"-{}B",
+							(-*self as f32 / 1_000_000_000.).to_formatted_label(ctx, percent)
+						)
+					}
+				}
+			}
+		}
+	};
+}
+
+macro_rules! impl_to_formatted_label_for_uint {
+	($int:ty) => {
+		impl ToFormatted for $int
+		where
+			Self: ToFormattedString,
+		{
+			fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
+				let locale = ctx.get_num_format_locale();
+
 				if percent {
 					format!("{}%", self.to_formatted_string(&locale))
 				} else if *self < 1_000_000 {
@@ -74,10 +121,15 @@ where
 	}
 }
 
-impl_to_formatted_label_for_int!(u32);
-impl_to_formatted_label_for_int!(u64);
-impl_to_formatted_label_for_int!(u128);
-impl_to_formatted_label_for_int!(usize);
+impl_to_formatted_label_for_int!(i32);
+impl_to_formatted_label_for_int!(i64);
+impl_to_formatted_label_for_int!(i128);
+impl_to_formatted_label_for_int!(isize);
+
+impl_to_formatted_label_for_uint!(u32);
+impl_to_formatted_label_for_uint!(u64);
+impl_to_formatted_label_for_uint!(u128);
+impl_to_formatted_label_for_uint!(usize);
 
 impl_to_formatted_label_for_float!(f32);
 impl_to_formatted_label_for_float!(f64);

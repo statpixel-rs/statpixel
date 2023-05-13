@@ -1,7 +1,7 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "speed_uhc",
 	pretty = "§b§lSpeed UHC",
@@ -16,9 +16,9 @@ use serde::{Deserialize, Serialize};
 )]
 #[serde(default)]
 pub struct SpeedUhc {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[game(label(colour = "aqua"))]
 	pub tears: u32,
 	#[game(label(colour = "yellow"))]
@@ -36,7 +36,7 @@ pub struct SpeedUhc {
 	pub team: Team,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_solo_normal")]
@@ -53,7 +53,7 @@ pub struct Solo {
 	pub survived_players: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct Team {
 	#[serde(rename = "wins_team_normal")]

@@ -75,6 +75,16 @@ where
 }
 
 #[allow(clippy::cast_possible_truncation)]
+pub(crate) fn from_trunc_f32_to_i32<'de, D>(deserializer: D) -> Result<i32, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: f32 = Deserialize::deserialize(deserializer)?;
+
+	Ok(s as i32)
+}
+
+#[allow(clippy::cast_possible_truncation)]
 #[allow(clippy::cast_sign_loss)]
 pub(crate) fn from_trunc_f32_to_u64<'de, D>(deserializer: D) -> Result<u64, D::Error>
 where

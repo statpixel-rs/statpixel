@@ -1,11 +1,11 @@
-use macros::{Game, Mode};
+use macros::{Diff, Game, Mode};
 use serde::{Deserialize, Serialize};
 
 fn default_level_fmt() -> String {
 	"§71".to_string()
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "sky_wars",
 	pretty = "§b§lSky§d§lWars",
@@ -19,9 +19,9 @@ fn default_level_fmt() -> String {
 )]
 #[serde(default)]
 pub struct SkyWars {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
 	#[game(label(colour = "gold"))]
-	pub coins: u32,
+	pub coins: i32,
 	#[serde(
 		rename = "skywars_chests",
 		deserialize_with = "super::from_trunc_f32_to_u32"
@@ -65,7 +65,7 @@ pub struct SkyWars {
 	pub team_insane: TeamInsane,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
@@ -78,7 +78,7 @@ pub struct SoloNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
@@ -91,7 +91,7 @@ pub struct SoloInsane {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
@@ -104,7 +104,7 @@ pub struct TeamNormal {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode)]
+#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
 #[serde(default)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]

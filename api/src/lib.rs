@@ -7,6 +7,7 @@ mod extras;
 mod http;
 mod ratelimit;
 
+pub use macros;
 use thiserror::Error;
 
 pub mod cache;

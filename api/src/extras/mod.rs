@@ -3,15 +3,15 @@ pub mod meters;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
-		#[derive(Debug, Clone, Copy, Default, PartialEq)]
-		pub struct $name(u64);
+		#[derive(Debug, Clone, Copy, Default, PartialEq, ::macros::Diff)]
+		pub struct $name(i64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
 			fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
 			where
 				D: ::serde::Deserializer<'de>,
 			{
-				let s: u64 = ::serde::Deserialize::deserialize(deserializer)?;
+				let s: i64 = ::serde::Deserialize::deserialize(deserializer)?;
 
 				Ok($name(s))
 			}
@@ -22,7 +22,7 @@ macro_rules! impl_time_unit {
 			where
 				S: ::serde::Serializer,
 			{
-				serializer.serialize_u64(self.0)
+				serializer.serialize_i64(self.0)
 			}
 		}
 
@@ -34,7 +34,7 @@ macro_rules! impl_time_unit {
 			}
 		}
 
-		impl ::std::convert::From<$name> for u64 {
+		impl ::std::convert::From<$name> for i64 {
 			fn from(s: $name) -> Self {
 				s.0
 			}
@@ -46,26 +46,50 @@ macro_rules! impl_time_unit {
 				_ctx: ::translate::Context<'_>,
 				_percent: bool,
 			) -> ::std::string::String {
-				let mut result = ::std::string::String::new();
-				let s = self.0 $op $val;
+				let mut result = ::std::string::String::with_capacity(3);
+				let (s, neg) = {
+					let s = self.0 $op $val;
+
+					if s < 0 {
+						(-s, true)
+					} else {
+						(s, false)
+					}
+				};
 
 				let days = s / 86_400;
 				if days > 0 {
+					if neg {
+						result.push('-');
+					}
+
 					result.push_str(&format!("{}d ", days));
 				}
 
 				let hours = (s % 86_400) / 3_600;
 				if hours > 0 {
+					if neg && days == 0 {
+						result.push('-');
+					}
+
 					result.push_str(&format!("{}h ", hours));
 				}
 
 				let minutes = (s % 3_600) / 60;
 				if minutes > 0 && days == 0 {
+					if neg && days == 0 && hours == 0 {
+						result.push('-');
+					}
+
 					result.push_str(&format!("{}m ", minutes));
 				}
 
 				let seconds = s % 60;
 				if (seconds > 0 && days == 0 && hours == 0) || result.is_empty() {
+					if seconds > 0 && neg && days == 0 && hours == 0 && minutes == 0 {
+						result.push('-');
+					}
+
 					result.push_str(&format!("{}s", seconds));
 				}
 

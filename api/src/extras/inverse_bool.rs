@@ -1,7 +1,7 @@
 use serde::{Deserialize, Deserializer};
 use translate::Context;
 
-use crate::canvas::label::ToFormatted;
+use crate::canvas::{diff::Diff, label::ToFormatted};
 
 #[derive(Debug, Clone, Copy, Default, PartialEq)]
 pub struct InverseBool(bool);
@@ -29,5 +29,11 @@ impl serde::Serialize for InverseBool {
 impl ToFormatted for InverseBool {
 	fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
 		(!self.0).to_formatted_label(ctx, percent)
+	}
+}
+
+impl Diff for InverseBool {
+	fn diff(&self, other: &Self) -> Self {
+		Self(self.0.diff(&other.0))
 	}
 }
