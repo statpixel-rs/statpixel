@@ -49,6 +49,7 @@ FarmHunt = Farm Hunt
 DragonWars = Dragon Wars
 BlockingDead = Blocking Dead
 Zombies = Zombies
+ZombiesBadBlood = Zombies: Bad Blood
 ZombiesDeadEnd = Zombies: Dead End
 PixelPainters = Pixel Painters
 HoleInTheWall = Hole in the Wall
@@ -105,13 +106,13 @@ emerald-collected = Emeralds
 items-purchased = Purchases
 
 bedwars = bedwars
-	.description = Shows the BedWars stats of a player.
+	.description = Shows the Bed Wars stats of a player.
 	.username = username
 	.username-description = The Minecraft username to view
 	.uuid = uuid
 	.uuid-description = The Minecraft UUID to view
 	.mode = mode
-	.mode-description = The BedWars mode to view
+	.mode-description = The Bed Wars mode to view
 
 # /blitz
 
@@ -202,9 +203,9 @@ BowSolo = Bow Duel
 ClassicSolo = Classic Duel
 OpDouble = OP Doubles
 UhcFour = UHC 4v4
-SkyWarsDouble = SkyWars Doubles
+SkyWarsDouble = Sky Wars Doubles
 SumoSolo = Sumo Duel
-SkyWarsSolo = SkyWars Duel
+SkyWarsSolo = Sky Wars Duel
 BridgeDoubleDuel = Bridge 2v2
 BridgeFourDuel = Bridge 4v4
 BridgeSolo = Bridge Duel
@@ -212,7 +213,7 @@ BridgeThree = Bridge Threes
 BridgeDouble = Bridge Doubles
 ComboSolo = Combo Duel
 SumoTournament = Sumo Tournament
-SkyWarsTournament = SkyWars Tournament
+SkyWarsTournament = Sky Wars Tournament
 UhcMeetup = UHC Meetup
 PotionSolo = Potion Duel
 BlitzSolo = Blitz Duel
@@ -395,7 +396,7 @@ speeduhc = speeduhc
 TntRun = TNT Run
 PvpRun = PvP Run
 BowSpleef = Bow Spleef
-wizard = Wizards
+Wizard = Wizards
 
 record = Record
 double-jumps = Double Jumps
@@ -531,6 +532,7 @@ woolwars = woolwars
 # Shared canvas labels
 
 Normal = Normal
+Team = Team
 
 blocks-broken = Blocks Broken
 blocks-placed = Blocks Placed

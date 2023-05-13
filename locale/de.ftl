@@ -1,72 +1,99 @@
-decimal-sep = ,
+# Allgemeine Beschriftungen
+not-linked = Fehlende Argumente
+not-linked-description = Da du nicht verknüpft bist, musst du ein Profil angeben, um es anzuzeigen.
 
 # /display
 display = display
-	.description = Ändert die Art und Weise, wie Antworten angezeigt werden.
+	.description = Ändert die Art, wie Antworten angezeigt werden.
 	.text = text
 	.text-description = Ob Antworten als Text angezeigt werden sollen
 
 display-changed = Anzeige geändert
 display-changed-text-description = Antworten werden jetzt als Text gesendet.
-display-changed-image-description = Antworten werden jetzt als Bilder gesendet, falls zutreffend.
+display-changed-image-description = Antworten werden jetzt als Bilder gesendet, wenn möglich.
 
 # /unlink
 unlink = unlink
-	.description = Trennt Ihre Discord-Verbindung von einem Minecraft-Konto.
+	.description = Löst die Verknüpfung deines Discord-Accounts von einem Minecraft-Account.
 
-not-linked = Fehlende Argumente
-not-linked-description = Da Sie nicht verbunden sind, müssen Sie ein Profil angeben, um es anzuzeigen.
-unlinking-failed = Trennung fehlgeschlagen
-unlinking-failed-description = Sie sind nicht mit einem Minecraft-Konto verbunden.
-unlinking-succeeded = Trennung erfolgreich
-unlinking-succeeded-description = Sie sind nicht mehr mit einem Minecraft-Konto verbunden.
+unlinking-failed = Verknüpfungsaufhebung fehlgeschlagen
+unlinking-failed-description = Du bist nicht mit einem Minecraft-Account verknüpft.
+unlinking-succeeded = Verknüpfung erfolgreich aufgehoben
+unlinking-succeeded-description = Du bist nicht mehr mit einem Minecraft-Account verknüpft.
 
 # /link
 link = link
-	.description = Verknüpft Ihr Discord-Konto mit einem Minecraft-Konto.
+	.description = Verknüpft deinen Discord-Account mit einem Minecraft-Account.
 	.username = username
 	.username-description = Der Minecraft-Benutzername zum Verknüpfen
 	.uuid = uuid
 	.uuid-description = Die Minecraft-UUID zum Verknüpfen
 
 linking-failed = Verknüpfung fehlgeschlagen
-linking-failed-uuid-description = Die UUID `{$uuid}` gehört nicht zu einem Minecraft-Konto.
-linking-failed-username-description = Der Benutzername **{$username}** gehört nicht zu einem Minecraft-Konto.
-linking-failed-description = Sie müssen eine gültige UUID oder einen gültigen Benutzernamen angeben.
+linking-failed-uuid-description = Die UUID "{$uuid}" gehört nicht zu einem Minecraft-Account.
+linking-failed-username-description = Der Benutzername **{$username}** gehört nicht zu einem Minecraft-Account.
+linking-failed-description = Du musst eine gültige UUID oder einen gültigen Benutzernamen angeben.
 linking-succeeded = Verknüpfung erfolgreich
-linking-succeeded-description = Ihr Discord-Konto ist jetzt mit dem Minecraft-Konto **{$name}** verknüpft.
+linking-succeeded-description = Dein Discord-Account ist jetzt mit dem Minecraft-Account **{$name}** verknüpft.
 
-# /skywars
-Overall = Insgesamt
-SoloNormal = Solo Normal
-SoloInsane = Solo Insane
-TeamNormal = Team Normal
-TeamInsane = Team Insane
+# /arcade
 
-opals = Opale
-heads = Köpfe
-souls = Seelen
-tokens = Token
-bow-accuracy = Bogen-Genauigkeit
+Party = Party
+SantaSays = Santa sagt
+SimonSays = Simon sagt
+MiniWalls = Mini-Wände
+Soccer = Fußball
+OneInTheQuiver = Einer im Köcher
+EnderSpleef = Ender Spleef
+FarmHunt = Farm-Hunt
+DragonWars = Drachenkriege
+BlockingDead = Tote blockieren
+Zombies = Zombies
+ZombiesBadBlood = Zombies: Schlechtes Blut
+ZombiesDeadEnd = Zombies: Sackgasse
+PixelPainters = Pixelmaler
+HoleInTheWall = Loch in der Wand
+ThrowOut = Herauswerfen
+EasterSimulator = Ostersimulator
+ScubaSimulator = Tauchsimulator
+HalloweenSimulator = Halloween-Simulator
+GrinchSimulator = Grinch-Simulator
 
-skywars = skywars
-	.description = Zeigt die SkyWars-Statistiken eines Spielers an.
+mystery-gifts = Geheimnisvolle Geschenke
+
+arcade = arcade
+	.description = Zeigt die Arcade-Statistiken eines Spielers an.
 	.username = username
 	.username-description = Der Minecraft-Benutzername zum Anzeigen
 	.uuid = uuid
 	.uuid-description = Die Minecraft-UUID zum Anzeigen
 	.mode = mode
-	.mode-description = Der SkyWars-Modus zum Anzeigen
+	.mode-description = Der Arcade-Modus zum Anzeigen
+
+# /arena
+
+magical-keys = Magische Schlüssel
+magical-chests = Magische Truhen
+rating = Bewertung
+
+arena = arena
+	.description = Zeigt die Arena Brawl Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft Benutzername zum Anzeigen
+	.uuid = uuid
+	.uuid-description = Die Minecraft UUID zum Anzeigen
+	.mode = mode
+	.mode-description = Der Arena Brawl Modus zum Anzeigen
 
 # /bedwars
 
 Solo = Solo
-Double = Doubles
-Three = 3v3v3v3
-Four = 4v4v4v4
+Double = Doppel
+Three = Dreier
+Four = Vierer
 
-final-kills = Final-Kills
-final-deaths = Final-Tode
+final-kills = Endgültige Tötungen
+final-deaths = Endgültige Tode
 fkdr = FKDR
 beds-broken = Betten zerstört
 beds-lost = Betten verloren
@@ -76,35 +103,482 @@ iron-collected = Eisen
 gold-collected = Gold
 diamond-collected = Diamanten
 emerald-collected = Smaragde
-items-purchased = Käufe
+items-purchased = Einkäufe
 
 bedwars = bedwars
-	.description = Zeigt die BedWars-Statistiken eines Spielers an.
+	.description = Zeigt die Bed Wars Statistiken eines Spielers an.
 	.username = username
-	.username-description = Der Minecraft-Benutzername zum Anzeigen
+	.username-description = Der Minecraft Benutzername zum Anzeigen
 	.uuid = uuid
-	.uuid-description = Die Minecraft-UUID zum Anzeigen
+	.uuid-description = Die Minecraft UUID zum Anzeigen
 	.mode = mode
-	.mode-description = Der BedWars-Modus zum Anzeigen
+	.mode-description = Der Bed Wars Modus zum Anzeigen
 
-# /arena
+# /blitz
 
-magical-keys = Magische Schlüssel
-magical-chests = Magische Truhen
+Armorer = Rüstungsschmied
+Scout = Kundschafter
+Speleologist = Höhlenforscher
+Random = Zufällig
+Rogue = Schurke
+Rambo = Rambo
+Troll = Troll
+HorseTamer = Pferdezähmer
+WolfTamer = Wolfszähmer
+Warrior = Krieger
+Phoenix = Phoenix
+DonkeyTamer = Eselzähmer
+Ranger = Waldläufer
+Archer = Bogenschütze
+Necromancer = Nekromant
+Meatmaster = Fleischmeister
+Tim = Tim
+Pigman = Schweinezüchter
+CreeperTamer = Creeper-Zähmer
+Florist = Florist
+Warlock = Hexenmeister
+Milkman = Milchmann
+Astronaut = Astronaut
+Blaze = Blaze
 
-# Shared canvas labels
+potions-drunk = Getrunkene Tränke
+chests-opened = Geöffnete Truhen
+time-played = Spielzeit
+
+blitz = blitz
+	.description = Zeigt die Blitz Survival Games Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft Benutzername zum Anzeigen
+	.uuid = uuid
+	.uuid-description = Die Minecraft UUID zum Anzeigen
+	.mode = mode
+	.mode-description = Der Blitz Survival Games Modus zum Anzeigen
+
+# /buildbattle
+
+SoloPro = Solo Pro
+GuessTheBuild = Rate den Bau
+
+votes = Stimmen
+most-points-solo = Meiste Punkte (Solo)
+most-points-team = Meiste Punkte (Team)
+
+buildbattle = buildbattle
+	.description = Zeigt die Build Battle-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Build Battle-Modus, den Sie anzeigen möchten.
+
+# /copsandcrims
+
+Defusal = Entschärfung
+GunGame = Gun Game
+Deathmatch = Deathmatch
+
+cop-kills = Cop-Kills
+criminal-kills = Kriminellen-Kills
+headshot-kills = Headshot-Kills
+grenade-kills = Granaten-Kills
+bombs-defused = Bomben entschärft
+bombs-planted = Bomben gelegt
+
+copsandcrims = copsandcrims
+	.description = Zeigt die Cops and Crims-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Cops and Crims-Modus, den Sie anzeigen möchten.
+
+# /duels
+
+UhcSolo = UHC-Duell
+OpSolo = OP-Duell
+UhcDouble = UHC-Duos
+BowSolo = Bogen-Duell
+ClassicSolo = Klassisches Duell
+OpDouble = OP-Duos
+UhcFour = UHC 4v4
+SkyWarsDouble = Sky Wars-Duos
+SumoSolo = Sumo-Duell
+SkyWarsSolo = Sky Wars-Duell
+BridgeDoubleDuel = Bridge 2v2
+BridgeFourDuel = Bridge 4v4
+BridgeSolo = Bridge-Duell
+BridgeThree = Bridge Threes
+BridgeDouble = Bridge-Duos
+ComboSolo = Combo-Duell
+SumoTournament = Sumo-Turnier
+SkyWarsTournament = Sky Wars-Turnier
+UhcMeetup = UHC-Treffen
+PotionSolo = Trank-Duell
+BlitzSolo = Blitz-Duell
+BowSpleefSolo = Bogen-Spleef-Duell
+MegaWallsSolo = Mega Walls-Duell
+BoxingSolo = Box-Duell
+Parkour = Parkour
+ArenaSolo = Arena-Duell
+CaptureThree = Capture Threes
+BridgeThreeDuel = Bridge 3v3
+
+melee-accuracy = Nahkampf-Genauigkeit
+health-regenerated = Regenerierte Gesundheit
+
+duels = duels
+	.description = Zeigt die Duell-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Duell-Modus, den Sie anzeigen möchten.
+
+# /megawalls
+
+FaceOff = Face Off
+
+distance-walked = Zurückgelegte Entfernung
+distance-fallen = Sturzdistanz
+bread-eaten = Gegessenes Brot
+wood-chopped = Gehacktes Holz
+treasures-found = Gefundene Schätze
+
+megawalls = megawalls
+	.description = Zeigt die Mega Walls-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Mega Walls-Modus, der angezeigt werden soll.
+
+# /murdermystery
+
+Assassins = Assassins
+Classic = Klassik
+DoubleUp = Verdoppeln
+Infection = Infektion
+
+time-survived = Überlebenszeit
+murderer-wins = Mörder gewinnt
+detective-wins = Detektiv gewinnt
+
+murdermystery = murdermystery
+	.description = Zeigt die Murder Mystery-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Murder Mystery-Modus, der angezeigt werden soll.
+
+# /paintball
+
+adrenaline = Adrenalin
+endurance = Ausdauer
+fortune = Glück
+godfather = Pate
+superluck = Super-Glück
+transfusion = Transfusion
+kill-prefix = Kill-Prefix
+show-kill-prefix = Zeige Kill-Prefix
+
+shots-fired = Abgefeuerte Schüsse
+killstreaks = Tötungsreihen
+forcefield-time = Zeit des Kraftfeldes
+chat-messages = Chat-Nachrichten
+soups-drank = Getrunkene Suppen
+cash-earned = Verdientes Geld
+highest-killstreak = Beste Reihenfolge
+
+paintball = paintball
+	.description = Zeigt die Paintball-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Paintball-Modus, der angezeigt werden soll.
+
+# /pit
+
+cash = Bargeld
+bow-damage-dealt = Verursachter Bogenschaden
+bow-damage-taken = Erhaltener Bogenschaden
+bdr = BDR
+contracts-completed = Abgeschlossene Verträge
+contracts-started = Gestartete Verträge
+cr = Abschlussrate
+
+pit = pit
+	.description = Zeigt die The Pit-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Pit-Modus, der angezeigt werden soll.
+
+# /quake
+
+SoloTournament = Solo-Turnier
+
+hr = Headshot-Rate
+headshots = Headshots
+sight = Sicht
+
+quake = quake
+	.description = Zeigt die Quakecraft-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Quakecraft-Modus, den Sie anzeigen möchten.
+
+# /skywars
+Overall = Gesamt
+SoloNormal = Solo Normal
+SoloInsane = Solo Insane
+TeamNormal = Team Normal
+TeamInsane = Team Insane
+
+opals = Opale
+heads = Köpfe
+souls = Seelen
+tokens = Tokens
+bow-accuracy = Bogen-Genauigkeit
+
+skywars = skywars
+	.description = Zeigt die SkyWars-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der SkyWars-Modus, den Sie anzeigen möchten.
+
+# /smash
+
+smasher = Smasher
+smashed = Smashed
+ssr = SSR
+
+smash = smash
+	.description = Zeigt die Smash Heroes-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Smash Heroes-Modus, den Sie anzeigen möchten.
+
+# /speeduhc
+
+tears = Tränen
+survived-players = Überlebende Spieler
+
+speeduhc = speeduhc
+	.description = Zeigt die SpeedUHC-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der SpeedUHC-Modus, den Sie anzeigen möchten.
+
+# /tntgames
+
+TntRun = TNT-Run
+PvpRun = PvP-Run
+BowSpleef = Bogen-Spleef
+Wizard = Zauberer
+
+record = Rekord
+double-jumps = Doppel-Sprünge
+tags = Tags
+air-time = Luftzeit
+points = Punkte
+
+tntgames = tntgames
+	.description = Zeigt die TNT Games-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der TNT Games-Modus, den Sie anzeigen möchten.
+
+# /turbokartracers
+
+box-pickups = Box-Pickups
+coin-pickups = Münzsammlungen
+grand-prix = Großer Preis
+show-prefix = Zeige Präfix
+bronze-trophies = Bronze Trophäen
+silver-trophies = Silber Trophäen
+gold-trophies = Gold Trophäen
+
+turbokartracers = turbokartracers
+	.description = Zeigt die Turbo Kart Racers-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Turbo Kart Racers-Modus, den Sie anzeigen möchten.
+
+# /uhc
+
+RedVsBlue = Rot gegen Blau
+NoDiamonds = Keine Diamanten
+VanillaDouble = Vanilla Doppel
+Brawl = Brawl
+SoloBrawl = Solo Brawl
+DoubleBrawl = Double Brawl
+
+heads-eaten = Gegnerköpfe gegessen
+ultimates-crafted = Ultimates hergestellt
+
+uhc = uhc
+	.description = Zeigt die UHC Champions-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der UHC Champions-Modus, den Sie anzeigen möchten.
+
+# /vampirez
+
+human-wins = Menschliche Siege
+vampire-wins = Vampir-Siege
+zombie-kills = Zombie-Tötungen
+human-kills = Menschliche Tötungen
+human-deaths = Menschliche Tode
+vampire-kills = Vampir-Tötungen
+vampire-deaths = Vampir-Tode
+blood = Blut
+starting-compass = Anfangskompass
+starting-gear = Anfangsausrüstung
+tracker = Tracker
+updated = Aktualisiert
+old-vampire = Alter Vampir
+
+vampirez = vampirez
+	.description = Zeigt die VampireZ-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der VampireZ-Modus, den Sie anzeigen möchten.
+
+# /walls
+
+Standard = Standard
+
+activations = Aktivierungen
+iron-broken = Eisen gebrochen
+
+walls = walls
+	.description = Zeigt die Walls-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, den Sie anzeigen möchten.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die Sie anzeigen möchten.
+	.mode = mode
+	.mode-description = Der Walls-Modus, den Sie anzeigen möchten.
+
+# /warlords
+
+CaptureTheFlag = Capture the Flag
+Domination = Domination
+TeamDeathmatch = Team Deathmatch
+
+wins-blue = Siege (Blau)
+wins-red = Siege (Rot)
+hide-prestige = Prestige ausblenden
+mvps = MVPs
+
+warlords = warlords
+	.description = Zeigt die Warlords-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Warlords-Modus, der angezeigt werden soll.
+
+# /woolwars
+
+layers = Ebenen
+powerups-collected = Gesammelte Power-Ups
+wool-placed = Platzierte Wolle
+
+woolwars = woolwars
+	.description = Zeigt die Wool Wars-Statistiken eines Spielers an.
+	.username = username
+	.username-description = Der Minecraft-Benutzername, der angezeigt werden soll.
+	.uuid = uuid
+	.uuid-description = Die Minecraft-UUID, die angezeigt werden soll.
+	.mode = mode
+	.mode-description = Der Wool Wars-Modus, der angezeigt werden soll.
+
+# Gemeinsame Bezeichnungen für Leinwände
+
+Normal = Normal
+Team = Team
+
+blocks-broken = Abgebaute Blöcke
+blocks-placed = Platzierte Blöcke
 
 coins = Münzen
 loot-chests = Beutekisten
 
 offline = Offline
 online = Online
-level = Level
+level = Stufe
 progress = Fortschritt
 
 wins = Siege
 losses = Niederlagen
 wlr = WLR
+win-streak = Gewinnserie
 kills = Kills
 deaths = Tode
 kdr = KDR
+assists = Assists
+games-played = Gespielte Spiele
+wr = Siegesrate
+damage-dealt = Ausgeteilter Schaden
+damage-taken = Eingesteckter Schaden
+ddtr = DDTR
+games = Spiele
+score = Punktzahl
+
+yes = Ja
+no = Nein
+
+# Farben
+
+black = Schwarz
+dark-blue = Dunkelblau
+dark-green = Dunkelgrün
+dark-aqua = Dunkelaquamarin
+dark-red = Dunkelrot
+dark-purple = Dunkellila
+gold = Gold
+gray = Grau
+dark-gray = Dunkelgrau
+blue = Blau
+green = Grün
+aqua = Aquamarin
+red = Rot
+light-purple = Helllila
+yellow = Gelb
+white = Weiß

@@ -161,10 +161,6 @@ impl Locale {
 				}
 			}
 
-			// At this point, all translation files have been applied. However, if a user uses a locale
-			// we haven't explicitly inserted, there would be no translations at all -> blank texts. So,
-			// we use the "main" translation file (en-US) as the non-localized strings.
-
 			// Set fallback command name and description to en-US
 			let bundle = &self.main;
 

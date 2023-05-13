@@ -5,7 +5,7 @@ not-linked-description = Comme vous n'êtes pas lié, vous devez fournir un prof
 # /display
 display = display
 	.description = Modifie la façon dont les réponses sont affichées.
-	.text = texte
+	.text = text
 	.text-description = Que les réponses soient affichées sous forme de texte
 
 display-changed = Affichage modifié
@@ -49,6 +49,7 @@ FarmHunt = Chasse à la ferme
 DragonWars = Guerres des dragons
 BlockingDead = Blocs morts
 Zombies = Zombies
+ZombiesBadBlood = Zombies : Mauvais sang
 ZombiesDeadEnd = Zombies : Impasse
 PixelPainters = Peintres de pixels
 HoleInTheWall = Trou dans le mur
@@ -202,9 +203,9 @@ BowSolo = Duel à l'arc Solo
 ClassicSolo = Duel classique Solo
 OpDouble = Duel OP Doubles
 UhcFour = UHC 4v4
-SkyWarsDouble = Duel SkyWars Doubles
+SkyWarsDouble = Duel Sky Wars Doubles
 SumoSolo = Duel Sumo Solo
-SkyWarsSolo = Duel SkyWars Solo
+SkyWarsSolo = Duel Sky Wars Solo
 BridgeDoubleDuel = Bridge 2v2
 BridgeFourDuel = Bridge 4v4
 BridgeSolo = Duel Bridge
@@ -212,7 +213,7 @@ BridgeThree = Bridge à trois
 BridgeDouble = Bridge Doubles
 ComboSolo = Duel Combo Solo
 SumoTournament = Tournoi Sumo
-SkyWarsTournament = Tournoi SkyWars
+SkyWarsTournament = Tournoi Sky Wars
 UhcMeetup = UHC Meetup
 PotionSolo = Duel Potion Solo
 BlitzSolo = Duel Blitz Solo
@@ -353,13 +354,13 @@ tokens = Jetons
 bow-accuracy = Précision à l'arc
 
 skywars = skywars
-	.description = Affiche les statistiques de SkyWars d'un joueur.
+	.description = Affiche les statistiques de Sky Wars d'un joueur.
 	.username = username
 	.username-description = Le nom d'utilisateur Minecraft à afficher
 	.uuid = uuid
 	.uuid-description = L'UUID Minecraft à afficher
 	.mode = mode
-	.mode-description = Le mode SkyWars à afficher
+	.mode-description = Le mode Sky Wars à afficher
 
 # /smash
 
@@ -395,7 +396,7 @@ speeduhc = speeduhc
 TntRun = TNT Run
 PvpRun = PvP Run
 BowSpleef = Bow Spleef
-wizard = Magiciens
+Wizard = Magiciens
 
 record = Record
 double-jumps = Doubles sauts
@@ -531,6 +532,7 @@ woolwars = woolwars
 # Étiquettes partagées
 
 Normal = Normal
+Team = Équipe
 
 blocks-broken = Blocs cassés
 blocks-placed = Blocs posés
