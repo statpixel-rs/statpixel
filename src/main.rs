@@ -11,6 +11,7 @@ use translate::{Context, Data, Error};
 
 mod commands;
 mod constants;
+mod snapshot;
 mod util;
 
 pub use constants::*;
@@ -34,10 +35,12 @@ async fn main() {
 		commands::games::buildbattle(),
 		commands::cache::cache(),
 		commands::games::copsandcrims(),
+		commands::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
 		commands::link::link(),
 		commands::games::megawalls(),
+		commands::monthly::monthly(),
 		commands::games::murdermystery(),
 		commands::games::paintball(),
 		commands::games::pit(),
@@ -53,8 +56,8 @@ async fn main() {
 		commands::games::vampirez(),
 		commands::games::walls(),
 		commands::games::warlords(),
+		commands::weekly::weekly(),
 		commands::games::woolwars(),
-		commands::history::history(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

@@ -1,58 +1,8 @@
 #[allow(clippy::wildcard_imports)]
-use api::player::{self, stats::*};
+use api::player::stats::*;
 
-use chrono::{DateTime, Utc};
-use database::schema::snapshot;
-use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl};
+use crate::snapshot::{get_or_insert_snapshot, SnapshotStatus};
 use translate::{Context, Error};
-
-enum SnapshotStatus {
-	Found((Box<player::data::Data>, DateTime<Utc>)),
-	Inserted,
-}
-
-/// Gets the earliest snapshot of a given player within a timeframe.
-fn get_snapshot(
-	ctx: Context<'_>,
-	player: &player::Player,
-	timeframe: DateTime<Utc>,
-) -> Result<Option<(player::data::Data, DateTime<Utc>)>, Error> {
-	let result = snapshot::table
-		.filter(snapshot::columns::created_at.ge(timeframe))
-		.filter(snapshot::columns::uuid.eq(player.uuid))
-		.select((snapshot::columns::data, snapshot::columns::created_at))
-		.order(snapshot::columns::created_at.asc())
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get()?);
-
-	match result {
-		Ok((data, created_at)) => Ok(Some((bson::from_slice(&data[..])?, created_at))),
-		Err(diesel::NotFound) => Ok(None),
-		Err(e) => Err(e.into()),
-	}
-}
-
-fn get_or_insert_snapshot(
-	ctx: Context<'_>,
-	player: &player::Player,
-	data: &player::data::Data,
-	timeframe: DateTime<Utc>,
-) -> Result<SnapshotStatus, Error> {
-	// If a snapshot exists within the given timeframe, return it.
-	if let Some(snapshot) = get_snapshot(ctx, player, timeframe)? {
-		return Ok(SnapshotStatus::Found((Box::new(snapshot.0), snapshot.1)));
-	}
-
-	// Otherwise, insert the current data into the database.
-	diesel::insert_into(snapshot::table)
-		.values((
-			snapshot::columns::uuid.eq(player.uuid),
-			snapshot::columns::data.eq(bson::to_vec(data)?),
-		))
-		.execute(&mut ctx.data().pool.get()?)?;
-
-	// And return nothing.
-	Ok(SnapshotStatus::Inserted)
-}
 
 macro_rules! generate_command {
 	($game: ty, $mode: ty, $fn: ident) => {
@@ -69,7 +19,7 @@ macro_rules! generate_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				get_or_insert_snapshot(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(1))?;
+				get_or_insert_snapshot(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(30))?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 				if let SnapshotStatus::Found((ref snapshot, _)) = status {
@@ -249,6 +199,6 @@ generate_command!(wool_wars::WoolWars, wool_wars::WoolWarsMode, woolwars);
 	)
 )]
 #[allow(clippy::unused_async)]
-pub async fn history(_ctx: Context<'_>) -> Result<(), Error> {
+pub async fn monthly(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())
 }
