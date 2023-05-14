@@ -21,6 +21,7 @@ pub async fn autocomplete_username(
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::autocomplete::table
 				.filter(schema::autocomplete::name.is_not_null())
+				.order(schema::autocomplete::searches.desc())
 				.limit(10)
 				.select(schema::autocomplete::name)
 				.get_results::<String>(&mut connection);
@@ -34,6 +35,7 @@ pub async fn autocomplete_username(
 					lower(schema::autocomplete::name)
 						.like(format!("{}%", partial.to_ascii_lowercase())),
 				)
+				.order(schema::autocomplete::searches.desc())
 				.limit(9)
 				.select(schema::autocomplete::name)
 				.get_results::<String>(&mut connection);

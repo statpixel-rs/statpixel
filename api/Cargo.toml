@@ -7,6 +7,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
 governor = "0.5.1"
+database = { path = "../database" }
 macros = { path = "./macros" }
 minecraft = { path = "../minecraft" }
 translate = { path = "../translate" }
@@ -22,6 +23,7 @@ skia-safe = "0.62.0"
 num-format = "0.4.4"
 poise = "0.5.5"
 futures = "0.3.28"
+diesel = "2.0.4"
 
 [dev-dependencies]
 dotenvy = "0.15.7"

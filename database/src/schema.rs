@@ -4,6 +4,7 @@ diesel::table! {
 	autocomplete (uuid) {
 		uuid -> Uuid,
 		name -> Varchar,
+		searches -> Int4,
 	}
 }
 

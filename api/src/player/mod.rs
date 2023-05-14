@@ -2,10 +2,13 @@ pub mod data;
 pub mod stats;
 pub mod status;
 
+use database::schema::autocomplete;
+use diesel::{ExpressionMethods, RunQueryDsl};
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
 use serde::Deserialize;
 use std::{str::FromStr, sync::Arc};
+use translate::Context;
 use uuid::Uuid;
 
 use crate::{
@@ -55,14 +58,36 @@ impl Player {
 	}
 
 	/// # Errors
+	/// Returns an error if there is an issue with the database.
+	pub fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+		diesel::insert_into(autocomplete::table)
+			.values((
+				autocomplete::name.eq(&self.username),
+				autocomplete::uuid.eq(&self.uuid),
+				autocomplete::searches.eq(1),
+			))
+			.on_conflict(autocomplete::uuid)
+			.do_update()
+			.set((
+				autocomplete::name.eq(&self.username),
+				autocomplete::searches.eq(autocomplete::searches + 1),
+			))
+			.execute(&mut ctx.data().pool.get()?)?;
+
+		Ok(())
+	}
+
+	/// # Errors
 	/// Returns an error if the username does not exist or if their data is invalid.
 	pub async fn from_username(username: &str) -> Result<Player, Arc<Error>> {
-		PLAYER_CACHE
+		let player = PLAYER_CACHE
 			.try_get_with(
 				username.to_ascii_lowercase(),
 				Self::from_username_raw(username),
 			)
-			.await
+			.await?;
+
+		Ok(player)
 	}
 
 	async fn from_username_raw(username: &str) -> Result<Player, Error> {

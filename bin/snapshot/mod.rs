@@ -1,3 +1,5 @@
+mod update;
+
 use std::io::{Read, Write};
 
 use api::player;
