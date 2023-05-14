@@ -6,9 +6,9 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 
 # /display
 display = display
-	.description = Modifie la façon dont les réponses sont affichées.
-	.text = text
-	.text-description = Que les réponses soient affichées sous forme de texte
+  .description = Modifie la façon dont les réponses sont affichées.
+  .text = text
+  .text-description = Que les réponses soient affichées sous forme de texte
 
 display-changed = Affichage modifié
 display-changed-text-description = Les réponses seront désormais envoyées sous forme de texte.
@@ -16,7 +16,7 @@ display-changed-image-description = Les réponses seront désormais envoyées so
 
 # /unlink
 unlink = unlink
-	.description = Dissocie votre compte Discord d'un compte Minecraft.
+  .description = Dissocie votre compte Discord d'un compte Minecraft.
 
 unlinking-failed = Suppression du lien échouée
 unlinking-failed-description = Vous n'êtes pas lié à un compte Minecraft.
@@ -25,11 +25,11 @@ unlinking-succeeded-description = Vous n'êtes plus lié à un compte Minecraft.
 
 # /link
 link = link
-	.description = Lie votre compte Discord à un compte Minecraft.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à lier
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à lier
+  .description = Lie votre compte Discord à un compte Minecraft.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à lier
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à lier
 
 linking-failed = Échec de la liaison
 linking-failed-uuid-description = L'UUID « {$uuid} » n'appartient pas à un compte Minecraft.
@@ -64,13 +64,13 @@ GrinchSimulator = Simulateur de Grinch
 mystery-gifts = Cadeaux mystères
 
 arcade = arcade
-	.description = Affiche les statistiques d'Arcade d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Arcade à afficher
+  .description = Affiche les statistiques d'Arcade d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Arcade à afficher
 
 # /arena
 
@@ -79,13 +79,13 @@ magical-chests = Coffres magiques
 rating = Classement
 
 arena = arena
-	.description = Affiche les statistiques du combat d'arène d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher.
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher.
-	.mode = mode
-	.mode-description = Le mode de combat d'arène à afficher.
+  .description = Affiche les statistiques du combat d'arène d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher.
+  .mode = mode
+  .mode-description = Le mode de combat d'arène à afficher.
 
 # /bedwars
 
@@ -108,13 +108,13 @@ emerald-collected = Emeraudes
 items-purchased = Achats
 
 bedwars = bedwars
-	.description = Affiche les statistiques du combat de lit d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher.
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher.
-	.mode = mode
-	.mode-description = Le mode de combat de lit à afficher.
+  .description = Affiche les statistiques du combat de lit d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher.
+  .mode = mode
+  .mode-description = Le mode de combat de lit à afficher.
 
 # /blitz
 
@@ -148,13 +148,13 @@ chests-opened = Coffres ouverts
 time-played = Temps de jeu
 
 blitz = blitz
-	.description = Affiche les statistiques des jeux de survie Blitz d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher.
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher.
-	.mode = mode
-	.mode-description = Le mode de jeu de survie Blitz à afficher.
+  .description = Affiche les statistiques des jeux de survie Blitz d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher.
+  .mode = mode
+  .mode-description = Le mode de jeu de survie Blitz à afficher.
 
 # /buildbattle
 
@@ -166,13 +166,13 @@ most-points-solo = Plus de points (Solo)
 most-points-team = Plus de points (Équipe)
 
 buildbattle = buildbattle
-	.description = Affiche les statistiques de Build Battle d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Build Battle à afficher
+  .description = Affiche les statistiques de Build Battle d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Build Battle à afficher
 
 # /copsandcrims
 
@@ -188,13 +188,13 @@ bombs-defused = Bombes désamorcées
 bombs-planted = Bombes posées
 
 copsandcrims = copsandcrims
-	.description = Affiche les statistiques de Cops and Crims d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Cops and Crims à afficher
+  .description = Affiche les statistiques de Cops and Crims d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Cops and Crims à afficher
 
 # /duels
 
@@ -231,13 +231,13 @@ melee-accuracy = Précision au corps-à-corps
 health-regenerated = Santé régénérée
 
 duels = duels
-	.description = Affiche les statistiques de Duels d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Duels à afficher
+  .description = Affiche les statistiques de Duels d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Duels à afficher
 
 # /megawalls
 
@@ -250,13 +250,13 @@ wood-chopped = Bois coupé
 treasures-found = Trésors trouvés
 
 megawalls = megawalls
-	.description = Affiche les statistiques Mega Walls d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Mega Walls à afficher
+  .description = Affiche les statistiques Mega Walls d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Mega Walls à afficher
 
 # /murdermystery
 
@@ -270,13 +270,13 @@ murderer-wins = Victoires du meurtrier
 detective-wins = Victoires du détective
 
 murdermystery = murdermystery
-	.description = Affiche les statistiques Murder Mystery d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Murder Mystery à afficher
+  .description = Affiche les statistiques Murder Mystery d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Murder Mystery à afficher
 
 # /paintball
 
@@ -298,13 +298,13 @@ cash-earned = Argent gagné
 highest-killstreak = Meilleure séquence
 
 paintball = paintball
-	.description = Affiche les statistiques Paintball d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Paintball à afficher
+  .description = Affiche les statistiques Paintball d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Paintball à afficher
 
 # /pit
 
@@ -317,13 +317,13 @@ contracts-started = Contrats commencés
 cr = Taux de complétion
 
 pit = pit
-	.description = Affiche les statistiques The Pit d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode The Pit à afficher
+  .description = Affiche les statistiques The Pit d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode The Pit à afficher
 
 # /quake
 
@@ -334,13 +334,13 @@ headshots = Headshots
 sight = Visée
 
 quake = quake
-	.description = Affiche les statistiques de Quakecraft d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Quakecraft à afficher
+  .description = Affiche les statistiques de Quakecraft d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Quakecraft à afficher
 
 # /skywars
 Overall = Général
@@ -356,13 +356,13 @@ tokens = Jetons
 bow-accuracy = Précision à l'arc
 
 skywars = skywars
-	.description = Affiche les statistiques de Sky Wars d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Sky Wars à afficher
+  .description = Affiche les statistiques de Sky Wars d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Sky Wars à afficher
 
 # /smash
 
@@ -371,13 +371,13 @@ smashed = Brisé
 ssr = SSR
 
 smash = smash
-	.description = Affiche les statistiques de Smash Heroes d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Smash Heroes à afficher
+  .description = Affiche les statistiques de Smash Heroes d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Smash Heroes à afficher
 
 # /speeduhc
 
@@ -385,13 +385,13 @@ tears = Larmes
 survived-players = Joueurs survivants
 
 speeduhc = speeduhc
-	.description = Affiche les statistiques de SpeedUHC d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode SpeedUHC à afficher
+  .description = Affiche les statistiques de SpeedUHC d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode SpeedUHC à afficher
 
 # /tntgames
 
@@ -407,13 +407,13 @@ air-time = Temps d'air
 points = Points
 
 tntgames = tntgames
-	.description = Affiche les statistiques de TNT Games d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode TNT Games à afficher
+  .description = Affiche les statistiques de TNT Games d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode TNT Games à afficher
 
 # /turbokartracers
 
@@ -426,13 +426,13 @@ silver-trophies = Trophées d'argent
 gold-trophies = Trophées d'or
 
 turbokartracers = turbokartracers
-	.description = Affiche les statistiques de Turbo Kart Racers d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Turbo Kart Racers à afficher
+  .description = Affiche les statistiques de Turbo Kart Racers d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Turbo Kart Racers à afficher
 
 # /uhc
 
@@ -447,13 +447,13 @@ heads-eaten = Têtes mangées
 ultimates-crafted = Ultimates créées
 
 uhc = uhc
-	.description = Affiche les statistiques d'UHC Champions d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode UHC Champions à afficher
+  .description = Affiche les statistiques d'UHC Champions d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode UHC Champions à afficher
 
 # /vampirez
 
@@ -472,13 +472,13 @@ updated = Mis à jour
 old-vampire = Ancien vampire
 
 vampirez = vampirez
-	.description = Affiche les statistiques de VampireZ d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode VampireZ à afficher
+  .description = Affiche les statistiques de VampireZ d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode VampireZ à afficher
 
 # /walls
 
@@ -488,13 +488,13 @@ activations = Activations
 iron-broken = Fer cassé
 
 walls = walls
-	.description = Affiche les statistiques de The Walls d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode The Walls à afficher
+  .description = Affiche les statistiques de The Walls d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode The Walls à afficher
 
 # /warlords
 
@@ -508,13 +508,13 @@ hide-prestige = Masquer le prestige
 mvps = MVPs
 
 warlords = warlords
-	.description = Affiche les statistiques de Warlords d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Warlords à afficher
+  .description = Affiche les statistiques de Warlords d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Warlords à afficher
 
 # /woolwars
 
@@ -523,13 +523,13 @@ powerups-collected = Powerups Collectés
 wool-placed = Laine Posée
 
 woolwars = woolwars
-	.description = Affiche les statistiques Wool Wars d'un joueur.
-	.username = username
-	.username-description = Le nom d'utilisateur Minecraft à afficher
-	.uuid = uuid
-	.uuid-description = L'UUID Minecraft à afficher
-	.mode = mode
-	.mode-description = Le mode Wool Wars à afficher
+  .description = Affiche les statistiques Wool Wars d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .mode = mode
+  .mode-description = Le mode Wool Wars à afficher
 
 # Étiquettes partagées
 

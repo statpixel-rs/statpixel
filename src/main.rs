@@ -4,7 +4,7 @@
 
 use std::num::NonZeroU32;
 
-use api::{http::HTTP, key, ratelimit::HYPIXEL_RATELIMIT};
+use api::{key, ratelimit::HYPIXEL_RATELIMIT};
 use database::get_pool;
 use governor::{Quota, RateLimiter};
 use poise::serenity_prelude::GatewayIntents;
@@ -22,27 +22,6 @@ pub use constants::*;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-async fn get_key_data() -> reqwest::Result<(key::Key, u32)> {
-	let response = HTTP
-		.get("https://api.hypixel.net/key")
-		.send()
-		.await?
-		.error_for_status()?;
-
-	let remaining = response
-		.headers()
-		.get("ratelimit-reset")
-		.expect("missing ratelimit-reset header")
-		.to_str()
-		.expect("ratelimit-reset header is not a valid utf-8 string")
-		.parse::<u32>()
-		.expect("ratelimit-reset header is not a valid u64");
-
-	let json = response.json::<key::Response>().await?;
-
-	Ok((json.record, remaining))
-}
-
 #[tokio::main]
 async fn main() {
 	let subscriber = FmtSubscriber::builder()
@@ -52,7 +31,7 @@ async fn main() {
 	tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 	dotenvy::dotenv().ok();
 
-	let (key, remaining) = get_key_data().await.unwrap();
+	let (key, remaining) = key::get_data().await.unwrap();
 
 	if remaining != key.limit - 1 {
 		info!(

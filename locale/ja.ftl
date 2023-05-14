@@ -6,9 +6,9 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 
 # /display
 display = display
-	.description = 応答の表示方法を変更します。
-	.text = text
-	.text-description = 応答をテキストとして表示するかどうか
+  .description = 応答の表示方法を変更します。
+  .text = text
+  .text-description = 応答をテキストとして表示するかどうか
 
 display-changed = 表示が変更されました
 display-changed-text-description = 応答は今後テキストとして送信されます。
@@ -16,7 +16,7 @@ display-changed-image-description = 応答は適用される場合には画像�
 
 # /unlink
 unlink = unlink
-	.description = DiscordアカウントとMinecraftアカウントのリンクを解除します。
+  .description = DiscordアカウントとMinecraftアカウントのリンクを解除します。
 
 unlinking-failed = リンク解除に失敗しました
 unlinking-failed-description = Minecraftアカウントにリンクされていません。
@@ -25,11 +25,11 @@ unlinking-succeeded-description = Minecraftアカウントとのリンクが解�
 
 # /link
 link = link
-	.description = DiscordアカウントをMinecraftアカウントにリンクします。
-	.username = username
-	.username-description = リンクするMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = リンクするMinecraftのUUID
+  .description = DiscordアカウントをMinecraftアカウントにリンクします。
+  .username = username
+  .username-description = リンクするMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = リンクするMinecraftのUUID
 
 linking-failed = リンクに失敗しました
 linking-failed-uuid-description = UUID `{$uuid}`はMinecraftアカウントに属していません。
@@ -64,13 +64,13 @@ GrinchSimulator = グリンチシミュレーター
 mystery-gifts = 謎の贈り物
 
 arcade = arcade
-	.description = プレイヤーのアーケードスタッツを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示するアーケードモード
+  .description = プレイヤーのアーケードスタッツを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示するアーケードモード
 
 # /arena
 
@@ -79,13 +79,13 @@ magical-chests = 魔法のチェスト
 rating = レーティング
 
 arena = arena
-	.description = プレイヤーのアリーナブロールスタッツを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示するアリーナブロールモード
+  .description = プレイヤーのアリーナブロールスタッツを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示するアリーナブロールモード
 
 # /bedwars
 
@@ -108,13 +108,13 @@ emerald-collected = エメラルド
 items-purchased = 購入品
 
 bedwars = bedwars
-	.description = プレイヤーのベッドウォーズスタッツを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示するベッドウォーズモード
+  .description = プレイヤーのベッドウォーズスタッツを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示するベッドウォーズモード
 
 # /blitz
 
@@ -148,13 +148,13 @@ chests-opened = チェスト開封回数
 time-played = プレイ時間
 
 blitz = blitz
-	.description = プレイヤーの Blitz Survival Games の統計情報を表示します。
-	.username = username
-	.username-description = 表示する Minecraft ユーザー名
-	.uuid = uuid
-	.uuid-description = 表示する Minecraft UUID
-	.mode = mode
-	.mode-description = 表示する Blitz Survival Games のモード
+  .description = プレイヤーの Blitz Survival Games の統計情報を表示します。
+  .username = username
+  .username-description = 表示する Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = 表示する Minecraft UUID
+  .mode = mode
+  .mode-description = 表示する Blitz Survival Games のモード
 
 # /buildbattle
 
@@ -166,13 +166,13 @@ most-points-solo = 最多ポイント (個人)
 most-points-team = 最多ポイント (チーム)
 
 buildbattle = buildbattle
-	.description = プレイヤーの Build Battle の統計情報を表示します。
-	.username = username
-	.username-description = 表示する Minecraft ユーザー名
-	.uuid = uuid
-	.uuid-description = 表示する Minecraft UUID
-	.mode = mode
-	.mode-description = 表示する Build Battle のモード
+  .description = プレイヤーの Build Battle の統計情報を表示します。
+  .username = username
+  .username-description = 表示する Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = 表示する Minecraft UUID
+  .mode = mode
+  .mode-description = 表示する Build Battle のモード
 
 # /copsandcrims
 
@@ -187,13 +187,13 @@ grenade-kills = 手榴弾キル数
 bombs-defused = 爆弾解除数
 bombs-planted = 爆弾設置数
 copsandcrims = copsandcrims
-	.description = プレイヤーのCops and Crims統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するCops and Crimsモード
+  .description = プレイヤーのCops and Crims統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するCops and Crimsモード
 
 # /duels
 
@@ -230,13 +230,13 @@ melee-accuracy = 近接攻撃精度
 health-regenerated = 回復した体力
 
 duels = duels
-	.description = プレイヤーのDuels統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するDuelsモード
+  .description = プレイヤーのDuels統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するDuelsモード
 
 # /megawalls
 
@@ -249,13 +249,13 @@ wood-chopped = 木を切った回数
 treasures-found = 発見した宝物の数
 
 megawalls = megawalls
-	.description = プレイヤーのメガウォールのステータスを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示するメガウォールのモード
+  .description = プレイヤーのメガウォールのステータスを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示するメガウォールのモード
 
 # /murdermystery
 
@@ -269,13 +269,13 @@ murderer-wins = 殺人鬼の勝利
 detective-wins = 探偵の勝利
 
 murdermystery = murdermystery
-	.description = プレイヤーの殺人ミステリーのステータスを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示する殺人ミステリーのモード
+  .description = プレイヤーの殺人ミステリーのステータスを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示する殺人ミステリーのモード
 
 # /paintball
 
@@ -297,13 +297,13 @@ cash-earned = 獲得した現金
 highest-killstreak = 最高連続キル数
 
 paintball = paintball
-	.description = プレイヤーのペイントボールのステータスを表示します。
-	.username = username
-	.username-description = 表示するマインクラフトのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するマインクラフトのUUID
-	.mode = mode
-	.mode-description = 表示するペイントボールのモード
+  .description = プレイヤーのペイントボールのステータスを表示します。
+  .username = username
+  .username-description = 表示するマインクラフトのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するマインクラフトのUUID
+  .mode = mode
+  .mode-description = 表示するペイントボールのモード
 
 # /pit
 
@@ -316,13 +316,13 @@ contracts-started = 開始した契約の数
 cr = 完了率
 
 pit = pit
-	.description = プレイヤーのThe Pit統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するThe Pitモード
+  .description = プレイヤーのThe Pit統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するThe Pitモード
 
 # /quake
 
@@ -333,13 +333,13 @@ headshots = ヘッドショット数
 sight = サイト
 
 quake = quake
-	.description = プレイヤーのQuakecraft統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するQuakecraftモード
+  .description = プレイヤーのQuakecraft統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するQuakecraftモード
 
 # /skywars
 Overall = 全体
@@ -355,13 +355,13 @@ tokens = トークン
 bow-accuracy = 弓の精度
 
 skywars = skywars
-	.description = プレイヤーのSkyWars統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するSkyWarsモード
+  .description = プレイヤーのSkyWars統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するSkyWarsモード
 
 # /smash
 
@@ -370,13 +370,13 @@ smashed = スマッシュされた回数
 ssr = SSR
 
 smash = smash
-	.description = プレイヤーのSmash Heroes統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するSmash Heroesモード
+  .description = プレイヤーのSmash Heroes統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するSmash Heroesモード
 
 # /speeduhc
 
@@ -384,13 +384,13 @@ tears = 涙の数
 survived-players = 生き残ったプレイヤー数
 
 speeduhc = speeduhc
-	.description = プレイヤーのSpeedUHC統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するSpeedUHCモード
+  .description = プレイヤーのSpeedUHC統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するSpeedUHCモード
 
 # /tntgames
 
@@ -406,13 +406,13 @@ air-time = 空中時間
 points = ポイント
 
 tntgames = tntgames
-	.description = プレイヤーのTNT Gamesの統計情報を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するTNT Gamesのモード
+  .description = プレイヤーのTNT Gamesの統計情報を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するTNT Gamesのモード
 
 # /turbokartracers
 
@@ -425,13 +425,13 @@ silver-trophies = シルバートロフィー
 gold-trophies = ゴールドトロフィー
 
 turbokartracers = turbokartracers
-	.description = プレイヤーのTurbo Kart Racersの統計情報を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するTurbo Kart Racersのモード
+  .description = プレイヤーのTurbo Kart Racersの統計情報を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するTurbo Kart Racersのモード
 
 # /uhc
 
@@ -446,13 +446,13 @@ heads-eaten = 食べた頭の数
 ultimates-crafted = クラフトした究極のアイテム数
 
 uhc = uhc
-	.description = プレイヤーのUHC Championsの統計情報を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するUHC Championsのモード
+  .description = プレイヤーのUHC Championsの統計情報を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するUHC Championsのモード
 
 # /vampirez
 
@@ -471,13 +471,13 @@ updated = 更新されました
 old-vampire = 古いヴァンパイア
 
 vampirez = vampirez
-	.description = プレイヤーのVampireZの統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するVampireZのモード
+  .description = プレイヤーのVampireZの統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するVampireZのモード
 
 # /walls
 
@@ -487,13 +487,13 @@ activations = アクティベーション
 iron-broken = 鉄の破損
 
 walls = walls
-	.description = プレイヤーのThe Wallsの統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するThe Wallsのモード
+  .description = プレイヤーのThe Wallsの統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するThe Wallsのモード
 
 # /warlords
 
@@ -507,13 +507,13 @@ hide-prestige = プレステージを隠す
 mvps = MVPs
 
 warlords = warlords
-	.description = プレイヤーのWarlordsの統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するWarlordsのモード
+  .description = プレイヤーのWarlordsの統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するWarlordsのモード
 
 # /woolwars
 
@@ -522,13 +522,13 @@ powerups-collected = 収集したパワーアップ
 wool-placed = 置かれた羊毛
 
 woolwars = woolwars
-	.description = プレイヤーのWool Warsの統計を表示します。
-	.username = username
-	.username-description = 表示するMinecraftのユーザー名
-	.uuid = uuid
-	.uuid-description = 表示するMinecraftのUUID
-	.mode = mode
-	.mode-description = 表示するWool Warsのモード
+  .description = プレイヤーのWool Warsの統計を表示します。
+  .username = username
+  .username-description = 表示するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するMinecraftのUUID
+  .mode = mode
+  .mode-description = 表示するWool Warsのモード
 
 # 共有キャンバスのラベル
 

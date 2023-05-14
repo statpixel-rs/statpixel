@@ -2,6 +2,7 @@
 #![allow(clippy::similar_names)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
+#![feature(assert_matches)]
 
 mod extras;
 

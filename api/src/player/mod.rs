@@ -42,7 +42,7 @@ pub struct MojangResponse {
 	pub id: Uuid,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Player {
 	pub uuid: Uuid,
 	pub username: String,
@@ -185,7 +185,26 @@ impl Player {
 
 #[cfg(test)]
 mod tests {
+	use std::{assert_matches::assert_matches, num::NonZeroU32};
+
+	use governor::{Quota, RateLimiter};
+
 	use super::*;
+	use crate::key;
+
+	async fn set_up_key() {
+		if HYPIXEL_RATELIMIT.get().is_some() {
+			return;
+		}
+
+		let (key, _) = key::get_data().await.unwrap();
+
+		HYPIXEL_RATELIMIT
+			.set(RateLimiter::direct(Quota::per_minute(
+				NonZeroU32::new(key.limit).unwrap(),
+			)))
+			.ok();
+	}
 
 	#[test]
 	fn test_player() {
@@ -193,16 +212,17 @@ mod tests {
 		let player = Player::new(uuid, "Notch".to_string());
 
 		assert_eq!(player.uuid, uuid);
+		assert_eq!(player.username, "Notch".to_string());
 	}
 
 	#[tokio::test]
 	async fn test_player_from_username() {
 		let player = Player::from_username("Notch").await;
 
-		assert!(player.is_ok());
+		assert_matches!(player, Ok(_));
 		assert_eq!(
+			player.unwrap().uuid,
 			Uuid::parse_str("069a79f4-44e9-4726-a5be-fca90e38aaf5").unwrap(),
-			player.unwrap().uuid
 		);
 	}
 
@@ -211,15 +231,17 @@ mod tests {
 		let uuid = Uuid::parse_str("069a79f4-44e9-4726-a5be-fca90e38aaf5").unwrap();
 		let player = Player::from_uuid(&uuid).await;
 
-		assert!(player.is_ok());
-		assert_eq!("Notch".to_string(), player.unwrap().username);
+		assert_matches!(player, Ok(_));
+		assert_eq!(player.unwrap().username, "Notch".to_string());
 	}
 
 	#[tokio::test]
 	async fn test_player_data() {
+		set_up_key().await;
+
 		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
 		let player = Player::new(uuid, "Technoblade".to_string());
 
-		assert!(player.get_data().await.is_ok());
+		assert_matches!(player.get_data().await, Ok(_));
 	}
 }

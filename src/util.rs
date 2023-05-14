@@ -60,7 +60,7 @@ pub async fn get_player_from_input(
 		uuid_raw,
 		username_raw
 			.as_ref()
-			.and_then(|username| Username::parse_str(username).ok()),
+			.and_then(|username| Username::try_from_str(username).ok()),
 		username_raw,
 	) {
 		(Some(uuid), _, _, _) => Ok(Player::from_uuid(&uuid).await?),

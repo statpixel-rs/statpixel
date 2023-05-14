@@ -1,5 +1,6 @@
 #![warn(clippy::pedantic)]
 #![feature(exclusive_range_pattern)]
+#![feature(assert_matches)]
 
 use thiserror::Error;
 

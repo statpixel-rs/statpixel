@@ -111,9 +111,8 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 		let locale = locale.to_str().ok_or("invalid filename UTF-8")?;
 
 		// Load .ftl resource
-		let file_contents = std::fs::read_to_string(path)
-			.map_err(|e| format!("could not read file: {e:?}"))?
-			.replace('\t', "    ");
+		let file_contents =
+			std::fs::read_to_string(path).map_err(|e| format!("could not read file: {e:?}"))?;
 
 		let resource = fluent::FluentResource::try_new(file_contents)
 			.map_err(|(_, e)| format!("failed to parse {path:?}: {e:?}"))?;

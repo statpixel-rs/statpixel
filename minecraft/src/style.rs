@@ -96,7 +96,6 @@ impl MinecraftFont {
 		}
 
 		style.set_foreground_color(paint.into());
-
 		style
 	}
 }
@@ -122,4 +121,26 @@ pub const fn parse_font(mut parser: Parser<'_>) -> ParseValueResult<'_, Minecraf
 	};
 
 	Ok((font, parser))
+}
+
+#[cfg(test)]
+mod tests {
+	use std::assert_matches::assert_matches;
+
+	use super::*;
+
+	#[test]
+	fn test_const_parse_font() {
+		assert_matches!(parse_font(Parser::new("r")), Ok((MinecraftFont::Normal, _)));
+		assert_matches!(parse_font(Parser::new("l")), Ok((MinecraftFont::Bold, _)));
+		assert_matches!(parse_font(Parser::new("o")), Ok((MinecraftFont::Italic, _)));
+		assert_matches!(parse_font(Parser::new("")), Err(_));
+	}
+
+	#[test]
+	fn test_font_from_char() {
+		assert_eq!(MinecraftFont::from('r'), MinecraftFont::Normal);
+		assert_eq!(MinecraftFont::from('l'), MinecraftFont::Bold);
+		assert_eq!(MinecraftFont::from('o'), MinecraftFont::Italic);
+	}
 }

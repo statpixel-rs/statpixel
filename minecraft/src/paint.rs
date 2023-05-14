@@ -190,3 +190,31 @@ pub const fn parse(mut parser: Parser<'_>) -> ParseValueResult<'_, Paint> {
 
 	Ok((paint, parser))
 }
+
+#[cfg(test)]
+mod tests {
+	use std::assert_matches::assert_matches;
+
+	use super::*;
+
+	#[test]
+	fn test_try_from_char() {
+		assert_matches!(Paint::try_from('0'), Ok(Paint::Black));
+		assert_matches!(Paint::try_from('1'), Ok(Paint::DarkBlue));
+		assert_matches!(Paint::try_from('2'), Ok(Paint::DarkGreen));
+		assert_matches!(Paint::try_from('3'), Ok(Paint::DarkAqua));
+		assert_matches!(Paint::try_from('4'), Ok(Paint::DarkRed));
+		assert_matches!(Paint::try_from('5'), Ok(Paint::DarkPurple));
+		assert_matches!(Paint::try_from('6'), Ok(Paint::Gold));
+		assert_matches!(Paint::try_from('7'), Ok(Paint::Gray));
+		assert_matches!(Paint::try_from('8'), Ok(Paint::DarkGray));
+		assert_matches!(Paint::try_from('9'), Ok(Paint::Blue));
+		assert_matches!(Paint::try_from('a'), Ok(Paint::Green));
+		assert_matches!(Paint::try_from('b'), Ok(Paint::Aqua));
+		assert_matches!(Paint::try_from('c'), Ok(Paint::Red));
+		assert_matches!(Paint::try_from('d'), Ok(Paint::LightPurple));
+		assert_matches!(Paint::try_from('e'), Ok(Paint::Yellow));
+		assert_matches!(Paint::try_from('f'), Ok(Paint::White));
+		assert_matches!(Paint::try_from('g'), Err(()));
+	}
+}
