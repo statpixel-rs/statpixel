@@ -98,16 +98,16 @@ macro_rules! generate_large_command {
 				};
 
 			let content = match status {
-				Status::Found((_, created_at)) => format!(
-					"Showing statistics change from <t:{}:f> to <t:{}:f>",
-					created_at.timestamp(),
-					::chrono::Utc::now().timestamp(),
+				Status::Found((_, created_at)) => ::translate::tr!(
+					ctx, "showing-statistics",
+					from: created_at.timestamp(),
+					to: ::chrono::Utc::now().timestamp(),
 				),
-				Status::Inserted => format!(
-					"No previous data found for **{}**, so it has been inserted.\nShowing statistics change from <t:{}:f> to <t:{}:f>",
-					$crate::util::escape_username(&player.username),
-					::chrono::Utc::now().timestamp(),
-					::chrono::Utc::now().timestamp(),
+				Status::Inserted => ::translate::tr!(
+					ctx, "no-previous-statistics",
+					name: $crate::util::escape_username(&player.username),
+					from: ::chrono::Utc::now().timestamp(),
+					to: ::chrono::Utc::now().timestamp(),
 				),
 			};
 

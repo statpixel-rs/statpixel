@@ -1,6 +1,10 @@
 # Étiquettes générales
 not-linked = Arguments manquants
 not-linked-description = Comme vous n'êtes pas lié, vous devez fournir un profil pour afficher.
+showing-statistics = Affichage des statistiques de <t:{$from}:f> à <t:{$to}:f>.
+no-previous-statistics =
+	Aucune donnée précédente trouvée pour **{$name}**, elle a donc été insérée.
+	Affichage des statistiques de <t:{$from}:f> à <t:{$to}:f>.
 
 # /display
 display = display

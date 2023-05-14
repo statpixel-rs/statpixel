@@ -1,6 +1,10 @@
 # 一般ラベル
 not-linked = 引数が不足しています
 not-linked-description = リンクされていないため、プロフィールを表示するにはプロフィールを提供する必要があります。
+showing-statistics = <t:{$from}:f>から<t:{$to}:f>までの統計を表示しています。
+no-previous-statistics =
+	**{$name}**の以前のデータが見つからなかったため、挿入されました。
+	<t:{$from}:f>から<t:{$to}:f>までの統計を表示しています。
 
 # /display
 display = display
