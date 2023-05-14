@@ -3,14 +3,12 @@ use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl, TextExpressionMethods};
 use translate::Context;
 
 pub mod cache;
-pub mod daily;
 pub mod display;
 pub mod games;
+pub mod history;
 pub mod link;
-pub mod monthly;
 pub mod ser;
 pub mod unlink;
-pub mod weekly;
 
 #[allow(clippy::unused_async)]
 pub async fn autocomplete_username(

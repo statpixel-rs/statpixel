@@ -67,7 +67,7 @@ async fn main() {
 		)))
 		.unwrap();
 
-	info!(ratelimit_min = key.limit, "hypixel api key found");
+	info!(ratelimit_per_min = key.limit, "hypixel api key found");
 
 	let mut commands = vec![
 		commands::games::arcade(),
@@ -77,12 +77,12 @@ async fn main() {
 		commands::games::buildbattle(),
 		commands::cache::cache(),
 		commands::games::copsandcrims(),
-		commands::daily::daily(),
+		commands::history::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
 		commands::link::link(),
 		commands::games::megawalls(),
-		commands::monthly::monthly(),
+		commands::history::monthly::monthly(),
 		commands::games::murdermystery(),
 		commands::games::paintball(),
 		commands::games::pit(),
@@ -98,7 +98,7 @@ async fn main() {
 		commands::games::vampirez(),
 		commands::games::walls(),
 		commands::games::warlords(),
-		commands::weekly::weekly(),
+		commands::history::weekly::weekly(),
 		commands::games::woolwars(),
 	];
 
