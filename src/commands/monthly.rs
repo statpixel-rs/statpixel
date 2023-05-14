@@ -98,16 +98,14 @@ macro_rules! generate_large_command {
 				};
 
 			let content = match status {
-				Status::Found((_, created_at)) => ::translate::tr!(
+				Status::Found((_, created_at)) => ::translate::tr_fmt!(
 					ctx, "showing-statistics",
-					from: created_at.timestamp(),
-					to: ::chrono::Utc::now().timestamp(),
+					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 				),
-				Status::Inserted => ::translate::tr!(
+				Status::Inserted => ::translate::tr_fmt!(
 					ctx, "no-previous-statistics",
 					name: $crate::util::escape_username(&player.username),
-					from: ::chrono::Utc::now().timestamp(),
-					to: ::chrono::Utc::now().timestamp(),
 				),
 			};
 

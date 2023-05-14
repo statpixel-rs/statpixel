@@ -1,10 +1,8 @@
 # Общие метки
 not-linked = Недостающие аргументы
 not-linked-description = Так как вы не привязаны, вы должны предоставить профиль для просмотра.
-showing-statistics = Показаны изменения статистики с <t:{$from}:f> по <t:{$to}:f>.
-no-previous-statistics =
-	Нет предыдущих данных для **{$name}**, поэтому они были вставлены.
-	Показаны изменения статистики с <t:{$from}:f> по <t:{$to}:f>.
+showing-statistics = Показаны изменения статистики с {$from} по {$to}.
+no-previous-statistics = Нет предыдущих данных для **{$name}**, поэтому они были вставлены.
 
 # /display
 display = display

@@ -1,10 +1,8 @@
 # General labels
 not-linked = Missing arguments
 not-linked-description = Since you're not linked, you need to provide a profile to view.
-showing-statistics = Showing statistics change from <t:{$from}:f> to <t:{$to}:f>.
-no-previous-statistics =
-	No previous data found for **{$name}**, so it has been inserted.
-	Showing statistics change from <t:{$from}:f> to <t:{$to}:f>.
+showing-statistics = Showing statistics change from {$from} to {$to}.
+no-previous-statistics = No previous data found for **{$name}**, so it has been inserted.
 
 # /display
 display = display

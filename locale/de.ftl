@@ -1,10 +1,8 @@
 # Allgemeine Beschriftungen
 not-linked = Fehlende Argumente
 not-linked-description = Da du nicht verknüpft bist, musst du ein Profil angeben, um es anzuzeigen.
-showing-statistics = Zeigt Statistikänderungen von <t:{$from}:f> bis <t:{$to}:f> an.
-no-previous-statistics =
-	Keine vorherigen Daten für **{$name}** gefunden, daher wurden sie eingefügt.
-	Zeigt Statistikänderungen von <t:{$from}:f> bis <t:{$to}:f> an.
+showing-statistics = Zeigt Statistikänderungen von {$from} bis {$to} an.
+no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher wurden sie eingefügt.
 
 # /display
 display = display

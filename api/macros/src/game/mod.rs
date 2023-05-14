@@ -574,7 +574,7 @@ impl ToTokens for GameInputReceiver {
 
 							::futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
 								::std::option::Option::Some(::poise::AutocompleteChoice {
-									name,
+									name: name.to_string(),
 									value: mode.into(),
 								})
 							} else {

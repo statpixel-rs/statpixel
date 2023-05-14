@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use serde::{Deserialize, Deserializer};
 use translate::Context;
 
@@ -27,8 +29,12 @@ impl serde::Serialize for InverseBool {
 }
 
 impl ToFormatted for InverseBool {
-	fn to_formatted_label(&self, ctx: Context<'_>, percent: bool) -> String {
-		(!self.0).to_formatted_label(ctx, percent)
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, percent: bool) -> Cow<'t, str> {
+		if self.0 {
+			false.to_formatted_label(ctx, percent)
+		} else {
+			true.to_formatted_label(ctx, percent)
+		}
 	}
 }
 

@@ -41,11 +41,11 @@ macro_rules! impl_time_unit {
 		}
 
 		impl $crate::canvas::label::ToFormatted for $name {
-			fn to_formatted_label(
-				&self,
-				_ctx: ::translate::Context<'_>,
+			fn to_formatted_label<'t, 'c: 't>(
+				&'t self,
+				_ctx: ::translate::Context<'c>,
 				_percent: bool,
-			) -> ::std::string::String {
+			) -> ::std::borrow::Cow<'t, str> {
 				let mut result = ::std::string::String::with_capacity(3);
 				let (s, neg) = {
 					let s = self.0 $op $val;
@@ -93,7 +93,7 @@ macro_rules! impl_time_unit {
 					result.push_str(&format!("{}s", seconds));
 				}
 
-				result
+				::std::borrow::Cow::Owned(result)
 			}
 		}
 	};

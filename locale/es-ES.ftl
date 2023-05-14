@@ -1,10 +1,8 @@
 # Etiquetas generales
 not-linked = Argumentos faltantes
 not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para ver.
-showing-statistics = Mostrando estadísticas de <t:{$from}:f> a <t:{$to}:f>.
-no-previous-statistics =
-	No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
-	Mostrando estadísticas de <t:{$from}:f> a <t:{$to}:f>.
+showing-statistics = Mostrando estadísticas de {$from} a {$to}.
+no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
 
 # /display
 display = display

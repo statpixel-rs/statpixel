@@ -1,6 +1,6 @@
 use database::schema;
 use diesel::{ExpressionMethods, RunQueryDsl};
-use translate::tr;
+use translate::{tr, tr_fmt};
 use uuid::Uuid;
 
 use crate::{
@@ -64,9 +64,9 @@ pub async fn link(
 				tr!(ctx, "linking-failed"),
 				match (uuid, username) {
 					(Some(uuid), _) => {
-						tr!(ctx, "linking-failed-uuid-description", uuid: uuid.to_string())
+						tr_fmt!(ctx, "linking-failed-uuid-description", uuid: uuid.to_string())
 					}
-					(_, Some(username)) => tr!(
+					(_, Some(username)) => tr_fmt!(
 						ctx,
 						"linking-failed-username-description",
 						name: escape_username(&username)

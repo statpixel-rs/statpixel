@@ -1,16 +1,16 @@
-use std::fmt::Debug;
+use std::{borrow::Cow, fmt::Debug};
 
 // Taken from https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 use crate::{Context, Data, Error};
 use tracing::warn;
 
-type FluentBundle = fluent::bundle::FluentBundle<
+type Bundle = fluent::bundle::FluentBundle<
 	fluent::FluentResource,
 	intl_memoizer::concurrent::IntlLangMemoizer,
 >;
 
 #[macro_export]
-macro_rules! tr {
+macro_rules! tr_fmt {
 	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
 		#[allow(unused_mut)]
 		let mut args = $crate::fluent::FluentArgs::new();
@@ -20,9 +20,16 @@ macro_rules! tr {
 	}};
 }
 
+#[macro_export]
+macro_rules! tr {
+	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
+		$crate::get_str($ctx, $id)
+	}};
+}
+
 pub struct Locale {
-	main: FluentBundle,
-	other: std::collections::HashMap<String, FluentBundle>,
+	main: Bundle,
+	other: std::collections::HashMap<String, Bundle>,
 }
 
 impl Debug for Locale {
@@ -33,7 +40,7 @@ impl Debug for Locale {
 
 /// Given a language file and message identifier, returns the translation
 pub fn format(
-	bundle: &FluentBundle,
+	bundle: &Bundle,
 	id: &str,
 	attr: Option<&str>,
 	args: Option<&fluent::FluentArgs<'_>>,
@@ -51,32 +58,54 @@ pub fn format(
 	)
 }
 
-/// Retrieves the appropriate language file depending on user locale and calls [`format`]
-pub fn get(
-	ctx: Context<'_>,
-	id: &str,
-	attr: Option<&str>,
-	args: Option<&fluent::FluentArgs<'_>>,
-) -> String {
+pub fn get_str<'t, 'i: 't>(ctx: Context<'t>, id: &'i str) -> Cow<'t, str> {
 	let locale = &ctx.data().locale;
 
 	ctx.locale()
 		// Try to get the language-specific translation
-		.and_then(|l| format(locale.other.get(l)?, id, attr, args))
+		.and_then(|l| get_locale_str(locale.other.get(l)?, id))
 		// Otherwise, fall back on main translation
-		.or_else(|| format(&locale.main, id, attr, args))
+		.or_else(|| get_locale_str(&locale.main, id))
 		// If this message ID is not present in any translation files whatsoever
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);
-			id.to_string()
+			Cow::Borrowed(id)
 		})
 }
 
-/// Parses the `locale/` folder into a set of language files (FluentBundle)
+fn get_locale_str<'t, 'i: 't>(bundle: &'t Bundle, id: &'i str) -> Option<Cow<'t, str>> {
+	let message = bundle.get_message(id)?;
+	let pattern = message.value()?;
+
+	Some(bundle.format_pattern(pattern, None, &mut vec![]))
+}
+
+/// Retrieves the appropriate language file depending on user locale and calls [`format`]
+pub fn get<'i>(
+	ctx: Context<'_>,
+	id: &'i str,
+	attr: Option<&str>,
+	args: Option<&fluent::FluentArgs<'_>>,
+) -> Cow<'i, str> {
+	let locale = &ctx.data().locale;
+
+	ctx.locale()
+		// Try to get the language-specific translation
+		.and_then(|l| format(locale.other.get(l)?, id, attr, args).map(Cow::Owned))
+		// Otherwise, fall back on main translation
+		.or_else(|| format(&locale.main, id, attr, args).map(Cow::Owned))
+		// If this message ID is not present in any translation files whatsoever
+		.unwrap_or_else(|| {
+			warn!("unknown fluent message identifier `{}`", id);
+			Cow::Borrowed(id)
+		})
+}
+
+/// Parses the `locale/` folder into a set of language files (Bundle)
 pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 	fn read_single_ftl(
 		path: &std::path::Path,
-	) -> Result<(String, FluentBundle), Box<dyn std::error::Error>> {
+	) -> Result<(String, Bundle), Box<dyn std::error::Error>> {
 		// Extract locale from filename
 		let locale = path.file_stem().ok_or("invalid .ftl filename")?;
 		let locale = locale.to_str().ok_or("invalid filename UTF-8")?;
@@ -90,7 +119,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 			.map_err(|(_, e)| format!("failed to parse {path:?}: {e:?}"))?;
 
 		// Associate .ftl resource with locale and bundle it
-		let mut bundle = FluentBundle::new_concurrent(vec![locale
+		let mut bundle = Bundle::new_concurrent(vec![locale
 			.parse()
 			.map_err(|e| format!("invalid locale `{locale}`: {e}"))?]);
 
@@ -106,7 +135,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 		other: std::fs::read_dir("locale")?
 			.map(|file| read_single_ftl(&file?.path()))
 			.collect::<Result<_, _>>()
-			.map_err(|_| "could not read directory")?,
+			.map_err(|e| format!("could not read directory {e:?}"))?,
 	})
 }
 

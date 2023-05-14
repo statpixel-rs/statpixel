@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use super::{
 	label::ToFormatted, util, GAP, HEADER_DATA_HEIGHT, HEADER_DATA_RAD, HEADER_HEIGHT,
 	HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT, ITEM_WIDTH, PADDING,
@@ -157,11 +159,9 @@ pub fn apply_item(
 	draw(surface, &text, 40., rect, TextAlign::Center, true);
 }
 
-pub fn apply_extras(
-	ctx: Context<'_>,
-	surface: &mut Surface,
-	lines: &[(String, Box<dyn ToFormatted>, Paint, bool)],
-) {
+type Extra<'c> = (Cow<'c, str>, Box<dyn ToFormatted>, Paint, bool);
+
+pub fn apply_extras<'c>(ctx: Context<'c>, surface: &mut Surface, lines: &[Extra<'c>]) {
 	let mut y = PADDING;
 	let x = HEADER_LEFT_END_X + GAP;
 

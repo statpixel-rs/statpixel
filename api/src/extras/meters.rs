@@ -1,4 +1,4 @@
-use std::ops::Add;
+use std::{borrow::Cow, ops::Add};
 
 use macros::Diff;
 use serde::{Deserialize, Deserializer};
@@ -45,13 +45,16 @@ impl From<Meters> for u64 {
 
 impl ToFormatted for Meters {
 	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted_label(&self, ctx: Context<'_>, _percent: bool) -> String {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, _percent: bool) -> Cow<'t, str> {
 		let m = self.0;
 
 		if let 0..1_000 = m {
-			return format!("{}m", m.to_formatted_label(ctx, false));
+			return Cow::Owned(format!("{}m", m.to_formatted_label(ctx, false)));
 		}
 
-		format!("{}km", (m as f64 / 1_000.).to_formatted_label(ctx, false))
+		Cow::Owned(format!(
+			"{}km",
+			(m as f64 / 1_000.).to_formatted_label(ctx, false)
+		))
 	}
 }
