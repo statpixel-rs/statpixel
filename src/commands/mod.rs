@@ -31,27 +31,16 @@ pub async fn autocomplete_username(
 				return Box::new(result.into_iter());
 			}
 		} else {
-			let start = std::time::Instant::now();
 			let result = schema::autocomplete::table
 				.filter(
 					lower(schema::autocomplete::name)
 						.like(format!("{}%", partial.to_ascii_lowercase())),
 				)
-				// No null fields will be matched by the LIKE filter, and
-				// there will be no null fields once it has all been populated.
-				// .filter(schema::autocomplete::name.is_not_null())
 				.limit(9)
 				.select(schema::autocomplete::name)
 				.get_results::<String>(&mut connection);
 
 			if let Ok(result) = result {
-				tracing::info!(
-					partial = partial,
-					"Found {} autocompletions in {}s",
-					result.len(),
-					start.elapsed().as_secs_f32()
-				);
-
 				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
 			}
 		}

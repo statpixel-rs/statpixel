@@ -134,7 +134,10 @@ impl Player {
 			url
 		};
 
-		HYPIXEL_RATELIMIT.until_ready().await;
+		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
+		unsafe {
+			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
+		}
 
 		let response = HTTP.get(url).send().await?;
 
@@ -163,7 +166,10 @@ impl Player {
 			url
 		};
 
-		HYPIXEL_RATELIMIT.until_ready().await;
+		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
+		unsafe {
+			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
+		}
 
 		let response = HTTP.get(url).send().await?;
 

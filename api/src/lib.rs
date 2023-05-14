@@ -4,8 +4,6 @@
 #![feature(exclusive_range_pattern)]
 
 mod extras;
-mod http;
-mod ratelimit;
 
 pub use macros;
 use thiserror::Error;
@@ -13,7 +11,10 @@ use thiserror::Error;
 pub mod cache;
 pub mod canvas;
 pub mod game;
+pub mod http;
+pub mod key;
 pub mod player;
+pub mod ratelimit;
 
 pub use extras::*;
 pub use translate::ApiError as Error;
