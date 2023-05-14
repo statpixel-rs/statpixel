@@ -188,19 +188,22 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let mode_match_apply_rows = modes.iter().map(|mode| {
-			let ty = &mode.ty;
-			let ident = mode.ident.as_ref().unwrap();
+		let mode_match_apply_rows = modes
+			.iter()
+			.map(|mode| {
+				let ty = &mode.ty;
+				let ident = mode.ident.as_ref().unwrap();
 
-			quote! {
-				#enum_ident ::#ty => player.stats. #path. #ident .apply(
-					ctx,
-					&mut surface,
-					player,
-					session,
-				),
-			}
-		});
+				quote! {
+					#enum_ident ::#ty => player.stats. #path. #ident .apply(
+						ctx,
+						&mut surface,
+						player,
+						session,
+					),
+				}
+			})
+			.collect::<Vec<_>>();
 
 		let mode_match_count_rows = modes.iter().map(|mode| {
 			let ty = &mode.ty;
@@ -578,6 +581,59 @@ impl ToTokens for GameInputReceiver {
 								::std::option::Option::None
 							})
 						}), 10)
+				}
+
+				pub fn canvas_diff(
+					ctx: ::translate::Context<'_>,
+					prev: &crate::player::data::Data,
+					curr: &mut crate::player::data::Data,
+					session: &crate::player::status::Session,
+					mode: Option<#enum_ident>
+				) -> ::skia_safe::Surface {
+					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
+
+					curr.stats.#path = stats;
+
+					let player = curr;
+					let stats = &player.stats.#path;
+
+					let xp = #calc ::convert(&#xp_field);
+					let level = #calc ::get_level(xp);
+
+					let mode = #enum_ident ::get_mode(mode, session);
+					let mut surface = crate::canvas::create_surface(mode.get_row_count());
+
+					match mode {
+						#enum_ident ::Overall => {
+							Overall::apply(
+								ctx,
+								&mut surface,
+								player,
+								session,
+							);
+						}
+						#(#mode_match_apply_rows)*
+					}
+
+					crate::canvas::header::apply_name(&mut surface, &player);
+
+					crate::canvas::draw::apply_data(
+						ctx,
+						&mut surface,
+						&#level_fmt_field,
+						#calc ::get_level_progress(xp),
+						#calc ::get_curr_level_xp(xp),
+						#calc ::get_level_xp(xp),
+						&#calc ::get_colours(level),
+					);
+
+					crate::canvas::header::apply_status(
+						ctx,
+						&mut surface,
+						&session
+					);
+
+					surface
 				}
 
 				pub fn canvas(ctx: ::translate::Context<'_>, player: &crate::player::data::Data, session: &crate::player::status::Session, mode: Option<#enum_ident>) -> ::skia_safe::Surface {

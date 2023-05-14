@@ -8,7 +8,7 @@ diesel::table! {
 }
 
 diesel::table! {
-	history (id) {
+	snapshot (id) {
 		uuid -> Uuid,
 		created_at -> Timestamptz,
 		updated_at -> Timestamptz,
@@ -25,4 +25,4 @@ diesel::table! {
 	}
 }
 
-diesel::allow_tables_to_appear_in_same_query!(autocomplete, history, users,);
+diesel::allow_tables_to_appear_in_same_query!(autocomplete, snapshot, users,);

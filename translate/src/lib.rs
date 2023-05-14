@@ -7,6 +7,7 @@ use uuid::Uuid;
 mod locale;
 pub mod prelude;
 
+pub use bson;
 pub use diesel;
 pub use fluent;
 pub use locale::*;
@@ -23,9 +24,9 @@ pub type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[derive(Error, Debug)]
 pub enum ApiError {
-	#[error("An internal error occurred when sending a request. {0:?}")]
+	#[error("An internal error occurred while sending a request. {0:?}")]
 	Reqwest(#[from] reqwest::Error),
-	#[error("An internal error occurred when deserializing JSON.")]
+	#[error("An internal error occurred while deserializing JSON.")]
 	Json(#[from] serde_json::Error),
 	#[error("Failed to parse UUID.")]
 	Uuid(#[from] uuid::Error),
@@ -61,4 +62,8 @@ pub enum Error {
 	InvalidUsername(String),
 	#[error("An error occurred while handling io.")]
 	Io(#[from] std::io::Error),
+	#[error("An internal error occurred while deserializing BSON.")]
+	BsonDeserialize(#[from] bson::de::Error),
+	#[error("An internal error occurred while serializing BSON.")]
+	BsonSerialize(#[from] bson::ser::Error),
 }

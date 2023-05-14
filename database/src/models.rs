@@ -9,7 +9,8 @@ pub struct User {
 }
 
 #[derive(Queryable)]
-pub struct History {
+pub struct Snapshot {
+	pub id: i64,
 	pub uuid: Uuid,
 	pub data: Vec<u8>,
 

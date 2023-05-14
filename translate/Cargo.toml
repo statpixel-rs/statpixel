@@ -6,6 +6,7 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
+bson = "2.6.1"
 database = { path = "../database" }
 diesel = "2.0.4"
 fluent = "0.16.0"
