@@ -19,7 +19,7 @@ readme = "https://github.com/matteopolak/statpixel/blob/main/README.md"
 
 [[bin]]
 name = "statpixel"
-path = "src/main.rs"
+path = "bin/main.rs"
 
 [[bench]]
 name = "bench_main"
