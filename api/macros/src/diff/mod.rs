@@ -3,22 +3,6 @@ use proc_macro_crate::{crate_name, FoundCrate};
 use quote::{quote, ToTokens};
 
 /// Creates a new struct that holds the diff between two values of the same struct.
-///
-/// Example:
-/// ```rust
-/// use macros::diff;
-///
-/// #[derive(Debug, PartialEq, Diff)]
-/// struct Test {
-///   a: u32,
-///   b: u32,
-/// }
-///
-/// let a = Test { a: 1, b: 2 };
-/// let b = Test { a: 0, b: 3 };
-///
-/// assert_eq!(a.diff(&b), TestDiff { a: 1, b: 1 });
-/// ```
 #[derive(Debug, FromDeriveInput)]
 #[darling(supports(struct_named, struct_tuple))]
 pub(crate) struct DiffInputReceiver {

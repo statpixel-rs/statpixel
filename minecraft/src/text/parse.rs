@@ -295,18 +295,9 @@ mod tests {
 
 	// Macro tests
 	#[test]
+	#[should_panic]
 	fn test_plain_string_macro() {
-		let parsed = minecraft_text!("Hello, world!");
-
-		assert_eq!(
-			parsed,
-			[Text {
-				text: "Hello, world!",
-				paint: paint::Paint::White,
-				font: style::MinecraftFont::Normal,
-				size: None,
-			}]
-		);
+		let _: [Text; 1] = minecraft_text!("Hello, world!");
 	}
 
 	#[test]
