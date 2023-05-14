@@ -4,13 +4,13 @@ use database::schema::snapshot;
 use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl};
 use translate::{Context, Error};
 
-pub enum SnapshotStatus {
+pub enum Status {
 	Found((Box<player::data::Data>, DateTime<Utc>)),
 	Inserted,
 }
 
 /// Gets the earliest snapshot of a given player within a timeframe.
-pub fn get_snapshot(
+pub fn get(
 	ctx: Context<'_>,
 	player: &player::Player,
 	timeframe: DateTime<Utc>,
@@ -29,15 +29,15 @@ pub fn get_snapshot(
 	}
 }
 
-pub fn get_or_insert_snapshot(
+pub fn get_or_insert(
 	ctx: Context<'_>,
 	player: &player::Player,
 	data: &player::data::Data,
 	timeframe: DateTime<Utc>,
-) -> Result<SnapshotStatus, Error> {
+) -> Result<Status, Error> {
 	// If a snapshot exists within the given timeframe, return it.
-	if let Some(snapshot) = get_snapshot(ctx, player, timeframe)? {
-		return Ok(SnapshotStatus::Found((Box::new(snapshot.0), snapshot.1)));
+	if let Some(snapshot) = get(ctx, player, timeframe)? {
+		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
 	}
 
 	// Otherwise, insert the current data into the database.
@@ -49,5 +49,5 @@ pub fn get_or_insert_snapshot(
 		.execute(&mut ctx.data().pool.get()?)?;
 
 	// And return nothing.
-	Ok(SnapshotStatus::Inserted)
+	Ok(Status::Inserted)
 }

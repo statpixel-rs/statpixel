@@ -1,7 +1,7 @@
 #[allow(clippy::wildcard_imports)]
 use api::player::stats::*;
 
-use crate::snapshot::{get_or_insert_snapshot, SnapshotStatus};
+use crate::snapshot::{get_or_insert, Status};
 use translate::{Context, Error};
 
 macro_rules! generate_command {
@@ -19,10 +19,10 @@ macro_rules! generate_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				get_or_insert_snapshot(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(1))?;
+				get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(1))?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let SnapshotStatus::Found((ref snapshot, _)) = status {
+				if let Status::Found((ref snapshot, _)) = status {
 					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
 
 					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
@@ -31,12 +31,12 @@ macro_rules! generate_command {
 				};
 
 			let content = match status {
-				SnapshotStatus::Found((_, created_at)) => format!(
+				Status::Found((_, created_at)) => format!(
 					"Showing statistics change from <t:{}:f> to <t:{}:f>",
 					created_at.timestamp(),
 					::chrono::Utc::now().timestamp(),
 				),
-				SnapshotStatus::Inserted => format!(
+				Status::Inserted => format!(
 					"No previous data found for **{}**, so it has been inserted.\nShowing statistics change from <t:{}:f> to <t:{}:f>",
 					$crate::util::escape_username(&player.username),
 					::chrono::Utc::now().timestamp(),
@@ -86,10 +86,10 @@ macro_rules! generate_large_command {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				get_or_insert_snapshot(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(1))?;
+				get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - ::chrono::Duration::days(1))?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let SnapshotStatus::Found((ref snapshot, _)) = status {
+				if let Status::Found((ref snapshot, _)) = status {
 					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
 
 					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
@@ -98,12 +98,12 @@ macro_rules! generate_large_command {
 				};
 
 			let content = match status {
-				SnapshotStatus::Found((_, created_at)) => format!(
+				Status::Found((_, created_at)) => format!(
 					"Showing statistics change from <t:{}:f> to <t:{}:f>",
 					created_at.timestamp(),
 					::chrono::Utc::now().timestamp(),
 				),
-				SnapshotStatus::Inserted => format!(
+				Status::Inserted => format!(
 					"No previous data found for **{}**, so it has been inserted.\nShowing statistics change from <t:{}:f> to <t:{}:f>",
 					$crate::util::escape_username(&player.username),
 					::chrono::Utc::now().timestamp(),
