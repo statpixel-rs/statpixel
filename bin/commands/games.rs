@@ -26,7 +26,7 @@ macro_rules! generate_large_command {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (player, data, session) = $crate::get_data!(ctx, uuid, username);
 
-			player.increase_searches(ctx);
+			player.increase_searches(ctx)?;
 
 			let png: ::std::borrow::Cow<[u8]> = {
 				let mut surface = <$game>::canvas(ctx, &data, &session, mode);
@@ -62,7 +62,7 @@ macro_rules! generate_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let (player, data, session) = $crate::get_data!(ctx, uuid, username);
 
-			player.increase_searches(ctx);
+			player.increase_searches(ctx)?;
 
 			let png: ::std::borrow::Cow<[u8]> = {
 				let mut surface = <$game>::canvas(ctx, &data, &session, mode);

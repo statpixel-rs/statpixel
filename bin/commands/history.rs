@@ -16,7 +16,7 @@ macro_rules! generate_history_command {
 			let status =
 				$crate::snapshot::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
 
-			player.increase_searches(ctx);
+			player.increase_searches(ctx)?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 				if let $crate::snapshot::Status::Found((ref snapshot, _)) = status {
@@ -86,7 +86,7 @@ macro_rules! generate_large_history_command {
 			let status =
 				$crate::snapshot::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
 
-			player.increase_searches(ctx);
+			player.increase_searches(ctx)?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 				if let $crate::snapshot::Status::Found((ref snapshot, _)) = status {
