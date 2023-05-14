@@ -61,7 +61,7 @@ jobs:
       - name: Install nightly
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly-2022-11-11
+          toolchain: nightly
           override: true
           profile: minimal
           target: ${{ matrix.target }}
