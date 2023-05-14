@@ -9,17 +9,6 @@ type FluentBundle = fluent::bundle::FluentBundle<
 	intl_memoizer::concurrent::IntlLangMemoizer,
 >;
 
-pub struct Locale {
-	main: FluentBundle,
-	other: std::collections::HashMap<String, FluentBundle>,
-}
-
-impl Debug for Locale {
-	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-		f.debug_struct("Locale").finish()
-	}
-}
-
 #[macro_export]
 macro_rules! tr {
 	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
@@ -31,7 +20,16 @@ macro_rules! tr {
 	}};
 }
 
-pub use tr;
+pub struct Locale {
+	main: FluentBundle,
+	other: std::collections::HashMap<String, FluentBundle>,
+}
+
+impl Debug for Locale {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		f.debug_struct("Locale").finish()
+	}
+}
 
 /// Given a language file and message identifier, returns the translation
 pub fn format(
