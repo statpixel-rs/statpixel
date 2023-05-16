@@ -1,7 +1,9 @@
 use macros::{Diff, Game, Mode};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "smash_heroes",
 	pretty = "§b§lSmash Heroes",
@@ -37,7 +39,9 @@ pub struct SmashHeroes {
 	pub team: Team,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_normal")]
@@ -54,7 +58,9 @@ pub struct Solo {
 	pub smashed: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "wins_2v2")]
@@ -71,7 +77,9 @@ pub struct Double {
 	pub smashed: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Team {
 	#[serde(rename = "wins_teams")]

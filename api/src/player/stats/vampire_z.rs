@@ -1,9 +1,11 @@
 use macros::{Diff, Game, Mode};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::inverse_bool;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "vampire_z",
 	pretty = "§c§lVampireZ",
@@ -56,7 +58,9 @@ pub struct VampireZ {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Normal {
 	pub human_wins: u32,

@@ -1,10 +1,12 @@
 use macros::{Diff, Game, Mode};
 use minecraft::calc::pit::Level;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::minutes;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Outer {
 	#[serde(rename = "pit_stats_ptl")]
@@ -12,7 +14,9 @@ pub struct Outer {
 	pub profile: Profile,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Profile {
 	pub cash: f32,
@@ -20,7 +24,9 @@ pub struct Profile {
 	pub level: Level,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "pit.data",
 	pretty = "§b§lPit",
@@ -78,7 +84,9 @@ pub struct Pit {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Normal {
 	pub kills: u32,

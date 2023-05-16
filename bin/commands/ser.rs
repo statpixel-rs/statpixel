@@ -17,7 +17,7 @@ pub async fn ser(
 ) -> Result<(), Error> {
 	let (player, data, _session) = crate::get_data!(ctx, uuid, username);
 
-	let ser = bson::to_vec(&data).unwrap();
+	let ser = bincode::encode_to_vec(&data, bincode::config::standard()).unwrap();
 	let serialized_bytes = ser.len();
 
 	let mut c = flate2::write::ZlibEncoder::new(Vec::new(), Compression::default());
@@ -32,7 +32,8 @@ pub async fn ser(
 
 	dec.read_to_end(&mut d).unwrap();
 
-	let dec_data = bson::from_slice::<Data>(&d[..]).unwrap();
+	let (dec_data, _): (Data, _) =
+		bincode::decode_from_slice(&d[..], bincode::config::standard()).unwrap();
 
 	assert_eq!(
 		data, dec_data,

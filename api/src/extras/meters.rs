@@ -6,7 +6,7 @@ use translate::Context;
 
 use crate::canvas::label::ToFormatted;
 
-#[derive(Debug, Clone, Copy, Default, PartialEq, Diff)]
+#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq, Diff)]
 pub struct Meters(u64);
 
 impl<'de> Deserialize<'de> for Meters {
@@ -17,15 +17,6 @@ impl<'de> Deserialize<'de> for Meters {
 		let s: u64 = Deserialize::deserialize(deserializer)?;
 
 		Ok(Meters(s))
-	}
-}
-
-impl serde::Serialize for Meters {
-	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-	where
-		S: serde::Serializer,
-	{
-		serializer.serialize_u64(self.0)
 	}
 }
 

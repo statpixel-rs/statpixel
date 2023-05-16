@@ -7,7 +7,6 @@
 mod extras;
 
 pub use macros;
-use thiserror::Error;
 
 pub mod cache;
 pub mod canvas;

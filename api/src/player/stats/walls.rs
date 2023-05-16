@@ -1,9 +1,11 @@
 use macros::{Diff, Game, Mode};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::meters::Meters;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "walls",
 	pretty = "§e§lThe Walls",
@@ -38,7 +40,9 @@ pub struct Walls {
 	pub standard: Standard,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Standard {
 	#[serde(rename = "wins_standard")]

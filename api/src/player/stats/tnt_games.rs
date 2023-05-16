@@ -1,9 +1,11 @@
 use macros::{Diff, Game, Mode};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::seconds::Seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "tnt_games",
 	pretty = "§c§lTNT Games",
@@ -29,7 +31,9 @@ pub struct TntGames {
 	pub wizard: Wizard,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct TntRun {
 	#[serde(rename = "wins_tntrun")]
@@ -42,7 +46,9 @@ pub struct TntRun {
 	pub record: Seconds,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[mode(field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths"))]
 #[serde(default)]
 pub struct PvpRun {
@@ -62,7 +68,9 @@ pub struct PvpRun {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct BowSpleef {
 	#[serde(rename = "wins_bowspleef")]
@@ -75,7 +83,9 @@ pub struct BowSpleef {
 	pub tags: Seconds,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[mode(field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths"))]
 #[serde(default)]
 pub struct Wizard {

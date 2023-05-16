@@ -21,9 +21,9 @@ pub mod walls;
 pub mod warlords;
 pub mod wool_wars;
 
-use serde::{Deserialize, Deserializer, Serialize};
+use serde::{Deserialize, Deserializer};
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq)]
+#[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
 	pub quake: quake::Quake,

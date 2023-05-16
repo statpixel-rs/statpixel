@@ -1,7 +1,7 @@
 use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use quote::quote;
-use serde::{Deserialize, Serialize, Serializer};
+use serde::Deserialize;
 
 macro_rules! colour {
 	($name: ident, $colour: expr) => {
@@ -31,7 +31,18 @@ colour!(WHITE, (255, 255, 255));
 // Utility colours
 colour!(BACKGROUND, (31, 48, 64));
 
-#[derive(Deserialize, Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
+#[derive(
+	bincode::Decode,
+	bincode::Encode,
+	Deserialize,
+	Default,
+	Clone,
+	Copy,
+	Debug,
+	PartialEq,
+	Eq,
+	FromMeta,
+)]
 #[serde(try_from = "&str")]
 #[darling(default)]
 pub enum Colour {
@@ -176,29 +187,6 @@ impl TryFrom<&str> for Colour {
 			"WHITE" => Ok(Self::White),
 			_ => Err("invalid colour code"),
 		}
-	}
-}
-
-impl Serialize for Colour {
-	fn serialize<S: Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
-		serializer.serialize_str(match self {
-			Self::Black => "BLACK",
-			Self::DarkBlue => "DARK_BLUE",
-			Self::DarkGreen => "DARK_GREEN",
-			Self::DarkAqua => "DARK_AQUA",
-			Self::DarkRed => "DARK_RED",
-			Self::DarkPurple => "DARK_PURPLE",
-			Self::Gold => "GOLD",
-			Self::Gray => "GRAY",
-			Self::DarkGray => "DARK_GRAY",
-			Self::Blue => "BLUE",
-			Self::Green => "GREEN",
-			Self::Aqua => "AQUA",
-			Self::Red => "RED",
-			Self::LightPurple => "LIGHT_PURPLE",
-			Self::Yellow => "YELLOW",
-			Self::White => "WHITE",
-		})
 	}
 }
 

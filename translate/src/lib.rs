@@ -7,7 +7,6 @@ use uuid::Uuid;
 mod locale;
 pub mod prelude;
 
-pub use bson;
 pub use diesel;
 pub use fluent;
 pub use locale::*;
@@ -62,8 +61,8 @@ pub enum Error {
 	InvalidUsername(String),
 	#[error("An error occurred while handling io.")]
 	Io(#[from] std::io::Error),
-	#[error("An internal error occurred while deserializing BSON.")]
-	BsonDeserialize(#[from] bson::de::Error),
-	#[error("An internal error occurred while serializing BSON.")]
-	BsonSerialize(#[from] bson::ser::Error),
+	#[error("An internal error occurred while decoding bincode.")]
+	BincodeDeserialize(#[from] bincode::error::DecodeError),
+	#[error("An internal error occurred while encoding bincode.")]
+	BincodeSerialize(#[from] bincode::error::EncodeError),
 }

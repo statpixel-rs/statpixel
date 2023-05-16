@@ -3,7 +3,7 @@ pub mod meters;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
-		#[derive(Debug, Clone, Copy, Default, PartialEq, ::macros::Diff)]
+		#[derive(bincode::Decode, bincode::Encode, Debug, Clone, Copy, Default, PartialEq, ::macros::Diff)]
 		pub struct $name(i64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
@@ -14,15 +14,6 @@ macro_rules! impl_time_unit {
 				let s: i64 = ::serde::Deserialize::deserialize(deserializer)?;
 
 				Ok($name(s))
-			}
-		}
-
-		impl ::serde::Serialize for $name {
-			fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-			where
-				S: ::serde::Serializer,
-			{
-				serializer.serialize_i64(self.0)
 			}
 		}
 

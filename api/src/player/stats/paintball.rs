@@ -1,10 +1,12 @@
 use macros::{Diff, Game, Mode};
 use minecraft::colour::Colour;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
 use crate::seconds;
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, Game, PartialEq, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
+)]
 #[game(
 	path = "paintball",
 	pretty = "§9§lPaintball",
@@ -41,7 +43,9 @@ pub struct Paintball {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, Serialize, Default, Debug, Clone, PartialEq, Mode, Diff)]
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

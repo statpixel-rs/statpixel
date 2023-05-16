@@ -8,7 +8,6 @@ use api::{key, ratelimit::HYPIXEL_RATELIMIT};
 use database::get_pool;
 use governor::{Quota, RateLimiter};
 use poise::serenity_prelude::GatewayIntents;
-use thiserror::Error;
 use tracing::{info, Level};
 use tracing_subscriber::FmtSubscriber;
 use translate::{Context, Data, Error};

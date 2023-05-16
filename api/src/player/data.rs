@@ -1,7 +1,7 @@
 use minecraft::{colour::Colour, text::rank::Rank};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq)]
 pub struct Data {
 	#[serde(rename = "displayname")]
 	pub username: String,
