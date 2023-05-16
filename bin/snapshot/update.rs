@@ -8,7 +8,10 @@ use database::{
 	schema::{schedule, snapshot},
 	PostgresPool,
 };
-use diesel::{Connection, ExpressionMethods, JoinOnDsl, PgConnection, QueryDsl, RunQueryDsl};
+use diesel::{
+	BoolExpressionMethods, Connection, ExpressionMethods, JoinOnDsl, NullableExpressionMethods,
+	PgConnection, QueryDsl, RunQueryDsl,
+};
 use futures::StreamExt;
 use tracing::{info, warn};
 use translate::Error;
@@ -88,7 +91,13 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 		// We can afford fetching a lot of records since all of them update with the same
 		// frequency, so it's impossible to insert one that would fit inside of these.
 		let players = schedule::table
-			.inner_join(snapshot::table.on(snapshot::columns::uuid.eq(schedule::columns::uuid)))
+			.inner_join(
+				snapshot::table.on(snapshot::columns::uuid.eq(schedule::columns::uuid).and(
+					snapshot::columns::id
+						.nullable()
+						.eq(diesel::dsl::max(snapshot::columns::id)),
+				)),
+			)
 			.select((
 				schedule::columns::uuid,
 				schedule::columns::update_at,
