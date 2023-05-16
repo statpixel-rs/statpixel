@@ -9,6 +9,15 @@ diesel::table! {
 }
 
 diesel::table! {
+	schedule (uuid) {
+		uuid -> Uuid,
+		update_at -> Timestamptz,
+		created_at -> Timestamptz,
+		snapshots -> Int4,
+	}
+}
+
+diesel::table! {
 	snapshot (id) {
 		uuid -> Uuid,
 		created_at -> Timestamptz,
@@ -23,7 +32,9 @@ diesel::table! {
 		id -> Int8,
 		text -> Bool,
 		uuid -> Nullable<Uuid>,
+		updated_at -> Timestamptz,
+		created_at -> Timestamptz,
 	}
 }
 
-diesel::allow_tables_to_appear_in_same_query!(autocomplete, snapshot, users,);
+diesel::allow_tables_to_appear_in_same_query!(autocomplete, schedule, snapshot, users,);

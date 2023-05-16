@@ -1,0 +1,4 @@
+-- Your SQL goes here
+
+ALTER TABLE schedule
+	ADD COLUMN IF NOT EXISTS snapshots INTEGER NOT NULL DEFAULT 0;

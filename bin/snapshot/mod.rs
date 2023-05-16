@@ -1,15 +1,32 @@
-mod update;
+pub mod update;
 
 use api::player::{data::Data, Player};
 use chrono::{DateTime, Utc};
-use database::schema::snapshot;
-use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl};
+use database::schema::{schedule, snapshot};
+use diesel::{Connection, ExpressionMethods, QueryDsl, RunQueryDsl};
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use translate::{Context, Error};
 
 pub enum Status {
 	Found((Box<Data>, DateTime<Utc>)),
 	Inserted,
+}
+
+pub fn encode(data: &Data) -> Result<Vec<u8>, Error> {
+	let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
+
+	bincode::encode_into_std_write(data, &mut encoder, bincode::config::standard())?;
+
+	Ok(encoder.finish()?)
+}
+
+pub fn decode(data: &[u8]) -> Result<Data, Error> {
+	let mut decoder = ZlibDecoder::new(data);
+
+	Ok(bincode::decode_from_std_read(
+		&mut decoder,
+		bincode::config::standard(),
+	)?)
 }
 
 /// Gets the earliest snapshot of a given player within a timeframe.
@@ -26,13 +43,7 @@ pub fn get(
 		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get()?);
 
 	match result {
-		Ok((data, created_at)) => {
-			let mut decoder = ZlibDecoder::new(&data[..]);
-			let data: Data =
-				bincode::decode_from_std_read(&mut decoder, bincode::config::standard())?;
-
-			Ok(Some((data, created_at)))
-		}
+		Ok((data, created_at)) => Ok(Some((decode(data.as_slice())?, created_at))),
 		Err(diesel::NotFound) => Ok(None),
 		Err(e) => Err(e.into()),
 	}
@@ -49,17 +60,34 @@ pub fn get_or_insert(
 		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
 	}
 
-	let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
+	let mut connection = ctx.data().pool.get()?;
 
-	bincode::encode_into_std_write(data, &mut encoder, bincode::config::standard())?;
+	connection.transaction::<(), Error, _>(|conn| {
+		// Otherwise, insert the current data into the database.
+		diesel::insert_into(schedule::table)
+			.values((
+				schedule::columns::uuid.eq(player.uuid),
+				// Schedule the first update for one hour from now.
+				// The first few updates should be more frequent to calculate the
+				// timezone of the player.
+				schedule::columns::update_at.eq(Utc::now() + chrono::Duration::hours(1)),
+				// Set the number of snapshots to 1, since we just inserted one.
+				schedule::columns::snapshots.eq(1),
+			))
+			.on_conflict(schedule::columns::uuid)
+			.do_update()
+			.set(schedule::columns::snapshots.eq(schedule::columns::snapshots + 1))
+			.execute(conn)?;
 
-	// Otherwise, insert the current data into the database.
-	diesel::insert_into(snapshot::table)
-		.values((
-			snapshot::columns::uuid.eq(player.uuid),
-			snapshot::columns::data.eq(encoder.finish()?),
-		))
-		.execute(&mut ctx.data().pool.get()?)?;
+		diesel::insert_into(snapshot::table)
+			.values((
+				snapshot::columns::uuid.eq(player.uuid),
+				snapshot::columns::data.eq(encode(data)?),
+			))
+			.execute(conn)?;
+
+		Ok(())
+	})?;
 
 	// And return nothing.
 	Ok(Status::Inserted)

@@ -57,6 +57,16 @@ impl Player {
 		Self { uuid, username }
 	}
 
+	/// Creates a new player from a uuid without any validation.
+	/// The username will not be set propertly.
+	#[must_use]
+	pub fn from_uuid_unchecked(uuid: Uuid) -> Self {
+		Self {
+			uuid,
+			username: String::new(),
+		}
+	}
+
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
 	pub fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {

@@ -1,6 +1,7 @@
 #![warn(clippy::pedantic)]
 #![allow(clippy::cast_possible_wrap)]
 #![feature(let_chains)]
+#![feature(exclusive_range_pattern)]
 
 use std::num::NonZeroU32;
 
@@ -8,7 +9,7 @@ use api::{key, ratelimit::HYPIXEL_RATELIMIT};
 use database::get_pool;
 use governor::{Quota, RateLimiter};
 use poise::serenity_prelude::GatewayIntents;
-use tracing::{info, Level};
+use tracing::{error, info, Level};
 use tracing_subscriber::FmtSubscriber;
 use translate::{Context, Data, Error};
 
@@ -33,10 +34,12 @@ async fn main() {
 	let (key, remaining) = key::get_data().await.unwrap();
 
 	if remaining != key.limit - 1 {
-		info!(
+		error!(
 			"ratelimit-reset header is at {remaining} (should be {}). wait a minute and try again.",
 			key.limit - 1
 		);
+
+		return;
 	}
 
 	HYPIXEL_RATELIMIT
@@ -83,7 +86,8 @@ async fn main() {
 	let locale = translate::read_ftl().unwrap();
 	locale.apply_translations(&mut commands);
 
-	let pool = get_pool();
+	let pool = get_pool(25);
+
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {
 			commands,
@@ -103,6 +107,16 @@ async fn main() {
 				Ok(Data { pool, locale })
 			})
 		});
+
+	tokio::task::spawn(async move {
+		let pool = get_pool(5);
+
+		while let Err(e) = snapshot::update::begin(&pool).await {
+			error!(error = ?e, "error in snapshot update loop");
+
+			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+		}
+	});
 
 	framework.run_autosharded().await.unwrap();
 }

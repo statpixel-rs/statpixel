@@ -1,6 +1,8 @@
+//! Portions of this implementation are taken from the Poise + Fluent example.
+//! https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
+
 use std::{borrow::Cow, fmt::Debug};
 
-// Taken from https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 use crate::{Context, Data, Error};
 use tracing::warn;
 
@@ -12,7 +14,6 @@ type Bundle = fluent::bundle::FluentBundle<
 #[macro_export]
 macro_rules! tr_fmt {
 	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
-		#[allow(unused_mut)]
 		let mut args = $crate::fluent::FluentArgs::new();
 		$( args.set(stringify!($argname), $argvalue); )*
 
@@ -62,11 +63,8 @@ pub fn get_str<'t, 'i: 't>(ctx: Context<'t>, id: &'i str) -> Cow<'t, str> {
 	let locale = &ctx.data().locale;
 
 	ctx.locale()
-		// Try to get the language-specific translation
 		.and_then(|l| get_locale_str(locale.other.get(l)?, id))
-		// Otherwise, fall back on main translation
 		.or_else(|| get_locale_str(&locale.main, id))
-		// If this message ID is not present in any translation files whatsoever
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);
 			Cow::Borrowed(id)
@@ -90,11 +88,8 @@ pub fn get<'i>(
 	let locale = &ctx.data().locale;
 
 	ctx.locale()
-		// Try to get the language-specific translation
 		.and_then(|l| format(locale.other.get(l)?, id, attr, args).map(Cow::Owned))
-		// Otherwise, fall back on main translation
 		.or_else(|| format(&locale.main, id, attr, args).map(Cow::Owned))
-		// If this message ID is not present in any translation files whatsoever
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);
 			Cow::Borrowed(id)

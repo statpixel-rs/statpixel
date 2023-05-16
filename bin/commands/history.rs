@@ -28,16 +28,14 @@ macro_rules! generate_history_command {
 				};
 
 			let content = match status {
-				$crate::snapshot::Status::Found((_, created_at)) => format!(
-					"Showing statistics change from <t:{}:f> to <t:{}:f>",
-					created_at.timestamp(),
-					::chrono::Utc::now().timestamp(),
+				$crate::snapshot::Status::Found((_, created_at)) => ::translate::tr_fmt!(
+					ctx, "showing-statistics",
+					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 				),
-				$crate::snapshot::Status::Inserted => format!(
-					"No previous data found for **{}**, so it has been inserted.\nShowing statistics change from <t:{}:f> to <t:{}:f>",
-					$crate::util::escape_username(&player.username),
-					::chrono::Utc::now().timestamp(),
-					::chrono::Utc::now().timestamp(),
+				$crate::snapshot::Status::Inserted => ::translate::tr_fmt!(
+					ctx, "no-previous-statistics",
+					name: $crate::util::escape_username(&player.username),
 				),
 			};
 
