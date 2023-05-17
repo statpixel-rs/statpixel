@@ -3,9 +3,11 @@ pub mod update;
 use api::player::{data::Data, Player};
 use chrono::{DateTime, Utc};
 use database::schema::{schedule, snapshot};
-use diesel::{Connection, ExpressionMethods, QueryDsl, RunQueryDsl};
+use diesel::{Connection, ExpressionMethods, NullableExpressionMethods, QueryDsl, RunQueryDsl};
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use translate::{Context, Error};
+
+use self::update::DEFAULT_SCHEDULE;
 
 pub enum Status {
 	Found((Box<Data>, DateTime<Utc>)),
@@ -60,29 +62,43 @@ pub fn get_or_insert(
 		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
 	}
 
+	let encoded = encode(data)?;
+	let hash = fxhash::hash64(&encoded) as i64;
 	let mut connection = ctx.data().pool.get()?;
 
 	connection.transaction::<(), Error, _>(|conn| {
 		// Otherwise, insert the current data into the database.
-		diesel::insert_into(schedule::table)
+		let prev_hash = diesel::insert_into(schedule::table)
 			.values((
 				schedule::columns::uuid.eq(player.uuid),
 				// Schedule the first update for one hour from now.
 				// The first few updates should be more frequent to calculate the
 				// timezone of the player.
-				schedule::columns::update_at.eq(Utc::now() + chrono::Duration::hours(1)),
+				schedule::columns::update_at.eq(Utc::now() + chrono::Duration::hours(3)),
 				// Set the number of snapshots to 1, since we just inserted one.
 				schedule::columns::snapshots.eq(1),
+				schedule::columns::hash.eq(hash),
+				schedule::columns::weekly_schedule.eq(DEFAULT_SCHEDULE),
 			))
 			.on_conflict(schedule::columns::uuid)
 			.do_update()
-			.set(schedule::columns::snapshots.eq(schedule::columns::snapshots + 1))
-			.execute(conn)?;
+			.set((
+				schedule::columns::snapshots.eq(schedule::columns::snapshots + 1),
+				schedule::columns::prev_hash.eq(schedule::columns::hash.nullable()),
+				schedule::columns::hash.eq(hash),
+			))
+			.returning(schedule::columns::prev_hash.nullable())
+			.get_result::<Option<i64>>(conn)?;
 
 		diesel::insert_into(snapshot::table)
 			.values((
 				snapshot::columns::uuid.eq(player.uuid),
-				snapshot::columns::data.eq(encode(data)?),
+				snapshot::columns::data.eq(encoded),
+				snapshot::columns::hash.eq(hash),
+				snapshot::columns::did_update.eq(match prev_hash {
+					Some(previous) => previous != hash,
+					None => true,
+				}),
 			))
 			.execute(conn)?;
 

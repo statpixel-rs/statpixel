@@ -48,7 +48,7 @@ flate2 = "1.0.26"
 chrono = "0.4.24"
 governor = "0.5.1"
 bincode = "2.0.0-rc.3"
-md5 = "0.7.0"
+fxhash = "0.2.1"
 
 [dev-dependencies]
 criterion = "0.4.0"
