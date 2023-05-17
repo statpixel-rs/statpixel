@@ -97,9 +97,10 @@ async fn update(
 		let weekday = time.weekday();
 		let weekday = weekday.num_days_from_monday();
 
-		let block = weekly_schedule >> (weekday * 3) & 0b111;
+		let block = weekly_schedule >> (weekday * CALCULATION_WEEK_TIME_STEP_HOURS as u32)
+			& ((1 << CALCULATION_WEEK_TIME_STEP_HOURS) - 1);
 		#[allow(clippy::cast_sign_loss)]
-		let hour = block as u32 * 3;
+		let hour = (block * CALCULATION_WEEK_TIME_STEP_HOURS) as u32;
 
 		// We can safely unwrap this as the hour and minute is always within range
 		time.with_hour(hour).unwrap().with_minute(0).unwrap()
@@ -135,9 +136,9 @@ async fn update(
 				let weekday = weekday.num_days_from_monday();
 				//  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 				//  0       1        2        3        4        5        6        7
-				let three_hour_block = time.hour() / 3;
+				let three_hour_block = time.hour() / CALCULATION_WEEK_TIME_STEP_HOURS as u32;
 
-				bitfield |= three_hour_block << (weekday * 3);
+				bitfield |= three_hour_block << (weekday * CALCULATION_WEEK_TIME_STEP_HOURS as u32);
 			}
 		}
 
