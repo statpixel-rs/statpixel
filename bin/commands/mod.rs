@@ -5,6 +5,7 @@ use translate::Context;
 pub mod cache;
 pub mod display;
 pub mod games;
+pub mod guild;
 pub mod history;
 pub mod link;
 pub mod ser;

@@ -164,6 +164,29 @@ impl TryFrom<char> for Colour {
 	}
 }
 
+impl From<Colour> for char {
+	fn from(colour: Colour) -> Self {
+		match colour {
+			Colour::Black => '0',
+			Colour::DarkBlue => '1',
+			Colour::DarkGreen => '2',
+			Colour::DarkAqua => '3',
+			Colour::DarkRed => '4',
+			Colour::DarkPurple => '5',
+			Colour::Gold => '6',
+			Colour::Gray => '7',
+			Colour::DarkGray => '8',
+			Colour::Blue => '9',
+			Colour::Green => 'a',
+			Colour::Aqua => 'b',
+			Colour::Red => 'c',
+			Colour::LightPurple => 'd',
+			Colour::Yellow => 'e',
+			Colour::White => 'f',
+		}
+	}
+}
+
 impl TryFrom<&str> for Colour {
 	type Error = &'static str;
 

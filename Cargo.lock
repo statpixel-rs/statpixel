@@ -37,6 +37,7 @@ name = "api"
 version = "0.1.4"
 dependencies = [
  "bincode",
+ "chrono",
  "database",
  "diesel",
  "dotenvy",

@@ -61,6 +61,7 @@ async fn main() {
 		commands::history::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
+		commands::guild::guild(),
 		commands::link::link(),
 		commands::games::megawalls(),
 		commands::history::monthly::monthly(),

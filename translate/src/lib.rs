@@ -37,6 +37,10 @@ pub enum ApiError {
 	UuidNotFound(Uuid),
 	#[error("The username `{0}` was not found.")]
 	UsernameNotFound(String),
+	#[error("The player `{0}` does not belong to a guild.")]
+	GuildByMemberNotFound(Uuid),
+	#[error("The guild `{0}` was not found.")]
+	GuildNotFound(String),
 }
 
 #[derive(Error, Debug)]
