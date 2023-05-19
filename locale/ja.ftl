@@ -561,6 +561,8 @@ damage-taken = 被ダメージ
 ddtr = DDTR
 games = ゲーム
 score = スコア
+created-at = 作成日時
+experience = 経験値
 
 yes = はい
 no = いいえ

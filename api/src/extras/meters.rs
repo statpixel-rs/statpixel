@@ -7,7 +7,7 @@ use translate::Context;
 use crate::canvas::label::ToFormatted;
 
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq, Diff)]
-pub struct Meters(u64);
+pub struct Meters(pub u64);
 
 impl<'de> Deserialize<'de> for Meters {
 	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>

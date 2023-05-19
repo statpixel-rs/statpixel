@@ -18,3 +18,20 @@ impl GetNumFormatLocale for Context<'_> {
 		result
 	}
 }
+
+pub trait GetChronoLocale {
+	fn get_chrono_locale(&self) -> chrono::Locale;
+}
+
+impl GetChronoLocale for Context<'_> {
+	fn get_chrono_locale(&self) -> chrono::Locale {
+		match self.locale().unwrap_or("en") {
+			"de" => chrono::Locale::de_DE,
+			"es" => chrono::Locale::es_ES,
+			"fr" => chrono::Locale::fr_FR,
+			"ja" => chrono::Locale::ja_JP,
+			"ru" => chrono::Locale::ru_RU,
+			_ => chrono::Locale::en_US,
+		}
+	}
+}

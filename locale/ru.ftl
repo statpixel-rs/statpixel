@@ -562,6 +562,8 @@ damage-taken = Полученный урон
 ddtr = DDTR
 games = Игры
 score = Счет
+created-at = Создано в
+experience = Опыт
 
 yes = Да
 no = Нет

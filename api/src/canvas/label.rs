@@ -1,8 +1,13 @@
 use std::borrow::Cow;
 
+use chrono::{DateTime, Utc};
 use minecraft::colour::Colour;
-use num_format::{Locale, ToFormattedString};
-use translate::{prelude::GetNumFormatLocale, tr, Context};
+use num_format::ToFormattedString;
+use pure_rust_locales::locale_match;
+use translate::{
+	prelude::{GetChronoLocale, GetNumFormatLocale},
+	tr, Context,
+};
 
 pub trait ToFormatted {
 	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, percent: bool) -> Cow<'t, str>;
@@ -102,7 +107,11 @@ macro_rules! impl_to_formatted_label_for_float {
 			) -> ::std::borrow::Cow<'t, str> {
 				let locale = ctx.get_num_format_locale();
 				let sep = match locale {
-					Locale::de | Locale::fr | Locale::it | Locale::es | Locale::pt => ",",
+					num_format::Locale::de
+					| num_format::Locale::fr
+					| num_format::Locale::it
+					| num_format::Locale::es
+					| num_format::Locale::pt => ",",
 					_ => ".",
 				};
 
@@ -202,5 +211,18 @@ where
 			Some(value) => value.to_formatted_label(ctx, percent),
 			None => tr!(ctx, "none"),
 		}
+	}
+}
+
+impl ToFormatted for DateTime<Utc> {
+	fn to_formatted_label<'t, 'c: 't>(
+		&'t self,
+		ctx: Context<'c>,
+		_percent: bool,
+	) -> Cow<'static, str> {
+		let locale = ctx.get_chrono_locale();
+		let fmt = locale_match!(locale => LC_TIME::D_FMT);
+
+		Cow::Owned(self.format_localized(fmt, locale).to_string())
 	}
 }

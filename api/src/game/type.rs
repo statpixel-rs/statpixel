@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone, Copy, PartialEq)]
@@ -77,7 +79,17 @@ impl Type {
 	}
 
 	#[must_use]
-	pub fn as_clean_name(&self) -> &str {
+	pub fn as_clean_cow(&self) -> Cow<'static, str> {
+		Cow::Borrowed(self.as_clean_name())
+	}
+
+	#[must_use]
+	pub fn as_short_clean_cow(&self) -> Cow<'static, str> {
+		Cow::Borrowed(self.as_short_clean_name())
+	}
+
+	#[must_use]
+	pub fn as_clean_name(&self) -> &'static str {
 		match self {
 			Self::Limbo => "Limbo",
 			Self::Lobby => "Lobby",
@@ -105,6 +117,44 @@ impl Type {
 			Self::BedWars => "Bed Wars",
 			Self::MurderMystery => "Murder Mystery",
 			Self::BuildBattle => "Build Battle",
+			Self::Duels => "Duels",
+			Self::SkyBlock => "SkyBlock",
+			Self::Pit => "Pit",
+			Self::Replay => "Replay",
+			Self::Smp => "SMP",
+			Self::WoolWars => "Wool Wars",
+		}
+	}
+
+	#[must_use]
+	pub fn as_short_clean_name(&self) -> &'static str {
+		match self {
+			Self::Limbo => "Limbo",
+			Self::Lobby => "Lobby",
+			Self::Quake => "Quake",
+			Self::Walls => "Walls",
+			Self::Paintball => "Paintball",
+			Self::BlitzSg => "Blitz SG",
+			Self::TntGames => "TNT Games",
+			Self::VampireZ => "VampireZ",
+			Self::MegaWalls => "Mega Walls",
+			Self::Arcade => "Arcade",
+			Self::Arena => "Arena",
+			Self::Uhc => "UHC",
+			Self::CopsAndCrims => "CnC",
+			Self::Warlords => "Warlords",
+			Self::SmashHeroes => "Smash Heroes",
+			Self::TurboKartRacers => "TKR",
+			Self::Housing => "Housing",
+			Self::SkyWars => "SkyWars",
+			Self::CrazyWalls => "Crazy Walls",
+			Self::SpeedUhc => "Speed UHC",
+			Self::SkyClash => "SkyClash",
+			Self::Classic => "Classic",
+			Self::Prototype => "Prototype",
+			Self::BedWars => "Bed Wars",
+			Self::MurderMystery => "MM",
+			Self::BuildBattle => "BB",
 			Self::Duels => "Duels",
 			Self::SkyBlock => "SkyBlock",
 			Self::Pit => "Pit",

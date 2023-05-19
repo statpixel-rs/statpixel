@@ -23,7 +23,9 @@ poise = "0.5.5"
 futures = "0.3.28"
 diesel = "2.0.4"
 bincode = "2.0.0-rc.3"
-chrono = { version = "0.4.24", features = ["serde"] }
+chrono = { version = "0.4.24", features = ["serde", "unstable-locales"] }
+tracing = "0.1.37"
+pure-rust-locales = "0.5.6"
 
 [dev-dependencies]
 dotenvy = "0.15.7"

@@ -1,7 +1,11 @@
+pub mod builder;
 pub mod diff;
 pub mod draw;
+pub mod game;
+pub mod guild;
 pub mod header;
 pub mod label;
+pub mod sidebar;
 pub(crate) mod util;
 
 use minecraft::paint;
@@ -38,7 +42,6 @@ pub const RATIO_ICON: &str = "\u{eaf6}";
 /// Panics if the surface cannot be created.
 #[must_use]
 #[allow(clippy::too_many_lines)]
-
 pub fn create_surface(rows: u8) -> Surface {
 	let height = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * f32::from(rows);
 

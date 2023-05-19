@@ -557,6 +557,8 @@ damage-taken = Daño recibido
 ddtr = Tasa de Daño infligido/Recibido
 games = Juegos
 score = Puntuación
+created-at = Creado en
+experience = Experiencia
 
 yes = Sí
 no = No

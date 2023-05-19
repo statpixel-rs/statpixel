@@ -562,6 +562,8 @@ damage-taken = Dégâts subis
 ddtr = TDRD
 games = Parties
 score = Score
+created-at = Créé le
+experience = Expérience
 
 yes = Oui
 no = Non

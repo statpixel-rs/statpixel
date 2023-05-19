@@ -287,7 +287,7 @@ impl ToTokens for GameInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::draw::apply_item(
+				crate::canvas::game::bubble(
 					ctx,
 					surface,
 					#sum,
@@ -320,7 +320,7 @@ impl ToTokens for GameInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::draw::apply_item(
+				crate::canvas::game::bubble(
 					ctx,
 					surface,
 					#value,
@@ -415,7 +415,7 @@ impl ToTokens for GameInputReceiver {
 						let label = ::translate::tr!(ctx, Self::get_tr());
 						let stats = &player.stats.#path;
 
-						crate::canvas::draw::apply_label(
+						crate::canvas::game::apply_label(
 							surface,
 							[
 								LABEL.as_slice(),
@@ -434,7 +434,7 @@ impl ToTokens for GameInputReceiver {
 
 						self.apply_own_fields(ctx, surface, player, session, stats, #start_mode_apply_idx);
 
-						crate::canvas::draw::apply_extras(
+						crate::canvas::sidebar::items(
 							ctx,
 							surface,
 							&[
@@ -471,7 +471,7 @@ impl ToTokens for GameInputReceiver {
 					let stats = &player.stats.#path;
 					let label = ::translate::tr!(ctx, Self::get_tr());
 
-					crate::canvas::draw::apply_label(
+					crate::canvas::game::apply_label(
 						surface,
 						&[
 							#(#label_iter)*
@@ -484,7 +484,7 @@ impl ToTokens for GameInputReceiver {
 						],
 					);
 
-					crate::canvas::draw::apply_extras(
+					crate::canvas::sidebar::items(
 						ctx,
 						surface,
 						&[
@@ -617,7 +617,7 @@ impl ToTokens for GameInputReceiver {
 
 					crate::canvas::header::apply_name(&mut surface, &player);
 
-					crate::canvas::draw::apply_data(
+					crate::canvas::game::apply_data(
 						ctx,
 						&mut surface,
 						&#level_fmt_field,
@@ -658,7 +658,7 @@ impl ToTokens for GameInputReceiver {
 
 					crate::canvas::header::apply_name(&mut surface, &player);
 
-					crate::canvas::draw::apply_data(
+					crate::canvas::game::apply_data(
 						ctx,
 						&mut surface,
 						&#level_fmt_field,

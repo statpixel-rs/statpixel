@@ -11,7 +11,7 @@ use diesel::{
 	Connection, ExpressionMethods, NullableExpressionMethods, PgConnection, QueryDsl, RunQueryDsl,
 };
 use futures::StreamExt;
-use tracing::warn;
+use tracing::{info, warn};
 use translate::Error;
 use uuid::Uuid;
 
@@ -213,6 +213,8 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 
 			continue;
 		}
+
+		info!(snapshots = players.len(), "updating player snapshots");
 
 		futures::stream::iter(players)
 			.map(

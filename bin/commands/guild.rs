@@ -1,9 +1,14 @@
 use std::borrow::Cow;
 
-use api::canvas;
-use translate::{tr, Context, Error};
+use api::{canvas, guild::member::Member, player::Player};
+use futures::StreamExt;
+use poise::serenity_prelude::AttachmentType;
+use translate::{tr, Context};
 
-use crate::util::{error_embed, get_guild_from_input};
+use crate::{
+	util::{error_embed, get_guild_from_input},
+	Error,
+};
 
 /// Shows the stats of a guild.
 #[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
@@ -17,7 +22,7 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
+	let mut guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
 			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
@@ -28,15 +33,48 @@ pub async fn guild(
 		Err(e) => return Err(e),
 	};
 
-	let png: Cow<_> = {
-		let mut surface = canvas::create_surface(2);
+	let data = if let Some(leader) = guild.get_leader() {
+		let player = leader.get_player_unchecked();
 
-		canvas::header::apply_guild(&mut surface, &guild);
+		Some(player.get_data().await?)
+	} else {
+		None
+	};
+
+	guild
+		.members
+		.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
+
+	let members = futures::stream::iter(
+		guild
+			.members
+			.iter()
+			.take(14)
+			.map(Member::get_player_unchecked)
+			.map(Player::get_data_owned),
+	)
+	.buffered(10)
+	.filter_map(|r| async { r.ok() })
+	.collect::<Vec<_>>()
+	.await;
+
+	let png: Cow<_> = {
+		let mut surface = canvas::guild::create_surface();
+
+		if let Some(ref data) = data {
+			canvas::guild::leader(&mut surface, data);
+		}
+
+		canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
+		canvas::guild::header(&mut surface, &guild);
+		canvas::guild::games(ctx, &mut surface, &mut guild);
+		canvas::guild::stats(ctx, &mut surface, &guild);
+
 		canvas::to_png(&mut surface).into()
 	};
 
 	ctx.send(move |m| {
-		m.attachment(poise::serenity_prelude::AttachmentType::Bytes {
+		m.attachment(AttachmentType::Bytes {
 			data: png,
 			filename: "canvas.png".to_string(),
 		})

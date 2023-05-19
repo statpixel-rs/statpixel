@@ -1,10 +1,11 @@
 pub mod inverse_bool;
 pub mod meters;
+pub mod xp;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
 		#[derive(bincode::Decode, bincode::Encode, Debug, Clone, Copy, Default, PartialEq, ::macros::Diff)]
-		pub struct $name(i64);
+		pub struct $name(pub i64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
 			fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>

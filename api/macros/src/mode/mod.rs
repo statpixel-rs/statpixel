@@ -60,7 +60,7 @@ impl ToTokens for ModeInputReceiver {
 				};
 
 				Some(quote! {
-					crate::canvas::draw::apply_item(
+					crate::canvas::game::bubble(
 						ctx,
 						surface,
 						#value,
@@ -94,7 +94,7 @@ impl ToTokens for ModeInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::draw::apply_item(
+				crate::canvas::game::bubble(
 					ctx,
 					surface,
 					#value,

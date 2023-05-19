@@ -562,6 +562,8 @@ damage-taken = Eingesteckter Schaden
 ddtr = DDTR
 games = Spiele
 score = Punktzahl
+created-at = Erstellt am
+experience = Erfahrung
 
 yes = Ja
 no = Nein

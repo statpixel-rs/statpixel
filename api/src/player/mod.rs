@@ -161,6 +161,14 @@ impl Player {
 			.await
 	}
 
+	/// # Errors
+	/// Returns an error if the player does not have a profile or if their data is invalid.
+	pub async fn get_data_owned(self) -> Result<data::Data, Arc<Error>> {
+		PLAYER_DATA_CACHE
+			.try_get_with(self.uuid, self.get_data_raw())
+			.await
+	}
+
 	async fn get_data_raw(&self) -> Result<data::Data, Error> {
 		let url = {
 			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
@@ -173,6 +181,8 @@ impl Player {
 		unsafe {
 			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
 		}
+
+		tracing::info!("Fetching data for {} from Hypixel API", self.uuid);
 
 		let response = HTTP.get(url).send().await?;
 
@@ -205,6 +215,8 @@ impl Player {
 		unsafe {
 			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
 		}
+
+		tracing::info!("Fetching session for {} from Hypixel API", self.uuid);
 
 		let response = HTTP.get(url).send().await?;
 

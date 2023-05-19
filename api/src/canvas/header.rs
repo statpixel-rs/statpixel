@@ -1,13 +1,10 @@
+use std::borrow::Cow;
+
 use crate::{
 	game::r#type::Type,
-	guild::Guild,
 	player::{data::Data, status::Session},
 };
-use minecraft::text::{
-	self,
-	parse::{self, minecraft_string, ESCAPE},
-	Text,
-};
+use minecraft::text::{self, parse::minecraft_string, rank::Rank, Text};
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
 use translate::{tr, Context};
 
@@ -15,29 +12,6 @@ use super::{
 	GAP, HEADER_HEIGHT, HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, PADDING,
 	WIDTH_F,
 };
-
-pub fn apply_guild(surface: &mut Surface, guild: &Guild) {
-	let colour: char = guild.tag_colour.into();
-	let name = guild.name.as_ref();
-	let tag = guild.tag.as_ref();
-
-	let text = if let Some(tag) = tag {
-		format!("{ESCAPE}{colour}{name} [{tag}]")
-	} else {
-		format!("{ESCAPE}{colour}{name}")
-	};
-
-	let text = parse::minecraft_string(&text).collect::<Vec<_>>();
-
-	text::draw(
-		surface,
-		text.as_slice(),
-		25.,
-		Rect::from_xywh(PADDING, PADDING, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT),
-		TextAlign::Center,
-		true,
-	);
-}
 
 pub fn apply_name(surface: &mut Surface, data: &Data) {
 	let rank = data.get_rank();
@@ -50,7 +24,11 @@ pub fn apply_name(surface: &mut Surface, data: &Data) {
 		unreachable!();
 	};
 
-	let username = format!(" {}", data.username);
+	let username = if rank == Rank::Default {
+		Cow::Borrowed(data.username.as_str())
+	} else {
+		Cow::Owned(format!(" {}", data.username))
+	};
 
 	text.push(Text {
 		text: &username,

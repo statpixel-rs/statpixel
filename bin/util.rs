@@ -88,7 +88,7 @@ pub async fn get_guild_from_input(
 	name_raw: Option<String>,
 	uuid_raw: Option<String>,
 	username_raw: Option<String>,
-) -> Result<Guild<'static>, Error> {
+) -> Result<Guild, Error> {
 	match (
 		name_raw,
 		uuid_raw

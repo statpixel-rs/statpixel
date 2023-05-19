@@ -6,7 +6,7 @@ use translate::Context;
 use crate::canvas::{diff::Diff, label::ToFormatted};
 
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq)]
-pub struct InverseBool(bool);
+pub struct InverseBool(pub bool);
 
 impl<'de> Deserialize<'de> for InverseBool {
 	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>

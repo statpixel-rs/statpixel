@@ -562,6 +562,8 @@ damage-taken = Damage Taken
 ddtr = DDTR
 games = Games
 score = Score
+created-at = Created At
+experience = Experience
 
 yes = Yes
 no = No

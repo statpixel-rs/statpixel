@@ -1,6 +1,7 @@
 use super::{parse::ESCAPE, Text};
 use crate::{colour::Colour, minecraft_text, paint::Paint};
 
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Rank {
 	Default,
 	Vip,
@@ -151,7 +152,7 @@ impl Rank {
 
 	/// `None` for `Rank::Custom`
 	#[must_use]
-	pub fn get_text(&self) -> Option<&[Text<'_>]> {
+	pub fn get_text(&self) -> Option<&'static [Text<'static>]> {
 		match self {
 			Self::Default => Some(&[]),
 			Self::Vip => Some(&VIP),
