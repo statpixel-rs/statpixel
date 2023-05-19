@@ -69,6 +69,8 @@ pub async fn guild(
 		canvas::guild::header(&mut surface, &guild);
 		canvas::guild::games(ctx, &mut surface, &mut guild);
 		canvas::guild::stats(ctx, &mut surface, &guild);
+		canvas::guild::level(ctx, &mut surface, &guild);
+		canvas::guild::ranks(&mut surface, &mut guild);
 
 		canvas::to_png(&mut surface).into()
 	};

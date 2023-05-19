@@ -3,6 +3,7 @@ pub mod diff;
 pub mod draw;
 pub mod game;
 pub mod guild;
+pub mod gutter;
 pub mod header;
 pub mod label;
 pub mod sidebar;

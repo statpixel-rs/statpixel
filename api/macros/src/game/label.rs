@@ -44,12 +44,19 @@ pub(crate) fn map_game_field_to_extras_value(
 	};
 
 	quote! {
-		(
-			::translate::tr!(ctx, #tr),
-			::std::boxed::Box::new(#value),
-			#colour,
-			#percent,
-		),
+		crate::canvas::sidebar::item(
+			ctx,
+			surface,
+			&(
+				::translate::tr!(ctx, #tr),
+				::std::boxed::Box::new(#value),
+				#colour,
+				#percent,
+			),
+			idx
+		);
+
+		idx += 1;
 	}
 }
 
@@ -75,11 +82,18 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 	};
 
 	quote! {
-		(
-			::translate::tr!(ctx, #tr),
-			::std::boxed::Box::new(#value),
-			#colour,
-			#percent,
-		),
+		crate::canvas::sidebar::item(
+			ctx,
+			surface,
+			&(
+				::translate::tr!(ctx, #tr),
+				::std::boxed::Box::new(#value),
+				#colour,
+				#percent,
+			),
+			idx
+		);
+
+		idx += 1;
 	}
 }

@@ -1,6 +1,8 @@
-use std::{borrow::Cow, cmp::min};
+use std::borrow::Cow;
 
 use minecraft::{
+	calc,
+	colour::Colour,
 	paint::{self, Paint},
 	style::MinecraftFont,
 	text::{
@@ -13,15 +15,12 @@ use minecraft::{
 use skia_safe::{textlayout::TextAlign, Path, Point, RRect, Rect, Surface};
 use translate::{tr, Context};
 
-use crate::{guild::Guild, player::data::Data};
-
 use super::{
-	game,
-	label::ToFormatted,
-	sidebar::{self, Line},
-	GAP, HEADER_DATA_RAD, HEADER_HEIGHT, HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X,
-	HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT, ITEM_WIDTH, PADDING, WIDTH, WIDTH_F,
+	game, gutter, label::ToFormatted, sidebar, GAP, HEADER_DATA_RAD, HEADER_HEIGHT,
+	HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT,
+	ITEM_WIDTH, PADDING, WIDTH, WIDTH_F,
 };
+use crate::{guild::Guild, player::data::Data};
 
 pub fn header(surface: &mut Surface, guild: &Guild) {
 	let colour: char = guild.tag_colour.into();
@@ -84,35 +83,52 @@ pub fn leader(surface: &mut Surface, data: &Data) {
 	);
 }
 
+#[allow(clippy::cast_possible_truncation)]
 pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 	guild.xp_by_game.sort_unstable_by_key(|g| g.1);
 
-	// There can be at most 7 lines in the sidebar
-	let mut lines: Vec<Line> = Vec::with_capacity(min(7, guild.xp_by_game.len()));
 	let mut iter = guild.xp_by_game.iter().rev();
 
 	if let Some((game, xp)) = iter.next() {
-		lines.push((game.as_short_clean_cow(), Box::new(*xp), Paint::Gold, false));
+		sidebar::item(
+			ctx,
+			surface,
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gold, false),
+			0,
+		);
 	}
 
 	if let Some((game, xp)) = iter.next() {
-		lines.push((game.as_short_clean_cow(), Box::new(*xp), Paint::Gray, false));
+		sidebar::item(
+			ctx,
+			surface,
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gray, false),
+			1,
+		);
 	}
 
 	if let Some((game, xp)) = iter.next() {
-		lines.push((game.as_short_clean_cow(), Box::new(*xp), Paint::Red, false));
+		sidebar::item(
+			ctx,
+			surface,
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Red, false),
+			2,
+		);
 	}
 
-	for (game, xp) in iter.take(4) {
-		lines.push((
-			game.as_short_clean_cow(),
-			Box::new(*xp),
-			Paint::Yellow,
-			false,
-		));
+	for (idx, (game, xp)) in iter.take(4).enumerate() {
+		sidebar::item(
+			ctx,
+			surface,
+			&(
+				game.as_short_clean_cow(),
+				Box::new(*xp),
+				Paint::DarkGray,
+				false,
+			),
+			3 + idx as u8,
+		);
 	}
-
-	sidebar::items(ctx, surface, lines.as_slice());
 }
 
 /// There should be at most 14 `players` should be sorted by weekly XP
@@ -282,6 +298,46 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 	let rect = super::get_item_rect(1);
 
 	draw(surface, &text, 30., rect, TextAlign::Center, true);
+}
+
+pub fn level(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
+	let level = calc::guild::get_level(guild.xp);
+
+	game::apply_data(
+		ctx,
+		surface,
+		&format!("{ESCAPE}6{level}"),
+		calc::guild::get_level_progress(guild.xp),
+		calc::guild::get_curr_level_xp(guild.xp),
+		calc::guild::get_level_xp(guild.xp),
+		&[Colour::Gold.into(), Colour::Gold.into()],
+	);
+}
+
+#[allow(clippy::cast_possible_truncation)]
+pub fn ranks(surface: &mut Surface, guild: &mut Guild) {
+	guild.ranks.sort_by_key(|r| r.priority);
+
+	for (idx, rank) in guild
+		.ranks
+		.iter()
+		.enumerate()
+		.filter_map(|(idx, r)| {
+			if idx > 0 && r.priority == guild.ranks[idx - 1].priority {
+				None
+			} else {
+				Some(r)
+			}
+		})
+		.rev()
+		.enumerate()
+	{
+		gutter::item(
+			surface,
+			&(Cow::Borrowed(&rank.name), paint::Paint::Blue),
+			idx as u8,
+		);
+	}
 }
 
 /// # Panics

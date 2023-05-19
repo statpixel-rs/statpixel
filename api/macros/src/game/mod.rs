@@ -171,12 +171,19 @@ impl ToTokens for GameInputReceiver {
 			};
 
 			quote! {
-				(
-					::translate::tr!(ctx, #tr),
-					::std::boxed::Box::new(#value),
-					#colour,
-					#percent,
-				),
+				crate::canvas::sidebar::item(
+					ctx,
+					surface,
+					&(
+						::translate::tr!(ctx, #tr),
+						::std::boxed::Box::new(#value),
+						#colour,
+						#percent,
+					),
+					idx
+				);
+
+				idx += 1;
 			}
 		});
 
@@ -414,6 +421,7 @@ impl ToTokens for GameInputReceiver {
 					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::Data, session: &crate::player::status::Session) {
 						let label = ::translate::tr!(ctx, Self::get_tr());
 						let stats = &player.stats.#path;
+						let mut idx = 0u8;
 
 						crate::canvas::game::apply_label(
 							surface,
@@ -434,14 +442,8 @@ impl ToTokens for GameInputReceiver {
 
 						self.apply_own_fields(ctx, surface, player, session, stats, #start_mode_apply_idx);
 
-						crate::canvas::sidebar::items(
-							ctx,
-							surface,
-							&[
-								#(#extras)*
-								#(#extras_for_mode)*
-							],
-						);
+						#(#extras)*
+						#(#extras_for_mode)*
 					}
 				}
 			}
@@ -470,6 +472,7 @@ impl ToTokens for GameInputReceiver {
 				pub fn apply(ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, player: &crate::player::data::Data, session: &crate::player::status::Session) {
 					let stats = &player.stats.#path;
 					let label = ::translate::tr!(ctx, Self::get_tr());
+					let mut idx = 0u8;
 
 					crate::canvas::game::apply_label(
 						surface,
@@ -484,15 +487,8 @@ impl ToTokens for GameInputReceiver {
 						],
 					);
 
-					crate::canvas::sidebar::items(
-						ctx,
-						surface,
-						&[
-							#(#extras)*
-							#(#extras_for_overall)*
-						],
-					);
-
+					#(#extras)*
+					#(#extras_for_overall)*
 					#(#apply_items_overall)*
 				}
 			}
