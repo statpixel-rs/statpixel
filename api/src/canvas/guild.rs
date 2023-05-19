@@ -330,6 +330,7 @@ pub fn ranks(surface: &mut Surface, guild: &mut Guild) {
 			}
 		})
 		.rev()
+		.take(7)
 		.enumerate()
 	{
 		gutter::item(
