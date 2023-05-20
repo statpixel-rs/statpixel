@@ -53,7 +53,7 @@ pub enum Error {
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] r2d2::Error),
-	#[error("An internal error occurred.")]
+	#[error("An internal error occurred. {0}")]
 	Framework(#[from] poise::serenity_prelude::Error),
 	#[error("An internal error occurred during setup.")]
 	Setup,

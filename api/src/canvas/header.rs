@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use crate::{
-	game::r#type::Type,
+	game::{mode::Mode, r#type::Type},
 	player::{data::Data, status::Session},
 };
 use minecraft::text::{self, parse::minecraft_string, rank::Rank, Text};
@@ -70,7 +70,7 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
 				},
 				Text {
 					text: data.game_type.unwrap_or(Type::Lobby).as_clean_name(),
-					paint: minecraft::paint::Paint::White,
+					paint: minecraft::paint::Paint::Gray,
 					..Default::default()
 				},
 				Text {
@@ -78,8 +78,12 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
 					..Default::default()
 				},
 				Text {
-					text: data.game_mode.as_deref().unwrap_or(""),
-					paint: minecraft::paint::Paint::White,
+					text: data
+						.game_mode
+						.as_deref()
+						.and_then(|m| Mode::try_from(m).ok())
+						.map_or("Unknown", |m| m.as_clean_name()),
+					paint: minecraft::paint::Paint::Aqua,
 					..Default::default()
 				},
 			],
