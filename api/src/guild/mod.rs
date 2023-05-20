@@ -42,6 +42,7 @@ pub struct Guild {
 	pub tag: Option<String>,
 	#[serde(rename = "guildExpByGameType", deserialize_with = "from_game_xp_map")]
 	pub xp_by_game: Vec<(Type, Xp)>,
+	#[serde(default)]
 	pub ranks: Vec<Rank>,
 	pub members: Vec<Member>,
 }
@@ -147,14 +148,14 @@ impl Guild {
 		let response = HTTP.get(url).send().await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::GuildByMemberNotFound(uuid));
+			return Err(Error::GuildByMemberUuidNotFound(uuid));
 		}
 
 		let response = response.json::<Response>().await?;
 
 		response
 			.guild
-			.ok_or_else(|| Error::GuildByMemberNotFound(uuid))
+			.ok_or_else(|| Error::GuildByMemberUuidNotFound(uuid))
 	}
 
 	#[must_use]
