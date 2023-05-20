@@ -531,6 +531,13 @@ woolwars = woolwars
   .mode = mode
   .mode-description = Der Wool Wars-Modus, der angezeigt werden soll.
 
+# /guild
+
+daily-xp = Tägliche XP
+weekly-xp = Wöchentliche XP
+monthly-xp = Monatliche XP
+members = Mitglieder
+
 # Gemeinsame Bezeichnungen für Leinwände
 
 Normal = Normal

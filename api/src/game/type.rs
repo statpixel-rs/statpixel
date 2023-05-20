@@ -1,8 +1,10 @@
 use std::borrow::Cow;
 
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Debug, Clone, Copy, PartialEq)]
+#[derive(
+	Deserialize, Serialize, bincode::Encode, bincode::Decode, Debug, Clone, Copy, PartialEq,
+)]
 #[serde(try_from = "&str")]
 pub enum Type {
 	Limbo = 0,

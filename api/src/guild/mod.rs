@@ -28,12 +28,15 @@ pub struct Response {
 	pub success: bool,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone)]
 pub struct Guild {
+	#[serde(rename = "_id", deserialize_with = "hex_from_str")]
+	pub id: u128,
 	pub name: String,
 	pub coins: u32,
 	#[serde(rename = "exp")]
 	pub xp: u32,
+	#[bincode(with_serde)]
 	#[serde(rename = "created", with = "chrono::serde::ts_milliseconds")]
 	pub created_at: DateTime<Utc>,
 	pub description: Option<String>,
@@ -45,9 +48,20 @@ pub struct Guild {
 	#[serde(default)]
 	pub ranks: Vec<Rank>,
 	pub members: Vec<Member>,
+	#[serde(rename = "preferredGames", default)]
+	pub preferred_games: Vec<Type>,
 }
 
-#[derive(Deserialize, Debug, Clone)]
+fn hex_from_str<'de, D>(deserializer: D) -> Result<u128, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: &str = Deserialize::deserialize(deserializer)?;
+
+	u128::from_str_radix(s, 16).map_err(serde::de::Error::custom)
+}
+
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone)]
 pub struct Rank {
 	pub name: String,
 	pub tag: Option<String>,

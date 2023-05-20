@@ -531,6 +531,13 @@ woolwars = woolwars
   .mode = mode
   .mode-description = Режим Wool Wars для просмотра
 
+# /guild
+
+daily-xp = Ежедневный опыт
+weekly-xp = Еженедельный опыт
+monthly-xp = Ежемесячный опыт
+members = Участники
+
 # Общие метки канвы
 
 Normal = Обычный

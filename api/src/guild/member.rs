@@ -6,14 +6,17 @@ use uuid::Uuid;
 
 use crate::{player::Player, Error};
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone)]
 pub struct Member {
+	#[bincode(with_serde)]
 	pub uuid: Uuid,
 	pub rank: String,
+	#[bincode(with_serde)]
 	#[serde(rename = "joined", with = "chrono::serde::ts_milliseconds")]
 	pub joined_at: DateTime<Utc>,
 	#[serde(rename = "questParticipation", default)]
 	pub quests: u32,
+	#[bincode(with_serde)]
 	#[serde(rename = "expHistory", deserialize_with = "from_date_map")]
 	pub xp_history: [(NaiveDate, u32); 7],
 }

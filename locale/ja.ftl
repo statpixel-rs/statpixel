@@ -530,6 +530,13 @@ woolwars = woolwars
   .mode = mode
   .mode-description = 表示するWool Warsのモード
 
+# /guild
+
+daily-xp = デイリーXP
+weekly-xp = ウィークリーXP
+monthly-xp = マンスリーXP
+members = メンバー
+
 # 共有キャンバスのラベル
 
 Normal = 通常

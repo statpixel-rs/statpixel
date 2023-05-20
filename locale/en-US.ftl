@@ -531,6 +531,13 @@ woolwars = woolwars
   .mode = mode
   .mode-description = The Wool Wars mode to view
 
+# /guild
+
+daily-xp = Daily XP
+weekly-xp = Weekly XP
+monthly-xp = Monthly XP
+members = Members
+
 # Shared canvas labels
 
 Normal = Normal

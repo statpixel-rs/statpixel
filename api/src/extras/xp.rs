@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use macros::Diff;
-use serde::{Deserialize, Deserializer};
+use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use translate::Context;
 
 use crate::canvas::label::ToFormatted;
@@ -29,6 +29,15 @@ impl<'de> Deserialize<'de> for Xp {
 		let s: u32 = Deserialize::deserialize(deserializer)?;
 
 		Ok(Xp(s))
+	}
+}
+
+impl Serialize for Xp {
+	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+	where
+		S: Serializer,
+	{
+		serializer.serialize_u32(self.0)
 	}
 }
 

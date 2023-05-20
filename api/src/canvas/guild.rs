@@ -133,13 +133,13 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 
 /// There should be at most 14 `players` should be sorted by weekly XP
 pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: &[Data]) {
-	let mut y = PADDING + HEADER_HEIGHT + GAP * 2. + ITEM_HEIGHT + 13.;
-	let count = players.len();
+	let mut y = PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2. + 13.;
+	let count = guild.members.len();
 
-	for (idx, player) in players.iter().enumerate().rev().take(7) {
+	for (idx, player) in players.iter().enumerate().take(7) {
 		let rank = player.get_rank();
 		let mut name = Vec::with_capacity(2);
-		let idx_string = format!("{}. ", count - idx);
+		let idx_string = format!("{}. ", idx + 1);
 
 		name.push(Text {
 			text: &idx_string,
@@ -167,7 +167,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 
 		let text = format!(
 			" ({})",
-			(guild.members[idx]
+			(guild.members[count - idx - 1]
 				.xp_history
 				.iter()
 				.map(|h| h.1)
@@ -177,7 +177,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 
 		name.push(Text {
 			text: &text,
-			paint: Paint::Yellow,
+			paint: Paint::Gray,
 			..Default::default()
 		});
 
@@ -193,12 +193,12 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 		y += 21.8;
 	}
 
-	let mut y = PADDING + HEADER_HEIGHT + GAP * 2. + ITEM_HEIGHT + 13.;
+	let mut y = PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2. + 13.;
 
-	for (idx, player) in players.iter().enumerate().rev().skip(7).take(7) {
+	for (idx, player) in players.iter().enumerate().skip(7).take(7) {
 		let rank = player.get_rank();
 		let mut name = Vec::with_capacity(2);
-		let idx_string = format!("{}. ", count - idx);
+		let idx_string = format!("{}. ", idx + 1);
 
 		name.push(Text {
 			text: &idx_string,
@@ -226,7 +226,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 
 		let text = format!(
 			" ({})",
-			(guild.members[idx]
+			(guild.members[count - idx - 1]
 				.xp_history
 				.iter()
 				.map(|h| h.1)
@@ -236,7 +236,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 
 		name.push(Text {
 			text: &text,
-			paint: Paint::Yellow,
+			paint: Paint::Gray,
 			..Default::default()
 		});
 
@@ -267,9 +267,9 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 	game::bubble(
 		ctx,
 		surface,
-		guild.xp,
-		tr!(ctx, "experience").as_ref(),
-		Paint::Yellow,
+		format!("{}/125", guild.members.len()),
+		tr!(ctx, "members").as_ref(),
+		Paint::LightPurple,
 		None,
 		2,
 	);
@@ -298,6 +298,43 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 	let rect = super::get_item_rect(1);
 
 	draw(surface, &text, 30., rect, TextAlign::Center, true);
+
+	let daily_xp = guild.members.iter().map(|m| m.xp_history[0].1).sum::<u32>();
+	let weekly_xp = guild
+		.members
+		.iter()
+		.map(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>())
+		.sum::<u32>();
+
+	game::bubble(
+		ctx,
+		surface,
+		daily_xp,
+		tr!(ctx, "daily-xp").as_ref(),
+		Paint::DarkGreen,
+		None,
+		3,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		weekly_xp,
+		tr!(ctx, "weekly-xp").as_ref(),
+		Paint::DarkGreen,
+		None,
+		4,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		guild.xp,
+		tr!(ctx, "experience").as_ref(),
+		Paint::Yellow,
+		None,
+		5,
+	);
 }
 
 pub fn level(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
@@ -315,27 +352,11 @@ pub fn level(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 }
 
 #[allow(clippy::cast_possible_truncation)]
-pub fn ranks(surface: &mut Surface, guild: &mut Guild) {
-	guild.ranks.sort_by_key(|r| r.priority);
-
-	for (idx, rank) in guild
-		.ranks
-		.iter()
-		.enumerate()
-		.filter_map(|(idx, r)| {
-			if idx > 0 && r.priority == guild.ranks[idx - 1].priority {
-				None
-			} else {
-				Some(r)
-			}
-		})
-		.rev()
-		.take(7)
-		.enumerate()
-	{
+pub fn preferred_games(surface: &mut Surface, guild: &Guild) {
+	for (idx, game) in guild.preferred_games.iter().enumerate().take(7) {
 		gutter::item(
 			surface,
-			&(Cow::Borrowed(&rank.name), paint::Paint::Blue),
+			&(game.as_short_clean_cow(), paint::Paint::Blue),
 			idx as u8,
 		);
 	}
@@ -345,7 +366,7 @@ pub fn ranks(surface: &mut Surface, guild: &mut Guild) {
 #[must_use]
 #[allow(clippy::too_many_lines)]
 pub fn create_surface() -> Surface {
-	const HEIGHT: f32 = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * 3.;
+	const HEIGHT: f32 = PADDING * 2. + HEADER_HEIGHT + (GAP + ITEM_HEIGHT) * 4.;
 
 	#[allow(clippy::cast_possible_truncation)]
 	let mut surface = Surface::new_raster_n32_premul((WIDTH, HEIGHT as i32)).unwrap();
@@ -459,34 +480,35 @@ pub fn create_surface() -> Surface {
 
 	path.add_rrect(rect, None);
 
-	let mut x = PADDING;
+	let mut y = PADDING + HEADER_HEIGHT + GAP;
 
-	for _ in 0..3 {
-		rect.set_rect_radii(
-			Rect::new(
-				x,
-				PADDING + HEADER_HEIGHT + GAP,
-				x + ITEM_WIDTH,
-				PADDING + HEADER_HEIGHT + GAP + ITEM_HEIGHT,
-			),
-			&[
-				Point::new(20., 20.),
-				Point::new(20., 20.),
-				Point::new(20., 20.),
-				Point::new(20., 20.),
-			],
-		);
+	for _ in 0..2 {
+		let mut x = PADDING;
 
-		path.add_rrect(rect, None);
+		for _ in 0..3 {
+			rect.set_rect_radii(
+				Rect::new(x, y, x + ITEM_WIDTH, y + ITEM_HEIGHT),
+				&[
+					Point::new(20., 20.),
+					Point::new(20., 20.),
+					Point::new(20., 20.),
+					Point::new(20., 20.),
+				],
+			);
 
-		x += ITEM_WIDTH + GAP;
+			path.add_rrect(rect, None);
+
+			x += ITEM_WIDTH + GAP;
+		}
+
+		y += ITEM_HEIGHT + GAP;
 	}
 
 	// Bottom left panel
 	rect.set_rect_radii(
 		Rect::new(
 			PADDING,
-			PADDING + HEADER_HEIGHT + GAP * 2. + ITEM_HEIGHT,
+			PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2.,
 			HEADER_LEFT_END_X,
 			HEIGHT - PADDING,
 		),
@@ -504,7 +526,7 @@ pub fn create_surface() -> Surface {
 	rect.set_rect_radii(
 		Rect::new(
 			HEADER_LEFT_END_X + GAP,
-			PADDING + HEADER_HEIGHT + GAP * 2. + ITEM_HEIGHT,
+			PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2.,
 			WIDTH_F - PADDING,
 			HEIGHT - PADDING,
 		),

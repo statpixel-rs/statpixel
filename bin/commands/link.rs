@@ -53,7 +53,7 @@ pub async fn link(
 			success_embed(
 				m,
 				tr!(ctx, "linking-succeeded"),
-				tr!(ctx, "linking-succeeded-description", name: escape_username(&player.username)),
+				tr_fmt!(ctx, "linking-succeeded-description", name: escape_username(&player.username)),
 			)
 		})
 		.await?;

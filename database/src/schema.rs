@@ -9,6 +9,18 @@ diesel::table! {
 }
 
 diesel::table! {
+	guild_snapshot (id) {
+		id -> Int4,
+		uuid -> Uuid,
+		hash -> Int8,
+		did_update -> Bool,
+		data -> Bytea,
+		created_at -> Timestamptz,
+		updated_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
 	schedule (uuid) {
 		uuid -> Uuid,
 		update_at -> Timestamptz,
@@ -42,4 +54,10 @@ diesel::table! {
 	}
 }
 
-diesel::allow_tables_to_appear_in_same_query!(autocomplete, schedule, snapshot, users,);
+diesel::allow_tables_to_appear_in_same_query!(
+	autocomplete,
+	guild_snapshot,
+	schedule,
+	snapshot,
+	users,
+);

@@ -49,11 +49,12 @@ pub async fn guild(
 		guild
 			.members
 			.iter()
+			.rev()
 			.take(14)
 			.map(Member::get_player_unchecked)
 			.map(Player::get_data_owned),
 	)
-	.buffered(10)
+	.buffered(14)
 	.filter_map(|r| async { r.ok() })
 	.collect::<Vec<_>>()
 	.await;
@@ -70,7 +71,7 @@ pub async fn guild(
 		canvas::guild::games(ctx, &mut surface, &mut guild);
 		canvas::guild::stats(ctx, &mut surface, &guild);
 		canvas::guild::level(ctx, &mut surface, &guild);
-		canvas::guild::ranks(&mut surface, &mut guild);
+		canvas::guild::preferred_games(&mut surface, &guild);
 
 		canvas::to_png(&mut surface).into()
 	};
