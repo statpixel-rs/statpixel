@@ -3,6 +3,8 @@ not-linked = Недостающие аргументы
 not-linked-description = Так как вы не привязаны, вы должны предоставить профиль для просмотра.
 showing-statistics = Показаны изменения статистики с {$from} по {$to}.
 no-previous-statistics = Нет предыдущих данных для **{$name}**, поэтому они были вставлены.
+showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
+no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
 # /display
 display = display
@@ -536,7 +538,17 @@ woolwars = woolwars
 daily-xp = Ежедневный опыт
 weekly-xp = Еженедельный опыт
 monthly-xp = Ежемесячный опыт
+xp-since = Опыт с
 members = Участники
+
+guild = guild
+  .description = Показывает статистику гильдии.
+  .name = name
+  .name-description = Название гильдии для просмотра
+  .username = username
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии для просмотра
 
 # Общие метки канвы
 

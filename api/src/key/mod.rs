@@ -24,12 +24,12 @@ pub async fn get_data() -> reqwest::Result<(Key, u32)> {
 
 	let remaining = response
 		.headers()
-		.get("ratelimit-reset")
-		.expect("missing ratelimit-reset header")
+		.get("ratelimit-remaining")
+		.expect("missing ratelimit-remaining header")
 		.to_str()
-		.expect("ratelimit-reset header is not a valid utf-8 string")
+		.expect("ratelimit-remaining header is not a valid utf-8 string")
 		.parse::<u32>()
-		.expect("ratelimit-reset header is not a valid u64");
+		.expect("ratelimit-remaining header is not a valid u32");
 
 	let json = response.json::<Response>().await?;
 

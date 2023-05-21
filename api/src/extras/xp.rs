@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, ops::SubAssign};
 
 use macros::Diff;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
@@ -53,5 +53,11 @@ impl ToFormatted for Xp {
 		let xp = self.0;
 
 		Cow::Owned(format!("{} XP", xp.to_formatted_label(ctx)))
+	}
+}
+
+impl SubAssign for Xp {
+	fn sub_assign(&mut self, rhs: Self) {
+		self.0 -= rhs.0;
 	}
 }

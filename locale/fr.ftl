@@ -3,6 +3,8 @@ not-linked = Arguments manquants
 not-linked-description = Comme vous n'êtes pas lié, vous devez fournir un profil pour afficher.
 showing-statistics = Affichage des statistiques de {$from} à {$to}.
 no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, elle a donc été insérée.
+showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
+no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
 # /display
 display = display
@@ -504,7 +506,7 @@ TeamDeathmatch = Match à mort par équipe
 
 wins-blue = Victoires (Bleu)
 wins-red = Victoires (Rouge)
-hide-prestige = Masquer le prestige
+hide-prestige = Masquer
 mvps = MVPs
 
 warlords = warlords
@@ -536,7 +538,17 @@ woolwars = woolwars
 daily-xp = XP Quotidien
 weekly-xp = XP Hebdomadaire
 monthly-xp = XP Mensuel
+xp-since = XP Depuis
 members = Membres
+
+guild = guild
+  .description = Affiche les statistiques d'une guilde.
+  .name = name
+  .name-description = Le nom de la guilde à afficher
+  .username = username
+  .username-description = Le nom d'utilisateur de la guilde du membre de la guilde à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID de la guilde du membre de la guilde à afficher.
 
 # Étiquettes partagées
 

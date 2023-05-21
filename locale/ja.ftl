@@ -3,6 +3,8 @@ not-linked = 引数が不足しています
 not-linked-description = リンクされていないため、プロフィールを表示するにはプロフィールを提供する必要があります。
 showing-statistics = {$from}から{$to}までの統計を表示しています。
 no-previous-statistics = **{$name}**の以前のデータが見つからなかったため、挿入されました。
+showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
+no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
 # /display
 display = display
@@ -535,7 +537,17 @@ woolwars = woolwars
 daily-xp = デイリーXP
 weekly-xp = ウィークリーXP
 monthly-xp = マンスリーXP
+xp-since = XP以降
 members = メンバー
+
+guild = ギルド
+  .description = ギルドの統計を表示します。
+  .name = name
+  .name-description = 表示するギルドの名前
+  .username = username
+  .username-description = 表示するギルドメンバーのMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのMinecraftのUUID
 
 # 共有キャンバスのラベル
 

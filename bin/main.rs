@@ -24,6 +24,8 @@ const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[tokio::main]
 async fn main() {
+	std::env::set_var("RUST_BACKTRACE", "1");
+
 	let subscriber = FmtSubscriber::builder()
 		.with_max_level(Level::INFO)
 		.finish();
@@ -35,7 +37,7 @@ async fn main() {
 
 	if remaining != key.limit - 1 {
 		error!(
-			"ratelimit-reset header is at {remaining} (should be {}). wait a minute and try again.",
+			"ratelimit-remaining header is at {remaining} (should be {}). wait a minute and try again.",
 			key.limit - 1
 		);
 
@@ -85,9 +87,9 @@ async fn main() {
 	];
 
 	let locale = translate::read_ftl().unwrap();
-	locale.apply_translations(&mut commands);
+	locale.apply_translations(&mut commands, false);
 
-	let pool = get_pool(25);
+	let pool = get_pool(20);
 
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {
@@ -110,10 +112,20 @@ async fn main() {
 		});
 
 	tokio::task::spawn(async move {
-		let pool = get_pool(5);
+		let pool = get_pool(2);
 
-		while let Err(e) = snapshot::update::begin(&pool).await {
-			error!(error = ?e, "error in snapshot update loop");
+		while let Err(e) = snapshot::user::begin(&pool).await {
+			error!(error = ?e, "error in user snapshot update loop");
+
+			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+		}
+	});
+
+	tokio::task::spawn(async move {
+		let pool = get_pool(2);
+
+		while let Err(e) = snapshot::guild::begin(&pool).await {
+			error!(error = ?e, "error in guild snapshot update loop");
 
 			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
 		}

@@ -223,18 +223,21 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 			..Default::default()
 		});
 
-		let text = format!(
-			" ({})",
-			(guild.members[count - idx - 1]
-				.xp_history
-				.iter()
-				.map(|h| h.1)
-				.sum::<u32>())
-			.to_formatted_label(ctx)
-		);
+		name.push(Text {
+			text: " • ",
+			paint: Paint::DarkGray,
+			..Default::default()
+		});
+
+		let text = guild.members[count - idx - 1]
+			.xp_history
+			.iter()
+			.map(|h| h.1)
+			.sum::<u32>();
+		let text = text.to_formatted_label(ctx);
 
 		name.push(Text {
-			text: &text,
+			text: text.as_ref(),
 			paint: Paint::Gray,
 			..Default::default()
 		});
@@ -252,7 +255,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 	}
 }
 
-pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
+pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, monthly_xp: impl ToFormatted) {
 	game::bubble(
 		ctx,
 		surface,
@@ -306,19 +309,10 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 	game::bubble(
 		ctx,
 		surface,
-		guild.xp,
-		tr!(ctx, "experience").as_ref(),
-		Paint::Yellow,
-		3,
-	);
-
-	game::bubble(
-		ctx,
-		surface,
 		daily_xp,
 		tr!(ctx, "daily-xp").as_ref(),
 		Paint::DarkGreen,
-		4,
+		3,
 	);
 
 	game::bubble(
@@ -326,6 +320,99 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 		surface,
 		weekly_xp,
 		tr!(ctx, "weekly-xp").as_ref(),
+		Paint::DarkGreen,
+		4,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		monthly_xp,
+		tr!(ctx, "monthly-xp").as_ref(),
+		Paint::DarkGreen,
+		5,
+	);
+}
+
+pub fn stats_history(
+	ctx: Context<'_>,
+	surface: &mut Surface,
+	guild: &Guild,
+	xp_since: impl ToFormatted,
+) {
+	game::bubble(
+		ctx,
+		surface,
+		guild.coins,
+		tr!(ctx, "coins").as_ref(),
+		Paint::Gold,
+		0,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		format!("{}/125", guild.members.len()),
+		tr!(ctx, "members").as_ref(),
+		Paint::LightPurple,
+		2,
+	);
+
+	let text = tr!(ctx, "created-at");
+	let text = [
+		Text {
+			text: text.as_ref(),
+			paint: Paint::Aqua,
+			font: MinecraftFont::Normal,
+			size: Some(20.),
+		},
+		Text {
+			text: "\n",
+			size: Some(20.),
+			..Default::default()
+		},
+		Text {
+			text: &guild.created_at.to_formatted_label(ctx),
+			paint: Paint::Aqua,
+			font: MinecraftFont::Normal,
+			size: None,
+		},
+	];
+
+	let rect = super::get_item_rect(1);
+
+	draw(surface, &text, 30., rect, TextAlign::Center, true);
+
+	let daily_xp = guild.members.iter().map(|m| m.xp_history[0].1).sum::<u32>();
+	let weekly_xp = guild
+		.members
+		.iter()
+		.map(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>())
+		.sum::<u32>();
+
+	game::bubble(
+		ctx,
+		surface,
+		daily_xp,
+		tr!(ctx, "daily-xp").as_ref(),
+		Paint::DarkGreen,
+		3,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		weekly_xp,
+		tr!(ctx, "weekly-xp").as_ref(),
+		Paint::DarkGreen,
+		4,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
+		xp_since,
+		tr!(ctx, "xp-since").as_ref(),
 		Paint::DarkGreen,
 		5,
 	);

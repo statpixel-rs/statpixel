@@ -135,49 +135,62 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 
 impl Locale {
 	/// Given a set of language files, fills in command strings and their localizations accordingly
-	pub fn apply_translations(&self, commands: &mut [poise::Command<Data, Error>]) {
+	pub fn apply_translations(
+		&self,
+		commands: &mut [poise::Command<Data, Error>],
+		subcommand: bool,
+	) {
 		for command in commands.iter_mut() {
+			match command.name.as_str() {
+				"daily" | "weekly" | "monthly" => {
+					self.apply_translations(command.subcommands.as_mut(), true)
+				}
+				_ => {}
+			}
+
 			// Add localizations
-			for (locale, bundle) in &self.other {
-				// Insert localized command name and description
-				let localized_command_name = match format(bundle, &command.name, None, None) {
-					Some(x) => x,
-					None => continue, // no localization entry => skip localization
-				};
+			if !subcommand {
+				for (locale, bundle) in &self.other {
+					// Insert localized command name and description
+					let localized_command_name = match format(bundle, &command.name, None, None) {
+						Some(x) => x,
+						None => continue, // no localization entry => skip localization
+					};
 
-				command
-					.name_localizations
-					.insert(locale.clone(), localized_command_name);
+					command
+						.name_localizations
+						.insert(locale.clone(), localized_command_name);
 
-				command.description_localizations.insert(
-					locale.clone(),
-					format(bundle, &command.name, Some("description"), None).unwrap(),
-				);
-
-				for parameter in &mut command.parameters {
-					// Insert localized parameter name and description
-					parameter.name_localizations.insert(
+					command.description_localizations.insert(
 						locale.clone(),
-						format(bundle, &command.name, Some(&parameter.name), None).unwrap(),
+						format(bundle, &command.name, Some("description"), None).unwrap(),
 					);
 
-					parameter.description_localizations.insert(
-						locale.clone(),
-						format(
-							bundle,
-							&command.name,
-							Some(&format!("{}-description", parameter.name)),
-							None,
-						)
-						.unwrap(),
-					);
-
-					// If this is a choice parameter, insert its localized variants
-					for choice in &mut parameter.choices {
-						choice.localizations.insert(
+					for parameter in &mut command.parameters {
+						// Insert localized parameter name and description
+						parameter.name_localizations.insert(
 							locale.clone(),
-							format(bundle, &choice.name, None, None).unwrap(),
+							format(bundle, &command.name, Some(&parameter.name), None).unwrap(),
 						);
+
+						parameter.description_localizations.insert(
+							locale.clone(),
+							format(
+								bundle,
+								&command.name,
+								Some(&format!("{}-description", parameter.name)),
+								None,
+							)
+							.unwrap(),
+						);
+
+						// If this is a choice parameter, insert its localized variants
+						for choice in &mut parameter.choices {
+							choice.localizations.insert(
+								locale.clone(),
+								format(bundle, &choice.name, None, None).unwrap(),
+							);
+						}
 					}
 				}
 			}

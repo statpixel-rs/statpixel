@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use minecraft::{
 	calc::pit::{Level, Prestige},
 	colour::Colour,
@@ -62,10 +63,7 @@ impl Diff for Level {
 	}
 }
 
-impl<T> Diff for Vec<T>
-where
-	T: Diff,
-{
+impl<T> Diff for Vec<T> {
 	fn diff(&self, _other: &Self) -> Self {
 		Vec::new()
 	}
@@ -87,5 +85,11 @@ where
 impl Diff for String {
 	fn diff(&self, _other: &Self) -> Self {
 		self.clone()
+	}
+}
+
+impl Diff for DateTime<Utc> {
+	fn diff(&self, _other: &Self) -> Self {
+		*self
 	}
 }

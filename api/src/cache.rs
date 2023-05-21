@@ -30,6 +30,13 @@ pub static GUILD_DATA_NAME_CACHE: Lazy<Cache<String, Guild>> = Lazy::new(|| {
 		.build()
 });
 
+pub static GUILD_DATA_UUID_CACHE: Lazy<Cache<Uuid, Guild>> = Lazy::new(|| {
+	CacheBuilder::new(100_000)
+		.time_to_idle(Duration::from_secs(60 * 10))
+		.time_to_live(Duration::from_secs(60 * 30))
+		.build()
+});
+
 pub static PLAYER_SESSION_CACHE: Lazy<Cache<Uuid, Session>> = Lazy::new(|| {
 	CacheBuilder::new(100_000)
 		.time_to_live(Duration::from_secs(60 * 5))

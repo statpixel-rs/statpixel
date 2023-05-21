@@ -3,6 +3,8 @@ not-linked = Fehlende Argumente
 not-linked-description = Da du nicht verknüpft bist, musst du ein Profil angeben, um es anzuzeigen.
 showing-statistics = Zeigt Statistikänderungen von {$from} bis {$to} an.
 no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher wurden sie eingefügt.
+showing-guild-statistics = Zeigt Gildenstatistikänderungen von {$from} bis {$to} an.
+no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}** gefunden, daher wurden sie eingefügt.
 
 # /display
 display = display
@@ -536,7 +538,17 @@ woolwars = woolwars
 daily-xp = Tägliche XP
 weekly-xp = Wöchentliche XP
 monthly-xp = Monatliche XP
+xp-since = XP seit
 members = Mitglieder
+
+guild = guild
+  .description = Zeigt die Statistiken einer Gilde an.
+  .name = name
+  .name-description = Der Name der Gilde, die angezeigt werden soll.
+  .username = username
+  .username-description = Der Benutzername des Gildenmitglieds, dessen Gilde angezeigt werden soll.
+  .uuid = uuid
+  .uuid-description = Die UUID des Gildenmitglieds, dessen Gilde angezeigt werden soll.
 
 # Gemeinsame Bezeichnungen für Leinwände
 

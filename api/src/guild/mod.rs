@@ -3,6 +3,7 @@ pub mod member;
 use chrono::{DateTime, Utc};
 use database::schema::guild_autocomplete;
 use diesel::{ExpressionMethods, RunQueryDsl};
+use macros::Diff;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
@@ -12,7 +13,7 @@ use translate::Context;
 use uuid::Uuid;
 
 use crate::{
-	cache::{GUILD_DATA_MEMBER_CACHE, GUILD_DATA_NAME_CACHE},
+	cache::{GUILD_DATA_MEMBER_CACHE, GUILD_DATA_NAME_CACHE, GUILD_DATA_UUID_CACHE},
 	game::r#type::Type,
 	http::HTTP,
 	ratelimit::HYPIXEL_RATELIMIT,
@@ -31,7 +32,7 @@ pub struct Response {
 	pub success: bool,
 }
 
-#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, Diff)]
 pub struct Guild {
 	#[serde(rename = "_id", deserialize_with = "hex_from_str")]
 	pub id: u128,
@@ -128,7 +129,7 @@ impl Guild {
 	}
 
 	/// # Errors
-	/// Returns [`Error::GuildByMemberNotFound`] if the guild could not be found.
+	/// Returns [`Error::GuildByMemberUuidNotFound`] if the guild could not be found.
 	pub async fn from_member_uuid(uuid: Uuid) -> Result<Guild, Arc<Error>> {
 		GUILD_DATA_MEMBER_CACHE
 			.try_get_with_by_ref(&uuid, Self::from_member_uuid_raw(uuid))
@@ -143,6 +144,37 @@ impl Guild {
 			.await
 	}
 
+	/// # Errors
+	/// Returns [`Error::GuildNotFound`] if the guild could not be found.
+	pub async fn from_uuid(uuid: Uuid) -> Result<Guild, Arc<Error>> {
+		GUILD_DATA_UUID_CACHE
+			.try_get_with_by_ref(&uuid, Self::from_uuid_raw(uuid))
+			.await
+	}
+
+	async fn from_uuid_raw(uuid: Uuid) -> Result<Guild, Error> {
+		let n = uuid.as_u128();
+		// format as hex, left-pad with 0s to 24 characters
+		let id = format!("{:024x}", n);
+
+		let url = {
+			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
+
+			url.set_query(Some(&format!("id={}", id)));
+			url
+		};
+
+		let response = HTTP.get(url).send().await?;
+
+		if response.status() != StatusCode::OK {
+			return Err(Error::GuildNotFound(id));
+		}
+
+		let response = response.json::<Response>().await?;
+
+		response.guild.ok_or_else(|| Error::GuildNotFound(id))
+	}
+
 	async fn from_name_raw(name: &str) -> Result<Guild, Error> {
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
@@ -154,7 +186,7 @@ impl Guild {
 		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
 		HYPIXEL_RATELIMIT.get().unwrap().until_ready().await;
 
-		tracing::info!("Requesting guild data for {}", name);
+		tracing::debug!("Requesting guild data for {}", name);
 
 		let response = HTTP.get(url).send().await?;
 
@@ -180,7 +212,7 @@ impl Guild {
 		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
 		HYPIXEL_RATELIMIT.get().unwrap().until_ready().await;
 
-		tracing::info!("Requesting guild data for {}", uuid);
+		tracing::debug!("Requesting guild data for {}", uuid);
 
 		let response = HTTP.get(url).send().await?;
 

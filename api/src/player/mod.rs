@@ -182,7 +182,7 @@ impl Player {
 			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
 		}
 
-		tracing::info!("Fetching data for {} from Hypixel API", self.uuid);
+		tracing::debug!("Fetching data for {} from Hypixel API", self.uuid);
 
 		let response = HTTP.get(url).send().await?;
 
@@ -216,7 +216,7 @@ impl Player {
 			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
 		}
 
-		tracing::info!("Fetching session for {} from Hypixel API", self.uuid);
+		tracing::debug!("Fetching session for {} from Hypixel API", self.uuid);
 
 		let response = HTTP.get(url).send().await?;
 

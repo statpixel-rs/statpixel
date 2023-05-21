@@ -14,12 +14,12 @@ macro_rules! generate_history_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				$crate::snapshot::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
+				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
 
 			player.increase_searches(ctx)?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let $crate::snapshot::Status::Found((ref snapshot, _)) = status {
+				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
 					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
 
 					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
@@ -28,12 +28,12 @@ macro_rules! generate_history_command {
 				};
 
 			let content = match status {
-				$crate::snapshot::Status::Found((_, created_at)) => ::translate::tr_fmt!(
+				$crate::snapshot::user::Status::Found((_, created_at)) => ::translate::tr_fmt!(
 					ctx, "showing-statistics",
 					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
 					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 				),
-				$crate::snapshot::Status::Inserted => ::translate::tr_fmt!(
+				$crate::snapshot::user::Status::Inserted => ::translate::tr_fmt!(
 					ctx, "no-previous-statistics",
 					name: $crate::util::escape_username(&player.username),
 				),
@@ -82,12 +82,12 @@ macro_rules! generate_large_history_command {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				$crate::snapshot::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
+				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
 
 			player.increase_searches(ctx)?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let $crate::snapshot::Status::Found((ref snapshot, _)) = status {
+				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
 					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
 
 					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
@@ -96,14 +96,133 @@ macro_rules! generate_large_history_command {
 				};
 
 			let content = match status {
-				$crate::snapshot::Status::Found((_, created_at)) => ::translate::tr_fmt!(
+				$crate::snapshot::user::Status::Found((_, created_at)) => ::translate::tr_fmt!(
 					ctx, "showing-statistics",
 					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
 					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 				),
-				$crate::snapshot::Status::Inserted => ::translate::tr_fmt!(
+				$crate::snapshot::user::Status::Inserted => ::translate::tr_fmt!(
 					ctx, "no-previous-statistics",
 					name: $crate::util::escape_username(&player.username),
+				),
+			};
+
+			ctx.send(move |m| {
+				if let ::std::option::Option::Some(png) = png {
+					m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+						data: png,
+						filename: "canvas.png".into(),
+					});
+				}
+
+				m.content(content)
+			})
+			.await?;
+
+			Ok(())
+		}
+	};
+}
+
+macro_rules! generate_guild_history_command {
+	($fn: ident, $duration: expr) => {
+		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		pub async fn $fn(
+			ctx: $crate::Context<'_>,
+			#[min_length = 3]
+			#[max_length = 32]
+			#[autocomplete = "crate::commands::autocomplete_guild_name"]
+			name: Option<::std::string::String>,
+			#[max_length = 16]
+			#[autocomplete = "crate::commands::autocomplete_username"]
+			username: Option<::std::string::String>,
+			#[min_length = 32]
+			#[max_length = 36]
+			uuid: Option<::std::string::String>,
+		) -> ::std::result::Result<(), ::translate::Error> {
+			let mut guild = match $crate::util::get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
+				::std::result::Result::Ok(guild) => guild,
+				::std::result::Result::Err(::translate::Error::NotLinked) => {
+					ctx.send(|m| $crate::util::error_embed(m, ::translate::tr!(ctx, "not-linked"), ::translate::tr!(ctx, "not-linked")))
+						.await?;
+
+					return Ok(());
+				}
+				::std::result::Result::Err(e) => return ::std::result::Result::Err(e),
+			};
+
+			let after = ::chrono::Utc::now() - $duration;
+			let status = $crate::snapshot::guild::get_or_insert(ctx, &guild, after)?;
+			let guilds = $crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, after)?;
+			let xp_since = $crate::commands::guild::get_monthly_xp(ctx, &guild, &guilds).unwrap_or(0);
+
+			guild.increase_searches(ctx)?;
+			$crate::commands::guild::apply_member_xp(&mut guild, &guilds);
+
+			let data = if let ::std::option::Option::Some(leader) = guild.get_leader() {
+				let player = leader.get_player_unchecked();
+
+				::std::option::Option::Some(player.get_data().await?)
+			} else {
+				::std::option::Option::None
+			};
+
+			guild
+				.members
+				.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
+
+			let members = futures::stream::iter(
+				guild
+					.members
+					.iter()
+					.rev()
+					.take(14)
+					.map(::api::guild::member::Member::get_player_unchecked)
+					.map(::api::player::Player::get_data_owned),
+			)
+			.buffered(14)
+			.filter_map(|r| async { r.ok() })
+			.collect::<Vec<_>>()
+			.await;
+
+			let png: ::std::option::Option<::std::borrow::Cow<_>> = if let $crate::snapshot::guild::Status::Found((ref snapshot, _)) = status {
+				let diff = ::api::canvas::diff::Diff::diff(&guild, snapshot);
+
+				guild.coins = diff.coins;
+				guild.xp = diff.xp;
+				guild
+					.xp_by_game
+					.iter_mut()
+					.zip(&snapshot.xp_by_game)
+					.for_each(|(a, b)| (*a).1 -= b.1);
+
+				let mut surface = ::api::canvas::guild::create_surface();
+
+				if let Some(ref data) = data {
+					::api::canvas::guild::leader(&mut surface, data);
+				}
+
+				::api::canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
+				::api::canvas::guild::header(&mut surface, &guild);
+				::api::canvas::guild::games(ctx, &mut surface, &mut guild);
+				::api::canvas::guild::stats_history(ctx, &mut surface, &guild, xp_since);
+				::api::canvas::guild::level(ctx, &mut surface, &guild);
+				::api::canvas::guild::preferred_games(&mut surface, &guild);
+
+				::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
+			} else {
+				::std::option::Option::None
+			};
+
+			let content = match status {
+				$crate::snapshot::guild::Status::Found((_, created_at)) => ::translate::tr_fmt!(
+					ctx, "showing-guild-statistics",
+					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
+				),
+				$crate::snapshot::guild::Status::Inserted => ::translate::tr_fmt!(
+					ctx, "no-previous-guild-statistics",
+					name: guild.name,
 				),
 			};
 
@@ -128,6 +247,8 @@ macro_rules! generate_large_history_command {
 macro_rules! generate_history_commands {
 	($fn: ident, $duration: expr) => {
 		pub mod $fn {
+			use futures::StreamExt;
+
 			generate_history_command!(
 				::api::player::stats::arcade::Arcade,
 				::api::player::stats::arcade::ArcadeMode,
@@ -260,6 +381,7 @@ macro_rules! generate_history_commands {
 				woolwars,
 				$duration
 			);
+			generate_guild_history_command!(guild, $duration);
 
 			#[poise::command(
 				slash_command,
@@ -285,7 +407,8 @@ macro_rules! generate_history_commands {
 					"vampirez",
 					"walls",
 					"warlords",
-					"woolwars"
+					"woolwars",
+					"guild"
 				)
 			)]
 			#[allow(clippy::unused_async)]

@@ -18,6 +18,17 @@ diesel::table! {
 }
 
 diesel::table! {
+	guild_schedule (uuid) {
+		uuid -> Uuid,
+		snapshots -> Int4,
+		hash -> Int8,
+		prev_hash -> Nullable<Int8>,
+		update_at -> Timestamptz,
+		created_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
 	guild_snapshot (id) {
 		id -> Int4,
 		uuid -> Uuid,
@@ -26,6 +37,7 @@ diesel::table! {
 		data -> Bytea,
 		created_at -> Timestamptz,
 		updated_at -> Timestamptz,
+		days_since_epoch -> Int4,
 	}
 }
 
@@ -66,6 +78,7 @@ diesel::table! {
 diesel::allow_tables_to_appear_in_same_query!(
 	autocomplete,
 	guild_autocomplete,
+	guild_schedule,
 	guild_snapshot,
 	schedule,
 	snapshot,

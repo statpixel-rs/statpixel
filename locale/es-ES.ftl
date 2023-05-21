@@ -3,6 +3,8 @@ not-linked = Argumentos faltantes
 not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para ver.
 showing-statistics = Mostrando estadísticas de {$from} a {$to}.
 no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
+showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
+no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
 # /display
 display = display
@@ -531,7 +533,17 @@ woolwars = woolwars
 daily-xp = XP Diaria
 weekly-xp = XP Semanal
 monthly-xp = XP Mensual
+xp-since = XP desde
 members = Miembros
+
+guild = guild
+  .description = Muestra las estadísticas de un gremio.
+  .name = name
+  .name-description = El nombre del gremio a ver
+  .username = username
+  .username-description = El nombre de usuario del miembro del gremio a ver.
+  .uuid = uuid
+  .uuid-description = El UUID del miembro del gremio a ver.
 
 # Etiquetas de lienzo compartido
 
