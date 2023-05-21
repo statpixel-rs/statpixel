@@ -12,13 +12,13 @@ use minecraft::{
 		Text,
 	},
 };
-use skia_safe::{textlayout::TextAlign, Path, Point, RRect, Rect, Surface};
+use skia_safe::{textlayout::TextAlign, Image, Path, Point, RRect, Rect, Surface};
 use translate::{tr, Context};
 
 use super::{
-	game, gutter, label::ToFormatted, sidebar, GAP, HEADER_DATA_RAD, HEADER_HEIGHT,
-	HEADER_LABEL_HEIGHT, HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT,
-	ITEM_WIDTH, PADDING, WIDTH, WIDTH_F,
+	game, label::ToFormatted, sidebar, GAP, HEADER_DATA_RAD, HEADER_HEIGHT, HEADER_LABEL_HEIGHT,
+	HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT, ITEM_WIDTH, PADDING,
+	WIDTH, WIDTH_F,
 };
 use crate::{guild::Guild, player::data::Data};
 
@@ -346,13 +346,32 @@ pub fn level(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 }
 
 #[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_precision_loss)]
+/// # Panics
+/// This function will not panic as the image bytes live for 'static.
 pub fn preferred_games(surface: &mut Surface, guild: &Guild) {
-	for (idx, game) in guild.preferred_games.iter().enumerate().take(7) {
-		gutter::item(
-			surface,
-			&(game.as_short_clean_cow(), paint::Paint::Blue),
-			idx as u8,
-		);
+	let mut iter = guild
+		.preferred_games
+		.iter()
+		.filter_map(crate::game::r#type::Type::as_image_bytes)
+		.enumerate()
+		.take(6);
+
+	while let Some((idx, bytes)) = iter.next() {
+		let x = HEADER_MIDDLE_END_X + GAP + 17.;
+		let y = PADDING + 20. + (40. + 7.) * idx as f32 / 2.;
+
+		// `bytes` lives for 'static, so it will always be valid.
+		let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+		surface.canvas().draw_image(image, (x, y), None);
+
+		if let Some((_, bytes)) = iter.next() {
+			let x = x + 40. + 7.;
+			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+			surface.canvas().draw_image(image, (x, y), None);
+		}
 	}
 }
 

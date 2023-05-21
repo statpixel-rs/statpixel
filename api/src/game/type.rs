@@ -165,6 +165,40 @@ impl Type {
 			Self::WoolWars => "Wool Wars",
 		}
 	}
+
+	#[must_use]
+	pub fn as_image_bytes(&self) -> Option<&'static [u8]> {
+		Some(match self {
+			Self::Quake => include_bytes!("../../../assets/games/quakecraft.png"),
+			Self::Walls => include_bytes!("../../../assets/games/walls.png"),
+			Self::Paintball => include_bytes!("../../../assets/games/paintball.png"),
+			Self::BlitzSg => include_bytes!("../../../assets/games/blitz_sg.png"),
+			Self::TntGames => include_bytes!("../../../assets/games/tntgames.png"),
+			Self::VampireZ => include_bytes!("../../../assets/games/vampirez.png"),
+			Self::MegaWalls => include_bytes!("../../../assets/games/megawalls.png"),
+			Self::Arcade => include_bytes!("../../../assets/games/arcade.png"),
+			Self::Arena => include_bytes!("../../../assets/games/arena.png"),
+			Self::Uhc => include_bytes!("../../../assets/games/uhc.png"),
+			Self::CopsAndCrims => include_bytes!("../../../assets/games/copsandcrims.png"),
+			Self::Warlords => include_bytes!("../../../assets/games/warlords.png"),
+			Self::SmashHeroes => include_bytes!("../../../assets/games/smash.png"),
+			Self::TurboKartRacers => include_bytes!("../../../assets/games/turbokartracers.png"),
+			Self::SkyWars => include_bytes!("../../../assets/games/skywars.png"),
+			Self::BedWars => include_bytes!("../../../assets/games/bedwars.png"),
+			Self::MurderMystery => include_bytes!("../../../assets/games/murdermystery.png"),
+			Self::BuildBattle => include_bytes!("../../../assets/games/buildbattle.png"),
+			Self::Duels => include_bytes!("../../../assets/games/duels.png"),
+			Self::SkyClash => include_bytes!("../../../assets/games/skyclash.png"),
+			Self::SpeedUhc => include_bytes!("../../../assets/games/speeduhc.png"),
+			Self::Smp => include_bytes!("../../../assets/games/smp.png"),
+			Self::CrazyWalls => include_bytes!("../../../assets/games/crazywalls.png"),
+			Self::SkyBlock => include_bytes!("../../../assets/games/skyblock.png"),
+			Self::Housing => include_bytes!("../../../assets/games/housing.png"),
+			Self::Pit => include_bytes!("../../../assets/games/thepit.png"),
+			Self::WoolWars => include_bytes!("../../../assets/games/woolwars.png"),
+			_ => return None,
+		})
+	}
 }
 
 impl TryFrom<&str> for Type {

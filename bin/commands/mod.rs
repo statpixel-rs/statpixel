@@ -16,7 +16,7 @@ pub async fn autocomplete_username(
 	ctx: Context<'_>,
 	partial: &str,
 ) -> Box<dyn Iterator<Item = String> + Send> {
-	tracing::info!("Autocompleting username `{partial}`");
+	tracing::debug!("Autocompleting username `{partial}`");
 
 	if let Ok(mut connection) = ctx.data().pool.get() {
 		if partial.is_empty() || partial.contains('%') {
@@ -55,7 +55,7 @@ pub async fn autocomplete_guild_name(
 	ctx: Context<'_>,
 	partial: &str,
 ) -> Box<dyn Iterator<Item = String> + Send> {
-	tracing::info!("Autocompleting guild name `{partial}`");
+	tracing::debug!("Autocompleting guild name `{partial}`");
 
 	if let Ok(mut connection) = ctx.data().pool.get() {
 		if partial.is_empty() || partial.contains('%') {
