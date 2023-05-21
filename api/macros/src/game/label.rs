@@ -1,7 +1,7 @@
 use proc_macro2::TokenStream;
 use quote::quote;
 
-use crate::tokens::get_tr_with_fallback;
+use crate::tokens::{get_percent_ident_for_str, get_percent_ident_for_type, get_tr_with_fallback};
 
 use super::{GameFieldReceiver, GameLabel, InfoFieldData};
 
@@ -31,11 +31,7 @@ pub(crate) fn map_game_field_to_extras_value(
 	let tr = get_tr_with_fallback(label.tr.as_deref(), name);
 
 	let colour = &label.colour;
-	let percent = if label.percent == Some(true) {
-		quote! { true }
-	} else {
-		quote! { false }
-	};
+	let percent = label.percent == Some(true);
 
 	let value = if let Some(div) = label.div.as_ref() {
 		quote! { ::std::cmp::min(100, stats.#name * 100 / if stats.#div == 0 { 1 } else { stats.#div }) }
@@ -43,20 +39,38 @@ pub(crate) fn map_game_field_to_extras_value(
 		quote! { stats.#name }
 	};
 
-	quote! {
-		crate::canvas::sidebar::item(
-			ctx,
-			surface,
-			&(
-				::translate::tr!(ctx, #tr),
-				::std::boxed::Box::new(#value),
-				#colour,
-				#percent,
-			),
-			idx
-		);
+	if percent {
+		let struct_name = get_percent_ident_for_type(field.ty.clone());
 
-		idx += 1;
+		quote! {
+			crate::canvas::sidebar::item(
+				ctx,
+				surface,
+				&(
+					::translate::tr!(ctx, #tr),
+					::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+					#colour,
+				),
+				idx
+			);
+
+			idx += 1;
+		}
+	} else {
+		quote! {
+			crate::canvas::sidebar::item(
+				ctx,
+				surface,
+				&(
+					::translate::tr!(ctx, #tr),
+					::std::boxed::Box::new(#value),
+					#colour,
+				),
+				idx
+			);
+
+			idx += 1;
+		}
 	}
 }
 
@@ -65,11 +79,6 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 	let tr = get_tr_with_fallback(info.tr.as_deref(), Some(name));
 
 	let colour = &info.colour;
-	let percent = if info.percent == Some(true) {
-		quote! { true }
-	} else {
-		quote! { false }
-	};
 
 	let value = if let Some(path) = info.path.as_ref() {
 		let path = parse_str_to_dot_path(path);
@@ -81,19 +90,37 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 		quote! { self.#name }
 	};
 
-	quote! {
-		crate::canvas::sidebar::item(
-			ctx,
-			surface,
-			&(
-				::translate::tr!(ctx, #tr),
-				::std::boxed::Box::new(#value),
-				#colour,
-				#percent,
-			),
-			idx
-		);
+	if let Some(ty) = info.percent.as_ref() {
+		let struct_name = get_percent_ident_for_str(ty);
 
-		idx += 1;
+		quote! {
+			crate::canvas::sidebar::item(
+				ctx,
+				surface,
+				&(
+					::translate::tr!(ctx, #tr),
+					::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+					#colour,
+				),
+				idx
+			);
+
+			idx += 1;
+		}
+	} else {
+		quote! {
+			crate::canvas::sidebar::item(
+				ctx,
+				surface,
+				&(
+					::translate::tr!(ctx, #tr),
+					::std::boxed::Box::new(#value),
+					#colour,
+				),
+				idx
+			);
+
+			idx += 1;
+		}
 	}
 }

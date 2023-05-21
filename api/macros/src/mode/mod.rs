@@ -2,7 +2,10 @@ use darling::{ast, FromDeriveInput, FromField, FromMeta};
 use minecraft::paint::Paint;
 use quote::{quote, ToTokens};
 
-use crate::{sum, tokens::get_tr_with_fallback};
+use crate::{
+	sum,
+	tokens::{get_percent_ident_for_str, get_percent_ident_for_type, get_tr_with_fallback},
+};
 
 macro_rules! ident {
 	($id: literal) => {
@@ -44,14 +47,23 @@ impl ToTokens for ModeInputReceiver {
 				let ident = data.ident.as_ref().unwrap();
 				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
-				let percent = match field.percent.as_ref() {
-					Some(true) => quote! { Some(true) },
-					_ => quote! { Some(false) },
-				};
+				let percent = field.percent == Some(true);
 				let colour = &field.colour;
 				let value = if let Some(div) = field.div.as_ref() {
-					if field.percent == Some(true) {
-						sum::div_u32_single_field(&ident!("self"), None, ident, div)
+					if percent {
+						let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+						let struct_name = get_percent_ident_for_type(data.ty.clone());
+
+						return Some(quote! {
+							crate::canvas::game::bubble(
+								ctx,
+								surface,
+								crate::extras::percent::#struct_name (#value),
+								&::translate::tr!(ctx, #tr),
+								#colour,
+								#idx + start_idx,
+							);
+						});
 					} else {
 						sum::div_f32_single_field(&ident!("self"), None, ident, div)
 					}
@@ -66,7 +78,6 @@ impl ToTokens for ModeInputReceiver {
 						#value,
 						&::translate::tr!(ctx, #tr),
 						#colour,
-						#percent,
 						#idx + start_idx,
 					);
 				})
@@ -78,14 +89,23 @@ impl ToTokens for ModeInputReceiver {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
-			let percent = match field.percent.as_ref() {
-				Some(true) => quote! { Some(true) },
-				_ => quote! { Some(false) },
-			};
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
-				if field.percent == Some(true) {
-					sum::div_u32_single_field(&ident!("self"), None, ident, div)
+				if let Some(ty) = field.percent.as_ref() {
+					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+
+					let struct_name = get_percent_ident_for_str(ty);
+
+					return quote! {
+						crate::canvas::game::bubble(
+							ctx,
+							surface,
+							crate::extras::percent::#struct_name (#value),
+							&::translate::tr!(ctx, #tr),
+							#colour,
+							#idx + start_idx,
+						);
+					};
 				} else {
 					sum::div_f32_single_field(&ident!("self"), None, ident, div)
 				}
@@ -100,7 +120,6 @@ impl ToTokens for ModeInputReceiver {
 					#value,
 					&::translate::tr!(ctx, #tr),
 					#colour,
-					#percent,
 					#idx + start_idx,
 				);
 			}
@@ -134,6 +153,8 @@ impl ToTokens for ModeInputReceiver {
 #[derive(Debug, FromField)]
 #[darling(attributes(mode))]
 pub(crate) struct ModeFieldReceiver {
+	pub ty: syn::Type,
+
 	/// Get the ident of the field. For fields in tuple or newtype structs or
 	/// enum bodies, this can be `None`.
 	pub ident: Option<syn::Ident>,
@@ -167,5 +188,5 @@ pub(crate) struct ModeFieldData {
 	#[darling(default)]
 	colour: Paint,
 
-	percent: Option<bool>,
+	percent: Option<String>,
 }

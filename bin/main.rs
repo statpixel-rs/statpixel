@@ -128,20 +128,14 @@ async fn event_handler(
 	_framework: poise::FrameworkContext<'_, Data, Error>,
 	_user_data: &Data,
 ) -> Result<(), Error> {
-	match event {
-		poise::Event::Ready { data_about_bot } => {
-			info!(user = ?data_about_bot.user.tag(), "logged in");
+	if let poise::Event::Ready { data_about_bot } = event {
+		info!(user = ?data_about_bot.user.tag(), "logged in");
 
-			ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
-				"Shard #{} | v{VERSION}",
-				ctx.shard_id + 1,
-			)))
-			.await;
-		}
-		poise::Event::ShardStageUpdate { update } => {
-			info!(shard = ?update, "shard stage update");
-		}
-		_ => {}
+		ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
+			"Shard #{} | v{VERSION}",
+			ctx.shard_id + 1,
+		)))
+		.await;
 	}
 
 	Ok(())

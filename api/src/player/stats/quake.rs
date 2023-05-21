@@ -9,7 +9,7 @@ use crate::meters::Meters;
 )]
 #[game(
 	path = "quake",
-	pretty = "§5§lQuakecraft",
+	pretty = "§a§lQuake§2§lcraft",
 	field(ident = "wins", colour = "green"),
 	field(ident = "killstreaks", colour = "red"),
 	field(ident = "distance_walked", colour = "gold"),
@@ -23,7 +23,7 @@ use crate::meters::Meters;
 		ident = "headshots",
 		div = "shots_fired",
 		colour = "gold",
-		percent
+		percent = "u32"
 	)
 )]
 #[serde(default)]

@@ -32,8 +32,8 @@ pub fn apply_data(
 	text.reserve_exact(8);
 
 	let label = format!("\n{}: ", tr!(ctx, "progress"));
-	let current = current.to_formatted_label(ctx, false);
-	let needed = needed.to_formatted_label(ctx, false);
+	let current = current.to_formatted_label(ctx);
+	let needed = needed.to_formatted_label(ctx);
 
 	text.push(Text {
 		text: &label,
@@ -129,7 +129,6 @@ pub fn bubble(
 	value: impl ToFormatted,
 	label: &str,
 	paint: Paint,
-	percent: Option<bool>,
 	index: usize,
 ) {
 	let text = [
@@ -145,7 +144,7 @@ pub fn bubble(
 			..Default::default()
 		},
 		Text {
-			text: &value.to_formatted_label(ctx, percent.unwrap_or(false)),
+			text: &value.to_formatted_label(ctx),
 			paint,
 			font: MinecraftFont::Normal,
 			size: None,

@@ -6,7 +6,7 @@ use serde::Deserialize;
 )]
 #[game(
 	path = "duels",
-	pretty = "§b§lDuels",
+	pretty = "§e§lDuels",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
@@ -17,14 +17,14 @@ use serde::Deserialize;
 		colour = "red",
 		ident = "arrows_hit",
 		div = "arrows_shot",
-		percent,
+		percent = "u32",
 		tr = "bow-accuracy"
 	),
 	label(
 		colour = "aqua",
 		ident = "melee_hits",
 		div = "melee_swings",
-		percent,
+		percent = "u32",
 		tr = "melee-accuracy"
 	),
 	label(

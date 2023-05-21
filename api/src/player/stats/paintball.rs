@@ -9,7 +9,7 @@ use crate::seconds;
 )]
 #[game(
 	path = "paintball",
-	pretty = "§9§lPaintball",
+	pretty = "§f§lPa§e§li§6§lnt§b§lba§3§lll",
 	field(ident = "wins", colour = "green"),
 	field(ident = "kill_prefix", colour = "red"),
 	field(ident = "show_kill_prefix", colour = "gold"),

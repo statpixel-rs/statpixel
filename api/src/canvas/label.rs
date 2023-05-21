@@ -10,7 +10,7 @@ use translate::{
 };
 
 pub trait ToFormatted {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, percent: bool) -> Cow<'t, str>;
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str>;
 }
 
 macro_rules! impl_to_formatted_label_for_int {
@@ -22,40 +22,29 @@ macro_rules! impl_to_formatted_label_for_int {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,
 				ctx: Context<'c>,
-				percent: bool,
 			) -> ::std::borrow::Cow<'t, str> {
 				let locale = ctx.get_num_format_locale();
 
 				::std::borrow::Cow::Owned(if *self >= 0 {
-					if percent {
-						format!("{}%", self.to_formatted_string(&locale))
-					} else if *self < 1_000_000 {
+					if *self < 1_000_000 {
 						self.to_formatted_string(&locale)
 					} else if *self < 1_000_000_000 {
-						format!(
-							"{}M",
-							(*self as f32 / 1_000_000.).to_formatted_label(ctx, percent)
-						)
+						format!("{}M", (*self as f32 / 1_000_000.).to_formatted_label(ctx))
 					} else {
 						format!(
 							"{}B",
-							(*self as f32 / 1_000_000_000.).to_formatted_label(ctx, percent)
+							(*self as f32 / 1_000_000_000.).to_formatted_label(ctx)
 						)
 					}
 				} else {
-					if percent {
-						format!("-{}%", (-*self).to_formatted_string(&locale))
-					} else if *self < -1_000_000 {
+					if *self < -1_000_000 {
 						(-*self).to_formatted_string(&locale)
 					} else if *self < 1_000_000_000 {
-						format!(
-							"-{}M",
-							(-*self as f32 / 1_000_000.).to_formatted_label(ctx, percent)
-						)
+						format!("-{}M", (-*self as f32 / 1_000_000.).to_formatted_label(ctx))
 					} else {
 						format!(
 							"-{}B",
-							(-*self as f32 / 1_000_000_000.).to_formatted_label(ctx, percent)
+							(-*self as f32 / 1_000_000_000.).to_formatted_label(ctx)
 						)
 					}
 				})
@@ -73,23 +62,17 @@ macro_rules! impl_to_formatted_label_for_uint {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,
 				ctx: Context<'c>,
-				percent: bool,
 			) -> ::std::borrow::Cow<'t, str> {
 				let locale = ctx.get_num_format_locale();
 
-				::std::borrow::Cow::Owned(if percent {
-					format!("{}%", self.to_formatted_string(&locale))
-				} else if *self < 1_000_000 {
+				::std::borrow::Cow::Owned(if *self < 1_000_000 {
 					self.to_formatted_string(&locale)
 				} else if *self < 1_000_000_000 {
-					format!(
-						"{}M",
-						(*self as f32 / 1_000_000.).to_formatted_label(ctx, percent)
-					)
+					format!("{}M", (*self as f32 / 1_000_000.).to_formatted_label(ctx))
 				} else {
 					format!(
 						"{}B",
-						(*self as f32 / 1_000_000_000.).to_formatted_label(ctx, percent)
+						(*self as f32 / 1_000_000_000.).to_formatted_label(ctx)
 					)
 				})
 			}
@@ -103,7 +86,6 @@ macro_rules! impl_to_formatted_label_for_float {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,
 				ctx: Context<'c>,
-				percent: bool,
 			) -> ::std::borrow::Cow<'t, str> {
 				let locale = ctx.get_num_format_locale();
 				let sep = match locale {
@@ -115,7 +97,7 @@ macro_rules! impl_to_formatted_label_for_float {
 					_ => ".",
 				};
 
-				let mut string = format!("{:.2}{}", self, if percent { "%" } else { "" });
+				let mut string = format!("{self:.2}");
 
 				if sep != "." {
 					let len = string.len();
@@ -133,14 +115,10 @@ impl ToFormatted for u8
 where
 	Self: ToFormattedString,
 {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
 		let locale = ctx.get_num_format_locale();
 
-		Cow::Owned(if percent {
-			format!("{}%", self.to_formatted_string(&locale))
-		} else {
-			self.to_formatted_string(&locale)
-		})
+		Cow::Owned(self.to_formatted_string(&locale))
 	}
 }
 
@@ -158,19 +136,19 @@ impl_to_formatted_label_for_float!(f32);
 impl_to_formatted_label_for_float!(f64);
 
 impl ToFormatted for String {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: Context<'c>, _percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: Context<'c>) -> Cow<'t, str> {
 		Cow::Borrowed(self)
 	}
 }
 
 impl ToFormatted for &str {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: Context<'c>, _percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: Context<'c>) -> Cow<'t, str> {
 		Cow::Borrowed(self)
 	}
 }
 
 impl ToFormatted for bool {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, _percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
 		if *self {
 			tr!(ctx, "yes")
 		} else {
@@ -180,7 +158,7 @@ impl ToFormatted for bool {
 }
 
 impl ToFormatted for Colour {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, _percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
 		match self {
 			Colour::Black => tr!(ctx, "black"),
 			Colour::DarkBlue => tr!(ctx, "dark-blue"),
@@ -206,20 +184,16 @@ impl<T> ToFormatted for Option<T>
 where
 	T: ToFormatted,
 {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>, percent: bool) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
 		match self {
-			Some(value) => value.to_formatted_label(ctx, percent),
+			Some(value) => value.to_formatted_label(ctx),
 			None => tr!(ctx, "none"),
 		}
 	}
 }
 
 impl ToFormatted for DateTime<Utc> {
-	fn to_formatted_label<'t, 'c: 't>(
-		&'t self,
-		ctx: Context<'c>,
-		_percent: bool,
-	) -> Cow<'static, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'static, str> {
 		let locale = ctx.get_chrono_locale();
 		let fmt = locale_match!(locale => LC_TIME::D_FMT);
 

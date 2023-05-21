@@ -1,5 +1,6 @@
 pub mod inverse_bool;
 pub mod meters;
+pub mod percent;
 pub mod xp;
 
 macro_rules! impl_time_unit {
@@ -36,7 +37,6 @@ macro_rules! impl_time_unit {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,
 				_ctx: ::translate::Context<'c>,
-				_percent: bool,
 			) -> ::std::borrow::Cow<'t, str> {
 				let mut result = ::std::string::String::with_capacity(3);
 				let (s, neg) = {

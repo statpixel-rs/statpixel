@@ -93,7 +93,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gold, false),
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gold),
 			0,
 		);
 	}
@@ -102,7 +102,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gray, false),
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gray),
 			1,
 		);
 	}
@@ -111,7 +111,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Red, false),
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Red),
 			2,
 		);
 	}
@@ -120,18 +120,14 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(
-				game.as_short_clean_cow(),
-				Box::new(*xp),
-				Paint::DarkGray,
-				false,
-			),
+			&(game.as_short_clean_cow(), Box::new(*xp), Paint::DarkGray),
 			3 + idx as u8,
 		);
 	}
 }
 
 /// There should be at most 14 `players` should be sorted by weekly XP
+#[allow(clippy::too_many_lines)]
 pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: &[Data]) {
 	let mut y = PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2. + 13.;
 	let count = guild.members.len();
@@ -165,18 +161,21 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 			..Default::default()
 		});
 
-		let text = format!(
-			" ({})",
-			(guild.members[count - idx - 1]
-				.xp_history
-				.iter()
-				.map(|h| h.1)
-				.sum::<u32>())
-			.to_formatted_label(ctx, false)
-		);
+		name.push(Text {
+			text: " • ",
+			paint: Paint::DarkGray,
+			..Default::default()
+		});
+
+		let text = guild.members[count - idx - 1]
+			.xp_history
+			.iter()
+			.map(|h| h.1)
+			.sum::<u32>();
+		let text = text.to_formatted_label(ctx);
 
 		name.push(Text {
-			text: &text,
+			text: text.as_ref(),
 			paint: Paint::Gray,
 			..Default::default()
 		});
@@ -231,7 +230,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 				.iter()
 				.map(|h| h.1)
 				.sum::<u32>())
-			.to_formatted_label(ctx, false)
+			.to_formatted_label(ctx)
 		);
 
 		name.push(Text {
@@ -260,7 +259,6 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 		guild.coins,
 		tr!(ctx, "coins").as_ref(),
 		Paint::Gold,
-		None,
 		0,
 	);
 
@@ -270,7 +268,6 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 		format!("{}/125", guild.members.len()),
 		tr!(ctx, "members").as_ref(),
 		Paint::LightPurple,
-		None,
 		2,
 	);
 
@@ -288,7 +285,7 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 			..Default::default()
 		},
 		Text {
-			text: &guild.created_at.to_formatted_label(ctx, false),
+			text: &guild.created_at.to_formatted_label(ctx),
 			paint: Paint::Aqua,
 			font: MinecraftFont::Normal,
 			size: None,
@@ -309,11 +306,19 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 	game::bubble(
 		ctx,
 		surface,
+		guild.xp,
+		tr!(ctx, "experience").as_ref(),
+		Paint::Yellow,
+		3,
+	);
+
+	game::bubble(
+		ctx,
+		surface,
 		daily_xp,
 		tr!(ctx, "daily-xp").as_ref(),
 		Paint::DarkGreen,
-		None,
-		3,
+		4,
 	);
 
 	game::bubble(
@@ -322,17 +327,6 @@ pub fn stats(ctx: Context<'_>, surface: &mut Surface, guild: &Guild) {
 		weekly_xp,
 		tr!(ctx, "weekly-xp").as_ref(),
 		Paint::DarkGreen,
-		None,
-		4,
-	);
-
-	game::bubble(
-		ctx,
-		surface,
-		guild.xp,
-		tr!(ctx, "experience").as_ref(),
-		Paint::Yellow,
-		None,
 		5,
 	);
 }

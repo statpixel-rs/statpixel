@@ -8,10 +8,16 @@ use crate::seconds;
 )]
 #[game(
 	path = "murder_mystery",
-	pretty = "§b§lMurder Mystery",
+	pretty = "§4§lMurder Mystery",
 	field(ident = "wins", colour = "green"),
 	field(ident = "games", colour = "red"),
-	field(tr = "wr", ident = "wins", div = "games", colour = "gold", percent),
+	field(
+		tr = "wr",
+		ident = "wins",
+		div = "games",
+		colour = "gold",
+		percent = "u32"
+	),
 	field(ident = "kills", colour = "green"),
 	field(ident = "deaths", colour = "red"),
 	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")

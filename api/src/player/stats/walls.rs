@@ -23,7 +23,7 @@ use crate::meters::Meters;
 		ident = "arrows_hit",
 		div = "arrows_shot",
 		colour = "gold",
-		percent
+		percent = "u32"
 	),
 	label(ident = "distance_walked", colour = "blue"),
 	label(ident = "distance_fallen", colour = "red"),

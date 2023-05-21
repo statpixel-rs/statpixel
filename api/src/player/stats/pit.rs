@@ -29,7 +29,7 @@ pub struct Profile {
 )]
 #[game(
 	path = "pit.data",
-	pretty = "§b§lPit",
+	pretty = "§c§lThe Pit",
 	xp = "pit.profile.level",
 	calc = "minecraft::calc::pit",
 	field(ident = "kills", colour = "green"),
@@ -58,7 +58,7 @@ pub struct Profile {
 		ident = "contracts_completed",
 		div = "contracts_started",
 		colour = "gold",
-		percent
+		percent = "u32"
 	),
 	label(ident = "cash", path = "pit.profile", colour = "gold")
 )]

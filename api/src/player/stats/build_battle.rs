@@ -6,7 +6,7 @@ use serde::Deserialize;
 )]
 #[game(
 	path = "build_battle",
-	pretty = "§b§lBuild Battle",
+	pretty = "§d§lBuild Battle",
 	calc = "minecraft::calc::build_battle",
 	field(ident = "wins", colour = "green")
 )]

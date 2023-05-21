@@ -6,7 +6,7 @@ use serde::Deserialize;
 )]
 #[game(
 	path = "uhc",
-	pretty = "§c§lUHC Champions",
+	pretty = "§e§lUHC §6§lChampions",
 	field(ident = "wins", colour = "green"),
 	field(ident = "heads_eaten", colour = "red"),
 	field(ident = "ultimates_crafted", colour = "gold"),

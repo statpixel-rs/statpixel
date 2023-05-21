@@ -8,7 +8,10 @@ use quote::{quote, ToTokens};
 use self::label::{
 	map_game_field_to_extras_value, map_info_field_to_extras_value, parse_str_to_dot_path,
 };
-use crate::{sum, tokens::get_tr_with_fallback};
+use crate::{
+	sum,
+	tokens::{get_percent_ident_for_str, get_tr_with_fallback},
+};
 
 macro_rules! ident {
 	($id: literal) => {
@@ -140,11 +143,6 @@ impl ToTokens for GameInputReceiver {
 			let tr = get_tr_with_fallback(info.tr.as_deref(), Some(name));
 
 			let colour = &info.colour;
-			let percent = if info.percent == Some(true) {
-				quote! { true }
-			} else {
-				quote! { false }
-			};
 
 			let sum = if let Some(path) = info.path.as_ref() {
 				let path = parse_str_to_dot_path(path);
@@ -170,20 +168,38 @@ impl ToTokens for GameInputReceiver {
 				quote! { #sum }
 			};
 
-			quote! {
-				crate::canvas::sidebar::item(
-					ctx,
-					surface,
-					&(
-						::translate::tr!(ctx, #tr),
-						::std::boxed::Box::new(#value),
-						#colour,
-						#percent,
-					),
-					idx
-				);
+			if let Some(ty) = info.percent.as_ref() {
+				let struct_name = get_percent_ident_for_str(ty);
 
-				idx += 1;
+				quote! {
+					crate::canvas::sidebar::item(
+						ctx,
+						surface,
+						&(
+							::translate::tr!(ctx, #tr),
+							::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+							#colour,
+						),
+						idx
+					);
+
+					idx += 1;
+				}
+			} else {
+				quote! {
+					crate::canvas::sidebar::item(
+						ctx,
+						surface,
+						&(
+							::translate::tr!(ctx, #tr),
+							::std::boxed::Box::new(#value),
+							#colour,
+						),
+						idx
+					);
+
+					idx += 1;
+				}
 			}
 		});
 
@@ -258,10 +274,6 @@ impl ToTokens for GameInputReceiver {
 			let ident_parent = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));
 			let colour = &field.colour;
-			let percent = match field.percent.as_ref() {
-				Some(true) => quote! { Some(true) },
-				_ => quote! { Some(false) },
-			};
 
 			let sum = if let Some(path) = field.path.as_ref() {
 				let path = parse_str_to_dot_path(path);
@@ -270,13 +282,26 @@ impl ToTokens for GameInputReceiver {
 					player.stats.#path.#ident_parent
 				};
 			} else if let Some(div) = field.div.as_ref() {
-				if field.percent == Some(true) {
-					sum::sum_div_u32_fields(
+				if let Some(ty) = field.percent.as_ref() {
+					let sum = sum::sum_div_u32_fields(
 						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
 						div,
-					)
+					);
+
+					let struct_name = get_percent_ident_for_str(ty);
+
+					return quote! {
+						crate::canvas::game::bubble(
+							ctx,
+							surface,
+							crate::extras::percent::#struct_name (#sum),
+							&::translate::tr!(ctx, #tr),
+							#colour,
+							#i,
+						);
+					};
 				} else {
 					sum::sum_div_f32_fields(
 						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
@@ -300,7 +325,6 @@ impl ToTokens for GameInputReceiver {
 					#sum,
 					&::translate::tr!(ctx, #tr),
 					#colour,
-					#percent,
 					#i,
 				);
 			}
@@ -311,14 +335,23 @@ impl ToTokens for GameInputReceiver {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
-			let percent = match field.percent.as_ref() {
-				Some(true) => quote! { Some(true) },
-				_ => quote! { Some(false) },
-			};
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
-				if field.percent == Some(true) {
-					sum::div_u32_single_field(&ident!("self"), None, ident, div)
+				if let Some(ty) = field.percent.as_ref() {
+					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+
+					let struct_name = get_percent_ident_for_str(ty);
+
+					return quote! {
+						crate::canvas::game::bubble(
+							ctx,
+							surface,
+							crate::extras::percent::#struct_name (#value),
+							&::translate::tr!(ctx, #tr),
+							#colour,
+							#idx,
+						);
+					};
 				} else {
 					sum::div_f32_single_field(&ident!("self"), None, ident, div)
 				}
@@ -333,7 +366,6 @@ impl ToTokens for GameInputReceiver {
 					#value,
 					&::translate::tr!(ctx, #tr),
 					#colour,
-					#percent,
 					#idx,
 				);
 			}
@@ -731,7 +763,7 @@ pub(crate) struct OverallFieldData {
 	#[darling(default)]
 	colour: Paint,
 
-	percent: Option<bool>,
+	percent: Option<String>,
 
 	path: Option<String>,
 }
@@ -747,7 +779,7 @@ pub(crate) struct InfoFieldData {
 	#[darling(default)]
 	colour: Paint,
 
-	percent: Option<bool>,
+	percent: Option<String>,
 
 	path: Option<String>,
 }
