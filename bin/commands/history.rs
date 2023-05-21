@@ -157,6 +157,17 @@ macro_rules! generate_guild_history_command {
 			let xp_since = $crate::commands::guild::get_monthly_xp(ctx, &guild, &guilds).unwrap_or(0);
 
 			guild.increase_searches(ctx)?;
+
+			let daily_xp = guild.members
+				.iter()
+				.map(|g| g.xp_history[1].1)
+				.sum::<u32>();
+
+			let weekly_xp = guild.members
+				.iter()
+				.map(|g| g.xp_history.iter().map(|h| h.1).sum::<u32>())
+				.sum::<u32>();
+
 			$crate::commands::guild::apply_member_xp(&mut guild, &guilds);
 
 			let data = if let ::std::option::Option::Some(leader) = guild.get_leader() {
@@ -205,7 +216,7 @@ macro_rules! generate_guild_history_command {
 				::api::canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
 				::api::canvas::guild::header(&mut surface, &guild);
 				::api::canvas::guild::games(ctx, &mut surface, &mut guild);
-				::api::canvas::guild::stats_history(ctx, &mut surface, &guild, xp_since);
+				::api::canvas::guild::stats_history(ctx, &mut surface, &guild, daily_xp, weekly_xp, xp_since);
 				::api::canvas::guild::level(ctx, &mut surface, &guild);
 				::api::canvas::guild::preferred_games(&mut surface, &guild);
 

@@ -338,6 +338,8 @@ pub fn stats_history(
 	ctx: Context<'_>,
 	surface: &mut Surface,
 	guild: &Guild,
+	daily_xp: impl ToFormatted,
+	weekly_xp: impl ToFormatted,
 	xp_since: impl ToFormatted,
 ) {
 	game::bubble(
@@ -382,13 +384,6 @@ pub fn stats_history(
 	let rect = super::get_item_rect(1);
 
 	draw(surface, &text, 30., rect, TextAlign::Center, true);
-
-	let daily_xp = guild.members.iter().map(|m| m.xp_history[0].1).sum::<u32>();
-	let weekly_xp = guild
-		.members
-		.iter()
-		.map(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>())
-		.sum::<u32>();
 
 	game::bubble(
 		ctx,
