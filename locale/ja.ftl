@@ -573,6 +573,7 @@ experience = 経験値
 
 yes = はい
 no = いいえ
+none = なし
 
 # 色
 

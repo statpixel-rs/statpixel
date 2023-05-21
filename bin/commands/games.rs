@@ -118,7 +118,7 @@ generate_command!(tnt_games::TntGames, tnt_games::TntGamesMode, tntgames);
 generate_command!(
 	turbo_kart_racers::TurboKartRacers,
 	turbo_kart_racers::TurboKartRacersMode,
-	turkokartracers
+	turbokartracers
 );
 generate_command!(uhc::Uhc, uhc::UhcMode, uhc);
 generate_command!(vampire_z::VampireZ, vampire_z::VampireZMode, vampirez);

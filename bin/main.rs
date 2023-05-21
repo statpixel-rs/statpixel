@@ -74,7 +74,7 @@ async fn main() {
 		commands::games::smash(),
 		commands::games::speeduhc(),
 		commands::games::tntgames(),
-		commands::games::turkokartracers(),
+		commands::games::turbokartracers(),
 		commands::games::uhc(),
 		commands::unlink::unlink(),
 		commands::games::vampirez(),

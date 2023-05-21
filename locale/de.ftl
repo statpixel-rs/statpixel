@@ -574,6 +574,7 @@ experience = Erfahrung
 
 yes = Ja
 no = Nein
+none = Keine
 
 # Farben
 

@@ -227,7 +227,7 @@ macro_rules! generate_history_commands {
 			generate_history_command!(
 				::api::player::stats::turbo_kart_racers::TurboKartRacers,
 				::api::player::stats::turbo_kart_racers::TurboKartRacersMode,
-				turkokartracers,
+				turbokartracers,
 				$duration
 			);
 			generate_history_command!(
@@ -280,7 +280,7 @@ macro_rules! generate_history_commands {
 					"smash",
 					"speeduhc",
 					"tntgames",
-					"turkokartracers",
+					"turbokartracers",
 					"uhc",
 					"vampirez",
 					"walls",

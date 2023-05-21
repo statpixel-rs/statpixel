@@ -569,6 +569,7 @@ experience = Experiencia
 
 yes = Sí
 no = No
+none = Ninguno
 
 # Colores
 
