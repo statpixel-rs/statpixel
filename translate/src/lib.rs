@@ -49,11 +49,11 @@ pub enum ApiError {
 pub enum Error {
 	#[error(transparent)]
 	Api(#[from] Arc<ApiError>),
-	#[error("An error occurred while interacting with Diesel.")]
+	#[error("An error occurred while interacting with Diesel.\n\n```\n{0:?}```")]
 	Diesel(#[from] diesel::result::Error),
-	#[error("An error occurred while interacting with the database.")]
+	#[error("An error occurred while interacting with the database. \n\n```\n{0:?}```")]
 	Database(#[from] r2d2::Error),
-	#[error("An internal error occurred. {0}")]
+	#[error("An internal error occurred. \n\n```\n{0:?}```")]
 	Framework(#[from] poise::serenity_prelude::Error),
 	#[error("An internal error occurred during setup.")]
 	Setup,
@@ -67,8 +67,8 @@ pub enum Error {
 	InvalidUsername(String),
 	#[error("An error occurred while handling io.")]
 	Io(#[from] std::io::Error),
-	#[error("An internal error occurred while decoding bincode.")]
+	#[error("An internal error occurred while decoding bincode.\n\n```\n{0:?}```")]
 	BincodeDeserialize(#[from] bincode::error::DecodeError),
-	#[error("An internal error occurred while encoding bincode.")]
+	#[error("An internal error occurred while encoding bincode.\n\n```\n{0:?}```")]
 	BincodeSerialize(#[from] bincode::error::EncodeError),
 }

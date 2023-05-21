@@ -50,6 +50,45 @@ pub async fn autocomplete_username(
 	Box::new(std::iter::once(partial.to_string()))
 }
 
+#[allow(clippy::unused_async)]
+pub async fn autocomplete_guild_name(
+	ctx: Context<'_>,
+	partial: &str,
+) -> Box<dyn Iterator<Item = String> + Send> {
+	tracing::info!("Autocompleting guild name `{partial}`");
+
+	if let Ok(mut connection) = ctx.data().pool.get() {
+		if partial.is_empty() || partial.contains('%') {
+			let result = schema::guild_autocomplete::table
+				.filter(schema::guild_autocomplete::name.is_not_null())
+				.order(schema::guild_autocomplete::xp.desc())
+				.limit(10)
+				.select(schema::guild_autocomplete::name)
+				.get_results::<String>(&mut connection);
+
+			if let Ok(result) = result {
+				return Box::new(result.into_iter());
+			}
+		} else {
+			let result = schema::guild_autocomplete::table
+				.filter(
+					lower(schema::guild_autocomplete::name)
+						.like(format!("{}%", partial.to_ascii_lowercase())),
+				)
+				.order(schema::guild_autocomplete::xp.desc())
+				.limit(9)
+				.select(schema::guild_autocomplete::name)
+				.get_results::<String>(&mut connection);
+
+			if let Ok(result) = result {
+				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
+			}
+		}
+	}
+
+	Box::new(std::iter::once(partial.to_string()))
+}
+
 /// Generates the code needed to fetch the player, their data, and their session.
 #[macro_export]
 macro_rules! get_data {

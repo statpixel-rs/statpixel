@@ -16,8 +16,11 @@ pub async fn guild(
 	ctx: Context<'_>,
 	#[min_length = 3]
 	#[max_length = 32]
+	#[autocomplete = "crate::commands::autocomplete_guild_name"]
 	name: Option<String>,
-	#[max_length = 16] username: Option<String>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
 	#[min_length = 32]
 	#[max_length = 36]
 	uuid: Option<String>,
@@ -32,6 +35,8 @@ pub async fn guild(
 		}
 		Err(e) => return Err(e),
 	};
+
+	guild.increase_searches(ctx)?;
 
 	let data = if let Some(leader) = guild.get_leader() {
 		let player = leader.get_player_unchecked();

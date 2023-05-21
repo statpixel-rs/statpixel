@@ -9,6 +9,15 @@ diesel::table! {
 }
 
 diesel::table! {
+	guild_autocomplete (uuid) {
+		uuid -> Uuid,
+		name -> Varchar,
+		xp -> Int4,
+		searches -> Int4,
+	}
+}
+
+diesel::table! {
 	guild_snapshot (id) {
 		id -> Int4,
 		uuid -> Uuid,
@@ -45,7 +54,7 @@ diesel::table! {
 }
 
 diesel::table! {
-	users (id) {
+	user (id) {
 		id -> Int8,
 		text -> Bool,
 		uuid -> Nullable<Uuid>,
@@ -56,8 +65,9 @@ diesel::table! {
 
 diesel::allow_tables_to_appear_in_same_query!(
 	autocomplete,
+	guild_autocomplete,
 	guild_snapshot,
 	schedule,
 	snapshot,
-	users,
+	user,
 );

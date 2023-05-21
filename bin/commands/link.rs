@@ -39,14 +39,14 @@ pub async fn link(
 	};
 
 	if let Ok(player) = player {
-		diesel::insert_into(schema::users::table)
+		diesel::insert_into(schema::user::table)
 			.values((
-				schema::users::id.eq(ctx.author().id.0 as i64),
-				schema::users::uuid.eq(player.uuid),
+				schema::user::id.eq(ctx.author().id.0 as i64),
+				schema::user::uuid.eq(player.uuid),
 			))
-			.on_conflict(schema::users::id)
+			.on_conflict(schema::user::id)
 			.do_update()
-			.set(schema::users::uuid.eq(player.uuid))
+			.set(schema::user::uuid.eq(player.uuid))
 			.execute(&mut ctx.data().pool.get()?)?;
 
 		ctx.send(|m| {

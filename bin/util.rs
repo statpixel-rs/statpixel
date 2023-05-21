@@ -68,9 +68,9 @@ pub async fn get_player_from_input(
 		(None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
 		(_, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(None, _, None, _) => {
-			let uuid: Option<Uuid> = schema::users::table
-				.filter(schema::users::id.eq(author.id.0 as i64))
-				.select(schema::users::uuid)
+			let uuid: Option<Uuid> = schema::user::table
+				.filter(schema::user::id.eq(author.id.0 as i64))
+				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get()?)?;
 
 			if let Some(uuid) = uuid {
@@ -110,9 +110,9 @@ pub async fn get_guild_from_input(
 		(_, None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
 		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(_, None, _, None, _) => {
-			let uuid: Option<Uuid> = schema::users::table
-				.filter(schema::users::id.eq(author.id.0 as i64))
-				.select(schema::users::uuid)
+			let uuid: Option<Uuid> = schema::user::table
+				.filter(schema::user::id.eq(author.id.0 as i64))
+				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get()?)?;
 
 			if let Some(uuid) = uuid {

@@ -1,11 +1,14 @@
 pub mod member;
 
 use chrono::{DateTime, Utc};
+use database::schema::guild_autocomplete;
+use diesel::{ExpressionMethods, RunQueryDsl};
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
 use serde::{Deserialize, Deserializer};
 use std::{str::FromStr, sync::Arc};
+use translate::Context;
 use uuid::Uuid;
 
 use crate::{
@@ -102,6 +105,26 @@ impl Guild {
 	#[must_use]
 	pub fn default_guild_colour() -> Colour {
 		Colour::Gray
+	}
+
+	/// # Errors
+	/// Returns an error if the query could not be executed.
+	pub fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+		diesel::insert_into(guild_autocomplete::table)
+			.values((
+				guild_autocomplete::name.eq(&self.name),
+				guild_autocomplete::uuid.eq(&Uuid::from_u128(self.id)),
+				guild_autocomplete::searches.eq(1),
+			))
+			.on_conflict(guild_autocomplete::uuid)
+			.do_update()
+			.set((
+				guild_autocomplete::name.eq(&self.name),
+				guild_autocomplete::searches.eq(guild_autocomplete::searches + 1),
+			))
+			.execute(&mut ctx.data().pool.get()?)?;
+
+		Ok(())
 	}
 
 	/// # Errors
