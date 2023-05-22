@@ -35,6 +35,7 @@ pub struct Inner {
 #[game(
 	path = "wool_wars.inner.stats",
 	pretty = "§f§lWool §7§lWars",
+	plain = "Wool Wars",
 	calc = "minecraft::calc::wool_wars",
 	field(ident = "wins", colour = "green"),
 	field(ident = "games", colour = "red"),

@@ -15,7 +15,7 @@ pub async fn ser(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let (player, data, _session) = crate::get_data!(ctx, uuid, username);
+	let (_format, player, data, _session) = crate::get_data!(ctx, uuid, username);
 
 	let ser = bincode::encode_to_vec(&data, bincode::config::standard()).unwrap();
 	let serialized_bytes = ser.len();

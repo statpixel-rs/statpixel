@@ -122,12 +122,13 @@ macro_rules! get_data {
 			Err(e) => return Err(e),
 		};
 
+		let format = $crate::util::get_format_from_input($ctx, $ctx.author()).await;
 		let (data, session) =
 			poise::futures_util::future::join(player.get_data(), player.get_session()).await;
 
 		let data = data?;
 		let session = session?;
 
-		(player, data, session)
+		(format, player, data, session)
 	}};
 }

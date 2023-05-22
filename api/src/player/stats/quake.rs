@@ -10,6 +10,7 @@ use crate::meters::Meters;
 #[game(
 	path = "quake",
 	pretty = "§a§lQuake§2§lcraft",
+	plain = "Quakecraft",
 	field(ident = "wins", colour = "green"),
 	field(ident = "killstreaks", colour = "red"),
 	field(ident = "distance_walked", colour = "gold"),

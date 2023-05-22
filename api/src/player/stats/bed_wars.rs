@@ -8,6 +8,7 @@ use serde::Deserialize;
 #[game(
 	path = "bed_wars",
 	pretty = "§c§lBed §f§lWars",
+	plain = "Bed Wars",
 	calc = "minecraft::calc::bed_wars",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),

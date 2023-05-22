@@ -1,3 +1,8 @@
+use std::borrow::Cow;
+
+use once_cell::sync::Lazy;
+use regex::Regex;
+
 use super::{parse::ESCAPE, Text};
 use crate::{colour::Colour, minecraft_text, paint::Paint};
 
@@ -18,6 +23,8 @@ pub enum Rank {
 	Owner,
 	Custom(String),
 }
+
+pub static REMOVE_SPECIAL_CHARS_REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"§.").unwrap());
 
 macro_rules! mvp_plus {
 	($colour: expr) => {
@@ -148,6 +155,28 @@ impl Rank {
 			Self::Admin | Self::Owner | Self::Mcp | Self::YouTube => Paint::Red,
 			Self::Custom(prefix) => Self::get_string_paint(prefix),
 		}
+	}
+
+	#[must_use]
+	pub fn as_str(&self) -> Option<Cow<'_, str>> {
+		Some(Cow::Borrowed(match self {
+			Self::Default => return None,
+			Self::Vip => "[VIP]",
+			Self::VipPlus => "[VIP+]",
+			Self::Mvp => "[MVP]",
+			Self::MvpPlus(_) => "[MVP+]",
+			Self::MvpPlusPlus(_, _) => "[MVP++]",
+			Self::Mojang => "[MOJANG]",
+			Self::Events => "[EVENTS]",
+			Self::Mcp => "[MCP]",
+			Self::Gm => "[GM]",
+			Self::Admin => "[ADMIN]",
+			Self::Owner => "[OWNER]",
+			Self::YouTube => "[YOUTUBE]",
+			Self::Custom(prefix) => {
+				return Some(REMOVE_SPECIAL_CHARS_REGEX.replace_all(prefix, ""))
+			}
+		}))
 	}
 
 	/// `None` for `Rank::Custom`

@@ -12,6 +12,7 @@ konst = "0.3.4"
 once_cell = "1.17.1"
 proc-macro2 = "1.0.56"
 quote = "1.0.26"
+regex = "1.8.1"
 serde = { version = "1.0.160", features = ["derive"] }
 skia-safe = { version = "0.62.0", features = ["textlayout"] }
 thiserror = "1.0.40"

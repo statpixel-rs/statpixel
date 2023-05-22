@@ -11,6 +11,7 @@ fn default_level_fmt() -> String {
 #[game(
 	path = "sky_wars",
 	pretty = "§b§lSky §f§lWars",
+	plain = "Sky Wars",
 	calc = "minecraft::calc::sky_wars",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),

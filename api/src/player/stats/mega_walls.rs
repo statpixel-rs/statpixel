@@ -9,6 +9,7 @@ use crate::{meters, minutes};
 #[game(
 	path = "mega_walls",
 	pretty = "§3§lMega Walls",
+	plain = "Mega Walls",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),

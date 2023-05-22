@@ -9,6 +9,7 @@ use crate::inverse_bool;
 #[game(
 	path = "vampire_z",
 	pretty = "§c§lVampire§4§lZ",
+	plain = "VampireZ",
 	field(ident = "human_wins", colour = "green"),
 	field(ident = "vampire_wins", colour = "red"),
 	field(ident = "zombie_kills", colour = "gold"),

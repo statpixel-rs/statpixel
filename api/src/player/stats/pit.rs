@@ -30,6 +30,7 @@ pub struct Profile {
 #[game(
 	path = "pit.data",
 	pretty = "§c§lThe Pit",
+	plain = "The Pit",
 	xp = "pit.profile.level",
 	calc = "minecraft::calc::pit",
 	field(ident = "kills", colour = "green"),

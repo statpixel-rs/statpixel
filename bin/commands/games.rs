@@ -24,23 +24,37 @@ macro_rules! generate_large_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let (player, data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;
 
-			let png: ::std::borrow::Cow<[u8]> = {
-				let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+			match format {
+				// TODO: Add compact format support
+				$crate::format::Display::Image | $crate::format::Display::Compact => {
+					let png: ::std::borrow::Cow<[u8]> = {
+						let mut surface = <$game>::canvas(ctx, &data, &session, mode);
 
-				::api::canvas::to_png(&mut surface).into()
-			};
+						::api::canvas::to_png(&mut surface).into()
+					};
 
-			ctx.send(move |m| {
-				m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
-					data: png,
-					filename: "canvas.png".into(),
-				})
-			})
-			.await?;
+					ctx.send(move |m| {
+						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+							data: png,
+							filename: "canvas.png".into(),
+						})
+					})
+					.await?;
+				}
+				$crate::format::Display::Text => {
+					let embed = <$game>::embed(ctx, &player, &data, &session);
+
+					ctx.send(|m| {
+						m.embeds.push(embed);
+						m
+					})
+					.await?;
+				}
+			}
 
 			Ok(())
 		}
@@ -60,23 +74,37 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let (player, data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;
 
-			let png: ::std::borrow::Cow<[u8]> = {
-				let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+			match format {
+				// TODO: Add compact format support
+				$crate::format::Display::Image | $crate::format::Display::Compact => {
+					let png: ::std::borrow::Cow<[u8]> = {
+						let mut surface = <$game>::canvas(ctx, &data, &session, mode);
 
-				::api::canvas::to_png(&mut surface).into()
-			};
+						::api::canvas::to_png(&mut surface).into()
+					};
 
-			ctx.send(move |m| {
-				m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
-					data: png,
-					filename: "canvas.png".into(),
-				})
-			})
-			.await?;
+					ctx.send(move |m| {
+						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+							data: png,
+							filename: "canvas.png".into(),
+						})
+					})
+					.await?;
+				}
+				$crate::format::Display::Text => {
+					let embed = <$game>::embed(ctx, &player, &data, &session);
+
+					ctx.send(|m| {
+						m.embeds.push(embed);
+						m
+					})
+					.await?;
+				}
+			}
 
 			Ok(())
 		}

@@ -133,7 +133,7 @@ impl ToTokens for ModeInputReceiver {
 					&self,
 					ctx: ::translate::Context<'_>,
 					surface: &mut ::skia_safe::Surface,
-					player: &crate::player::data::Data,
+					data: &crate::player::data::Data,
 					session: &crate::player::status::Session,
 					stats: &Stats,
 					start_idx: usize,

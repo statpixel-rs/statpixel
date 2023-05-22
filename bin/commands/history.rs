@@ -12,7 +12,7 @@ macro_rules! generate_history_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
 				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 
@@ -80,7 +80,7 @@ macro_rules! generate_large_history_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
 				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 

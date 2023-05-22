@@ -9,6 +9,7 @@ use crate::meters::Meters;
 #[game(
 	path = "walls",
 	pretty = "§e§lThe Walls",
+	plain = "The Walls",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),

@@ -7,9 +7,10 @@ use diesel::{
 	AsExpression, FromSqlRow,
 };
 
-#[derive(poise::ChoiceParameter, Debug, AsExpression, FromSqlRow)]
+#[derive(poise::ChoiceParameter, Debug, AsExpression, FromSqlRow, Default)]
 #[diesel(sql_type = SmallInt)]
 pub enum Display {
+	#[default]
 	Image,
 	Compact,
 	Text,

@@ -8,7 +8,7 @@ use poise::CreateReply;
 use std::fmt::Display;
 use uuid::Uuid;
 
-use crate::{Context, Error};
+use crate::{format, Context, Error};
 
 pub fn success_embed<'a, 'b, S>(
 	reply: &'b mut CreateReply<'a>,
@@ -46,6 +46,20 @@ where
 
 pub fn escape_username(username: &str) -> String {
 	username.replace('_', "\\_")
+}
+
+pub async fn get_format_from_input(ctx: Context<'_>, author: &User) -> format::Display {
+	let Ok(mut connection) = ctx.data().pool.get().await else {
+		return format::Display::default();
+	};
+
+	let result = schema::user::table
+		.filter(schema::user::id.eq(author.id.0 as i64))
+		.select(schema::user::display)
+		.get_result::<format::Display>(&mut connection)
+		.await;
+
+	result.unwrap_or_default()
 }
 
 pub async fn get_player_from_input(

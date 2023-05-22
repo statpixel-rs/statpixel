@@ -83,7 +83,7 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 	let value = if let Some(path) = info.path.as_ref() {
 		let path = parse_str_to_dot_path(path);
 
-		quote! { player.stats.#path.#name }
+		quote! { data.stats.#path.#name }
 	} else if let Some(div) = info.div.as_ref() {
 		quote! { ::std::cmp::min(100, self.#name * 100 / if self.#div == 0 { 1 } else { self.#div }) }
 	} else {

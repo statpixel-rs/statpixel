@@ -10,6 +10,7 @@ use crate::seconds::Seconds;
 #[game(
 	path = "blitz_sg",
 	pretty = "§c§lBlitz SG",
+	plain = "Blitz SG",
 	field(ident = "wins", colour = "green"),
 	field(ident = "games_played", colour = "red"),
 	field(

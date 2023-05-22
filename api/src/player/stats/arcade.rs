@@ -7,6 +7,7 @@ use serde::Deserialize;
 #[game(
 	path = "arcade",
 	pretty = "§6§lArcade",
+	plain = "Arcade",
 	field(ident = "wins", colour = "green"),
 	field(ident = "games", colour = "red"),
 	field(
