@@ -7,7 +7,8 @@ use api::{
 };
 use chrono::{DateTime, Utc};
 use database::{extend::modulo, schema::guild_snapshot};
-use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl};
+use diesel::{query_dsl::methods::DistinctOnDsl, ExpressionMethods, QueryDsl};
+use diesel_async::RunQueryDsl;
 use futures::StreamExt;
 use poise::serenity_prelude::AttachmentType;
 use translate::{tr, Context};
@@ -19,7 +20,7 @@ use crate::{
 	Error,
 };
 
-pub fn get_snapshots_multiple_of_weekday(
+pub async fn get_snapshots_multiple_of_weekday(
 	ctx: Context<'_>,
 	guild: &Guild,
 	after: DateTime<Utc>,
@@ -35,7 +36,12 @@ pub fn get_snapshots_multiple_of_weekday(
 		.select(guild_snapshot::data)
 		.order(guild_snapshot::days_since_epoch.desc())
 		.distinct_on(guild_snapshot::days_since_epoch)
-		.get_results::<Vec<u8>>(&mut ctx.data().pool.get()?)?;
+		.get_results::<Vec<u8>>(&mut ctx.data().pool.get().await?)
+		.await?;
+
+	if result.is_empty() {
+		snapshot::guild::insert(ctx, guild).await?;
+	}
 
 	Ok(result
 		.into_iter()
@@ -43,13 +49,7 @@ pub fn get_snapshots_multiple_of_weekday(
 		.collect())
 }
 
-pub fn get_monthly_xp(ctx: Context<'_>, guild: &Guild, guilds: &[Guild]) -> Result<u32, Error> {
-	if guilds.is_empty() {
-		snapshot::guild::insert(ctx, guild)?;
-
-		return Ok(0);
-	}
-
+pub fn get_monthly_xp(guild: &Guild, guilds: &[Guild]) -> u32 {
 	let mut xp = 0;
 
 	for snapshot in guilds {
@@ -68,7 +68,7 @@ pub fn get_monthly_xp(ctx: Context<'_>, guild: &Guild, guilds: &[Guild]) -> Resu
 		xp += member.xp_history[0].1;
 	}
 
-	Ok(xp)
+	xp
 }
 
 pub fn apply_member_xp(guild: &mut Guild, guilds: &[Guild]) {
@@ -113,11 +113,12 @@ pub async fn guild(
 		Err(e) => return Err(e),
 	};
 
-	guild.increase_searches(ctx)?;
+	guild.increase_searches(ctx).await?;
 
 	let guilds =
-		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))?;
-	let monthly_xp = get_monthly_xp(ctx, &guild, &guilds).unwrap_or(0);
+		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
+			.await?;
+	let monthly_xp = get_monthly_xp(&guild, &guilds);
 
 	let data = if let Some(leader) = guild.get_leader() {
 		let player = leader.get_player_unchecked();

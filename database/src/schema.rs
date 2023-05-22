@@ -68,10 +68,10 @@ diesel::table! {
 diesel::table! {
 	user (id) {
 		id -> Int8,
-		text -> Bool,
 		uuid -> Nullable<Uuid>,
 		updated_at -> Timestamptz,
 		created_at -> Timestamptz,
+		display -> Int2,
 	}
 }
 

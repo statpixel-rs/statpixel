@@ -2,7 +2,8 @@ pub mod member;
 
 use chrono::{DateTime, Utc};
 use database::schema::guild_autocomplete;
-use diesel::{ExpressionMethods, RunQueryDsl};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use macros::Diff;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
@@ -110,7 +111,7 @@ impl Guild {
 
 	/// # Errors
 	/// Returns an error if the query could not be executed.
-	pub fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
 		diesel::insert_into(guild_autocomplete::table)
 			.values((
 				guild_autocomplete::name.eq(&self.name),
@@ -123,7 +124,8 @@ impl Guild {
 				guild_autocomplete::name.eq(&self.name),
 				guild_autocomplete::searches.eq(guild_autocomplete::searches + 1),
 			))
-			.execute(&mut ctx.data().pool.get()?)?;
+			.execute(&mut ctx.data().pool.get().await?)
+			.await?;
 
 		Ok(())
 	}

@@ -9,12 +9,17 @@ no-previous-guild-statistics = No previous data found for guild **{$name}**, so 
 # /display
 display = display
   .description = Changes the way responses are displayed.
-  .text = text
-  .text-description = Whether to display responses as text
+  .format = format
+  .format-description = The response format to use
 
 display-changed = Display changed
 display-changed-text-description = Responses will now be sent as text.
 display-changed-image-description = Responses will now be sent as images where applicable.
+display-changed-compact-description = Responses will now be sent as compact images.
+
+Image = Image
+Compact = Compact
+Text = Text
 
 # /unlink
 unlink = unlink

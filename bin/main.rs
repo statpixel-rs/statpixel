@@ -15,6 +15,7 @@ use translate::{Context, Data, Error};
 
 mod commands;
 mod constants;
+mod format;
 mod snapshot;
 mod util;
 

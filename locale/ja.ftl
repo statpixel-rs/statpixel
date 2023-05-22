@@ -7,14 +7,20 @@ showing-guild-statistics = {$from}から{$to}までのギルド統計を表示�
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
 # /display
+
 display = display
   .description = 応答の表示方法を変更します。
-  .text = text
-  .text-description = 応答をテキストとして表示するかどうか
+  .format = format
+  .format-description = 使用する応答フォーマット
 
 display-changed = 表示が変更されました
 display-changed-text-description = 応答は今後テキストとして送信されます。
 display-changed-image-description = 応答は適用される場合には画像として送信されます。
+display-changed-compact-description = 応答は今後コンパクトとして送信されます。
+
+Image = 画像
+Compact = コンパクト
+Text = テキスト
 
 # /unlink
 unlink = unlink

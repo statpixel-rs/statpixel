@@ -3,7 +3,8 @@ pub mod stats;
 pub mod status;
 
 use database::schema::autocomplete;
-use diesel::{ExpressionMethods, RunQueryDsl};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use reqwest::{StatusCode, Url};
 use serde::Deserialize;
@@ -69,7 +70,7 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
-	pub fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
 		diesel::insert_into(autocomplete::table)
 			.values((
 				autocomplete::name.eq(&self.username),
@@ -82,7 +83,8 @@ impl Player {
 				autocomplete::name.eq(&self.username),
 				autocomplete::searches.eq(autocomplete::searches + 1),
 			))
-			.execute(&mut ctx.data().pool.get()?)?;
+			.execute(&mut ctx.data().pool.get().await?)
+			.await?;
 
 		Ok(())
 	}

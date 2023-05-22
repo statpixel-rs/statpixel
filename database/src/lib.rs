@@ -4,20 +4,20 @@ pub mod extend;
 pub mod models;
 pub mod schema;
 
-use diesel::{
-	r2d2::{ConnectionManager, Pool},
-	PgConnection,
+use diesel_async::{
+	pooled_connection::{deadpool::Pool, AsyncDieselConnectionManager},
+	AsyncPgConnection,
 };
 
-pub type PostgresPool = Pool<ConnectionManager<PgConnection>>;
+pub type PostgresPool = Pool<AsyncPgConnection>;
 
 #[must_use]
-pub fn get_pool(max_size: u32) -> PostgresPool {
+pub fn get_pool(max_size: usize) -> PostgresPool {
 	let url = std::env::var("DATABASE_URL").expect("environment variable DATABASE_URL not found");
-	let manager = ConnectionManager::<PgConnection>::new(url);
+	let manager = AsyncDieselConnectionManager::<AsyncPgConnection>::new(url);
 
-	Pool::builder()
+	Pool::builder(manager)
 		.max_size(max_size)
-		.build(manager)
+		.build()
 		.expect("failed to create connection pool")
 }

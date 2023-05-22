@@ -49,6 +49,7 @@ chrono = "0.4.24"
 governor = "0.5.1"
 bincode = "2.0.0-rc.3"
 fxhash = "0.2.1"
+diesel-async = { version = "0.2.2", features = ["postgres"] }
 
 [dev-dependencies]
 criterion = "0.4.0"

@@ -7,14 +7,20 @@ showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
 # /display
+
 display = display
   .description = Cambia la forma en que se muestran las respuestas.
-  .text = text
-  .text-description = Si mostrar las respuestas como texto
+  .format = format
+  .format-description = El formato de respuesta a utilizar
 
 display-changed = Cambio de visualización
 display-changed-text-description = Las respuestas se enviarán ahora como texto.
 display-changed-image-description = Las respuestas ahora se enviarán como imágenes cuando corresponda.
+display-changed-compact-description = Las respuestas ahora se enviarán como imágenes compactas cuando corresponda.
+
+Image = Imagen
+Compact = Compacto
+Text = Texto
 
 # /unlink
 unlink = unlink

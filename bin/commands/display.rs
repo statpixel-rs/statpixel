@@ -1,47 +1,34 @@
 use database::schema;
-use diesel::{ExpressionMethods, RunQueryDsl};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use translate::tr;
 
-use crate::{util::success_embed, Context, Error};
+use crate::{format::Display, util::success_embed, Context, Error};
 
 /// Changes the way responses are displayed.
 #[poise::command(slash_command, required_bot_permissions = "EMBED_LINKS")]
-pub async fn display(ctx: Context<'_>, text: Option<bool>) -> Result<(), Error> {
+pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 	let u = ctx.author();
 
-	// If they provide a value, use it. Otherwise, toggle the current value.
-	let text = if let Some(text) = text {
-		diesel::insert_into(schema::user::table)
-			.values((
-				schema::user::text.eq(text),
-				schema::user::id.eq(u.id.0 as i64),
-			))
-			.on_conflict(schema::user::id)
-			.do_update()
-			.set(schema::user::text.eq(text))
-			.returning(schema::user::text)
-			.get_result::<bool>(&mut ctx.data().pool.get()?)?
-	} else {
-		diesel::insert_into(schema::user::table)
-			.values((
-				schema::user::text.eq(true),
-				schema::user::id.eq(u.id.0 as i64),
-			))
-			.on_conflict(schema::user::id)
-			.do_update()
-			.set(schema::user::text.eq(diesel::dsl::not(schema::user::text)))
-			.returning(schema::user::text)
-			.get_result::<bool>(&mut ctx.data().pool.get()?)?
-	};
+	diesel::insert_into(schema::user::table)
+		.values((
+			schema::user::display.eq(&format),
+			schema::user::id.eq(u.id.0 as i64),
+		))
+		.on_conflict(schema::user::id)
+		.do_update()
+		.set(schema::user::display.eq(&format))
+		.execute(&mut ctx.data().pool.get().await?)
+		.await?;
 
 	ctx.send(|m| {
 		success_embed(
 			m,
 			tr!(ctx, "display-changed"),
-			if text {
-				tr!(ctx, "display-changed-text-description")
-			} else {
-				tr!(ctx, "display-changed-image-description")
+			match format {
+				Display::Image => tr!(ctx, "display-changed-image-description"),
+				Display::Compact => tr!(ctx, "display-changed-compact-description"),
+				Display::Text => tr!(ctx, "display-changed-text-description"),
 			},
 		)
 	})

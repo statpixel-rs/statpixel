@@ -7,13 +7,10 @@ use uuid::Uuid;
 mod locale;
 pub mod prelude;
 
-pub use diesel;
 pub use fluent;
 pub use locale::*;
-pub use r2d2;
 pub use uuid;
 
-#[derive(Debug)]
 pub struct Data {
 	pub pool: PostgresPool,
 	pub locale: locale::Locale,
@@ -52,7 +49,7 @@ pub enum Error {
 	#[error("An error occurred while interacting with Diesel.\n\n```\n{0:?}```")]
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database. \n\n```\n{0:?}```")]
-	Database(#[from] r2d2::Error),
+	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
 	#[error("An internal error occurred. \n\n```\n{0:?}```")]
 	Framework(#[from] poise::serenity_prelude::Error),
 	#[error("An internal error occurred during setup.")]

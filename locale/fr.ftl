@@ -7,14 +7,20 @@ showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
 # /display
+
 display = display
   .description = Modifie la façon dont les réponses sont affichées.
-  .text = text
-  .text-description = Que les réponses soient affichées sous forme de texte
+  .format = format
+  .format-description = Le format de réponse à utiliser
 
 display-changed = Affichage modifié
 display-changed-text-description = Les réponses seront désormais envoyées sous forme de texte.
 display-changed-image-description = Les réponses seront désormais envoyées sous forme d'images lorsque cela est applicable.
+display-changed-compact-description = Les réponses seront désormais envoyées sous forme d'images compactes lorsque cela est applicable.
+
+Image = Image
+Compact = Compact
+Text = Text
 
 # /unlink
 unlink = unlink

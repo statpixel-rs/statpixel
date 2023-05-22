@@ -1,0 +1,4 @@
+-- Your SQL goes here
+
+ALTER TABLE "user" DROP COLUMN text;
+ALTER TABLE "user" ADD COLUMN display SMALLINT NOT NULL DEFAULT 0;

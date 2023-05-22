@@ -6,8 +6,9 @@ use database::{
 	schema::{schedule, snapshot},
 	PostgresPool,
 };
-use diesel::{
-	Connection, ExpressionMethods, NullableExpressionMethods, PgConnection, QueryDsl, RunQueryDsl,
+use diesel::{ExpressionMethods, NullableExpressionMethods, QueryDsl};
+use diesel_async::{
+	scoped_futures::ScopedFutureExt, AsyncConnection, AsyncPgConnection, RunQueryDsl,
 };
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
@@ -40,8 +41,9 @@ const PLAYER_BUFFER_LIMIT: usize = 20;
 #[allow(clippy::unusual_byte_groupings)]
 pub const DEFAULT_SCHEDULE: i32 = 0b00000000000_000_000_000_000_000_000_000;
 
+#[allow(clippy::too_many_lines)]
 async fn update(
-	connection: &mut PgConnection,
+	connection: &mut AsyncPgConnection,
 	uuid: Uuid,
 	timestamp: DateTime<Utc>,
 	snapshots: i32,
@@ -115,7 +117,8 @@ async fn update(
 			.filter(snapshot::uuid.eq(uuid))
 			.order(snapshot::created_at.desc())
 			.limit(i64::from(CALCULATION_PERIOD_SNAPSHOTS))
-			.get_results::<(DateTime<Utc>, bool)>(connection)?;
+			.get_results::<(DateTime<Utc>, bool)>(connection)
+			.await?;
 
 		let time = Utc::now();
 
@@ -148,41 +151,49 @@ async fn update(
 	};
 
 	// Make sure both the snapshot is inserted and the player is updated.
-	connection.transaction::<(), Error, _>(|conn| {
-		if let Some(bitfield) = bitfield {
-			diesel::update(schedule::table)
-				.filter(schedule::uuid.eq(player.uuid))
-				.set((
-					schedule::update_at.eq(next),
-					schedule::snapshots.eq(schedule::snapshots + 1),
-					schedule::prev_hash.eq(schedule::hash.nullable()),
-					schedule::hash.eq(hash),
-					schedule::weekly_schedule.eq(bitfield as i32),
-				))
-				.execute(conn)?;
-		} else {
-			diesel::update(schedule::table)
-				.filter(schedule::uuid.eq(player.uuid))
-				.set((
-					schedule::update_at.eq(next),
-					schedule::snapshots.eq(schedule::snapshots + 1),
-					schedule::prev_hash.eq(schedule::hash.nullable()),
-					schedule::hash.eq(hash),
-				))
-				.execute(conn)?;
-		}
+	connection
+		.transaction::<(), Error, _>(|conn| {
+			async move {
+				if let Some(bitfield) = bitfield {
+					diesel::update(schedule::table)
+						.filter(schedule::uuid.eq(player.uuid))
+						.set((
+							schedule::update_at.eq(next),
+							schedule::snapshots.eq(schedule::snapshots + 1),
+							schedule::prev_hash.eq(schedule::hash.nullable()),
+							schedule::hash.eq(hash),
+							schedule::weekly_schedule.eq(bitfield as i32),
+						))
+						.execute(conn)
+						.await?;
+				} else {
+					diesel::update(schedule::table)
+						.filter(schedule::uuid.eq(player.uuid))
+						.set((
+							schedule::update_at.eq(next),
+							schedule::snapshots.eq(schedule::snapshots + 1),
+							schedule::prev_hash.eq(schedule::hash.nullable()),
+							schedule::hash.eq(hash),
+						))
+						.execute(conn)
+						.await?;
+				}
 
-		diesel::insert_into(snapshot::table)
-			.values((
-				snapshot::uuid.eq(player.uuid),
-				snapshot::data.eq(encoded),
-				snapshot::hash.eq(new_hash),
-				snapshot::did_update.eq(did_update),
-			))
-			.execute(conn)?;
+				diesel::insert_into(snapshot::table)
+					.values((
+						snapshot::uuid.eq(player.uuid),
+						snapshot::data.eq(encoded),
+						snapshot::hash.eq(new_hash),
+						snapshot::did_update.eq(did_update),
+					))
+					.execute(conn)
+					.await?;
 
-		Ok(())
-	})?;
+				Ok(())
+			}
+			.scope_boxed()
+		})
+		.await?;
 
 	Ok(())
 }
@@ -191,7 +202,7 @@ async fn update(
 /// This function will return an Err if
 pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 	loop {
-		let mut connection = pool.get()?;
+		let mut connection = pool.get().await?;
 
 		// We can afford fetching a lot of records since all of them update with the same
 		// frequency, so it's impossible to insert one that would fit inside of these.
@@ -205,7 +216,8 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 			))
 			.order(schedule::update_at.asc())
 			.limit(PLAYER_BATCH_LIMIT)
-			.get_results::<(Uuid, DateTime<Utc>, i32, i64, i32)>(&mut connection)?;
+			.get_results::<(Uuid, DateTime<Utc>, i32, i64, i32)>(&mut connection)
+			.await?;
 
 		if players.is_empty() {
 			// Sleep for an hour, since that's the earliest a profile could be added.
@@ -226,7 +238,7 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 					}
 
 					let mut connection = loop {
-						match pool.get() {
+						match pool.get().await {
 							Ok(connection) => break connection,
 							Err(e) => {
 								warn!("Failed to get connection: {}", e);
@@ -237,14 +249,14 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 					};
 
 					// This will never fail since it's an md5 hash.
-					while let Err(e) = update(
+					while let Err(e) = Box::pin(update(
 						&mut connection,
 						uuid,
 						update_at,
 						snapshots,
 						hash,
 						weekly_schedule,
-					)
+					))
 					.await
 					{
 						warn!("Failed to update player {uuid}: {e}");
@@ -282,7 +294,7 @@ pub fn decode(data: &[u8]) -> Result<Data, Error> {
 }
 
 /// Gets the earliest snapshot of a given player within a timeframe.
-pub fn get(
+pub async fn get(
 	ctx: Context<'_>,
 	player: &Player,
 	timeframe: DateTime<Utc>,
@@ -292,7 +304,8 @@ pub fn get(
 		.filter(snapshot::uuid.eq(player.uuid))
 		.select((snapshot::data, snapshot::created_at))
 		.order(snapshot::created_at.asc())
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get()?);
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.await;
 
 	match result {
 		Ok((data, created_at)) => Ok(Some((decode(data.as_slice())?, created_at))),
@@ -301,59 +314,66 @@ pub fn get(
 	}
 }
 
-pub fn get_or_insert(
+pub async fn get_or_insert(
 	ctx: Context<'_>,
 	player: &Player,
 	data: &Data,
 	timeframe: DateTime<Utc>,
 ) -> Result<Status, Error> {
 	// If a snapshot exists within the given timeframe, return it.
-	if let Some(snapshot) = get(ctx, player, timeframe)? {
+	if let Some(snapshot) = get(ctx, player, timeframe).await? {
 		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
 	}
 
 	let encoded = encode(data)?;
 	let hash = fxhash::hash64(&encoded) as i64;
-	let mut connection = ctx.data().pool.get()?;
+	let mut connection = ctx.data().pool.get().await?;
 
-	connection.transaction::<(), Error, _>(|conn| {
-		// Otherwise, insert the current data into the database.
-		let prev_hash = diesel::insert_into(schedule::table)
-			.values((
-				schedule::uuid.eq(player.uuid),
-				// Schedule the first update for one hour from now.
-				// The first few updates should be more frequent to calculate the
-				// timezone of the player.
-				schedule::update_at.eq(Utc::now() + chrono::Duration::hours(3)),
-				// Set the number of snapshots to 1, since we just inserted one.
-				schedule::snapshots.eq(1),
-				schedule::hash.eq(hash),
-				schedule::weekly_schedule.eq(DEFAULT_SCHEDULE),
-			))
-			.on_conflict(schedule::uuid)
-			.do_update()
-			.set((
-				schedule::snapshots.eq(schedule::snapshots + 1),
-				schedule::prev_hash.eq(schedule::hash.nullable()),
-				schedule::hash.eq(hash),
-			))
-			.returning(schedule::prev_hash.nullable())
-			.get_result::<Option<i64>>(conn)?;
+	connection
+		.transaction::<(), Error, _>(|conn| {
+			async move {
+				// Otherwise, insert the current data into the database.
+				let prev_hash = diesel::insert_into(schedule::table)
+					.values((
+						schedule::uuid.eq(player.uuid),
+						// Schedule the first update for one hour from now.
+						// The first few updates should be more frequent to calculate the
+						// timezone of the player.
+						schedule::update_at.eq(Utc::now() + chrono::Duration::hours(3)),
+						// Set the number of snapshots to 1, since we just inserted one.
+						schedule::snapshots.eq(1),
+						schedule::hash.eq(hash),
+						schedule::weekly_schedule.eq(DEFAULT_SCHEDULE),
+					))
+					.on_conflict(schedule::uuid)
+					.do_update()
+					.set((
+						schedule::snapshots.eq(schedule::snapshots + 1),
+						schedule::prev_hash.eq(schedule::hash.nullable()),
+						schedule::hash.eq(hash),
+					))
+					.returning(schedule::prev_hash.nullable())
+					.get_result::<Option<i64>>(conn)
+					.await?;
 
-		diesel::insert_into(snapshot::table)
-			.values((
-				snapshot::uuid.eq(player.uuid),
-				snapshot::data.eq(encoded),
-				snapshot::hash.eq(hash),
-				snapshot::did_update.eq(match prev_hash {
-					Some(previous) => previous != hash,
-					None => true,
-				}),
-			))
-			.execute(conn)?;
+				diesel::insert_into(snapshot::table)
+					.values((
+						snapshot::uuid.eq(player.uuid),
+						snapshot::data.eq(encoded),
+						snapshot::hash.eq(hash),
+						snapshot::did_update.eq(match prev_hash {
+							Some(previous) => previous != hash,
+							None => true,
+						}),
+					))
+					.execute(conn)
+					.await?;
 
-		Ok(())
-	})?;
+				Ok(())
+			}
+			.scope_boxed()
+		})
+		.await?;
 
 	// And return nothing.
 	Ok(Status::Inserted)

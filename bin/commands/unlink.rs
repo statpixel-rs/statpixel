@@ -1,5 +1,6 @@
 use database::schema;
-use diesel::{ExpressionMethods, RunQueryDsl};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use translate::tr;
 use uuid::Uuid;
 
@@ -15,7 +16,8 @@ pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 		.set(schema::user::uuid.eq::<Option<Uuid>>(None))
 		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 		.filter(schema::user::uuid.is_not_null())
-		.execute(&mut ctx.data().pool.get()?)?;
+		.execute(&mut ctx.data().pool.get().await?)
+		.await?;
 
 	if removed > 0 {
 		ctx.send(|m| {

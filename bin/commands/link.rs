@@ -1,5 +1,6 @@
 use database::schema;
-use diesel::{ExpressionMethods, RunQueryDsl};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use translate::{tr, tr_fmt};
 use uuid::Uuid;
 
@@ -47,7 +48,8 @@ pub async fn link(
 			.on_conflict(schema::user::id)
 			.do_update()
 			.set(schema::user::uuid.eq(player.uuid))
-			.execute(&mut ctx.data().pool.get()?)?;
+			.execute(&mut ctx.data().pool.get().await?)
+			.await?;
 
 		ctx.send(|m| {
 			success_embed(

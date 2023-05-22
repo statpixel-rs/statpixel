@@ -14,9 +14,9 @@ macro_rules! generate_history_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
+				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 
-			player.increase_searches(ctx)?;
+			player.increase_searches(ctx).await?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
@@ -82,9 +82,9 @@ macro_rules! generate_large_history_command {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 			let status =
-				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration)?;
+				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 
-			player.increase_searches(ctx)?;
+			player.increase_searches(ctx).await?;
 
 			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
@@ -152,11 +152,11 @@ macro_rules! generate_guild_history_command {
 			};
 
 			let after = ::chrono::Utc::now() - $duration;
-			let status = $crate::snapshot::guild::get_or_insert(ctx, &guild, after)?;
-			let guilds = $crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, after)?;
-			let xp_since = $crate::commands::guild::get_monthly_xp(ctx, &guild, &guilds).unwrap_or(0);
+			let status = $crate::snapshot::guild::get_or_insert(ctx, &guild, after).await?;
+			let guilds = $crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, after).await?;
+			let xp_since = $crate::commands::guild::get_monthly_xp(&guild, &guilds);
 
-			guild.increase_searches(ctx)?;
+			guild.increase_searches(ctx).await?;
 
 			let daily_xp = guild.members
 				.iter()

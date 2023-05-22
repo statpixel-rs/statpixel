@@ -1,5 +1,6 @@
 use database::{extend::lower, schema};
-use diesel::{ExpressionMethods, QueryDsl, RunQueryDsl, TextExpressionMethods};
+use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
+use diesel_async::RunQueryDsl;
 use translate::Context;
 
 pub mod cache;
@@ -18,14 +19,15 @@ pub async fn autocomplete_username(
 ) -> Box<dyn Iterator<Item = String> + Send> {
 	tracing::debug!("Autocompleting username `{partial}`");
 
-	if let Ok(mut connection) = ctx.data().pool.get() {
+	if let Ok(mut connection) = ctx.data().pool.get().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::autocomplete::table
 				.filter(schema::autocomplete::name.is_not_null())
 				.order(schema::autocomplete::searches.desc())
 				.limit(10)
 				.select(schema::autocomplete::name)
-				.get_results::<String>(&mut connection);
+				.get_results::<String>(&mut connection)
+				.await;
 
 			if let Ok(result) = result {
 				return Box::new(result.into_iter());
@@ -39,7 +41,8 @@ pub async fn autocomplete_username(
 				.order(schema::autocomplete::searches.desc())
 				.limit(9)
 				.select(schema::autocomplete::name)
-				.get_results::<String>(&mut connection);
+				.get_results::<String>(&mut connection)
+				.await;
 
 			if let Ok(result) = result {
 				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
@@ -57,14 +60,15 @@ pub async fn autocomplete_guild_name(
 ) -> Box<dyn Iterator<Item = String> + Send> {
 	tracing::debug!("Autocompleting guild name `{partial}`");
 
-	if let Ok(mut connection) = ctx.data().pool.get() {
+	if let Ok(mut connection) = ctx.data().pool.get().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::guild_autocomplete::table
 				.filter(schema::guild_autocomplete::name.is_not_null())
 				.order(schema::guild_autocomplete::xp.desc())
 				.limit(10)
 				.select(schema::guild_autocomplete::name)
-				.get_results::<String>(&mut connection);
+				.get_results::<String>(&mut connection)
+				.await;
 
 			if let Ok(result) = result {
 				return Box::new(result.into_iter());
@@ -78,7 +82,8 @@ pub async fn autocomplete_guild_name(
 				.order(schema::guild_autocomplete::xp.desc())
 				.limit(9)
 				.select(schema::guild_autocomplete::name)
-				.get_results::<String>(&mut connection);
+				.get_results::<String>(&mut connection)
+				.await;
 
 			if let Ok(result) = result {
 				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
