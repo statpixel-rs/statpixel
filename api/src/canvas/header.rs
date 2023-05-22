@@ -40,7 +40,12 @@ pub fn apply_name(surface: &mut Surface, data: &Data) {
 		surface,
 		text.as_slice(),
 		25.,
-		Rect::from_xywh(PADDING, PADDING, HEADER_LEFT_END_X, HEADER_NAME_HEIGHT),
+		Rect::from_xywh(
+			PADDING,
+			PADDING,
+			HEADER_LEFT_END_X - PADDING,
+			HEADER_NAME_HEIGHT,
+		),
 		TextAlign::Center,
 		true,
 	);
