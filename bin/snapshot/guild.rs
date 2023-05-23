@@ -34,6 +34,9 @@ async fn update(
 	let did_update = new_hash != hash;
 
 	let now = Utc::now();
+	#[allow(clippy::cast_possible_truncation)]
+	let days = (now.timestamp() / 60 / 60 / 24) as i32;
+
 	let next = {
 		let increase = chrono::Duration::hours(12);
 		let next = timestamp + increase;
@@ -74,6 +77,7 @@ async fn update(
 						guild_snapshot::data.eq(encoded),
 						guild_snapshot::hash.eq(new_hash),
 						guild_snapshot::did_update.eq(did_update),
+						guild_snapshot::days_since_epoch.eq(days),
 					))
 					.execute(conn)
 					.await?;
@@ -128,7 +132,7 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 
 				// This will never fail since it's an md5 hash.
 				while let Err(e) = update(&mut connection, uuid, update_at, hash).await {
-					warn!("Failed to update player {uuid}: {e}");
+					warn!("Failed to update guild {uuid}: {e}");
 
 					tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
 				}

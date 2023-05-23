@@ -125,6 +125,37 @@ impl ToTokens for ModeInputReceiver {
 			}
 		});
 
+		let apply_embed_field_items_mode = field_data.iter().map(|field| {
+			let ident = &field.ident;
+			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+
+			let value = if let Some(div) = field.div.as_ref() {
+				if let Some(ty) = field.percent.as_ref() {
+					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+
+					let struct_name = get_percent_ident_for_str(ty);
+
+					return quote! {
+						field.push_str(::translate::tr!(ctx, #tr).as_ref());
+						field.push_str(": **");
+						field.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (#value), ctx).as_ref());
+						field.push_str("**\n");
+					};
+				} else {
+					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+				}
+			} else {
+				quote! { self.#ident }
+			};
+
+			quote! {
+				field.push_str(::translate::tr!(ctx, #tr).as_ref());
+				field.push_str(": **");
+				field.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&#value, ctx).as_ref());
+				field.push_str("**\n");
+			}
+		});
+
 		let field_count = outer_start_idx as u8;
 
 		tokens.extend(quote! {
@@ -144,6 +175,18 @@ impl ToTokens for ModeInputReceiver {
 
 				pub fn get_own_field_count() -> u8 {
 					#field_count
+				}
+
+				#[allow(clippy::ptr_arg)]
+				pub fn embed_own_fields(
+					&self,
+					ctx: ::translate::Context<'_>,
+					field: &mut ::std::string::String,
+					data: &crate::player::data::Data,
+					session: &crate::player::status::Session,
+					stats: &Stats,
+				) {
+					#(#apply_embed_field_items_mode)*
 				}
 			}
 		});

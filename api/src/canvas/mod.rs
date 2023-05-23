@@ -188,7 +188,7 @@ pub fn create_surface(rows: u8) -> Surface {
 }
 
 /// # Panics
-/// Panics if the canvas cannot be ended to a png
+/// Panics if the canvas cannot be encoded to a png
 pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 	surface
 		.image_snapshot()

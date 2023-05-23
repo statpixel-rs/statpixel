@@ -18,38 +18,62 @@ macro_rules! generate_history_command {
 
 			player.increase_searches(ctx).await?;
 
-			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
-					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
-
-					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
-				} else {
-					::std::option::Option::None
-				};
-
-			let content = match status {
-				$crate::snapshot::user::Status::Found((_, created_at)) => ::translate::tr_fmt!(
-					ctx, "showing-statistics",
-					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
-					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
-				),
-				$crate::snapshot::user::Status::Inserted => ::translate::tr_fmt!(
+			let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
+				let content = ::translate::tr_fmt!(
 					ctx, "no-previous-statistics",
 					name: $crate::util::escape_username(&player.username),
-				),
+				);
+
+				ctx.send(move |m| {
+					m.content(content)
+				})
+				.await?;
+
+				return Ok(());
 			};
 
-			ctx.send(move |m| {
-				if let ::std::option::Option::Some(png) = png {
-					m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
-						data: png,
-						filename: "canvas.png".into(),
-					});
-				}
+			let content = ::translate::tr_fmt!(
+				ctx, "showing-statistics",
+				from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+				to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
+			);
 
-				m.content(content)
-			})
-			.await?;
+			match format {
+				$crate::format::Display::Image | $crate::format::Display::Compact => {
+					let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
+						if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
+
+							::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
+						} else {
+							::std::option::Option::None
+						};
+
+					ctx.send(move |m| {
+						if let ::std::option::Option::Some(png) = png {
+							m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+								data: png,
+								filename: "canvas.png".into(),
+							});
+						}
+
+						m.content(content)
+					})
+					.await?;
+				}
+				$crate::format::Display::Text => {
+					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut data, &session);
+
+					embed.colour($crate::EMBED_COLOUR);
+
+					ctx.send(|m| {
+						m.content(content);
+						m.embeds.push(embed);
+						m
+					})
+					.await?;
+				}
+			}
 
 			Ok(())
 		}
@@ -86,38 +110,62 @@ macro_rules! generate_large_history_command {
 
 			player.increase_searches(ctx).await?;
 
-			let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
-				if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
-					let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
-
-					::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
-				} else {
-					::std::option::Option::None
-				};
-
-			let content = match status {
-				$crate::snapshot::user::Status::Found((_, created_at)) => ::translate::tr_fmt!(
-					ctx, "showing-statistics",
-					from: ::std::format!("<t:{}:f>", created_at.timestamp()),
-					to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
-				),
-				$crate::snapshot::user::Status::Inserted => ::translate::tr_fmt!(
+			let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
+				let content = ::translate::tr_fmt!(
 					ctx, "no-previous-statistics",
 					name: $crate::util::escape_username(&player.username),
-				),
+				);
+
+				ctx.send(move |m| {
+					m.content(content)
+				})
+				.await?;
+
+				return Ok(());
 			};
 
-			ctx.send(move |m| {
-				if let ::std::option::Option::Some(png) = png {
-					m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
-						data: png,
-						filename: "canvas.png".into(),
-					});
-				}
+			let content = ::translate::tr_fmt!(
+				ctx, "showing-statistics",
+				from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+				to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
+			);
 
-				m.content(content)
-			})
-			.await?;
+			match format {
+				$crate::format::Display::Image | $crate::format::Display::Compact => {
+					let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
+						if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
+
+							::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
+						} else {
+							::std::option::Option::None
+						};
+
+					ctx.send(move |m| {
+						if let ::std::option::Option::Some(png) = png {
+							m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
+								data: png,
+								filename: "canvas.png".into(),
+							});
+						}
+
+						m.content(content)
+					})
+					.await?;
+				}
+				$crate::format::Display::Text => {
+					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut data, &session);
+
+					embed.colour($crate::EMBED_COLOUR);
+
+					ctx.send(|m| {
+						m.content(content);
+						m.embeds.push(embed);
+						m
+					})
+					.await?;
+				}
+			}
 
 			Ok(())
 		}

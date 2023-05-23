@@ -207,14 +207,17 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let apply_modes_text = modes.iter().map(|mode| {
-			let ty = &mode.ty;
-			let ident = mode.ident.as_ref().unwrap();
+		let apply_modes_text = modes
+			.iter()
+			.map(|mode| {
+				let ty = &mode.ty;
+				let ident = mode.ident.as_ref().unwrap();
 
-			quote! {
-				#ty ::embed(&data.stats. #path. #ident, ctx, &mut embed, data, session);
-			}
-		});
+				quote! {
+					#ty ::embed(&data.stats. #path. #ident, ctx, &mut embed, data, session);
+				}
+			})
+			.collect::<Vec<_>>();
 
 		let mode_enum_rows = modes.iter().map(|mode| {
 			let ty = &mode.ty;
@@ -596,8 +599,10 @@ impl ToTokens for GameInputReceiver {
 
 					pub fn embed(&self, ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data, session: &crate::player::status::Session) {
 						let mut field = ::std::string::String::new();
+						let stats = &data.stats.#path;
 
 						#(#apply_embed_mode)*
+						self.embed_own_fields(ctx, &mut field, data, session, stats);
 
 						embed.field(::translate::tr!(ctx, Self::get_tr()), field, true);
 					}
@@ -808,7 +813,12 @@ impl ToTokens for GameInputReceiver {
 					surface
 				}
 
-				pub fn canvas(ctx: ::translate::Context<'_>, data: &crate::player::data::Data, session: &crate::player::status::Session, mode: Option<#enum_ident>) -> ::skia_safe::Surface {
+				pub fn canvas(
+					ctx: ::translate::Context<'_>,
+					data: &crate::player::data::Data,
+					session: &crate::player::status::Session,
+					mode: Option<#enum_ident>
+				) -> ::skia_safe::Surface {
 					let stats = &data.stats.#path;
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
@@ -850,7 +860,12 @@ impl ToTokens for GameInputReceiver {
 				}
 
 				#[allow(clippy::reversed_empty_ranges)]
-				pub fn embed(ctx: ::translate::Context<'_>, player: &crate::player::Player, data: &crate::player::data::Data, session: &crate::player::status::Session) -> ::poise::serenity_prelude::CreateEmbed {
+				pub fn embed(
+					ctx: ::translate::Context<'_>,
+					player: &crate::player::Player,
+					data: &crate::player::data::Data,
+					session: &crate::player::status::Session
+				) -> ::poise::serenity_prelude::CreateEmbed {
 					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
 
 					if let Some(prefix) = data.get_rank().as_str() {
@@ -872,7 +887,51 @@ impl ToTokens for GameInputReceiver {
 						session,
 					);
 
-					// TODO: Add mode-specific fields to right spots
+					#(#apply_modes_text)*
+
+					for _ in 0..#buffer_fields {
+						embed.field("\u{200b}", "\u{200b}", true);
+					}
+
+					embed
+				}
+
+				#[allow(clippy::reversed_empty_ranges)]
+				pub fn embed_diff(
+					ctx: ::translate::Context<'_>,
+					player: &crate::player::Player,
+					prev: &crate::player::data::Data,
+					curr: &mut crate::player::data::Data,
+					session: &crate::player::status::Session
+				) -> ::poise::serenity_prelude::CreateEmbed {
+					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
+
+					curr.stats.#path = stats;
+
+					let data = curr;
+					let stats = &data.stats.#path;
+
+					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
+
+					if let Some(prefix) = data.get_rank().as_str() {
+						embed.author(|a| {
+							a.name(format!(concat!("{} {} :: ", #plain), prefix, player.username))
+								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+						});
+					} else {
+						embed.author(|a| {
+							a.name(format!(concat!("{} :: ", #plain), player.username))
+								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+						});
+					}
+
+					Overall::embed(
+						ctx,
+						&mut embed,
+						data,
+						session,
+					);
+
 					#(#apply_modes_text)*
 
 					for _ in 0..#buffer_fields {

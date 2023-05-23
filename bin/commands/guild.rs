@@ -10,7 +10,7 @@ use database::{extend::modulo, schema::guild_snapshot};
 use diesel::{query_dsl::methods::DistinctOnDsl, ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use futures::StreamExt;
-use poise::serenity_prelude::{AttachmentType, CreateEmbed, CreateEmbedAuthor};
+use poise::serenity_prelude::AttachmentType;
 use translate::{tr, Context};
 use uuid::Uuid;
 
@@ -42,8 +42,6 @@ pub async fn get_snapshots_multiple_of_weekday(
 	if result.is_empty() {
 		snapshot::guild::insert(ctx, guild).await?;
 	}
-
-	let mut embed = CreateEmbed::default();
 
 	Ok(result
 		.into_iter()

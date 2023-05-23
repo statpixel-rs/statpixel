@@ -46,7 +46,9 @@ macro_rules! generate_large_command {
 					.await?;
 				}
 				$crate::format::Display::Text => {
-					let embed = <$game>::embed(ctx, &player, &data, &session);
+					let mut embed = <$game>::embed(ctx, &player, &data, &session);
+
+					embed.colour($crate::EMBED_COLOUR);
 
 					ctx.send(|m| {
 						m.embeds.push(embed);
@@ -96,7 +98,9 @@ macro_rules! generate_command {
 					.await?;
 				}
 				$crate::format::Display::Text => {
-					let embed = <$game>::embed(ctx, &player, &data, &session);
+					let mut embed = <$game>::embed(ctx, &player, &data, &session);
+
+					embed.colour($crate::EMBED_COLOUR);
 
 					ctx.send(|m| {
 						m.embeds.push(embed);
