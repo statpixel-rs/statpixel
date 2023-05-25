@@ -64,7 +64,6 @@ pub async fn get_format_from_input(ctx: Context<'_>, author: &User) -> format::D
 
 pub async fn get_player_from_input(
 	ctx: Context<'_>,
-	author: &User,
 	uuid_raw: Option<String>,
 	username_raw: Option<String>,
 ) -> Result<Player, Error> {
@@ -84,7 +83,7 @@ pub async fn get_player_from_input(
 		(_, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(None, _, None, _) => {
 			let uuid: Option<Uuid> = schema::user::table
-				.filter(schema::user::id.eq(author.id.0 as i64))
+				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await?;

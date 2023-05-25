@@ -68,6 +68,16 @@ impl Player {
 		}
 	}
 
+	#[must_use]
+	pub fn get_head_url(&self) -> String {
+		format!("https://visage.surgeplay.com/head/64/{}?y=72.5", self.uuid)
+	}
+
+	#[must_use]
+	pub fn get_body_url(&self) -> String {
+		format!("https://visage.surgeplay.com/full/{}?y=20", self.uuid)
+	}
+
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
 	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {

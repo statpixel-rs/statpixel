@@ -1,2 +1,5 @@
 hard_tabs=true
 reorder_imports=true
+hex_literal_case = "Lower"
+newline_style = "Unix"
+reorder_impl_items = true

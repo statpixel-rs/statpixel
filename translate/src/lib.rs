@@ -68,4 +68,8 @@ pub enum Error {
 	BincodeDeserialize(#[from] bincode::error::DecodeError),
 	#[error("An internal error occurred while encoding bincode.\n\n```\n{0:?}```")]
 	BincodeSerialize(#[from] bincode::error::EncodeError),
+	#[error("An internal error occurred while drawing a plot.")]
+	Plotters,
+	#[error("{0}")]
+	Custom(&'static str),
 }

@@ -23,6 +23,8 @@ macro_rules! generate_large_command {
 			uuid: Option<::std::string::String>,
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
+			ctx.defer().await?;
+
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
 
@@ -76,6 +78,8 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
+			ctx.defer().await?;
+
 			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;

@@ -13,6 +13,15 @@ pub trait ToFormatted {
 	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str>;
 }
 
+impl<T> ToFormatted for &'_ T
+where
+	T: ToFormatted + Copy,
+{
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
+		(*self).to_formatted_label(ctx)
+	}
+}
+
 macro_rules! impl_to_formatted_label_for_int {
 	($int:ty) => {
 		impl ToFormatted for $int

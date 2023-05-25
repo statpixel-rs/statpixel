@@ -868,15 +868,17 @@ impl ToTokens for GameInputReceiver {
 				) -> ::poise::serenity_prelude::CreateEmbed {
 					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
 
+					embed.thumbnail(player.get_body_url());
+
 					if let Some(prefix) = data.get_rank().as_str() {
 						embed.author(|a| {
 							a.name(format!(concat!("{} {} :: ", #plain), prefix, player.username))
-								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+								.icon_url(player.get_head_url())
 						});
 					} else {
 						embed.author(|a| {
 							a.name(format!(concat!("{} :: ", #plain), player.username))
-								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+								.icon_url(player.get_head_url())
 						});
 					}
 
@@ -913,15 +915,17 @@ impl ToTokens for GameInputReceiver {
 
 					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
 
+					embed.thumbnail(player.get_body_url());
+
 					if let Some(prefix) = data.get_rank().as_str() {
 						embed.author(|a| {
 							a.name(format!(concat!("{} {} :: ", #plain), prefix, player.username))
-								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+								.icon_url(player.get_head_url())
 						});
 					} else {
 						embed.author(|a| {
 							a.name(format!(concat!("{} :: ", #plain), player.username))
-								.icon_url(format!("https://crafatar.com/avatars/{}", &player.uuid))
+								.icon_url(player.get_head_url())
 						});
 					}
 

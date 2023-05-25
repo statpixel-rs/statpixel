@@ -1,6 +1,7 @@
 use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
+use plotters::style::RGBColor;
 use quote::quote;
 
 macro_rules! paint_colour {
@@ -61,6 +62,30 @@ pub enum Paint {
 	Yellow,
 	#[default]
 	White,
+}
+
+impl Paint {
+	#[must_use]
+	pub fn as_plotters(&self) -> RGBColor {
+		match self {
+			Self::Black => RGBColor(0, 0, 0),
+			Self::DarkBlue => RGBColor(0, 0, 170),
+			Self::DarkGreen => RGBColor(0, 170, 0),
+			Self::DarkAqua => RGBColor(0, 170, 170),
+			Self::DarkRed => RGBColor(170, 0, 0),
+			Self::DarkPurple => RGBColor(170, 0, 170),
+			Self::Gold => RGBColor(255, 170, 0),
+			Self::Gray => RGBColor(170, 170, 170),
+			Self::DarkGray => RGBColor(85, 85, 85),
+			Self::Blue => RGBColor(85, 85, 255),
+			Self::Green => RGBColor(85, 255, 85),
+			Self::Aqua => RGBColor(85, 255, 255),
+			Self::Red => RGBColor(255, 85, 85),
+			Self::LightPurple => RGBColor(255, 85, 255),
+			Self::Yellow => RGBColor(255, 255, 85),
+			Self::White => RGBColor(255, 255, 255),
+		}
+	}
 }
 
 impl darling::ToTokens for Paint {

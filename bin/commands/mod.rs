@@ -7,9 +7,11 @@ pub mod cache;
 pub mod display;
 pub mod games;
 pub mod guild;
+pub mod help;
 pub mod history;
 pub mod link;
 pub mod ser;
+pub mod snapshot;
 pub mod unlink;
 
 #[allow(clippy::unused_async)]
@@ -98,14 +100,7 @@ pub async fn autocomplete_guild_name(
 #[macro_export]
 macro_rules! get_data {
 	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match $crate::util::get_player_from_input(
-			$ctx,
-			$ctx.author(),
-			$uuid,
-			$username,
-		)
-		.await
-		{
+		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
 			Ok(player) => player,
 			Err($crate::Error::NotLinked) => {
 				$ctx.send(|m| {

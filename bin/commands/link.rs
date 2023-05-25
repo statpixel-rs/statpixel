@@ -18,6 +18,8 @@ pub async fn link(
 	uuid: Option<String>,
 	#[max_length = 16] username: Option<String>,
 ) -> Result<(), Error> {
+	ctx.defer().await?;
+
 	let (player, uuid, username) = match (uuid.and_then(|u| Uuid::parse_str(&u).ok()), username) {
 		(r @ Some(uuid), _) => (api::player::Player::from_uuid(&uuid).await, r, None),
 		(_, Some(username)) => (

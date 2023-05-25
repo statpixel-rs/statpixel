@@ -1,7 +1,7 @@
 use darling::FromMeta;
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use quote::quote;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 macro_rules! colour {
 	($name: ident, $colour: expr) => {
@@ -35,6 +35,7 @@ colour!(BACKGROUND, (31, 48, 64));
 	bincode::Decode,
 	bincode::Encode,
 	Deserialize,
+	Serialize,
 	Default,
 	Clone,
 	Copy,

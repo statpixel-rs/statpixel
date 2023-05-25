@@ -1,4 +1,5 @@
 pub mod builder;
+pub mod chart;
 pub mod diff;
 pub mod draw;
 pub mod game;

@@ -6,6 +6,32 @@ no-previous-statistics = No previous data found for **{$name}**, so it has been 
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
 
+# /history
+
+statistics-history-for = Statistics history for{" "}
+
+# /help
+
+help = help
+  .description = Shows the help menu.
+
+help-general = General <:cookie:1110754829392953364>
+help-general-description = StatPixel supports every game on the Hypixel Network. You can view statistics for each game by using `/<game>`. For example, try out </bedwars:1106761189226205186>!
+
+help-display = Display <:spyglass:1110754818433228991>
+help-display-description = If you're on a metered connection or just want to save some data, you can receive responses in different formats, like text or condensed images, with </display:1100232181504290887>.
+
+help-link = Linking <a:recovery_compass:1110755004463198218>
+help-link-description = Typing in your username for every command can become tedious. To make this easier, you can link an account without verification with </link:866348630600056875> and unlink it later on with </unlink:1101304082817355807>.
+
+help-snapshot = Snapshots <:book_and_quill:1110754805724479569>
+help-snapshot-description = Snapshots are a way to view the changes in your statistics over time. There are a few utility commands to make your life easier: </daily bedwars:1107131762062135366>, </weekly bedwars:1107131762062135368>, and </monthly bedwars:1107131762062135367>. These also work for your guild, so try out </daily guild:1107131762062135366>!
+  
+  If you want to view a more specific range, try out </from:0000> and </to:0000>.
+
+help-history = History <a:clock:1110754973794451557>
+help-history-description = To view a graph of how specific statistics changed over time, try out </history:0000>.
+
 # /display
 display = display
   .description = Changes the way responses are displayed.

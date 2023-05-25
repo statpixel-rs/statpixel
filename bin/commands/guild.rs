@@ -102,6 +102,8 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	ctx.defer().await?;
+
 	let mut guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {

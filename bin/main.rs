@@ -15,18 +15,17 @@ use translate::{Context, Data, Error};
 
 mod commands;
 mod constants;
+mod emoji;
 mod format;
 mod snapshot;
 mod util;
 
 pub use constants::*;
 
-const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[tokio::main]
 async fn main() {
-	std::env::set_var("RUST_BACKTRACE", "1");
-
 	let subscriber = FmtSubscriber::builder()
 		.with_max_level(Level::INFO)
 		.finish();
@@ -36,14 +35,14 @@ async fn main() {
 
 	let (key, remaining) = key::get_data().await.unwrap();
 
-	if remaining != key.limit - 1 {
+	/*if remaining != key.limit - 1 {
 		error!(
 			"ratelimit-remaining header is at {remaining} (should be {}). wait a minute and try again.",
 			key.limit - 1
 		);
 
 		return;
-	}
+	}*/
 
 	HYPIXEL_RATELIMIT
 		.set(RateLimiter::direct(Quota::per_minute(
@@ -61,13 +60,15 @@ async fn main() {
 		commands::games::buildbattle(),
 		commands::cache::cache(),
 		commands::games::copsandcrims(),
-		commands::history::daily::daily(),
+		commands::snapshot::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
 		commands::guild::guild(),
+		commands::help::help(),
+		commands::history::history(),
 		commands::link::link(),
 		commands::games::megawalls(),
-		commands::history::monthly::monthly(),
+		commands::snapshot::monthly::monthly(),
 		commands::games::murdermystery(),
 		commands::games::paintball(),
 		commands::games::pit(),
@@ -83,7 +84,7 @@ async fn main() {
 		commands::games::vampirez(),
 		commands::games::walls(),
 		commands::games::warlords(),
-		commands::history::weekly::weekly(),
+		commands::snapshot::weekly::weekly(),
 		commands::games::woolwars(),
 	];
 
