@@ -9,9 +9,6 @@ macro_rules! bench_player {
 		fn $fn(c: &mut Criterion) {
 			let data = {
 				let runtime = Runtime::new().unwrap();
-
-				runtime.block_on(super::set_up_key());
-
 				let player = runtime.block_on(Player::from_username($name)).unwrap();
 
 				bincode::encode_to_vec(

@@ -13,9 +13,8 @@ pub mod canvas;
 pub mod game;
 pub mod guild;
 pub mod http;
-pub mod key;
 pub mod player;
-pub mod ratelimit;
+pub mod ratelimiter;
 pub mod snapshot;
 
 pub use extras::*;

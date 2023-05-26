@@ -3,11 +3,7 @@
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 
-use std::num::NonZeroU32;
-
-use api::{key, ratelimit::HYPIXEL_RATELIMIT};
 use database::get_pool;
-use governor::{Quota, RateLimiter};
 use poise::serenity_prelude::GatewayIntents;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
@@ -32,23 +28,6 @@ async fn main() {
 
 	tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
 	dotenvy::dotenv().ok();
-
-	let (key, remaining) = key::get_data().await.unwrap();
-
-	if remaining != key.limit - 1 {
-		warn!(
-			"ratelimit-remaining header is at {remaining} (should be {}). this could cause ratelimit issues.",
-			key.limit - 1
-		);
-	}
-
-	HYPIXEL_RATELIMIT
-		.set(RateLimiter::direct(Quota::per_minute(
-			NonZeroU32::new(key.limit).unwrap(),
-		)))
-		.unwrap();
-
-	info!(ratelimit_per_min = key.limit, "hypixel api key found");
 
 	let mut commands = vec![
 		commands::games::arcade(),

@@ -20,7 +20,9 @@ pub type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[derive(Error, Debug)]
 pub enum ApiError {
-	#[error("An internal error occurred while sending a request. {0:?}")]
+	#[error("An internal error occurred while sending a request.")]
+	Http,
+	#[error("An internal error occurred while sending a request.")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("An internal error occurred while deserializing JSON.")]
 	Json(#[from] serde_json::Error),
@@ -46,11 +48,11 @@ pub enum ApiError {
 pub enum Error {
 	#[error(transparent)]
 	Api(#[from] Arc<ApiError>),
-	#[error("An error occurred while interacting with Diesel.\n\n```\n{0:?}```")]
+	#[error("An error occurred while interacting with Diesel.")]
 	Diesel(#[from] diesel::result::Error),
-	#[error("An error occurred while interacting with the database. \n\n```\n{0:?}```")]
+	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
-	#[error("An internal error occurred. \n\n```\n{0:?}```")]
+	#[error("An internal error occurred.")]
 	Framework(#[from] poise::serenity_prelude::Error),
 	#[error("An internal error occurred during setup.")]
 	Setup,
@@ -64,9 +66,9 @@ pub enum Error {
 	InvalidUsername(String),
 	#[error("An error occurred while handling io.")]
 	Io(#[from] std::io::Error),
-	#[error("An internal error occurred while decoding bincode.\n\n```\n{0:?}```")]
+	#[error("An internal error occurred while decoding bincode.")]
 	BincodeDeserialize(#[from] bincode::error::DecodeError),
-	#[error("An internal error occurred while encoding bincode.\n\n```\n{0:?}```")]
+	#[error("An internal error occurred while encoding bincode.")]
 	BincodeSerialize(#[from] bincode::error::EncodeError),
 	#[error("An internal error occurred while drawing a plot.")]
 	Plotters,

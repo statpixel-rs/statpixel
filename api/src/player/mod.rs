@@ -6,7 +6,7 @@ use database::schema::autocomplete;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
-use reqwest::{StatusCode, Url};
+use reqwest::{Request, StatusCode, Url};
 use serde::Deserialize;
 use std::{str::FromStr, sync::Arc};
 use translate::Context;
@@ -15,7 +15,6 @@ use uuid::Uuid;
 use crate::{
 	cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE},
 	http::HTTP,
-	ratelimit::{HYPIXEL_RATELIMIT, MOJANG_RATELIMIT},
 	Error,
 };
 
@@ -115,9 +114,8 @@ impl Player {
 	async fn from_username_raw(username: &str) -> Result<Player, Error> {
 		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
 
-		MOJANG_RATELIMIT.until_ready().await;
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_mojang(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::UsernameNotFound(username.to_string()));
@@ -147,9 +145,8 @@ impl Player {
 			.join(&uuid.to_string())
 			.unwrap();
 
-		MOJANG_RATELIMIT.until_ready().await;
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_mojang(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::UuidNotFound(*uuid));
@@ -189,14 +186,8 @@ impl Player {
 			url
 		};
 
-		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
-		unsafe {
-			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
-		}
-
-		tracing::debug!("Fetching data for {} from Hypixel API", self.uuid);
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::PlayerNotFound(self.username.clone()));
@@ -223,14 +214,8 @@ impl Player {
 			url
 		};
 
-		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
-		unsafe {
-			HYPIXEL_RATELIMIT.get_unchecked().until_ready().await;
-		}
-
-		tracing::debug!("Fetching session for {} from Hypixel API", self.uuid);
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::SessionNotFound(self.username.clone()));
@@ -244,26 +229,9 @@ impl Player {
 
 #[cfg(test)]
 mod tests {
-	use std::{assert_matches::assert_matches, num::NonZeroU32};
-
-	use governor::{Quota, RateLimiter};
+	use std::assert_matches::assert_matches;
 
 	use super::*;
-	use crate::key;
-
-	async fn set_up_key() {
-		if HYPIXEL_RATELIMIT.get().is_some() {
-			return;
-		}
-
-		let (key, _) = key::get_data().await.unwrap();
-
-		HYPIXEL_RATELIMIT
-			.set(RateLimiter::direct(Quota::per_minute(
-				NonZeroU32::new(key.limit).unwrap(),
-			)))
-			.ok();
-	}
 
 	#[test]
 	fn test_player() {
@@ -296,8 +264,6 @@ mod tests {
 
 	#[tokio::test]
 	async fn test_player_data() {
-		set_up_key().await;
-
 		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
 		let player = Player::new(uuid, "Technoblade".to_string());
 

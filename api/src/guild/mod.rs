@@ -7,7 +7,7 @@ use diesel_async::RunQueryDsl;
 use macros::Diff;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
-use reqwest::{StatusCode, Url};
+use reqwest::{Request, StatusCode, Url};
 use serde::{Deserialize, Deserializer};
 use std::{str::FromStr, sync::Arc};
 use translate::Context;
@@ -17,7 +17,6 @@ use crate::{
 	cache::{GUILD_DATA_MEMBER_CACHE, GUILD_DATA_NAME_CACHE, GUILD_DATA_UUID_CACHE},
 	game::r#type::Type,
 	http::HTTP,
-	ratelimit::HYPIXEL_RATELIMIT,
 	xp::Xp,
 	Error,
 };
@@ -166,7 +165,8 @@ impl Guild {
 			url
 		};
 
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::GuildNotFound(id));
@@ -185,12 +185,8 @@ impl Guild {
 			url
 		};
 
-		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
-		HYPIXEL_RATELIMIT.get().unwrap().until_ready().await;
-
-		tracing::debug!("Requesting guild data for {}", name);
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::GuildNotFound(name.to_string()));
@@ -211,12 +207,8 @@ impl Guild {
 			url
 		};
 
-		// HYPIXEL_RATELIMIT will always be present, as it is initialized in the main function
-		HYPIXEL_RATELIMIT.get().unwrap().until_ready().await;
-
-		tracing::debug!("Requesting guild data for {}", uuid);
-
-		let response = HTTP.get(url).send().await?;
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
 			return Err(Error::GuildByMemberUuidNotFound(uuid));

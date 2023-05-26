@@ -1,6 +1,8 @@
 use once_cell::sync::Lazy;
 
-pub static HTTP: Lazy<reqwest::Client> = Lazy::new(|| {
+use crate::ratelimiter::Ratelimiter;
+
+pub static HTTP: Lazy<Ratelimiter> = Lazy::new(|| {
 	let mut headers = reqwest::header::HeaderMap::new();
 
 	#[cfg(test)]
@@ -14,8 +16,10 @@ pub static HTTP: Lazy<reqwest::Client> = Lazy::new(|| {
 			.expect("failed to parse HYPIXEL_API_KEY"),
 	);
 
-	reqwest::Client::builder()
+	let client = reqwest::Client::builder()
 		.default_headers(headers)
 		.build()
-		.unwrap()
+		.unwrap();
+
+	Ratelimiter::new(client)
 });

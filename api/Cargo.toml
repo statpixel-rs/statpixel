@@ -13,7 +13,6 @@ chrono = { workspace = true }
 diesel = { workspace = true }
 diesel-async = { workspace = true }
 bincode = { workspace = true }
-governor = { workspace = true }
 moka = { workspace = true }
 num-format = { workspace = true }
 once_cell = { workspace = true }
@@ -29,6 +28,8 @@ futures = { workspace = true }
 plotters = { workspace = true }
 plotters-backend = { workspace = true }
 poise = { workspace = true }
+tokio = "1.28.1"
+thiserror = { workspace = true }
 
 [dev-dependencies]
 dotenvy = "0.15.7"
