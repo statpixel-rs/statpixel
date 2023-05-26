@@ -5,6 +5,7 @@ use translate::Context;
 
 pub mod cache;
 pub mod display;
+pub mod from;
 pub mod games;
 pub mod guild;
 pub mod help;
@@ -13,7 +14,6 @@ pub mod link;
 pub mod ser;
 pub mod snapshot;
 pub mod unlink;
-pub mod from;
 
 #[allow(clippy::unused_async)]
 pub async fn autocomplete_username(
