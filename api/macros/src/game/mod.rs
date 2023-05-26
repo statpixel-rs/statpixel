@@ -708,9 +708,8 @@ impl ToTokens for GameInputReceiver {
 						ctx: ::translate::Context<'_>,
 						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>
 					) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
-						let (::std::option::Option::Some(first), ::std::option::Option::Some(last)) = (snapshots.first(), snapshots.last()) else {
-							return ::std::result::Result::Err(::translate::Error::Custom("No data found for this player."));
-						};
+						let first = snapshots.first().unwrap();
+						let last = snapshots.last().unwrap();
 
 						let lower = Self::min_fields(&first.1.stats.#path.#ident);
 						let upper = ::std::cmp::max(Self::max_fields(&last.1.stats.#path.#ident), 100);
@@ -719,11 +718,7 @@ impl ToTokens for GameInputReceiver {
 						let upper = ::std::cmp::max(Self::max_own_fields(&last.1.stats.#path.#ident), upper);
 
 						let x_range = first.0.clone()..last.0.clone();
-
 						let last_data = last.1.clone();
-
-						drop(first);
-						drop(last);
 
 						let snapshots = snapshots.into_iter().map(|(created_at, data)| {
 							(created_at, data.stats.#path.#ident)

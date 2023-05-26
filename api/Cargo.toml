@@ -6,37 +6,34 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
-chrono = { version = "0.4.24", features = ["serde", "unstable-locales"] }
 database = { path = "../database" }
-diesel = "2.0.4"
-diesel-async = "0.2.2"
-bincode = { version = "2.0.0-rc.3", features = ["serde"] }
-futures = "0.3.28"
-governor = "0.5.1"
 macros = { path = "./macros" }
 minecraft = { path = "../minecraft" }
-moka = { version = "0.10.2", features = ["future"] }
-num-format = "0.4.4"
-once_cell = "1.17.1"
-poise = "0.5.5"
-pure-rust-locales = "0.5.6"
-reqwest = { version = "0.11.18", features = ["stream"] }
-serde = { version = "1.0.160", features = ["derive"] }
-skia-safe = "0.62.0"
-tracing = "0.1.37"
+chrono = { workspace = true }
+diesel = { workspace = true }
+diesel-async = { workspace = true }
+bincode = { workspace = true }
+governor = { workspace = true }
+moka = { workspace = true }
+num-format = { workspace = true }
+once_cell = { workspace = true }
+pure-rust-locales = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+skia-safe = { workspace = true }
+tracing = { workspace = true }
 translate = { path = "../translate" }
-uuid = { version = "1.3.1", features = ["v4", "serde"] }
-num-traits = "0.2.15"
-flate2 = "1.0.26"
-
-[dependencies.plotters]
-git = "https://github.com/plotters-rs/plotters.git"
-branch = "next-release-devel"
-
-[dependencies.plotters-backend]
-git = "https://github.com/plotters-rs/plotters.git"
-branch = "next-release-devel"
+uuid = { workspace = true }
+flate2 = { workspace = true }
+futures = { workspace = true }
+plotters = { workspace = true }
+plotters-backend = { workspace = true }
+poise = { workspace = true }
 
 [dev-dependencies]
 dotenvy = "0.15.7"
 tokio = { version = "1.28.1", features = ["rt-multi-thread", "macros"] }
+
+# These crates are used in `macros`
+[package.metadata.cargo-machete]
+ignored = ["futures", "poise"]

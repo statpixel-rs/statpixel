@@ -71,5 +71,5 @@ pub enum Error {
 	#[error("An internal error occurred while drawing a plot.")]
 	Plotters,
 	#[error("{0}")]
-	Custom(&'static str),
+	Custom(String),
 }

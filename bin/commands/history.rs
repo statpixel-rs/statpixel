@@ -120,6 +120,10 @@ macro_rules! generate_command {
 				snapshots_
 			};
 
+			if snapshots.is_empty() {
+				return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1107131762062135366>.", player.username)));
+			}
+
 			let png = {
 				let buffer = <$game>::chart(ctx, snapshots, &session, mode)?;
 
@@ -177,11 +181,22 @@ async fn network(
 	};
 
 	let (Some(first), Some(last)) = (snapshots.first(), snapshots.last()) else {
-		return Err(::translate::Error::Custom("No data found for this player."));
+		return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1107131762062135366>.", player.username)));
 	};
 
 	let lower = first.1.xp * 15 / 16;
 	let upper = last.1.xp * 16 / 15;
+
+	let rank = last.1.get_rank();
+	let colour = {
+		let colour = rank.get_username_paint();
+
+		if colour == Paint::Gray {
+			Paint::White
+		} else {
+			colour
+		}
+	};
 
 	let png = {
 		let mut buffer = chart::u64::create(
@@ -195,7 +210,7 @@ async fn network(
 			)],
 			first.0..last.0,
 			lower..upper,
-			None,
+			Some(colour),
 		)?;
 		let mut surface = chart::canvas(&mut buffer)?;
 
