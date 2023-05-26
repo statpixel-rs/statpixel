@@ -28,7 +28,7 @@ macro_rules! generate_command {
 
 			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 
-			let mut duration = ::chrono::Duration::min_value();
+			let mut duration = ::chrono::Duration::zero();
 
 			if let Some(hours) = hours {
 				duration = duration + ::chrono::Duration::hours(hours);
@@ -146,7 +146,7 @@ macro_rules! generate_large_command {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
 
-			let mut duration = ::chrono::Duration::min_value();
+			let mut duration = ::chrono::Duration::zero();
 
 			if let Some(hours) = hours {
 				duration = duration + ::chrono::Duration::hours(hours);
@@ -267,7 +267,7 @@ macro_rules! generate_guild_command {
 				::std::result::Result::Err(e) => return ::std::result::Result::Err(e),
 			};
 
-			let mut duration = ::chrono::Duration::min_value();
+			let mut duration = ::chrono::Duration::zero();
 
 			if let Some(hours) = hours {
 				duration = duration + ::chrono::Duration::hours(hours);
