@@ -447,7 +447,6 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
-		///
 		let apply_items_overall = overall_fields.iter().enumerate().map(|(i, field)| {
 			let ident_parent = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));

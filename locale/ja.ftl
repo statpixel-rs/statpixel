@@ -6,6 +6,28 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /help
+
+help = help
+  .description = ヘルプメニューを表示します。
+
+help-general = 一般 <:cookie:1110754829392953364>
+help-general-description = StatPixelはHypixelネットワークのすべてのゲームをサポートしています。 `/<game>`を使用して各ゲームの統計を表示できます。 たとえば、</bedwars:1106761189226205186>を試してみてください！
+
+help-display = 表示 <:spyglass:1110754818433228991>
+help-display-description = メーター付き接続を使用しているか、データを保存したい場合は、</display:1100232181504290887>などのテキストや縮小画像など、さまざまな形式で応答を受信できます。
+
+help-link = リンク <a:recovery_compass:1110755004463198218>
+help-link-description = 各コマンドのユーザー名を入力するのは面倒になる場合があります。これを簡単にするには、</link:866348630600056875>で確認なしでアカウントをリンクし、後で</unlink:1101304082817355807>でリンクを解除できます。
+
+help-snapshot = スナップショット <:book_and_quill:1110754805724479569>
+help-snapshot-description = スナップショットは、統計の変更を時間の経過とともに表示する方法です。いくつかのユーティリティコマンドを使用して、生活をより簡単にすることができます。</daily bedwars:1107131762062135366>、</weekly bedwars:1107131762062135368>、</monthly bedwars:1107131762062135367>。これらはギルドにも適用されるため、</daily guild:1107131762062135366>を試してみてください！
+  
+  より具体的な範囲を表示するには、</from bedwars:1111713108919070820>を試してみてください。
+
+help-history = 履歴 <a:clock:1110754973794451557>
+help-history-description = 特定の統計が時間の経過とともにどのように変化したかをグラフで表示するには、</history network:1110774513970466896>などを試してみてください。
+
 # /history
 
 statistics-history = {" "}の歴史{" "}

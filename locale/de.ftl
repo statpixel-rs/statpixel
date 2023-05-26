@@ -6,6 +6,28 @@ no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher
 showing-guild-statistics = Zeigt Gildenstatistikänderungen von {$from} bis {$to} an.
 no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}** gefunden, daher wurden sie eingefügt.
 
+# /help
+
+help = help
+  .description = Zeigt das Hilfemenü an.
+
+help-general = Allgemein <:cookie:1110754829392953364>
+help-general-description = StatPixel unterstützt jedes Spiel im Hypixel-Netzwerk. Du kannst Statistiken für jedes Spiel anzeigen, indem du `/<game>` verwendest. Versuche es zum Beispiel mit </bedwars:1106761189226205186>!
+
+help-display = Anzeige <:spyglass:1110754818433228991>
+help-display-description = Wenn du eine getaktete Verbindung hast oder einfach nur etwas Datenvolumen sparen möchtest, kannst du Antworten in verschiedenen Formaten wie Text oder komprimierten Bildern mit </display:1100232181504290887> erhalten.
+
+help-link = Verknüpfung <a:recovery_compass:1110755004463198218>
+help-link-description = Das Eingeben deines Benutzernamens für jede Anfrage kann mühsam werden. Um dies zu erleichtern, kannst du einen Account ohne Verifizierung mit </link:866348630600056875> verknüpfen und ihn später mit </unlink:1101304082817355807> wieder aufheben.
+
+help-snapshot = Schnappschüsse <:book_and_quill:1110754805724479569>
+help-snapshot-description = Schnappschüsse sind eine Möglichkeit, die Änderungen deiner Statistiken im Laufe der Zeit anzuzeigen. Es gibt ein paar Hilfsbefehle, um dein Leben einfacher zu machen: </daily bedwars:1107131762062135366>, </weekly bedwars:1107131762062135368> und </monthly bedwars:1107131762062135367>. Diese funktionieren auch für deine Gilde, also versuche es mit </daily guild:1107131762062135366>!
+  
+  Wenn du einen genaueren Bereich anzeigen möchtest, versuche es mit </from bedwars:1111713108919070820>.
+
+help-history = Verlauf <a:clock:1110754973794451557>
+help-history-description = Um eine Grafik anzuzeigen, wie sich bestimmte Statistiken im Laufe der Zeit geändert haben, versuche es mit </history network:1110774513970466896>.
+
 # /history
 
 statistics-history = {" "}statistik für{" "}

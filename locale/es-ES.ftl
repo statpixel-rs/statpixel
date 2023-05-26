@@ -6,6 +6,28 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# /help
+
+help = help
+  .description = Muestra el menú de ayuda.
+
+help-general = General <:cookie:1110754829392953364>
+help-general-description = StatPixel admite todos los juegos de la red Hypixel. Puedes ver las estadísticas de cada juego usando `/<juego>`. Por ejemplo, ¡prueba </bedwars:1106761189226205186>!
+
+help-display = Visualización <:spyglass:1110754818433228991>
+help-display-description = Si estás en una conexión medida o simplemente quieres ahorrar algunos datos, puedes recibir respuestas en diferentes formatos, como texto o imágenes condensadas, con </display:1100232181504290887>.
+
+help-link = Vinculación <a:recovery_compass:1110755004463198218>
+help-link-description = Escribir tu nombre de usuario para cada comando puede volverse tedioso. Para facilitar esto, puedes vincular una cuenta sin verificación con </link:866348630600056875> y desvincularla más tarde con </unlink:1101304082817355807>.
+
+help-snapshot = Instantáneas <:book_and_quill:1110754805724479569>
+help-snapshot-description = Las instantáneas son una forma de ver los cambios en tus estadísticas a lo largo del tiempo. Hay algunos comandos de utilidad para facilitar tu vida: </daily bedwars:1107131762062135366>, </weekly bedwars:1107131762062135368> y </monthly bedwars:1107131762062135367>. ¡Estos también funcionan para tu gremio, así que prueba </daily guild:1107131762062135366>!
+  
+  Si quieres ver un rango más específico, prueba </from bedwars:1111713108919070820>.
+
+help-history = Historia <a:clock:1110754973794451557>
+help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1110774513970466896>.
+
 # /history
 
 statistics-history = {" "}historia para{" "}

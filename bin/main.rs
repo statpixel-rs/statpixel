@@ -9,7 +9,7 @@ use api::{key, ratelimit::HYPIXEL_RATELIMIT};
 use database::get_pool;
 use governor::{Quota, RateLimiter};
 use poise::serenity_prelude::GatewayIntents;
-use tracing::{error, info, Level};
+use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
 use translate::{Context, Data, Error};
 
@@ -36,12 +36,10 @@ async fn main() {
 	let (key, remaining) = key::get_data().await.unwrap();
 
 	if remaining != key.limit - 1 {
-		error!(
-			"ratelimit-remaining header is at {remaining} (should be {}). wait a minute and try again.",
+		warn!(
+			"ratelimit-remaining header is at {remaining} (should be {}). this could cause ratelimit issues.",
 			key.limit - 1
 		);
-
-		return;
 	}
 
 	HYPIXEL_RATELIMIT
@@ -63,6 +61,7 @@ async fn main() {
 		commands::snapshot::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
+		commands::from::from(),
 		commands::guild::guild(),
 		commands::help::help(),
 		commands::history::history(),

@@ -13,6 +13,7 @@ pub mod link;
 pub mod ser;
 pub mod snapshot;
 pub mod unlink;
+pub mod from;
 
 #[allow(clippy::unused_async)]
 pub async fn autocomplete_username(
