@@ -1,8 +1,5 @@
 use std::borrow::Cow;
 
-use once_cell::sync::Lazy;
-use regex::Regex;
-
 use super::{parse::ESCAPE, Text};
 use crate::{colour::Colour, minecraft_text, paint::Paint};
 
@@ -23,8 +20,6 @@ pub enum Rank {
 	Owner,
 	Custom(String),
 }
-
-pub static REMOVE_SPECIAL_CHARS_REGEX: Lazy<Regex> = Lazy::new(|| Regex::new(r"§.").unwrap());
 
 macro_rules! mvp_plus {
 	($colour: expr) => {
@@ -105,6 +100,21 @@ const GM: [Text; 1] = minecraft_text!("§2[GM]");
 const ADMIN: [Text; 1] = minecraft_text!("§c[ADMIN]");
 const OWNER: [Text; 1] = minecraft_text!("§c[OWNER]");
 
+fn remove_special_chars(text: &str) -> String {
+	let mut result = String::with_capacity(text.len());
+	let mut chars = text.chars();
+
+	while let Some(c) = chars.next() {
+		if c == '§' {
+			chars.next();
+		} else {
+			result.push(c);
+		}
+	}
+
+	result
+}
+
 impl Rank {
 	#[must_use]
 	pub fn from_str(
@@ -173,9 +183,7 @@ impl Rank {
 			Self::Admin => "[ADMIN]",
 			Self::Owner => "[OWNER]",
 			Self::YouTube => "[YOUTUBE]",
-			Self::Custom(prefix) => {
-				return Some(REMOVE_SPECIAL_CHARS_REGEX.replace_all(prefix, ""))
-			}
+			Self::Custom(prefix) => return Some(Cow::Owned(remove_special_chars(prefix))),
 		}))
 	}
 

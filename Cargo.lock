@@ -1198,14 +1198,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c390a940a5d157878dd057c78680a33ce3415bcd05b4799509ea44210914b4d5"
 dependencies = [
  "cfg-if",
- "dashmap",
  "futures",
  "futures-timer",
  "no-std-compat",
  "nonzero_ext",
  "parking_lot",
  "quanta 0.9.3",
- "rand",
  "smallvec",
 ]
 
@@ -1663,7 +1661,6 @@ dependencies = [
  "plotters 0.4.0",
  "proc-macro2",
  "quote",
- "regex",
  "serde",
  "skia-safe",
  "thiserror",
@@ -3342,7 +3339,6 @@ dependencies = [
 name = "translate"
 version = "0.1.4"
 dependencies = [
- "api",
  "bincode",
  "chrono",
  "database",

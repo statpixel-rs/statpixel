@@ -6,9 +6,9 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
+database = { path = "../database" }
 bincode = { workspace = true }
 chrono = { workspace = true }
-database = { path = "../database" }
 diesel = { workspace = true }
 diesel-async = { workspace = true }
 fluent = { workspace = true }
@@ -20,6 +20,3 @@ thiserror = { workspace = true }
 tracing = { workspace = true }
 uuid = { workspace = true }
 poise = { workspace = true }
-
-[dev-dependencies]
-api = { path = "../api" }

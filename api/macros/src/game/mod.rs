@@ -366,6 +366,88 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
+		let series_tuple_overall = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+				let value = sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					ident,
+				);
+
+				Some(quote! {
+					(
+						::translate::tr!(ctx, #tr),
+						snapshots.iter().map(|(created_at, stats)| {
+							let v: u32 = (#value).into();
+
+							(*created_at, v)
+						})
+						.collect::<::std::vec::Vec<_>>(),
+					),
+				})
+			})
+			.collect::<Vec<_>>();
+
+		let min_fields_overall = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+				let value = sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					ident,
+				);
+
+				Some(quote! {
+					{
+						let v: u32 = (#value).into();
+
+						if v < min {
+							min = v;
+						}
+					}
+				})
+			})
+			.collect::<Vec<_>>();
+
+		let max_fields_overall = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+				let value = sum::sum_fields(
+					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					Some(&ident!("stats")),
+					ident,
+				);
+
+				Some(quote! {
+					{
+						let v: u32 = (#value).into();
+
+						if v > max {
+							max = v;
+						}
+					}
+				})
+			})
+			.collect::<Vec<_>>();
+
+		///
 		let apply_items_overall = overall_fields.iter().enumerate().map(|(i, field)| {
 			let ident_parent = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));
@@ -815,6 +897,64 @@ impl ToTokens for GameInputReceiver {
 						true,
 					);
 				}
+
+				pub fn min_fields(stats: &Stats) -> u32 {
+					let mut min = ::std::u32::MAX;
+
+					#(#min_fields_overall)*
+
+					min
+				}
+
+				pub fn max_fields(stats: &Stats) -> u32 {
+					let mut max = ::std::u32::MIN;
+
+					#(#max_fields_overall)*
+
+					max
+				}
+
+				pub fn chart(
+					ctx: ::translate::Context<'_>,
+					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>
+				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+					let first = snapshots.first().unwrap();
+					let last = snapshots.last().unwrap();
+
+					let lower = Self::min_fields(&first.1.stats.#path);
+					let upper = ::std::cmp::max(Self::max_fields(&last.1.stats.#path), 100);
+
+					let x_range = first.0.clone()..last.0.clone();
+					let last_data = last.1.clone();
+
+					let snapshots = snapshots.into_iter().map(|(created_at, data)| {
+						(created_at, data.stats.#path)
+					})
+						.collect::<::std::vec::Vec<_>>();
+
+					let v = ::std::vec![
+						#(#series_tuple_overall)*
+					];
+
+					let mut buffer = crate::canvas::chart::u32::create(
+						ctx,
+						v,
+						x_range,
+						(lower * 11 / 16)..(upper * 16 / 15),
+						::std::option::Option::None,
+					)?;
+
+					let mut surface = crate::canvas::chart::canvas(&mut buffer)?;
+
+					crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
+					crate::canvas::chart::round_corners(&mut surface);
+
+					Ok(surface
+						.image_snapshot()
+						.encode_to_data(::skia_safe::EncodedImageFormat::PNG)
+						.unwrap()
+						.to_vec())
+				}
 			}
 
 			#impl_mode_enum
@@ -1009,11 +1149,15 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<#enum_ident>
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 					let mode = #enum_ident ::get_mode(mode, session);
-					let mut surface = crate::canvas::create_surface(mode.get_row_count());
 
 					match mode {
+						#enum_ident ::Overall => {
+							Overall::chart(
+								ctx,
+								snapshots,
+							)
+						}
 						#(#mode_match_apply_chart)*
-						_ => unimplemented!(),
 					}
 				}
 
