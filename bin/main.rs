@@ -141,14 +141,23 @@ async fn event_handler(
 	_framework: poise::FrameworkContext<'_, Data, Error>,
 	_user_data: &Data,
 ) -> Result<(), Error> {
-	if let poise::Event::Ready { data_about_bot } = event {
-		info!(user = ?data_about_bot.user.tag(), "logged in");
+	match event {
+		poise::Event::Ready { data_about_bot } => {
+			info!(user = ?data_about_bot.user.tag(), "logged in");
 
-		ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
-			"Shard #{} | v{VERSION}",
-			ctx.shard_id + 1,
-		)))
-		.await;
+			ctx.set_activity(poise::serenity_prelude::Activity::watching(format!(
+				"Shard #{} | v{VERSION}",
+				ctx.shard_id + 1,
+			)))
+			.await;
+		}
+		poise::Event::GuildCreate { guild, .. } => {
+			info!(guild = ?guild.name, "joined guild");
+		}
+		poise::Event::GuildDelete { incomplete, .. } => {
+			info!(guild = ?incomplete.id, "left guild");
+		}
+		_ => {}
 	}
 
 	Ok(())
