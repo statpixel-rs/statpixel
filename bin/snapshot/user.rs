@@ -206,7 +206,11 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 
 		// We can afford fetching a lot of records since all of them update with the same
 		// frequency, so it's impossible to insert one that would fit inside of these.
+		//
+		// However, we can only fetch ones that update within 3 hours, since other profiles
+		// could be added while this is active that might need to update in 3 hours.
 		let players = schedule::table
+			.filter(schedule::update_at.le(Utc::now() + chrono::Duration::hours(3)))
 			.select((
 				schedule::uuid,
 				schedule::update_at,

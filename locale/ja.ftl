@@ -6,6 +6,10 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /history
+
+statistics-history = {" "}の歴史{" "}
+
 # /display
 
 display = display

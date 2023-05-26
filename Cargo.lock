@@ -42,6 +42,7 @@ dependencies = [
  "diesel",
  "diesel-async",
  "dotenvy",
+ "flate2",
  "futures",
  "governor",
  "macros",

@@ -16,6 +16,7 @@ pub mod http;
 pub mod key;
 pub mod player;
 pub mod ratelimit;
+pub mod snapshot;
 
 pub use extras::*;
 pub use translate::ApiError as Error;

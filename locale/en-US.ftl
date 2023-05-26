@@ -8,7 +8,7 @@ no-previous-guild-statistics = No previous data found for guild **{$name}**, so 
 
 # /history
 
-statistics-history-for = Statistics history for{" "}
+statistics-history = {" "}history for{" "}
 
 # /help
 

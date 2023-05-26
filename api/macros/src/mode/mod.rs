@@ -39,49 +39,50 @@ impl ToTokens for ModeInputReceiver {
 			.fields;
 
 		let outer_start_idx = fields.iter().filter(|data| data.field.is_some()).count();
-		let apply_items_mode = fields
+		let valid_fields = fields
 			.iter()
 			.filter_map(|data| data.field.as_ref().map(|field| (data, field)))
-			.enumerate()
-			.map(|(idx, (data, field))| {
-				let ident = data.ident.as_ref().unwrap();
-				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+			.collect::<Vec<_>>();
 
-				let percent = field.percent == Some(true);
-				let colour = &field.colour;
-				let value = if let Some(div) = field.div.as_ref() {
-					if percent {
-						let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
-						let struct_name = get_percent_ident_for_type(data.ty.clone());
+		let apply_items_mode = valid_fields.iter().enumerate().map(|(idx, (data, field))| {
+			let ident = data.ident.as_ref().unwrap();
+			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
-						return Some(quote! {
-							crate::canvas::game::bubble(
-								ctx,
-								surface,
-								crate::extras::percent::#struct_name (#value),
-								&::translate::tr!(ctx, #tr),
-								#colour,
-								#idx + start_idx,
-							);
-						});
-					} else {
-						sum::div_f32_single_field(&ident!("self"), None, ident, div)
-					}
+			let percent = field.percent == Some(true);
+			let colour = &field.colour;
+			let value = if let Some(div) = field.div.as_ref() {
+				if percent {
+					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+					let struct_name = get_percent_ident_for_type(data.ty.clone());
+
+					return Some(quote! {
+						crate::canvas::game::bubble(
+							ctx,
+							surface,
+							crate::extras::percent::#struct_name (#value),
+							&::translate::tr!(ctx, #tr),
+							#colour,
+							#idx + start_idx,
+						);
+					});
 				} else {
-					quote! { self.#ident }
-				};
+					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+				}
+			} else {
+				quote! { self.#ident }
+			};
 
-				Some(quote! {
-					crate::canvas::game::bubble(
-						ctx,
-						surface,
-						#value,
-						&::translate::tr!(ctx, #tr),
-						#colour,
-						#idx + start_idx,
-					);
-				})
-			});
+			Some(quote! {
+				crate::canvas::game::bubble(
+					ctx,
+					surface,
+					#value,
+					&::translate::tr!(ctx, #tr),
+					#colour,
+					#idx + start_idx,
+				);
+			})
+		});
 
 		let apply_field_items_mode = field_data.iter().enumerate().map(|(idx, field)| {
 			let idx = idx + outer_start_idx;
@@ -156,6 +157,40 @@ impl ToTokens for ModeInputReceiver {
 			}
 		});
 
+		let min_fields = valid_fields
+			.iter()
+			.map(|(field, _)| {
+				let ident = field.ident.as_ref().unwrap();
+
+				quote! {
+					{
+						let v: u32 = self.#ident.into();
+
+						if v < min {
+							min = v;
+						}
+					}
+				}
+			})
+			.collect::<Vec<_>>();
+
+		let max_fields = valid_fields
+			.iter()
+			.map(|(field, _)| {
+				let ident = field.ident.as_ref().unwrap();
+
+				quote! {
+					{
+						let v: u32 = self.#ident.into();
+
+						if v > max {
+							max = v;
+						}
+					}
+				}
+			})
+			.collect::<Vec<_>>();
+
 		let field_count = outer_start_idx as u8;
 
 		tokens.extend(quote! {
@@ -171,6 +206,22 @@ impl ToTokens for ModeInputReceiver {
 				) {
 					#(#apply_items_mode)*
 					#(#apply_field_items_mode)*
+				}
+
+				pub fn min_own_fields(&self) -> u32 {
+					let mut min = ::std::u32::MAX;
+
+					#(#min_fields)*
+
+					min
+				}
+
+				pub fn max_own_fields(&self) -> u32 {
+					let mut max = ::std::u32::MIN;
+
+					#(#max_fields)*
+
+					max
 				}
 
 				pub fn get_own_field_count() -> u8 {

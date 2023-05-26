@@ -26,6 +26,7 @@ use translate::{prelude::GetChronoLocale, tr, Context, Error};
 use super::WIDTH_F;
 
 const CANVAS_BACKGROUND: RGBColor = RGBColor(31, 48, 64);
+const BACKGROUND: RGBColor = RGBColor(21, 33, 43);
 
 macro_rules! impl_chart_create {
 	($ty: ident) => {
@@ -36,7 +37,7 @@ macro_rules! impl_chart_create {
 			/// Returns an error if the image could not be created.
 			pub fn create(
 				ctx: Context<'_>,
-				series: Vec<(&'static str, impl IntoIterator<Item = (DateTime<Utc>, $ty)>)>,
+				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>)>,
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,
 				colour: Option<Paint>,
@@ -58,8 +59,8 @@ macro_rules! impl_chart_create {
 				// set start time to `created_at`, and end to last time
 				let mut chart = ChartBuilder::on(&backend)
 					.margin_top(60)
-					.margin_bottom(15)
-					.margin_right(20)
+					.margin_bottom(20)
+					.margin_right(30)
 					.set_label_area_size(LabelAreaPosition::Left, 90)
 					.set_label_area_size(LabelAreaPosition::Bottom, 30)
 					.build_cartesian_2d(range_x, range_y)
@@ -89,9 +90,9 @@ macro_rules! impl_chart_create {
 
 					for (name, series) in series.into_iter() {
 						chart
-							.draw_series(LineSeries::new(series, colour))
+							.draw_series(LineSeries::new(series, colour).point_size(2))
 							.map_err(|_| Error::Plotters)?
-							.label(name)
+							.label(name.into_owned())
 							.legend(move |(x, y)| {
 								Rectangle::new([(x, y - 5), (x + 10, y + 5)], colour.filled())
 							});
@@ -101,9 +102,11 @@ macro_rules! impl_chart_create {
 						let colour = Palette99::pick(idx).mix(0.9);
 
 						chart
-							.draw_series(LineSeries::new(series, colour.stroke_width(2)))
+							.draw_series(
+								LineSeries::new(series, colour.stroke_width(2)).point_size(2),
+							)
 							.map_err(|_| Error::Plotters)?
-							.label(name)
+							.label(name.into_owned())
 							.legend(move |(x, y)| {
 								Rectangle::new([(x, y - 5), (x + 10, y + 5)], colour.filled())
 							});
@@ -114,7 +117,7 @@ macro_rules! impl_chart_create {
 					.configure_series_labels()
 					.position(SeriesLabelPosition::UpperLeft)
 					.border_style(&style::colors::TRANSPARENT)
-					.background_style(&style::colors::WHITE.mix(0.2))
+					.background_style(&BACKGROUND.mix(0.8))
 					.label_font(
 						("Minecraft", 17)
 							.into_text_style(&backend)
@@ -160,12 +163,14 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 		.ok_or_else(|| Error::Custom("Failed to create canvas"))
 }
 
-pub fn apply_title(ctx: Context<'_>, surface: &mut Surface, data: &Data) {
+pub fn apply_title(ctx: Context<'_>, surface: &mut Surface, data: &Data, label: &[Text]) {
 	let rank = data.get_rank();
 	let username_paint = rank.get_username_paint();
 
 	let mut text = Vec::new();
-	let tr = tr!(ctx, "statistics-history-for");
+	let tr = tr!(ctx, "statistics-history");
+
+	text.extend(label);
 
 	text.push(Text {
 		text: tr.as_ref(),

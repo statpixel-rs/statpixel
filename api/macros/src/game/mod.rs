@@ -244,6 +244,20 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
+		let mode_match_apply_chart = modes
+			.iter()
+			.map(|mode| {
+				let ty = &mode.ty;
+
+				quote! {
+					#enum_ident ::#ty => #ty ::chart(
+						ctx,
+						snapshots,
+					),
+				}
+			})
+			.collect::<Vec<_>>();
+
 		let mode_match_count_rows = modes.iter().map(|mode| {
 			let ty = &mode.ty;
 
@@ -285,6 +299,72 @@ impl ToTokens for GameInputReceiver {
 				LABEL[#i],
 			}
 		});
+
+		let series_tuple_mode = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+
+				Some(quote! {
+					(
+						::translate::tr!(ctx, #tr),
+						snapshots.iter().map(|(created_at, stats)| {
+							let v: u32 = stats.#ident.into();
+
+							(*created_at, v)
+						})
+						.collect::<::std::vec::Vec<_>>(),
+					),
+				})
+			})
+			.collect::<Vec<_>>();
+
+		let min_fields_mode = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+
+				Some(quote! {
+					{
+						let v: u32 = self.#ident.into();
+
+						if v < min {
+							min = v;
+						}
+					}
+				})
+			})
+			.collect::<Vec<_>>();
+
+		let max_fields_mode = overall_fields
+			.iter()
+			.filter_map(|field| {
+				if field.div.is_some() || field.skip_chart.is_some() {
+					return None;
+				}
+
+				let ident = &field.ident;
+
+				Some(quote! {
+					{
+						let v: u32 = self.#ident.into();
+
+						if v > max {
+							max = v;
+						}
+					}
+				})
+			})
+			.collect::<Vec<_>>();
 
 		let apply_items_overall = overall_fields.iter().enumerate().map(|(i, field)| {
 			let ident_parent = &field.ident;
@@ -543,6 +623,7 @@ impl ToTokens for GameInputReceiver {
 
 		let apply_all_modes = modes.iter().map(|mode| {
 			let ty = &mode.ty;
+			let ident = mode.ident.as_ref().unwrap();
 			let tr = mode.mode.as_ref().unwrap().tr.as_ref();
 			let tr = if let Some(tr) = tr {
 				quote! { #tr }
@@ -606,6 +687,72 @@ impl ToTokens for GameInputReceiver {
 
 						embed.field(::translate::tr!(ctx, Self::get_tr()), field, true);
 					}
+
+					pub fn min_fields(&self) -> u32 {
+						let mut min = ::std::u32::MAX;
+
+						#(#min_fields_mode)*
+
+						min
+					}
+
+					pub fn max_fields(&self) -> u32 {
+						let mut max = ::std::u32::MIN;
+
+						#(#max_fields_mode)*
+
+						max
+					}
+
+					pub fn chart(
+						ctx: ::translate::Context<'_>,
+						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>
+					) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+						let (::std::option::Option::Some(first), ::std::option::Option::Some(last)) = (snapshots.first(), snapshots.last()) else {
+							return ::std::result::Result::Err(::translate::Error::Custom("No data found for this player."));
+						};
+
+						let lower = Self::min_fields(&first.1.stats.#path.#ident);
+						let upper = ::std::cmp::max(Self::max_fields(&last.1.stats.#path.#ident), 100);
+
+						let lower = ::std::cmp::min(Self::min_own_fields(&first.1.stats.#path.#ident), lower);
+						let upper = ::std::cmp::max(Self::max_own_fields(&last.1.stats.#path.#ident), upper);
+
+						let x_range = first.0.clone()..last.0.clone();
+
+						let last_data = last.1.clone();
+
+						drop(first);
+						drop(last);
+
+						let snapshots = snapshots.into_iter().map(|(created_at, data)| {
+							(created_at, data.stats.#path.#ident)
+						})
+							.collect::<::std::vec::Vec<_>>();
+
+						let v = ::std::vec![
+							#(#series_tuple_mode)*
+						];
+
+						let mut buffer = crate::canvas::chart::u32::create(
+							ctx,
+							v,
+							x_range,
+							(lower * 11 / 16)..(upper * 16 / 15),
+							::std::option::Option::None,
+						)?;
+
+						let mut surface = crate::canvas::chart::canvas(&mut buffer)?;
+
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
+						crate::canvas::chart::round_corners(&mut surface);
+
+						Ok(surface
+							.image_snapshot()
+							.encode_to_data(::skia_safe::EncodedImageFormat::PNG)
+							.unwrap()
+							.to_vec())
+					}
 				}
 			}
 		});
@@ -619,6 +766,7 @@ impl ToTokens for GameInputReceiver {
 
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::minecraft_text!(#pretty);
+			const PRETTY: &'static str = #pretty;
 
 			#(#apply_all_modes)*
 
@@ -859,6 +1007,21 @@ impl ToTokens for GameInputReceiver {
 					surface
 				}
 
+				pub fn chart(
+					ctx: ::translate::Context<'_>,
+					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+					session: &crate::player::status::Session,
+					mode: Option<#enum_ident>
+				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+					let mode = #enum_ident ::get_mode(mode, session);
+					let mut surface = crate::canvas::create_surface(mode.get_row_count());
+
+					match mode {
+						#(#mode_match_apply_chart)*
+						_ => unimplemented!(),
+					}
+				}
+
 				#[allow(clippy::reversed_empty_ranges)]
 				pub fn embed(
 					ctx: ::translate::Context<'_>,
@@ -1006,6 +1169,8 @@ pub(crate) struct OverallFieldData {
 	percent: Option<String>,
 
 	path: Option<String>,
+
+	skip_chart: Option<bool>,
 }
 
 #[derive(Debug, FromMeta)]

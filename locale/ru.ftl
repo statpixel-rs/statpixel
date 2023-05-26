@@ -6,6 +6,10 @@ no-previous-statistics = Нет предыдущих данных для **{$nam
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
+# /history
+
+statistics-history = {" "}история для{" "}
+
 # /display
 
 display = display

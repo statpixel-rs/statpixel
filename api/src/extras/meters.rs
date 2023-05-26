@@ -6,7 +6,19 @@ use translate::Context;
 
 use crate::canvas::label::ToFormatted;
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq, Diff)]
+#[derive(
+	bincode::Encode,
+	bincode::Decode,
+	Debug,
+	Clone,
+	Copy,
+	Default,
+	PartialEq,
+	Diff,
+	Eq,
+	PartialOrd,
+	Ord,
+)]
 pub struct Meters(pub u64);
 
 impl<'de> Deserialize<'de> for Meters {
@@ -31,6 +43,13 @@ impl Add for Meters {
 impl From<Meters> for u64 {
 	fn from(s: Meters) -> Self {
 		s.0
+	}
+}
+
+#[allow(clippy::cast_possible_truncation)]
+impl From<Meters> for u32 {
+	fn from(s: Meters) -> Self {
+		s.0 as u32
 	}
 }
 

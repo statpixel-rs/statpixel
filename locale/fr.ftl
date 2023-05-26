@@ -6,6 +6,10 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
+# /history
+
+statistics-history = {" "}historique pour{" "}
+
 # /display
 
 display = display

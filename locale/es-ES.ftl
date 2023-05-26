@@ -6,6 +6,10 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# /history
+
+statistics-history = {" "}historia para{" "}
+
 # /display
 
 display = display

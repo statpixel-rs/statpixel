@@ -5,7 +5,7 @@ pub mod xp;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
-		#[derive(bincode::Decode, bincode::Encode, Debug, Clone, Copy, Default, PartialEq, ::macros::Diff)]
+		#[derive(bincode::Decode, bincode::Encode, Debug, Clone, Copy, Default, PartialEq, Eq, ::macros::Diff, PartialOrd, Ord)]
 		pub struct $name(pub i64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
@@ -30,6 +30,12 @@ macro_rules! impl_time_unit {
 		impl ::std::convert::From<$name> for i64 {
 			fn from(s: $name) -> Self {
 				s.0
+			}
+		}
+
+		impl ::std::convert::From<$name> for u32 {
+			fn from(s: $name) -> Self {
+				s.0 as u32
 			}
 		}
 

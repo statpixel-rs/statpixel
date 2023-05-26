@@ -35,14 +35,14 @@ async fn main() {
 
 	let (key, remaining) = key::get_data().await.unwrap();
 
-	/*if remaining != key.limit - 1 {
+	if remaining != key.limit - 1 {
 		error!(
 			"ratelimit-remaining header is at {remaining} (should be {}). wait a minute and try again.",
 			key.limit - 1
 		);
 
 		return;
-	}*/
+	}
 
 	HYPIXEL_RATELIMIT
 		.set(RateLimiter::direct(Quota::per_minute(
