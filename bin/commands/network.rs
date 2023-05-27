@@ -66,7 +66,7 @@ pub async fn network(
 				canvas::sidebar::item(
 					ctx,
 					&mut surface,
-					&(tr!(ctx, "playtime"), data.playtime, Paint::Gold),
+					&(tr!(ctx, "time-played"), data.playtime, Paint::Gold),
 					4,
 				);
 
@@ -113,7 +113,7 @@ pub async fn network(
 			}
 
 			embed.description(format!(
-				"{}: **{}**\n{}: **{}**\n{}: **{}\n{}: **{}\n{}: **{}\n{}: **{}\n{}: **{}",
+				"{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**",
 				tr!(ctx, "experience"),
 				data.xp.to_formatted_label(ctx),
 				tr!(ctx, "karma"),
