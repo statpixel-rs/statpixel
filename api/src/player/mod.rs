@@ -1,4 +1,5 @@
 pub mod data;
+pub mod data_old;
 pub mod stats;
 pub mod status;
 
@@ -35,6 +36,7 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 
 #[derive(Deserialize, Debug)]
 pub struct Response {
+	#[serde(default)]
 	pub player: data::Data,
 	pub success: bool,
 }

@@ -9,10 +9,13 @@ use minecraft::{
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
 use translate::Context;
 
-pub type Line<'c> = (Cow<'c, str>, Box<dyn ToFormatted>, Paint);
-
 /// (name, value, colour, percent)
-pub fn item(ctx: Context<'_>, surface: &mut Surface, line: &Line<'_>, idx: u8) {
+pub fn item(
+	ctx: Context<'_>,
+	surface: &mut Surface,
+	line: &(Cow<'_, str>, impl ToFormatted, Paint),
+	idx: u8,
+) {
 	let y = PADDING + f32::from(idx) * 21.2;
 	let x = HEADER_LEFT_END_X + GAP;
 

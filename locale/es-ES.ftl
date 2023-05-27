@@ -6,6 +6,27 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# /network
+
+network = network
+  .description = Muestra las estadísticas de la red de un jugador.
+  .username = username
+  .username-description = El nombre de usuario de Minecraft para ver
+  .uuid = uuid
+  .uuid-description = El UUID de Minecraft para ver
+  .hours = hours
+  .hours-description = Las horas de juego para ver
+  .days = days
+  .days-description = Los días de juego para ver
+  .weeks = weeks
+  .weeks-description = Las semanas de juego para ver
+
+karma = Karma
+rewards = Recompensas
+friend-requests = Solicitudes de amistad
+first-login = Primera conexión
+last-login = Última conexión
+
 # /help
 
 help = help

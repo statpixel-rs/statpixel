@@ -38,6 +38,7 @@ diesel::table! {
 		created_at -> Timestamptz,
 		updated_at -> Timestamptz,
 		days_since_epoch -> Int4,
+		version -> Int2,
 	}
 }
 
@@ -62,6 +63,7 @@ diesel::table! {
 		data -> Bytea,
 		did_update -> Bool,
 		hash -> Int8,
+		version -> Int2,
 	}
 }
 

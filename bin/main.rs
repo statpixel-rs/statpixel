@@ -5,6 +5,7 @@
 
 use database::get_pool;
 use poise::serenity_prelude::GatewayIntents;
+use snapshot::user;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
 use translate::{Context, Data, Error};
@@ -48,6 +49,7 @@ async fn main() {
 		commands::games::megawalls(),
 		commands::snapshot::monthly::monthly(),
 		commands::games::murdermystery(),
+		commands::network::network(),
 		commands::games::paintball(),
 		commands::games::pit(),
 		commands::games::quake(),
@@ -69,7 +71,7 @@ async fn main() {
 	let locale = translate::read_ftl().unwrap();
 	locale.apply_translations(&mut commands, false);
 
-	let pool = get_pool(20);
+	let pool = user::upgrade::all(get_pool(20)).await.unwrap();
 
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {

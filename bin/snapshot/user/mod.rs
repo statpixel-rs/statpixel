@@ -1,6 +1,11 @@
+pub mod upgrade;
+
 use std::ops::Mul;
 
-use api::player::{data::Data, Player};
+use api::player::{
+	data::{Data, VERSION},
+	Player,
+};
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
 	schema::{schedule, snapshot},
@@ -185,6 +190,7 @@ async fn update(
 						snapshot::data.eq(encoded),
 						snapshot::hash.eq(new_hash),
 						snapshot::did_update.eq(did_update),
+						snapshot::version.eq(VERSION),
 					))
 					.execute(conn)
 					.await?;
@@ -252,7 +258,6 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 						}
 					};
 
-					// This will never fail since it's an md5 hash.
 					while let Err(e) = Box::pin(update(
 						&mut connection,
 						uuid,
@@ -369,6 +374,7 @@ pub async fn get_or_insert(
 							Some(previous) => previous != hash,
 							None => true,
 						}),
+						snapshot::version.eq(VERSION),
 					))
 					.execute(conn)
 					.await?;

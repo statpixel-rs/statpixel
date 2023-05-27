@@ -48,7 +48,7 @@ pub(crate) fn map_game_field_to_extras_value(
 				surface,
 				&(
 					::translate::tr!(ctx, #tr),
-					::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+					crate::extras::percent::#struct_name (#value),
 					#colour,
 				),
 				idx
@@ -63,7 +63,7 @@ pub(crate) fn map_game_field_to_extras_value(
 				surface,
 				&(
 					::translate::tr!(ctx, #tr),
-					::std::boxed::Box::new(#value),
+					#value,
 					#colour,
 				),
 				idx
@@ -99,7 +99,7 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 				surface,
 				&(
 					::translate::tr!(ctx, #tr),
-					::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+					crate::extras::percent::#struct_name (#value),
 					#colour,
 				),
 				idx
@@ -114,7 +114,7 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 				surface,
 				&(
 					::translate::tr!(ctx, #tr),
-					::std::boxed::Box::new(#value),
+					#value,
 					#colour,
 				),
 				idx

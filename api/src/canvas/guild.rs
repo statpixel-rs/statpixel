@@ -93,7 +93,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gold),
+			&(game.as_short_clean_cow(), *xp, Paint::Gold),
 			0,
 		);
 	}
@@ -102,7 +102,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Gray),
+			&(game.as_short_clean_cow(), *xp, Paint::Gray),
 			1,
 		);
 	}
@@ -111,7 +111,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::Red),
+			&(game.as_short_clean_cow(), *xp, Paint::Red),
 			2,
 		);
 	}
@@ -120,7 +120,7 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 		sidebar::item(
 			ctx,
 			surface,
-			&(game.as_short_clean_cow(), Box::new(*xp), Paint::DarkGray),
+			&(game.as_short_clean_cow(), *xp, Paint::DarkGray),
 			3 + idx as u8,
 		);
 	}

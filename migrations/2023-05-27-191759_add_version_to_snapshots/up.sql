@@ -1,0 +1,4 @@
+-- Your SQL goes here
+
+ALTER TABLE snapshot ADD COLUMN version SMALLINT NOT NULL DEFAULT 0;
+ALTER TABLE guild_snapshot ADD COLUMN version SMALLINT NOT NULL DEFAULT 0;

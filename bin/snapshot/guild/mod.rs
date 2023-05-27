@@ -1,6 +1,6 @@
 use std::ops::Mul;
 
-use api::guild::Guild;
+use api::guild::{Guild, VERSION};
 use chrono::{DateTime, Utc};
 use database::{
 	schema::{guild_schedule, guild_snapshot},
@@ -78,6 +78,7 @@ async fn update(
 						guild_snapshot::hash.eq(new_hash),
 						guild_snapshot::did_update.eq(did_update),
 						guild_snapshot::days_since_epoch.eq(days),
+						guild_snapshot::version.eq(VERSION),
 					))
 					.execute(conn)
 					.await?;
@@ -249,6 +250,7 @@ pub async fn insert(ctx: Context<'_>, guild: &Guild) -> Result<(), Error> {
 							None => true,
 						}),
 						guild_snapshot::days_since_epoch.eq(days),
+						guild_snapshot::version.eq(VERSION),
 					))
 					.execute(conn)
 					.await?;

@@ -6,6 +6,27 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
+# /network
+
+network = network
+  .description = Affiche les statistiques du réseau d'un joueur.
+  .username = username
+  .username-description = Le nom d'utilisateur Minecraft à afficher
+  .uuid = uuid
+  .uuid-description = L'UUID Minecraft à afficher
+  .hours = hours
+  .hours-description = Le nombre d'heures à afficher
+  .days = days
+  .days-description = Le nombre de jours à afficher
+  .weeks = weeks
+  .weeks-description = Le nombre de semaines à afficher
+
+karma = Karma
+rewards = Récompenses
+friend-requests = Demandes d'amis
+first-login = Première connexion
+last-login = Dernière connexion
+
 # /help
 
 help = help

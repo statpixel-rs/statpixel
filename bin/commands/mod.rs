@@ -11,6 +11,7 @@ pub mod guild;
 pub mod help;
 pub mod history;
 pub mod link;
+pub mod network;
 pub mod ser;
 pub mod snapshot;
 pub mod unlink;

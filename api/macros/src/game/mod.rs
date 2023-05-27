@@ -181,7 +181,7 @@ impl ToTokens for GameInputReceiver {
 						surface,
 						&(
 							::translate::tr!(ctx, #tr),
-							::std::boxed::Box::new(crate::extras::percent::#struct_name (#value)),
+							crate::extras::percent::#struct_name (#value),
 							#colour,
 						),
 						idx
@@ -196,7 +196,7 @@ impl ToTokens for GameInputReceiver {
 						surface,
 						&(
 							::translate::tr!(ctx, #tr),
-							::std::boxed::Box::new(#value),
+							#value,
 							#colour,
 						),
 						idx

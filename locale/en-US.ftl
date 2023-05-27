@@ -6,6 +6,27 @@ no-previous-statistics = No previous data found for **{$name}**, so it has been 
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
 
+# /network
+
+network = network
+  .description = Network
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .hours = hours
+  .hours-description = hours
+  .days = days
+  .days-description = days
+  .weeks = weeks
+  .weeks-description = weeks
+
+karma = Karma
+rewards = Rewards
+friend-requests = Friend Requests
+first-login = First Login
+last-login = Last Login
+
 # /history
 
 statistics-history = {" "}history for{" "}

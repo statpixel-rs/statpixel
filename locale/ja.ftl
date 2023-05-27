@@ -6,6 +6,27 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /network
+
+network = network
+  .description = ネットワーク
+  .username = ユーザー名
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .hours = 時間
+  .hours-description = 時間
+  .days = 日
+  .days-description = 日
+  .weeks = 週
+  .weeks-description = 週
+
+karma = カルマ
+rewards = 報酬
+friend-requests = フレンドリクエスト
+first-login = 最初のログイン
+last-login = 最後のログイン
+
 # /help
 
 help = help

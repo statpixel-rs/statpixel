@@ -6,6 +6,27 @@ no-previous-statistics = Нет предыдущих данных для **{$nam
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
+# /network
+
+network = network
+  .description = Статистика сети Hypixel.
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .hours = hours
+  .hours-description = часы
+  .days = days
+  .days-description = дни
+  .weeks = weeks
+  .weeks-description = недели
+
+karma = Карма
+rewards = Награды
+friend-requests = Запросы в друзья
+first-login = Первый вход
+last-login = Последний вход
+
 # /help
 
 help = help

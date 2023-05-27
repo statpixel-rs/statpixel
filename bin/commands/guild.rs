@@ -39,10 +39,6 @@ pub async fn get_snapshots_multiple_of_weekday(
 		.get_results::<Vec<u8>>(&mut ctx.data().pool.get().await?)
 		.await?;
 
-	if result.is_empty() {
-		snapshot::guild::insert(ctx, guild).await?;
-	}
-
 	Ok(result
 		.into_iter()
 		.filter_map(|data| snapshot::guild::decode(data.as_slice()).ok())
