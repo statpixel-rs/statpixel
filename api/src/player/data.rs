@@ -4,8 +4,6 @@ use serde::{Deserialize, Deserializer};
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 1;
-
 #[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
 #[serde(default)]
 pub struct Data {
@@ -14,15 +12,15 @@ pub struct Data {
 	#[serde(default)]
 	pub stats: super::stats::Stats,
 	#[serde(rename = "rank")]
-	pub(super) status_rank: Option<String>,
+	pub(crate) status_rank: Option<String>,
 	#[serde(rename = "newPackageRank")]
-	pub(super) rank: Option<String>,
+	pub(crate) rank: Option<String>,
 	#[serde(rename = "monthlyPackageRank")]
-	pub(super) package_rank: Option<String>,
+	pub(crate) package_rank: Option<String>,
 	#[serde(rename = "rankPlusColor")]
-	pub(super) rank_colour: Option<Colour>,
+	pub(crate) rank_colour: Option<Colour>,
 	#[serde(rename = "monthlyRankColor")]
-	pub(super) monthly_rank_colour: Option<Colour>,
+	pub(crate) monthly_rank_colour: Option<Colour>,
 	pub prefix: Option<String>,
 	#[serde(
 		rename = "networkExp",

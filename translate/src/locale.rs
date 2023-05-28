@@ -1,6 +1,7 @@
 //! Portions of this implementation are taken from the Poise + Fluent example.
 //! https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 
+use core::panic;
 use std::{borrow::Cow, fmt::Debug};
 
 use crate::{Context, Data, Error};
@@ -154,42 +155,76 @@ impl Locale {
 					// Insert localized command name and description
 					let localized_command_name = match format(bundle, &command.name, None, None) {
 						Some(x) => x,
-						None => continue, // no localization entry => skip localization
+						None => {
+							warn!(
+								name = command.name,
+								locale = locale,
+								"missing localization for command"
+							);
+
+							continue;
+						}
 					};
 
 					command
 						.name_localizations
 						.insert(locale.clone(), localized_command_name);
 
-					command.description_localizations.insert(
-						locale.clone(),
-						format(bundle, &command.name, Some("description"), None).unwrap(),
-					);
+					let description = format(bundle, &command.name, Some("description"), None);
+
+					if let Some(description) = description {
+						command
+							.description_localizations
+							.insert(locale.clone(), description);
+					} else {
+						panic!(
+							"missing command description localization for `{}` in {}",
+							command.name, locale
+						);
+					}
 
 					for parameter in &mut command.parameters {
-						// Insert localized parameter name and description
-						parameter.name_localizations.insert(
-							locale.clone(),
-							format(bundle, &command.name, Some(&parameter.name), None).unwrap(),
+						let name = format(bundle, &command.name, Some(&parameter.name), None);
+
+						if let Some(name) = name {
+							parameter.name_localizations.insert(locale.clone(), name);
+						} else {
+							panic!(
+								"missing parameter name localization for `{}` in {}",
+								parameter.name, locale
+							);
+						}
+
+						let description = format(
+							bundle,
+							&command.name,
+							Some(&format!("{}-description", parameter.name)),
+							None,
 						);
 
-						parameter.description_localizations.insert(
-							locale.clone(),
-							format(
-								bundle,
-								&command.name,
-								Some(&format!("{}-description", parameter.name)),
-								None,
-							)
-							.unwrap(),
-						);
+						if let Some(description) = description {
+							parameter
+								.description_localizations
+								.insert(locale.clone(), description);
+						} else {
+							panic!(
+								"missing parameter description localization for `{}` in {}",
+								parameter.name, locale
+							);
+						}
 
 						// If this is a choice parameter, insert its localized variants
 						for choice in &mut parameter.choices {
-							choice.localizations.insert(
-								locale.clone(),
-								format(bundle, &choice.name, None, None).unwrap(),
-							);
+							let name = format(bundle, &choice.name, None, None);
+
+							if let Some(name) = name {
+								choice.localizations.insert(locale.clone(), name);
+							} else {
+								panic!(
+									"missing choice name localization for `{}` in {}",
+									choice.name, locale
+								);
+							}
 						}
 					}
 				}
@@ -203,27 +238,54 @@ impl Locale {
 				None => continue, // no localization entry => keep hardcoded names
 			}
 
-			command.description =
-				Some(format(bundle, &command.name, Some("description"), None).unwrap());
+			let description = format(bundle, &command.name, Some("description"), None);
+
+			if let Some(description) = description {
+				command.description = Some(description);
+			} else {
+				panic!(
+					"missing command description localization for `{}` in en-US",
+					command.name
+				);
+			}
 
 			for parameter in &mut command.parameters {
-				// Set fallback parameter name and description to en-US
-				parameter.name =
-					format(bundle, &command.name, Some(&parameter.name), None).unwrap();
+				let name = format(bundle, &command.name, Some(&parameter.name), None);
 
-				parameter.description = Some(
-					format(
-						bundle,
-						&command.name,
-						Some(&format!("{}-description", parameter.name)),
-						None,
-					)
-					.unwrap(),
+				// Set fallback parameter name and description to en-US
+				if let Some(name) = name {
+					parameter.name = name;
+				} else {
+					panic!(
+						"missing parameter localization for `{}` in en-US",
+						parameter.name
+					);
+				}
+
+				let description = format(
+					bundle,
+					&command.name,
+					Some(&format!("{}-description", parameter.name)),
+					None,
 				);
 
+				if let Some(description) = description {
+					parameter.description = Some(description);
+				} else {
+					panic!(
+						"missing parameter description localization for `{}` in en-US",
+						parameter.name
+					);
+				}
 				// If this is a choice parameter, set the choice names to en-US
 				for choice in &mut parameter.choices {
-					choice.name = format(bundle, &choice.name, None, None).unwrap();
+					let name = format(bundle, &choice.name, None, None);
+
+					if let Some(name) = name {
+						choice.name = name;
+					} else {
+						panic!("missing choice localization for `{}` in en-US", choice.name);
+					}
 				}
 			}
 		}

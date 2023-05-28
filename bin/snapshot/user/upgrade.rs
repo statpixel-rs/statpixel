@@ -1,7 +1,4 @@
-use api::{
-	player::{data, data_old},
-	snapshot::user::encode,
-};
+use api::{player, player_old, snapshot::user::encode};
 use database::{schema::snapshot, PostgresPool};
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
@@ -9,7 +6,7 @@ use flate2::read::ZlibDecoder;
 use futures::StreamExt;
 use tracing::info;
 
-pub fn decode_old(data: &[u8]) -> Result<data_old::Data, crate::Error> {
+pub fn decode_old(data: &[u8]) -> Result<player_old::data::Data, crate::Error> {
 	let mut decoder = ZlibDecoder::new(data);
 
 	Ok(bincode::decode_from_std_read(
@@ -22,7 +19,7 @@ pub fn decode_old(data: &[u8]) -> Result<data_old::Data, crate::Error> {
 pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 	loop {
 		let snapshots = snapshot::table
-			.filter(snapshot::version.eq(data_old::VERSION))
+			.filter(snapshot::version.eq(player_old::data::VERSION))
 			.select((snapshot::data, snapshot::id))
 			.limit(1_000)
 			.load::<(Vec<u8>, i32)>(&mut pool.get().await?)
@@ -35,7 +32,7 @@ pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 				let pool = &pool;
 
 				async move {
-					let data: data::Data = decode_old(snapshot.as_slice())?.into();
+					let data: player::data::Data = decode_old(snapshot.as_slice())?.into();
 					let encoded = encode(&data)?;
 					let new_hash = fxhash::hash64(&encoded) as i64;
 
@@ -43,7 +40,7 @@ pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 						.set((
 							snapshot::data.eq(encoded),
 							snapshot::hash.eq(new_hash),
-							snapshot::version.eq(data::VERSION),
+							snapshot::version.eq(player::VERSION),
 						))
 						.execute(&mut pool.get().await?)
 						.await?;

@@ -3,7 +3,16 @@ use std::borrow::Cow;
 use serde::{Deserialize, Serialize};
 
 #[derive(
-	Deserialize, Serialize, bincode::Encode, bincode::Decode, Debug, Clone, Copy, PartialEq,
+	Deserialize,
+	Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Debug,
+	Clone,
+	Copy,
+	PartialEq,
+	Eq,
+	Hash,
 )]
 #[serde(try_from = "&str")]
 pub enum Type {

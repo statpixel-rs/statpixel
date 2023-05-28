@@ -122,7 +122,7 @@ pub async fn network(
 				data.rewards.to_formatted_label(ctx),
 				tr!(ctx, "friend-requests"),
 				data.friend_requests.to_formatted_label(ctx),
-				tr!(ctx, "playtime"),
+				tr!(ctx, "time-played"),
 				data.playtime.to_formatted_label(ctx),
 				tr!(ctx, "first-login"),
 				data.first_login.to_formatted_label(ctx),

@@ -1,5 +1,4 @@
 pub mod data;
-pub mod data_old;
 pub mod stats;
 pub mod status;
 
@@ -20,6 +19,8 @@ use crate::{
 };
 
 use self::status::Status;
+
+pub const VERSION: i16 = 2;
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
@@ -167,17 +168,13 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
 	pub async fn get_data(&self) -> Result<data::Data, Arc<Error>> {
-		PLAYER_DATA_CACHE
-			.try_get_with_by_ref(&self.uuid, self.get_data_raw())
-			.await
+		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(&self.uuid, self.get_data_raw())).await
 	}
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
 	pub async fn get_data_owned(self) -> Result<data::Data, Arc<Error>> {
-		PLAYER_DATA_CACHE
-			.try_get_with(self.uuid, self.get_data_raw())
-			.await
+		Box::pin(PLAYER_DATA_CACHE.try_get_with(self.uuid, self.get_data_raw())).await
 	}
 
 	async fn get_data_raw(&self) -> Result<data::Data, Error> {

@@ -45,6 +45,11 @@ pub struct BlitzSg {
 	pub coins: i32,
 
 	#[serde(flatten)]
+	pub solo: Solo,
+	#[serde(flatten)]
+	pub team: Team,
+
+	#[serde(flatten)]
 	#[game(mode())]
 	pub armorer: Armorer,
 	#[serde(flatten)]
@@ -116,6 +121,24 @@ pub struct BlitzSg {
 	#[serde(flatten)]
 	#[game(mode())]
 	pub blaze: Blaze,
+}
+
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[serde(default)]
+pub struct Solo {
+	#[serde(rename = "wins_solo_normal")]
+	pub wins: u32,
+	#[serde(rename = "kills_solo_normal")]
+	pub kills: u32,
+}
+
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[serde(default)]
+pub struct Team {
+	#[serde(rename = "wins_teams_normal")]
+	pub wins: u32,
+	#[serde(rename = "kills_teams_normal")]
+	pub kills: u32,
 }
 
 #[derive(

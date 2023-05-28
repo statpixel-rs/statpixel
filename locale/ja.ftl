@@ -450,6 +450,7 @@ speeduhc = speeduhc
 # /tntgames
 
 TntRun = TNT Run
+TntTag = TNT Tag
 PvpRun = PvP Run
 BowSpleef = Bow Spleef
 Wizard = Wizards

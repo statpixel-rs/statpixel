@@ -43,7 +43,7 @@ pub struct Warlords {
 	pub capture_the_flag: CaptureTheFlag,
 	#[serde(flatten)]
 	#[game(mode())]
-	pub donination: Domination,
+	pub domination: Domination,
 	#[serde(flatten)]
 	#[game(mode())]
 	pub team_deathmatch: TeamDeathmatch,

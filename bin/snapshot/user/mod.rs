@@ -2,10 +2,7 @@ pub mod upgrade;
 
 use std::ops::Mul;
 
-use api::player::{
-	data::{Data, VERSION},
-	Player,
-};
+use api::player::{data::Data, Player, VERSION};
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
 	schema::{schedule, snapshot},

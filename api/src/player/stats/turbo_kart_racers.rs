@@ -29,6 +29,8 @@ pub struct TurboKartRacers {
 	pub show_prefix: bool,
 	#[game(label(colour = "green"))]
 	pub wins: u32,
+	#[game(label(colour = "red"))]
+	pub laps_completed: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]
