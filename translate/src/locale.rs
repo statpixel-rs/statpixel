@@ -144,7 +144,9 @@ impl Locale {
 		for command in commands.iter_mut() {
 			match command.name.as_str() {
 				"daily" | "weekly" | "monthly" | "history" | "from" => {
-					self.apply_translations(command.subcommands.as_mut(), true)
+					self.apply_translations(command.subcommands.as_mut(), true);
+
+					continue;
 				}
 				_ => {}
 			}
