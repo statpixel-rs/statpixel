@@ -6,6 +6,13 @@ no-previous-statistics = Нет предыдущих данных для **{$nam
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
+# /leaderboard
+
+leaderboard = leaderboard
+	.description = Просмотр доски лидеров для различных игр
+	.board = board
+	.board-description = Доска лидеров для просмотра
+
 # /network
 
 network = network

@@ -6,6 +6,13 @@ no-previous-statistics = No previous data found for **{$name}**, so it has been 
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
 
+# /leaderboard
+
+leaderboard = leaderboard
+	.description = View the leaderboard for various games
+	.board = board
+	.board-description = The leaderboard to view
+
 # /network
 
 network = network

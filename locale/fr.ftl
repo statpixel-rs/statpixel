@@ -6,6 +6,13 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
+# /leaderboard
+
+leaderboard = leaderboard
+	.description = Affiche le classement de différents jeux.
+	.board = board
+	.board-description = Le classement à afficher
+
 # /network
 
 network = network

@@ -6,6 +6,13 @@ no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher
 showing-guild-statistics = Zeigt Gildenstatistikänderungen von {$from} bis {$to} an.
 no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}** gefunden, daher wurden sie eingefügt.
 
+# /leaderboard
+
+leaderboard = leaderboard
+	.description = Zeigt die Bestenliste für verschiedene Spiele an.
+	.board = board
+	.board-description = Die Bestenliste, die angezeigt werden soll
+
 # /network
 
 network = network

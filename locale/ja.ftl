@@ -6,6 +6,13 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /leaderboard
+
+leaderboard = leaderboard
+	.description = さまざまなゲームのリーダーボードを表示します。
+	.board = board
+	.board-description = 表示するリーダーボード
+
 # /network
 
 network = network
