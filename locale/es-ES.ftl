@@ -9,9 +9,9 @@ no-previous-guild-statistics = No se encontraron datos anteriores para el gremio
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = Muestra la clasificación de varios juegos
-	.board = board
-	.board-description = La clasificación para ver
+  .description = Muestra la clasificación de varios juegos
+  .board = board
+  .board-description = La clasificación para ver
 
 # /network
 

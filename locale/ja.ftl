@@ -9,9 +9,9 @@ no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = さまざまなゲームのリーダーボードを表示します。
-	.board = board
-	.board-description = 表示するリーダーボード
+  .description = さまざまなゲームのリーダーボードを表示します。
+  .board = board
+  .board-description = 表示するリーダーボード
 
 # /network
 

@@ -9,9 +9,9 @@ no-previous-guild-statistics = Нет предыдущих данных для �
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = Просмотр доски лидеров для различных игр
-	.board = board
-	.board-description = Доска лидеров для просмотра
+  .description = Просмотр доски лидеров для различных игр
+  .board = board
+  .board-description = Доска лидеров для просмотра
 
 # /network
 

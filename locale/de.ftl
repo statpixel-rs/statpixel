@@ -9,9 +9,9 @@ no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}**
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = Zeigt die Bestenliste für verschiedene Spiele an.
-	.board = board
-	.board-description = Die Bestenliste, die angezeigt werden soll
+  .description = Zeigt die Bestenliste für verschiedene Spiele an.
+  .board = board
+  .board-description = Die Bestenliste, die angezeigt werden soll
 
 # /network
 

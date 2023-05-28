@@ -9,9 +9,9 @@ no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guil
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = Affiche le classement de différents jeux.
-	.board = board
-	.board-description = Le classement à afficher
+  .description = Affiche le classement de différents jeux.
+  .board = board
+  .board-description = Le classement à afficher
 
 # /network
 

@@ -9,9 +9,9 @@ no-previous-guild-statistics = No previous data found for guild **{$name}**, so 
 # /leaderboard
 
 leaderboard = leaderboard
-	.description = View the leaderboard for various games
-	.board = board
-	.board-description = The leaderboard to view
+  .description = View the leaderboard for various games
+  .board = board
+  .board-description = The leaderboard to view
 
 # /network
 
