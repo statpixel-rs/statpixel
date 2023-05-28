@@ -7,6 +7,7 @@ pub mod guild;
 pub mod gutter;
 pub mod header;
 pub mod label;
+pub mod leaderboard;
 pub mod sidebar;
 pub(crate) mod util;
 

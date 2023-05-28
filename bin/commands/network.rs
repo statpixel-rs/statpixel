@@ -1,5 +1,3 @@
-use std::borrow::Cow;
-
 use crate::{format::Display, Context, Error};
 use api::canvas::{self, label::ToFormatted};
 use minecraft::paint::Paint;
@@ -25,7 +23,7 @@ pub async fn network(
 
 	match format {
 		Display::Image | Display::Compact => {
-			let png: Cow<[u8]> = {
+			let png = {
 				let mut surface = canvas::create_surface(1);
 
 				canvas::header::apply_status(ctx, &mut surface, &session);

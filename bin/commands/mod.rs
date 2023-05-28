@@ -10,6 +10,7 @@ pub mod games;
 pub mod guild;
 pub mod help;
 pub mod history;
+pub mod leaderboard;
 pub mod link;
 pub mod network;
 pub mod ser;
@@ -119,7 +120,7 @@ macro_rules! get_data {
 			Err(e) => return Err(e),
 		};
 
-		let format = $crate::util::get_format_from_input($ctx, $ctx.author()).await;
+		let format = $crate::util::get_format_from_input($ctx).await;
 		let (data, session) =
 			poise::futures_util::future::join(player.get_data(), player.get_session()).await;
 
@@ -151,7 +152,7 @@ macro_rules! get_history_data {
 			Err(e) => return Err(e),
 		};
 
-		let format = $crate::util::get_format_from_input($ctx, $ctx.author()).await;
+		let format = $crate::util::get_format_from_input($ctx).await;
 		let session = player.get_session().await;
 
 		let session = session?;

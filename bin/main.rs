@@ -2,6 +2,7 @@
 #![allow(clippy::cast_possible_wrap)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
+#![feature(iter_intersperse)]
 
 use database::get_pool;
 use poise::serenity_prelude::GatewayIntents;
@@ -45,6 +46,7 @@ async fn main() {
 		commands::guild::guild(),
 		commands::help::help(),
 		commands::history::history(),
+		commands::leaderboard::leaderboard(),
 		commands::link::link(),
 		commands::games::megawalls(),
 		commands::snapshot::monthly::monthly(),

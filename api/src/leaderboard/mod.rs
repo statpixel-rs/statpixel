@@ -1,34 +1,71 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, str::FromStr, sync::Arc, time::Duration};
 
+use moka::future::{Cache, CacheBuilder};
+use once_cell::sync::Lazy;
+use reqwest::{Method, Request, Url};
 use serde::{Deserialize, Deserializer};
 use uuid::Uuid;
 
-use crate::{canvas::label::ToFormatted, game::r#type::Type, player::stats::Stats};
+use crate::{canvas::label::ToFormatted, game::r#type::Type, http::HTTP, player::stats::Stats};
+
+pub static LEADERBOARD_CACHE: Lazy<Cache<(), HashMap<String, Leaderboard>>> = Lazy::new(|| {
+	CacheBuilder::new(1)
+		.time_to_idle(Duration::from_secs(60 * 10))
+		.time_to_live(Duration::from_secs(60 * 30))
+		.build()
+});
+
+pub static URL: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/leaderboards").unwrap());
 
 #[derive(Deserialize, Debug)]
 pub struct Response {
 	#[serde(deserialize_with = "from_leaderboard_map")]
-	pub leaderboards: HashMap<Type, Vec<Leaderboard>>,
+	pub leaderboards: HashMap<String, Leaderboard>,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
+struct RawLeaderboard<'a> {
+	path: String,
+	prefix: &'a str,
+	title: &'a str,
+	leaders: Vec<Uuid>,
+}
+
+#[derive(Debug, Clone)]
 pub struct Leaderboard {
 	pub path: String,
-	pub prefix: String,
-	pub title: String,
+	pub name: String,
+	pub display_name: String,
 	pub leaders: Vec<Uuid>,
+	pub game: Type,
 }
 
-fn from_leaderboard_map<'de, D>(
-	deserializer: D,
-) -> Result<HashMap<Type, Vec<Leaderboard>>, D::Error>
+/// # Errors
+/// Returns [`Error::Http`] if the request fails.
+pub async fn get() -> Result<HashMap<String, Leaderboard>, Arc<crate::Error>> {
+	LEADERBOARD_CACHE.try_get_with((), get_raw()).await
+}
+
+async fn get_raw() -> Result<HashMap<String, Leaderboard>, crate::Error> {
+	let request = Request::new(Method::GET, URL.clone());
+	let response = HTTP
+		.perform_hypixel(request.into())
+		.await?
+		.json::<Response>()
+		.await?;
+
+	Ok(response.leaderboards)
+}
+
+fn from_leaderboard_map<'de, D>(deserializer: D) -> Result<HashMap<String, Leaderboard>, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	struct Visitor(HashMap<Type, Vec<Leaderboard>>);
+	struct Visitor(HashMap<String, Leaderboard>);
 
 	impl<'de> serde::de::Visitor<'de> for Visitor {
-		type Value = HashMap<Type, Vec<Leaderboard>>;
+		type Value = HashMap<String, Leaderboard>;
 
 		fn expecting(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
 			f.write_str("a mapping of games to their leaderboards")
@@ -39,13 +76,31 @@ where
 			A: serde::de::MapAccess<'de>,
 		{
 			while let Some((game, boards)) = map.next_entry()? {
-				let boards: Vec<Leaderboard> = boards;
-				let boards = boards
-					.into_iter()
-					.filter(|b| Stats::has_value(&game, b.path.as_str()))
-					.collect::<Vec<_>>();
+				let boards: Vec<RawLeaderboard> = boards;
 
-				self.0.insert(game, boards);
+				self.0.extend(
+					boards
+						.into_iter()
+						.filter(|b| Stats::has_value(&game, b.path.as_str()))
+						.map(|mut b| {
+							// Only keep the first 10 leaders
+							b.leaders.drain(10..);
+
+							let display_name =
+								format!("{} ({} {})", game.as_clean_name(), b.prefix, b.title);
+							let display_name_lower = display_name.to_ascii_lowercase();
+
+							let board = Leaderboard {
+								path: b.path,
+								display_name,
+								name: format!("{} {}", b.prefix, b.title),
+								leaders: b.leaders,
+								game,
+							};
+
+							(display_name_lower, board)
+						}),
+				);
 			}
 
 			Ok(self.0)

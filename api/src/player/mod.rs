@@ -9,6 +9,7 @@ use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};
 use serde::Deserialize;
 use std::{str::FromStr, sync::Arc};
+use tracing::error;
 use translate::Context;
 use uuid::Uuid;
 
@@ -192,7 +193,14 @@ impl Player {
 			return Err(Error::PlayerNotFound(self.username.clone()));
 		}
 
-		let response = response.json::<Response>().await?;
+		let response = match response.json::<Response>().await {
+			Ok(response) => response,
+			Err(err) => {
+				error!("Failed to deserialize {} data: {}", self.uuid, err);
+
+				return Err(err.into());
+			}
+		};
 
 		Ok(response.player)
 	}

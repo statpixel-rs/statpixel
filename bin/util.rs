@@ -48,13 +48,13 @@ pub fn escape_username(username: &str) -> String {
 	username.replace('_', "\\_")
 }
 
-pub async fn get_format_from_input(ctx: Context<'_>, author: &User) -> format::Display {
+pub async fn get_format_from_input(ctx: Context<'_>) -> format::Display {
 	let Ok(mut connection) = ctx.data().pool.get().await else {
 		return format::Display::default();
 	};
 
 	let result = schema::user::table
-		.filter(schema::user::id.eq(author.id.0 as i64))
+		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 		.select(schema::user::display)
 		.get_result::<format::Display>(&mut connection)
 		.await;

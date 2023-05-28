@@ -1,5 +1,6 @@
 use std::borrow::Cow;
 
+use minecraft::{minecraft_text, text::Text};
 use serde::{Deserialize, Serialize};
 
 #[derive(
@@ -138,6 +139,83 @@ impl Type {
 	}
 
 	#[must_use]
+	pub fn as_clean_name_lower(&self) -> &'static str {
+		match self {
+			Self::Limbo => "limbo",
+			Self::Lobby => "lobby",
+			Self::Quake => "quake",
+			Self::Walls => "walls",
+			Self::Paintball => "paintball",
+			Self::BlitzSg => "blitz survival games",
+			Self::TntGames => "tnt games",
+			Self::VampireZ => "vampirez",
+			Self::MegaWalls => "mega walls",
+			Self::Arcade => "arcade",
+			Self::Arena => "arena",
+			Self::Uhc => "uhc champions",
+			Self::CopsAndCrims => "cops and crims",
+			Self::Warlords => "warlords",
+			Self::SmashHeroes => "smash heroes",
+			Self::TurboKartRacers => "turbo kart racers",
+			Self::Housing => "housing",
+			Self::SkyWars => "skywars",
+			Self::CrazyWalls => "crazy walls",
+			Self::SpeedUhc => "speed uhc",
+			Self::SkyClash => "skyclash",
+			Self::Classic => "classic games",
+			Self::Prototype => "prototype",
+			Self::BedWars => "bed wars",
+			Self::MurderMystery => "murder mystery",
+			Self::BuildBattle => "build battle",
+			Self::Duels => "duels",
+			Self::SkyBlock => "skyblock",
+			Self::Pit => "pit",
+			Self::Replay => "replay",
+			Self::Smp => "smp",
+			Self::WoolWars => "wool wars",
+		}
+	}
+
+	#[must_use]
+	pub fn try_from_clean_name(value: &str) -> Option<Self> {
+		Some(match value {
+			"Limbo" => Self::Limbo,
+			"Lobby" => Self::Lobby,
+			"Quake" => Self::Quake,
+			"Walls" => Self::Walls,
+			"Paintball" => Self::Paintball,
+			"Blitz Survival Games" => Self::BlitzSg,
+			"TNT Games" => Self::TntGames,
+			"VampireZ" => Self::VampireZ,
+			"Mega Walls" => Self::MegaWalls,
+			"Arcade" => Self::Arcade,
+			"Arena" => Self::Arena,
+			"UHC Champions" => Self::Uhc,
+			"Cops and Crims" => Self::CopsAndCrims,
+			"Warlords" => Self::Warlords,
+			"Smash Heroes" => Self::SmashHeroes,
+			"Turbo Kart Racers" => Self::TurboKartRacers,
+			"Housing" => Self::Housing,
+			"SkyWars" => Self::SkyWars,
+			"Crazy Walls" => Self::CrazyWalls,
+			"Speed UHC" => Self::SpeedUhc,
+			"SkyClash" => Self::SkyClash,
+			"Classic Games" => Self::Classic,
+			"Prototype" => Self::Prototype,
+			"Bed Wars" => Self::BedWars,
+			"Murder Mystery" => Self::MurderMystery,
+			"Build Battle" => Self::BuildBattle,
+			"Duels" => Self::Duels,
+			"SkyBlock" => Self::SkyBlock,
+			"Pit" => Self::Pit,
+			"Replay" => Self::Replay,
+			"SMP" => Self::Smp,
+			"Wool Wars" => Self::WoolWars,
+			_ => return None,
+		})
+	}
+
+	#[must_use]
 	pub fn as_short_clean_name(&self) -> &'static str {
 		match self {
 			Self::Limbo => "Limbo",
@@ -207,6 +285,141 @@ impl Type {
 			Self::WoolWars => include_bytes!("../../../assets/games/woolwars.png"),
 			_ => return None,
 		})
+	}
+
+	#[allow(clippy::too_many_lines)]
+	#[must_use]
+	pub fn as_text(&self) -> &'static [Text<'static>] {
+		match self {
+			Self::Limbo => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lLimbo");
+				&TEXT
+			}
+			Self::Lobby => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lLobby");
+				&TEXT
+			}
+			Self::Quake => {
+				const TEXT: [Text; 2] = minecraft_text!("§a§lQuake§2§lcraft");
+				&TEXT
+			}
+			Self::Walls => {
+				const TEXT: [Text; 1] = minecraft_text!("§e§lThe Walls");
+				&TEXT
+			}
+			Self::Paintball => {
+				const TEXT: [Text; 5] = minecraft_text!("§f§lPa§e§li§6§lnt§b§lba§3§lll");
+				&TEXT
+			}
+			Self::BlitzSg => {
+				const TEXT: [Text; 1] = minecraft_text!("§c§lBlitz SG");
+				&TEXT
+			}
+			Self::TntGames => {
+				const TEXT: [Text; 2] = minecraft_text!("§4§lTNT §c§lGames");
+				&TEXT
+			}
+			Self::VampireZ => {
+				const TEXT: [Text; 2] = minecraft_text!("§c§lVampire§4§lZ");
+				&TEXT
+			}
+			Self::MegaWalls => {
+				const TEXT: [Text; 1] = minecraft_text!("§3§lMega Walls");
+				&TEXT
+			}
+			Self::Arcade => {
+				const TEXT: [Text; 1] = minecraft_text!("§6§lArcade");
+				&TEXT
+			}
+			Self::Arena => {
+				const TEXT: [Text; 1] = minecraft_text!("§6§lArena Brawl");
+				&TEXT
+			}
+			Self::Uhc => {
+				const TEXT: [Text; 2] = minecraft_text!("§e§lUHC §6§lChampions");
+				&TEXT
+			}
+			Self::CopsAndCrims => {
+				const TEXT: [Text; 3] = minecraft_text!("§9§lCops §f§land §c§lCrims");
+				&TEXT
+			}
+			Self::Warlords => {
+				const TEXT: [Text; 1] = minecraft_text!("§b§lWarlords");
+				&TEXT
+			}
+			Self::SmashHeroes => {
+				const TEXT: [Text; 1] = minecraft_text!("§e§lSmash Heroes");
+				&TEXT
+			}
+			Self::TurboKartRacers => {
+				const TEXT: [Text; 1] = minecraft_text!("§a§lKart Racers");
+				&TEXT
+			}
+			Self::Housing => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lHousing");
+				&TEXT
+			}
+			Self::SkyWars => {
+				const TEXT: [Text; 2] = minecraft_text!("§b§lSky §f§lWars");
+				&TEXT
+			}
+			Self::CrazyWalls => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lCrazy Walls");
+				&TEXT
+			}
+			Self::SpeedUhc => {
+				const TEXT: [Text; 2] = minecraft_text!("§e§lSpeed §6§lUHC");
+				&TEXT
+			}
+			Self::SkyClash => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lSkyClash");
+				&TEXT
+			}
+			Self::Classic => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lClassic Games");
+				&TEXT
+			}
+			Self::Prototype => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lPrototype");
+				&TEXT
+			}
+			Self::BedWars => {
+				const TEXT: [Text; 2] = minecraft_text!("§c§lBed §f§lWars");
+				&TEXT
+			}
+			Self::MurderMystery => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lMurder Mystery");
+				&TEXT
+			}
+			Self::BuildBattle => {
+				const TEXT: [Text; 1] = minecraft_text!("§d§lBuild Battle");
+				&TEXT
+			}
+			Self::Duels => {
+				const TEXT: [Text; 1] = minecraft_text!("§e§lDuels");
+				&TEXT
+			}
+			Self::SkyBlock => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lSkyBlock");
+				&TEXT
+			}
+			Self::Pit => {
+				const TEXT: [Text; 1] = minecraft_text!("§c§lThe Pit");
+				&TEXT
+			}
+			Self::Replay => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lReplay");
+				&TEXT
+			}
+			Self::Smp => {
+				const TEXT: [Text; 1] = minecraft_text!("§4§lSMP");
+				&TEXT
+			}
+			Self::WoolWars => {
+				const TEXT: [Text; 2] = minecraft_text!("§f§lWool §7§lWars");
+				&TEXT
+			}
+		}
 	}
 }
 
