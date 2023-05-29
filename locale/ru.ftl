@@ -6,6 +6,52 @@ no-previous-statistics = Нет предыдущих данных для **{$nam
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
+# /skyblock profile
+
+profile = profile
+  .description = Просмотр профиля SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+member-profile = Профиль участника
+fairy-souls = Феерические души
+fairy-exchanges = Обмены
+fishing-treasure = Сокровища
+zones-visited = Зоны
+generators-crafted = Генераторы
+highest-crit = Самый высокий крит
+
+farming = Фермерство
+mining = Горное дело
+combat = Бой
+foraging = Сбор
+fishing = Рыбалка
+enchanting = Зачарование
+alchemy = Алхимия
+taming = Приручение
+dungeoneering = Подземелья
+carpentry = Плотничество
+runecrafting = Рунное дело
+social = Социальное
+
+# /skyblock bank
+
+bank = bank
+  .description = Просмотр банка SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+island-bank-balance = Баланс острова
+bank-balance = Баланс банка
+
 # /leaderboard
 
 leaderboard = leaderboard

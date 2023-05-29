@@ -6,6 +6,52 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /skyblock profile
+
+profile = profile
+  .description = SkyBlockプロファイルを表示します。
+  .username = ユーザー名
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+member-profile = メンバープロファイル
+fairy-souls = 妖精の魂
+fairy-exchanges = 交換
+fishing-treasure = 宝物
+zones-visited = ゾーン
+generators-crafted = ジェネレーター
+highest-crit = 最高クリティカル
+
+farming = 農業
+mining = 採掘
+combat = 戦闘
+foraging = 採取
+fishing = 釣り
+enchanting = エンチャント
+alchemy = 錬金術
+taming = 飼いならし
+dungeoneering = ダンジョン
+carpentry = 大工
+runecrafting = ルーン
+social = ソーシャル
+
+# /skyblock bank
+
+bank = bank
+  .description = SkyBlock銀行を表示します。
+  .username = ユーザー名
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+island-bank-balance = アイランド銀行残高
+bank-balance = 銀行残高
+
 # /leaderboard
 
 leaderboard = leaderboard

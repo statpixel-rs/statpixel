@@ -6,6 +6,48 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# /skyblock profile
+
+profile = profile
+  .description = Muestra un perfil de SkyBlock
+  .username = username
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .profile = profile
+  .profile-description = El perfil para ver
+
+member-profile = Perfil de miembro
+fairy-souls = Almas de hadas
+fairy-exchanges = Intercambios
+fishing-treasure = Tesoro
+zones-visited = Zonas
+generators-crafted = Generadores
+highest-crit = Crit más alto
+
+farming = Agricultura
+mining = Minería
+combat = Combate
+foraging = Forrajeo
+fishing = Pesca
+enchanting = Encantamiento
+alchemy = Alquimia
+taming = Domesticación
+
+# /skyblock bank
+
+bank = bank
+  .description = Muestra un banco de SkyBlock
+  .username = username
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .profile = profile
+  .profile-description = El perfil para ver
+
+island-bank-balance = Saldo del banco de isla
+bank-balance = Saldo del banco
+
 # /leaderboard
 
 leaderboard = leaderboard

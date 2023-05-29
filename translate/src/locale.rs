@@ -148,6 +148,11 @@ impl Locale {
 
 					continue;
 				}
+				"skyblock" => {
+					self.apply_translations(command.subcommands.as_mut(), false);
+
+					continue;
+				}
 				_ => {}
 			}
 

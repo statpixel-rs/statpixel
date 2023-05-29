@@ -6,6 +6,52 @@ no-previous-statistics = No previous data found for **{$name}**, so it has been 
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
 
+# /skyblock profile
+
+profile = profile
+  .description = View a SkyBlock profile
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+member-profile = Member Profile
+fairy-souls = Fairy Souls
+fairy-exchanges = Exchanges
+fishing-treasure = Treasure
+zones-visited = Zones
+generators-crafted = Generators
+highest-crit = Highest Crit
+
+farming = Farming
+mining = Mining
+combat = Combat
+foraging = Foraging
+fishing = Fishing
+enchanting = Enchanting
+alchemy = Alchemy
+taming = Taming
+dungeoneering = Dungeoneering
+carpentry = Carpentry
+runecrafting = Runecrafting
+social = Social
+
+# /skyblock bank
+
+bank = bank
+  .description = View a SkyBlock bank
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+island-bank-balance = Island Bank Balance
+bank-balance = Bank Balance
+
 # /leaderboard
 
 leaderboard = leaderboard

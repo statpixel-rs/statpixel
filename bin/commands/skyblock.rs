@@ -15,7 +15,7 @@ use minecraft::{
 use poise::serenity_prelude::AttachmentType;
 use translate::{tr, Context, Error};
 
-const LABEL: [Text; 3] = minecraft_text!("§b§lSky§a§lBlock§f (Member Profile)");
+const LABEL: [Text; 2] = minecraft_text!("§b§lSky§a§lBlock");
 
 #[allow(clippy::unused_async)]
 async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator<Item = String> {
@@ -68,7 +68,28 @@ pub async fn profile(
 
 		canvas::header::apply_name(&mut surface, &data);
 		canvas::header::apply_status(ctx, &mut surface, &session);
-		canvas::game::apply_label(&mut surface, &LABEL);
+		canvas::game::apply_label(
+			&mut surface,
+			&[
+				LABEL[0],
+				LABEL[1],
+				Text {
+					text: " (",
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "member-profile").as_ref(),
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: ")",
+					paint: Paint::White,
+					..Default::default()
+				},
+			],
+		);
 
 		let level = network::get_level(data.xp);
 
@@ -341,7 +362,7 @@ pub async fn bank(
 		let mut buffer = chart::u64::create(
 			ctx,
 			vec![(
-				Cow::Borrowed("Bank Balance"),
+				tr!(ctx, "bank-balance"),
 				bank.transactions
 					.iter()
 					.map(|t| (t.timestamp, t.amount))
@@ -359,7 +380,7 @@ pub async fn bank(
 			&mut surface,
 			&data,
 			&[Text {
-				text: "Island Bank Balance",
+				text: tr!(ctx, "island-bank-balance").as_ref(),
 				paint: Paint::Gold,
 				..Default::default()
 			}],

@@ -6,6 +6,52 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
+# /skyblock profile
+
+profile = profile
+  .description = Affiche un profil SkyBlock.
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+member-profile = Profil de membre
+fairy-souls = Âmes de fées
+fairy-exchanges = Échanges
+fishing-treasure = Trésor
+zones-visited = Zones
+generators-crafted = Générateurs
+highest-crit = Crit le plus élevé
+
+farming = Agriculture
+mining = Minage
+combat = Combat
+foraging = Récolte
+fishing = Pêche
+enchanting = Enchantement
+alchemy = Alchimie
+taming = Dressage
+dungeoneering = Donjon
+carpentry = Menuiserie
+runecrafting = Runecraft
+social = Social
+
+# /skyblock bank
+
+bank = bank
+  .description = Affiche une banque SkyBlock.
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+island-bank-balance = Solde de la banque de l'île
+bank-balance = Solde de la banque
+
 # /leaderboard
 
 leaderboard = leaderboard
