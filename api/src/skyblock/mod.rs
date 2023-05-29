@@ -67,7 +67,7 @@ pub const NAMES: &[&str] = &[
 
 #[derive(Deserialize)]
 pub struct Response {
-	pub profile: Profile,
+	pub profile: Option<Profile>,
 }
 
 impl Player {
@@ -96,6 +96,8 @@ impl Player {
 
 		let response = response.json::<Response>().await?;
 
-		Ok(response.profile)
+		response
+			.profile
+			.ok_or_else(|| Error::SessionNotFound(profile.to_string()))
 	}
 }
