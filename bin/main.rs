@@ -56,6 +56,7 @@ async fn main() {
 		commands::games::pit(),
 		commands::games::quake(),
 		commands::ser::ser(),
+		commands::skyblock::skyblock(),
 		commands::games::skywars(),
 		commands::games::smash(),
 		commands::games::speeduhc(),

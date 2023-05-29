@@ -22,7 +22,7 @@ pub type Context<'a> = poise::Context<'a, Data, Error>;
 pub enum ApiError {
 	#[error("An internal error occurred while sending a request.")]
 	Http,
-	#[error("An internal error occurred while sending a request.")]
+	#[error("An internal error occurred while sending a request. {0:?}")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("An internal error occurred while deserializing JSON.")]
 	Json(#[from] serde_json::Error),

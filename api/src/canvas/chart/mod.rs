@@ -86,11 +86,13 @@ macro_rules! impl_chart_create {
 
 				if let Some(colour) = colour {
 					let colour: ShapeStyle = colour.as_plotters().into();
-					let colour = colour.stroke_width(2);
 
 					for (name, series) in series.into_iter() {
 						chart
-							.draw_series(LineSeries::new(series, colour).point_size(2))
+							.draw_series(
+								LineSeries::new(series, colour.filled().stroke_width(2))
+									.point_size(2),
+							)
 							.map_err(|_| Error::Plotters)?
 							.label(name.into_owned())
 							.legend(move |(x, y)| {
@@ -103,7 +105,8 @@ macro_rules! impl_chart_create {
 
 						chart
 							.draw_series(
-								LineSeries::new(series, colour.stroke_width(2)).point_size(2),
+								LineSeries::new(series, colour.filled().stroke_width(2))
+									.point_size(2),
 							)
 							.map_err(|_| Error::Plotters)?
 							.label(name.into_owned())

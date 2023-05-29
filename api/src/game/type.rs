@@ -400,7 +400,7 @@ impl Type {
 				&TEXT
 			}
 			Self::SkyBlock => {
-				const TEXT: [Text; 1] = minecraft_text!("§4§lSkyBlock");
+				const TEXT: [Text; 2] = minecraft_text!("§b§lSky§a§lBlock");
 				&TEXT
 			}
 			Self::Pit => {

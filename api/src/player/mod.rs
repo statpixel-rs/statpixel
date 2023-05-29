@@ -21,7 +21,7 @@ use crate::{
 
 use self::status::Status;
 
-pub const VERSION: i16 = 2;
+pub const VERSION: i16 = 3;
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());

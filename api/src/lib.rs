@@ -17,6 +17,7 @@ pub mod leaderboard;
 pub mod player;
 pub mod player_old;
 pub mod ratelimiter;
+pub mod skyblock;
 pub mod snapshot;
 
 pub use extras::*;

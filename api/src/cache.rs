@@ -7,6 +7,7 @@ use uuid::Uuid;
 use crate::{
 	guild::Guild,
 	player::{data::Data, status::Session, Player},
+	skyblock::profile::Profile,
 };
 
 pub static PLAYER_DATA_CACHE: Lazy<Cache<Uuid, Data>> = Lazy::new(|| {
@@ -47,5 +48,12 @@ pub static PLAYER_SESSION_CACHE: Lazy<Cache<Uuid, Session>> = Lazy::new(|| {
 pub static PLAYER_CACHE: Lazy<Cache<String, Player>> = Lazy::new(|| {
 	CacheBuilder::new(1_000_000)
 		.time_to_live(Duration::from_secs(60 * 60 * 24))
+		.build()
+});
+
+// profile uuid to profile
+pub static SKYBLOCK_PROFILE_CACHE: Lazy<Cache<Uuid, Profile>> = Lazy::new(|| {
+	CacheBuilder::new(50_000)
+		.time_to_live(Duration::from_secs(60 * 30))
 		.build()
 });

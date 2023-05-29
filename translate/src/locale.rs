@@ -179,7 +179,7 @@ impl Locale {
 							.description_localizations
 							.insert(locale.clone(), description);
 					} else {
-						panic!(
+						warn!(
 							"missing command description localization for `{}` in {}",
 							command.name, locale
 						);
@@ -191,7 +191,7 @@ impl Locale {
 						if let Some(name) = name {
 							parameter.name_localizations.insert(locale.clone(), name);
 						} else {
-							panic!(
+							warn!(
 								"missing parameter name localization for `{}` in {}",
 								parameter.name, locale
 							);
@@ -209,7 +209,7 @@ impl Locale {
 								.description_localizations
 								.insert(locale.clone(), description);
 						} else {
-							panic!(
+							warn!(
 								"missing parameter description localization for `{}` in {}",
 								parameter.name, locale
 							);
@@ -222,7 +222,7 @@ impl Locale {
 							if let Some(name) = name {
 								choice.localizations.insert(locale.clone(), name);
 							} else {
-								panic!(
+								warn!(
 									"missing choice name localization for `{}` in {}",
 									choice.name, locale
 								);
@@ -279,6 +279,7 @@ impl Locale {
 						parameter.name
 					);
 				}
+
 				// If this is a choice parameter, set the choice names to en-US
 				for choice in &mut parameter.choices {
 					let name = format(bundle, &choice.name, None, None);

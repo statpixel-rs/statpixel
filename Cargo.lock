@@ -1976,7 +1976,7 @@ dependencies = [
 [[package]]
 name = "plotters"
 version = "0.4.0"
-source = "git+https://github.com/plotters-rs/plotters.git?branch=next-release-devel#3fe48e3debf13cf053b04a9315e2749b428f4220"
+source = "git+https://github.com/matteopolak/plotters.git?branch=next-release-devel#e8dbea16371a83b6af12b3bda2d6e5085f0c0d9b"
 dependencies = [
  "chrono",
  "font-kit",
@@ -2001,12 +2001,12 @@ checksum = "193228616381fecdc1224c62e96946dfbc73ff4384fba576e052ff8c1bea8142"
 [[package]]
 name = "plotters-backend"
 version = "0.4.0"
-source = "git+https://github.com/plotters-rs/plotters.git?branch=next-release-devel#3fe48e3debf13cf053b04a9315e2749b428f4220"
+source = "git+https://github.com/matteopolak/plotters.git?branch=next-release-devel#e8dbea16371a83b6af12b3bda2d6e5085f0c0d9b"
 
 [[package]]
 name = "plotters-bitmap"
 version = "0.4.0"
-source = "git+https://github.com/plotters-rs/plotters.git?branch=next-release-devel#3fe48e3debf13cf053b04a9315e2749b428f4220"
+source = "git+https://github.com/matteopolak/plotters.git?branch=next-release-devel#e8dbea16371a83b6af12b3bda2d6e5085f0c0d9b"
 dependencies = [
  "gif",
  "image",
@@ -2025,7 +2025,7 @@ dependencies = [
 [[package]]
 name = "plotters-svg"
 version = "0.4.0"
-source = "git+https://github.com/plotters-rs/plotters.git?branch=next-release-devel#3fe48e3debf13cf053b04a9315e2749b428f4220"
+source = "git+https://github.com/matteopolak/plotters.git?branch=next-release-devel#e8dbea16371a83b6af12b3bda2d6e5085f0c0d9b"
 dependencies = [
  "plotters-backend 0.4.0",
 ]

@@ -10,6 +10,7 @@ pub mod murder_mystery;
 pub mod paintball;
 pub mod pit;
 pub mod quake;
+pub mod sky_block;
 pub mod sky_wars;
 pub mod smash_heroes;
 pub mod speed_uhc;
@@ -57,7 +58,7 @@ pub struct Stats {
 	#[serde(rename = "BuildBattle")]
 	pub build_battle: build_battle::BuildBattle,
 	pub duels: duels::Duels,
-	// pub sky_block: SkyBlockStats,
+	pub sky_block: sky_block::SkyBlock,
 	pub pit: pit::Outer,
 	#[serde(rename = "WoolGames")]
 	pub wool_wars: wool_wars::Outer,
@@ -91,6 +92,17 @@ where
 	D: Deserializer<'de>,
 {
 	let s: f32 = Deserialize::deserialize(deserializer)?;
+
+	Ok(s as u64)
+}
+
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_sign_loss)]
+pub(crate) fn from_trunc_f64_to_u64<'de, D>(deserializer: D) -> Result<u64, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: f64 = Deserialize::deserialize(deserializer)?;
 
 	Ok(s as u64)
 }

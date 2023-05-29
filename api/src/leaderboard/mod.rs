@@ -1,4 +1,4 @@
-use std::{collections::HashMap, str::FromStr, sync::Arc, time::Duration};
+use std::{str::FromStr, sync::Arc, time::Duration};
 
 use moka::future::{Cache, CacheBuilder};
 use once_cell::sync::Lazy;
@@ -8,7 +8,7 @@ use uuid::Uuid;
 
 use crate::{canvas::label::ToFormatted, game::r#type::Type, http::HTTP, player::stats::Stats};
 
-pub static LEADERBOARD_CACHE: Lazy<Cache<(), HashMap<String, Leaderboard>>> = Lazy::new(|| {
+pub static LEADERBOARD_CACHE: Lazy<Cache<(), Vec<Leaderboard>>> = Lazy::new(|| {
 	CacheBuilder::new(1)
 		.time_to_idle(Duration::from_secs(60 * 10))
 		.time_to_live(Duration::from_secs(60 * 30))
@@ -21,7 +21,7 @@ pub static URL: Lazy<Url> =
 #[derive(Deserialize, Debug)]
 pub struct Response {
 	#[serde(deserialize_with = "from_leaderboard_map")]
-	pub leaderboards: HashMap<String, Leaderboard>,
+	pub leaderboards: Vec<Leaderboard>,
 }
 
 #[derive(Deserialize, Debug, Clone)]
@@ -43,11 +43,11 @@ pub struct Leaderboard {
 
 /// # Errors
 /// Returns [`Error::Http`] if the request fails.
-pub async fn get() -> Result<HashMap<String, Leaderboard>, Arc<crate::Error>> {
+pub async fn get() -> Result<Vec<Leaderboard>, Arc<crate::Error>> {
 	LEADERBOARD_CACHE.try_get_with((), get_raw()).await
 }
 
-async fn get_raw() -> Result<HashMap<String, Leaderboard>, crate::Error> {
+async fn get_raw() -> Result<Vec<Leaderboard>, crate::Error> {
 	let request = Request::new(Method::GET, URL.clone());
 	let response = HTTP
 		.perform_hypixel(request.into())
@@ -58,14 +58,14 @@ async fn get_raw() -> Result<HashMap<String, Leaderboard>, crate::Error> {
 	Ok(response.leaderboards)
 }
 
-fn from_leaderboard_map<'de, D>(deserializer: D) -> Result<HashMap<String, Leaderboard>, D::Error>
+fn from_leaderboard_map<'de, D>(deserializer: D) -> Result<Vec<Leaderboard>, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	struct Visitor(HashMap<String, Leaderboard>);
+	struct Visitor(Vec<Leaderboard>);
 
 	impl<'de> serde::de::Visitor<'de> for Visitor {
-		type Value = HashMap<String, Leaderboard>;
+		type Value = Vec<Leaderboard>;
 
 		fn expecting(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
 			f.write_str("a mapping of games to their leaderboards")
@@ -88,26 +88,26 @@ where
 
 							let display_name =
 								format!("{} ({} {})", game.as_clean_name(), b.prefix, b.title);
-							let display_name_lower = display_name.to_ascii_lowercase();
 
-							let board = Leaderboard {
+							Leaderboard {
 								path: b.path,
 								display_name,
 								name: format!("{} {}", b.prefix, b.title),
 								leaders: b.leaders,
 								game,
-							};
-
-							(display_name_lower, board)
+							}
 						}),
 				);
 			}
+
+			self.0.sort_by(|a, b| a.display_name.cmp(&b.display_name));
+			self.0.shrink_to_fit();
 
 			Ok(self.0)
 		}
 	}
 
-	deserializer.deserialize_map(Visitor(HashMap::new()))
+	deserializer.deserialize_map(Visitor(vec![]))
 }
 
 impl Stats {

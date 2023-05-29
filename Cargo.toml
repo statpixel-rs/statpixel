@@ -101,11 +101,11 @@ version = "1.3.1"
 features = ["serde"]
 
 [workspace.dependencies.plotters]
-git = "https://github.com/plotters-rs/plotters.git"
+git = "https://github.com/matteopolak/plotters.git"
 branch = "next-release-devel"
 
 [workspace.dependencies.plotters-backend]
-git = "https://github.com/plotters-rs/plotters.git"
+git = "https://github.com/matteopolak/plotters.git"
 branch = "next-release-devel"
 
 [workspace.dependencies.poise]

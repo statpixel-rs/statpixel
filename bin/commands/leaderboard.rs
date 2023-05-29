@@ -18,8 +18,8 @@ async fn autocomplete_board(
 	Box::new(
 		leaderboards
 			.into_iter()
-			.filter_map(|(name, board)| {
-				if !name.starts_with(&lower) {
+			.filter_map(|board| {
+				if !board.display_name.to_ascii_lowercase().starts_with(&lower) {
 					return None;
 				}
 
@@ -37,10 +37,12 @@ pub async fn leaderboard(
 	ctx: Context<'_>,
 	#[autocomplete = "autocomplete_board"] board: String,
 ) -> Result<(), Error> {
+	ctx.defer().await?;
+
 	let format = crate::util::get_format_from_input(ctx).await;
 	let leaderboard = {
-		let mut leaderboards = api::leaderboard::get().await?;
-		let Some(leaderboard) = leaderboards.remove(&board.to_ascii_lowercase()) else {
+		let leaderboards = api::leaderboard::get().await?;
+		let Some(leaderboard) = leaderboards.into_iter().find(|l| l.display_name == board) else {
 			return Err(Error::Custom(format!("No leaderboard found with the name `{}`.", board)));
 		};
 

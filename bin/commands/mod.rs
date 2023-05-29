@@ -14,6 +14,7 @@ pub mod leaderboard;
 pub mod link;
 pub mod network;
 pub mod ser;
+pub mod skyblock;
 pub mod snapshot;
 pub mod unlink;
 
