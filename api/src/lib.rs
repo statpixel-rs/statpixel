@@ -17,9 +17,9 @@ pub mod leaderboard;
 pub mod player;
 pub mod player_old;
 pub mod ratelimiter;
+pub mod redis;
 pub mod skyblock;
 pub mod snapshot;
-pub mod redis;
 
 pub use extras::*;
 pub use translate::ApiError as Error;
