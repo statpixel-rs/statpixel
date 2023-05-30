@@ -237,16 +237,18 @@ macro_rules! generate_guild_history_command {
 			)
 			.buffered(14)
 			.filter_map(|r| async { r.ok() })
-			.collect::<Vec<_>>()
-			.await;
+			.collect::<::std::vec::Vec<_>>();
 
-			let leader = if let ::std::option::Option::Some(name) = guild
+			let leader = guild
 				.get_leader()
-				.map(|m| m.get_player_unchecked().get_display_string_owned())
-			{
-				::std::option::Option::Some(name.await.map_err(::std::sync::Arc::new)?)
+				.map(|m| m.get_player_unchecked().get_display_string_owned());
+
+			let (members, leader) = if let Some(leader) = leader {
+				let (members, leader) = ::tokio::join!(members, leader);
+
+				(members, ::std::option::Option::Some(leader.map_err(::std::sync::Arc::new)?))
 			} else {
-				::std::option::Option::None
+				(members.await, ::std::option::Option::None)
 			};
 
 			let png: ::std::option::Option<::std::borrow::Cow<_>> = if let $crate::snapshot::guild::Status::Found((ref snapshot, _)) = status {

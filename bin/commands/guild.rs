@@ -12,6 +12,7 @@ use diesel_async::RunQueryDsl;
 use futures::StreamExt;
 use minecraft::text::parse::minecraft_string;
 use poise::serenity_prelude::AttachmentType;
+use tokio::join;
 use translate::{tr, Context};
 use uuid::Uuid;
 
@@ -99,7 +100,6 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let start = std::time::Instant::now();
 	ctx.defer().await?;
 
 	let mut guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
@@ -113,24 +113,12 @@ pub async fn guild(
 		Err(e) => return Err(e),
 	};
 
-	let end = std::time::Instant::now();
-
-	println!("Took {}ms to get guild", (end - start).as_millis());
-
 	guild.increase_searches(ctx).await?;
-
-	let end = std::time::Instant::now();
-
-	println!("Took {}ms to get search inc", (end - start).as_millis());
 
 	let guilds =
 		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
 	let monthly_xp = get_monthly_xp(&guild, &guilds);
-
-	let end = std::time::Instant::now();
-
-	println!("Took {}ms to compute snapshots", (end - start).as_millis());
 
 	guild
 		.members
@@ -147,23 +135,19 @@ pub async fn guild(
 	)
 	.buffered(14)
 	.filter_map(|r| async { r.ok() })
-	.collect::<Vec<_>>()
-	.await;
-	let end = std::time::Instant::now();
+	.collect::<Vec<_>>();
 
-	println!("Took {}ms to get members", (end - start).as_millis());
-
-	let leader = if let Some(name) = guild
+	let leader = guild
 		.get_leader()
-		.map(|m| m.get_player_unchecked().get_display_string_owned())
-	{
-		Some(name.await.map_err(Arc::new)?)
-	} else {
-		None
-	};
-	let end = std::time::Instant::now();
+		.map(|m| m.get_player_unchecked().get_display_string_owned());
 
-	println!("Took {}ms to get leader", (end - start).as_millis());
+	let (members, leader) = if let Some(leader) = leader {
+		let (members, leader) = join!(members, leader);
+
+		(members, Some(leader.map_err(Arc::new)?))
+	} else {
+		(members.await, None)
+	};
 
 	let png: Cow<_> = {
 		let mut surface = canvas::guild::create_surface();
@@ -178,16 +162,9 @@ pub async fn guild(
 		canvas::guild::stats(ctx, &mut surface, &guild, monthly_xp);
 		canvas::guild::level(ctx, &mut surface, &guild);
 		canvas::guild::preferred_games(&mut surface, &guild);
-		let end = std::time::Instant::now();
-
-		println!("Took {}ms to get canvas", (end - start).as_millis());
 
 		canvas::to_png(&mut surface).into()
 	};
-
-	let end = std::time::Instant::now();
-
-	println!("Took {}ms to get data", (end - start).as_millis());
 
 	ctx.send(move |m| {
 		m.attachment(AttachmentType::Bytes {
