@@ -303,15 +303,6 @@ macro_rules! generate_guild_command {
 				.sum::<u32>();
 
 			$crate::commands::guild::apply_member_xp(&mut guild, &guilds);
-
-			let data = if let ::std::option::Option::Some(leader) = guild.get_leader() {
-				let player = leader.get_player_unchecked();
-
-				::std::option::Option::Some(player.get_data().await?)
-			} else {
-				::std::option::Option::None
-			};
-
 			guild
 				.members
 				.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
@@ -323,12 +314,21 @@ macro_rules! generate_guild_command {
 					.rev()
 					.take(14)
 					.map(::api::guild::member::Member::get_player_unchecked)
-					.map(::api::player::Player::get_data_owned),
+					.map(::api::player::Player::get_display_string_owned),
 			)
 			.buffered(14)
 			.filter_map(|r| async { r.ok() })
 			.collect::<Vec<_>>()
 			.await;
+
+			let leader = if let ::std::option::Option::Some(name) = guild
+			.get_leader()
+			.map(|m| m.get_player_unchecked().get_display_string_owned())
+			{
+				::std::option::Option::Some(name.await.map_err(::std::sync::Arc::new)?)
+			} else {
+				::std::option::Option::None
+			};
 
 			let png: ::std::option::Option<::std::borrow::Cow<_>> = if let $crate::snapshot::guild::Status::Found((ref snapshot, _)) = status {
 				let diff = ::api::canvas::diff::Diff::diff(&guild, snapshot);
@@ -343,8 +343,8 @@ macro_rules! generate_guild_command {
 
 				let mut surface = ::api::canvas::guild::create_surface();
 
-				if let Some(ref data) = data {
-					::api::canvas::guild::leader(&mut surface, data);
+				if let Some(leader) = leader {
+					::api::canvas::guild::leader(&mut surface, &::minecraft::text::parse::minecraft_string(&leader).collect::<::std::vec::Vec<_>>());
 				}
 
 				::api::canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());

@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, sync::Arc};
 
 use api::{
 	canvas,
@@ -10,6 +10,7 @@ use database::{extend::modulo, schema::guild_snapshot};
 use diesel::{query_dsl::methods::DistinctOnDsl, ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use futures::StreamExt;
+use minecraft::text::parse::minecraft_string;
 use poise::serenity_prelude::AttachmentType;
 use translate::{tr, Context};
 use uuid::Uuid;
@@ -98,6 +99,7 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let start = std::time::Instant::now();
 	ctx.defer().await?;
 
 	let mut guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
@@ -111,20 +113,24 @@ pub async fn guild(
 		Err(e) => return Err(e),
 	};
 
+	let end = std::time::Instant::now();
+
+	println!("Took {}ms to get guild", (end - start).as_millis());
+
 	guild.increase_searches(ctx).await?;
+
+	let end = std::time::Instant::now();
+
+	println!("Took {}ms to get search inc", (end - start).as_millis());
 
 	let guilds =
 		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
 	let monthly_xp = get_monthly_xp(&guild, &guilds);
 
-	let data = if let Some(leader) = guild.get_leader() {
-		let player = leader.get_player_unchecked();
+	let end = std::time::Instant::now();
 
-		Some(player.get_data().await?)
-	} else {
-		None
-	};
+	println!("Took {}ms to compute snapshots", (end - start).as_millis());
 
 	guild
 		.members
@@ -137,18 +143,33 @@ pub async fn guild(
 			.rev()
 			.take(14)
 			.map(Member::get_player_unchecked)
-			.map(Player::get_data_owned),
+			.map(Player::get_display_string_owned),
 	)
 	.buffered(14)
 	.filter_map(|r| async { r.ok() })
 	.collect::<Vec<_>>()
 	.await;
+	let end = std::time::Instant::now();
+
+	println!("Took {}ms to get members", (end - start).as_millis());
+
+	let leader = if let Some(name) = guild
+		.get_leader()
+		.map(|m| m.get_player_unchecked().get_display_string_owned())
+	{
+		Some(name.await.map_err(Arc::new)?)
+	} else {
+		None
+	};
+	let end = std::time::Instant::now();
+
+	println!("Took {}ms to get leader", (end - start).as_millis());
 
 	let png: Cow<_> = {
 		let mut surface = canvas::guild::create_surface();
 
-		if let Some(ref data) = data {
-			canvas::guild::leader(&mut surface, data);
+		if let Some(leader) = leader {
+			canvas::guild::leader(&mut surface, &minecraft_string(&leader).collect::<Vec<_>>());
 		}
 
 		canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
@@ -157,9 +178,16 @@ pub async fn guild(
 		canvas::guild::stats(ctx, &mut surface, &guild, monthly_xp);
 		canvas::guild::level(ctx, &mut surface, &guild);
 		canvas::guild::preferred_games(&mut surface, &guild);
+		let end = std::time::Instant::now();
+
+		println!("Took {}ms to get canvas", (end - start).as_millis());
 
 		canvas::to_png(&mut surface).into()
 	};
+
+	let end = std::time::Instant::now();
+
+	println!("Took {}ms to get data", (end - start).as_millis());
 
 	ctx.send(move |m| {
 		m.attachment(AttachmentType::Bytes {

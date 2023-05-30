@@ -106,6 +106,8 @@ impl Ratelimiter {
 	async fn perform(&self, req: RatelimitedRequest, route: Route) -> Result<Response> {
 		let RatelimitedRequest { req } = req;
 
+		info!(url = req.url().as_str(), "added request to queue");
+
 		loop {
 			// This will block if another thread hit the global ratelimit.
 			drop(self.global.lock().await);

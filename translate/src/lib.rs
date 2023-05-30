@@ -42,6 +42,8 @@ pub enum ApiError {
 	GuildByMemberUsernameNotFound(String),
 	#[error("The guild `{0}` was not found.")]
 	GuildNotFound(String),
+	#[error("An internal error occurred while interacting with Redis.")]
+	Redis(#[from] redis::RedisError),
 }
 
 #[derive(Error, Debug)]

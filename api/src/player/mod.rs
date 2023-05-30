@@ -202,6 +202,8 @@ impl Player {
 			}
 		};
 
+		self.set_display_str(&response.player).await?;
+
 		Ok(response.player)
 	}
 

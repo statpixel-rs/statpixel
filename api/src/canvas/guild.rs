@@ -1,5 +1,3 @@
-use std::borrow::Cow;
-
 use minecraft::{
 	calc,
 	colour::Colour,
@@ -8,7 +6,6 @@ use minecraft::{
 	text::{
 		self, draw,
 		parse::{self, minecraft_string, ESCAPE},
-		rank::Rank,
 		Text,
 	},
 };
@@ -20,7 +17,7 @@ use super::{
 	HEADER_LEFT_END_X, HEADER_MIDDLE_END_X, HEADER_NAME_HEIGHT, ITEM_HEIGHT, ITEM_WIDTH, PADDING,
 	WIDTH, WIDTH_F,
 };
-use crate::{guild::Guild, player::data::Data};
+use crate::guild::Guild;
 
 pub fn header(surface: &mut Surface, guild: &Guild) {
 	let colour: char = guild.tag_colour.into();
@@ -45,32 +42,10 @@ pub fn header(surface: &mut Surface, guild: &Guild) {
 	);
 }
 
-pub fn leader(surface: &mut Surface, data: &Data) {
-	let rank = data.get_rank();
-
-	let mut text = if let Some(text) = rank.get_text() {
-		text.to_vec()
-	} else if let Some(prefix) = data.prefix.as_ref() {
-		minecraft_string(prefix).by_ref().collect()
-	} else {
-		unreachable!();
-	};
-
-	let username = if rank == Rank::Default {
-		Cow::Borrowed(data.username.as_str())
-	} else {
-		Cow::Owned(format!(" {}", data.username))
-	};
-
-	text.push(Text {
-		text: &username,
-		paint: rank.get_username_paint(),
-		..Default::default()
-	});
-
+pub fn leader(surface: &mut Surface, name: &[Text]) {
 	text::draw(
 		surface,
-		text.as_slice(),
+		name,
 		20.,
 		Rect::from_xywh(
 			PADDING,
@@ -128,38 +103,12 @@ pub fn games(ctx: Context<'_>, surface: &mut Surface, guild: &mut Guild) {
 
 /// There should be at most 14 `players` should be sorted by weekly XP
 #[allow(clippy::too_many_lines)]
-pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: &[Data]) {
+pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: &[String]) {
 	let mut y = PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2. + 13.;
 	let count = guild.members.len();
 
 	for (idx, player) in players.iter().enumerate().take(7) {
-		let rank = player.get_rank();
-		let mut name = Vec::with_capacity(2);
-		let idx_string = format!("{}. ", idx + 1);
-
-		name.push(Text {
-			text: &idx_string,
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		if let Some(text) = rank.get_text() {
-			name.extend(text);
-		} else if let Some(prefix) = player.prefix.as_ref() {
-			name.extend(minecraft_string(prefix).by_ref());
-		}
-
-		let username = if rank == Rank::Default {
-			Cow::Borrowed(player.username.as_str())
-		} else {
-			Cow::Owned(format!(" {}", player.username))
-		};
-
-		name.push(Text {
-			text: &username,
-			paint: rank.get_username_paint(),
-			..Default::default()
-		});
+		let mut name = minecraft_string(player).collect::<Vec<_>>();
 
 		name.push(Text {
 			text: " • ",
@@ -195,33 +144,7 @@ pub fn members(ctx: Context<'_>, surface: &mut Surface, guild: &Guild, players: 
 	let mut y = PADDING + HEADER_HEIGHT + GAP * 3. + ITEM_HEIGHT * 2. + 13.;
 
 	for (idx, player) in players.iter().enumerate().skip(7).take(7) {
-		let rank = player.get_rank();
-		let mut name = Vec::with_capacity(2);
-		let idx_string = format!("{}. ", idx + 1);
-
-		name.push(Text {
-			text: &idx_string,
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		if let Some(text) = rank.get_text() {
-			name.extend(text);
-		} else if let Some(prefix) = player.prefix.as_ref() {
-			name.extend(minecraft_string(prefix).by_ref());
-		}
-
-		let username = if rank == Rank::Default {
-			Cow::Borrowed(player.username.as_str())
-		} else {
-			Cow::Owned(format!(" {}", player.username))
-		};
-
-		name.push(Text {
-			text: &username,
-			paint: rank.get_username_paint(),
-			..Default::default()
-		});
+		let mut name = minecraft_string(player).collect::<Vec<_>>();
 
 		name.push(Text {
 			text: " • ",

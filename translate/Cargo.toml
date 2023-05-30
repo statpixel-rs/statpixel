@@ -20,3 +20,4 @@ thiserror = { workspace = true }
 tracing = { workspace = true }
 uuid = { workspace = true }
 poise = { workspace = true }
+redis = { workspace = true }

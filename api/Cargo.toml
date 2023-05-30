@@ -30,6 +30,7 @@ plotters-backend = { workspace = true }
 poise = { workspace = true }
 tokio = "1.28.1"
 thiserror = { workspace = true }
+redis = { workspace = true }
 
 [dev-dependencies]
 dotenvy = "0.15.7"
