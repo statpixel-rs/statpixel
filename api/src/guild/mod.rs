@@ -110,6 +110,7 @@ impl Guild {
 		Colour::Gray
 	}
 
+	#[allow(clippy::cast_possible_wrap)]
 	/// # Errors
 	/// Returns an error if the query could not be executed.
 	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
@@ -118,12 +119,14 @@ impl Guild {
 				guild_autocomplete::name.eq(&self.name),
 				guild_autocomplete::uuid.eq(&Uuid::from_u128(self.id)),
 				guild_autocomplete::searches.eq(1),
+				guild_autocomplete::xp.eq(self.xp as i32),
 			))
 			.on_conflict(guild_autocomplete::uuid)
 			.do_update()
 			.set((
 				guild_autocomplete::name.eq(&self.name),
 				guild_autocomplete::searches.eq(guild_autocomplete::searches + 1),
+				guild_autocomplete::xp.eq(self.xp as i32),
 			))
 			.execute(&mut ctx.data().pool.get().await?)
 			.await?;
