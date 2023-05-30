@@ -1,6 +1,6 @@
+pub mod auction;
 pub mod member;
 pub mod profile;
-pub mod auction;
 
 use std::{str::FromStr, sync::Arc};
 
