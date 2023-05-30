@@ -6,6 +6,18 @@ no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher
 showing-guild-statistics = Zeigt Gildenstatistikänderungen von {$from} bis {$to} an.
 no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}** gefunden, daher wurden sie eingefügt.
 
+# /skyblock auctions
+
+auctions = Auktionen
+  .description = Zeigt SkyBlock-Auktionen an.
+  .username = username
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+
+player-auctions = Auktionen
+highest-bid = Höchstes Gebot
+
 # /skyblock profile
 
 profile = profile

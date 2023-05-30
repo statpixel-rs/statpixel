@@ -7,7 +7,7 @@ use uuid::Uuid;
 use crate::{
 	guild::Guild,
 	player::{data::Data, status::Session, Player},
-	skyblock::profile::Profile,
+	skyblock::{self, profile::Profile},
 };
 
 pub static PLAYER_DATA_CACHE: Lazy<Cache<Uuid, Data>> = Lazy::new(|| {
@@ -57,3 +57,10 @@ pub static SKYBLOCK_PROFILE_CACHE: Lazy<Cache<Uuid, Profile>> = Lazy::new(|| {
 		.time_to_live(Duration::from_secs(60 * 30))
 		.build()
 });
+
+pub static SKYBLOCK_AUCTION_CACHE: Lazy<Cache<Uuid, Vec<skyblock::auction::Auction>>> =
+	Lazy::new(|| {
+		CacheBuilder::new(50_000)
+			.time_to_live(Duration::from_secs(60 * 30))
+			.build()
+	});

@@ -6,6 +6,18 @@ no-previous-statistics = No previous data found for **{$name}**, so it has been 
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
 
+# /skyblock auctions
+
+auctions = auctions
+  .description = View SkyBlock auctions
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+player-auctions = Auctions
+highest-bid = Highest Bid
+
 # /skyblock profile
 
 profile = profile

@@ -6,6 +6,18 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# /skyblock auctions
+
+auctions = auctions
+  .description = Muestra subastas de SkyBlock
+  .username = username
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+
+player-auctions = Subastas
+highest-bid = Oferta más alta
+
 # /skyblock profile
 
 profile = profile

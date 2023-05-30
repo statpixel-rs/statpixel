@@ -6,6 +6,18 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# /skyblock auctions
+
+auctions = auctions
+  .description = SkyBlockオークションを表示します。
+  .username = ユーザー名
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+
+player-auctions = Auctions
+highest-bid = 最高入札
+
 # /skyblock profile
 
 profile = profile

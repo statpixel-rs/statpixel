@@ -1,7 +1,7 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, cmp::max};
 
 use api::{
-	canvas::{self, chart},
+	canvas::{self, chart, label::ToFormatted},
 	player::Player,
 	skyblock::{profile::TransactionAction, NAMES},
 };
@@ -10,9 +10,11 @@ use minecraft::{
 	calc::{network, sky_block},
 	minecraft_text,
 	paint::Paint,
-	text::Text,
+	style::MinecraftFont,
+	text::{draw, parse::minecraft_string, Text},
 };
 use poise::serenity_prelude::AttachmentType;
+use skia_safe::textlayout::TextAlign;
 use translate::{tr, Context, Error};
 
 const LABEL: [Text; 2] = minecraft_text!("§b§lSky§a§lBlock");
@@ -32,6 +34,122 @@ async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator
 
 #[allow(clippy::too_many_lines)]
 #[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+pub async fn auctions(
+	ctx: Context<'_>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+) -> Result<(), Error> {
+	ctx.defer().await?;
+
+	let (_format, player, data, session) = crate::get_data!(ctx, uuid, username);
+
+	player.increase_searches(ctx).await?;
+
+	let auctions = player.get_auctions().await?;
+
+	let png = {
+		#[allow(clippy::cast_possible_truncation)]
+		let mut surface = canvas::create_surface((auctions.len() as u8 + 2) / 3);
+
+		canvas::header::apply_name(&mut surface, &data);
+		canvas::header::apply_status(ctx, &mut surface, &session);
+		canvas::game::apply_label(
+			&mut surface,
+			&[
+				LABEL[0],
+				LABEL[1],
+				Text {
+					text: " (",
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "player-auctions").as_ref(),
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: ")",
+					paint: Paint::White,
+					..Default::default()
+				},
+			],
+		);
+
+		let level = network::get_level(data.xp);
+
+		canvas::game::apply_data(
+			ctx,
+			&mut surface,
+			&network::get_level_format(level),
+			network::get_level_progress(data.xp),
+			network::get_curr_level_xp(data.xp),
+			network::get_level_xp(data.xp),
+			&network::get_colours(level),
+		);
+
+		canvas::sidebar::item(
+			ctx,
+			&mut surface,
+			&(tr!(ctx, "player-auctions"), auctions.len(), Paint::Aqua),
+			0,
+		);
+
+		canvas::sidebar::item(
+			ctx,
+			&mut surface,
+			&(
+				tr!(ctx, "highest-bid"),
+				auctions.iter().map(|a| a.highest_bid).max(),
+				Paint::Gold,
+			),
+			1,
+		);
+
+		for (i, auction) in auctions.iter().enumerate() {
+			let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
+			let bid = max(auction.starting_bid, auction.highest_bid);
+			let bid = bid.to_formatted_label(ctx);
+
+			text.extend([
+				Text {
+					text: "\n",
+					size: None,
+					..Default::default()
+				},
+				Text {
+					text: bid.as_ref(),
+					paint: Paint::Gold,
+					font: MinecraftFont::Normal,
+					size: Some(15.),
+				},
+			]);
+
+			let rect = canvas::get_item_rect(i);
+
+			draw(&mut surface, &text, 20., rect, TextAlign::Center, true);
+		}
+
+		canvas::to_png(&mut surface).into()
+	};
+
+	ctx.send(move |m| {
+		m.attachment(AttachmentType::Bytes {
+			data: png,
+			filename: "canvas.png".to_string(),
+		})
+	})
+	.await?;
+
+	Ok(())
+}
+
+#[allow(clippy::too_many_lines)]
+#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
 pub async fn profile(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -46,6 +164,8 @@ pub async fn profile(
 
 	let (_format, player, mut data, session) = crate::get_data!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
+
+	player.increase_searches(ctx).await?;
 
 	// clear the profiles so that we can continue to use Data
 	data.stats.sky_block.profiles = vec![];
@@ -310,8 +430,10 @@ pub async fn bank(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, _player, mut data, _session) = crate::get_data!(ctx, uuid, username);
+	let (_format, player, mut data, _session) = crate::get_data!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
+
+	player.increase_searches(ctx).await?;
 
 	// clear the profiles so that we can continue to use Data
 	data.stats.sky_block.profiles = vec![];
@@ -411,7 +533,7 @@ pub async fn bank(
 #[poise::command(
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES",
-	subcommands("profile", "bank")
+	subcommands("profile", "bank", "auctions")
 )]
 pub async fn skyblock(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())

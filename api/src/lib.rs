@@ -14,6 +14,7 @@ pub mod game;
 pub mod guild;
 pub mod http;
 pub mod leaderboard;
+pub mod nbt;
 pub mod player;
 pub mod player_old;
 pub mod ratelimiter;

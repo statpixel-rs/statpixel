@@ -51,6 +51,22 @@ pub fn apply_name(surface: &mut Surface, data: &Data) {
 	);
 }
 
+pub fn apply_name_str(surface: &mut Surface, display: &str) {
+	text::draw(
+		surface,
+		minecraft_string(display).collect::<Vec<_>>().as_slice(),
+		25.,
+		Rect::from_xywh(
+			PADDING,
+			PADDING,
+			HEADER_LEFT_END_X - PADDING,
+			HEADER_NAME_HEIGHT,
+		),
+		TextAlign::Center,
+		true,
+	);
+}
+
 pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
 	let rect = Rect::new(
 		HEADER_MIDDLE_END_X + GAP,

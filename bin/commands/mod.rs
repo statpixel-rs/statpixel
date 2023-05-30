@@ -100,6 +100,39 @@ pub async fn autocomplete_guild_name(
 	Box::new(std::iter::once(partial.to_string()))
 }
 
+/// Generates the code needed to fetch the player, their display name, and their session.
+#[macro_export]
+macro_rules! get_with_display {
+	($ctx: ident, $uuid: ident, $username: ident) => {{
+		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
+			Ok(player) => player,
+			Err($crate::Error::NotLinked) => {
+				$ctx.send(|m| {
+					$crate::util::error_embed(
+						m,
+						::translate::tr!($ctx, "not-linked"),
+						::translate::tr!($ctx, "not-linked-description"),
+					)
+				})
+				.await?;
+
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
+
+		let format = $crate::util::get_format_from_input($ctx).await;
+		let (data, session) =
+			poise::futures_util::future::join(player.get_display_string(), player.get_session())
+				.await;
+
+		let data = data?;
+		let session = session?;
+
+		(format, player, data, session)
+	}};
+}
+
 /// Generates the code needed to fetch the player, their data, and their session.
 #[macro_export]
 macro_rules! get_data {
