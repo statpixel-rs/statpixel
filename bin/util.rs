@@ -89,7 +89,7 @@ pub async fn get_player_from_input(
 				.await?;
 
 			if let Some(uuid) = uuid {
-				Ok(Player::from_uuid(&uuid).await?)
+				Ok(Player::from_uuid_unchecked(uuid))
 			} else {
 				Err(Error::NotLinked)
 			}

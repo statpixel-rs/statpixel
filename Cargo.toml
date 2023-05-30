@@ -49,6 +49,8 @@ tokio = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 uuid = { workspace = true }
+base64 = "0.21.2"
+fastnbt = "2.4.4"
 
 [dependencies.serenity_feature_only]
 git = "https://github.com/serenity-rs/serenity"
