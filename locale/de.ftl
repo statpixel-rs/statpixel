@@ -8,7 +8,7 @@ no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}**
 
 # /skyblock auctions
 
-auctions = Auktionen
+auctions = auctions
   .description = Zeigt SkyBlock-Auktionen an.
   .username = username
   .username-description = Minecraft-Benutzername

@@ -8,7 +8,7 @@ no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guil
 
 # /skyblock auctions
 
-auctions = enchères
+auctions = auctions
   .description = Affiche les enchères SkyBlock.
   .username = username
   .username-description = Nom d'utilisateur Minecraft

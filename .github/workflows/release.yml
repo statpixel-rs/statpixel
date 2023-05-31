@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
       - name: Build changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
@@ -30,7 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          name: ${{ steps.get_version.outputs.VERSION }} 🎉
+          name: ${{ steps.get_version.outputs.version }} 🎉
           body: ${{ steps.github_release.outputs.changelog }}
   create-binaries:
     name: release ${{ matrix.target }}
@@ -102,6 +102,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: release/release${{ matrix.ext }}
-          asset_name: cli-${{ matrix.target }}${{ matrix.ext }}
+          asset_name: ${{ matrix.target }}${{ matrix.ext }}
           tag: ${{ github.ref }}
-          overwrite: true
+          overwrite: false
