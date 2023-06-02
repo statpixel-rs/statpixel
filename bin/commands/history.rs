@@ -121,7 +121,7 @@ macro_rules! generate_command {
 			};
 
 			if snapshots.is_empty() {
-				return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1107131762062135366>.", player.username)));
+				return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1113624864272683065>.", player.username)));
 			}
 
 			let png = {
@@ -181,7 +181,7 @@ async fn network(
 	};
 
 	let (Some(first), Some(last)) = (snapshots.first(), snapshots.last()) else {
-		return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1107131762062135366>.", player.username)));
+		return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1113624864272683065>.", player.username)));
 	};
 
 	let lower = first.1.xp * 15 / 16;

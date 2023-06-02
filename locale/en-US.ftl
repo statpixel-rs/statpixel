@@ -102,21 +102,21 @@ help = help
   .description = Shows the help menu.
 
 help-general = General <:cookie:1110754829392953364>
-help-general-description = StatPixel supports every game on the Hypixel Network. You can view statistics for each game by using `/<game>`. For example, try out </bedwars:1106761189226205186>!
+help-general-description = StatPixel supports every game on the Hypixel Network. You can view statistics for each game by using `/<game>`. For example, try out </bedwars:1113624864272683060>!
 
 help-display = Display <:spyglass:1110754818433228991>
-help-display-description = If you're on a metered connection or just want to save some data, you can receive responses in different formats, like text or condensed images, with </display:1100232181504290887>.
+help-display-description = If you're on a metered connection or just want to save some data, you can receive responses in different formats, like text or condensed images, with </display:1113624864524357705>.
 
 help-link = Linking <a:recovery_compass:1110755004463198218>
-help-link-description = Typing in your username for every command can become tedious. To make this easier, you can link an account without verification with </link:866348630600056875> and unlink it later on with </unlink:1101304082817355807>.
+help-link-description = Typing in your username for every command can become tedious. To make this easier, you can link an account without verification with </link:1113624864524357710> and unlink it later on with </unlink:1113624865262538854>.
 
 help-snapshot = Snapshots <:book_and_quill:1110754805724479569>
-help-snapshot-description = Snapshots are a way to view the changes in your statistics over time. There are a few utility commands to make your life easier: </daily bedwars:1107131762062135366>, </weekly bedwars:1107131762062135368>, and </monthly bedwars:1107131762062135367>. These also work for your guild, so try out </daily guild:1107131762062135366>!
+help-snapshot-description = Snapshots are a way to view the changes in your statistics over time. There are a few utility commands to make your life easier: </daily bedwars:1113624864272683065>, </weekly bedwars:1113624865262538858>, and </monthly bedwars:1113624864524357712>. These also work for your guild, so try out </daily guild:1113624864272683065>!
   
-  If you want to view a more specific range, try out </from bedwars:1111713108919070820>.
+  If you want to view a more specific range, try out </from bedwars:1113624864524357705>.
 
 help-history = History <a:clock:1110754973794451557>
-help-history-description = To view a graph of how specific statistics changed over time, try out </history network:1110774513970466896>.
+help-history-description = To view a graph of how specific statistics changed over time, try out </history network:1113624864524357708>.
 
 # /display
 display = display

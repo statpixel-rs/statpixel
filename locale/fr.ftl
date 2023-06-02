@@ -98,21 +98,21 @@ help = help
   .description = Affiche le menu d'aide.
 
 help-general = Général <:cookie:1110754829392953364>
-help-general-description = StatPixel prend en charge tous les jeux du réseau Hypixel. Vous pouvez afficher les statistiques de chaque jeu en utilisant `/<jeu>`. Par exemple, essayez </bedwars:1106761189226205186> !
+help-general-description = StatPixel prend en charge tous les jeux du réseau Hypixel. Vous pouvez afficher les statistiques de chaque jeu en utilisant `/<jeu>`. Par exemple, essayez </bedwars:1113624864272683060> !
 
 help-display = Affichage <:spyglass:1110754818433228991>
-help-display-description = Si vous êtes sur une connexion mesurée ou si vous voulez simplement économiser des données, vous pouvez recevoir des réponses dans différents formats, comme du texte ou des images condensées, avec </display:1100232181504290887>.
+help-display-description = Si vous êtes sur une connexion mesurée ou si vous voulez simplement économiser des données, vous pouvez recevoir des réponses dans différents formats, comme du texte ou des images condensées, avec </display:1113624864524357705>.
 
 help-link = Liaison <a:recovery_compass:1110755004463198218>
-help-link-description = Taper votre nom d'utilisateur pour chaque commande peut devenir fastidieux. Pour rendre cela plus facile, vous pouvez lier un compte sans vérification avec </link:866348630600056875> et le dissocier plus tard avec </unlink:1101304082817355807>.
+help-link-description = Taper votre nom d'utilisateur pour chaque commande peut devenir fastidieux. Pour rendre cela plus facile, vous pouvez lier un compte sans vérification avec </link:1113624864524357710> et le dissocier plus tard avec </unlink:1113624865262538854>.
 
 help-snapshot = Instantanés <:book_and_quill:1110754805724479569>
-help-snapshot-description = Les instantanés sont un moyen de visualiser les changements de vos statistiques au fil du temps. Il existe quelques commandes utilitaires pour vous faciliter la vie : </daily bedwars:1107131762062135366>, </weekly bedwars:1107131762062135368> et </monthly bedwars:1107131762062135367>. Celles-ci fonctionnent également pour votre guilde, alors essayez </daily guild:1107131762062135366> !
+help-snapshot-description = Les instantanés sont un moyen de visualiser les changements de vos statistiques au fil du temps. Il existe quelques commandes utilitaires pour vous faciliter la vie : </daily bedwars:1113624864272683065>, </weekly bedwars:1113624865262538858> et </monthly bedwars:1113624864524357712>. Celles-ci fonctionnent également pour votre guilde, alors essayez </daily guild:1113624864272683065> !
   
-  Si vous voulez afficher une plage plus spécifique, essayez </from bedwars:1111713108919070820>.
+  Si vous voulez afficher une plage plus spécifique, essayez </from bedwars:1113624864524357705>.
 
 help-history = Historique <a:clock:1110754973794451557>
-help-history-description = Pour afficher un graphique de l'évolution de statistiques spécifiques au fil du temps, essayez </history network:1110774513970466896>.
+help-history-description = Pour afficher un graphique de l'évolution de statistiques spécifiques au fil du temps, essayez </history network:1113624864524357708>.
 
 # /history
 
