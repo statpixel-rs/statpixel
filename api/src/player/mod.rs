@@ -6,9 +6,9 @@ use database::schema::autocomplete;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
-use reqwest::{Request, StatusCode, Url};
+use reqwest::{Method, Request, StatusCode, Url};
 use serde::Deserialize;
-use std::{str::FromStr, sync::Arc};
+use std::{borrow::Cow, str::FromStr, sync::Arc};
 use tracing::error;
 use translate::Context;
 use uuid::Uuid;
@@ -22,6 +22,7 @@ use crate::{
 use self::status::Status;
 
 pub const VERSION: i16 = 3;
+pub const DEFAULT_SKIN: &[u8] = include_bytes!("../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
@@ -35,6 +36,9 @@ static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
 static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 	Url::from_str("https://sessionserver.mojang.com/session/minecraft/profile/").unwrap()
 });
+
+static PLAYER_SKIN_ENDPOINT: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://visage.surgeplay.com/full/157/").unwrap());
 
 #[derive(Deserialize, Debug)]
 pub struct Response {
@@ -205,6 +209,25 @@ impl Player {
 		self.set_display_str(&response.player).await?;
 
 		Ok(response.player)
+	}
+
+	/// # Panics
+	/// Will not panic.
+	pub async fn get_skin(&self) -> Cow<'static, [u8]> {
+		let url = PLAYER_SKIN_ENDPOINT
+			.join(&format!("{}.png", self.uuid))
+			.unwrap();
+
+		let request = Request::new(Method::GET, url);
+		let response = HTTP.perform_bare(request).await;
+
+		match response {
+			Ok(response) => match response.bytes().await {
+				Ok(bytes) => Cow::Owned(bytes.into()),
+				Err(_) => Cow::Borrowed(DEFAULT_SKIN),
+			},
+			Err(_) => Cow::Borrowed(DEFAULT_SKIN),
+		}
 	}
 
 	/// # Errors

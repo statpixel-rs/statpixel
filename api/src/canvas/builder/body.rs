@@ -138,13 +138,7 @@ impl<'t> Body<'t> {
 				])
 				.build(18., TextAlign::Center)
 		} else {
-			Self::default()
-				.extend(&[Text {
-					text: &tr!(ctx, "offline"),
-					paint: minecraft::paint::Paint::DarkGray,
-					..Default::default()
-				}])
-				.build(25., TextAlign::Center)
+			Self::default().build(25., TextAlign::Center)
 		}
 	}
 

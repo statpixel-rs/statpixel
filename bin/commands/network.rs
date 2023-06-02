@@ -17,7 +17,7 @@ pub async fn network(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (format, player, data, session) = crate::get_data!(ctx, uuid, username);
+	let (format, player, data, session, skin) = crate::get_all!(ctx, uuid, username);
 
 	player.increase_searches(ctx).await?;
 
@@ -26,7 +26,7 @@ pub async fn network(
 			let png = {
 				let mut surface = canvas::create_surface(1);
 
-				canvas::header::apply_status(ctx, &mut surface, &session);
+				canvas::header::apply_status(ctx, &mut surface, &session, skin.as_ref());
 				canvas::header::apply_name(&mut surface, &data);
 
 				canvas::sidebar::item(

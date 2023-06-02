@@ -1,4 +1,7 @@
-use crate::canvas::{label::ToFormatted, util};
+use crate::{
+	canvas::{label::ToFormatted, util},
+	player::status::Session,
+};
 
 use super::{body::Body, CORNER_RADIUS};
 
@@ -9,7 +12,7 @@ use minecraft::{
 use skia_safe::{
 	gradient_shader,
 	textlayout::{Paragraph, TextAlign},
-	Canvas, Color, Path, Point, RRect, Rect, Size,
+	Canvas, Color, Image, Path, Point, RRect, Rect, Size,
 };
 use translate::{tr, Context};
 
@@ -37,6 +40,7 @@ pub struct TallBubble;
 
 pub struct Sidebar;
 pub struct Gutter;
+pub struct Status<'s>(pub &'s Session, pub &'s [u8]);
 
 pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
 
@@ -206,6 +210,47 @@ impl_rect_shape!(
 	BUBBLE_HEIGHT * 2. + GAP,
 	true
 );
+
+// pub struct Status<'s>(&'s Session, Vec<u8>);
+
+impl<'s> Shape for Status<'s> {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		let rrect = RRect::new_rect_radii(
+			bounds,
+			&[
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+			],
+		);
+
+		path.add_rrect(rrect, None);
+	}
+
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+		if !self.0.online {
+			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(self.1) }).unwrap();
+
+			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
+		}
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: (BUBBLE_WIDTH - GAP) / 2.,
+			height: BUBBLE_HEIGHT * 2. + GAP,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(10, 10).into()
+	}
+}
 
 impl Shape for Sidebar {
 	fn draw(&self, path: &mut Path, bounds: &Rect) {

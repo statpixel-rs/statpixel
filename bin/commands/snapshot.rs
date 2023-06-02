@@ -13,7 +13,7 @@ macro_rules! generate_history_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			ctx.defer().await?;
 
-			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, mut data, session, skin) = $crate::get_all!(ctx, uuid, username);
 			let status =
 				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 
@@ -43,7 +43,7 @@ macro_rules! generate_history_command {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
 					let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 						if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode);
 
 							::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
 						} else {
@@ -106,7 +106,7 @@ macro_rules! generate_large_history_command {
 			ctx.defer().await?;
 
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let (format, player, mut data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, mut data, session, skin) = $crate::get_all!(ctx, uuid, username);
 			let status =
 				$crate::snapshot::user::get_or_insert(ctx, &player, &data, ::chrono::Utc::now() - $duration).await?;
 
@@ -136,7 +136,7 @@ macro_rules! generate_large_history_command {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
 					let png: ::std::option::Option<::std::borrow::Cow<[u8]>> =
 						if let $crate::snapshot::user::Status::Found((ref snapshot, _)) = status {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, mode);
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode);
 
 							::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
 						} else {

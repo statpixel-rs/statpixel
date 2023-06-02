@@ -133,7 +133,39 @@ macro_rules! get_with_display {
 	}};
 }
 
-/// Generates the code needed to fetch the player, their data, and their session.
+/// Generates the code needed to fetch the player, their data, display format, session, and skin
+#[macro_export]
+macro_rules! get_all {
+	($ctx: ident, $uuid: ident, $username: ident) => {{
+		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
+			Ok(player) => player,
+			Err($crate::Error::NotLinked) => {
+				$ctx.send(|m| {
+					$crate::util::error_embed(
+						m,
+						::translate::tr!($ctx, "not-linked"),
+						::translate::tr!($ctx, "not-linked-description"),
+					)
+				})
+				.await?;
+
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
+
+		let format = $crate::util::get_format_from_input($ctx).await;
+		let (data, session, skin) =
+			tokio::join!(player.get_data(), player.get_session(), player.get_skin());
+
+		let data = data?;
+		let session = session?;
+
+		(format, player, data, session, skin)
+	}};
+}
+
+/// Generates the code needed to fetch the player and their data
 #[macro_export]
 macro_rules! get_data {
 	($ctx: ident, $uuid: ident, $username: ident) => {{
@@ -154,14 +186,9 @@ macro_rules! get_data {
 			Err(e) => return Err(e),
 		};
 
-		let format = $crate::util::get_format_from_input($ctx).await;
-		let (data, session) =
-			poise::futures_util::future::join(player.get_data(), player.get_session()).await;
+		let data = player.get_data().await?;
 
-		let data = data?;
-		let session = session?;
-
-		(format, player, data, session)
+		(player, data)
 	}};
 }
 

@@ -53,11 +53,12 @@ pub async fn auctions(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, player, data, session) = crate::get_data!(ctx, uuid, username);
+	let (_format, player, data, session, skin) = crate::get_all!(ctx, uuid, username);
 
 	player.increase_searches(ctx).await?;
 
 	let auctions = player.get_auctions().await?;
+	let status = shape::Status(&session, skin.as_ref());
 
 	let png = {
 		let level = network::get_level(data.xp);
@@ -85,7 +86,7 @@ pub async fn auctions(
 					&network::get_level_xp(data.xp),
 				),
 			)
-			.push_right_start(&shape::Gutter, Body::from_status(ctx, &session));
+			.push_right_start(&status, Body::from_status(ctx, &session));
 
 		for auction in &auctions {
 			let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
@@ -142,7 +143,7 @@ pub async fn profile(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, player, mut data, session) = crate::get_data!(ctx, uuid, username);
+	let (_format, player, mut data, session, skin) = crate::get_all!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -167,7 +168,7 @@ pub async fn profile(
 		let mut surface = canvas::create_surface(4);
 
 		canvas::header::apply_name(&mut surface, &data);
-		canvas::header::apply_status(ctx, &mut surface, &session);
+		canvas::header::apply_status(ctx, &mut surface, &session, skin.as_ref());
 		canvas::game::apply_label(
 			&mut surface,
 			&[
@@ -410,7 +411,7 @@ pub async fn bank(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, player, mut data, _session) = crate::get_data!(ctx, uuid, username);
+	let (player, mut data) = crate::get_data!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;

@@ -26,7 +26,7 @@ macro_rules! generate_large_command {
 			ctx.defer().await?;
 
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, data, session, skin) = $crate::get_all!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;
 
@@ -34,7 +34,8 @@ macro_rules! generate_large_command {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+						let mut surface =
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode);
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -80,7 +81,7 @@ macro_rules! generate_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			ctx.defer().await?;
 
-			let (format, player, data, session) = $crate::get_data!(ctx, uuid, username);
+			let (format, player, data, session, skin) = $crate::get_all!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;
 
@@ -88,7 +89,8 @@ macro_rules! generate_command {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas(ctx, &data, &session, mode);
+						let mut surface =
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode);
 
 						::api::canvas::to_png(&mut surface).into()
 					};

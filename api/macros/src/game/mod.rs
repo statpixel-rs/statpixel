@@ -235,6 +235,7 @@ impl ToTokens for GameInputReceiver {
 						canvas,
 						data,
 						session,
+						&status,
 						&progress,
 					),
 				}
@@ -707,7 +708,8 @@ impl ToTokens for GameInputReceiver {
 						ctx: ::translate::Context<'_>,
 						mut canvas: crate::canvas::builder::Canvas<'c>,
 						data: &'c crate::player::data::Data,
-						session: &crate::player::status::Session,
+						session: &'c crate::player::status::Session,
+						status: &'c crate::canvas::builder::shape::Status,
 						progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
 					) -> crate::canvas::builder::Canvas<'c> {
 						let stats = &data.stats.#path;
@@ -737,16 +739,22 @@ impl ToTokens for GameInputReceiver {
 									.build(17., ::std::option::Option::None)
 							)
 							.push_right(
-								&crate::canvas::builder::shape::Gutter,
-								crate::canvas::builder::body::Body::from_status(ctx, &session)
+								status,
+								crate::canvas::builder::body::Body::from_status(ctx, session)
 							);
 
 						let mut canvas = canvas #(#apply_items_mode)*;
-						
+
 						self.apply_own_fields(ctx, canvas, data, session, stats)
 					}
 
-					pub fn embed(&self, ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data, session: &crate::player::status::Session) {
+					pub fn embed(
+						&self,
+						ctx: ::translate::Context<'_>,
+						embed: &mut ::poise::serenity_prelude::CreateEmbed,
+						data: &crate::player::data::Data,
+						session: &crate::player::status::Session,
+					) {
 						let mut field = ::std::string::String::new();
 						let stats = &data.stats.#path;
 
@@ -844,7 +852,8 @@ impl ToTokens for GameInputReceiver {
 					ctx: ::translate::Context<'_>,
 					mut canvas: crate::canvas::builder::Canvas<'c>,
 					data: &'c crate::player::data::Data,
-					session: &crate::player::status::Session,
+					session: &'c crate::player::status::Session,
+					status: &'c crate::canvas::builder::shape::Status,
 					progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
 				) -> crate::canvas::builder::Canvas<'c> {
 					let stats = &data.stats.#path;
@@ -874,8 +883,8 @@ impl ToTokens for GameInputReceiver {
 								.build(17., ::std::option::Option::None)
 						)
 						.push_right(
-							&crate::canvas::builder::shape::Gutter,
-							crate::canvas::builder::body::Body::from_status(ctx, &session)
+							status,
+							crate::canvas::builder::body::Body::from_status(ctx, session)
 						);
 
 					canvas #(#apply_items_overall)*
@@ -1037,6 +1046,7 @@ impl ToTokens for GameInputReceiver {
 					prev: &crate::player::data::Data,
 					curr: &mut crate::player::data::Data,
 					session: &crate::player::status::Session,
+					skin: &[u8],
 					mode: Option<#enum_ident>
 				) -> ::skia_safe::Surface {
 					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
@@ -1062,6 +1072,8 @@ impl ToTokens for GameInputReceiver {
 						#calc ::get_colours(level),
 					);
 
+					let status = crate::canvas::builder::shape::Status(session, skin);
+
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
@@ -1069,6 +1081,7 @@ impl ToTokens for GameInputReceiver {
 								canvas,
 								data,
 								session,
+								&status,
 								&progress,
 							)
 						}
@@ -1082,6 +1095,7 @@ impl ToTokens for GameInputReceiver {
 					ctx: ::translate::Context<'_>,
 					data: &crate::player::data::Data,
 					session: &crate::player::status::Session,
+					skin: &[u8],
 					mode: Option<#enum_ident>
 				) -> ::skia_safe::Surface {
 					let stats = &data.stats.#path;
@@ -1102,6 +1116,8 @@ impl ToTokens for GameInputReceiver {
 						#calc ::get_colours(level),
 					);
 
+					let status = crate::canvas::builder::shape::Status(session, skin);
+
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
@@ -1109,6 +1125,7 @@ impl ToTokens for GameInputReceiver {
 								canvas,
 								data,
 								session,
+								&status,
 								&progress,
 							)
 						}

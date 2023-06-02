@@ -103,6 +103,15 @@ impl Ratelimiter {
 		self.perform(req, Route::Mojang).await
 	}
 
+	/// Sends a regular request
+	///
+	/// # Errors
+	/// Transparently returns [`reqwest::Error`]
+	#[inline]
+	pub async fn perform_bare(&self, req: Request) -> reqwest::Result<Response> {
+		self.client.execute(req).await
+	}
+
 	async fn perform(&self, req: RatelimitedRequest, route: Route) -> Result<Response> {
 		let RatelimitedRequest { req } = req;
 

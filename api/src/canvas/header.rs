@@ -5,7 +5,7 @@ use crate::{
 	player::{data::Data, status::Session},
 };
 use minecraft::text::{self, parse::minecraft_string, rank::Rank, Text};
-use skia_safe::{textlayout::TextAlign, Rect, Surface};
+use skia_safe::{textlayout::TextAlign, Image, Rect, Surface};
 use translate::{tr, Context};
 
 use super::{
@@ -67,7 +67,9 @@ pub fn apply_name_str(surface: &mut Surface, display: &str) {
 	);
 }
 
-pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
+/// # Panics
+/// Panics if `skin` does not live for the duration of the function
+pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session, skin: &[u8]) {
 	let rect = Rect::new(
 		HEADER_MIDDLE_END_X + GAP,
 		PADDING,
@@ -114,17 +116,10 @@ pub fn apply_status(ctx: Context<'_>, surface: &mut Surface, data: &Session) {
 			true,
 		);
 	} else {
-		text::draw(
-			surface,
-			&[Text {
-				text: &tr!(ctx, "offline"),
-				paint: minecraft::paint::Paint::DarkGray,
-				..Default::default()
-			}],
-			25.,
-			rect,
-			TextAlign::Center,
-			true,
-		);
+		let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(skin) }).unwrap();
+
+		surface
+			.canvas()
+			.draw_image(image, (rect.x(), rect.y()), None);
 	}
 }
