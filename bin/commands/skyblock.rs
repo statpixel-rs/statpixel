@@ -66,7 +66,7 @@ pub async fn auctions(
 			network::get_colours(level),
 		);
 
-		let mut canvas = Canvas::new(None)
+		let mut canvas = Canvas::new(720.)
 			.gap(7.)
 			.push_down(
 				&shape::Title,
@@ -83,8 +83,6 @@ pub async fn auctions(
 					&network::get_level_format(level),
 					&network::get_curr_level_xp(data.xp),
 					&network::get_level_xp(data.xp),
-					// TODO: Support coloured paths in new canvas builder
-					// &network::get_colours(level),
 				),
 			)
 			.push_right_start(&shape::Gutter, Body::from_status(ctx, &session));
