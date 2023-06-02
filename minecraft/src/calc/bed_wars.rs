@@ -102,6 +102,8 @@ pub fn get_level_format(level: u64) -> String {
 		string.push(c);
 	}
 
+	string.push(ESCAPE);
+	string.push(format.1[4]);
 	string.push(format.2);
 
 	string.push(ESCAPE);
