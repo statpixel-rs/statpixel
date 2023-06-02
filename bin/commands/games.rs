@@ -44,7 +44,9 @@ macro_rules! generate_large_command {
 						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
 							data: png,
 							filename: "canvas.png".into(),
-						})
+						});
+						m.components = Some(<$mode>::as_components(ctx));
+						m
 					})
 					.await?;
 				}
@@ -58,7 +60,43 @@ macro_rules! generate_large_command {
 						m
 					})
 					.await?;
+
+					return Ok(());
 				}
+			}
+
+			let ctx_id = ctx.id();
+
+			while let Some(press) = ::poise::serenity_prelude::CollectComponentInteraction::new(ctx)
+				.filter(move |press| press.data.custom_id.eq(&ctx_id.to_string()))
+				.timeout(std::time::Duration::from_secs(60 * 5))
+				.await
+			{
+				let mode = &press.data.values.first().unwrap();
+				let mode = <$mode>::from_u8_str(mode.as_str());
+
+				let (data, session, skin) = $crate::get_from_player!(ctx, player);
+
+				let png: ::std::borrow::Cow<[u8]> = {
+					let mut surface =
+						<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode));
+
+					::api::canvas::to_png(&mut surface).into()
+				};
+
+				press
+					.create_interaction_response(ctx, |b| {
+						b.kind(::poise::serenity_prelude::InteractionResponseType::UpdateMessage)
+							.interaction_response_data(|m| {
+								m.files([::poise::serenity_prelude::AttachmentType::Bytes {
+									data: png,
+									filename: "canvas.png".into(),
+								}]);
+								m.set_components(<$mode>::as_components(ctx));
+								m
+							})
+					})
+					.await?;
 			}
 
 			Ok(())
@@ -99,7 +137,9 @@ macro_rules! generate_command {
 						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
 							data: png,
 							filename: "canvas.png".into(),
-						})
+						});
+						m.components = Some(<$mode>::as_components(ctx));
+						m
 					})
 					.await?;
 				}
@@ -113,7 +153,43 @@ macro_rules! generate_command {
 						m
 					})
 					.await?;
+
+					return Ok(());
 				}
+			}
+
+			let ctx_id = ctx.id();
+
+			while let Some(press) = ::poise::serenity_prelude::CollectComponentInteraction::new(ctx)
+				.filter(move |press| press.data.custom_id.eq(&ctx_id.to_string()))
+				.timeout(std::time::Duration::from_secs(60 * 5))
+				.await
+			{
+				let mode = &press.data.values.first().unwrap();
+				let mode = <$mode>::from_u8_str(mode.as_str());
+
+				let (data, session, skin) = $crate::get_from_player!(ctx, player);
+
+				let png: ::std::borrow::Cow<[u8]> = {
+					let mut surface =
+						<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode));
+
+					::api::canvas::to_png(&mut surface).into()
+				};
+
+				press
+					.create_interaction_response(ctx, |b| {
+						b.kind(::poise::serenity_prelude::InteractionResponseType::UpdateMessage)
+							.interaction_response_data(|m| {
+								m.files([::poise::serenity_prelude::AttachmentType::Bytes {
+									data: png,
+									filename: "canvas.png".into(),
+								}]);
+								m.set_components(<$mode>::as_components(ctx));
+								m
+							})
+					})
+					.await?;
 			}
 
 			Ok(())

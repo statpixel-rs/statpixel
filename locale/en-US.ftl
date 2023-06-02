@@ -383,7 +383,7 @@ CaptureThree = Capture Threes
 BridgeThreeDuel = Bridge 3v3
 
 melee-accuracy = Melee Accuracy
-health-regenerated = Health Regenerated
+health-regenerated = Regenerated
 
 duels = duels
   .description = Duels

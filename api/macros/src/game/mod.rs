@@ -264,6 +264,29 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
+		let mode_match_from_u8_str = modes.iter().enumerate().map(|(idx, mode)| {
+			let ty = &mode.ty;
+			let idx = (idx + 1).to_string();
+			let idx = idx.as_str();
+
+			quote! {
+				#idx => #enum_ident ::#ty,
+			}
+		});
+
+		let mode_menu_option = modes.iter().take(24).enumerate().map(|(idx, mode)| {
+			let idx = (idx + 1).to_string();
+			let idx = idx.as_str();
+
+			let ty = &mode.ty;
+			let ty = quote!(#ty).to_string();
+			let ty = ty.as_str();
+
+			quote! {
+				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty), #idx))
+			}
+		});
+
 		let mode_from_str_impl =
 			modes.iter().map(
 				|mode| match mode.mode.as_ref().and_then(|m| m.hypixel.as_ref()) {
@@ -1012,6 +1035,33 @@ impl ToTokens for GameInputReceiver {
 						Self::Overall => Overall::get_tr(),
 						#(#mode_match_get_tr)*
 					}
+				}
+
+				pub fn from_u8_str(value: &str) -> Self {
+					match value {
+						#(#mode_match_from_u8_str)*
+						_ => Self::Overall,
+					}
+				}
+
+				pub fn as_components(ctx: ::translate::Context<'_>) -> ::poise::serenity_prelude::CreateComponents {
+					let mut components = ::poise::serenity_prelude::CreateComponents::default();
+					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
+					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
+
+					menu.options(|o| o
+						.add_option(::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), "0"))
+						#(#mode_menu_option)*
+					);
+
+					menu.custom_id(ctx.id().to_string());
+					menu.max_values(1);
+					menu.min_values(1);
+
+					row.add_select_menu(menu);
+					components.set_action_row(row);
+					components
 				}
 			}
 

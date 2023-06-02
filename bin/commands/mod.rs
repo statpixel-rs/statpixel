@@ -165,6 +165,23 @@ macro_rules! get_all {
 	}};
 }
 
+/// Generates the code needed to fetch the player, their data, display format, session, and skin
+#[macro_export]
+macro_rules! get_from_player {
+	($ctx: ident, $player: ident) => {{
+		let (data, session, skin) = tokio::join!(
+			$player.get_data(),
+			$player.get_session(),
+			$player.get_skin()
+		);
+
+		let data = data?;
+		let session = session?;
+
+		(data, session, skin)
+	}};
+}
+
 /// Generates the code needed to fetch the player and their data
 #[macro_export]
 macro_rules! get_data {
