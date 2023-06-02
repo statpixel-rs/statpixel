@@ -38,13 +38,12 @@ impl ToTokens for ModeInputReceiver {
 			.expect("should be a named struct")
 			.fields;
 
-		let outer_start_idx = fields.iter().filter(|data| data.field.is_some()).count();
 		let valid_fields = fields
 			.iter()
 			.filter_map(|data| data.field.as_ref().map(|field| (data, field)))
 			.collect::<Vec<_>>();
 
-		let apply_items_mode = valid_fields.iter().enumerate().map(|(idx, (data, field))| {
+		let apply_items_mode = valid_fields.iter().map(|(data, field)| {
 			let ident = data.ident.as_ref().unwrap();
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
@@ -55,16 +54,17 @@ impl ToTokens for ModeInputReceiver {
 					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
 					let struct_name = get_percent_ident_for_type(data.ty.clone());
 
-					return Some(quote! {
-						crate::canvas::game::bubble(
-							ctx,
-							surface,
-							crate::extras::percent::#struct_name (#value),
-							&::translate::tr!(ctx, #tr),
-							#colour,
-							#idx + start_idx,
-						);
-					});
+					return quote! {
+						.push_checked(
+							&crate::canvas::builder::shape::Bubble,
+							crate::canvas::builder::body::Body::from_bubble(
+								ctx,
+								&crate::extras::percent::#struct_name (#value),
+								&::translate::tr!(ctx, #tr),
+								#colour,
+							),
+						)
+					};
 				} else {
 					sum::div_f32_single_field(&ident!("self"), None, ident, div)
 				}
@@ -72,21 +72,20 @@ impl ToTokens for ModeInputReceiver {
 				quote! { self.#ident }
 			};
 
-			Some(quote! {
-				crate::canvas::game::bubble(
-					ctx,
-					surface,
-					#value,
-					&::translate::tr!(ctx, #tr),
-					#colour,
-					#idx + start_idx,
-				);
-			})
+			quote! {
+				.push_checked(
+					&crate::canvas::builder::shape::Bubble,
+					crate::canvas::builder::body::Body::from_bubble(
+						ctx,
+						&#value,
+						&::translate::tr!(ctx, #tr),
+						#colour,
+					),
+				)
+			}
 		});
 
-		let apply_field_items_mode = field_data.iter().enumerate().map(|(idx, field)| {
-			let idx = idx + outer_start_idx;
-
+		let apply_field_items_mode = field_data.iter().map(|field| {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
@@ -98,14 +97,15 @@ impl ToTokens for ModeInputReceiver {
 					let struct_name = get_percent_ident_for_str(ty);
 
 					return quote! {
-						crate::canvas::game::bubble(
-							ctx,
-							surface,
-							crate::extras::percent::#struct_name (#value),
-							&::translate::tr!(ctx, #tr),
-							#colour,
-							#idx + start_idx,
-						);
+						.push_checked(
+							&crate::canvas::builder::shape::Bubble,
+							crate::canvas::builder::body::Body::from_bubble(
+								ctx,
+								&crate::extras::percent::#struct_name (#value),
+								&::translate::tr!(ctx, #tr),
+								#colour,
+							),
+						)
 					};
 				} else {
 					sum::div_f32_single_field(&ident!("self"), None, ident, div)
@@ -115,14 +115,15 @@ impl ToTokens for ModeInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::game::bubble(
-					ctx,
-					surface,
-					#value,
-					&::translate::tr!(ctx, #tr),
-					#colour,
-					#idx + start_idx,
-				);
+				.push_checked(
+					&crate::canvas::builder::shape::Bubble,
+					crate::canvas::builder::body::Body::from_bubble(
+						ctx,
+						&#value,
+						&::translate::tr!(ctx, #tr),
+						#colour,
+					),
+				)
 			}
 		});
 
@@ -191,19 +192,17 @@ impl ToTokens for ModeInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
-		let field_count = outer_start_idx as u8;
-
 		tokens.extend(quote! {
 			impl #ident #generics {
-				pub fn apply_own_fields(
+				pub fn apply_own_fields<'c>(
 					&self,
 					ctx: ::translate::Context<'_>,
-					surface: &mut ::skia_safe::Surface,
-					data: &crate::player::data::Data,
+					mut canvas: crate::canvas::builder::Canvas<'c>,
+					data: &'c crate::player::data::Data,
 					session: &crate::player::status::Session,
 					stats: &Stats,
-					start_idx: usize,
-				) {
+				) -> crate::canvas::builder::Canvas<'c> {
+					canvas
 					#(#apply_items_mode)*
 					#(#apply_field_items_mode)*
 				}
@@ -222,10 +221,6 @@ impl ToTokens for ModeInputReceiver {
 					#(#max_fields)*
 
 					max
-				}
-
-				pub fn get_own_field_count() -> u8 {
-					#field_count
 				}
 
 				#[allow(clippy::ptr_arg)]

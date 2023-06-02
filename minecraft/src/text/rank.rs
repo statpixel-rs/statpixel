@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
-use super::{parse::ESCAPE, Text};
-use crate::{colour::Colour, minecraft_text, paint::Paint};
+use super::{parse::minecraft_text, parse::ESCAPE, Text};
+use crate::{colour::Colour, paint::Paint};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Rank {
@@ -23,23 +23,23 @@ pub enum Rank {
 
 macro_rules! mvp_plus {
 	($colour: expr) => {
-		minecraft_text!(concat!("§b[MVP§", $colour, "+§b]"))
+		minecraft_text(concat!("§b[MVP§", $colour, "+§b]"))
 	};
 }
 
 macro_rules! mvp_plus_plus {
 	($colour: expr, $plain: expr) => {
 		if $plain {
-			minecraft_text!(concat!("§b[MVP§", $colour, "++§b]"))
+			minecraft_text(concat!("§b[MVP§", $colour, "++§b]"))
 		} else {
-			minecraft_text!(concat!("§6[MVP§", $colour, "++§6]"))
+			minecraft_text(concat!("§6[MVP§", $colour, "++§6]"))
 		}
 	};
 }
 
-const VIP: [Text; 1] = minecraft_text!("§a[VIP]");
-const VIP_PLUS: [Text; 3] = minecraft_text!("§a[VIP§6+§a]");
-const MVP: [Text; 1] = minecraft_text!("§b[MVP]");
+const VIP: [Text; 1] = minecraft_text("§a[VIP]");
+const VIP_PLUS: [Text; 3] = minecraft_text("§a[VIP§6+§a]");
+const MVP: [Text; 1] = minecraft_text("§b[MVP]");
 
 const MVP_PLUS_BLACK: [Text; 3] = mvp_plus!("0");
 const MVP_PLUS_DARK_BLUE: [Text; 3] = mvp_plus!("1");
@@ -92,13 +92,13 @@ const MVP_PLUS_PLUS_LIGHT_PURPLE_PLAIN: [Text; 3] = mvp_plus_plus!("d", true);
 const MVP_PLUS_PLUS_YELLOW_PLAIN: [Text; 3] = mvp_plus_plus!("e", true);
 const MVP_PLUS_PLUS_WHITE_PLAIN: [Text; 3] = mvp_plus_plus!("f", true);
 
-const YOUTUBE: [Text; 3] = minecraft_text!("§c[§fYOUTUBE§c]");
-const MOJANG: [Text; 1] = minecraft_text!("§6[MOJANG]");
-const EVENTS: [Text; 1] = minecraft_text!("§6[EVENTS]");
-const MCP: [Text; 1] = minecraft_text!("§c[MCP]");
-const GM: [Text; 1] = minecraft_text!("§2[GM]");
-const ADMIN: [Text; 1] = minecraft_text!("§c[ADMIN]");
-const OWNER: [Text; 1] = minecraft_text!("§c[OWNER]");
+const YOUTUBE: [Text; 3] = minecraft_text("§c[§fYOUTUBE§c]");
+const MOJANG: [Text; 1] = minecraft_text("§6[MOJANG]");
+const EVENTS: [Text; 1] = minecraft_text("§6[EVENTS]");
+const MCP: [Text; 1] = minecraft_text("§c[MCP]");
+const GM: [Text; 1] = minecraft_text("§2[GM]");
+const ADMIN: [Text; 1] = minecraft_text("§c[ADMIN]");
+const OWNER: [Text; 1] = minecraft_text("§c[OWNER]");
 
 fn remove_special_chars(text: &str) -> String {
 	let mut result = String::with_capacity(text.len());

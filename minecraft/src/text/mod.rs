@@ -1,12 +1,13 @@
+mod draw;
 pub mod parse;
 pub mod rank;
 
-use skia_safe::{
-	textlayout::{FontCollection, ParagraphBuilder, ParagraphStyle, TextAlign, TextStyle},
-	FontMgr, Rect, Surface,
-};
+use skia_safe::textlayout::TextStyle;
 
 use crate::{paint::Paint, style::MinecraftFont};
+pub use draw::draw;
+
+pub const ESCAPE: char = '§';
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Text<'t> {
@@ -16,7 +17,27 @@ pub struct Text<'t> {
 	pub size: Option<f32>,
 }
 
+const DEFAULT_TEXT: Text<'static> = Text {
+	text: "",
+	font: MinecraftFont::Normal,
+	paint: Paint::White,
+	size: None,
+};
+
+impl<'t> Default for Text<'t> {
+	fn default() -> Self {
+		DEFAULT_TEXT
+	}
+}
+
 impl<'t> Text<'t> {
+	pub const NEW_LINE: Text<'static> = Text {
+		text: "\n",
+		font: MinecraftFont::Normal,
+		paint: Paint::White,
+		size: None,
+	};
+
 	#[must_use]
 	pub fn get_style(&self, paint: Paint, default_size: f32) -> TextStyle {
 		let size = self.size.unwrap_or(default_size);
@@ -30,69 +51,6 @@ impl<'t> Text<'t> {
 		}
 
 		style.set_foreground_color(paint.into());
-
 		style
 	}
-}
-
-impl Default for Text<'_> {
-	fn default() -> Self {
-		Self {
-			text: "",
-			font: MinecraftFont::Normal,
-			paint: Paint::White,
-			size: None,
-		}
-	}
-}
-
-pub fn draw(
-	surface: &mut Surface,
-	text: &[Text<'_>],
-	size: f32,
-	rect: impl Into<Rect>,
-	h_align: impl Into<Option<TextAlign>>,
-	v_center: bool,
-) {
-	let style = {
-		let mut style = ParagraphStyle::new();
-
-		style.set_text_align(h_align.into().unwrap_or(TextAlign::Left));
-		style
-	};
-
-	let mut paragraph = {
-		let font = {
-			let mut manager = FontCollection::new();
-
-			manager.set_default_font_manager(FontMgr::new(), "Minecraft");
-			manager
-		};
-
-		let mut builder = ParagraphBuilder::new(&style, font);
-
-		for blob in text {
-			let style = blob.get_style(blob.paint, size);
-
-			builder.push_style(&style);
-			builder.add_text(blob.text);
-		}
-
-		builder.build()
-	};
-
-	let rect: Rect = rect.into();
-
-	paragraph.layout(rect.width());
-
-	let point = (
-		rect.left(),
-		if v_center {
-			rect.center_y() - paragraph.height() / 2.
-		} else {
-			rect.top()
-		},
-	);
-
-	paragraph.paint(surface.canvas(), point);
 }

@@ -1,6 +1,6 @@
 use skia_safe::Color;
 
-use crate::{colour::Colour, text::parse::ESCAPE};
+use crate::{colour::Colour, text::ESCAPE};
 
 const BASE: u64 = 10_000;
 const GROWTH: f64 = 2_500.;

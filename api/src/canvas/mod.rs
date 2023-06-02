@@ -210,3 +210,19 @@ pub fn get_item_rect(i: usize) -> Rect {
 
 	Rect::from_xywh(x, y, ITEM_WIDTH, ITEM_HEIGHT)
 }
+
+#[must_use]
+#[allow(clippy::cast_precision_loss)]
+/// A slab is a 1.5x2 equivalent of items, with 2 per row
+pub fn get_slab_rect(i: usize) -> Rect {
+	const SLAB_WIDTH: f32 = ITEM_WIDTH * 1.5 - GAP / 2.;
+	const SLAB_HEIGHT: f32 = ITEM_HEIGHT * 2. + GAP;
+
+	let x = i % 3;
+	let y = i / 3;
+
+	let x = PADDING + (GAP + ITEM_WIDTH) * 1.5 * x as f32;
+	let y = PADDING + HEADER_HEIGHT + GAP + (ITEM_HEIGHT + GAP) * 2. * y as f32;
+
+	Rect::from_xywh(x, y, SLAB_WIDTH, SLAB_HEIGHT)
+}

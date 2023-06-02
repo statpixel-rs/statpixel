@@ -4,7 +4,7 @@ use super::{label::ToFormatted, GAP, HEADER_LEFT_END_X, ITEM_WIDTH, PADDING};
 
 use minecraft::{
 	paint::{self, Paint},
-	text::{draw, Text},
+	text::Text,
 };
 use skia_safe::{textlayout::TextAlign, Rect, Surface};
 use translate::Context;
@@ -22,7 +22,7 @@ pub fn item(
 	let rect = Rect::from_xywh(x, y, ITEM_WIDTH, 21.2).with_offset((17., 13.));
 	let text = line.1.to_formatted_label(ctx);
 
-	draw(
+	minecraft::text::draw(
 		surface,
 		&[
 			Text {

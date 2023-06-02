@@ -46,6 +46,7 @@ dependencies = [
  "fastnbt",
  "flate2",
  "futures",
+ "konst",
  "macros",
  "minecraft",
  "moka",

@@ -1,6 +1,6 @@
 use skia_safe::Color;
 
-use crate::{colour::Colour, text::parse::ESCAPE};
+use crate::{colour::Colour, text::ESCAPE};
 
 #[must_use]
 pub fn get_level_format(level: u32) -> String {

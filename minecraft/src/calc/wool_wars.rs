@@ -2,7 +2,7 @@ use std::cmp::min;
 
 use skia_safe::Color;
 
-use crate::{colour::Colour, text::parse::ESCAPE};
+use crate::{colour::Colour, text::ESCAPE};
 
 const TOTAL_LEVEL_XP: [u64; 4] = [1_000, 3_000, 6_000, 10_000];
 const XP_PER_LEVEL: u64 = 5_000;

@@ -1,23 +1,31 @@
 use std::{borrow::Cow, cmp::max};
 
 use api::{
-	canvas::{self, chart, label::ToFormatted},
+	canvas::{
+		self,
+		builder::{body::Body, Canvas},
+		chart,
+		label::ToFormatted,
+	},
 	player::Player,
 	skyblock::{profile::TransactionAction, NAMES},
 };
+use canvas::builder::{shape, text};
 use chrono::Utc;
 use minecraft::{
 	calc::{network, sky_block},
-	minecraft_text,
 	paint::Paint,
 	style::MinecraftFont,
-	text::{draw, parse::minecraft_string, Text},
+	text::{
+		parse::{minecraft_string, minecraft_text},
+		Text,
+	},
 };
 use poise::serenity_prelude::AttachmentType;
 use skia_safe::textlayout::TextAlign;
 use translate::{tr, Context, Error};
 
-const LABEL: [Text; 2] = minecraft_text!("§b§lSky§a§lBlock");
+const LABEL: [Text; 2] = minecraft_text("§b§lSky§a§lBlock");
 
 #[allow(clippy::unused_async)]
 async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator<Item = String> {
@@ -52,65 +60,36 @@ pub async fn auctions(
 	let auctions = player.get_auctions().await?;
 
 	let png = {
-		#[allow(clippy::cast_possible_truncation)]
-		let mut surface = canvas::create_surface((auctions.len() as u8 + 2) / 3);
-
-		canvas::header::apply_name(&mut surface, &data);
-		canvas::header::apply_status(ctx, &mut surface, &session);
-		canvas::game::apply_label(
-			&mut surface,
-			&[
-				LABEL[0],
-				LABEL[1],
-				Text {
-					text: " (",
-					paint: Paint::White,
-					..Default::default()
-				},
-				Text {
-					text: tr!(ctx, "player-auctions").as_ref(),
-					paint: Paint::White,
-					..Default::default()
-				},
-				Text {
-					text: ")",
-					paint: Paint::White,
-					..Default::default()
-				},
-			],
-		);
-
 		let level = network::get_level(data.xp);
-
-		canvas::game::apply_data(
-			ctx,
-			&mut surface,
-			&network::get_level_format(level),
+		let progress = shape::WideBubbleProgress(
 			network::get_level_progress(data.xp),
-			network::get_curr_level_xp(data.xp),
-			network::get_level_xp(data.xp),
-			&network::get_colours(level),
+			network::get_colours(level),
 		);
 
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(tr!(ctx, "player-auctions"), auctions.len(), Paint::Aqua),
-			0,
-		);
+		let mut canvas = Canvas::new(None)
+			.gap(7.)
+			.push_down(
+				&shape::Title,
+				shape::Title::from_text(&text::from_data(&data, &data.username)),
+			)
+			.push_down(
+				&shape::Subtitle,
+				shape::Subtitle::from_label(ctx, &LABEL, "player-auctions"),
+			)
+			.push_down(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&network::get_level_format(level),
+					&network::get_curr_level_xp(data.xp),
+					&network::get_level_xp(data.xp),
+					// TODO: Support coloured paths in new canvas builder
+					// &network::get_colours(level),
+				),
+			)
+			.push_right_start(&shape::Gutter, Body::from_status(ctx, &session));
 
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "highest-bid"),
-				auctions.iter().map(|a| a.highest_bid).max(),
-				Paint::Gold,
-			),
-			1,
-		);
-
-		for (i, auction) in auctions.iter().enumerate() {
+		for auction in &auctions {
 			let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
 			let bid = max(auction.starting_bid, auction.highest_bid);
 			let bid = bid.to_formatted_label(ctx);
@@ -125,16 +104,19 @@ pub async fn auctions(
 					text: bid.as_ref(),
 					paint: Paint::Gold,
 					font: MinecraftFont::Normal,
-					size: Some(15.),
+					size: Some(30.),
 				},
 			]);
 
-			let rect = canvas::get_item_rect(i);
-
-			draw(&mut surface, &text, 20., rect, TextAlign::Center, true);
+			canvas = canvas.push_checked(
+				&shape::TallBubble,
+				Body::default()
+					.extend(text.as_slice())
+					.build(23., TextAlign::Center),
+			);
 		}
 
-		canvas::to_png(&mut surface).into()
+		canvas::to_png(&mut canvas.build(None).unwrap()).into()
 	};
 
 	ctx.send(move |m| {

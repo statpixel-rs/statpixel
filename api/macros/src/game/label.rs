@@ -43,33 +43,25 @@ pub(crate) fn map_game_field_to_extras_value(
 		let struct_name = get_percent_ident_for_type(field.ty.clone());
 
 		quote! {
-			crate::canvas::sidebar::item(
-				ctx,
-				surface,
-				&(
-					::translate::tr!(ctx, #tr),
-					crate::extras::percent::#struct_name (#value),
-					#colour,
+			.append_item(
+				&::translate::tr!(ctx, #tr),
+				&crate::canvas::label::ToFormatted::to_formatted_label(
+					&crate::extras::percent::#struct_name (#value),
+					ctx,
 				),
-				idx
-			);
-
-			idx += 1;
+				&#colour
+			)
 		}
 	} else {
 		quote! {
-			crate::canvas::sidebar::item(
-				ctx,
-				surface,
-				&(
-					::translate::tr!(ctx, #tr),
-					#value,
-					#colour,
+			.append_item(
+				&::translate::tr!(ctx, #tr),
+				&crate::canvas::label::ToFormatted::to_formatted_label(
+					&#value,
+					ctx,
 				),
-				idx
-			);
-
-			idx += 1;
+				&#colour
+			)
 		}
 	}
 }
@@ -94,33 +86,25 @@ pub(crate) fn map_info_field_to_extras_value(info: &InfoFieldData) -> TokenStrea
 		let struct_name = get_percent_ident_for_str(ty);
 
 		quote! {
-			crate::canvas::sidebar::item(
-				ctx,
-				surface,
-				&(
-					::translate::tr!(ctx, #tr),
-					crate::extras::percent::#struct_name (#value),
-					#colour,
+			.append_item(
+				&::translate::tr!(ctx, #tr),
+				&crate::canvas::label::ToFormatted::to_formatted_label(
+					&crate::extras::percent::#struct_name (#value),
+					ctx,
 				),
-				idx
-			);
-
-			idx += 1;
+				&#colour
+			)
 		}
 	} else {
 		quote! {
-			crate::canvas::sidebar::item(
-				ctx,
-				surface,
-				&(
-					::translate::tr!(ctx, #tr),
-					#value,
-					#colour,
+			.append_item(
+				&::translate::tr!(ctx, #tr),
+				&crate::canvas::label::ToFormatted::to_formatted_label(
+					&#value,
+					ctx,
 				),
-				idx
-			);
-
-			idx += 1;
+				&#colour
+			)
 		}
 	}
 }

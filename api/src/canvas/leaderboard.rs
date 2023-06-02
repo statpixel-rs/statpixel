@@ -3,7 +3,7 @@ use std::borrow::Cow;
 use minecraft::{
 	paint,
 	style::MinecraftFont,
-	text::{draw, parse::minecraft_string, rank::Rank, Text},
+	text::{parse::minecraft_string, rank::Rank, Text},
 };
 use skia_safe::{textlayout::TextAlign, Path, Point, RRect, Rect, Surface};
 use translate::Context;
@@ -121,7 +121,7 @@ pub fn header(surface: &mut Surface, leaderboard: &Leaderboard) {
 		..Default::default()
 	});
 
-	draw(
+	minecraft::text::draw(
 		surface,
 		text.as_slice(),
 		24.,
@@ -141,7 +141,7 @@ pub fn row(
 	let y = PADDING + (ITEM_HEIGHT + GAP) * f32::from(idx) + HEADER_HEIGHT + GAP;
 	let mut x = PADDING;
 
-	draw(
+	minecraft::text::draw(
 		surface,
 		&[Text {
 			text: &format!("{}", idx + 1),
@@ -178,7 +178,7 @@ pub fn row(
 		..Default::default()
 	});
 
-	draw(
+	minecraft::text::draw(
 		surface,
 		name.as_slice(),
 		20.,
@@ -189,7 +189,7 @@ pub fn row(
 
 	x += NAME_WIDTH + GAP;
 
-	draw(
+	minecraft::text::draw(
 		surface,
 		&[Text {
 			text: &value.to_formatted_label(ctx),

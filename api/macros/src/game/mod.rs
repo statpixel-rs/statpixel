@@ -72,8 +72,6 @@ impl ToTokens for GameInputReceiver {
 		let path = parse_str_to_dot_path(path);
 
 		let label_size = minecraft_string(pretty).count();
-		let field_count = overall_fields.len() as u8;
-		let row_count = (field_count + 2) / 3;
 
 		let calc = if let Some(ref calc) = calc {
 			quote! { #calc }
@@ -140,8 +138,14 @@ impl ToTokens for GameInputReceiver {
 		};
 
 		let enum_ident = syn::Ident::new(&format!("{}Mode", ident), proc_macro2::Span::call_site());
-		let extras = labels.iter().map(map_game_field_to_extras_value);
-		let extras_for_mode = info.iter().map(map_info_field_to_extras_value);
+		let extras = labels
+			.iter()
+			.map(map_game_field_to_extras_value)
+			.collect::<Vec<_>>();
+		let extras_for_mode = info
+			.iter()
+			.map(map_info_field_to_extras_value)
+			.collect::<Vec<_>>();
 		let extras_for_overall = info.iter().map(|info| {
 			let name = &info.ident;
 			let tr = get_tr_with_fallback(info.tr.as_deref(), Some(name));
@@ -176,33 +180,25 @@ impl ToTokens for GameInputReceiver {
 				let struct_name = get_percent_ident_for_str(ty);
 
 				quote! {
-					crate::canvas::sidebar::item(
-						ctx,
-						surface,
-						&(
-							::translate::tr!(ctx, #tr),
-							crate::extras::percent::#struct_name (#value),
-							#colour,
+					.append_item(
+						&::translate::tr!(ctx, #tr),
+						&crate::canvas::label::ToFormatted::to_formatted_label(
+							&crate::extras::percent::#struct_name (#value),
+							ctx,
 						),
-						idx
-					);
-
-					idx += 1;
+						&#colour
+					)
 				}
 			} else {
 				quote! {
-					crate::canvas::sidebar::item(
-						ctx,
-						surface,
-						&(
-							::translate::tr!(ctx, #tr),
-							#value,
-							#colour,
+					.append_item(
+						&::translate::tr!(ctx, #tr),
+						&crate::canvas::label::ToFormatted::to_formatted_label(
+							&#value,
+							ctx,
 						),
-						idx
-					);
-
-					idx += 1;
+						&#colour
+					)
 				}
 			}
 		});
@@ -236,9 +232,10 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#enum_ident ::#ty => data.stats. #path. #ident .apply(
 						ctx,
-						&mut surface,
+						canvas,
 						data,
 						session,
+						&progress,
 					),
 				}
 			})
@@ -258,14 +255,6 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
-		let mode_match_count_rows = modes.iter().map(|mode| {
-			let ty = &mode.ty;
-
-			quote! {
-				#enum_ident ::#ty => #ty ::get_row_count(),
-			}
-		});
-
 		let mode_match_get_tr = modes.iter().map(|mode| {
 			let ty = &mode.ty;
 
@@ -273,11 +262,6 @@ impl ToTokens for GameInputReceiver {
 				#enum_ident ::#ty => #ty ::get_tr(),
 			}
 		});
-
-		let first_ty = modes
-			.first()
-			.map(|mode| &mode.ty)
-			.expect("there must be at least one #[game(mode(...))] attribute");
 
 		let mode_from_str_impl =
 			modes.iter().map(
@@ -293,12 +277,6 @@ impl ToTokens for GameInputReceiver {
 					_ => quote! {},
 				},
 			);
-
-		let label_iter = (0..label_size).map(|i| {
-			quote! {
-				LABEL[#i],
-			}
-		});
 
 		let series_tuple_mode = overall_fields
 			.iter()
@@ -447,12 +425,12 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
-		let apply_items_overall = overall_fields.iter().enumerate().map(|(i, field)| {
+		let apply_items_overall = overall_fields.iter().map(|field| {
 			let ident_parent = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident_parent));
 			let colour = &field.colour;
 
-			let sum = if let Some(path) = field.path.as_ref() {
+			let value: TokenStream = if let Some(path) = field.path.as_ref() {
 				let path = parse_str_to_dot_path(path);
 
 				return quote! {
@@ -460,7 +438,7 @@ impl ToTokens for GameInputReceiver {
 				};
 			} else if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
-					let sum = sum::sum_div_u32_fields(
+					let value = sum::sum_div_u32_fields(
 						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
@@ -470,14 +448,15 @@ impl ToTokens for GameInputReceiver {
 					let struct_name = get_percent_ident_for_str(ty);
 
 					return quote! {
-						crate::canvas::game::bubble(
-							ctx,
-							surface,
-							crate::extras::percent::#struct_name (#sum),
-							&::translate::tr!(ctx, #tr),
-							#colour,
-							#i,
-						);
+						.push_checked(
+							&crate::canvas::builder::shape::Bubble,
+							crate::canvas::builder::body::Body::from_bubble(
+								ctx,
+								&crate::extras::percent::#struct_name (#value),
+								&::translate::tr!(ctx, #tr),
+								#colour,
+							),
+						)
 					};
 				} else {
 					sum::sum_div_f32_fields(
@@ -496,14 +475,15 @@ impl ToTokens for GameInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::game::bubble(
-					ctx,
-					surface,
-					#sum,
-					&::translate::tr!(ctx, #tr),
-					#colour,
-					#i,
-				);
+				.push_checked(
+					&crate::canvas::builder::shape::Bubble,
+					crate::canvas::builder::body::Body::from_bubble(
+						ctx,
+						&#value,
+						&::translate::tr!(ctx, #tr),
+						#colour,
+					),
+				)
 			}
 		});
 
@@ -568,8 +548,7 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let start_mode_apply_idx = overall_fields.len();
-		let apply_items_mode = overall_fields.iter().enumerate().map(|(idx, field)| {
+		let apply_items_mode = overall_fields.iter().map(|field| {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
@@ -581,14 +560,15 @@ impl ToTokens for GameInputReceiver {
 					let struct_name = get_percent_ident_for_str(ty);
 
 					return quote! {
-						crate::canvas::game::bubble(
-							ctx,
-							surface,
-							crate::extras::percent::#struct_name (#value),
-							&::translate::tr!(ctx, #tr),
-							#colour,
-							#idx,
-						);
+						.push_checked(
+							&crate::canvas::builder::shape::Bubble,
+							crate::canvas::builder::body::Body::from_bubble(
+								ctx,
+								&crate::extras::percent::#struct_name (#value),
+								&::translate::tr!(ctx, #tr),
+								#colour,
+							),
+						)
 					};
 				} else {
 					sum::div_f32_single_field(&ident!("self"), None, ident, div)
@@ -598,14 +578,15 @@ impl ToTokens for GameInputReceiver {
 			};
 
 			quote! {
-				crate::canvas::game::bubble(
-					ctx,
-					surface,
-					#value,
-					&::translate::tr!(ctx, #tr),
-					#colour,
-					#idx,
-				);
+				.push_checked(
+					&crate::canvas::builder::shape::Bubble,
+					crate::canvas::builder::body::Body::from_bubble(
+						ctx,
+						&#value,
+						&::translate::tr!(ctx, #tr),
+						#colour,
+					),
+				)
 			}
 		});
 
@@ -714,49 +695,55 @@ impl ToTokens for GameInputReceiver {
 
 			let apply_items_mode = apply_items_mode.clone();
 			let apply_embed_mode = apply_embed_mode.clone();
-			let extras = extras.clone();
-			let extras_for_mode = extras_for_mode.clone();
 
 			quote! {
 				impl #ty {
-					pub fn get_field_count() -> u8 {
-						#field_count
-					}
-
-					pub fn get_row_count() -> u8 {
-						(Self::get_field_count() + Self::get_own_field_count() + 2) / 3
-					}
-
 					pub fn get_tr() -> &'static str {
 						#tr
 					}
 
-					pub fn apply(&self, ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, data: &crate::player::data::Data, session: &crate::player::status::Session) {
-						let label = ::translate::tr!(ctx, Self::get_tr());
+					pub fn apply<'c>(
+						&self,
+						ctx: ::translate::Context<'_>,
+						mut canvas: crate::canvas::builder::Canvas<'c>,
+						data: &'c crate::player::data::Data,
+						session: &crate::player::status::Session,
+						progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
+					) -> crate::canvas::builder::Canvas<'c> {
 						let stats = &data.stats.#path;
-						let mut idx = 0u8;
 
-						crate::canvas::game::apply_label(
-							surface,
-							[
-								LABEL.as_slice(),
-								&[::minecraft::text::Text {
-									text: &::std::format!(" ({label})"),
-									paint: ::minecraft::paint::Paint::White,
-									font: ::minecraft::style::MinecraftFont::Normal,
-									size: ::std::option::Option::None,
-								}],
-							]
-								.concat()
-								.as_slice(),
-						);
+						let xp = #calc ::convert(&#xp_field);
+						let level = #calc ::get_level(xp);
 
-						#(#apply_items_mode)*
+						let mut canvas = canvas
+							.push_down(
+								&crate::canvas::builder::shape::Subtitle,
+								crate::canvas::builder::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
+							)
+							.push_down(
+								progress,
+								crate::canvas::builder::shape::WideBubbleProgress::from_level_progress(
+									ctx,
+									&#level_fmt_field,
+									&#calc ::get_curr_level_xp(xp),
+									&#calc ::get_level_xp(xp),
+								),
+							)
+							.push_right_start(
+								&crate::canvas::builder::shape::Sidebar,
+								crate::canvas::builder::body::Body::default()
+									#(#extras)*
+									#(#extras_for_mode)*
+									.build(17., ::std::option::Option::None)
+							)
+							.push_right(
+								&crate::canvas::builder::shape::Gutter,
+								crate::canvas::builder::body::Body::from_status(ctx, &session)
+							);
 
-						self.apply_own_fields(ctx, surface, data, session, stats, #start_mode_apply_idx);
-
-						#(#extras)*
-						#(#extras_for_mode)*
+						let mut canvas = canvas #(#apply_items_mode)*;
+						
+						self.apply_own_fields(ctx, canvas, data, session, stats)
 					}
 
 					pub fn embed(&self, ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data, session: &crate::player::status::Session) {
@@ -841,7 +828,7 @@ impl ToTokens for GameInputReceiver {
 		};
 
 		tokens.extend(quote! {
-			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::minecraft_text!(#pretty);
+			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
 
 			#(#apply_all_modes)*
@@ -849,39 +836,49 @@ impl ToTokens for GameInputReceiver {
 			pub struct Overall;
 
 			impl Overall {
-				pub fn get_row_count() -> u8 {
-					#row_count
-				}
-
 				pub fn get_tr() -> &'static str {
 					"Overall"
 				}
 
-				pub fn label_len() -> usize {
-					#label_size
-				}
-
-				pub fn apply(ctx: ::translate::Context<'_>, surface: &mut ::skia_safe::Surface, data: &crate::player::data::Data, session: &crate::player::status::Session) {
+				pub fn apply<'c>(
+					ctx: ::translate::Context<'_>,
+					mut canvas: crate::canvas::builder::Canvas<'c>,
+					data: &'c crate::player::data::Data,
+					session: &crate::player::status::Session,
+					progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
+				) -> crate::canvas::builder::Canvas<'c> {
 					let stats = &data.stats.#path;
-					let label = ::translate::tr!(ctx, Self::get_tr());
-					let mut idx = 0u8;
 
-					crate::canvas::game::apply_label(
-						surface,
-						&[
-							#(#label_iter)*
-							::minecraft::text::Text {
-								text: &::std::format!(" ({label})"),
-								paint: ::minecraft::paint::Paint::White,
-								font: ::minecraft::style::MinecraftFont::Normal,
-								size: ::std::option::Option::None,
-							},
-						],
-					);
+					let xp = #calc ::convert(&#xp_field);
+					let level = #calc ::get_level(xp);
 
-					#(#extras)*
-					#(#extras_for_overall)*
-					#(#apply_items_overall)*
+					let mut canvas = canvas
+						.push_down(
+							&crate::canvas::builder::shape::Subtitle,
+							crate::canvas::builder::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
+						)
+						.push_down(
+							progress,
+							crate::canvas::builder::shape::WideBubbleProgress::from_level_progress(
+								ctx,
+								&#level_fmt_field,
+								&#calc ::get_curr_level_xp(xp),
+								&#calc ::get_level_xp(xp),
+							),
+						)
+						.push_right_start(
+							&crate::canvas::builder::shape::Sidebar,
+							crate::canvas::builder::body::Body::default()
+								#(#extras)*
+								#(#extras_for_overall)*
+								.build(17., ::std::option::Option::None)
+						)
+						.push_right(
+							&crate::canvas::builder::shape::Gutter,
+							crate::canvas::builder::body::Body::from_status(ctx, &session)
+						);
+
+					canvas #(#apply_items_overall)*
 				}
 
 				pub fn embed(ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data, session: &crate::player::status::Session) {
@@ -1001,13 +998,6 @@ impl ToTokens for GameInputReceiver {
 					}
 				}
 
-				pub fn get_row_count(&self) -> u8 {
-					match self {
-						Self::Overall => #first_ty ::get_row_count(),
-						#(#mode_match_count_rows)*
-					}
-				}
-
 				pub fn get_tr(&self) -> &'static str {
 					match self {
 						Self::Overall => Overall::get_tr(),
@@ -1056,43 +1046,36 @@ impl ToTokens for GameInputReceiver {
 					let data = curr;
 					let stats = &data.stats.#path;
 
+					let mode = #enum_ident ::get_mode(mode, session);
+					let mut canvas = crate::canvas::builder::Canvas::new(720.)
+						.gap(7.)
+						.push_down(
+							&crate::canvas::builder::shape::Title,
+							crate::canvas::builder::shape::Title::from_text(&crate::canvas::builder::text::from_data(&data, &data.username)),
+						);
+
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
 
-					let mode = #enum_ident ::get_mode(mode, session);
-					let mut surface = crate::canvas::create_surface(mode.get_row_count());
+					let progress = crate::canvas::builder::shape::WideBubbleProgress(
+						#calc ::get_level_progress(xp),
+						#calc ::get_colours(level),
+					);
 
-					match mode {
+					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
 								ctx,
-								&mut surface,
+								canvas,
 								data,
 								session,
-							);
+								&progress,
+							)
 						}
 						#(#mode_match_apply_rows)*
-					}
+					};
 
-					crate::canvas::header::apply_name(&mut surface, &data);
-
-					crate::canvas::game::apply_data(
-						ctx,
-						&mut surface,
-						&#level_fmt_field,
-						#calc ::get_level_progress(xp),
-						#calc ::get_curr_level_xp(xp),
-						#calc ::get_level_xp(xp),
-						&#calc ::get_colours(level),
-					);
-
-					crate::canvas::header::apply_status(
-						ctx,
-						&mut surface,
-						&session
-					);
-
-					surface
+					canvas.build(None).unwrap()
 				}
 
 				pub fn canvas(
@@ -1102,43 +1085,37 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<#enum_ident>
 				) -> ::skia_safe::Surface {
 					let stats = &data.stats.#path;
+
+					let mode = #enum_ident ::get_mode(mode, session);
+					let mut canvas = crate::canvas::builder::Canvas::new(720.)
+						.gap(7.)
+						.push_down(
+							&crate::canvas::builder::shape::Title,
+							crate::canvas::builder::shape::Title::from_text(&crate::canvas::builder::text::from_data(&data, &data.username)),
+						);
+
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
 
-					let mode = #enum_ident ::get_mode(mode, session);
-					let mut surface = crate::canvas::create_surface(mode.get_row_count());
+					let progress = crate::canvas::builder::shape::WideBubbleProgress(
+						#calc ::get_level_progress(xp),
+						#calc ::get_colours(level),
+					);
 
-					match mode {
+					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
 								ctx,
-								&mut surface,
+								canvas,
 								data,
 								session,
-							);
+								&progress,
+							)
 						}
 						#(#mode_match_apply_rows)*
-					}
+					};
 
-					crate::canvas::header::apply_name(&mut surface, &data);
-
-					crate::canvas::game::apply_data(
-						ctx,
-						&mut surface,
-						&#level_fmt_field,
-						#calc ::get_level_progress(xp),
-						#calc ::get_curr_level_xp(xp),
-						#calc ::get_level_xp(xp),
-						&#calc ::get_colours(level),
-					);
-
-					crate::canvas::header::apply_status(
-						ctx,
-						&mut surface,
-						&session
-					);
-
-					surface
+					canvas.build(None).unwrap()
 				}
 
 				pub fn chart(

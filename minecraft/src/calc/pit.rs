@@ -3,7 +3,7 @@ use std::cmp::min;
 use serde::Deserialize;
 use skia_safe::Color;
 
-use crate::{colour::Colour, text::parse::ESCAPE};
+use crate::{colour::Colour, text::ESCAPE};
 
 #[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
 pub struct Prestige {

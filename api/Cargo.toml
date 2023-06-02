@@ -33,6 +33,7 @@ thiserror = { workspace = true }
 redis = { workspace = true }
 base64 = { workspace = true }
 fastnbt = { workspace = true }
+konst = { workspace = true }
 
 [dev-dependencies]
 dotenvy = "0.15.7"

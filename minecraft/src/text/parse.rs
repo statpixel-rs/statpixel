@@ -7,21 +7,17 @@ use super::Text;
 use crate::{
 	paint::{self, parse},
 	style::{self, parse_font},
+	text::DEFAULT_TEXT,
 };
 
 pub const ESCAPE: char = '§';
 
-#[macro_export]
-macro_rules! minecraft_text {
-	($text: expr) => {
-		$crate::text::parse::_const_parse_minecraft_strings($text)
-	};
+#[must_use]
+pub const fn minecraft_text<const LEN: usize>(text: &str) -> [Text<'_>; LEN] {
+	_const_parse_minecraft_strings(text)
 }
 
-pub use minecraft_text;
-
-#[must_use]
-pub const fn _const_parse_minecraft_strings<const LEN: usize>(string: &str) -> [Text<'_>; LEN] {
+const fn _const_parse_minecraft_strings<const LEN: usize>(string: &str) -> [Text<'_>; LEN] {
 	unwrap_ctx!(const_minecraft_strings::<LEN>(Parser::new(string))).0
 }
 
@@ -30,12 +26,7 @@ const fn const_minecraft_strings<const LEN: usize>(
 ) -> ParseValueResult<'_, [Text<'_>; LEN]> {
 	let mut font = style::MinecraftFont::Normal;
 	let mut paint = paint::Paint::White;
-	let mut result = [Text {
-		text: "",
-		font: style::MinecraftFont::Normal,
-		paint: paint::Paint::White,
-		size: None,
-	}; LEN];
+	let mut result = [DEFAULT_TEXT; LEN];
 
 	try_!(parser.find_skip(ESCAPE));
 
@@ -297,12 +288,12 @@ mod tests {
 	#[test]
 	#[should_panic]
 	fn test_plain_string_macro() {
-		let _: [Text; 1] = minecraft_text!("Hello, world!");
+		let _: [Text; 1] = minecraft_text("Hello, world!");
 	}
 
 	#[test]
 	fn test_paint_string_macro() {
-		let parsed = minecraft_text!("§cHello, world!");
+		let parsed = minecraft_text("§cHello, world!");
 
 		assert_eq!(
 			parsed,
@@ -317,7 +308,7 @@ mod tests {
 
 	#[test]
 	fn test_font_string_macro() {
-		let parsed = minecraft_text!("§lHello, world!");
+		let parsed = minecraft_text("§lHello, world!");
 
 		assert_eq!(
 			parsed,
@@ -332,7 +323,7 @@ mod tests {
 
 	#[test]
 	fn test_paint_font_string_macro() {
-		let parsed = minecraft_text!("§c§lHello, world!");
+		let parsed = minecraft_text("§c§lHello, world!");
 
 		assert_eq!(
 			parsed,
@@ -347,7 +338,7 @@ mod tests {
 
 	#[test]
 	fn test_font_reset_string_macro() {
-		let parsed = minecraft_text!("§c§l§dHello, world!");
+		let parsed = minecraft_text("§c§l§dHello, world!");
 
 		assert_eq!(
 			parsed,
@@ -362,7 +353,7 @@ mod tests {
 
 	#[test]
 	fn test_reset_string_macro() {
-		let parsed = minecraft_text!("§cHello, §lworld§r!");
+		let parsed = minecraft_text("§cHello, §lworld§r!");
 
 		assert_eq!(
 			parsed,
