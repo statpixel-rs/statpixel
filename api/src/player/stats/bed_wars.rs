@@ -13,9 +13,6 @@ use serde::Deserialize;
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
-	field(ident = "kills", colour = "green"),
-	field(ident = "deaths", colour = "red"),
-	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
 	field(ident = "final_kills", colour = "green"),
 	field(ident = "final_deaths", colour = "red"),
 	field(
@@ -24,6 +21,9 @@ use serde::Deserialize;
 		div = "final_deaths",
 		colour = "gold"
 	),
+	field(ident = "kills", colour = "green"),
+	field(ident = "deaths", colour = "red"),
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
 	field(ident = "beds_broken", colour = "green"),
 	field(ident = "beds_lost", colour = "red"),
 	field(tr = "bblr", ident = "beds_broken", div = "beds_lost", colour = "gold"),
