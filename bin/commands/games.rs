@@ -171,14 +171,14 @@ macro_rules! generate_command {
 						press
 							.create_interaction_response(ctx, |b| {
 								b.kind(::poise::serenity_prelude::InteractionResponseType::UpdateMessage)
-																					.interaction_response_data(|m| {
-																						m.files([::poise::serenity_prelude::AttachmentType::Bytes {
-																							data: png,
-																							filename: "canvas.png".into(),
-																						}]);
-																						m.set_components(<$mode>::as_components(ctx));
-																						m
-																					})
+																							.interaction_response_data(|m| {
+																								m.files([::poise::serenity_prelude::AttachmentType::Bytes {
+																									data: png,
+																									filename: "canvas.png".into(),
+																								}]);
+																								m.set_components(<$mode>::as_components(ctx));
+																								m
+																							})
 							})
 							.await?;
 					}
