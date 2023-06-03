@@ -88,13 +88,9 @@ async fn main() {
 		.intents(GatewayIntents::from_bits(0).unwrap())
 		.setup(move |ctx, _ready, framework| {
 			Box::pin(async move {
-				poise::builtins::register_globally(
-					ctx,
-					&framework.options().commands,
-					// 968_627_637_444_558_918u64.into(),
-				)
-				.await
-				.unwrap();
+				poise::builtins::register_globally(ctx, &framework.options().commands)
+					.await
+					.unwrap();
 
 				Ok(Data { pool, locale })
 			})

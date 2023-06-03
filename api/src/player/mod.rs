@@ -21,7 +21,7 @@ use crate::{
 
 use self::status::Status;
 
-pub const VERSION: i16 = 3;
+pub const VERSION: i16 = 4;
 pub const DEFAULT_SKIN: &[u8] = include_bytes!("../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =

@@ -51,17 +51,68 @@ pub struct BedWars {
 	pub xp: u64,
 
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_eight_one"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE"))]
 	pub solo: Solo,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_eight_two"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO"))]
 	pub double: Double,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_four_three"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_THREE"))]
 	pub three: Three,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "bedwars_four_four"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR"))]
 	pub four: Four,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_RUSH"))]
+	pub solo_rush: SoloRush,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_RUSH"))]
+	pub double_rush: DoubleRush,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_RUSH"))]
+	pub four_rush: FourRush,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_ULTIMATE"))]
+	pub solo_ultimate: SoloUltimate,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ULTIMATE"))]
+	pub double_ultimate: DoubleUltimate,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ULTIMATE"))]
+	pub four_ultimate: FourUltimate,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_CASTLE"))]
+	pub castle: Castle,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_LUCKY"))]
+	pub double_lucky: DoubleLucky,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_LUCKY"))]
+	pub four_lucky: FourLucky,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_VOIDLESS"))]
+	pub double_voidless: DoubleVoidless,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_VOIDLESS"))]
+	pub four_voidless: FourVoidless,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ARMED"))]
+	pub double_armed: DoubleArmed,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ARMED"))]
+	pub four_armed: FourArmed,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_UNDERWORLD"))]
+	pub double_underworld: DoubleUnderworld,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_UNDERWORLD"))]
+	pub four_underworld: FourUnderworld,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_SWAP"))]
+	pub double_swap: DoubleSwap,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_SWAP"))]
+	pub four_swap: FourSwap,
 }
 
 #[derive(
@@ -193,5 +244,566 @@ pub struct Four {
 	#[serde(rename = "four_four_emerald_resources_collected_bedwars")]
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct SoloRush {
+	#[serde(rename = "eight_one_rush_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_one_rush_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_one_rush_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_one_rush_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_one_rush_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_one_rush_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_one_rush_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_one_rush_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_one_rush_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_one_rush_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_one_rush_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_one_rush_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_one_rush_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleRush {
+	#[serde(rename = "eight_two_rush_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_rush_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_rush_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_rush_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_rush_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_rush_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_rush_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_rush_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_rush_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_rush_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_rush_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_rush_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_rush_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourRush {
+	#[serde(rename = "four_four_rush_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_rush_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_rush_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_rush_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_rush_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_rush_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_rush_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_rush_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_rush_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_rush_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_rush_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_rush_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_rush_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct SoloUltimate {
+	#[serde(rename = "eight_one_ultimate_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_one_ultimate_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_one_ultimate_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_one_ultimate_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_one_ultimate_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_one_ultimate_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_one_ultimate_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_one_ultimate_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_one_ultimate_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_one_ultimate_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_one_ultimate_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_one_ultimate_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_one_ultimate_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleUltimate {
+	#[serde(rename = "eight_two_ultimate_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_ultimate_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_ultimate_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_ultimate_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_ultimate_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_ultimate_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_ultimate_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_ultimate_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_ultimate_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_ultimate_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_ultimate_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_ultimate_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_ultimate_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourUltimate {
+	#[serde(rename = "four_four_ultimate_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_ultimate_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_ultimate_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_ultimate_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_ultimate_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_ultimate_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_ultimate_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_ultimate_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_ultimate_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_ultimate_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_ultimate_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_ultimate_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_ultimate_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct Castle {
+	#[serde(rename = "castle_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "castle_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "castle_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "castle_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "castle_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "castle_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "castle_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "castle_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "castle_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "castle_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "castle_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "castle_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "castle_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleLucky {
+	#[serde(rename = "eight_two_lucky_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_lucky_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_lucky_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_lucky_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_lucky_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_lucky_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_lucky_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_lucky_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_lucky_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_lucky_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_lucky_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_lucky_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_lucky_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourLucky {
+	#[serde(rename = "four_four_lucky_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_lucky_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_lucky_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_lucky_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_lucky_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_lucky_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_lucky_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_lucky_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_lucky_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_lucky_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_lucky_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_lucky_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_lucky_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleVoidless {
+	#[serde(rename = "eight_two_voidless_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_voidless_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_voidless_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_voidless_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_voidless_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_voidless_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_voidless_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_voidless_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_voidless_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_voidless_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_voidless_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_voidless_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_voidless_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourVoidless {
+	#[serde(rename = "four_four_voidless_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_voidless_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_voidless_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_voidless_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_voidless_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_voidless_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_voidless_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_voidless_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_voidless_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_voidless_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_voidless_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_voidless_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_voidless_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleArmed {
+	#[serde(rename = "eight_two_armed_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_armed_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_armed_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_armed_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_armed_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_armed_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_armed_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_armed_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_armed_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_armed_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_armed_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_armed_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_armed_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourArmed {
+	#[serde(rename = "four_four_armed_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_armed_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_armed_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_armed_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_armed_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_armed_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_armed_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_armed_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_armed_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_armed_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_armed_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_armed_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_armed_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleUnderworld {
+	#[serde(rename = "eight_two_underworld_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_underworld_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_underworld_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_underworld_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_underworld_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_underworld_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_underworld_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_underworld_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_underworld_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_underworld_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_underworld_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_underworld_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_underworld_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourUnderworld {
+	#[serde(rename = "four_four_underworld_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_underworld_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_underworld_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_underworld_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_underworld_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_underworld_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_underworld_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_underworld_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_underworld_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_underworld_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_underworld_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_underworld_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_underworld_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct DoubleSwap {
+	#[serde(rename = "eight_two_swap_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "eight_two_swap_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "eight_two_swap_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "eight_two_swap_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "eight_two_swap_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "eight_two_swap_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "eight_two_swap_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "eight_two_swap_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "eight_two_swap_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "eight_two_swap_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "eight_two_swap_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "eight_two_swap_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "eight_two_swap_items_purchased_bedwars")]
+	pub items_purchased: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct FourSwap {
+	#[serde(rename = "four_four_swap_wins_bedwars")]
+	pub wins: u32,
+	#[serde(rename = "four_four_swap_losses_bedwars")]
+	pub losses: u32,
+	#[serde(rename = "four_four_swap_kills_bedwars")]
+	pub kills: u32,
+	#[serde(rename = "four_four_swap_deaths_bedwars")]
+	pub deaths: u32,
+	#[serde(rename = "four_four_swap_final_kills_bedwars")]
+	pub final_kills: u32,
+	#[serde(rename = "four_four_swap_final_deaths_bedwars")]
+	pub final_deaths: u32,
+	#[serde(rename = "four_four_swap_beds_broken_bedwars")]
+	pub beds_broken: u32,
+	#[serde(rename = "four_four_swap_beds_lost_bedwars")]
+	pub beds_lost: u32,
+	#[serde(rename = "four_four_swap_iron_resources_collected_bedwars")]
+	pub iron_collected: u32,
+	#[serde(rename = "four_four_swap_gold_resources_collected_bedwars")]
+	pub gold_collected: u32,
+	#[serde(rename = "four_four_swap_diamond_resources_collected_bedwars")]
+	pub diamond_collected: u32,
+	#[serde(rename = "four_four_swap_emerald_resources_collected_bedwars")]
+	pub emerald_collected: u32,
+	#[serde(rename = "four_four_swap_items_purchased_bedwars")]
 	pub items_purchased: u32,
 }

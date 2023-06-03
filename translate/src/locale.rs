@@ -159,6 +159,10 @@ impl Locale {
 			// Add localizations
 			if !subcommand {
 				for (locale, bundle) in &self.other {
+					if locale == "en-US" {
+						continue;
+					}
+
 					// Insert localized command name and description
 					let localized_command_name = match format(bundle, &command.name, None, None) {
 						Some(x) => x,
@@ -269,12 +273,20 @@ impl Locale {
 					);
 				}
 
-				let description = format(
-					bundle,
-					&command.name,
-					Some(&format!("{}-description", parameter.name)),
-					None,
-				);
+				let description = if subcommand
+					|| parameter.name == "hours"
+					|| parameter.name == "days"
+					|| parameter.name == "weeks"
+				{
+					Some(".".to_string())
+				} else {
+					format(
+						bundle,
+						&command.name,
+						Some(&format!("{}-description", parameter.name)),
+						None,
+					)
+				};
 
 				if let Some(description) = description {
 					parameter.description = Some(description);
