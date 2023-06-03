@@ -229,7 +229,6 @@ impl ToTokens for ModeInputReceiver {
 					ctx: ::translate::Context<'_>,
 					field: &mut ::std::string::String,
 					data: &crate::player::data::Data,
-					session: &crate::player::status::Session,
 					stats: &Stats,
 				) {
 					#(#apply_embed_field_items_mode)*

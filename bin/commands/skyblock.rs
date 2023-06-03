@@ -53,14 +53,13 @@ pub async fn auctions(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, player, data, session, skin) = crate::get_all!(ctx, uuid, username);
+	let (player, data, session, skin) = crate::get_all!(ctx, uuid, username);
 
 	player.increase_searches(ctx).await?;
 
-	let auctions = player.get_auctions().await?;
-	let status = shape::Status(&session, skin.as_ref());
-
 	let png = {
+		let auctions = player.get_auctions().await?;
+		let status = shape::Status(&session, skin.as_ref());
 		let level = network::get_level(data.xp);
 		let progress = shape::WideBubbleProgress(
 			network::get_level_progress(data.xp),
@@ -143,7 +142,7 @@ pub async fn profile(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (_format, player, mut data, session, skin) = crate::get_all!(ctx, uuid, username);
+	let (player, mut data, session, skin) = crate::get_all!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -165,224 +164,200 @@ pub async fn profile(
 	};
 
 	let png = {
-		let mut surface = canvas::create_surface(4);
-
-		canvas::header::apply_name(&mut surface, &data);
-		canvas::header::apply_status(ctx, &mut surface, &session, skin.as_ref());
-		canvas::game::apply_label(
-			&mut surface,
-			&[
-				LABEL[0],
-				LABEL[1],
-				Text {
-					text: " (",
-					paint: Paint::White,
-					..Default::default()
-				},
-				Text {
-					text: tr!(ctx, "member-profile").as_ref(),
-					paint: Paint::White,
-					..Default::default()
-				},
-				Text {
-					text: ")",
-					paint: Paint::White,
-					..Default::default()
-				},
-			],
-		);
-
+		let status = shape::Status(&session, skin.as_ref());
 		let level = network::get_level(data.xp);
-
-		canvas::game::apply_data(
-			ctx,
-			&mut surface,
-			&network::get_level_format(level),
+		let progress = shape::WideBubbleProgress(
 			network::get_level_progress(data.xp),
-			network::get_curr_level_xp(data.xp),
-			network::get_level_xp(data.xp),
-			&network::get_colours(level),
+			network::get_colours(level),
 		);
 
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(tr!(ctx, "coins"), member.coin_purse, Paint::Gold),
-			0,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "fairy-souls"),
-				member.fairy_souls_collected,
-				Paint::Aqua,
-			),
-			1,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "fairy-exchanges"),
-				member.fairy_exchanges,
-				Paint::LightPurple,
-			),
-			2,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "fishing-treasure"),
-				member.fishing_treasure_caught,
-				Paint::Blue,
-			),
-			3,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "zones-visited"),
-				member.zones_visited,
-				Paint::Green,
-			),
-			4,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "generators-crafted"),
-				member.generators_crafted,
-				Paint::White,
-			),
-			5,
-		);
-
-		canvas::sidebar::item(
-			ctx,
-			&mut surface,
-			&(
-				tr!(ctx, "highest-crit"),
-				member.stats.highest_critical_damage,
-				Paint::Red,
-			),
-			6,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.farming),
-			tr!(ctx, "farming").as_ref(),
-			Paint::Gold,
-			0,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.mining),
-			tr!(ctx, "mining").as_ref(),
-			Paint::Gray,
-			1,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.combat),
-			tr!(ctx, "combat").as_ref(),
-			Paint::Gray,
-			2,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.foraging),
-			tr!(ctx, "foraging").as_ref(),
-			Paint::Green,
-			3,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.fishing),
-			tr!(ctx, "fishing").as_ref(),
-			Paint::White,
-			4,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.enchanting),
-			tr!(ctx, "enchanting").as_ref(),
-			Paint::DarkPurple,
-			5,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.alchemy),
-			tr!(ctx, "alchemy").as_ref(),
-			Paint::Yellow,
-			6,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.taming),
-			tr!(ctx, "taming").as_ref(),
-			Paint::Gray,
-			7,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_dungeoneering(member.dungeons.types.catacombs.experience),
-			tr!(ctx, "dungeoneering").as_ref(),
-			Paint::Gray,
-			8,
-		);
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_general(member.skills.carpentry),
-			tr!(ctx, "carpentry").as_ref(),
-			Paint::Red,
-			9,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_runecrafting(member.skills.runecrafting),
-			tr!(ctx, "runecrafting").as_ref(),
-			Paint::LightPurple,
-			10,
-		);
-
-		canvas::game::bubble(
-			ctx,
-			&mut surface,
-			sky_block::skills::get_level_social(member.skills.social),
-			tr!(ctx, "social").as_ref(),
-			Paint::Green,
-			11,
-		);
+		let mut surface = Canvas::new(720.)
+			.gap(7.)
+			.push_down(
+				&shape::Title,
+				shape::Title::from_text(&text::from_data(&data, &data.username)),
+			)
+			.push_down(
+				&shape::Subtitle,
+				shape::Subtitle::from_label(ctx, &LABEL, "member-profile"),
+			)
+			.push_down(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&network::get_level_format(level),
+					&network::get_curr_level_xp(data.xp),
+					&network::get_level_xp(data.xp),
+				),
+			)
+			.push_right_start(
+				&canvas::builder::shape::Sidebar,
+				canvas::builder::body::Body::default()
+					.append_item(
+						&::translate::tr!(ctx, "coins"),
+						&canvas::label::ToFormatted::to_formatted_label(&member.coin_purse, ctx),
+						&Paint::Gold,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fairy-souls"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fairy_souls_collected,
+							ctx,
+						),
+						&Paint::Aqua,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fairy-exchanges"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fairy_exchanges,
+							ctx,
+						),
+						&Paint::LightPurple,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fishing-treasure"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fishing_treasure_caught,
+							ctx,
+						),
+						&Paint::Blue,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "zones-visited"),
+						&canvas::label::ToFormatted::to_formatted_label(&member.zones_visited, ctx),
+						&Paint::Green,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "generators-crafted"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.generators_crafted,
+							ctx,
+						),
+						&Paint::White,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "highest-crit"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.stats.highest_critical_damage,
+							ctx,
+						),
+						&Paint::Red,
+					)
+					.build(17., ::std::option::Option::None),
+			)
+			.push_right(&status, Body::from_status(ctx, &session))
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.farming),
+					tr!(ctx, "farming").as_ref(),
+					Paint::Gold,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.mining),
+					tr!(ctx, "mining").as_ref(),
+					Paint::Gray,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.combat),
+					tr!(ctx, "combat").as_ref(),
+					Paint::Gray,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.foraging),
+					tr!(ctx, "foraging").as_ref(),
+					Paint::Green,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.fishing),
+					tr!(ctx, "fishing").as_ref(),
+					Paint::White,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.enchanting),
+					tr!(ctx, "enchanting").as_ref(),
+					Paint::DarkPurple,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.alchemy),
+					tr!(ctx, "alchemy").as_ref(),
+					Paint::Yellow,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.taming),
+					tr!(ctx, "taming").as_ref(),
+					Paint::Gray,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_dungeoneering(
+						member.dungeons.types.catacombs.experience,
+					),
+					tr!(ctx, "dungeoneering").as_ref(),
+					Paint::Gray,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.carpentry),
+					tr!(ctx, "carpentry").as_ref(),
+					Paint::Red,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.runecrafting),
+					tr!(ctx, "runecrafting").as_ref(),
+					Paint::LightPurple,
+				),
+			)
+			.push_checked(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&sky_block::skills::get_level_general(member.skills.social),
+					tr!(ctx, "social").as_ref(),
+					Paint::Green,
+				),
+			)
+			.build(None)
+			.unwrap();
 
 		canvas::to_png(&mut surface).into()
 	};

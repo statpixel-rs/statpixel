@@ -28,7 +28,7 @@ pub struct Data {
 		default
 	)]
 	pub xp: u64,
-	#[serde(rename = "networkLevel", default)]
+	#[serde(default)]
 	pub karma: u64,
 	#[serde(rename = "firstLogin", with = "chrono::serde::ts_milliseconds_option")]
 	#[bincode(with_serde)]

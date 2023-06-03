@@ -154,14 +154,13 @@ macro_rules! get_all {
 			Err(e) => return Err(e),
 		};
 
-		let format = $crate::util::get_format_from_input($ctx).await;
 		let (data, session, skin) =
 			tokio::join!(player.get_data(), player.get_session(), player.get_skin());
 
 		let data = data?;
 		let session = session?;
 
-		(format, player, data, session, skin)
+		(player, data, session, skin)
 	}};
 }
 

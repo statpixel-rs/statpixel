@@ -210,7 +210,7 @@ impl ToTokens for GameInputReceiver {
 				let ident = mode.ident.as_ref().unwrap();
 
 				quote! {
-					#ty ::embed(&data.stats. #path. #ident, ctx, &mut embed, data, session);
+					#ty ::embed(&data.stats. #path. #ident, ctx, &mut embed, data);
 				}
 			})
 			.collect::<Vec<_>>();
@@ -776,13 +776,12 @@ impl ToTokens for GameInputReceiver {
 						ctx: ::translate::Context<'_>,
 						embed: &mut ::poise::serenity_prelude::CreateEmbed,
 						data: &crate::player::data::Data,
-						session: &crate::player::status::Session,
 					) {
 						let mut field = ::std::string::String::new();
 						let stats = &data.stats.#path;
 
 						#(#apply_embed_mode)*
-						self.embed_own_fields(ctx, &mut field, data, session, stats);
+						self.embed_own_fields(ctx, &mut field, data, stats);
 
 						embed.field(::translate::tr!(ctx, Self::get_tr()), field, true);
 					}
@@ -913,7 +912,7 @@ impl ToTokens for GameInputReceiver {
 					canvas #(#apply_items_overall)*
 				}
 
-				pub fn embed(ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data, session: &crate::player::status::Session) {
+				pub fn embed(ctx: ::translate::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data) {
 					let stats = &data.stats.#path;
 					let mut field = ::std::string::String::new();
 
@@ -1209,7 +1208,6 @@ impl ToTokens for GameInputReceiver {
 					ctx: ::translate::Context<'_>,
 					player: &crate::player::Player,
 					data: &crate::player::data::Data,
-					session: &crate::player::status::Session
 				) -> ::poise::serenity_prelude::CreateEmbed {
 					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
 
@@ -1231,7 +1229,6 @@ impl ToTokens for GameInputReceiver {
 						ctx,
 						&mut embed,
 						data,
-						session,
 					);
 
 					#(#apply_modes_text)*
@@ -1249,7 +1246,6 @@ impl ToTokens for GameInputReceiver {
 					player: &crate::player::Player,
 					prev: &crate::player::data::Data,
 					curr: &mut crate::player::data::Data,
-					session: &crate::player::status::Session
 				) -> ::poise::serenity_prelude::CreateEmbed {
 					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
 
@@ -1278,7 +1274,6 @@ impl ToTokens for GameInputReceiver {
 						ctx,
 						&mut embed,
 						data,
-						session,
 					);
 
 					#(#apply_modes_text)*
