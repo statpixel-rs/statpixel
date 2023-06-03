@@ -117,13 +117,13 @@ pub async fn get_player_with_username_from_input(
 		(None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
 		(_, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(None, _, None, _) => {
-			let uuid: Option<Uuid> = schema::user::table
+			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
-				.await?;
+				.await;
 
-			if let Some(uuid) = uuid {
+			if let Ok(Some(uuid)) = uuid {
 				Ok(Player::from_uuid(&uuid).await?)
 			} else {
 				Err(Error::NotLinked)
@@ -160,13 +160,13 @@ pub async fn get_guild_from_input(
 		(_, None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
 		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(_, None, _, None, _) => {
-			let uuid: Option<Uuid> = schema::user::table
+			let uuid = schema::user::table
 				.filter(schema::user::id.eq(author.id.0 as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
-				.await?;
+				.await;
 
-			if let Some(uuid) = uuid {
+			if let Ok(Some(uuid)) = uuid {
 				Ok(Guild::from_member_uuid(uuid).await?)
 			} else {
 				Err(Error::NotLinked)
