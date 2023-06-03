@@ -97,6 +97,41 @@ pub async fn get_player_from_input(
 	}
 }
 
+pub async fn get_player_with_username_from_input(
+	ctx: Context<'_>,
+	uuid_raw: Option<String>,
+	username_raw: Option<String>,
+) -> Result<Player, Error> {
+	match (
+		uuid_raw
+			.as_ref()
+			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
+		uuid_raw,
+		username_raw
+			.as_ref()
+			.and_then(|username| Username::try_from_str(username).ok()),
+		username_raw,
+	) {
+		(Some(uuid), _, _, _) => Ok(Player::from_uuid(&uuid).await?),
+		(_, _, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
+		(None, Some(uuid), _, _) => Err(Error::InvalidUuid(uuid)),
+		(_, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
+		(None, _, None, _) => {
+			let uuid: Option<Uuid> = schema::user::table
+				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+				.select(schema::user::uuid)
+				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.await?;
+
+			if let Some(uuid) = uuid {
+				Ok(Player::from_uuid(&uuid).await?)
+			} else {
+				Err(Error::NotLinked)
+			}
+		}
+	}
+}
+
 pub async fn get_guild_from_input(
 	ctx: Context<'_>,
 	author: &User,

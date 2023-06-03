@@ -18,7 +18,7 @@ macro_rules! generate_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin) = $crate::get_all!(ctx, uuid, username);
+					let (player, mut data, session, skin) = $crate::get_all_with_username!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -102,7 +102,7 @@ macro_rules! generate_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::get_data!(ctx, uuid, username);
+					let (player, mut data) = $crate::get_data_with_username!(ctx, uuid, username);
 
 					player.increase_searches(ctx).await?;
 
@@ -177,7 +177,7 @@ macro_rules! generate_large_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin) = $crate::get_all!(ctx, uuid, username);
+					let (player, mut data, session, skin) = $crate::get_all_with_username!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -261,7 +261,7 @@ macro_rules! generate_large_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::get_data!(ctx, uuid, username);
+					let (player, mut data) = $crate::get_data_with_username!(ctx, uuid, username);
 
 					player.increase_searches(ctx).await?;
 

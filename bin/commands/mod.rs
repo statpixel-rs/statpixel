@@ -166,6 +166,37 @@ macro_rules! get_all {
 
 /// Generates the code needed to fetch the player, their data, display format, session, and skin
 #[macro_export]
+macro_rules! get_all_with_username {
+	($ctx: ident, $uuid: ident, $username: ident) => {{
+		let player = match $crate::util::get_player_with_username_from_input($ctx, $uuid, $username).await {
+			Ok(player) => player,
+			Err($crate::Error::NotLinked) => {
+				$ctx.send(|m| {
+					$crate::util::error_embed(
+						m,
+						::translate::tr!($ctx, "not-linked"),
+						::translate::tr!($ctx, "not-linked-description"),
+					)
+				})
+				.await?;
+
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
+
+		let (data, session, skin) =
+			tokio::join!(player.get_data(), player.get_session(), player.get_skin());
+
+		let data = data?;
+		let session = session?;
+
+		(player, data, session, skin)
+	}};
+}
+
+/// Generates the code needed to fetch the player, their data, display format, session, and skin
+#[macro_export]
 macro_rules! get_from_player {
 	($ctx: ident, $player: ident) => {{
 		let (data, session, skin) = tokio::join!(
@@ -186,6 +217,32 @@ macro_rules! get_from_player {
 macro_rules! get_data {
 	($ctx: ident, $uuid: ident, $username: ident) => {{
 		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
+			Ok(player) => player,
+			Err($crate::Error::NotLinked) => {
+				$ctx.send(|m| {
+					$crate::util::error_embed(
+						m,
+						::translate::tr!($ctx, "not-linked"),
+						::translate::tr!($ctx, "not-linked-description"),
+					)
+				})
+				.await?;
+
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
+
+		let data = player.get_data().await?;
+
+		(player, data)
+	}};
+}
+
+#[macro_export]
+macro_rules! get_data_with_username {
+	($ctx: ident, $uuid: ident, $username: ident) => {{
+		let player = match $crate::util::get_player_with_username_from_input($ctx, $uuid, $username).await {
 			Ok(player) => player,
 			Err($crate::Error::NotLinked) => {
 				$ctx.send(|m| {
