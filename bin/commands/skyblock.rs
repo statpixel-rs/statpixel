@@ -1,16 +1,11 @@
 use std::{borrow::Cow, cmp::max};
 
 use api::{
-	canvas::{
-		self,
-		builder::{body::Body, Canvas},
-		chart,
-		label::ToFormatted,
-	},
+	canvas::{self, body::Body, chart, label::ToFormatted, Canvas},
 	player::Player,
 	skyblock::{profile::TransactionAction, NAMES},
 };
-use canvas::builder::{shape, text};
+use canvas::{shape, text};
 use chrono::Utc;
 use minecraft::{
 	calc::{network, sky_block},
@@ -108,9 +103,7 @@ pub async fn auctions(
 
 			canvas = canvas.push_checked(
 				&shape::TallBubble,
-				Body::default()
-					.extend(text.as_slice())
-					.build(23., TextAlign::Center),
+				Body::build_slice(text.as_slice(), 23., TextAlign::Center),
 			);
 		}
 
@@ -191,8 +184,8 @@ pub async fn profile(
 				),
 			)
 			.push_right_start(
-				&canvas::builder::shape::Sidebar,
-				canvas::builder::body::Body::default()
+				&canvas::shape::Sidebar,
+				canvas::body::Body::new(17., None)
 					.append_item(
 						&::translate::tr!(ctx, "coins"),
 						&canvas::label::ToFormatted::to_formatted_label(&member.coin_purse, ctx),
@@ -243,7 +236,7 @@ pub async fn profile(
 						),
 						&Paint::Red,
 					)
-					.build(17., ::std::option::Option::None),
+					.build(),
 			)
 			.push_right(&status, Body::from_status(ctx, &session))
 			.push_checked(

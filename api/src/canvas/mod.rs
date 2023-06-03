@@ -1,15 +1,16 @@
-pub mod builder;
+pub mod body;
+mod builder;
 pub mod chart;
 pub mod diff;
-pub mod draw;
 pub mod game;
 pub mod guild;
-pub mod gutter;
-pub mod header;
 pub mod label;
-pub mod leaderboard;
+pub mod shape;
 pub mod sidebar;
+pub mod text;
 pub(crate) mod util;
+
+pub use builder::*;
 
 use minecraft::paint;
 use skia_safe::{EncodedImageFormat, Path, Point, RRect, Rect, Surface};

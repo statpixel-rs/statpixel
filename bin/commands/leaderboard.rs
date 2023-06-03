@@ -1,6 +1,11 @@
-use api::{canvas, player::Player};
+use api::{
+	canvas::{self, body::Body, shape, text, Canvas},
+	player::Player,
+};
 use futures::StreamExt;
+use minecraft::{paint::Paint, text::Text};
 use poise::serenity_prelude::{AttachmentType, CreateEmbed};
+use skia_safe::textlayout::TextAlign;
 use translate::{Context, Error};
 
 use crate::{format::Display, util::escape_username};
@@ -57,9 +62,6 @@ pub async fn leaderboard(
 		display_name,
 	} = leaderboard;
 
-	#[allow(clippy::cast_possible_truncation)]
-	let leaders_len = leaders.len() as u8;
-
 	let leaders = futures::stream::iter(
 		leaders
 			.into_iter()
@@ -82,9 +84,29 @@ pub async fn leaderboard(
 	match format {
 		Display::Image | Display::Compact => {
 			let png = {
-				let mut surface = canvas::leaderboard::create(leaders_len);
-
-				canvas::leaderboard::header(&mut surface, &leaderboard);
+				let mut canvas = Canvas::new(720.).gap(7.).push_down(
+					&shape::LeaderboardTitle,
+					Body::new(24., TextAlign::Center)
+						.extend(leaderboard.game.as_text())
+						.extend(&[
+							Text {
+								text: " (",
+								paint: Paint::White,
+								..Default::default()
+							},
+							Text {
+								text: &leaderboard.name,
+								paint: Paint::White,
+								..Default::default()
+							},
+							Text {
+								text: ")",
+								paint: Paint::White,
+								..Default::default()
+							},
+						])
+						.build(),
+				);
 
 				for (idx, player) in leaders.iter().enumerate() {
 					let value = player
@@ -92,9 +114,26 @@ pub async fn leaderboard(
 						.get_value(&leaderboard.game, leaderboard.path.as_str())
 						.unwrap_or_else(|| Box::new(0));
 
-					#[allow(clippy::cast_possible_truncation)]
-					canvas::leaderboard::row(ctx, &mut surface, player, &*value, idx as u8);
+					canvas = canvas
+						.push_down_start(
+							&shape::LeaderboardPlace,
+							shape::LeaderboardPlace::from_usize(idx + 1),
+						)
+						.push_right(
+							&shape::LeaderboardName,
+							Body::build_slice(
+								&text::from_data(player, &player.username),
+								20.,
+								None,
+							),
+						)
+						.push_right(
+							&shape::LeaderboardValue,
+							shape::LeaderboardValue::from_value(ctx, &value),
+						);
 				}
+
+				let mut surface = canvas.build(None).unwrap();
 
 				canvas::to_png(&mut surface).into()
 			};

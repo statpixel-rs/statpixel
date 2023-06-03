@@ -473,8 +473,8 @@ impl ToTokens for GameInputReceiver {
 
 					return quote! {
 						.push_checked(
-							&crate::canvas::builder::shape::Bubble,
-							crate::canvas::builder::body::Body::from_bubble(
+							&crate::canvas::shape::Bubble,
+							crate::canvas::body::Body::from_bubble(
 								ctx,
 								&crate::extras::percent::#struct_name (#value),
 								&::translate::tr!(ctx, #tr),
@@ -500,8 +500,8 @@ impl ToTokens for GameInputReceiver {
 
 			quote! {
 				.push_checked(
-					&crate::canvas::builder::shape::Bubble,
-					crate::canvas::builder::body::Body::from_bubble(
+					&crate::canvas::shape::Bubble,
+					crate::canvas::body::Body::from_bubble(
 						ctx,
 						&#value,
 						&::translate::tr!(ctx, #tr),
@@ -585,8 +585,8 @@ impl ToTokens for GameInputReceiver {
 
 					return quote! {
 						.push_checked(
-							&crate::canvas::builder::shape::Bubble,
-							crate::canvas::builder::body::Body::from_bubble(
+							&crate::canvas::shape::Bubble,
+							crate::canvas::body::Body::from_bubble(
 								ctx,
 								&crate::extras::percent::#struct_name (#value),
 								&::translate::tr!(ctx, #tr),
@@ -603,8 +603,8 @@ impl ToTokens for GameInputReceiver {
 
 			quote! {
 				.push_checked(
-					&crate::canvas::builder::shape::Bubble,
-					crate::canvas::builder::body::Body::from_bubble(
+					&crate::canvas::shape::Bubble,
+					crate::canvas::body::Body::from_bubble(
 						ctx,
 						&#value,
 						&::translate::tr!(ctx, #tr),
@@ -729,12 +729,12 @@ impl ToTokens for GameInputReceiver {
 					pub fn apply<'c>(
 						&self,
 						ctx: ::translate::Context<'_>,
-						mut canvas: crate::canvas::builder::Canvas<'c>,
+						mut canvas: crate::canvas::Canvas<'c>,
 						data: &'c crate::player::data::Data,
 						session: &'c crate::player::status::Session,
-						status: &'c crate::canvas::builder::shape::Status,
-						progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
-					) -> crate::canvas::builder::Canvas<'c> {
+						status: &'c crate::canvas::shape::Status,
+						progress: &'c crate::canvas::shape::WideBubbleProgress,
+					) -> crate::canvas::Canvas<'c> {
 						let stats = &data.stats.#path;
 
 						let xp = #calc ::convert(&#xp_field);
@@ -742,12 +742,12 @@ impl ToTokens for GameInputReceiver {
 
 						let mut canvas = canvas
 							.push_down(
-								&crate::canvas::builder::shape::Subtitle,
-								crate::canvas::builder::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
+								&crate::canvas::shape::Subtitle,
+								crate::canvas::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
 							)
 							.push_down(
 								progress,
-								crate::canvas::builder::shape::WideBubbleProgress::from_level_progress(
+								crate::canvas::shape::WideBubbleProgress::from_level_progress(
 									ctx,
 									&#level_fmt_field,
 									&#calc ::get_curr_level_xp(xp),
@@ -755,15 +755,15 @@ impl ToTokens for GameInputReceiver {
 								),
 							)
 							.push_right_start(
-								&crate::canvas::builder::shape::Sidebar,
-								crate::canvas::builder::body::Body::default()
+								&crate::canvas::shape::Sidebar,
+								crate::canvas::body::Body::new(17., ::std::option::Option::None)
 									#(#extras)*
 									#(#extras_for_mode)*
-									.build(17., ::std::option::Option::None)
+									.build()
 							)
 							.push_right(
 								status,
-								crate::canvas::builder::body::Body::from_status(ctx, session)
+								crate::canvas::body::Body::from_status(ctx, session)
 							);
 
 						let mut canvas = canvas #(#apply_items_mode)*;
@@ -872,12 +872,12 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn apply<'c>(
 					ctx: ::translate::Context<'_>,
-					mut canvas: crate::canvas::builder::Canvas<'c>,
+					mut canvas: crate::canvas::Canvas<'c>,
 					data: &'c crate::player::data::Data,
 					session: &'c crate::player::status::Session,
-					status: &'c crate::canvas::builder::shape::Status,
-					progress: &'c crate::canvas::builder::shape::WideBubbleProgress,
-				) -> crate::canvas::builder::Canvas<'c> {
+					status: &'c crate::canvas::shape::Status,
+					progress: &'c crate::canvas::shape::WideBubbleProgress,
+				) -> crate::canvas::Canvas<'c> {
 					let stats = &data.stats.#path;
 
 					let xp = #calc ::convert(&#xp_field);
@@ -885,12 +885,12 @@ impl ToTokens for GameInputReceiver {
 
 					let mut canvas = canvas
 						.push_down(
-							&crate::canvas::builder::shape::Subtitle,
-							crate::canvas::builder::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
+							&crate::canvas::shape::Subtitle,
+							crate::canvas::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
 						)
 						.push_down(
 							progress,
-							crate::canvas::builder::shape::WideBubbleProgress::from_level_progress(
+							crate::canvas::shape::WideBubbleProgress::from_level_progress(
 								ctx,
 								&#level_fmt_field,
 								&#calc ::get_curr_level_xp(xp),
@@ -898,15 +898,15 @@ impl ToTokens for GameInputReceiver {
 							),
 						)
 						.push_right_start(
-							&crate::canvas::builder::shape::Sidebar,
-							crate::canvas::builder::body::Body::default()
+							&crate::canvas::shape::Sidebar,
+							crate::canvas::body::Body::new(17., ::std::option::Option::None)
 								#(#extras)*
 								#(#extras_for_overall)*
-								.build(17., ::std::option::Option::None)
+								.build()
 						)
 						.push_right(
 							status,
-							crate::canvas::builder::body::Body::from_status(ctx, session)
+							crate::canvas::body::Body::from_status(ctx, session)
 						);
 
 					canvas #(#apply_items_overall)*
@@ -1106,22 +1106,22 @@ impl ToTokens for GameInputReceiver {
 					let stats = &data.stats.#path;
 
 					let mode = #enum_ident ::get_mode(mode, session);
-					let mut canvas = crate::canvas::builder::Canvas::new(720.)
+					let mut canvas = crate::canvas::Canvas::new(720.)
 						.gap(7.)
 						.push_down(
-							&crate::canvas::builder::shape::Title,
-							crate::canvas::builder::shape::Title::from_text(&crate::canvas::builder::text::from_data(&data, &data.username)),
+							&crate::canvas::shape::Title,
+							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
 						);
 
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
 
-					let progress = crate::canvas::builder::shape::WideBubbleProgress(
+					let progress = crate::canvas::shape::WideBubbleProgress(
 						#calc ::get_level_progress(xp),
 						#calc ::get_colours(level),
 					);
 
-					let status = crate::canvas::builder::shape::Status(session, skin);
+					let status = crate::canvas::shape::Status(session, skin);
 
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {
@@ -1150,22 +1150,22 @@ impl ToTokens for GameInputReceiver {
 					let stats = &data.stats.#path;
 
 					let mode = #enum_ident ::get_mode(mode, session);
-					let mut canvas = crate::canvas::builder::Canvas::new(720.)
+					let mut canvas = crate::canvas::Canvas::new(720.)
 						.gap(7.)
 						.push_down(
-							&crate::canvas::builder::shape::Title,
-							crate::canvas::builder::shape::Title::from_text(&crate::canvas::builder::text::from_data(&data, &data.username)),
+							&crate::canvas::shape::Title,
+							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
 						);
 
 					let xp = #calc ::convert(&#xp_field);
 					let level = #calc ::get_level(xp);
 
-					let progress = crate::canvas::builder::shape::WideBubbleProgress(
+					let progress = crate::canvas::shape::WideBubbleProgress(
 						#calc ::get_level_progress(xp),
 						#calc ::get_colours(level),
 					);
 
-					let status = crate::canvas::builder::shape::Status(session, skin);
+					let status = crate::canvas::shape::Status(session, skin);
 
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {

@@ -451,9 +451,9 @@ macro_rules! generate_guild_command {
 			let (members, leader) = if let Some(leader) = leader {
 				let (members, leader) = ::tokio::join!(members, leader);
 
-				(members, ::std::option::Option::Some(leader.map_err(::std::sync::Arc::new)?))
+				(members, Some(leader.map_err(::std::sync::Arc::new)?))
 			} else {
-				(members.await, ::std::option::Option::None)
+				(members.await, None)
 			};
 
 			let png: ::std::option::Option<::std::borrow::Cow<_>> = if let $crate::snapshot::guild::Status::Found((ref snapshot, _)) = status {
@@ -480,9 +480,9 @@ macro_rules! generate_guild_command {
 				::api::canvas::guild::level(ctx, &mut surface, &guild);
 				::api::canvas::guild::preferred_games(&mut surface, &guild);
 
-				::std::option::Option::Some(::api::canvas::to_png(&mut surface).into())
+				Some(::api::canvas::to_png(&mut surface).into())
 			} else {
-				::std::option::Option::None
+				None
 			};
 
 			let content = match status {
@@ -498,7 +498,7 @@ macro_rules! generate_guild_command {
 			};
 
 			ctx.send(move |m| {
-				if let ::std::option::Option::Some(png) = png {
+				if let Some(png) = png {
 					m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
 						data: png,
 						filename: "canvas.png".into(),

@@ -56,8 +56,8 @@ impl ToTokens for ModeInputReceiver {
 
 					return quote! {
 						.push_checked(
-							&crate::canvas::builder::shape::Bubble,
-							crate::canvas::builder::body::Body::from_bubble(
+							&crate::canvas::shape::Bubble,
+							crate::canvas::body::Body::from_bubble(
 								ctx,
 								&crate::extras::percent::#struct_name (#value),
 								&::translate::tr!(ctx, #tr),
@@ -74,8 +74,8 @@ impl ToTokens for ModeInputReceiver {
 
 			quote! {
 				.push_checked(
-					&crate::canvas::builder::shape::Bubble,
-					crate::canvas::builder::body::Body::from_bubble(
+					&crate::canvas::shape::Bubble,
+					crate::canvas::body::Body::from_bubble(
 						ctx,
 						&#value,
 						&::translate::tr!(ctx, #tr),
@@ -98,8 +98,8 @@ impl ToTokens for ModeInputReceiver {
 
 					return quote! {
 						.push_checked(
-							&crate::canvas::builder::shape::Bubble,
-							crate::canvas::builder::body::Body::from_bubble(
+							&crate::canvas::shape::Bubble,
+							crate::canvas::body::Body::from_bubble(
 								ctx,
 								&crate::extras::percent::#struct_name (#value),
 								&::translate::tr!(ctx, #tr),
@@ -116,8 +116,8 @@ impl ToTokens for ModeInputReceiver {
 
 			quote! {
 				.push_checked(
-					&crate::canvas::builder::shape::Bubble,
-					crate::canvas::builder::body::Body::from_bubble(
+					&crate::canvas::shape::Bubble,
+					crate::canvas::body::Body::from_bubble(
 						ctx,
 						&#value,
 						&::translate::tr!(ctx, #tr),
@@ -197,11 +197,11 @@ impl ToTokens for ModeInputReceiver {
 				pub fn apply_own_fields<'c>(
 					&self,
 					ctx: ::translate::Context<'_>,
-					mut canvas: crate::canvas::builder::Canvas<'c>,
+					mut canvas: crate::canvas::Canvas<'c>,
 					data: &'c crate::player::data::Data,
 					session: &crate::player::status::Session,
 					stats: &Stats,
-				) -> crate::canvas::builder::Canvas<'c> {
+				) -> crate::canvas::Canvas<'c> {
 					canvas
 					#(#apply_items_mode)*
 					#(#apply_field_items_mode)*

@@ -12,44 +12,71 @@ use crate::{
 };
 
 #[derive(Debug)]
-pub struct Body<'t> {
-	text: Vec<Text<'t>>,
+pub struct Body {
+	paragraph: ParagraphBuilder,
 	first: bool,
+	size: f32,
 }
 
-impl<'t> Default for Body<'t> {
-	fn default() -> Self {
+impl Body {
+	#[inline]
+	#[must_use]
+	pub fn new(size: f32, align: impl Into<Option<TextAlign>>) -> Self {
+		let style = {
+			let mut style = ParagraphStyle::new();
+
+			style.set_text_align(align.into().unwrap_or(TextAlign::Left));
+			style
+		};
+
+		let font = {
+			let mut manager = FontCollection::new();
+
+			manager.set_default_font_manager(FontMgr::new(), "Minecraft");
+			manager
+		};
+
 		Self {
-			text: vec![],
+			paragraph: ParagraphBuilder::new(&style, font),
 			first: true,
+			size,
 		}
 	}
-}
 
-impl<'t> Body<'t> {
 	#[inline]
 	#[must_use]
-	pub fn extend(mut self, text: &[Text<'t>]) -> Self {
+	pub fn extend(mut self, text: &[Text]) -> Self {
 		self.first = false;
-		self.text.extend_from_slice(text);
+
+		for blob in text {
+			let style = blob.get_style(blob.paint, self.size);
+
+			self.paragraph.push_style(&style);
+			self.paragraph.add_text(blob.text);
+		}
+
 		self
 	}
 
 	#[inline]
 	#[must_use]
-	pub fn append(mut self, text: Text<'t>) -> Self {
+	pub fn append(mut self, blob: Text) -> Self {
+		let style = blob.get_style(blob.paint, self.size);
+
 		self.first = false;
-		self.text.push(text);
+		self.paragraph.push_style(&style);
+		self.paragraph.add_text(blob.text);
 		self
 	}
 
 	#[must_use]
-	pub fn append_item(mut self, label: &'t str, value: &'t str, colour: &'t Paint) -> Self {
-		if !self.first {
-			self.text.push(Text::NEW_LINE);
+	pub fn append_item(self, label: &str, value: &str, colour: &Paint) -> Self {
+		if self.first {
+			self
+		} else {
+			self.append(Text::NEW_LINE)
 		}
-
-		self.extend(&[
+		.extend(&[
 			Text {
 				text: "• ",
 				paint: *colour,
@@ -80,7 +107,7 @@ impl<'t> Body<'t> {
 		label: &str,
 		paint: Paint,
 	) -> Paragraph {
-		Self::default()
+		Self::new(40., TextAlign::Center)
 			.extend(&[
 				Text {
 					text: label,
@@ -100,13 +127,13 @@ impl<'t> Body<'t> {
 					size: None,
 				},
 			])
-			.build(40., TextAlign::Center)
+			.build()
 	}
 
 	#[must_use]
 	pub fn from_status(ctx: Context<'_>, session: &Session) -> Paragraph {
 		if session.online {
-			Self::default()
+			Self::new(18., TextAlign::Center)
 				.extend(&[
 					Text {
 						text: &tr!(ctx, "online"),
@@ -136,36 +163,23 @@ impl<'t> Body<'t> {
 						..Default::default()
 					},
 				])
-				.build(18., TextAlign::Center)
+				.build()
 		} else {
-			Self::default().build(25., TextAlign::Center)
+			Self::new(25., TextAlign::Center).build()
 		}
 	}
 
-	pub fn build(self, size: f32, align: impl Into<Option<TextAlign>>) -> Paragraph {
-		let style = {
-			let mut style = ParagraphStyle::new();
+	pub fn build_slice(
+		slice: &[Text],
+		size: f32,
+		align: impl Into<Option<TextAlign>>,
+	) -> Paragraph {
+		Self::new(size, align).extend(slice).build()
+	}
 
-			style.set_text_align(align.into().unwrap_or(TextAlign::Left));
-			style
-		};
-
-		let font = {
-			let mut manager = FontCollection::new();
-
-			manager.set_default_font_manager(FontMgr::new(), "Minecraft");
-			manager
-		};
-
-		let mut builder = ParagraphBuilder::new(&style, font);
-
-		for blob in self.text {
-			let style = blob.get_style(blob.paint, size);
-
-			builder.push_style(&style);
-			builder.add_text(blob.text);
-		}
-
-		builder.build()
+	#[inline]
+	#[must_use]
+	pub fn build(mut self) -> Paragraph {
+		self.paragraph.build()
 	}
 }

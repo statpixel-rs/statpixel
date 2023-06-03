@@ -1,14 +1,10 @@
-pub mod body;
-pub mod shape;
-pub mod text;
-
 use std::fmt;
 
 use skia_safe::{
 	textlayout::Paragraph, Color, ISize, Paint, Path, Point, RRect, Rect, Size, Surface,
 };
 
-use self::shape::Shape;
+use super::shape::Shape;
 
 pub const CORNER_RADIUS: f32 = 20.;
 pub const INSET: f32 = 3.5;

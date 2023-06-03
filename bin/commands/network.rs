@@ -1,9 +1,5 @@
 use crate::{format::Display, Context, Error};
-use api::canvas::{
-	self,
-	builder::{body::Body, shape, text, Canvas},
-	label::ToFormatted,
-};
+use api::canvas::{self, body::Body, label::ToFormatted, shape, text, Canvas};
 use minecraft::{
 	calc::network,
 	paint::Paint,
@@ -63,8 +59,8 @@ pub async fn network(
 						),
 					)
 					.push_right_start(
-						&canvas::builder::shape::Sidebar,
-						canvas::builder::body::Body::default()
+						&canvas::shape::Sidebar,
+						canvas::body::Body::new(17., None)
 							.append_item(
 								&::translate::tr!(ctx, "experience"),
 								&data.xp.to_formatted_label(ctx),
@@ -100,7 +96,7 @@ pub async fn network(
 								&data.last_login.to_formatted_label(ctx),
 								&Paint::Blue,
 							)
-							.build(17., ::std::option::Option::None),
+							.build(),
 					)
 					.push_right(&status, Body::from_status(ctx, &session))
 					.build(None)

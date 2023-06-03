@@ -7,6 +7,7 @@ use super::{body::Body, CORNER_RADIUS};
 
 use minecraft::{
 	paint::Paint,
+	style::MinecraftFont,
 	text::{parse::minecraft_string, Text},
 };
 use skia_safe::{
@@ -42,19 +43,24 @@ pub struct Sidebar;
 pub struct Gutter;
 pub struct Status<'s>(pub &'s Session, pub &'s [u8]);
 
+pub struct LeaderboardTitle;
+pub struct LeaderboardPlace;
+pub struct LeaderboardName;
+pub struct LeaderboardValue;
+
 pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
 
 impl Title {
 	#[must_use]
 	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::default().extend(text).build(25., TextAlign::Center)
+		Body::new(25., TextAlign::Center).extend(text).build()
 	}
 }
 
 impl Subtitle {
 	#[must_use]
 	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::default().extend(text).build(20., TextAlign::Center)
+		Body::new(20., TextAlign::Center).extend(text).build()
 	}
 
 	#[must_use]
@@ -89,7 +95,7 @@ impl Subtitle {
 impl WideBubbleProgress {
 	#[must_use]
 	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::default().extend(text).build(20., TextAlign::Center)
+		Body::new(20., TextAlign::Center).extend(text).build()
 	}
 
 	#[must_use]
@@ -160,6 +166,44 @@ impl WideBubbleProgress {
 	}
 }
 
+impl LeaderboardPlace {
+	#[must_use]
+	pub fn from_usize(value: usize) -> Paragraph {
+		let text = value.to_string();
+
+		Body::new(20., TextAlign::Center)
+			.extend(&[Text {
+				text: &text,
+				font: MinecraftFont::Bold,
+				paint: Paint::White,
+				..Default::default()
+			}])
+			.build()
+	}
+}
+
+impl LeaderboardName {
+	#[must_use]
+	pub fn from_text(text: &str) -> Paragraph {
+		Body::new(20., TextAlign::Left)
+			.extend(&minecraft_string(text).collect::<Vec<_>>())
+			.build()
+	}
+}
+
+impl LeaderboardValue {
+	#[must_use]
+	pub fn from_value(ctx: Context<'_>, value: &impl ToFormatted) -> Paragraph {
+		Body::new(20., TextAlign::Center)
+			.extend(&[Text {
+				text: &value.to_formatted_label(ctx),
+				paint: Paint::White,
+				..Default::default()
+			}])
+			.build()
+	}
+}
+
 macro_rules! impl_rect_shape {
 	($ty: ty, $width: expr, $height: expr, $v_align: expr) => {
 		impl Shape for $ty {
@@ -211,7 +255,41 @@ impl_rect_shape!(
 	true
 );
 
-// pub struct Status<'s>(&'s Session, Vec<u8>);
+impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
+impl_rect_shape!(LeaderboardPlace, 50., 35., true);
+impl_rect_shape!(LeaderboardValue, 200., 35., true);
+
+impl Shape for LeaderboardName {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: 456.,
+			height: 35.,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(10., 0.).into()
+	}
+}
 
 impl<'s> Shape for Status<'s> {
 	fn draw(&self, path: &mut Path, bounds: &Rect) {
@@ -280,7 +358,7 @@ impl Shape for Sidebar {
 	}
 
 	fn insets(&self) -> Point {
-		(13., 17.).into()
+		(13., 19.).into()
 	}
 }
 

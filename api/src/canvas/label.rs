@@ -209,3 +209,9 @@ impl ToFormatted for DateTime<Utc> {
 		Cow::Owned(self.format_localized(fmt, locale).to_string())
 	}
 }
+
+impl ToFormatted for Box<dyn ToFormatted> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
+		self.as_ref().to_formatted_label(ctx)
+	}
+}
