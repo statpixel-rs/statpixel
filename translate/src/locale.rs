@@ -274,9 +274,9 @@ impl Locale {
 				}
 
 				let description = if subcommand
-					|| parameter.name == "hours"
-					|| parameter.name == "days"
-					|| parameter.name == "weeks"
+					&& (parameter.name == "hours"
+						|| parameter.name == "days"
+						|| parameter.name == "weeks")
 				{
 					Some(".".to_string())
 				} else {
