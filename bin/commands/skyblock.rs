@@ -158,10 +158,10 @@ pub async fn profile(
 
 	let png = {
 		let status = shape::Status(&session, skin.as_ref());
-		let level = network::get_level(data.xp);
+		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
-			network::get_level_progress(data.xp),
-			network::get_colours(level),
+			sky_block::get_level_progress(member.leveling.xp),
+			sky_block::get_colours(level),
 		);
 
 		let mut surface = Canvas::new(720.)
@@ -178,9 +178,9 @@ pub async fn profile(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
-					&network::get_level_format(level),
-					&network::get_curr_level_xp(data.xp),
-					&network::get_level_xp(data.xp),
+					&sky_block::get_level_format(level),
+					&sky_block::get_curr_level_xp(member.leveling.xp),
+					&sky_block::get_level_xp(member.leveling.xp),
 				),
 			)
 			.push_right_start(

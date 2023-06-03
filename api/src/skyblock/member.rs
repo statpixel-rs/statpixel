@@ -24,6 +24,14 @@ pub struct Member {
 	#[serde(flatten)]
 	pub skills: Skills,
 	pub dungeons: Dungeons,
+	pub leveling: Leveling,
+}
+
+#[derive(Deserialize, Clone, Debug, Default)]
+#[serde(default)]
+pub struct Leveling {
+	#[serde(rename = "experience")]
+	pub xp: u32,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]
