@@ -163,8 +163,6 @@ macro_rules! get_all {
 			player.get_suffix($ctx),
 		);
 
-		println!("suffix: {:?}", suffix);
-
 		let data = data?;
 		let session = session?;
 
