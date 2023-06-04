@@ -112,7 +112,7 @@ git = "https://github.com/matteopolak/plotters.git"
 branch = "next-release-devel"
 
 [workspace.dependencies.poise]
-version = "0.5.5"
+git = "https://github.com/serenity-rs/poise"
 
 [workspace.dependencies.serde]
 version = "1.0.160"
