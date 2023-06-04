@@ -74,6 +74,7 @@ diesel::table! {
 		updated_at -> Timestamptz,
 		created_at -> Timestamptz,
 		display -> Int2,
+		#[max_length = 4]
 		suffix -> Nullable<Varchar>,
 	}
 }
