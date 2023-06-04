@@ -88,8 +88,6 @@ impl Player {
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
 	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
-		println!("increase_searches for {self:?}");
-
 		diesel::insert_into(autocomplete::table)
 			.values((
 				autocomplete::name.eq(&self.username),

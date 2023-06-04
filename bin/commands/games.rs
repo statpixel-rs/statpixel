@@ -123,23 +123,37 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
+			let start = ::std::time::Instant::now();
 			ctx.defer().await?;
+			println!("deferred: {:?}", start.elapsed().as_millis());
 
+			let start = ::std::time::Instant::now();
 			let format = $crate::util::get_format_from_input(ctx).await;
+			println!("format: {:?}", start.elapsed().as_millis());
 
 			match format {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
+					let start = ::std::time::Instant::now();
 					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
+					println!("get_all: {:?}", start.elapsed().as_millis());
 					let ctx_id = ctx.id();
 
+					let start = ::std::time::Instant::now();
 					player.increase_searches(ctx).await?;
+					println!("inc_search: {:?}", start.elapsed().as_millis());
 
 					let png: ::std::borrow::Cow<[u8]> = {
+						let start = ::std::time::Instant::now();
 						let mut surface =
 							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
+						println!("canvas: {:?}", start.elapsed().as_millis());
 
-						::api::canvas::to_png(&mut surface).into()
+						let start = ::std::time::Instant::now();
+						let png = ::api::canvas::to_png(&mut surface).into();
+						println!("png: {:?}", start.elapsed().as_millis());
+
+						png
 					};
 
 					ctx.send(move |m| {
