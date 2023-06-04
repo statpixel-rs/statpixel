@@ -163,6 +163,8 @@ macro_rules! get_all {
 			player.get_suffix($ctx),
 		);
 
+		println!("prefix: {:?}", prefix);
+
 		let data = data?;
 		let session = session?;
 
