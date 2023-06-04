@@ -50,13 +50,6 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 uuid = { workspace = true }
 
-[dependencies.serenity_feature_only]
-git = "https://github.com/serenity-rs/serenity"
-features = ["rustls_backend"]
-default-features = false
-package = "serenity"
-branch = "next"
-
 [workspace.dependencies]
 bincode = { version = "2.0.0-rc.3", features = ["serde"] }
 chrono = { version = "0.4.24", default-features = false, features = ["alloc", "std", "clock", "serde", "unstable-locales"] }
