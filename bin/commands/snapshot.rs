@@ -16,7 +16,7 @@ macro_rules! generate_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_username_data_session_skin_suffix(ctx, uuid, username).await?;
+					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -27,7 +27,7 @@ macro_rules! generate_history_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
@@ -100,7 +100,7 @@ macro_rules! generate_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::commands::get_player_username_data(ctx, uuid, username).await?;
+					let (player, mut data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -110,7 +110,7 @@ macro_rules! generate_history_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
@@ -173,7 +173,7 @@ macro_rules! generate_large_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_username_data_session_skin_suffix(ctx, uuid, username).await?;
+					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -184,7 +184,7 @@ macro_rules! generate_large_history_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
@@ -257,7 +257,7 @@ macro_rules! generate_large_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::commands::get_player_username_data(ctx, uuid, username).await?;
+					let (player, mut data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -267,7 +267,7 @@ macro_rules! generate_large_history_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {

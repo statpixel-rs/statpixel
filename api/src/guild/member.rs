@@ -59,7 +59,12 @@ where
 			let mut i = 0;
 
 			while let Some((date, xp)) = map.next_entry()? {
-				self.0[i] = (NaiveDate::parse_from_str(date, "%Y-%m-%d").unwrap(), xp);
+				self.0[i] = (
+					NaiveDate::parse_from_str(date, "%Y-%m-%d").map_err(|| {
+						serde::de::Error::custom("error while parsing date from str")
+					})?,
+					xp,
+				);
 
 				i += 1;
 			}

@@ -31,8 +31,6 @@ pub enum ApiError {
 	Http,
 	#[error("An internal error occurred while sending a request.")]
 	Reqwest(#[from] reqwest::Error),
-	#[error("An internal error occurred while deserializing JSON.")]
-	Json(#[from] serde_json::Error),
 	#[error("Failed to parse UUID.")]
 	Uuid(#[from] uuid::Error),
 	#[error("A profile belonging to `{0}` was not found.")]

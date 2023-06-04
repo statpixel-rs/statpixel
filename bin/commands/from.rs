@@ -57,7 +57,7 @@ macro_rules! generate_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
@@ -138,7 +138,7 @@ macro_rules! generate_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
@@ -316,7 +316,7 @@ macro_rules! generate_large_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
+							name: $crate::util::escape_username(&data.username),
 						);
 
 						ctx.send(move |m| {
