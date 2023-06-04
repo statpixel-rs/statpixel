@@ -88,6 +88,8 @@ impl Player {
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
 	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+		println!("increase_searches for {self:?}");
+
 		diesel::insert_into(autocomplete::table)
 			.values((
 				autocomplete::name.eq(&self.username),
@@ -238,11 +240,11 @@ impl Player {
 		let response = HTTP.perform_bare(request).await;
 
 		match response {
-			Ok(response) => match response.bytes().await {
+			Ok(response) if response.status() == StatusCode::OK => match response.bytes().await {
 				Ok(bytes) => Cow::Owned(bytes.into()),
 				Err(_) => Cow::Borrowed(DEFAULT_SKIN),
 			},
-			Err(_) => Cow::Borrowed(DEFAULT_SKIN),
+			_ => Cow::Borrowed(DEFAULT_SKIN),
 		}
 	}
 

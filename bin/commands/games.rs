@@ -133,6 +133,8 @@ macro_rules! generate_command {
 					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
+					player.increase_searches(ctx).await?;
+
 					let png: ::std::borrow::Cow<[u8]> = {
 						let mut surface =
 							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
