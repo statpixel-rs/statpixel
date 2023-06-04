@@ -117,6 +117,8 @@ impl Ratelimiter {
 
 		info!(url = req.url().as_str(), "added request to queue");
 
+		let start = std::time::Instant::now();
+
 		loop {
 			// This will block if another thread hit the global ratelimit.
 			drop(self.global.lock().await);
@@ -130,8 +132,16 @@ impl Ratelimiter {
 			let redo = bucket.lock().await.post_hook(&response, &route).await;
 
 			if !redo.unwrap_or(true) {
+				info!(
+					url = req.url().as_str(),
+					time = start.elapsed().as_millis(),
+					"added request to queue"
+				);
+
 				return Ok(response);
 			}
+
+			info!(url = req.url().as_str(), "retrying request");
 		}
 	}
 }
