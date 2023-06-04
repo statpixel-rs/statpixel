@@ -324,10 +324,6 @@ impl<'s> Shape for Status<'s> {
 	fn v_align(&self) -> bool {
 		true
 	}
-
-	fn insets(&self) -> Point {
-		(10, 10).into()
-	}
 }
 
 impl Shape for Sidebar {
