@@ -32,8 +32,8 @@ pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 				let pool = &pool;
 
 				async move {
-					let data: player::data::Data = decode_old(snapshot.as_slice())?.into();
-					let encoded = encode(&data)?;
+					let data: player::data::Data = decode_old(snapshot.as_slice()).unwrap().into();
+					let encoded = encode(&data).unwrap();
 					let new_hash = fxhash::hash64(&encoded) as i64;
 
 					diesel::update(snapshot::table.filter(snapshot::id.eq(id)))
@@ -42,8 +42,9 @@ pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 							snapshot::hash.eq(new_hash),
 							snapshot::version.eq(player::VERSION),
 						))
-						.execute(&mut pool.get().await?)
-						.await?;
+						.execute(&mut pool.get().await.unwrap())
+						.await
+						.unwrap();
 
 					info!(id = id, "upgraded snapshot");
 
