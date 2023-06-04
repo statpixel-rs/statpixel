@@ -60,7 +60,7 @@ where
 
 			while let Some((date, xp)) = map.next_entry()? {
 				self.0[i] = (
-					NaiveDate::parse_from_str(date, "%Y-%m-%d").map_err(|| {
+					NaiveDate::parse_from_str(date, "%Y-%m-%d").map_err(|_| {
 						serde::de::Error::custom("error while parsing date from str")
 					})?,
 					xp,
