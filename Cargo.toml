@@ -82,7 +82,7 @@ fastnbt = "2.4.4"
 [workspace.dependencies.diesel]
 version = "2.0.4"
 # Figure out how to make `without-deprecated` compile
-features = ["uuid", "chrono", "with-deprecated", "postgres"]
+features = ["uuid", "chrono", "with-deprecated", "postgres", "nightly-error-messages"]
 
 [workspace.dependencies.diesel-async]
 version = "0.2.2"
