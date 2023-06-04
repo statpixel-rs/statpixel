@@ -14,7 +14,7 @@ use crate::{
 };
 
 macro_rules! ident {
-	($id: literal) => {
+	($id: tt) => {
 		::syn::Ident::new($id, ::proc_macro2::Span::call_site())
 	};
 }
@@ -52,6 +52,9 @@ pub(crate) struct GameInputReceiver {
 
 	/// The path (from `stats`) to the XP field
 	pub xp: Option<String>,
+	/// The path (from the current mode) to the XP field
+	/// This takes precedence over `xp`
+	pub xp_local: Option<String>,
 }
 
 impl ToTokens for GameInputReceiver {
@@ -67,6 +70,7 @@ impl ToTokens for GameInputReceiver {
 			label: info,
 			xp: xp_path,
 			plain,
+			xp_local: xp_local_path,
 		} = self;
 
 		let path = parse_str_to_dot_path(path);
@@ -112,23 +116,43 @@ impl ToTokens for GameInputReceiver {
 			}
 		}
 
-		if xp_field.is_none() && let Some(path) = xp_path.as_ref() {
-			let path = parse_str_to_dot_path(path);
+		let (is_raw_xp, xp_field_overall) = if xp_field.is_none() {
+			if let Some(path) = xp_local_path.as_ref() {
+				let path = ident!(path);
 
-			xp_field = Some(quote!(data.stats.#path));
-		}
+				xp_field = Some(quote!(#path));
+				(
+					false,
+					Some(sum::sum_fields(
+						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						Some(&ident!("stats")),
+						&path,
+					)),
+				)
+			} else if let Some(path) = xp_path.as_ref() {
+				let path = parse_str_to_dot_path(path);
+
+				xp_field = Some(quote!(data.stats.#path));
+				(true, None)
+			} else {
+				(true, None)
+			}
+		} else {
+			(true, xp_field.clone())
+		};
 
 		modes.sort_by_cached_key(|field| field.ident.as_ref().unwrap().to_string());
 
-		let (level_fmt_field, xp_field) = match (level_fmt_field, xp_field) {
+		let (is_raw, level_fmt_field, ref xp_field) = match (level_fmt_field, xp_field) {
 			(Some(level), Some(xp)) => {
 				let level_name = level.ident.as_ref().unwrap();
 
-				(quote!(stats. #level_name), xp)
+				(true, quote!(stats. #level_name), xp)
 			}
 			(Some(_), None) => panic!("xp field required when level field is present"),
 			(_, xp_field) => (
-				quote!(#calc ::get_level_format(level)),
+				false,
+				quote!(::get_level_format(level)),
 				if let Some(xp_field) = xp_field {
 					xp_field
 				} else {
@@ -136,6 +160,15 @@ impl ToTokens for GameInputReceiver {
 				},
 			),
 		};
+
+		let level_fmt_field_overall = if is_raw {
+			#[allow(clippy::redundant_clone)]
+			level_fmt_field.clone()
+		} else {
+			quote!(#calc #level_fmt_field)
+		};
+
+		let xp_field_overall = xp_field_overall.unwrap_or_else(|| xp_field.clone());
 
 		let enum_ident = syn::Ident::new(&format!("{}Mode", ident), proc_macro2::Span::call_site());
 		let extras = labels
@@ -720,6 +753,23 @@ impl ToTokens for GameInputReceiver {
 			let apply_items_mode = apply_items_mode.clone();
 			let apply_embed_mode = apply_embed_mode.clone();
 
+			let (level_fmt_field, calc) =
+				if let Some(calc) = mode.mode.as_ref().unwrap().calc.as_ref() {
+					(quote! { #calc #level_fmt_field }, quote! { #calc })
+				} else if is_raw {
+					(quote! { #level_fmt_field }, quote! { #calc })
+				} else {
+					(quote! { #calc #level_fmt_field }, quote! { #calc })
+				};
+
+			let xp_field = if let Some(expr) = mode.mode.as_ref().unwrap().xp.as_ref() {
+				quote! { &(#expr) }
+			} else if is_raw_xp {
+				quote! { #xp_field }
+			} else {
+				quote! { stats. #ident.#xp_field }
+			};
+
 			quote! {
 				impl #ty {
 					pub fn get_tr() -> &'static str {
@@ -857,6 +907,69 @@ impl ToTokens for GameInputReceiver {
 			_ => unreachable!(),
 		};
 
+		let mode_match_xp_code = if xp_local_path.is_some() {
+			let mode_match_xp = modes.iter().map(|mode| {
+				let ident = mode.ident.as_ref().unwrap();
+				let ty = &mode.ty;
+				let calc = if let Some(calc) = mode.mode.as_ref().unwrap().calc.as_ref() {
+					quote! { #calc }
+				} else {
+					quote! { #calc }
+				};
+
+				let xp_field = if let Some(expr) = mode.mode.as_ref().unwrap().xp.as_ref() {
+					quote! { &(#expr) }
+				} else if is_raw_xp {
+					quote! { #xp_field }
+				} else {
+					quote! { stats. #ident.#xp_field }
+				};
+
+				quote! {
+					#enum_ident ::#ty => {
+						let xp = #calc ::convert(&#xp_field);
+						let level = #calc ::get_level(xp);
+
+						let progress = crate::canvas::shape::WideBubbleProgress(
+							#calc ::get_level_progress(xp),
+							#calc ::get_colours(level),
+						);
+
+						(xp, level, progress)
+					}
+				}
+			});
+
+			quote! {
+				match mode {
+					#enum_ident ::Overall => {
+						let xp = #calc ::convert(&#xp_field_overall);
+						let level = #calc ::get_level(xp);
+
+						let progress = crate::canvas::shape::WideBubbleProgress(
+							#calc ::get_level_progress(xp),
+							#calc ::get_colours(level),
+						);
+
+						(xp, level, progress)
+					},
+					#(#mode_match_xp)*
+				}
+			}
+		} else {
+			quote! {
+				let xp = #calc ::convert(&#xp_field);
+				let level = #calc ::get_level(xp);
+
+				let progress = crate::canvas::shape::WideBubbleProgress(
+					#calc ::get_level_progress(xp),
+					#calc ::get_colours(level),
+				);
+
+				(xp, level, progress)
+			}
+		};
+
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
@@ -880,7 +993,7 @@ impl ToTokens for GameInputReceiver {
 				) -> crate::canvas::Canvas<'c> {
 					let stats = &data.stats.#path;
 
-					let xp = #calc ::convert(&#xp_field);
+					let xp = #calc ::convert(&#xp_field_overall);
 					let level = #calc ::get_level(xp);
 
 					let mut canvas = canvas
@@ -892,7 +1005,7 @@ impl ToTokens for GameInputReceiver {
 							progress,
 							crate::canvas::shape::WideBubbleProgress::from_level_progress(
 								ctx,
-								&#level_fmt_field,
+								&#level_fmt_field_overall,
 								&#calc ::get_curr_level_xp(xp),
 								&#calc ::get_level_xp(xp),
 							),
@@ -1113,13 +1226,9 @@ impl ToTokens for GameInputReceiver {
 							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
 						);
 
-					let xp = #calc ::convert(&#xp_field);
-					let level = #calc ::get_level(xp);
-
-					let progress = crate::canvas::shape::WideBubbleProgress(
-						#calc ::get_level_progress(xp),
-						#calc ::get_colours(level),
-					);
+					let (xp, level, progress) = {
+						#mode_match_xp_code
+					};
 
 					let status = crate::canvas::shape::Status(session, skin);
 
@@ -1157,13 +1266,9 @@ impl ToTokens for GameInputReceiver {
 							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
 						);
 
-					let xp = #calc ::convert(&#xp_field);
-					let level = #calc ::get_level(xp);
-
-					let progress = crate::canvas::shape::WideBubbleProgress(
-						#calc ::get_level_progress(xp),
-						#calc ::get_colours(level),
-					);
+					let (xp, level, progress) = {
+						#mode_match_xp_code
+					};
 
 					let status = crate::canvas::shape::Status(session, skin);
 
@@ -1329,6 +1434,8 @@ pub(crate) struct GameLabel {
 #[derive(Debug, FromMeta)]
 pub(crate) struct ModeData {
 	hypixel: Option<String>,
+	calc: Option<syn::Path>,
+	xp: Option<syn::Expr>,
 	tr: Option<String>,
 }
 

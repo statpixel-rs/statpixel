@@ -43,8 +43,7 @@ pub struct SkyWars {
 	pub arrows_shot: u32,
 	#[game(label(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	pub arrows_hit: u32,
-	#[serde(rename = "levelFormatted")]
-	#[serde(default = "default_level_fmt")]
+	#[serde(rename = "levelFormatted", default = "default_level_fmt")]
 	#[game(level)]
 	pub level_fmt: String,
 	#[serde(

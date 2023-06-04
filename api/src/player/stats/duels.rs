@@ -8,6 +8,8 @@ use serde::Deserialize;
 	path = "duels",
 	pretty = "§e§lDuels",
 	plain = "Duels",
+	calc = "minecraft::calc::duels::overall",
+	xp_local = "wins",
 	field(ident = "wins", colour = "green"),
 	field(ident = "losses", colour = "red"),
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
@@ -42,89 +44,142 @@ pub struct Duels {
 	pub coins: i32,
 
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
+	))]
 	pub uhc_solo: UhcSolo,
 	#[serde(flatten)]
-	#[game(mode())]
-	pub op_solo: OpSolo,
-	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
+	))]
 	pub uhc_double: UhcDouble,
 	#[serde(flatten)]
-	#[game(mode())]
-	pub bow_solo: BowSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub classic_solo: ClassicSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub op_double: OpDouble,
-	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
+	))]
 	pub uhc_four: UhcFour,
 	#[serde(flatten)]
-	#[game(mode())]
-	pub sky_wars_double: SkyWarsDouble,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub sumo_solo: SumoSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub sky_wars_solo: SkyWarsSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_double_duel: BridgeDoubleDuel,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_four: BridgeFourDuel,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_solo: BridgeSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_three: BridgeThree,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_double: BridgeDouble,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub combo_solo: ComboSolo,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub sumo_tournament: SumoTournament,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub sky_wars_tournament: SkyWarsTournament,
-	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
+	))]
 	pub uhc_meetup: UhcMeetup,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.op_solo.wins + stats.op_double.wins"
+	))]
+	pub op_solo: OpSolo,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.op_solo.wins + stats.op_double.wins"
+	))]
+	pub op_double: OpDouble,
+	#[serde(flatten)]
+	#[game(mode(calc = "minecraft::calc::duels"))]
+	pub bow_solo: BowSolo,
+	#[serde(flatten)]
+	#[game(mode(calc = "minecraft::calc::duels"))]
+	pub classic_solo: ClassicSolo,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
+	))]
+	pub sky_wars_solo: SkyWarsSolo,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
+	))]
+	pub sky_wars_double: SkyWarsDouble,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
+	))]
+	pub sky_wars_tournament: SkyWarsTournament,
+
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.sumo_solo.wins + stats.sumo_tournament.wins"
+	))]
+	pub sumo_solo: SumoSolo,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.sumo_solo.wins + stats.sumo_tournament.wins"
+	))]
+	pub sumo_tournament: SumoTournament,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_double_duel: BridgeDoubleDuel,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_four: BridgeFourDuel,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_solo: BridgeSolo,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_three: BridgeThree,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_double: BridgeDouble,
+	#[serde(flatten)]
+	#[game(mode(
+		calc = "minecraft::calc::duels",
+		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
+	))]
+	pub bridge_three_duel: BridgeThreeDuel,
+
+	#[serde(flatten)]
+	#[game(mode(calc = "minecraft::calc::duels"))]
+	pub combo_solo: ComboSolo,
+	#[serde(flatten)]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub potion_solo: PotionSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub blitz_solo: BlitzSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub bow_spleef_solo: BowSpleefSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub mega_walls_solo: MegaWallsSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub boxing_solo: BoxingSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub parkour: Parkour,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub arena_solo: ArenaSolo,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub capture_three: CaptureThree,
-	#[serde(flatten)]
-	#[game(mode())]
-	pub bridge_three_duel: BridgeThreeDuel,
 }
 
 #[derive(
