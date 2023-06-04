@@ -10,7 +10,7 @@ use crate::{
 };
 
 /// Unlinks your Discord account from a Minecraft account.
-#[poise::command(slash_command)]
+#[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 	let removed = diesel::update(schema::user::table)
 		.set(schema::user::uuid.eq::<Option<Uuid>>(None))

@@ -6,7 +6,11 @@ use translate::tr;
 use crate::{format::Display, util::success_embed, Context, Error};
 
 /// Changes the way responses are displayed.
-#[poise::command(slash_command, required_bot_permissions = "EMBED_LINKS")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "EMBED_LINKS"
+)]
 pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 	let u = ctx.author();
 

@@ -16,11 +16,7 @@ use tokio::join;
 use translate::{tr, Context};
 use uuid::Uuid;
 
-use crate::{
-	snapshot,
-	util::{error_embed, get_guild_from_input},
-	Error,
-};
+use crate::{snapshot, util::error_embed, Error};
 
 pub async fn get_snapshots_multiple_of_weekday(
 	ctx: Context<'_>,
@@ -86,7 +82,11 @@ pub fn apply_member_xp(guild: &mut Guild, guilds: &[Guild]) {
 }
 
 /// Shows the stats of a guild.
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn guild(
 	ctx: Context<'_>,
 	#[min_length = 3]
@@ -100,9 +100,7 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	ctx.defer().await?;
-
-	let mut guild = match get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
+	let mut guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
 			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))

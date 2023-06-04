@@ -37,7 +37,11 @@ async fn autocomplete_board(
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn leaderboard(
 	ctx: Context<'_>,
 	#[autocomplete = "autocomplete_board"] board: String,

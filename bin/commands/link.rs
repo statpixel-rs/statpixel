@@ -10,7 +10,7 @@ use crate::{
 };
 
 /// Links your Discord account to a Minecraft account.
-#[poise::command(slash_command)]
+#[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn link(
 	ctx: Context<'_>,
 	#[min_length = 32]

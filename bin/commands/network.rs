@@ -11,7 +11,11 @@ use translate::tr;
 const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn network(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -21,13 +25,12 @@ pub async fn network(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	ctx.defer().await?;
-
 	let format = crate::util::get_format_from_input(ctx).await;
 
 	match format {
 		Display::Image | Display::Compact => {
-			let (player, data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
+			let (player, data, session, skin, suffix) =
+				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
@@ -43,7 +46,11 @@ pub async fn network(
 					.gap(7.)
 					.push_down(
 						&shape::Title,
-						shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
+						shape::Title::from_text(&text::from_data(
+							&data,
+							&data.username,
+							suffix.as_deref(),
+						)),
 					)
 					.push_down(
 						&shape::Subtitle,
@@ -114,7 +121,7 @@ pub async fn network(
 			.await?;
 		}
 		Display::Text => {
-			let (player, data) = crate::get_data!(ctx, uuid, username);
+			let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 

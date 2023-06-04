@@ -12,7 +12,7 @@ macro_rules! generate_large_command {
 			<$game>::autocomplete(ctx, partial).await
 		}
 
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -23,15 +23,13 @@ macro_rules! generate_large_command {
 			uuid: Option<::std::string::String>,
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let format = $crate::util::get_format_from_input(ctx).await;
 
 			match format {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
+					let (player, data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -63,7 +61,7 @@ macro_rules! generate_large_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
+						let (data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
@@ -87,7 +85,7 @@ macro_rules! generate_large_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, data) = $crate::get_data!(ctx, uuid, username);
+					let (player, data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -112,7 +110,7 @@ macro_rules! generate_large_command {
 
 macro_rules! generate_command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -124,10 +122,6 @@ macro_rules! generate_command {
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let start = ::std::time::Instant::now();
-			ctx.defer().await?;
-			println!("deferred: {:?}", start.elapsed().as_millis());
-
-			let start = ::std::time::Instant::now();
 			let format = $crate::util::get_format_from_input(ctx).await;
 			println!("format: {:?}", start.elapsed().as_millis());
 
@@ -135,7 +129,7 @@ macro_rules! generate_command {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
 					let start = ::std::time::Instant::now();
-					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
+					let (player, data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 					println!("get_all: {:?}", start.elapsed().as_millis());
 					let ctx_id = ctx.id();
 
@@ -175,7 +169,7 @@ macro_rules! generate_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
+						let (data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
@@ -199,7 +193,7 @@ macro_rules! generate_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, data) = $crate::get_data!(ctx, uuid, username);
+					let (player, data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 					let mut embed = <$game>::embed(ctx, &player, &data);
 
 					player.increase_searches(ctx).await?;

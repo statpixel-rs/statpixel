@@ -1,3 +1,4 @@
+use std::fmt;
 use std::sync::Arc;
 
 use database::PostgresPool;
@@ -16,13 +17,19 @@ pub struct Data {
 	pub locale: locale::Locale,
 }
 
+impl fmt::Debug for Data {
+	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+		f.debug_struct("Data").finish()
+	}
+}
+
 pub type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[derive(Error, Debug)]
 pub enum ApiError {
 	#[error("An internal error occurred while sending a request.")]
 	Http,
-	#[error("An internal error occurred while sending a request. {0:?}")]
+	#[error("An internal error occurred while sending a request.")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("An internal error occurred while deserializing JSON.")]
 	Json(#[from] serde_json::Error),
@@ -50,9 +57,9 @@ pub enum ApiError {
 pub enum Error {
 	#[error(transparent)]
 	Api(#[from] Arc<ApiError>),
-	#[error("An error occurred while interacting with Diesel. {0:?}")]
+	#[error("An error occurred while interacting with Diesel.")]
 	Diesel(#[from] diesel::result::Error),
-	#[error("An error occurred while interacting with the database. {0:?}")]
+	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
 	#[error("An internal error occurred.")]
 	Framework(#[from] poise::serenity_prelude::Error),

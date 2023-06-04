@@ -6,6 +6,20 @@ no-previous-statistics = Нет предыдущих данных для **{$nam
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
 
+# Errors
+
+error-player-not-found = Профиль, принадлежащий {$name}, не найден.
+error-session-not-found = Сессия, принадлежащая {$name}, не найдена.
+error-player-uuid-not-found = Игрок с uuid {$uuid} не найден.
+error-player-username-not-found = Игрок с именем {$name} не найден.
+error-guild-by-member-uuid-not-found = Участник гильдии с uuid {$uuid} не найден.
+error-guild-by-member-username-not-found = Участник гильдии с именем {$name} не найден.
+error-guild-not-found = Гильдия с именем {$name} не найдена.
+error-internal = Произошла внутренняя ошибка. Она была зарегистрирована и будет решена в ближайшее время.
+error-not-linked = Вы не привязаны к учетной записи Minecraft. Используйте </link:1113624864524357710>, чтобы привязать свою учетную запись.
+error-invalid-uuid = UUID {$uuid} недействителен.
+error-invalid-username = Имя пользователя {$name} недействительно.
+
 # /skyblock auctions
 
 auctions = auctions

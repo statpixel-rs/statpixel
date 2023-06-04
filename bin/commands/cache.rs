@@ -6,7 +6,7 @@ use api::cache::{
 use crate::{util::success_embed, Context, Error};
 
 /// Views the current cache data
-#[poise::command(slash_command)]
+#[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn cache(ctx: Context<'_>) -> Result<(), Error> {
 	let player_data_count = PLAYER_DATA_CACHE.entry_count();
 	let player_session_count = PLAYER_SESSION_CACHE.entry_count();

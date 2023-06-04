@@ -22,7 +22,11 @@ macro_rules! generate_large_command {
 			<$game>::autocomplete(ctx, partial).await
 		}
 
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(
+			on_error = "crate::util::error_handler",
+			slash_command,
+			required_bot_permissions = "ATTACH_FILES"
+		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -33,10 +37,9 @@ macro_rules! generate_large_command {
 			uuid: Option<::std::string::String>,
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let (_format, player, session) = $crate::get_history_data!(ctx, uuid, username);
+			let (player, session) =
+				$crate::commands::get_player_session(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
@@ -82,7 +85,7 @@ macro_rules! generate_large_command {
 
 macro_rules! generate_command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -93,9 +96,7 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
-			let (_format, player, session) = $crate::get_history_data!(ctx, uuid, username);
+			let (player, session) = $crate::commands::get_player_session(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
@@ -145,7 +146,11 @@ macro_rules! generate_command {
 
 /// Shows the network XP history of a player.
 #[allow(clippy::too_many_lines)]
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 async fn network(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -290,6 +295,7 @@ generate_command!(warlords::Warlords, warlords::WarlordsMode, warlords);
 generate_command!(wool_wars::WoolWars, wool_wars::WoolWarsMode, woolwars);
 
 #[poise::command(
+	on_error = "crate::util::error_handler",
 	slash_command,
 	subcommands(
 		"arcade",

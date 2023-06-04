@@ -57,7 +57,6 @@ pub struct RatelimitInfo {
 
 pub struct Ratelimiter {
 	client: Client,
-	global: Arc<Mutex<()>>,
 	routes: Arc<RwLock<Routes>>,
 }
 
@@ -79,7 +78,6 @@ impl Ratelimiter {
 	pub fn new(client: Client) -> Self {
 		Self {
 			client,
-			global: Arc::default(),
 			routes: Arc::default(),
 		}
 	}
@@ -120,9 +118,6 @@ impl Ratelimiter {
 		let start = std::time::Instant::now();
 
 		loop {
-			// This will block if another thread hit the global ratelimit.
-			drop(self.global.lock().await);
-
 			let bucket = self.routes.write().await.get(&route);
 
 			bucket.lock().await.pre_hook(&route).await;

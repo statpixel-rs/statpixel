@@ -7,7 +7,11 @@ use translate::{Context, Error};
 use crate::util::escape_username;
 
 /// Shows the serialized size of a player's profile.
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn ser(
 	ctx: Context<'_>,
 	#[max_length = 16] username: Option<String>,
@@ -15,7 +19,7 @@ pub async fn ser(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let (player, data) = crate::get_data!(ctx, uuid, username);
+	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	let ser = bincode::encode_to_vec(&data, bincode::config::standard()).unwrap();
 	let serialized_bytes = ser.len();

@@ -1,7 +1,7 @@
 macro_rules! generate_history_command {
 	($game: ty, $mode: ty, $fn: ident, $duration: expr) => {
 		#[allow(clippy::too_many_lines)]
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -12,13 +12,11 @@ macro_rules! generate_history_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
 			let format = $crate::util::get_format_from_input(ctx).await;
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::get_all_with_username!(ctx, uuid, username);
+					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_username_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -72,7 +70,7 @@ macro_rules! generate_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
+						let (mut data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -102,7 +100,7 @@ macro_rules! generate_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::get_data_with_username!(ctx, uuid, username);
+					let (player, mut data) = $crate::commands::get_player_username_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -159,7 +157,7 @@ macro_rules! generate_large_history_command {
 		}
 
 		#[allow(clippy::too_many_lines)]
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -170,14 +168,12 @@ macro_rules! generate_large_history_command {
 			uuid: Option<::std::string::String>,
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 			let format = $crate::util::get_format_from_input(ctx).await;
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::get_all_with_username!(ctx, uuid, username);
+					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_username_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -231,7 +227,7 @@ macro_rules! generate_large_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
+						let (mut data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -261,7 +257,7 @@ macro_rules! generate_large_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::get_data_with_username!(ctx, uuid, username);
+					let (player, mut data) = $crate::commands::get_player_username_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -308,7 +304,7 @@ macro_rules! generate_large_history_command {
 
 macro_rules! generate_guild_history_command {
 	($fn: ident, $duration: expr) => {
-		#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[min_length = 3]
@@ -322,9 +318,7 @@ macro_rules! generate_guild_history_command {
 			#[max_length = 36]
 			uuid: Option<::std::string::String>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			ctx.defer().await?;
-
-			let mut guild = match $crate::util::get_guild_from_input(ctx, ctx.author(), name, uuid, username).await {
+			let mut guild = match $crate::commands::get_guild(ctx, name, uuid, username).await {
 				::std::result::Result::Ok(guild) => guild,
 				::std::result::Result::Err(::translate::Error::NotLinked) => {
 					ctx.send(|m| $crate::util::error_embed(m, ::translate::tr!(ctx, "not-linked"), ::translate::tr!(ctx, "not-linked")))
@@ -582,6 +576,7 @@ macro_rules! generate_history_commands {
 			generate_guild_history_command!(guild, $duration);
 
 			#[poise::command(
+				on_error = "crate::util::error_handler",
 				slash_command,
 				subcommands(
 					"arcade",

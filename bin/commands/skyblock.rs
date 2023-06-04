@@ -36,7 +36,11 @@ async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn auctions(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -46,9 +50,8 @@ pub async fn auctions(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	ctx.defer().await?;
-
-	let (player, data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
+	let (player, data, session, skin, suffix) =
+		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
@@ -122,7 +125,11 @@ pub async fn auctions(
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn profile(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -133,9 +140,8 @@ pub async fn profile(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	ctx.defer().await?;
-
-	let (player, mut data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
+	let (player, mut data, session, skin, suffix) =
+		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -366,7 +372,11 @@ pub async fn profile(
 	Ok(())
 }
 
-#[poise::command(slash_command, required_bot_permissions = "ATTACH_FILES")]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
 pub async fn bank(
 	ctx: Context<'_>,
 	#[max_length = 16]
@@ -377,9 +387,7 @@ pub async fn bank(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	ctx.defer().await?;
-
-	let (player, mut data) = crate::get_data!(ctx, uuid, username);
+	let (player, mut data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -480,6 +488,7 @@ pub async fn bank(
 
 #[allow(clippy::unused_async)]
 #[poise::command(
+	on_error = "crate::util::error_handler",
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES",
 	subcommands("profile", "bank", "auctions")

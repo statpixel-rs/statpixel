@@ -6,6 +6,20 @@ no-previous-statistics = **{$name}**の以前のデータが見つからなか�
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
 
+# Errors
+
+error-player-not-found = {$name}のプロフィールが見つかりませんでした。
+error-session-not-found = {$name}のセッションが見つかりませんでした。
+error-player-uuid-not-found = uuid {$uuid}のプレイヤーが見つかりませんでした。
+error-player-username-not-found = ユーザー名 {$name}のプレイヤーが見つかりませんでした。
+error-guild-by-member-uuid-not-found = uuid {$uuid}のギルドメンバーが見つかりませんでした。
+error-guild-by-member-username-not-found = ユーザー名 {$name}のギルドメンバーが見つかりませんでした。
+error-guild-not-found = {$name}のギルドが見つかりませんでした。
+error-internal = 内部エラーが発生しました。ログに記録され、すぐに解決されます。
+error-not-linked = Minecraftアカウントにリンクされていません。 </link:1113624864524357710>を使用してアカウントをリンクしてください。
+error-invalid-uuid = uuid {$uuid}は無効です。
+error-invalid-username = ユーザー名 {$name}は無効です。
+
 # /skyblock auctions
 
 auctions = auctions

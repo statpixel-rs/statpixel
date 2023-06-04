@@ -4,7 +4,7 @@ use translate::{tr, Context};
 const TITLE: &str = concat!("StatPixel | v", env!("CARGO_PKG_VERSION"));
 
 /// Shows the help menu.
-#[poise::command(slash_command)]
+#[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
 	ctx.send(|m| {
 		m.embed(|e| {

@@ -3,9 +3,10 @@ use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::username::Username;
-use poise::serenity_prelude::User;
 use poise::CreateReply;
-use std::fmt::Display;
+use std::{borrow::Cow, fmt::Display};
+use tracing::error;
+use translate::{tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
 
 use crate::{format, Context, Error};
@@ -64,18 +65,18 @@ pub async fn get_format_from_input(ctx: Context<'_>) -> format::Display {
 
 pub async fn get_player_from_input(
 	ctx: Context<'_>,
-	uuid_raw: Option<String>,
-	username_raw: Option<String>,
+	uuid: Option<String>,
+	username: Option<String>,
 ) -> Result<Player, Error> {
 	match (
-		uuid_raw
+		uuid
 			.as_ref()
 			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
-		uuid_raw,
-		username_raw
+		uuid,
+		username
 			.as_ref()
 			.and_then(|username| Username::try_from_str(username).ok()),
-		username_raw,
+		username,
 	) {
 		(Some(uuid), _, _, _) => Ok(Player::from_uuid(&uuid).await?),
 		(_, _, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
@@ -99,18 +100,18 @@ pub async fn get_player_from_input(
 
 pub async fn get_player_with_username_from_input(
 	ctx: Context<'_>,
-	uuid_raw: Option<String>,
-	username_raw: Option<String>,
+	uuid: Option<String>,
+	username: Option<String>,
 ) -> Result<Player, Error> {
 	match (
-		uuid_raw
+		uuid
 			.as_ref()
 			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
-		uuid_raw,
-		username_raw
+		uuid,
+		username
 			.as_ref()
 			.and_then(|username| Username::try_from_str(username).ok()),
-		username_raw,
+		username,
 	) {
 		(Some(uuid), _, _, _) => Ok(Player::from_uuid(&uuid).await?),
 		(_, _, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
@@ -134,21 +135,18 @@ pub async fn get_player_with_username_from_input(
 
 pub async fn get_guild_from_input(
 	ctx: Context<'_>,
-	author: &User,
-	name_raw: Option<String>,
-	uuid_raw: Option<String>,
-	username_raw: Option<String>,
+	name: Option<String>,
+	uuid: Option<String>,
+	username: Option<String>,
 ) -> Result<Guild, Error> {
 	match (
-		name_raw,
-		uuid_raw
-			.as_ref()
-			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
-		uuid_raw,
-		username_raw
+		name,
+		uuid.as_ref().and_then(|uuid| Uuid::parse_str(uuid).ok()),
+		uuid,
+		username
 			.as_ref()
 			.and_then(|username| Username::try_from_str(username).ok()),
-		username_raw,
+		username,
 	) {
 		(Some(name), _, _, _, _) => Ok(Guild::from_name(&name).await?),
 		(_, Some(uuid), _, _, _) => Ok(Guild::from_member_uuid(uuid).await?),
@@ -161,7 +159,7 @@ pub async fn get_guild_from_input(
 		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		(_, None, _, None, _) => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(author.id.0 as i64))
+				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -172,5 +170,65 @@ pub async fn get_guild_from_input(
 				Err(Error::NotLinked)
 			}
 		}
+	}
+}
+
+pub async fn error_handler(error: poise::FrameworkError<'_, Data, Error>) {
+	if let poise::FrameworkError::Command { error, ctx } = error {
+		let content = match error {
+			Error::Api(err) => match *err {
+				ApiError::PlayerNotFound(ref name) => {
+					tr_fmt!(ctx, "error-player-not-found", name: format!("`{}`", name))
+				}
+				ApiError::SessionNotFound(ref name) => {
+					tr_fmt!(ctx, "error-session-not-found", name: format!("`{}`", name))
+				}
+				ApiError::UuidNotFound(ref uuid) => {
+					tr_fmt!(ctx, "error-player-uuid-not-found", uuid: format!("`{}`", uuid))
+				}
+				ApiError::UsernameNotFound(ref name) => {
+					tr_fmt!(ctx, "error-player-username-not-found", name: format!("`{}`", name))
+				}
+				ApiError::GuildByMemberUuidNotFound(ref uuid) => {
+					tr_fmt!(ctx, "error-guild-by-member-uuid-not-found", uuid: format!("`{}`", uuid))
+				}
+				ApiError::GuildByMemberUsernameNotFound(ref name) => {
+					tr_fmt!(ctx, "error-guild-by-member-username-not-found", name: format!("`{}`", name))
+				}
+				ApiError::GuildNotFound(ref name) => {
+					tr_fmt!(ctx, "error-guild-not-found", name: format!("`{}`", name))
+				}
+				ref error => {
+					error!(error = ?error, "internal error");
+					tr!(ctx, "error-internal")
+				}
+			},
+			Error::NotLinked => {
+				tr!(ctx, "error-not-linked")
+			}
+			Error::InvalidUuid(ref uuid) => {
+				tr_fmt!(ctx, "error-invalid-uuid", uuid: format!("`{}`", uuid))
+			}
+			Error::InvalidUsername(ref name) => {
+				tr_fmt!(ctx, "error-invalid-username", name: format!("`{}`", name))
+			}
+			Error::Custom(ref message) => Cow::Borrowed(message.as_str()),
+			ref error => {
+				error!(error = ?error, "internal error");
+				tr!(ctx, "error-internal")
+			}
+		};
+
+		if let Err(e) = ctx
+			.send(|m| {
+				m.content(content);
+				m
+			})
+			.await
+		{
+			error!(e = ?e, "failed to send error message");
+		}
+	} else {
+		error!(error = ?error, "non-command internal error");
 	}
 }

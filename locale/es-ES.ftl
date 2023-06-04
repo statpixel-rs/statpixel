@@ -6,6 +6,20 @@ no-previous-statistics = No se encontraron datos anteriores para **{$name}**, po
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
 
+# Errors
+
+error-player-not-found = No se encontró un perfil perteneciente a {$name}.
+error-session-not-found = No se encontró una sesión perteneciente a {$name}.
+error-player-uuid-not-found = No se encontró un jugador con el UUID {$uuid}.
+error-player-username-not-found = No se encontró un jugador con el nombre de usuario {$name}.
+error-guild-by-member-uuid-not-found = No se encontró un miembro de gremio con el UUID {$uuid}.
+error-guild-by-member-username-not-found = No se encontró un miembro de gremio con el nombre de usuario {$name}.
+error-guild-not-found = No se encontró un gremio con el nombre {$name}.
+error-internal = Se produjo un error interno. Se ha registrado y se resolverá en breve.
+error-not-linked = No estás vinculado a una cuenta de Minecraft. Usa </link:1113624864524357710> para vincular tu cuenta.
+error-invalid-uuid = El UUID {$uuid} no es válido.
+error-invalid-username = El nombre de usuario {$name} no es válido.
+
 # /skyblock auctions
 
 auctions = auctions

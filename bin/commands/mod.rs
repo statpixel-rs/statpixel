@@ -1,7 +1,15 @@
+use std::borrow::Cow;
+
+use api::{
+	guild::Guild,
+	player::{data::Data, status::Session, Player},
+};
 use database::{extend::lower, schema};
 use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
 use diesel_async::RunQueryDsl;
-use translate::Context;
+use translate::{Context, Error};
+
+use crate::util;
 
 pub mod cache;
 pub mod display;
@@ -100,210 +108,139 @@ pub async fn autocomplete_guild_name(
 	Box::new(std::iter::once(partial.to_string()))
 }
 
-/// Generates the code needed to fetch the player, their display name, and their session.
-#[macro_export]
-macro_rules! get_with_display {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
-			Ok(player) => player,
-			Err($crate::Error::NotLinked) => {
-				$ctx.send(|m| {
-					$crate::util::error_embed(
-						m,
-						::translate::tr!($ctx, "not-linked"),
-						::translate::tr!($ctx, "not-linked-description"),
-					)
-				})
-				.await?;
-
-				return Ok(());
-			}
-			Err(e) => return Err(e),
-		};
-
-		let format = $crate::util::get_format_from_input($ctx).await;
-		let (data, session) = poise::futures_util::future::join(
-			player.get_display_string(),
-			player.get_session($ctx),
-		)
-		.await;
-
-		let data = data?;
-		let session = session?;
-
-		(format, player, data, session)
-	}};
+pub async fn get_guild(
+	ctx: Context<'_>,
+	name: Option<String>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<Guild, Error> {
+	util::get_guild_from_input(ctx, name, uuid, username).await
 }
 
-/// Generates the code needed to fetch the player, their data, display format, session, and skin
-#[macro_export]
-macro_rules! get_all {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
-			Ok(player) => player,
-			Err($crate::Error::NotLinked) => {
-				$ctx.send(|m| {
-					$crate::util::error_embed(
-						m,
-						::translate::tr!($ctx, "not-linked"),
-						::translate::tr!($ctx, "not-linked-description"),
-					)
-				})
-				.await?;
+pub async fn get_player_data_session_skin_suffix(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+	let (result, _) = tokio::join!(
+		player_data_session_skin_suffix(ctx, uuid, username),
+		ctx.defer(),
+	);
 
-				return Ok(());
-			}
-			Err(e) => return Err(e),
-		};
-
-		let (data, session, skin, suffix) = tokio::join!(
-			player.get_data(),
-			player.get_session(),
-			player.get_skin(),
-			player.get_suffix($ctx),
-		);
-
-		let data = data?;
-		let session = session?;
-
-		(player, data, session, skin, suffix)
-	}};
+	result
 }
 
-/// Generates the code needed to fetch the player, their data, display format, session, and skin
-#[macro_export]
-macro_rules! get_all_with_username {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player =
-			match $crate::util::get_player_with_username_from_input($ctx, $uuid, $username).await {
-				Ok(player) => player,
-				Err($crate::Error::NotLinked) => {
-					$ctx.send(|m| {
-						$crate::util::error_embed(
-							m,
-							::translate::tr!($ctx, "not-linked"),
-							::translate::tr!($ctx, "not-linked-description"),
-						)
-					})
-					.await?;
+pub async fn from_player_data_session_skin_suffix(
+	ctx: Context<'_>,
+	player: &Player,
+) -> Result<(Data, Session, Cow<'static, [u8]>, Option<String>), Error> {
+	let (data, session, skin, suffix) = tokio::join!(
+		player.get_data(),
+		player.get_session(),
+		player.get_skin(),
+		player.get_suffix(ctx),
+	);
 
-					return Ok(());
-				}
-				Err(e) => return Err(e),
-			};
+	let data = data?;
+	let session = session?;
 
-		let (data, session, skin, suffix) = tokio::join!(
-			player.get_data(),
-			player.get_session(),
-			player.get_skin(),
-			player.get_suffix($ctx),
-		);
-
-		let data = data?;
-		let session = session?;
-
-		(player, data, session, skin, suffix)
-	}};
+	Ok((data, session, skin, suffix))
 }
 
-/// Generates the code needed to fetch the player, their data, display format, session, and skin
-#[macro_export]
-macro_rules! get_from_player {
-	($ctx: ident, $player: ident) => {{
-		let (data, session, skin, suffix) = tokio::join!(
-			$player.get_data(),
-			$player.get_session(),
-			$player.get_skin(),
-			$player.get_suffix($ctx),
-		);
+async fn player_data_session_skin_suffix(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let (data, session, skin, suffix) = from_player_data_session_skin_suffix(ctx, &player).await?;
 
-		let data = data?;
-		let session = session?;
-
-		(data, session, skin, suffix)
-	}};
+	Ok((player, data, session, skin, suffix))
 }
 
-/// Generates the code needed to fetch the player and their data
-#[macro_export]
-macro_rules! get_data {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
-			Ok(player) => player,
-			Err($crate::Error::NotLinked) => {
-				$ctx.send(|m| {
-					$crate::util::error_embed(
-						m,
-						::translate::tr!($ctx, "not-linked"),
-						::translate::tr!($ctx, "not-linked-description"),
-					)
-				})
-				.await?;
+pub async fn get_player_username_data_session_skin_suffix(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+	let (result, _) = tokio::join!(
+		player_username_data_session_skin_suffix(ctx, uuid, username),
+		ctx.defer(),
+	);
 
-				return Ok(());
-			}
-			Err(e) => return Err(e),
-		};
-
-		let data = player.get_data().await?;
-
-		(player, data)
-	}};
+	result
 }
 
-#[macro_export]
-macro_rules! get_data_with_username {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player =
-			match $crate::util::get_player_with_username_from_input($ctx, $uuid, $username).await {
-				Ok(player) => player,
-				Err($crate::Error::NotLinked) => {
-					$ctx.send(|m| {
-						$crate::util::error_embed(
-							m,
-							::translate::tr!($ctx, "not-linked"),
-							::translate::tr!($ctx, "not-linked-description"),
-						)
-					})
-					.await?;
+async fn player_username_data_session_skin_suffix(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+	let player = util::get_player_with_username_from_input(ctx, uuid, username).await?;
+	let (data, session, skin, suffix) = from_player_data_session_skin_suffix(ctx, &player).await?;
 
-					return Ok(());
-				}
-				Err(e) => return Err(e),
-			};
-
-		let data = player.get_data().await?;
-
-		(player, data)
-	}};
+	Ok((player, data, session, skin, suffix))
 }
 
-/// Generates the code needed to fetch the player their session.
-#[macro_export]
-macro_rules! get_history_data {
-	($ctx: ident, $uuid: ident, $username: ident) => {{
-		let player = match $crate::util::get_player_from_input($ctx, $uuid, $username).await {
-			Ok(player) => player,
-			Err($crate::Error::NotLinked) => {
-				$ctx.send(|m| {
-					$crate::util::error_embed(
-						m,
-						::translate::tr!($ctx, "not-linked"),
-						::translate::tr!($ctx, "not-linked-description"),
-					)
-				})
-				.await?;
+pub async fn get_player_username_data(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data), Error> {
+	let (result, _) = tokio::join!(player_username_data(ctx, uuid, username), ctx.defer());
 
-				return Ok(());
-			}
-			Err(e) => return Err(e),
-		};
+	result
+}
 
-		let format = $crate::util::get_format_from_input($ctx).await;
-		let session = player.get_session().await;
+async fn player_username_data(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data), Error> {
+	let player = util::get_player_with_username_from_input(ctx, uuid, username).await?;
+	let data = player.get_data().await?;
 
-		let session = session?;
+	Ok((player, data))
+}
 
-		(format, player, session)
-	}};
+pub async fn get_player_data(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data), Error> {
+	let (result, _) = tokio::join!(player_data(ctx, uuid, username), ctx.defer());
+
+	result
+}
+
+async fn player_data(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Data), Error> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let data = player.get_data().await?;
+
+	Ok((player, data))
+}
+
+pub async fn get_player_session(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Session), Error> {
+	let (result, _) = tokio::join!(player_session(ctx, uuid, username), ctx.defer());
+
+	result
+}
+
+async fn player_session(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Session), Error> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let session = player.get_session().await?;
+
+	Ok((player, session))
 }

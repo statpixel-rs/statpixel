@@ -6,6 +6,20 @@ no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, 
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
 
+# Errors
+
+error-player-not-found = Un profil appartenant à {$name} n'a pas été trouvé.
+error-session-not-found = Une session appartenant à {$name} n'a pas été trouvée.
+error-player-uuid-not-found = Un joueur avec l'uuid {$uuid} n'a pas été trouvé.
+error-player-username-not-found = Un joueur avec le nom d'utilisateur {$name} n'a pas été trouvé.
+error-guild-by-member-uuid-not-found = Un membre de guilde avec l'uuid {$uuid} n'a pas été trouvé.
+error-guild-by-member-username-not-found = Un membre de guilde avec le nom d'utilisateur {$name} n'a pas été trouvé.
+error-guild-not-found = Une guilde avec le nom {$name} n'a pas été trouvée.
+error-internal = Une erreur interne s'est produite. Il a été enregistré et sera résolu sous peu.
+error-not-linked = Vous n'êtes pas lié à un compte Minecraft. Utilisez </link:1113624864524357710> pour lier votre compte.
+error-invalid-uuid = L'uuid {$uuid} est invalide.
+error-invalid-username = Le nom d'utilisateur {$name} est invalide.
+
 # /skyblock auctions
 
 auctions = auctions
