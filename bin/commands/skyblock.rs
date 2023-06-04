@@ -48,7 +48,7 @@ pub async fn auctions(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (player, data, session, skin) = crate::get_all!(ctx, uuid, username);
+	let (player, data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
 
 	player.increase_searches(ctx).await?;
 
@@ -65,7 +65,7 @@ pub async fn auctions(
 			.gap(7.)
 			.push_down(
 				&shape::Title,
-				shape::Title::from_text(&text::from_data(&data, &data.username)),
+				shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
 			)
 			.push_down(
 				&shape::Subtitle,
@@ -135,7 +135,7 @@ pub async fn profile(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let (player, mut data, session, skin) = crate::get_all!(ctx, uuid, username);
+	let (player, mut data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -168,7 +168,7 @@ pub async fn profile(
 			.gap(7.)
 			.push_down(
 				&shape::Title,
-				shape::Title::from_text(&text::from_data(&data, &data.username)),
+				shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
 			)
 			.push_down(
 				&shape::Subtitle,

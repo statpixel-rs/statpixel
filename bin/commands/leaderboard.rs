@@ -122,7 +122,7 @@ pub async fn leaderboard(
 						.push_right(
 							&shape::LeaderboardName,
 							Body::build_slice(
-								&text::from_data(player, &player.username),
+								&text::from_data(player, &player.username, None),
 								20.,
 								None,
 							),

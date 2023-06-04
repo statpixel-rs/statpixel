@@ -2,8 +2,8 @@ pub mod data;
 pub mod stats;
 pub mod status;
 
-use database::schema::autocomplete;
-use diesel::ExpressionMethods;
+use database::schema::{autocomplete, user};
+use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use reqwest::{Method, Request, StatusCode, Url};
@@ -104,6 +104,22 @@ impl Player {
 			.await?;
 
 		Ok(())
+	}
+
+	pub async fn get_suffix(&self, ctx: Context<'_>) -> Option<String> {
+		let Ok(mut connnection) = ctx.data().pool.get().await else {
+			return None;
+		};
+
+		match user::table
+			.filter(user::uuid.eq(&self.uuid))
+			.select(user::suffix)
+			.first::<Option<String>>(&mut connnection)
+			.await
+		{
+			Ok(suffix) => suffix,
+			Err(_) => None,
+		}
 	}
 
 	/// # Errors

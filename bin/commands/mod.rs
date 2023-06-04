@@ -122,9 +122,11 @@ macro_rules! get_with_display {
 		};
 
 		let format = $crate::util::get_format_from_input($ctx).await;
-		let (data, session) =
-			poise::futures_util::future::join(player.get_display_string(), player.get_session())
-				.await;
+		let (data, session) = poise::futures_util::future::join(
+			player.get_display_string(),
+			player.get_session($ctx),
+		)
+		.await;
 
 		let data = data?;
 		let session = session?;
@@ -154,13 +156,17 @@ macro_rules! get_all {
 			Err(e) => return Err(e),
 		};
 
-		let (data, session, skin) =
-			tokio::join!(player.get_data(), player.get_session(), player.get_skin());
+		let (data, session, skin, prefix) = tokio::join!(
+			player.get_data(),
+			player.get_session(),
+			player.get_skin(),
+			player.get_suffix($ctx),
+		);
 
 		let data = data?;
 		let session = session?;
 
-		(player, data, session, skin)
+		(player, data, session, skin, prefix)
 	}};
 }
 
@@ -186,13 +192,17 @@ macro_rules! get_all_with_username {
 				Err(e) => return Err(e),
 			};
 
-		let (data, session, skin) =
-			tokio::join!(player.get_data(), player.get_session(), player.get_skin());
+		let (data, session, skin, prefix) = tokio::join!(
+			player.get_data(),
+			player.get_session(),
+			player.get_skin(),
+			player.get_suffix($ctx),
+		);
 
 		let data = data?;
 		let session = session?;
 
-		(player, data, session, skin)
+		(player, data, session, skin, prefix)
 	}};
 }
 
@@ -200,16 +210,17 @@ macro_rules! get_all_with_username {
 #[macro_export]
 macro_rules! get_from_player {
 	($ctx: ident, $player: ident) => {{
-		let (data, session, skin) = tokio::join!(
+		let (data, session, skin, prefix) = tokio::join!(
 			$player.get_data(),
 			$player.get_session(),
-			$player.get_skin()
+			$player.get_skin(),
+			$player.get_suffix($ctx),
 		);
 
 		let data = data?;
 		let session = session?;
 
-		(data, session, skin)
+		(data, session, skin, prefix)
 	}};
 }
 

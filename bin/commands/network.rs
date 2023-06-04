@@ -27,7 +27,7 @@ pub async fn network(
 
 	match format {
 		Display::Image | Display::Compact => {
-			let (player, data, session, skin) = crate::get_all!(ctx, uuid, username);
+			let (player, data, session, skin, suffix) = crate::get_all!(ctx, uuid, username);
 
 			player.increase_searches(ctx).await?;
 
@@ -43,7 +43,7 @@ pub async fn network(
 					.gap(7.)
 					.push_down(
 						&shape::Title,
-						shape::Title::from_text(&text::from_data(&data, &data.username)),
+						shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
 					)
 					.push_down(
 						&shape::Subtitle,

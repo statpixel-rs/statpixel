@@ -306,11 +306,11 @@ impl<'s> Shape for Status<'s> {
 		path.add_rrect(rrect, None);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
 		if !self.0.online {
 			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(self.1) }).unwrap();
 
-			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
+			canvas.draw_image(image, (bounds.x() + 10., bounds.y() + 10.), None);
 		}
 	}
 

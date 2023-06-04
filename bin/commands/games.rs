@@ -31,13 +31,13 @@ macro_rules! generate_large_command {
 			match format {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, data, session, skin) = $crate::get_all!(ctx, uuid, username);
+					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
 
 					player.increase_searches(ctx).await?;
 
 					let png: ::std::borrow::Cow<[u8]> = {
 						let mut surface =
-							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode);
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -63,11 +63,11 @@ macro_rules! generate_large_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin) = $crate::get_from_player!(ctx, player);
+						let (data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
-								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode));
+								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -130,12 +130,12 @@ macro_rules! generate_command {
 			match format {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, data, session, skin) = $crate::get_all!(ctx, uuid, username);
+					let (player, data, session, skin, suffix) = $crate::get_all!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
 					let png: ::std::borrow::Cow<[u8]> = {
 						let mut surface =
-							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode);
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -159,11 +159,11 @@ macro_rules! generate_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin) = $crate::get_from_player!(ctx, player);
+						let (data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
-								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode));
+								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};

@@ -18,7 +18,7 @@ macro_rules! generate_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin) = $crate::get_all_with_username!(ctx, uuid, username);
+					let (player, mut data, session, skin, suffix) = $crate::get_all_with_username!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -47,7 +47,7 @@ macro_rules! generate_history_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode);
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -72,7 +72,7 @@ macro_rules! generate_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin) = $crate::get_from_player!(ctx, player);
+						let (mut data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -81,7 +81,7 @@ macro_rules! generate_history_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode));
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -177,7 +177,7 @@ macro_rules! generate_large_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin) = $crate::get_all_with_username!(ctx, uuid, username);
+					let (player, mut data, session, skin, suffix) = $crate::get_all_with_username!(ctx, uuid, username);
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -206,7 +206,7 @@ macro_rules! generate_large_history_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode);
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -231,7 +231,7 @@ macro_rules! generate_large_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin) = $crate::get_from_player!(ctx, player);
+						let (mut data, session, skin, suffix) = $crate::get_from_player!(ctx, player);
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -240,7 +240,7 @@ macro_rules! generate_large_history_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode));
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};

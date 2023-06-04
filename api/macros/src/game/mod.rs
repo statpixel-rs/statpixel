@@ -1209,7 +1209,8 @@ impl ToTokens for GameInputReceiver {
 					curr: &mut crate::player::data::Data,
 					session: &crate::player::status::Session,
 					skin: &[u8],
-					mode: Option<#enum_ident>
+					mode: Option<#enum_ident>,
+					suffix: Option<&str>,
 				) -> ::skia_safe::Surface {
 					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
 
@@ -1223,7 +1224,7 @@ impl ToTokens for GameInputReceiver {
 						.gap(7.)
 						.push_down(
 							&crate::canvas::shape::Title,
-							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
+							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username, suffix)),
 						);
 
 					let (xp, level, progress) = {
@@ -1254,7 +1255,8 @@ impl ToTokens for GameInputReceiver {
 					data: &crate::player::data::Data,
 					session: &crate::player::status::Session,
 					skin: &[u8],
-					mode: Option<#enum_ident>
+					mode: Option<#enum_ident>,
+					suffix: Option<&str>,
 				) -> ::skia_safe::Surface {
 					let stats = &data.stats.#path;
 
@@ -1263,7 +1265,7 @@ impl ToTokens for GameInputReceiver {
 						.gap(7.)
 						.push_down(
 							&crate::canvas::shape::Title,
-							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username)),
+							crate::canvas::shape::Title::from_text(&crate::canvas::text::from_data(&data, &data.username, suffix)),
 						);
 
 					let (xp, level, progress) = {
