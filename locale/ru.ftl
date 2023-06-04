@@ -19,6 +19,10 @@ error-internal = Произошла внутренняя ошибка. Она б
 error-not-linked = Вы не привязаны к учетной записи Minecraft. Используйте </link:1113624864524357710>, чтобы привязать свою учетную запись.
 error-invalid-uuid = UUID {$uuid} недействителен.
 error-invalid-username = Имя пользователя {$name} недействительно.
+error-member-player-not-found = Участник {$name} не найден в профиле.
+error-skyblock-profile-not-found = Профиль SkyBlock, принадлежащий {$name}, не найден.
+error-player-snapshot-not-found = Снимки не найдены для {$name}. Создайте один с помощью </daily bedwars:1113624864272683065>.
+error-leaderboard-not-found = Доска лидеров с именем {$name} не найдена.
 
 # /skyblock auctions
 

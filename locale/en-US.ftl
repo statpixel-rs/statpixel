@@ -19,6 +19,10 @@ error-internal = An internal error occurred. It has been logged and will be reso
 error-not-linked = You are not linked to a Minecraft account. Use </link:1113624864524357710> to link your account.
 error-invalid-uuid = The uuid {$uuid} is invalid.
 error-invalid-username = The username {$name} is invalid.
+error-member-player-not-found = The member {$name} was not found in the profile.
+error-skyblock-profile-not-found = A SkyBlock profile belonging to {$name} was not found.
+error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </daily bedwars:1113624864272683065>.
+error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 
 # /skyblock auctions
 

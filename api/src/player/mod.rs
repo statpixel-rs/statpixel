@@ -6,9 +6,9 @@ use database::schema::{autocomplete, user};
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
-use reqwest::{Method, Request, StatusCode, Url};
+use reqwest::{Request, StatusCode, Url};
 use serde::Deserialize;
-use std::{borrow::Cow, str::FromStr, sync::Arc};
+use std::{borrow::Cow, str::FromStr, sync::Arc, time::Duration};
 use tracing::error;
 use translate::Context;
 use uuid::Uuid;
@@ -56,12 +56,12 @@ pub struct MojangResponse {
 #[derive(Clone, Debug)]
 pub struct Player {
 	pub uuid: Uuid,
-	pub username: String,
+	pub username: Option<String>,
 }
 
 impl Player {
 	#[must_use]
-	pub fn new(uuid: Uuid, username: String) -> Self {
+	pub fn new(uuid: Uuid, username: Option<String>) -> Self {
 		Self { uuid, username }
 	}
 
@@ -71,7 +71,7 @@ impl Player {
 	pub fn from_uuid_unchecked(uuid: Uuid) -> Self {
 		Self {
 			uuid,
-			username: String::new(),
+			username: None,
 		}
 	}
 
@@ -88,20 +88,28 @@ impl Player {
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
 	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
-		diesel::insert_into(autocomplete::table)
-			.values((
-				autocomplete::name.eq(&self.username),
-				autocomplete::uuid.eq(&self.uuid),
-				autocomplete::searches.eq(1),
-			))
-			.on_conflict(autocomplete::uuid)
-			.do_update()
-			.set((
-				autocomplete::name.eq(&self.username),
-				autocomplete::searches.eq(autocomplete::searches + 1),
-			))
-			.execute(&mut ctx.data().pool.get().await?)
-			.await?;
+		if let Some(ref username) = self.username {
+			diesel::insert_into(autocomplete::table)
+				.values((
+					autocomplete::name.eq(username),
+					autocomplete::uuid.eq(&self.uuid),
+					autocomplete::searches.eq(1),
+				))
+				.on_conflict(autocomplete::uuid)
+				.do_update()
+				.set((
+					autocomplete::name.eq(username),
+					autocomplete::searches.eq(autocomplete::searches + 1),
+				))
+				.execute(&mut ctx.data().pool.get().await?)
+				.await?;
+		} else {
+			diesel::update(autocomplete::table)
+				.filter(autocomplete::uuid.eq(&self.uuid))
+				.set((autocomplete::searches.eq(autocomplete::searches + 1),))
+				.execute(&mut ctx.data().pool.get().await?)
+				.await?;
+		}
 
 		Ok(())
 	}
@@ -146,7 +154,7 @@ impl Player {
 		}
 
 		let response = response.json::<MojangResponse>().await?;
-		let player = Self::new(response.id, response.name);
+		let player = Self::new(response.id, Some(response.name));
 
 		// Also add the player with their uuid to the cache
 		PLAYER_CACHE
@@ -178,7 +186,7 @@ impl Player {
 
 		let response = response.json::<MojangResponse>().await?;
 		let lower = response.name.to_ascii_lowercase();
-		let player = Self::new(response.id, response.name);
+		let player = Self::new(response.id, Some(response.name));
 
 		// Also add the player to the cache with the lower-case username
 		PLAYER_CACHE.insert(lower, player.clone()).await;
@@ -210,7 +218,11 @@ impl Player {
 		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::PlayerNotFound(self.username.clone()));
+			return Err(Error::PlayerNotFound(
+				self.username
+					.as_ref()
+					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
+			));
 		}
 
 		let response = match response.json::<Response>().await {
@@ -234,8 +246,11 @@ impl Player {
 			.join(&format!("{}.png", self.uuid))
 			.unwrap();
 
-		let request = Request::new(Method::GET, url);
-		let response = HTTP.perform_bare(request).await;
+		let response = HTTP
+			.get(url)
+			.timeout(Duration::from_millis(300))
+			.send()
+			.await;
 
 		match response {
 			Ok(response) if response.status() == StatusCode::OK => match response.bytes().await {
@@ -266,7 +281,11 @@ impl Player {
 		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::SessionNotFound(self.username.clone()));
+			return Err(Error::SessionNotFound(
+				self.username
+					.as_ref()
+					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
+			));
 		}
 
 		let response = response.json::<Status>().await?;
@@ -284,10 +303,10 @@ mod tests {
 	#[test]
 	fn test_player() {
 		let uuid = Uuid::new_v4();
-		let player = Player::new(uuid, "Notch".to_string());
+		let player = Player::new(uuid, Some("Notch".to_string()));
 
 		assert_eq!(player.uuid, uuid);
-		assert_eq!(player.username, "Notch".to_string());
+		assert_eq!(player.username, Some("Notch".to_string()));
 	}
 
 	#[tokio::test]
@@ -307,13 +326,13 @@ mod tests {
 		let player = Player::from_uuid(&uuid).await;
 
 		assert_matches!(player, Ok(_));
-		assert_eq!(player.unwrap().username, "Notch".to_string());
+		assert_eq!(player.unwrap().username, Some("Notch".to_string()));
 	}
 
 	#[tokio::test]
 	async fn test_player_data() {
 		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
-		let player = Player::new(uuid, "Technoblade".to_string());
+		let player = Player::new(uuid, Some("Technoblade".to_string()));
 
 		assert_matches!(player.get_data().await, Ok(_));
 	}

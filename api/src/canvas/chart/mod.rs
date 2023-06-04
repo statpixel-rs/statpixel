@@ -162,8 +162,7 @@ impl_chart_create!(f64);
 pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	let info = ImageInfo::new((750, 389), ColorType::RGBA8888, AlphaType::Premul, None);
 
-	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None)
-		.ok_or_else(|| Error::Custom("Failed to create canvas".to_string()))
+	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
 pub fn apply_title(ctx: Context<'_>, surface: &mut Surface, data: &Data, label: &[Text]) {

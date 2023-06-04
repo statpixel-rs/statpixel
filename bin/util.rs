@@ -4,7 +4,7 @@ use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::username::Username;
 use poise::CreateReply;
-use std::{borrow::Cow, fmt::Display};
+use std::fmt::Display;
 use tracing::error;
 use translate::{tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
@@ -69,9 +69,7 @@ pub async fn get_player_from_input(
 	username: Option<String>,
 ) -> Result<Player, Error> {
 	match (
-		uuid
-			.as_ref()
-			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
+		uuid.as_ref().and_then(|uuid| Uuid::parse_str(uuid).ok()),
 		uuid,
 		username
 			.as_ref()
@@ -104,9 +102,7 @@ pub async fn get_player_with_username_from_input(
 	username: Option<String>,
 ) -> Result<Player, Error> {
 	match (
-		uuid
-			.as_ref()
-			.and_then(|uuid| Uuid::parse_str(uuid).ok()),
+		uuid.as_ref().and_then(|uuid| Uuid::parse_str(uuid).ok()),
 		uuid,
 		username
 			.as_ref()
@@ -212,7 +208,18 @@ pub async fn error_handler(error: poise::FrameworkError<'_, Data, Error>) {
 			Error::InvalidUsername(ref name) => {
 				tr_fmt!(ctx, "error-invalid-username", name: format!("`{}`", name))
 			}
-			Error::Custom(ref message) => Cow::Borrowed(message.as_str()),
+			Error::MemberPlayerNotFound(ref name) => {
+				tr_fmt!(ctx, "error-member-player-not-found", name: format!("`{}`", name))
+			}
+			Error::SkyBlockProfileNotFound(ref name) => {
+				tr_fmt!(ctx, "error-skyblock-profile-not-found", name: format!("`{}`", name))
+			}
+			Error::PlayerSnapshotNotFound(ref name) => {
+				tr_fmt!(ctx, "error-player-snapshot-not-found", name: format!("`{}`", name))
+			}
+			Error::LeaderboardNotFound(ref name) => {
+				tr_fmt!(ctx, "error-leaderboard-not-found", name: format!("`{}`", name))
+			}
 			ref error => {
 				error!(error = ?error, "internal error");
 				tr!(ctx, "error-internal")

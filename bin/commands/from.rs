@@ -57,7 +57,7 @@ macro_rules! generate_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(&player.username),
+							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
 						);
 
 						ctx.send(move |m| {
@@ -99,7 +99,7 @@ macro_rules! generate_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (mut data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -138,7 +138,7 @@ macro_rules! generate_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(&player.username),
+							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
 						);
 
 						ctx.send(move |m| {
@@ -235,7 +235,7 @@ macro_rules! generate_large_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(&player.username),
+							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
 						);
 
 						ctx.send(move |m| {
@@ -277,7 +277,7 @@ macro_rules! generate_large_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (mut data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -316,7 +316,7 @@ macro_rules! generate_large_command {
 					let $crate::snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
 						let content = ::translate::tr_fmt!(
 							ctx, "no-previous-statistics",
-							name: $crate::util::escape_username(&player.username),
+							name: $crate::util::escape_username(player.username.as_deref().unwrap()),
 						);
 
 						ctx.send(move |m| {

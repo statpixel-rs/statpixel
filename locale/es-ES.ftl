@@ -19,6 +19,10 @@ error-internal = Se produjo un error interno. Se ha registrado y se resolverá e
 error-not-linked = No estás vinculado a una cuenta de Minecraft. Usa </link:1113624864524357710> para vincular tu cuenta.
 error-invalid-uuid = El UUID {$uuid} no es válido.
 error-invalid-username = El nombre de usuario {$name} no es válido.
+error-member-player-not-found = El miembro {$name} no se encontró en el perfil.
+error-skyblock-profile-not-found = No se encontró un perfil de SkyBlock perteneciente a {$name}.
+error-player-snapshot-not-found = No se encontraron instantáneas para {$name}. Crea una con </daily bedwars:1113624864272683065>.
+error-leaderboard-not-found = No se encontró una clasificación con el nombre {$name}.
 
 # /skyblock auctions
 

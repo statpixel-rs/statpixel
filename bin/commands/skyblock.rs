@@ -141,7 +141,7 @@ pub async fn profile(
 	uuid: Option<String>,
 ) -> Result<(), Error> {
 	let (player, mut data, session, skin, suffix) =
-		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+		crate::commands::get_player_username_data_session_skin_suffix(ctx, uuid, username).await?;
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -153,13 +153,13 @@ pub async fn profile(
 		Some(profile) => profiles.into_iter().find(|p| p.name == profile),
 		None => profiles.into_iter().next(),
 	}) else {
-		return Err(Error::Custom("No profile found.".to_string()));
+		return Err(Error::SkyBlockProfileNotFound(player.username.unwrap()));
 	};
 
 	let mut profile = Player::get_skyblock_profile(profile.id).await?;
 
 	let Some(member) = profile.members.remove(&player.uuid) else {
-		return Err(Error::Custom(format!("`{}` is not a member of the provided profile.", player.username)));
+		return Err(Error::MemberPlayerNotFound(player.username.unwrap()));
 	};
 
 	let png = {
@@ -387,7 +387,7 @@ pub async fn bank(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let (player, mut data) = crate::commands::get_player_data(ctx, uuid, username).await?;
+	let (player, mut data) = crate::commands::get_player_username_data(ctx, uuid, username).await?;
 	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
@@ -399,7 +399,7 @@ pub async fn bank(
 		Some(profile) => profiles.into_iter().find(|p| p.name == profile),
 		None => profiles.into_iter().next(),
 	}) else {
-		return Err(Error::Custom("No profile found.".to_string()));
+		return Err(Error::MemberPlayerNotFound(player.username.unwrap()));
 	};
 
 	let profile = Player::get_skyblock_profile(profile.id).await?;

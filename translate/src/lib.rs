@@ -81,6 +81,14 @@ pub enum Error {
 	BincodeSerialize(#[from] bincode::error::EncodeError),
 	#[error("An internal error occurred while drawing a plot.")]
 	Plotters,
-	#[error("{0}")]
-	Custom(String),
+	#[error("`{0}` is not a member of the provided profile.")]
+	MemberPlayerNotFound(String),
+	#[error("A SkyBlock profile belonging to `{0}` was not found.")]
+	SkyBlockProfileNotFound(String),
+	#[error("No snapshots were found for `{0}`.")]
+	PlayerSnapshotNotFound(String),
+	#[error("A leaderboard with the name `{0}` was not found.")]
+	LeaderboardNotFound(String),
+	#[error("An internal error occurred while interacting with the canvas.")]
+	Canvas,
 }

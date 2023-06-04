@@ -47,7 +47,7 @@ pub async fn ser(
 	ctx.send(|m| {
 		m.content(format!(
 			"**{}** profile size\n{serialized_bytes} serialized bytes ({compressed_bytes} compressed)",
-			escape_username(&player.username),
+			escape_username(player.username.as_deref().unwrap()),
 		))
 	})
 	.await?;

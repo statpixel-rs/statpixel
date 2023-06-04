@@ -131,12 +131,12 @@ pub async fn network(
 
 			if let Some(prefix) = data.get_rank().as_str() {
 				embed.author(|a| {
-					a.name(format!("{} {} :: Network", prefix, player.username))
+					a.name(format!("{} {} :: Network", prefix, data.username))
 						.icon_url(player.get_head_url())
 				});
 			} else {
 				embed.author(|a| {
-					a.name(format!("{} :: Network", player.username))
+					a.name(format!("{} :: Network", data.username))
 						.icon_url(player.get_head_url())
 				});
 			}

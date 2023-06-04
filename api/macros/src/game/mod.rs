@@ -1320,14 +1320,15 @@ impl ToTokens for GameInputReceiver {
 
 					embed.thumbnail(player.get_body_url());
 
+					let username: &str = player.username.as_deref().unwrap();
 					if let Some(prefix) = data.get_rank().as_str() {
 						embed.author(|a| {
-							a.name(format!(concat!("{} {} :: ", #plain), prefix, player.username))
+							a.name(format!(concat!("{} {} :: ", #plain), prefix, username))
 								.icon_url(player.get_head_url())
 						});
 					} else {
 						embed.author(|a| {
-							a.name(format!(concat!("{} :: ", #plain), player.username))
+							a.name(format!(concat!("{} :: ", #plain), username))
 								.icon_url(player.get_head_url())
 						});
 					}
@@ -1365,14 +1366,15 @@ impl ToTokens for GameInputReceiver {
 
 					embed.thumbnail(player.get_body_url());
 
+					let username: &str = player.username.as_deref().unwrap();
 					if let Some(prefix) = data.get_rank().as_str() {
 						embed.author(|a| {
-							a.name(format!(concat!("{} {} :: ", #plain), prefix, player.username))
+							a.name(format!(concat!("{} {} :: ", #plain), prefix, username))
 								.icon_url(player.get_head_url())
 						});
 					} else {
 						embed.author(|a| {
-							a.name(format!(concat!("{} :: ", #plain), player.username))
+							a.name(format!(concat!("{} :: ", #plain), username))
 								.icon_url(player.get_head_url())
 						});
 					}

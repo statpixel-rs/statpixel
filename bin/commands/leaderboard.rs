@@ -52,7 +52,7 @@ pub async fn leaderboard(
 	let leaderboard = {
 		let leaderboards = api::leaderboard::get().await?;
 		let Some(leaderboard) = leaderboards.into_iter().find(|l| l.display_name == board) else {
-			return Err(Error::Custom(format!("No leaderboard found with the name `{}`.", board)));
+			return Err(Error::LeaderboardNotFound(board));
 		};
 
 		leaderboard

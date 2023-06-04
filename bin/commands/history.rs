@@ -85,7 +85,11 @@ macro_rules! generate_large_command {
 
 macro_rules! generate_command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
+		#[poise::command(
+			on_error = "crate::util::error_handler",
+			slash_command,
+			required_bot_permissions = "ATTACH_FILES"
+		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
 			#[max_length = 16]
@@ -96,7 +100,8 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let (player, session) = $crate::commands::get_player_session(ctx, uuid, username).await?;
+			let (player, session) =
+				$crate::commands::get_player_username_session(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
@@ -122,7 +127,9 @@ macro_rules! generate_command {
 			};
 
 			if snapshots.is_empty() {
-				return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1113624864272683065>.", player.username)));
+				return Err(::translate::Error::PlayerSnapshotNotFound(
+					player.username.unwrap(),
+				));
 			}
 
 			let png = {
@@ -186,7 +193,7 @@ async fn network(
 	};
 
 	let (Some(first), Some(last)) = (snapshots.first(), snapshots.last()) else {
-		return Err(::translate::Error::Custom(format!("`{}` has no snapshots. You can create one with </daily bedwars:1113624864272683065>.", player.username)));
+		return Err(::translate::Error::PlayerSnapshotNotFound(player.username.unwrap()));
 	};
 
 	let lower = first.1.xp * 15 / 16;

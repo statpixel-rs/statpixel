@@ -3,7 +3,7 @@ use std::sync::Arc;
 use std::time::SystemTime;
 
 use reqwest::header::HeaderMap;
-use reqwest::{Client, Request, Response, StatusCode};
+use reqwest::{Client, Request, RequestBuilder, Response, StatusCode, Url};
 use tokio::sync::{Mutex, RwLock};
 use tokio::time::{sleep, Duration};
 use tracing::info;
@@ -87,6 +87,11 @@ impl Ratelimiter {
 		Arc::clone(&self.routes)
 	}
 
+	#[inline]
+	pub fn get(&self, url: Url) -> RequestBuilder {
+		self.client.get(url)
+	}
+
 	/// # Errors
 	/// Returns an error if the header is not present, or if the header is invalid.
 	#[inline]
@@ -107,7 +112,17 @@ impl Ratelimiter {
 	/// Transparently returns [`reqwest::Error`]
 	#[inline]
 	pub async fn perform_bare(&self, req: Request) -> reqwest::Result<Response> {
-		self.client.execute(req).await
+		let start = std::time::Instant::now();
+		let url = req.url().as_str().to_string();
+		info!(url = url, "added request to queue");
+		let response = self.client.execute(req).await;
+		info!(
+			url = url,
+			time = start.elapsed().as_millis(),
+			"completed request"
+		);
+
+		response
 	}
 
 	async fn perform(&self, req: RatelimitedRequest, route: Route) -> Result<Response> {
@@ -130,7 +145,7 @@ impl Ratelimiter {
 				info!(
 					url = req.url().as_str(),
 					time = start.elapsed().as_millis(),
-					"added request to queue"
+					"completed request"
 				);
 
 				return Ok(response);
@@ -211,7 +226,7 @@ impl Ratelimit {
 			// If the header does not exist (like the case is with Mojang), just wait 5 seconds.
 			parse_header::<f64>(response.headers(), "retry-after").unwrap_or(Some(5.))
 		{
-			info!("Ratelimited on route {:?} for {:?}ms", route, retry_after);
+			info!("ratelimited on route {:?} for {:?}ms", route, retry_after);
 			sleep(Duration::from_secs_f64(retry_after)).await;
 
 			true

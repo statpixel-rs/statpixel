@@ -130,6 +130,18 @@ pub async fn get_player_data_session_skin_suffix(
 	result
 }
 
+pub async fn get_from_player_data_session_skin_suffix(
+	ctx: Context<'_>,
+	player: &Player,
+) -> Result<(Data, Session, Cow<'static, [u8]>, Option<String>), Error> {
+	let (result, _) = tokio::join!(
+		from_player_data_session_skin_suffix(ctx, player),
+		ctx.defer(),
+	);
+
+	result
+}
+
 pub async fn from_player_data_session_skin_suffix(
 	ctx: Context<'_>,
 	player: &Player,
@@ -234,12 +246,33 @@ pub async fn get_player_session(
 	result
 }
 
+pub async fn get_player_username_session(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Session), Error> {
+	let (result, _) = tokio::join!(player_username_session(ctx, uuid, username), ctx.defer());
+
+	result
+}
+
 async fn player_session(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
 ) -> Result<(Player, Session), Error> {
 	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let session = player.get_session().await?;
+
+	Ok((player, session))
+}
+
+async fn player_username_session(
+	ctx: Context<'_>,
+	uuid: Option<String>,
+	username: Option<String>,
+) -> Result<(Player, Session), Error> {
+	let player = util::get_player_with_username_from_input(ctx, uuid, username).await?;
 	let session = player.get_session().await?;
 
 	Ok((player, session))

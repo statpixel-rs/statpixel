@@ -19,6 +19,10 @@ error-internal = 内部エラーが発生しました。ログに記録され、
 error-not-linked = Minecraftアカウントにリンクされていません。 </link:1113624864524357710>を使用してアカウントをリンクしてください。
 error-invalid-uuid = uuid {$uuid}は無効です。
 error-invalid-username = ユーザー名 {$name}は無効です。
+error-member-player-not-found = メンバー{$name}はプロフィールに見つかりませんでした。
+error-skyblock-profile-not-found = {$name}のSkyBlockプロファイルが見つかりませんでした。
+error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。 </daily bedwars:1113624864272683065>で作成してください。
+error-leaderboard-not-found = 名前{$name}のリーダーボードが見つかりませんでした。
 
 # /skyblock auctions
 

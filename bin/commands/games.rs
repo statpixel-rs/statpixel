@@ -61,7 +61,7 @@ macro_rules! generate_large_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
@@ -121,33 +121,21 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let start = ::std::time::Instant::now();
 			let format = $crate::util::get_format_from_input(ctx).await;
-			println!("format: {:?}", start.elapsed().as_millis());
 
 			match format {
 				// TODO: Add compact format support
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let start = ::std::time::Instant::now();
 					let (player, data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
-					println!("get_all: {:?}", start.elapsed().as_millis());
 					let ctx_id = ctx.id();
 
-					let start = ::std::time::Instant::now();
 					player.increase_searches(ctx).await?;
-					println!("inc_search: {:?}", start.elapsed().as_millis());
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let start = ::std::time::Instant::now();
 						let mut surface =
 							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
-						println!("canvas: {:?}", start.elapsed().as_millis());
 
-						let start = ::std::time::Instant::now();
-						let png = ::api::canvas::to_png(&mut surface).into();
-						println!("png: {:?}", start.elapsed().as_millis());
-
-						png
+						::api::canvas::to_png(&mut surface).into()
 					};
 
 					ctx.send(move |m| {
@@ -169,7 +157,7 @@ macro_rules! generate_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (data, session, skin, suffix) = $crate::commands::from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
