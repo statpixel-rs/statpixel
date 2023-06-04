@@ -156,19 +156,19 @@ macro_rules! get_all {
 			Err(e) => return Err(e),
 		};
 
-		let (data, session, skin, prefix) = tokio::join!(
+		let (data, session, skin, suffix) = tokio::join!(
 			player.get_data(),
 			player.get_session(),
 			player.get_skin(),
 			player.get_suffix($ctx),
 		);
 
-		println!("prefix: {:?}", prefix);
+		println!("suffix: {:?}", suffix);
 
 		let data = data?;
 		let session = session?;
 
-		(player, data, session, skin, prefix)
+		(player, data, session, skin, suffix)
 	}};
 }
 
@@ -194,7 +194,7 @@ macro_rules! get_all_with_username {
 				Err(e) => return Err(e),
 			};
 
-		let (data, session, skin, prefix) = tokio::join!(
+		let (data, session, skin, suffix) = tokio::join!(
 			player.get_data(),
 			player.get_session(),
 			player.get_skin(),
@@ -204,7 +204,7 @@ macro_rules! get_all_with_username {
 		let data = data?;
 		let session = session?;
 
-		(player, data, session, skin, prefix)
+		(player, data, session, skin, suffix)
 	}};
 }
 
@@ -212,7 +212,7 @@ macro_rules! get_all_with_username {
 #[macro_export]
 macro_rules! get_from_player {
 	($ctx: ident, $player: ident) => {{
-		let (data, session, skin, prefix) = tokio::join!(
+		let (data, session, skin, suffix) = tokio::join!(
 			$player.get_data(),
 			$player.get_session(),
 			$player.get_skin(),
@@ -222,7 +222,7 @@ macro_rules! get_from_player {
 		let data = data?;
 		let session = session?;
 
-		(data, session, skin, prefix)
+		(data, session, skin, suffix)
 	}};
 }
 
