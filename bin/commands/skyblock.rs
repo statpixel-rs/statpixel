@@ -405,27 +405,34 @@ pub async fn bank(
 	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
 
 	let mut bank = profile.banking;
-	let mut lower = u64::MAX;
-	// The upper bound should be at least 100
-	let mut upper = 100u64;
 
-	// overwrite the bank transactions and replace the "change" by the total at that time
-	for transaction in bank.transactions.iter_mut().rev() {
-		match transaction.action {
-			TransactionAction::Withdraw => bank.balance += transaction.amount,
-			TransactionAction::Deposit => bank.balance -= transaction.amount,
+	let (lower, upper) = if bank.transactions.is_empty() {
+		(0, 100)
+	} else {
+		let mut lower = u64::MAX;
+		// The upper bound should be at least 100
+		let mut upper = 100u64;
+
+		// overwrite the bank transactions and replace the "change" by the total at that time
+		for transaction in bank.transactions.iter_mut().rev() {
+			match transaction.action {
+				TransactionAction::Withdraw => bank.balance += transaction.amount,
+				TransactionAction::Deposit => bank.balance -= transaction.amount,
+			}
+
+			transaction.amount = bank.balance;
+
+			if transaction.amount < lower {
+				lower = transaction.amount;
+			}
+
+			if transaction.amount > upper {
+				upper = transaction.amount;
+			}
 		}
 
-		transaction.amount = bank.balance;
-
-		if transaction.amount < lower {
-			lower = transaction.amount;
-		}
-
-		if transaction.amount > upper {
-			upper = transaction.amount;
-		}
-	}
+		(lower, upper)
+	};
 
 	let first = bank
 		.transactions
