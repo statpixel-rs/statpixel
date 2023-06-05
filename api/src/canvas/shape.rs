@@ -1,5 +1,7 @@
 use crate::{
 	canvas::{label::ToFormatted, util},
+	game::r#type::Type,
+	guild::Guild,
 	player::status::Session,
 };
 
@@ -8,7 +10,7 @@ use super::{body::Body, CORNER_RADIUS};
 use minecraft::{
 	paint::Paint,
 	style::MinecraftFont,
-	text::{parse::minecraft_string, Text},
+	text::{parse::minecraft_string, Text, ESCAPE},
 };
 use skia_safe::{
 	gradient_shader,
@@ -38,10 +40,12 @@ pub struct Subtitle;
 pub struct Bubble;
 pub struct WideBubble;
 pub struct TallBubble;
+pub struct WideTallBubble;
 
 pub struct Sidebar;
 pub struct Gutter;
 pub struct Status<'s>(pub &'s Session, pub &'s [u8]);
+pub struct PreferredGames<'g>(pub &'g [Type]);
 
 pub struct LeaderboardTitle;
 pub struct LeaderboardPlace;
@@ -50,10 +54,115 @@ pub struct LeaderboardValue;
 
 pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
 
+impl Sidebar {
+	#[must_use]
+	pub fn from_guild(ctx: Context<'_>, guild: &mut Guild) -> Paragraph {
+		guild.xp_by_game.sort_unstable_by_key(|g| g.1);
+
+		let mut body = Body::new(17., None);
+		let mut iter = guild.xp_by_game.iter().rev();
+
+		if let Some((game, xp)) = iter.next() {
+			body = body.append_item(
+				game.as_short_clean_name(),
+				xp.to_formatted_label(ctx).as_ref(),
+				&Paint::Gold,
+			);
+		}
+
+		if let Some((game, xp)) = iter.next() {
+			body = body.append_item(
+				game.as_short_clean_name(),
+				xp.to_formatted_label(ctx).as_ref(),
+				&Paint::Gray,
+			);
+		}
+
+		if let Some((game, xp)) = iter.next() {
+			body = body.append_item(
+				game.as_short_clean_name(),
+				xp.to_formatted_label(ctx).as_ref(),
+				&Paint::Red,
+			);
+		}
+
+		for (game, xp) in iter.take(4) {
+			body = body.append_item(
+				game.as_short_clean_name(),
+				xp.to_formatted_label(ctx).as_ref(),
+				&Paint::DarkGray,
+			);
+		}
+
+		body.build()
+	}
+}
+
+impl WideTallBubble {
+	#[must_use]
+	pub fn from_guild(
+		ctx: Context<'_>,
+		guild: &Guild,
+		players: &[String],
+		idx: usize,
+	) -> Paragraph {
+		let count = guild.members.len();
+		let mut body = Body::new(17., None);
+
+		for (idx, player) in players.iter().enumerate().skip(idx * 7).take(7) {
+			let text = guild.members[count - idx - 1]
+				.xp_history
+				.iter()
+				.map(|h| h.1)
+				.sum::<u32>();
+			let text = text.to_formatted_label(ctx);
+
+			body = body.extend_owned(minecraft_string(player)).extend(&[
+				Text {
+					text: " • ",
+					paint: Paint::DarkGray,
+					..Default::default()
+				},
+				Text {
+					text: text.as_ref(),
+					paint: Paint::Gray,
+					..Default::default()
+				},
+			]);
+
+			if idx % 7 != 6 {
+				body = body.append(Text {
+					text: "\n",
+					..Default::default()
+				});
+			}
+		}
+
+		body.build()
+	}
+}
+
 impl Title {
 	#[must_use]
 	pub fn from_text(text: &[Text]) -> Paragraph {
 		Body::new(25., TextAlign::Center).extend(text).build()
+	}
+
+	#[must_use]
+	pub fn from_guild(guild: &Guild) -> Paragraph {
+		let colour: char = guild.tag_colour.into();
+		let name = guild.name.as_str();
+		let tag = guild.tag.as_ref();
+
+		let text = if let Some(tag) = tag {
+			format!("{ESCAPE}{colour}{name} [{tag}]")
+		} else {
+			format!("{ESCAPE}{colour}{name}")
+		};
+
+		Body::new(25., TextAlign::Center)
+			.extend_owned(minecraft_string(&text))
+			.build()
 	}
 }
 
@@ -259,6 +368,38 @@ impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
 impl_rect_shape!(LeaderboardPlace, 50., 35., true);
 impl_rect_shape!(LeaderboardValue, 200., 35., true);
 
+impl Shape for WideTallBubble {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: BUBBLE_WIDTH * 1.5 + GAP / 2.,
+			height: BUBBLE_HEIGHT * 2. + GAP,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		false
+	}
+
+	fn insets(&self) -> Point {
+		(17., 20.).into()
+	}
+}
+
 impl Shape for LeaderboardName {
 	fn draw(&self, path: &mut Path, bounds: &Rect) {
 		path.add_rrect(
@@ -288,6 +429,65 @@ impl Shape for LeaderboardName {
 
 	fn insets(&self) -> Point {
 		(10., 0.).into()
+	}
+}
+
+impl<'g> Shape for PreferredGames<'g> {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		let rrect = RRect::new_rect_radii(
+			bounds,
+			&[
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+				(CORNER_RADIUS, CORNER_RADIUS).into(),
+			],
+		);
+
+		path.add_rrect(rrect, None);
+	}
+
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+		let mut iter = self
+			.0
+			.iter()
+			.filter_map(crate::game::r#type::Type::as_image_bytes)
+			.enumerate()
+			.take(6);
+
+		while let Some((idx, bytes)) = iter.next() {
+			let x = bounds.x() + insets.x;
+			#[allow(clippy::cast_precision_loss)]
+			let y = bounds.y() + insets.y + (40. + 7.) * idx as f32 / 2.;
+
+			// `bytes` lives for 'static, so it will always be valid.
+			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+			canvas.draw_image(image, (x, y), None);
+
+			if let Some((_, bytes)) = iter.next() {
+				let x = x + 40. + 7.;
+				let image =
+					Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+				canvas.draw_image(image, (x, y), None);
+			}
+		}
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: (BUBBLE_WIDTH - GAP) / 2.,
+			height: BUBBLE_HEIGHT * 2. + GAP,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(14.5, 22.).into()
 	}
 }
 

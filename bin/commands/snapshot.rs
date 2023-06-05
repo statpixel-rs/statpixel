@@ -304,6 +304,7 @@ macro_rules! generate_large_history_command {
 
 macro_rules! generate_guild_history_command {
 	($fn: ident, $duration: expr) => {
+		#[allow(clippy::too_many_lines)]
 		#[poise::command(on_error = "crate::util::error_handler", slash_command, required_bot_permissions = "ATTACH_FILES")]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -388,20 +389,122 @@ macro_rules! generate_guild_history_command {
 					.zip(&snapshot.xp_by_game)
 					.for_each(|(a, b)| (*a).1 -= b.1);
 
-				let mut surface = ::api::canvas::guild::create_surface();
+				let level = ::minecraft::calc::guild::get_level(guild.xp);
+				let progress = ::api::canvas::shape::WideBubbleProgress(
+					::minecraft::calc::guild::get_level_progress(guild.xp),
+					[::minecraft::colour::Colour::Gold.into(), ::minecraft::colour::Colour::Gold.into()],
+				);
 
-				if let Some(leader) = leader {
-					::api::canvas::guild::leader(&mut surface, &::minecraft::text::parse::minecraft_string(&leader).collect::<::std::vec::Vec<_>>());
-				}
+				let mut canvas = ::api::canvas::Canvas::new(720.)
+					.gap(7.)
+					.push_down(&::api::canvas::shape::Title, ::api::canvas::shape::Title::from_guild(&guild))
+					.push_down(
+						&::api::canvas::shape::Subtitle,
+						if let Some(leader) = leader {
+							::api::canvas::body::Body::new(20., ::skia_safe::textlayout::TextAlign::Center)
+								.extend_owned(::minecraft::text::parse::minecraft_string(&leader))
+								.build()
+						} else {
+							::api::canvas::body::Body::new(20., ::skia_safe::textlayout::TextAlign::Center)
+								.append(::minecraft::text::Text {
+									text: ::translate::tr!(ctx, "none").as_ref(),
+									paint: ::minecraft::paint::Paint::Gray,
+									font: ::minecraft::style::MinecraftFont::Bold,
+									..Default::default()
+								})
+								.build()
+						},
+					)
+					.push_down(
+						&progress,
+						::api::canvas::shape::WideBubbleProgress::from_level_progress(
+							ctx,
+							&format!("{}6{level}", ::minecraft::text::ESCAPE),
+							&::minecraft::calc::guild::get_curr_level_xp(guild.xp),
+							&::minecraft::calc::guild::get_level_xp(guild.xp),
+						),
+					)
+					.push_right_start(&::api::canvas::shape::Sidebar, ::api::canvas::shape::Sidebar::from_guild(ctx, &mut guild))
+					.push_right(
+						&::api::canvas::shape::PreferredGames(&guild.preferred_games),
+						::api::canvas::body::Body::empty(),
+					)
+					.push_down_start(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::from_bubble(ctx, &guild.coins, ::translate::tr!(ctx, "coins").as_ref(), ::minecraft::paint::Paint::Gold),
+					)
+					.push_right(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::new(30., ::skia_safe::textlayout::TextAlign::Center)
+							.extend(&[
+								::minecraft::text::Text {
+									text: ::translate::tr!(ctx, "created-at").as_ref(),
+									paint: ::minecraft::paint::Paint::Aqua,
+									font: ::minecraft::style::MinecraftFont::Normal,
+									size: Some(20.),
+								},
+								::minecraft::text::Text {
+									text: "\n",
+									size: Some(20.),
+									..Default::default()
+								},
+								::minecraft::text::Text {
+									text: &::api::canvas::label::ToFormatted::to_formatted_label(&guild.created_at, ctx),
+									paint: ::minecraft::paint::Paint::Aqua,
+									font: ::minecraft::style::MinecraftFont::Normal,
+									size: None,
+								},
+							])
+							.build(),
+					)
+					.push_right(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::from_bubble(
+							ctx,
+							&format!("{}/125", guild.members.len()),
+							::translate::tr!(ctx, "members").as_ref(),
+							::minecraft::paint::Paint::LightPurple,
+						),
+					)
+					.push_down_start(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::from_bubble(
+							ctx,
+							&daily_xp,
+							::translate::tr!(ctx, "daily-xp").as_ref(),
+							::minecraft::paint::Paint::DarkGreen,
+						),
+					)
+					.push_right(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::from_bubble(
+							ctx,
+							&weekly_xp,
+							::translate::tr!(ctx, "weekly-xp").as_ref(),
+							::minecraft::paint::Paint::DarkGreen,
+						),
+					)
+					.push_right(
+						&::api::canvas::shape::Bubble,
+						::api::canvas::body::Body::from_bubble(
+							ctx,
+							&xp_since,
+							::translate::tr!(ctx, "xp-since").as_ref(),
+							::minecraft::paint::Paint::DarkGreen,
+						),
+					)
+					.push_down_start(
+						&::api::canvas::shape::WideTallBubble,
+						::api::canvas::shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 0),
+					)
+					.push_right(
+						&::api::canvas::shape::WideTallBubble,
+						::api::canvas::shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 1),
+					)
+					.build(None)
+					.unwrap();
 
-				::api::canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
-				::api::canvas::guild::header(&mut surface, &guild);
-				::api::canvas::guild::games(ctx, &mut surface, &mut guild);
-				::api::canvas::guild::stats_history(ctx, &mut surface, &guild, daily_xp, weekly_xp, xp_since);
-				::api::canvas::guild::level(ctx, &mut surface, &guild);
-				::api::canvas::guild::preferred_games(&mut surface, &guild);
-
-				Some(::api::canvas::to_png(&mut surface).into())
+				Some(::api::canvas::to_png(&mut canvas).into())
 			} else {
 				None
 			};

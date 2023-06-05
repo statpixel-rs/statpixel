@@ -1,7 +1,7 @@
 use std::{borrow::Cow, sync::Arc};
 
 use api::{
-	canvas,
+	canvas::{self, body::Body, label::ToFormatted, shape, Canvas},
 	guild::{member::Member, Guild},
 	player::Player,
 };
@@ -10,8 +10,15 @@ use database::{extend::modulo, schema::guild_snapshot};
 use diesel::{query_dsl::methods::DistinctOnDsl, ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use futures::StreamExt;
-use minecraft::text::parse::minecraft_string;
+use minecraft::{
+	calc,
+	colour::Colour,
+	paint::Paint,
+	style::MinecraftFont,
+	text::{parse::minecraft_string, Text, ESCAPE},
+};
 use poise::serenity_prelude::AttachmentType;
+use skia_safe::textlayout::TextAlign;
 use tokio::join;
 use translate::{tr, Context};
 use uuid::Uuid;
@@ -87,6 +94,7 @@ pub fn apply_member_xp(guild: &mut Guild, guilds: &[Guild]) {
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES"
 )]
+#[allow(clippy::too_many_lines)]
 pub async fn guild(
 	ctx: Context<'_>,
 	#[min_length = 3]
@@ -148,20 +156,129 @@ pub async fn guild(
 	};
 
 	let png: Cow<_> = {
-		let mut surface = canvas::guild::create_surface();
+		let level = calc::guild::get_level(guild.xp);
+		let progress = shape::WideBubbleProgress(
+			calc::guild::get_level_progress(guild.xp),
+			[Colour::Gold.into(), Colour::Gold.into()],
+		);
 
-		if let Some(leader) = leader {
-			canvas::guild::leader(&mut surface, &minecraft_string(&leader).collect::<Vec<_>>());
-		}
+		let daily_xp = guild.members.iter().map(|m| m.xp_history[0].1).sum::<u32>();
+		let weekly_xp = guild
+			.members
+			.iter()
+			.map(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>())
+			.sum::<u32>();
 
-		canvas::guild::members(ctx, &mut surface, &guild, members.as_slice());
-		canvas::guild::header(&mut surface, &guild);
-		canvas::guild::games(ctx, &mut surface, &mut guild);
-		canvas::guild::stats(ctx, &mut surface, &guild, monthly_xp);
-		canvas::guild::level(ctx, &mut surface, &guild);
-		canvas::guild::preferred_games(&mut surface, &guild);
+		let mut canvas = Canvas::new(720.)
+			.gap(7.)
+			.push_down(&shape::Title, shape::Title::from_guild(&guild))
+			.push_down(
+				&shape::Subtitle,
+				if let Some(leader) = leader {
+					Body::new(20., TextAlign::Center)
+						.extend_owned(minecraft_string(&leader))
+						.build()
+				} else {
+					Body::new(20., TextAlign::Center)
+						.append(Text {
+							text: tr!(ctx, "none").as_ref(),
+							paint: Paint::Gray,
+							font: MinecraftFont::Bold,
+							..Default::default()
+						})
+						.build()
+				},
+			)
+			.push_down(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&format!("{ESCAPE}6{level}"),
+					&calc::guild::get_curr_level_xp(guild.xp),
+					&calc::guild::get_level_xp(guild.xp),
+				),
+			)
+			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &mut guild))
+			.push_right(
+				&shape::PreferredGames(&guild.preferred_games),
+				Body::empty(),
+			)
+			.push_down_start(
+				&shape::Bubble,
+				Body::from_bubble(ctx, &guild.coins, tr!(ctx, "coins").as_ref(), Paint::Gold),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::new(30., TextAlign::Center)
+					.extend(&[
+						Text {
+							text: tr!(ctx, "created-at").as_ref(),
+							paint: Paint::Aqua,
+							font: MinecraftFont::Normal,
+							size: Some(20.),
+						},
+						Text {
+							text: "\n",
+							size: Some(20.),
+							..Default::default()
+						},
+						Text {
+							text: &guild.created_at.to_formatted_label(ctx),
+							paint: Paint::Aqua,
+							font: MinecraftFont::Normal,
+							size: None,
+						},
+					])
+					.build(),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&format!("{}/125", guild.members.len()),
+					tr!(ctx, "members").as_ref(),
+					Paint::LightPurple,
+				),
+			)
+			.push_down_start(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&daily_xp,
+					tr!(ctx, "daily-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&weekly_xp,
+					tr!(ctx, "weekly-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&monthly_xp,
+					tr!(ctx, "monthly-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			)
+			.push_down_start(
+				&shape::WideTallBubble,
+				shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 0),
+			)
+			.push_right(
+				&shape::WideTallBubble,
+				shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 1),
+			)
+			.build(None)
+			.unwrap();
 
-		canvas::to_png(&mut surface).into()
+		canvas::to_png(&mut canvas).into()
 	};
 
 	ctx.send(move |m| {

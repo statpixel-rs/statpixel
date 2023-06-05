@@ -23,7 +23,7 @@ use skia_safe::{
 };
 use translate::{prelude::GetChronoLocale, tr, Context, Error};
 
-use super::WIDTH_F;
+pub const WIDTH_F: f32 = 750.;
 
 const CANVAS_BACKGROUND: RGBColor = RGBColor(31, 48, 64);
 const BACKGROUND: RGBColor = RGBColor(21, 33, 43);

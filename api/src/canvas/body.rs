@@ -21,6 +21,12 @@ pub struct Body {
 impl Body {
 	#[inline]
 	#[must_use]
+	pub fn empty() -> Paragraph {
+		ParagraphBuilder::new(&ParagraphStyle::new(), FontCollection::new()).build()
+	}
+
+	#[inline]
+	#[must_use]
 	pub fn new(size: f32, align: impl Into<Option<TextAlign>>) -> Self {
 		let style = {
 			let mut style = ParagraphStyle::new();
@@ -45,7 +51,22 @@ impl Body {
 
 	#[inline]
 	#[must_use]
-	pub fn extend(mut self, text: &[Text]) -> Self {
+	pub fn extend_owned<'t>(mut self, text: impl IntoIterator<Item = Text<'t>>) -> Self {
+		self.first = false;
+
+		for blob in text {
+			let style = blob.get_style(blob.paint, self.size);
+
+			self.paragraph.push_style(&style);
+			self.paragraph.add_text(blob.text);
+		}
+
+		self
+	}
+
+	#[inline]
+	#[must_use]
+	pub fn extend<'t>(mut self, text: impl IntoIterator<Item = &'t Text<'t>>) -> Self {
 		self.first = false;
 
 		for blob in text {
