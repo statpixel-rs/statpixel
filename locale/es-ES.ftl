@@ -112,13 +112,13 @@ last-login = Última conexión
 help = help
   .description = Muestra el menú de ayuda.
 
-help-general = General <:cookie:1110754829392953364>
+help-general = General <:cookie:1115091335565811775>
 help-general-description = StatPixel admite todos los juegos de la red Hypixel. Puedes ver las estadísticas de cada juego usando `/<juego>`. Por ejemplo, ¡prueba </bedwars:1113624864272683060>!
 
-help-display = Visualización <:spyglass:1110754818433228991>
+help-display = Visualización <:spyglass:1115091333657411625>
 help-display-description = Si estás en una conexión medida o simplemente quieres ahorrar algunos datos, puedes recibir respuestas en diferentes formatos, como texto o imágenes condensadas, con </display:1113624864524357705>.
 
-help-link = Vinculación <a:recovery_compass:1110755004463198218>
+help-link = Vinculación <a:recovery_compass:1115091332680126504>
 help-link-description = Escribir tu nombre de usuario para cada comando puede volverse tedioso. Para facilitar esto, puedes vincular una cuenta sin verificación con </link:1113624864524357710> y desvincularla más tarde con </unlink:1113624865262538854>.
 
 help-snapshot = Instantáneas <:book_and_quill:1110754805724479569>
@@ -126,7 +126,7 @@ help-snapshot-description = Las instantáneas son una forma de ver los cambios e
   
   Si quieres ver un rango más específico, prueba </from bedwars:1113624864524357705>.
 
-help-history = Historia <a:clock:1110754973794451557>
+help-history = Historia <a:clock:1115091329958019253>
 help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1113624864524357708>.
 
 # /history
