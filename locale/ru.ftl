@@ -23,6 +23,7 @@ error-member-player-not-found = Участник {$name} не найден в п
 error-skyblock-profile-not-found = Профиль SkyBlock, принадлежащий {$name}, не найден.
 error-player-snapshot-not-found = Снимки не найдены для {$name}. Создайте один с помощью </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = Доска лидеров с именем {$name} не найдена.
+error-profile-not-found = Профиль SkyBlock {$profile}, принадлежащий {$name}, имеет отключенный API.
 
 # /skyblock auctions
 

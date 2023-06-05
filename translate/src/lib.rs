@@ -37,6 +37,8 @@ pub enum ApiError {
 	PlayerNotFound(String),
 	#[error("A session belonging to `{0}` was not found.")]
 	SessionNotFound(String),
+	#[error("The `{0}` SkyBlock profile belonging to `{1}` has its API disabled.")]
+	ProfileNotFound(String, String),
 	#[error("The uuid `{0}` was not found.")]
 	UuidNotFound(Uuid),
 	#[error("The username `{0}` was not found.")]

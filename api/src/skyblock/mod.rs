@@ -7,9 +7,13 @@ use std::{str::FromStr, sync::Arc};
 use once_cell::sync::Lazy;
 use reqwest::{Method, Request, StatusCode, Url};
 use serde::Deserialize;
-use uuid::Uuid;
 
-use crate::{cache::SKYBLOCK_PROFILE_CACHE, http::HTTP, player::Player, Error};
+use crate::{
+	cache::SKYBLOCK_PROFILE_CACHE,
+	http::HTTP,
+	player::{stats::sky_block, Player},
+	Error,
+};
 
 use self::profile::Profile;
 
@@ -74,17 +78,26 @@ pub struct Response {
 impl Player {
 	/// # Errors
 	/// Returns [`Error::SessionNotFound`] if the player has no skyblock profile.
-	pub async fn get_skyblock_profile(profile: Uuid) -> Result<Profile, Arc<Error>> {
+	pub async fn get_skyblock_profile(
+		profile: sky_block::Profile,
+		username: &str,
+	) -> Result<Profile, Arc<Error>> {
 		SKYBLOCK_PROFILE_CACHE
-			.try_get_with_by_ref(&profile, Self::get_skyblock_profile_raw(profile))
+			.try_get_with(
+				profile.id,
+				Self::get_skyblock_profile_raw(profile, username),
+			)
 			.await
 	}
 
-	async fn get_skyblock_profile_raw(profile: Uuid) -> Result<Profile, Error> {
+	async fn get_skyblock_profile_raw(
+		profile: sky_block::Profile,
+		username: &str,
+	) -> Result<Profile, Error> {
 		let url = {
 			let mut url = HYPIXEL_SKYBLOCK_PROFILE_ENDPOINT.clone();
 
-			url.set_query(Some(&format!("profile={}", &profile)));
+			url.set_query(Some(&format!("profile={}", &profile.id)));
 			url
 		};
 
@@ -92,13 +105,13 @@ impl Player {
 		let response = HTTP.perform_hypixel(request.into()).await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::SessionNotFound(profile.to_string()));
+			return Err(Error::ProfileNotFound(profile.name, username.to_string()));
 		}
 
 		let response = response.json::<Response>().await?;
 
 		response
 			.profile
-			.ok_or_else(|| Error::SessionNotFound(profile.to_string()))
+			.ok_or_else(|| Error::ProfileNotFound(profile.name, username.to_string()))
 	}
 }

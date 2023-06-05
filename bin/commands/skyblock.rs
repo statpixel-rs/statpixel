@@ -156,7 +156,7 @@ pub async fn profile(
 		return Err(Error::SkyBlockProfileNotFound(data.username));
 	};
 
-	let mut profile = Player::get_skyblock_profile(profile.id).await?;
+	let mut profile = Player::get_skyblock_profile(profile, &data.username).await?;
 
 	let Some(member) = profile.members.remove(&player.uuid) else {
 		return Err(Error::MemberPlayerNotFound(data.username));
@@ -402,7 +402,7 @@ pub async fn bank(
 		return Err(Error::MemberPlayerNotFound(data.username));
 	};
 
-	let profile = Player::get_skyblock_profile(profile.id).await?;
+	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
 
 	let mut bank = profile.banking;
 	let mut lower = u64::MAX;

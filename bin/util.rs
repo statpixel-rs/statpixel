@@ -179,6 +179,9 @@ pub async fn error_handler(error: poise::FrameworkError<'_, Data, Error>) {
 				ApiError::SessionNotFound(ref name) => {
 					tr_fmt!(ctx, "error-session-not-found", name: format!("`{}`", name))
 				}
+				ApiError::ProfileNotFound(ref profile, ref name) => {
+					tr_fmt!(ctx, "error-profile-not-found", profile: format!("`{}`", profile), name: format!("`{}`", name))
+				}
 				ApiError::UuidNotFound(ref uuid) => {
 					tr_fmt!(ctx, "error-player-uuid-not-found", uuid: format!("`{}`", uuid))
 				}
