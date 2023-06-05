@@ -23,7 +23,7 @@ error-member-player-not-found = メンバー{$name}はプロフィールに見�
 error-skyblock-profile-not-found = {$name}のSkyBlockプロファイルが見つかりませんでした。
 error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。 </daily bedwars:1113624864272683065>で作成してください。
 error-leaderboard-not-found = 名前{$name}のリーダーボードが見つかりませんでした。
-error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、APIが無効になっています。
+error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、APIが無効になっているか、新しいプロファイルシステム以降ログインしていません。
 
 # /skyblock auctions
 

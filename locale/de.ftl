@@ -23,7 +23,7 @@ error-member-player-not-found = Das Mitglied {$name} wurde im Profil nicht gefun
 error-skyblock-profile-not-found = Ein SkyBlock-Profil mit dem Namen {$name} wurde nicht gefunden.
 error-player-snapshot-not-found = Für {$name} wurden keine Schnappschüsse gefunden. Erstelle einen mit </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = Eine Bestenliste mit dem Namen {$name} wurde nicht gefunden.
-error-profile-not-found = Das SkyBlock-Profil {$profile} von {$name} hat seine API deaktiviert.
+error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine API deaktiviert oder sie haben sich seit dem neuen Profilsystem nicht mehr angemeldet.
 
 # /skyblock auctions
 
