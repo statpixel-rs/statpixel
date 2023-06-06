@@ -1,3 +1,6 @@
+use api::guild::Guild;
+use api::player::data::Data;
+
 macro_rules! generate_history_command {
 	($game: ty, $mode: ty, $fn: ident, $duration: expr) => {
 		#[allow(clippy::too_many_lines)]
@@ -16,7 +19,7 @@ macro_rules! generate_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+					let (player, data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -45,7 +48,7 @@ macro_rules! generate_history_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode, suffix.as_deref());
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -70,7 +73,7 @@ macro_rules! generate_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -79,7 +82,7 @@ macro_rules! generate_history_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -100,7 +103,7 @@ macro_rules! generate_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
+					let (player, data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -127,7 +130,7 @@ macro_rules! generate_history_command {
 						to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 					);
 
-					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut data);
+					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut Data::clone(&data));
 
 					embed.colour($crate::EMBED_COLOUR);
 
@@ -173,7 +176,7 @@ macro_rules! generate_large_history_command {
 
 			match format {
 				$crate::format::Display::Image | $crate::format::Display::Compact => {
-					let (player, mut data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+					let (player, data, session, skin, suffix) = $crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 					let ctx_id = ctx.id();
 
 					player.increase_searches(ctx).await?;
@@ -202,7 +205,7 @@ macro_rules! generate_large_history_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), mode, suffix.as_deref());
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref());
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -227,7 +230,7 @@ macro_rules! generate_large_history_command {
 						let mode = &press.data.values.first().unwrap();
 						let mode = <$mode>::from_u8_str(mode.as_str());
 
-						let (mut data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
+						let (data, session, skin, suffix) = $crate::commands::get_from_player_data_session_skin_suffix(ctx, &player).await?;
 
 						let content = ::translate::tr_fmt!(
 							ctx, "showing-statistics",
@@ -236,7 +239,7 @@ macro_rules! generate_large_history_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref());
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -257,7 +260,7 @@ macro_rules! generate_large_history_command {
 					}
 				}
 				$crate::format::Display::Text => {
-					let (player, mut data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
+					let (player, data) = $crate::commands::get_player_data(ctx, uuid, username).await?;
 
 					player.increase_searches(ctx).await?;
 
@@ -284,7 +287,7 @@ macro_rules! generate_large_history_command {
 						to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
 					);
 
-					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut data);
+					let mut embed = <$game>::embed_diff(ctx, &player, snapshot, &mut Data::clone(&data));
 
 					embed.colour($crate::EMBED_COLOUR);
 
@@ -319,7 +322,7 @@ macro_rules! generate_guild_history_command {
 			#[max_length = 36]
 			uuid: Option<::std::string::String>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let mut guild = match $crate::commands::get_guild(ctx, name, uuid, username).await {
+			let guild = match $crate::commands::get_guild(ctx, name, uuid, username).await {
 				::std::result::Result::Ok(guild) => guild,
 				::std::result::Result::Err(::translate::Error::NotLinked) => {
 					ctx.send(|m| $crate::util::error_embed(m, ::translate::tr!(ctx, "not-linked"), ::translate::tr!(ctx, "not-linked")))
@@ -347,11 +350,7 @@ macro_rules! generate_guild_history_command {
 				.map(|g| g.xp_history.iter().map(|h| h.1).sum::<u32>())
 				.sum::<u32>();
 
-			$crate::commands::guild::apply_member_xp(&mut guild, &guilds);
-
-			guild
-				.members
-				.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
+			$crate::commands::guild::apply_member_xp(&mut Guild::clone(&guild), &guilds);
 
 			let members = futures::stream::iter(
 				guild
@@ -380,14 +379,24 @@ macro_rules! generate_guild_history_command {
 
 			let png: ::std::option::Option<::std::borrow::Cow<_>> = if let $crate::snapshot::guild::Status::Found((ref snapshot, _)) = status {
 				let diff = ::api::canvas::diff::Diff::diff(&guild, snapshot);
+				let mut guild = Guild::clone(&guild);
 
 				guild.coins = diff.coins;
 				guild.xp = diff.xp;
 				guild
 					.xp_by_game
 					.iter_mut()
-					.zip(&snapshot.xp_by_game)
-					.for_each(|(a, b)| (*a).1 -= b.1);
+					.for_each(|a| {
+						let b = snapshot.xp_by_game.iter().find(|x| x.0 == a.0).unwrap();
+
+						if a.1 > b.1 {
+							(*a).1 -= b.1;
+						} else {
+							(*a).1 = api::xp::Xp(0);
+						}
+					});
+
+					guild.xp_by_game.sort_unstable_by_key(|g| g.1);
 
 				let level = ::minecraft::calc::guild::get_level(guild.xp);
 				let progress = ::api::canvas::shape::WideBubbleProgress(
@@ -424,7 +433,7 @@ macro_rules! generate_guild_history_command {
 							&::minecraft::calc::guild::get_level_xp(guild.xp),
 						),
 					)
-					.push_right_start(&::api::canvas::shape::Sidebar, ::api::canvas::shape::Sidebar::from_guild(ctx, &mut guild))
+					.push_right_start(&::api::canvas::shape::Sidebar, ::api::canvas::shape::Sidebar::from_guild(ctx, &guild))
 					.push_right(
 						&::api::canvas::shape::PreferredGames(&guild.preferred_games),
 						::api::canvas::body::Body::empty(),
@@ -517,7 +526,7 @@ macro_rules! generate_guild_history_command {
 				),
 				$crate::snapshot::guild::Status::Inserted => ::translate::tr_fmt!(
 					ctx, "no-previous-guild-statistics",
-					name: guild.name,
+					name: guild.name.as_str(),
 				),
 			};
 
@@ -542,6 +551,7 @@ macro_rules! generate_guild_history_command {
 macro_rules! generate_history_commands {
 	($fn: ident, $duration: expr) => {
 		pub mod $fn {
+			use super::*;
 			use futures::StreamExt;
 
 			generate_history_command!(

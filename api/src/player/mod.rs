@@ -196,17 +196,17 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
-	pub async fn get_data(&self) -> Result<data::Data, Arc<Error>> {
+	pub async fn get_data(&self) -> Result<Arc<data::Data>, Arc<Error>> {
 		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(&self.uuid, self.get_data_raw())).await
 	}
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
-	pub async fn get_data_owned(self) -> Result<data::Data, Arc<Error>> {
+	pub async fn get_data_owned(self) -> Result<Arc<data::Data>, Arc<Error>> {
 		Box::pin(PLAYER_DATA_CACHE.try_get_with(self.uuid, self.get_data_raw())).await
 	}
 
-	async fn get_data_raw(&self) -> Result<data::Data, Error> {
+	async fn get_data_raw(&self) -> Result<Arc<data::Data>, Error> {
 		let url = {
 			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
@@ -236,7 +236,7 @@ impl Player {
 
 		self.set_display_str(&response.player).await?;
 
-		Ok(response.player)
+		Ok(Arc::new(response.player))
 	}
 
 	/// # Panics
@@ -263,13 +263,13 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
-	pub async fn get_session(&self) -> Result<status::Session, Arc<Error>> {
+	pub async fn get_session(&self) -> Result<Arc<status::Session>, Arc<Error>> {
 		PLAYER_SESSION_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_session_raw())
 			.await
 	}
 
-	async fn get_session_raw(&self) -> Result<status::Session, Error> {
+	async fn get_session_raw(&self) -> Result<Arc<status::Session>, Error> {
 		let url = {
 			let mut url = HYPIXEL_STATUS_API_ENDPOINT.clone();
 
@@ -290,7 +290,7 @@ impl Player {
 
 		let response = response.json::<Status>().await?;
 
-		Ok(response.session)
+		Ok(Arc::new(response.session))
 	}
 }
 

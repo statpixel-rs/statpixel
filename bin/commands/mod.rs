@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, sync::Arc};
 
 use api::{
 	guild::Guild,
@@ -113,7 +113,7 @@ pub async fn get_guild(
 	name: Option<String>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<Guild, Error> {
+) -> Result<Arc<Guild>, Error> {
 	util::get_guild_from_input(ctx, name, uuid, username).await
 }
 
@@ -121,7 +121,7 @@ pub async fn get_player_data_session_skin_suffix(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+) -> Result<(Player, Arc<Data>, Arc<Session>, Cow<[u8]>, Option<String>), Error> {
 	let (result, _) = tokio::join!(
 		player_data_session_skin_suffix(ctx, uuid, username),
 		ctx.defer(),
@@ -133,7 +133,7 @@ pub async fn get_player_data_session_skin_suffix(
 pub async fn get_from_player_data_session_skin_suffix(
 	ctx: Context<'_>,
 	player: &Player,
-) -> Result<(Data, Session, Cow<'static, [u8]>, Option<String>), Error> {
+) -> Result<(Arc<Data>, Arc<Session>, Cow<'static, [u8]>, Option<String>), Error> {
 	let (result, _) = tokio::join!(
 		from_player_data_session_skin_suffix(ctx, player),
 		ctx.defer(),
@@ -145,7 +145,7 @@ pub async fn get_from_player_data_session_skin_suffix(
 pub async fn from_player_data_session_skin_suffix(
 	ctx: Context<'_>,
 	player: &Player,
-) -> Result<(Data, Session, Cow<'static, [u8]>, Option<String>), Error> {
+) -> Result<(Arc<Data>, Arc<Session>, Cow<'static, [u8]>, Option<String>), Error> {
 	let (data, session, skin, suffix) = tokio::join!(
 		player.get_data(),
 		player.get_session(),
@@ -163,7 +163,7 @@ async fn player_data_session_skin_suffix(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Data, Session, Cow<[u8]>, Option<String>), Error> {
+) -> Result<(Player, Arc<Data>, Arc<Session>, Cow<[u8]>, Option<String>), Error> {
 	let player = util::get_player_from_input(ctx, uuid, username).await?;
 	let (data, session, skin, suffix) = from_player_data_session_skin_suffix(ctx, &player).await?;
 
@@ -174,7 +174,7 @@ pub async fn get_player_data(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Data), Error> {
+) -> Result<(Player, Arc<Data>), Error> {
 	let (result, _) = tokio::join!(player_data(ctx, uuid, username), ctx.defer());
 
 	result
@@ -184,7 +184,7 @@ async fn player_data(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Data), Error> {
+) -> Result<(Player, Arc<Data>), Error> {
 	let player = util::get_player_from_input(ctx, uuid, username).await?;
 	let data = player.get_data().await?;
 
@@ -195,7 +195,7 @@ pub async fn get_player_session(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Session), Error> {
+) -> Result<(Player, Arc<Session>), Error> {
 	let (result, _) = tokio::join!(player_session(ctx, uuid, username), ctx.defer());
 
 	result
@@ -205,7 +205,7 @@ pub async fn get_player_username_session(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Session), Error> {
+) -> Result<(Player, Arc<Session>), Error> {
 	let (result, _) = tokio::join!(player_username_session(ctx, uuid, username), ctx.defer());
 
 	result
@@ -215,7 +215,7 @@ async fn player_session(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Session), Error> {
+) -> Result<(Player, Arc<Session>), Error> {
 	let player = util::get_player_from_input(ctx, uuid, username).await?;
 	let session = player.get_session().await?;
 
@@ -226,7 +226,7 @@ async fn player_username_session(
 	ctx: Context<'_>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<(Player, Session), Error> {
+) -> Result<(Player, Arc<Session>), Error> {
 	let player = util::get_player_with_username_from_input(ctx, uuid, username).await?;
 	let session = player.get_session().await?;
 

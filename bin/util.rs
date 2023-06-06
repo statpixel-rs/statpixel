@@ -4,7 +4,7 @@ use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::username::Username;
 use poise::CreateReply;
-use std::fmt::Display;
+use std::{fmt::Display, sync::Arc};
 use tracing::error;
 use translate::{tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
@@ -134,7 +134,7 @@ pub async fn get_guild_from_input(
 	name: Option<String>,
 	uuid: Option<String>,
 	username: Option<String>,
-) -> Result<Guild, Error> {
+) -> Result<Arc<Guild>, Error> {
 	match (
 		name,
 		uuid.as_ref().and_then(|uuid| Uuid::parse_str(uuid).ok()),

@@ -3,7 +3,7 @@ use std::{borrow::Cow, cmp::max};
 use api::{
 	canvas::{self, body::Body, chart, label::ToFormatted, Canvas},
 	player::Player,
-	skyblock::{profile::TransactionAction, NAMES},
+	skyblock::{self, profile::TransactionAction, NAMES},
 };
 use canvas::{shape, text};
 use chrono::Utc;
@@ -85,7 +85,7 @@ pub async fn auctions(
 			)
 			.push_right_start(&status, Body::from_status(ctx, &session));
 
-		for auction in &auctions {
+		for auction in auctions.iter() {
 			let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
 			let bid = max(auction.starting_bid, auction.highest_bid);
 			let bid = bid.to_formatted_label(ctx);
@@ -140,26 +140,22 @@ pub async fn profile(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let (player, mut data, session, skin, suffix) =
+	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
-	let profiles = data.stats.sky_block.profiles;
 
 	player.increase_searches(ctx).await?;
 
-	// clear the profiles so that we can continue to use Data
-	data.stats.sky_block.profiles = vec![];
-
 	let Some(profile) = (match profile {
-		Some(profile) => profiles.into_iter().find(|p| p.name == profile),
-		None => profiles.into_iter().next(),
+		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		None => data.stats.sky_block.profiles.first(),
 	}) else {
-		return Err(Error::SkyBlockProfileNotFound(data.username));
+		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));
 	};
 
-	let mut profile = Player::get_skyblock_profile(profile, &data.username).await?;
+	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
 
-	let Some(member) = profile.members.remove(&player.uuid) else {
-		return Err(Error::MemberPlayerNotFound(data.username));
+	let Some(member) = profile.members.get(&player.uuid) else {
+		return Err(Error::MemberPlayerNotFound(data.username.clone()));
 	};
 
 	let png = {
@@ -387,24 +383,20 @@ pub async fn bank(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let (player, mut data) = crate::commands::get_player_data(ctx, uuid, username).await?;
-	let profiles = data.stats.sky_block.profiles;
+	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
-	// clear the profiles so that we can continue to use Data
-	data.stats.sky_block.profiles = vec![];
-
 	let Some(profile) = (match profile {
-		Some(profile) => profiles.into_iter().find(|p| p.name == profile),
-		None => profiles.into_iter().next(),
+		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		None => data.stats.sky_block.profiles.first(),
 	}) else {
-		return Err(Error::MemberPlayerNotFound(data.username));
+		return Err(Error::MemberPlayerNotFound(data.username.clone()));
 	};
 
 	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
 
-	let mut bank = profile.banking;
+	let mut bank = skyblock::profile::Banking::clone(&profile.banking);
 
 	let (lower, upper) = if bank.transactions.is_empty() {
 		(0, 100)

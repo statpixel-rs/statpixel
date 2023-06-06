@@ -1,3 +1,5 @@
+use std::sync::Arc;
+
 use chrono::{DateTime, Utc};
 use minecraft::{
 	calc::pit::{Level, Prestige},
@@ -91,5 +93,14 @@ impl Diff for String {
 impl Diff for DateTime<Utc> {
 	fn diff(&self, _other: &Self) -> Self {
 		*self
+	}
+}
+
+impl<T> Diff for Arc<T>
+where
+	T: Diff,
+{
+	fn diff(&self, other: &Self) -> Self {
+		self.as_ref().diff(other.as_ref()).into()
 	}
 }

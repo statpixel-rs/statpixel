@@ -1,4 +1,4 @@
-use std::ops::Mul;
+use std::{ops::Mul, sync::Arc};
 
 use api::guild::{Guild, VERSION};
 use chrono::{DateTime, Utc};
@@ -145,7 +145,7 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 }
 
 pub enum Status {
-	Found((Box<Guild>, DateTime<Utc>)),
+	Found((Arc<Guild>, DateTime<Utc>)),
 	Inserted,
 }
 
@@ -194,7 +194,7 @@ pub async fn get_or_insert(
 ) -> Result<Status, Error> {
 	// If a snapshot exists within the given timeframe, return it.
 	if let Some(snapshot) = get(ctx, guild, timeframe).await? {
-		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
+		return Ok(Status::Found((Arc::new(snapshot.0), snapshot.1)));
 	}
 
 	insert(ctx, guild).await?;

@@ -1,4 +1,7 @@
-use std::io::{Read, Write};
+use std::{
+	io::{Read, Write},
+	sync::Arc,
+};
 
 use api::player::data::Data;
 use flate2::Compression;
@@ -40,7 +43,8 @@ pub async fn ser(
 		bincode::decode_from_slice(&d[..], bincode::config::standard()).unwrap();
 
 	assert_eq!(
-		data, dec_data,
+		data,
+		Arc::new(dec_data),
 		"deserialized data does not match serialized data"
 	);
 

@@ -56,9 +56,7 @@ pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
 
 impl Sidebar {
 	#[must_use]
-	pub fn from_guild(ctx: Context<'_>, guild: &mut Guild) -> Paragraph {
-		guild.xp_by_game.sort_unstable_by_key(|g| g.1);
-
+	pub fn from_guild(ctx: Context<'_>, guild: &Guild) -> Paragraph {
 		let mut body = Body::new(17., None);
 		let mut iter = guild.xp_by_game.iter().rev();
 

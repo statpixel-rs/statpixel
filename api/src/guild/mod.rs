@@ -53,9 +53,42 @@ pub struct Guild {
 	pub xp_by_game: Vec<(Type, Xp)>,
 	#[serde(default)]
 	pub ranks: Vec<Rank>,
+	#[serde(deserialize_with = "from_sorted_members")]
 	pub members: Vec<Member>,
 	#[serde(rename = "preferredGames", default)]
 	pub preferred_games: Vec<Type>,
+}
+
+fn from_sorted_members<'de, D>(deserializer: D) -> Result<Vec<Member>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	struct Visitor;
+
+	impl<'de> serde::de::Visitor<'de> for Visitor {
+		type Value = Vec<Member>;
+
+		fn expecting(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+			f.write_str("a list of members, sorted by xp gained")
+		}
+
+		fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+		where
+			A: serde::de::SeqAccess<'de>,
+		{
+			let mut vec: Vec<Member> = Vec::with_capacity(seq.size_hint().unwrap_or(0));
+
+			while let Some(member) = seq.next_element()? {
+				vec.push(member);
+			}
+
+			vec.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
+
+			Ok(vec)
+		}
+	}
+
+	deserializer.deserialize_seq(Visitor)
 }
 
 fn hex_from_str<'de, D>(deserializer: D) -> Result<u128, D::Error>
@@ -97,6 +130,8 @@ where
 				vec.push((game, Xp(xp)));
 			}
 
+			vec.sort_unstable_by_key(|g| g.1);
+
 			Ok(vec)
 		}
 	}
@@ -136,7 +171,7 @@ impl Guild {
 
 	/// # Errors
 	/// Returns [`Error::GuildByMemberUuidNotFound`] if the guild could not be found.
-	pub async fn from_member_uuid(uuid: Uuid) -> Result<Guild, Arc<Error>> {
+	pub async fn from_member_uuid(uuid: Uuid) -> Result<Arc<Guild>, Arc<Error>> {
 		GUILD_DATA_MEMBER_CACHE
 			.try_get_with_by_ref(&uuid, Self::from_member_uuid_raw(uuid))
 			.await
@@ -144,21 +179,21 @@ impl Guild {
 
 	/// # Errors
 	/// Returns [`Error::GuildNotFound`] if the guild could not be found.
-	pub async fn from_name(name: &str) -> Result<Guild, Arc<Error>> {
+	pub async fn from_name(name: &str) -> Result<Arc<Guild>, Arc<Error>> {
 		GUILD_DATA_NAME_CACHE
-			.try_get_with_by_ref(name, Self::from_name_raw(name))
+			.try_get_with(name.to_ascii_lowercase(), Self::from_name_raw(name))
 			.await
 	}
 
 	/// # Errors
 	/// Returns [`Error::GuildNotFound`] if the guild could not be found.
-	pub async fn from_uuid(uuid: Uuid) -> Result<Guild, Arc<Error>> {
+	pub async fn from_uuid(uuid: Uuid) -> Result<Arc<Guild>, Arc<Error>> {
 		GUILD_DATA_UUID_CACHE
 			.try_get_with_by_ref(&uuid, Self::from_uuid_raw(uuid))
 			.await
 	}
 
-	async fn from_uuid_raw(uuid: Uuid) -> Result<Guild, Error> {
+	async fn from_uuid_raw(uuid: Uuid) -> Result<Arc<Guild>, Error> {
 		let n = uuid.as_u128();
 		// format as hex, left-pad with 0s to 24 characters
 		let id = format!("{:024x}", n);
@@ -179,10 +214,26 @@ impl Guild {
 
 		let response = response.json::<Response>().await?;
 
-		response.guild.ok_or_else(|| Error::GuildNotFound(id))
+		if let Some(guild) = response.guild {
+			let guild = Arc::new(guild);
+
+			for member in &guild.members {
+				GUILD_DATA_MEMBER_CACHE
+					.insert(member.uuid, Arc::clone(&guild))
+					.await;
+			}
+
+			GUILD_DATA_NAME_CACHE
+				.insert(guild.name.to_ascii_lowercase(), Arc::clone(&guild))
+				.await;
+
+			return Ok(guild);
+		}
+
+		Err(Error::GuildNotFound(id))
 	}
 
-	async fn from_name_raw(name: &str) -> Result<Guild, Error> {
+	async fn from_name_raw(name: &str) -> Result<Arc<Guild>, Error> {
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
 
@@ -199,12 +250,26 @@ impl Guild {
 
 		let response = response.json::<Response>().await?;
 
-		response
-			.guild
-			.ok_or_else(|| Error::GuildNotFound(name.to_string()))
+		if let Some(guild) = response.guild {
+			let guild = Arc::new(guild);
+
+			for member in &guild.members {
+				GUILD_DATA_MEMBER_CACHE
+					.insert(member.uuid, Arc::clone(&guild))
+					.await;
+			}
+
+			GUILD_DATA_UUID_CACHE
+				.insert(Uuid::from_u128(guild.id), Arc::clone(&guild))
+				.await;
+
+			return Ok(guild);
+		}
+
+		Err(Error::GuildNotFound(name.to_string()))
 	}
 
-	async fn from_member_uuid_raw(uuid: Uuid) -> Result<Guild, Error> {
+	async fn from_member_uuid_raw(uuid: Uuid) -> Result<Arc<Guild>, Error> {
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
 
@@ -221,9 +286,30 @@ impl Guild {
 
 		let response = response.json::<Response>().await?;
 
-		response
-			.guild
-			.ok_or_else(|| Error::GuildByMemberUuidNotFound(uuid))
+		if let Some(guild) = response.guild {
+			let guild = Arc::new(guild);
+
+			for member in &guild.members {
+				if member.uuid == uuid {
+					continue;
+				}
+
+				GUILD_DATA_MEMBER_CACHE
+					.insert(member.uuid, Arc::clone(&guild))
+					.await;
+			}
+
+			GUILD_DATA_UUID_CACHE
+				.insert(Uuid::from_u128(guild.id), Arc::clone(&guild))
+				.await;
+			GUILD_DATA_NAME_CACHE
+				.insert(guild.name.to_ascii_lowercase(), Arc::clone(&guild))
+				.await;
+
+			return Ok(guild);
+		}
+
+		Err(Error::GuildByMemberUuidNotFound(uuid))
 	}
 
 	#[must_use]

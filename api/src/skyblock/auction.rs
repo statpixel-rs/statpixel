@@ -43,13 +43,13 @@ static HYPIXEL_AUCTION_API_ENDPOINT: Lazy<Url> =
 impl Player {
 	/// # Errors
 	/// Returns an error if the player cannot be found
-	pub async fn get_auctions(&self) -> Result<Vec<Auction>, Arc<Error>> {
+	pub async fn get_auctions(&self) -> Result<Arc<Vec<Auction>>, Arc<Error>> {
 		SKYBLOCK_AUCTION_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_auctions_raw())
 			.await
 	}
 
-	async fn get_auctions_raw(&self) -> Result<Vec<Auction>, Error> {
+	async fn get_auctions_raw(&self) -> Result<Arc<Vec<Auction>>, Error> {
 		let url = {
 			let mut url = HYPIXEL_AUCTION_API_ENDPOINT.clone();
 
@@ -64,6 +64,6 @@ impl Player {
 			.json::<Response>()
 			.await?;
 
-		Ok(response.auctions)
+		Ok(Arc::new(response.auctions))
 	}
 }

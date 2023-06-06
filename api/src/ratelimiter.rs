@@ -2,11 +2,10 @@ use std::str::FromStr;
 use std::sync::Arc;
 use std::time::SystemTime;
 
-use reqwest::header::HeaderMap;
+use reqwest::header::{HeaderMap, HeaderValue};
 use reqwest::{Client, Request, RequestBuilder, Response, StatusCode, Url};
 use tokio::sync::{Mutex, RwLock};
 use tokio::time::{sleep, Duration};
-use tracing::info;
 
 #[derive(Debug, thiserror::Error)]
 pub enum HttpError {
@@ -57,6 +56,7 @@ pub struct RatelimitInfo {
 
 pub struct Ratelimiter {
 	client: Client,
+	token: HeaderValue,
 	routes: Arc<RwLock<Routes>>,
 }
 
@@ -75,9 +75,10 @@ impl Ratelimiter {
 	/// Creates a new ratelimiter. `client` should contain the
 	/// `API-Key` header already.
 	#[must_use]
-	pub fn new(client: Client) -> Self {
+	pub fn new(client: Client, token: HeaderValue) -> Self {
 		Self {
 			client,
+			token,
 			routes: Arc::default(),
 		}
 	}
@@ -95,7 +96,11 @@ impl Ratelimiter {
 	/// # Errors
 	/// Returns an error if the header is not present, or if the header is invalid.
 	#[inline]
-	pub async fn perform_hypixel(&self, req: RatelimitedRequest) -> Result<Response> {
+	pub async fn perform_hypixel(&self, mut req: RatelimitedRequest) -> Result<Response> {
+		let headers = req.req.headers_mut();
+
+		headers.insert("API-Key", self.token.clone());
+
 		self.perform(req, Route::Hypixel).await
 	}
 
@@ -112,46 +117,24 @@ impl Ratelimiter {
 	/// Transparently returns [`reqwest::Error`]
 	#[inline]
 	pub async fn perform_bare(&self, req: Request) -> reqwest::Result<Response> {
-		let start = std::time::Instant::now();
-		let url = req.url().as_str().to_string();
-		info!(url = url, "added request to queue");
-		let response = self.client.execute(req).await;
-		info!(
-			url = url,
-			time = start.elapsed().as_millis(),
-			"completed request"
-		);
-
-		response
+		self.client.execute(req).await
 	}
 
 	async fn perform(&self, req: RatelimitedRequest, route: Route) -> Result<Response> {
 		let RatelimitedRequest { req } = req;
 
-		info!(url = req.url().as_str(), "added request to queue");
-
-		let start = std::time::Instant::now();
-
 		loop {
 			let bucket = self.routes.write().await.get(&route);
 
-			bucket.lock().await.pre_hook(&route).await;
+			bucket.lock().await.pre_hook().await;
 
 			// This will not panic, since the request body is never a stream.
 			let response = self.client.execute(req.try_clone().unwrap()).await?;
-			let redo = bucket.lock().await.post_hook(&response, &route).await;
+			let redo = bucket.lock().await.post_hook(&response).await;
 
 			if !redo.unwrap_or(true) {
-				info!(
-					url = req.url().as_str(),
-					time = start.elapsed().as_millis(),
-					"completed request"
-				);
-
 				return Ok(response);
 			}
-
-			info!(url = req.url().as_str(), "retrying request");
 		}
 	}
 }
@@ -169,7 +152,7 @@ fn parse_header<T: FromStr>(headers: &HeaderMap, header: &str) -> Result<Option<
 }
 
 impl Ratelimit {
-	pub async fn pre_hook(&mut self, route: &Route) {
+	pub async fn pre_hook(&mut self) {
 		if self.limit() == 0 {
 			return;
 		}
@@ -191,11 +174,6 @@ impl Ratelimit {
 		};
 
 		if self.remaining() == 0 {
-			info!(
-				"Pre-emptive ratelimit on route {:?} for {}ms",
-				route,
-				delay.as_millis(),
-			);
 			sleep(delay).await;
 
 			return;
@@ -206,7 +184,7 @@ impl Ratelimit {
 
 	/// # Errors
 	/// Returns an error if the header is not a valid utf-8 string or is in the wrong format.
-	pub async fn post_hook(&mut self, response: &Response, route: &Route) -> Result<bool> {
+	pub async fn post_hook(&mut self, response: &Response) -> Result<bool> {
 		if let Some(limit) = parse_header(response.headers(), "ratelimit-limit")? {
 			self.limit = limit;
 		}
@@ -214,7 +192,7 @@ impl Ratelimit {
 		if let Some(remaining) = parse_header(response.headers(), "ratelimit-remaining")? {
 			self.remaining = remaining;
 		}
-
+		
 		if let Some(reset_after) = parse_header::<f64>(response.headers(), "ratelimit-reset")? {
 			self.reset = Some(SystemTime::now() + Duration::from_secs_f64(reset_after));
 			self.reset_after = Some(Duration::from_secs_f64(reset_after));
@@ -226,7 +204,6 @@ impl Ratelimit {
 			// If the header does not exist (like the case is with Mojang), just wait 5 seconds.
 			parse_header::<f64>(response.headers(), "retry-after").unwrap_or(Some(5.))
 		{
-			info!("ratelimited on route {:?} for {:?}ms", route, retry_after);
 			sleep(Duration::from_secs_f64(retry_after)).await;
 
 			true

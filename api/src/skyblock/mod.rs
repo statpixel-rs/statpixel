@@ -79,9 +79,9 @@ impl Player {
 	/// # Errors
 	/// Returns [`Error::SessionNotFound`] if the player has no skyblock profile.
 	pub async fn get_skyblock_profile(
-		profile: sky_block::Profile,
+		profile: &sky_block::Profile,
 		username: &str,
-	) -> Result<Profile, Arc<Error>> {
+	) -> Result<Arc<Profile>, Arc<Error>> {
 		SKYBLOCK_PROFILE_CACHE
 			.try_get_with(
 				profile.id,
@@ -91,9 +91,9 @@ impl Player {
 	}
 
 	async fn get_skyblock_profile_raw(
-		profile: sky_block::Profile,
+		profile: &sky_block::Profile,
 		username: &str,
-	) -> Result<Profile, Error> {
+	) -> Result<Arc<Profile>, Error> {
 		let url = {
 			let mut url = HYPIXEL_SKYBLOCK_PROFILE_ENDPOINT.clone();
 
@@ -105,13 +105,22 @@ impl Player {
 		let response = HTTP.perform_hypixel(request.into()).await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::ProfileNotFound(profile.name, username.to_string()));
+			return Err(Error::ProfileNotFound(
+				profile.name.clone(),
+				username.to_string(),
+			));
 		}
 
 		let response = response.json::<Response>().await?;
 
-		response
-			.profile
-			.ok_or_else(|| Error::ProfileNotFound(profile.name, username.to_string()))
+		response.profile.map_or_else(
+			|| {
+				Err(Error::ProfileNotFound(
+					profile.name.clone(),
+					username.to_string(),
+				))
+			},
+			|p| Ok(Arc::new(p)),
+		)
 	}
 }

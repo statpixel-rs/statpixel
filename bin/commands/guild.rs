@@ -108,7 +108,7 @@ pub async fn guild(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let mut guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
+	let guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
 			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
@@ -125,10 +125,6 @@ pub async fn guild(
 		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
 	let monthly_xp = get_monthly_xp(&guild, &guilds);
-
-	guild
-		.members
-		.sort_by_cached_key(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>());
 
 	let members = futures::stream::iter(
 		guild
@@ -198,7 +194,7 @@ pub async fn guild(
 					&calc::guild::get_level_xp(guild.xp),
 				),
 			)
-			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &mut guild))
+			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &guild))
 			.push_right(
 				&shape::PreferredGames(&guild.preferred_games),
 				Body::empty(),
