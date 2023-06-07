@@ -13,7 +13,10 @@ use crate::{
 #[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 	let removed = diesel::update(schema::user::table)
-		.set(schema::user::uuid.eq::<Option<Uuid>>(None))
+		.set((
+			schema::user::uuid.eq::<Option<Uuid>>(None),
+			schema::user::updated_at.eq(chrono::Utc::now()),
+		))
 		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
 		.filter(schema::user::uuid.is_not_null())
 		.execute(&mut ctx.data().pool.get().await?)

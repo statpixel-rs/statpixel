@@ -21,7 +21,10 @@ pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 		))
 		.on_conflict(schema::user::id)
 		.do_update()
-		.set(schema::user::display.eq(&format))
+		.set((
+			schema::user::display.eq(&format),
+			schema::user::updated_at.eq(chrono::Utc::now()),
+		))
 		.execute(&mut ctx.data().pool.get().await?)
 		.await?;
 

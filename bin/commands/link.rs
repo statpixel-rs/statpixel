@@ -49,7 +49,10 @@ pub async fn link(
 			))
 			.on_conflict(schema::user::id)
 			.do_update()
-			.set(schema::user::uuid.eq(player.uuid))
+			.set((
+				schema::user::uuid.eq(player.uuid),
+				schema::user::updated_at.eq(chrono::Utc::now()),
+			))
 			.execute(&mut ctx.data().pool.get().await?)
 			.await?;
 
