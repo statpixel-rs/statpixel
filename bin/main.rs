@@ -4,7 +4,9 @@
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 
-use database::get_pool;
+use database::{get_pool, schema::usage};
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use poise::serenity_prelude::GatewayIntents;
 use snapshot::user;
 use tracing::{error, info, warn, Level};
@@ -82,6 +84,7 @@ async fn main() {
 			event_handler: |ctx, event, framework, user_data| {
 				Box::pin(event_handler(ctx, event, framework, user_data))
 			},
+			pre_command: |ctx| Box::pin(pre_command(ctx)),
 			..Default::default()
 		})
 		.token(std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN"))
@@ -119,11 +122,30 @@ async fn main() {
 	framework.run_autosharded().await.unwrap();
 }
 
+async fn pre_command(ctx: Context<'_>) {
+	let Ok(mut connection) = ctx.data().pool.get().await else {
+		return;
+	};
+
+	diesel::insert_into(usage::table)
+		.values((
+			usage::user_id.eq(ctx.author().id.0 as i64),
+			usage::command_name.eq(&ctx.command().qualified_name),
+			usage::count.eq(1),
+		))
+		.on_conflict((usage::user_id, usage::command_name))
+		.do_update()
+		.set(usage::count.eq(usage::count + 1))
+		.execute(&mut connection)
+		.await
+		.ok();
+}
+
 async fn event_handler(
 	ctx: &poise::serenity_prelude::Context,
 	event: &poise::Event<'_>,
 	_framework: poise::FrameworkContext<'_, Data, Error>,
-	_user_data: &Data,
+	_data: &Data,
 ) -> Result<(), Error> {
 	match event {
 		poise::Event::Ready { data_about_bot } => {
