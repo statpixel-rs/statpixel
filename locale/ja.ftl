@@ -503,6 +503,9 @@ SoloNormal = ソロ通常
 SoloInsane = ソロインセイン
 TeamNormal = チーム通常
 TeamInsane = チームインセイン
+MegaNormal = メガ通常
+MegaDouble = メガダブル
+Ranked = ランク戦
 
 opals = オパール
 heads = ヘッド

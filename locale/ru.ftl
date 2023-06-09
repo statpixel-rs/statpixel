@@ -504,6 +504,9 @@ SoloNormal = Соло, обычный
 SoloInsane = Соло, безумный
 TeamNormal = Командный, обычный
 TeamInsane = Командный, безумный
+MegaNormal = Мега, обычный
+MegaDouble = Мега, удвоение
+Ranked = Рейтинговый
 
 opals = Опалы
 heads = Головы

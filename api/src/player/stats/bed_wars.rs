@@ -63,55 +63,55 @@ pub struct BedWars {
 	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR"))]
 	pub four: Four,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_RUSH"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_RUSH", skip_overall))]
 	pub solo_rush: SoloRush,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_RUSH"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_RUSH", skip_overall))]
 	pub double_rush: DoubleRush,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_RUSH"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_RUSH", skip_overall))]
 	pub four_rush: FourRush,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_ULTIMATE"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE_ULTIMATE", skip_overall))]
 	pub solo_ultimate: SoloUltimate,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ULTIMATE"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ULTIMATE", skip_overall))]
 	pub double_ultimate: DoubleUltimate,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ULTIMATE"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ULTIMATE", skip_overall))]
 	pub four_ultimate: FourUltimate,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_CASTLE"))]
+	#[game(mode(hypixel = "BEDWARS_CASTLE", skip_overall))]
 	pub castle: Castle,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_LUCKY"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_LUCKY", skip_overall))]
 	pub double_lucky: DoubleLucky,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_LUCKY"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_LUCKY", skip_overall))]
 	pub four_lucky: FourLucky,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_VOIDLESS"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_VOIDLESS", skip_overall))]
 	pub double_voidless: DoubleVoidless,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_VOIDLESS"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_VOIDLESS", skip_overall))]
 	pub four_voidless: FourVoidless,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ARMED"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_ARMED", skip_overall))]
 	pub double_armed: DoubleArmed,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ARMED"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_ARMED", skip_overall))]
 	pub four_armed: FourArmed,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_UNDERWORLD"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_UNDERWORLD", skip_overall))]
 	pub double_underworld: DoubleUnderworld,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_UNDERWORLD"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_UNDERWORLD", skip_overall))]
 	pub four_underworld: FourUnderworld,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_SWAP"))]
+	#[game(mode(hypixel = "BEDWARS_EIGHT_TWO_SWAP", skip_overall))]
 	pub double_swap: DoubleSwap,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_SWAP"))]
+	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_SWAP", skip_overall))]
 	pub four_swap: FourSwap,
 }
 

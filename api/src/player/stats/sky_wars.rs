@@ -65,6 +65,15 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(hypixel = "teams_insane"))]
 	pub team_insane: TeamInsane,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "mega_doubles"))]
+	pub mega_double: MegaDouble,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "mega_normal"))]
+	pub mega_normal: MegaNormal,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "ranked"))]
+	pub ranked: Ranked,
 }
 
 #[derive(
@@ -124,5 +133,50 @@ pub struct TeamInsane {
 	#[serde(rename = "kills_team_insane")]
 	pub kills: u32,
 	#[serde(rename = "deaths_team_insane")]
+	pub deaths: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct MegaDouble {
+	#[serde(rename = "losses_mega_doubles")]
+	pub losses: u32,
+	#[serde(rename = "wins_mega_doubles")]
+	pub wins: u32,
+	#[serde(rename = "kills_mega_doubles")]
+	pub kills: u32,
+	#[serde(rename = "deaths_mega_doubles")]
+	pub deaths: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct MegaNormal {
+	#[serde(rename = "losses_mega_doubles_normal")]
+	pub losses: u32,
+	#[serde(rename = "wins_mega_doubles_normal")]
+	pub wins: u32,
+	#[serde(rename = "kills_mega_doubles_normal")]
+	pub kills: u32,
+	#[serde(rename = "deaths_mega_doubles_normal")]
+	pub deaths: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct Ranked {
+	#[serde(rename = "losses_ranked")]
+	pub losses: u32,
+	#[serde(rename = "wins_ranked")]
+	pub wins: u32,
+	#[serde(rename = "kills_ranked")]
+	pub kills: u32,
+	#[serde(rename = "deaths_ranked")]
 	pub deaths: u32,
 }

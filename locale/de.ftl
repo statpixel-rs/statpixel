@@ -504,6 +504,9 @@ SoloNormal = Solo Normal
 SoloInsane = Solo Insane
 TeamNormal = Team Normal
 TeamInsane = Team Insane
+MegaNormal = Mega Normal
+MegaDouble = Mega Doubles
+Ranked = Ranked
 
 opals = Opale
 heads = Köpfe

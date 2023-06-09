@@ -1,4 +1,4 @@
-mod bed_wars;
+mod sky_wars;
 
 use crate::player::stats;
 
@@ -18,15 +18,15 @@ pub struct Stats {
 	pub warlords: stats::warlords::Warlords,
 	pub smash_heroes: stats::smash_heroes::SmashHeroes,
 	pub turbo_kart_racers: stats::turbo_kart_racers::TurboKartRacers,
-	pub sky_wars: stats::sky_wars::SkyWars,
+	pub sky_wars: sky_wars::SkyWars,
 	pub speed_uhc: stats::speed_uhc::SpeedUhc,
-	pub bed_wars: bed_wars::BedWars,
+	pub bed_wars: stats::bed_wars::BedWars,
 	pub murder_mystery: stats::murder_mystery::MurderMystery,
 	pub build_battle: stats::build_battle::BuildBattle,
 	pub duels: stats::duels::Duels,
+	pub sky_block: stats::sky_block::SkyBlock,
 	pub pit: stats::pit::Outer,
 	pub wool_wars: stats::wool_wars::Outer,
-	pub sky_block: stats::sky_block::SkyBlock,
 }
 
 impl From<Stats> for crate::player::stats::Stats {
@@ -46,9 +46,9 @@ impl From<Stats> for crate::player::stats::Stats {
 			warlords: value.warlords,
 			smash_heroes: value.smash_heroes,
 			turbo_kart_racers: value.turbo_kart_racers,
-			sky_wars: value.sky_wars,
+			sky_wars: value.sky_wars.into(),
 			speed_uhc: value.speed_uhc,
-			bed_wars: value.bed_wars.into(),
+			bed_wars: value.bed_wars,
 			murder_mystery: value.murder_mystery,
 			build_battle: value.build_battle,
 			duels: value.duels,

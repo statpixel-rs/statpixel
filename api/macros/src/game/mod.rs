@@ -124,7 +124,16 @@ impl ToTokens for GameInputReceiver {
 				(
 					false,
 					Some(sum::sum_fields(
-						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						modes
+							.iter()
+							.filter_map(|m| {
+								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
 						Some(&ident!("stats")),
 						&path,
 					)),
@@ -191,7 +200,16 @@ impl ToTokens for GameInputReceiver {
 				quote! { data.stats.#path.#name }
 			} else {
 				sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					name,
 				)
@@ -199,7 +217,16 @@ impl ToTokens for GameInputReceiver {
 
 			let value = if let Some(div) = info.div.as_ref() {
 				let sum_bottom = sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					div,
 				);
@@ -411,7 +438,16 @@ impl ToTokens for GameInputReceiver {
 				let ident = &field.ident;
 				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 				let value = sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					ident,
 				);
@@ -439,7 +475,16 @@ impl ToTokens for GameInputReceiver {
 
 				let ident = &field.ident;
 				let value = sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					ident,
 				);
@@ -465,7 +510,16 @@ impl ToTokens for GameInputReceiver {
 
 				let ident = &field.ident;
 				let value = sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					ident,
 				);
@@ -496,7 +550,16 @@ impl ToTokens for GameInputReceiver {
 			} else if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
 					let value = sum::sum_div_u32_fields(
-						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						modes
+							.iter()
+							.filter_map(|m| {
+								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
 						div,
@@ -517,7 +580,16 @@ impl ToTokens for GameInputReceiver {
 					};
 				} else {
 					sum::sum_div_f32_fields(
-						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						modes
+							.iter()
+							.filter_map(|m| {
+								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
 						div,
@@ -525,7 +597,16 @@ impl ToTokens for GameInputReceiver {
 				}
 			} else {
 				sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes
+						.iter()
+						.filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						})
+						.peekable(),
 					Some(&ident!("stats")),
 					ident_parent,
 				)
@@ -563,7 +644,13 @@ impl ToTokens for GameInputReceiver {
 			} else if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
 					let sum = sum::sum_div_u32_fields(
-						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						modes.iter().filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						}).peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
 						div,
@@ -581,7 +668,13 @@ impl ToTokens for GameInputReceiver {
 					};
 				} else {
 					sum::sum_div_f32_fields(
-						modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+						modes.iter().filter_map(|m| {
+							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								None
+							} else {
+								Some(m.ident.as_ref().unwrap())
+							}
+						}).peekable(),
 						Some(&ident!("stats")),
 						ident_parent,
 						div,
@@ -589,7 +682,13 @@ impl ToTokens for GameInputReceiver {
 				}
 			} else {
 				sum::sum_fields(
-					modes.iter().map(|m| m.ident.as_ref().unwrap()).peekable(),
+					modes.iter().filter_map(|m| {
+						if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							None
+						} else {
+							Some(m.ident.as_ref().unwrap())
+						}
+					}).peekable(),
 					Some(&ident!("stats")),
 					ident_parent,
 				)
@@ -1435,6 +1534,7 @@ pub(crate) struct GameLabel {
 
 #[derive(Debug, FromMeta)]
 pub(crate) struct ModeData {
+	skip_overall: Option<bool>,
 	hypixel: Option<String>,
 	calc: Option<syn::Path>,
 	xp: Option<syn::Expr>,
