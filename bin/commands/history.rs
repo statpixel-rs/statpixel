@@ -52,6 +52,24 @@ macro_rules! generate_large_command {
 			)
 			.await?;
 
+			if snapshots.is_empty() {
+				let data = player.get_data().await?;
+
+				$crate::snapshot::user::insert(ctx, &player, &data).await?;
+
+				let content = ::translate::tr_fmt!(
+					ctx, "no-previous-statistics",
+					name: $crate::util::escape_username(&data.username),
+				);
+
+				ctx.send(move |m| {
+					m.content(content)
+				})
+				.await?;
+
+				return Ok(());
+			}
+
 			let snapshots = {
 				let mut snapshots_ = Vec::with_capacity(snapshots.len());
 
@@ -114,6 +132,24 @@ macro_rules! generate_command {
 			)
 			.await?;
 
+			if snapshots.is_empty() {
+				let data = player.get_data().await?;
+
+				$crate::snapshot::user::insert(ctx, &player, &data).await?;
+
+				let content = ::translate::tr_fmt!(
+					ctx, "no-previous-statistics",
+					name: $crate::util::escape_username(&data.username),
+				);
+
+				ctx.send(move |m| {
+					m.content(content)
+				})
+				.await?;
+
+				return Ok(());
+			}
+
 			let snapshots = {
 				let mut snapshots_ = Vec::with_capacity(snapshots.len());
 
@@ -125,12 +161,6 @@ macro_rules! generate_command {
 
 				snapshots_
 			};
-
-			if snapshots.is_empty() {
-				return Err(::translate::Error::PlayerSnapshotNotFound(
-					player.username.unwrap(),
-				));
-			}
 
 			let png = {
 				let buffer = <$game>::chart(ctx, snapshots, &session, mode)?;
@@ -180,6 +210,21 @@ async fn network(
 	)
 	.await?;
 
+	if snapshots.is_empty() {
+		let data = player.get_data().await?;
+
+		crate::snapshot::user::insert(ctx, &player, &data).await?;
+
+		let content = ::translate::tr_fmt!(
+			ctx, "no-previous-statistics",
+			name: crate::util::escape_username(&data.username),
+		);
+
+		ctx.send(move |m| m.content(content)).await?;
+
+		return Ok(());
+	}
+
 	let snapshots = {
 		let mut snapshots_ = Vec::with_capacity(snapshots.len());
 
@@ -192,9 +237,8 @@ async fn network(
 		snapshots_
 	};
 
-	let (Some(first), Some(last)) = (snapshots.first(), snapshots.last()) else {
-		return Err(::translate::Error::PlayerSnapshotNotFound(player.username.unwrap()));
-	};
+	let first = snapshots.first().unwrap();
+	let last = snapshots.last().unwrap();
 
 	let lower = first.1.xp * 15 / 16;
 	let upper = last.1.xp * 16 / 15;

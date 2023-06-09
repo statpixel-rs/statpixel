@@ -217,9 +217,6 @@ pub async fn error_handler(error: poise::FrameworkError<'_, Data, Error>) {
 			Error::SkyBlockProfileNotFound(ref name) => {
 				tr_fmt!(ctx, "error-skyblock-profile-not-found", name: format!("`{}`", name))
 			}
-			Error::PlayerSnapshotNotFound(ref name) => {
-				tr_fmt!(ctx, "error-player-snapshot-not-found", name: format!("`{}`", name))
-			}
 			Error::LeaderboardNotFound(ref name) => {
 				tr_fmt!(ctx, "error-leaderboard-not-found", name: format!("`{}`", name))
 			}

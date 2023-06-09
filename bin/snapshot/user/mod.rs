@@ -331,6 +331,13 @@ pub async fn get_or_insert(
 		return Ok(Status::Found((Box::new(snapshot.0), snapshot.1)));
 	}
 
+	insert(ctx, player, data).await?;
+
+	// And return nothing.
+	Ok(Status::Inserted)
+}
+
+pub async fn insert(ctx: Context<'_>, player: &Player, data: &Data) -> Result<(), Error> {
 	let encoded = encode(data)?;
 	let hash = fxhash::hash64(&encoded) as i64;
 	let mut connection = ctx.data().pool.get().await?;
@@ -382,6 +389,5 @@ pub async fn get_or_insert(
 		})
 		.await?;
 
-	// And return nothing.
-	Ok(Status::Inserted)
+	Ok(())
 }
