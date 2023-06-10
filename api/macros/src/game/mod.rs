@@ -910,7 +910,7 @@ impl ToTokens for GameInputReceiver {
 									#(#extras_for_mode)*
 									.build()
 							)
-							.push_right(
+							.push_right_post_draw(
 								status,
 								crate::canvas::body::Body::from_status(ctx, session)
 							);
@@ -1116,7 +1116,7 @@ impl ToTokens for GameInputReceiver {
 								#(#extras_for_overall)*
 								.build()
 						)
-						.push_right(
+						.push_right_post_draw(
 							status,
 							crate::canvas::body::Body::from_status(ctx, session)
 						);
