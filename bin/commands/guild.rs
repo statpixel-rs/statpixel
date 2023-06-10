@@ -20,6 +20,7 @@ use minecraft::{
 use poise::serenity_prelude::AttachmentType;
 use skia_safe::textlayout::TextAlign;
 use tokio::join;
+use tracing::error;
 use translate::{tr, Context};
 use uuid::Uuid;
 
@@ -321,6 +322,34 @@ async fn members(
 
 	guild.increase_searches(ctx).await?;
 
+	let mut members =
+		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
+			|p| async {
+				match p.get_display_string_owned().await {
+					Ok(s) => {
+						let paragraph =
+							shape::Custom::from_text(&minecraft_string(&s).collect::<Vec<_>>());
+
+						Ok((shape::Custom::get_from_paragraph(&paragraph), paragraph))
+					}
+					Err(e) => Err(e),
+				}
+			},
+		))
+		.buffered(20)
+		.filter_map(|r| async {
+			match r {
+				Err(e) => {
+					error!("Failed to get player display string: {}", e);
+
+					None
+				}
+				d => d.ok().map(Some),
+			}
+		})
+		.collect::<Vec<_>>()
+		.await;
+
 	let mut member_rank_indices = guild
 		.members
 		.iter()
@@ -339,25 +368,6 @@ async fn members(
 
 	member_rank_indices.sort_by_key(|(_, rank)| std::cmp::Reverse(*rank));
 
-	let mut members =
-		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
-			|p| async {
-				match p.get_display_string_owned().await {
-					Ok(s) => {
-						let paragraph =
-							shape::Custom::from_text(&minecraft_string(&s).collect::<Vec<_>>());
-
-						Ok((shape::Custom::get_from_paragraph(&paragraph), paragraph))
-					}
-					Err(e) => Err(e),
-				}
-			},
-		))
-		.buffered(20)
-		.filter_map(|r| async { r.ok().map(Some) })
-		.collect::<Vec<_>>()
-		.await;
-
 	let png: Cow<_> = {
 		let mut canvas = Canvas::new(1_176.666_6)
 			.gap(7.)
@@ -368,18 +378,22 @@ async fn members(
 
 		if let Some((i, r)) = iter.next() {
 			let mut last_rank = r;
-			let (shape, paragraph) = members[i].take().unwrap();
-			let text = shape::Custom::from_text_large(&[Text {
-				text: "Guild Master",
-				..Default::default()
-			}]);
 
-			canvas = canvas
-				.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
-				.push_down_start(&shape, paragraph);
+			if let Some((shape, paragraph)) = members[i].take() {
+				let text = shape::Custom::from_text_large(&[Text {
+					text: "Guild Master",
+					..Default::default()
+				}]);
+
+				canvas = canvas
+					.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
+					.push_down_start(&shape, paragraph);
+			}
 
 			for (i, r) in iter {
-				let (shape, paragraph) = members[i].take().unwrap();
+				let Some((shape, paragraph)) = members[i].take() else {
+					continue;
+				};
 
 				if r == last_rank {
 					canvas = canvas.push_checked(&shape, paragraph);
