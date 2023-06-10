@@ -11,6 +11,7 @@ use translate::{Context, Error};
 
 use crate::util;
 
+pub mod background;
 pub mod cache;
 pub mod display;
 pub mod from;

@@ -1302,6 +1302,7 @@ impl ToTokens for GameInputReceiver {
 						}), 10)
 				}
 
+				#[allow(clippy::too_many_arguments)]
 				pub fn canvas_diff(
 					ctx: ::translate::Context<'_>,
 					prev: &crate::player::data::Data,
@@ -1310,6 +1311,7 @@ impl ToTokens for GameInputReceiver {
 					skin: &[u8],
 					mode: Option<#enum_ident>,
 					suffix: Option<&str>,
+					background: Option<::skia_safe::Color>,
 				) -> ::skia_safe::Surface {
 					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
 
@@ -1346,9 +1348,10 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_match_apply_rows)*
 					};
 
-					canvas.build(None).unwrap()
+					canvas.build(None, background).unwrap()
 				}
 
+				#[allow(clippy::too_many_arguments)]
 				pub fn canvas(
 					ctx: ::translate::Context<'_>,
 					data: &crate::player::data::Data,
@@ -1356,6 +1359,7 @@ impl ToTokens for GameInputReceiver {
 					skin: &[u8],
 					mode: Option<#enum_ident>,
 					suffix: Option<&str>,
+					background: Option<::skia_safe::Color>,
 				) -> ::skia_safe::Surface {
 					let stats = &data.stats.#path;
 
@@ -1387,7 +1391,7 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_match_apply_rows)*
 					};
 
-					canvas.build(None).unwrap()
+					canvas.build(None, background).unwrap()
 				}
 
 				pub fn chart(

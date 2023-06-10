@@ -36,6 +36,7 @@ async fn main() {
 	let mut commands = vec![
 		commands::games::arcade(),
 		commands::games::arena(),
+		commands::background::background(),
 		commands::games::bedwars(),
 		commands::games::blitz(),
 		commands::games::buildbattle(),

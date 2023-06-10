@@ -24,7 +24,7 @@ macro_rules! generate_large_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let format = $crate::util::get_format_from_input(ctx).await;
+			let (format, background) = $crate::util::get_format_colour_from_input(ctx).await;
 
 			match format {
 				// TODO: Add compact format support
@@ -35,7 +35,7 @@ macro_rules! generate_large_command {
 
 					let png: ::std::borrow::Cow<[u8]> = {
 						let mut surface =
-							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref(), background);
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -65,7 +65,7 @@ macro_rules! generate_large_command {
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
-								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
+								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref(), background);
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -121,7 +121,7 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let format = $crate::util::get_format_from_input(ctx).await;
+			let (format, background) = $crate::util::get_format_colour_from_input(ctx).await;
 
 			match format {
 				// TODO: Add compact format support
@@ -133,7 +133,7 @@ macro_rules! generate_command {
 
 					let png: ::std::borrow::Cow<[u8]> = {
 						let mut surface =
-							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref());
+							<$game>::canvas(ctx, &data, &session, skin.as_ref(), mode, suffix.as_deref(), background);
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -161,7 +161,7 @@ macro_rules! generate_command {
 
 						let png: ::std::borrow::Cow<[u8]> = {
 							let mut surface =
-								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref());
+								<$game>::canvas(ctx, &data, &session, skin.as_ref(), Some(mode), suffix.as_deref(), background);
 
 							::api::canvas::to_png(&mut surface).into()
 						};

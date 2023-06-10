@@ -122,6 +122,7 @@ async fn general(
 
 	guild.increase_searches(ctx).await?;
 
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let guilds =
 		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
@@ -272,7 +273,7 @@ async fn general(
 				&shape::WideTallBubble,
 				shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 1),
 			)
-			.build(None)
+			.build(None, background)
 			.unwrap();
 
 		canvas::to_png(&mut canvas).into()
@@ -322,6 +323,7 @@ async fn members(
 
 	guild.increase_searches(ctx).await?;
 
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let mut members =
 		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
 			|p| async {
@@ -413,7 +415,7 @@ async fn members(
 			}
 		}
 
-		let mut canvas = canvas.build(None).unwrap();
+		let mut canvas = canvas.build(None, background).unwrap();
 
 		canvas::to_png(&mut canvas).into()
 	};

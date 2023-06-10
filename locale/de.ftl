@@ -25,6 +25,18 @@ error-player-snapshot-not-found = Für {$name} wurden keine Schnappschüsse gefu
 error-leaderboard-not-found = Eine Bestenliste mit dem Namen {$name} wurde nicht gefunden.
 error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine API deaktiviert oder sie haben sich seit dem neuen Profilsystem nicht mehr angemeldet.
 
+# /background
+
+background = background
+  .description = Zeigt den Hintergrund eines Spielers an.
+  .colour = colour
+  .colour-description = Die Farbe des Hintergrunds
+
+error-invalid-colour = Ungültige Farbe angegeben
+error-invalid-colour-description = Die angegebene Farbe ist ungültig. Versuche eine der [diesen Farben](https://simple.wikipedia.org/wiki/List_of_colors) oder eine Hex-Farbe mit `#` als Präfix.
+colour-changed = Hintergrundfarbe geändert
+colour-changed-description = Deine Hintergrundfarbe wurde zu {$colour} geändert.
+
 # /skyblock auctions
 
 auctions = auctions

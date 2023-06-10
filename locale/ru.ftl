@@ -25,6 +25,18 @@ error-player-snapshot-not-found = Снимки не найдены для {$name
 error-leaderboard-not-found = Доска лидеров с именем {$name} не найдена.
 error-profile-not-found = Профиль SkyBlock {$profile}, принадлежащий {$name}, имеет отключенный API или они не входили в систему с момента введения новой системы профилей.
 
+# /background
+
+background = background
+  .description = Просмотр фона игрока
+  .colour = colour
+  .colour-description = Цвет фона
+
+error-invalid-colour = Указан недействительный цвет
+error-invalid-colour-description = Указанный цвет недействителен. Попробуйте указать один из [этих цветов](https://simple.wikipedia.org/wiki/List_of_colors) или шестнадцатеричный цвет с префиксом `#`.
+colour-changed = Цвет фона изменен
+colour-changed-description = Цвет фона изменен на {$colour}.
+
 # /skyblock auctions
 
 auctions = auctions

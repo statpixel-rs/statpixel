@@ -25,6 +25,18 @@ error-player-snapshot-not-found = No snapshots were found for {$name}. Create on
 error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
 
+# /background
+
+background = background
+  .description = View a player's background
+  .colour = colour
+  .colour-description = The colour of the background
+
+error-invalid-colour = Invalid colour provided
+error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of_colors) or a hex colour prefixed with `#`.
+colour-changed = Background colour changed
+colour-changed-description = Your background colour has been changed to {$colour}.
+
 # /skyblock auctions
 
 auctions = auctions

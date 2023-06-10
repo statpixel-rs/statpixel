@@ -25,6 +25,18 @@ error-player-snapshot-not-found = No se encontraron instantáneas para {$name}. 
 error-leaderboard-not-found = No se encontró una clasificación con el nombre {$name}.
 error-profile-not-found = El perfil de SkyBlock {$profile} perteneciente a {$name} tiene su API desactivada o no ha iniciado sesión desde el nuevo sistema de perfiles.
 
+# /background
+
+background = background
+  .description = Muestra el fondo de un jugador
+  .colour = colour
+  .colour-description = El color del fondo
+
+error-invalid-colour = Color no válido
+error-invalid-colour-description = El color proporcionado no es válido. Intenta proporcionar uno de [estos colores](https://simple.wikipedia.org/wiki/List_of_colors) o un color hexadecimal con el prefijo `#`.
+colour-changed = Color de fondo cambiado
+colour-changed-description = Tu color de fondo ha sido cambiado a {$colour}.
+
 # /skyblock auctions
 
 auctions = auctions

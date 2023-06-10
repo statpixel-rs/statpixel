@@ -27,7 +27,7 @@ macro_rules! generate_command {
 			#[min = 1i64]
 			weeks: Option<i64>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let format = $crate::util::get_format_from_input(ctx).await;
+			let (format, background) = $crate::util::get_format_colour_from_input(ctx).await;
 
 			let mut duration = ::chrono::Duration::zero();
 
@@ -77,7 +77,7 @@ macro_rules! generate_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref());
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref(), background);
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -110,7 +110,7 @@ macro_rules! generate_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref());
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref(), background);
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -205,7 +205,7 @@ macro_rules! generate_large_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let format = $crate::util::get_format_from_input(ctx).await;
+			let (format, background) = $crate::util::get_format_colour_from_input(ctx).await;
 
 			let mut duration = ::chrono::Duration::zero();
 
@@ -255,7 +255,7 @@ macro_rules! generate_large_command {
 					);
 
 					let png: ::std::borrow::Cow<[u8]> = {
-						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref());
+						let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), mode, suffix.as_deref(), background);
 
 						::api::canvas::to_png(&mut surface).into()
 					};
@@ -288,7 +288,7 @@ macro_rules! generate_large_command {
 						);
 
 						let png: ::std::borrow::Cow<[u8]> = {
-							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref());
+							let mut surface = <$game>::canvas_diff(ctx, snapshot, &mut Data::clone(&data), &session, skin.as_ref(), Some(mode), suffix.as_deref(), background);
 
 							::api::canvas::to_png(&mut surface).into()
 						};
@@ -404,6 +404,8 @@ macro_rules! generate_guild_command {
 			if duration.is_zero() {
 				duration = ::chrono::Duration::weeks(1);
 			}
+
+			let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 
 			let after = ::chrono::Utc::now() - duration;
 			let status = $crate::snapshot::guild::get_or_insert(ctx, &guild, after).await?;
@@ -586,7 +588,7 @@ macro_rules! generate_guild_command {
 						&::api::canvas::shape::WideTallBubble,
 						::api::canvas::shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 1),
 					)
-					.build(None)
+					.build(None, background)
 					.unwrap();
 
 				Some(::api::canvas::to_png(&mut canvas).into())

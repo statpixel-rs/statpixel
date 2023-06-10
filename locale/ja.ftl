@@ -25,6 +25,18 @@ error-player-snapshot-not-found = {$name}のスナップショットが見つか
 error-leaderboard-not-found = 名前{$name}のリーダーボードが見つかりませんでした。
 error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、APIが無効になっているか、新しいプロファイルシステム以降ログインしていません。
 
+# /background
+
+background = background
+  .description = プレイヤーの背景を表示します。
+  .colour = 色
+  .colour-description = 背景の色
+
+error-invalid-colour = 無効な色が指定されました
+error-invalid-colour-description = 指定された色は無効です。 [これらの色](https://simple.wikipedia.org/wiki/List_of_colors) のいずれかを提供するか、 `＃`で始まる16進色を提供してみてください。
+colour-changed = 背景色が変更されました
+colour-changed-description = 背景色が{$colour}に変更されました。
+
 # /skyblock auctions
 
 auctions = auctions

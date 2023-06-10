@@ -50,6 +50,7 @@ pub async fn auctions(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -110,7 +111,7 @@ pub async fn auctions(
 			);
 		}
 
-		canvas::to_png(&mut canvas.build(None).unwrap()).into()
+		canvas::to_png(&mut canvas.build(None, background).unwrap()).into()
 	};
 
 	ctx.send(move |m| {
@@ -140,6 +141,7 @@ pub async fn profile(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -351,7 +353,7 @@ pub async fn profile(
 					Paint::Green,
 				),
 			)
-			.build(None)
+			.build(None, background)
 			.unwrap();
 
 		canvas::to_png(&mut surface).into()

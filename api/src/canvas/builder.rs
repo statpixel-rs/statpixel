@@ -50,7 +50,8 @@ impl From<Margin> for i32 {
 
 impl<'c> Canvas<'c> {
 	pub const BACKGROUND: Color = Color::from_rgb(31, 48, 64);
-	pub const ITEM_BACKGROUND: Color = Color::from_rgb(21, 33, 43);
+	pub const BACKGROUND_U32: u32 = 255 << 24 | 31 << 16 | 48 << 8 | 64;
+	pub const ITEM_BACKGROUND: Color = Color::from_argb(192, 20, 28, 36);
 
 	#[must_use]
 	pub fn new(max_width: impl Into<Option<f32>>) -> Self {
@@ -259,7 +260,11 @@ impl<'c> Canvas<'c> {
 
 	#[must_use]
 	#[allow(clippy::cast_possible_truncation)]
-	pub fn build(mut self, margin: impl Into<Option<Margin>>) -> Option<Surface> {
+	pub fn build(
+		mut self,
+		margin: impl Into<Option<Margin>>,
+		background: impl Into<Option<Color>>,
+	) -> Option<Surface> {
 		if let Some(size) = self.last_size {
 			self.tl.x += size.width + self.inset * 2.;
 			self.tl.y += size.height + self.inset * 2.;
@@ -289,7 +294,7 @@ impl<'c> Canvas<'c> {
 					Point::new(30., 30.),
 				],
 			),
-			Paint::default().set_color(Self::BACKGROUND),
+			Paint::default().set_color(background.into().unwrap_or(Self::BACKGROUND)),
 		);
 
 		self.path.offset(offset);

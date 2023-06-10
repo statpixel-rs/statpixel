@@ -48,7 +48,7 @@ pub async fn leaderboard(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let format = crate::util::get_format_from_input(ctx).await;
+	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let leaderboard = {
 		let leaderboards = api::leaderboard::get().await?;
 		let Some(leaderboard) = leaderboards.into_iter().find(|l| l.display_name == board) else {
@@ -137,7 +137,7 @@ pub async fn leaderboard(
 						);
 				}
 
-				let mut surface = canvas.build(None).unwrap();
+				let mut surface = canvas.build(None, background).unwrap();
 
 				canvas::to_png(&mut surface).into()
 			};

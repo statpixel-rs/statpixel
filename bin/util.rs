@@ -4,6 +4,7 @@ use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::username::Username;
 use poise::CreateReply;
+use skia_safe::Color;
 use std::{fmt::Display, sync::Arc};
 use tracing::error;
 use translate::{tr, tr_fmt, ApiError, Data};
@@ -49,18 +50,22 @@ pub fn escape_username(username: &str) -> String {
 	username.replace('_', "\\_")
 }
 
-pub async fn get_format_from_input(ctx: Context<'_>) -> format::Display {
+pub async fn get_format_colour_from_input(ctx: Context<'_>) -> (format::Display, Option<Color>) {
 	let Ok(mut connection) = ctx.data().pool.get().await else {
-		return format::Display::default();
+		return (format::Display::default(), None);
 	};
 
 	let result = schema::user::table
 		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
-		.select(schema::user::display)
-		.get_result::<format::Display>(&mut connection)
+		.select((schema::user::display, schema::user::colour))
+		.get_result::<(format::Display, Option<i32>)>(&mut connection)
 		.await;
 
-	result.unwrap_or_default()
+	match result {
+		#[allow(clippy::cast_sign_loss)]
+		Ok((display, colour)) => (display, colour.map(|c| (c as u32).into())),
+		Err(_) => (format::Display::default(), None),
+	}
 }
 
 pub async fn get_player_from_input(

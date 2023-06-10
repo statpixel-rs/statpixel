@@ -25,7 +25,7 @@ pub async fn network(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let format = crate::util::get_format_from_input(ctx).await;
+	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
 
 	match format {
 		Display::Image | Display::Compact => {
@@ -106,7 +106,7 @@ pub async fn network(
 							.build(),
 					)
 					.push_right_post_draw(&status, Body::from_status(ctx, &session))
-					.build(None)
+					.build(None, background)
 					.unwrap();
 
 				canvas::to_png(&mut surface).into()
