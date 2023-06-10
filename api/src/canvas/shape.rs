@@ -651,7 +651,7 @@ impl Shape for WideBubbleProgress {
 				.set_stroke_width(3.)
 				.set_style(skia_safe::paint::Style::Stroke)
 				.set_stroke_cap(skia_safe::paint::Cap::Round)
-				.set_alpha(64)
+				.set_alpha(192)
 				.set_shader(gradient_shader::linear(
 					((bounds.left, bounds.top), (bounds.right, bounds.bottom)),
 					self.1.as_ref(),
