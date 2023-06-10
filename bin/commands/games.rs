@@ -46,6 +46,7 @@ macro_rules! generate_large_command {
 							filename: "canvas.png".into(),
 						});
 						m.components = Some(<$mode>::as_components(ctx));
+						m.content(crate::tip::random(ctx));
 						m
 					})
 					.await?;
@@ -78,6 +79,7 @@ macro_rules! generate_large_command {
 										filename: "canvas.png".into(),
 									}]);
 									m.set_components(<$mode>::as_components(ctx));
+									m.content(crate::tip::random(ctx));
 									m
 								})
 							})
@@ -95,6 +97,7 @@ macro_rules! generate_large_command {
 
 					ctx.send(|m| {
 						m.embeds.push(embed);
+						m.content(crate::tip::random(ctx));
 						m
 					})
 					.await?;
@@ -144,6 +147,7 @@ macro_rules! generate_command {
 							filename: "canvas.png".into(),
 						});
 						m.components = Some(<$mode>::as_components(ctx));
+						m.content(crate::tip::random(ctx));
 						m
 					})
 					.await?;
@@ -174,6 +178,7 @@ macro_rules! generate_command {
 										filename: "canvas.png".into(),
 									}]);
 									m.set_components(<$mode>::as_components(ctx));
+									m.content(crate::tip::random(ctx));
 									m
 								})
 							})
@@ -189,6 +194,7 @@ macro_rules! generate_command {
 
 					ctx.send(|m| {
 						m.embeds.push(embed);
+						m.content(crate::tip::random(ctx));
 						m
 					})
 					.await?;

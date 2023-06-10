@@ -2919,6 +2919,7 @@ dependencies = [
  "fxhash",
  "minecraft",
  "poise",
+ "rand",
  "skia-safe",
  "tokio",
  "tracing",

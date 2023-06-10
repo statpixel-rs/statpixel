@@ -113,6 +113,7 @@ pub async fn network(
 			};
 
 			ctx.send(move |m| {
+				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
 					filename: "canvas.png".into(),
@@ -160,6 +161,7 @@ pub async fn network(
 			));
 
 			ctx.send(|m| {
+				m.content(crate::tip::random(ctx));
 				m.embeds.push(embed);
 				m
 			})

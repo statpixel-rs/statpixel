@@ -25,6 +25,21 @@ error-player-snapshot-not-found = No snapshots were found for {$name}. Create on
 error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
 
+# Quick tips
+
+tip-background = <:knowledge_book:1117179094556233828> Change the background of generated images with </background:1117174166056075335>.
+tip-history = <:knowledge_book:1117179094556233828> View a historical graph of your statistics with </history bedwars:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> View the statistics change from a specific date with </from bedwars:1113624864524357705>.
+tip-leaderboard = <:knowledge_book:1117179094556233828> View tons of leaderboards with </leaderboard:1113624864524357709>.
+tip-skyblock = <:knowledge_book:1117179094556233828> We support SkyBlock! View a profile with </skyblock profile:1113624864826327074>.
+tip-link = <:knowledge_book:1117179094556233828> Link your Minecraft account with </link:1113624864524357710>.
+tip-guild = <:knowledge_book:1117179094556233828> View guild statistics with </guild general:1113624864524357706>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Access your daily statistics with </daily bedwars:1113624864272683065>.
+tip-display = <:knowledge_book:1117179094556233828> Change your display format with </display:1113624864272683066>.
+tip-help = <:knowledge_book:1117179094556233828> Get more help with </help:1113624864524357707>.
+tip-website = <:knowledge_book:1117179094556233828> Visit our website at <https://statpixel.xyz>.
+tip-support-discord = <:knowledge_book:1117179094556233828> Join our support server at <https://statpixel.xyz/discord>.
+
 # /background
 
 background = background
@@ -136,7 +151,7 @@ help-general = General <:cookie:1115091335565811775>
 help-general-description = StatPixel supports every game on the Hypixel Network. You can view statistics for each game by using `/<game>`. For example, try out </bedwars:1113624864272683060>!
 
 help-display = Display <:spyglass:1115091333657411625>
-help-display-description = If you're on a metered connection or just want to save some data, you can receive responses in different formats, like text or condensed images, with </display:1113624864524357705>.
+help-display-description = If you're on a metered connection or just want to save some data, you can receive responses in different formats, like text or condensed images, with </display:1113624864272683066>.
 
 help-link = Linking <a:recovery_compass:1115091332680126504>
 help-link-description = Typing in your username for every command can become tedious. To make this easier, you can link an account without verification with </link:1113624864524357710> and unlink it later on with </unlink:1113624865262538854>.

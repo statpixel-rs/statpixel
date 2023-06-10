@@ -18,6 +18,7 @@ mod constants;
 mod emoji;
 mod format;
 mod snapshot;
+mod tip;
 mod util;
 
 pub use constants::*;

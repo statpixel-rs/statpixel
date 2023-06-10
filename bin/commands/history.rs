@@ -89,6 +89,7 @@ macro_rules! generate_large_command {
 			};
 
 			ctx.send(move |m| {
+				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
 					filename: "canvas.png".to_string(),
@@ -169,6 +170,7 @@ macro_rules! generate_command {
 			};
 
 			ctx.send(move |m| {
+				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
 					filename: "canvas.png".to_string(),

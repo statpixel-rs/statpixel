@@ -280,6 +280,7 @@ async fn general(
 	};
 
 	ctx.send(move |m| {
+		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
 			filename: "canvas.png".to_string(),
@@ -421,6 +422,7 @@ async fn members(
 	};
 
 	ctx.send(move |m| {
+		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
 			filename: "canvas.png".to_string(),

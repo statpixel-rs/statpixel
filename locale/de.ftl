@@ -25,6 +25,21 @@ error-player-snapshot-not-found = Für {$name} wurden keine Schnappschüsse gefu
 error-leaderboard-not-found = Eine Bestenliste mit dem Namen {$name} wurde nicht gefunden.
 error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine API deaktiviert oder sie haben sich seit dem neuen Profilsystem nicht mehr angemeldet.
 
+# Quick tips
+
+tip-background = <:knowledge_book:1117179094556233828> Ändere den Hintergrund von generierten Bildern mit </background:1117174166056075335>.
+tip-history = <:knowledge_book:1117179094556233828> Zeige einen historischen Graphen deiner Statistiken mit </history bedwars:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Zeige die Statistikänderung ab einem bestimmten Datum mit </from bedwars:1113624864524357705>.
+tip-leaderboard = <:knowledge_book:1117179094556233828> Zeige viele Bestenlisten mit </leaderboard:1113624864524357709>.
+tip-skyblock = <:knowledge_book:1117179094556233828> Wir unterstützen SkyBlock! Zeige ein Profil mit </skyblock profile:1113624864826327074>.
+tip-link = <:knowledge_book:1117179094556233828> Verknüpfe deinen Minecraft-Account mit </link:1113624864524357710>.
+tip-guild = <:knowledge_book:1117179094556233828> Zeige Gildenstatistiken mit </guild general:1113624864524357706>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Greife auf deine täglichen Statistiken mit </daily bedwars:1113624864272683065> zu.
+tip-display = <:knowledge_book:1117179094556233828> Ändere dein Anzeigeformat mit </display:1113624864272683066>.
+tip-help = <:knowledge_book:1117179094556233828> Erhalte mehr Hilfe mit </help:1113624864524357707>.
+tip-website = <:knowledge_book:1117179094556233828> Besuche unsere Website unter <https://statpixel.xyz>.
+tip-support-discord = <:knowledge_book:1117179094556233828> Tritt unserem Support-Server unter <https://statpixel.xyz/discord> bei.
+
 # /background
 
 background = background

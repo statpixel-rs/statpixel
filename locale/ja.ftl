@@ -25,6 +25,21 @@ error-player-snapshot-not-found = {$name}のスナップショットが見つか
 error-leaderboard-not-found = 名前{$name}のリーダーボードが見つかりませんでした。
 error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、APIが無効になっているか、新しいプロファイルシステム以降ログインしていません。
 
+# Quick tips
+
+tip-background = <:knowledge_book:1117179094556233828> 生成された画像の背景を </background:1117174166056075335> で変更します。
+tip-history = <:knowledge_book:1117179094556233828> </history bedwars:1113624864524357708>で統計の履歴グラフを表示します。
+tip-from = <:knowledge_book:1117179094556233828> </from bedwars:1113624864524357705>で特定の日付からの統計変更を表示します。
+tip-leaderboard = <:knowledge_book:1117179094556233828> </leaderboard:1113624864524357709>で多くのリーダーボードを表示します。
+tip-skyblock = <:knowledge_book:1117179094556233828> SkyBlockをサポートしています！ </skyblock profile:1113624864826327074>でプロファイルを表示します。
+tip-link = <:knowledge_book:1117179094556233828> </link:1113624864524357710>でMinecraftアカウントをリンクします。
+tip-guild = <:knowledge_book:1117179094556233828> </guild general:1113624864524357706>でギルド統計を表示します。
+tip-snapshot = <:knowledge_book:1117179094556233828> </daily bedwars:1113624864272683065>で毎日の統計にアクセスします。
+tip-display = <:knowledge_book:1117179094556233828> </display:1113624864272683066>で表示形式を変更します。
+tip-help = <:knowledge_book:1117179094556233828> </help:1113624864524357707>でより詳しいヘルプを取得します。
+tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>でウェブサイトを訪問します。
+tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
+
 # /background
 
 background = background

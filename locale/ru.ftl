@@ -25,6 +25,21 @@ error-player-snapshot-not-found = Снимки не найдены для {$name
 error-leaderboard-not-found = Доска лидеров с именем {$name} не найдена.
 error-profile-not-found = Профиль SkyBlock {$profile}, принадлежащий {$name}, имеет отключенный API или они не входили в систему с момента введения новой системы профилей.
 
+# Quick tips
+
+tip-background = <:knowledge_book:1117179094556233828> Измените фон сгенерированных изображений с помощью </background:1117174166056075335>.
+tip-history = <:knowledge_book:1117179094556233828> Просмотрите исторический график своей статистики с помощью </history bedwars:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Просмотр изменений статистики с определенной даты с помощью </from bedwars:1113624864524357705>.
+tip-leaderboard = <:knowledge_book:1117179094556233828> Просмотрите тонны досок лидеров с помощью </leaderboard:1113624864524357709>.
+tip-skyblock = <:knowledge_book:1117179094556233828> Мы поддерживаем SkyBlock! Просмотр профиля с помощью </skyblock profile:1113624864826327074>.
+tip-link = <:knowledge_book:1117179094556233828> Свяжите свою учетную запись Minecraft с помощью </link:1113624864524357710>.
+tip-guild = <:knowledge_book:1117179094556233828> Просмотр статистики гильдии с помощью </guild general:1113624864524357706>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Получите доступ к своей ежедневной статистике с помощью </daily bedwars:1113624864272683065>.
+tip-display = <:knowledge_book:1117179094556233828> Измените формат отображения с помощью </display:1113624864272683066>.
+tip-help = <:knowledge_book:1117179094556233828> Получите больше помощи с помощью </help:1113624864524357707>.
+tip-website = <:knowledge_book:1117179094556233828> Посетите наш веб-сайт по адресу <https://statpixel.xyz>.
+tip-support-discord = <:knowledge_book:1117179094556233828> Присоединяйтесь к нашему серверу поддержки по адресу <https://statpixel.xyz/discord>.
+
 # /background
 
 background = background
