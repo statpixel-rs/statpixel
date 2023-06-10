@@ -6,6 +6,7 @@ use reqwest::header::{HeaderMap, HeaderValue};
 use reqwest::{Client, Request, RequestBuilder, Response, StatusCode, Url};
 use tokio::sync::{Mutex, RwLock};
 use tokio::time::{sleep, Duration};
+use tracing::info;
 
 #[derive(Debug, thiserror::Error)]
 pub enum HttpError {
@@ -174,6 +175,7 @@ impl Ratelimit {
 		};
 
 		if self.remaining() == 0 {
+			info!(sleep = delay.as_secs_f64(), "ratelimit reached");
 			sleep(delay).await;
 
 			return;
@@ -192,7 +194,7 @@ impl Ratelimit {
 		if let Some(remaining) = parse_header(response.headers(), "ratelimit-remaining")? {
 			self.remaining = remaining;
 		}
-		
+
 		if let Some(reset_after) = parse_header::<f64>(response.headers(), "ratelimit-reset")? {
 			self.reset = Some(SystemTime::now() + Duration::from_secs_f64(reset_after));
 			self.reset_after = Some(Duration::from_secs_f64(reset_after));
@@ -204,6 +206,7 @@ impl Ratelimit {
 			// If the header does not exist (like the case is with Mojang), just wait 5 seconds.
 			parse_header::<f64>(response.headers(), "retry-after").unwrap_or(Some(5.))
 		{
+			info!(sleep = retry_after, "ratelimit reached");
 			sleep(Duration::from_secs_f64(retry_after)).await;
 
 			true

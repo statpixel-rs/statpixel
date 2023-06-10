@@ -696,10 +696,28 @@ daily-xp = デイリーXP
 weekly-xp = ウィークリーXP
 monthly-xp = マンスリーXP
 xp-since = XP以降
-members = メンバー
+members_label = メンバー
 
-guild = ギルド
+general = general
   .description = ギルドの統計を表示します。
+  .name = name
+  .name-description = 表示するギルドの名前
+  .username = username
+  .username-description = 表示するギルドメンバーのMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのMinecraftのUUID
+
+guild = guild
+  .description = ギルドの統計を表示します。
+  .name = name
+  .name-description = 表示するギルドの名前
+  .username = username
+  .username-description = 表示するギルドメンバーのMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのMinecraftのUUID
+
+members = members
+  .description = ギルドのメンバーを表示します。
   .name = name
   .name-description = 表示するギルドの名前
   .username = username

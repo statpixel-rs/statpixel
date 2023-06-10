@@ -697,10 +697,28 @@ daily-xp = Ежедневный опыт
 weekly-xp = Еженедельный опыт
 monthly-xp = Ежемесячный опыт
 xp-since = Опыт с
-members = Участники
+members_label = Участники
 
 guild = guild
   .description = Показывает статистику гильдии.
+  .name = name
+  .name-description = Название гильдии для просмотра
+  .username = username
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии для просмотра
+
+general = general
+  .description = Показывает статистику гильдии.
+  .name = name
+  .name-description = Название гильдии для просмотра
+  .username = username
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии для просмотра
+
+members = members
+  .description = Показывает участников гильдии.
   .name = name
   .name-description = Название гильдии для просмотра
   .username = username

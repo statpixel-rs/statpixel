@@ -95,7 +95,7 @@ pub fn apply_member_xp(guild: &mut Guild, guilds: &[Guild]) {
 	required_bot_permissions = "ATTACH_FILES"
 )]
 #[allow(clippy::too_many_lines)]
-pub async fn guild(
+async fn general(
 	ctx: Context<'_>,
 	#[min_length = 3]
 	#[max_length = 32]
@@ -185,7 +185,7 @@ pub async fn guild(
 						.build()
 				},
 			)
-			.push_down(
+			.push_down_post_draw(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
@@ -195,7 +195,7 @@ pub async fn guild(
 				),
 			)
 			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &guild))
-			.push_right(
+			.push_right_post_draw(
 				&shape::PreferredGames(&guild.preferred_games),
 				Body::empty(),
 			)
@@ -232,7 +232,7 @@ pub async fn guild(
 				Body::from_bubble(
 					ctx,
 					&format!("{}/125", guild.members.len()),
-					tr!(ctx, "members").as_ref(),
+					tr!(ctx, "members_label").as_ref(),
 					Paint::LightPurple,
 				),
 			)
@@ -285,5 +285,142 @@ pub async fn guild(
 	})
 	.await?;
 
+	Ok(())
+}
+
+/// Shows the members of a guild.
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+#[allow(clippy::too_many_lines)]
+async fn members(
+	ctx: Context<'_>,
+	#[min_length = 3]
+	#[max_length = 32]
+	#[autocomplete = "crate::commands::autocomplete_guild_name"]
+	name: Option<String>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+) -> Result<(), Error> {
+	let guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
+		Ok(guild) => guild,
+		Err(Error::NotLinked) => {
+			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				.await?;
+
+			return Ok(());
+		}
+		Err(e) => return Err(e),
+	};
+
+	guild.increase_searches(ctx).await?;
+
+	let mut member_rank_indices = guild
+		.members
+		.iter()
+		.enumerate()
+		.map(|(i, m)| {
+			(
+				i,
+				guild
+					.ranks
+					.iter()
+					.find(|r| r.name == m.rank)
+					.map_or(u8::MAX, |r| r.priority),
+			)
+		})
+		.collect::<Vec<_>>();
+
+	member_rank_indices.sort_by_key(|(_, rank)| std::cmp::Reverse(*rank));
+
+	let mut members =
+		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
+			|p| async {
+				match p.get_display_string_owned().await {
+					Ok(s) => {
+						let paragraph =
+							shape::Custom::from_text(&minecraft_string(&s).collect::<Vec<_>>());
+
+						Ok((shape::Custom::get_from_paragraph(&paragraph), paragraph))
+					}
+					Err(e) => Err(e),
+				}
+			},
+		))
+		.buffered(20)
+		.filter_map(|r| async { r.ok().map(Some) })
+		.collect::<Vec<_>>()
+		.await;
+
+	let png: Cow<_> = {
+		let mut canvas = Canvas::new(1_176.666_6)
+			.gap(7.)
+			.push_down(&shape::FullWidthTitle, shape::Title::from_guild(&guild));
+
+		let mut iter = member_rank_indices.into_iter();
+		let mut ranks_iter = guild.ranks.iter();
+
+		if let Some((i, r)) = iter.next() {
+			let mut last_rank = r;
+			let (shape, paragraph) = members[i].take().unwrap();
+			let text = shape::Custom::from_text_large(&[Text {
+				text: "Guild Master",
+				..Default::default()
+			}]);
+
+			canvas = canvas
+				.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
+				.push_down_start(&shape, paragraph);
+
+			for (i, r) in iter {
+				let (shape, paragraph) = members[i].take().unwrap();
+
+				if r == last_rank {
+					canvas = canvas.push_checked(&shape, paragraph);
+				} else {
+					last_rank = r;
+
+					let text = shape::Custom::from_text_large(&[Text {
+						text: &ranks_iter.next().unwrap().name,
+						..Default::default()
+					}]);
+
+					canvas = canvas
+						.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
+						.push_down_start(&shape, paragraph);
+				}
+			}
+		}
+
+		let mut canvas = canvas.build(None).unwrap();
+
+		canvas::to_png(&mut canvas).into()
+	};
+
+	ctx.send(move |m| {
+		m.attachment(AttachmentType::Bytes {
+			data: png,
+			filename: "canvas.png".to_string(),
+		})
+	})
+	.await?;
+
+	Ok(())
+}
+
+#[allow(clippy::unused_async)]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES",
+	subcommands("general", "members")
+)]
+pub async fn guild(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())
 }

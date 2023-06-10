@@ -114,7 +114,12 @@ pub async fn get_guild(
 	uuid: Option<String>,
 	username: Option<String>,
 ) -> Result<Arc<Guild>, Error> {
-	util::get_guild_from_input(ctx, name, uuid, username).await
+	let (guild, _) = tokio::join!(
+		util::get_guild_from_input(ctx, name, uuid, username),
+		ctx.defer(),
+	);
+
+	guild
 }
 
 pub async fn get_player_data_session_skin_suffix(

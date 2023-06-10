@@ -894,7 +894,7 @@ impl ToTokens for GameInputReceiver {
 								&crate::canvas::shape::Subtitle,
 								crate::canvas::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
 							)
-							.push_down(
+							.push_down_post_draw(
 								progress,
 								crate::canvas::shape::WideBubbleProgress::from_level_progress(
 									ctx,
@@ -1100,7 +1100,7 @@ impl ToTokens for GameInputReceiver {
 							&crate::canvas::shape::Subtitle,
 							crate::canvas::shape::Subtitle::from_label(ctx, &LABEL, Self::get_tr()),
 						)
-						.push_down(
+						.push_down_post_draw(
 							progress,
 							crate::canvas::shape::WideBubbleProgress::from_level_progress(
 								ctx,

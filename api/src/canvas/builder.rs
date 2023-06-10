@@ -16,9 +16,11 @@ pub struct Canvas<'c> {
 	last_size: Option<Size>,
 	max_width: Option<f32>,
 	path: Path,
-	text: Vec<(Rect, Paragraph, bool, Point, &'c dyn Shape)>,
+	text: Vec<Item<'c>>,
 	inset: f32,
 }
+
+pub type Item<'c> = (Rect, Paragraph, bool, Point, Option<&'c dyn Shape>);
 
 impl<'c> fmt::Debug for Canvas<'c> {
 	fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -71,7 +73,7 @@ impl<'c> Canvas<'c> {
 	}
 
 	#[must_use]
-	pub fn push(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push(mut self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
 		let mut bounds = Rect::from_size(shape.size());
 
 		bounds.offset(self.tl);
@@ -80,13 +82,33 @@ impl<'c> Canvas<'c> {
 		shape.draw(&mut self.path, &bounds);
 
 		self.text
-			.push((bounds, text.into(), shape.v_align(), shape.insets(), shape));
+			.push((bounds, text.into(), shape.v_align(), shape.insets(), None));
 		self.last_size = shape.size().into();
 		self
 	}
 
 	#[must_use]
-	pub fn push_checked(self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push_post_draw(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+		let mut bounds = Rect::from_size(shape.size());
+
+		bounds.offset(self.tl);
+		bounds.offset((self.inset, self.inset));
+
+		shape.draw(&mut self.path, &bounds);
+
+		self.last_size = shape.size().into();
+		self.text.push((
+			bounds,
+			text.into(),
+			shape.v_align(),
+			shape.insets(),
+			Some(shape),
+		));
+		self
+	}
+
+	#[must_use]
+	pub fn push_checked_post_draw(self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
 		let last_width = match self.last_size {
 			Some(size) => size.width,
 			None => 0.,
@@ -96,6 +118,26 @@ impl<'c> Canvas<'c> {
 
 		if let Some(max_width) = self.max_width {
 			if self.tl.x + last_width + size.width > max_width {
+				self.push_down_start_post_draw(shape, text)
+			} else {
+				self.push_right_post_draw(shape, text)
+			}
+		} else {
+			self.push_right_post_draw(shape, text)
+		}
+	}
+
+	#[must_use]
+	pub fn push_checked(self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
+		let last_width = match self.last_size {
+			Some(size) => size.width,
+			None => 0.,
+		};
+
+		let size = shape.size();
+
+		if let Some(max_width) = self.max_width {
+			if self.tl.x + last_width + size.width + self.inset * 2. > max_width {
 				self.push_down_start(shape, text)
 			} else {
 				self.push_right(shape, text)
@@ -106,7 +148,21 @@ impl<'c> Canvas<'c> {
 	}
 
 	#[must_use]
-	pub fn push_right(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push_right_post_draw(
+		mut self,
+		shape: &'c impl Shape,
+		text: impl Into<Paragraph>,
+	) -> Self {
+		if let Some(size) = self.last_size {
+			self.tl.x += size.width + self.inset * 2.;
+			self.update_size();
+		}
+
+		self.push_post_draw(shape, text)
+	}
+
+	#[must_use]
+	pub fn push_right(mut self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
 		if let Some(size) = self.last_size {
 			self.tl.x += size.width + self.inset * 2.;
 			self.update_size();
@@ -116,7 +172,21 @@ impl<'c> Canvas<'c> {
 	}
 
 	#[must_use]
-	pub fn push_down(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push_down_post_draw(
+		mut self,
+		shape: &'c impl Shape,
+		text: impl Into<Paragraph>,
+	) -> Self {
+		if let Some(size) = self.last_size {
+			self.tl.y += size.height + self.inset * 2.;
+			self.update_size();
+		}
+
+		self.push_post_draw(shape, text)
+	}
+
+	#[must_use]
+	pub fn push_down(mut self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
 		if let Some(size) = self.last_size {
 			self.tl.y += size.height + self.inset * 2.;
 			self.update_size();
@@ -126,7 +196,7 @@ impl<'c> Canvas<'c> {
 	}
 
 	#[must_use]
-	pub fn push_down_start(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push_down_start(mut self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
 		if let Some(size) = self.last_size {
 			self.tl.x += size.width + self.inset * 2.;
 			self.tl.y += size.height + self.inset * 2.;
@@ -134,12 +204,31 @@ impl<'c> Canvas<'c> {
 		}
 
 		self.tl.x = 0.;
-
 		self.push(shape, text)
 	}
 
 	#[must_use]
-	pub fn push_right_start(mut self, shape: &'c impl Shape, text: impl Into<Paragraph>) -> Self {
+	pub fn push_down_start_post_draw(
+		mut self,
+		shape: &'c impl Shape,
+		text: impl Into<Paragraph>,
+	) -> Self {
+		if let Some(size) = self.last_size {
+			self.tl.x += size.width + self.inset * 2.;
+			self.tl.y += size.height + self.inset * 2.;
+			self.update_size();
+		}
+
+		self.tl.x = 0.;
+		self.push_post_draw(shape, text)
+	}
+
+	#[must_use]
+	pub fn push_right_start_post_draw(
+		mut self,
+		shape: &'c impl Shape,
+		text: impl Into<Paragraph>,
+	) -> Self {
 		if let Some(size) = self.last_size {
 			self.tl.x += size.width + self.inset * 2.;
 			self.tl.y += size.height + self.inset * 2.;
@@ -147,7 +236,18 @@ impl<'c> Canvas<'c> {
 		}
 
 		self.tl.y = 0.;
+		self.push_post_draw(shape, text)
+	}
 
+	#[must_use]
+	pub fn push_right_start(mut self, shape: &impl Shape, text: impl Into<Paragraph>) -> Self {
+		if let Some(size) = self.last_size {
+			self.tl.x += size.width + self.inset * 2.;
+			self.tl.y += size.height + self.inset * 2.;
+			self.update_size();
+		}
+
+		self.tl.y = 0.;
 		self.push(shape, text)
 	}
 
@@ -214,7 +314,9 @@ impl<'c> Canvas<'c> {
 				),
 			);
 
-			shape.post_draw(canvas, &bounds, &insets);
+			if let Some(shape) = shape {
+				shape.post_draw(canvas, &bounds, &insets);
+			}
 		}
 
 		Some(surface)

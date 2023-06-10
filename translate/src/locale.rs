@@ -148,7 +148,7 @@ impl Locale {
 
 					continue;
 				}
-				"skyblock" => {
+				"skyblock" | "guild" if !subcommand => {
 					self.apply_translations(command.subcommands.as_mut(), false);
 
 					continue;

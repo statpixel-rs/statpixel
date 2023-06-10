@@ -828,7 +828,7 @@ daily-xp = Daily XP
 weekly-xp = Weekly XP
 monthly-xp = Monthly XP
 xp-since = XP Since
-members = Members
+members_label = Members
 
 guild = guild
   .description = Shows the stats of a guild.
@@ -844,6 +844,30 @@ guild = guild
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+
+general = general
+  .description = Shows the stats of a guild.
+  .name = name
+  .name-description = The name of the guild to view
+  .username = username
+  .username-description = The username of the guild member's guild to view
+  .uuid = uuid
+  .uuid-description = The uuid of the guild member's guild to view
+  .hours = hours
+  .hours-description = hours
+  .days = days
+  .days-description = days
+  .weeks = weeks
+  .weeks-description = weeks
+
+members = members
+  .description = Shows the members of a guild.
+  .name = name
+  .name-description = The name of the guild to view
+  .username = username
+  .username-description = The username of the guild member's guild to view
+  .uuid = uuid
+  .uuid-description = The uuid of the guild member's guild to view
 
 # Shared canvas labels
 

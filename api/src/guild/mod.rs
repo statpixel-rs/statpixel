@@ -51,12 +51,44 @@ pub struct Guild {
 	pub tag: Option<String>,
 	#[serde(rename = "guildExpByGameType", deserialize_with = "from_game_xp_map")]
 	pub xp_by_game: Vec<(Type, Xp)>,
-	#[serde(default)]
+	#[serde(default, deserialize_with = "from_sorted_ranks")]
 	pub ranks: Vec<Rank>,
 	#[serde(deserialize_with = "from_sorted_members")]
 	pub members: Vec<Member>,
 	#[serde(rename = "preferredGames", default)]
 	pub preferred_games: Vec<Type>,
+}
+
+fn from_sorted_ranks<'de, D>(deserializer: D) -> Result<Vec<Rank>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	struct Visitor;
+
+	impl<'de> serde::de::Visitor<'de> for Visitor {
+		type Value = Vec<Rank>;
+
+		fn expecting(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+			f.write_str("a list of ranks, sorted by priority desc")
+		}
+
+		fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+		where
+			A: serde::de::SeqAccess<'de>,
+		{
+			let mut vec: Vec<Rank> = Vec::with_capacity(seq.size_hint().unwrap_or(0));
+
+			while let Some(member) = seq.next_element()? {
+				vec.push(member);
+			}
+
+			vec.sort_unstable_by_key(|m| std::cmp::Reverse(m.priority));
+
+			Ok(vec)
+		}
+	}
+
+	deserializer.deserialize_seq(Visitor)
 }
 
 fn from_sorted_members<'de, D>(deserializer: D) -> Result<Vec<Member>, D::Error>

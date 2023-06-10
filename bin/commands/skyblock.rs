@@ -74,7 +74,7 @@ pub async fn auctions(
 				&shape::Subtitle,
 				shape::Subtitle::from_label(ctx, &LABEL, "player-auctions"),
 			)
-			.push_down(
+			.push_down_post_draw(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
@@ -83,7 +83,7 @@ pub async fn auctions(
 					&network::get_level_xp(data.xp),
 				),
 			)
-			.push_right_start(&status, Body::from_status(ctx, &session));
+			.push_right_start_post_draw(&status, Body::from_status(ctx, &session));
 
 		for auction in auctions.iter() {
 			let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
@@ -176,7 +176,7 @@ pub async fn profile(
 				&shape::Subtitle,
 				shape::Subtitle::from_label(ctx, &LABEL, "member-profile"),
 			)
-			.push_down(
+			.push_down_post_draw(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
@@ -240,7 +240,7 @@ pub async fn profile(
 					)
 					.build(),
 			)
-			.push_right(&status, Body::from_status(ctx, &session))
+			.push_right_post_draw(&status, Body::from_status(ctx, &session))
 			.push_checked(
 				&shape::Bubble,
 				Body::from_bubble(

@@ -688,7 +688,7 @@ daily-xp = XP Diaria
 weekly-xp = XP Semanal
 monthly-xp = XP Mensual
 xp-since = XP desde
-members = Miembros
+members_label = Miembros
 
 guild = guild
   .description = Muestra las estadísticas de un gremio.
@@ -698,6 +698,24 @@ guild = guild
   .username-description = El nombre de usuario del miembro del gremio a ver.
   .uuid = uuid
   .uuid-description = El UUID del miembro del gremio a ver.
+
+general = general
+  .description = Muestra las estadísticas de un gremio.
+  .name = name
+  .name-description = El nombre del gremio a ver
+  .username = username
+  .username-description = El nombre de usuario del miembro del gremio a ver.
+  .uuid = uuid
+  .uuid-description = El UUID del miembro del gremio a ver.
+
+members = members
+  .description = Muestra los miembros de un gremio.
+  .name = name
+  .name-description = El nombre del gremio a ver
+  .username = username
+  .username-description = El nombre de usuario del miembro del gremio a ver
+  .uuid = uuid
+  .uuid-description = El UUID del miembro del gremio a ver
 
 # Etiquetas de lienzo compartido
 

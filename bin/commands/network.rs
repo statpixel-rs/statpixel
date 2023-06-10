@@ -56,7 +56,7 @@ pub async fn network(
 						&shape::Subtitle,
 						shape::Subtitle::from_label(ctx, &LABEL, "member-profile"),
 					)
-					.push_down(
+					.push_down_post_draw(
 						&progress,
 						shape::WideBubbleProgress::from_level_progress(
 							ctx,
@@ -105,7 +105,7 @@ pub async fn network(
 							)
 							.build(),
 					)
-					.push_right(&status, Body::from_status(ctx, &session))
+					.push_right_post_draw(&status, Body::from_status(ctx, &session))
 					.build(None)
 					.unwrap();
 

@@ -500,7 +500,7 @@ macro_rules! generate_guild_command {
 								.build()
 						},
 					)
-					.push_down(
+					.push_down_post_draw(
 						&progress,
 						::api::canvas::shape::WideBubbleProgress::from_level_progress(
 							ctx,
@@ -510,7 +510,7 @@ macro_rules! generate_guild_command {
 						),
 					)
 					.push_right_start(&::api::canvas::shape::Sidebar, ::api::canvas::shape::Sidebar::from_guild(ctx, &guild))
-					.push_right(
+					.push_right_post_draw(
 						&::api::canvas::shape::PreferredGames(&guild.preferred_games),
 						::api::canvas::body::Body::empty(),
 					)

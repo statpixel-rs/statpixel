@@ -34,7 +34,12 @@ pub trait Shape {
 	}
 }
 
+pub struct Custom {
+	pub width: f32,
+	pub height: f32,
+}
 pub struct Title;
+pub struct FullWidthTitle;
 pub struct Subtitle;
 
 pub struct Bubble;
@@ -53,6 +58,33 @@ pub struct LeaderboardName;
 pub struct LeaderboardValue;
 
 pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
+
+impl Custom {
+	#[must_use]
+	pub fn from_text_large(text: &[Text]) -> Paragraph {
+		let mut paragraph = Body::new(25., TextAlign::Center).extend(text).build();
+
+		paragraph.layout(f32::MAX);
+		paragraph
+	}
+
+	#[must_use]
+	pub fn from_text(text: &[Text]) -> Paragraph {
+		let mut paragraph = Body::new(20., TextAlign::Center).extend(text).build();
+
+		paragraph.layout(f32::MAX);
+		paragraph
+	}
+
+	#[must_use]
+	/// Layout the paragraph first
+	pub fn get_from_paragraph(paragraph: &Paragraph) -> Self {
+		Self {
+			width: paragraph.max_intrinsic_width() + 20.,
+			height: paragraph.height() + 10.,
+		}
+	}
+}
 
 impl Sidebar {
 	#[must_use]
@@ -344,6 +376,7 @@ macro_rules! impl_rect_shape {
 }
 
 impl_rect_shape!(Title, BUBBLE_WIDTH * 1.5 + GAP / 2., 45., true);
+impl_rect_shape!(FullWidthTitle, BUBBLE_WIDTH * 5. + GAP * 4., 45., true);
 impl_rect_shape!(Subtitle, BUBBLE_WIDTH * 1.5 + GAP / 2., 33., true);
 
 impl_rect_shape!(Bubble, BUBBLE_WIDTH, BUBBLE_HEIGHT, true);
@@ -365,6 +398,34 @@ impl_rect_shape!(
 impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
 impl_rect_shape!(LeaderboardPlace, 50., 35., true);
 impl_rect_shape!(LeaderboardValue, 200., 35., true);
+
+impl Shape for Custom {
+	fn size(&self) -> Size {
+		Size {
+			width: self.width,
+			height: self.height,
+		}
+	}
+
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+}
 
 impl Shape for WideTallBubble {
 	fn draw(&self, path: &mut Path, bounds: &Rect) {

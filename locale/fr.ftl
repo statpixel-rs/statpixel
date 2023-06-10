@@ -697,10 +697,28 @@ daily-xp = XP Quotidien
 weekly-xp = XP Hebdomadaire
 monthly-xp = XP Mensuel
 xp-since = XP Depuis
-members = Membres
+members_label = Membres
 
 guild = guild
   .description = Affiche les statistiques d'une guilde.
+  .name = name
+  .name-description = Le nom de la guilde à afficher
+  .username = username
+  .username-description = Le nom d'utilisateur de la guilde du membre de la guilde à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID de la guilde du membre de la guilde à afficher.
+
+general = general
+  .description = Affiche les statistiques d'une guilde.
+  .name = name
+  .name-description = Le nom de la guilde à afficher
+  .username = username
+  .username-description = Le nom d'utilisateur de la guilde du membre de la guilde à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID de la guilde du membre de la guilde à afficher.
+
+members = members
+  .description = Affiche les membres d'une guilde.
   .name = name
   .name-description = Le nom de la guilde à afficher
   .username = username
