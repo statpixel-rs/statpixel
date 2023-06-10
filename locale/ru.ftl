@@ -28,7 +28,7 @@ error-profile-not-found = Профиль SkyBlock {$profile}, принадлеж
 # /background
 
 background = background
-  .description = Просмотр фона игрока
+  .description = Изменить фон сгенерированных изображений
   .colour = colour
   .colour-description = Цвет фона
 

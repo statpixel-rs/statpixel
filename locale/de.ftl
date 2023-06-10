@@ -28,7 +28,7 @@ error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine A
 # /background
 
 background = background
-  .description = Zeigt den Hintergrund eines Spielers an.
+  .description = Ändert den Hintergrund von generierten Bildern
   .colour = colour
   .colour-description = Die Farbe des Hintergrunds
 

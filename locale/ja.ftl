@@ -28,7 +28,7 @@ error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、A
 # /background
 
 background = background
-  .description = プレイヤーの背景を表示します。
+  .description = 生成された画像の背景を変更します。
   .colour = 色
   .colour-description = 背景の色
 

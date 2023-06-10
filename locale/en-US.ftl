@@ -28,7 +28,7 @@ error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} h
 # /background
 
 background = background
-  .description = View a player's background
+  .description = Change the background of generated images
   .colour = colour
   .colour-description = The colour of the background
 
