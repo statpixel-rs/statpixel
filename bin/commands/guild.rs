@@ -379,7 +379,8 @@ async fn members(
 		if let Some((i, r)) = iter.next() {
 			let mut last_rank = r;
 
-			if let Some((shape, paragraph)) = members[i].take() {
+			if let Some((shape, paragraph)) = members.get_mut(i).and_then(std::option::Option::take)
+			{
 				let text = shape::Custom::from_text_large(&[Text {
 					text: "Guild Master",
 					..Default::default()
@@ -391,7 +392,7 @@ async fn members(
 			}
 
 			for (i, r) in iter {
-				let Some((shape, paragraph)) = members[i].take() else {
+				let Some((shape, paragraph)) = members.get_mut(i).and_then(std::option::Option::take) else {
 					continue;
 				};
 
