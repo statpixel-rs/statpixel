@@ -7,22 +7,7 @@ use reqwest::{Client, Request, RequestBuilder, Response, StatusCode, Url};
 use tokio::sync::{Mutex, RwLock};
 use tokio::time::{sleep, Duration};
 use tracing::info;
-
-#[derive(Debug, thiserror::Error)]
-pub enum HttpError {
-	#[error("invalid utf8 when parsing header")]
-	InvalidHeaderUtf8,
-	#[error("invalid format when parsing header")]
-	InvalidHeaderFormat,
-	#[error("http error")]
-	Http(#[from] reqwest::Error),
-}
-
-impl From<HttpError> for crate::Error {
-	fn from(_: HttpError) -> Self {
-		Self::Http
-	}
-}
+use translate::HttpError;
 
 pub type Result<T> = std::result::Result<T, HttpError>;
 

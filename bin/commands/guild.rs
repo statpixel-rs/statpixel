@@ -1,4 +1,4 @@
-use std::{borrow::Cow, sync::Arc};
+use std::borrow::Cow;
 
 use api::{
 	canvas::{self, body::Body, label::ToFormatted, shape, Canvas},
@@ -147,7 +147,7 @@ async fn general(
 	let (members, leader) = if let Some(leader) = leader {
 		let (members, leader) = join!(members, leader);
 
-		(members, Some(leader.map_err(Arc::new)?))
+		(members, Some(leader?))
 	} else {
 		(members.await, None)
 	};
@@ -340,7 +340,7 @@ async fn members(
 		.filter_map(|r| async {
 			match r {
 				Err(e) => {
-					error!("Failed to get player display string: {}", e);
+					error!("Failed to get player display string: {:?}", e);
 
 					None
 				}

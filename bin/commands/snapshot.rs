@@ -372,7 +372,7 @@ macro_rules! generate_guild_history_command {
 			let (members, leader) = if let Some(leader) = leader {
 				let (members, leader) = ::tokio::join!(members, leader);
 
-				(members, Some(leader.map_err(::std::sync::Arc::new)?))
+				(members, Some(leader?))
 			} else {
 				(members.await, None)
 			};

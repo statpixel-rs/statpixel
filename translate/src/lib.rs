@@ -28,7 +28,7 @@ pub type Context<'a> = poise::Context<'a, Data, Error>;
 #[derive(Error, Debug)]
 pub enum ApiError {
 	#[error("An internal error occurred while sending a request.")]
-	Http,
+	Http(#[from] HttpError),
 	#[error("An internal error occurred while sending a request.")]
 	Reqwest(#[from] reqwest::Error),
 	#[error("Failed to parse UUID.")]
@@ -89,4 +89,14 @@ pub enum Error {
 	LeaderboardNotFound(String),
 	#[error("An internal error occurred while interacting with the canvas.")]
 	Canvas,
+}
+
+#[derive(Debug, thiserror::Error)]
+pub enum HttpError {
+	#[error("invalid utf8 when parsing header")]
+	InvalidHeaderUtf8,
+	#[error("invalid format when parsing header")]
+	InvalidHeaderFormat,
+	#[error("http error")]
+	Http(#[from] reqwest::Error),
 }
