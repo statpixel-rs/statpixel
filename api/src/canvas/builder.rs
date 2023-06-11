@@ -51,7 +51,7 @@ impl From<Margin> for i32 {
 impl<'c> Canvas<'c> {
 	pub const BACKGROUND: Color = Color::from_rgb(31, 48, 64);
 	pub const BACKGROUND_U32: u32 = 255 << 24 | 31 << 16 | 48 << 8 | 64;
-	pub const ITEM_BACKGROUND: Color = Color::from_argb(192, 20, 28, 36);
+	pub const ITEM_BACKGROUND: Color = Color::from_argb(128, 20, 20, 20);
 
 	#[must_use]
 	pub fn new(max_width: impl Into<Option<f32>>) -> Self {
@@ -282,6 +282,7 @@ impl<'c> Canvas<'c> {
 		let mut surface = Surface::new_raster_n32_premul(size)?;
 		let canvas = surface.canvas();
 		let offset: Point = (margin.0, margin.0).into();
+		let colour: Color = background.into().unwrap_or(Self::BACKGROUND);
 
 		canvas.draw_rrect(
 			RRect::new_rect_radii(
@@ -294,13 +295,18 @@ impl<'c> Canvas<'c> {
 					Point::new(30., 30.),
 				],
 			),
-			Paint::default().set_color(background.into().unwrap_or(Self::BACKGROUND)),
+			Paint::default().set_color(colour),
 		);
 
 		self.path.offset(offset);
 		canvas.draw_path(
 			&self.path,
-			Paint::default().set_color(Self::ITEM_BACKGROUND),
+			Paint::default().set_color(Color::from_argb(
+				colour.a(),
+				colour.r() / 2,
+				colour.g() / 2,
+				colour.b() / 2,
+			)),
 		);
 
 		for (mut bounds, mut text, v_align, insets, shape) in self.text {
