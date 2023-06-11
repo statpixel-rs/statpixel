@@ -2,8 +2,8 @@ use std::borrow::Cow;
 
 use serde::Deserialize;
 
-#[derive(Deserialize, Debug, Clone, Copy, PartialEq)]
-#[serde(try_from = "&str")]
+#[derive(Deserialize, Debug, Clone, PartialEq)]
+#[serde(from = "&str")]
 pub enum Mode {
 	Limbo,
 	MainLobby,
@@ -161,14 +161,13 @@ pub enum Mode {
 	TheGarden,
 	Smp,
 	WoolWars,
+	Other(String),
 }
 
-impl TryFrom<&str> for Mode {
-	type Error = &'static str;
-
+impl From<&str> for Mode {
 	#[allow(clippy::too_many_lines)]
-	fn try_from(value: &str) -> Result<Self, Self::Error> {
-		Ok(match value {
+	fn from(value: &str) -> Self {
+		match value {
 			"LIMBO" => Self::Limbo,
 			"MAIN" => Self::MainLobby,
 			"LOBBY" => Self::Lobby,
@@ -325,20 +324,20 @@ impl TryFrom<&str> for Mode {
 			"garden" => Self::TheGarden,
 			"SMP" => Self::Smp,
 			"WOOL_GAMES" => Self::WoolWars,
-			_ => return Err("unknown game mode"),
-		})
+			s => Self::Other(s.to_string()),
+		}
 	}
 }
 
 impl Mode {
 	#[must_use]
-	pub fn as_clean_cow(&self) -> Cow<'static, str> {
+	pub fn as_clean_cow(&self) -> Cow<str> {
 		Cow::Borrowed(self.as_clean_name())
 	}
 
 	#[must_use]
 	#[allow(clippy::too_many_lines)]
-	pub fn as_clean_name(&self) -> &'static str {
+	pub fn as_clean_name(&self) -> &str {
 		match self {
 			Self::Limbo => "Limbo",
 			Self::MainLobby => "Main Lobby",
@@ -496,6 +495,7 @@ impl Mode {
 			Self::TheGarden => "The Garden",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Other(ref s) => s,
 		}
 	}
 }

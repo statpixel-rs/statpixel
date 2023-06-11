@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 	Eq,
 	Hash,
 )]
-#[serde(try_from = "&str")]
+#[serde(from = "&str")]
 pub enum Type {
 	Limbo = 0,
 	Lobby = 1,
@@ -49,6 +49,7 @@ pub enum Type {
 	Replay = 65,
 	Smp = 67,
 	WoolWars = 68,
+	Unknown = 127,
 }
 
 impl Type {
@@ -87,6 +88,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "WoolGames",
+			Self::Unknown => "Unknown",
 		}
 	}
 
@@ -135,6 +137,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Unknown => "Unknown",
 		}
 	}
 
@@ -173,6 +176,7 @@ impl Type {
 			Self::Replay => "replay",
 			Self::Smp => "smp",
 			Self::WoolWars => "wool wars",
+			Self::Unknown => "unknown",
 		}
 	}
 
@@ -250,6 +254,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Unknown => "Unknown",
 		}
 	}
 
@@ -419,48 +424,50 @@ impl Type {
 				const TEXT: [Text; 2] = minecraft_text("§f§lWool §7§lWars");
 				&TEXT
 			}
+			Self::Unknown => {
+				const TEXT: [Text; 1] = minecraft_text("§f§lUnknown");
+				&TEXT
+			}
 		}
 	}
 }
 
-impl TryFrom<&str> for Type {
-	type Error = &'static str;
-
-	fn try_from(name: &str) -> Result<Self, Self::Error> {
+impl From<&str> for Type {
+	fn from(name: &str) -> Self {
 		match name {
-			"LIMBO" => Ok(Self::Limbo),
-			"LOBBY" => Ok(Self::Lobby),
-			"QUAKECRAFT" => Ok(Self::Quake),
-			"WALLS" => Ok(Self::Walls),
-			"PAINTBALL" => Ok(Self::Paintball),
-			"SURVIVAL_GAMES" => Ok(Self::BlitzSg),
-			"TNTGAMES" => Ok(Self::TntGames),
-			"VAMPIREZ" => Ok(Self::VampireZ),
-			"WALLS3" => Ok(Self::MegaWalls),
-			"ARCADE" => Ok(Self::Arcade),
-			"ARENA" => Ok(Self::Arena),
-			"UHC" => Ok(Self::Uhc),
-			"MCGO" => Ok(Self::CopsAndCrims),
-			"BATTLEGROUND" => Ok(Self::Warlords),
-			"SUPER_SMASH" => Ok(Self::SmashHeroes),
-			"GINGERBREAD" => Ok(Self::TurboKartRacers),
-			"HOUSING" => Ok(Self::Housing),
-			"SKYWARS" => Ok(Self::SkyWars),
-			"TRUE_COMBAT" => Ok(Self::CrazyWalls),
-			"SPEED_UHC" => Ok(Self::SpeedUhc),
-			"SKYCLASH" => Ok(Self::SkyClash),
-			"LEGACY" => Ok(Self::Classic),
-			"PROTOTYPE" => Ok(Self::Prototype),
-			"BEDWARS" => Ok(Self::BedWars),
-			"MURDER_MYSTERY" => Ok(Self::MurderMystery),
-			"BUILD_BATTLE" => Ok(Self::BuildBattle),
-			"DUELS" => Ok(Self::Duels),
-			"SKYBLOCK" => Ok(Self::SkyBlock),
-			"PIT" => Ok(Self::Pit),
-			"REPLAY" => Ok(Self::Replay),
-			"SMP" => Ok(Self::Smp),
-			"WOOL_GAMES" => Ok(Self::WoolWars),
-			_ => Err("invalid game type"),
+			"LIMBO" => Self::Limbo,
+			"LOBBY" => Self::Lobby,
+			"QUAKECRAFT" => Self::Quake,
+			"WALLS" => Self::Walls,
+			"PAINTBALL" => Self::Paintball,
+			"SURVIVAL_GAMES" => Self::BlitzSg,
+			"TNTGAMES" => Self::TntGames,
+			"VAMPIREZ" => Self::VampireZ,
+			"WALLS3" => Self::MegaWalls,
+			"ARCADE" => Self::Arcade,
+			"ARENA" => Self::Arena,
+			"UHC" => Self::Uhc,
+			"MCGO" => Self::CopsAndCrims,
+			"BATTLEGROUND" => Self::Warlords,
+			"SUPER_SMASH" => Self::SmashHeroes,
+			"GINGERBREAD" => Self::TurboKartRacers,
+			"HOUSING" => Self::Housing,
+			"SKYWARS" => Self::SkyWars,
+			"TRUE_COMBAT" => Self::CrazyWalls,
+			"SPEED_UHC" => Self::SpeedUhc,
+			"SKYCLASH" => Self::SkyClash,
+			"LEGACY" => Self::Classic,
+			"PROTOTYPE" => Self::Prototype,
+			"BEDWARS" => Self::BedWars,
+			"MURDER_MYSTERY" => Self::MurderMystery,
+			"BUILD_BATTLE" => Self::BuildBattle,
+			"DUELS" => Self::Duels,
+			"SKYBLOCK" => Self::SkyBlock,
+			"PIT" => Self::Pit,
+			"REPLAY" => Self::Replay,
+			"SMP" => Self::Smp,
+			"WOOL_GAMES" => Self::WoolWars,
+			_ => Self::Unknown,
 		}
 	}
 }

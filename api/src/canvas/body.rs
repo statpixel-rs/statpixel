@@ -154,6 +154,8 @@ impl Body {
 	#[must_use]
 	pub fn from_status(ctx: Context<'_>, session: &Session) -> Paragraph {
 		if session.online {
+			let mode = session.game_mode.as_deref().map(Mode::from);
+
 			Self::new(18., TextAlign::Center)
 				.extend(&[
 					Text {
@@ -175,11 +177,7 @@ impl Body {
 						..Default::default()
 					},
 					Text {
-						text: session
-							.game_mode
-							.as_deref()
-							.and_then(|m| Mode::try_from(m).ok())
-							.map_or("Unknown", |m| m.as_clean_name()),
+						text: mode.as_ref().map_or("Unknown", Mode::as_clean_name),
 						paint: Paint::Aqua,
 						..Default::default()
 					},
