@@ -1,4 +1,4 @@
-use std::borrow::Cow;
+use std::{borrow::Cow, collections::HashMap};
 
 use api::{
 	canvas::{self, body::Body, label::ToFormatted, shape, Canvas},
@@ -49,6 +49,35 @@ pub async fn get_snapshots_multiple_of_weekday(
 		.into_iter()
 		.filter_map(|data| snapshot::guild::decode(data.as_slice()).ok())
 		.collect())
+}
+
+pub fn get_member_monthly_xp(guild: &Guild, guilds: &[Guild]) -> HashMap<Uuid, u32> {
+	let mut members = guild
+		.members
+		.iter()
+		.map(|m| (m.uuid, 0))
+		.collect::<HashMap<_, _>>();
+
+	for snapshot in guilds {
+		for member in &snapshot.members {
+			members.entry(member.uuid).and_modify(|xp| {
+				*xp += member
+					.xp_history
+					.into_iter()
+					.skip(1)
+					.map(|(_, xp)| xp)
+					.sum::<u32>();
+			});
+		}
+	}
+
+	for member in &guild.members {
+		members.entry(member.uuid).and_modify(|xp| {
+			*xp += member.xp_history[0].1;
+		});
+	}
+
+	members
 }
 
 pub fn get_monthly_xp(guild: &Guild, guilds: &[Guild]) -> u32 {
@@ -433,12 +462,183 @@ async fn members(
 	Ok(())
 }
 
+/// Shows the members of a guild.
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+#[allow(clippy::too_many_lines)]
+async fn top(
+	ctx: Context<'_>,
+	#[min_length = 3]
+	#[max_length = 32]
+	#[autocomplete = "crate::commands::autocomplete_guild_name"]
+	name: Option<String>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+	#[min = 1i64] days: Option<i64>,
+) -> Result<(), Error> {
+	let guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
+		Ok(guild) => guild,
+		Err(Error::NotLinked) => {
+			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				.await?;
+
+			return Ok(());
+		}
+		Err(e) => return Err(e),
+	};
+
+	guild.increase_searches(ctx).await?;
+
+	let from = Utc::now() - days.map_or(chrono::Duration::days(30), chrono::Duration::days);
+
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let guilds =
+		crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, from).await?;
+
+	let member_xp = get_member_monthly_xp(&guild, &guilds);
+	let mut members = member_xp.into_iter().collect::<Vec<_>>();
+
+	members.sort_by_key(|m| std::cmp::Reverse(m.1));
+
+	let members = futures::stream::iter(
+		members
+			.into_iter()
+			.take(30)
+			.map(|m| (Player::from_uuid_unchecked(m.0), m.1))
+			.map(|(p, v)| async move {
+				let uuid = p.uuid;
+
+				match p.get_display_string_owned().await {
+					Ok(s) => Ok((uuid, s, v)),
+					Err(e) => Err(e),
+				}
+			}),
+	)
+	.buffered(20)
+	.filter_map(|r| async {
+		match r {
+			Err(e) => {
+				error!("Failed to get player display string: {:?}", e);
+
+				None
+			}
+			d => d.ok(),
+		}
+	})
+	.collect::<Vec<_>>()
+	.await;
+
+	let png: Cow<_> = {
+		let mut canvas = Canvas::new(1_176.666_6)
+			.gap(7.)
+			.push_down(&shape::GuildXpTitle, shape::Title::from_guild(&guild));
+
+		for (idx, (_, name, xp)) in members.iter().enumerate().take(15) {
+			canvas = canvas
+				.push_down_start(
+					&shape::LeaderboardPlace,
+					shape::LeaderboardPlace::from_usize(idx + 1),
+				)
+				.push_right(&shape::GuildXpName, shape::LeaderboardName::from_text(name))
+				.push_right(
+					&shape::GuildXpValue,
+					shape::LeaderboardValue::from_value(ctx, xp),
+				);
+
+			if let Some((_, name, xp)) = members.get(idx + 15) {
+				canvas = canvas
+					.push_right(
+						&shape::LeaderboardPlace,
+						shape::LeaderboardPlace::from_usize(idx + 16),
+					)
+					.push_right(&shape::GuildXpName, shape::LeaderboardName::from_text(name))
+					.push_right(
+						&shape::GuildXpValue,
+						shape::LeaderboardValue::from_value(ctx, xp),
+					);
+			} else {
+				canvas = canvas
+					.push_right(
+						&shape::LeaderboardPlace,
+						shape::LeaderboardPlace::from_usize(idx + 16),
+					)
+					.push_right(
+						&shape::GuildXpName,
+						shape::LeaderboardName::from_text("§7§oNone"),
+					)
+					.push_right(
+						&shape::GuildXpValue,
+						shape::LeaderboardValue::from_value(ctx, &0),
+					);
+			};
+		}
+
+		if members.len() < 15 {
+			for idx in members.len()..15 {
+				canvas = canvas
+					.push_down_start(
+						&shape::LeaderboardPlace,
+						shape::LeaderboardPlace::from_usize(idx + 1),
+					)
+					.push_right(
+						&shape::GuildXpName,
+						shape::LeaderboardName::from_text("§7§oNone"),
+					)
+					.push_right(
+						&shape::GuildXpValue,
+						shape::LeaderboardValue::from_value(ctx, &0),
+					)
+					.push_right(
+						&shape::LeaderboardPlace,
+						shape::LeaderboardPlace::from_usize(idx + 16),
+					)
+					.push_right(
+						&shape::GuildXpName,
+						shape::LeaderboardName::from_text("§7§oNone"),
+					)
+					.push_right(
+						&shape::GuildXpValue,
+						shape::LeaderboardValue::from_value(ctx, &0),
+					);
+			}
+		}
+
+		let mut canvas = canvas.build(None, background).unwrap();
+
+		canvas::to_png(&mut canvas).into()
+	};
+
+	let content = ::translate::tr_fmt!(
+		ctx, "showing-guild-xp-statistics",
+		from: ::std::format!("<t:{}:f>", from.timestamp()),
+		to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
+	);
+
+	ctx.send(move |m| {
+		m.content(content);
+		m.attachment(AttachmentType::Bytes {
+			data: png,
+			filename: "canvas.png".to_string(),
+		})
+	})
+	.await?;
+
+	Ok(())
+}
+
 #[allow(clippy::unused_async)]
 #[poise::command(
 	on_error = "crate::util::error_handler",
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES",
-	subcommands("general", "members")
+	subcommands("general", "members", "top")
 )]
 pub async fn guild(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())

@@ -744,6 +744,19 @@ members = members
   .uuid = uuid
   .uuid-description = El UUID del miembro del gremio a ver
 
+top = top
+  .description = Muestra los miembros principales de un gremio por experiencia.
+  .name = name
+  .name-description = El nombre del gremio a ver
+  .username = username
+  .username-description = El nombre de usuario del miembro del gremio a ver
+  .uuid = uuid
+  .uuid-description = El UUID del miembro del gremio a ver
+  .days = days
+  .days-description = días
+
+showing-guild-xp-statistics = Mostrando la experiencia ganada por el gremio desde {$from} hasta {$to}.
+
 # Etiquetas de lienzo compartido
 
 Normal = Normal

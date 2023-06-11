@@ -753,6 +753,19 @@ members = members
   .uuid = uuid
   .uuid-description = UUID гильдии для просмотра
 
+top = top
+  .description = Показывает топ участников гильдии по опыту.
+  .name = name
+  .name-description = Название гильдии для просмотра
+  .username = username
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии для просмотра
+  .days = days
+  .days-description = дней
+
+showing-guild-xp-statistics = Показывает полученный опыт гильдии с {$from} по {$to}.
+
 # Общие метки канвы
 
 Normal = Обычный

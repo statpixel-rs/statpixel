@@ -896,6 +896,19 @@ members = members
   .uuid = uuid
   .uuid-description = The uuid of the guild member's guild to view
 
+top = top
+  .description = Shows the top members of a guild by xp.
+  .name = name
+  .name-description = The name of the guild to view
+  .username = username
+  .username-description = The username of the guild member's guild to view
+  .uuid = uuid
+  .uuid-description = The uuid of the guild member's guild to view
+  .days = days
+  .days-description = days
+
+showing-guild-xp-statistics = Showing guild xp gain from {$from} to {$to}.
+
 # Shared canvas labels
 
 Normal = Normal

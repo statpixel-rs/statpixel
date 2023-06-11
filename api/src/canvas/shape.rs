@@ -57,6 +57,10 @@ pub struct LeaderboardPlace;
 pub struct LeaderboardName;
 pub struct LeaderboardValue;
 
+pub struct GuildXpName;
+pub struct GuildXpValue;
+pub struct GuildXpTitle;
+
 pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
 
 impl Custom {
@@ -399,6 +403,9 @@ impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
 impl_rect_shape!(LeaderboardPlace, 50., 35., true);
 impl_rect_shape!(LeaderboardValue, 200., 35., true);
 
+impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
+impl_rect_shape!(GuildXpValue, 125., 35., true);
+
 impl Shape for Custom {
 	fn size(&self) -> Size {
 		Size {
@@ -424,6 +431,38 @@ impl Shape for Custom {
 
 	fn v_align(&self) -> bool {
 		true
+	}
+}
+
+impl Shape for GuildXpName {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: 300.,
+			height: 35.,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(10., 0.).into()
 	}
 }
 

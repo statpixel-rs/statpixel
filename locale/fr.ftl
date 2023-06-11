@@ -753,6 +753,19 @@ members = members
   .uuid = uuid
   .uuid-description = L'UUID de la guilde du membre de la guilde à afficher.
 
+top = top
+  .description = Affiche les membres d'une guilde par XP.
+  .name = name
+  .name-description = Le nom de la guilde à afficher
+  .username = username
+  .username-description = Le nom d'utilisateur de la guilde du membre de la guilde à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID de la guilde du membre de la guilde à afficher.
+  .days = days
+  .days-description = jours
+
+showing-guild-xp-statistics = Affiche les gains d'XP de la guilde de {$from} à {$to}.
+
 # Étiquettes partagées
 
 Normal = Normal

@@ -753,6 +753,19 @@ members = members
   .uuid = uuid
   .uuid-description = Die UUID des Gildenmitglieds, dessen Gilde angezeigt werden soll.
 
+top = top
+  .description = Zeigt die Top-Mitglieder einer Gilde nach XP an.
+  .name = name
+  .name-description = Der Name der Gilde, die angezeigt werden soll.
+  .username = username
+  .username-description = Der Benutzername des Gildenmitglieds, dessen Gilde angezeigt werden soll.
+  .uuid = uuid
+  .uuid-description = Die UUID des Gildenmitglieds, dessen Gilde angezeigt werden soll.
+  .days = days
+  .days-description = Tage
+
+showing-guild-xp-statistics = Zeigt den Gilden-XP-Gewinn von {$from} bis {$to} an.
+
 # Gemeinsame Bezeichnungen für Leinwände
 
 Normal = Normal

@@ -752,6 +752,19 @@ members = members
   .uuid = uuid
   .uuid-description = 表示するギルドメンバーのMinecraftのUUID
 
+top = top
+  .description = ギルドのXPのトップメンバーを表示します。
+  .name = name
+  .name-description = 表示するギルドの名前
+  .username = username
+  .username-description = 表示するギルドメンバーのMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのMinecraftのUUID
+  .days = days
+  .days-description = days
+
+showing-guild-xp-statistics = {$from}から{$to}までのギルドXPの獲得を表示しています。
+
 # 共有キャンバスのラベル
 
 Normal = 通常
