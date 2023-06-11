@@ -302,7 +302,7 @@ impl<'c> Canvas<'c> {
 		canvas.draw_path(
 			&self.path,
 			Paint::default().set_color(Color::from_argb(
-				colour.a(),
+				colour.a().max(128),
 				colour.r() / 2,
 				colour.g() / 2,
 				colour.b() / 2,
