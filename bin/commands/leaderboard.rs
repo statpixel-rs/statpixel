@@ -146,7 +146,7 @@ pub async fn leaderboard(
 				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
-					filename: "canvas.png".into(),
+					filename: crate::IMAGE_NAME.into(),
 				})
 			})
 			.await?;

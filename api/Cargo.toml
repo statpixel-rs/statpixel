@@ -19,7 +19,6 @@ once_cell = { workspace = true }
 pure-rust-locales = { workspace = true }
 reqwest = { workspace = true }
 serde = { workspace = true }
-skia-safe = { workspace = true }
 tracing = { workspace = true }
 translate = { path = "../translate" }
 uuid = { workspace = true }
@@ -34,6 +33,14 @@ redis = { workspace = true }
 base64 = { workspace = true }
 fastnbt = { workspace = true }
 konst = { workspace = true }
+
+[target.'cfg(not(target_os = "linux"))'.dependencies.skia-safe]
+version = "0.62.0"
+features = ["textlayout"]
+
+[target.'cfg(target_os = "linux")'.dependencies.skia-safe]
+version = "0.62.0"
+features = ["textlayout", "webp-encode"]
 
 [dev-dependencies]
 dotenvy = "0.15.7"

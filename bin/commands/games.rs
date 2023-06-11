@@ -43,7 +43,7 @@ macro_rules! generate_large_command {
 					ctx.send(move |m| {
 						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
 							data: png,
-							filename: "canvas.png".into(),
+							filename: crate::IMAGE_NAME.into(),
 						});
 						m.components = Some(<$mode>::as_components(ctx));
 						m.content(crate::tip::random(ctx));
@@ -76,7 +76,7 @@ macro_rules! generate_large_command {
 								b.kind(::poise::serenity_prelude::InteractionResponseType::UpdateMessage).interaction_response_data(|m| {
 									m.files([::poise::serenity_prelude::AttachmentType::Bytes {
 										data: png,
-										filename: "canvas.png".into(),
+										filename: crate::IMAGE_NAME.into(),
 									}]);
 									m.set_components(<$mode>::as_components(ctx));
 									m.content(crate::tip::random(ctx));
@@ -144,7 +144,7 @@ macro_rules! generate_command {
 					ctx.send(move |m| {
 						m.attachment(::poise::serenity_prelude::AttachmentType::Bytes {
 							data: png,
-							filename: "canvas.png".into(),
+							filename: crate::IMAGE_NAME.into(),
 						});
 						m.components = Some(<$mode>::as_components(ctx));
 						m.content(crate::tip::random(ctx));
@@ -175,7 +175,7 @@ macro_rules! generate_command {
 								b.kind(::poise::serenity_prelude::InteractionResponseType::UpdateMessage).interaction_response_data(|m| {
 									m.files([::poise::serenity_prelude::AttachmentType::Bytes {
 										data: png,
-										filename: "canvas.png".into(),
+										filename: crate::IMAGE_NAME.into(),
 									}]);
 									m.set_components(<$mode>::as_components(ctx));
 									m.content(crate::tip::random(ctx));

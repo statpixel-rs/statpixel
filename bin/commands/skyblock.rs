@@ -118,7 +118,7 @@ pub async fn auctions(
 		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;
@@ -364,7 +364,7 @@ pub async fn profile(
 		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;
@@ -482,7 +482,7 @@ pub async fn bank(
 		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;

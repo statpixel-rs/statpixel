@@ -312,7 +312,7 @@ async fn general(
 		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;
@@ -454,7 +454,7 @@ async fn members(
 		m.content(crate::tip::random(ctx));
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;
@@ -632,7 +632,7 @@ async fn top(
 		m.content(content);
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;

@@ -25,6 +25,11 @@ pub use constants::*;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
+#[cfg(target_os = "linux")]
+pub const IMAGE_NAME: &str = "canvas.webp";
+#[cfg(not(target_os = "linux"))]
+pub const IMAGE_NAME: &str = "canvas.png";
+
 #[tokio::main]
 async fn main() {
 	let subscriber = FmtSubscriber::builder()

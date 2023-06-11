@@ -92,7 +92,7 @@ macro_rules! generate_large_command {
 				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
-					filename: "canvas.png".to_string(),
+					filename: crate::IMAGE_NAME.to_string(),
 				})
 			})
 			.await?;
@@ -173,7 +173,7 @@ macro_rules! generate_command {
 				m.content(crate::tip::random(ctx));
 				m.attachment(AttachmentType::Bytes {
 					data: png,
-					filename: "canvas.png".to_string(),
+					filename: crate::IMAGE_NAME.to_string(),
 				})
 			})
 			.await?;
@@ -296,7 +296,7 @@ async fn network(
 	ctx.send(move |m| {
 		m.attachment(AttachmentType::Bytes {
 			data: png,
-			filename: "canvas.png".to_string(),
+			filename: crate::IMAGE_NAME.to_string(),
 		})
 	})
 	.await?;
