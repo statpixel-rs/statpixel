@@ -496,11 +496,12 @@ async fn top(
 
 	guild.increase_searches(ctx).await?;
 
-	let from = Utc::now() - days.map_or(chrono::Duration::days(30), chrono::Duration::days);
+	let after = Utc::now() - days.map_or(chrono::Duration::days(30), chrono::Duration::days);
+	let status = crate::snapshot::guild::get_or_insert(ctx, &guild, after).await?;
 
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let guilds =
-		crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, from).await?;
+		crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, after).await?;
 
 	let member_xp = get_member_monthly_xp(&guild, &guilds);
 	let mut members = member_xp.into_iter().collect::<Vec<_>>();
@@ -615,11 +616,17 @@ async fn top(
 		canvas::to_png(&mut canvas).into()
 	};
 
-	let content = ::translate::tr_fmt!(
-		ctx, "showing-guild-xp-statistics",
-		from: ::std::format!("<t:{}:f>", from.timestamp()),
-		to: ::std::format!("<t:{}:f>", ::chrono::Utc::now().timestamp()),
-	);
+	let content = match status {
+		crate::snapshot::guild::Status::Found((_, created_at)) => ::translate::tr_fmt!(
+			ctx, "showing-guild-xp-statistics",
+			from: ::std::format!("<t:{}:f>", created_at.timestamp()),
+			to: ::std::format!("<t:{}:f>", chrono::Utc::now().timestamp()),
+		),
+		crate::snapshot::guild::Status::Inserted => ::translate::tr_fmt!(
+			ctx, "no-previous-guild-statistics",
+			name: guild.name.as_str(),
+		),
+	};
 
 	ctx.send(move |m| {
 		m.content(content);
