@@ -469,13 +469,7 @@ pub async fn bank(
 		);
 		chart::round_corners(&mut surface);
 
-		Cow::Owned(
-			surface
-				.image_snapshot()
-				.encode_to_data(skia_safe::EncodedImageFormat::PNG)
-				.unwrap()
-				.to_vec(),
-		)
+		Cow::Owned(canvas::to_png(&mut surface))
 	};
 
 	ctx.send(move |m| {

@@ -989,11 +989,7 @@ impl ToTokens for GameInputReceiver {
 						crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
 						crate::canvas::chart::round_corners(&mut surface);
 
-						Ok(surface
-							.image_snapshot()
-							.encode_to_data(::skia_safe::EncodedImageFormat::PNG)
-							.unwrap()
-							.to_vec())
+						Ok(crate::canvas::to_png(&mut surface))
 					}
 				}
 			}
@@ -1188,11 +1184,7 @@ impl ToTokens for GameInputReceiver {
 					crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
 					crate::canvas::chart::round_corners(&mut surface);
 
-					Ok(surface
-						.image_snapshot()
-						.encode_to_data(::skia_safe::EncodedImageFormat::PNG)
-						.unwrap()
-						.to_vec())
+					Ok(crate::canvas::to_png(&mut surface))
 				}
 			}
 
