@@ -12,7 +12,7 @@ pub use builder::*;
 use skia_safe::{EncodedImageFormat, Surface};
 
 #[cfg(target_os = "linux")]
-const IMAGE_FORMAT: EncodedImageFormat = EncodedImageFormat::WEBP;
+const IMAGE_FORMAT: EncodedImageFormat = EncodedImageFormat::PNG;
 #[cfg(not(target_os = "linux"))]
 const IMAGE_FORMAT: EncodedImageFormat = EncodedImageFormat::PNG;
 

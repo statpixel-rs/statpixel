@@ -26,9 +26,9 @@ pub use constants::*;
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[cfg(target_os = "linux")]
-pub const IMAGE_NAME: &str = "canvas.webp";
+pub const IMAGE_NAME: &str = "statpixel.png";
 #[cfg(not(target_os = "linux"))]
-pub const IMAGE_NAME: &str = "canvas.png";
+pub const IMAGE_NAME: &str = "statpixel.png";
 
 #[tokio::main]
 async fn main() {
