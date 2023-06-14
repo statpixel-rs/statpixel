@@ -39,6 +39,7 @@ tip-display = <:knowledge_book:1117179094556233828> Cambia tu formato de visuali
 tip-help = <:knowledge_book:1117179094556233828> Obtén más ayuda con </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Visita nuestro sitio web en <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Únete a nuestro servidor de soporte en <https://statpixel.xyz/discord>.
+tip-project = <:knowledge_book:1117179094556233828> Ver estimaciones de todos tus datos con </project bedwars:1118417616541843477>.
 
 # /project
 

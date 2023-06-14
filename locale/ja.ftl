@@ -39,6 +39,7 @@ tip-display = <:knowledge_book:1117179094556233828> </display:111362486427268306
 tip-help = <:knowledge_book:1117179094556233828> </help:1113624864524357707>でより詳しいヘルプを取得します。
 tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>でウェブサイトを訪問します。
 tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
+tip-project = <:knowledge_book:1117179094556233828> </project bedwars:1118417616541843477>ですべてのデータの推定値を表示します。
 
 # /project
 
