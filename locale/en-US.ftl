@@ -40,6 +40,12 @@ tip-help = <:knowledge_book:1117179094556233828> Get more help with </help:11136
 tip-website = <:knowledge_book:1117179094556233828> Visit our website at <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Join our support server at <https://statpixel.xyz/discord>.
 
+# /project
+
+accuracy = Accuracy
+estimate = Estimate
+never = Never
+
 # /background
 
 background = background
@@ -131,6 +137,10 @@ network = network
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
 
 karma = Karma
 rewards = Rewards
@@ -240,6 +250,10 @@ arcade = arcade
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Arcade mode to view
 
@@ -261,6 +275,10 @@ arena = arena
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Arena Brawl mode to view
 
@@ -313,6 +331,10 @@ bedwars = bedwars
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Bed Wars mode to view
 
@@ -359,6 +381,10 @@ blitz = blitz
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Blitz Survival Games mode to view
 
@@ -383,6 +409,10 @@ buildbattle = buildbattle
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Build Battle mode to view
 
@@ -411,6 +441,10 @@ copsandcrims = copsandcrims
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Cops and Crims mode to view
 
@@ -460,6 +494,10 @@ duels = duels
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Duels mode to view
 
@@ -485,6 +523,10 @@ megawalls = megawalls
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Mega Walls mode to view
 
@@ -511,6 +553,10 @@ murdermystery = murdermystery
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Murder Mystery mode to view
 
@@ -545,6 +591,10 @@ paintball = paintball
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Paintball mode to view
 
@@ -570,6 +620,10 @@ pit = pit
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Pit mode to view
 
@@ -593,6 +647,10 @@ quake = quake
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Quakecraft mode to view
 
@@ -624,6 +682,10 @@ skywars = skywars
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The SkyWars mode to view
 
@@ -645,6 +707,10 @@ smash = smash
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Smash Heroes mode to view
 
@@ -665,6 +731,10 @@ speeduhc = speeduhc
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The SpeedUHC mode to view
 
@@ -694,6 +764,10 @@ tntgames = tntgames
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The TNT Games mode to view
 
@@ -719,6 +793,10 @@ turbokartracers = turbokartracers
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Turbo Kart Racers mode to view
 
@@ -746,6 +824,10 @@ uhc = uhc
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The UHC Champions mode to view
 
@@ -764,6 +846,8 @@ starting-gear = Starting Gear
 tracker = Tracker
 updated = Updated
 old-vampire = Old Vampire
+hkdr = HKDR
+vkdr = VKDR
 
 vampirez = vampirez
   .description = VampireZ
@@ -777,6 +861,10 @@ vampirez = vampirez
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The VampireZ mode to view
 
@@ -799,6 +887,10 @@ walls = walls
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Walls mode to view
 
@@ -825,6 +917,10 @@ warlords = warlords
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Warlords mode to view
 
@@ -846,6 +942,10 @@ woolwars = woolwars
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
   .mode = mode
   .mode-description = The Wool Wars mode to view
 
@@ -871,6 +971,10 @@ guild = guild
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
 
 general = general
   .description = Shows the stats of a guild.
@@ -886,6 +990,10 @@ general = general
   .days-description = days
   .weeks = weeks
   .weeks-description = weeks
+  .kind = kind
+  .kind-description = kind
+  .value = value
+  .value-description = value
 
 members = members
   .description = Shows the members of a guild.
@@ -906,6 +1014,8 @@ top = top
   .uuid-description = The uuid of the guild member's guild to view
   .days = days
   .days-description = days
+  .limit = limit
+  .limit-description = The number of members to show
 
 showing-guild-xp-statistics = Showing guild xp gain from {$from} to {$to}.
 

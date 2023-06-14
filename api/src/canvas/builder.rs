@@ -51,7 +51,7 @@ impl From<Margin> for i32 {
 impl<'c> Canvas<'c> {
 	pub const BACKGROUND: Color = Color::from_rgb(31, 48, 64);
 	pub const BACKGROUND_U32: u32 = 255 << 24 | 31 << 16 | 48 << 8 | 64;
-	pub const ITEM_BACKGROUND: Color = Color::from_argb(128, 20, 20, 20);
+	pub const ITEM_BACKGROUND: Color = Color::from_argb(128, 15, 24, 32);
 
 	#[must_use]
 	pub fn new(max_width: impl Into<Option<f32>>) -> Self {
@@ -64,6 +64,13 @@ impl<'c> Canvas<'c> {
 			text: vec![],
 			inset: INSET,
 		}
+	}
+
+	#[inline]
+	#[must_use]
+	pub fn tl(mut self, tl: impl Into<Point>) -> Self {
+		self.tl = tl.into();
+		self
 	}
 
 	#[inline]
@@ -258,45 +265,23 @@ impl<'c> Canvas<'c> {
 		self.size.y = self.size.y.max(self.tl.y);
 	}
 
+	#[inline]
 	#[must_use]
-	#[allow(clippy::cast_possible_truncation)]
-	pub fn build(
+	pub fn into_path(self) -> Path {
+		self.path
+	}
+
+	pub fn build_with(
 		mut self,
+		surface: &mut Surface,
 		margin: impl Into<Option<Margin>>,
 		background: impl Into<Option<Color>>,
-	) -> Option<Surface> {
-		if let Some(size) = self.last_size {
-			self.tl.x += size.width + self.inset * 2.;
-			self.tl.y += size.height + self.inset * 2.;
-
-			self.update_size();
-		}
-
+	) -> &mut Surface {
 		let margin: Margin = margin.into().unwrap_or(Margin(MARGIN));
-		let size: ISize = (
-			self.size.x as i32 + margin.0 * 2,
-			self.size.y as i32 + margin.0 * 2,
-		)
-			.into();
 
-		let mut surface = Surface::new_raster_n32_premul(size)?;
 		let canvas = surface.canvas();
 		let offset: Point = (margin.0, margin.0).into();
 		let colour: Color = background.into().unwrap_or(Self::BACKGROUND);
-
-		canvas.draw_rrect(
-			RRect::new_rect_radii(
-				#[allow(clippy::cast_precision_loss)]
-				Rect::new(0., 0., size.width as f32, size.height as f32),
-				&[
-					Point::new(30., 30.),
-					Point::new(30., 30.),
-					Point::new(30., 30.),
-					Point::new(30., 30.),
-				],
-			),
-			Paint::default().set_color(colour),
-		);
 
 		self.path.offset(offset);
 		canvas.draw_path(
@@ -329,6 +314,51 @@ impl<'c> Canvas<'c> {
 				shape.post_draw(canvas, &bounds, &insets);
 			}
 		}
+
+		surface
+	}
+
+	#[must_use]
+	#[allow(clippy::cast_possible_truncation)]
+	pub fn build(
+		mut self,
+		margin: impl Into<Option<Margin>>,
+		background: impl Into<Option<Color>>,
+	) -> Option<Surface> {
+		if let Some(size) = self.last_size {
+			self.tl.x += size.width + self.inset * 2.;
+			self.tl.y += size.height + self.inset * 2.;
+
+			self.update_size();
+		}
+
+		let margin: Margin = margin.into().unwrap_or(Margin(MARGIN));
+		let size: ISize = (
+			self.size.x as i32 + margin.0 * 2,
+			self.size.y as i32 + margin.0 * 2,
+		)
+			.into();
+
+		let mut surface = Surface::new_raster_n32_premul(size)?;
+		let canvas = surface.canvas();
+		let background = background.into();
+		let colour: Color = background.unwrap_or(Self::BACKGROUND);
+
+		canvas.draw_rrect(
+			RRect::new_rect_radii(
+				#[allow(clippy::cast_precision_loss)]
+				Rect::new(0., 0., size.width as f32, size.height as f32),
+				&[
+					Point::new(30., 30.),
+					Point::new(30., 30.),
+					Point::new(30., 30.),
+					Point::new(30., 30.),
+				],
+			),
+			Paint::default().set_color(colour),
+		);
+
+		self.build_with(&mut surface, margin, background);
 
 		Some(surface)
 	}

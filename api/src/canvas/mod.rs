@@ -3,6 +3,7 @@ mod builder;
 pub mod chart;
 pub mod diff;
 pub mod label;
+pub mod project;
 pub mod shape;
 pub mod text;
 pub(crate) mod util;

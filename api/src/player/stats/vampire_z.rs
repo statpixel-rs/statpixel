@@ -16,7 +16,7 @@ use crate::inverse_bool;
 	field(ident = "human_kills", colour = "green"),
 	field(ident = "human_deaths", colour = "red"),
 	field(
-		tr = "kdr",
+		tr = "hkdr",
 		ident = "human_kills",
 		div = "human_deaths",
 		colour = "gold"
@@ -24,7 +24,7 @@ use crate::inverse_bool;
 	field(ident = "vampire_kills", colour = "green"),
 	field(ident = "vampire_deaths", colour = "red"),
 	field(
-		tr = "kdr",
+		tr = "vkdr",
 		ident = "vampire_kills",
 		div = "vampire_deaths",
 		colour = "gold"

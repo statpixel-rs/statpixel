@@ -22,6 +22,7 @@ pub mod history;
 pub mod leaderboard;
 pub mod link;
 pub mod network;
+pub mod project;
 pub mod ser;
 pub mod skyblock;
 pub mod snapshot;

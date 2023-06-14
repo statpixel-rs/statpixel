@@ -40,6 +40,12 @@ tip-help = <:knowledge_book:1117179094556233828> </help:1113624864524357707>で�
 tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>でウェブサイトを訪問します。
 tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
 
+# /project
+
+accuracy = 精度
+estimate = 推定
+never = 決して
+
 # /background
 
 background = background
@@ -656,6 +662,8 @@ starting-gear = スタートギア
 tracker = トラッカー
 updated = 更新されました
 old-vampire = 古いヴァンパイア
+hkdr = HKDR
+vkdr = VKDR
 
 vampirez = vampirez
   .description = プレイヤーのVampireZの統計を表示します。
@@ -762,6 +770,8 @@ top = top
   .uuid-description = 表示するギルドメンバーのMinecraftのUUID
   .days = days
   .days-description = days
+  .limit = limit
+  .limit-description = 表示するメンバーの数
 
 showing-guild-xp-statistics = {$from}から{$to}までのギルドXPの獲得を表示しています。
 

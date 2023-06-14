@@ -15,7 +15,7 @@ use plotters::{
 		SeriesLabelPosition, ShapeStyle,
 	},
 	series::LineSeries,
-	style::{self, Color, IntoTextStyle, Palette, Palette99, RGBColor},
+	style::{self, Color, IntoTextStyle, Palette, Palette99, RGBAColor, RGBColor},
 };
 use skia_safe::{
 	textlayout::TextAlign, AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect,
@@ -25,8 +25,8 @@ use translate::{prelude::GetChronoLocale, tr, Context, Error};
 
 pub const WIDTH_F: f32 = 750.;
 
-const CANVAS_BACKGROUND: RGBColor = RGBColor(31, 48, 64);
-const BACKGROUND: RGBColor = RGBColor(21, 33, 43);
+pub const CANVAS_BACKGROUND: RGBColor = RGBColor(31, 48, 64);
+pub const BACKGROUND: RGBAColor = RGBAColor(20, 20, 20, 0.5);
 
 macro_rules! impl_chart_create {
 	($ty: ident) => {

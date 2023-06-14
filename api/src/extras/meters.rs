@@ -53,6 +53,13 @@ impl From<Meters> for u32 {
 	}
 }
 
+#[allow(clippy::cast_precision_loss)]
+impl From<Meters> for f64 {
+	fn from(s: Meters) -> Self {
+		s.0 as f64
+	}
+}
+
 impl ToFormatted for Meters {
 	#[allow(clippy::cast_precision_loss)]
 	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {

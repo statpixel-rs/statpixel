@@ -40,6 +40,12 @@ tip-help = <:knowledge_book:1117179094556233828> Получите больше �
 tip-website = <:knowledge_book:1117179094556233828> Посетите наш веб-сайт по адресу <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Присоединяйтесь к нашему серверу поддержки по адресу <https://statpixel.xyz/discord>.
 
+# /project
+
+accuracy = Точность
+estimate = Оценка
+never = Никогда
+
 # /background
 
 background = background
@@ -657,6 +663,8 @@ starting-gear = Начальная экипировка
 tracker = Трекер
 updated = Обновлено
 old-vampire = Старый вампир
+hkdr = HKDR
+vkdr = VKDR
 
 vampirez = vampirez
   .description = Показывает статистику игрока в режиме VampireZ.
@@ -763,6 +771,8 @@ top = top
   .uuid-description = UUID гильдии для просмотра
   .days = days
   .days-description = дней
+  .limit = limit
+  .limit-description = Количество участников для показа
 
 showing-guild-xp-statistics = Показывает полученный опыт гильдии с {$from} по {$to}.
 

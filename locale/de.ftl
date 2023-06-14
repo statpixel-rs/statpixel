@@ -40,6 +40,12 @@ tip-help = <:knowledge_book:1117179094556233828> Erhalte mehr Hilfe mit </help:1
 tip-website = <:knowledge_book:1117179094556233828> Besuche unsere Website unter <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Tritt unserem Support-Server unter <https://statpixel.xyz/discord> bei.
 
+# /project
+
+accuracy = Genauigkeit
+estimate = Schätzung
+never = Nie
+
 # /background
 
 background = background
@@ -237,6 +243,7 @@ arcade = arcade
   .uuid-description = Die Minecraft-UUID zum Anzeigen
   .mode = mode
   .mode-description = Der Arcade-Modus zum Anzeigen
+  .limit-description = Die Anzahl der Mitglieder, die angezeigt werden sollen
 
 # /arena
 
@@ -657,6 +664,8 @@ starting-gear = Anfangsausrüstung
 tracker = Tracker
 updated = Aktualisiert
 old-vampire = Alter Vampir
+hkdr = HKDR
+vkdr = VKDR
 
 vampirez = vampirez
   .description = Zeigt die VampireZ-Statistiken eines Spielers an.

@@ -39,6 +39,12 @@ macro_rules! impl_time_unit {
 			}
 		}
 
+		impl ::std::convert::From<$name> for f64 {
+			fn from(s: $name) -> Self {
+				s.0 as f64
+			}
+		}
+
 		impl $crate::canvas::label::ToFormatted for $name {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,

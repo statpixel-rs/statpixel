@@ -180,6 +180,8 @@ impl ToTokens for GameInputReceiver {
 		let xp_field_overall = xp_field_overall.unwrap_or_else(|| xp_field.clone());
 
 		let enum_ident = syn::Ident::new(&format!("{}Mode", ident), proc_macro2::Span::call_site());
+		let enum_kind_ident =
+			syn::Ident::new(&format!("{}Kind", ident), proc_macro2::Span::call_site());
 		let extras = labels
 			.iter()
 			.map(map_game_field_to_extras_value)
@@ -315,6 +317,19 @@ impl ToTokens for GameInputReceiver {
 				}
 			})
 			.collect::<Vec<_>>();
+
+		let mode_match_apply_project = modes.iter().map(|mode| {
+			let ty = &mode.ty;
+
+			quote! {
+				#enum_ident ::#ty => #ty ::project(
+					ctx,
+					snapshots,
+					kind,
+					value,
+				),
+			}
+		});
 
 		let mode_match_get_tr = modes.iter().map(|mode| {
 			let ty = &mode.ty;
@@ -809,6 +824,38 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
+		let kind_into_int_impl = overall_fields.iter().filter(|f| f.skip_chart.is_none()).enumerate().map(|(idx, f)| {
+			let idx = idx as u32;
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			quote! {
+				&#enum_kind_ident ::#id => #idx,
+			}
+		});
+
+		let kind_from_int_impl = overall_fields.iter().filter(|f| f.skip_chart.is_none()).enumerate().map(|(idx, f)| {
+			let idx = idx as u32;
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			quote! {
+				#idx => #enum_kind_ident ::#id,
+			}
+		});
+
 		let impl_mode_enum = if modes_len > 25 {
 			// There can only be 25 options in a ChoiceParameter, so we need to use
 			// autocomplete instead.
@@ -839,6 +886,23 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
+		let static_kinds_iter = overall_fields.iter().filter(|f| f.skip_chart.is_none()).map(|f| {
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			quote! {
+				#enum_kind_ident ::#id,
+			}
+		});
+
+		let kinds_len = overall_fields.iter().filter(|f| f.skip_chart.is_none()).count();
+
 		let apply_all_modes = modes.iter().map(|mode| {
 			let ty = &mode.ty;
 			let ident = mode.ident.as_ref().unwrap();
@@ -868,6 +932,106 @@ impl ToTokens for GameInputReceiver {
 			} else {
 				quote! { stats. #ident.#xp_field }
 			};
+
+			let kind_enum_match_project = overall_fields
+				.iter()
+				.filter_map(|f| {
+					if f.skip_chart.is_some() {
+						return None;
+					}
+
+					let name = &f.ident;
+					let id = if let Some(ref tr) = f.tr {
+						let id = &tr.replace('-', "_");
+
+						ident!(id)
+					} else {
+						name.clone()
+					};
+
+					let tr = get_tr_with_fallback(f.tr.as_deref(), Some(name));
+					let val = if let Some(ref div) = f.div {
+						quote! { (f64::from(data.stats.#path.#ident.#name) / f64::from(data.stats.#path.#ident.#div)) }
+					} else {
+						quote! { f64::from(data.stats.#path.#ident.#name) }
+					};
+
+					let val_last = if let Some(ref div) = f.div {
+						quote! { (f64::from(last.1.stats.#path.#ident.#name) / f64::from(last.1.stats.#path.#ident.#div)) }
+					} else {
+						quote! { f64::from(last.1.stats.#path.#ident.#name) }
+					};
+
+					Some(quote! {
+						#enum_kind_ident ::#id => {
+							let mut low = f64::MAX;
+							let mut high: f64 = 1.;
+
+							for (_, data) in &snapshots {
+								low = low.min(#val);
+								high = high.max(#val);
+							}
+
+							let series = snapshots
+								.iter()
+								.map(|(time, data)| (time.timestamp() as f64, #val))
+								.collect::<Vec<_>>();
+
+							let line = crate::canvas::project::line::Line::from_series(&series);
+
+							let predict_y = value.unwrap_or_else(|| crate::canvas::project::next_milestone(#val_last));
+							let predict_x = line
+								.x(predict_y, last.0.timestamp() as f64)
+								.map(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).unwrap());
+
+							let mut buffer = crate::canvas::project::f64::create(
+								ctx,
+								::std::vec![(
+									::translate::tr!(ctx, #tr),
+									snapshots
+										.iter()
+										.map(|(time, data)| (*time, #val))
+										.collect::<Vec<_>>(),
+									predict_x.unwrap_or(last.0),
+									predict_y,
+								)],
+								first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
+								(f64::from(first.1.stats.#path.#ident.#name) * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
+								None,
+							)?;
+
+							let mut surface = crate::canvas::project::canvas(&mut buffer)?;
+
+							crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+
+							let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
+
+							if let Some(x) = predict_x {
+								crate::canvas::project::apply_bubbles(
+									&mut surface,
+									ctx,
+									::translate::tr!(ctx, #tr).as_ref(),
+									&predict_y,
+									&r,
+									&x,
+								);
+							} else {
+								crate::canvas::project::apply_bubbles(
+									&mut surface,
+									ctx,
+									::translate::tr!(ctx, #tr).as_ref(),
+									&predict_y,
+									&r,
+									&::translate::tr!(ctx, "never").as_ref(),
+								);
+							}
+
+							crate::canvas::project::round_corners(&mut surface);
+
+							Ok(crate::canvas::to_png(&mut surface))
+						}
+					})
+				});
 
 			quote! {
 				impl #ty {
@@ -949,6 +1113,20 @@ impl ToTokens for GameInputReceiver {
 						#(#max_fields_mode)*
 
 						max
+					}
+
+					pub fn project(
+						ctx: ::translate::Context<'_>,
+						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+						kind: #enum_kind_ident,
+						value: Option<f64>,
+					) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+						let first = snapshots.first().unwrap();
+						let last = snapshots.last().unwrap();
+
+						match kind {
+							#(#kind_enum_match_project)*
+						}
 					}
 
 					pub fn chart(
@@ -1065,6 +1243,315 @@ impl ToTokens for GameInputReceiver {
 			}
 		};
 
+		let kind_enum_rows = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
+
+			let name = &f.ident;
+			let tr = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			Some(quote! { #tr, })
+		});
+
+		let default_kind = overall_fields
+			.iter()
+			.find(|f| f.skip_chart.is_none())
+			.map(|f| {
+				let name = &f.ident;
+
+				if let Some(ref tr) = f.tr {
+					let id = &tr.replace('-', "_");
+
+					ident!(id)
+				} else {
+					name.clone()
+				}
+			})
+			.unwrap();
+
+		let kind_enum_match_project = overall_fields
+			.iter()
+			.filter_map(|f| {
+				if f.skip_chart.is_some() {
+					return None;
+				}
+
+				let name = &f.ident;
+				let id = if let Some(ref tr) = f.tr {
+					let id = &tr.replace('-', "_");
+
+					ident!(id)
+				} else {
+					name.clone()
+				};
+
+				let tr = get_tr_with_fallback(f.tr.as_deref(), Some(name));
+				let val = {
+					let sum = if let Some(path) = f.path.as_ref() {
+						let path = parse_str_to_dot_path(path);
+		
+						quote! { data.stats.#path.#name }
+					} else {
+						sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							name,
+						)
+					};
+
+					if let Some(div) = f.div.as_ref() {
+						let sum_bottom = sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							div,
+						);
+		
+						quote! {
+							{
+								let stats = &data.stats.#path;
+
+								(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
+							}
+						}
+					} else {
+						quote! {
+							{
+								let stats = &data.stats.#path;
+
+								f64::from(#sum)
+							}
+						}
+					}
+				};
+
+				let val_last = {
+					let sum = if let Some(path) = f.path.as_ref() {
+						let path = parse_str_to_dot_path(path);
+		
+						quote! { data.stats.#path.#name }
+					} else {
+						sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							name,
+						)
+					};
+
+					if let Some(div) = f.div.as_ref() {
+						let sum_bottom = sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							div,
+						);
+		
+						quote! {
+							{
+								let stats = &last.1.stats.#path;
+
+								(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
+							}
+						}
+					} else {
+						quote! {
+							{
+								let stats = &last.1.stats.#path;
+
+								f64::from(#sum)
+							}
+						}
+					}
+				};
+
+				let val_first = {
+					let sum = if let Some(path) = f.path.as_ref() {
+						let path = parse_str_to_dot_path(path);
+		
+						quote! { data.stats.#path.#name }
+					} else {
+						sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							name,
+						)
+					};
+
+					if let Some(div) = f.div.as_ref() {
+						let sum_bottom = sum::sum_fields(
+							modes
+								.iter()
+								.filter_map(|m| {
+									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+										None
+									} else {
+										Some(m.ident.as_ref().unwrap())
+									}
+								})
+								.peekable(),
+							Some(&ident!("stats")),
+							div,
+						);
+		
+						quote! {
+							{
+								let stats = &first.1.stats.#path;
+
+								(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
+							}
+						}
+					} else {
+						quote! {
+							{
+								let stats = &first.1.stats.#path;
+
+								f64::from(#sum)
+							}
+						}
+					}
+				};
+
+				Some(quote! {
+					#enum_kind_ident ::#id => {
+						let mut low = f64::MAX;
+						let mut high: f64 = 1.;
+
+						for (_, data) in &snapshots {
+							low = low.min(#val);
+							high = high.max(#val);
+						}
+
+						let series = snapshots
+							.iter()
+							.map(|(time, data)| (time.timestamp() as f64, #val))
+							.collect::<Vec<_>>();
+
+						let line = crate::canvas::project::line::Line::from_series(&series);
+
+						let predict_y = value.unwrap_or_else(|| crate::canvas::project::next_milestone(#val_last));
+						let predict_x = line
+							.x(predict_y, last.0.timestamp() as f64)
+							.map(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).unwrap());
+
+						let mut buffer = crate::canvas::project::f64::create(
+							ctx,
+							::std::vec![(
+								::translate::tr!(ctx, #tr),
+								snapshots
+									.iter()
+									.map(|(time, data)| (*time, #val))
+									.collect::<Vec<_>>(),
+								predict_x.unwrap_or(last.0),
+								predict_y,
+							)],
+							first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
+							(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
+							None,
+						)?;
+
+						let mut surface = crate::canvas::project::canvas(&mut buffer)?;
+
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+
+						let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
+
+						if let Some(x) = predict_x {
+							crate::canvas::project::apply_bubbles(
+								&mut surface,
+								ctx,
+								::translate::tr!(ctx, #tr).as_ref(),
+								&predict_y,
+								&r,
+								&x,
+							);
+						} else {
+							crate::canvas::project::apply_bubbles(
+								&mut surface,
+								ctx,
+								::translate::tr!(ctx, #tr).as_ref(),
+								&predict_y,
+								&r,
+								&::translate::tr!(ctx, "never").as_ref(),
+							);
+						}
+
+						crate::canvas::project::round_corners(&mut surface);
+
+						Ok(crate::canvas::to_png(&mut surface))
+					}
+				})
+			});
+
+		let impl_kind = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
+
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+			let tr = get_tr_with_fallback(f.tr.as_deref(), Some(name));
+
+			Some(quote! {
+				#enum_kind_ident ::#id => #tr,
+			})
+		});
+
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
@@ -1076,6 +1563,20 @@ impl ToTokens for GameInputReceiver {
 			impl Overall {
 				pub fn get_tr() -> &'static str {
 					"Overall"
+				}
+
+				pub fn project(
+					ctx: ::translate::Context<'_>,
+					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+					kind: #enum_kind_ident,
+					value: Option<f64>,
+				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+					let first = snapshots.first().unwrap();
+					let last = snapshots.last().unwrap();
+
+					match kind {
+						#(#kind_enum_match_project)*
+					}
 				}
 
 				pub fn apply<'c>(
@@ -1188,7 +1689,52 @@ impl ToTokens for GameInputReceiver {
 				}
 			}
 
+			#[allow(non_camel_case_types)]
+			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter)]
+			pub enum #enum_kind_ident {
+				#(#kind_enum_rows)*
+			}
+
+			impl #enum_kind_ident {
+				pub fn get_tr(&self) -> &'static str {
+					match self {
+						#(#impl_kind)*
+					}
+				}
+
+				pub fn slice() -> &'static [#enum_kind_ident] {
+					const KINDS: [#enum_kind_ident; #kinds_len] = [
+						#(#static_kinds_iter)*
+					];
+
+					&KINDS
+				}
+			}
+
+			impl ::std::default::Default for #enum_kind_ident {
+				fn default() -> Self {
+					#enum_kind_ident ::#default_kind
+				}
+			}
+
 			#impl_mode_enum
+
+			impl From<&#enum_kind_ident> for u32 {
+				fn from(value: &#enum_kind_ident) -> u32 {
+					match value {
+						#(#kind_into_int_impl)*
+					}
+				}
+			}
+
+			impl From<u32> for #enum_kind_ident {
+				fn from(value: u32) -> Self {
+					match value {
+						#(#kind_from_int_impl)*
+						_ => #enum_kind_ident ::default(),
+					}
+				}
+			}
 
 			impl From<&#enum_ident> for u32 {
 				fn from(value: &#enum_ident) -> u32 {
@@ -1215,7 +1761,7 @@ impl ToTokens for GameInputReceiver {
 			// This should be able to get the recommended mode from the session.
 			impl #enum_ident {
 				pub fn slice() -> &'static [#enum_ident] {
-					static MODES: [#enum_ident; #modes_len] = [
+					const MODES: [#enum_ident; #modes_len] = [
 						#enum_ident ::Overall,
 						#(#static_modes_iter)*
 					];
@@ -1287,6 +1833,22 @@ impl ToTokens for GameInputReceiver {
 								::std::option::Option::Some(::poise::AutocompleteChoice {
 									name: name.to_string(),
 									value: mode.into(),
+								})
+							} else {
+								::std::option::Option::None
+							})
+						}), 10)
+				}
+
+				pub async fn autocomplete_kind<'a>(ctx: ::translate::Context<'a>, partial: ::std::string::String) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+					::futures::StreamExt::take(
+						::futures::StreamExt::filter_map(::futures::stream::iter(#enum_kind_ident ::slice()), move |kind| {
+							let name = ::translate::tr!(ctx, kind.get_tr());
+
+							::futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
+								::std::option::Option::Some(::poise::AutocompleteChoice {
+									name: name.to_string(),
+									value: kind.into(),
 								})
 							} else {
 								::std::option::Option::None
@@ -1402,6 +1964,30 @@ impl ToTokens for GameInputReceiver {
 							)
 						}
 						#(#mode_match_apply_chart)*
+					}
+				}
+
+				pub fn project(
+					ctx: ::translate::Context<'_>,
+					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+					session: &crate::player::status::Session,
+					mode: Option<#enum_ident>,
+					kind: Option<#enum_kind_ident>,
+					value: Option<f64>,
+				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+					let mode = #enum_ident ::get_mode(mode, session);
+					let kind = kind.unwrap_or_default();
+
+					match mode {
+						#enum_ident ::Overall => {
+							Overall::project(
+								ctx,
+								snapshots,
+								kind,
+								value,
+							)
+						}
+						#(#mode_match_apply_project)*
 					}
 				}
 

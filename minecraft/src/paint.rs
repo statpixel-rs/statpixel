@@ -39,7 +39,7 @@ paint_colour!(YELLOW, (255, 255, 255, 85));
 paint_colour!(WHITE, (255, 255, 255, 255));
 
 // Utility colours
-paint_colour!(BACKGROUND, (255, 21, 33, 43));
+paint_colour!(BACKGROUND, (128, 15, 24, 32));
 paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
 #[derive(Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]

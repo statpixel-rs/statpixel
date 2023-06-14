@@ -40,6 +40,12 @@ tip-help = <:knowledge_book:1117179094556233828> Obtén más ayuda con </help:11
 tip-website = <:knowledge_book:1117179094556233828> Visita nuestro sitio web en <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Únete a nuestro servidor de soporte en <https://statpixel.xyz/discord>.
 
+# /project
+
+accuracy = Precisión
+estimate = Estimación
+never = Nunca
+
 # /background
 
 background = background
@@ -651,6 +657,8 @@ starting-gear = Equipo de inicio
 tracker = Rastreador
 updated = Actualizado
 old-vampire = Vampiro antiguo
+hkdr = HKDR
+vkdr = VKDR
 
 vampirez = vampirez
   .description = Muestra las estadísticas de VampireZ de un jugador.
@@ -754,6 +762,8 @@ top = top
   .uuid-description = El UUID del miembro del gremio a ver
   .days = days
   .days-description = días
+  .limit = limit
+  .limit-description = El número de miembros a mostrar
 
 showing-guild-xp-statistics = Mostrando la experiencia ganada por el gremio desde {$from} hasta {$to}.
 

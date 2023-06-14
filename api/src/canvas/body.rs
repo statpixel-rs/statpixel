@@ -122,6 +122,36 @@ impl Body {
 	}
 
 	#[must_use]
+	pub fn from_bubble_small(
+		ctx: Context<'_>,
+		value: &impl ToFormatted,
+		label: &str,
+		paint: Paint,
+	) -> Paragraph {
+		Self::new(40., TextAlign::Center)
+			.extend(&[
+				Text {
+					text: label,
+					paint,
+					font: MinecraftFont::Normal,
+					size: Some(20.),
+				},
+				Text {
+					text: "\n",
+					size: Some(20.),
+					..Default::default()
+				},
+				Text {
+					text: &value.to_formatted_label(ctx),
+					paint,
+					font: MinecraftFont::Normal,
+					size: None,
+				},
+			])
+			.build()
+	}
+
+	#[must_use]
 	pub fn from_bubble(
 		ctx: Context<'_>,
 		value: &impl ToFormatted,

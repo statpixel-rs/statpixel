@@ -63,6 +63,7 @@ async fn main() {
 		commands::network::network(),
 		commands::games::paintball(),
 		commands::games::pit(),
+		commands::project::project(),
 		commands::games::quake(),
 		commands::ser::ser(),
 		commands::skyblock::skyblock(),

@@ -143,7 +143,7 @@ impl Locale {
 	) {
 		for command in commands.iter_mut() {
 			match command.name.as_str() {
-				"daily" | "weekly" | "monthly" | "history" | "from" => {
+				"daily" | "weekly" | "monthly" | "history" | "from" | "project" => {
 					self.apply_translations(command.subcommands.as_mut(), true);
 
 					continue;
@@ -273,20 +273,21 @@ impl Locale {
 					);
 				}
 
-				let description = if subcommand
-					&& (parameter.name == "hours"
-						|| parameter.name == "days"
-						|| parameter.name == "weeks")
-				{
-					Some(".".to_string())
-				} else {
-					format(
-						bundle,
-						&command.name,
-						Some(&format!("{}-description", parameter.name)),
-						None,
-					)
-				};
+				let description =
+					if subcommand
+						&& (parameter.name == "hours"
+							|| parameter.name == "days" || parameter.name == "weeks"
+							|| parameter.name == "kind" || parameter.name == "value")
+					{
+						Some(".".to_string())
+					} else {
+						format(
+							bundle,
+							&command.name,
+							Some(&format!("{}-description", parameter.name)),
+							None,
+						)
+					};
 
 				if let Some(description) = description {
 					parameter.description = Some(description);
@@ -299,7 +300,7 @@ impl Locale {
 
 				// If this is a choice parameter, set the choice names to en-US
 				for choice in &mut parameter.choices {
-					let name = format(bundle, &choice.name, None, None);
+					let name = format(bundle, &choice.name.replace('_', "-"), None, None);
 
 					if let Some(name) = name {
 						choice.name = name;

@@ -482,7 +482,11 @@ async fn top(
 	#[max_length = 36]
 	uuid: Option<String>,
 	#[min = 1i64] days: Option<i64>,
+	#[min = 1usize]
+	#[max = 128usize]
+	limit: Option<usize>,
 ) -> Result<(), Error> {
+	let limit = limit.map_or(30, |l| if l % 2 == 0 { l } else { l + 1 });
 	let guild = match crate::commands::get_guild(ctx, name, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
@@ -511,7 +515,7 @@ async fn top(
 	let members = futures::stream::iter(
 		members
 			.into_iter()
-			.take(30)
+			.take(limit)
 			.map(|m| (Player::from_uuid_unchecked(m.0), m.1))
 			.map(|(p, v)| async move {
 				let uuid = p.uuid;
@@ -541,7 +545,7 @@ async fn top(
 			.gap(7.)
 			.push_down(&shape::GuildXpTitle, shape::Title::from_guild(&guild));
 
-		for (idx, (_, name, xp)) in members.iter().enumerate().take(15) {
+		for (idx, (_, name, xp)) in members.iter().enumerate().take(limit / 2) {
 			canvas = canvas
 				.push_down_start(
 					&shape::LeaderboardPlace,
@@ -553,11 +557,11 @@ async fn top(
 					shape::LeaderboardValue::from_value(ctx, xp),
 				);
 
-			if let Some((_, name, xp)) = members.get(idx + 15) {
+			if let Some((_, name, xp)) = members.get(idx + limit / 2) {
 				canvas = canvas
 					.push_right(
 						&shape::LeaderboardPlace,
-						shape::LeaderboardPlace::from_usize(idx + 16),
+						shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
 					)
 					.push_right(&shape::GuildXpName, shape::LeaderboardName::from_text(name))
 					.push_right(
@@ -568,7 +572,7 @@ async fn top(
 				canvas = canvas
 					.push_right(
 						&shape::LeaderboardPlace,
-						shape::LeaderboardPlace::from_usize(idx + 16),
+						shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
 					)
 					.push_right(
 						&shape::GuildXpName,
@@ -581,8 +585,8 @@ async fn top(
 			};
 		}
 
-		if members.len() < 15 {
-			for idx in members.len()..15 {
+		if members.len() < limit / 2 {
+			for idx in members.len()..(limit / 2) {
 				canvas = canvas
 					.push_down_start(
 						&shape::LeaderboardPlace,
@@ -598,7 +602,7 @@ async fn top(
 					)
 					.push_right(
 						&shape::LeaderboardPlace,
-						shape::LeaderboardPlace::from_usize(idx + 16),
+						shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
 					)
 					.push_right(
 						&shape::GuildXpName,
