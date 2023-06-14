@@ -220,7 +220,7 @@ async fn general(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
-					&format!("{ESCAPE}6{level}"),
+					&format!("{ESCAPE}6{}", level.0),
 					&calc::guild::get_curr_level_xp(guild.xp),
 					&calc::guild::get_level_xp(guild.xp),
 				),
@@ -401,9 +401,10 @@ async fn members(
 	member_rank_indices.sort_by_key(|(_, rank)| std::cmp::Reverse(*rank));
 
 	let png: Cow<_> = {
-		let mut canvas = Canvas::new(1_176.666_6)
-			.gap(7.)
-			.push_down(&shape::FullWidthTitle, shape::Title::from_guild(&guild));
+		let mut canvas = Canvas::new(1_176.666_6).gap(7.).push_down(
+			&shape::FullWidthBigTitle,
+			shape::FullWidthBigTitle::from_guild(ctx, &guild),
+		);
 
 		let mut iter = member_rank_indices.into_iter();
 		let mut ranks_iter = guild.ranks.iter();
@@ -413,13 +414,13 @@ async fn members(
 
 			if let Some((shape, paragraph)) = members.get_mut(i).and_then(std::option::Option::take)
 			{
-				let text = shape::Custom::from_text_large(&[Text {
+				let text = shape::Title::from_text(&[Text {
 					text: "Guild Master",
 					..Default::default()
 				}]);
 
 				canvas = canvas
-					.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
+					.push_down_start(&shape::FullWidthTitle, text)
 					.push_down_start(&shape, paragraph);
 			}
 
@@ -433,13 +434,13 @@ async fn members(
 				} else {
 					last_rank = r;
 
-					let text = shape::Custom::from_text_large(&[Text {
+					let text = shape::Title::from_text(&[Text {
 						text: &ranks_iter.next().unwrap().name,
 						..Default::default()
 					}]);
 
 					canvas = canvas
-						.push_down_start(&shape::Custom::get_from_paragraph(&text), text)
+						.push_down_start(&shape::FullWidthTitle, text)
 						.push_down_start(&shape, paragraph);
 				}
 			}

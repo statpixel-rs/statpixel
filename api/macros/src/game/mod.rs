@@ -829,7 +829,7 @@ impl ToTokens for GameInputReceiver {
 			.filter(|f| f.skip_chart.is_none())
 			.enumerate()
 			.map(|(idx, f)| {
-				let idx = idx as u32;
+				let idx = idx as u32 + 1;
 				let name = &f.ident;
 				let id = if let Some(ref tr) = f.tr {
 					let id = &tr.replace('-', "_");
@@ -849,7 +849,7 @@ impl ToTokens for GameInputReceiver {
 			.filter(|f| f.skip_chart.is_none())
 			.enumerate()
 			.map(|(idx, f)| {
-				let idx = idx as u32;
+				let idx = idx as u32 + 1;
 				let name = &f.ident;
 				let id = if let Some(ref tr) = f.tr {
 					let id = &tr.replace('-', "_");
@@ -1047,6 +1047,117 @@ impl ToTokens for GameInputReceiver {
 					})
 				});
 
+			let kind_level_match_project = {
+				let val = {
+					quote! {
+						f64::from({
+							let stats = &data.stats.#path;
+							let xp = #calc ::convert(&#xp_field);
+
+							f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+						})
+					}
+				};
+
+				let val_last = {
+					quote! {
+						f64::from({
+							let data = &last.1;
+							let stats = &data.stats.#path;
+							let xp = #calc ::convert(&#xp_field);
+
+							f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+						})
+					}
+				};
+
+				let val_first = {
+					quote! {
+						f64::from({
+							let data = &first.1;
+							let stats = &data.stats.#path;
+							let xp = #calc ::convert(&#xp_field);
+
+							f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+						})
+					}
+				};
+
+				let tr = "level";
+
+				quote! {
+					#enum_kind_ident ::level => {
+						let mut low = f64::MAX;
+						let mut high: f64 = 1.;
+
+						for (_, data) in &snapshots {
+							let val = #val;
+
+							low = low.min(val);
+							high = high.max(val);
+						}
+
+						let series = snapshots
+							.iter()
+							.map(|(time, data)| (time.timestamp() as f64, #val))
+							.collect::<Vec<_>>();
+
+						let line = crate::canvas::project::line::Line::from_series(&series);
+
+						let predict_y = value.unwrap_or_else(|| crate::canvas::project::next_milestone(#val_last));
+						let predict_x = line
+							.x(predict_y, last.0.timestamp() as f64)
+							.map(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).unwrap());
+
+						let mut buffer = crate::canvas::project::f64::create(
+							ctx,
+							::std::vec![(
+								::translate::tr!(ctx, #tr),
+								snapshots
+									.iter()
+									.map(|(time, data)| (*time, #val))
+									.collect::<Vec<_>>(),
+								predict_x.unwrap_or(last.0),
+								predict_y,
+							)],
+							first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
+							(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
+							None,
+						)?;
+
+						let mut surface = crate::canvas::project::canvas(&mut buffer)?;
+
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+
+						let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
+
+						if let Some(x) = predict_x {
+							crate::canvas::project::apply_bubbles(
+								&mut surface,
+								ctx,
+								::translate::tr!(ctx, #tr).as_ref(),
+								&predict_y,
+								&r,
+								&x,
+							);
+						} else {
+							crate::canvas::project::apply_bubbles(
+								&mut surface,
+								ctx,
+								::translate::tr!(ctx, #tr).as_ref(),
+								&predict_y,
+								&r,
+								&::translate::tr!(ctx, "never").as_ref(),
+							);
+						}
+
+						crate::canvas::project::round_corners(&mut surface);
+
+						Ok(crate::canvas::to_png(&mut surface))
+					}
+				}
+			};
+
 			quote! {
 				impl #ty {
 					pub fn get_tr() -> &'static str {
@@ -1139,6 +1250,7 @@ impl ToTokens for GameInputReceiver {
 						let last = snapshots.last().unwrap();
 
 						match kind {
+							#kind_level_match_project,
 							#(#kind_enum_match_project)*
 						}
 					}
@@ -1566,6 +1678,117 @@ impl ToTokens for GameInputReceiver {
 			})
 		});
 
+		let kind_level_match_project = {
+			let val = {
+				quote! {
+					f64::from({
+						let stats = &data.stats.#path;
+						let xp = #calc ::convert(&#xp_field_overall);
+
+						f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+					})
+				}
+			};
+
+			let val_last = {
+				quote! {
+					f64::from({
+						let data = &last.1;
+						let stats = &data.stats.#path;
+						let xp = #calc ::convert(&#xp_field_overall);
+
+						f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+					})
+				}
+			};
+
+			let val_first = {
+				quote! {
+					f64::from({
+						let data = &first.1;
+						let stats = &data.stats.#path;
+						let xp = #calc ::convert(&#xp_field_overall);
+
+						f64::from(#calc ::get_level(xp)) + f64::from(#calc ::get_level_progress(xp))
+					})
+				}
+			};
+
+			let tr = "level";
+
+			quote! {
+				#enum_kind_ident ::level => {
+					let mut low = f64::MAX;
+					let mut high: f64 = 1.;
+
+					for (_, data) in &snapshots {
+						let val = #val;
+
+						low = low.min(val);
+						high = high.max(val);
+					}
+
+					let series = snapshots
+						.iter()
+						.map(|(time, data)| (time.timestamp() as f64, #val))
+						.collect::<Vec<_>>();
+
+					let line = crate::canvas::project::line::Line::from_series(&series);
+
+					let predict_y = value.unwrap_or_else(|| crate::canvas::project::next_milestone(#val_last));
+					let predict_x = line
+						.x(predict_y, last.0.timestamp() as f64)
+						.map(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).unwrap());
+
+					let mut buffer = crate::canvas::project::f64::create(
+						ctx,
+						::std::vec![(
+							::translate::tr!(ctx, #tr),
+							snapshots
+								.iter()
+								.map(|(time, data)| (*time, #val))
+								.collect::<Vec<_>>(),
+							predict_x.unwrap_or(last.0),
+							predict_y,
+						)],
+						first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
+						(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
+						None,
+					)?;
+
+					let mut surface = crate::canvas::project::canvas(&mut buffer)?;
+
+					crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+
+					let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
+
+					if let Some(x) = predict_x {
+						crate::canvas::project::apply_bubbles(
+							&mut surface,
+							ctx,
+							::translate::tr!(ctx, #tr).as_ref(),
+							&predict_y,
+							&r,
+							&x,
+						);
+					} else {
+						crate::canvas::project::apply_bubbles(
+							&mut surface,
+							ctx,
+							::translate::tr!(ctx, #tr).as_ref(),
+							&predict_y,
+							&r,
+							&::translate::tr!(ctx, "never").as_ref(),
+						);
+					}
+
+					crate::canvas::project::round_corners(&mut surface);
+
+					Ok(crate::canvas::to_png(&mut surface))
+				}
+			}
+		};
+
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
@@ -1589,6 +1812,7 @@ impl ToTokens for GameInputReceiver {
 					let last = snapshots.last().unwrap();
 
 					match kind {
+						#kind_level_match_project,
 						#(#kind_enum_match_project)*
 					}
 				}
@@ -1706,18 +1930,21 @@ impl ToTokens for GameInputReceiver {
 			#[allow(non_camel_case_types)]
 			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter)]
 			pub enum #enum_kind_ident {
+				level,
 				#(#kind_enum_rows)*
 			}
 
 			impl #enum_kind_ident {
 				pub fn get_tr(&self) -> &'static str {
 					match self {
+						#enum_kind_ident ::level => "level",
 						#(#impl_kind)*
 					}
 				}
 
 				pub fn slice() -> &'static [#enum_kind_ident] {
-					const KINDS: [#enum_kind_ident; #kinds_len] = [
+					const KINDS: [#enum_kind_ident; #kinds_len + 1] = [
+						#enum_kind_ident ::level,
 						#(#static_kinds_iter)*
 					];
 
@@ -1736,6 +1963,7 @@ impl ToTokens for GameInputReceiver {
 			impl From<&#enum_kind_ident> for u32 {
 				fn from(value: &#enum_kind_ident) -> u32 {
 					match value {
+						#enum_kind_ident ::level => 0,
 						#(#kind_into_int_impl)*
 					}
 				}
@@ -1744,6 +1972,7 @@ impl ToTokens for GameInputReceiver {
 			impl From<u32> for #enum_kind_ident {
 				fn from(value: u32) -> Self {
 					match value {
+						0 => Self::level,
 						#(#kind_from_int_impl)*
 						_ => #enum_kind_ident ::default(),
 					}

@@ -39,7 +39,9 @@ pub struct Custom {
 	pub height: f32,
 }
 pub struct Title;
+pub struct LongTitle;
 pub struct FullWidthTitle;
+pub struct FullWidthBigTitle;
 pub struct Subtitle;
 
 pub struct Bubble;
@@ -197,6 +199,47 @@ impl Title {
 		Body::new(25., TextAlign::Center)
 			.extend_owned(minecraft_string(&text))
 			.build()
+	}
+}
+
+impl FullWidthBigTitle {
+	#[must_use]
+	pub fn from_text(text: &[Text]) -> Paragraph {
+		Body::new(40., TextAlign::Center).extend(text).build()
+	}
+
+	#[must_use]
+	pub fn from_guild(ctx: Context<'_>, guild: &Guild) -> Paragraph {
+		let colour: char = guild.tag_colour.into();
+		let name = guild.name.as_str();
+		let tag = guild.tag.as_ref();
+
+		let text = if let Some(tag) = tag {
+			format!("{ESCAPE}{colour}{name} [{tag}]")
+		} else {
+			format!("{ESCAPE}{colour}{name}")
+		};
+
+		let mut text = minecraft_string(&text).collect::<Vec<_>>();
+		let members = guild.members.len();
+		let members = members.to_formatted_label(ctx);
+
+		text.extend([
+			Text {
+				text: " (",
+				..Default::default()
+			},
+			Text {
+				text: members.as_ref(),
+				..Default::default()
+			},
+			Text {
+				text: "/125)",
+				..Default::default()
+			},
+		]);
+
+		Body::new(40., TextAlign::Center).extend(&text).build()
 	}
 }
 
@@ -380,7 +423,9 @@ macro_rules! impl_rect_shape {
 }
 
 impl_rect_shape!(Title, BUBBLE_WIDTH * 1.5 + GAP / 2., 45., true);
+impl_rect_shape!(LongTitle, BUBBLE_WIDTH * 3. + GAP * 2., 45., true);
 impl_rect_shape!(FullWidthTitle, BUBBLE_WIDTH * 5. + GAP * 4., 45., true);
+impl_rect_shape!(FullWidthBigTitle, BUBBLE_WIDTH * 5. + GAP * 4., 75., true);
 impl_rect_shape!(Subtitle, BUBBLE_WIDTH * 1.5 + GAP / 2., 33., true);
 
 impl_rect_shape!(Bubble, BUBBLE_WIDTH, BUBBLE_HEIGHT, true);

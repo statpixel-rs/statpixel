@@ -6,7 +6,7 @@ use std::{borrow::Cow, ops::Range};
 use crate::{canvas::label::ToFormatted, player::data::Data};
 use chrono::{DateTime, Utc};
 use minecraft::{
-	paint::{self, Paint},
+	paint::Paint,
 	text::{parse::minecraft_string, rank::Rank, Text},
 };
 use plotters::{
@@ -18,10 +18,11 @@ use plotters::{
 	style::{self, Color, IntoTextStyle, Palette, Palette99, RGBAColor, RGBColor},
 };
 use skia_safe::{
-	textlayout::TextAlign, AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect,
-	Rect, Surface,
+	AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect, Rect, Surface,
 };
 use translate::{prelude::GetChronoLocale, tr, Context, Error};
+
+use super::shape;
 
 pub const WIDTH_F: f32 = 750.;
 
@@ -42,7 +43,7 @@ macro_rules! impl_chart_create {
 				range_y: Range<$ty>,
 				colour: Option<Paint>,
 			) -> Result<Vec<u8>, Error> {
-				const PIXELS: usize = 750 * 389;
+				const PIXELS: usize = 750 * 400;
 				const BUF_LEN_RGBA: usize = 4 * PIXELS;
 
 				// Allocate a buffer large enough to hold an RGBA representation of the image
@@ -50,7 +51,7 @@ macro_rules! impl_chart_create {
 
 				// The BitMapBackend uses RGB, so we will need to conver it later
 				let backend =
-					BitMapBackend::with_buffer(&mut buffer, (750, 389)).into_drawing_area();
+					BitMapBackend::with_buffer(&mut buffer, (750, 400)).into_drawing_area();
 
 				backend
 					.fill(&CANVAS_BACKGROUND)
@@ -58,7 +59,7 @@ macro_rules! impl_chart_create {
 
 				// set start time to `created_at`, and end to last time
 				let mut chart = ChartBuilder::on(&backend)
-					.margin_top(60)
+					.margin_top(71)
 					.margin_bottom(20)
 					.margin_right(30)
 					.set_label_area_size(LabelAreaPosition::Left, 90)
@@ -160,7 +161,7 @@ impl_chart_create!(f64);
 /// # Errors
 /// Returns an error if the canvas could not be created.
 pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
-	let info = ImageInfo::new((750, 389), ColorType::RGBA8888, AlphaType::Premul, None);
+	let info = ImageInfo::new((750, 400), ColorType::RGBA8888, AlphaType::Premul, None);
 
 	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
@@ -198,18 +199,16 @@ pub fn apply_title(ctx: Context<'_>, surface: &mut Surface, data: &Data, label: 
 		..Default::default()
 	});
 
-	let rect = Rect::from_xywh(0., 0., 750., 50.);
-
-	surface.canvas().draw_rect(rect, &paint::BACKGROUND);
-
-	minecraft::text::draw(surface, text.as_slice(), 20., rect, TextAlign::Center, true);
+	super::Canvas::new(720.)
+		.push_right(&shape::LongTitle, shape::Title::from_text(&text))
+		.build_with(surface, None, None);
 }
 
 pub fn round_corners(surface: &mut Surface) {
 	let mut rect = RRect::new();
 
 	rect.set_rect_radii(
-		Rect::new(0., 0., WIDTH_F, 389.),
+		Rect::new(0., 0., WIDTH_F, 400.),
 		&[
 			Point::new(30., 30.),
 			Point::new(30., 30.),

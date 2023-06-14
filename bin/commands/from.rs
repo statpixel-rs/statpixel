@@ -506,7 +506,7 @@ macro_rules! generate_guild_command {
 						&progress,
 						::api::canvas::shape::WideBubbleProgress::from_level_progress(
 							ctx,
-							&format!("{}6{level}", ::minecraft::text::ESCAPE),
+							&format!("{}6{}", ::minecraft::text::ESCAPE, level.0),
 							&::minecraft::calc::guild::get_curr_level_xp(guild.xp),
 							&::minecraft::calc::guild::get_level_xp(guild.xp),
 						),

@@ -23,7 +23,7 @@ use skia_safe::{
 };
 use translate::{prelude::GetChronoLocale, tr, Context, Error};
 
-use super::{body, chart::WIDTH_F, shape, INSET, MARGIN};
+use super::{body, chart::WIDTH_F, shape, INSET};
 
 #[allow(clippy::cast_sign_loss)]
 #[allow(clippy::cast_possible_truncation)]
@@ -69,7 +69,7 @@ pub fn next_milestone(value: f64) -> f64 {
 #[allow(clippy::cast_possible_wrap)]
 pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	let info = ImageInfo::new(
-		(750, 389 + BUBBLE_HEIGHT_I as i32 + GAP_I as i32),
+		(750, 400 + BUBBLE_HEIGHT_I as i32 + GAP_I as i32),
 		ColorType::RGBA8888,
 		AlphaType::Premul,
 		None,
@@ -89,7 +89,7 @@ pub fn apply_bubbles(
 ) {
 	crate::canvas::Canvas::new(720.)
 		.gap(7.)
-		.tl((0., 50. - MARGIN as f32 + INSET))
+		.tl((0., INSET + 50.))
 		.push(
 			&shape::Bubble,
 			body::Body::from_bubble(ctx, value, kind, Paint::Aqua),
@@ -129,7 +129,7 @@ pub fn round_corners(surface: &mut Surface) {
 	let mut rect = RRect::new();
 
 	rect.set_rect_radii(
-		Rect::new(0., 0., WIDTH_F, 389. + BUBBLE_HEIGHT + GAP),
+		Rect::new(0., 0., WIDTH_F, 400. + BUBBLE_HEIGHT + GAP),
 		&[
 			Point::new(30., 30.),
 			Point::new(30., 30.),
@@ -158,7 +158,7 @@ macro_rules! impl_project_create {
 				range_y: Range<$ty>,
 				colour: Option<Paint>,
 			) -> Result<Vec<u8>, Error> {
-				const PIXELS: usize = 750 * (389 + BUBBLE_HEIGHT_I as usize + GAP_I as usize);
+				const PIXELS: usize = 750 * (400 + BUBBLE_HEIGHT_I as usize + GAP_I as usize);
 				const BUF_LEN_RGBA: usize = 4 * PIXELS;
 
 				// Allocate a buffer large enough to hold an RGBA representation of the image
@@ -166,7 +166,7 @@ macro_rules! impl_project_create {
 
 				// The BitMapBackend uses RGB, so we will need to conver it later
 				let backend =
-					BitMapBackend::with_buffer(&mut buffer, (750, 389 + BUBBLE_HEIGHT_I + GAP_I))
+					BitMapBackend::with_buffer(&mut buffer, (750, 400 + BUBBLE_HEIGHT_I + GAP_I))
 						.into_drawing_area();
 
 				backend
@@ -175,7 +175,7 @@ macro_rules! impl_project_create {
 
 				// set start time to `created_at`, and end to last time
 				let mut chart = ChartBuilder::on(&backend)
-					.margin_top(60 + BUBBLE_HEIGHT_I + GAP_I * 2)
+					.margin_top(71 + BUBBLE_HEIGHT_I + GAP_I * 2)
 					.margin_bottom(20)
 					.margin_right(30)
 					.set_label_area_size(LabelAreaPosition::Left, 90)

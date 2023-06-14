@@ -6,6 +6,17 @@ use skia_safe::Color;
 
 use crate::colour::Colour;
 
+#[derive(Clone, Copy)]
+pub struct Level(pub u32);
+
+#[allow(clippy::cast_precision_loss)]
+#[allow(clippy::cast_lossless)]
+impl From<Level> for f64 {
+	fn from(value: Level) -> Self {
+		value.0 as f64
+	}
+}
+
 const LEVEL_COLOUR: [Colour; 11] = [
 	Colour::DarkGray,
 	Colour::White,
@@ -133,8 +144,8 @@ const TOTAL_XP: [u32; 47] = [
 const XP_PER_LEVEL: u32 = 10_000;
 
 #[must_use]
-pub fn get_colours(level: u32) -> [Color; 2] {
-	let prestige = level / 5;
+pub fn get_colours(level: Level) -> [Color; 2] {
+	let prestige = level.0 / 5;
 	let colour = LEVEL_COLOUR[min(prestige as usize, LEVEL_COLOUR.len() - 1)];
 
 	[colour.into(), colour.into()]
@@ -142,13 +153,13 @@ pub fn get_colours(level: u32) -> [Color; 2] {
 
 #[must_use]
 #[allow(clippy::cast_possible_truncation)]
-pub fn get_level_format(level: u32) -> String {
-	LEVEL_FORMAT[min(level as usize, LEVEL_FORMAT.len() - 1)].to_string()
+pub fn get_level_format(level: Level) -> String {
+	LEVEL_FORMAT[min(level.0 as usize, LEVEL_FORMAT.len() - 1)].to_string()
 }
 
 #[must_use]
-pub fn get_level(xp: u32) -> u32 {
-	match xp {
+pub fn get_level(xp: u32) -> Level {
+	Level(match xp {
 		0..50 => 0,
 		50..60 => 1,
 		60..70 => 2,
@@ -196,16 +207,16 @@ pub fn get_level(xp: u32) -> u32 {
 		40_000..45_000 => 44,
 		45_000..50_000 => 45,
 		_ => 46 + (xp - 50_000) / XP_PER_LEVEL,
-	}
+	})
 }
 
 #[must_use]
 #[allow(clippy::cast_possible_truncation)]
-pub fn get_xp(level: u32) -> u32 {
-	if (level as usize) < TOTAL_XP.len() {
-		TOTAL_XP[level as usize]
+pub fn get_xp(level: Level) -> u32 {
+	if (level.0 as usize) < TOTAL_XP.len() {
+		TOTAL_XP[level.0 as usize]
 	} else {
-		TOTAL_XP[TOTAL_XP.len() - 1] + (level - TOTAL_XP.len() as u32) * XP_PER_LEVEL
+		TOTAL_XP[TOTAL_XP.len() - 1] + (level.0 - TOTAL_XP.len() as u32) * XP_PER_LEVEL
 	}
 }
 
@@ -213,7 +224,7 @@ pub fn get_xp(level: u32) -> u32 {
 pub fn get_level_xp(xp: u32) -> u32 {
 	let level = get_level(xp);
 
-	get_xp(level + 1) - get_xp(level)
+	get_xp(Level(level.0 + 1)) - get_xp(level)
 }
 
 #[must_use]
@@ -226,7 +237,7 @@ pub fn get_curr_level_xp(xp: u32) -> u32 {
 pub fn get_level_progress(xp: u32) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
-	let next = get_xp(level + 1);
+	let next = get_xp(Level(level.0 + 1));
 
 	(xp - base) as f32 / (next - base) as f32
 }

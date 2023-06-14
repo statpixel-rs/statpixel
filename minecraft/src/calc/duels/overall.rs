@@ -1,4 +1,4 @@
-pub use super::{convert, get_colours, get_level_format};
+pub use super::{convert, get_colours, get_level_format, Level};
 
 const TOTAL_XP: [u32; 47] = [
 	0,
@@ -52,8 +52,8 @@ const TOTAL_XP: [u32; 47] = [
 const XP_PER_LEVEL: u32 = 20_000;
 
 #[must_use]
-pub fn get_level(xp: u32) -> u32 {
-	match xp {
+pub fn get_level(xp: u32) -> Level {
+	Level(match xp {
 		0..100 => 0,
 		100..120 => 1,
 		120..140 => 2,
@@ -101,16 +101,16 @@ pub fn get_level(xp: u32) -> u32 {
 		80_000..90_000 => 44,
 		90_000..100_000 => 45,
 		_ => 46 + (xp - 100_000) / XP_PER_LEVEL,
-	}
+	})
 }
 
 #[must_use]
 #[allow(clippy::cast_possible_truncation)]
-pub fn get_xp(level: u32) -> u32 {
-	if (level as usize) < TOTAL_XP.len() {
-		TOTAL_XP[level as usize]
+pub fn get_xp(level: Level) -> u32 {
+	if (level.0 as usize) < TOTAL_XP.len() {
+		TOTAL_XP[level.0 as usize]
 	} else {
-		TOTAL_XP[TOTAL_XP.len() - 1] + (level - TOTAL_XP.len() as u32) * XP_PER_LEVEL
+		TOTAL_XP[TOTAL_XP.len() - 1] + (level.0 - TOTAL_XP.len() as u32) * XP_PER_LEVEL
 	}
 }
 
@@ -118,7 +118,7 @@ pub fn get_xp(level: u32) -> u32 {
 pub fn get_level_xp(xp: u32) -> u32 {
 	let level = get_level(xp);
 
-	get_xp(level + 1) - get_xp(level)
+	get_xp(Level(level.0 + 1)) - get_xp(level)
 }
 
 #[must_use]
@@ -131,7 +131,7 @@ pub fn get_curr_level_xp(xp: u32) -> u32 {
 pub fn get_level_progress(xp: u32) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
-	let next = get_xp(level + 1);
+	let next = get_xp(Level(level.0 + 1));
 
 	(xp - base) as f32 / (next - base) as f32
 }

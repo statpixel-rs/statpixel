@@ -24,12 +24,22 @@ pub struct LevelSimple {
 	pub prestige: usize,
 }
 
+#[derive(Clone, Copy)]
+pub struct LevelData(pub usize, pub u64);
+
 impl From<&Level> for LevelSimple {
 	fn from(level: &Level) -> Self {
 		Self {
 			xp: level.xp,
 			prestige: level.prestiges.len(),
 		}
+	}
+}
+
+#[allow(clippy::cast_precision_loss)]
+impl From<LevelData> for f64 {
+	fn from(value: LevelData) -> Self {
+		value.0 as f64 * 120. + value.1 as f64
 	}
 }
 
@@ -108,7 +118,7 @@ fn get_level_data(xp: u64) -> u64 {
 
 #[must_use]
 #[allow(clippy::cast_possible_truncation)]
-pub fn get_level_format((prestige, level): (usize, u64)) -> String {
+pub fn get_level_format(LevelData(prestige, level): LevelData) -> String {
 	let bracket = PRESTIGE_COLOUR[if prestige == 0 {
 		0
 	} else {
@@ -128,14 +138,14 @@ pub fn get_level_format((prestige, level): (usize, u64)) -> String {
 #[allow(clippy::cast_precision_loss)]
 #[allow(clippy::cast_possible_truncation)]
 #[allow(clippy::cast_sign_loss)]
-pub fn get_xp((prestige, level): (usize, u64)) -> u64 {
+pub fn get_xp(LevelData(prestige, level): LevelData) -> u64 {
 	let (mul, base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 
 	(level as f64 * mul) as u64 + base
 }
 
 #[must_use]
-pub fn get_colours((prestige, _level): (usize, u64)) -> [Color; 2] {
+pub fn get_colours(LevelData(prestige, _level): LevelData) -> [Color; 2] {
 	let colour = match prestige {
 		0 => Colour::Gray,
 		1..5 => Colour::Blue,
@@ -182,14 +192,14 @@ pub fn get_level_xp(level: LevelSimple) -> u64 {
 #[allow(clippy::cast_precision_loss)]
 #[allow(clippy::cast_possible_truncation)]
 #[allow(clippy::cast_sign_loss)]
-pub fn get_level(level: LevelSimple) -> (usize, u64) {
+pub fn get_level(level: LevelSimple) -> LevelData {
 	let prestige = level.prestige;
 	let (mul, base) = PRESTIGES[min(prestige, PRESTIGES.len() - 1)];
 
 	let xp = ((level.xp - base) as f64 / mul) as u64;
 	let level = get_level_data(xp);
 
-	(prestige, level)
+	LevelData(prestige, level)
 }
 
 #[must_use]

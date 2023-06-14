@@ -199,9 +199,9 @@ impl Stats {
 			},
 			Type::BedWars => match path {
 				"bedwars_level" => {
-					return Some(Box::new(minecraft::calc::bed_wars::get_level(
-						self.bed_wars.xp,
-					)))
+					return Some(Box::new(
+						minecraft::calc::bed_wars::get_level(self.bed_wars.xp).0,
+					))
 				}
 				"wins_new" => {
 					self.bed_wars.solo.wins

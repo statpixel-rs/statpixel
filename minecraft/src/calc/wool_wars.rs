@@ -10,6 +10,16 @@ const XP_PER_PRESTIGE: u64 = 96 * XP_PER_LEVEL + 10_000;
 
 type Format = ((char, char), [char; 5], char);
 
+#[derive(Clone, Copy)]
+pub struct Level(pub u64);
+
+#[allow(clippy::cast_precision_loss)]
+impl From<Level> for f64 {
+	fn from(value: Level) -> Self {
+		value.0 as f64
+	}
+}
+
 const LEVEL_FORMAT: [Format; 11] = [
 	(('7', '7'), ['7', '7', '7', '7', '7'], '❤'),
 	(('f', 'f'), ['f', 'f', 'f', 'f', 'f'], '✙'),
@@ -27,8 +37,8 @@ const LEVEL_FORMAT: [Format; 11] = [
 #[must_use]
 /// # Panics
 /// Panics if the format contains invalid `char`s.
-pub fn get_colours(level: u64) -> [Color; 2] {
-	let prestige = level / 100;
+pub fn get_colours(level: Level) -> [Color; 2] {
+	let prestige = level.0 / 100;
 	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
 
 	[
@@ -41,12 +51,12 @@ pub fn get_colours(level: u64) -> [Color; 2] {
 #[allow(clippy::cast_possible_truncation)]
 #[allow(clippy::cast_sign_loss)]
 #[allow(clippy::cast_precision_loss)]
-pub fn get_level_format(level: u64) -> String {
-	let prestige = level / 100;
+pub fn get_level_format(level: Level) -> String {
+	let prestige = level.0 / 100;
 
 	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
-	let length = (level as f32).log10().ceil() as u8;
-	let string = level.to_string();
+	let length = (level.0 as f32).log10().ceil() as u8;
+	let string = level.0.to_string();
 	let chars = string.chars();
 
 	// char, escape, colour, + 3 for each bracket, + star
@@ -74,24 +84,24 @@ pub fn get_level_format(level: u64) -> String {
 }
 
 #[must_use]
-pub fn get_level(xp: u64) -> u64 {
+pub fn get_level(xp: u64) -> Level {
 	// Level from prestiges, remaining level is from start of a prestige
 	let level = 100 * (xp / XP_PER_PRESTIGE);
 	let xp = xp % XP_PER_PRESTIGE;
 
-	match xp {
+	Level(match xp {
 		0..1_000 => level + 1,
 		1_000..3_000 => level + 2,
 		3_000..6_000 => level + 3,
 		6_000..10_000 => level + 4,
 		_ => level + 5 + (xp - 10_000) / XP_PER_LEVEL,
-	}
+	})
 }
 
 #[must_use]
-pub fn get_xp(level: u64) -> u64 {
-	let prestige = level / 100;
-	let level = level % 100;
+pub fn get_xp(level: Level) -> u64 {
+	let prestige = level.0 / 100;
+	let level = level.0 % 100;
 
 	let mut xp = prestige * XP_PER_PRESTIGE;
 
@@ -110,7 +120,7 @@ pub fn get_xp(level: u64) -> u64 {
 pub fn get_level_xp(xp: u64) -> u64 {
 	let level = get_level(xp);
 
-	get_xp(level + 1) - get_xp(level)
+	get_xp(Level(level.0 + 1)) - get_xp(level)
 }
 
 #[must_use]
@@ -123,7 +133,7 @@ pub fn get_curr_level_xp(xp: u64) -> u64 {
 pub fn get_level_progress(xp: u64) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
-	let next = get_xp(level + 1);
+	let next = get_xp(Level(level.0 + 1));
 
 	(xp - base) as f32 / (next - base) as f32
 }

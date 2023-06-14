@@ -2,9 +2,20 @@ use skia_safe::Color;
 
 use crate::{colour::Colour, text::ESCAPE};
 
+#[derive(Clone, Copy)]
+pub struct Level(pub u32);
+
+#[allow(clippy::cast_precision_loss)]
+#[allow(clippy::cast_lossless)]
+impl From<Level> for f64 {
+	fn from(value: Level) -> Self {
+		value.0 as f64
+	}
+}
+
 #[must_use]
-pub fn get_level_format(level: u32) -> String {
-	match level {
+pub fn get_level_format(level: Level) -> String {
+	match level.0 {
 		0..=1 => format!("{ESCAPE}fRookie"),
 		2 => format!("{ESCAPE}8Untrained"),
 		3 => format!("{ESCAPE}eAmateur"),
@@ -22,8 +33,8 @@ pub fn get_level_format(level: u32) -> String {
 }
 
 #[must_use]
-pub fn get_colours(level: u32) -> [Color; 2] {
-	let colour = match level {
+pub fn get_colours(level: Level) -> [Color; 2] {
+	let colour = match level.0 {
 		0..=1 => Colour::White,
 		2 => Colour::DarkGray,
 		3 => Colour::Yellow,
@@ -43,8 +54,8 @@ pub fn get_colours(level: u32) -> [Color; 2] {
 }
 
 #[must_use]
-pub fn get_level(xp: u32) -> u32 {
-	match xp {
+pub fn get_level(xp: u32) -> Level {
+	Level(match xp {
 		0..100 => 1,
 		100..250 => 2,
 		250..500 => 3,
@@ -58,12 +69,12 @@ pub fn get_level(xp: u32) -> u32 {
 		15_000..20_000 => 11,
 		// TODO: add "#1 Builder" level
 		_ => 12,
-	}
+	})
 }
 
 #[must_use]
-pub fn get_xp(level: u32) -> u32 {
-	match level {
+pub fn get_xp(level: Level) -> u32 {
+	match level.0 {
 		..=1 => 0,
 		2 => 100,
 		3 => 250,
@@ -83,7 +94,7 @@ pub fn get_xp(level: u32) -> u32 {
 pub fn get_level_xp(xp: u32) -> u32 {
 	let level = get_level(xp);
 
-	get_xp(level + 1) - get_xp(level)
+	get_xp(Level(level.0 + 1)) - get_xp(level)
 }
 
 #[must_use]
@@ -96,7 +107,7 @@ pub fn get_curr_level_xp(xp: u32) -> u32 {
 pub fn get_level_progress(xp: u32) -> f32 {
 	let level = get_level(xp);
 	let base = get_xp(level);
-	let next = get_xp(level + 1);
+	let next = get_xp(Level(level.0 + 1));
 
 	(xp - base) as f32
 		/ if next == base {
