@@ -824,37 +824,45 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let kind_into_int_impl = overall_fields.iter().filter(|f| f.skip_chart.is_none()).enumerate().map(|(idx, f)| {
-			let idx = idx as u32;
-			let name = &f.ident;
-			let id = if let Some(ref tr) = f.tr {
-				let id = &tr.replace('-', "_");
+		let kind_into_int_impl = overall_fields
+			.iter()
+			.filter(|f| f.skip_chart.is_none())
+			.enumerate()
+			.map(|(idx, f)| {
+				let idx = idx as u32;
+				let name = &f.ident;
+				let id = if let Some(ref tr) = f.tr {
+					let id = &tr.replace('-', "_");
 
-				ident!(id)
-			} else {
-				name.clone()
-			};
+					ident!(id)
+				} else {
+					name.clone()
+				};
 
-			quote! {
-				&#enum_kind_ident ::#id => #idx,
-			}
-		});
+				quote! {
+					&#enum_kind_ident ::#id => #idx,
+				}
+			});
 
-		let kind_from_int_impl = overall_fields.iter().filter(|f| f.skip_chart.is_none()).enumerate().map(|(idx, f)| {
-			let idx = idx as u32;
-			let name = &f.ident;
-			let id = if let Some(ref tr) = f.tr {
-				let id = &tr.replace('-', "_");
+		let kind_from_int_impl = overall_fields
+			.iter()
+			.filter(|f| f.skip_chart.is_none())
+			.enumerate()
+			.map(|(idx, f)| {
+				let idx = idx as u32;
+				let name = &f.ident;
+				let id = if let Some(ref tr) = f.tr {
+					let id = &tr.replace('-', "_");
 
-				ident!(id)
-			} else {
-				name.clone()
-			};
+					ident!(id)
+				} else {
+					name.clone()
+				};
 
-			quote! {
-				#idx => #enum_kind_ident ::#id,
-			}
-		});
+				quote! {
+					#idx => #enum_kind_ident ::#id,
+				}
+			});
 
 		let impl_mode_enum = if modes_len > 25 {
 			// There can only be 25 options in a ChoiceParameter, so we need to use
@@ -886,22 +894,28 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let static_kinds_iter = overall_fields.iter().filter(|f| f.skip_chart.is_none()).map(|f| {
-			let name = &f.ident;
-			let id = if let Some(ref tr) = f.tr {
-				let id = &tr.replace('-', "_");
+		let static_kinds_iter = overall_fields
+			.iter()
+			.filter(|f| f.skip_chart.is_none())
+			.map(|f| {
+				let name = &f.ident;
+				let id = if let Some(ref tr) = f.tr {
+					let id = &tr.replace('-', "_");
 
-				ident!(id)
-			} else {
-				name.clone()
-			};
+					ident!(id)
+				} else {
+					name.clone()
+				};
 
-			quote! {
-				#enum_kind_ident ::#id,
-			}
-		});
+				quote! {
+					#enum_kind_ident ::#id,
+				}
+			});
 
-		let kinds_len = overall_fields.iter().filter(|f| f.skip_chart.is_none()).count();
+		let kinds_len = overall_fields
+			.iter()
+			.filter(|f| f.skip_chart.is_none())
+			.count();
 
 		let apply_all_modes = modes.iter().map(|mode| {
 			let ty = &mode.ty;
@@ -1296,7 +1310,7 @@ impl ToTokens for GameInputReceiver {
 				let val = {
 					let sum = if let Some(path) = f.path.as_ref() {
 						let path = parse_str_to_dot_path(path);
-		
+
 						quote! { data.stats.#path.#name }
 					} else {
 						sum::sum_fields(
@@ -1330,7 +1344,7 @@ impl ToTokens for GameInputReceiver {
 							Some(&ident!("stats")),
 							div,
 						);
-		
+
 						quote! {
 							{
 								let stats = &data.stats.#path;
@@ -1352,7 +1366,7 @@ impl ToTokens for GameInputReceiver {
 				let val_last = {
 					let sum = if let Some(path) = f.path.as_ref() {
 						let path = parse_str_to_dot_path(path);
-		
+
 						quote! { data.stats.#path.#name }
 					} else {
 						sum::sum_fields(
@@ -1386,7 +1400,7 @@ impl ToTokens for GameInputReceiver {
 							Some(&ident!("stats")),
 							div,
 						);
-		
+
 						quote! {
 							{
 								let stats = &last.1.stats.#path;
@@ -1408,7 +1422,7 @@ impl ToTokens for GameInputReceiver {
 				let val_first = {
 					let sum = if let Some(path) = f.path.as_ref() {
 						let path = parse_str_to_dot_path(path);
-		
+
 						quote! { data.stats.#path.#name }
 					} else {
 						sum::sum_fields(
@@ -1442,7 +1456,7 @@ impl ToTokens for GameInputReceiver {
 							Some(&ident!("stats")),
 							div,
 						);
-		
+
 						quote! {
 							{
 								let stats = &first.1.stats.#path;
