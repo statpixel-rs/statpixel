@@ -31,6 +31,8 @@ impl Line {
 		}
 	}
 
+	/// # Panics
+	/// Panics if `series` is empty.
 	#[must_use]
 	pub fn from_series(series: &[(f64, f64)]) -> Self {
 		if series.len() == 1 {

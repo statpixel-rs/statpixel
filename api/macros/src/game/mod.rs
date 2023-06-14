@@ -1481,7 +1481,7 @@ impl ToTokens for GameInputReceiver {
 						let predict_y = value.unwrap_or_else(|| crate::canvas::project::next_milestone(#val_last));
 						let predict_x = line
 							.x(predict_y, last.0.timestamp() as f64)
-							.map(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).unwrap());
+							.and_then(|x| ::chrono::TimeZone::timestamp_opt(&::chrono::Utc, x as i64, 0).single());
 
 						let mut buffer = crate::canvas::project::f64::create(
 							ctx,

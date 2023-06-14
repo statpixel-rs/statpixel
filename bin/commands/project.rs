@@ -48,6 +48,7 @@ macro_rules! generate_large_command {
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 				#[autocomplete = "autocomplete_kind"] kind: Option<u32>,
 				#[min = 0.0f64]
+				#[max = 1_000_000_000.0f64]
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
@@ -147,6 +148,7 @@ macro_rules! generate_command {
 				mode: Option<$mode>,
 				#[autocomplete = "autocomplete_kind"] kind: Option<u32>,
 				#[min = 0.0f64]
+				#[max = 1_000_000_000.0f64]
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let kind: ::std::option::Option<$kind> = kind.map(|m| m.into());

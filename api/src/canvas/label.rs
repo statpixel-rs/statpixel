@@ -89,35 +89,64 @@ macro_rules! impl_to_formatted_label_for_uint {
 	};
 }
 
-macro_rules! impl_to_formatted_label_for_float {
-	($float:ty) => {
-		impl ToFormatted for $float {
-			fn to_formatted_label<'t, 'c: 't>(
-				&'t self,
-				ctx: Context<'c>,
-			) -> ::std::borrow::Cow<'t, str> {
-				let locale = ctx.get_num_format_locale();
-				let sep = match locale {
-					num_format::Locale::de
-					| num_format::Locale::fr
-					| num_format::Locale::it
-					| num_format::Locale::es
-					| num_format::Locale::pt => ",",
-					_ => ".",
-				};
+impl ToFormatted for f64 {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> ::std::borrow::Cow<'t, str> {
+		let locale = ctx.get_num_format_locale();
+		let sep = match locale {
+			num_format::Locale::de
+			| num_format::Locale::fr
+			| num_format::Locale::it
+			| num_format::Locale::es
+			| num_format::Locale::pt => ",",
+			_ => ".",
+		};
 
-				let mut string = format!("{self:.2}");
+		if *self < 1_000. {
+			let mut string = format!("{self:.2}");
 
-				if sep != "." {
-					let len = string.len();
+			if sep != "." {
+				let len = string.len();
 
-					string.replace_range(len - 3..len - 2, sep);
-				}
-
-				Cow::Owned(string)
+				string.replace_range(len - 3..len - 2, sep);
 			}
+
+			Cow::Owned(string)
+		} else {
+			#[allow(clippy::cast_possible_truncation)]
+			#[allow(clippy::cast_sign_loss)]
+			(*self as u64).to_formatted_label(ctx).into_owned().into()
 		}
-	};
+	}
+}
+
+impl ToFormatted for f32 {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> ::std::borrow::Cow<'t, str> {
+		let locale = ctx.get_num_format_locale();
+		let sep = match locale {
+			num_format::Locale::de
+			| num_format::Locale::fr
+			| num_format::Locale::it
+			| num_format::Locale::es
+			| num_format::Locale::pt => ",",
+			_ => ".",
+		};
+
+		if *self < 1_000. {
+			let mut string = format!("{self:.2}");
+
+			if sep != "." {
+				let len = string.len();
+
+				string.replace_range(len - 3..len - 2, sep);
+			}
+
+			Cow::Owned(string)
+		} else {
+			#[allow(clippy::cast_possible_truncation)]
+			#[allow(clippy::cast_sign_loss)]
+			(*self as u32).to_formatted_label(ctx).into_owned().into()
+		}
+	}
 }
 
 impl ToFormatted for u8
@@ -140,9 +169,6 @@ impl_to_formatted_label_for_uint!(u32);
 impl_to_formatted_label_for_uint!(u64);
 impl_to_formatted_label_for_uint!(u128);
 impl_to_formatted_label_for_uint!(usize);
-
-impl_to_formatted_label_for_float!(f32);
-impl_to_formatted_label_for_float!(f64);
 
 impl ToFormatted for String {
 	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: Context<'c>) -> Cow<'t, str> {

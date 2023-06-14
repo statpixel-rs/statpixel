@@ -772,6 +772,8 @@ top = top
   .uuid-description = Die UUID des Gildenmitglieds, dessen Gilde angezeigt werden soll.
   .days = days
   .days-description = Tage
+  .limit = limit
+  .limit-description = Die Anzahl der anzuzeigenden Mitglieder
 
 showing-guild-xp-statistics = Zeigt den Gilden-XP-Gewinn von {$from} bis {$to} an.
 
