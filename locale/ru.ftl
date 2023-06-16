@@ -71,6 +71,17 @@ auctions = auctions
 player-auctions = Аукционы
 highest-bid = Самая высокая ставка
 
+# /skyblock inventory
+
+inventory = inventory
+  .description = Просмотр инвентаря SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
 # /skyblock profile
 
 profile = profile

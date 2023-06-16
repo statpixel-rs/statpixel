@@ -71,6 +71,17 @@ auctions = auctions
 player-auctions = Subastas
 highest-bid = Oferta más alta
 
+# /skyblock inventory
+
+inventory = inventory
+  .description = Ver un inventario de SkyBlock
+  .username = username
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .profile = profile
+  .profile-description = El perfil para ver
+
 # /skyblock profile
 
 profile = profile

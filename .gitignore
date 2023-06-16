@@ -4,3 +4,8 @@
 *.txt
 !.release.json
 /data
+/node_modules
+/pnpm-lock.yaml
+!package.json
+/assets/materials
+/assets/textures

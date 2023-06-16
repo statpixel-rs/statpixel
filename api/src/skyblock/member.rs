@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-use crate::player::stats::from_trunc_f64_to_u64;
+use crate::{nbt::inventory::Inventory, player::stats::from_trunc_f64_to_u64};
 
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
@@ -25,6 +25,8 @@ pub struct Member {
 	pub skills: Skills,
 	pub dungeons: Dungeons,
 	pub leveling: Leveling,
+	#[serde(deserialize_with = "crate::nbt::from_data", rename = "inv_contents")]
+	pub inventory: Inventory,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]

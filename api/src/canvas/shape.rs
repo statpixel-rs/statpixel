@@ -44,6 +44,9 @@ pub struct FullWidthTitle;
 pub struct FullWidthBigTitle;
 pub struct Subtitle;
 
+/// Expects a 48x48 PNG
+pub struct Slot<'a>(pub Option<&'a [u8]>, pub u8);
+
 pub struct Bubble;
 pub struct WideBubble;
 pub struct TallBubble;
@@ -450,6 +453,61 @@ impl_rect_shape!(LeaderboardValue, 200., 35., true);
 
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
+
+impl Shape for Slot<'_> {
+	fn size(&self) -> Size {
+		Size {
+			width: 73.777_78,
+			height: 73.777_78,
+		}
+	}
+
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+		if let Some(bytes) = self.0 {
+			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
+
+			if self.1 > 1 {
+				let mut paragraph = Body::build_slice(
+					&[Text {
+						text: &self.1.to_string(),
+						..Default::default()
+					}],
+					24.,
+					TextAlign::Center,
+				);
+
+				paragraph.layout(40.);
+				// bottom right corner
+				paragraph.paint(canvas, (bounds.right() - 27., bounds.bottom() - 27.));
+			}
+		}
+	}
+
+	fn insets(&self) -> Point {
+		(12.888_89, 12.888_89).into()
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+}
 
 impl Shape for Custom {
 	fn size(&self) -> Size {

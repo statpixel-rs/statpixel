@@ -1,4 +1,5 @@
 pub mod auction;
+pub mod materials;
 pub mod member;
 pub mod profile;
 

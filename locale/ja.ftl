@@ -71,6 +71,17 @@ auctions = auctions
 player-auctions = Auctions
 highest-bid = 最高入札
 
+# /skyblock inventory
+
+inventory = inventory
+  .description = SkyBlockインベントリを表示します。
+  .username = ユーザー名
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
 # /skyblock profile
 
 profile = profile
