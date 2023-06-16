@@ -1,6 +1,9 @@
 use serde::Deserialize;
 
-use crate::{nbt::inventory::Inventory, player::stats::from_trunc_f64_to_u64};
+use crate::{
+	nbt::inventory::{self, Inventory, Pets, WithHotbar},
+	player::stats::from_trunc_f64_to_u64,
+};
 
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
@@ -25,8 +28,46 @@ pub struct Member {
 	pub skills: Skills,
 	pub dungeons: Dungeons,
 	pub leveling: Leveling,
-	#[serde(deserialize_with = "crate::nbt::from_data", rename = "inv_contents")]
-	pub inventory: Inventory,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "inv_contents"
+	)]
+	pub inventory: Option<WithHotbar>,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "ender_chest_contents"
+	)]
+	pub ender_chest: Option<Inventory>,
+	#[serde(deserialize_with = "crate::nbt::from_data_opt")]
+	pub talisman_bag: Option<Inventory>,
+	#[serde(deserialize_with = "crate::nbt::from_data_opt")]
+	pub quiver: Option<Inventory>,
+	#[serde(deserialize_with = "crate::nbt::from_data_opt")]
+	pub fishing_bag: Option<Inventory>,
+	#[serde(deserialize_with = "crate::nbt::from_data_opt")]
+	pub potion_bag: Option<Inventory>,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "equippment_contents"
+	)]
+	pub equipment: Option<Inventory>,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "wardrobe_contents"
+	)]
+	pub wardrobe: Option<Inventory>,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "candy_inventory_contents"
+	)]
+	pub candy: Option<Inventory>,
+	#[serde(
+		deserialize_with = "crate::nbt::from_data_opt",
+		rename = "personal_vault_contents"
+	)]
+	pub vault: Option<Inventory>,
+	#[serde(deserialize_with = "inventory::pets")]
+	pub pets: Option<Pets>,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]

@@ -42,8 +42,7 @@ static PLAYER_SKIN_ENDPOINT: Lazy<Url> =
 
 #[derive(Deserialize, Debug)]
 pub struct Response {
-	#[serde(default)]
-	pub player: data::Data,
+	pub player: Option<data::Data>,
 	pub success: bool,
 }
 
@@ -234,9 +233,17 @@ impl Player {
 			}
 		};
 
-		self.set_display_str(&response.player).await?;
+		let Some(player) = response.player else {
+			return Err(Error::PlayerNotFound(
+				self.username
+					.as_ref()
+					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
+			));
+		};
 
-		Ok(Arc::new(response.player))
+		self.set_display_str(&player).await?;
+
+		Ok(Arc::new(player))
 	}
 
 	/// # Panics

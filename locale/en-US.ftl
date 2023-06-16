@@ -82,6 +82,96 @@ inventory = inventory
   .profile = profile
   .profile-description = The profile to view
 
+enderchest = enderchest
+  .description = View a SkyBlock enderchest
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+quiver = quiver
+  .description = View a SkyBlock quiver
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+talisman = talisman
+  .description = View a SkyBlock talisman bag
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+fishing = fishing
+  .description = View a SkyBlock fishing bag
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+potions = potions
+  .description = View a SkyBlock potion bag
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+equipment = equipment
+  .description = View SkyBlock equipment
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+wardrobe = wardrobe
+  .description = View a SkyBlock wardrobe
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+candy = candy
+  .description = View a SkyBlock candy inventory
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+vault = vault
+  .description = View a SkyBlock personal vault
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
+pets = pets
+  .description = View SkyBlock pets
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
 # /skyblock profile
 
 profile = profile
@@ -105,7 +195,7 @@ farming = Farming
 mining = Mining
 combat = Combat
 foraging = Foraging
-fishing = Fishing
+fishing-skill = Fishing
 enchanting = Enchanting
 alchemy = Alchemy
 taming = Taming

@@ -9,3 +9,5 @@
 !package.json
 /assets/materials
 /assets/textures
+!assets/items.json
+!assets/map.json

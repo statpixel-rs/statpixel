@@ -63,7 +63,7 @@ colour-changed-description = 背景色が{$colour}に変更されました。
 
 auctions = auctions
   .description = SkyBlockオークションを表示します。
-  .username = ユーザー名
+  .username = username
   .username-description = Minecraftのユーザー名
   .uuid = uuid
   .uuid-description = MinecraftのUUID
@@ -75,7 +75,97 @@ highest-bid = 最高入札
 
 inventory = inventory
   .description = SkyBlockインベントリを表示します。
-  .username = ユーザー名
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+enderchest = enderchest
+  .description = SkyBlockエンダーチェストを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+quiver = quiver
+  .description = SkyBlockクイバーを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+talisman = talisman
+  .description = SkyBlockタリスマンバッグを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+fishing = fishing
+  .description = SkyBlock釣りバッグを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+potions = potions
+  .description = SkyBlockポーションバッグを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+equipment = equipment
+  .description = SkyBlock装備を表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+wardrobe = wardrobe
+  .description = SkyBlockワードローブを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+candy = candy
+  .description = SkyBlockキャンディーインベントリを表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+vault = vault
+  .description = SkyBlock個人用金庫を表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
+pets = pets
+  .description = SkyBlockペットを表示します。
+  .username = username
   .username-description = Minecraftのユーザー名
   .uuid = uuid
   .uuid-description = MinecraftのUUID
@@ -86,7 +176,7 @@ inventory = inventory
 
 profile = profile
   .description = SkyBlockプロファイルを表示します。
-  .username = ユーザー名
+  .username = username
   .username-description = Minecraftのユーザー名
   .uuid = uuid
   .uuid-description = MinecraftのUUID
@@ -105,7 +195,7 @@ farming = 農業
 mining = 採掘
 combat = 戦闘
 foraging = 採取
-fishing = 釣り
+fishing-skill = 釣り
 enchanting = エンチャント
 alchemy = 錬金術
 taming = 飼いならし
@@ -118,7 +208,7 @@ social = ソーシャル
 
 bank = bank
   .description = SkyBlock銀行を表示します。
-  .username = ユーザー名
+  .username = username
   .username-description = Minecraftのユーザー名
   .uuid = uuid
   .uuid-description = MinecraftのUUID
@@ -139,15 +229,15 @@ leaderboard = leaderboard
 
 network = network
   .description = ネットワーク
-  .username = ユーザー名
+  .username = username
   .username-description = Minecraftのユーザー名
   .uuid = uuid
   .uuid-description = MinecraftのUUID
-  .hours = 時間
+  .hours = hours
   .hours-description = 時間
-  .days = 日
+  .days = days
   .days-description = 日
-  .weeks = 週
+  .weeks = weeks
   .weeks-description = 週
 
 karma = カルマ

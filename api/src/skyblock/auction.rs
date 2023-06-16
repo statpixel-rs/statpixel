@@ -26,7 +26,7 @@ pub struct Auction {
 #[derive(Deserialize, Clone)]
 pub struct Item {
 	#[serde(
-		deserialize_with = "crate::nbt::item::item_name_from_gzipped_base64",
+		deserialize_with = "crate::nbt::item::name_from_gzipped_base64",
 		rename = "data"
 	)]
 	pub name: String,

@@ -3,8 +3,19 @@
 use serde::{Deserialize, Deserializer};
 
 #[derive(Clone, Debug, Default, Deserialize)]
+pub struct WithHotbar {
+	#[serde(deserialize_with = "nested_items_hotbar", rename = "i")]
+	pub items: Vec<Option<Item>>,
+}
+
+#[derive(Clone, Debug, Default, Deserialize)]
 pub struct Inventory {
 	#[serde(deserialize_with = "nested_items", rename = "i")]
+	pub items: Vec<Option<Item>>,
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct Pets {
 	pub items: Vec<Option<Item>>,
 }
 
@@ -12,6 +23,13 @@ pub struct Inventory {
 pub struct Item {
 	pub id: String,
 	pub count: u8,
+	pub damage: u16,
+}
+
+#[derive(Deserialize)]
+pub struct RawPet {
+	#[serde(rename = "type")]
+	pub id: String,
 }
 
 #[derive(Deserialize)]
@@ -20,6 +38,8 @@ pub struct RawItem {
 	pub id: Option<String>,
 	#[serde(rename = "Count", default)]
 	pub count: u8,
+	#[serde(rename = "Damage", default)]
+	pub damage: u16,
 }
 
 fn nested_id<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
@@ -29,7 +49,7 @@ where
 	#[derive(Deserialize)]
 	struct Tag {
 		#[serde(rename = "ExtraAttributes")]
-		extra: ExtraAttributes,
+		extra: Option<ExtraAttributes>,
 	}
 
 	#[derive(Deserialize)]
@@ -37,10 +57,10 @@ where
 		id: String,
 	}
 
-	Option::<Tag>::deserialize(deserializer).map(|t| t.map(|t| t.extra.id))
+	Option::<Tag>::deserialize(deserializer).map(|t| t.and_then(|t| t.extra.map(|e| e.id)))
 }
 
-fn nested_items<'de, D>(deserializer: D) -> Result<Vec<Option<Item>>, D::Error>
+fn nested_items_hotbar<'de, D>(deserializer: D) -> Result<Vec<Option<Item>>, D::Error>
 where
 	D: Deserializer<'de>,
 {
@@ -55,6 +75,51 @@ where
 
 	Ok(items
 		.into_iter()
-		.map(|i| i.id.map(|id| Item { id, count: i.count }))
+		.map(|i| {
+			i.id.map(|id| Item {
+				id,
+				count: i.count,
+				damage: i.damage,
+			})
+		})
 		.collect())
+}
+
+fn nested_items<'de, D>(deserializer: D) -> Result<Vec<Option<Item>>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	Vec::<RawItem>::deserialize(deserializer).map(|i| {
+		i.into_iter()
+			.map(|i| {
+				i.id.map(|id| Item {
+					id,
+					count: i.count,
+					damage: i.damage,
+				})
+			})
+			.collect()
+	})
+}
+
+/// # Errors
+/// Serde errors if data is missing or invalid
+pub fn pets<'de, D>(deserializer: D) -> Result<Option<Pets>, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	Option::<Vec<RawPet>>::deserialize(deserializer).map(|p| {
+		p.map(|p| Pets {
+			items: p
+				.into_iter()
+				.map(|p| {
+					Some(Item {
+						id: p.id,
+						count: 1,
+						damage: 0,
+					})
+				})
+				.collect(),
+		})
+	})
 }

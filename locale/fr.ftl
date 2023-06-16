@@ -82,6 +82,96 @@ inventory = inventory
   .profile = profile
   .profile-description = Le profil à afficher
 
+enderchest = enderchest
+  .description = Affiche un coffre de fin SkyBlock.
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+quiver = quiver
+  .description = Affiche un carquois SkyBlock.
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+talisman = talisman
+  .description = Affiche un sac de talismans SkyBlock.
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+fishing = fishing
+  .description = Affiche un sac de pêche SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+potions = potions
+  .description = Affiche un sac de potions SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+equipment = equipment
+  .description = Affiche l'équipement SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+wardrobe = wardrobe
+  .description = Affiche une garde-robe SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+candy = candy
+  .description = Affiche un inventaire de bonbons SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+vault = vault
+  .description = Affiche un coffre personnel SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
+pets = pets
+  .description = Affiche les animaux SkyBlock
+  .username = username
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Le profil à afficher
+
 # /skyblock profile
 
 profile = profile
@@ -105,7 +195,7 @@ farming = Agriculture
 mining = Minage
 combat = Combat
 foraging = Récolte
-fishing = Pêche
+fishing-skill = Pêche
 enchanting = Enchantement
 alchemy = Alchimie
 taming = Dressage

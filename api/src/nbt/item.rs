@@ -2,7 +2,7 @@ use base64::{engine::general_purpose::STANDARD, Engine};
 use flate2::read::GzDecoder;
 use serde::{Deserialize, Deserializer};
 
-mod item {
+mod _item {
 	use serde::Deserialize;
 
 	#[derive(Deserialize, Debug)]
@@ -30,7 +30,7 @@ mod item {
 /// # Errors
 /// See [`parse_from_encoded`]
 pub fn parse_item_name(input: &str) -> Result<String, super::Error> {
-	let item: item::Item = parse_from_encoded(input)?;
+	let item: _item::Item = parse_from_encoded(input)?;
 	let item = item.i.into_iter().next().ok_or(super::Error::InvalidNbt)?;
 
 	Ok(item.tag.display.name)
@@ -54,7 +54,7 @@ where
 
 /// # Errors
 /// See [`parse_from_encoded`]
-pub fn item_name_from_gzipped_base64<'de, D>(deserializer: D) -> Result<String, D::Error>
+pub fn name_from_gzipped_base64<'de, D>(deserializer: D) -> Result<String, D::Error>
 where
 	D: Deserializer<'de>,
 {

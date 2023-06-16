@@ -279,6 +279,33 @@ impl Subtitle {
 
 		Self::from_text(text.as_slice())
 	}
+
+	#[must_use]
+	pub fn from_label_str(label: &[Text], sub: &str) -> Paragraph {
+		let text = [
+			label,
+			&[
+				Text {
+					text: " (",
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: sub,
+					paint: Paint::White,
+					..Default::default()
+				},
+				Text {
+					text: ")",
+					paint: Paint::White,
+					..Default::default()
+				},
+			],
+		]
+		.concat();
+
+		Self::from_text(text.as_slice())
+	}
 }
 
 impl WideBubbleProgress {
@@ -489,13 +516,13 @@ impl Shape for Slot<'_> {
 						text: &self.1.to_string(),
 						..Default::default()
 					}],
-					24.,
+					27.,
 					TextAlign::Center,
 				);
 
 				paragraph.layout(40.);
 				// bottom right corner
-				paragraph.paint(canvas, (bounds.right() - 27., bounds.bottom() - 27.));
+				paragraph.paint(canvas, (bounds.right() - 32., bounds.bottom() - 30.));
 			}
 		}
 	}

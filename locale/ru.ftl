@@ -82,6 +82,96 @@ inventory = inventory
   .profile = profile
   .profile-description = Профиль для просмотра
 
+enderchest = enderchest
+  .description = Просмотр эндерсундука SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+quiver = quiver
+  .description = Просмотр колчана SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+talisman = talisman
+  .description = Просмотр сумки талисманов SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+fishing = fishing
+  .description = Просмотр сумки рыбака SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+potions = potions
+  .description = Просмотр сумки зелий SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+equipment = equipment
+  .description = Просмотр снаряжения SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+wardrobe = wardrobe
+  .description = Просмотр гардероба SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+candy = candy
+  .description = Просмотр инвентаря конфет SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+vault = vault
+  .description = Просмотр личного хранилища SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
+pets = pets
+  .description = Просмотр питомцев SkyBlock
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .profile = profile
+  .profile-description = Профиль для просмотра
+
 # /skyblock profile
 
 profile = profile
@@ -105,7 +195,7 @@ farming = Фермерство
 mining = Горное дело
 combat = Бой
 foraging = Сбор
-fishing = Рыбалка
+fishing-skill = Рыбалка
 enchanting = Зачарование
 alchemy = Алхимия
 taming = Приручение
