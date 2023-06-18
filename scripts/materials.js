@@ -30,7 +30,7 @@ for (const name of ORDER) {
 	for (let path of files) {
 		path = path.replace(/\\/g, '/');
 
-		const material = path.slice(path.lastIndexOf('\\') + 1);
+		const material = path.slice(path.lastIndexOf('/') + 1);
 		let name = material;
 
 		if (ANIMATE_REGEX.test(material)) {
@@ -80,7 +80,7 @@ for (const name of ORDER) {
 									// for crisp edges since it's pixel art
 									kernel: 'nearest'
 								})
-								.toFile(`./assets/textures/${name.replace(/:/g, '_').toUpperCase()}.png`);
+								.toFile(`./assets/textures/${name.replace(/:/g, ';').toUpperCase()}.png`);
 
 							tryagain = false;
 						} catch (e) {
@@ -104,7 +104,7 @@ for (const name of ORDER) {
 				position: 'left top',
 				fit: 'cover',
 			})
-			.toFile(`./assets/materials/${name.replace(/:/g, '_').toUpperCase()}.png`);
+			.toFile(`./assets/materials/${name.replace(/:/g, ';').toUpperCase()}.png`);
 	}
 
 	console.log(`Finished "${name}"`);
