@@ -1,111 +1,109 @@
 import fs from 'node:fs';
 
 import axios from 'axios';
+import { fdir } from 'fdir';
 import sharp from 'sharp';
 
 import { bufferUnordered } from './utils.js';
 
-const materials = fs.readdirSync('./assets/materials_raw');
-
-fs.mkdirSync('./assets/materials', { recursive: true });
+const ORDER = [
+	'Vanilla',
+	'Vanilla+_1_441',
+	'Worlds_and_Beyond_1_4_1',
+	'Hypixel_Plus',
+	'PacksHQ_16x_14',
+	'RNBW+_0_7',
+	'FurfSky_Reborn_1_6_3'
+];
 
 const ANIMATE_REGEX = /_(\d+)\.[^.]+$/;
-const ITEMS = Object.values(JSON.parse(fs.readFileSync('./assets/items.json', 'utf-8'))).flat();
-const MAP = new Map(Object.entries(JSON.parse(fs.readFileSync('./assets/map.json', 'utf-8'))));
-const buf = fs.readFileSync('./assets/items.png');
 
-for (const material of materials) {
-	let name = material;
+fs.mkdirSync('./assets/materials', { recursive: true });
+fs.mkdirSync('./assets/textures', { recursive: true });
 
-	if (ANIMATE_REGEX.test(material)) {
-		const [, num] = material.match(ANIMATE_REGEX);
-		const n = parseInt(num);
+for (const name of ORDER) {
+	const files = new fdir()
+		.withFullPaths()
+		.crawl(`./assets/resourcepacks/${name}`)
+		.sync();
 
-		if (n === 0)
-			name = material.slice(0, material.lastIndexOf('_'));
-		else {
+	for (const path of files) {
+		const material = path.slice(path.lastIndexOf('\\') + 1);
+		let name = material;
+
+		if (ANIMATE_REGEX.test(material)) {
+			const [, num] = material.match(ANIMATE_REGEX);
+			const n = parseInt(num);
+
+			if (n === 0)
+				name = material.slice(0, material.lastIndexOf('_'));
+			else {
+				const dotIndex = name.lastIndexOf('.');
+
+				name = name.slice(0, dotIndex);
+			}
+		} else {
 			const dotIndex = name.lastIndexOf('.');
 
 			name = name.slice(0, dotIndex);
 		}
-	} else {
-		const dotIndex = name.lastIndexOf('.');
 
-		name = name.slice(0, dotIndex);
-	}
+		if (name === 'item') {
+			// go back up one directory
+			name = path.slice(0, path.lastIndexOf('\\'));
+			name = name.slice(name.lastIndexOf('\\') + 1);
+		}
 
-	console.log(name, material);
+		if (path.endsWith('.properties')) {
+			const b64 = fs.readFileSync(path, 'utf-8').match(/nbt\.SkullOwner\.Properties\.textures\.0\.Value=(.+)/)?.[1];
 
-	if (await fs.promises.stat(`./assets/materials/${name.toUpperCase()}.png`).then(() => true).catch(() => false)) {
-		console.log(`Skipped "${name}"`);
+			if (b64) {
+				try {
+					console.log(`Processed "${name}" (${path})`);
 
-		continue;
-	}
+					const data = JSON.parse(Buffer.from(b64, 'base64').toString('utf-8'));
+					const texture = data.textures.SKIN.url;
+					const id = texture.slice(texture.lastIndexOf('/') + 1);
 
-	await sharp(`./assets/materials_raw/${material}`)
-		.resize(48, 48, {
-			// for crisp edges since it's pixel art
-			kernel: 'nearest',
-			position: 'left top',
-			fit: 'cover',
-		})
-		.toFile(`./assets/materials/${name.toUpperCase()}.png`);
-}
+					let tryagain = true;
 
-function stripDamage(item, id) {
-	const idx = id.indexOf(':');
-	const updatedId = idx !== -1 ? id.slice(0, idx) : id;
+					while (tryagain) {
+						try {
+							const { data: buf } = await axios.get(`https://sky.shiiyu.moe/head/${id}`, {
+								responseType: 'arraybuffer'
+							});
 
-	if (item.Damage !== 0 && typeof item.Damage === 'number') {
-		return `${updatedId};${item.Damage}`;
-	}
+							await sharp(buf)
+								.resize(48, 48, {
+									// for crisp edges since it's pixel art
+									kernel: 'nearest'
+								})
+								.toFile(`./assets/textures/${name.replace(/:/g, '_').toUpperCase()}.png`);
 
-	return updatedId;
-}
+							tryagain = false;
+						} catch (e) {
+							console.error(e);
+						}
+					}
+				} catch (e) {
+					console.error(e);
+				}
+			}
+		}
 
-await bufferUnordered(ITEMS, async item => {
-	let id = item?.tag?.ExtraAttributes?.id;
-	const texture = item?.texture_path;
+		if (!path.endsWith('.png')) {
+			continue;
+		}
 
-	if (id?.startsWith('ENCHANTED_')) {
-		id = id.slice(10);
-	}
-
-	if (item?.tag?.ExtraAttributes?.petInfo?.type) {
-		id = item.tag.ExtraAttributes.petInfo.type;
-		item.Damage = 0;
-	}
-
-	// Skip skulls
-	if (item.id === 397 && !id) return;
-
-	console.log(`Processing "${id}" (${item.id}:${item.Damage})...`);
-
-	if (id && texture) {
-		const { data: buf } = await axios.get(`https://sky.shiiyu.moe${texture}`, {
-			responseType: 'arraybuffer'
-		});
-
-		await sharp(buf)
+		await sharp(path)
 			.resize(48, 48, {
 				// for crisp edges since it's pixel art
-				kernel: 'nearest'
+				kernel: 'nearest',
+				position: 'left top',
+				fit: 'cover',
 			})
-			.toFile(`./assets/materials/${stripDamage(item, id)}.png`);
-	} else if (id && item.id && MAP.has(`${item.id}${item.Damage === 0 ? '' : `:${item.Damage}`}`)) {
-		const [x, y] = MAP.get(`${item.id}${item.Damage === 0 ? '' : `:${item.Damage}`}`);
-
-		await sharp(buf)
-			.extract({
-				left: x,
-				top: y,
-				width: 128,
-				height: 128,
-			})
-			.resize(48, 48, {
-				// for crisp edges since it's pixel art
-				kernel: 'nearest'
-			})
-			.toFile(`./assets/materials/${stripDamage(item, id)}.png`);
+			.toFile(`./assets/materials/${name.replace(/:/g, '_').toUpperCase()}.png`);
 	}
-}, 15);
+
+	console.log(`Finished "${name}"`);
+}

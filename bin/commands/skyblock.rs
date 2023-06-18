@@ -640,14 +640,14 @@ pub async fn networth(
 							&shape::NetworthName,
 							Body::build_slice(
 								&minecraft_string(&item.name).collect::<Vec<_>>(),
-								20.,
+								17.,
 								None,
 							),
 						);
 				} else {
 					canvas = canvas
 						.push_down_start_post_draw(&shape::EmptyNetworthSlot, Body::empty())
-						.push_right(&shape::NetworthName, Body::empty());
+						.push_right(&shape::EmptyNetworthName, Body::empty());
 				}
 
 				if let Some((item, slot)) = right {
@@ -655,14 +655,14 @@ pub async fn networth(
 						&shape::NetworthName,
 						Body::build_slice(
 							&minecraft_string(&item.name).collect::<Vec<_>>(),
-							20.,
+							17.,
 							None,
 						),
 					);
 				} else {
 					canvas = canvas
 						.push_right(&shape::EmptyNetworthSlot, Body::empty())
-						.push_right(&shape::NetworthName, Body::empty());
+						.push_right(&shape::EmptyNetworthName, Body::empty());
 				}
 			}
 		}
@@ -673,7 +673,7 @@ pub async fn networth(
 	};
 
 	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
+		m.content("Networth calculation is in beta, and may be inaccurate.");
 		m.attachment(AttachmentType::Bytes {
 			data: png,
 			filename: crate::IMAGE_NAME.to_string(),

@@ -7,10 +7,10 @@ export async function bufferUnordered(data, fn, concurrency = 10) {
 	let realIndex = 0;
 
 	const results = [];
-	const promises = new Map(data.splice(0, concurrency).map((d, i) => [i, fn(d, realIndex++).then(r => [i, r])]));
+	const promises = new Map(data.slice(0, concurrency).map((d, i) => [i, fn(d, realIndex++).then(r => [i, r])]));
 
 	// create a promise for each item
-	for (const item of data) {
+	for (const item of data.slice(concurrency)) {
 		// if there are more promises than the concurrency, wait for one to finish
 		if (promises.size >= concurrency) {
 			const [index, result] = await Promise.race(promises.values());

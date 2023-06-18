@@ -404,8 +404,8 @@ impl Pet {
 
 		let level = TOTAL_XP[offset..max_level]
 			.binary_search_by(|xp| xp.cmp(&self.xp))
-			.unwrap_or_else(|level| level)
-			.min(max_level - 2);
+			.map_or_else(|level| level, |level| level - 1)
+			.min(self.max_level() - 1);
 
 		let max_xp = TOTAL_XP[max_level - 1];
 
@@ -455,7 +455,8 @@ impl Pet {
 
 				(curr - base) / f64::from(max) * f64::from(self.xp) + base
 			}
-			100..200 => {
+			100 => self.base_worth(prices, 100),
+			101..200 => {
 				if level % 100 == 1 {
 					self.base_worth(prices, 100)
 				} else {

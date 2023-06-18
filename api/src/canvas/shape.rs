@@ -52,6 +52,7 @@ pub struct Slot<'a>(pub Option<&'a [u8]>, pub u8);
 pub struct NetworthSlot<'a>(pub Option<&'a [u8]>, pub u8);
 pub struct EmptyNetworthSlot;
 pub struct NetworthName;
+pub struct EmptyNetworthName;
 
 pub struct Bubble;
 pub struct WideBubble;
@@ -527,6 +528,25 @@ impl Shape for EmptyNetworthSlot {
 
 	fn v_align(&self) -> bool {
 		true
+	}
+}
+
+impl Shape for EmptyNetworthName {
+	fn draw(&self, _path: &mut Path, _bounds: &Rect) {}
+
+	fn size(&self) -> Size {
+		Size {
+			width: (BUBBLE_WIDTH * 1.5 + GAP / 2.) - 48. - GAP,
+			height: 48.,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(10., 0.).into()
 	}
 }
 

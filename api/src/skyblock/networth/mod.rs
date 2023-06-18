@@ -85,7 +85,7 @@ pub enum ItemCategory {
 }
 
 pub static ITEMS: Lazy<Arc<HashMap<String, ItemData>>> = Lazy::new(|| {
-	let path = std::path::Path::new("assets/item_data.json");
+	let path = std::path::Path::new("assets/items.json");
 	let file = File::open(path).unwrap();
 
 	let items: Vec<ItemData> = serde_json::from_reader(file).unwrap();

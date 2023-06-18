@@ -34,7 +34,7 @@ checksum = "4b46cbb362ab8752921c97e041f5e366ee6297bd428a31275b9fcf1e380f7299"
 
 [[package]]
 name = "api"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "base64 0.21.2",
  "bincode",
@@ -695,7 +695,7 @@ dependencies = [
 
 [[package]]
 name = "database"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "chrono",
  "diesel",
@@ -1613,7 +1613,7 @@ dependencies = [
 
 [[package]]
 name = "macros"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "darling 0.20.1",
  "minecraft",
@@ -1665,7 +1665,7 @@ dependencies = [
 
 [[package]]
 name = "minecraft"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "bincode",
  "darling 0.20.1",
@@ -2930,7 +2930,7 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
 name = "statpixel"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "api",
  "bincode",
@@ -3336,7 +3336,7 @@ dependencies = [
 
 [[package]]
 name = "translate"
-version = "0.15.0"
+version = "0.16.0"
 dependencies = [
  "bincode",
  "chrono",

@@ -1,6 +1,6 @@
 /target
 .env
-*.json
+/*.json
 *.txt
 !.release.json
 /data
@@ -9,6 +9,3 @@
 !package.json
 /assets/materials
 /assets/textures
-!assets/items.json
-!assets/map.json
-!assets/item_data.json
