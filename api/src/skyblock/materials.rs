@@ -8,7 +8,7 @@ pub static MATERIALS: Lazy<HashMap<String, Vec<u8>>> = Lazy::new(|| {
 	let materials = std::fs::read_dir("assets/materials").unwrap();
 	let textures = std::fs::read_dir("assets/textures").unwrap();
 
-	map.extend(materials.into_iter().map(|f| {
+	map.extend(textures.into_iter().map(|f| {
 		let f = f.unwrap();
 		let bytes = std::fs::read(f.path()).unwrap();
 
@@ -21,7 +21,7 @@ pub static MATERIALS: Lazy<HashMap<String, Vec<u8>>> = Lazy::new(|| {
 		(name.to_string(), bytes)
 	}));
 
-	map.extend(textures.into_iter().map(|f| {
+	map.extend(materials.into_iter().map(|f| {
 		let f = f.unwrap();
 		let bytes = std::fs::read(f.path()).unwrap();
 
