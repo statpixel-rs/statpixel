@@ -24,7 +24,7 @@ fs.mkdirSync('./assets/textures', { recursive: true });
 for (const name of ORDER) {
 	const files = new fdir()
 		.withFullPaths()
-		.crawl(`./assets/resourcepacks/${name}`)
+		.crawl(`./assets/resourcepacks/${name}/assets`)
 		.sync();
 
 	for (const path of files) {
