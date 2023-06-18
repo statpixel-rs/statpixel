@@ -27,7 +27,9 @@ for (const name of ORDER) {
 		.crawl(`./assets/resourcepacks/${name}/assets`)
 		.sync();
 
-	for (const path of files) {
+	for (let path of files) {
+		path = path.replace(/\\/g, '/');
+
 		const material = path.slice(path.lastIndexOf('\\') + 1);
 		let name = material;
 
@@ -50,8 +52,8 @@ for (const name of ORDER) {
 
 		if (name === 'item') {
 			// go back up one directory
-			name = path.slice(0, path.lastIndexOf('\\'));
-			name = name.slice(name.lastIndexOf('\\') + 1);
+			name = path.slice(0, path.lastIndexOf('/'));
+			name = name.slice(name.lastIndexOf('/') + 1);
 		}
 
 		if (path.endsWith('.properties')) {
