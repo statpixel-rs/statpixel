@@ -3,6 +3,7 @@ use crate::{
 	game::r#type::Type,
 	guild::Guild,
 	player::status::Session,
+	skyblock::networth::calc::Category,
 };
 
 use super::{body::Body, CORNER_RADIUS};
@@ -46,6 +47,11 @@ pub struct Subtitle;
 
 /// Expects a 48x48 PNG
 pub struct Slot<'a>(pub Option<&'a [u8]>, pub u8);
+
+/// Expects a 48x48 PNG
+pub struct NetworthSlot<'a>(pub Option<&'a [u8]>, pub u8);
+pub struct EmptyNetworthSlot;
+pub struct NetworthName;
 
 pub struct Bubble;
 pub struct WideBubble;
@@ -185,6 +191,34 @@ impl Title {
 	#[must_use]
 	pub fn from_text(text: &[Text]) -> Paragraph {
 		Body::new(25., TextAlign::Center).extend(text).build()
+	}
+
+	#[must_use]
+	pub fn from_category(ctx: Context<'_>, category: &Category) -> Paragraph {
+		let Some(ref kind) = category.kind else {
+			return Body::empty();
+		};
+
+		Body::new(25., TextAlign::Center)
+			.extend(kind.as_text())
+			.extend(&[
+				Text {
+					text: " [",
+					paint: Paint::DarkGray,
+					..Default::default()
+				},
+				Text {
+					text: category.value.to_formatted_label(ctx).as_ref(),
+					paint: Paint::Gold,
+					..Default::default()
+				},
+				Text {
+					text: "]",
+					paint: Paint::DarkGray,
+					..Default::default()
+				},
+			])
+			.build()
 	}
 
 	#[must_use]
@@ -480,6 +514,91 @@ impl_rect_shape!(LeaderboardValue, 200., 35., true);
 
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
+
+impl Shape for EmptyNetworthSlot {
+	fn size(&self) -> Size {
+		Size {
+			width: 48.,
+			height: 48.,
+		}
+	}
+
+	fn draw(&self, _path: &mut Path, _bounds: &Rect) {}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+}
+
+impl Shape for NetworthName {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: (BUBBLE_WIDTH * 1.5 + GAP / 2.) - 48. - GAP,
+			height: 48.,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(10., 0.).into()
+	}
+}
+
+impl Shape for NetworthSlot<'_> {
+	fn size(&self) -> Size {
+		Size {
+			width: 48.,
+			height: 48.,
+		}
+	}
+
+	fn draw(&self, _path: &mut Path, _bounds: &Rect) {}
+
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+		if let Some(bytes) = self.0 {
+			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+
+			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
+
+			if self.1 > 1 {
+				let mut paragraph = Body::build_slice(
+					&[Text {
+						text: &self.1.to_string(),
+						..Default::default()
+					}],
+					27.,
+					TextAlign::Center,
+				);
+
+				paragraph.layout(40.);
+				// bottom right corner
+				paragraph.paint(canvas, (bounds.right() - 20., bounds.bottom() - 18.));
+			}
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+}
 
 impl Shape for Slot<'_> {
 	fn size(&self) -> Size {

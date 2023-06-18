@@ -14,8 +14,8 @@ pub enum Error {
 }
 
 #[derive(Deserialize)]
-struct Data {
-	data: String,
+pub struct Data {
+	pub data: String,
 }
 
 /// # Errors

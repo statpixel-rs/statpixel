@@ -1,9 +1,7 @@
 use serde::Deserialize;
 
-use crate::{
-	nbt::inventory::{self, Inventory, Pets, WithHotbar},
-	player::stats::from_trunc_f64_to_u64,
-};
+use super::{essence::Essence, pet::Pet};
+use crate::{nbt::inventory::Inventory, player::stats::from_trunc_f64_to_u64};
 
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
@@ -26,13 +24,17 @@ pub struct Member {
 	pub stats: Stats,
 	#[serde(flatten)]
 	pub skills: Skills,
+	#[serde(flatten)]
+	pub essence: Essence,
+	#[serde(with = "crate::ser::vec_map", rename = "sacks_counts")]
+	pub sacks: Vec<(String, u32)>,
 	pub dungeons: Dungeons,
 	pub leveling: Leveling,
 	#[serde(
 		deserialize_with = "crate::nbt::from_data_opt",
 		rename = "inv_contents"
 	)]
-	pub inventory: Option<WithHotbar>,
+	pub inventory: Option<Inventory<true>>,
 	#[serde(
 		deserialize_with = "crate::nbt::from_data_opt",
 		rename = "ender_chest_contents"
@@ -66,8 +68,15 @@ pub struct Member {
 		rename = "personal_vault_contents"
 	)]
 	pub vault: Option<Inventory>,
-	#[serde(deserialize_with = "inventory::pets")]
-	pub pets: Option<Pets>,
+	pub pets: Option<Vec<Pet>>,
+	#[serde(deserialize_with = "crate::nbt::from_data_opt", rename = "inv_armor")]
+	pub armour: Option<Inventory>,
+	#[serde(
+		with = "crate::ser::vec_map_inventory",
+		rename = "backpack_contents",
+		default
+	)]
+	pub backpack: Vec<Inventory>,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]

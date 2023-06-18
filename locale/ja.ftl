@@ -172,6 +172,15 @@ pets = pets
   .profile = profile
   .profile-description = 表示するプロファイル
 
+networth = networth
+  .description = SkyBlockプロファイルの純資産を表示します。
+  .username = username
+  .username-description = Minecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = MinecraftのUUID
+  .profile = profile
+  .profile-description = 表示するプロファイル
+
 # /skyblock profile
 
 profile = profile

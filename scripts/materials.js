@@ -14,14 +14,6 @@ const ITEMS = Object.values(JSON.parse(fs.readFileSync('./assets/items.json', 'u
 const MAP = new Map(Object.entries(JSON.parse(fs.readFileSync('./assets/map.json', 'utf-8'))));
 const buf = fs.readFileSync('./assets/items.png');
 
-const flattened = ITEMS.flatMap(item => {
-	if (item?.containsItems) {
-		return [item, ...item.containsItems];
-	}
-
-	return item;
-});
-
 for (const material of materials) {
 	let name = material;
 
@@ -71,7 +63,7 @@ function stripDamage(item, id) {
 	return updatedId;
 }
 
-await bufferUnordered(flattened, async item => {
+await bufferUnordered(ITEMS, async item => {
 	let id = item?.tag?.ExtraAttributes?.id;
 	const texture = item?.texture_path;
 
@@ -90,9 +82,6 @@ await bufferUnordered(flattened, async item => {
 	console.log(`Processing "${id}" (${item.id}:${item.Damage})...`);
 
 	if (id && texture) {
-		if (await fs.promises.stat(`./assets/materials/${stripDamage(item, id)}.png`).then(() => true).catch(() => false))
-			return console.log(`Skipped "${id}"`);
-
 		const { data: buf } = await axios.get(`https://sky.shiiyu.moe${texture}`, {
 			responseType: 'arraybuffer'
 		});
@@ -104,9 +93,6 @@ await bufferUnordered(flattened, async item => {
 			})
 			.toFile(`./assets/materials/${stripDamage(item, id)}.png`);
 	} else if (id && item.id && MAP.has(`${item.id}${item.Damage === 0 ? '' : `:${item.Damage}`}`)) {
-		if (await fs.promises.stat(`./assets/materials/${stripDamage(item, id)}.png`).then(() => true).catch(() => false))
-			return console.log(`Skipped "${id}"`);
-
 		const [x, y] = MAP.get(`${item.id}${item.Damage === 0 ? '' : `:${item.Damage}`}`);
 
 		await sharp(buf)

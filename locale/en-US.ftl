@@ -172,6 +172,15 @@ pets = pets
   .profile = profile
   .profile-description = The profile to view
 
+networth = networth
+  .description = View SkyBlock profile networth
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = profile
+  .profile-description = The profile to view
+
 # /skyblock profile
 
 profile = profile

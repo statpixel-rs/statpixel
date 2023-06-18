@@ -3,7 +3,13 @@ use std::{borrow::Cow, cmp::max};
 use api::{
 	canvas::{self, body::Body, chart, label::ToFormatted, Canvas},
 	player::Player,
-	skyblock::{self, materials::MATERIALS, profile::TransactionAction, NAMES},
+	skyblock::{
+		self,
+		materials::MATERIALS,
+		networth::{self, calc::Category},
+		profile::TransactionAction,
+		NAMES,
+	},
 };
 use canvas::{shape, text};
 use chrono::Utc;
@@ -485,6 +491,360 @@ pub async fn bank(
 	Ok(())
 }
 
+#[allow(clippy::too_many_lines)]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+pub async fn networth(
+	ctx: Context<'_>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (player, data, session, skin, suffix) =
+		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+
+	player.increase_searches(ctx).await?;
+
+	let Some(profile) = (match profile {
+		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		None => data.stats.sky_block.profiles.first(),
+	}) else {
+		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));
+	};
+
+	let name = profile.name.as_str();
+	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
+
+	let Some(member) = profile.members.get(&player.uuid) else {
+		return Err(Error::MemberPlayerNotFound(data.username.clone()));
+	};
+
+	let prices = networth::prices().await?;
+	let networth = member.networth(&prices);
+
+	#[allow(clippy::cast_precision_loss)]
+	let purse = member.coin_purse as f64;
+	#[allow(clippy::cast_precision_loss)]
+	let bank = profile.banking.balance as f64;
+
+	let png = {
+		let status = shape::Status(&session, skin.as_ref());
+		let level = sky_block::get_level(member.leveling.xp);
+		let progress = shape::WideBubbleProgress(
+			sky_block::get_level_progress(member.leveling.xp),
+			sky_block::get_colours(level),
+		);
+
+		let mut canvas = Canvas::new(720.)
+			.gap(7.)
+			.push_down(
+				&shape::Title,
+				shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
+			)
+			.push_down(
+				&shape::Subtitle,
+				shape::Subtitle::from_label_str(&LABEL, name),
+			)
+			.push_down_post_draw(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&sky_block::get_level_format(level),
+					&sky_block::get_curr_level_xp(member.leveling.xp),
+					&sky_block::get_level_xp(member.leveling.xp),
+				),
+			)
+			.push_right_start(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&(networth.value + bank + purse),
+					"Networth",
+					Paint::Gold,
+				),
+			)
+			.push_down(
+				&shape::Bubble,
+				Body::from_bubble(ctx, &bank, "Bank", Paint::Gold),
+			)
+			.push_right_start_post_draw(&status, Body::from_status(ctx, &session));
+
+		let categories = networth
+			.categories
+			.iter()
+			.map(|c| {
+				(
+					c,
+					c.items
+						.iter()
+						.map(|s| {
+							(
+								s,
+								shape::NetworthSlot(
+									if let Some(v) = if s.id.starts_with("ENCHANTED_") {
+										MATERIALS.get(&s.id[10..])
+									} else if let Some(idx) = s.id.find(':') {
+										MATERIALS
+											.get(&format!("{}:{}", &s.id[..idx], s.damage))
+											.or_else(|| MATERIALS.get(&s.id))
+									} else if s.damage != 0 {
+										MATERIALS
+											.get(&format!("{}:{}", &s.id, s.damage))
+											.or_else(|| MATERIALS.get(&s.id))
+									} else {
+										MATERIALS.get(&s.id)
+									} {
+										Some(v.as_slice())
+									} else {
+										tracing::warn!(id = s.id, "unknown item");
+
+										None
+									},
+									s.count,
+								),
+							)
+						})
+						.collect::<Vec<_>>(),
+				)
+			})
+			.collect::<Vec<_>>();
+
+		let default = (&Category::default(), vec![]);
+
+		for i in categories.chunks(2) {
+			let (left, left_items) = i.get(0).unwrap();
+			let (right, right_items) = i.get(1).unwrap_or(&default);
+
+			let rows = left_items.len().max(right_items.len());
+
+			canvas = canvas
+				.push_down_start(&shape::Title, shape::Title::from_category(ctx, left))
+				.push_right(&shape::Title, shape::Title::from_category(ctx, right));
+
+			for i in 0..rows {
+				let left = left_items.get(i);
+				let right = right_items.get(i);
+
+				if let Some((item, slot)) = left {
+					canvas = canvas
+						.push_down_start_post_draw(slot, Body::empty())
+						.push_right(
+							&shape::NetworthName,
+							Body::build_slice(
+								&minecraft_string(&item.name).collect::<Vec<_>>(),
+								20.,
+								None,
+							),
+						);
+				} else {
+					canvas = canvas
+						.push_down_start_post_draw(&shape::EmptyNetworthSlot, Body::empty())
+						.push_right(&shape::NetworthName, Body::empty());
+				}
+
+				if let Some((item, slot)) = right {
+					canvas = canvas.push_right_post_draw(slot, Body::empty()).push_right(
+						&shape::NetworthName,
+						Body::build_slice(
+							&minecraft_string(&item.name).collect::<Vec<_>>(),
+							20.,
+							None,
+						),
+					);
+				} else {
+					canvas = canvas
+						.push_right(&shape::EmptyNetworthSlot, Body::empty())
+						.push_right(&shape::NetworthName, Body::empty());
+				}
+			}
+		}
+
+		let mut surface = canvas.build(None, background).unwrap();
+
+		canvas::to_png(&mut surface).into()
+	};
+
+	ctx.send(move |m| {
+		m.content(crate::tip::random(ctx));
+		m.attachment(AttachmentType::Bytes {
+			data: png,
+			filename: crate::IMAGE_NAME.to_string(),
+		})
+	})
+	.await?;
+
+	Ok(())
+}
+
+#[allow(clippy::too_many_lines)]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+pub async fn pets(
+	ctx: Context<'_>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (player, data, session, skin, suffix) =
+		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+
+	player.increase_searches(ctx).await?;
+
+	let Some(profile) = (match profile {
+		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		None => data.stats.sky_block.profiles.first(),
+	}) else {
+		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));
+	};
+
+	let name = profile.name.as_str();
+	let profile = Player::get_skyblock_profile(profile, &data.username).await?;
+
+	let Some(member) = profile.members.get(&player.uuid) else {
+		return Err(Error::MemberPlayerNotFound(data.username.clone()));
+	};
+
+	let Some(items) = member.pets.as_ref() else {
+		return Err(Error::from(std::sync::Arc::new(ApiError::ProfileNotFound(name.to_string(), data.username.clone()))));
+	};
+
+	let png = {
+		let status = shape::Status(&session, skin.as_ref());
+		let level = sky_block::get_level(member.leveling.xp);
+		let progress = shape::WideBubbleProgress(
+			sky_block::get_level_progress(member.leveling.xp),
+			sky_block::get_colours(level),
+		);
+
+		let mut canvas = Canvas::new(720.)
+			.gap(7.)
+			.push_down(
+				&shape::Title,
+				shape::Title::from_text(&text::from_data(&data, &data.username, suffix.as_deref())),
+			)
+			.push_down(
+				&shape::Subtitle,
+				shape::Subtitle::from_label_str(&LABEL, name),
+			)
+			.push_down_post_draw(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&sky_block::get_level_format(level),
+					&sky_block::get_curr_level_xp(member.leveling.xp),
+					&sky_block::get_level_xp(member.leveling.xp),
+				),
+			)
+			.push_right_start(
+				&canvas::shape::Sidebar,
+				canvas::body::Body::new(17., None)
+					.append_item(
+						&::translate::tr!(ctx, "coins"),
+						&canvas::label::ToFormatted::to_formatted_label(&member.coin_purse, ctx),
+						&Paint::Gold,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fairy-souls"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fairy_souls_collected,
+							ctx,
+						),
+						&Paint::Aqua,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fairy-exchanges"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fairy_exchanges,
+							ctx,
+						),
+						&Paint::LightPurple,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "fishing-treasure"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.fishing_treasure_caught,
+							ctx,
+						),
+						&Paint::Blue,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "zones-visited"),
+						&canvas::label::ToFormatted::to_formatted_label(&member.zones_visited, ctx),
+						&Paint::Green,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "generators-crafted"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.generators_crafted,
+							ctx,
+						),
+						&Paint::White,
+					)
+					.append_item(
+						&::translate::tr!(ctx, "highest-crit"),
+						&canvas::label::ToFormatted::to_formatted_label(
+							&member.stats.highest_critical_damage,
+							ctx,
+						),
+						&Paint::Red,
+					)
+					.build(),
+			)
+			.push_right_post_draw(&status, Body::from_status(ctx, &session));
+
+		let slots = items
+			.iter()
+			.map(|s| {
+				shape::Slot(
+					if let Some(v) = MATERIALS.get(&s.id) {
+						Some(v.as_slice())
+					} else {
+						tracing::warn!(id = s.id, "unknown item");
+
+						None
+					},
+					1,
+				)
+			})
+			.collect::<Vec<_>>();
+
+		for slot in &slots {
+			canvas = canvas.push_checked_post_draw(slot, Body::empty());
+		}
+
+		let mut surface = canvas.build(None, background).unwrap();
+
+		canvas::to_png(&mut surface).into()
+	};
+
+	ctx.send(move |m| {
+		m.content(crate::tip::random(ctx));
+		m.attachment(AttachmentType::Bytes {
+			data: png,
+			filename: crate::IMAGE_NAME.to_string(),
+		})
+	})
+	.await?;
+
+	Ok(())
+}
+
 macro_rules! inventory_command {
 	($fn: ident, $key: ident) => {
 		#[allow(clippy::too_many_lines)]
@@ -683,7 +1043,6 @@ inventory_command!(equipment, equipment);
 inventory_command!(wardrobe, wardrobe);
 inventory_command!(candy, candy);
 inventory_command!(vault, vault);
-inventory_command!(pets, pets);
 
 #[allow(clippy::unused_async)]
 #[poise::command(
@@ -705,6 +1064,7 @@ inventory_command!(pets, pets);
 		"candy",
 		"vault",
 		"pets",
+		"networth",
 	)
 )]
 pub async fn skyblock(_ctx: Context<'_>) -> Result<(), Error> {

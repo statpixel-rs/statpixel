@@ -89,6 +89,74 @@ macro_rules! impl_to_formatted_label_for_uint {
 	};
 }
 
+#[allow(clippy::cast_precision_loss)]
+impl ToFormatted for u64
+where
+	Self: ToFormattedString,
+{
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> ::std::borrow::Cow<'t, str> {
+		let locale = ctx.get_num_format_locale();
+
+		::std::borrow::Cow::Owned(if *self < 1_000_000 {
+			self.to_formatted_string(&locale)
+		} else if *self < 1_000_000_000 {
+			format!("{}M", (*self as f32 / 1_000_000.).to_formatted_label(ctx))
+		} else if *self < 1_000_000_000_000 {
+			format!(
+				"{}B",
+				(*self as f64 / 1_000_000_000.).to_formatted_label(ctx)
+			)
+		} else {
+			format!(
+				"{}T",
+				(*self as f64 / 1_000_000_000_000.).to_formatted_label(ctx)
+			)
+		})
+	}
+}
+
+#[allow(clippy::cast_precision_loss)]
+impl ToFormatted for i64
+where
+	Self: ToFormattedString,
+{
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> ::std::borrow::Cow<'t, str> {
+		let locale = ctx.get_num_format_locale();
+
+		::std::borrow::Cow::Owned(if *self >= 0 {
+			if *self < 1_000_000 {
+				self.to_formatted_string(&locale)
+			} else if *self < 1_000_000_000 {
+				format!("{}M", (*self as f32 / 1_000_000.).to_formatted_label(ctx))
+			} else if *self < 1_000_000_000_000 {
+				format!(
+					"{}B",
+					(*self as f64 / 1_000_000_000.).to_formatted_label(ctx)
+				)
+			} else {
+				format!(
+					"{}T",
+					(*self as f64 / 1_000_000_000_000.).to_formatted_label(ctx)
+				)
+			}
+		} else if *self < -1_000_000 {
+			(-*self).to_formatted_string(&locale)
+		} else if *self < 1_000_000_000 {
+			format!("-{}M", (-*self as f32 / 1_000_000.).to_formatted_label(ctx))
+		} else if *self < 1_000_000_000_000 {
+			format!(
+				"-{}B",
+				(-*self as f64 / 1_000_000_000.).to_formatted_label(ctx)
+			)
+		} else {
+			format!(
+				"-{}T",
+				(-*self as f64 / 1_000_000_000_000.).to_formatted_label(ctx)
+			)
+		})
+	}
+}
+
 impl ToFormatted for f64 {
 	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> ::std::borrow::Cow<'t, str> {
 		let locale = ctx.get_num_format_locale();
@@ -161,12 +229,10 @@ where
 }
 
 impl_to_formatted_label_for_int!(i32);
-impl_to_formatted_label_for_int!(i64);
 impl_to_formatted_label_for_int!(i128);
 impl_to_formatted_label_for_int!(isize);
 
 impl_to_formatted_label_for_uint!(u32);
-impl_to_formatted_label_for_uint!(u64);
 impl_to_formatted_label_for_uint!(u128);
 impl_to_formatted_label_for_uint!(usize);
 
