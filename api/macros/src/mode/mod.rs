@@ -196,7 +196,7 @@ impl ToTokens for ModeInputReceiver {
 			impl #ident #generics {
 				pub fn apply_own_fields<'c>(
 					&self,
-					ctx: ::translate::Context<'_>,
+					ctx: &::translate::context::Context<'_>,
 					mut canvas: crate::canvas::Canvas<'c>,
 					data: &'c crate::player::data::Data,
 					session: &crate::player::status::Session,
@@ -226,7 +226,7 @@ impl ToTokens for ModeInputReceiver {
 				#[allow(clippy::ptr_arg)]
 				pub fn embed_own_fields(
 					&self,
-					ctx: ::translate::Context<'_>,
+					ctx: &::translate::context::Context<'_>,
 					field: &mut ::std::string::String,
 					data: &crate::player::data::Data,
 					stats: &Stats,

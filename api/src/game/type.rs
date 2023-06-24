@@ -1,8 +1,12 @@
 use std::borrow::Cow;
 
+use crate::image::Image;
+use crate::include_image;
 use minecraft::{text::parse::minecraft_text, text::Text};
+use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 
+#[allow(clippy::unsafe_derive_deserialize)]
 #[derive(
 	Deserialize,
 	Serialize,
@@ -259,35 +263,120 @@ impl Type {
 	}
 
 	#[must_use]
-	pub fn as_image_bytes(&self) -> Option<&'static [u8]> {
+	#[allow(clippy::too_many_lines)]
+	pub fn as_image_bytes(&self) -> Option<&'static Image> {
 		Some(match self {
-			Self::Quake => include_bytes!("../../../assets/games/quakecraft.png"),
-			Self::Walls => include_bytes!("../../../assets/games/walls.png"),
-			Self::Paintball => include_bytes!("../../../assets/games/paintball.png"),
-			Self::BlitzSg => include_bytes!("../../../assets/games/blitz_sg.png"),
-			Self::TntGames => include_bytes!("../../../assets/games/tntgames.png"),
-			Self::VampireZ => include_bytes!("../../../assets/games/vampirez.png"),
-			Self::MegaWalls => include_bytes!("../../../assets/games/megawalls.png"),
-			Self::Arcade => include_bytes!("../../../assets/games/arcade.png"),
-			Self::Arena => include_bytes!("../../../assets/games/arena.png"),
-			Self::Uhc => include_bytes!("../../../assets/games/uhc.png"),
-			Self::CopsAndCrims => include_bytes!("../../../assets/games/copsandcrims.png"),
-			Self::Warlords => include_bytes!("../../../assets/games/warlords.png"),
-			Self::SmashHeroes => include_bytes!("../../../assets/games/smash.png"),
-			Self::TurboKartRacers => include_bytes!("../../../assets/games/turbokartracers.png"),
-			Self::SkyWars => include_bytes!("../../../assets/games/skywars.png"),
-			Self::BedWars => include_bytes!("../../../assets/games/bedwars.png"),
-			Self::MurderMystery => include_bytes!("../../../assets/games/murdermystery.png"),
-			Self::BuildBattle => include_bytes!("../../../assets/games/buildbattle.png"),
-			Self::Duels => include_bytes!("../../../assets/games/duels.png"),
-			Self::SkyClash => include_bytes!("../../../assets/games/skyclash.png"),
-			Self::SpeedUhc => include_bytes!("../../../assets/games/speeduhc.png"),
-			Self::Smp => include_bytes!("../../../assets/games/smp.png"),
-			Self::CrazyWalls => include_bytes!("../../../assets/games/crazywalls.png"),
-			Self::SkyBlock => include_bytes!("../../../assets/games/skyblock.png"),
-			Self::Housing => include_bytes!("../../../assets/games/housing.png"),
-			Self::Pit => include_bytes!("../../../assets/games/thepit.png"),
-			Self::WoolWars => include_bytes!("../../../assets/games/woolwars.png"),
+			Self::Quake => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/quakecraft.png");
+				&IMAGE
+			}
+			Self::Walls => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/walls.png");
+				&IMAGE
+			}
+			Self::Paintball => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/paintball.png");
+				&IMAGE
+			}
+			Self::BlitzSg => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/blitz_sg.png");
+				&IMAGE
+			}
+			Self::TntGames => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/tntgames.png");
+				&IMAGE
+			}
+			Self::VampireZ => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/vampirez.png");
+				&IMAGE
+			}
+			Self::MegaWalls => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/megawalls.png");
+				&IMAGE
+			}
+			Self::Arcade => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/arcade.png");
+				&IMAGE
+			}
+			Self::Arena => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/arena.png");
+				&IMAGE
+			}
+			Self::Uhc => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/uhc.png");
+				&IMAGE
+			}
+			Self::CopsAndCrims => {
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../assets/games/copsandcrims.png");
+				&IMAGE
+			}
+			Self::Warlords => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/warlords.png");
+				&IMAGE
+			}
+			Self::SmashHeroes => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/smash.png");
+				&IMAGE
+			}
+			Self::TurboKartRacers => {
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../assets/games/turbokartracers.png");
+				&IMAGE
+			}
+			Self::SkyWars => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skywars.png");
+				&IMAGE
+			}
+			Self::BedWars => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/bedwars.png");
+				&IMAGE
+			}
+			Self::MurderMystery => {
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../assets/games/murdermystery.png");
+				&IMAGE
+			}
+			Self::BuildBattle => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/buildbattle.png");
+				&IMAGE
+			}
+			Self::Duels => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/duels.png");
+				&IMAGE
+			}
+			Self::SkyClash => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skyclash.png");
+				&IMAGE
+			}
+			Self::SpeedUhc => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/speeduhc.png");
+				&IMAGE
+			}
+			Self::Smp => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/smp.png");
+				&IMAGE
+			}
+			Self::CrazyWalls => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/crazywalls.png");
+				&IMAGE
+			}
+			Self::SkyBlock => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skyblock.png");
+				&IMAGE
+			}
+			Self::Housing => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/housing.png");
+				&IMAGE
+			}
+			Self::Pit => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/thepit.png");
+				&IMAGE
+			}
+			Self::WoolWars => {
+				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/woolwars.png");
+				&IMAGE
+			}
 			_ => return None,
 		})
 	}

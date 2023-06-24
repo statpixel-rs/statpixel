@@ -18,7 +18,7 @@ use skia_safe::{
 	textlayout::{Paragraph, TextAlign},
 	Canvas, Color, Image, Path, Point, RRect, Rect, Size,
 };
-use translate::{tr, Context};
+use translate::{context::Context, tr};
 
 pub const BUBBLE_WIDTH: f32 = 706. / 3.;
 pub const BUBBLE_HEIGHT: f32 = 85.;
@@ -46,10 +46,10 @@ pub struct FullWidthBigTitle;
 pub struct Subtitle;
 
 /// Expects a 48x48 PNG
-pub struct Slot<'a>(pub Option<&'a [u8]>, pub u8);
+pub struct Slot<'a>(pub Option<&'a Image>, pub u8);
 
 /// Expects a 48x48 PNG
-pub struct NetworthSlot<'a>(pub Option<&'a [u8]>, pub u8);
+pub struct NetworthSlot<'a>(pub Option<&'a Image>, pub u8);
 pub struct EmptyNetworthSlot;
 pub struct NetworthName;
 pub struct EmptyNetworthName;
@@ -61,7 +61,7 @@ pub struct WideTallBubble;
 
 pub struct Sidebar;
 pub struct Gutter;
-pub struct Status<'s>(pub &'s Session, pub &'s [u8]);
+pub struct Status<'s>(pub &'s Session, pub &'s Image);
 pub struct PreferredGames<'g>(pub &'g [Type]);
 
 pub struct LeaderboardTitle;
@@ -104,7 +104,7 @@ impl Custom {
 
 impl Sidebar {
 	#[must_use]
-	pub fn from_guild(ctx: Context<'_>, guild: &Guild) -> Paragraph {
+	pub fn from_guild(ctx: &Context<'_>, guild: &Guild) -> Paragraph {
 		let mut body = Body::new(17., None);
 		let mut iter = guild.xp_by_game.iter().rev();
 
@@ -147,7 +147,7 @@ impl Sidebar {
 impl WideTallBubble {
 	#[must_use]
 	pub fn from_guild(
-		ctx: Context<'_>,
+		ctx: &Context<'_>,
 		guild: &Guild,
 		players: &[String],
 		idx: usize,
@@ -195,7 +195,7 @@ impl Title {
 	}
 
 	#[must_use]
-	pub fn from_category(ctx: Context<'_>, category: &Category) -> Paragraph {
+	pub fn from_category(ctx: &Context<'_>, category: &Category) -> Paragraph {
 		let Some(ref kind) = category.kind else {
 			return Body::empty();
 		};
@@ -247,7 +247,7 @@ impl FullWidthBigTitle {
 	}
 
 	#[must_use]
-	pub fn from_guild(ctx: Context<'_>, guild: &Guild) -> Paragraph {
+	pub fn from_guild(ctx: &Context<'_>, guild: &Guild) -> Paragraph {
 		let colour: char = guild.tag_colour.into();
 		let name = guild.name.as_str();
 		let tag = guild.tag.as_ref();
@@ -288,7 +288,7 @@ impl Subtitle {
 	}
 
 	#[must_use]
-	pub fn from_label(ctx: Context<'_>, label: &[Text], tr: &str) -> Paragraph {
+	pub fn from_label(ctx: &Context<'_>, label: &[Text], tr: &str) -> Paragraph {
 		let text = tr!(ctx, tr);
 		let text = [
 			label,
@@ -351,7 +351,7 @@ impl WideBubbleProgress {
 
 	#[must_use]
 	pub fn from_level_progress(
-		ctx: Context<'_>,
+		ctx: &Context<'_>,
 		level: &str,
 		current: &impl ToFormatted,
 		needed: &impl ToFormatted,
@@ -444,7 +444,7 @@ impl LeaderboardName {
 
 impl LeaderboardValue {
 	#[must_use]
-	pub fn from_value(ctx: Context<'_>, value: &impl ToFormatted) -> Paragraph {
+	pub fn from_value(ctx: &Context<'_>, value: &impl ToFormatted) -> Paragraph {
 		Body::new(20., TextAlign::Center)
 			.extend(&[Text {
 				text: &value.to_formatted_label(ctx),
@@ -593,9 +593,7 @@ impl Shape for NetworthSlot<'_> {
 	fn draw(&self, _path: &mut Path, _bounds: &Rect) {}
 
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
-		if let Some(bytes) = self.0 {
-			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
-
+		if let Some(image) = self.0 {
 			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
 
 			if self.1 > 1 {
@@ -644,9 +642,7 @@ impl Shape for Slot<'_> {
 	}
 
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
-		if let Some(bytes) = self.0 {
-			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
-
+		if let Some(image) = self.0 {
 			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
 
 			if self.1 > 1 {
@@ -822,22 +818,17 @@ impl<'g> Shape for PreferredGames<'g> {
 			.enumerate()
 			.take(6);
 
-		while let Some((idx, bytes)) = iter.next() {
+		while let Some((idx, image)) = iter.next() {
 			let x = bounds.x() + insets.x;
 			#[allow(clippy::cast_precision_loss)]
 			let y = bounds.y() + insets.y + (40. + 7.) * idx as f32 / 2.;
 
-			// `bytes` lives for 'static, so it will always be valid.
-			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
+			canvas.draw_image(image.image(), (x, y), None);
 
-			canvas.draw_image(image, (x, y), None);
-
-			if let Some((_, bytes)) = iter.next() {
+			if let Some((_, image)) = iter.next() {
 				let x = x + 40. + 7.;
-				let image =
-					Image::from_encoded(unsafe { skia_safe::Data::new_bytes(bytes) }).unwrap();
 
-				canvas.draw_image(image, (x, y), None);
+				canvas.draw_image(image.image(), (x, y), None);
 			}
 		}
 	}
@@ -875,9 +866,7 @@ impl<'s> Shape for Status<'s> {
 
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
 		if !self.0.online {
-			let image = Image::from_encoded(unsafe { skia_safe::Data::new_bytes(self.1) }).unwrap();
-
-			canvas.draw_image(image, (bounds.x() + 10., bounds.y() + 10.), None);
+			canvas.draw_image(self.1, (bounds.x() + 10., bounds.y() + 10.), None);
 		}
 	}
 

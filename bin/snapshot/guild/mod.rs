@@ -13,7 +13,7 @@ use diesel_async::{
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
 use tracing::warn;
-use translate::{Context, Error};
+use translate::{context::Context, Error};
 use uuid::Uuid;
 
 const GUILD_BATCH_LIMIT: i64 = 1_000;
@@ -168,7 +168,7 @@ pub fn decode(guild: &[u8]) -> Result<Guild, Error> {
 
 /// Gets the earliest snapshot of a given player within a timeframe.
 pub async fn get(
-	ctx: Context<'_>,
+	ctx: &Context<'_>,
 	guild: &Guild,
 	timeframe: DateTime<Utc>,
 ) -> Result<Option<(Guild, DateTime<Utc>)>, Error> {
@@ -188,7 +188,7 @@ pub async fn get(
 }
 
 pub async fn get_or_insert(
-	ctx: Context<'_>,
+	ctx: &Context<'_>,
 	guild: &Guild,
 	timeframe: DateTime<Utc>,
 ) -> Result<Status, Error> {
@@ -203,7 +203,7 @@ pub async fn get_or_insert(
 	Ok(Status::Inserted)
 }
 
-pub async fn insert(ctx: Context<'_>, guild: &Guild) -> Result<(), Error> {
+pub async fn insert(ctx: &Context<'_>, guild: &Guild) -> Result<(), Error> {
 	let encoded = encode(guild)?;
 	let hash = fxhash::hash64(&encoded) as i64;
 	let mut connection = ctx.data().pool.get().await?;

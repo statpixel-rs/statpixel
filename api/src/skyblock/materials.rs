@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use once_cell::sync::Lazy;
 
-pub static MATERIALS: Lazy<HashMap<String, Vec<u8>>> = Lazy::new(|| {
+pub static MATERIALS: Lazy<HashMap<String, crate::image::Image<'static>>> = Lazy::new(|| {
 	let mut map = HashMap::new();
 
 	let materials = std::fs::read_dir("assets/materials").unwrap();
@@ -18,7 +18,9 @@ pub static MATERIALS: Lazy<HashMap<String, Vec<u8>>> = Lazy::new(|| {
 		let idx = name.rfind('.').unwrap();
 		let name = &name[..idx];
 
-		(name.to_string(), bytes)
+		let image = crate::image::from_bytes(bytes.leak()).unwrap();
+
+		(name.to_string(), image)
 	}));
 
 	map.extend(materials.into_iter().map(|f| {
@@ -31,7 +33,9 @@ pub static MATERIALS: Lazy<HashMap<String, Vec<u8>>> = Lazy::new(|| {
 		let idx = name.rfind('.').unwrap();
 		let name = &name[..idx];
 
-		(name.to_string(), bytes)
+		let image = crate::image::from_bytes(bytes.leak()).unwrap();
+
+		(name.to_string(), image)
 	}));
 
 	map

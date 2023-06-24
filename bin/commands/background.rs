@@ -17,8 +17,8 @@ pub async fn background(ctx: Context<'_>, colour: Option<String>) -> Result<(), 
 		ctx.send(|m| {
 			error_embed(
 				m,
-				tr!(ctx, "error-invalid-colour"),
-				tr!(ctx, "error-invalid-colour-description")
+				tr!(&ctx, "error-invalid-colour"),
+				tr!(&ctx, "error-invalid-colour-description")
 			)
 		})
 		.await?;
@@ -44,9 +44,9 @@ pub async fn background(ctx: Context<'_>, colour: Option<String>) -> Result<(), 
 
 	ctx.send(|m| {
 		m.embed(|e| {
-			e.title(tr!(ctx, "colour-changed"))
+			e.title(tr!(&ctx, "colour-changed"))
 				.description(
-					tr_fmt!(ctx, "colour-changed-description", colour: format!("`#{:x}`", colour)),
+					tr_fmt!(&ctx, "colour-changed-description", colour: format!("`#{:x}`", colour)),
 				)
 				.colour(colour & 0x00_ffffff)
 		});

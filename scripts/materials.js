@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 
 import axios from 'axios';
 import { fdir } from 'fdir';
@@ -27,7 +28,7 @@ for (const name of ORDER) {
 		.crawl(`./assets/resourcepacks/${name}/assets`)
 		.sync();
 
-	for (let path of files) {
+	outer: for (let path of files) {
 		path = path.replace(/\\/g, '/');
 
 		const material = path.slice(path.lastIndexOf('/') + 1);
@@ -80,9 +81,11 @@ for (const name of ORDER) {
 									// for crisp edges since it's pixel art
 									kernel: 'nearest'
 								})
-								.toFile(`./assets/textures/${name.replace(/:/g, ';').toUpperCase()}.png`);
+								.toFile(`./assets/materials/${name.replace(/:/g, ';').toUpperCase()}.png`);
 
 							tryagain = false;
+
+							console.log(`[MATERIAL] Processed "${name}" (${path})`);
 						} catch (e) {
 							console.error(e);
 						}
@@ -105,6 +108,8 @@ for (const name of ORDER) {
 				fit: 'cover',
 			})
 			.toFile(`./assets/materials/${name.replace(/:/g, ';').toUpperCase()}.png`);
+
+		console.log(`[REGULAR] Processed "${name}" (${path})`);
 	}
 
 	console.log(`Finished "${name}"`);

@@ -3,7 +3,7 @@ use skia_safe::{
 	textlayout::{FontCollection, Paragraph, ParagraphBuilder, ParagraphStyle, TextAlign},
 	FontMgr,
 };
-use translate::{tr, Context};
+use translate::{context, tr};
 
 use crate::{
 	canvas::label::ToFormatted,
@@ -123,7 +123,7 @@ impl Body {
 
 	#[must_use]
 	pub fn from_bubble_small(
-		ctx: Context<'_>,
+		ctx: &context::Context<'_>,
 		value: &impl ToFormatted,
 		label: &str,
 		paint: Paint,
@@ -153,7 +153,7 @@ impl Body {
 
 	#[must_use]
 	pub fn from_bubble(
-		ctx: Context<'_>,
+		ctx: &context::Context<'_>,
 		value: &impl ToFormatted,
 		label: &str,
 		paint: Paint,
@@ -182,7 +182,7 @@ impl Body {
 	}
 
 	#[must_use]
-	pub fn from_status(ctx: Context<'_>, session: &Session) -> Paragraph {
+	pub fn from_status(ctx: &context::Context<'_>, session: &Session) -> Paragraph {
 		if session.online {
 			let mode = session.game_mode.as_deref().map(Mode::from);
 

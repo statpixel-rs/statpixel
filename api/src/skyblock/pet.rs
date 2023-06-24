@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use serde::Deserialize;
 
 use super::networth::{calc::worth, Prices};
@@ -323,7 +325,7 @@ impl From<Pet> for Item {
 	fn from(value: Pet) -> Self {
 		let name = value.name();
 
-		Item::empty_wth_name(value.id, name)
+		Item::empty_wth_name(value.id().into_owned(), name)
 	}
 }
 
@@ -442,6 +444,15 @@ impl Pet {
 			.and_then(|k| prices.get(&k))
 			.unwrap_or(&0.)
 			.max(*prices.get(&self.base_key(level)).unwrap_or(&0.))
+	}
+
+	#[must_use]
+	pub fn id(&self) -> Cow<str> {
+		if let Some(ref skin) = self.skin {
+			format!("PET_SKIN_{skin}").into()
+		} else {
+			self.id.as_str().into()
+		}
 	}
 
 	#[must_use]

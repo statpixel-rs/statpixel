@@ -17,6 +17,9 @@ pub mod username;
 
 pub use konst;
 
+pub use colour::Colour;
+pub use text::ESCAPE;
+
 #[derive(Error, Debug)]
 pub enum Error {
 	#[error("The username `{0}` is invalid.")]

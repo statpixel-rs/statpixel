@@ -48,7 +48,7 @@ macro_rules! impl_time_unit {
 		impl $crate::canvas::label::ToFormatted for $name {
 			fn to_formatted_label<'t, 'c: 't>(
 				&'t self,
-				_ctx: ::translate::Context<'c>,
+				_ctx: &::translate::context::Context<'c>,
 			) -> ::std::borrow::Cow<'t, str> {
 				let mut result = ::std::string::String::with_capacity(3);
 				let (s, neg) = {

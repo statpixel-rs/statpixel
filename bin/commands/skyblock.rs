@@ -24,7 +24,9 @@ use minecraft::{
 };
 use poise::serenity_prelude::AttachmentType;
 use skia_safe::textlayout::TextAlign;
-use translate::{tr, ApiError, Context, Error};
+use translate::{context, tr, ApiError, Context, Error};
+
+use crate::util;
 
 const LABEL: [Text; 2] = minecraft_text("§b§lSky§a§lBlock");
 
@@ -56,6 +58,9 @@ pub async fn auctions(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -64,7 +69,7 @@ pub async fn auctions(
 
 	let png = {
 		let auctions = player.get_auctions().await?;
-		let status = shape::Status(&session, skin.as_ref());
+		let status = shape::Status(&session, skin.image());
 		let level = network::get_level(data.xp);
 		let progress = shape::WideBubbleProgress(
 			network::get_level_progress(data.xp),
@@ -122,10 +127,11 @@ pub async fn auctions(
 
 	ctx.send(move |m| {
 		m.content(crate::tip::random(ctx));
-		m.attachment(AttachmentType::Bytes {
+		m.attachments = vec![AttachmentType::Bytes {
 			data: png,
-			filename: crate::IMAGE_NAME.to_string(),
-		})
+			filename: crate::IMAGE_NAME.into(),
+		}];
+		m
 	})
 	.await?;
 
@@ -148,6 +154,9 @@ pub async fn profile(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -169,13 +178,14 @@ pub async fn profile(
 	};
 
 	let png = {
-		let status = shape::Status(&session, skin.as_ref());
+		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
 			sky_block::get_level_progress(member.leveling.xp),
 			sky_block::get_colours(level),
 		);
 
+		let ctx = &ctx;
 		let mut surface = Canvas::new(720.)
 			.gap(7.)
 			.push_down(
@@ -369,10 +379,11 @@ pub async fn profile(
 
 	ctx.send(move |m| {
 		m.content(crate::tip::random(ctx));
-		m.attachment(AttachmentType::Bytes {
+		m.attachments = vec![AttachmentType::Bytes {
 			data: png,
-			filename: crate::IMAGE_NAME.to_string(),
-		})
+			filename: crate::IMAGE_NAME.into(),
+		}];
+		m
 	})
 	.await?;
 
@@ -394,6 +405,9 @@ pub async fn bank(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
@@ -469,7 +483,7 @@ pub async fn bank(
 			&mut surface,
 			&data,
 			&[Text {
-				text: tr!(ctx, "island-bank-balance").as_ref(),
+				text: tr!(&ctx, "island-bank-balance").as_ref(),
 				paint: Paint::Gold,
 				..Default::default()
 			}],
@@ -481,10 +495,11 @@ pub async fn bank(
 
 	ctx.send(move |m| {
 		m.content(crate::tip::random(ctx));
-		m.attachment(AttachmentType::Bytes {
+		m.attachments = vec![AttachmentType::Bytes {
 			data: png,
-			filename: crate::IMAGE_NAME.to_string(),
-		})
+			filename: crate::IMAGE_NAME.into(),
+		}];
+		m
 	})
 	.await?;
 
@@ -507,6 +522,9 @@ pub async fn networth(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -536,7 +554,7 @@ pub async fn networth(
 	let bank = profile.banking.balance as f64;
 
 	let png = {
-		let status = shape::Status(&session, skin.as_ref());
+		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
 			sky_block::get_level_progress(member.leveling.xp),
@@ -602,7 +620,7 @@ pub async fn networth(
 									} else {
 										MATERIALS.get(&s.id)
 									} {
-										Some(v.as_slice())
+										Some(v.image())
 									} else {
 										tracing::warn!(id = s.id, "unknown item");
 
@@ -674,10 +692,11 @@ pub async fn networth(
 
 	ctx.send(move |m| {
 		m.content("Networth calculation is in beta, and may be inaccurate.");
-		m.attachment(AttachmentType::Bytes {
+		m.attachments = vec![AttachmentType::Bytes {
 			data: png,
-			filename: crate::IMAGE_NAME.to_string(),
-		})
+			filename: crate::IMAGE_NAME.into(),
+		}];
+		m
 	})
 	.await?;
 
@@ -700,6 +719,9 @@ pub async fn pets(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -725,7 +747,7 @@ pub async fn pets(
 	};
 
 	let png = {
-		let status = shape::Status(&session, skin.as_ref());
+		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
 			sky_block::get_level_progress(member.leveling.xp),
@@ -813,7 +835,7 @@ pub async fn pets(
 			.map(|s| {
 				shape::Slot(
 					if let Some(v) = MATERIALS.get(&s.id) {
-						Some(v.as_slice())
+						Some(v.image())
 					} else {
 						tracing::warn!(id = s.id, "unknown item");
 
@@ -835,10 +857,11 @@ pub async fn pets(
 
 	ctx.send(move |m| {
 		m.content(crate::tip::random(ctx));
-		m.attachment(AttachmentType::Bytes {
+		m.attachments = vec![AttachmentType::Bytes {
 			data: png,
-			filename: crate::IMAGE_NAME.to_string(),
-		})
+			filename: crate::IMAGE_NAME.into(),
+		}];
+		m
 	})
 	.await?;
 
@@ -863,6 +886,9 @@ macro_rules! inventory_command {
 			#[max_length = 36]
 			uuid: Option<String>,
 		) -> Result<(), Error> {
+			let uuid = util::parse_uuid(uuid)?;
+			let ctx = &context::Context::from_poise(&ctx);
+
 			let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 			let (player, data, session, skin, suffix) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -891,13 +917,14 @@ macro_rules! inventory_command {
 			};
 
 			let png = {
-				let status = shape::Status(&session, skin.as_ref());
+				let status = shape::Status(&session, skin.image());
 				let level = sky_block::get_level(member.leveling.xp);
 				let progress = shape::WideBubbleProgress(
 					sky_block::get_level_progress(member.leveling.xp),
 					sky_block::get_colours(level),
 				);
 
+				let ctx = &ctx;
 				let mut canvas = Canvas::new(720.)
 					.gap(7.)
 					.push_down(
@@ -998,7 +1025,7 @@ macro_rules! inventory_command {
 								} else {
 									MATERIALS.get(&s.id)
 								} {
-									Some(v.as_slice())
+									Some(v.image())
 								} else {
 									tracing::warn!(id = s.id, "unknown item");
 
@@ -1021,10 +1048,11 @@ macro_rules! inventory_command {
 
 			ctx.send(move |m| {
 				m.content(crate::tip::random(ctx));
-				m.attachment(AttachmentType::Bytes {
+				m.attachments = vec![AttachmentType::Bytes {
 					data: png,
-					filename: crate::IMAGE_NAME.to_string(),
-				})
+					filename: crate::IMAGE_NAME.into(),
+				}];
+				m
 			})
 			.await?;
 

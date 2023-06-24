@@ -2,7 +2,7 @@ use std::{borrow::Cow, ops::SubAssign};
 
 use macros::Diff;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-use translate::Context;
+use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
@@ -49,7 +49,7 @@ impl From<Xp> for u32 {
 
 impl ToFormatted for Xp {
 	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let xp = self.0;
 
 		Cow::Owned(format!("{} XP", xp.to_formatted_label(ctx)))

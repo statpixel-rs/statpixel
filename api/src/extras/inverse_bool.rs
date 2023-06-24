@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use serde::{Deserialize, Deserializer};
-use translate::Context;
+use translate::context::Context;
 
 use crate::canvas::{diff::Diff, label::ToFormatted};
 
@@ -20,7 +20,7 @@ impl<'de> Deserialize<'de> for InverseBool {
 }
 
 impl ToFormatted for InverseBool {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		if self.0 {
 			false.to_formatted_label(ctx)
 		} else {

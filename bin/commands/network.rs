@@ -1,4 +1,4 @@
-use crate::{format::Display, Context, Error};
+use crate::{format::Display, util, Error};
 use api::canvas::{self, body::Body, label::ToFormatted, shape, text, Canvas};
 use minecraft::{
 	calc::network,
@@ -6,7 +6,7 @@ use minecraft::{
 	text::{parse::minecraft_text, Text},
 };
 use poise::serenity_prelude::{AttachmentType, CreateEmbed};
-use translate::tr;
+use translate::{context, tr, Context};
 
 const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
 
@@ -25,6 +25,8 @@ pub async fn network(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
 	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
 
 	match format {
@@ -35,13 +37,14 @@ pub async fn network(
 			player.increase_searches(ctx).await?;
 
 			let png = {
-				let status = shape::Status(&session, skin.as_ref());
+				let status = shape::Status(&session, skin.image());
 				let level = network::get_level(data.xp);
 				let progress = shape::WideBubbleProgress(
 					network::get_level_progress(data.xp),
 					network::get_colours(level),
 				);
 
+				let ctx = &ctx;
 				let mut surface = Canvas::new(720.)
 					.gap(7.)
 					.push_down(
@@ -114,10 +117,11 @@ pub async fn network(
 
 			ctx.send(move |m| {
 				m.content(crate::tip::random(ctx));
-				m.attachment(AttachmentType::Bytes {
+				m.attachments = vec![AttachmentType::Bytes {
 					data: png,
 					filename: crate::IMAGE_NAME.into(),
-				})
+				}];
+				m
 			})
 			.await?;
 		}
@@ -126,39 +130,44 @@ pub async fn network(
 
 			player.increase_searches(ctx).await?;
 
-			let mut embed = CreateEmbed::default();
+			let embed = {
+				let ctx = &ctx;
+				let mut embed = CreateEmbed::default();
 
-			embed.thumbnail(player.get_body_url());
+				embed.thumbnail(player.get_body_url());
 
-			if let Some(prefix) = data.get_rank().as_str() {
-				embed.author(|a| {
-					a.name(format!("{} {} :: Network", prefix, data.username))
-						.icon_url(player.get_head_url())
-				});
-			} else {
-				embed.author(|a| {
-					a.name(format!("{} :: Network", data.username))
-						.icon_url(player.get_head_url())
-				});
-			}
+				if let Some(prefix) = data.get_rank().as_str() {
+					embed.author(|a| {
+						a.name(format!("{} {} :: Network", prefix, data.username))
+							.icon_url(player.get_head_url())
+					});
+				} else {
+					embed.author(|a| {
+						a.name(format!("{} :: Network", data.username))
+							.icon_url(player.get_head_url())
+					});
+				}
 
-			embed.description(format!(
-				"{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**",
-				tr!(ctx, "experience"),
-				data.xp.to_formatted_label(ctx),
-				tr!(ctx, "karma"),
-				data.karma.to_formatted_label(ctx),
-				tr!(ctx, "rewards"),
-				data.rewards.to_formatted_label(ctx),
-				tr!(ctx, "friend-requests"),
-				data.friend_requests.to_formatted_label(ctx),
-				tr!(ctx, "time-played"),
-				data.playtime.to_formatted_label(ctx),
-				tr!(ctx, "first-login"),
-				data.first_login.to_formatted_label(ctx),
-				tr!(ctx, "last-login"),
-				data.last_login.to_formatted_label(ctx),
-			));
+				embed.description(format!(
+					"{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**",
+					tr!(ctx, "experience"),
+					data.xp.to_formatted_label(ctx),
+					tr!(ctx, "karma"),
+					data.karma.to_formatted_label(ctx),
+					tr!(ctx, "rewards"),
+					data.rewards.to_formatted_label(ctx),
+					tr!(ctx, "friend-requests"),
+					data.friend_requests.to_formatted_label(ctx),
+					tr!(ctx, "time-played"),
+					data.playtime.to_formatted_label(ctx),
+					tr!(ctx, "first-login"),
+					data.first_login.to_formatted_label(ctx),
+					tr!(ctx, "last-login"),
+					data.last_login.to_formatted_label(ctx),
+				));
+
+				embed
+			};
 
 			ctx.send(|m| {
 				m.content(crate::tip::random(ctx));

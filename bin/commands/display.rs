@@ -31,11 +31,11 @@ pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 	ctx.send(|m| {
 		success_embed(
 			m,
-			tr!(ctx, "display-changed"),
+			tr!(&ctx, "display-changed"),
 			match format {
-				Display::Image => tr!(ctx, "display-changed-image-description"),
-				Display::Compact => tr!(ctx, "display-changed-compact-description"),
-				Display::Text => tr!(ctx, "display-changed-text-description"),
+				Display::Image => tr!(&ctx, "display-changed-image-description"),
+				Display::Compact => tr!(&ctx, "display-changed-compact-description"),
+				Display::Text => tr!(&ctx, "display-changed-text-description"),
 			},
 		)
 	})

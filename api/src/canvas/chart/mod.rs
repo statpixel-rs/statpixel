@@ -20,7 +20,7 @@ use plotters::{
 use skia_safe::{
 	AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect, Rect, Surface,
 };
-use translate::{prelude::GetChronoLocale, tr, Context, Error};
+use translate::{prelude::GetChronoLocale, tr, context::Context, Error};
 
 use super::shape;
 
@@ -37,7 +37,7 @@ macro_rules! impl_chart_create {
 			/// # Errors
 			/// Returns an error if the image could not be created.
 			pub fn create(
-				ctx: Context<'_>,
+				ctx: &Context<'_>,
 				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>)>,
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,
@@ -166,7 +166,7 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
-pub fn apply_title(ctx: Context<'_>, surface: &mut Surface, data: &Data, label: &[Text]) {
+pub fn apply_title(ctx: &Context<'_>, surface: &mut Surface, data: &Data, label: &[Text]) {
 	let rank = data.get_rank();
 	let username_paint = rank.get_username_paint();
 

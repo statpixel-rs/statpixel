@@ -12,12 +12,12 @@ use plotters::{
 	style::{self, Color, IntoTextStyle},
 };
 
-use translate::{prelude::GetChronoLocale, Context, Error};
+use translate::{prelude::GetChronoLocale, context::Context, Error};
 
 /// # Errors
 /// Returns an error if the image could not be created.
 pub fn create(
-	ctx: Context<'_>,
+	ctx: &Context<'_>,
 	series: impl IntoIterator<Item = (DateTime<Utc>, u32)>,
 	colour: Paint,
 	range_x: Range<DateTime<Utc>>,

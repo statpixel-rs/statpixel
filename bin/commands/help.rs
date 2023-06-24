@@ -8,6 +8,8 @@ const TITLE: &str = concat!("StatPixel | v", env!("CARGO_PKG_VERSION"));
 pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
 	ctx.send(|m| {
 		m.embed(|e| {
+			let ctx = &ctx;
+
 			e.colour(crate::EMBED_COLOUR)
 				.title(TITLE)
 				.field(

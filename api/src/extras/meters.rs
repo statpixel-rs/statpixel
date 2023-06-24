@@ -2,7 +2,7 @@ use std::{borrow::Cow, ops::Add};
 
 use macros::Diff;
 use serde::{Deserialize, Deserializer};
-use translate::Context;
+use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
@@ -62,7 +62,7 @@ impl From<Meters> for f64 {
 
 impl ToFormatted for Meters {
 	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: Context<'c>) -> Cow<'t, str> {
+	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let m = self.0;
 
 		if let 0..1_000 = m {

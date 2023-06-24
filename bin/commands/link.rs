@@ -29,6 +29,8 @@ pub async fn link(
 		),
 		(None, None) => {
 			ctx.send(|m| {
+				let ctx = &ctx;
+
 				m.embed(|e| {
 					e.title(tr!(ctx, "linking-failed"))
 						.description(tr!(ctx, "linking-failed-description"))
@@ -57,6 +59,8 @@ pub async fn link(
 			.await?;
 
 		ctx.send(|m| {
+			let ctx = &ctx;
+			
 			success_embed(
 				m,
 				tr!(ctx, "linking-succeeded"),
@@ -66,6 +70,8 @@ pub async fn link(
 		.await?;
 	} else {
 		ctx.send(|m| {
+			let ctx = &ctx;
+
 			error_embed(
 				m,
 				tr!(ctx, "linking-failed"),

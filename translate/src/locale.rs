@@ -2,9 +2,9 @@
 //! https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 
 use core::panic;
-use std::{borrow::Cow, fmt::Debug};
+use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
-use crate::{Context, Data, Error};
+use crate::{prelude::GetLocale, Data, Error};
 use tracing::warn;
 
 type Bundle = fluent::bundle::FluentBundle<
@@ -14,7 +14,7 @@ type Bundle = fluent::bundle::FluentBundle<
 
 #[macro_export]
 macro_rules! tr_fmt {
-	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
+	($ctx: expr, $id: expr $(, $argname:ident: $argvalue:expr )* $(,)?) => {{
 		let mut args = $crate::fluent::FluentArgs::new();
 		$( args.set(stringify!($argname), $argvalue); )*
 
@@ -24,14 +24,14 @@ macro_rules! tr_fmt {
 
 #[macro_export]
 macro_rules! tr {
-	( $ctx:ident, $id:expr $(, $argname:ident: $argvalue:expr )* $(,)? ) => {{
+	($ctx: expr, $id: expr) => {{
 		$crate::get_str($ctx, $id)
 	}};
 }
 
 pub struct Locale {
 	main: Bundle,
-	other: std::collections::HashMap<String, Bundle>,
+	other: std::collections::HashMap<super::context::Locale, Bundle>,
 }
 
 impl Debug for Locale {
@@ -60,7 +60,7 @@ pub fn format(
 	)
 }
 
-pub fn get_str<'t, 'i: 't>(ctx: Context<'t>, id: &'i str) -> Cow<'t, str> {
+pub fn get_str<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
 	let locale = &ctx.data().locale;
 
 	ctx.locale()
@@ -81,7 +81,7 @@ fn get_locale_str<'t, 'i: 't>(bundle: &'t Bundle, id: &'i str) -> Option<Cow<'t,
 
 /// Retrieves the appropriate language file depending on user locale and calls [`format`]
 pub fn get<'i>(
-	ctx: Context<'_>,
+	ctx: &impl GetLocale,
 	id: &'i str,
 	attr: Option<&str>,
 	args: Option<&fluent::FluentArgs<'_>>,
@@ -101,7 +101,7 @@ pub fn get<'i>(
 pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 	fn read_single_ftl(
 		path: &std::path::Path,
-	) -> Result<(String, Bundle), Box<dyn std::error::Error>> {
+	) -> Result<(crate::context::Locale, Bundle), Box<dyn std::error::Error>> {
 		// Extract locale from filename
 		let locale = path.file_stem().ok_or("invalid .ftl filename")?;
 		let locale = locale.to_str().ok_or("invalid filename UTF-8")?;
@@ -122,7 +122,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 			.add_resource(resource)
 			.map_err(|e| format!("failed to add resource to bundle: {e:?}"))?;
 
-		Ok((locale.to_string(), bundle))
+		Ok((crate::context::Locale::from_str(locale).unwrap(), bundle))
 	}
 
 	Ok(Locale {
@@ -159,7 +159,7 @@ impl Locale {
 			// Add localizations
 			if !subcommand {
 				for (locale, bundle) in &self.other {
-					if locale == "en-US" {
+					if locale == &crate::context::Locale::en_US {
 						continue;
 					}
 
@@ -169,7 +169,7 @@ impl Locale {
 						None => {
 							warn!(
 								name = command.name,
-								locale = locale,
+								locale = locale.as_str(),
 								"missing localization for command"
 							);
 
@@ -179,18 +179,19 @@ impl Locale {
 
 					command
 						.name_localizations
-						.insert(locale.clone(), localized_command_name);
+						.insert(locale.as_str().to_string(), localized_command_name);
 
 					let description = format(bundle, &command.name, Some("description"), None);
 
 					if let Some(description) = description {
 						command
 							.description_localizations
-							.insert(locale.clone(), description);
+							.insert(locale.as_str().to_string(), description);
 					} else {
 						warn!(
 							"missing command description localization for `{}` in {}",
-							command.name, locale
+							command.name,
+							locale.as_str()
 						);
 					}
 
@@ -198,11 +199,14 @@ impl Locale {
 						let name = format(bundle, &command.name, Some(&parameter.name), None);
 
 						if let Some(name) = name {
-							parameter.name_localizations.insert(locale.clone(), name);
+							parameter
+								.name_localizations
+								.insert(locale.as_str().to_string(), name);
 						} else {
 							warn!(
 								"missing parameter name localization for `{}` in {}",
-								parameter.name, locale
+								parameter.name,
+								locale.as_str()
 							);
 						}
 
@@ -216,11 +220,12 @@ impl Locale {
 						if let Some(description) = description {
 							parameter
 								.description_localizations
-								.insert(locale.clone(), description);
+								.insert(locale.as_str().to_string(), description);
 						} else {
 							warn!(
 								"missing parameter description localization for `{}` in {}",
-								parameter.name, locale
+								parameter.name,
+								locale.as_str()
 							);
 						}
 
@@ -229,11 +234,14 @@ impl Locale {
 							let name = format(bundle, &choice.name, None, None);
 
 							if let Some(name) = name {
-								choice.localizations.insert(locale.clone(), name);
+								choice
+									.localizations
+									.insert(locale.as_str().to_string(), name);
 							} else {
 								warn!(
 									"missing choice name localization for `{}` in {}",
-									choice.name, locale
+									choice.name,
+									locale.as_str()
 								);
 							}
 						}

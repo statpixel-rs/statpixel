@@ -26,8 +26,8 @@ pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 		ctx.send(|m| {
 			success_embed(
 				m,
-				tr!(ctx, "unlinking-succeeded"),
-				tr!(ctx, "unlinking-succeeded-description"),
+				tr!(&ctx, "unlinking-succeeded"),
+				tr!(&ctx, "unlinking-succeeded-description"),
 			)
 		})
 		.await?;
@@ -35,8 +35,8 @@ pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 		ctx.send(|m| {
 			error_embed(
 				m,
-				tr!(ctx, "unlinking-failed"),
-				tr!(ctx, "unlinking-failed-description"),
+				tr!(&ctx, "unlinking-failed"),
+				tr!(&ctx, "unlinking-failed-description"),
 			)
 		})
 		.await?;

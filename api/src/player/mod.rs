@@ -10,19 +10,20 @@ use reqwest::{Request, StatusCode, Url};
 use serde::Deserialize;
 use std::{borrow::Cow, str::FromStr, sync::Arc, time::Duration};
 use tracing::error;
-use translate::Context;
+use translate::context;
 use uuid::Uuid;
 
 use crate::{
 	cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE},
 	http::HTTP,
-	Error,
+	include_image, Error,
 };
 
 use self::status::Status;
 
 pub const VERSION: i16 = 6;
-pub const DEFAULT_SKIN: &[u8] = include_bytes!("../../../assets/skins/steve.png");
+pub static DEFAULT_SKIN: Lazy<crate::image::Image> =
+	include_image!("../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
@@ -86,7 +87,10 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
-	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+	pub async fn increase_searches(
+		&self,
+		ctx: &context::Context<'_>,
+	) -> Result<(), translate::Error> {
 		if let Some(ref username) = self.username {
 			diesel::insert_into(autocomplete::table)
 				.values((
@@ -113,7 +117,7 @@ impl Player {
 		Ok(())
 	}
 
-	pub async fn get_suffix(&self, ctx: Context<'_>) -> Option<String> {
+	pub async fn get_suffix(&self, ctx: &context::Context<'_>) -> Option<String> {
 		let Ok(mut connnection) = ctx.data().pool.get().await else {
 			return None;
 		};
@@ -248,7 +252,7 @@ impl Player {
 
 	/// # Panics
 	/// Will not panic.
-	pub async fn get_skin(&self) -> Cow<'static, [u8]> {
+	pub async fn get_skin(&self) -> Cow<'static, crate::image::Image<'static>> {
 		let url = PLAYER_SKIN_ENDPOINT
 			.join(&format!("{}.png", self.uuid))
 			.unwrap();
@@ -261,10 +265,10 @@ impl Player {
 
 		match response {
 			Ok(response) if response.status() == StatusCode::OK => match response.bytes().await {
-				Ok(bytes) => Cow::Owned(bytes.into()),
-				Err(_) => Cow::Borrowed(DEFAULT_SKIN),
+				Ok(bytes) => Cow::Owned(crate::image::from_bytes_copy(&bytes).unwrap()),
+				Err(_) => Cow::Borrowed(&DEFAULT_SKIN),
 			},
-			_ => Cow::Borrowed(DEFAULT_SKIN),
+			_ => Cow::Borrowed(&DEFAULT_SKIN),
 		}
 	}
 

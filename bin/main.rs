@@ -4,19 +4,21 @@
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 
+pub use api::id::Id;
 use database::{get_pool, schema::usage};
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
-use poise::serenity_prelude::GatewayIntents;
+use poise::serenity_prelude::{GatewayIntents, Interaction};
 use snapshot::user;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
-use translate::{Context, Data, Error};
+use translate::{context, Context, Data, Error};
 
 mod commands;
 mod constants;
 mod emoji;
 mod format;
+mod id;
 mod snapshot;
 mod tip;
 mod util;
@@ -46,7 +48,6 @@ async fn main() {
 		commands::games::bedwars(),
 		commands::games::blitz(),
 		commands::games::buildbattle(),
-		commands::cache::cache(),
 		commands::games::copsandcrims(),
 		commands::snapshot::daily::daily(),
 		commands::display::display(),
@@ -65,7 +66,6 @@ async fn main() {
 		commands::games::pit(),
 		commands::project::project(),
 		commands::games::quake(),
-		commands::ser::ser(),
 		commands::skyblock::skyblock(),
 		commands::games::skywars(),
 		commands::games::smash(),
@@ -96,7 +96,7 @@ async fn main() {
 			..Default::default()
 		})
 		.token(std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN"))
-		.intents(GatewayIntents::from_bits(0).unwrap())
+		.intents(GatewayIntents::GUILDS)
 		.setup(move |ctx, _ready, framework| {
 			Box::pin(async move {
 				poise::builtins::register_globally(ctx, &framework.options().commands)
@@ -153,7 +153,7 @@ async fn event_handler(
 	ctx: &poise::serenity_prelude::Context,
 	event: &poise::Event<'_>,
 	_framework: poise::FrameworkContext<'_, Data, Error>,
-	_data: &Data,
+	data: &Data,
 ) -> Result<(), Error> {
 	match event {
 		poise::Event::Ready { data_about_bot } => {
@@ -165,11 +165,18 @@ async fn event_handler(
 			)))
 			.await;
 		}
-		poise::Event::GuildCreate { guild, .. } => {
-			info!(guild = ?guild.name, "joined guild");
-		}
-		poise::Event::GuildDelete { incomplete, .. } => {
-			info!(guild = ?incomplete.id, "left guild");
+		poise::Event::InteractionCreate {
+			interaction: Interaction::MessageComponent(interaction),
+		} => {
+			let Some(id) = interaction.data.values.get(0).and_then(|p| api::id::decode(p)) else {
+				return Ok(());
+			};
+
+			let ctx = context::Context::from_component(ctx, data, interaction);
+
+			if let Err(e) = crate::id::map(&ctx, id).await {
+				util::error(&ctx, e).await;
+			};
 		}
 		_ => {}
 	}

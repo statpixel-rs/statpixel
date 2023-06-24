@@ -10,7 +10,7 @@ use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};
 use serde::{Deserialize, Deserializer};
 use std::{str::FromStr, sync::Arc};
-use translate::Context;
+use translate::context::Context;
 use uuid::Uuid;
 
 use crate::{
@@ -180,7 +180,7 @@ impl Guild {
 	#[allow(clippy::cast_possible_wrap)]
 	/// # Errors
 	/// Returns an error if the query could not be executed.
-	pub async fn increase_searches(&self, ctx: Context<'_>) -> Result<(), translate::Error> {
+	pub async fn increase_searches(&self, ctx: &Context<'_>) -> Result<(), translate::Error> {
 		diesel::insert_into(guild_autocomplete::table)
 			.values((
 				guild_autocomplete::name.eq(&self.name),

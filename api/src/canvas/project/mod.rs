@@ -21,7 +21,7 @@ use skia_safe::{
 	textlayout::TextAlign, AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect,
 	Rect, Surface,
 };
-use translate::{prelude::GetChronoLocale, tr, Context, Error};
+use translate::{context::Context, prelude::GetChronoLocale, tr, Error};
 
 use super::{body, chart::WIDTH_F, shape, INSET};
 
@@ -81,7 +81,7 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 #[allow(clippy::cast_precision_loss)]
 pub fn apply_bubbles(
 	surface: &mut Surface,
-	ctx: Context<'_>,
+	ctx: &Context<'_>,
 	kind: &str,
 	value: &impl ToFormatted,
 	acc: &impl ToFormatted,
@@ -152,7 +152,7 @@ macro_rules! impl_project_create {
 			#[allow(clippy::too_many_lines)]
 			#[allow(clippy::missing_errors_doc)]
 			pub fn create(
-				ctx: Context<'_>,
+				ctx: &Context<'_>,
 				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>, DateTime<Utc>, $ty)>,
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,

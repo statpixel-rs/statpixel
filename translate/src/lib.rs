@@ -5,6 +5,7 @@ use database::PostgresPool;
 use thiserror::Error;
 use uuid::Uuid;
 
+pub mod context;
 mod locale;
 pub mod prelude;
 
@@ -89,6 +90,8 @@ pub enum Error {
 	LeaderboardNotFound(String),
 	#[error("An internal error occurred while interacting with the canvas.")]
 	Canvas,
+	#[error("An internal error occurred while decoding base64.")]
+	Base64(#[from] base64::DecodeError),
 }
 
 #[derive(Debug, thiserror::Error)]

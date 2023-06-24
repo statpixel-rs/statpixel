@@ -6,7 +6,7 @@ use futures::StreamExt;
 use minecraft::{paint::Paint, text::Text};
 use poise::serenity_prelude::{AttachmentType, CreateEmbed};
 use skia_safe::textlayout::TextAlign;
-use translate::{Context, Error};
+use translate::{context, Context, Error};
 
 use crate::{format::Display, util::escape_username};
 
@@ -47,6 +47,8 @@ pub async fn leaderboard(
 	#[autocomplete = "autocomplete_board"] board: String,
 ) -> Result<(), Error> {
 	ctx.defer().await?;
+
+	let ctx = &context::Context::from_poise(&ctx);
 
 	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let leaderboard = {
@@ -144,10 +146,11 @@ pub async fn leaderboard(
 
 			ctx.send(move |m| {
 				m.content(crate::tip::random(ctx));
-				m.attachment(AttachmentType::Bytes {
+				m.attachments = vec![AttachmentType::Bytes {
 					data: png,
 					filename: crate::IMAGE_NAME.into(),
-				})
+				}];
+				m
 			})
 			.await?;
 		}

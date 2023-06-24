@@ -15,15 +15,26 @@ pub mod canvas;
 pub mod game;
 pub mod guild;
 pub mod http;
+pub mod id;
+pub mod image;
 pub mod leaderboard;
 pub mod nbt;
 pub mod player;
 pub mod player_old;
+pub mod prelude;
 pub mod ratelimiter;
 pub mod redis;
+pub(crate) mod ser;
 pub mod skyblock;
 pub mod snapshot;
-pub(crate) mod ser;
 
 pub use extras::*;
 pub use translate::ApiError as Error;
+
+pub use canvas::shape;
+pub use guild::member::Member;
+pub use guild::Guild;
+pub use guild::Rank;
+pub use player::data::Data;
+pub use player::status::Session;
+pub use player::Player;
