@@ -80,6 +80,9 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 					super::commands::guild::run::general(ctx, None, None, None, Some(uuid)).await
 				}
 				GuildMode::Member => {
+					super::commands::guild::run::member(ctx, None, Some(uuid)).await
+				}
+				GuildMode::Members => {
 					super::commands::guild::run::members(ctx, None, None, None, Some(uuid)).await
 				}
 				GuildMode::Top => {

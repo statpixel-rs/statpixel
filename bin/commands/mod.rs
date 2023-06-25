@@ -125,6 +125,19 @@ pub async fn get_guild(
 	guild
 }
 
+pub async fn get_guild_with_member(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<(Arc<Guild>, Player), Error> {
+	let (result, _) = tokio::join!(
+		util::get_guild_with_member_from_input(ctx, uuid, username),
+		ctx.defer(),
+	);
+
+	result
+}
+
 pub async fn get_player_data_session_skin_suffix(
 	ctx: &context::Context<'_>,
 	uuid: Option<Uuid>,

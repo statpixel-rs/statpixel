@@ -272,7 +272,7 @@ impl ToTokens for GameInputReceiver {
 				let ident = mode.ident.as_ref().unwrap();
 
 				quote! {
-					#ty ::embed(&data.stats. #path. #ident, ctx, &mut embed, data);
+					embed = #ty ::embed(&data.stats. #path. #ident, ctx, embed, data);
 				}
 			})
 			.collect::<Vec<_>>();
@@ -355,10 +355,10 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Root {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Root {
 					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -368,11 +368,11 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Snapshot {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Snapshot {
 					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
 					uuid,
 					from,
-				})))
+				}))
 			}
 		});
 
@@ -382,10 +382,10 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::History {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::History {
 					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -395,10 +395,10 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Project {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Project {
 					kind: crate::id::ProjectMode::#ident (#enum_ident ::#ty, kind),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -1252,16 +1252,16 @@ impl ToTokens for GameInputReceiver {
 					pub fn embed(
 						&self,
 						ctx: &::translate::context::Context<'_>,
-						embed: &mut ::poise::serenity_prelude::CreateEmbed,
+						embed: ::poise::serenity_prelude::CreateEmbed,
 						data: &crate::player::data::Data,
-					) {
+					) -> ::poise::serenity_prelude::CreateEmbed {
 						let mut field = ::std::string::String::new();
 						let stats = &data.stats.#path;
 
 						#(#apply_embed_mode)*
 						self.embed_own_fields(ctx, &mut field, data, stats);
 
-						embed.field(::translate::tr!(ctx, Self::get_tr()), field, true);
+						embed.field(::translate::tr!(ctx, Self::get_tr()), field, true)
 					}
 
 					pub fn min_fields(&self) -> u32 {
@@ -1899,7 +1899,11 @@ impl ToTokens for GameInputReceiver {
 					canvas #(#apply_items_overall)*
 				}
 
-				pub fn embed(ctx: &::translate::context::Context<'_>, embed: &mut ::poise::serenity_prelude::CreateEmbed, data: &crate::player::data::Data) {
+				pub fn embed(
+					ctx: &::translate::context::Context<'_>,
+					embed: ::poise::serenity_prelude::CreateEmbed,
+					data: &crate::player::data::Data
+				) -> ::poise::serenity_prelude::CreateEmbed {
 					let stats = &data.stats.#path;
 					let mut field = ::std::string::String::new();
 
@@ -1909,7 +1913,7 @@ impl ToTokens for GameInputReceiver {
 						::translate::tr!(ctx, Self::get_tr()),
 						field,
 						true,
-					);
+					)
 				}
 
 				pub fn min_fields(stats: &Stats) -> u32 {
@@ -2080,31 +2084,27 @@ impl ToTokens for GameInputReceiver {
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						.add_option(::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Root {
-							kind: crate::id::Mode::#ident (#enum_ident ::Overall),
-							uuid,
-						})))
-						#(#mode_menu_root)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Root {
+									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+									uuid,
+								})),
+								#(#mode_menu_root),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				pub fn as_snapshot(
@@ -2112,63 +2112,55 @@ impl ToTokens for GameInputReceiver {
 					uuid: ::uuid::Uuid,
 					from: ::chrono::DateTime<::chrono::Utc>,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						.add_option(::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Snapshot {
-							kind: crate::id::Mode::#ident (#enum_ident ::Overall),
-							uuid,
-							from,
-						})))
-						#(#mode_menu_snapshot)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Snapshot {
+									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+									uuid,
+									from,
+								})),
+								#(#mode_menu_snapshot),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				pub fn as_history(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						.add_option(::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::History {
-							kind: crate::id::Mode::#ident (#enum_ident ::Overall),
-							uuid,
-						})))
-						#(#mode_menu_history)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::History {
+									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+									uuid,
+								})),
+								#(#mode_menu_history),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				pub fn as_project(
@@ -2176,50 +2168,46 @@ impl ToTokens for GameInputReceiver {
 					uuid: ::uuid::Uuid,
 					kind: #enum_kind_ident,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						.add_option(::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Project {
-							kind: crate::id::ProjectMode::#ident (#enum_ident ::Overall, kind),
-							uuid,
-						})))
-						#(#mode_menu_project)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Project {
+									kind: crate::id::ProjectMode::#ident (#enum_ident ::Overall, kind),
+									uuid,
+								})),
+								#(#mode_menu_project),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 			}
 
 			impl crate::prelude::Mode for #enum_ident {
 				type Kind = #enum_kind_ident;
 
-				fn as_root(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateComponents {
+				fn as_root(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
 					Self::as_root(ctx, uuid, selected)
 				}
 
-				fn as_snapshot(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, from: ::chrono::DateTime<::chrono::Utc>, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateComponents {
+				fn as_snapshot(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, from: ::chrono::DateTime<::chrono::Utc>, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
 					Self::as_snapshot(ctx, uuid, from, selected)
 				}
 
-				fn as_history(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateComponents {
+				fn as_history(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
 					Self::as_history(ctx, uuid, selected)
 				}
 
-				fn as_project(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, kind: <Self as crate::prelude::Mode>::Kind, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateComponents {
+				fn as_project(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, kind: <Self as crate::prelude::Mode>::Kind, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
 					Self::as_project(ctx, uuid, kind, selected)
 				}
 			}
@@ -2304,11 +2292,12 @@ impl ToTokens for GameInputReceiver {
 					::futures::StreamExt::take(
 						::futures::StreamExt::filter_map(::futures::stream::iter(#enum_ident ::slice()), move |mode| {
 							let name = ::translate::tr!(&ctx, mode.get_tr());
+							let mode: u32 = mode.into();
 
 							::futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
 								::std::option::Option::Some(::poise::AutocompleteChoice {
 									name: name.to_string(),
-									value: mode.into(),
+									value: mode,
 								})
 							} else {
 								::std::option::Option::None
@@ -2320,11 +2309,12 @@ impl ToTokens for GameInputReceiver {
 					::futures::StreamExt::take(
 						::futures::StreamExt::filter_map(::futures::stream::iter(#enum_kind_ident ::slice()), move |kind| {
 							let name = ::translate::tr!(&ctx, kind.get_tr());
+							let kind: u32 = kind.into();
 
 							::futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
 								::std::option::Option::Some(::poise::AutocompleteChoice {
 									name: name.to_string(),
-									value: kind.into(),
+									value: kind,
 								})
 							} else {
 								::std::option::Option::None
@@ -2473,32 +2463,35 @@ impl ToTokens for GameInputReceiver {
 					player: &crate::player::Player,
 					data: &crate::player::data::Data,
 				) -> ::poise::serenity_prelude::CreateEmbed {
-					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
-
-					embed.thumbnail(player.get_body_url());
+					let mut embed = ::poise::serenity_prelude::CreateEmbed::default()
+						.thumbnail(player.get_body_url());
 
 					if let Some(prefix) = data.get_rank().as_str() {
-						embed.author(|a| {
-							a.name(format!(concat!("{} {} :: ", #plain), prefix, &data.username))
-								.icon_url(player.get_head_url())
-						});
+						embed = embed.author(
+							::poise::serenity_prelude::CreateEmbedAuthor::new(
+								format!(concat!("{} {} :: ", #plain), prefix, &data.username)
+							)
+							.icon_url(player.get_head_url())
+						);
 					} else {
-						embed.author(|a| {
-							a.name(format!(concat!("{} :: ", #plain), &data.username))
-								.icon_url(player.get_head_url())
-						});
+						embed = embed.author(
+							::poise::serenity_prelude::CreateEmbedAuthor::new(
+								format!(concat!("{} :: ", #plain), &data.username)
+							)
+							.icon_url(player.get_head_url())
+						);
 					}
 
-					Overall::embed(
+					embed = Overall::embed(
 						ctx,
-						&mut embed,
+						embed,
 						data,
 					);
 
 					#(#apply_modes_text)*
 
 					for _ in 0..#buffer_fields {
-						embed.field("\u{200b}", "\u{200b}", true);
+						embed = embed.field("\u{200b}", "\u{200b}", true);
 					}
 
 					embed
@@ -2518,32 +2511,35 @@ impl ToTokens for GameInputReceiver {
 					let data = curr;
 					let stats = &data.stats.#path;
 
-					let mut embed = ::poise::serenity_prelude::CreateEmbed::default();
-
-					embed.thumbnail(player.get_body_url());
+					let mut embed = ::poise::serenity_prelude::CreateEmbed::default()
+						.thumbnail(player.get_body_url());
 
 					if let Some(prefix) = data.get_rank().as_str() {
-						embed.author(|a| {
-							a.name(format!(concat!("{} {} :: ", #plain), prefix, &data.username))
-								.icon_url(player.get_head_url())
-						});
+						embed = embed.author(
+							::poise::serenity_prelude::CreateEmbedAuthor::new(
+								format!(concat!("{} {} :: ", #plain), prefix, &data.username)
+							)
+							.icon_url(player.get_head_url())
+						);
 					} else {
-						embed.author(|a| {
-							a.name(format!(concat!("{} :: ", #plain), &data.username))
-								.icon_url(player.get_head_url())
-						});
+						embed = embed.author(
+							::poise::serenity_prelude::CreateEmbedAuthor::new(
+								format!(concat!("{} :: ", #plain), &data.username)
+							)
+							.icon_url(player.get_head_url())
+						);
 					}
 
-					Overall::embed(
+					embed = Overall::embed(
 						ctx,
-						&mut embed,
+						embed,
 						data,
 					);
 
 					#(#apply_modes_text)*
 
 					for _ in 0..#buffer_fields {
-						embed.field("\u{200b}", "\u{200b}", true);
+						embed = embed.field("\u{200b}", "\u{200b}", true);
 					}
 
 					embed

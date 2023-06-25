@@ -17,7 +17,7 @@ pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 	diesel::insert_into(schema::user::table)
 		.values((
 			schema::user::display.eq(&format),
-			schema::user::id.eq(u.id.0 as i64),
+			schema::user::id.eq(u.id.0.get() as i64),
 		))
 		.on_conflict(schema::user::id)
 		.do_update()
@@ -28,17 +28,14 @@ pub async fn display(ctx: Context<'_>, format: Display) -> Result<(), Error> {
 		.execute(&mut ctx.data().pool.get().await?)
 		.await?;
 
-	ctx.send(|m| {
-		success_embed(
-			m,
-			tr!(&ctx, "display-changed"),
-			match format {
-				Display::Image => tr!(&ctx, "display-changed-image-description"),
-				Display::Compact => tr!(&ctx, "display-changed-compact-description"),
-				Display::Text => tr!(&ctx, "display-changed-text-description"),
-			},
-		)
-	})
+	ctx.send(success_embed(
+		tr!(&ctx, "display-changed"),
+		match format {
+			Display::Image => tr!(&ctx, "display-changed-image-description"),
+			Display::Compact => tr!(&ctx, "display-changed-compact-description"),
+			Display::Text => tr!(&ctx, "display-changed-text-description"),
+		},
+	))
 	.await?;
 
 	Ok(())

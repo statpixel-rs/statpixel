@@ -5,34 +5,216 @@ use crate::macros::ModeTrait;
 
 use base64::Engine;
 use chrono::{DateTime, Utc};
+use macros::GetTr;
+use poise::serenity_prelude as serenity;
+use translate::{context, tr};
 use uuid::Uuid;
 
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, ModeTrait)]
 #[mode(kind = "SkyBlockKind", rename = "SkyBlock")]
 pub enum SkyBlockMode {
-	Inventory,
-	Networth,
-	Profile,
-	Bank,
 	Auctions,
-	Pets,
-	Vault,
-	Talisman,
+	Bank,
 	Candy,
-	Enderchest,
+	EnderChest,
 	Equipment,
 	Fishing,
+	Inventory,
+	Networth,
+	Pets,
 	Potions,
+	Profile,
 	Quiver,
+	Talisman,
+	Vault,
 	Wardrobe,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, ModeTrait)]
-#[mode(kind = "GuildKind", rename = "Guild")]
+#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, GetTr)]
 pub enum GuildMode {
 	General,
-	Top,
 	Member,
+	Members,
+	Top,
+}
+
+impl GuildMode {
+	pub fn as_root(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		selected: Option<Self>,
+	) -> serenity::CreateActionRow {
+		let mut menu = serenity::CreateSelectMenu::new(
+			ctx.id().to_string(),
+			serenity::CreateSelectMenuKind::String {
+				options: vec![
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "General"),
+						encode(Id::Root {
+							kind: Mode::Guild(Self::General),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Members"),
+						encode(Id::Root {
+							kind: Mode::Guild(Self::Members),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Top"),
+						encode(Id::Root {
+							kind: Mode::Guild(Self::Top),
+							uuid,
+						}),
+					),
+				],
+			},
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(selected) = selected {
+			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+		}
+
+		serenity::CreateActionRow::SelectMenu(menu)
+	}
+
+	pub fn as_snapshot(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		from: DateTime<Utc>,
+		selected: Option<Self>,
+	) -> serenity::CreateActionRow {
+		let mut menu = serenity::CreateSelectMenu::new(
+			ctx.id().to_string(),
+			serenity::CreateSelectMenuKind::String {
+				options: vec![
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "General"),
+						encode(Id::Snapshot {
+							kind: Mode::Guild(Self::General),
+							uuid,
+							from,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Members"),
+						encode(Id::Snapshot {
+							kind: Mode::Guild(Self::Members),
+							uuid,
+							from,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Top"),
+						encode(Id::Snapshot {
+							kind: Mode::Guild(Self::Top),
+							uuid,
+							from,
+						}),
+					),
+				],
+			},
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(selected) = selected {
+			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+		}
+
+		serenity::CreateActionRow::SelectMenu(menu)
+	}
+
+	pub fn as_history(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		selected: Option<Self>,
+	) -> serenity::CreateActionRow {
+		let mut menu = serenity::CreateSelectMenu::new(
+			ctx.id().to_string(),
+			serenity::CreateSelectMenuKind::String {
+				options: vec![
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "General"),
+						encode(Id::History {
+							kind: Mode::Guild(Self::General),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Members"),
+						encode(Id::History {
+							kind: Mode::Guild(Self::Members),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Top"),
+						encode(Id::History {
+							kind: Mode::Guild(Self::Top),
+							uuid,
+						}),
+					),
+				],
+			},
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(selected) = selected {
+			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+		}
+
+		serenity::CreateActionRow::SelectMenu(menu)
+	}
+
+	pub fn as_project(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		kind: GuildKind,
+		selected: Option<Self>,
+	) -> serenity::CreateActionRow {
+		let mut menu = serenity::CreateSelectMenu::new(
+			ctx.id().to_string(),
+			serenity::CreateSelectMenuKind::String {
+				options: vec![
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "General"),
+						encode(Id::Project {
+							kind: ProjectMode::Guild(Self::General, kind),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Members"),
+						encode(Id::Project {
+							kind: ProjectMode::Guild(Self::Members, kind),
+							uuid,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr!(ctx, "Top"),
+						encode(Id::Project {
+							kind: ProjectMode::Guild(Self::Top, kind),
+							uuid,
+						}),
+					),
+				],
+			},
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(selected) = selected {
+			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+		}
+
+		serenity::CreateActionRow::SelectMenu(menu)
+	}
 }
 
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default)]

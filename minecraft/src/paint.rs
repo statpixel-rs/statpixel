@@ -37,6 +37,7 @@ paint_colour!(RED, (255, 255, 85, 85));
 paint_colour!(LIGHT_PURPLE, (255, 255, 85, 255));
 paint_colour!(YELLOW, (255, 255, 255, 85));
 paint_colour!(WHITE, (255, 255, 255, 255));
+paint_colour!(BRONZE, (255, 205, 127, 50));
 
 // Utility colours
 paint_colour!(BACKGROUND, (128, 15, 24, 32));
@@ -62,6 +63,8 @@ pub enum Paint {
 	Yellow,
 	#[default]
 	White,
+	/// Special non-Minecraft colour for "3rd place" colour
+	Bronze,
 }
 
 impl Paint {
@@ -84,6 +87,7 @@ impl Paint {
 			Self::LightPurple => RGBColor(255, 85, 255),
 			Self::Yellow => RGBColor(255, 255, 85),
 			Self::White => RGBColor(255, 255, 255),
+			Self::Bronze => RGBColor(205, 127, 50),
 		}
 	}
 }
@@ -111,6 +115,7 @@ impl darling::ToTokens for Paint {
 			Self::LightPurple => tokens.extend(quote!(LightPurple)),
 			Self::Yellow => tokens.extend(quote!(Yellow)),
 			Self::White => tokens.extend(quote!(White)),
+			Self::Bronze => tokens.extend(quote!(Bronze)),
 		}
 	}
 }
@@ -134,6 +139,7 @@ impl From<Paint> for &skia_safe::Paint {
 			Paint::LightPurple => &LIGHT_PURPLE,
 			Paint::Yellow => &YELLOW,
 			Paint::White => &WHITE,
+			Paint::Bronze => &BRONZE,
 		}
 	}
 }

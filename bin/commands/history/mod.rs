@@ -10,7 +10,7 @@ use chrono::{DateTime, Utc};
 use database::schema::snapshot;
 use diesel::{ExpressionMethods, QueryDsl};
 use minecraft::{paint::Paint, text::Text};
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use translate::{context, Context, Error};
 
 use crate::util;
@@ -116,7 +116,7 @@ async fn network(
 			name: crate::util::escape_username(&data.username),
 		);
 
-		ctx.send(move |m| m.content(content)).await?;
+		ctx.send(poise::CreateReply::new().content(content)).await?;
 
 		return Ok(());
 	}
@@ -181,13 +181,11 @@ async fn network(
 		Cow::Owned(canvas::to_png(&mut surface))
 	};
 
-	ctx.send(move |m| {
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())

@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use crate::{format::Display, util, Error};
 use api::canvas::{self, body::Body, label::ToFormatted, shape, text, Canvas};
 use minecraft::{
@@ -5,7 +7,7 @@ use minecraft::{
 	paint::Paint,
 	text::{parse::minecraft_text, Text},
 };
-use poise::serenity_prelude::{AttachmentType, CreateEmbed};
+use poise::serenity_prelude::{self as serenity, CreateAttachment, CreateEmbed};
 use translate::{context, tr, Context};
 
 const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
@@ -36,7 +38,7 @@ pub async fn network(
 
 			player.increase_searches(ctx).await?;
 
-			let png = {
+			let png: Cow<_> = {
 				let status = shape::Status(&session, skin.image());
 				let level = network::get_level(data.xp);
 				let progress = shape::WideBubbleProgress(
@@ -115,14 +117,11 @@ pub async fn network(
 				canvas::to_png(&mut surface).into()
 			};
 
-			ctx.send(move |m| {
-				m.content(crate::tip::random(ctx));
-				m.attachments = vec![AttachmentType::Bytes {
-					data: png,
-					filename: crate::IMAGE_NAME.into(),
-				}];
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+			)
 			.await?;
 		}
 		Display::Text => {
@@ -132,20 +131,21 @@ pub async fn network(
 
 			let embed = {
 				let ctx = &ctx;
-				let mut embed = CreateEmbed::default();
-
-				embed.thumbnail(player.get_body_url());
+				let mut embed = CreateEmbed::default().thumbnail(player.get_body_url());
 
 				if let Some(prefix) = data.get_rank().as_str() {
-					embed.author(|a| {
-						a.name(format!("{} {} :: Network", prefix, data.username))
-							.icon_url(player.get_head_url())
-					});
+					embed = embed.author(
+						serenity::CreateEmbedAuthor::new(format!(
+							"{} {} :: Network",
+							prefix, data.username
+						))
+						.icon_url(player.get_head_url()),
+					);
 				} else {
-					embed.author(|a| {
-						a.name(format!("{} :: Network", data.username))
-							.icon_url(player.get_head_url())
-					});
+					embed = embed.author(
+						serenity::CreateEmbedAuthor::new(format!("{} :: Network", data.username))
+							.icon_url(player.get_head_url()),
+					);
 				}
 
 				embed.description(format!(
@@ -164,16 +164,14 @@ pub async fn network(
 					data.first_login.to_formatted_label(ctx),
 					tr!(ctx, "last-login"),
 					data.last_login.to_formatted_label(ctx),
-				));
-
-				embed
+				))
 			};
 
-			ctx.send(|m| {
-				m.content(crate::tip::random(ctx));
-				m.embeds.push(embed);
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.embed(embed),
+			)
 			.await?;
 		}
 	}

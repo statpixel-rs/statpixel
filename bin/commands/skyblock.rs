@@ -22,7 +22,7 @@ use minecraft::{
 		Text,
 	},
 };
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use skia_safe::textlayout::TextAlign;
 use translate::{context, tr, ApiError, Context, Error};
 
@@ -67,7 +67,7 @@ pub async fn auctions(
 
 	player.increase_searches(ctx).await?;
 
-	let png = {
+	let png: Cow<_> = {
 		let auctions = player.get_auctions().await?;
 		let status = shape::Status(&session, skin.image());
 		let level = network::get_level(data.xp);
@@ -125,14 +125,11 @@ pub async fn auctions(
 		canvas::to_png(&mut canvas.build(None, background).unwrap()).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -177,7 +174,7 @@ pub async fn profile(
 		return Err(Error::MemberPlayerNotFound(data.username.clone()));
 	};
 
-	let png = {
+	let png: Cow<_> = {
 		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
@@ -377,14 +374,11 @@ pub async fn profile(
 		canvas::to_png(&mut surface).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -461,7 +455,7 @@ pub async fn bank(
 		.last()
 		.map_or_else(Utc::now, |t| t.timestamp);
 
-	let png = {
+	let png: Cow<_> = {
 		let mut buffer = chart::u64::create(
 			ctx,
 			vec![(
@@ -490,17 +484,14 @@ pub async fn bank(
 		);
 		chart::round_corners(&mut surface);
 
-		Cow::Owned(canvas::to_png(&mut surface))
+		canvas::to_png(&mut surface).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -553,7 +544,7 @@ pub async fn networth(
 	#[allow(clippy::cast_precision_loss)]
 	let bank = profile.banking.balance as f64;
 
-	let png = {
+	let png: Cow<_> = {
 		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
@@ -690,14 +681,11 @@ pub async fn networth(
 		canvas::to_png(&mut surface).into()
 	};
 
-	ctx.send(move |m| {
-		m.content("Networth calculation is in beta, and may be inaccurate.");
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content("Networth calculation is in beta, and may be inaccurate.")
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -746,7 +734,7 @@ pub async fn pets(
 		return Err(Error::from(std::sync::Arc::new(ApiError::ProfileNotFound(name.to_string(), data.username.clone()))));
 	};
 
-	let png = {
+	let png: Cow<_> = {
 		let status = shape::Status(&session, skin.image());
 		let level = sky_block::get_level(member.leveling.xp);
 		let progress = shape::WideBubbleProgress(
@@ -855,14 +843,11 @@ pub async fn pets(
 		canvas::to_png(&mut surface).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -916,7 +901,7 @@ macro_rules! inventory_command {
 				return Err(Error::from(std::sync::Arc::new(ApiError::ProfileNotFound(name.to_string(), data.username.clone()))));
 			};
 
-			let png = {
+			let png: Cow<_> = {
 				let status = shape::Status(&session, skin.image());
 				let level = sky_block::get_level(member.leveling.xp);
 				let progress = shape::WideBubbleProgress(
@@ -1046,14 +1031,11 @@ macro_rules! inventory_command {
 				canvas::to_png(&mut surface).into()
 			};
 
-			ctx.send(move |m| {
-				m.content(crate::tip::random(ctx));
-				m.attachments = vec![AttachmentType::Bytes {
-					data: png,
-					filename: crate::IMAGE_NAME.into(),
-				}];
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+			)
 			.await?;
 
 			Ok(())

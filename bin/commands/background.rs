@@ -2,6 +2,7 @@ use api::canvas;
 use database::schema;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
+use poise::serenity_prelude as serenity;
 use translate::{tr, tr_fmt};
 
 use crate::{util::error_embed, Context, Error};
@@ -14,13 +15,10 @@ use crate::{util::error_embed, Context, Error};
 )]
 pub async fn background(ctx: Context<'_>, colour: Option<String>) -> Result<(), Error> {
 	let Some(colour) = colour.map_or(Some(canvas::Canvas::BACKGROUND_U32), |c| colour_from_str(&c)) else {
-		ctx.send(|m| {
-			error_embed(
-				m,
+		ctx.send(error_embed(
 				tr!(&ctx, "error-invalid-colour"),
 				tr!(&ctx, "error-invalid-colour-description")
-			)
-		})
+			))
 		.await?;
 
 		return Ok(());
@@ -30,7 +28,7 @@ pub async fn background(ctx: Context<'_>, colour: Option<String>) -> Result<(), 
 
 	diesel::insert_into(schema::user::table)
 		.values((
-			schema::user::id.eq(u.id.0 as i64),
+			schema::user::id.eq(u.id.0.get() as i64),
 			schema::user::colour.eq(colour as i32),
 		))
 		.on_conflict(schema::user::id)
@@ -42,17 +40,16 @@ pub async fn background(ctx: Context<'_>, colour: Option<String>) -> Result<(), 
 		.execute(&mut ctx.data().pool.get().await?)
 		.await?;
 
-	ctx.send(|m| {
-		m.embed(|e| {
-			e.title(tr!(&ctx, "colour-changed"))
+	ctx.send(
+		poise::CreateReply::new().embed(
+			serenity::CreateEmbed::new()
+				.title(tr!(&ctx, "colour-changed"))
 				.description(
 					tr_fmt!(&ctx, "colour-changed-description", colour: format!("`#{:x}`", colour)),
 				)
-				.colour(colour & 0x00_ffffff)
-		});
-
-		m
-	})
+				.colour(colour & 0x00_ffffff),
+		),
+	)
 	.await?;
 
 	Ok(())

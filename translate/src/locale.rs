@@ -18,7 +18,10 @@ macro_rules! tr_fmt {
 		let mut args = $crate::fluent::FluentArgs::new();
 		$( args.set(stringify!($argname), $argvalue); )*
 
-		$crate::get($ctx, $id, None, Some(&args))
+		let result = $crate::get($ctx, $id, None, Some(&args));
+		drop(args);
+
+		result
 	}};
 }
 

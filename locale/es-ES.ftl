@@ -835,6 +835,21 @@ weekly-xp = XP Semanal
 monthly-xp = XP Mensual
 xp-since = XP desde
 members_label = Miembros
+date = Fecha
+weekly-gexp = GEXP Semanal
+position = Posición
+
+Member = Miembro
+General = General
+Members = Miembros
+Top = Top
+
+member = member
+  .description = Muestra el miembro de un gremio.
+  .username = username
+  .username-description = El nombre de usuario del miembro del gremio a ver.
+  .uuid = uuid
+  .uuid-description = El UUID del miembro del gremio a ver.
 
 guild = guild
   .description = Muestra las estadísticas de un gremio.

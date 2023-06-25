@@ -44,6 +44,8 @@ pub struct LongTitle;
 pub struct FullWidthTitle;
 pub struct FullWidthBigTitle;
 pub struct Subtitle;
+pub struct BubbleSubtitle;
+pub struct ShortSubtitle;
 
 /// Expects a 48x48 PNG
 pub struct Slot<'a>(pub Option<&'a Image>, pub u8);
@@ -288,6 +290,34 @@ impl Subtitle {
 	}
 
 	#[must_use]
+	pub fn from_formatted(ctx: &Context<'_>, text: &impl ToFormatted, paint: Paint) -> Paragraph {
+		Body::new(20., TextAlign::Center)
+			.append(Text {
+				text: text.to_formatted_label(ctx).as_ref(),
+				paint,
+				..Default::default()
+			})
+			.build()
+	}
+
+	#[must_use]
+	pub fn from_guild(guild: &Guild) -> Paragraph {
+		let colour: char = guild.tag_colour.into();
+		let name = guild.name.as_str();
+		let tag = guild.tag.as_ref();
+
+		let text = if let Some(tag) = tag {
+			format!("{ESCAPE}{colour}{name} [{tag}]")
+		} else {
+			format!("{ESCAPE}{colour}{name}")
+		};
+
+		Body::new(20., TextAlign::Center)
+			.extend_owned(minecraft_string(&text))
+			.build()
+	}
+
+	#[must_use]
 	pub fn from_label(ctx: &Context<'_>, label: &[Text], tr: &str) -> Paragraph {
 		let text = tr!(ctx, tr);
 		let text = [
@@ -426,7 +456,12 @@ impl LeaderboardPlace {
 			.extend(&[Text {
 				text: &text,
 				font: MinecraftFont::Bold,
-				paint: Paint::White,
+				paint: match value {
+					1 => Paint::Gold,
+					2 => Paint::Gray,
+					3 => Paint::Bronze,
+					_ => Paint::White,
+				},
 				..Default::default()
 			}])
 			.build()
@@ -492,6 +527,8 @@ impl_rect_shape!(LongTitle, BUBBLE_WIDTH * 3. + GAP * 2., 45., true);
 impl_rect_shape!(FullWidthTitle, BUBBLE_WIDTH * 5. + GAP * 4., 45., true);
 impl_rect_shape!(FullWidthBigTitle, BUBBLE_WIDTH * 5. + GAP * 4., 75., true);
 impl_rect_shape!(Subtitle, BUBBLE_WIDTH * 1.5 + GAP / 2., 33., true);
+impl_rect_shape!(BubbleSubtitle, BUBBLE_WIDTH, 33., true);
+impl_rect_shape!(ShortSubtitle, BUBBLE_WIDTH / 2. - GAP / 2., 33., true);
 
 impl_rect_shape!(Bubble, BUBBLE_WIDTH, BUBBLE_HEIGHT, true);
 impl_rect_shape!(

@@ -844,6 +844,21 @@ weekly-xp = Еженедельный опыт
 monthly-xp = Ежемесячный опыт
 xp-since = Опыт с
 members_label = Участники
+date = Date
+weekly-gexp = Weekly GEXP
+position = Position
+
+Member = Member
+General = General
+Members = Members
+Top = Top
+
+member = member
+  .description = Показывает участника гильдии.
+  .username = username
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии для просмотра
 
 guild = guild
   .description = Показывает статистику гильдии.

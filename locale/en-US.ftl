@@ -1067,6 +1067,21 @@ weekly-xp = Weekly XP
 monthly-xp = Monthly XP
 xp-since = XP Since
 members_label = Members
+date = Date
+weekly-gexp = Weekly GEXP
+position = Position
+
+Member = Member
+General = General
+Members = Members
+Top = Top
+
+member = member
+  .description = Shows the member of a guild.
+  .username = username
+  .username-description = The username of the guild member to view
+  .uuid = uuid
+  .uuid-description = The uuid of the guild member to view
 
 guild = guild
   .description = Shows the stats of a guild.

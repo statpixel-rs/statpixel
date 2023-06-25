@@ -17,28 +17,22 @@ pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 			schema::user::uuid.eq::<Option<Uuid>>(None),
 			schema::user::updated_at.eq(chrono::Utc::now()),
 		))
-		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+		.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
 		.filter(schema::user::uuid.is_not_null())
 		.execute(&mut ctx.data().pool.get().await?)
 		.await?;
 
 	if removed > 0 {
-		ctx.send(|m| {
-			success_embed(
-				m,
-				tr!(&ctx, "unlinking-succeeded"),
-				tr!(&ctx, "unlinking-succeeded-description"),
-			)
-		})
+		ctx.send(success_embed(
+			tr!(&ctx, "unlinking-succeeded"),
+			tr!(&ctx, "unlinking-succeeded-description"),
+		))
 		.await?;
 	} else {
-		ctx.send(|m| {
-			error_embed(
-				m,
-				tr!(&ctx, "unlinking-failed"),
-				tr!(&ctx, "unlinking-failed-description"),
-			)
-		})
+		ctx.send(error_embed(
+			tr!(&ctx, "unlinking-failed"),
+			tr!(&ctx, "unlinking-failed-description"),
+		))
 		.await?;
 	}
 

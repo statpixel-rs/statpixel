@@ -844,6 +844,21 @@ weekly-xp = XP Hebdomadaire
 monthly-xp = XP Mensuel
 xp-since = XP Depuis
 members_label = Membres
+date = Date
+weekly-gexp = GEXP Hebdomadaire
+position = Position
+
+Member = Membre
+General = Général
+Members = Membres
+Top = Top
+
+member = member
+  .description = Affiche le membre d'une guilde.
+  .username = username
+  .username-description = Le nom d'utilisateur de la guilde du membre à afficher.
+  .uuid = uuid
+  .uuid-description = L'UUID de la guilde du membre à afficher.
 
 guild = guild
   .description = Affiche les statistiques d'une guilde.

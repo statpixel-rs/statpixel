@@ -3,47 +3,39 @@ use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::username::Username;
-use poise::CreateReply;
+use poise::{serenity_prelude as serenity, CreateReply};
 use skia_safe::Color;
-use std::{fmt::Display, sync::Arc};
+use std::sync::Arc;
 use tracing::error;
 use translate::{context, tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
 
 use crate::{context::Context, format, Error};
 
-pub fn success_embed<'a, 'b, S>(
-	reply: &'b mut CreateReply<'a>,
-	title: S,
-	description: S,
-) -> &'b mut CreateReply<'a>
+pub fn success_embed<S, D>(title: S, description: D) -> CreateReply
 where
-	S: Into<String> + Display,
+	S: Into<String>,
+	D: Into<String>,
 {
-	reply.embed(|e| {
-		e.title(title)
+	CreateReply::new().embed(
+		serenity::CreateEmbed::new()
+			.title(title)
 			.description(description)
-			.colour(crate::EMBED_COLOUR)
-	});
-
-	reply
+			.colour(crate::EMBED_COLOUR),
+	)
 }
 
-pub fn error_embed<'a, 'b, S>(
-	reply: &'b mut CreateReply<'a>,
-	title: S,
-	description: S,
-) -> &'b mut CreateReply<'a>
+pub fn error_embed<S, D>(title: S, description: D) -> CreateReply
 where
-	S: Display,
+	S: Into<String>,
+	D: Into<String>,
 {
-	reply.embed(|e| {
-		e.title(title)
+	CreateReply::new().embed(
+		serenity::CreateEmbed::new()
+			.title(title)
 			.description(description)
-			.colour(crate::EMBED_COLOUR_ERROR)
-	});
-
-	reply
+			.colour(crate::EMBED_COLOUR_ERROR),
+	)
 }
 
 pub fn escape_username(username: &str) -> String {
@@ -56,7 +48,7 @@ pub async fn get_format_colour_from_input(ctx: &Context<'_>) -> (format::Display
 	};
 
 	let result = schema::user::table
-		.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+		.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
 		.select((schema::user::display, schema::user::colour))
 		.get_result::<(format::Display, Option<i32>)>(&mut connection)
 		.await;
@@ -93,7 +85,7 @@ pub async fn get_player_from_input(
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -124,7 +116,7 @@ pub async fn get_player_with_username_from_input(
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -165,13 +157,54 @@ pub async fn get_guild_from_input(
 		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0 as i64))
+				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {
 				Ok(Guild::from_member_uuid(uuid).await?)
+			} else {
+				Err(Error::NotLinked)
+			}
+		}
+	}
+}
+
+pub async fn get_guild_with_member_from_input(
+	ctx: &Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<(Arc<Guild>, Player), Error> {
+	match (
+		uuid,
+		username
+			.as_ref()
+			.and_then(|username| Username::try_from_str(username).ok()),
+		username,
+	) {
+		(Some(uuid), _, _) => Ok((
+			Guild::from_member_uuid(uuid).await?,
+			Player::from_uuid_unchecked(uuid),
+		)),
+		(_, Some(username), _) => {
+			let player = Player::from_username(username.as_str()).await?;
+
+			Ok((Guild::from_member_uuid(player.uuid).await?, player))
+		}
+		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
+		_ => {
+			let uuid = schema::user::table
+				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+				.select(schema::user::uuid)
+				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.await;
+
+			if let Ok(Some(uuid)) = uuid {
+				Ok((
+					Guild::from_member_uuid(uuid).await?,
+					Player::from_uuid_unchecked(uuid),
+				))
 			} else {
 				Err(Error::NotLinked)
 			}
@@ -235,13 +268,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		}
 	};
 
-	if let Err(e) = ctx
-		.send(|m| {
-			m.content(content);
-			m
-		})
-		.await
-	{
+	if let Err(e) = ctx.send(poise::CreateReply::new().content(content)).await {
 		error!(e = ?e, "failed to send error message");
 	}
 }

@@ -37,10 +37,10 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Root {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Root {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -50,11 +50,11 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Snapshot {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Snapshot {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
 					from,
-				})))
+				}))
 			}
 		});
 
@@ -64,10 +64,10 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::History {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::History {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -77,10 +77,10 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				.add_option(poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Project {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Project {
 					kind: #api ::id::ProjectMode::#mode_ty (Self::#ty, kind),
 					uuid,
-				})))
+				}))
 			}
 		});
 
@@ -109,27 +109,23 @@ impl ToTokens for ModeTraitInputReceiver {
 				fn as_root(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid, selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						#(#options_root)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#(#options_root),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				fn as_snapshot(
@@ -137,54 +133,46 @@ impl ToTokens for ModeTraitInputReceiver {
 					uuid: ::uuid::Uuid,
 					from: ::chrono::DateTime<::chrono::Utc>,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						#(#options_snapshot)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#(#options_snapshot),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				fn as_history(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						#(#options_history)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#(#options_history),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
 				fn as_project(
@@ -192,27 +180,23 @@ impl ToTokens for ModeTraitInputReceiver {
 					uuid: ::uuid::Uuid,
 					kind: Self::Kind,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateComponents {
-					let mut components = ::poise::serenity_prelude::CreateComponents::default();
-					let mut row = ::poise::serenity_prelude::CreateActionRow::default();
-					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::default();
-					let mut options = ::poise::serenity_prelude::CreateSelectMenuOptions::default();
-
-					menu.options(|o| o
-						#(#options_project)*
+				) -> ::poise::serenity_prelude::CreateActionRow {
+					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
+						ctx.id().to_string(),
+						::poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#(#options_project),*
+							]
+						}
 					);
 
 					if let Some(selected) = selected {
-						menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
 					}
 
-					menu.custom_id(ctx.id().to_string());
-					menu.max_values(1);
-					menu.min_values(1);
+					menu = menu.max_values(1).min_values(1);
 
-					row.add_select_menu(menu);
-					components.set_action_row(row);
-					components
+					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 			}
 		});

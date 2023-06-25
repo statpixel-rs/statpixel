@@ -75,25 +75,25 @@ pub trait Mode: Sized + Copy {
 		ctx: &context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> serenity::CreateComponents;
+	) -> serenity::CreateActionRow;
 
 	fn as_snapshot(
 		ctx: &context::Context,
 		uuid: Uuid,
 		from: DateTime<Utc>,
 		selected: Option<Self>,
-	) -> serenity::CreateComponents;
+	) -> serenity::CreateActionRow;
 
 	fn as_history(
 		ctx: &context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> serenity::CreateComponents;
+	) -> serenity::CreateActionRow;
 
 	fn as_project(
 		ctx: &context::Context,
 		uuid: Uuid,
 		kind: Self::Kind,
 		selected: Option<Self>,
-	) -> serenity::CreateComponents;
+	) -> serenity::CreateActionRow;
 }

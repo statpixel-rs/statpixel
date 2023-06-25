@@ -843,6 +843,21 @@ weekly-xp = ウィークリーXP
 monthly-xp = マンスリーXP
 xp-since = XP以降
 members_label = メンバー
+date = 日付
+weekly-gexp = ウィークリーGEXP
+position = ポジション
+
+Member = メンバー
+General = 一般
+Members = メンバー
+Top = トップ
+
+member = member
+  .description = ギルドのメンバーを表示します。
+  .username = username
+  .username-description = 表示するギルドメンバーのMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのMinecraftのUUID
 
 general = general
   .description = ギルドの統計を表示します。

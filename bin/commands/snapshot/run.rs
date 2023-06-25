@@ -14,7 +14,7 @@ use minecraft::{
 	text::{parse, Text},
 	Colour,
 };
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use skia_safe::textlayout::TextAlign;
 use translate::{context, tr, tr_fmt, Error};
 use uuid::Uuid;
@@ -45,9 +45,10 @@ pub async fn command<G: api::prelude::Game>(
 					name: util::escape_username(&data.username),
 				);
 
-				ctx.send(move |m| {
-					m.content(content)
-				})
+				ctx.send(
+					poise::CreateReply::new()
+						.content(content)
+				)
 				.await?;
 
 				return Ok(());
@@ -74,15 +75,12 @@ pub async fn command<G: api::prelude::Game>(
 				canvas::to_png(&mut surface).into()
 			};
 
-			ctx.send(move |m| {
-				m.attachments = vec![AttachmentType::Bytes {
-					data: png,
-					filename: crate::IMAGE_NAME.into(),
-				}];
-				m.components = Some(G::Mode::as_snapshot(ctx, player.uuid, after, mode));
-
-				m.content(content)
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(content)
+					.components(vec![G::Mode::as_snapshot(ctx, player.uuid, after, mode)])
+					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+			)
 			.await?;
 		}
 		format::Display::Text => {
@@ -98,9 +96,10 @@ pub async fn command<G: api::prelude::Game>(
 					name: util::escape_username(&data.username),
 				);
 
-				ctx.send(move |m| {
-					m.content(content)
-				})
+				ctx.send(
+					poise::CreateReply::new()
+						.content(content)
+				)
 				.await?;
 
 				return Ok(());
@@ -112,17 +111,11 @@ pub async fn command<G: api::prelude::Game>(
 				to: format!("<t:{}:f>", Utc::now().timestamp()),
 			);
 
-			let mut embed = G::embed_diff(ctx, &player, snapshot, &mut api::Data::clone(&data));
+			let embed = G::embed_diff(ctx, &player, snapshot, &mut api::Data::clone(&data))
+				.colour(crate::EMBED_COLOUR);
 
-			embed.colour(crate::EMBED_COLOUR);
-
-			ctx.send(|m| {
-				m.content(content);
-				m.components = Some(G::Mode::as_snapshot(ctx, player.uuid, after, mode));
-				m.embeds.push(embed);
-				m
-			})
-			.await?;
+			ctx.send(poise::CreateReply::new().content(content).embed(embed))
+				.await?;
 		}
 	}
 
@@ -142,8 +135,11 @@ pub async fn guild_command(
 	let guild = match commands::get_guild(ctx, name, uuid, username, guild_id).await {
 		Result::Ok(guild) => guild,
 		Result::Err(Error::NotLinked) => {
-			ctx.send(|m| util::error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
-				.await?;
+			ctx.send(util::error_embed(
+				tr!(ctx, "not-linked"),
+				tr!(ctx, "not-linked"),
+			))
+			.await?;
 
 			return Ok(());
 		}
@@ -341,15 +337,14 @@ pub async fn guild_command(
 		),
 	};
 
-	ctx.send(move |m| {
-		if let Some(png) = png {
-			m.attachments = vec![AttachmentType::Bytes {
-				data: png,
-				filename: crate::IMAGE_NAME.into(),
-			}];
-		}
+	ctx.send({
+		let reply = poise::CreateReply::new().content(content);
 
-		m.content(content)
+		if let Some(png) = png {
+			reply.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME))
+		} else {
+			reply
+		}
 	})
 	.await?;
 

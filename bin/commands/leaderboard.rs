@@ -1,10 +1,12 @@
+use std::borrow::Cow;
+
 use api::{
 	canvas::{self, body::Body, shape, text, Canvas},
 	player::Player,
 };
 use futures::StreamExt;
 use minecraft::{paint::Paint, text::Text};
-use poise::serenity_prelude::{AttachmentType, CreateEmbed};
+use poise::serenity_prelude::{CreateAttachment, CreateEmbed};
 use skia_safe::textlayout::TextAlign;
 use translate::{context, Context, Error};
 
@@ -89,7 +91,7 @@ pub async fn leaderboard(
 
 	match format {
 		Display::Image | Display::Compact => {
-			let png = {
+			let png: Cow<_> = {
 				let mut canvas = Canvas::new(720.).gap(7.).push_down(
 					&shape::LeaderboardTitle,
 					Body::new(24., TextAlign::Center)
@@ -144,60 +146,56 @@ pub async fn leaderboard(
 				canvas::to_png(&mut surface).into()
 			};
 
-			ctx.send(move |m| {
-				m.content(crate::tip::random(ctx));
-				m.attachments = vec![AttachmentType::Bytes {
-					data: png,
-					filename: crate::IMAGE_NAME.into(),
-				}];
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+			)
 			.await?;
 		}
 		Display::Text => {
-			let mut embed = CreateEmbed::default();
+			let embed = CreateEmbed::new()
+				.colour(crate::EMBED_COLOUR)
+				.title(format!("{}", leaderboard.display_name))
+				.description(format!(
+					"{}",
+					leaders
+						.into_iter()
+						.enumerate()
+						.map(|(i, player)| {
+							let value = player
+								.stats
+								.get_value(&leaderboard.game, leaderboard.path.as_str())
+								.unwrap_or_else(|| Box::new(0));
 
-			embed.colour(crate::EMBED_COLOUR);
-			embed.title(format!("{}", leaderboard.display_name));
-			embed.description(format!(
-				"{}",
-				leaders
-					.into_iter()
-					.enumerate()
-					.map(|(i, player)| {
-						let value = player
-							.stats
-							.get_value(&leaderboard.game, leaderboard.path.as_str())
-							.unwrap_or_else(|| Box::new(0));
+							let value = value.to_formatted_label(ctx);
 
-						let value = value.to_formatted_label(ctx);
+							if let Some(prefix) = player.get_rank().as_str() {
+								format!(
+									"{}. **{} {}** ({})",
+									i + 1,
+									prefix,
+									escape_username(&player.username),
+									value
+								)
+							} else {
+								format!(
+									"{}. **{}** ({})",
+									i + 1,
+									escape_username(&player.username),
+									value
+								)
+							}
+						})
+						.intersperse("\n".to_string())
+						.collect::<String>()
+				));
 
-						if let Some(prefix) = player.get_rank().as_str() {
-							format!(
-								"{}. **{} {}** ({})",
-								i + 1,
-								prefix,
-								escape_username(&player.username),
-								value
-							)
-						} else {
-							format!(
-								"{}. **{}** ({})",
-								i + 1,
-								escape_username(&player.username),
-								value
-							)
-						}
-					})
-					.intersperse("\n".to_string())
-					.collect::<String>()
-			));
-
-			ctx.send(|m| {
-				m.content(crate::tip::random(ctx));
-				m.embeds.push(embed);
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.embed(embed),
+			)
 			.await?;
 		}
 	}

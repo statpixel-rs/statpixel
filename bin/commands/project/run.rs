@@ -5,7 +5,7 @@ use chrono::{DateTime, Utc};
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
 
@@ -40,7 +40,7 @@ pub async fn command<G: api::prelude::Game>(
 			name: util::escape_username(&data.username),
 		);
 
-		ctx.send(move |m| m.content(content)).await?;
+		ctx.send(poise::CreateReply::new().content(content)).await?;
 
 		return Ok(());
 	}
@@ -63,20 +63,17 @@ pub async fn command<G: api::prelude::Game>(
 		Cow::Owned(buffer)
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.components = Some(G::Mode::as_project(
-			ctx,
-			player.uuid,
-			kind.unwrap_or_default(),
-			mode,
-		));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.components(vec![G::Mode::as_project(
+				ctx,
+				player.uuid,
+				kind.unwrap_or_default(),
+				mode,
+			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())

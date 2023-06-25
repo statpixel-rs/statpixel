@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::{canvas, prelude::Mode};
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use translate::context;
 use uuid::Uuid;
 
@@ -36,29 +36,25 @@ pub async fn command<G: api::prelude::Game>(
 				canvas::to_png(&mut surface).into()
 			};
 
-			ctx.send(move |m| {
-				m.attachments = vec![AttachmentType::Bytes {
-					data: png,
-					filename: crate::IMAGE_NAME.into(),
-				}];
-				m.components = Some(G::Mode::as_root(ctx, player.uuid, mode));
-				m.content(crate::tip::random(ctx));
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.components(vec![G::Mode::as_root(ctx, player.uuid, mode)])
+					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+			)
 			.await?;
 		}
 		format::Display::Text => {
 			let (player, data) = commands::get_player_data(ctx, uuid, username).await?;
-			let mut embed = G::embed(ctx, &player, &data);
+			let embed = G::embed(ctx, &player, &data).colour(crate::EMBED_COLOUR);
 
 			player.increase_searches(ctx).await?;
-			embed.colour(crate::EMBED_COLOUR);
 
-			ctx.send(|m| {
-				m.embeds.push(embed);
-				m.content(crate::tip::random(ctx));
-				m
-			})
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.embed(embed),
+			)
 			.await?;
 		}
 	}

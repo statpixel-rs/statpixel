@@ -156,6 +156,28 @@ async fn members(
 	run::members(ctx, name, username, uuid, None).await
 }
 
+/// Shows the member of a guild.
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+#[allow(clippy::too_many_lines)]
+async fn member(
+	ctx: Context<'_>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
+	#[min_length = 32]
+	#[max_length = 36]
+	uuid: Option<String>,
+) -> Result<(), Error> {
+	let uuid = util::parse_uuid(uuid)?;
+	let ctx = &context::Context::from_poise(&ctx);
+
+	run::member(ctx, username, uuid).await
+}
+
 /// Shows the members of a guild.
 #[poise::command(
 	on_error = "crate::util::error_handler",
@@ -192,7 +214,7 @@ async fn top(
 	on_error = "crate::util::error_handler",
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES",
-	subcommands("general", "members", "top")
+	subcommands("general", "members", "member", "top")
 )]
 pub async fn guild(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())

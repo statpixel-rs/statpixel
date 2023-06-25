@@ -5,9 +5,8 @@ use api::{
 	guild::member::Member,
 	id::GuildMode,
 	player::Player,
-	prelude::Mode,
 };
-use chrono::Utc;
+use chrono::{NaiveTime, Utc};
 use futures::StreamExt;
 use minecraft::{
 	calc,
@@ -16,7 +15,7 @@ use minecraft::{
 	style::MinecraftFont,
 	text::{parse::minecraft_string, Text, ESCAPE},
 };
-use poise::serenity_prelude::AttachmentType;
+use poise::serenity_prelude::CreateAttachment;
 use skia_safe::textlayout::TextAlign;
 use tokio::join;
 use tracing::error;
@@ -40,7 +39,7 @@ pub async fn top(
 	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
-			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
 				.await?;
 
 			return Ok(());
@@ -182,19 +181,16 @@ pub async fn top(
 		),
 	};
 
-	ctx.send(move |m| {
-		m.content(content);
-		m.components = Some(GuildMode::as_root(
-			ctx,
-			Uuid::from_u128(guild.id),
-			Some(GuildMode::Top),
-		));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(content)
+			.components(vec![GuildMode::as_root(
+				ctx,
+				Uuid::from_u128(guild.id),
+				Some(GuildMode::Top),
+			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -211,7 +207,7 @@ pub async fn members(
 	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
-			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
 				.await?;
 
 			return Ok(());
@@ -319,19 +315,16 @@ pub async fn members(
 		canvas::to_png(&mut canvas).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.components = Some(GuildMode::as_root(
-			ctx,
-			Uuid::from_u128(guild.id),
-			Some(GuildMode::Member),
-		));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.components(vec![GuildMode::as_root(
+				ctx,
+				Uuid::from_u128(guild.id),
+				Some(GuildMode::Members),
+			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())
@@ -348,7 +341,7 @@ pub async fn general(
 	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
-			ctx.send(|m| error_embed(m, tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
 				.await?;
 
 			return Ok(());
@@ -515,19 +508,247 @@ pub async fn general(
 		canvas::to_png(&mut canvas).into()
 	};
 
-	ctx.send(move |m| {
-		m.content(crate::tip::random(ctx));
-		m.components = Some(GuildMode::as_root(
-			ctx,
-			Uuid::from_u128(guild.id),
-			Some(GuildMode::General),
-		));
-		m.attachments = vec![AttachmentType::Bytes {
-			data: png,
-			filename: crate::IMAGE_NAME.into(),
-		}];
-		m
-	})
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.components(vec![GuildMode::as_root(
+				ctx,
+				Uuid::from_u128(guild.id),
+				Some(GuildMode::General),
+			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
+	.await?;
+
+	Ok(())
+}
+
+#[allow(clippy::too_many_lines)]
+pub async fn member(
+	ctx: &context::Context<'_>,
+	username: Option<String>,
+	uuid: Option<Uuid>,
+) -> Result<(), Error> {
+	let (guild, player) = match crate::commands::get_guild_with_member(ctx, uuid, username).await {
+		Ok(guild) => guild,
+		Err(Error::NotLinked) => {
+			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				.await?;
+
+			return Ok(());
+		}
+		Err(e) => return Err(e),
+	};
+
+	guild.increase_searches(ctx).await?;
+
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let guilds =
+		get_snapshots_multiple_of_weekday(ctx, &guild, Utc::now() - chrono::Duration::days(30))
+			.await?;
+
+	let member_xp = get_member_monthly_xp(&guild, &guilds);
+	let member = player.get_display_string().await?;
+
+	let png: Cow<_> = {
+		let preferred = shape::PreferredGames(&guild.preferred_games);
+		let level = calc::guild::get_level(guild.xp);
+		let progress = shape::WideBubbleProgress(
+			calc::guild::get_level_progress(guild.xp),
+			[Colour::Gold.into(), Colour::Gold.into()],
+		);
+
+		let member_data = guild
+			.members
+			.iter()
+			.find(|m| m.uuid == player.uuid)
+			.unwrap();
+
+		let daily_xp = member_data.xp_history[0].1;
+		let weekly_xp = member_data.xp_history.iter().map(|h| h.1).sum::<u32>();
+
+		let mut canvas = Canvas::new(720.)
+			.gap(7.)
+			.push_down(
+				&shape::Title,
+				Body::new(25., TextAlign::Center)
+					.extend_owned(minecraft_string(&member))
+					.build(),
+			)
+			.push_down(&shape::Subtitle, shape::Subtitle::from_guild(&guild))
+			.push_down_post_draw(
+				&progress,
+				shape::WideBubbleProgress::from_level_progress(
+					ctx,
+					&format!("{ESCAPE}6{}", level.0),
+					&calc::guild::get_curr_level_xp(guild.xp),
+					&calc::guild::get_level_xp(guild.xp),
+				),
+			)
+			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &guild))
+			.push_right_post_draw(&preferred, Body::empty())
+			.push_down_start(
+				&shape::Bubble,
+				Body::from_bubble(ctx, &guild.coins, tr!(ctx, "coins").as_ref(), Paint::Gold),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::new(30., TextAlign::Center)
+					.extend(&[
+						Text {
+							text: tr!(ctx, "created-at").as_ref(),
+							paint: Paint::Aqua,
+							font: MinecraftFont::Normal,
+							size: Some(20.),
+						},
+						Text {
+							text: "\n",
+							size: Some(20.),
+							..Default::default()
+						},
+						Text {
+							text: &guild.created_at.to_formatted_label(ctx),
+							paint: Paint::Aqua,
+							font: MinecraftFont::Normal,
+							size: None,
+						},
+					])
+					.build(),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&format!("{}/125", guild.members.len()),
+					tr!(ctx, "members_label").as_ref(),
+					Paint::LightPurple,
+				),
+			)
+			.push_down_start(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&daily_xp,
+					tr!(ctx, "daily-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&weekly_xp,
+					tr!(ctx, "weekly-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			)
+			.push_right(
+				&shape::Bubble,
+				Body::from_bubble(
+					ctx,
+					&member_xp.get(&player.uuid).copied().unwrap_or(0),
+					tr!(ctx, "monthly-xp").as_ref(),
+					Paint::DarkGreen,
+				),
+			);
+
+		canvas = canvas
+			.push_down_start(
+				&shape::BubbleSubtitle,
+				shape::Subtitle::from_text(&[Text {
+					text: tr!(ctx, "date").as_ref(),
+					..Default::default()
+				}]),
+			)
+			.push_right(
+				&shape::BubbleSubtitle,
+				shape::Subtitle::from_text(&[Text {
+					text: tr!(ctx, "weekly-gexp").as_ref(),
+					..Default::default()
+				}]),
+			)
+			.push_right(
+				&shape::BubbleSubtitle,
+				shape::Subtitle::from_text(&[Text {
+					text: tr!(ctx, "position").as_ref(),
+					..Default::default()
+				}]),
+			);
+
+		for (idx, (date, xp)) in member_data.xp_history.iter().enumerate() {
+			let position = guild
+				.members
+				.iter()
+				.filter(|m| m.xp_history[idx].1 > *xp)
+				.count() + 1;
+
+			canvas = canvas
+				.push_down_start(
+					&shape::BubbleSubtitle,
+					shape::Subtitle::from_formatted(
+						ctx,
+						&date.and_time(NaiveTime::MIN).and_utc(),
+						Paint::White,
+					),
+				)
+				.push_right(
+					&shape::BubbleSubtitle,
+					shape::Subtitle::from_formatted(ctx, xp, Paint::DarkGreen),
+				)
+				.push_right(
+					&shape::BubbleSubtitle,
+					shape::Subtitle::from_text(&[
+						Text {
+							text: "#",
+							paint: match position {
+								1 => Paint::Gold,
+								2 => Paint::Gray,
+								3 => Paint::Bronze,
+								_ => Paint::White,
+							},
+							font: MinecraftFont::Bold,
+							..Default::default()
+						},
+						Text {
+							text: position.to_formatted_label(ctx).as_ref(),
+							paint: match position {
+								1 => Paint::Gold,
+								2 => Paint::Gray,
+								3 => Paint::Bronze,
+								_ => Paint::White,
+							},
+							font: MinecraftFont::Bold,
+							..Default::default()
+						},
+						Text {
+							text: "/",
+							paint: Paint::Gray,
+							..Default::default()
+						},
+						Text {
+							text: guild.members.len().to_formatted_label(ctx).as_ref(),
+							paint: Paint::Gray,
+							..Default::default()
+						},
+					]),
+				);
+		}
+
+		let mut canvas = canvas.build(None, background).unwrap();
+
+		canvas::to_png(&mut canvas).into()
+	};
+
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
+			.components(vec![GuildMode::as_root(
+				ctx,
+				Uuid::from_u128(guild.id),
+				Some(GuildMode::Member),
+			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
 	.await?;
 
 	Ok(())

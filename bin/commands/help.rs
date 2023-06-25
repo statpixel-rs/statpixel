@@ -1,16 +1,19 @@
 use crate::Error;
-use translate::{tr, Context};
+use translate::{context, tr, Context};
+
+use poise::serenity_prelude as serenity;
 
 const TITLE: &str = concat!("StatPixel | v", env!("CARGO_PKG_VERSION"));
 
 /// Shows the help menu.
 #[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
-	ctx.send(|m| {
-		m.embed(|e| {
-			let ctx = &ctx;
+	let ctx = &context::Context::from_poise(&ctx);
 
-			e.colour(crate::EMBED_COLOUR)
+	ctx.send(
+		poise::CreateReply::new().embed(
+			serenity::CreateEmbed::new()
+				.colour(crate::EMBED_COLOUR)
 				.title(TITLE)
 				.field(
 					tr!(ctx, "help-general"),
@@ -36,9 +39,9 @@ pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
 					tr!(ctx, "help-history"),
 					tr!(ctx, "help-history-description"),
 					false,
-				)
-		})
-	})
+				),
+		),
+	)
 	.await?;
 
 	Ok(())
