@@ -2,11 +2,11 @@ pub mod auction;
 pub mod essence;
 pub mod materials;
 pub mod member;
+pub mod modifier;
 pub mod networth;
 pub mod pet;
 pub mod prestige;
 pub mod profile;
-pub mod modifier;
 
 use std::{str::FromStr, sync::Arc};
 

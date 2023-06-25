@@ -20,7 +20,7 @@ use plotters::{
 use skia_safe::{
 	AlphaType, Borrows, ClipOp, Color4f, ColorType, ImageInfo, Point, RRect, Rect, Surface,
 };
-use translate::{prelude::GetChronoLocale, tr, context::Context, Error};
+use translate::{context::Context, prelude::GetChronoLocale, tr, Error};
 
 use super::shape;
 

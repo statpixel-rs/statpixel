@@ -12,7 +12,7 @@ use plotters::{
 	style::{self, Color, IntoTextStyle},
 };
 
-use translate::{prelude::GetChronoLocale, context::Context, Error};
+use translate::{context::Context, prelude::GetChronoLocale, Error};
 
 /// # Errors
 /// Returns an error if the image could not be created.
