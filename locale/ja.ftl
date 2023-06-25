@@ -61,6 +61,22 @@ colour-changed-description = 背景色が{$colour}に変更されました。
 
 # /skyblock auctions
 
+Auctions = オークション
+Bank = 銀行
+Candy = キャンディー
+EnderChest = エンダーチェスト
+Equipment = 装備
+Fishing = 釣り
+Inventory = インベントリ
+Networth = 総資産
+Pets = ペット
+Potions = ポーション
+Profile = プロファイル
+Quiver = 矢筒
+Talisman = タリスマン
+Vault = 金庫
+Wardrobe = ワードローブ
+
 auctions = auctions
   .description = SkyBlockオークションを表示します。
   .username = username

@@ -6,7 +6,7 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
-chrono = { workspace = true }
-diesel = { workspace = true }
-diesel-async = { workspace = true }
-uuid = { workspace = true }
+chrono.workspace = true
+diesel.workspace = true
+diesel-async.workspace = true
+uuid.workspace = true

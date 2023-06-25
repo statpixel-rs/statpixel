@@ -6,33 +6,33 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
-database = { path = "../database" }
-macros = { path = "./macros" }
-minecraft = { path = "../minecraft" }
-chrono = { workspace = true }
-diesel = { workspace = true }
-diesel-async = { workspace = true }
-bincode = { workspace = true }
-moka = { workspace = true }
-num-format = { workspace = true }
-once_cell = { workspace = true }
-pure-rust-locales = { workspace = true }
-reqwest = { workspace = true }
-serde = { workspace = true }
-tracing = { workspace = true }
-translate = { path = "../translate" }
-uuid = { workspace = true }
-flate2 = { workspace = true }
-futures = { workspace = true }
-plotters = { workspace = true }
-plotters-backend = { workspace = true }
-poise = { workspace = true }
+database.path = "../database"
+macros.path = "./macros"
+minecraft.path = "../minecraft"
+chrono.workspace = true
+diesel.workspace = true
+diesel-async.workspace = true
+bincode.workspace = true
+moka.workspace = true
+num-format.workspace = true
+once_cell.workspace = true
+pure-rust-locales.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+tracing.workspace = true
+translate.path = "../translate"
+uuid.workspace = true
+flate2.workspace = true
+futures.workspace = true
+plotters.workspace = true
+plotters-backend.workspace = true
+poise.workspace = true
 tokio = "1.28.1"
-thiserror = { workspace = true }
-redis = { workspace = true }
-base64 = { workspace = true }
-fastnbt = { workspace = true }
-konst = { workspace = true }
+thiserror.workspace = true
+redis.workspace = true
+base64.workspace = true
+fastnbt.workspace = true
+konst.workspace = true
 serde_json = "1.0.97"
 phf = { version = "0.11.1", features = ["macros"] }
 

@@ -61,6 +61,22 @@ colour-changed-description = Цвет фона изменен на {$colour}.
 
 # /skyblock auctions
 
+Auctions = Аукционы
+Bank = Банк
+Candy = Конфеты
+EnderChest = Эндерсундук
+Equipment = Экипировка
+Fishing = Рыбалка
+Inventory = Инвентарь
+Networth = Стоимость
+Pets = Питомцы
+Potions = Зелья
+Profile = Профиль
+Quiver = Колчан
+Talisman = Талисман
+Vault = Хранилище
+Wardrobe = Гардероб
+
 auctions = auctions
   .description = Просмотр аукционов SkyBlock
   .username = username

@@ -2,13 +2,14 @@ use std::{borrow::Cow, cmp::max};
 
 use api::{
 	canvas::{self, body::Body, chart, label::ToFormatted, Canvas},
+	id::SkyBlockMode,
+	nbt::inventory::Item,
 	player::Player,
 	skyblock::{
 		self,
 		materials::MATERIALS,
 		networth::{self, calc::Category},
 		profile::TransactionAction,
-		NAMES,
 	},
 };
 use canvas::{shape, text};
@@ -24,43 +25,17 @@ use minecraft::{
 };
 use poise::serenity_prelude::CreateAttachment;
 use skia_safe::textlayout::TextAlign;
-use translate::{context, tr, ApiError, Context, Error};
-
-use crate::util;
+use translate::{context, tr, Error};
+use uuid::Uuid;
 
 const LABEL: [Text; 2] = minecraft_text("§b§lSky§a§lBlock");
+const EMPTY_ROW: &[Option<Item>] = &[None, None, None, None, None, None, None, None, None];
 
-#[allow(clippy::unused_async)]
-async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator<Item = String> {
-	let lower = partial.to_ascii_lowercase();
-
-	NAMES
-		.iter()
-		.filter(|n| n.to_ascii_lowercase().starts_with(&lower))
-		.take(10)
-		.map(|s| (*s).to_string())
-		.collect::<Vec<_>>()
-		.into_iter()
-}
-
-#[allow(clippy::too_many_lines)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
 pub async fn auctions(
-	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
+	ctx: &context::Context<'_>,
 	username: Option<String>,
-	#[min_length = 32]
-	#[max_length = 36]
-	uuid: Option<String>,
+	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
-	let ctx = &context::Context::from_poise(&ctx);
-
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -128,6 +103,12 @@ pub async fn auctions(
 	ctx.send(
 		poise::CreateReply::new()
 			.content(crate::tip::random(ctx))
+			.components(vec![SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				None,
+				Some(SkyBlockMode::Auctions),
+			)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -136,24 +117,12 @@ pub async fn auctions(
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
 pub async fn profile(
-	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
+	ctx: &context::Context<'_>,
 	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
-	#[max_length = 36]
-	uuid: Option<String>,
+	profile: Option<String>,
+	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
-	let ctx = &context::Context::from_poise(&ctx);
-
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -377,6 +346,12 @@ pub async fn profile(
 	ctx.send(
 		poise::CreateReply::new()
 			.content(crate::tip::random(ctx))
+			.components(vec![SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				Some(name.to_string()),
+				Some(SkyBlockMode::Profile(None)),
+			)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -384,24 +359,12 @@ pub async fn profile(
 	Ok(())
 }
 
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
 pub async fn bank(
-	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
+	ctx: &context::Context<'_>,
 	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
-	#[max_length = 36]
-	uuid: Option<String>,
+	profile: Option<String>,
+	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
-	let ctx = &context::Context::from_poise(&ctx);
-
 	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
@@ -490,6 +453,12 @@ pub async fn bank(
 	ctx.send(
 		poise::CreateReply::new()
 			.content(crate::tip::random(ctx))
+			.components(vec![SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				None,
+				Some(SkyBlockMode::Bank(None)),
+			)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -498,24 +467,12 @@ pub async fn bank(
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
 pub async fn networth(
-	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
+	ctx: &context::Context<'_>,
 	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
-	#[max_length = 36]
-	uuid: Option<String>,
+	profile: Option<String>,
+	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
-	let ctx = &context::Context::from_poise(&ctx);
-
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -684,6 +641,12 @@ pub async fn networth(
 	ctx.send(
 		poise::CreateReply::new()
 			.content("Networth calculation is in beta, and may be inaccurate.")
+			.components(vec![SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				Some(name.to_string()),
+				Some(SkyBlockMode::Networth(None)),
+			)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -692,24 +655,12 @@ pub async fn networth(
 }
 
 #[allow(clippy::too_many_lines)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
 pub async fn pets(
-	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
+	ctx: &context::Context<'_>,
 	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
-	#[max_length = 36]
-	uuid: Option<String>,
+	profile: Option<String>,
+	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
-	let ctx = &context::Context::from_poise(&ctx);
-
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -730,9 +681,8 @@ pub async fn pets(
 		return Err(Error::MemberPlayerNotFound(data.username.clone()));
 	};
 
-	let Some(items) = member.pets.as_ref() else {
-		return Err(Error::from(std::sync::Arc::new(ApiError::ProfileNotFound(name.to_string(), data.username.clone()))));
-	};
+	let default = vec![];
+	let items = member.pets.as_ref().unwrap_or(&default);
 
 	let png: Cow<_> = {
 		let status = shape::Status(&session, skin.image());
@@ -846,6 +796,12 @@ pub async fn pets(
 	ctx.send(
 		poise::CreateReply::new()
 			.content(crate::tip::random(ctx))
+			.components(vec![SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				Some(name.to_string()),
+				Some(SkyBlockMode::Pets(None)),
+			)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -854,26 +810,14 @@ pub async fn pets(
 }
 
 macro_rules! inventory_command {
-	($fn: ident, $key: ident) => {
+	($fn: ident, $key: ident, $mode: ident) => {
 		#[allow(clippy::too_many_lines)]
-		#[poise::command(
-			on_error = "crate::util::error_handler",
-			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
-		)]
 		pub async fn $fn(
-			ctx: Context<'_>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
+			ctx: &context::Context<'_>,
 			username: Option<String>,
-			#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-			#[min_length = 32]
-			#[max_length = 36]
-			uuid: Option<String>,
+			profile: Option<String>,
+			uuid: Option<Uuid>,
 		) -> Result<(), Error> {
-			let uuid = util::parse_uuid(uuid)?;
-			let ctx = &context::Context::from_poise(&ctx);
-
 			let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 			let (player, data, session, skin, suffix) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -897,9 +841,7 @@ macro_rules! inventory_command {
 			};
 
 			#[rustfmt::skip]
-			let Some(items) = member.$key.as_ref().map(|i| &i.items) else {
-				return Err(Error::from(std::sync::Arc::new(ApiError::ProfileNotFound(name.to_string(), data.username.clone()))));
-			};
+			let items = member.$key.as_ref().map_or(EMPTY_ROW, |i| i.items.as_slice());
 
 			let png: Cow<_> = {
 				let status = shape::Status(&session, skin.image());
@@ -1004,9 +946,13 @@ macro_rules! inventory_command {
 								if let Some(v) = if s.id.starts_with("ENCHANTED_") {
 									MATERIALS.get(&s.id[10..])
 								} else if let Some(idx) = s.id.find(':') {
-									MATERIALS.get(&format!("{}:{}", &s.id[..idx], s.damage)).or_else(|| MATERIALS.get(&s.id))
+									MATERIALS
+										.get(&format!("{}:{}", &s.id[..idx], s.damage))
+										.or_else(|| MATERIALS.get(&s.id))
 								} else if s.damage != 0 {
-									MATERIALS.get(&format!("{}:{}", &s.id, s.damage)).or_else(|| MATERIALS.get(&s.id))
+									MATERIALS
+										.get(&format!("{}:{}", &s.id, s.damage))
+										.or_else(|| MATERIALS.get(&s.id))
 								} else {
 									MATERIALS.get(&s.id)
 								} {
@@ -1034,6 +980,12 @@ macro_rules! inventory_command {
 			ctx.send(
 				poise::CreateReply::new()
 					.content(crate::tip::random(ctx))
+					.components(vec![SkyBlockMode::as_root(
+						ctx,
+						player.uuid,
+						Some(name.to_string()),
+						Some(SkyBlockMode::$mode(None)),
+					)])
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;
@@ -1043,40 +995,13 @@ macro_rules! inventory_command {
 	};
 }
 
-inventory_command!(inventory, inventory);
-inventory_command!(enderchest, ender_chest);
-inventory_command!(talisman, talisman_bag);
-inventory_command!(quiver, quiver);
-inventory_command!(fishing, fishing_bag);
-inventory_command!(potions, potion_bag);
-inventory_command!(equipment, equipment);
-inventory_command!(wardrobe, wardrobe);
-inventory_command!(candy, candy);
-inventory_command!(vault, vault);
-
-#[allow(clippy::unused_async)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES",
-	subcommands(
-		"profile",
-		"bank",
-		"auctions",
-		"inventory",
-		"enderchest",
-		"talisman",
-		"quiver",
-		"fishing",
-		"potions",
-		"equipment",
-		"wardrobe",
-		"candy",
-		"vault",
-		"pets",
-		"networth",
-	)
-)]
-pub async fn skyblock(_ctx: Context<'_>) -> Result<(), Error> {
-	Ok(())
-}
+inventory_command!(inventory, inventory, Inventory);
+inventory_command!(enderchest, ender_chest, EnderChest);
+inventory_command!(talisman, talisman_bag, Talisman);
+inventory_command!(quiver, quiver, Quiver);
+inventory_command!(fishing, fishing_bag, Fishing);
+inventory_command!(potions, potion_bag, Potions);
+inventory_command!(equipment, equipment, Equipment);
+inventory_command!(wardrobe, wardrobe, Wardrobe);
+inventory_command!(candy, candy, Candy);
+inventory_command!(vault, vault, Vault);

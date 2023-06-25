@@ -1,7 +1,7 @@
 #[allow(clippy::wildcard_imports)]
 use api::player::stats::*;
 
-use api::id::{GuildMode, Id, Mode, ProjectMode};
+use api::id::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode};
 use tracing::info;
 use translate::{context::Context, Error};
 
@@ -90,7 +90,54 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 						.await
 				}
 			},
-			_ => Ok(()),
+			Mode::SkyBlock(mode) => match mode {
+				SkyBlockMode::Auctions => {
+					super::commands::skyblock::run::auctions(ctx, None, Some(uuid)).await
+				}
+				SkyBlockMode::Bank(profile) => {
+					super::commands::skyblock::run::bank(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Candy(profile) => {
+					super::commands::skyblock::run::candy(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::EnderChest(profile) => {
+					super::commands::skyblock::run::enderchest(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Equipment(profile) => {
+					super::commands::skyblock::run::equipment(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Fishing(profile) => {
+					super::commands::skyblock::run::fishing(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Inventory(profile) => {
+					super::commands::skyblock::run::inventory(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Networth(profile) => {
+					super::commands::skyblock::run::networth(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Pets(profile) => {
+					super::commands::skyblock::run::pets(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Potions(profile) => {
+					super::commands::skyblock::run::potions(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Profile(profile) => {
+					super::commands::skyblock::run::profile(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Quiver(profile) => {
+					super::commands::skyblock::run::quiver(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Talisman(profile) => {
+					super::commands::skyblock::run::talisman(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Vault(profile) => {
+					super::commands::skyblock::run::vault(ctx, None, profile, Some(uuid)).await
+				}
+				SkyBlockMode::Wardrobe(profile) => {
+					super::commands::skyblock::run::wardrobe(ctx, None, profile, Some(uuid)).await
+				}
+			},
+			Mode::Network => Ok(()),
 		},
 		Id::Snapshot { kind, uuid, from } => match kind {
 			Mode::Arcade(mode) => impl_snapshot!(ctx, uuid, from, mode, arcade::Arcade),

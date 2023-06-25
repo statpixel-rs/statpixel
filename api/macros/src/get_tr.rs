@@ -2,7 +2,7 @@ use darling::{ast, FromDeriveInput, FromVariant};
 use quote::{quote, ToTokens};
 
 #[derive(Debug, FromDeriveInput)]
-#[darling(attributes(), supports(enum_unit))]
+#[darling(attributes(), supports(enum_unit, enum_tuple))]
 pub(crate) struct GetTrInputReceiver {
 	pub ident: syn::Ident,
 	pub generics: syn::Generics,
@@ -17,12 +17,16 @@ impl ToTokens for GetTrInputReceiver {
 			data,
 		} = self;
 
-		let fields = data.as_ref().take_enum().expect("should be a named struct");
+		let fields = data.as_ref().take_enum().expect("should be an enum");
 
 		let get_tr = fields.iter().map(|f| {
-			let ty = &f.ident;
-			let ty_str = quote!(#ty).to_string();
-			let ty_str = ty_str.as_str();
+			let ident = &f.ident;
+			let ty = if f.fields.fields.is_empty() {
+				quote!(#ident)
+			} else {
+				quote!(#ident (..))
+			};
+			let ty_str = ident.to_string();
 
 			quote! {
 				Self::#ty => #ty_str,
@@ -42,7 +46,8 @@ impl ToTokens for GetTrInputReceiver {
 }
 
 #[derive(Debug, FromVariant)]
-#[darling(attributes(mode))]
+#[darling(attributes())]
 pub(crate) struct FieldReceiver {
 	pub ident: syn::Ident,
+	pub fields: ast::Fields<()>,
 }

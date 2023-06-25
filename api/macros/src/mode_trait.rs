@@ -22,7 +22,7 @@ impl ToTokens for ModeTraitInputReceiver {
 			rename,
 		} = self;
 
-		let fields = data.as_ref().take_enum().expect("should be a named struct");
+		let fields = data.as_ref().take_enum().expect("should be a unit enum");
 
 		let mode_ty = rename.clone().unwrap_or(ident.clone());
 

@@ -61,6 +61,22 @@ colour-changed-description = Deine Hintergrundfarbe wurde zu {$colour} geändert
 
 # /skyblock auctions
 
+Auctions = Auktionen
+Bank = Bank
+Candy = Candy
+EnderChest = Endertruhe
+Equipment = Ausrüstung
+Fishing = Angeln
+Inventory = Inventar
+Networth = Networth
+Pets = Haustiere
+Potions = Tränke
+Profile = Profil
+Quiver = Köcher
+Talisman = Talisman
+Vault = Tresor
+Wardrobe = Kleiderschrank
+
 auctions = auctions
   .description = Zeigt SkyBlock-Auktionen an.
   .username = username

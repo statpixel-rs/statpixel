@@ -61,6 +61,22 @@ colour-changed-description = Tu color de fondo ha sido cambiado a {$colour}.
 
 # /skyblock auctions
 
+Auctions = Subastas
+Bank = Banco
+Candy = Caramelos
+EnderChest = Cofre de Ender
+Equipment = Equipo
+Fishing = Pesca
+Inventory = Inventario
+Networth = Valor neto
+Pets = Mascotas
+Potions = Pociones
+Profile = Perfil
+Quiver = Carcaj
+Talisman = Talismán
+Vault = Bóveda
+Wardrobe = Armario
+
 auctions = auctions
   .description = Muestra subastas de SkyBlock
   .username = username

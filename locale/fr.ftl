@@ -61,6 +61,22 @@ colour-changed-description = Votre couleur de fond a été modifiée en {$colour
 
 # /skyblock auctions
 
+Auctions = Enchères
+Bank = Banque
+Candy = Bonbons
+EnderChest = Coffre de fin
+Equipment = Équipement
+Fishing = Pêche
+Inventory = Inventaire
+Networth = Valeur nette
+Pets = Animaux de compagnie
+Potions = Potions
+Profile = Profil
+Quiver = Carquois
+Talisman = Talisman
+Vault = Coffre-fort
+Wardrobe = Garde-robe
+
 auctions = auctions
   .description = Affiche les enchères SkyBlock.
   .username = username
