@@ -10,8 +10,8 @@ use uuid::Uuid;
 use crate::http::HTTP;
 
 pub static GAMES_CACHE: Lazy<Cache<Uuid, Arc<Vec<Game>>>> = Lazy::new(|| {
-	CacheBuilder::new(100_000)
-		.time_to_live(Duration::from_secs(60 * 60 * 24))
+	CacheBuilder::new(10_000)
+		.time_to_live(Duration::from_secs(60 * 5))
 		.build()
 });
 
