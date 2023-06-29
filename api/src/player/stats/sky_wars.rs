@@ -1,6 +1,8 @@
 use macros::{Diff, Game, Mode};
 use serde::Deserialize;
 
+use crate::seconds::Seconds;
+
 fn default_level_fmt() -> String {
 	"§71".to_string()
 }
@@ -18,7 +20,17 @@ fn default_level_fmt() -> String {
 	field(tr = "wlr", ident = "wins", div = "losses", colour = "gold"),
 	field(ident = "kills", colour = "green"),
 	field(ident = "deaths", colour = "red"),
-	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
+	field(ident = "time_played", colour = "green", skip_chart),
+	field(
+		tr = "bow-accuracy",
+		ident = "arrows_hit",
+		div = "arrows_shot",
+		percent = "u32",
+		colour = "red",
+		skip_chart
+	),
+	field(ident = "fastest_win", colour = "gold", skip_chart)
 )]
 #[serde(default)]
 pub struct SkyWars {
@@ -40,9 +52,9 @@ pub struct SkyWars {
 	#[serde(rename = "cosmetic_tokens")]
 	#[game(label(colour = "dark_green"))]
 	pub tokens: u32,
-	pub arrows_shot: u32,
-	#[game(label(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
-	pub arrows_hit: u32,
+	#[serde(rename = "egg_thrown")]
+	#[game(label(colour = "yellow"))]
+	pub eggs_thrown: u32,
 	#[serde(rename = "levelFormatted", default = "default_level_fmt")]
 	#[game(level)]
 	pub level_fmt: String,
@@ -57,13 +69,25 @@ pub struct SkyWars {
 	#[game(mode(hypixel = "solo_normal"))]
 	pub solo_normal: SoloNormal,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "solo_insane"))]
+	#[game(mode(
+		hypixel = "solo_insane",
+		skip_field = "time_played",
+		skip_field = "arrows_hit",
+		skip_field = "arrows_shot",
+		skip_field = "fastest_win"
+	))]
 	pub solo_insane: SoloInsane,
 	#[serde(flatten)]
 	#[game(mode(hypixel = "teams_normal"))]
 	pub team_normal: TeamNormal,
 	#[serde(flatten)]
-	#[game(mode(hypixel = "teams_insane"))]
+	#[game(mode(
+		hypixel = "teams_insane",
+		skip_field = "time_played",
+		skip_field = "arrows_hit",
+		skip_field = "arrows_shot",
+		skip_field = "fastest_win"
+	))]
 	pub team_insane: TeamInsane,
 	#[serde(flatten)]
 	#[game(mode(hypixel = "mega_doubles"))]
@@ -74,6 +98,12 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(hypixel = "ranked"))]
 	pub ranked: Ranked,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "solo_lab"))]
+	pub solo_lab: SoloLab,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "teams_lab"))]
+	pub team_lab: TeamLab,
 }
 
 #[derive(
@@ -89,12 +119,34 @@ pub struct SoloNormal {
 	pub kills: u32,
 	#[serde(rename = "deaths_solo_normal")]
 	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_solo")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_solo")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_solo")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_solo")]
+	pub fastest_win: Seconds,
 }
 
 #[derive(
 	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
 )]
 #[serde(default)]
+#[mode(
+	field(ident = "sky_wars.solo_normal.time_played", colour = "green"),
+	field(
+		ident = "sky_wars.solo_normal.arrows_hit",
+		colour = "red",
+		div = "arrows_shot",
+		percent = "u32",
+		tr = "bow-accuracy"
+	),
+	field(ident = "sky_wars.solo_normal.fastest_win", colour = "gold")
+)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
 	pub losses: u32,
@@ -119,12 +171,34 @@ pub struct TeamNormal {
 	pub kills: u32,
 	#[serde(rename = "deaths_team_normal")]
 	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_team")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_team")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_team")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_team")]
+	pub fastest_win: Seconds,
 }
 
 #[derive(
 	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
 )]
 #[serde(default)]
+#[mode(
+	field(ident = "sky_wars.team_normal.time_played", colour = "green"),
+	field(
+		ident = "sky_wars.team_normal.arrows_hit",
+		colour = "red",
+		div = "arrows_shot",
+		percent = "u32",
+		tr = "bow-accuracy"
+	),
+	field(ident = "sky_wars.team_normal.fastest_win", colour = "gold")
+)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]
 	pub losses: u32,
@@ -149,6 +223,17 @@ pub struct MegaDouble {
 	pub kills: u32,
 	#[serde(rename = "deaths_mega_doubles")]
 	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_mega_doubles")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_mega_doubles")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_mega_doubles")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_mega_doubles")]
+	pub fastest_win: Seconds,
 }
 
 #[derive(
@@ -156,14 +241,25 @@ pub struct MegaDouble {
 )]
 #[serde(default)]
 pub struct MegaNormal {
-	#[serde(rename = "losses_mega_doubles_normal")]
+	#[serde(rename = "losses_mega")]
 	pub losses: u32,
-	#[serde(rename = "wins_mega_doubles_normal")]
+	#[serde(rename = "wins_mega")]
 	pub wins: u32,
-	#[serde(rename = "kills_mega_doubles_normal")]
+	#[serde(rename = "kills_mega")]
 	pub kills: u32,
-	#[serde(rename = "deaths_mega_doubles_normal")]
+	#[serde(rename = "deaths_mega")]
 	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_mega")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_mega")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_mega")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_mega")]
+	pub fastest_win: Seconds,
 }
 
 #[derive(
@@ -179,4 +275,67 @@ pub struct Ranked {
 	pub kills: u32,
 	#[serde(rename = "deaths_ranked")]
 	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_ranked")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_ranked")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_ranked")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_ranked")]
+	pub fastest_win: Seconds,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct SoloLab {
+	#[serde(rename = "losses_lab_solo")]
+	pub losses: u32,
+	#[serde(rename = "wins_lab_solo")]
+	pub wins: u32,
+	#[serde(rename = "kills_lab_solo")]
+	pub kills: u32,
+	#[serde(rename = "deaths_lab_solo")]
+	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_lab_solo")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_lab_solo")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_lab_solo")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_lab_solo")]
+	pub fastest_win: Seconds,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct TeamLab {
+	#[serde(rename = "losses_lab_team")]
+	pub losses: u32,
+	#[serde(rename = "wins_lab_team")]
+	pub wins: u32,
+	#[serde(rename = "kills_lab_team")]
+	pub kills: u32,
+	#[serde(rename = "deaths_lab_team")]
+	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_lab_team")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_lab_team")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_lab_team")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_lab_team")]
+	pub fastest_win: Seconds,
 }

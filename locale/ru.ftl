@@ -682,12 +682,16 @@ TeamInsane = Командный, безумный
 MegaNormal = Мега, обычный
 MegaDouble = Мега, удвоение
 Ranked = Рейтинговый
+SoloLab = Соло, лаборатория
+TeamLab = Командный, лаборатория
 
 opals = Опалы
 heads = Головы
 souls = Души
 tokens = Токены
 bow-accuracy = Точность стрельбы из лука
+eggs-thrown = Брошенные яйца
+fastest-win = Самая быстрая победа
 
 skywars = skywars
   .description = Показывает статистику игрока в SkyWars.
@@ -878,6 +882,7 @@ members_label = Участники
 date = Date
 weekly-gexp = Weekly GEXP
 position = Position
+guild-quests = Guild Quests
 
 Member = Member
 General = General

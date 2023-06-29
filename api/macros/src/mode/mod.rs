@@ -8,7 +8,7 @@ use crate::{
 };
 
 macro_rules! ident {
-	($id: literal) => {
+	($id: expr) => {
 		::syn::Ident::new($id, ::proc_macro2::Span::call_site())
 	};
 }
@@ -51,7 +51,7 @@ impl ToTokens for ModeInputReceiver {
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
 				if percent {
-					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+					let value = sum::div_u32_single_field(&quote!(self), ident, div);
 					let struct_name = get_percent_ident_for_type(data.ty.clone());
 
 					return quote! {
@@ -66,7 +66,7 @@ impl ToTokens for ModeInputReceiver {
 						)
 					};
 				} else {
-					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+					sum::div_f32_single_field(&quote!(self), ident, div)
 				}
 			} else {
 				quote! { self.#ident }
@@ -86,13 +86,29 @@ impl ToTokens for ModeInputReceiver {
 		});
 
 		let apply_field_items_mode = field_data.iter().map(|field| {
-			let ident = &field.ident;
+			let mut split = field.ident.split('.');
+			let (ident, parent) = match (split.next_back(), split.next()) {
+				(Some(ident), Some(first)) => (ident!(ident), {
+					let first = syn::Ident::new(first, proc_macro2::Span::call_site());
+
+					let rest = split.map(|p| {
+						let ident = syn::Ident::new(p, proc_macro2::Span::call_site());
+
+						quote! { .#ident }
+					});
+
+					quote! { data.stats.#first #(#rest)* }
+				}),
+				_ => (ident!(&field.ident), quote!(self)),
+			};
+			let ident = &ident;
+
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
-					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+					let value = sum::div_u32_single_field(&parent, ident, div);
 
 					let struct_name = get_percent_ident_for_str(ty);
 
@@ -108,10 +124,10 @@ impl ToTokens for ModeInputReceiver {
 						)
 					};
 				} else {
-					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+					sum::div_f32_single_field(&parent, ident, div)
 				}
 			} else {
-				quote! { self.#ident }
+				quote! { #parent .#ident }
 			};
 
 			quote! {
@@ -128,13 +144,28 @@ impl ToTokens for ModeInputReceiver {
 		});
 
 		let apply_embed_field_items_mode = field_data.iter().map(|field| {
-			let ident = &field.ident;
+			let mut split = field.ident.split('.');
+			let (ident, parent) = match (split.next_back(), split.next()) {
+				(Some(ident), Some(first)) => (ident!(ident), {
+					let first =
+						syn::Ident::new(first, proc_macro2::Span::call_site());
+
+					let rest = split.map(|p| {
+						let ident = syn::Ident::new(p, proc_macro2::Span::call_site());
+
+						quote! { .#ident }
+					});
+
+					quote! { data.stats.#first #(#rest)* }
+				}),
+				_ => (ident!(&field.ident), quote!(self)),
+			};
+			let ident = &ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
 			let value = if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
-					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
-
+					let value = sum::div_u32_single_field(&parent, ident, div);
 					let struct_name = get_percent_ident_for_str(ty);
 
 					return quote! {
@@ -144,10 +175,10 @@ impl ToTokens for ModeInputReceiver {
 						field.push_str("**\n");
 					};
 				} else {
-					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+					sum::div_f32_single_field(&parent, ident, div)
 				}
 			} else {
-				quote! { self.#ident }
+				quote! { #parent.#ident }
 			};
 
 			quote! {
@@ -267,8 +298,7 @@ pub(crate) struct ModeField {
 
 #[derive(Debug, FromMeta)]
 pub(crate) struct ModeFieldData {
-	ident: syn::Ident,
-
+	ident: String,
 	div: Option<syn::Ident>,
 
 	tr: Option<String>,

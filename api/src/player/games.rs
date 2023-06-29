@@ -31,7 +31,7 @@ pub struct Game {
 	#[serde(rename = "gameType")]
 	pub kind: crate::game::r#type::Type,
 	pub mode: crate::game::mode::Mode,
-	pub map: String,
+	pub map: Option<String>,
 	#[serde(with = "chrono::serde::ts_milliseconds_option", default)]
 	pub ended: Option<DateTime<Utc>>,
 }

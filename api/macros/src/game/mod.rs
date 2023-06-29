@@ -127,7 +127,11 @@ impl ToTokens for GameInputReceiver {
 						modes
 							.iter()
 							.filter_map(|m| {
-								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(&path))
+								{
 									None
 								} else {
 									Some(m.ident.as_ref().unwrap())
@@ -205,7 +209,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(name))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -222,7 +230,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(div))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -496,7 +508,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -533,7 +549,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -568,7 +588,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -604,18 +628,26 @@ impl ToTokens for GameInputReceiver {
 				};
 			} else if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
+					let parent = quote! { stats };
 					let value = sum::sum_div_u32_fields(
 						modes
 							.iter()
 							.filter_map(|m| {
-								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode
+										.skip_field
+										.iter()
+										.any(|f| f.eq(div) || f.eq(ident_parent))
+								{
 									None
 								} else {
 									Some(m.ident.as_ref().unwrap())
 								}
 							})
 							.peekable(),
-						Some(&ident!("stats")),
+						Some(&parent),
 						ident_parent,
 						div,
 					);
@@ -634,18 +666,27 @@ impl ToTokens for GameInputReceiver {
 						)
 					};
 				} else {
+					let parent = quote! { stats };
+
 					sum::sum_div_f32_fields(
 						modes
 							.iter()
 							.filter_map(|m| {
-								if m.mode.as_ref().unwrap().skip_overall.is_some() {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode
+										.skip_field
+										.iter()
+										.any(|f| f.eq(div) || f.eq(ident_parent))
+								{
 									None
 								} else {
 									Some(m.ident.as_ref().unwrap())
 								}
 							})
 							.peekable(),
-						Some(&ident!("stats")),
+						Some(&parent),
 						ident_parent,
 						div,
 					)
@@ -655,7 +696,11 @@ impl ToTokens for GameInputReceiver {
 					modes
 						.iter()
 						.filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident_parent))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
@@ -698,15 +743,21 @@ impl ToTokens for GameInputReceiver {
 				};
 			} else if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
+					let parent = quote! { stats };
+
 					let sum = sum::sum_div_u32_fields(
 						modes.iter().filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident_parent) || f.eq(div))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
 							}
 						}).peekable(),
-						Some(&ident!("stats")),
+						Some(&parent),
 						ident_parent,
 						div,
 					);
@@ -722,15 +773,21 @@ impl ToTokens for GameInputReceiver {
 						field.push_str("**\n");
 					};
 				} else {
+					let parent = quote! { stats };
+
 					sum::sum_div_f32_fields(
 						modes.iter().filter_map(|m| {
-							if m.mode.as_ref().unwrap().skip_overall.is_some() {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(ident_parent) || f.eq(div))
+							{
 								None
 							} else {
 								Some(m.ident.as_ref().unwrap())
 							}
 						}).peekable(),
-						Some(&ident!("stats")),
+						Some(&parent),
 						ident_parent,
 						div,
 					)
@@ -738,7 +795,11 @@ impl ToTokens for GameInputReceiver {
 			} else {
 				sum::sum_fields(
 					modes.iter().filter_map(|m| {
-						if m.mode.as_ref().unwrap().skip_overall.is_some() {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some()
+							|| mode.skip_field.iter().any(|f| f.eq(ident_parent))
+						{
 							None
 						} else {
 							Some(m.ident.as_ref().unwrap())
@@ -759,18 +820,22 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let apply_items_mode = overall_fields.iter().map(|field| {
+		let apply_items_mode = overall_fields.iter().filter_map(|field| {
+			if field.skip_chart.is_some() {
+				return None;
+			};
+
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
 			let colour = &field.colour;
 			let value = if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
-					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+					let value = sum::div_u32_single_field(&quote! { self }, ident, div);
 
 					let struct_name = get_percent_ident_for_str(ty);
 
-					return quote! {
+					return Some(quote! {
 						.push_checked(
 							&crate::canvas::shape::Bubble,
 							crate::canvas::body::Body::from_bubble(
@@ -780,15 +845,15 @@ impl ToTokens for GameInputReceiver {
 								#colour,
 							),
 						)
-					};
+					});
 				} else {
-					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+					sum::div_f32_single_field(&quote!(self), ident, div)
 				}
 			} else {
 				quote! { self.#ident }
 			};
 
-			quote! {
+			Some(quote! {
 				.push_checked(
 					&crate::canvas::shape::Bubble,
 					crate::canvas::body::Body::from_bubble(
@@ -798,10 +863,10 @@ impl ToTokens for GameInputReceiver {
 						#colour,
 					),
 				)
-			}
+			})
 		});
 
-		let apply_embed_mode = overall_fields.iter().enumerate().map(|(idx, field)| {
+		let apply_embed_mode = overall_fields.iter().filter(|field| field.skip_chart.is_none()).enumerate().map(|(idx, field)| {
 			let ident = &field.ident;
 			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
 
@@ -813,7 +878,7 @@ impl ToTokens for GameInputReceiver {
 
 			let value = if let Some(div) = field.div.as_ref() {
 				if let Some(ty) = field.percent.as_ref() {
-					let value = sum::div_u32_single_field(&ident!("self"), None, ident, div);
+					let value = sum::div_u32_single_field(&quote!(self), ident, div);
 
 					let struct_name = get_percent_ident_for_str(ty);
 
@@ -826,7 +891,7 @@ impl ToTokens for GameInputReceiver {
 						field.push_str("**\n");
 					};
 				} else {
-					sum::div_f32_single_field(&ident!("self"), None, ident, div)
+					sum::div_f32_single_field(&quote!(self), ident, div)
 				}
 			} else {
 				quote! { self.#ident }
@@ -1469,7 +1534,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(name))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -1486,7 +1555,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(div))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -1525,7 +1598,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(name))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -1542,7 +1619,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(div))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -1581,7 +1662,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(name))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -1598,7 +1683,11 @@ impl ToTokens for GameInputReceiver {
 							modes
 								.iter()
 								.filter_map(|m| {
-									if m.mode.as_ref().unwrap().skip_overall.is_some() {
+									let mode = m.mode.as_ref().unwrap();
+
+									if mode.skip_overall.is_some()
+										|| mode.skip_field.iter().any(|f| f.eq(div))
+									{
 										None
 									} else {
 										Some(m.ident.as_ref().unwrap())
@@ -2589,6 +2678,8 @@ pub(crate) struct GameLabel {
 #[derive(Debug, FromMeta)]
 pub(crate) struct ModeData {
 	skip_overall: Option<bool>,
+	#[darling(default, multiple)]
+	skip_field: Vec<syn::Ident>,
 	hypixel: Option<String>,
 	calc: Option<syn::Path>,
 	xp: Option<syn::Expr>,

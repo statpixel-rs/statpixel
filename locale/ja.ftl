@@ -681,12 +681,16 @@ TeamInsane = チームインセイン
 MegaNormal = メガ通常
 MegaDouble = メガダブル
 Ranked = ランク戦
+SoloLab = ソロラボ
+TeamLab = チームラボ
 
 opals = オパール
 heads = ヘッド
 souls = ソウル
 tokens = トークン
 bow-accuracy = 弓の精度
+eggs-thrown = 投げた卵の数
+fastest-win = 最速勝利
 
 skywars = skywars
   .description = プレイヤーのSkyWars統計を表示します。
@@ -877,6 +881,7 @@ members_label = メンバー
 date = 日付
 weekly-gexp = ウィークリーGEXP
 position = ポジション
+guild-quests = ギルドクエスト
 
 Member = メンバー
 General = 一般

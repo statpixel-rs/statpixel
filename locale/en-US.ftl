@@ -805,12 +805,16 @@ TeamInsane = Team Insane
 MegaNormal = Mega Normal
 MegaDouble = Mega Doubles
 Ranked = Ranked
+SoloLab = Solo Lab
+TeamLab = Team Lab
 
 opals = Opals
 heads = Heads
 souls = Souls
 tokens = Tokens
 bow-accuracy = Bow Accuracy
+eggs-thrown = Eggs Thrown
+fastest-win = Fastest Win
 
 skywars = skywars
   .description = SkyWars
@@ -1101,6 +1105,7 @@ members_label = Members
 date = Date
 weekly-gexp = Weekly GEXP
 position = Position
+guild-quests = Guild Quests
 
 Member = Member
 General = General

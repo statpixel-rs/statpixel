@@ -683,12 +683,16 @@ TeamInsane = Team Insane
 MegaNormal = Mega Normal
 MegaDouble = Mega Doubles
 Ranked = Ranked
+SoloLab = Solo Lab
+TeamLab = Team Lab
 
 opals = Opale
 heads = Köpfe
 souls = Seelen
 tokens = Tokens
 bow-accuracy = Bogen-Genauigkeit
+eggs-thrown = Geworfene Eier
+fastest-win = Schnellster Sieg
 
 skywars = skywars
   .description = Zeigt die SkyWars-Statistiken eines Spielers an.
@@ -879,6 +883,7 @@ members_label = Mitglieder
 date = Datum
 weekly-gexp = Wöchentliche GEXP
 position = Position
+guild-quests = Gildenquests
 
 Member = Mitglied
 General = General

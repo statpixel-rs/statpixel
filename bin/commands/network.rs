@@ -33,7 +33,7 @@ pub async fn network(
 
 	match format {
 		Display::Image | Display::Compact => {
-			let (player, data, _guild, session, skin, suffix) =
+			let (player, data, guild, session, skin, suffix) =
 				crate::commands::get_player_data_guild_session_skin_suffix(ctx, uuid, username)
 					.await?;
 
@@ -46,6 +46,10 @@ pub async fn network(
 					network::get_level_progress(data.xp),
 					network::get_colours(level),
 				);
+
+				let member = guild
+					.as_ref()
+					.and_then(|g| g.members.iter().find(|m| m.uuid == player.uuid));
 
 				let ctx = &ctx;
 				let mut surface = Canvas::new(720.)
@@ -112,6 +116,33 @@ pub async fn network(
 							.build(),
 					)
 					.push_right_post_draw(&status, Body::from_status(ctx, &session))
+					.push_down_start(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&member.map_or(0, |m| m.xp_history[0].1),
+							tr!(ctx, "daily-xp").as_ref(),
+							Paint::DarkGreen,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&member.map_or(0, |m| m.xp_history.iter().map(|(_, x)| x).sum::<u32>()),
+							tr!(ctx, "weekly-xp").as_ref(),
+							Paint::DarkGreen,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&member.map_or(0, |m| m.quests),
+							tr!(ctx, "guild-quests").as_ref(),
+							Paint::DarkGreen,
+						),
+					)
 					.build(None, background)
 					.unwrap();
 

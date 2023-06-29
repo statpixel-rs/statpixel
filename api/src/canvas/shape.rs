@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use crate::{
 	canvas::{label::ToFormatted, util},
 	game::{self, r#type::Type},
@@ -195,7 +197,11 @@ impl RecentGame<'_> {
 					..Default::default()
 				},
 				Text {
-					text: game.map.as_str(),
+					text: game
+						.map
+						.as_ref()
+						.map_or_else(|| tr!(ctx, "none"), |s| Cow::Borrowed(s))
+						.as_ref(),
 					paint: Paint::LightPurple,
 					..Default::default()
 				},
