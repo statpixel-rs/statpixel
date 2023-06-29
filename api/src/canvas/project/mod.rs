@@ -3,7 +3,7 @@ pub mod line;
 use std::{borrow::Cow, ops::Range};
 
 use crate::canvas::{
-	chart::CANVAS_BACKGROUND,
+	chart::{BACKGROUND, CANVAS_BACKGROUND},
 	label::ToFormatted,
 	shape::{BUBBLE_HEIGHT, GAP},
 };
@@ -270,11 +270,11 @@ macro_rules! impl_project_create {
 					.configure_series_labels()
 					.position(SeriesLabelPosition::UpperLeft)
 					.border_style(style::colors::TRANSPARENT)
-					.background_style(background.mix(0.8))
+					.background_style(&BACKGROUND.mix(0.6))
 					.label_font(
 						("Minecraft", 17)
 							.into_text_style(&backend)
-							.with_color(foreground),
+							.with_color(style::colors::WHITE),
 					)
 					.draw()
 					.map_err(|_| Error::Plotters)?;

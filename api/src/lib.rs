@@ -12,6 +12,7 @@ pub use macros;
 
 pub mod cache;
 pub mod canvas;
+pub(crate) mod de;
 pub mod game;
 pub mod guild;
 pub mod http;
@@ -24,7 +25,6 @@ pub mod player_old;
 pub mod prelude;
 pub mod ratelimiter;
 pub mod redis;
-pub(crate) mod de;
 pub mod skyblock;
 pub mod snapshot;
 

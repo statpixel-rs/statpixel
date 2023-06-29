@@ -27,7 +27,7 @@ use super::shape;
 pub const WIDTH_F: f32 = 750.;
 
 pub const CANVAS_BACKGROUND: RGBAColor = RGBAColor(31, 48, 64, 1.);
-pub const BACKGROUND: RGBAColor = RGBAColor(20, 20, 20, 0.5);
+pub const BACKGROUND: RGBAColor = RGBAColor(20, 20, 20, 1.);
 
 macro_rules! impl_chart_create {
 	($ty: ident) => {
@@ -127,11 +127,11 @@ macro_rules! impl_chart_create {
 					.configure_series_labels()
 					.position(SeriesLabelPosition::UpperLeft)
 					.border_style(&style::colors::TRANSPARENT)
-					.background_style(&background.mix(0.8))
+					.background_style(&BACKGROUND.mix(0.6))
 					.label_font(
 						("Minecraft", 17)
 							.into_text_style(&backend)
-							.with_color(foreground),
+							.with_color(style::colors::WHITE),
 					)
 					.draw()
 					.map_err(|_| Error::Plotters)?;
