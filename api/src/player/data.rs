@@ -24,11 +24,11 @@ pub struct Data {
 	pub prefix: Option<String>,
 	#[serde(
 		rename = "networkExp",
-		deserialize_with = "super::stats::from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		default
 	)]
 	pub xp: u64,
-	#[serde(default, deserialize_with = "super::stats::from_trunc_f64_to_u64")]
+	#[serde(default, deserialize_with = "crate::de::from::f64_to_u64")]
 	pub karma: u64,
 	#[serde(rename = "firstLogin", with = "chrono::serde::ts_milliseconds_option")]
 	#[bincode(with_serde)]

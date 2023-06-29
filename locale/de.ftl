@@ -41,6 +41,21 @@ tip-website = <:knowledge_book:1117179094556233828> Besuche unsere Website unter
 tip-support-discord = <:knowledge_book:1117179094556233828> Tritt unserem Support-Server unter <https://statpixel.xyz/discord> bei.
 tip-project = <:knowledge_book:1117179094556233828> Zeige Schätzungen aller deiner Daten mit </project bedwars:1118417616541843477>.
 
+# /recent
+
+mode = Modus
+map = Karte
+started = Gestartet
+duration = Dauer
+playing = Aktiv
+
+recent = recent
+  .description = Zeige die letzten Spiele eines Spielers an
+  .username = username
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 # /project
 
 accuracy = Genauigkeit

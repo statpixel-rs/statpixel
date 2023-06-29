@@ -18,7 +18,7 @@ use crate::{
 	game::r#type::Type,
 	http::HTTP,
 	xp::Xp,
-	Error,
+	Error, Player,
 };
 
 use self::member::Member;
@@ -39,6 +39,7 @@ pub struct Guild {
 	#[serde(rename = "_id", deserialize_with = "hex_from_str")]
 	pub id: u128,
 	pub name: String,
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	pub coins: u32,
 	#[serde(rename = "exp")]
 	pub xp: u32,
@@ -169,6 +170,12 @@ where
 	}
 
 	deserializer.deserialize_map(Visitor)
+}
+
+impl Player {
+	pub async fn get_guild(&self) -> Option<Arc<Guild>> {
+		Guild::from_member_uuid(self.uuid).await.ok()
+	}
 }
 
 impl Guild {

@@ -264,7 +264,7 @@ impl Type {
 
 	#[must_use]
 	#[allow(clippy::too_many_lines)]
-	pub fn as_image_bytes(&self) -> Option<&'static Image> {
+	pub fn as_image_bytes(&self) -> Option<&Image> {
 		Some(match self {
 			Self::Quake => {
 				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/quakecraft.png");

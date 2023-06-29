@@ -3,7 +3,7 @@ use std::{borrow::Cow, sync::Arc};
 use api::{
 	guild::Guild,
 	image::Image,
-	player::{data::Data, status::Session, Player},
+	player::{self, data::Data, status::Session, Player},
 };
 use database::{extend::lower, schema};
 use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
@@ -24,6 +24,7 @@ pub mod leaderboard;
 pub mod link;
 pub mod network;
 pub mod project;
+pub mod recent;
 pub mod skyblock;
 pub mod snapshot;
 pub mod unlink;
@@ -160,6 +161,52 @@ pub async fn get_player_data_session_skin_suffix(
 	result
 }
 
+pub async fn get_player_data_guild_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<
+	(
+		Player,
+		Arc<Data>,
+		Option<Arc<Guild>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let (result, _) = tokio::join!(
+		player_data_guild_session_skin_suffix(ctx, uuid, username),
+		ctx.defer(),
+	);
+
+	result
+}
+
+pub async fn get_player_data_games_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<
+	(
+		Player,
+		Arc<Data>,
+		Arc<Vec<player::games::Game>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let (result, _) = tokio::join!(
+		player_data_games_session_skin_suffix(ctx, uuid, username),
+		ctx.defer(),
+	);
+
+	result
+}
+
 pub async fn from_player_data_session_skin_suffix(
 	ctx: &context::Context<'_>,
 	player: &Player,
@@ -185,6 +232,83 @@ pub async fn from_player_data_session_skin_suffix(
 	Ok((data, session, skin, suffix))
 }
 
+pub async fn from_player_data_guild_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	player: &Player,
+) -> Result<
+	(
+		Arc<Data>,
+		Option<Arc<Guild>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let (data, guild, session, skin, suffix) = tokio::join!(
+		player.get_data(),
+		player.get_guild(),
+		player.get_session(),
+		player.get_skin(),
+		player.get_suffix(ctx),
+	);
+
+	let data = data?;
+	let session = session?;
+
+	Ok((data, guild, session, skin, suffix))
+}
+
+pub async fn from_player_data_games_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	player: &Player,
+) -> Result<
+	(
+		Arc<Data>,
+		Arc<Vec<player::games::Game>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let (data, games, session, skin, suffix) = tokio::join!(
+		player.get_data(),
+		player.get_games(),
+		player.get_session(),
+		player.get_skin(),
+		player.get_suffix(ctx),
+	);
+
+	let data = data?;
+	let session = session?;
+	let games = games?;
+
+	Ok((data, games, session, skin, suffix))
+}
+
+async fn player_data_games_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<
+	(
+		Player,
+		Arc<Data>,
+		Arc<Vec<player::games::Game>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let (data, games, session, skin, suffix) =
+		from_player_data_games_session_skin_suffix(ctx, &player).await?;
+
+	Ok((player, data, games, session, skin, suffix))
+}
+
 async fn player_data_session_skin_suffix(
 	ctx: &context::Context<'_>,
 	uuid: Option<Uuid>,
@@ -203,6 +327,28 @@ async fn player_data_session_skin_suffix(
 	let (data, session, skin, suffix) = from_player_data_session_skin_suffix(ctx, &player).await?;
 
 	Ok((player, data, session, skin, suffix))
+}
+
+async fn player_data_guild_session_skin_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<
+	(
+		Player,
+		Arc<Data>,
+		Option<Arc<Guild>>,
+		Arc<Session>,
+		Cow<'static, Image<'static>>,
+		Option<String>,
+	),
+	Error,
+> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let (data, guild, session, skin, suffix) =
+		from_player_data_guild_session_skin_suffix(ctx, &player).await?;
+
+	Ok((player, data, guild, session, skin, suffix))
 }
 
 pub async fn get_player_data(

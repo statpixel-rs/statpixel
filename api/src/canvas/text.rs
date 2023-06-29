@@ -1,4 +1,7 @@
-use minecraft::text::{parse::minecraft_string, Text};
+use minecraft::{
+	paint::Paint,
+	text::{parse::minecraft_string, Text},
+};
 
 use crate::player::data::Data;
 
@@ -42,6 +45,7 @@ pub fn from_data<'u>(data: &'u Data, username: &'u str, suffix: Option<&'u str>)
 
 		text.push(Text {
 			text: suffix,
+			paint: Paint::Gold,
 			..Default::default()
 		});
 	}

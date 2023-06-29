@@ -308,10 +308,7 @@ impl Tier {
 pub struct Pet {
 	#[serde(rename = "type")]
 	pub id: String,
-	#[serde(
-		deserialize_with = "crate::player::stats::from_trunc_f32_to_u32",
-		rename = "exp"
-	)]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32", rename = "exp")]
 	pub xp: u32,
 	pub tier: Tier,
 	#[serde(rename = "heldItem")]

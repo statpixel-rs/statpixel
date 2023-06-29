@@ -199,9 +199,9 @@ pub mod raw {
 		pub skin: Option<String>,
 		pub party_hat_emoji: Option<String>,
 		pub party_hat_color: Option<String>,
-		#[serde(with = "crate::ser::f64_string_opt", default)]
+		#[serde(with = "crate::de::f64_string_opt", default)]
 		pub price: Option<f64>,
-		#[serde(with = "crate::ser::vec_map", default)]
+		#[serde(with = "crate::de::vec_map", default)]
 		pub runes: Vec<(String, u8)>,
 		#[serde(rename = "new_years_cake")]
 		pub cake: Option<u16>,
@@ -212,9 +212,9 @@ pub mod raw {
 		pub shiny: Option<bool>,
 		pub bid: Option<f64>,
 		pub winning_bid: Option<f64>,
-		#[serde(with = "crate::ser::vec_map_uppercase", default)]
+		#[serde(with = "crate::de::vec_map_uppercase", default)]
 		pub enchantments: Vec<(String, u8)>,
-		#[serde(with = "crate::ser::vec_map_uppercase", default)]
+		#[serde(with = "crate::de::vec_map_uppercase", default)]
 		pub attributes: Vec<(String, u8)>,
 		pub modifier: Option<Modifier>,
 		#[serde(rename = "ability_scroll", default)]

@@ -1,4 +1,5 @@
 pub mod data;
+pub mod games;
 pub mod stats;
 pub mod status;
 

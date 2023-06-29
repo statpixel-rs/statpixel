@@ -17,7 +17,7 @@ use serde::Deserialize;
 )]
 #[serde(default)]
 pub struct Uhc {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[game(label(colour = "yellow"))]
@@ -54,10 +54,7 @@ pub struct Uhc {
 )]
 #[serde(default)]
 pub struct Solo {
-	#[serde(
-		rename = "wins_solo",
-		deserialize_with = "super::from_trunc_f32_to_u32"
-	)]
+	#[serde(rename = "wins_solo", deserialize_with = "crate::de::from::f32_to_u32")]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_solo")]
 	pub heads_eaten: u32,
@@ -65,7 +62,7 @@ pub struct Solo {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_solo",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_solo")]
@@ -77,11 +74,11 @@ pub struct Solo {
 )]
 #[serde(default)]
 pub struct Team {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	pub wins: u32,
 	pub heads_eaten: u32,
 	pub ultimates_crafted: u32,
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	pub kills: u32,
 	pub deaths: u32,
 }
@@ -93,7 +90,7 @@ pub struct Team {
 pub struct RedVsBlue {
 	#[serde(
 		rename = "wins_red_vs_blue",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_red_vs_blue")]
@@ -102,7 +99,7 @@ pub struct RedVsBlue {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_red_vs_blue",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_red_vs_blue")]
@@ -116,7 +113,7 @@ pub struct RedVsBlue {
 pub struct NoDiamonds {
 	#[serde(
 		rename = "wins_no_diamonds",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_no_diamonds")]
@@ -125,7 +122,7 @@ pub struct NoDiamonds {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_no_diamonds",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_no_diamonds")]
@@ -139,7 +136,7 @@ pub struct NoDiamonds {
 pub struct VanillaDouble {
 	#[serde(
 		rename = "wins_vanilla_doubles",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_vanilla_doubles")]
@@ -148,7 +145,7 @@ pub struct VanillaDouble {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_vanilla_doubles",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_vanilla_doubles")]
@@ -162,7 +159,7 @@ pub struct VanillaDouble {
 pub struct Brawl {
 	#[serde(
 		rename = "wins_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_brawl")]
@@ -171,7 +168,7 @@ pub struct Brawl {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_brawl")]
@@ -185,7 +182,7 @@ pub struct Brawl {
 pub struct SoloBrawl {
 	#[serde(
 		rename = "wins_solo_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_solo_brawl")]
@@ -194,7 +191,7 @@ pub struct SoloBrawl {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_solo_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_solo_brawl")]
@@ -208,7 +205,7 @@ pub struct SoloBrawl {
 pub struct DoubleBrawl {
 	#[serde(
 		rename = "wins_duo_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub wins: u32,
 	#[serde(rename = "heads_eaten_duo_brawl")]
@@ -217,7 +214,7 @@ pub struct DoubleBrawl {
 	pub ultimates_crafted: u32,
 	#[serde(
 		rename = "kills_duo_brawl",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	pub kills: u32,
 	#[serde(rename = "deaths_duo_brawl")]

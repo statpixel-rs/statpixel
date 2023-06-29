@@ -22,12 +22,12 @@ fn default_level_fmt() -> String {
 )]
 #[serde(default)]
 pub struct SkyWars {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[serde(
 		rename = "skywars_chests",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	#[game(label(colour = "yellow"))]
 	pub loot_chests: u32,
@@ -48,7 +48,7 @@ pub struct SkyWars {
 	pub level_fmt: String,
 	#[serde(
 		rename = "skywars_experience",
-		deserialize_with = "super::from_trunc_f32_to_u64"
+		deserialize_with = "crate::de::from::f64_to_u64"
 	)]
 	#[game(xp)]
 	pub xp: u64,

@@ -2,7 +2,7 @@ use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
 use skia_safe::{
 	font_arguments::{variation_position::Coordinate, VariationPosition},
-	textlayout::TextStyle,
+	textlayout::{TextShadow, TextStyle},
 	FontArguments, FourByteTag,
 };
 
@@ -95,6 +95,10 @@ impl MinecraftFont {
 			style.set_font_size(size);
 		}
 
+		#[allow(clippy::cast_possible_truncation)]
+		let offset = (style.font_size() / 9.) as i32;
+
+		style.add_shadow(TextShadow::new(paint.shadow(), (offset, offset), 0.));
 		style.set_foreground_color(paint.into());
 		style
 	}

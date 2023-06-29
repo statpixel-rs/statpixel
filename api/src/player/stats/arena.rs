@@ -17,7 +17,7 @@ use serde::Deserialize;
 	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
 )]
 pub struct Arena {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[serde(rename = "magical_chest")]
@@ -26,7 +26,7 @@ pub struct Arena {
 	#[serde(rename = "keys")]
 	#[game(label(colour = "aqua"))]
 	pub magical_keys: u32,
-	#[serde(deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "green"))]
 	pub rating: u32,
 

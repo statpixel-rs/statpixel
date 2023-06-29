@@ -1,8 +1,9 @@
 use crate::{
 	canvas::{label::ToFormatted, util},
-	game::r#type::Type,
+	game::{self, r#type::Type},
 	guild::Guild,
-	player::status::Session,
+	milliseconds::Milliseconds,
+	player::{self, status::Session},
 	skyblock::networth::calc::Category,
 };
 
@@ -18,7 +19,7 @@ use skia_safe::{
 	textlayout::{Paragraph, TextAlign},
 	Canvas, Color, Image, Path, Point, RRect, Rect, Size,
 };
-use translate::{context::Context, tr};
+use translate::{context::Context, prelude::GetChronoLocale, tr};
 
 pub const BUBBLE_WIDTH: f32 = 706. / 3.;
 pub const BUBBLE_HEIGHT: f32 = 85.;
@@ -60,6 +61,7 @@ pub struct Bubble;
 pub struct WideBubble;
 pub struct TallBubble;
 pub struct WideTallBubble;
+pub struct RecentGame<'g>(pub &'g game::r#type::Type);
 
 pub struct Sidebar;
 pub struct Gutter;
@@ -143,6 +145,107 @@ impl Sidebar {
 		}
 
 		body.build()
+	}
+}
+
+impl RecentGame<'_> {
+	#[must_use]
+	pub fn from_game(ctx: &Context<'_>, game: &player::games::Game) -> Paragraph {
+		let fmt = "%d/%m %r";
+		let locale = ctx.get_chrono_locale();
+		let duration = game
+			.ended
+			.map(|e| Milliseconds((e - game.started).num_milliseconds()));
+
+		Body::new(20., None)
+			.extend_owned(game.kind.as_text().iter().map(|t| Text {
+				text: t.text,
+				paint: t.paint,
+				size: Some(25.),
+				font: t.font,
+			}))
+			.extend(&[
+				Text {
+					text: "\n",
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "mode").as_ref(),
+					..Default::default()
+				},
+				Text {
+					text: ": ",
+					..Default::default()
+				},
+				Text {
+					text: game.mode.as_clean_name(),
+					paint: Paint::Blue,
+					..Default::default()
+				},
+				Text {
+					text: "\n",
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "map").as_ref(),
+					..Default::default()
+				},
+				Text {
+					text: ": ",
+					..Default::default()
+				},
+				Text {
+					text: game.map.as_str(),
+					paint: Paint::LightPurple,
+					..Default::default()
+				},
+				Text {
+					text: "\n",
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "started").as_ref(),
+					..Default::default()
+				},
+				Text {
+					text: ": ",
+					..Default::default()
+				},
+				Text {
+					text: game
+						.started
+						.format_localized(fmt, locale)
+						.to_string()
+						.as_str(),
+					paint: Paint::Gray,
+					..Default::default()
+				},
+				Text {
+					text: "\n",
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "duration").as_ref(),
+					..Default::default()
+				},
+				Text {
+					text: ": ",
+					..Default::default()
+				},
+				Text {
+					text: duration
+						.as_ref()
+						.map_or_else(|| tr!(ctx, "playing"), |e| e.to_formatted_label(ctx))
+						.as_ref(),
+					paint: if duration.is_none() {
+						Paint::Green
+					} else {
+						Paint::Gray
+					},
+					..Default::default()
+				},
+			])
+			.build()
 	}
 }
 
@@ -552,6 +655,48 @@ impl_rect_shape!(LeaderboardValue, 200., 35., true);
 
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
+
+impl Shape for RecentGame<'_> {
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
+		if let Some(image) = self.0.as_image_bytes() {
+			canvas.draw_image(
+				image.image(),
+				(bounds.right() - 40. - 10., bounds.top() + 10.),
+				None,
+			);
+		}
+	}
+
+	fn size(&self) -> Size {
+		Size {
+			width: BUBBLE_WIDTH * 1.5 + GAP / 2.,
+			height: BUBBLE_HEIGHT * 2. + GAP,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(30., 0.).into()
+	}
+}
 
 impl Shape for EmptyNetworthSlot {
 	fn size(&self) -> Size {

@@ -3,6 +3,7 @@ use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
 use plotters::style::RGBColor;
 use quote::quote;
+use skia_safe::Color;
 
 macro_rules! paint_colour {
 	($name: ident, $colour: expr) => {
@@ -65,6 +66,31 @@ pub enum Paint {
 	White,
 	/// Special non-Minecraft colour for "3rd place" colour
 	Bronze,
+}
+
+impl Paint {
+	#[must_use]
+	pub fn shadow(&self) -> Color {
+		match self {
+			Self::Black => Color::from_argb(255, 0, 0, 0),
+			Self::DarkBlue => Color::from_argb(255, 0, 0, 0x2a),
+			Self::DarkGreen => Color::from_argb(255, 0, 0x2a, 0),
+			Self::DarkAqua => Color::from_argb(255, 0, 0x2a, 0x2a),
+			Self::DarkRed => Color::from_argb(255, 0x2a, 0, 0),
+			Self::DarkPurple => Color::from_argb(255, 0x2a, 0, 0x2a),
+			Self::Gold => Color::from_argb(255, 0x3f, 0x2a, 0),
+			Self::Gray => Color::from_argb(255, 0x2a, 0x2a, 0x2a),
+			Self::DarkGray => Color::from_argb(255, 0x15, 0x15, 0x15),
+			Self::Blue => Color::from_argb(255, 0x15, 0x15, 0x3f),
+			Self::Green => Color::from_argb(255, 0x15, 0x3f, 0x15),
+			Self::Aqua => Color::from_argb(255, 0x15, 0x3f, 0x3f),
+			Self::Red => Color::from_argb(255, 0x3f, 0x15, 0x15),
+			Self::LightPurple => Color::from_argb(255, 0x3f, 0x15, 0x3f),
+			Self::Yellow => Color::from_argb(255, 0x3f, 0x3f, 0x15),
+			Self::White => Color::from_argb(255, 0x3f, 0x3f, 0x3f),
+			Self::Bronze => Color::from_argb(255, 0xcd, 0x81, 0x32),
+		}
+	}
 }
 
 impl Paint {
@@ -140,6 +166,30 @@ impl From<Paint> for &skia_safe::Paint {
 			Paint::Yellow => &YELLOW,
 			Paint::White => &WHITE,
 			Paint::Bronze => &BRONZE,
+		}
+	}
+}
+
+impl From<Paint> for skia_safe::Color {
+	fn from(paint: Paint) -> Self {
+		match paint {
+			Paint::Black => super::colour::BLACK,
+			Paint::DarkBlue => super::colour::DARK_BLUE,
+			Paint::DarkGreen => super::colour::DARK_GREEN,
+			Paint::DarkAqua => super::colour::DARK_AQUA,
+			Paint::DarkRed => super::colour::DARK_RED,
+			Paint::DarkPurple => super::colour::DARK_PURPLE,
+			Paint::Gold => super::colour::GOLD,
+			Paint::Gray => super::colour::GRAY,
+			Paint::DarkGray => super::colour::DARK_GRAY,
+			Paint::Blue => super::colour::BLUE,
+			Paint::Green => super::colour::GREEN,
+			Paint::Aqua => super::colour::AQUA,
+			Paint::Red => super::colour::RED,
+			Paint::LightPurple => super::colour::LIGHT_PURPLE,
+			Paint::Yellow => super::colour::YELLOW,
+			Paint::White => super::colour::WHITE,
+			Paint::Bronze => super::colour::BRONZE,
 		}
 	}
 }

@@ -22,7 +22,7 @@ pub mod walls;
 pub mod warlords;
 pub mod wool_wars;
 
-use serde::{Deserialize, Deserializer};
+use serde::Deserialize;
 
 #[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
 #[serde(rename_all = "PascalCase", default)]
@@ -62,47 +62,4 @@ pub struct Stats {
 	pub pit: pit::Outer,
 	#[serde(rename = "WoolGames")]
 	pub wool_wars: wool_wars::Outer,
-}
-
-#[allow(clippy::cast_possible_truncation)]
-#[allow(clippy::cast_sign_loss)]
-pub(crate) fn from_trunc_f32_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let s: f32 = Deserialize::deserialize(deserializer)?;
-
-	Ok(s as u32)
-}
-
-#[allow(clippy::cast_possible_truncation)]
-pub(crate) fn from_trunc_f32_to_i32<'de, D>(deserializer: D) -> Result<i32, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let s: f32 = Deserialize::deserialize(deserializer)?;
-
-	Ok(s as i32)
-}
-
-#[allow(clippy::cast_possible_truncation)]
-#[allow(clippy::cast_sign_loss)]
-pub(crate) fn from_trunc_f32_to_u64<'de, D>(deserializer: D) -> Result<u64, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let s: f32 = Deserialize::deserialize(deserializer)?;
-
-	Ok(s as u64)
-}
-
-#[allow(clippy::cast_possible_truncation)]
-#[allow(clippy::cast_sign_loss)]
-pub(crate) fn from_trunc_f64_to_u64<'de, D>(deserializer: D) -> Result<u64, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let s: f64 = Deserialize::deserialize(deserializer)?;
-
-	Ok(s as u64)
 }

@@ -41,6 +41,21 @@ tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>で�
 tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
 tip-project = <:knowledge_book:1117179094556233828> </project bedwars:1118417616541843477>ですべてのデータの推定値を表示します。
 
+# /recent
+
+mode = モード
+map = マップ
+started = 開始
+duration = 継続時間
+playing = アクティブ
+
+recent = recent
+  .description = 最近のゲームを表示します
+  .username = username
+  .username-description = Minecraftユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 # /project
 
 accuracy = 精度

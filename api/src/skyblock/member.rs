@@ -1,7 +1,7 @@
 use serde::Deserialize;
 
 use super::{essence::Essence, pet::Pet};
-use crate::{nbt::inventory::Inventory, player::stats::from_trunc_f64_to_u64};
+use crate::nbt::inventory::Inventory;
 
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
@@ -9,7 +9,7 @@ pub struct Member {
 	pub fairy_exchanges: u32,
 	pub fairy_souls_collected: u32,
 	pub fishing_treasure_caught: u32,
-	#[serde(deserialize_with = "from_trunc_f64_to_u64")]
+	#[serde(deserialize_with = "crate::de::from::f64_to_u64")]
 	pub coin_purse: u64,
 	#[serde(
 		deserialize_with = "crate::player::data::vec_len_to_u32",
@@ -26,7 +26,7 @@ pub struct Member {
 	pub skills: Skills,
 	#[serde(flatten)]
 	pub essence: Essence,
-	#[serde(with = "crate::ser::vec_map", rename = "sacks_counts")]
+	#[serde(with = "crate::de::vec_map", rename = "sacks_counts")]
 	pub sacks: Vec<(String, u32)>,
 	pub dungeons: Dungeons,
 	pub leveling: Leveling,
@@ -72,7 +72,7 @@ pub struct Member {
 	#[serde(deserialize_with = "crate::nbt::from_data_opt", rename = "inv_armor")]
 	pub armour: Option<Inventory>,
 	#[serde(
-		with = "crate::ser::vec_map_inventory",
+		with = "crate::de::vec_map_inventory",
 		rename = "backpack_contents",
 		default
 	)]
@@ -102,14 +102,14 @@ pub struct Types {
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
 pub struct Catacombs {
-	#[serde(deserialize_with = "from_trunc_f64_to_u64")]
+	#[serde(deserialize_with = "crate::de::from::f64_to_u64")]
 	pub experience: u64,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
 pub struct Stats {
-	#[serde(deserialize_with = "from_trunc_f64_to_u64")]
+	#[serde(deserialize_with = "crate::de::from::f64_to_u64")]
 	pub highest_critical_damage: u64,
 }
 
@@ -117,58 +117,58 @@ pub struct Stats {
 #[serde(default)]
 pub struct Skills {
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_farming"
 	)]
 	pub farming: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_mining"
 	)]
 	pub mining: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_combat"
 	)]
 	pub combat: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_foraging"
 	)]
 	pub foraging: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_fishing"
 	)]
 	pub fishing: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_enchanting"
 	)]
 	pub enchanting: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_alchemy"
 	)]
 	pub alchemy: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_taming"
 	)]
 	pub taming: u64,
 	// Dungeons is in `dungeons.types.catacombs.experience`
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_carpentry"
 	)]
 	pub carpentry: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_runecrafting"
 	)]
 	pub runecrafting: u64,
 	#[serde(
-		deserialize_with = "from_trunc_f64_to_u64",
+		deserialize_with = "crate::de::from::f64_to_u64",
 		rename = "experience_skill_social2"
 	)]
 	pub social: u64,

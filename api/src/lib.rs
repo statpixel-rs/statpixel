@@ -24,7 +24,7 @@ pub mod player_old;
 pub mod prelude;
 pub mod ratelimiter;
 pub mod redis;
-pub(crate) mod ser;
+pub(crate) mod de;
 pub mod skyblock;
 pub mod snapshot;
 

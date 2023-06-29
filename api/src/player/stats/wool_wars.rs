@@ -8,7 +8,7 @@ pub struct Progression {
 	pub layers: u32,
 	#[serde(
 		rename = "experience",
-		deserialize_with = "super::from_trunc_f32_to_u64"
+		deserialize_with = "crate::de::from::f64_to_u64"
 	)]
 	pub xp: u64,
 }
@@ -18,7 +18,7 @@ pub struct Progression {
 pub struct Outer {
 	#[serde(rename = "wool_wars")]
 	pub inner: Inner,
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	pub coins: i32,
 	pub progression: Progression,
 }

@@ -27,6 +27,7 @@ colour!(RED, (255, 85, 85));
 colour!(LIGHT_PURPLE, (255, 85, 255));
 colour!(YELLOW, (255, 255, 85));
 colour!(WHITE, (255, 255, 255));
+colour!(BRONZE, (205, 127, 50));
 
 // Utility colours
 colour!(BACKGROUND, (31, 48, 64));

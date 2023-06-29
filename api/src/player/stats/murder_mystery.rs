@@ -25,13 +25,10 @@ use crate::seconds;
 )]
 #[serde(default)]
 pub struct MurderMystery {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
-	#[serde(
-		rename = "mm_chests",
-		deserialize_with = "super::from_trunc_f32_to_u32"
-	)]
+	#[serde(rename = "mm_chests", deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "yellow"))]
 	pub loot_chests: u32,
 	#[serde(rename = "total_time_survived_seconds")]

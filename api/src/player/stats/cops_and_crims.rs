@@ -26,7 +26,7 @@ use serde::Deserialize;
 )]
 #[serde(default)]
 pub struct CopsAndCrims {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[game(label(colour = "aqua"))]

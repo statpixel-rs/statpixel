@@ -14,19 +14,19 @@ use serde::Deserialize;
 )]
 #[serde(default)]
 pub struct Warlords {
-	#[serde(deserialize_with = "super::from_trunc_f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
-	#[serde(rename = "damage", deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(rename = "damage", deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "green"))]
 	pub damage_dealt: u32,
 	#[serde(
 		rename = "damage_taken",
-		deserialize_with = "super::from_trunc_f32_to_u32"
+		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	#[game(label(colour = "blue"))]
 	pub damage_taken: u32,
-	#[serde(rename = "heal", deserialize_with = "super::from_trunc_f32_to_u32")]
+	#[serde(rename = "heal", deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "red"))]
 	pub health_regenerated: u32,
 	#[game(label(colour = "aqua"))]

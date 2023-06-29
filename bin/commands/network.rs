@@ -33,8 +33,9 @@ pub async fn network(
 
 	match format {
 		Display::Image | Display::Compact => {
-			let (player, data, session, skin, suffix) =
-				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+			let (player, data, _guild, session, skin, suffix) =
+				crate::commands::get_player_data_guild_session_skin_suffix(ctx, uuid, username)
+					.await?;
 
 			player.increase_searches(ctx).await?;
 

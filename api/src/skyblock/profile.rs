@@ -16,14 +16,14 @@ pub struct Profile {
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
 pub struct Banking {
-	#[serde(deserialize_with = "crate::player::stats::from_trunc_f64_to_u64")]
+	#[serde(deserialize_with = "crate::de::from::f64_to_u64")]
 	pub balance: u64,
 	pub transactions: Vec<Transaction>,
 }
 
 #[derive(Deserialize, Clone, Debug, Default)]
 pub struct Transaction {
-	#[serde(deserialize_with = "crate::player::stats::from_trunc_f64_to_u64")]
+	#[serde(deserialize_with = "crate::de::from::f64_to_u64")]
 	pub amount: u64,
 	#[serde(with = "chrono::serde::ts_milliseconds")]
 	pub timestamp: DateTime<Utc>,
