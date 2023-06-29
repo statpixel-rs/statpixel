@@ -1,7 +1,7 @@
 use macros::{Diff, Game, Mode};
 use serde::Deserialize;
 
-use crate::seconds::Seconds;
+use crate::seconds::{Seconds, SecondsOption};
 
 fn default_level_fmt() -> String {
 	"§71".to_string()
@@ -30,7 +30,7 @@ fn default_level_fmt() -> String {
 		colour = "red",
 		skip_chart
 	),
-	field(ident = "fastest_win", colour = "gold", skip_chart)
+	field(ident = "fastest_win", colour = "gold", skip_chart, min)
 )]
 #[serde(default)]
 pub struct SkyWars {
@@ -129,7 +129,7 @@ pub struct SoloNormal {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_solo")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -181,7 +181,7 @@ pub struct TeamNormal {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_team")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -233,7 +233,7 @@ pub struct MegaDouble {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_mega_doubles")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -259,7 +259,7 @@ pub struct MegaNormal {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_mega")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -285,7 +285,7 @@ pub struct Ranked {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_ranked")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -311,7 +311,7 @@ pub struct SoloLab {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_solo")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 #[derive(
@@ -337,5 +337,5 @@ pub struct TeamLab {
 	pub arrows_hit: u32,
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_team")]
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }

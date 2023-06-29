@@ -18,6 +18,7 @@ pub async fn command<G: api::prelude::Game>(
 	uuid: Option<Uuid>,
 	mode: Option<G::Mode>,
 ) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, session) = commands::get_player_username_session(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
@@ -57,7 +58,7 @@ pub async fn command<G: api::prelude::Game>(
 	};
 
 	let png = {
-		let buffer = G::chart(ctx, snapshots, &session, mode)?;
+		let buffer = G::chart(ctx, snapshots, &session, background, mode)?;
 
 		Cow::Owned(buffer)
 	};

@@ -325,6 +325,7 @@ impl ToTokens for GameInputReceiver {
 					#enum_ident ::#ty => #ty ::chart(
 						ctx,
 						snapshots,
+						background,
 					),
 				}
 			})
@@ -339,6 +340,7 @@ impl ToTokens for GameInputReceiver {
 					snapshots,
 					kind,
 					value,
+					background,
 				),
 			}
 		});
@@ -690,6 +692,37 @@ impl ToTokens for GameInputReceiver {
 						ident_parent,
 						div,
 					)
+				}
+			} else if field.min.is_some() {
+				let mut apply = modes.iter().filter_map(|m| {
+					let mode = m.mode.as_ref().unwrap();
+
+					if mode.skip_overall.is_some()
+						|| mode.skip_field.iter().any(|f| f.eq(ident_parent))
+					{
+						None
+					} else {
+						let ident = m.ident.as_ref().unwrap();
+
+						Some(ident)
+					}
+				});
+
+				let first = apply.next().unwrap();
+				let other = apply.map(|ident| {
+					quote! {
+						min = min.min(stats.#ident.#ident_parent);
+					}
+				});
+
+				quote! {
+					{
+						let mut min = stats.#first.#ident_parent;
+
+						#(#other)*
+
+						min
+					}
 				}
 			} else {
 				sum::sum_fields(
@@ -1117,11 +1150,12 @@ impl ToTokens for GameInputReceiver {
 								first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
 								(f64::from(first.1.stats.#path.#ident.#name) * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
 								None,
+								background,
 							)?;
 
 							let mut surface = crate::canvas::project::canvas(&mut buffer)?;
 
-							crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+							crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 
 							let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -1133,6 +1167,7 @@ impl ToTokens for GameInputReceiver {
 									&predict_y,
 									&r,
 									&x,
+									background,
 								);
 							} else {
 								crate::canvas::project::apply_bubbles(
@@ -1142,6 +1177,7 @@ impl ToTokens for GameInputReceiver {
 									&predict_y,
 									&r,
 									&::translate::tr!(ctx, "never").as_ref(),
+									background,
 								);
 							}
 
@@ -1228,11 +1264,12 @@ impl ToTokens for GameInputReceiver {
 							first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
 							(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
 							None,
+							background,
 						)?;
 
 						let mut surface = crate::canvas::project::canvas(&mut buffer)?;
 
-						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 
 						let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -1244,6 +1281,7 @@ impl ToTokens for GameInputReceiver {
 								&predict_y,
 								&r,
 								&x,
+								background,
 							);
 						} else {
 							crate::canvas::project::apply_bubbles(
@@ -1253,6 +1291,7 @@ impl ToTokens for GameInputReceiver {
 								&predict_y,
 								&r,
 								&::translate::tr!(ctx, "never").as_ref(),
+								background,
 							);
 						}
 
@@ -1350,6 +1389,7 @@ impl ToTokens for GameInputReceiver {
 						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
 						kind: #enum_kind_ident,
 						value: Option<f64>,
+						background: Option<skia_safe::Color>,
 					) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 						let first = snapshots.first().unwrap();
 						let last = snapshots.last().unwrap();
@@ -1362,7 +1402,8 @@ impl ToTokens for GameInputReceiver {
 
 					pub fn chart(
 						ctx: &::translate::context::Context<'_>,
-						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>
+						snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+						background: Option<::skia_safe::Color>,
 					) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 						let first = snapshots.first().unwrap();
 						let last = snapshots.last().unwrap();
@@ -1391,11 +1432,12 @@ impl ToTokens for GameInputReceiver {
 							x_range,
 							(lower * 11 / 16)..(upper * 16 / 15),
 							::std::option::Option::None,
+							background,
 						)?;
 
 						let mut surface = crate::canvas::chart::canvas(&mut buffer)?;
 
-						crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL, background);
 						crate::canvas::chart::round_corners(&mut surface);
 
 						Ok(crate::canvas::to_png(&mut surface))
@@ -1529,6 +1571,37 @@ impl ToTokens for GameInputReceiver {
 						let path = parse_str_to_dot_path(path);
 
 						quote! { data.stats.#path.#name }
+					} else if f.min.is_some() {
+						let mut apply = modes.iter().filter_map(|m| {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(name))
+							{
+								None
+							} else {
+								let ident = m.ident.as_ref().unwrap();
+
+								Some(ident)
+							}
+						});
+
+						let first = apply.next().unwrap();
+						let other = apply.map(|ident| {
+							quote! {
+								min = min.min(stats.#ident.#name);
+							}
+						});
+
+						quote! {
+							{
+								let mut min = stats.#first.#name;
+
+								#(#other)*
+
+								min
+							}
+						}
 					} else {
 						sum::sum_fields(
 							modes
@@ -1593,6 +1666,37 @@ impl ToTokens for GameInputReceiver {
 						let path = parse_str_to_dot_path(path);
 
 						quote! { data.stats.#path.#name }
+					} else if f.min.is_some() {
+						let mut apply = modes.iter().filter_map(|m| {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(name))
+							{
+								None
+							} else {
+								let ident = m.ident.as_ref().unwrap();
+
+								Some(ident)
+							}
+						});
+
+						let first = apply.next().unwrap();
+						let other = apply.map(|ident| {
+							quote! {
+								min = min.min(stats.#ident.#name);
+							}
+						});
+
+						quote! {
+							{
+								let mut min = stats.#first.#name;
+
+								#(#other)*
+
+								min
+							}
+						}
 					} else {
 						sum::sum_fields(
 							modes
@@ -1657,6 +1761,37 @@ impl ToTokens for GameInputReceiver {
 						let path = parse_str_to_dot_path(path);
 
 						quote! { data.stats.#path.#name }
+					} else if f.min.is_some() {
+						let mut apply = modes.iter().filter_map(|m| {
+							let mode = m.mode.as_ref().unwrap();
+
+							if mode.skip_overall.is_some()
+								|| mode.skip_field.iter().any(|f| f.eq(name))
+							{
+								None
+							} else {
+								let ident = m.ident.as_ref().unwrap();
+
+								Some(ident)
+							}
+						});
+
+						let first = apply.next().unwrap();
+						let other = apply.map(|ident| {
+							quote! {
+								min = min.min(stats.#ident.#name);
+							}
+						});
+
+						quote! {
+							{
+								let mut min = stats.#first.#name;
+
+								#(#other)*
+
+								min
+							}
+						}
 					} else {
 						sum::sum_fields(
 							modes
@@ -1752,11 +1887,12 @@ impl ToTokens for GameInputReceiver {
 							first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
 							(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
 							None,
+							background,
 						)?;
 
 						let mut surface = crate::canvas::project::canvas(&mut buffer)?;
 
-						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+						crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 
 						let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -1768,6 +1904,7 @@ impl ToTokens for GameInputReceiver {
 								&predict_y,
 								&r,
 								&x,
+								background,
 							);
 						} else {
 							crate::canvas::project::apply_bubbles(
@@ -1777,6 +1914,7 @@ impl ToTokens for GameInputReceiver {
 								&predict_y,
 								&r,
 								&::translate::tr!(ctx, "never").as_ref(),
+								background,
 							);
 						}
 
@@ -1883,11 +2021,12 @@ impl ToTokens for GameInputReceiver {
 						first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
 						(#val_first * (7. / 8.))..(predict_y.max(#val_last) * (8. / 7.)),
 						None,
+						background,
 					)?;
 
 					let mut surface = crate::canvas::project::canvas(&mut buffer)?;
 
-					crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL);
+					crate::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 
 					let r = crate::percent::PercentU32((crate::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -1899,6 +2038,7 @@ impl ToTokens for GameInputReceiver {
 							&predict_y,
 							&r,
 							&x,
+							background,
 						);
 					} else {
 						crate::canvas::project::apply_bubbles(
@@ -1908,6 +2048,7 @@ impl ToTokens for GameInputReceiver {
 							&predict_y,
 							&r,
 							&::translate::tr!(ctx, "never").as_ref(),
+							background,
 						);
 					}
 
@@ -1936,6 +2077,7 @@ impl ToTokens for GameInputReceiver {
 					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
 					kind: #enum_kind_ident,
 					value: Option<f64>,
+					background: Option<skia_safe::Color>,
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 					let first = snapshots.first().unwrap();
 					let last = snapshots.last().unwrap();
@@ -2023,7 +2165,8 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn chart(
 					ctx: &::translate::context::Context<'_>,
-					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>
+					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
+					background: Option<::skia_safe::Color>,
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 					let first = snapshots.first().unwrap();
 					let last = snapshots.last().unwrap();
@@ -2049,11 +2192,12 @@ impl ToTokens for GameInputReceiver {
 						x_range,
 						(lower * 11 / 16)..(upper * 16 / 15),
 						::std::option::Option::None,
+						background,
 					)?;
 
 					let mut surface = crate::canvas::chart::canvas(&mut buffer)?;
 
-					crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL);
+					crate::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL, background);
 					crate::canvas::chart::round_corners(&mut surface);
 
 					Ok(crate::canvas::to_png(&mut surface))
@@ -2342,9 +2486,10 @@ impl ToTokens for GameInputReceiver {
 					ctx: &::translate::context::Context<'_>,
 					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
 					session: &crate::player::status::Session,
+					background: Option<::skia_safe::Color>,
 					mode: Option<#enum_ident>
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
-					#ident ::chart(ctx, snapshots, session, mode)
+					#ident ::chart(ctx, snapshots, session, background, mode)
 				}
 
 				fn project(
@@ -2354,8 +2499,9 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<#enum_ident>,
 					kind: Option<#enum_kind_ident>,
 					value: Option<f64>,
+					background: Option<skia_safe::Color>,
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
-					#ident ::project(ctx, snapshots, session, mode, kind, value)
+					#ident ::project(ctx, snapshots, session, mode, kind, value, background)
 				}
 
 				fn embed(
@@ -2507,6 +2653,7 @@ impl ToTokens for GameInputReceiver {
 					ctx: &::translate::context::Context<'_>,
 					snapshots: ::std::vec::Vec<(::chrono::DateTime<::chrono::Utc>, crate::player::data::Data)>,
 					session: &crate::player::status::Session,
+					background: Option<::skia_safe::Color>,
 					mode: Option<#enum_ident>
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 					let mode = #enum_ident ::get_mode(mode, session);
@@ -2516,6 +2663,7 @@ impl ToTokens for GameInputReceiver {
 							Overall::chart(
 								ctx,
 								snapshots,
+								background,
 							)
 						}
 						#(#mode_match_apply_chart)*
@@ -2529,6 +2677,7 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<#enum_ident>,
 					kind: Option<#enum_kind_ident>,
 					value: Option<f64>,
+					background: Option<skia_safe::Color>,
 				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
 					let mode = #enum_ident ::get_mode(mode, session);
 					let kind = kind.unwrap_or_default();
@@ -2540,6 +2689,7 @@ impl ToTokens for GameInputReceiver {
 								snapshots,
 								kind,
 								value,
+								background,
 							)
 						}
 						#(#mode_match_apply_project)*
@@ -2698,6 +2848,7 @@ pub(crate) struct OverallFieldData {
 	colour: Paint,
 
 	percent: Option<String>,
+	min: Option<bool>,
 
 	path: Option<String>,
 

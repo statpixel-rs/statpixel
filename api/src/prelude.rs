@@ -39,6 +39,7 @@ pub trait Game {
 		ctx: &context::Context,
 		snapshots: Vec<(DateTime<Utc>, data::Data)>,
 		session: &status::Session,
+		background: Option<skia_safe::Color>,
 		mode: Option<Self::Mode>,
 	) -> Result<Vec<u8>, Error>;
 
@@ -52,6 +53,7 @@ pub trait Game {
 		mode: Option<Self::Mode>,
 		kind: Option<<<Self as Game>::Mode as Mode>::Kind>,
 		value: Option<f64>,
+		background: Option<skia_safe::Color>,
 	) -> Result<Vec<u8>, Error>;
 
 	fn embed(

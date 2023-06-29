@@ -73,13 +73,14 @@ impl<T> Diff for Vec<T> {
 
 impl<T> Diff for Option<T>
 where
-	T: Diff,
+	T: Diff + Clone,
 {
 	fn diff(&self, other: &Self) -> Self {
-		if let (Some(self_), Some(other_)) = (self, other) {
-			Some(self_.diff(other_))
-		} else {
-			None
+		match (self, other) {
+			(Some(self_), Some(other_)) => Some(self_.diff(other_)),
+			(Some(self_), None) => Some(self_.clone()),
+			(None, Some(other_)) => Some(other_.clone()),
+			(None, None) => None,
 		}
 	}
 }

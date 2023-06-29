@@ -365,6 +365,7 @@ pub async fn bank(
 	profile: Option<String>,
 	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
@@ -431,6 +432,7 @@ pub async fn bank(
 			first..last,
 			(lower * 7 / 8)..(upper * 8 / 7),
 			Some(Paint::Gold),
+			background,
 		)?;
 
 		let mut surface = chart::canvas(&mut buffer)?;
@@ -444,6 +446,7 @@ pub async fn bank(
 				paint: Paint::Gold,
 				..Default::default()
 			}],
+			background,
 		);
 		chart::round_corners(&mut surface);
 

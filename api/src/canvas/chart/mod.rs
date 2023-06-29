@@ -26,7 +26,7 @@ use super::shape;
 
 pub const WIDTH_F: f32 = 750.;
 
-pub const CANVAS_BACKGROUND: RGBColor = RGBColor(31, 48, 64);
+pub const CANVAS_BACKGROUND: RGBAColor = RGBAColor(31, 48, 64, 1.);
 pub const BACKGROUND: RGBAColor = RGBAColor(20, 20, 20, 0.5);
 
 macro_rules! impl_chart_create {
@@ -42,9 +42,17 @@ macro_rules! impl_chart_create {
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,
 				colour: Option<Paint>,
+				background: Option<skia_safe::Color>,
 			) -> Result<Vec<u8>, Error> {
 				const PIXELS: usize = 750 * 400;
 				const BUF_LEN_RGBA: usize = 4 * PIXELS;
+
+				let foreground = background.map_or(style::colors::WHITE, |c| {
+					RGBColor(255 - c.r(), 255 - c.g(), 255 - c.b())
+				});
+				let background = background.map_or(CANVAS_BACKGROUND, |c| {
+					RGBAColor(c.r(), c.g(), c.b(), c.a() as f64 / 255.)
+				});
 
 				// Allocate a buffer large enough to hold an RGBA representation of the image
 				let mut buffer = vec![u8::MAX; BUF_LEN_RGBA];
@@ -53,9 +61,7 @@ macro_rules! impl_chart_create {
 				let backend =
 					BitMapBackend::with_buffer(&mut buffer, (750, 400)).into_drawing_area();
 
-				backend
-					.fill(&CANVAS_BACKGROUND)
-					.map_err(|_| Error::Plotters)?;
+				backend.fill(&background).map_err(|_| Error::Plotters)?;
 
 				// set start time to `created_at`, and end to last time
 				let mut chart = ChartBuilder::on(&backend)
@@ -74,13 +80,13 @@ macro_rules! impl_chart_create {
 					.y_label_formatter(&|y| y.to_formatted_label(ctx).into_owned())
 					.x_label_formatter(&|x| x.format_localized("%b %e", locale).to_string())
 					.x_labels(7)
-					.light_line_style(style::colors::WHITE.mix(0.05))
-					.bold_line_style(style::colors::WHITE.mix(0.1))
-					.axis_style(style::colors::WHITE.mix(0.5))
+					.light_line_style(foreground.mix(0.05))
+					.bold_line_style(foreground.mix(0.1))
+					.axis_style(foreground.mix(0.5))
 					.label_style(
 						("Minecraft", 20)
 							.into_text_style(&backend)
-							.with_color(style::colors::WHITE),
+							.with_color(foreground),
 					)
 					.draw()
 					.map_err(|_| Error::Plotters)?;
@@ -121,11 +127,11 @@ macro_rules! impl_chart_create {
 					.configure_series_labels()
 					.position(SeriesLabelPosition::UpperLeft)
 					.border_style(&style::colors::TRANSPARENT)
-					.background_style(&BACKGROUND.mix(0.8))
+					.background_style(&background.mix(0.8))
 					.label_font(
 						("Minecraft", 17)
 							.into_text_style(&backend)
-							.with_color(style::colors::WHITE),
+							.with_color(foreground),
 					)
 					.draw()
 					.map_err(|_| Error::Plotters)?;
@@ -166,7 +172,13 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
-pub fn apply_title(ctx: &Context<'_>, surface: &mut Surface, data: &Data, label: &[Text]) {
+pub fn apply_title(
+	ctx: &Context<'_>,
+	surface: &mut Surface,
+	data: &Data,
+	label: &[Text],
+	background: Option<skia_safe::Color>,
+) {
 	let rank = data.get_rank();
 	let username_paint = rank.get_username_paint();
 
@@ -201,7 +213,7 @@ pub fn apply_title(ctx: &Context<'_>, surface: &mut Surface, data: &Data, label:
 
 	super::Canvas::new(720.)
 		.push_right(&shape::LongTitle, shape::Title::from_text(&text))
-		.build_with(surface, None, None);
+		.build_with(surface, None, background);
 }
 
 pub fn round_corners(surface: &mut Surface) {

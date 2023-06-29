@@ -95,6 +95,8 @@ async fn network(
 
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
+
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let player = crate::util::get_player_from_input(ctx, uuid, username).await?;
 
 	let snapshots = diesel_async::RunQueryDsl::get_results::<(DateTime<Utc>, Vec<u8>)>(
@@ -163,6 +165,7 @@ async fn network(
 			first.0..last.0,
 			lower..upper,
 			Some(colour),
+			background,
 		)?;
 		let mut surface = chart::canvas(&mut buffer)?;
 
@@ -175,6 +178,7 @@ async fn network(
 				paint: Paint::Gold,
 				..Default::default()
 			}],
+			background,
 		);
 		chart::round_corners(&mut surface);
 
