@@ -647,11 +647,11 @@ duels = duels
 
 FaceOff = Face Off
 
-distance-walked = Distance Walked
-distance-fallen = Distance Fallen
+distance-walked = Walked
+distance-fallen = Fallen
 bread-eaten = Bread Eaten
 wood-chopped = Wood Chopped
-treasures-found = Treasures Found
+treasures-found = Treasures
 
 megawalls = megawalls
   .description = Mega Walls
@@ -863,7 +863,7 @@ smash = smash
 # /speeduhc
 
 tears = Tears
-survived-players = Survived Players
+survived-players = Survived
 
 speeduhc = speeduhc
   .description = SpeedUHC

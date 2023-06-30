@@ -260,7 +260,7 @@ impl Player {
 
 		let response = HTTP
 			.get(url)
-			.timeout(Duration::from_millis(300))
+			.timeout(Duration::from_millis(500))
 			.send()
 			.await;
 

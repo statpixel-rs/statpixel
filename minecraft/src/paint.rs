@@ -88,7 +88,7 @@ impl Paint {
 			Self::LightPurple => Color::from_argb(255, 0x3f, 0x15, 0x3f),
 			Self::Yellow => Color::from_argb(255, 0x3f, 0x3f, 0x15),
 			Self::White => Color::from_argb(255, 0x3f, 0x3f, 0x3f),
-			Self::Bronze => Color::from_argb(255, 0xcd, 0x81, 0x32),
+			Self::Bronze => Color::from_argb(255, 77, 45, 14),
 		}
 	}
 }
