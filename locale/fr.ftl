@@ -83,6 +83,19 @@ error-invalid-colour-description = La couleur fournie est invalide. Essayez de f
 colour-changed = Couleur de fond modifiée
 colour-changed-description = Votre couleur de fond a été modifiée en {$colour}.
 
+# /skyblock bazaar
+
+buy-price = Prix d'achat
+sell-price = Prix de vente
+last-hour = Dernière heure
+last-day = Dernier jour
+last-week = Dernière semaine
+
+bazaar = bazaar
+  .description = Affiche les prix du bazar SkyBlock
+  .product = produit
+  .product-description = Le produit à afficher
+
 # /skyblock auctions
 
 Auctions = Enchères

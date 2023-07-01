@@ -58,7 +58,7 @@ pub enum ApiError {
 pub enum Error {
 	#[error(transparent)]
 	Api(#[from] Arc<ApiError>),
-	#[error("An error occurred while interacting with Diesel.")]
+	#[error("An error occurred while interacting with Diesel: {0:?}")]
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),

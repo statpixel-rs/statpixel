@@ -36,7 +36,7 @@ macro_rules! impl_chart_create {
 
 			/// # Errors
 			/// Returns an error if the image could not be created.
-			pub fn create(
+			pub fn create<const BUBBLE: bool>(
 				ctx: &Context<'_>,
 				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>)>,
 				range_x: Range<DateTime<Utc>>,
@@ -96,10 +96,12 @@ macro_rules! impl_chart_create {
 
 					for (name, series) in series.into_iter() {
 						chart
-							.draw_series(
+							.draw_series(if BUBBLE {
 								LineSeries::new(series, colour.filled().stroke_width(2))
-									.point_size(2),
-							)
+									.point_size(2)
+							} else {
+								LineSeries::new(series, colour.filled().stroke_width(2))
+							})
 							.map_err(|_| Error::Plotters)?
 							.label(name.into_owned())
 							.legend(move |(x, y)| {
@@ -111,10 +113,12 @@ macro_rules! impl_chart_create {
 						let colour = Palette99::pick(idx).mix(0.9);
 
 						chart
-							.draw_series(
+							.draw_series(if BUBBLE {
 								LineSeries::new(series, colour.filled().stroke_width(2))
-									.point_size(2),
-							)
+									.point_size(2)
+							} else {
+								LineSeries::new(series, colour.filled().stroke_width(2))
+							})
 							.map_err(|_| Error::Plotters)?
 							.label(name.into_owned())
 							.legend(move |(x, y)| {
@@ -163,6 +167,24 @@ impl_chart_create!(i64);
 
 impl_chart_create!(f32);
 impl_chart_create!(f64);
+
+/// # Errors
+/// Returns an error if the canvas could not be created.
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_possible_wrap)]
+pub fn canvas_with_size(
+	buffer: &mut [u8],
+	size: (usize, usize),
+) -> Result<Borrows<Surface>, Error> {
+	let info = ImageInfo::new(
+		(size.0 as i32, size.1 as i32),
+		ColorType::RGBA8888,
+		AlphaType::Premul,
+		None,
+	);
+
+	skia_safe::Surface::new_raster_direct(&info, buffer, size.0 * 4, None).ok_or(Error::Canvas)
+}
 
 /// # Errors
 /// Returns an error if the canvas could not be created.

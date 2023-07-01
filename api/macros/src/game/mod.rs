@@ -1426,7 +1426,7 @@ impl ToTokens for GameInputReceiver {
 							#(#series_tuple_mode)*
 						];
 
-						let mut buffer = crate::canvas::chart::u32::create(
+						let mut buffer = crate::canvas::chart::u32::create::<true>(
 							ctx,
 							v,
 							x_range,
@@ -2186,7 +2186,7 @@ impl ToTokens for GameInputReceiver {
 						#(#series_tuple_overall)*
 					];
 
-					let mut buffer = crate::canvas::chart::u32::create(
+					let mut buffer = crate::canvas::chart::u32::create::<true>(
 						ctx,
 						v,
 						x_range,

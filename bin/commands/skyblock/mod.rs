@@ -1,6 +1,9 @@
 pub mod run;
 
 use api::skyblock::NAMES;
+use database::{extend::lower, schema::bazaar_items};
+use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
+use diesel_async::RunQueryDsl;
 use translate::{context, Context, Error};
 
 use crate::util;
@@ -16,6 +19,44 @@ async fn autocomplete_profile(_ctx: Context<'_>, partial: &str) -> impl Iterator
 		.map(|s| (*s).to_string())
 		.collect::<Vec<_>>()
 		.into_iter()
+}
+
+async fn autocomplete_product(
+	ctx: Context<'_>,
+	partial: &str,
+) -> impl Iterator<Item = String> + Send {
+	tracing::debug!("Autocompleting username `{partial}`");
+
+	if let Ok(mut connection) = ctx.data().pool.get().await {
+		if partial.is_empty() || partial.contains('%') {
+			let result: Result<_, _> = bazaar_items::table
+				.order(bazaar_items::name.asc())
+				.limit(10)
+				.select(bazaar_items::name)
+				.get_results::<String>(&mut connection)
+				.await;
+
+			if let Ok(result) = result {
+				return result.into_iter();
+			}
+		} else {
+			let result = bazaar_items::table
+				.filter(
+					lower(bazaar_items::name).like(format!("{}%", partial.to_ascii_lowercase())),
+				)
+				.order(bazaar_items::name.asc())
+				.limit(9)
+				.select(bazaar_items::name)
+				.get_results::<String>(&mut connection)
+				.await;
+
+			if let Ok(result) = result {
+				return result.into_iter();
+			}
+		}
+	}
+
+	vec![].into_iter()
 }
 
 #[poise::command(
@@ -122,6 +163,24 @@ pub async fn pets(
 	run::pets(ctx, username, profile, uuid).await
 }
 
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES"
+)]
+pub async fn bazaar(
+	ctx: Context<'_>,
+	#[min_length = 1]
+	#[autocomplete = "autocomplete_product"]
+	mut product: String,
+) -> Result<(), Error> {
+	product.make_ascii_uppercase();
+
+	let ctx = &context::Context::from_poise(&ctx);
+
+	run::bazaar(ctx, product).await
+}
+
 macro_rules! inventory_command {
 	($fn: ident, $key: ident) => {
 		#[poise::command(
@@ -179,6 +238,7 @@ inventory_command!(vault, vault);
 		"vault",
 		"pets",
 		"networth",
+		"bazaar"
 	)
 )]
 pub async fn skyblock(_ctx: Context<'_>) -> Result<(), Error> {

@@ -83,6 +83,19 @@ error-invalid-colour-description = 指定された色は無効です。 [これ�
 colour-changed = 背景色が変更されました
 colour-changed-description = 背景色が{$colour}に変更されました。
 
+# /skyblock bazaar
+
+buy-price = 購入価格
+sell-price = 販売価格
+last-hour = 最後の1時間
+last-day = 最後の1日
+last-week = 最後の1週間
+
+bazaar = bazaar
+  .description = SkyBlockバザーの価格を表示します
+  .product = product
+  .product-description = 表示する製品
+
 # /skyblock auctions
 
 Auctions = オークション

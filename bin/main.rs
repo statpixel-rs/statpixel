@@ -5,6 +5,7 @@
 #![feature(iter_intersperse)]
 
 pub use api::id::Id;
+use api::skyblock;
 use database::{get_pool, schema::usage};
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
@@ -33,6 +34,7 @@ pub const IMAGE_NAME: &str = "statpixel.png";
 pub const IMAGE_NAME: &str = "statpixel.png";
 
 #[tokio::main]
+#[allow(clippy::too_many_lines)]
 async fn main() {
 	let subscriber = FmtSubscriber::builder()
 		.with_max_level(Level::INFO)
@@ -134,6 +136,19 @@ async fn main() {
 
 		while let Err(e) = snapshot::guild::begin(&pool).await {
 			error!(error = ?e, "error in guild snapshot update loop");
+
+			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+		}
+	});
+
+	tokio::task::spawn(async move {
+		let pool = get_pool(3);
+		let mut identifiers = skyblock::bazaar::get_all_item_identifiers(&pool).await;
+
+		loop {
+			if let Err(e) = skyblock::bazaar::update(&pool, &mut identifiers).await {
+				error!(error = ?e, "error in bazaar update loop");
+			}
 
 			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
 		}

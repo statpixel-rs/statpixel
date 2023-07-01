@@ -1,0 +1,3 @@
+-- Your SQL goes here
+
+ALTER TABLE bazaar ALTER COLUMN created_at TYPE TIMESTAMP WITH TIME ZONE;

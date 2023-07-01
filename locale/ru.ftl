@@ -83,6 +83,19 @@ error-invalid-colour-description = Указанный цвет недейств�
 colour-changed = Цвет фона изменен
 colour-changed-description = Цвет фона изменен на {$colour}.
 
+# /skyblock bazaar
+
+buy-price = Цена покупки
+sell-price = Цена продажи
+last-hour = Последний час
+last-day = Последний день
+last-week = Последняя неделя
+
+bazaar = bazaar
+  .description = Просмотр цен на товары SkyBlock
+  .product = product
+  .product-description = Товар для просмотра
+
 # /skyblock auctions
 
 Auctions = Аукционы

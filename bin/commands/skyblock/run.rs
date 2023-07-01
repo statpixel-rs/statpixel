@@ -1,10 +1,18 @@
-use std::{borrow::Cow, cmp::max};
+use std::{borrow::Cow, cmp::max, ops::Range};
 
 use api::{
-	canvas::{self, body::Body, chart, label::ToFormatted, Canvas},
+	canvas::{
+		self,
+		body::Body,
+		chart::{self, BACKGROUND, CANVAS_BACKGROUND, WIDTH_F},
+		label::ToFormatted,
+		project::{BUBBLE_HEIGHT_I, GAP_I},
+		Canvas,
+	},
 	id::SkyBlockMode,
 	nbt::inventory::Item,
 	player::Player,
+	shape::{BUBBLE_HEIGHT, GAP},
 	skyblock::{
 		self,
 		materials::MATERIALS,
@@ -13,7 +21,9 @@ use api::{
 	},
 };
 use canvas::{shape, text};
-use chrono::Utc;
+use chrono::{DateTime, Utc};
+use database::schema::{bazaar, bazaar_items};
+use diesel::{ExpressionMethods, QueryDsl};
 use minecraft::{
 	calc::{network, sky_block},
 	paint::Paint,
@@ -23,13 +33,239 @@ use minecraft::{
 		Text,
 	},
 };
+use plotters::{
+	prelude::{
+		BitMapBackend, ChartBuilder, IntoDrawingArea, LabelAreaPosition, Rectangle,
+		SeriesLabelPosition,
+	},
+	series::LineSeries,
+	style::{self, Color, IntoTextStyle, Palette, Palette99, RGBAColor, RGBColor, ShapeStyle},
+};
 use poise::serenity_prelude::CreateAttachment;
-use skia_safe::textlayout::TextAlign;
-use translate::{context, tr, Error};
+use skia_safe::{textlayout::TextAlign, ClipOp, Color4f, Point, RRect, Rect, Surface};
+use translate::{context, prelude::GetChronoLocale, tr, Error};
 use uuid::Uuid;
 
 const LABEL: [Text; 2] = minecraft_text("§b§lSky§a§lBlock");
 const EMPTY_ROW: &[Option<Item>] = &[None, None, None, None, None, None, None, None, None];
+
+fn round_corners(surface: &mut Surface) {
+	let mut rect = RRect::new();
+
+	rect.set_rect_radii(
+		Rect::new(0., 0., WIDTH_F, 400. + BUBBLE_HEIGHT * 2. + GAP * 3.),
+		&[
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+			Point::new(30., 30.),
+		],
+	);
+
+	surface.canvas().clip_rrect(rect, ClipOp::Difference, false);
+	surface.canvas().save();
+	surface.canvas().clear(Color4f::new(0., 0., 0., 0.));
+	surface.canvas().restore();
+}
+
+#[allow(clippy::type_complexity)]
+fn create<const BUBBLE: bool>(
+	ctx: &context::Context<'_>,
+	series: Vec<(Cow<str>, Vec<(DateTime<Utc>, f64)>)>,
+	range_x: Range<DateTime<Utc>>,
+	range_y: Range<f64>,
+	colour: Option<Paint>,
+	background: Option<skia_safe::Color>,
+) -> Result<Vec<u8>, Error> {
+	const PIXELS: usize = 750 * (400 + BUBBLE_HEIGHT_I as usize * 2 + GAP_I as usize * 3);
+	const BUF_LEN_RGBA: usize = 4 * PIXELS;
+
+	let foreground = background.map_or(style::colors::WHITE, |c| {
+		RGBColor(255 - c.r(), 255 - c.g(), 255 - c.b())
+	});
+	let background = background.map_or(CANVAS_BACKGROUND, |c| {
+		RGBAColor(c.r(), c.g(), c.b(), f64::from(c.a()) / 255.)
+	});
+
+	// Allocate a buffer large enough to hold an RGBA representation of the image
+	let mut buffer = vec![u8::MAX; BUF_LEN_RGBA];
+
+	// The BitMapBackend uses RGB, so we will need to convert it later
+	let backend =
+		BitMapBackend::with_buffer(&mut buffer, (750, 400 + BUBBLE_HEIGHT_I * 2 + GAP_I * 3))
+			.into_drawing_area();
+
+	backend.fill(&background).map_err(|_| Error::Plotters)?;
+
+	// set start time to `created_at`, and end to last time
+	let mut chart = ChartBuilder::on(&backend)
+		.margin_top(71 + BUBBLE_HEIGHT_I * 2 + GAP_I * 3)
+		.margin_bottom(20)
+		.margin_right(30)
+		.set_label_area_size(LabelAreaPosition::Left, 90)
+		.set_label_area_size(LabelAreaPosition::Bottom, 30)
+		.build_cartesian_2d(range_x, range_y)
+		.map_err(|_| Error::Plotters)?;
+
+	let locale = ctx.get_chrono_locale();
+
+	chart
+		.configure_mesh()
+		.y_label_formatter(&|y| y.to_formatted_label(ctx).into_owned())
+		.x_label_formatter(&|x| x.format_localized("%d/%m %H:%M", locale).to_string())
+		.x_labels(5)
+		.light_line_style(foreground.mix(0.05))
+		.bold_line_style(foreground.mix(0.1))
+		.axis_style(foreground.mix(0.5))
+		.label_style(
+			("Minecraft", 20)
+				.into_text_style(&backend)
+				.with_color(foreground),
+		)
+		.draw()
+		.map_err(|_| Error::Plotters)?;
+
+	if let Some(colour) = colour {
+		let colour: ShapeStyle = colour.as_plotters().into();
+
+		for (name, series) in series {
+			chart
+				.draw_series(if BUBBLE {
+					LineSeries::new(series, colour.filled().stroke_width(2)).point_size(2)
+				} else {
+					LineSeries::new(series, colour.filled().stroke_width(2))
+				})
+				.map_err(|_| Error::Plotters)?
+				.label(name.into_owned())
+				.legend(move |(x, y)| {
+					Rectangle::new([(x, y - 5), (x + 10, y + 5)], colour.filled())
+				});
+		}
+	} else {
+		for (idx, (name, series)) in series.into_iter().enumerate() {
+			let colour = Palette99::pick(idx).mix(0.9);
+
+			chart
+				.draw_series(if BUBBLE {
+					LineSeries::new(series, colour.filled().stroke_width(2)).point_size(2)
+				} else {
+					LineSeries::new(series, colour.filled().stroke_width(2))
+				})
+				.map_err(|_| Error::Plotters)?
+				.label(name.into_owned())
+				.legend(move |(x, y)| {
+					Rectangle::new([(x, y - 5), (x + 10, y + 5)], colour.filled())
+				});
+		}
+	}
+
+	chart
+		.configure_series_labels()
+		.position(SeriesLabelPosition::UpperLeft)
+		.border_style(style::colors::TRANSPARENT)
+		.background_style(BACKGROUND.mix(0.6))
+		.label_font(
+			("Minecraft", 17)
+				.into_text_style(&backend)
+				.with_color(style::colors::WHITE),
+		)
+		.draw()
+		.map_err(|_| Error::Plotters)?;
+
+	backend.present().map_err(|_| Error::Plotters)?;
+
+	drop(chart);
+	drop(backend);
+
+	// Convert the RGB buffer to RGBA, in place
+	for i in (0..PIXELS).rev() {
+		buffer.copy_within(i * 3..i * 3 + 3, i * 4);
+
+		// Set fourth channel to max
+		buffer[i * 4 + 3] = u8::MAX;
+	}
+
+	Ok(buffer)
+}
+
+/// (buy, sell)
+pub fn apply_bazaar_data(
+	ctx: &context::Context<'_>,
+	surface: &mut Surface,
+	text: &[Text],
+	products: &[(f64, i32, f64, i32, DateTime<Utc>)],
+	background: Option<skia_safe::Color>,
+) {
+	#[allow(clippy::cast_precision_loss)]
+	let length = products.len() as f64;
+
+	let buy_avg_hour = products.iter().take(60).map(|p| p.0).sum::<f64>() / length;
+	let sell_avg_hour = products.iter().take(60).map(|p| p.2).sum::<f64>() / length;
+
+	let buy_avg_day = products.iter().take(60 * 24).map(|p| p.0).sum::<f64>() / length;
+	let sell_avg_day = products.iter().take(60 * 24).map(|p| p.2).sum::<f64>() / length;
+
+	let buy_avg_week = products.iter().take(60 * 24 * 7).map(|p| p.0).sum::<f64>() / length;
+	let sell_avg_week = products.iter().take(60 * 24 * 7).map(|p| p.2).sum::<f64>() / length;
+
+	Canvas::new(720.)
+		.push_right(&shape::LongTitle, shape::Title::from_text(text))
+		.push_down_start(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&sell_avg_hour,
+				tr!(ctx, "last-hour").as_ref(),
+				Paint::Red,
+			),
+		)
+		.push_right(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&sell_avg_day,
+				tr!(ctx, "last-day").as_ref(),
+				Paint::Red,
+			),
+		)
+		.push_right(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&sell_avg_week,
+				tr!(ctx, "last-week").as_ref(),
+				Paint::Red,
+			),
+		)
+		.push_down_start(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&buy_avg_hour,
+				tr!(ctx, "last-hour").as_ref(),
+				Paint::Green,
+			),
+		)
+		.push_right(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&buy_avg_day,
+				tr!(ctx, "last-day").as_ref(),
+				Paint::Green,
+			),
+		)
+		.push_right(
+			&shape::Bubble,
+			Body::from_bubble(
+				ctx,
+				&buy_avg_week,
+				tr!(ctx, "last-week").as_ref(),
+				Paint::Green,
+			),
+		)
+		.build_with(surface, None, background);
+}
 
 pub async fn auctions(
 	ctx: &context::Context<'_>,
@@ -420,7 +656,7 @@ pub async fn bank(
 		.map_or_else(Utc::now, |t| t.timestamp);
 
 	let png: Cow<_> = {
-		let mut buffer = chart::u64::create(
+		let mut buffer = chart::u64::create::<true>(
 			ctx,
 			vec![(
 				tr!(ctx, "bank-balance"),
@@ -805,6 +1041,111 @@ pub async fn pets(
 				Some(name.to_string()),
 				Some(SkyBlockMode::Pets(None)),
 			)])
+			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
+	)
+	.await?;
+
+	Ok(())
+}
+
+#[allow(clippy::too_many_lines)]
+pub async fn bazaar(ctx: &context::Context<'_>, product: String) -> Result<(), Error> {
+	let id = diesel_async::RunQueryDsl::first::<i16>(
+		bazaar_items::table
+			.filter(bazaar_items::name.eq(&product))
+			.select(bazaar_items::id),
+		&mut ctx.data().pool.get().await?,
+	)
+	.await?;
+
+	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let history = diesel_async::RunQueryDsl::get_results::<(f64, i32, f64, i32, DateTime<Utc>)>(
+		bazaar::table
+			.filter(bazaar::item_id.eq(id))
+			.select((
+				bazaar::buy_price,
+				bazaar::buy_volume,
+				bazaar::sell_price,
+				bazaar::sell_volume,
+				bazaar::created_at,
+			))
+			.order(bazaar::created_at.asc())
+			.limit(60 * 24 * 7),
+		&mut ctx.data().pool.get().await?,
+	)
+	.await?;
+
+	let range_x = history.first().unwrap().4..history.last().unwrap().4;
+
+	let mut range_y_start: f64 = f64::MAX;
+	let mut range_y_end: f64 = f64::MIN;
+
+	for product in &history {
+		range_y_start = range_y_start.min(product.0).min(product.2);
+		range_y_end = range_y_end.max(product.0).max(product.2);
+	}
+
+	let png: Cow<_> = {
+		let mut buffer = create::<false>(
+			ctx,
+			vec![
+				(
+					::translate::tr!(ctx, "sell-price"),
+					history
+						.iter()
+						.map(|(_, _, price, _, created_at)| (*created_at, *price))
+						.collect(),
+				),
+				(
+					::translate::tr!(ctx, "buy-price"),
+					history
+						.iter()
+						.map(|(price, _, _, _, created_at)| (*created_at, *price))
+						.collect(),
+				),
+			],
+			range_x,
+			range_y_start..range_y_end,
+			None,
+			background,
+		)?;
+
+		let mut surface = chart::canvas_with_size(
+			&mut buffer,
+			(750, 400 + BUBBLE_HEIGHT_I as usize * 2 + GAP_I as usize * 3),
+		)?;
+
+		apply_bazaar_data(
+			ctx,
+			&mut surface,
+			&[
+				Text {
+					text: "Bazaar",
+					paint: Paint::Gold,
+					font: MinecraftFont::Bold,
+					..Default::default()
+				},
+				Text {
+					text: tr!(ctx, "statistics-history").as_ref(),
+					..Default::default()
+				},
+				Text {
+					text: product.as_str(),
+					paint: Paint::Aqua,
+					..Default::default()
+				},
+			],
+			&history,
+			background,
+		);
+		round_corners(&mut surface);
+
+		canvas::to_png(&mut surface).into()
+	};
+
+	ctx.send(
+		poise::CreateReply::new()
+			.content(crate::tip::random(ctx))
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;

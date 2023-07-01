@@ -85,6 +85,19 @@ error-invalid-colour-description = The colour provided is invalid. Try providing
 colour-changed = Background colour changed
 colour-changed-description = Your background colour has been changed to {$colour}.
 
+# /skyblock bazaar
+
+buy-price = Buy Price
+sell-price = Sell Price
+last-hour = Last Hour
+last-day = Last Day
+last-week = Last Week
+
+bazaar = bazaar
+  .description = View SkyBlock bazaar prices
+  .product = product
+  .product-description = The product to view
+
 # /skyblock auctions
 
 Auctions = Auctions

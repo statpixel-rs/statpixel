@@ -1,4 +1,5 @@
 pub mod auction;
+pub mod bazaar;
 pub mod essence;
 pub mod materials;
 pub mod member;

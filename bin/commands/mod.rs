@@ -40,7 +40,6 @@ pub async fn autocomplete_username(
 	if let Ok(mut connection) = ctx.data().pool.get().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::autocomplete::table
-				.filter(schema::autocomplete::name.is_not_null())
 				.order(schema::autocomplete::searches.desc())
 				.limit(10)
 				.select(schema::autocomplete::name)

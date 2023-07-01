@@ -153,7 +153,7 @@ async fn network(
 	};
 
 	let png = {
-		let mut buffer = chart::u64::create(
+		let mut buffer = chart::u64::create::<true>(
 			ctx,
 			vec![(
 				Cow::Borrowed("Network XP"),

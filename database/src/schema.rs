@@ -9,6 +9,27 @@ diesel::table! {
 }
 
 diesel::table! {
+	bazaar (id) {
+		id -> Int4,
+		item_id -> Int2,
+		sell_price -> Float8,
+		sell_volume -> Int4,
+		sell_orders -> Int4,
+		buy_price -> Float8,
+		buy_volume -> Int4,
+		buy_orders -> Int4,
+		created_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
+	bazaar_items (id) {
+		id -> Int2,
+		name -> Text,
+	}
+}
+
+diesel::table! {
 	guild_autocomplete (uuid) {
 		uuid -> Uuid,
 		name -> Varchar,
@@ -86,14 +107,3 @@ diesel::table! {
 		colour -> Nullable<Int4>,
 	}
 }
-
-diesel::allow_tables_to_appear_in_same_query!(
-	autocomplete,
-	guild_autocomplete,
-	guild_schedule,
-	guild_snapshot,
-	schedule,
-	snapshot,
-	usage,
-	user,
-);

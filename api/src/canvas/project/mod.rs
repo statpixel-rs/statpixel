@@ -27,10 +27,10 @@ use super::{body, chart::WIDTH_F, shape, INSET};
 
 #[allow(clippy::cast_sign_loss)]
 #[allow(clippy::cast_possible_truncation)]
-const BUBBLE_HEIGHT_I: u32 = BUBBLE_HEIGHT as u32;
+pub const BUBBLE_HEIGHT_I: u32 = BUBBLE_HEIGHT as u32;
 #[allow(clippy::cast_sign_loss)]
 #[allow(clippy::cast_possible_truncation)]
-const GAP_I: u32 = GAP as u32;
+pub const GAP_I: u32 = GAP as u32;
 
 // Get the next milestone for the given value.
 //
