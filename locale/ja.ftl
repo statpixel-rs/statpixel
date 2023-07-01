@@ -40,6 +40,9 @@ tip-help = <:knowledge_book:1117179094556233828> </help:1113624864524357707>で�
 tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>でウェブサイトを訪問します。
 tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
 tip-project = <:knowledge_book:1117179094556233828> </project bedwars:1118417616541843477>ですべてのデータの推定値を表示します。
+tip-winstreak = <:knowledge_book:1117179094556233828> </winstreaks:1124767485384724520>で勝利ストリークを表示します。
+tip-recent = <:knowledge_book:1117179094556233828> </recent:1123839349428080690>で最近のゲームを表示します。
+tip-bazaar = <:knowledge_book:1117179094556233828> </skyblock bazaar:1113624864826327074>でSkyBlockバザー価格を表示します。
 
 # /winstreaks
 

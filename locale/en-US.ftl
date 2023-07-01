@@ -42,6 +42,7 @@ tip-support-discord = <:knowledge_book:1117179094556233828> Join our support ser
 tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </project bedwars:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
+tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
 
 # /winstreaks
 

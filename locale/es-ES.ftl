@@ -40,6 +40,9 @@ tip-help = <:knowledge_book:1117179094556233828> Obtén más ayuda con </help:11
 tip-website = <:knowledge_book:1117179094556233828> Visita nuestro sitio web en <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Únete a nuestro servidor de soporte en <https://statpixel.xyz/discord>.
 tip-project = <:knowledge_book:1117179094556233828> Ver estimaciones de todos tus datos con </project bedwars:1118417616541843477>.
+tip-winstreak = <:knowledge_book:1117179094556233828> Ver tus rachas de victorias con </winstreaks:1124767485384724520>.
+tip-recent = <:knowledge_book:1117179094556233828> Ver tus juegos recientes con </recent:1123839349428080690>.
+tip-bazaar = <:knowledge_book:1117179094556233828> Ver los precios del bazar de SkyBlock con </skyblock bazaar:1113624864826327074>.
 
 # /winstreaks
 
