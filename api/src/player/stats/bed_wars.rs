@@ -49,6 +49,8 @@ pub struct BedWars {
 	)]
 	#[game(xp)]
 	pub xp: u64,
+	#[serde(rename = "winstreak")]
+	pub win_streak: u32,
 
 	#[serde(flatten)]
 	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE"))]
@@ -146,6 +148,8 @@ pub struct Solo {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_one_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_one_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -179,6 +183,8 @@ pub struct Double {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -212,6 +218,8 @@ pub struct Three {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_three_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_three_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -245,6 +253,8 @@ pub struct Four {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -278,6 +288,8 @@ pub struct SoloRush {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_one_rush_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_one_rush_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -311,6 +323,8 @@ pub struct DoubleRush {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_rush_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_rush_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -344,6 +358,8 @@ pub struct FourRush {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_rush_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_rush_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -377,6 +393,8 @@ pub struct SoloUltimate {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_one_ultimate_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_one_ultimate_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -410,6 +428,8 @@ pub struct DoubleUltimate {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_ultimate_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_ultimate_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -443,6 +463,8 @@ pub struct FourUltimate {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_ultimate_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_ultimate_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -476,6 +498,8 @@ pub struct Castle {
 	pub emerald_collected: u32,
 	#[serde(rename = "castle_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "castle_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -509,6 +533,8 @@ pub struct DoubleLucky {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_lucky_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_lucky_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -542,6 +568,8 @@ pub struct FourLucky {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_lucky_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_lucky_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -575,6 +603,8 @@ pub struct DoubleVoidless {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_voidless_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_voidless_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -608,6 +638,8 @@ pub struct FourVoidless {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_voidless_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_voidless_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -641,6 +673,8 @@ pub struct DoubleArmed {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_armed_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_armed_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -674,6 +708,8 @@ pub struct FourArmed {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_armed_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_armed_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -707,6 +743,8 @@ pub struct DoubleUnderworld {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_underworld_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_underworld_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -740,6 +778,8 @@ pub struct FourUnderworld {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_underworld_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_underworld_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -773,6 +813,8 @@ pub struct DoubleSwap {
 	pub emerald_collected: u32,
 	#[serde(rename = "eight_two_swap_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "eight_two_swap_winstreak")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -806,4 +848,6 @@ pub struct FourSwap {
 	pub emerald_collected: u32,
 	#[serde(rename = "four_four_swap_items_purchased_bedwars")]
 	pub items_purchased: u32,
+	#[serde(rename = "four_four_swap_winstreak")]
+	pub win_streak: u32,
 }

@@ -64,6 +64,7 @@ pub struct SkyWars {
 	)]
 	#[game(xp)]
 	pub xp: u64,
+	pub win_streak: u32,
 
 	#[serde(flatten)]
 	#[game(mode(hypixel = "solo_normal"))]
@@ -104,6 +105,9 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(hypixel = "teams_lab"))]
 	pub team_lab: TeamLab,
+	#[serde(flatten)]
+	#[game(mode(hypixel = "solo_tourney"))]
+	pub tourney: Tourney,
 }
 
 #[derive(
@@ -130,6 +134,8 @@ pub struct SoloNormal {
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_solo")]
 	pub fastest_win: SecondsOption,
+	#[serde(rename = "winstreak_solo")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -182,6 +188,8 @@ pub struct TeamNormal {
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_team")]
 	pub fastest_win: SecondsOption,
+	#[serde(rename = "winstreak_team")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -312,6 +320,8 @@ pub struct SoloLab {
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_solo")]
 	pub fastest_win: SecondsOption,
+	#[serde(rename = "winstreak_lab_solo")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -338,4 +348,34 @@ pub struct TeamLab {
 	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_team")]
 	pub fastest_win: SecondsOption,
+	#[serde(rename = "winstreak_lab_team")]
+	pub win_streak: u32,
+}
+
+#[derive(
+	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
+)]
+#[serde(default)]
+pub struct Tourney {
+	#[serde(rename = "losses_tourney")]
+	pub losses: u32,
+	#[serde(rename = "wins_tourney")]
+	pub wins: u32,
+	#[serde(rename = "kills_tourney")]
+	pub kills: u32,
+	#[serde(rename = "deaths_tourney")]
+	pub deaths: u32,
+	#[mode(field(colour = "green"))]
+	#[serde(rename = "time_played_tourney")]
+	pub time_played: Seconds,
+	#[serde(rename = "arrows_shot_tourney")]
+	pub arrows_shot: u32,
+	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
+	#[serde(rename = "arrows_hit_tourney")]
+	pub arrows_hit: u32,
+	#[mode(field(colour = "gold"))]
+	#[serde(rename = "fastest_win_tourney")]
+	pub fastest_win: SecondsOption,
+	#[serde(rename = "winstreak_tourney")]
+	pub win_streak: u32,
 }

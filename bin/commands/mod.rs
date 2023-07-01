@@ -28,6 +28,7 @@ pub mod recent;
 pub mod skyblock;
 pub mod snapshot;
 pub mod unlink;
+pub mod winstreaks;
 
 #[allow(clippy::unused_async)]
 pub async fn autocomplete_username(

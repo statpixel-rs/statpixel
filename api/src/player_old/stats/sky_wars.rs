@@ -65,7 +65,7 @@ pub struct Data {
 	pub time_played: Seconds,
 	pub arrows_shot: u32,
 	pub arrows_hit: u32,
-	pub fastest_win: Seconds,
+	pub fastest_win: SecondsOption,
 }
 
 impl From<Data> for sky_wars::SoloNormal {
@@ -78,11 +78,8 @@ impl From<Data> for sky_wars::SoloNormal {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
+			win_streak: 0,
 		}
 	}
 }
@@ -97,11 +94,8 @@ impl From<Data> for sky_wars::TeamNormal {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
+			win_streak: 0,
 		}
 	}
 }
@@ -116,11 +110,7 @@ impl From<Data> for sky_wars::MegaDouble {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
 		}
 	}
 }
@@ -135,11 +125,7 @@ impl From<Data> for sky_wars::MegaNormal {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
 		}
 	}
 }
@@ -154,11 +140,7 @@ impl From<Data> for sky_wars::Ranked {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
 		}
 	}
 }
@@ -173,11 +155,8 @@ impl From<Data> for sky_wars::SoloLab {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
+			win_streak: 0,
 		}
 	}
 }
@@ -192,16 +171,13 @@ impl From<Data> for sky_wars::TeamLab {
 			time_played: value.time_played,
 			arrows_shot: value.arrows_shot,
 			arrows_hit: value.arrows_hit,
-			fastest_win: if value.fastest_win.0 == 0 {
-				SecondsOption(None)
-			} else {
-				SecondsOption(Some(value.fastest_win.0))
-			},
+			fastest_win: value.fastest_win,
+			win_streak: 0,
 		}
 	}
 }
 
-impl From<SkyWars> for crate::player::stats::sky_wars::SkyWars {
+impl From<SkyWars> for sky_wars::SkyWars {
 	fn from(value: SkyWars) -> Self {
 		Self {
 			coins: value.coins,
@@ -222,6 +198,8 @@ impl From<SkyWars> for crate::player::stats::sky_wars::SkyWars {
 			solo_lab: value.solo_lab.into(),
 			team_lab: value.team_lab.into(),
 			eggs_thrown: value.eggs_thrown,
+			win_streak: 0,
+			tourney: sky_wars::Tourney::default(),
 		}
 	}
 }

@@ -4,7 +4,7 @@ use serde::Deserialize;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 7;
+pub const VERSION: i16 = 8;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {

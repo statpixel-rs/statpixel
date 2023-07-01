@@ -17,6 +17,8 @@ const TIPS: &[&str] = &[
 	"tip-website",
 	"tip-support-discord",
 	"tip-project",
+	"tip-winstreak",
+	"tip-recent",
 ];
 
 pub fn random<'c>(ctx: &'c Context<'_>) -> Cow<'c, str> {

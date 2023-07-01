@@ -161,6 +161,10 @@ pub enum Mode {
 	TheGarden,
 	Smp,
 	WoolWars,
+	Overall,
+	LabSolo,
+	LabTeam,
+	Tourney,
 	Other(String),
 }
 
@@ -495,6 +499,10 @@ impl Mode {
 			Self::TheGarden => "The Garden",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Overall => "Overall",
+			Self::LabSolo => "Solo Lab",
+			Self::LabTeam => "Team Lab",
+			Self::Tourney => "Tourney",
 			Self::Other(ref s) => s,
 		}
 	}

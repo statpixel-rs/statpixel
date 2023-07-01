@@ -41,6 +41,15 @@ tip-website = <:knowledge_book:1117179094556233828> <https://statpixel.xyz>で�
 tip-support-discord = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/discord>でサポートサーバーに参加します。
 tip-project = <:knowledge_book:1117179094556233828> </project bedwars:1118417616541843477>ですべてのデータの推定値を表示します。
 
+# /winstreaks
+
+winstreaks = winstreaks
+  .description = 勝利ストリークを表示します
+  .username = username
+  .username-description = Minecraftユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 # /recent
 
 mode = モード
@@ -683,6 +692,7 @@ MegaDouble = メガダブル
 Ranked = ランク戦
 SoloLab = ソロラボ
 TeamLab = チームラボ
+Tourney = トーナメント
 
 opals = オパール
 heads = ヘッド

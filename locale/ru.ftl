@@ -41,6 +41,15 @@ tip-website = <:knowledge_book:1117179094556233828> Посетите наш ве
 tip-support-discord = <:knowledge_book:1117179094556233828> Присоединяйтесь к нашему серверу поддержки по адресу <https://statpixel.xyz/discord>.
 tip-project = <:knowledge_book:1117179094556233828> Просмотрите оценки всех ваших данных с помощью </project bedwars:1118417616541843477>.
 
+# /winstreaks
+
+winstreaks = winstreaks
+  .description = Просмотр серий побед
+  .username = username
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 # /recent
 
 mode = Режим
@@ -684,6 +693,7 @@ MegaDouble = Мега, удвоение
 Ranked = Рейтинговый
 SoloLab = Соло, лаборатория
 TeamLab = Командный, лаборатория
+Tourney = Турнир
 
 opals = Опалы
 heads = Головы

@@ -1,4 +1,7 @@
+mod arena;
+mod bed_wars;
 mod sky_wars;
+mod warlords;
 
 use crate::player::stats;
 
@@ -12,15 +15,15 @@ pub struct Stats {
 	pub vampire_z: stats::vampire_z::VampireZ,
 	pub mega_walls: stats::mega_walls::MegaWalls,
 	pub arcade: stats::arcade::Arcade,
-	pub arena: stats::arena::Arena,
+	pub arena: arena::Arena,
 	pub uhc: stats::uhc::Uhc,
 	pub cops_and_crims: stats::cops_and_crims::CopsAndCrims,
-	pub warlords: stats::warlords::Warlords,
+	pub warlords: warlords::Warlords,
 	pub smash_heroes: stats::smash_heroes::SmashHeroes,
 	pub turbo_kart_racers: stats::turbo_kart_racers::TurboKartRacers,
 	pub sky_wars: sky_wars::SkyWars,
 	pub speed_uhc: stats::speed_uhc::SpeedUhc,
-	pub bed_wars: stats::bed_wars::BedWars,
+	pub bed_wars: bed_wars::BedWars,
 	pub murder_mystery: stats::murder_mystery::MurderMystery,
 	pub build_battle: stats::build_battle::BuildBattle,
 	pub duels: stats::duels::Duels,
@@ -40,15 +43,15 @@ impl From<Stats> for crate::player::stats::Stats {
 			vampire_z: value.vampire_z,
 			mega_walls: value.mega_walls,
 			arcade: value.arcade,
-			arena: value.arena,
+			arena: value.arena.into(),
 			uhc: value.uhc,
 			cops_and_crims: value.cops_and_crims,
-			warlords: value.warlords,
+			warlords: value.warlords.into(),
 			smash_heroes: value.smash_heroes,
 			turbo_kart_racers: value.turbo_kart_racers,
 			sky_wars: value.sky_wars.into(),
 			speed_uhc: value.speed_uhc,
-			bed_wars: value.bed_wars,
+			bed_wars: value.bed_wars.into(),
 			murder_mystery: value.murder_mystery,
 			build_battle: value.build_battle,
 			duels: value.duels,

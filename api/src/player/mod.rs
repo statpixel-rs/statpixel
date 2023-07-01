@@ -22,7 +22,7 @@ use crate::{
 
 use self::status::Status;
 
-pub const VERSION: i16 = 8;
+pub const VERSION: i16 = 9;
 pub static DEFAULT_SKIN: Lazy<crate::image::Image> =
 	include_image!("../../../assets/skins/steve.png");
 
@@ -34,6 +34,9 @@ static HYPIXEL_STATUS_API_ENDPOINT: Lazy<Url> =
 
 static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.mojang.com/users/profiles/minecraft/").unwrap());
+
+static MINETOOLS_API_ENDPOINT: Lazy<Url> =
+	Lazy::new(|| Url::from_str("https://api.minetools.eu/uuid/").unwrap());
 
 static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 	Url::from_str("https://sessionserver.mojang.com/session/minecraft/profile/").unwrap()
@@ -52,6 +55,12 @@ pub struct Response {
 pub struct MojangResponse {
 	pub name: String,
 	pub id: Uuid,
+}
+
+#[derive(Deserialize, Clone)]
+pub struct MineToolsResponse {
+	pub name: Option<String>,
+	pub id: Option<Uuid>,
 }
 
 #[derive(Clone, Debug)]
@@ -148,6 +157,27 @@ impl Player {
 	}
 
 	async fn from_username_raw(username: &str) -> Result<Player, Error> {
+		let url = MINETOOLS_API_ENDPOINT.join(username).unwrap();
+
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_bare(req).await?;
+
+		if response.status() != StatusCode::OK {
+			return Err(Error::UsernameNotFound(username.to_string()));
+		}
+
+		let response = response.json::<MineToolsResponse>().await?;
+
+		if let Some((id, name)) = response.id.zip(response.name) {
+			let player = Self::new(id, Some(name));
+
+			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
+
+			return Ok(player);
+		}
+
+		// If the id or name was not present in the above response, the username
+		// may or may not be invalid. Therefore, we still need to check with Mojang.
 		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
 
 		let req = Request::new(reqwest::Method::GET, url);
@@ -177,6 +207,25 @@ impl Player {
 	}
 
 	async fn from_uuid_raw(uuid: &Uuid) -> Result<Player, Error> {
+		let url = MINETOOLS_API_ENDPOINT.join(&uuid.to_string()).unwrap();
+
+		let req = Request::new(reqwest::Method::GET, url);
+		let response = HTTP.perform_bare(req).await?;
+
+		if response.status() != StatusCode::OK {
+			return Err(Error::UuidNotFound(*uuid));
+		}
+
+		let response = response.json::<MineToolsResponse>().await?;
+
+		if let Some((id, name)) = response.id.zip(response.name) {
+			let player = Self::new(id, Some(name));
+
+			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
+
+			return Ok(player);
+		}
+
 		let url = MOJANG_UUID_TO_USERNAME_API_ENDPOINT
 			.join(&uuid.to_string())
 			.unwrap();

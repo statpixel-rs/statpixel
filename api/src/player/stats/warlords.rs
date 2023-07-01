@@ -37,6 +37,7 @@ pub struct Warlords {
 	#[serde(rename = "mvp_count")]
 	#[game(label(colour = "yellow"))]
 	pub mvps: u32,
+	pub win_streak: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]

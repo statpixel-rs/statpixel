@@ -54,6 +54,8 @@ pub struct Solo {
 	pub kills: u32,
 	#[serde(rename = "deaths_1v1")]
 	pub deaths: u32,
+	#[serde(rename = "win_streaks_1v1")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -69,6 +71,8 @@ pub struct Double {
 	pub kills: u32,
 	#[serde(rename = "deaths_2v2")]
 	pub deaths: u32,
+	#[serde(rename = "win_streaks_2v2")]
+	pub win_streak: u32,
 }
 
 #[derive(
@@ -84,4 +88,6 @@ pub struct Four {
 	pub kills: u32,
 	#[serde(rename = "deaths_4v4")]
 	pub deaths: u32,
+	#[serde(rename = "win_streaks_4v4")]
+	pub win_streak: u32,
 }

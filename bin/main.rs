@@ -79,6 +79,7 @@ async fn main() {
 		commands::games::walls(),
 		commands::games::warlords(),
 		commands::snapshot::weekly::weekly(),
+		commands::winstreaks::winstreaks(),
 		commands::games::woolwars(),
 	];
 

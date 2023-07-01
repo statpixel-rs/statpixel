@@ -41,6 +41,15 @@ tip-website = <:knowledge_book:1117179094556233828> Besuche unsere Website unter
 tip-support-discord = <:knowledge_book:1117179094556233828> Tritt unserem Support-Server unter <https://statpixel.xyz/discord> bei.
 tip-project = <:knowledge_book:1117179094556233828> Zeige Schätzungen aller deiner Daten mit </project bedwars:1118417616541843477>.
 
+# /winstreaks
+
+winstreaks = winstreaks
+  .description = Zeige die Winstreaks eines Spielers an
+  .username = username
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 # /recent
 
 mode = Modus
@@ -685,6 +694,7 @@ MegaDouble = Mega Doubles
 Ranked = Ranked
 SoloLab = Solo Lab
 TeamLab = Team Lab
+Tourney = Turnier
 
 opals = Opale
 heads = Köpfe
