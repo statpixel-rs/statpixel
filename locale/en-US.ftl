@@ -40,7 +40,7 @@ tip-help = <:knowledge_book:1117179094556233828> Get more help with </help:11136
 tip-website = <:knowledge_book:1117179094556233828> Visit our website at <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Join our support server at <https://statpixel.xyz/discord>.
 tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </project bedwars:1118417616541843477>.
-tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1113624864524357704>.
+tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 
 # /winstreaks
