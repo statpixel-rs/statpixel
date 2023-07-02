@@ -42,6 +42,25 @@ pub struct Data {
 	pub rewards: u32,
 	#[serde(deserialize_with = "vec_len_to_u32", default)]
 	pub friend_requests: u32,
+	#[serde(deserialize_with = "from_challenges", default)]
+	pub challenges: u32,
+	#[serde(deserialize_with = "from_quests", default)]
+	pub quests: u32,
+	#[serde(rename = "giftingMeta", default)]
+	pub gifting: Gifting,
+	#[serde(rename = "achievementPoints")]
+	pub achivement_points: u32,
+	#[serde(rename = "userLanguage", default)]
+	pub language: super::language::Language,
+}
+
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
+#[serde(default)]
+pub struct Gifting {
+	#[serde(rename = "giftsGiven")]
+	pub gifts_given: u32,
+	#[serde(rename = "ranksGiven")]
+	pub ranks_given: u32,
 }
 
 impl Data {
@@ -78,7 +97,42 @@ pub(crate) fn vec_len_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	let s: Vec<&str> = Deserialize::deserialize(deserializer)?;
+	let s: Vec<serde::de::IgnoredAny> = Deserialize::deserialize(deserializer)?;
 
 	Ok(s.len() as u32)
+}
+
+#[allow(clippy::cast_possible_truncation)]
+pub(crate) fn from_challenges<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	#[derive(Deserialize)]
+	struct Challenges {
+		#[serde(with = "crate::de::vec_map_no_key")]
+		all_time: Vec<u32>,
+	}
+
+	let c: Challenges = Deserialize::deserialize(deserializer)?;
+
+	Ok(c.all_time.into_iter().sum::<u32>())
+}
+
+#[allow(clippy::cast_possible_truncation)]
+pub(crate) fn from_quests<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	#[derive(Deserialize)]
+	struct Quest {
+		#[serde(deserialize_with = "vec_len_to_u32", default)]
+		completions: u32,
+	}
+
+	#[derive(Deserialize)]
+	struct Quests(#[serde(with = "crate::de::vec_map_no_key")] Vec<Quest>);
+
+	let c: Quests = Deserialize::deserialize(deserializer)?;
+
+	Ok(c.0.into_iter().map(|q| q.completions).sum::<u32>())
 }

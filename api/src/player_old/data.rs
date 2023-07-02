@@ -4,13 +4,13 @@ use serde::Deserialize;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 8;
+pub const VERSION: i16 = 9;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
 	pub username: String,
 	#[serde(skip)]
-	pub stats: super::stats::Stats,
+	pub stats: crate::player::stats::Stats,
 	pub(crate) status_rank: Option<String>,
 	pub(crate) rank: Option<String>,
 	pub(crate) package_rank: Option<String>,
@@ -34,7 +34,7 @@ impl From<Data> for crate::player::data::Data {
 	fn from(value: Data) -> Self {
 		Self {
 			username: value.username,
-			stats: value.stats.into(),
+			stats: value.stats,
 			status_rank: value.status_rank,
 			rank: value.rank,
 			package_rank: value.package_rank,
@@ -48,6 +48,11 @@ impl From<Data> for crate::player::data::Data {
 			playtime: value.playtime,
 			rewards: value.rewards,
 			friend_requests: value.friend_requests,
+			challenges: 0,
+			quests: 0,
+			gifting: crate::player::data::Gifting::default(),
+			achivement_points: 0,
+			language: crate::player::language::Language::default(),
 		}
 	}
 }

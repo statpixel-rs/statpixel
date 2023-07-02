@@ -310,6 +310,12 @@ rewards = Belohnungen
 friend-requests = Freundesanfragen
 first-login = Erster Login
 last-login = Letzter Login
+quests = Quests
+challenges = Herausforderungen
+achievement-points = Erfolgspunkte
+language = Sprache
+gifts-given = Geschenke gegeben
+ranks-given = Ränge gegeben
 
 # /help
 

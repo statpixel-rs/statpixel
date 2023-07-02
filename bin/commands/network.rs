@@ -64,7 +64,11 @@ pub async fn network(
 					)
 					.push_down(
 						&shape::Subtitle,
-						shape::Subtitle::from_label(ctx, &LABEL, "member-profile"),
+						if let Some(ref guild) = guild {
+							shape::Subtitle::from_guild(guild)
+						} else {
+							shape::Subtitle::from_label(ctx, &LABEL, "member-profile")
+						},
 					)
 					.push_down_post_draw(
 						&progress,
@@ -116,6 +120,60 @@ pub async fn network(
 							.build(),
 					)
 					.push_right_post_draw(&status, Body::from_status(ctx, &session))
+					.push_down_start(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&data.quests,
+							tr!(ctx, "quests").as_ref(),
+							Paint::Gold,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&data.challenges,
+							tr!(ctx, "challenges").as_ref(),
+							Paint::Gold,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&data.achivement_points,
+							tr!(ctx, "achievement-points").as_ref(),
+							Paint::Gold,
+						),
+					)
+					.push_down_start(
+						&shape::Bubble,
+						Body::from_bubble_small(
+							ctx,
+							&data.language,
+							tr!(ctx, "language").as_ref(),
+							Paint::Aqua,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&data.gifting.gifts_given,
+							tr!(ctx, "gifts-given").as_ref(),
+							Paint::LightPurple,
+						),
+					)
+					.push_right(
+						&shape::Bubble,
+						Body::from_bubble(
+							ctx,
+							&data.gifting.ranks_given,
+							tr!(ctx, "ranks-given").as_ref(),
+							Paint::LightPurple,
+						),
+					)
 					.push_down_start(
 						&shape::Bubble,
 						Body::from_bubble(

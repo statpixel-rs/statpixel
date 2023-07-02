@@ -128,7 +128,7 @@ impl Body {
 		label: &str,
 		paint: Paint,
 	) -> Paragraph {
-		Self::new(40., TextAlign::Center)
+		Self::new(25., TextAlign::Center)
 			.extend(&[
 				Text {
 					text: label,

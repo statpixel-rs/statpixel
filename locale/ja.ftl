@@ -310,6 +310,12 @@ rewards = 報酬
 friend-requests = フレンドリクエスト
 first-login = 最初のログイン
 last-login = 最後のログイン
+quests = クエスト
+challenges = チャレンジ
+achievement-points = 実績ポイント
+language = 言語
+gifts-given = 贈り物
+ranks-given = ランク
 
 # /help
 

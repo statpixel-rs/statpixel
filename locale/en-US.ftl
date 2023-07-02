@@ -314,6 +314,12 @@ rewards = Rewards
 friend-requests = Friend Requests
 first-login = First Login
 last-login = Last Login
+quests = Quests
+challenges = Challenges
+achievement-points = Achievement Points
+language = Language
+gifts-given = Gifts Given
+ranks-given = Ranks Given
 
 # /history
 
