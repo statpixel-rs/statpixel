@@ -17,7 +17,7 @@ pub enum Display {
 }
 
 impl FromSql<SmallInt, Pg> for Display {
-	fn from_sql(bytes: diesel::backend::RawValue<'_, Pg>) -> diesel::deserialize::Result<Self> {
+	fn from_sql(bytes: <Pg as Backend>::RawValue<'_>) -> diesel::deserialize::Result<Self> {
 		Ok(match i16::from_sql(bytes)? {
 			0 => Display::Image,
 			1 => Display::Compact,

@@ -22,7 +22,7 @@ const IMAGE_FORMAT: EncodedImageFormat = EncodedImageFormat::PNG;
 pub fn to_png(surface: &mut Surface) -> Vec<u8> {
 	surface
 		.image_snapshot()
-		.encode_to_data(IMAGE_FORMAT)
+		.encode(None, IMAGE_FORMAT, 100)
 		.unwrap()
 		.to_vec()
 }

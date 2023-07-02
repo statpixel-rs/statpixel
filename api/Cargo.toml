@@ -9,38 +9,33 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 database.path = "../database"
 macros.path = "./macros"
 minecraft.path = "../minecraft"
+translate.path = "../translate"
+base64.workspace = true
+bincode.workspace = true
 chrono.workspace = true
 diesel.workspace = true
 diesel-async.workspace = true
-bincode.workspace = true
+fastnbt.workspace = true
+flate2.workspace = true
+futures.workspace = true
 moka.workspace = true
 num-format.workspace = true
 once_cell.workspace = true
-pure-rust-locales.workspace = true
-reqwest.workspace = true
-serde.workspace = true
-tracing.workspace = true
-translate.path = "../translate"
-uuid.workspace = true
-flate2.workspace = true
-futures.workspace = true
+phf.workspace = true
 plotters.workspace = true
 plotters-backend.workspace = true
 poise.workspace = true
-tokio = "1.28.1"
-thiserror.workspace = true
+pure-rust-locales.workspace = true
 redis.workspace = true
-base64.workspace = true
-fastnbt.workspace = true
-konst.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
 skia-safe.workspace = true
-serde_json = "1.0.97"
-phf = { version = "0.11.1", features = ["macros"] }
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+uuid.workspace = true
 
 [dev-dependencies]
-dotenvy = "0.15.7"
-tokio = { version = "1.28.1", features = ["rt-multi-thread", "macros"] }
-
-# These crates are used in `macros`
-[package.metadata.cargo-machete]
-ignored = ["futures", "poise"]
+dotenvy.workspace = true
+tokio.workspace = true
