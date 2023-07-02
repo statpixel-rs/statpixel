@@ -23,6 +23,7 @@ mod emoji;
 mod format;
 mod id;
 mod snapshot;
+#[cfg(not(debug_assertions))]
 mod stats;
 mod tip;
 mod util;
@@ -157,7 +158,7 @@ async fn main() {
 		}
 	});
 
-	#[cfg(debug_assertions)]
+	#[cfg(not(debug_assertions))]
 	tokio::task::spawn(async move {
 		info!("starting topgg stats loop");
 
