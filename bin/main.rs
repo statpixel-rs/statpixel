@@ -44,6 +44,7 @@ async fn main() {
 	dotenvy::dotenv().ok();
 
 	let mut commands = vec![
+		commands::about::about(),
 		commands::games::arcade(),
 		commands::games::arena(),
 		commands::background::background(),
@@ -108,7 +109,11 @@ async fn main() {
 				.await
 				.unwrap();
 
-				Ok(Data { pool, locale })
+				Ok(Data {
+					pool,
+					locale,
+					guilds: tokio::sync::RwLock::default(),
+				})
 			})
 		},
 	);
@@ -186,7 +191,12 @@ async fn event_handler(
 			ctx,
 			data_about_bot: ready,
 		} => {
-			info!(user = ?ready.user.tag(), "logged in");
+			info!(user = ?ready.user.tag(), guilds = ready.guilds.len(), "logged in");
+
+			data.guilds
+				.write()
+				.await
+				.extend(ready.guilds.iter().map(|g| g.id.0.get()));
 
 			ctx.set_activity(Some(serenity::ActivityData {
 				name: format!("Shard #{} | v{VERSION}", ctx.shard_id.0 + 1),
@@ -213,6 +223,24 @@ async fn event_handler(
 			if let Err(e) = crate::id::map(&ctx, id).await {
 				util::error(&ctx, e).await;
 			};
+		}
+		FullEvent::GuildCreate { guild, .. } => {
+			if data.guilds.write().await.insert(guild.id.0.get()) && tracing::enabled!(Level::INFO)
+			{
+				let guilds = data.guilds.read().await.len();
+
+				info!(guilds = guilds, "guild count");
+			}
+		}
+		FullEvent::GuildDelete {
+			incomplete: guild, ..
+		} => {
+			if data.guilds.write().await.remove(&guild.id.0.get()) && tracing::enabled!(Level::INFO)
+			{
+				let guilds = data.guilds.read().await.len();
+
+				info!(guilds = guilds, "guild count");
+			}
 		}
 		_ => {}
 	}

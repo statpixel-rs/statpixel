@@ -16,6 +16,7 @@ pub use uuid;
 pub struct Data {
 	pub pool: PostgresPool,
 	pub locale: locale::Locale,
+	pub guilds: tokio::sync::RwLock<std::collections::HashSet<u64>>,
 }
 
 impl fmt::Debug for Data {

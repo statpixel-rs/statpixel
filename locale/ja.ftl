@@ -44,6 +44,20 @@ tip-winstreak = <:knowledge_book:1117179094556233828> </winstreaks:1124767485384
 tip-recent = <:knowledge_book:1117179094556233828> </recent:1123839349428080690>で最近のゲームを表示します。
 tip-bazaar = <:knowledge_book:1117179094556233828> </skyblock bazaar:1113624864826327074>でSkyBlockバザー価格を表示します。
 
+# /about
+
+author = 作者 🤖
+guilds = ギルド 🏰
+profiles = プロファイル 🤺
+users = ユーザー 🤸
+snapshots = スナップショット 📒
+
+about-description =
+  StatPixelは、Wool WarsやSkyBlockを含むHypixelネットワークのすべてのゲームをサポートしています。詳細については、</help:1113624864524357707>を使用するか、<https://statpixel.xyz/docs/commands>のドキュメントを参照してください。
+
+about = about
+  .description = ボットに関する情報を表示します
+
 # /winstreaks
 
 winstreaks = winstreaks

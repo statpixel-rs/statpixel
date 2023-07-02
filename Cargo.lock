@@ -3268,6 +3268,7 @@ dependencies = [
  "redis",
  "reqwest",
  "thiserror",
+ "tokio",
  "tracing",
  "uuid",
 ]

@@ -13,6 +13,7 @@ use uuid::Uuid;
 
 use crate::util;
 
+pub mod about;
 pub mod background;
 pub mod display;
 pub mod from;

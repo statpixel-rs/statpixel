@@ -44,6 +44,20 @@ tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with 
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
 
+# /about
+
+author = Author 🤖
+guilds = Guilds 🏰
+profiles = Profiles 🤺
+users = Users 🤸
+snapshots = Snapshots 📒
+
+about-description =
+  StatPixel supports every game on the Hypixel network, including Wool Wars and SkyBlock. For more information, use </help:1113624864524357707> or visit the documentation at <https://statpixel.xyz/docs/commands>.
+
+about = about
+  .description = View information about the bot
+
 # /winstreaks
 
 winstreaks = winstreaks
