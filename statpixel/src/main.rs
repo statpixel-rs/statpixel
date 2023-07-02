@@ -9,11 +9,13 @@ use api::skyblock;
 use database::{get_pool, schema::usage};
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
-use poise::serenity_prelude::{self as serenity, FullEvent, GatewayIntents, Interaction};
+use poise::serenity_prelude::{
+	self as serenity, ConnectionStage, FullEvent, GatewayIntents, Interaction,
+};
 use snapshot::user;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
-use translate::{context, Context, Data, Error};
+use translate::{context, Context, Data};
 
 mod commands;
 mod constants;
@@ -21,12 +23,12 @@ mod emoji;
 mod format;
 mod id;
 mod snapshot;
+mod stats;
 mod tip;
 mod util;
 
 pub use constants::*;
-
-pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub use statpixel::*;
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";
@@ -109,11 +111,7 @@ async fn main() {
 				.await
 				.unwrap();
 
-				Ok(Data {
-					pool,
-					locale,
-					guilds: tokio::sync::RwLock::default(),
-				})
+				Ok(Data { pool, locale })
 			})
 		},
 	);
@@ -159,6 +157,24 @@ async fn main() {
 		}
 	});
 
+	#[cfg(debug_assertions)]
+	tokio::task::spawn(async move {
+		info!("starting topgg stats loop");
+
+		let token = std::env::var("TOPGG_TOKEN")
+			.expect("missing TOPGG_TOKEN")
+			.try_into()
+			.unwrap();
+
+		loop {
+			if let Err(e) = stats::post(&token).await {
+				error!(error = ?e, "error in topgg stats loop");
+			}
+
+			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+		}
+	});
+
 	client.start_autosharded().await.unwrap();
 }
 
@@ -193,7 +209,7 @@ async fn event_handler(
 		} => {
 			info!(user = ?ready.user.tag(), guilds = ready.guilds.len(), "logged in");
 
-			data.guilds
+			GUILDS
 				.write()
 				.await
 				.extend(ready.guilds.iter().map(|g| g.id.0.get()));
@@ -225,9 +241,8 @@ async fn event_handler(
 			};
 		}
 		FullEvent::GuildCreate { guild, .. } => {
-			if data.guilds.write().await.insert(guild.id.0.get()) && tracing::enabled!(Level::INFO)
-			{
-				let guilds = data.guilds.read().await.len();
+			if GUILDS.write().await.insert(guild.id.0.get()) && tracing::enabled!(Level::INFO) {
+				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
 			}
@@ -235,11 +250,17 @@ async fn event_handler(
 		FullEvent::GuildDelete {
 			incomplete: guild, ..
 		} => {
-			if data.guilds.write().await.remove(&guild.id.0.get()) && tracing::enabled!(Level::INFO)
-			{
-				let guilds = data.guilds.read().await.len();
+			if GUILDS.write().await.remove(&guild.id.0.get()) && tracing::enabled!(Level::INFO) {
+				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
+			}
+		}
+		FullEvent::ShardStageUpdate { event, .. } => {
+			if event.new == ConnectionStage::Connected {
+				*SHARDS.write().await += 1;
+			} else if event.old == ConnectionStage::Connected {
+				*SHARDS.write().await -= 1;
 			}
 		}
 		_ => {}

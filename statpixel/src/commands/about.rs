@@ -32,7 +32,7 @@ pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 			.get_result::<i64>(connection)
 			.await?;
 
-		let guilds = ctx.data().guilds.read().await.len();
+		let guilds = crate::GUILDS.read().await.len();
 
 		(guilds, profiles, users, snapshots)
 	};

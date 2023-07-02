@@ -1,5 +1,3 @@
-// @generated automatically by Diesel CLI.
-
 diesel::table! {
 	autocomplete (uuid) {
 		uuid -> Uuid,
@@ -23,7 +21,7 @@ diesel::table! {
 }
 
 diesel::table! {
-	bazaar_items (id) {
+	bazaar_item (id) {
 		id -> Int2,
 		name -> Text,
 	}
@@ -105,5 +103,6 @@ diesel::table! {
 		display -> Int2,
 		suffix -> Nullable<Varchar>,
 		colour -> Nullable<Int4>,
+		votes -> Int2,
 	}
 }

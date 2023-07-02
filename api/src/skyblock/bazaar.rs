@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use chrono::{DateTime, Utc};
 use database::{
-	schema::{bazaar, bazaar_items},
+	schema::{bazaar, bazaar_item},
 	PostgresPool,
 };
 use diesel::{ExpressionMethods, QueryDsl};
@@ -50,8 +50,8 @@ pub struct Response {
 /// # Panics
 /// Panics if a database query fails. This is useful since it is only done once on startup.
 pub async fn get_all_item_identifiers(pool: &PostgresPool) -> HashMap<String, i16> {
-	bazaar_items::table
-		.select((bazaar_items::name, bazaar_items::id))
+	bazaar_item::table
+		.select((bazaar_item::name, bazaar_item::id))
 		.load(&mut pool.get().await.unwrap())
 		.await
 		.unwrap()
@@ -89,9 +89,9 @@ pub async fn update<S: std::hash::BuildHasher>(
 			} else {
 				// Since is it guaranteed that `products` contains unique names, we can safely
 				// create a new item without checking if it is already being inserted.
-				let id = diesel::insert_into(bazaar_items::table)
-					.values((bazaar_items::name.eq(&name),))
-					.returning(bazaar_items::id)
+				let id = diesel::insert_into(bazaar_item::table)
+					.values((bazaar_item::name.eq(&name),))
+					.returning(bazaar_item::id)
 					.get_result::<i16>(&mut pool.get().await?)
 					.await?;
 

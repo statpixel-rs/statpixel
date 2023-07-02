@@ -22,7 +22,7 @@ use api::{
 };
 use canvas::{shape, text};
 use chrono::{DateTime, Utc};
-use database::schema::{bazaar, bazaar_items};
+use database::schema::{bazaar, bazaar_item};
 use diesel::{ExpressionMethods, QueryDsl};
 use minecraft::{
 	calc::{network, sky_block},
@@ -1071,9 +1071,9 @@ pub async fn pets(
 #[allow(clippy::too_many_lines)]
 pub async fn bazaar(ctx: &context::Context<'_>, product: String) -> Result<(), Error> {
 	let id = diesel_async::RunQueryDsl::first::<i16>(
-		bazaar_items::table
-			.filter(bazaar_items::name.eq(&product))
-			.select(bazaar_items::id),
+		bazaar_item::table
+			.filter(bazaar_item::name.eq(&product))
+			.select(bazaar_item::id),
 		&mut ctx.data().pool.get().await?,
 	)
 	.await?;

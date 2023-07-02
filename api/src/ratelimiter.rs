@@ -79,6 +79,11 @@ impl Ratelimiter {
 		self.client.get(url)
 	}
 
+	#[inline]
+	pub fn post(&self, url: Url) -> RequestBuilder {
+		self.client.post(url)
+	}
+
 	/// # Errors
 	/// Returns an error if the header is not present, or if the header is invalid.
 	#[inline]

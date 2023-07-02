@@ -1,7 +1,7 @@
 pub mod run;
 
 use api::skyblock::NAMES;
-use database::{extend::lower, schema::bazaar_items};
+use database::{extend::lower, schema::bazaar_item};
 use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
 use diesel_async::RunQueryDsl;
 use translate::{context, Context, Error};
@@ -29,10 +29,10 @@ async fn autocomplete_product(
 
 	if let Ok(mut connection) = ctx.data().pool.get().await {
 		if partial.is_empty() || partial.contains('%') {
-			let result: Result<_, _> = bazaar_items::table
-				.order(bazaar_items::name.asc())
+			let result: Result<_, _> = bazaar_item::table
+				.order(bazaar_item::name.asc())
 				.limit(10)
-				.select(bazaar_items::name)
+				.select(bazaar_item::name)
 				.get_results::<String>(&mut connection)
 				.await;
 
@@ -40,13 +40,13 @@ async fn autocomplete_product(
 				return result.into_iter();
 			}
 		} else {
-			let result = bazaar_items::table
+			let result = bazaar_item::table
 				.filter(
-					lower(bazaar_items::name).like(format!("{}%", partial.to_ascii_lowercase())),
+					lower(bazaar_item::name).like(format!("{}%", partial.to_ascii_lowercase())),
 				)
-				.order(bazaar_items::name.asc())
+				.order(bazaar_item::name.asc())
 				.limit(9)
-				.select(bazaar_items::name)
+				.select(bazaar_item::name)
 				.get_results::<String>(&mut connection)
 				.await;
 
