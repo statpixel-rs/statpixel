@@ -138,9 +138,9 @@ pub async fn background(
 		colour_from_str(&c)
 	}) else {
 		ctx.send(error_embed(
-				tr!(&ctx, "error-invalid-colour"),
-				tr!(&ctx, "error-invalid-colour-description")
-			))
+			tr!(&ctx, "error-invalid-colour"),
+			tr!(&ctx, "error-invalid-colour-description"),
+		))
 		.await?;
 
 		return Ok(());

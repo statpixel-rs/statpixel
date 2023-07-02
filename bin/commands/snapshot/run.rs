@@ -45,11 +45,7 @@ pub async fn command<G: api::prelude::Game>(
 					name: util::escape_username(&data.username),
 				);
 
-				ctx.send(
-					poise::CreateReply::new()
-						.content(content)
-				)
-				.await?;
+				ctx.send(poise::CreateReply::new().content(content)).await?;
 
 				return Ok(());
 			};
@@ -96,11 +92,7 @@ pub async fn command<G: api::prelude::Game>(
 					name: util::escape_username(&data.username),
 				);
 
-				ctx.send(
-					poise::CreateReply::new()
-						.content(content)
-				)
-				.await?;
+				ctx.send(poise::CreateReply::new().content(content)).await?;
 
 				return Ok(());
 			};

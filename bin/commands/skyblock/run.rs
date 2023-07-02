@@ -366,7 +366,12 @@ pub async fn profile(
 	player.increase_searches(ctx).await?;
 
 	let Some(profile) = (match profile {
-		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		Some(profile) => data
+			.stats
+			.sky_block
+			.profiles
+			.iter()
+			.find(|p| p.name == profile),
 		None => data.stats.sky_block.profiles.first(),
 	}) else {
 		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));
@@ -607,7 +612,12 @@ pub async fn bank(
 	player.increase_searches(ctx).await?;
 
 	let Some(profile) = (match profile {
-		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		Some(profile) => data
+			.stats
+			.sky_block
+			.profiles
+			.iter()
+			.find(|p| p.name == profile),
 		None => data.stats.sky_block.profiles.first(),
 	}) else {
 		return Err(Error::MemberPlayerNotFound(data.username.clone()));
@@ -719,7 +729,12 @@ pub async fn networth(
 	player.increase_searches(ctx).await?;
 
 	let Some(profile) = (match profile {
-		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		Some(profile) => data
+			.stats
+			.sky_block
+			.profiles
+			.iter()
+			.find(|p| p.name == profile),
 		None => data.stats.sky_block.profiles.first(),
 	}) else {
 		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));
@@ -907,7 +922,12 @@ pub async fn pets(
 	player.increase_searches(ctx).await?;
 
 	let Some(profile) = (match profile {
-		Some(profile) => data.stats.sky_block.profiles.iter().find(|p| p.name == profile),
+		Some(profile) => data
+			.stats
+			.sky_block
+			.profiles
+			.iter()
+			.find(|p| p.name == profile),
 		None => data.stats.sky_block.profiles.first(),
 	}) else {
 		return Err(Error::SkyBlockProfileNotFound(data.username.clone()));

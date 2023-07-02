@@ -198,7 +198,9 @@ async fn event_handler(
 			ctx,
 			interaction: Interaction::Component(interaction),
 		} => {
-			let serenity::ComponentInteractionDataKind::StringSelect { ref values } = interaction.data.kind else {
+			let serenity::ComponentInteractionDataKind::StringSelect { ref values } =
+				interaction.data.kind
+			else {
 				return Ok(());
 			};
 
