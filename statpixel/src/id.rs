@@ -2,6 +2,7 @@
 use api::player::stats::*;
 
 use api::id::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode};
+use chrono::Duration;
 use tracing::info;
 use translate::{context::Context, Error};
 
@@ -75,105 +76,152 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::Walls(mode) => impl_root!(ctx, uuid, mode, walls::Walls),
 			Mode::Warlords(mode) => impl_root!(ctx, uuid, mode, warlords::Warlords),
 			Mode::WoolWars(mode) => impl_root!(ctx, uuid, mode, wool_wars::WoolWars),
-			Mode::Guild(mode) => match mode {
+			Mode::Guild(mode, limit, nanos, member_id) => match mode {
 				GuildMode::General => {
-					super::commands::guild::run::general(ctx, None, None, None, Some(uuid)).await
+					super::commands::guild::run::general(
+						ctx,
+						None,
+						None,
+						member_id,
+						Some(uuid),
+						limit,
+						nanos,
+					)
+					.await
 				}
 				GuildMode::Member => {
-					super::commands::guild::run::member(ctx, None, Some(uuid)).await
+					super::commands::guild::run::member(ctx, None, member_id, limit, nanos).await
 				}
 				GuildMode::Members => {
-					super::commands::guild::run::members(ctx, None, None, None, Some(uuid)).await
+					super::commands::guild::run::members(
+						ctx,
+						None,
+						None,
+						member_id,
+						Some(uuid),
+						limit,
+						nanos,
+					)
+					.await
 				}
 				GuildMode::Top => {
-					super::commands::guild::run::top(ctx, None, None, None, None, 30, Some(uuid))
-						.await
+					super::commands::guild::run::top(
+						ctx,
+						None,
+						None,
+						member_id,
+						nanos.map_or(chrono::Duration::days(30), chrono::Duration::nanoseconds),
+						limit.unwrap_or(30),
+						Some(uuid),
+					)
+					.await
 				}
 			},
-			Mode::SkyBlock(mode) => match mode {
+			Mode::SkyBlock(mode, profile) => match mode {
 				SkyBlockMode::Auctions => {
-					super::commands::skyblock::run::auctions(ctx, None, Some(uuid)).await
+					super::commands::skyblock::run::auctions(ctx, None, Some(uuid), profile).await
 				}
-				SkyBlockMode::Bank(profile) => {
-					super::commands::skyblock::run::bank(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Bank => {
+					super::commands::skyblock::run::bank(ctx, None, None, Some(uuid), profile).await
 				}
-				SkyBlockMode::Candy(profile) => {
-					super::commands::skyblock::run::candy(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Candy => {
+					super::commands::skyblock::run::candy(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::EnderChest(profile) => {
-					super::commands::skyblock::run::enderchest(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::EnderChest => {
+					super::commands::skyblock::run::enderchest(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Equipment(profile) => {
-					super::commands::skyblock::run::equipment(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Equipment => {
+					super::commands::skyblock::run::equipment(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Fishing(profile) => {
-					super::commands::skyblock::run::fishing(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Fishing => {
+					super::commands::skyblock::run::fishing(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Inventory(profile) => {
-					super::commands::skyblock::run::inventory(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Inventory => {
+					super::commands::skyblock::run::inventory(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Networth(profile) => {
-					super::commands::skyblock::run::networth(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Networth => {
+					super::commands::skyblock::run::networth(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Pets(profile) => {
-					super::commands::skyblock::run::pets(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Pets => {
+					super::commands::skyblock::run::pets(ctx, None, None, Some(uuid), profile).await
 				}
-				SkyBlockMode::Potions(profile) => {
-					super::commands::skyblock::run::potions(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Potions => {
+					super::commands::skyblock::run::potions(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Profile(profile) => {
-					super::commands::skyblock::run::profile(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Profile => {
+					super::commands::skyblock::run::profile(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Quiver(profile) => {
-					super::commands::skyblock::run::quiver(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Quiver => {
+					super::commands::skyblock::run::quiver(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Talisman(profile) => {
-					super::commands::skyblock::run::talisman(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Talisman => {
+					super::commands::skyblock::run::talisman(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Vault(profile) => {
-					super::commands::skyblock::run::vault(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Vault => {
+					super::commands::skyblock::run::vault(ctx, None, None, Some(uuid), profile)
+						.await
 				}
-				SkyBlockMode::Wardrobe(profile) => {
-					super::commands::skyblock::run::wardrobe(ctx, None, profile, Some(uuid)).await
+				SkyBlockMode::Wardrobe => {
+					super::commands::skyblock::run::wardrobe(ctx, None, None, Some(uuid), profile)
+						.await
 				}
 			},
 			Mode::Network => Ok(()),
 		},
-		Id::Snapshot { kind, uuid, from } => match kind {
-			Mode::Arcade(mode) => impl_snapshot!(ctx, uuid, from, mode, arcade::Arcade),
-			Mode::Arena(mode) => impl_snapshot!(ctx, uuid, from, mode, arena::Arena),
-			Mode::BedWars(mode) => impl_snapshot!(ctx, uuid, from, mode, bed_wars::BedWars),
-			Mode::BlitzSg(mode) => impl_snapshot!(ctx, uuid, from, mode, blitz_sg::BlitzSg),
-			Mode::BuildBattle(mode) => {
-				impl_snapshot!(ctx, uuid, from, mode, build_battle::BuildBattle)
+		Id::Snapshot { kind, uuid, past } => {
+			let past = Duration::nanoseconds(past);
+			match kind {
+				Mode::Arcade(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, arcade::Arcade)
+				}
+				Mode::Arena(mode) => impl_snapshot!(ctx, uuid, past, mode, arena::Arena),
+				Mode::BedWars(mode) => impl_snapshot!(ctx, uuid, past, mode, bed_wars::BedWars),
+				Mode::BlitzSg(mode) => impl_snapshot!(ctx, uuid, past, mode, blitz_sg::BlitzSg),
+				Mode::BuildBattle(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, build_battle::BuildBattle)
+				}
+				Mode::CopsAndCrims(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, cops_and_crims::CopsAndCrims)
+				}
+				Mode::Duels(mode) => impl_snapshot!(ctx, uuid, past, mode, duels::Duels),
+				Mode::MegaWalls(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, mega_walls::MegaWalls)
+				}
+				Mode::MurderMystery(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, murder_mystery::MurderMystery)
+				}
+				Mode::Paintball(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, paintball::Paintball)
+				}
+				Mode::Pit(mode) => impl_snapshot!(ctx, uuid, past, mode, pit::Pit),
+				Mode::Quake(mode) => impl_snapshot!(ctx, uuid, past, mode, quake::Quake),
+				Mode::SkyWars(mode) => impl_snapshot!(ctx, uuid, past, mode, sky_wars::SkyWars),
+				Mode::SmashHeroes(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, smash_heroes::SmashHeroes)
+				}
+				Mode::SpeedUhc(mode) => impl_snapshot!(ctx, uuid, past, mode, speed_uhc::SpeedUhc),
+				Mode::TntGames(mode) => impl_snapshot!(ctx, uuid, past, mode, tnt_games::TntGames),
+				Mode::TurboKartRacers(mode) => {
+					impl_snapshot!(ctx, uuid, past, mode, turbo_kart_racers::TurboKartRacers)
+				}
+				Mode::Uhc(mode) => impl_snapshot!(ctx, uuid, past, mode, uhc::Uhc),
+				Mode::VampireZ(mode) => impl_snapshot!(ctx, uuid, past, mode, vampire_z::VampireZ),
+				Mode::Walls(mode) => impl_snapshot!(ctx, uuid, past, mode, walls::Walls),
+				Mode::Warlords(mode) => impl_snapshot!(ctx, uuid, past, mode, warlords::Warlords),
+				Mode::WoolWars(mode) => impl_snapshot!(ctx, uuid, past, mode, wool_wars::WoolWars),
+				_ => Ok(()),
 			}
-			Mode::CopsAndCrims(mode) => {
-				impl_snapshot!(ctx, uuid, from, mode, cops_and_crims::CopsAndCrims)
-			}
-			Mode::Duels(mode) => impl_snapshot!(ctx, uuid, from, mode, duels::Duels),
-			Mode::MegaWalls(mode) => impl_snapshot!(ctx, uuid, from, mode, mega_walls::MegaWalls),
-			Mode::MurderMystery(mode) => {
-				impl_snapshot!(ctx, uuid, from, mode, murder_mystery::MurderMystery)
-			}
-			Mode::Paintball(mode) => impl_snapshot!(ctx, uuid, from, mode, paintball::Paintball),
-			Mode::Pit(mode) => impl_snapshot!(ctx, uuid, from, mode, pit::Pit),
-			Mode::Quake(mode) => impl_snapshot!(ctx, uuid, from, mode, quake::Quake),
-			Mode::SkyWars(mode) => impl_snapshot!(ctx, uuid, from, mode, sky_wars::SkyWars),
-			Mode::SmashHeroes(mode) => {
-				impl_snapshot!(ctx, uuid, from, mode, smash_heroes::SmashHeroes)
-			}
-			Mode::SpeedUhc(mode) => impl_snapshot!(ctx, uuid, from, mode, speed_uhc::SpeedUhc),
-			Mode::TntGames(mode) => impl_snapshot!(ctx, uuid, from, mode, tnt_games::TntGames),
-			Mode::TurboKartRacers(mode) => {
-				impl_snapshot!(ctx, uuid, from, mode, turbo_kart_racers::TurboKartRacers)
-			}
-			Mode::Uhc(mode) => impl_snapshot!(ctx, uuid, from, mode, uhc::Uhc),
-			Mode::VampireZ(mode) => impl_snapshot!(ctx, uuid, from, mode, vampire_z::VampireZ),
-			Mode::Walls(mode) => impl_snapshot!(ctx, uuid, from, mode, walls::Walls),
-			Mode::Warlords(mode) => impl_snapshot!(ctx, uuid, from, mode, warlords::Warlords),
-			Mode::WoolWars(mode) => impl_snapshot!(ctx, uuid, from, mode, wool_wars::WoolWars),
-			_ => Ok(()),
-		},
+		}
 		Id::History { kind, uuid } => match kind {
 			Mode::Arcade(mode) => impl_history!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_history!(ctx, uuid, mode, arena::Arena),

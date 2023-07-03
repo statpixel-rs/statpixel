@@ -1,3 +1,4 @@
+pub mod image;
 pub mod run;
 
 use std::collections::HashMap;
@@ -127,7 +128,7 @@ async fn general(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::general(ctx, name, username, uuid, None).await
+	run::general(ctx, name, username, uuid, None, None, None).await
 }
 
 /// Shows the members of a guild.
@@ -153,7 +154,7 @@ async fn members(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::members(ctx, name, username, uuid, None).await
+	run::members(ctx, name, username, uuid, None, None, None).await
 }
 
 /// Shows the member of a guild.
@@ -175,7 +176,7 @@ async fn member(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::member(ctx, username, uuid).await
+	run::member(ctx, username, uuid, None, None).await
 }
 
 /// Shows the members of a guild.
@@ -203,10 +204,20 @@ async fn top(
 	limit: Option<usize>,
 ) -> Result<(), Error> {
 	let limit = limit.map_or(30, |l| if l % 2 == 0 { l } else { l + 1 });
+
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::top(ctx, name, username, uuid, days, limit, None).await
+	run::top(
+		ctx,
+		name,
+		username,
+		uuid,
+		days.map_or(chrono::Duration::days(30), chrono::Duration::days),
+		limit,
+		None,
+	)
+	.await
 }
 
 #[allow(clippy::unused_async)]

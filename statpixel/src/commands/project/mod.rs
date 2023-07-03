@@ -1,3 +1,4 @@
+pub mod image;
 pub mod run;
 
 #[allow(clippy::wildcard_imports)]

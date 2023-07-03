@@ -82,7 +82,7 @@ pub trait Mode: Sized + Copy {
 	fn as_snapshot(
 		ctx: &context::Context,
 		uuid: Uuid,
-		from: DateTime<Utc>,
+		past: i64,
 		selected: Option<Self>,
 	) -> serenity::CreateActionRow;
 

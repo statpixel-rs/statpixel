@@ -1,3 +1,4 @@
+pub mod image;
 pub mod run;
 
 use std::borrow::Cow;

@@ -53,7 +53,7 @@ impl ToTokens for ModeTraitInputReceiver {
 				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Snapshot {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
-					from,
+					past,
 				}))
 			}
 		});
@@ -131,7 +131,7 @@ impl ToTokens for ModeTraitInputReceiver {
 				fn as_snapshot(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
-					from: ::chrono::DateTime<::chrono::Utc>,
+					past: i64,
 					selected: Option<Self>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(

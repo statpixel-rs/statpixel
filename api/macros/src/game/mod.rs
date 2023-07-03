@@ -385,7 +385,7 @@ impl ToTokens for GameInputReceiver {
 				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Snapshot {
 					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
 					uuid,
-					from,
+					past,
 				}))
 			}
 		});
@@ -2343,7 +2343,7 @@ impl ToTokens for GameInputReceiver {
 				pub fn as_snapshot(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
-					from: ::chrono::DateTime<::chrono::Utc>,
+					past: i64,
 					selected: Option<#enum_ident>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
@@ -2353,7 +2353,7 @@ impl ToTokens for GameInputReceiver {
 								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Snapshot {
 									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
 									uuid,
-									from,
+									past,
 								})),
 								#(#mode_menu_snapshot),*
 							]
@@ -2432,8 +2432,8 @@ impl ToTokens for GameInputReceiver {
 					Self::as_root(ctx, uuid, selected)
 				}
 
-				fn as_snapshot(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, from: ::chrono::DateTime<::chrono::Utc>, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
-					Self::as_snapshot(ctx, uuid, from, selected)
+				fn as_snapshot(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, past: i64, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
+					Self::as_snapshot(ctx, uuid, past, selected)
 				}
 
 				fn as_history(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {

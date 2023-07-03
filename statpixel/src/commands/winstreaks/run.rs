@@ -1,31 +1,33 @@
-use api::prelude::Mode;
+use crate::Error;
 use poise::serenity_prelude::CreateAttachment;
-use translate::{context, Error};
+use translate::context;
 use uuid::Uuid;
 
-use crate::commands;
-
-#[inline]
-pub async fn command<G: api::prelude::Game>(
+#[allow(clippy::too_many_lines)]
+pub async fn winstreaks(
 	ctx: &context::Context<'_>,
 	username: Option<String>,
 	uuid: Option<Uuid>,
-	mode: Option<G::Mode>,
 ) -> Result<(), Error> {
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
-	let (player, session) = commands::get_player_username_session(ctx, uuid, username).await?;
+
+	let (player, data, session, skin, suffix) =
+		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
-	let Some(png) = super::image::command::<G>(ctx, mode, &player, &session, background).await?
-	else {
-		return Ok(());
-	};
+	let png = super::image::winstreaks(
+		ctx,
+		&data,
+		&session,
+		skin.image(),
+		suffix.as_deref(),
+		background,
+	);
 
 	ctx.send(
 		poise::CreateReply::new()
 			.content(crate::tip::random(ctx))
-			.components(vec![G::Mode::as_history(ctx, player.uuid, mode)])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;

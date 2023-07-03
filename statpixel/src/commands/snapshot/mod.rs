@@ -26,7 +26,7 @@ macro_rules! generate_history_command {
 			let uuid = util::parse_uuid(uuid)?;
 			let ctx = &context::Context::from_poise(&ctx);
 
-			run::command::<$game>(ctx, username, uuid, mode, Utc::now() - $duration).await
+			run::command::<$game>(ctx, username, uuid, mode, $duration).await
 		}
 	};
 }
@@ -62,7 +62,7 @@ macro_rules! generate_large_history_command {
 			let uuid = util::parse_uuid(uuid)?;
 			let ctx = &context::Context::from_poise(&ctx);
 
-			run::command::<$game>(ctx, username, uuid, mode, Utc::now() - $duration).await
+			run::command::<$game>(ctx, username, uuid, mode, $duration).await
 		}
 	};
 }

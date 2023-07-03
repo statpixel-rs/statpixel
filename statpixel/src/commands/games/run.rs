@@ -1,6 +1,4 @@
-use std::borrow::Cow;
-
-use api::{canvas, prelude::Mode};
+use api::prelude::Mode;
 use poise::serenity_prelude::CreateAttachment;
 use translate::context;
 use uuid::Uuid;
@@ -22,19 +20,15 @@ pub async fn command<G: api::prelude::Game>(
 
 			player.increase_searches(ctx).await?;
 
-			let png: Cow<[u8]> = {
-				let mut surface = G::canvas(
-					ctx,
-					&data,
-					&session,
-					skin.image(),
-					mode,
-					suffix.as_deref(),
-					background,
-				);
-
-				canvas::to_png(&mut surface).into()
-			};
+			let png = super::image::command::<G>(
+				ctx,
+				mode,
+				background,
+				&data,
+				&session,
+				skin.image(),
+				suffix.as_deref(),
+			);
 
 			ctx.send(
 				poise::CreateReply::new()

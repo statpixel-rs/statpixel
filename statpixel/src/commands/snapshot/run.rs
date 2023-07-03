@@ -26,8 +26,9 @@ pub async fn command<G: api::prelude::Game>(
 	username: Option<String>,
 	uuid: Option<Uuid>,
 	mode: Option<G::Mode>,
-	after: DateTime<Utc>,
+	past: chrono::Duration,
 ) -> Result<(), Error> {
+	let after = Utc::now() - past;
 	let (format, background) = util::get_format_colour_from_input(ctx).await;
 
 	match format {
@@ -74,7 +75,12 @@ pub async fn command<G: api::prelude::Game>(
 			ctx.send(
 				poise::CreateReply::new()
 					.content(content)
-					.components(vec![G::Mode::as_snapshot(ctx, player.uuid, after, mode)])
+					.components(vec![G::Mode::as_snapshot(
+						ctx,
+						player.uuid,
+						past.num_nanoseconds().unwrap_or_default(),
+						mode,
+					)])
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;

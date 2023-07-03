@@ -9,6 +9,7 @@ members = [
 	"translate",
 ]
 resolver = "2"
+default-members = ["statpixel"]
 
 [profile.release]
 strip = true

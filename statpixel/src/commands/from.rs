@@ -48,8 +48,7 @@ macro_rules! generate_command {
 				duration = ::chrono::Duration::weeks(1);
 			}
 
-			super::snapshot::run::command::<$game>(ctx, username, uuid, mode, Utc::now() - duration)
-				.await
+			super::snapshot::run::command::<$game>(ctx, username, uuid, mode, duration).await
 		}
 	};
 }
@@ -106,8 +105,7 @@ macro_rules! generate_large_command {
 				duration = ::chrono::Duration::weeks(1);
 			}
 
-			super::snapshot::run::command::<$game>(ctx, username, uuid, mode, Utc::now() - duration)
-				.await
+			super::snapshot::run::command::<$game>(ctx, username, uuid, mode, duration).await
 		}
 	};
 }

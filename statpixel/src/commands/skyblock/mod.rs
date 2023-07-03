@@ -1,3 +1,4 @@
+pub mod image;
 pub mod run;
 
 use api::skyblock::NAMES;
@@ -41,9 +42,7 @@ async fn autocomplete_product(
 			}
 		} else {
 			let result = bazaar_item::table
-				.filter(
-					lower(bazaar_item::name).like(format!("{}%", partial.to_ascii_lowercase())),
-				)
+				.filter(lower(bazaar_item::name).like(format!("{}%", partial.to_ascii_lowercase())))
 				.order(bazaar_item::name.asc())
 				.limit(9)
 				.select(bazaar_item::name)
@@ -76,7 +75,7 @@ pub async fn auctions(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::auctions(ctx, username, uuid).await
+	run::auctions(ctx, username, uuid, None).await
 }
 
 #[poise::command(
@@ -97,7 +96,7 @@ pub async fn profile(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::profile(ctx, username, profile, uuid).await
+	run::profile(ctx, username, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -118,7 +117,7 @@ pub async fn bank(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::bank(ctx, username, profile, uuid).await
+	run::bank(ctx, username, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -139,7 +138,7 @@ pub async fn networth(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::networth(ctx, username, profile, uuid).await
+	run::networth(ctx, username, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -160,7 +159,7 @@ pub async fn pets(
 	let uuid = util::parse_uuid(uuid)?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::pets(ctx, username, profile, uuid).await
+	run::pets(ctx, username, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -201,7 +200,7 @@ macro_rules! inventory_command {
 			let uuid = util::parse_uuid(uuid)?;
 			let ctx = &context::Context::from_poise(&ctx);
 
-			run::$fn(ctx, username, profile, uuid).await
+			run::$fn(ctx, username, profile, uuid, None).await
 		}
 	};
 }

@@ -53,14 +53,16 @@ impl FromStr for Locale {
 #[derive(Clone, Copy)]
 pub enum ContextInteraction<'c> {
 	Command(&'c super::Context<'c>),
-	Component(&'c serenity::ComponentInteraction),
+	Component {
+		interaction: &'c serenity::ComponentInteraction,
+		data: &'c super::Data,
+		ctx: &'c serenity::Context,
+	},
+	External(&'c super::Data),
 }
 
 pub struct Context<'c> {
-	data: &'c super::Data,
-	author: &'c serenity::User,
 	locale: Option<Locale>,
-	serenity: &'c serenity::Context,
 	interaction: ContextInteraction<'c>,
 }
 
@@ -71,21 +73,26 @@ impl<'c> Context<'c> {
 		interaction: &'c serenity::ComponentInteraction,
 	) -> Self {
 		Self {
-			data,
-			author: &interaction.user,
 			locale: Locale::from_str(&interaction.locale).ok(),
-			serenity: ctx,
-			interaction: ContextInteraction::Component(interaction),
+			interaction: ContextInteraction::Component {
+				interaction,
+				data,
+				ctx,
+			},
 		}
 	}
 
 	pub fn from_poise(ctx: &'c super::Context<'c>) -> Self {
 		Self {
-			data: ctx.data(),
-			author: ctx.author(),
 			locale: ctx.locale().and_then(|l| Locale::from_str(l).ok()),
-			serenity: ctx.discord(),
 			interaction: ContextInteraction::Command(ctx),
+		}
+	}
+
+	pub fn external(data: &'c super::Data) -> Self {
+		Self {
+			locale: None,
+			interaction: ContextInteraction::External(data),
 		}
 	}
 
@@ -94,40 +101,80 @@ impl<'c> Context<'c> {
 	}
 
 	pub fn author(&self) -> &serenity::User {
-		self.author
+		match self {
+			Self {
+				interaction: ContextInteraction::Command(ctx),
+				..
+			} => ctx.author(),
+			Self {
+				interaction: ContextInteraction::Component { interaction, .. },
+				..
+			} => &interaction.user,
+			Self {
+				interaction: ContextInteraction::External(..),
+				..
+			} => {
+				unreachable!("Context::author() called on external context")
+			}
+		}
 	}
 
 	pub fn data(&self) -> &super::Data {
-		self.data
+		match self {
+			Self {
+				interaction: ContextInteraction::Command(ctx),
+				..
+			} => ctx.data(),
+			Self {
+				interaction: ContextInteraction::Component { data, .. },
+				..
+			} => data,
+			Self {
+				interaction: ContextInteraction::External(data),
+				..
+			} => data,
+		}
 	}
 
 	pub fn id(&self) -> u64 {
 		match self.interaction {
 			ContextInteraction::Command(ctx) => ctx.id(),
-			ContextInteraction::Component(interaction) => interaction.id.0.get(),
+			ContextInteraction::Component { interaction, .. } => interaction.id.0.get(),
+			ContextInteraction::External(..) => {
+				unreachable!("Context::id() called on external context")
+			}
 		}
 	}
 
 	pub async fn defer(&self) -> Result<(), serenity::Error> {
 		match self.interaction {
 			ContextInteraction::Command(ctx) => ctx.defer().await,
-			ContextInteraction::Component(interaction) => {
-				interaction.defer(self.serenity).await?;
+			ContextInteraction::Component {
+				interaction, ctx, ..
+			} => {
+				interaction.defer(ctx).await?;
 
 				Ok(())
 			}
+			ContextInteraction::External(..) => Ok(()),
 		}
 	}
 
 	pub async fn send(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
 		match self.interaction {
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
-			ContextInteraction::Component(interaction) => self._send(interaction, reply).await,
+			ContextInteraction::Component {
+				interaction, ctx, ..
+			} => self._send(ctx, interaction, reply).await,
+			ContextInteraction::External(..) => {
+				unreachable!("Context::send() called on external context")
+			}
 		}
 	}
 
 	async fn _send(
 		&self,
+		ctx: &serenity::Context,
 		interaction: &serenity::ComponentInteraction,
 		data: poise::CreateReply,
 	) -> Result<(), serenity::Error> {
@@ -147,7 +194,7 @@ impl<'c> Context<'c> {
 			edit = edit.new_attachment(attachment);
 		}
 
-		interaction.edit_response(self.serenity, edit).await?;
+		interaction.edit_response(ctx, edit).await?;
 
 		Ok(())
 	}

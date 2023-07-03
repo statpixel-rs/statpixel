@@ -9,6 +9,8 @@ use super::member::Member;
 #[derive(Deserialize, Clone, Debug, Default)]
 #[serde(default)]
 pub struct Profile {
+	#[serde(rename = "profile_id")]
+	pub id: Uuid,
 	pub members: HashMap<Uuid, Member>,
 	pub banking: Banking,
 }
