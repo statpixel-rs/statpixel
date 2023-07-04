@@ -369,8 +369,8 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Root {
-					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::Root {
+					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
 				}))
 			}
@@ -382,8 +382,8 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Snapshot {
-					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::Snapshot {
+					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
 					past,
 				}))
@@ -396,8 +396,8 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::History {
-					kind: crate::id::Mode::#ident (#enum_ident ::#ty),
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::History {
+					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
 				}))
 			}
@@ -409,8 +409,8 @@ impl ToTokens for GameInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::encode(crate::id::Id::Project {
-					kind: crate::id::ProjectMode::#ident (#enum_ident ::#ty, kind),
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::Project {
+					kind: crate::command::ProjectMode::#ident (#enum_ident ::#ty, kind),
 					uuid,
 				}))
 			}
@@ -1945,6 +1945,32 @@ impl ToTokens for GameInputReceiver {
 			})
 		});
 
+		let impl_kind_try_from_str_lower = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
+
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', " ");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			let name = f.ident.to_string().replace('_', " ");
+			let string = if let Some(ref tr) = f.tr {
+				tr.replace('-', " ")
+			} else {
+				name
+			};
+
+			Some(quote! {
+				#string => #enum_kind_ident ::#id
+			})
+		});
+
 		let kind_level_match_project = {
 			let val = {
 				quote! {
@@ -2058,6 +2084,129 @@ impl ToTokens for GameInputReceiver {
 				}
 			}
 		};
+
+		let kind_level_match = quote! {
+			#enum_kind_ident ::level => {
+				let stats = &data.stats.#path;
+				let xp = #calc ::convert(&#xp_field_overall);
+				let level = #calc ::get_level(xp);
+
+				std::borrow::Cow::Owned(#level_fmt_field_overall .clone())
+			}
+		};
+
+		let kind_enum_match = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
+
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			let val = {
+				let sum = if let Some(path) = f.path.as_ref() {
+					let path = parse_str_to_dot_path(path);
+
+					quote! { data.stats.#path.#name }
+				} else if f.min.is_some() {
+					let mut apply = modes.iter().filter_map(|m| {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some() || mode.skip_field.iter().any(|f| f.eq(name))
+						{
+							None
+						} else {
+							let ident = m.ident.as_ref().unwrap();
+
+							Some(ident)
+						}
+					});
+
+					let first = apply.next().unwrap();
+					let other = apply.map(|ident| {
+						quote! {
+							min = min.min(stats.#ident.#name);
+						}
+					});
+
+					quote! {
+						{
+							let mut min = stats.#first.#name;
+
+							#(#other)*
+
+							min
+						}
+					}
+				} else {
+					sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(name))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats")),
+						name,
+					)
+				};
+
+				if let Some(div) = f.div.as_ref() {
+					let sum_bottom = sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(div))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats")),
+						div,
+					);
+
+					quote! {
+						{
+							let stats = &data.stats.#path;
+
+							(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
+						}
+					}
+				} else {
+					quote! {
+						{
+							#sum
+						}
+					}
+				}
+			};
+
+			Some(quote! {
+				#enum_kind_ident ::#id => {
+					std::borrow::Cow::Owned(crate::canvas::label::ToFormatted::to_formatted_label(&#val, ctx).into_owned())
+				}
+			})
+		});
 
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
@@ -2219,6 +2368,14 @@ impl ToTokens for GameInputReceiver {
 					}
 				}
 
+				pub fn try_from_str_lower(value: &str) -> Option<Self> {
+					Some(match value {
+						"level" => #enum_kind_ident ::level,
+						#(#impl_kind_try_from_str_lower,)*
+						_ => return None,
+					})
+				}
+
 				pub fn slice() -> &'static [#enum_kind_ident] {
 					const KINDS: [#enum_kind_ident; #kinds_len + 1] = [
 						#enum_kind_ident ::level,
@@ -2319,11 +2476,11 @@ impl ToTokens for GameInputReceiver {
 					selected: Option<#enum_ident>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
-						ctx.id().to_string(),
+						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Root {
-									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::Root {
+									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
 								})),
 								#(#mode_menu_root),*
@@ -2347,11 +2504,11 @@ impl ToTokens for GameInputReceiver {
 					selected: Option<#enum_ident>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
-						ctx.id().to_string(),
+						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Snapshot {
-									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::Snapshot {
+									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
 									past,
 								})),
@@ -2375,11 +2532,11 @@ impl ToTokens for GameInputReceiver {
 					selected: Option<#enum_ident>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
-						ctx.id().to_string(),
+						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::History {
-									kind: crate::id::Mode::#ident (#enum_ident ::Overall),
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::History {
+									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
 								})),
 								#(#mode_menu_history),*
@@ -2403,11 +2560,11 @@ impl ToTokens for GameInputReceiver {
 					selected: Option<#enum_ident>
 				) -> ::poise::serenity_prelude::CreateActionRow {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
-						ctx.id().to_string(),
+						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::encode(crate::id::Id::Project {
-									kind: crate::id::ProjectMode::#ident (#enum_ident ::Overall, kind),
+								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::Project {
+									kind: crate::command::ProjectMode::#ident (#enum_ident ::Overall, kind),
 									uuid,
 								})),
 								#(#mode_menu_project),*
@@ -2523,6 +2680,15 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			impl #imp #ident #ty #wher {
+				pub fn from_kind<'t, 'c: 't>(ctx: &'c ::translate::context::Context<'c>, data: &'t crate::player::data::Data, kind: &#enum_kind_ident) -> std::borrow::Cow<'t, str> {
+					let stats = &data.stats.#path;
+
+					match kind {
+						#kind_level_match,
+						#(#kind_enum_match)*
+					}
+				}
+
 				pub async fn autocomplete<'a>(ctx: ::translate::Context<'a>, partial: ::std::string::String) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
 					::futures::StreamExt::take(
 						::futures::StreamExt::filter_map(::futures::stream::iter(#enum_ident ::slice()), move |mode| {

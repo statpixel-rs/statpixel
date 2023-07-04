@@ -1,8 +1,9 @@
 #[allow(clippy::wildcard_imports)]
 use api::player::stats::*;
 
-use api::id::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode};
+use api::command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode};
 use chrono::Duration;
+use poise::serenity_prelude as serenity;
 use tracing::info;
 use translate::{context::Context, Error};
 
@@ -51,6 +52,20 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 	info!(id = ?id, "dispatching command");
 
 	match id {
+		Id::Builder { shapes, uuid } => {
+			let (_, data, session, skin, _) =
+				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
+			let bytes = super::commands::builder::build(ctx, &shapes, &data, &session, &skin);
+
+			ctx.send(
+				poise::CreateReply::new()
+					.content(crate::tip::random(ctx))
+					.attachment(serenity::CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
+			)
+			.await?;
+
+			Ok(())
+		}
 		Id::Root { kind, uuid } => match kind {
 			Mode::Arcade(mode) => impl_root!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_root!(ctx, uuid, mode, arena::Arena),

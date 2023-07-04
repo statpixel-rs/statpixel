@@ -1,4 +1,4 @@
-use api::id::SkyBlockMode;
+use api::command::SkyBlockMode;
 use poise::serenity_prelude::CreateAttachment;
 use translate::{context, Error};
 use uuid::Uuid;

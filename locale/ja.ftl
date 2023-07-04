@@ -44,6 +44,90 @@ tip-winstreak = <:knowledge_book:1117179094556233828> </winstreaks:1124767485384
 tip-recent = <:knowledge_book:1117179094556233828> </recent:1123839349428080690>で最近のゲームを表示します。
 tip-bazaar = <:knowledge_book:1117179094556233828> </skyblock bazaar:1113624864826327074>でSkyBlockバザー価格を表示します。
 
+# /custom
+
+custom = custom
+  .description = 識別子によってコマンドを実行します
+  .id = id
+  .id-description = コマンドの識別子
+
+invalid-identifier = 無効な識別子が提供されました
+invalid-identifier-description = 提供された識別子は無効です。 StatPixelからこの識別子が与えられた場合は、識別スキームが更新されているため、新しい識別子を取得する必要があります。
+invalid-identifier-command-description = 提供された識別子はコマンドではありません。
+
+# /builder
+
+builder = builder
+  .description = 新しいカスタム画像ビルダーを作成します
+
+builder-welcome =
+  StatPixel画像ビルダーへようこそ。
+
+  最初のコンポーネントを追加するには、下のボタンをクリックして、完了したら作成ボタンを使用して最終的に作成します。
+  何かを間違えた場合は、元に戻すを使用して元に戻します。 Redoボタンは現在ありませんので、注意してください！
+
+  作成されたら、提供された識別子を使用して、いつでも更新された統計でその画像を表示し、友達と共有します！
+  また、画像APIと共に使用して、フォーラム署名やインターネット上の他の場所に表示することもできます。
+
+down = 下
+down-description = 直前の形状の下に形状を追加します。
+down-start = 下（開始）
+down-start-description = 直前のものの下に形状を追加しますが、すべて左にあります。
+right = 右
+right-description = 直前の形状の右に形状を追加します。
+right-start = 右（開始）
+right-start-description = 直前の形状の右に形状を追加しますが、すべて上にあります。
+select-position = 形状の位置を選択します
+
+title = タイトル
+title-description = ユーザー名を表示します。
+level-description = 任意のゲームのレベルを表示します。
+skin = スキン
+skin-description = プレイヤーのスキンの画像。
+bubble = バブル
+bubble-description = 任意のゲームの任意の統計を表示するボックス。
+subtitle = サブタイトル
+subtitle-description = サブタイトルは、最大16文字までの任意のテキストを表示するために使用されます。
+select-shape = 形状タイプを選択します
+select-colour = 色を選択します
+
+add-shape = 形状を追加
+undo = 元に戻す
+create = 作成
+
+subtitle-modal-title = 新しいサブタイトル形状を作成する
+subtitle-text = サブタイトルテキスト
+subtitle-placeholder = 最大16文字を入力してください
+
+level-modal-title = 新しいレベル形状を作成する
+level-type = レベルタイプ
+level-type-placeholder = bedwars、buildbattle、duels、network、pit、skywars、woolwarsのいずれか
+
+bubble-modal-title = 新しいバブル形状を作成する
+game-type = ゲームタイプ
+game-type-placeholder = ドキュメントを参照：https://statpixel.xyz/docs/builder
+statistic = 統計
+statistic-placeholder = ドキュメントを参照：https://statpixel.xyz/docs/builder
+
+create-modal-title = 画像の作成を完了する
+username = ユーザー名
+username-placeholder = 使用するユーザー名を入力してください
+
+invalid-statistic =
+  {$game}の無効な統計{$statistic}。 ドキュメントを確認して、もう一度お試しください。
+
+invalid-level-type =
+  無効なレベルタイプ{$kind}。 ドキュメントを確認して、もう一度お試しください。
+
+invalid-game-type =
+  無効なゲームタイプ{$game}。 ドキュメントを確認して、もう一度お試しください。
+
+image-created =
+  あなたの画像が作成されました！
+
+  識別子：{$id}
+  リンク：{$link}
+
 # /about
 
 author = 作者 🤖

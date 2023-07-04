@@ -185,6 +185,45 @@ impl Type {
 	}
 
 	#[must_use]
+	pub fn try_from_clean_name_lower(value: &str) -> Option<Self> {
+		Some(match value {
+			"limbo" => Self::Limbo,
+			"lobby" => Self::Lobby,
+			"quake" => Self::Quake,
+			"walls" => Self::Walls,
+			"paintball" => Self::Paintball,
+			"blitz survival games" | "blitz" | "blitzsg" | "blitzsurvivalgames" => Self::BlitzSg,
+			"tnt games" | "tntgames" => Self::TntGames,
+			"vampirez" => Self::VampireZ,
+			"mega walls" | "megawalls" => Self::MegaWalls,
+			"arcade" => Self::Arcade,
+			"arena" => Self::Arena,
+			"uhc champions" | "uhc" | "uhcchampions" => Self::Uhc,
+			"cops and crims" | "cnc" | "copsandcrims" => Self::CopsAndCrims,
+			"warlords" => Self::Warlords,
+			"smash heroes" | "smash" | "smashheroes" => Self::SmashHeroes,
+			"turbo kart racers" | "tkr" | "turbokartracers" => Self::TurboKartRacers,
+			"housing" => Self::Housing,
+			"sky wars" | "skywars" => Self::SkyWars,
+			"crazy walls" | "crazywalls" => Self::CrazyWalls,
+			"speed uhc" | "speeduhc" => Self::SpeedUhc,
+			"skyclash" => Self::SkyClash,
+			"classic games" | "classic" | "classicgames" => Self::Classic,
+			"prototype" => Self::Prototype,
+			"bed wars" | "bedwars" => Self::BedWars,
+			"murder mystery" => Self::MurderMystery,
+			"build battle" | "buildbattle" => Self::BuildBattle,
+			"duels" => Self::Duels,
+			"skyblock" => Self::SkyBlock,
+			"pit" => Self::Pit,
+			"replay" => Self::Replay,
+			"smp" => Self::Smp,
+			"wool wars" | "woolwars" => Self::WoolWars,
+			_ => return None,
+		})
+	}
+
+	#[must_use]
 	pub fn try_from_clean_name(value: &str) -> Option<Self> {
 		Some(match value {
 			"Limbo" => Self::Limbo,

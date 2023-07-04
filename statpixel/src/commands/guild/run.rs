@@ -1,4 +1,4 @@
-use api::id::GuildMode;
+use api::command::GuildMode;
 use chrono::Utc;
 use poise::serenity_prelude::CreateAttachment;
 use translate::{context, tr};

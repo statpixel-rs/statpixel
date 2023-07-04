@@ -1,10 +1,11 @@
 #![warn(clippy::pedantic)]
 #![allow(clippy::cast_possible_wrap)]
+#![allow(clippy::wildcard_imports)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 
-pub use api::id::Id;
+pub use api::command::Id;
 use api::skyblock;
 use database::{get_pool, schema::usage};
 use diesel::ExpressionMethods;
@@ -30,6 +31,7 @@ mod util;
 
 pub use constants::*;
 pub use statpixel::*;
+use util::error_embed;
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";
@@ -52,9 +54,11 @@ async fn main() {
 		commands::games::arena(),
 		commands::background::background(),
 		commands::games::bedwars(),
+		commands::builder::builder(),
 		commands::games::blitz(),
 		commands::games::buildbattle(),
 		commands::games::copsandcrims(),
+		commands::custom::custom(),
 		commands::snapshot::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
@@ -198,6 +202,7 @@ async fn pre_command(ctx: Context<'_>) {
 		.ok();
 }
 
+#[allow(clippy::too_many_lines)]
 async fn event_handler(
 	event: &FullEvent,
 	_framework: poise::FrameworkContext<'_, Data, Error>,
@@ -223,23 +228,69 @@ async fn event_handler(
 		}
 		FullEvent::InteractionCreate {
 			ctx,
+			interaction: Interaction::Modal(interaction),
+		} => {
+			let Some(id) = api::id::decode(&interaction.data.custom_id) else {
+				return Ok(());
+			};
+
+			match id {
+				api::id::Id::Builder(id) => {
+					if let Err(e) =
+						commands::builder::modal_handler(ctx, interaction, data, id).await
+					{
+						let ctx = context::Context::from_modal(ctx, data, interaction);
+						util::error(&ctx, e).await;
+					}
+				}
+				api::id::Id::Command(..) => return Ok(()),
+			}
+		}
+		FullEvent::InteractionCreate {
+			ctx,
 			interaction: Interaction::Component(interaction),
 		} => {
-			let serenity::ComponentInteractionDataKind::StringSelect { ref values } =
-				interaction.data.kind
-			else {
-				return Ok(());
-			};
-
-			let Some(id) = values.get(0).and_then(|p| api::id::decode(p)) else {
-				return Ok(());
-			};
-
 			let ctx = context::Context::from_component(ctx, data, interaction);
+			let values = match &interaction.data.kind {
+				serenity::ComponentInteractionDataKind::StringSelect { ref values } => values,
+				serenity::ComponentInteractionDataKind::Button => {
+					let Some(api::id::Id::Builder(id)) =
+						api::id::decode(&interaction.data.custom_id)
+					else {
+						return Ok(());
+					};
 
-			if let Err(e) = crate::id::map(&ctx, id).await {
-				util::error(&ctx, e).await;
+					return commands::builder::handler(&ctx, interaction, id).await;
+				}
+				_ => return Ok(()),
 			};
+
+			if interaction.data.custom_id == "select" {
+				let Some(id) = values.get(0).and_then(|p| api::id::decode(p)) else {
+					info!(?interaction, "deprecated interaction");
+
+					return Ok(ctx.send(error_embed(
+						"Deprecated interaction",
+						"Internal identifiers for StatPixel interactions have changed since this component was created. Please create a new one and try again."
+					)).await?);
+				};
+
+				if let api::id::Id::Command(id) = id {
+					if let Err(e) = crate::id::map(&ctx, id).await {
+						util::error(&ctx, e).await;
+					}
+				}
+			} else {
+				let Some(id) = api::id::decode(&interaction.data.custom_id) else {
+					return Ok(());
+				};
+
+				if let api::id::Id::Builder(id) = id {
+					if let Err(e) = commands::builder::handler(&ctx, interaction, id).await {
+						util::error(&ctx, e).await;
+					}
+				}
+			}
 		}
 		FullEvent::GuildCreate { guild, .. } => {
 			if GUILDS.write().await.insert(guild.id.0.get()) && tracing::enabled!(Level::INFO) {

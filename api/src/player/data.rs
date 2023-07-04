@@ -54,6 +54,19 @@ pub struct Data {
 	pub language: super::language::Language,
 }
 
+impl Data {
+	#[must_use]
+	pub fn placeholder() -> Self {
+		Self {
+			username: "StatPixel".to_string(),
+			rank: Some("MVP_PLUS".to_string()),
+			package_rank: Some("MVP_PLUS_PLUS".to_string()),
+			monthly_rank_colour: Some(Colour::Gold),
+			..Self::default()
+		}
+	}
+}
+
 #[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
 #[serde(default)]
 pub struct Gifting {

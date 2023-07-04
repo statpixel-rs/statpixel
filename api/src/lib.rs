@@ -1,6 +1,7 @@
 #![warn(clippy::pedantic)]
 #![allow(clippy::similar_names)]
 #![allow(clippy::enum_glob_use)]
+#![allow(clippy::wildcard_imports)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
@@ -10,8 +11,10 @@ mod extras;
 
 pub use macros;
 
+pub mod builder;
 pub mod cache;
 pub mod canvas;
+pub mod command;
 pub(crate) mod de;
 pub mod game;
 pub mod guild;

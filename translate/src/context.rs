@@ -1,4 +1,7 @@
-use std::str::FromStr;
+use std::{
+	str::FromStr,
+	sync::atomic::{AtomicBool, Ordering},
+};
 
 use poise::serenity_prelude as serenity;
 
@@ -50,11 +53,16 @@ impl FromStr for Locale {
 	}
 }
 
-#[derive(Clone, Copy)]
 pub enum ContextInteraction<'c> {
 	Command(&'c super::Context<'c>),
 	Component {
 		interaction: &'c serenity::ComponentInteraction,
+		data: &'c super::Data,
+		ctx: &'c serenity::Context,
+		deferred: AtomicBool,
+	},
+	Modal {
+		interaction: &'c serenity::ModalInteraction,
 		data: &'c super::Data,
 		ctx: &'c serenity::Context,
 	},
@@ -75,6 +83,22 @@ impl<'c> Context<'c> {
 		Self {
 			locale: Locale::from_str(&interaction.locale).ok(),
 			interaction: ContextInteraction::Component {
+				interaction,
+				data,
+				ctx,
+				deferred: AtomicBool::new(false),
+			},
+		}
+	}
+
+	pub fn from_modal(
+		ctx: &'c serenity::Context,
+		data: &'c super::Data,
+		interaction: &'c serenity::ModalInteraction,
+	) -> Self {
+		Self {
+			locale: Locale::from_str(&interaction.locale).ok(),
+			interaction: ContextInteraction::Modal {
 				interaction,
 				data,
 				ctx,
@@ -111,7 +135,7 @@ impl<'c> Context<'c> {
 				..
 			} => &interaction.user,
 			Self {
-				interaction: ContextInteraction::External(..),
+				interaction: ContextInteraction::External(..) | ContextInteraction::Modal { .. },
 				..
 			} => {
 				unreachable!("Context::author() called on external context")
@@ -130,9 +154,24 @@ impl<'c> Context<'c> {
 				..
 			} => data,
 			Self {
+				interaction: ContextInteraction::Modal { data, .. },
+				..
+			} => data,
+			Self {
 				interaction: ContextInteraction::External(data),
 				..
 			} => data,
+		}
+	}
+
+	pub fn discord(&self) -> &serenity::Context {
+		match self.interaction {
+			ContextInteraction::Command(ctx) => ctx.discord(),
+			ContextInteraction::Component { ctx, .. } => ctx,
+			ContextInteraction::Modal { ctx, .. } => ctx,
+			ContextInteraction::External(..) => {
+				unreachable!("Context::discord() called on external context")
+			}
 		}
 	}
 
@@ -140,45 +179,59 @@ impl<'c> Context<'c> {
 		match self.interaction {
 			ContextInteraction::Command(ctx) => ctx.id(),
 			ContextInteraction::Component { interaction, .. } => interaction.id.0.get(),
-			ContextInteraction::External(..) => {
+			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => {
 				unreachable!("Context::id() called on external context")
 			}
 		}
 	}
 
 	pub async fn defer(&self) -> Result<(), serenity::Error> {
-		match self.interaction {
+		match &self.interaction {
 			ContextInteraction::Command(ctx) => ctx.defer().await,
 			ContextInteraction::Component {
-				interaction, ctx, ..
+				interaction,
+				ctx,
+				deferred,
+				..
 			} => {
+				if deferred.load(Ordering::SeqCst) {
+					return Ok(());
+				}
+
+				deferred.store(true, Ordering::SeqCst);
 				interaction.defer(ctx).await?;
 
 				Ok(())
 			}
-			ContextInteraction::External(..) => Ok(()),
+			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => Ok(()),
 		}
 	}
 
 	pub async fn send(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
-		match self.interaction {
+		match &self.interaction {
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
 			ContextInteraction::Component {
+				interaction,
+				ctx,
+				deferred,
+				..
+			} => self.send_component(ctx, interaction, deferred, reply).await,
+			ContextInteraction::Modal {
 				interaction, ctx, ..
-			} => self._send(ctx, interaction, reply).await,
+			} => self.send_modal(ctx, interaction, reply).await,
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
 		}
 	}
 
-	async fn _send(
+	async fn send_modal(
 		&self,
 		ctx: &serenity::Context,
-		interaction: &serenity::ComponentInteraction,
+		interaction: &serenity::ModalInteraction,
 		data: poise::CreateReply,
 	) -> Result<(), serenity::Error> {
-		let mut edit = serenity::EditInteractionResponse::new().embeds(data.embeds);
+		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
 
 		if let Some(content) = data.content {
 			edit = edit.content(content);
@@ -188,13 +241,65 @@ impl<'c> Context<'c> {
 			edit = edit.components(components);
 		}
 
-		edit = edit.clear_existing_attachments();
+		edit = edit.files(data.attachments);
 
-		for attachment in data.attachments {
-			edit = edit.new_attachment(attachment);
+		interaction
+			.create_response(
+				ctx,
+				serenity::CreateInteractionResponse::UpdateMessage(edit),
+			)
+			.await?;
+
+		Ok(())
+	}
+
+	async fn send_component(
+		&self,
+		ctx: &serenity::Context,
+		interaction: &serenity::ComponentInteraction,
+		deferred: &AtomicBool,
+		data: poise::CreateReply,
+	) -> Result<(), serenity::Error> {
+		if deferred.load(Ordering::SeqCst) {
+			let mut edit = serenity::EditInteractionResponse::new().embeds(data.embeds);
+
+			if let Some(content) = data.content {
+				edit = edit.content(content);
+			}
+
+			if let Some(components) = data.components {
+				edit = edit.components(components);
+			}
+
+			if !data.attachments.is_empty() {
+				edit = edit.clear_existing_attachments();
+			}
+
+			for attachment in data.attachments {
+				edit = edit.new_attachment(attachment);
+			}
+
+			interaction.edit_response(ctx, edit).await?;
+		} else {
+			let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
+
+			if let Some(content) = data.content {
+				edit = edit.content(content);
+			}
+
+			if let Some(components) = data.components {
+				edit = edit.components(components);
+			}
+
+			edit = edit.files(data.attachments);
+
+			interaction
+				.create_response(
+					ctx,
+					serenity::CreateInteractionResponse::UpdateMessage(edit),
+				)
+				.await?;
 		}
-
-		interaction.edit_response(ctx, edit).await?;
 
 		Ok(())
 	}

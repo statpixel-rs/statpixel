@@ -44,6 +44,90 @@ tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with 
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
 
+# /custom
+
+custom = custom
+  .description = Executes a command by its identifier
+  .id = id
+  .id-description = The identifier of the command
+
+invalid-identifier = Invalid identifier provided
+invalid-identifier-description = The provided identifier is invalid. If you were given this identifier from StatPixel, then the identification scheme has been updated and you will need to obtain a new one.
+invalid-identifier-command-description = The provided identifier is not a command.
+
+# /builder
+
+builder = builder
+  .description = Creates a new custom image builder
+
+builder-welcome =
+  Welcome to the StatPixel image builder.
+
+  Click the buttons below to add your first component, then use the Create button to finalize it once you're done.
+  If you mess something up, use Undo to undo it. There is currently no Redo button, so be careful!
+
+  Once created, use the provided identifier to display that image with your updated statistics at any time, and share it with your friends!
+  You can also use it with our image API to display it in your forum signature or anywhere else on the internet.
+
+down = Down
+down-description = Adds a shape directly below the previous shape.
+down-start = Down (start)
+down-start-description = Adds a shape below the previous one, but all the way to the left.
+right = Right
+right-description = Adds a shape to the right of the previous shape.
+right-start = Right (start)
+right-start-description = Adds a shape to the right of the previous shape, but all the way at the top.
+select-position = Select the position for the shape
+
+title = Title
+title-description = Displays a username.
+level-description = Displays the level of any game.
+skin = Skin
+skin-description = An image of the player's skin.
+bubble = Bubble
+bubble-description = A box to display any statistic in any game.
+subtitle = Subtitle
+subtitle-description = A subtitle, used to display arbitrary text up to 16 characters.
+select-shape = Select a shape type
+select-colour = Select a colour
+
+add-shape = Add Shape
+undo = Undo
+create = Create
+
+subtitle-modal-title = Create a new subtitle shape
+subtitle-text = Subtitle text
+subtitle-placeholder = Enter up to 16 characters
+
+level-modal-title = Create a new level shape
+level-type = Level type
+level-type-placeholder = One of: bedwars, buildbattle, duels, network, pit, skywars, woolwars
+
+bubble-modal-title = Create a new bubble shape
+game-type = Game type
+game-type-placeholder = See documentation: https://statpixel.xyz/docs/builder
+statistic = Statistic
+statistic-placeholder = See documentation: https://statpixel.xyz/docs/builder
+
+create-modal-title = Finish building your image
+username = Username
+username-placeholder = Enter username to use
+
+invalid-statistic =
+  Invalid statistic {$statistic} for {$game}. Check the documentation and try again.
+
+invalid-level-type =
+  Invalid level type {$kind}. Check the documentation and try again.
+
+invalid-game-type =
+  Invalid game type {$game}. Check the documentation and try again.
+
+image-created =
+  Your image has been created!
+
+  Identifier: {$id}
+  Link: {$link}
+
 # /about
 
 author = Author 🤖

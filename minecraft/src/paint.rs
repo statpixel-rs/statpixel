@@ -44,7 +44,9 @@ paint_colour!(BRONZE, (255, 205, 127, 50));
 paint_colour!(BACKGROUND, (128, 15, 24, 32));
 paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
-#[derive(Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta)]
+#[derive(
+	Default, Clone, Copy, Debug, PartialEq, Eq, FromMeta, bincode::Encode, bincode::Decode,
+)]
 #[darling(default)]
 pub enum Paint {
 	Black,

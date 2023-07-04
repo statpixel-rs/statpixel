@@ -1,3 +1,5 @@
+use std::borrow::Cow;
+
 use minecraft::{paint::Paint, style::MinecraftFont, text::Text};
 use skia_safe::{
 	textlayout::{FontCollection, Paragraph, ParagraphBuilder, ParagraphStyle, TextAlign},
@@ -173,6 +175,32 @@ impl Body {
 				},
 				Text {
 					text: &value.to_formatted_label(ctx),
+					paint,
+					font: MinecraftFont::Normal,
+					size: None,
+				},
+			])
+			.build()
+	}
+
+	#[must_use]
+	#[allow(clippy::needless_pass_by_value)]
+	pub fn from_bubble_cow(value: Cow<str>, label: &str, paint: Paint) -> Paragraph {
+		Self::new(40., TextAlign::Center)
+			.extend(&[
+				Text {
+					text: label,
+					paint,
+					font: MinecraftFont::Normal,
+					size: Some(20.),
+				},
+				Text {
+					text: "\n",
+					size: Some(20.),
+					..Default::default()
+				},
+				Text {
+					text: value.as_ref(),
 					paint,
 					font: MinecraftFont::Normal,
 					size: None,

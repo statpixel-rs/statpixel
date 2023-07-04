@@ -44,6 +44,88 @@ tip-winstreak = <:knowledge_book:1117179094556233828> Zeige deine Winstreaks mit
 tip-recent = <:knowledge_book:1117179094556233828> Zeige deine letzten Spiele mit </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Zeige SkyBlock Bazaar Preise mit </skyblock bazaar:1113624864826327074>.
 
+# /custom
+
+custom = custom
+  .description = Führt einen Befehl anhand seiner ID aus
+  .id = id
+  .id-description = Die ID des Befehls
+
+invalid-identifier = Ungültige ID angegeben
+invalid-identifier-description = Die angegebene ID ist ungültig. Wenn Sie diese ID von StatPixel erhalten haben, wurde das Identifizierungsschema aktualisiert und Sie müssen eine neue erhalten.
+invalid-identifier-command-description = Die angegebene ID ist kein Befehl.
+
+# /builder
+
+builder = builder
+  .description = Erstellt einen neuen benutzerdefinierten Bildgenerator
+
+builder-welcome =
+  Willkommen beim StatPixel Bildgenerator.
+
+  Klicken Sie unten auf die Schaltflächen, um Ihre erste Komponente hinzuzufügen, und verwenden Sie dann die Schaltfläche Erstellen, um sie abzuschließen, wenn Sie fertig sind.
+  Wenn Sie etwas durcheinander bringen, verwenden Sie Rückgängig, um es rückgängig zu machen. Es gibt derzeit keine Schaltfläche Wiederholen, also seien Sie vorsichtig!
+
+  Nach der Erstellung verwenden Sie die bereitgestellte ID, um dieses Bild mit Ihren aktualisierten Statistiken jederzeit anzuzeigen und mit Ihren Freunden zu teilen!
+  Sie können es auch mit unserer Bild-API verwenden, um es in Ihrer Forensignatur oder an anderer Stelle im Internet anzuzeigen.
+
+down = Runter
+down-description = Fügt eine Form direkt unter der vorherigen Form hinzu.
+down-start = Runter (start)
+down-start-description = Fügt eine Form unter der vorherigen Form hinzu, aber ganz links.
+right = Rechts
+right-description = Fügt eine Form rechts von der vorherigen Form hinzu.
+right-start = Rechts (start)
+right-start-description = Fügt eine Form rechts von der vorherigen Form hinzu, aber ganz oben.
+select-position = Wählen Sie die Position für die Form
+
+title = Titel
+title-description = Zeigt einen Benutzernamen an.
+level-description = Zeigt das Level eines beliebigen Spiels an.
+skin = Skin
+skin-description = Ein Bild des Skins des Spielers.
+bubble = Blase
+bubble-description = Eine Box, um eine beliebige Statistik in einem beliebigen Spiel anzuzeigen.
+subtitle = Untertitel
+subtitle-description = Ein Untertitel, der verwendet wird, um beliebigen Text bis zu 16 Zeichen anzuzeigen.
+select-shape = Wählen Sie einen Formtyp
+select-colour = Wählen Sie eine Farbe
+
+add-shape = Form hinzufügen
+undo = Rückgängig
+create = Erstellen
+
+subtitle-modal-title = Erstellen Sie eine neue Untertitel-Form
+subtitle-text = Untertiteltext
+subtitle-placeholder = Geben Sie bis zu 16 Zeichen ein
+
+level-modal-title = Erstellen Sie eine neue Level-Form
+level-type = Leveltyp
+level-type-placeholder = Einer von: bedwars, buildbattle, duels, network, pit, skywars, woolwars
+
+bubble-modal-title = Erstellen Sie eine neue Blasenform
+game-type = Spieltyp
+game-type-placeholder = Siehe Dokumentation: https://statpixel.xyz/docs/builder
+
+create-modal-title = Beenden Sie den Aufbau Ihres Bildes
+username = Benutzername
+username-placeholder = Geben Sie den zu verwendenden Benutzernamen ein
+
+invalid-statistic =
+  Ungültige Statistik {$statistic} für {$game}. Überprüfen Sie die Dokumentation und versuchen Sie es erneut.
+
+invalid-level-type =
+  Ungültiger Leveltyp {$kind}. Überprüfen Sie die Dokumentation und versuchen Sie es erneut.
+
+invalid-game-type =
+  Ungültiger Spieltyp {$game}. Überprüfen Sie die Dokumentation und versuchen Sie es erneut.
+
+image-created =
+  Ihr Bild wurde erstellt!
+
+  Identifikator: {$id}
+  Link: {$link}
+
 # /about
 
 author = Autor 🤖

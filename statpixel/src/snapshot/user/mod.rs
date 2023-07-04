@@ -305,13 +305,39 @@ pub async fn get(
 	player: &Player,
 	timeframe: DateTime<Utc>,
 ) -> Result<Option<(Data, DateTime<Utc>)>, Error> {
-	let result = snapshot::table
+	// Get the oldest snapshot after the timeframe
+	let first = snapshot::table
 		.filter(snapshot::created_at.ge(timeframe))
 		.filter(snapshot::uuid.eq(player.uuid))
 		.select((snapshot::data, snapshot::created_at))
 		.order(snapshot::created_at.asc())
 		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
 		.await;
+
+	// Get the newest snapshot before the timeframe
+	let last = snapshot::table
+		.filter(snapshot::created_at.le(timeframe))
+		.filter(snapshot::uuid.eq(player.uuid))
+		.select((snapshot::data, snapshot::created_at))
+		.order(snapshot::created_at.desc())
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.await;
+
+	// Use the one that is closest to the timeframe
+	let result = match (first, last) {
+		(Ok(first), Ok(last)) => {
+			if (timeframe.timestamp_millis() - first.1.timestamp_millis()).abs()
+				< (timeframe.timestamp_millis() - last.1.timestamp_millis()).abs()
+			{
+				Ok(first)
+			} else {
+				Ok(last)
+			}
+		}
+		(Ok(first), Err(_)) => Ok(first),
+		(Err(_), Ok(last)) => Ok(last),
+		(Err(e), Err(_)) => Err(e),
+	};
 
 	match result {
 		Ok((data, created_at)) => Ok(Some((decode(data.as_slice())?, created_at))),

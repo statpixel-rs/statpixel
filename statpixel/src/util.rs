@@ -315,7 +315,10 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		}
 	};
 
-	if let Err(e) = ctx.send(poise::CreateReply::new().content(content)).await {
+	if let Err(e) = ctx
+		.send(poise::CreateReply::new().content(content).ephemeral(true))
+		.await
+	{
 		error!(e = ?e, "failed to send error message");
 	}
 }

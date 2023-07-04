@@ -44,6 +44,88 @@ tip-winstreak = <:knowledge_book:1117179094556233828> Affichez vos séries de vi
 tip-recent = <:knowledge_book:1117179094556233828> Affichez vos dernières parties avec </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Affichez les prix du bazar SkyBlock avec </skyblock bazaar:1113624864826327074>.
 
+custom = custom
+  .description = Exécute une commande par son identifiant
+  .id = id
+  .id-description = L'identifiant de la commande
+
+invalid-identifier = Identifiant invalide fourni
+invalid-identifier-description = L'identifiant fourni est invalide. Si vous avez reçu cet identifiant de StatPixel, le schéma d'identification a été mis à jour et vous devrez en obtenir un nouveau.
+invalid-identifier-command-description = L'identifiant fourni n'est pas une commande.
+
+# /builder
+
+builder = builder
+  .description = Crée un nouveau constructeur d'images personnalisées
+
+builder-welcome =
+  Bienvenue dans le constructeur d'images StatPixel.
+
+  Cliquez sur les boutons ci-dessous pour ajouter votre premier composant, puis utilisez le bouton Créer pour le finaliser une fois que vous avez terminé.
+  Si vous faites une erreur, utilisez Annuler pour l'annuler. Il n'y a actuellement pas de bouton Refaire, alors faites attention !
+
+  Une fois créé, utilisez l'identifiant fourni pour afficher cette image avec vos statistiques mises à jour à tout moment, et partagez-la avec vos amis !
+  Vous pouvez également l'utiliser avec notre API d'images pour l'afficher dans votre signature de forum ou n'importe où ailleurs sur Internet.
+
+down = Bas
+down-description = Ajoute une forme directement en dessous de la forme précédente.
+down-start = Bas (début)
+down-start-description = Ajoute une forme en dessous de la précédente, mais tout en bas à gauche.
+right = Droite
+right-description = Ajoute une forme à droite de la forme précédente.
+right-start = Droite (début)
+right-start-description = Ajoute une forme à droite de la forme précédente, mais tout en haut.
+select-position = Sélectionnez la position pour la forme
+
+title = Titre
+title-description = Affiche un nom d'utilisateur.
+level-description = Affiche le niveau de n'importe quel jeu.
+skin = Peau
+skin-description = Une image de la peau du joueur.
+bubble = Bulle
+bubble-description = Une boîte pour afficher n'importe quelle statistique dans n'importe quel jeu.
+subtitle = Sous-titre
+subtitle-description = Un sous-titre, utilisé pour afficher un texte arbitraire jusqu'à 16 caractères.
+select-shape = Sélectionnez un type de forme
+select-colour = Sélectionnez une couleur
+
+add-shape = Ajouter une forme
+undo = Annuler
+create = Créer
+
+subtitle-modal-title = Créez une nouvelle forme de sous-titre
+subtitle-text = Texte du sous-titre
+subtitle-placeholder = Entrez jusqu'à 16 caractères
+
+level-modal-title = Créez une nouvelle forme de niveau
+level-type = Type de niveau
+level-type-placeholder = Un de : bedwars, buildbattle, duels, network, pit, skywars, woolwars
+
+bubble-modal-title = Créez une nouvelle forme de bulle
+game-type = Type de jeu
+game-type-placeholder = Voir la documentation : https://statpixel.xyz/docs/builder
+statistic = Statistique
+statistic-placeholder = Voir la documentation : https://statpixel.xyz/docs/builder
+
+create-modal-title = Terminez la construction de votre image
+username = Nom d'utilisateur
+username-placeholder = Entrez le nom d'utilisateur à utiliser
+
+invalid-statistic =
+  Statistique invalide {$statistic} pour {$game}. Vérifiez la documentation et réessayez.
+
+invalid-level-type =
+  Type de niveau invalide {$kind}. Vérifiez la documentation et réessayez.
+
+invalid-game-type =
+  Type de jeu invalide {$game}. Vérifiez la documentation et réessayez.
+
+image-created =
+  Votre image a été créée !
+
+  Identifiant : {$id}
+  Lien : {$link}
+
 # /about
 
 author = Auteur 🤖
