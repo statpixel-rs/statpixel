@@ -62,6 +62,7 @@ pub enum ShapeData {
 }
 
 impl ShapeData {
+	#[must_use]
 	pub fn is_subtitle(&self) -> bool {
 		matches!(self, Self::Subtitle(..))
 	}
