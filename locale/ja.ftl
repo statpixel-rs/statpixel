@@ -131,7 +131,7 @@ invalid-game-type =
   無効なゲームタイプ{$game}。 ドキュメントを確認して、もう一度お試しください。
 
 image-created =
-  あなたの画像が作成されました！ </execute:1113624864524357708>で試してみてください。
+  あなたの画像が作成されました！ </execute:1125992506501365892>で試してみてください。
 
   識別子: {$id}
   リンク: {$link}
@@ -446,7 +446,7 @@ help-history = 履歴 <a:clock:1115091329958019253>
 help-history-description = 特定の統計が時間の経過とともにどのように変化したかをグラフで表示するには、</history network:1113624864524357708>などを試してみてください。
 
 help-image-builder = イメージビルダー <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = イメージビルダーを使用して、独自の動的イメージを作成します！ </builder:1113624864524357709>を使用して開始するか、https://statpixel.xyz/docs/builder で詳細を確認してください。
+help-image-builder-description = イメージビルダーを使用して、独自の動的イメージを作成します！ </builder:1125992506501365891>を使用して開始するか、https://statpixel.xyz/docs/builder で詳細を確認してください。
 
 # /history
 

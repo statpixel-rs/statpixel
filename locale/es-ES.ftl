@@ -131,7 +131,7 @@ invalid-game-type =
   Tipo de juego no válido {$game}. Consulte la documentación e intente nuevamente.
 
 image-created =
-  ¡Tu imagen ha sido creada! Pruébalo con </execute:1113624864524357708>.
+  ¡Tu imagen ha sido creada! Pruébalo con </execute:1125992506501365892>.
 
   Identificador: {$id}
   Enlace: {$link}
@@ -442,7 +442,7 @@ help-history = Historia <a:clock:1115091329958019253>
 help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1113624864524357708>.
 
 help-image-builder = Constructor de imágenes <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de imágenes! Usa </builder:1113624864524357709> para comenzar o ve a https://statpixel.xyz/docs/builder para obtener más información.
+help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de imágenes! Usa </builder:1125992506501365891> para comenzar o ve a https://statpixel.xyz/docs/builder para obtener más información.
 
 # /history
 
