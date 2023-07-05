@@ -1,22 +1,20 @@
+mod image;
 mod topgg;
 
-use axum::{routing::post, Router};
-use database::{get_pool, PostgresPool};
+use axum::{
+	routing::{get, post},
+	Router,
+};
 use std::{net::SocketAddr, sync::Arc};
 use topgg::add_vote;
 
-pub struct AppState {
-	pub pool: PostgresPool,
-}
+pub type Data = translate::Data;
 
-#[tokio::main]
-async fn main() {
-	tracing_subscriber::fmt::init();
-	dotenvy::dotenv().ok();
-
+pub async fn run(data: Data) {
 	let app = Router::new()
 		.route("/internal/vote", post(add_vote))
-		.with_state(Arc::new(AppState { pool: get_pool(2) }));
+		.route("/image/:id", get(image::get))
+		.with_state(Arc::new(data));
 
 	let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 

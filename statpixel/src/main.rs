@@ -5,6 +5,8 @@
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 
+use std::sync::Arc;
+
 pub use api::command::Id;
 use api::skyblock;
 use database::{get_pool, schema::usage};
@@ -23,6 +25,7 @@ mod constants;
 mod emoji;
 mod format;
 mod id;
+mod server;
 mod snapshot;
 #[cfg(not(debug_assertions))]
 mod stats;
@@ -31,7 +34,7 @@ mod util;
 
 pub use constants::*;
 pub use statpixel::*;
-use util::error_embed;
+use util::deprecated_interaction;
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";
@@ -58,7 +61,7 @@ async fn main() {
 		commands::games::blitz(),
 		commands::games::buildbattle(),
 		commands::games::copsandcrims(),
-		commands::custom::custom(),
+		commands::execute::execute(),
 		commands::snapshot::daily::daily(),
 		commands::display::display(),
 		commands::games::duels(),
@@ -97,6 +100,10 @@ async fn main() {
 	locale.apply_translations(&mut commands, false);
 
 	let pool = user::upgrade::all(get_pool(20)).await.unwrap();
+	let data = Data {
+		pool,
+		locale: Arc::new(locale),
+	};
 
 	let framework = poise::Framework::new(
 		poise::FrameworkOptions {
@@ -107,17 +114,21 @@ async fn main() {
 			pre_command: |ctx| Box::pin(pre_command(ctx)),
 			..Default::default()
 		},
-		move |ctx, _ready, framework| {
-			Box::pin(async move {
-				serenity::Command::set_global_commands(
-					&ctx.http,
-					poise::builtins::create_application_commands(&framework.options().commands),
-				)
-				.await
-				.unwrap();
+		{
+			let data = data.clone();
 
-				Ok(Data { pool, locale })
-			})
+			move |ctx, _ready, framework| {
+				Box::pin(async move {
+					serenity::Command::set_global_commands(
+						&ctx.http,
+						poise::builtins::create_application_commands(&framework.options().commands),
+					)
+					.await
+					.unwrap();
+
+					Ok(data)
+				})
+			}
 		},
 	);
 
@@ -160,6 +171,10 @@ async fn main() {
 
 			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
 		}
+	});
+
+	tokio::task::spawn(async move {
+		server::run(data).await;
 	});
 
 	#[cfg(not(debug_assertions))]
@@ -231,7 +246,8 @@ async fn event_handler(
 			interaction: Interaction::Modal(interaction),
 		} => {
 			let Some(id) = api::id::decode(&interaction.data.custom_id) else {
-				return Ok(());
+				let ctx = context::Context::from_modal(ctx, data, interaction);
+				return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 			};
 
 			match id {
@@ -257,7 +273,7 @@ async fn event_handler(
 					let Some(api::id::Id::Builder(id)) =
 						api::id::decode(&interaction.data.custom_id)
 					else {
-						return Ok(());
+						return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 					};
 
 					return commands::builder::handler(&ctx, interaction, id).await;
@@ -267,12 +283,7 @@ async fn event_handler(
 
 			if interaction.data.custom_id == "select" {
 				let Some(id) = values.get(0).and_then(|p| api::id::decode(p)) else {
-					info!(?interaction, "deprecated interaction");
-
-					return Ok(ctx.send(error_embed(
-						"Deprecated interaction",
-						"Internal identifiers for StatPixel interactions have changed since this component was created. Please create a new one and try again."
-					)).await?);
+					return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 				};
 
 				if let api::id::Id::Command(id) = id {
@@ -282,7 +293,7 @@ async fn event_handler(
 				}
 			} else {
 				let Some(id) = api::id::decode(&interaction.data.custom_id) else {
-					return Ok(());
+					return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 				};
 
 				if let api::id::Id::Builder(id) = id {

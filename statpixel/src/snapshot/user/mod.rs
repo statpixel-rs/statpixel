@@ -282,6 +282,15 @@ pub enum Status {
 	Inserted,
 }
 
+impl Status {
+	pub fn ok(self) -> Option<(Box<Data>, DateTime<Utc>)> {
+		match self {
+			Status::Found(data) => Some(data),
+			Status::Inserted => None,
+		}
+	}
+}
+
 pub fn encode(data: &Data) -> Result<Vec<u8>, Error> {
 	let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
 

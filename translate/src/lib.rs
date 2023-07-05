@@ -13,9 +13,10 @@ pub use fluent;
 pub use locale::*;
 pub use uuid;
 
+#[derive(Clone)]
 pub struct Data {
 	pub pool: PostgresPool,
-	pub locale: locale::Locale,
+	pub locale: Arc<locale::Locale>,
 }
 
 impl fmt::Debug for Data {
@@ -92,6 +93,8 @@ pub enum Error {
 	Canvas,
 	#[error("An internal error occurred while decoding base64.")]
 	Base64(#[from] base64::DecodeError),
+	#[error("The generated identifier is too long.")]
+	IdentifierTooLong,
 }
 
 #[derive(Debug, thiserror::Error)]

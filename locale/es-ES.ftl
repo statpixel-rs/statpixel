@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = No se encontró un perfil de SkyBlock pertene
 error-player-snapshot-not-found = No se encontraron instantáneas para {$name}. Crea una con </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = No se encontró una clasificación con el nombre {$name}.
 error-profile-not-found = El perfil de SkyBlock {$profile} perteneciente a {$name} tiene su API desactivada o no ha iniciado sesión desde el nuevo sistema de perfiles.
+error-identifier-too-long =
+  Uno de los identificadores generados para esta interacción es demasiado largo.
+  Intente reducir el número de componentes o la cantidad de texto personalizado.
 
 # Quick tips
 
@@ -46,7 +49,7 @@ tip-bazaar = <:knowledge_book:1117179094556233828> Ver los precios del bazar de 
 
 # /custom
 
-custom = custom
+execute = execute
   .description = Ejecuta un comando por su identificador
   .id = id
   .id-description = El identificador del comando
@@ -54,6 +57,10 @@ custom = custom
 invalid-identifier = Identificador no válido
 invalid-identifier-description = El identificador proporcionado no es válido. Si te dieron este identificador de StatPixel, entonces el esquema de identificación se ha actualizado y necesitarás obtener uno nuevo.
 invalid-identifier-command-description = El identificador proporcionado no es un comando.
+
+deprecated-interaction = Interacción obsoleta
+deprecated-interaction-description = Esta interacción está obsoleta y no funcionará. Ejecute el comando original nuevamente.
+identifier = <:id:1125971775755407390> Identificador: `{$identifier}`
 
 # /builder
 
@@ -123,7 +130,7 @@ invalid-game-type =
   Tipo de juego no válido {$game}. Consulte la documentación e intente nuevamente.
 
 image-created =
-  ¡Tu imagen ha sido creada!
+  ¡Tu imagen ha sido creada! Pruébalo con </execute:1113624864524357708>.
 
   Identificador: {$id}
   Enlace: {$link}

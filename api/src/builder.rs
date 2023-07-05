@@ -2,7 +2,7 @@ use minecraft::paint::Paint;
 
 use crate::player::stats::*;
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
 pub enum Location {
 	Down,
 	DownStart,
@@ -10,7 +10,7 @@ pub enum Location {
 	RightStart,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
 pub enum LevelKind {
 	BedWars,
 	BuildBattle,
@@ -21,7 +21,7 @@ pub enum LevelKind {
 	WoolWars,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
 pub enum Statistic {
 	Arcade(arcade::ArcadeKind),
 	Arena(arena::ArenaKind),
@@ -47,7 +47,7 @@ pub enum Statistic {
 	WoolWars(wool_wars::WoolWarsKind),
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
 pub enum ShapeData {
 	/// Always the player's username
 	Title,
@@ -68,7 +68,7 @@ impl ShapeData {
 	}
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
 pub enum ShapeKind {
 	Title,
 	Subtitle,
@@ -77,14 +77,14 @@ pub enum ShapeKind {
 	Bubble,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
 pub struct Shape {
 	pub location: Location,
 	pub colour: Paint,
 	pub data: ShapeData,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Default, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Default, Clone)]
 pub struct PartialShape {
 	pub location: Option<Location>,
 	pub kind: Option<ShapeKind>,
@@ -96,11 +96,17 @@ pub struct PartialShape {
 impl PartialShape {
 	#[must_use]
 	pub fn is_complete(&self) -> bool {
-		self.location.is_some() && self.kind.is_some() && self.colour.is_some()
+		if let Some(ref kind) = self.kind {
+			return self.location.is_some()
+				&& (self.colour.is_some()
+					|| !matches!(kind, ShapeKind::Bubble | ShapeKind::Subtitle));
+		}
+
+		false
 	}
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Default, Clone)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Default, Clone)]
 pub struct State {
 	pub shapes: Vec<Shape>,
 	pub next: PartialShape,
@@ -113,7 +119,7 @@ impl State {
 	}
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug)]
 pub enum Action {
 	AddShape,
 	Undo,
@@ -127,78 +133,87 @@ pub enum Action {
 }
 
 /// The structure of a button's `custom_id`
-#[derive(bincode::Encode, bincode::Decode, Debug)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug)]
 pub struct Id {
 	pub action: Action,
 	pub state: State,
 }
 
-#[must_use]
-pub fn add_shape(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn add_shape(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::AddShape,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_subtitle_data(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_subtitle_data(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetSubtitleData,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_bubble_data(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_bubble_data(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetBubbleData,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_level_data(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_level_data(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetLevelData,
 		state,
 	})
 }
 
-#[must_use]
-pub fn undo(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn undo(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::Undo,
 		state,
 	})
 }
 
-#[must_use]
-pub fn create(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn create(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::Create,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_next_position(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_next_position(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetNextPosition,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_next_shape(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_next_shape(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetNextShape,
 		state,
 	})
 }
 
-#[must_use]
-pub fn set_next_colour(state: State) -> String {
+/// # Errors
+/// Returns [`crate::Error::IdentifierTooLong`] if the encoded string is longer than 100 characters
+pub fn set_next_colour(state: State) -> crate::Result<String> {
 	super::id::builder(Id {
 		action: Action::SetNextColour,
 		state,

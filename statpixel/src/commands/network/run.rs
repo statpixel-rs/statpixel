@@ -1,7 +1,7 @@
 use crate::{format::Display, Error};
 use api::canvas::label::ToFormatted;
 use poise::serenity_prelude::{self as serenity, CreateAttachment, CreateEmbed};
-use translate::{context, tr};
+use translate::{context, tr, tr_fmt};
 use uuid::Uuid;
 
 #[allow(clippy::too_many_lines)]
@@ -31,9 +31,18 @@ pub async fn network(
 				background,
 			);
 
+			let id = api::id::command(api::command::Id::Root {
+				kind: api::command::Mode::Network,
+				uuid: player.uuid,
+			});
+
 			ctx.send(
 				poise::CreateReply::new()
-					.content(crate::tip::random(ctx))
+					.content(format!(
+						"{}\n{}",
+						tr_fmt!(ctx, "identifier", identifier: id),
+						crate::tip::random(ctx),
+					))
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;

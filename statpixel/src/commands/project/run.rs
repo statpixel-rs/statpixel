@@ -1,6 +1,6 @@
 use api::prelude::Mode;
 use poise::serenity_prelude::CreateAttachment;
-use translate::{context, Error};
+use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
 
 use crate::commands;
@@ -18,21 +18,22 @@ pub async fn command<G: api::prelude::Game>(
 
 	player.increase_searches(ctx).await?;
 
-	let Some(png) =
+	let Some((png, mode)) =
 		super::image::command::<G>(ctx, &player, &session, background, mode, kind, value).await?
 	else {
 		return Ok(());
 	};
 
+	let (row, id) = G::Mode::as_project(ctx, player.uuid, kind.unwrap_or_default(), Some(mode));
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![G::Mode::as_project(
-				ctx,
-				player.uuid,
-				kind.unwrap_or_default(),
-				mode,
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;

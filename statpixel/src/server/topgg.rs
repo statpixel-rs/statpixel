@@ -13,8 +13,6 @@ use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use serde::Deserialize;
 
-use crate::AppState;
-
 pub struct Plain(pub String);
 
 impl Credentials for Plain {
@@ -39,7 +37,7 @@ pub struct Vote {
 static SECRET: Lazy<String> = Lazy::new(|| std::env::var("TOPGG_SECRET").unwrap());
 
 pub async fn add_vote(
-	State(state): State<Arc<AppState>>,
+	State(state): State<Arc<super::Data>>,
 	TypedHeader(token): TypedHeader<Authorization<Plain>>,
 	Json(vote): Json<Vote>,
 ) -> Result<impl IntoResponse, StatusCode> {

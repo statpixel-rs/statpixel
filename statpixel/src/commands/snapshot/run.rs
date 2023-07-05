@@ -57,8 +57,8 @@ pub async fn command<G: api::prelude::Game>(
 				to: format!("<t:{}:f>", Utc::now().timestamp()),
 			);
 
-			let png: Cow<_> = {
-				let mut surface = G::canvas_diff(
+			let (png, mode): (Cow<_>, _) = {
+				let (mut surface, mode) = G::canvas_diff(
 					ctx,
 					snapshot,
 					&mut api::Data::clone(&data),
@@ -69,18 +69,23 @@ pub async fn command<G: api::prelude::Game>(
 					background,
 				);
 
-				canvas::to_png(&mut surface).into()
+				(canvas::to_png(&mut surface).into(), mode)
 			};
+
+			let (row, id) = G::Mode::as_snapshot(
+				ctx,
+				player.uuid,
+				past.num_nanoseconds().unwrap_or_default(),
+				Some(mode),
+			);
 
 			ctx.send(
 				poise::CreateReply::new()
-					.content(content)
-					.components(vec![G::Mode::as_snapshot(
-						ctx,
-						player.uuid,
-						past.num_nanoseconds().unwrap_or_default(),
-						mode,
-					)])
+					.content(format!(
+						"{}\n{content}",
+						tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+					))
+					.components(vec![row])
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;

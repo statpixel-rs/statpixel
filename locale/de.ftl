@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = Ein SkyBlock-Profil mit dem Namen {$name} wur
 error-player-snapshot-not-found = Für {$name} wurden keine Schnappschüsse gefunden. Erstelle einen mit </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = Eine Bestenliste mit dem Namen {$name} wurde nicht gefunden.
 error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine API deaktiviert oder sie haben sich seit dem neuen Profilsystem nicht mehr angemeldet.
+error-identifier-too-long =
+  Einer der generierten Bezeichner für diese Interaktion ist zu lang.
+  Versuchen Sie, die Anzahl der Komponenten oder die Menge des benutzerdefinierten Texts zu reduzieren.
 
 # Quick tips
 
@@ -46,7 +49,7 @@ tip-bazaar = <:knowledge_book:1117179094556233828> Zeige SkyBlock Bazaar Preise 
 
 # /custom
 
-custom = custom
+execute = execute
   .description = Führt einen Befehl anhand seiner ID aus
   .id = id
   .id-description = Die ID des Befehls
@@ -54,6 +57,10 @@ custom = custom
 invalid-identifier = Ungültige ID angegeben
 invalid-identifier-description = Die angegebene ID ist ungültig. Wenn Sie diese ID von StatPixel erhalten haben, wurde das Identifizierungsschema aktualisiert und Sie müssen eine neue erhalten.
 invalid-identifier-command-description = Die angegebene ID ist kein Befehl.
+
+deprecated-interaction = Interaktion veraltet
+deprecated-interaction-description = Diese Interaktion ist veraltet und funktioniert nicht. Bitte führen Sie den ursprünglichen Befehl erneut aus.
+identifier = <:id:1125971775755407390> Bezeichner: `{$identifier}`
 
 # /builder
 
@@ -121,9 +128,9 @@ invalid-game-type =
   Ungültiger Spieltyp {$game}. Überprüfen Sie die Dokumentation und versuchen Sie es erneut.
 
 image-created =
-  Ihr Bild wurde erstellt!
+  Ihr Bild wurde erstellt! Probieren Sie es mit </execute:1113624864524357708> aus.
 
-  Identifikator: {$id}
+  Bezeichner: {$id}
   Link: {$link}
 
 # /about

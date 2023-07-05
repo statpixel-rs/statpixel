@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = A SkyBlock profile belonging to {$name} was n
 error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
+error-identifier-too-long =
+  One of the generated identifiers for this interaction is too long.
+  Try reducing the number of components or the amount of custom text.
 
 # Quick tips
 
@@ -46,7 +49,7 @@ tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices w
 
 # /custom
 
-custom = custom
+execute = execute
   .description = Executes a command by its identifier
   .id = id
   .id-description = The identifier of the command
@@ -54,6 +57,10 @@ custom = custom
 invalid-identifier = Invalid identifier provided
 invalid-identifier-description = The provided identifier is invalid. If you were given this identifier from StatPixel, then the identification scheme has been updated and you will need to obtain a new one.
 invalid-identifier-command-description = The provided identifier is not a command.
+
+deprecated-interaction = Interaction deprecated
+deprecated-interaction-description = This interaction is deprecated and will not work. Please run the original command again.
+identifier = <:id:1125971775755407390> Identifier: `{$identifier}`
 
 # /builder
 
@@ -123,7 +130,7 @@ invalid-game-type =
   Invalid game type {$game}. Check the documentation and try again.
 
 image-created =
-  Your image has been created!
+  Your image has been created! Try it out with </execute:1113624864524357708>.
 
   Identifier: {$id}
   Link: {$link}

@@ -36,6 +36,8 @@ uuid.workspace = true
 once_cell.workspace = true
 reqwest.workspace = true
 serde.workspace = true
+bitcode.workspace = true
+axum.workspace = true
 
 [dev-dependencies]
 criterion = "0.5"

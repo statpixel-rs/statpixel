@@ -2,9 +2,12 @@ use std::cmp::min;
 
 use skia_safe::Color;
 
-use crate::colour::{
-	AQUA, BLUE, DARK_AQUA, DARK_BLUE, DARK_GREEN, DARK_PURPLE, DARK_RED, GOLD, GRAY, GREEN,
-	LIGHT_PURPLE, RED, WHITE, YELLOW,
+use crate::{
+	colour::{
+		AQUA, BLUE, DARK_AQUA, DARK_BLUE, DARK_GREEN, DARK_PURPLE, DARK_RED, GOLD, GRAY, GREEN,
+		LIGHT_PURPLE, RED, WHITE, YELLOW,
+	},
+	ESCAPE,
 };
 
 #[derive(Clone, Copy)]
@@ -54,6 +57,75 @@ const LEVEL_COLOUR: [[Color; 2]; 31] = [
 	[AQUA, AQUA],
 	[RED, GREEN],
 ];
+
+const LEVEL_FORMAT: [((char, char), [char; 3], &str); 31] = [
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+	(('f', 'f'), ['f', 'f', 'f'], "§f"),
+];
+
+#[must_use]
+#[allow(clippy::cast_possible_truncation)]
+#[allow(clippy::cast_sign_loss)]
+#[allow(clippy::cast_precision_loss)]
+pub fn get_level_format(level: Level) -> String {
+	let prestige = level.0 / 5;
+
+	let format = LEVEL_FORMAT[min(prestige as usize, LEVEL_FORMAT.len() - 1)];
+	let length = (level.0 as f32).log10().ceil() as usize;
+	let string = level.0.to_string();
+	let chars = string.chars();
+
+	// char, escape, colour, + 3 for each bracket, + star if it exists
+	let mut string = String::with_capacity(length * 3 + 6 + 1);
+
+	string.push(ESCAPE);
+	string.push(format.0 .0);
+	string.push('[');
+
+	for (i, c) in chars.enumerate() {
+		string.push(ESCAPE);
+		string.push(format.1[i]);
+		string.push(c);
+	}
+
+	string.push(ESCAPE);
+	string.push_str(format.2);
+
+	string.push(ESCAPE);
+	string.push(format.0 .1);
+	string.push(']');
+
+	string
+}
 
 #[must_use]
 #[allow(clippy::cast_possible_truncation)]

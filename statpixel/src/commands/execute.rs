@@ -1,6 +1,9 @@
 use translate::{context, tr};
 
-use crate::{util::error_embed, Context, Error};
+use crate::{
+	util::{error_embed, invalid_identifier},
+	Context, Error,
+};
 
 /// Executes a command by its ID.
 #[poise::command(
@@ -8,13 +11,9 @@ use crate::{util::error_embed, Context, Error};
 	slash_command,
 	required_bot_permissions = "EMBED_LINKS"
 )]
-pub async fn custom(ctx: Context<'_>, id: String) -> Result<(), Error> {
+pub async fn execute(ctx: Context<'_>, id: String) -> Result<(), Error> {
 	let Some(id) = api::id::decode(&id) else {
-		ctx.send(error_embed(
-			tr!(&ctx, "invalid-identifier"),
-			tr!(&ctx, "invalid-identifier-description"),
-		))
-		.await?;
+		ctx.send(invalid_identifier(&ctx)).await?;
 
 		return Ok(());
 	};

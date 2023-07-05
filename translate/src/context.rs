@@ -225,6 +225,24 @@ impl<'c> Context<'c> {
 		}
 	}
 
+	pub async fn reply(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
+		match &self.interaction {
+			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
+			ContextInteraction::Component {
+				interaction,
+				ctx,
+				deferred,
+				..
+			} => self.send_component(ctx, interaction, deferred, reply).await,
+			ContextInteraction::Modal {
+				interaction, ctx, ..
+			} => self.reply_modal(ctx, interaction, reply).await,
+			ContextInteraction::External(..) => {
+				unreachable!("Context::send() called on external context")
+			}
+		}
+	}
+
 	async fn send_modal(
 		&self,
 		ctx: &serenity::Context,
@@ -248,6 +266,31 @@ impl<'c> Context<'c> {
 				ctx,
 				serenity::CreateInteractionResponse::UpdateMessage(edit),
 			)
+			.await?;
+
+		Ok(())
+	}
+
+	async fn reply_modal(
+		&self,
+		ctx: &serenity::Context,
+		interaction: &serenity::ModalInteraction,
+		data: poise::CreateReply,
+	) -> Result<(), serenity::Error> {
+		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
+
+		if let Some(content) = data.content {
+			edit = edit.content(content);
+		}
+
+		if let Some(components) = data.components {
+			edit = edit.components(components);
+		}
+
+		edit = edit.files(data.attachments);
+
+		interaction
+			.create_response(ctx, serenity::CreateInteractionResponse::Message(edit))
 			.await?;
 
 		Ok(())

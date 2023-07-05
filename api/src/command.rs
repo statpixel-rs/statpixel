@@ -5,7 +5,7 @@ use poise::serenity_prelude as serenity;
 use translate::{context, tr};
 use uuid::Uuid;
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, GetTr)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, GetTr)]
 pub enum SkyBlockMode {
 	Auctions,
 	Bank,
@@ -24,7 +24,7 @@ pub enum SkyBlockMode {
 	Wardrobe,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, GetTr)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy, GetTr)]
 pub enum GuildMode {
 	General,
 	Member,
@@ -39,7 +39,7 @@ impl SkyBlockMode {
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			ctx.id().to_string(),
 			serenity::CreateSelectMenuKind::String {
@@ -155,11 +155,17 @@ impl SkyBlockMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Root {
+				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
+				uuid,
+			}),
+		)
 	}
 
 	#[allow(clippy::too_many_lines)]
@@ -169,7 +175,7 @@ impl SkyBlockMode {
 		profile: Option<Uuid>,
 		past: i64,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			ctx.id().to_string(),
 			serenity::CreateSelectMenuKind::String {
@@ -300,11 +306,18 @@ impl SkyBlockMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Snapshot {
+				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
+				uuid,
+				past,
+			}),
+		)
 	}
 
 	#[allow(clippy::too_many_lines)]
@@ -313,7 +326,7 @@ impl SkyBlockMode {
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			ctx.id().to_string(),
 			serenity::CreateSelectMenuKind::String {
@@ -429,11 +442,17 @@ impl SkyBlockMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::History {
+				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
+				uuid,
+			}),
+		)
 	}
 
 	#[allow(clippy::too_many_lines)]
@@ -443,7 +462,7 @@ impl SkyBlockMode {
 		profile: Option<Uuid>,
 		kind: SkyBlockKind,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			ctx.id().to_string(),
 			serenity::CreateSelectMenuKind::String {
@@ -559,11 +578,17 @@ impl SkyBlockMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Project {
+				kind: ProjectMode::SkyBlock(selected.unwrap_or(Self::Profile), kind, profile),
+				uuid,
+			}),
+		)
 	}
 }
 
@@ -575,7 +600,7 @@ impl GuildMode {
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -620,11 +645,17 @@ impl GuildMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Root {
+				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
+				uuid,
+			}),
+		)
 	}
 
 	pub fn as_snapshot(
@@ -635,7 +666,7 @@ impl GuildMode {
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -684,11 +715,18 @@ impl GuildMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Snapshot {
+				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
+				uuid,
+				past,
+			}),
+		)
 	}
 
 	pub fn as_history(
@@ -698,7 +736,7 @@ impl GuildMode {
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -743,11 +781,17 @@ impl GuildMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::History {
+				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
+				uuid,
+			}),
+		)
 	}
 
 	pub fn as_project(
@@ -755,7 +799,7 @@ impl GuildMode {
 		uuid: Uuid,
 		kind: GuildKind,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow {
+	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			ctx.id().to_string(),
 			serenity::CreateSelectMenuKind::String {
@@ -787,27 +831,33 @@ impl GuildMode {
 		.min_values(1)
 		.max_values(1);
 
-		if let Some(selected) = selected {
+		if let Some(ref selected) = selected {
 			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
 		}
 
-		serenity::CreateActionRow::SelectMenu(menu)
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::Project {
+				kind: ProjectMode::Guild(selected.unwrap_or(Self::General), kind),
+				uuid,
+			}),
+		)
 	}
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy, Default)]
 pub enum GuildKind {
 	#[default]
 	None,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy, Default)]
 pub enum SkyBlockKind {
 	#[default]
 	None,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug)]
 pub enum Mode {
 	Arcade(arcade::ArcadeMode),
 	Arena(arena::ArenaMode),
@@ -833,18 +883,18 @@ pub enum Mode {
 	WoolWars(wool_wars::WoolWarsMode),
 
 	// profile id
-	SkyBlock(SkyBlockMode, #[bincode(with_serde)] Option<Uuid>),
+	SkyBlock(SkyBlockMode, #[bitcode(with_serde)] Option<Uuid>),
 	// `top.limit`, `top.past` as nanos
 	Guild(
 		GuildMode,
 		Option<usize>,
 		Option<i64>,
-		#[bincode(with_serde)] Option<Uuid>,
+		#[bitcode(with_serde)] Option<Uuid>,
 	),
 	Network,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Debug)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug)]
 pub enum ProjectMode {
 	Arcade(arcade::ArcadeMode, arcade::ArcadeKind),
 	Arena(arena::ArenaMode, arena::ArenaKind),
@@ -882,23 +932,23 @@ pub enum ProjectMode {
 	SkyBlock(
 		SkyBlockMode,
 		SkyBlockKind,
-		#[bincode(with_serde)] Option<Uuid>,
+		#[bitcode(with_serde)] Option<Uuid>,
 	),
 }
 
 /// The structure of a menu option's `custom_id`
-#[derive(bincode::Encode, bincode::Decode, Debug)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug)]
 pub enum Id {
 	/// A root command, like `/guild`, etc.
 	Root {
 		kind: Mode,
-		#[bincode(with_serde)]
+		#[bitcode(with_serde)]
 		uuid: Uuid,
 	},
 	/// A `/from`, `/daily`, `/weekly`, and `/monthly` command
 	Snapshot {
 		kind: Mode,
-		#[bincode(with_serde)]
+		#[bitcode(with_serde)]
 		uuid: Uuid,
 		// duration in nanos
 		past: i64,
@@ -906,18 +956,18 @@ pub enum Id {
 	/// A `/history` command
 	History {
 		kind: Mode,
-		#[bincode(with_serde)]
+		#[bitcode(with_serde)]
 		uuid: Uuid,
 	},
 	/// A `/project` command
 	Project {
 		kind: ProjectMode,
-		#[bincode(with_serde)]
+		#[bitcode(with_serde)]
 		uuid: Uuid,
 	},
 	Builder {
 		shapes: Vec<super::builder::Shape>,
-		#[bincode(with_serde)]
+		#[bitcode(with_serde)]
 		uuid: Uuid,
 		// TODO: Add custom backgrounds?
 		// background: Option<u32>,

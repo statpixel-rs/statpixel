@@ -16,7 +16,7 @@ use crate::util;
 pub mod about;
 pub mod background;
 pub mod builder;
-pub mod custom;
+pub mod execute;
 pub mod display;
 pub mod from;
 pub mod games;

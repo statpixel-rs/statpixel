@@ -13,8 +13,8 @@ pub fn command<G: api::prelude::Game>(
 	session: &Session,
 	skin: &skia_safe::Image,
 	suffix: Option<&str>,
-) -> Cow<'static, [u8]> {
-	let mut surface = G::canvas(ctx, data, session, skin, mode, suffix, background);
+) -> (Cow<'static, [u8]>, G::Mode) {
+	let (mut surface, mode) = G::canvas(ctx, data, session, skin, mode, suffix, background);
 
-	canvas::to_png(&mut surface).into()
+	(canvas::to_png(&mut surface).into(), mode)
 }

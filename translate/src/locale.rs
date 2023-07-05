@@ -121,7 +121,10 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 			.parse()
 			.map_err(|e| format!("invalid locale `{locale}`: {e}"))?]);
 
+		bundle.set_use_isolating(false);
 		bundle
+			// disable the Directional Isolate formatting characters since they
+			// can mess up with copying text from Discord, like identifiers, correctly
 			.add_resource(resource)
 			.map_err(|e| format!("failed to add resource to bundle: {e:?}"))?;
 

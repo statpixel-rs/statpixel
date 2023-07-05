@@ -1007,7 +1007,7 @@ impl ToTokens for GameInputReceiver {
 			// autocomplete instead.
 			quote! {
 				// Implement the game mode enum.
-				#[derive(::std::fmt::Debug, Clone, Copy, bincode::Encode, bincode::Decode)]
+				#[derive(::std::fmt::Debug, Clone, Copy, bincode::Encode, bincode::Decode, bitcode::Encode, bitcode::Decode)]
 				pub enum #enum_ident {
 					Overall,
 					#(#mode_enum_rows)*
@@ -1016,7 +1016,7 @@ impl ToTokens for GameInputReceiver {
 		} else {
 			quote! {
 				// Implement the game mode enum.
-				#[derive(::std::fmt::Debug, ::poise::ChoiceParameter, Clone, Copy, bincode::Encode, bincode::Decode)]
+				#[derive(::std::fmt::Debug, ::poise::ChoiceParameter, Clone, Copy, bincode::Encode, bincode::Decode, bitcode::Encode, bitcode::Decode)]
 				pub enum #enum_ident {
 					Overall,
 					#(#mode_enum_rows)*
@@ -2085,16 +2085,6 @@ impl ToTokens for GameInputReceiver {
 			}
 		};
 
-		let kind_level_match = quote! {
-			#enum_kind_ident ::level => {
-				let stats = &data.stats.#path;
-				let xp = #calc ::convert(&#xp_field_overall);
-				let level = #calc ::get_level(xp);
-
-				std::borrow::Cow::Owned(#level_fmt_field_overall .clone())
-			}
-		};
-
 		let kind_enum_match = overall_fields.iter().filter_map(|f| {
 			if f.skip_chart.is_some() {
 				return None;
@@ -2196,6 +2186,197 @@ impl ToTokens for GameInputReceiver {
 					quote! {
 						{
 							#sum
+						}
+					}
+				}
+			};
+
+			Some(quote! {
+				#enum_kind_ident ::#id => {
+					std::borrow::Cow::Owned(crate::canvas::label::ToFormatted::to_formatted_label(&#val, ctx).into_owned())
+				}
+			})
+		});
+
+		let kind_diff_enum_match = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
+
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
+
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			let val = {
+				let sum_new = if let Some(path) = f.path.as_ref() {
+					let path = parse_str_to_dot_path(path);
+
+					quote! { data_new.stats.#path.#name }
+				} else if f.min.is_some() {
+					let mut apply = modes.iter().filter_map(|m| {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some() || mode.skip_field.iter().any(|f| f.eq(name))
+						{
+							None
+						} else {
+							let ident = m.ident.as_ref().unwrap();
+
+							Some(ident)
+						}
+					});
+
+					let first = apply.next().unwrap();
+					let other = apply.map(|ident| {
+						quote! {
+							min = min.min(stats.#ident.#name);
+						}
+					});
+
+					quote! {
+						{
+							let mut min = stats.#first.#name;
+
+							#(#other)*
+
+							min
+						}
+					}
+				} else {
+					sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(name))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_new")),
+						name,
+					)
+				};
+
+				let sum_old = if let Some(path) = f.path.as_ref() {
+					let path = parse_str_to_dot_path(path);
+
+					quote! { data_old.stats.#path.#name }
+				} else if f.min.is_some() {
+					let mut apply = modes.iter().filter_map(|m| {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some() || mode.skip_field.iter().any(|f| f.eq(name))
+						{
+							None
+						} else {
+							let ident = m.ident.as_ref().unwrap();
+
+							Some(ident)
+						}
+					});
+
+					let first = apply.next().unwrap();
+					let other = apply.map(|ident| {
+						quote! {
+							min = min.min(stats_old.#ident.#name);
+						}
+					});
+
+					quote! {
+						{
+							let mut min = stats_old.#first.#name;
+
+							#(#other)*
+
+							min
+						}
+					}
+				} else {
+					sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(name))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_old")),
+						name,
+					)
+				};
+
+				if let Some(div) = f.div.as_ref() {
+					let sum_bottom_new = sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(div))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_new")),
+						div,
+					);
+
+					let sum_bottom_old = sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(div))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_old")),
+						div,
+					);
+
+					quote! {
+						{
+							let stats_new = &data_new.stats.#path;
+							let stats_old = &data_old.stats.#path;
+
+							crate::canvas::diff::Diff::diff(
+								&(f64::from(#sum_new) / if #sum_bottom_new == 0 { 1. } else { f64::from(#sum_bottom_new) }),
+								&(f64::from(#sum_old) / if #sum_bottom_old == 0 { 1. } else { f64::from(#sum_bottom_old) }),
+							)
+						}
+					}
+				} else {
+					quote! {
+						{
+							crate::canvas::diff::Diff::diff(&#sum_new, &#sum_old)
 						}
 					}
 				}
@@ -2354,7 +2535,7 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			#[allow(non_camel_case_types)]
-			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter, bincode::Encode, bincode::Decode, Clone, Copy)]
+			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter, bincode::Encode, bincode::Decode, bitcode::Encode, bitcode::Decode, Clone, Copy)]
 			pub enum #enum_kind_ident {
 				level,
 				#(#kind_enum_rows)*
@@ -2370,7 +2551,6 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn try_from_str_lower(value: &str) -> Option<Self> {
 					Some(match value {
-						"level" => #enum_kind_ident ::level,
 						#(#impl_kind_try_from_str_lower,)*
 						_ => return None,
 					})
@@ -2474,7 +2654,7 @@ impl ToTokens for GameInputReceiver {
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -2494,7 +2674,13 @@ impl ToTokens for GameInputReceiver {
 
 					menu = menu.max_values(1).min_values(1);
 
-					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
+					(
+						::poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						crate::id::Id::Command(crate::command::Id::Root {
+							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
+							uuid,
+						})
+					)
 				}
 
 				pub fn as_snapshot(
@@ -2502,7 +2688,7 @@ impl ToTokens for GameInputReceiver {
 					uuid: ::uuid::Uuid,
 					past: i64,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -2523,14 +2709,21 @@ impl ToTokens for GameInputReceiver {
 
 					menu = menu.max_values(1).min_values(1);
 
-					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
+					(
+						::poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						crate::id::Id::Command(crate::command::Id::Snapshot {
+							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
+							uuid,
+							past,
+						})
+					)
 				}
 
 				pub fn as_history(
 					ctx: &::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -2550,7 +2743,13 @@ impl ToTokens for GameInputReceiver {
 
 					menu = menu.max_values(1).min_values(1);
 
-					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
+					(
+						::poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						crate::id::Id::Command(crate::command::Id::History {
+							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
+							uuid,
+						})
+					)
 				}
 
 				pub fn as_project(
@@ -2558,7 +2757,7 @@ impl ToTokens for GameInputReceiver {
 					uuid: ::uuid::Uuid,
 					kind: #enum_kind_ident,
 					selected: Option<#enum_ident>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -2578,26 +2777,50 @@ impl ToTokens for GameInputReceiver {
 
 					menu = menu.max_values(1).min_values(1);
 
-					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
+					(
+						::poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						crate::id::Id::Command(crate::command::Id::Project {
+							kind: crate::command::ProjectMode::#ident (selected.unwrap_or(#enum_ident ::Overall), kind),
+							uuid,
+						})
+					)
 				}
 			}
 
 			impl crate::prelude::Mode for #enum_ident {
 				type Kind = #enum_kind_ident;
 
-				fn as_root(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
+				fn as_root(
+					ctx: &::translate::context::Context<'_>,
+					uuid: ::uuid::Uuid,
+					selected: Option<#enum_ident>
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					Self::as_root(ctx, uuid, selected)
 				}
 
-				fn as_snapshot(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, past: i64, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
+				fn as_snapshot(
+					ctx: &::translate::context::Context<'_>,
+					uuid: ::uuid::Uuid,
+					past: i64,
+					selected: Option<#enum_ident>
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					Self::as_snapshot(ctx, uuid, past, selected)
 				}
 
-				fn as_history(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
+				fn as_history(
+					ctx: &::translate::context::Context<'_>,
+					uuid: ::uuid::Uuid,
+					selected: Option<#enum_ident>
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					Self::as_history(ctx, uuid, selected)
 				}
 
-				fn as_project(ctx: &::translate::context::Context<'_>, uuid: ::uuid::Uuid, kind: <Self as crate::prelude::Mode>::Kind, selected: Option<#enum_ident>) -> ::poise::serenity_prelude::CreateActionRow {
+				fn as_project(
+					ctx: &::translate::context::Context<'_>,
+					uuid: ::uuid::Uuid,
+					kind: <Self as crate::prelude::Mode>::Kind,
+					selected: Option<#enum_ident>
+				) -> (::poise::serenity_prelude::CreateActionRow, crate::id::Id) {
 					Self::as_project(ctx, uuid, kind, selected)
 				}
 			}
@@ -2623,7 +2846,7 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<<Self as crate::prelude::Game>::Mode>,
 					suffix: Option<&str>,
 					background: Option<::skia_safe::Color>,
-				) -> ::skia_safe::Surface {
+				) -> (::skia_safe::Surface, <Self as crate::prelude::Game>::Mode) {
 					#ident ::canvas_diff(ctx, prev, curr, session, skin, mode, suffix, background)
 				}
 
@@ -2635,7 +2858,7 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<<Self as crate::prelude::Game>::Mode>,
 					suffix: Option<&str>,
 					background: Option<::skia_safe::Color>,
-				) -> ::skia_safe::Surface {
+				) -> (::skia_safe::Surface, <Self as crate::prelude::Game>::Mode) {
 					#ident ::canvas(ctx, data, session, skin, mode, suffix, background)
 				}
 
@@ -2645,7 +2868,7 @@ impl ToTokens for GameInputReceiver {
 					session: &crate::player::status::Session,
 					background: Option<::skia_safe::Color>,
 					mode: Option<#enum_ident>
-				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+				) -> Result<(::std::vec::Vec<u8>, <Self as crate::prelude::Game>::Mode), ::translate::Error> {
 					#ident ::chart(ctx, snapshots, session, background, mode)
 				}
 
@@ -2657,7 +2880,7 @@ impl ToTokens for GameInputReceiver {
 					kind: Option<#enum_kind_ident>,
 					value: Option<f64>,
 					background: Option<skia_safe::Color>,
-				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+				) -> Result<(::std::vec::Vec<u8>, <Self as crate::prelude::Game>::Mode), ::translate::Error> {
 					#ident ::project(ctx, snapshots, session, mode, kind, value, background)
 				}
 
@@ -2684,8 +2907,23 @@ impl ToTokens for GameInputReceiver {
 					let stats = &data.stats.#path;
 
 					match kind {
-						#kind_level_match,
+						#enum_kind_ident ::level => unreachable!(),
 						#(#kind_enum_match)*
+					}
+				}
+
+				pub fn from_kind_diff<'t, 'c: 't>(
+					ctx: &'c ::translate::context::Context<'c>,
+					data_new: &'t crate::player::data::Data,
+					data_old: &'t crate::player::data::Data,
+					kind: &#enum_kind_ident
+				) -> std::borrow::Cow<'t, str> {
+					let stats_new = &data_new.stats.#path;
+					let stats_old = &data_old.stats.#path;
+
+					match kind {
+						#enum_kind_ident ::level => unreachable!(),
+						#(#kind_diff_enum_match)*
 					}
 				}
 
@@ -2733,7 +2971,7 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<<Self as crate::prelude::Game>::Mode>,
 					suffix: Option<&str>,
 					background: Option<::skia_safe::Color>,
-				) -> ::skia_safe::Surface {
+				) -> (::skia_safe::Surface, <Self as crate::prelude::Game>::Mode) {
 					let stats = crate::canvas::diff::Diff::diff(&curr.stats.#path, &prev.stats.#path);
 
 					curr.stats.#path = stats;
@@ -2769,7 +3007,7 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_match_apply_rows)*
 					};
 
-					canvas.build(None, background).unwrap()
+					(canvas.build(None, background).unwrap(), mode)
 				}
 
 				#[allow(clippy::too_many_arguments)]
@@ -2781,7 +3019,7 @@ impl ToTokens for GameInputReceiver {
 					mode: Option<<Self as crate::prelude::Game>::Mode>,
 					suffix: Option<&str>,
 					background: Option<::skia_safe::Color>,
-				) -> ::skia_safe::Surface {
+				) -> (::skia_safe::Surface, <Self as crate::prelude::Game>::Mode) {
 					let stats = &data.stats.#path;
 
 					let mode = #enum_ident ::get_mode(mode, session);
@@ -2812,7 +3050,7 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_match_apply_rows)*
 					};
 
-					canvas.build(None, background).unwrap()
+					(canvas.build(None, background).unwrap(), mode)
 				}
 
 				pub fn chart(
@@ -2821,10 +3059,10 @@ impl ToTokens for GameInputReceiver {
 					session: &crate::player::status::Session,
 					background: Option<::skia_safe::Color>,
 					mode: Option<#enum_ident>
-				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+				) -> Result<(::std::vec::Vec<u8>, <Self as crate::prelude::Game>::Mode), ::translate::Error> {
 					let mode = #enum_ident ::get_mode(mode, session);
 
-					match mode {
+					Ok((match mode {
 						#enum_ident ::Overall => {
 							Overall::chart(
 								ctx,
@@ -2833,7 +3071,7 @@ impl ToTokens for GameInputReceiver {
 							)
 						}
 						#(#mode_match_apply_chart)*
-					}
+					}?, mode))
 				}
 
 				pub fn project(
@@ -2844,11 +3082,11 @@ impl ToTokens for GameInputReceiver {
 					kind: Option<#enum_kind_ident>,
 					value: Option<f64>,
 					background: Option<skia_safe::Color>,
-				) -> Result<::std::vec::Vec<u8>, ::translate::Error> {
+				) -> Result<(::std::vec::Vec<u8>, <Self as crate::prelude::Game>::Mode), ::translate::Error> {
 					let mode = #enum_ident ::get_mode(mode, session);
 					let kind = kind.unwrap_or_default();
 
-					match mode {
+					Ok((match mode {
 						#enum_ident ::Overall => {
 							Overall::project(
 								ctx,
@@ -2859,7 +3097,7 @@ impl ToTokens for GameInputReceiver {
 							)
 						}
 						#(#mode_match_apply_project)*
-					}
+					}?, mode))
 				}
 
 				#[allow(clippy::reversed_empty_ranges)]

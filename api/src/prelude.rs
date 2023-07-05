@@ -20,7 +20,7 @@ pub trait Game {
 		mode: Option<Self::Mode>,
 		suffix: Option<&str>,
 		background: Option<skia_safe::Color>,
-	) -> skia_safe::Surface;
+	) -> (skia_safe::Surface, Self::Mode);
 
 	fn canvas(
 		ctx: &context::Context,
@@ -30,7 +30,7 @@ pub trait Game {
 		mode: Option<Self::Mode>,
 		suffix: Option<&str>,
 		background: Option<skia_safe::Color>,
-	) -> skia_safe::Surface;
+	) -> (skia_safe::Surface, Self::Mode);
 
 	/// # Errors
 	///
@@ -41,7 +41,7 @@ pub trait Game {
 		session: &status::Session,
 		background: Option<skia_safe::Color>,
 		mode: Option<Self::Mode>,
-	) -> Result<Vec<u8>, Error>;
+	) -> Result<(Vec<u8>, Self::Mode), Error>;
 
 	/// # Errors
 	///
@@ -54,7 +54,7 @@ pub trait Game {
 		kind: Option<<<Self as Game>::Mode as Mode>::Kind>,
 		value: Option<f64>,
 		background: Option<skia_safe::Color>,
-	) -> Result<Vec<u8>, Error>;
+	) -> Result<(Vec<u8>, Self::Mode), Error>;
 
 	fn embed(
 		ctx: &context::Context,
@@ -77,25 +77,25 @@ pub trait Mode: Sized + Copy {
 		ctx: &context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow;
+	) -> (serenity::CreateActionRow, crate::id::Id);
 
 	fn as_snapshot(
 		ctx: &context::Context,
 		uuid: Uuid,
 		past: i64,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow;
+	) -> (serenity::CreateActionRow, crate::id::Id);
 
 	fn as_history(
 		ctx: &context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow;
+	) -> (serenity::CreateActionRow, crate::id::Id);
 
 	fn as_project(
 		ctx: &context::Context,
 		uuid: Uuid,
 		kind: Self::Kind,
 		selected: Option<Self>,
-	) -> serenity::CreateActionRow;
+	) -> (serenity::CreateActionRow, crate::id::Id);
 }

@@ -7,7 +7,7 @@ use poise::{serenity_prelude as serenity, CreateReply};
 use skia_safe::Color;
 use std::sync::Arc;
 use tracing::error;
-use translate::{context, tr, tr_fmt, ApiError, Data};
+use translate::{context, prelude::GetLocale, tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
 
 use crate::{context::Context, format, Error};
@@ -34,6 +34,24 @@ where
 		serenity::CreateEmbed::new()
 			.title(title)
 			.description(description)
+			.colour(crate::EMBED_COLOUR_ERROR),
+	)
+}
+
+pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply {
+	CreateReply::new().embed(
+		serenity::CreateEmbed::new()
+			.title(tr!(ctx, "deprecated-interaction"))
+			.description(tr!(ctx, "deprecated-interaction-description"))
+			.colour(crate::EMBED_COLOUR_ERROR),
+	)
+}
+
+pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply {
+	CreateReply::new().embed(
+		serenity::CreateEmbed::new()
+			.title(tr!(ctx, "invalid-identifier"))
+			.description(tr!(ctx, "invalid-identifier-description"))
 			.colour(crate::EMBED_COLOUR_ERROR),
 	)
 }
@@ -309,6 +327,9 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		Error::LeaderboardNotFound(ref name) => {
 			tr_fmt!(ctx, "error-leaderboard-not-found", name: format!("`{}`", name))
 		}
+		Error::IdentifierTooLong => {
+			tr!(ctx, "error-identifier-too-long")
+		}
 		ref error => {
 			error!(error = ?error, "internal error");
 			tr!(ctx, "error-internal")
@@ -316,7 +337,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 	};
 
 	if let Err(e) = ctx
-		.send(poise::CreateReply::new().content(content).ephemeral(true))
+		.reply(poise::CreateReply::new().content(content).ephemeral(true))
 		.await
 	{
 		error!(e = ?e, "failed to send error message");

@@ -1,7 +1,7 @@
 use api::command::GuildMode;
 use chrono::Utc;
 use poise::serenity_prelude::CreateAttachment;
-use translate::{context, tr};
+use translate::{context, tr, tr_fmt};
 use uuid::Uuid;
 
 use crate::{util::error_embed, Error};
@@ -47,17 +47,23 @@ pub async fn top(
 		),
 	};
 
+	let (row, id) = GuildMode::as_root(
+		ctx,
+		Uuid::from_u128(guild.id),
+		Some(limit),
+		past.num_nanoseconds(),
+		player.map(|p| p.uuid),
+		Some(GuildMode::Top),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(content)
-			.components(vec![GuildMode::as_root(
-				ctx,
-				Uuid::from_u128(guild.id),
-				Some(limit),
-				past.num_nanoseconds(),
-				player.map(|p| p.uuid),
-				Some(GuildMode::Top),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				content,
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -90,17 +96,23 @@ pub async fn members(
 
 	let png = super::image::members(ctx, &guild).await?;
 
+	let (row, id) = GuildMode::as_root(
+		ctx,
+		Uuid::from_u128(guild.id),
+		limit,
+		past_nanos,
+		uuid,
+		Some(GuildMode::Members),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![GuildMode::as_root(
-				ctx,
-				Uuid::from_u128(guild.id),
-				limit,
-				past_nanos,
-				uuid,
-				Some(GuildMode::Members),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -133,17 +145,23 @@ pub async fn general(
 
 	let png = super::image::general(ctx, &guild).await?;
 
+	let (row, id) = GuildMode::as_root(
+		ctx,
+		Uuid::from_u128(guild.id),
+		limit,
+		past_nanos,
+		uuid,
+		Some(GuildMode::General),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![GuildMode::as_root(
-				ctx,
-				Uuid::from_u128(guild.id),
-				limit,
-				past_nanos,
-				uuid,
-				Some(GuildMode::General),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -174,17 +192,23 @@ pub async fn member(
 
 	let png = super::image::member(ctx, &guild, &player).await?;
 
+	let (row, id) = GuildMode::as_root(
+		ctx,
+		Uuid::from_u128(guild.id),
+		limit,
+		past_nanos,
+		Some(player.uuid),
+		Some(GuildMode::Member),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![GuildMode::as_root(
-				ctx,
-				Uuid::from_u128(guild.id),
-				limit,
-				past_nanos,
-				Some(player.uuid),
-				Some(GuildMode::Member),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;

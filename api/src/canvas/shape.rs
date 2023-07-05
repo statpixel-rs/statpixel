@@ -1094,11 +1094,11 @@ impl Shape for Sidebar {
 	}
 
 	fn v_align(&self) -> bool {
-		false
+		true
 	}
 
 	fn insets(&self) -> Point {
-		(13., 19.).into()
+		(13., 0.).into()
 	}
 }
 

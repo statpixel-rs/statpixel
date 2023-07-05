@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = Un profil SkyBlock appartenant à {$name} n'a
 error-player-snapshot-not-found = Aucun instantané n'a été trouvé pour {$name}. Créez-en un avec </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = Un classement avec le nom {$name} n'a pas été trouvé.
 error-profile-not-found = Le profil SkyBlock {$profile} appartenant à {$name} a son API désactivée ou ils ne se sont pas connectés depuis le nouveau système de profil.
+error-identifier-too-long =
+  Un des identifiants générés pour cette interaction est trop long.
+  Essayez de réduire le nombre de composants ou la quantité de texte personnalisé.
 
 # Quick tips
 
@@ -44,7 +47,7 @@ tip-winstreak = <:knowledge_book:1117179094556233828> Affichez vos séries de vi
 tip-recent = <:knowledge_book:1117179094556233828> Affichez vos dernières parties avec </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Affichez les prix du bazar SkyBlock avec </skyblock bazaar:1113624864826327074>.
 
-custom = custom
+execute = execute
   .description = Exécute une commande par son identifiant
   .id = id
   .id-description = L'identifiant de la commande
@@ -52,6 +55,10 @@ custom = custom
 invalid-identifier = Identifiant invalide fourni
 invalid-identifier-description = L'identifiant fourni est invalide. Si vous avez reçu cet identifiant de StatPixel, le schéma d'identification a été mis à jour et vous devrez en obtenir un nouveau.
 invalid-identifier-command-description = L'identifiant fourni n'est pas une commande.
+
+deprecated-interaction = Interaction obsolète
+deprecated-interaction-description = Cette interaction est obsolète et ne fonctionnera pas. Veuillez exécuter à nouveau la commande d'origine.
+identifier = <:id:1125971775755407390> Identifiant : `{$identifier}`
 
 # /builder
 
@@ -121,7 +128,7 @@ invalid-game-type =
   Type de jeu invalide {$game}. Vérifiez la documentation et réessayez.
 
 image-created =
-  Votre image a été créée !
+  Votre image a été créée ! Essayez-la avec </execute:1113624864524357708>.
 
   Identifiant : {$id}
   Lien : {$link}

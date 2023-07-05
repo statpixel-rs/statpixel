@@ -7,9 +7,7 @@ fn default_level_fmt() -> String {
 	"§71".to_string()
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Debug, Clone, Game, PartialEq, Diff)]
 #[game(
 	path = "sky_wars",
 	pretty = "§b§lSky §f§lWars",
@@ -108,6 +106,34 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(hypixel = "solo_tourney"))]
 	pub tourney: Tourney,
+}
+
+// We need to implement this manually for the level_fmt default
+impl Default for SkyWars {
+	fn default() -> Self {
+		Self {
+			level_fmt: default_level_fmt(),
+			coins: i32::default(),
+			loot_chests: u32::default(),
+			opals: u32::default(),
+			heads: u32::default(),
+			souls: u32::default(),
+			tokens: u32::default(),
+			eggs_thrown: u32::default(),
+			xp: u64::default(),
+			win_streak: u32::default(),
+			solo_normal: SoloNormal::default(),
+			solo_insane: SoloInsane::default(),
+			team_normal: TeamNormal::default(),
+			team_insane: TeamInsane::default(),
+			mega_double: MegaDouble::default(),
+			mega_normal: MegaNormal::default(),
+			ranked: Ranked::default(),
+			solo_lab: SoloLab::default(),
+			team_lab: TeamLab::default(),
+			tourney: Tourney::default(),
+		}
+	}
 }
 
 #[derive(

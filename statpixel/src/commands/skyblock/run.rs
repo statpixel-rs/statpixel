@@ -1,6 +1,6 @@
 use api::command::SkyBlockMode;
 use poise::serenity_prelude::CreateAttachment;
-use translate::{context, Error};
+use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
 
 pub async fn auctions(
@@ -26,15 +26,17 @@ pub async fn auctions(
 	)
 	.await?;
 
+	let (row, id) =
+		SkyBlockMode::as_root(ctx, player.uuid, profile_id, Some(SkyBlockMode::Auctions));
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![SkyBlockMode::as_root(
-				ctx,
-				player.uuid,
-				profile_id,
-				Some(SkyBlockMode::Auctions),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -69,15 +71,21 @@ pub async fn profile(
 	)
 	.await?;
 
+	let (row, id) = SkyBlockMode::as_root(
+		ctx,
+		player.uuid,
+		Some(profile.id),
+		Some(SkyBlockMode::Profile),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![SkyBlockMode::as_root(
-				ctx,
-				player.uuid,
-				Some(profile.id),
-				Some(SkyBlockMode::Profile),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -99,15 +107,17 @@ pub async fn bank(
 
 	let (png, profile) = super::image::bank(ctx, &data, background, profile_id, profile).await?;
 
+	let (row, id) =
+		SkyBlockMode::as_root(ctx, player.uuid, Some(profile.id), Some(SkyBlockMode::Bank));
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![SkyBlockMode::as_root(
-				ctx,
-				player.uuid,
-				Some(profile.id),
-				Some(SkyBlockMode::Bank),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -142,15 +152,21 @@ pub async fn networth(
 	)
 	.await?;
 
+	let (row, id) = SkyBlockMode::as_root(
+		ctx,
+		player.uuid,
+		Some(profile.id),
+		Some(SkyBlockMode::Networth),
+	);
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content("Networth calculation is in beta, and may be inaccurate.")
-			.components(vec![SkyBlockMode::as_root(
-				ctx,
-				player.uuid,
-				Some(profile.id),
-				Some(SkyBlockMode::Networth),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -185,15 +201,17 @@ pub async fn pets(
 	)
 	.await?;
 
+	let (row, id) =
+		SkyBlockMode::as_root(ctx, player.uuid, Some(profile.id), Some(SkyBlockMode::Pets));
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.components(vec![SkyBlockMode::as_root(
-				ctx,
-				player.uuid,
-				Some(profile.id),
-				Some(SkyBlockMode::Pets),
-			)])
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			))
+			.components(vec![row])
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -246,15 +264,21 @@ macro_rules! inventory_command {
 			)
 			.await?;
 
+			let (row, id) = SkyBlockMode::as_root(
+				ctx,
+				player.uuid,
+				Some(profile.id),
+				Some(SkyBlockMode::$mode),
+			);
+
 			ctx.send(
 				poise::CreateReply::new()
-					.content(crate::tip::random(ctx))
-					.components(vec![SkyBlockMode::as_root(
-						ctx,
-						player.uuid,
-						Some(profile.id),
-						Some(SkyBlockMode::$mode),
-					)])
+					.content(format!(
+						"{}\n{}",
+						tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+						crate::tip::random(ctx),
+					))
+					.components(vec![row])
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;

@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = Профиль SkyBlock, принадлежа
 error-player-snapshot-not-found = Снимки не найдены для {$name}. Создайте один с помощью </daily bedwars:1113624864272683065>.
 error-leaderboard-not-found = Доска лидеров с именем {$name} не найдена.
 error-profile-not-found = Профиль SkyBlock {$profile}, принадлежащий {$name}, имеет отключенный API или они не входили в систему с момента введения новой системы профилей.
+error-identifier-too-long =
+  Один из сгенерированных идентификаторов для этого взаимодействия слишком длинный.
+  Попробуйте уменьшить количество компонентов или количество пользовательского текста.
 
 # Quick tips
 
@@ -46,7 +49,7 @@ tip-bazaar = <:knowledge_book:1117179094556233828> Просмотр цен SkyBl
 
 # /custom
 
-custom = custom
+execute = execute
   .description = Выполняет команду по ее идентификатору
   .id = id
   .id-description = Идентификатор команды
@@ -54,6 +57,10 @@ custom = custom
 invalid-identifier = Предоставлен недопустимый идентификатор
 invalid-identifier-description = Предоставленный идентификатор недействителен. Если вам был предоставлен этот идентификатор от StatPixel, то схема идентификации была обновлена, и вам нужно получить новый.
 invalid-identifier-command-description = Предоставленный идентификатор не является командой.
+
+deprecated-interaction = Veraltete Interaktion
+deprecated-interaction-description = Diese Interaktion ist veraltet und funktioniert nicht. Bitte führen Sie den ursprünglichen Befehl erneut aus.
+identifier = <:id:1125971775755407390> Идентификатор: `{$identifier}`
 
 # /builder
 
@@ -123,7 +130,7 @@ invalid-game-type =
   Недопустимый тип игры {$game}. Проверьте документацию и попробуйте еще раз.
 
 image-created =
-  Ваше изображение было создано!
+  Ваше изображение было создано! Попробуйте его с </execute:1113624864524357708>.
 
   Идентификатор: {$id}
   Ссылка: {$link}

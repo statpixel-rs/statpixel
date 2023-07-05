@@ -1,18 +1,16 @@
-use std::borrow::Cow;
+pub mod build;
+pub mod build_diff;
 
 use crate::Error;
 use api::{
 	builder::{
-		self, Action, Id, LevelKind, Location, PartialShape, Shape, ShapeData, ShapeKind, State,
-		Statistic,
+		self, Action, Id, LevelKind, Location, PartialShape, ShapeData, ShapeKind, State, Statistic,
 	},
-	canvas::{self, body::Body, text, Canvas},
 	game::r#type::Type,
-	image::Image,
 	player::DEFAULT_SKIN,
-	shape, Data, Player, Session,
+	Data, Player, Session,
 };
-use minecraft::{calc, paint::Paint, text::Text};
+use minecraft::paint::Paint;
 use translate::{context, tr, tr_fmt, Context};
 
 use poise::serenity_prelude::{
@@ -31,7 +29,7 @@ pub async fn builder(ctx: Context<'_>) -> Result<(), Error> {
 
 	ctx.send(
 		poise::CreateReply::new()
-			.components(create_components(ctx, State::default()))
+			.components(create_components(ctx, State::default())?)
 			.content(tr!(&ctx, "builder-welcome")),
 	)
 	.await?;
@@ -40,303 +38,16 @@ pub async fn builder(ctx: Context<'_>) -> Result<(), Error> {
 }
 
 #[allow(clippy::too_many_lines)]
-pub fn build(
+pub fn create_components(
 	ctx: &context::Context<'_>,
-	shapes: &Vec<Shape>,
-	data: &Data,
-	session: &Session,
-	skin: &Image,
-) -> Cow<'static, [u8]> {
-	let mut canvas = Canvas::new(750.);
-	let skin = shape::Status(session, skin.image());
-
-	for shape in shapes {
-		match shape.data {
-			ShapeData::Title => {
-				let kind = shape::Title;
-				let body = shape::Title::from_text(&text::from_data(data, &data.username, None));
-
-				match shape.location {
-					Location::Down => {
-						canvas = canvas.push_down(&kind, body);
-					}
-					Location::DownStart => {
-						canvas = canvas.push_down_start(&kind, body);
-					}
-					Location::Right => {
-						canvas = canvas.push_right(&kind, body);
-					}
-					Location::RightStart => {
-						canvas = canvas.push_right_start(&kind, body);
-					}
-				}
-			}
-			ShapeData::Skin => {
-				let body = Body::empty();
-
-				match shape.location {
-					Location::Down => {
-						canvas = canvas.push_down_post_draw(&skin, body);
-					}
-					Location::DownStart => {
-						canvas = canvas.push_down_start_post_draw(&skin, body);
-					}
-					Location::Right => {
-						canvas = canvas.push_right_post_draw(&skin, body);
-					}
-					Location::RightStart => {
-						canvas = canvas.push_right_start_post_draw(&skin, body);
-					}
-				}
-			}
-			ShapeData::Level(ref kind) => {
-				let (level, current, needed, progress, colours) = match kind {
-					LevelKind::BedWars => {
-						let xp = calc::bed_wars::convert(&data.stats.bed_wars.xp);
-						let level = calc::bed_wars::get_level(xp);
-						let current = calc::bed_wars::get_curr_level_xp(xp);
-						let needed = calc::bed_wars::get_level_xp(xp);
-						let format = calc::bed_wars::get_level_format(level);
-						let progress = calc::bed_wars::get_level_progress(xp);
-						let colours = calc::bed_wars::get_colours(level);
-
-						(format, current, needed, progress, colours)
-					}
-					LevelKind::BuildBattle => {
-						let xp = calc::build_battle::convert(&data.stats.build_battle.score);
-						let level = calc::build_battle::get_level(xp);
-						let current = calc::build_battle::get_curr_level_xp(xp);
-						let needed = calc::build_battle::get_level_xp(xp);
-						let format = calc::build_battle::get_level_format(level);
-						let progress = calc::build_battle::get_level_progress(xp);
-						let colours = calc::build_battle::get_colours(level);
-
-						(
-							format,
-							u64::from(current),
-							u64::from(needed),
-							progress,
-							colours,
-						)
-					}
-					LevelKind::Duels => {
-						let xp = calc::duels::overall::convert(&0);
-						let level = calc::duels::overall::get_level(xp);
-						let current = calc::duels::overall::get_curr_level_xp(xp);
-						let needed = calc::duels::overall::get_level_xp(xp);
-						let format = calc::duels::overall::get_level_format(level);
-						let progress = calc::duels::overall::get_level_progress(xp);
-						let colours = calc::duels::overall::get_colours(level);
-
-						(
-							format,
-							u64::from(current),
-							u64::from(needed),
-							progress,
-							colours,
-						)
-					}
-					LevelKind::Network => {
-						let xp = calc::network::convert(&data.xp);
-						let level = calc::network::get_level(xp);
-						let current = calc::network::get_curr_level_xp(xp);
-						let needed = calc::network::get_level_xp(xp);
-						let format = calc::network::get_level_format(level);
-						let progress = calc::network::get_level_progress(xp);
-						let colours = calc::network::get_colours(level);
-
-						(format, current, needed, progress, colours)
-					}
-					LevelKind::Pit => {
-						let xp = calc::pit::convert(&data.stats.pit.profile.level);
-						let level = calc::pit::get_level(xp);
-						let current = calc::pit::get_curr_level_xp(xp);
-						let needed = calc::pit::get_level_xp(xp);
-						let format = calc::pit::get_level_format(level);
-						let progress = calc::pit::get_level_progress(xp);
-						let colours = calc::pit::get_colours(level);
-
-						(format, current, needed, progress, colours)
-					}
-					LevelKind::SkyWars => {
-						let xp = calc::sky_wars::convert(&data.stats.sky_wars.xp);
-						let level = calc::sky_wars::get_level(xp);
-						let current = calc::sky_wars::get_curr_level_xp(xp);
-						let needed = calc::sky_wars::get_level_xp(xp);
-						let format = data.stats.sky_wars.level_fmt.clone();
-						let progress = calc::sky_wars::get_level_progress(xp);
-						let colours = calc::sky_wars::get_colours(level);
-
-						(format, current, needed, progress, colours)
-					}
-					LevelKind::WoolWars => {
-						let xp = calc::wool_wars::convert(&data.stats.wool_wars.progression.xp);
-						let level = calc::wool_wars::get_level(xp);
-						let current = calc::wool_wars::get_curr_level_xp(xp);
-						let needed = calc::wool_wars::get_level_xp(xp);
-						let format = calc::wool_wars::get_level_format(level);
-						let progress = calc::wool_wars::get_level_progress(xp);
-						let colours = calc::wool_wars::get_colours(level);
-
-						(format, current, needed, progress, colours)
-					}
-				};
-
-				let kind = shape::WideBubbleProgress(progress, colours);
-				let body =
-					shape::WideBubbleProgress::from_level_progress(ctx, &level, &current, &needed);
-
-				match shape.location {
-					Location::Down => {
-						canvas = canvas.push_down(&kind, body);
-					}
-					Location::DownStart => {
-						canvas = canvas.push_down_start(&kind, body);
-					}
-					Location::Right => {
-						canvas = canvas.push_right(&kind, body);
-					}
-					Location::RightStart => {
-						canvas = canvas.push_right_start(&kind, body);
-					}
-				}
-			}
-			ShapeData::Subtitle(ref text) => {
-				let kind = shape::Subtitle;
-				let body = shape::Subtitle::from_text(&[Text {
-					text,
-					paint: shape.colour,
-					..Default::default()
-				}]);
-
-				match shape.location {
-					Location::Down => {
-						canvas = canvas.push_down(&kind, body);
-					}
-					Location::DownStart => {
-						canvas = canvas.push_down_start(&kind, body);
-					}
-					Location::Right => {
-						canvas = canvas.push_right(&kind, body);
-					}
-					Location::RightStart => {
-						canvas = canvas.push_right_start(&kind, body);
-					}
-				}
-			}
-			ShapeData::Bubble(ref statistic) => {
-				use api::player::stats::*;
-
-				let (value, label) = match statistic {
-					Statistic::Arcade(kind) => {
-						(arcade::Arcade::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::Arena(kind) => {
-						(arena::Arena::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::BedWars(kind) => {
-						(bed_wars::BedWars::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::BlitzSg(kind) => {
-						(blitz_sg::BlitzSg::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::BuildBattle(kind) => (
-						build_battle::BuildBattle::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::CopsAndCrims(kind) => (
-						cops_and_crims::CopsAndCrims::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Duels(kind) => {
-						(duels::Duels::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::MegaWalls(kind) => (
-						mega_walls::MegaWalls::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::MurderMystery(kind) => (
-						murder_mystery::MurderMystery::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Paintball(kind) => (
-						paintball::Paintball::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Pit(kind) => (pit::Pit::from_kind(ctx, data, kind), kind.get_tr()),
-					Statistic::Quake(kind) => {
-						(quake::Quake::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::SkyWars(kind) => {
-						(sky_wars::SkyWars::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::SmashHeroes(kind) => (
-						smash_heroes::SmashHeroes::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::SpeedUhc(kind) => (
-						speed_uhc::SpeedUhc::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::TntGames(kind) => (
-						tnt_games::TntGames::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::TurboKartRacers(kind) => (
-						turbo_kart_racers::TurboKartRacers::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Uhc(kind) => (uhc::Uhc::from_kind(ctx, data, kind), kind.get_tr()),
-					Statistic::VampireZ(kind) => (
-						vampire_z::VampireZ::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Walls(kind) => {
-						(walls::Walls::from_kind(ctx, data, kind), kind.get_tr())
-					}
-					Statistic::Warlords(kind) => (
-						warlords::Warlords::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::WoolWars(kind) => (
-						wool_wars::WoolWars::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-				};
-
-				let kind = shape::Bubble;
-				let body = Body::from_bubble_cow(value, tr!(ctx, label).as_ref(), shape.colour);
-
-				match shape.location {
-					Location::Down => {
-						canvas = canvas.push_down(&kind, body);
-					}
-					Location::DownStart => {
-						canvas = canvas.push_down_start(&kind, body);
-					}
-					Location::Right => {
-						canvas = canvas.push_right(&kind, body);
-					}
-					Location::RightStart => {
-						canvas = canvas.push_right_start(&kind, body);
-					}
-				}
-			}
-		};
-	}
-
-	canvas::to_png(&mut canvas.build(None, None).unwrap()).into()
-}
-
-#[allow(clippy::too_many_lines)]
-pub fn create_components(ctx: &context::Context<'_>, state: State) -> Vec<CreateActionRow> {
+	state: State,
+) -> Result<Vec<CreateActionRow>, Error> {
 	let empty = state.shapes.is_empty();
-	let has_subtitle = state.shapes.iter().any(|shape| shape.data.is_subtitle());
 
-	vec![
+	Ok(vec![
 		CreateActionRow::SelectMenu(
 			CreateSelectMenu::new(
-				builder::set_next_position(state.clone()),
+				builder::set_next_position(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
 					options: vec![
 						CreateSelectMenuOption::new(tr!(ctx, "down"), "down")
@@ -360,30 +71,20 @@ pub fn create_components(ctx: &context::Context<'_>, state: State) -> Vec<Create
 		),
 		CreateActionRow::SelectMenu(
 			CreateSelectMenu::new(
-				builder::set_next_shape(state.clone()),
+				builder::set_next_shape(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
-					options: {
-						let mut options = vec![
-							CreateSelectMenuOption::new(tr!(ctx, "title"), "title")
-								.description(tr!(ctx, "title-description")),
-							CreateSelectMenuOption::new(tr!(ctx, "level"), "level")
-								.description(tr!(ctx, "level-description")),
-							CreateSelectMenuOption::new(tr!(ctx, "skin"), "skin")
-								.description(tr!(ctx, "skin-description")),
-							CreateSelectMenuOption::new(tr!(ctx, "bubble"), "bubble")
-								.description(tr!(ctx, "bubble-description")),
-						];
-
-						// Only allow one subtitle
-						if !has_subtitle {
-							options.push(
-								CreateSelectMenuOption::new(tr!(ctx, "subtitle"), "subtitle")
-									.description(tr!(ctx, "subtitle-description")),
-							);
-						}
-
-						options
-					},
+					options: vec![
+						CreateSelectMenuOption::new(tr!(ctx, "title"), "title")
+							.description(tr!(ctx, "title-description")),
+						CreateSelectMenuOption::new(tr!(ctx, "level"), "level")
+							.description(tr!(ctx, "level-description")),
+						CreateSelectMenuOption::new(tr!(ctx, "skin"), "skin")
+							.description(tr!(ctx, "skin-description")),
+						CreateSelectMenuOption::new(tr!(ctx, "bubble"), "bubble")
+							.description(tr!(ctx, "bubble-description")),
+						CreateSelectMenuOption::new(tr!(ctx, "subtitle"), "subtitle")
+							.description(tr!(ctx, "subtitle-description")),
+					],
 				},
 			)
 			.placeholder(match state.next.kind {
@@ -397,7 +98,7 @@ pub fn create_components(ctx: &context::Context<'_>, state: State) -> Vec<Create
 		),
 		CreateActionRow::SelectMenu(
 			CreateSelectMenu::new(
-				builder::set_next_colour(state.clone()),
+				builder::set_next_colour(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
 					options: vec![
 						CreateSelectMenuOption::new(tr!(ctx, "aqua"), "AQUA"),
@@ -442,20 +143,20 @@ pub fn create_components(ctx: &context::Context<'_>, state: State) -> Vec<Create
 			}),
 		),
 		CreateActionRow::Buttons(vec![
-			CreateButton::new(builder::add_shape(state.clone()))
+			CreateButton::new(builder::add_shape(state.clone())?)
 				.label(tr!(ctx, "add-shape"))
 				.style(serenity::ButtonStyle::Primary)
 				.disabled(state.shapes.len() >= MAX_SHAPES || !state.next.is_complete()),
-			CreateButton::new(builder::undo(state.clone()))
+			CreateButton::new(builder::undo(state.clone())?)
 				.label(tr!(ctx, "undo"))
 				.style(serenity::ButtonStyle::Danger)
 				.disabled(empty),
-			CreateButton::new(builder::create(state))
+			CreateButton::new(builder::create(state)?)
 				.label(tr!(ctx, "create"))
 				.style(serenity::ButtonStyle::Success)
 				.disabled(empty),
 		]),
-	]
+	])
 }
 
 #[allow(clippy::too_many_lines)]
@@ -499,7 +200,7 @@ pub async fn handler(
 					PartialShape {
 						location: Some(location),
 						kind: Some(kind),
-						colour: Some(colour),
+						colour,
 						..
 					},
 				) => {
@@ -508,18 +209,18 @@ pub async fn handler(
 						builder::ShapeKind::Title => {
 							id.state.shapes.push(builder::Shape {
 								location: *location,
-								colour: *colour,
+								colour: Paint::White,
 								data: ShapeData::Title,
 							});
 
 							update = true;
 						}
-						builder::ShapeKind::Subtitle => {
+						builder::ShapeKind::Subtitle if colour.is_some() => {
 							return Ok(interaction
 								.create_response(
 									ctx.discord(),
 									serenity::CreateInteractionResponse::Modal(
-										create_subtitle_modal(ctx, id.state),
+										create_subtitle_modal(ctx, id.state)?,
 									),
 								)
 								.await?)
@@ -530,29 +231,30 @@ pub async fn handler(
 									ctx.discord(),
 									serenity::CreateInteractionResponse::Modal(create_level_modal(
 										ctx, id.state,
-									)),
+									)?),
 								)
 								.await?)
 						}
 						builder::ShapeKind::Skin => {
 							id.state.shapes.push(builder::Shape {
 								location: *location,
-								colour: *colour,
+								colour: Paint::White,
 								data: ShapeData::Skin,
 							});
 
 							update = true;
 						}
-						builder::ShapeKind::Bubble => {
+						builder::ShapeKind::Bubble if colour.is_some() => {
 							return Ok(interaction
 								.create_response(
 									ctx.discord(),
 									serenity::CreateInteractionResponse::Modal(
-										create_bubble_modal(ctx, id.state),
+										create_bubble_modal(ctx, id.state)?,
 									),
 								)
 								.await?)
 						}
+						_ => return Ok(()),
 					}
 				}
 				(Action::Undo, ..) => {
@@ -567,7 +269,7 @@ pub async fn handler(
 							ctx.discord(),
 							serenity::CreateInteractionResponse::Modal(create_create_modal(
 								ctx, id.state,
-							)),
+							)?),
 						)
 						.await?)
 				}
@@ -584,16 +286,16 @@ pub async fn handler(
 			game_type: None,
 			game_mode: None,
 		};
-		let bytes = build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN);
+		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN);
 
 		ctx.send(
 			poise::CreateReply::new()
-				.components(create_components(ctx, id.state))
+				.components(create_components(ctx, id.state)?)
 				.attachment(CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
 		)
 		.await?;
 	} else {
-		ctx.send(poise::CreateReply::new().components(create_components(ctx, id.state)))
+		ctx.send(poise::CreateReply::new().components(create_components(ctx, id.state)?))
 			.await?;
 	}
 
@@ -603,7 +305,7 @@ pub async fn handler(
 pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Result<(), Error> {
 	let (_, data, session, skin, _) =
 		super::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
-	let bytes = build(ctx, &state.shapes, &data, &session, &skin);
+	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin);
 
 	let id = api::id::command(api::command::Id::Builder {
 		shapes: state.shapes,
@@ -616,16 +318,19 @@ pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Res
 			poise::CreateReply::new()
 				.components(vec![])
 				.content(
-					tr_fmt!(ctx, "image-created", id: id, link: format!("<https://images.statpixel.xyz/{id}>")),
+					tr_fmt!(ctx, "image-created", id: format!("`{id}`"), link: format!("<https://images.statpixel.xyz/{id}>")),
 				)
 				.attachment(serenity::CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
 		)
 		.await?)
 }
 
-pub fn create_subtitle_modal(ctx: &context::Context<'_>, state: State) -> CreateModal {
-	CreateModal::new(
-		builder::set_subtitle_data(state),
+pub fn create_subtitle_modal(
+	ctx: &context::Context<'_>,
+	state: State,
+) -> Result<CreateModal, Error> {
+	Ok(CreateModal::new(
+		builder::set_subtitle_data(state)?,
 		tr!(ctx, "subtitle-modal-title"),
 	)
 	.components(vec![CreateActionRow::InputText(
@@ -636,12 +341,12 @@ pub fn create_subtitle_modal(ctx: &context::Context<'_>, state: State) -> Create
 		)
 		.max_length(16)
 		.placeholder(tr!(ctx, "subtitle-placeholder")),
-	)])
+	)]))
 }
 
-pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> CreateModal {
-	CreateModal::new(
-		builder::set_level_data(state),
+pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+	Ok(CreateModal::new(
+		builder::set_level_data(state)?,
 		tr!(ctx, "level-modal-title"),
 	)
 	.components(vec![CreateActionRow::InputText(
@@ -652,12 +357,12 @@ pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> CreateMod
 		)
 		.max_length(16)
 		.placeholder(tr!(ctx, "level-type-placeholder")),
-	)])
+	)]))
 }
 
-pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> CreateModal {
-	CreateModal::new(
-		builder::set_bubble_data(state),
+pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+	Ok(CreateModal::new(
+		builder::set_bubble_data(state)?,
 		tr!(ctx, "bubble-modal-title"),
 	)
 	.components(vec![
@@ -677,20 +382,22 @@ pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> CreateMo
 			)
 			.placeholder(tr!(ctx, "statistic-placeholder")),
 		),
-	])
+	]))
 }
 
-pub fn create_create_modal(ctx: &context::Context<'_>, state: State) -> CreateModal {
-	CreateModal::new(builder::create(state), tr!(ctx, "create-modal-title")).components(vec![
-		CreateActionRow::InputText(
-			CreateInputText::new(
-				serenity::InputTextStyle::Short,
-				tr!(ctx, "username"),
-				"username",
-			)
-			.placeholder(tr!(ctx, "username-placeholder")),
-		),
-	])
+pub fn create_create_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+	Ok(
+		CreateModal::new(builder::create(state)?, tr!(ctx, "create-modal-title")).components(vec![
+			CreateActionRow::InputText(
+				CreateInputText::new(
+					serenity::InputTextStyle::Short,
+					tr!(ctx, "username"),
+					"username",
+				)
+				.placeholder(tr!(ctx, "username-placeholder")),
+			),
+		]),
+	)
 }
 
 macro_rules! impl_type_branch {
@@ -765,7 +472,6 @@ pub async fn modal_handler(
 			Action::SetLevelData,
 			PartialShape {
 				location: Some(location),
-				colour: Some(colour),
 				..
 			},
 		) => {
@@ -802,7 +508,7 @@ pub async fn modal_handler(
 
 			id.state.shapes.push(builder::Shape {
 				location: *location,
-				colour: *colour,
+				colour: Paint::White,
 				data: ShapeData::Level(level),
 			});
 		}
@@ -1093,18 +799,14 @@ pub async fn modal_handler(
 			game_mode: None,
 		};
 
-		build(local_ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN)
+		build::build(local_ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN)
 	};
 
-	interaction
-		.create_response(
-			ctx,
-			serenity::CreateInteractionResponse::Message(
-				poise::CreateReply::new()
-					.components(create_components(local_ctx, id.state))
-					.attachment(CreateAttachment::bytes(bytes, crate::IMAGE_NAME))
-					.to_slash_initial_response(),
-			),
+	local_ctx
+		.send(
+			poise::CreateReply::new()
+				.components(create_components(local_ctx, id.state)?)
+				.attachment(CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
 		)
 		.await?;
 

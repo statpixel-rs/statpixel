@@ -4,7 +4,6 @@ members = [
 	"database",
 	"minecraft",
 	"api/macros",
-	"server",
 	"statpixel",
 	"translate",
 ]
@@ -46,6 +45,11 @@ features = ["headers"]
 
 [workspace.dependencies.bincode]
 version = "2.0.0-rc.3"
+features = ["serde"]
+
+[workspace.dependencies.bitcode]
+git = "https://github.com/SoftbearStudios/bitcode"
+branch = "main"
 features = ["serde"]
 
 [workspace.dependencies.chrono]

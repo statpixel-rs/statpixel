@@ -7,6 +7,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
 bincode.workspace = true
+bitcode.workspace = true
 darling.workspace = true
 konst.workspace = true
 once_cell.workspace = true

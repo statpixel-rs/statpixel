@@ -5,6 +5,11 @@
 #![feature(const_mut_refs)]
 #![feature(const_trait_impl)]
 #![feature(const_option)]
+// Temporarily suppress a few clippy warnings
+// See: https://github.com/SoftbearStudios/bitcode/issues/7
+// TODO: Remember to remove this once it has been fixed
+#![allow(clippy::verbose_bit_mask)]
+#![allow(unused_must_use)]
 
 use thiserror::Error;
 

@@ -18,7 +18,7 @@ pub async fn command<G: api::prelude::Game>(
 	mode: Option<G::Mode>,
 	kind: Option<<G::Mode as Mode>::Kind>,
 	value: Option<f64>,
-) -> Result<Option<Cow<'static, [u8]>>, Error> {
+) -> Result<Option<(Cow<'static, [u8]>, G::Mode)>, Error> {
 	let snapshots = schema::snapshot::table
 		.filter(schema::snapshot::uuid.eq(player.uuid))
 		.order(schema::snapshot::created_at.asc())
@@ -53,7 +53,7 @@ pub async fn command<G: api::prelude::Game>(
 		snapshots_
 	};
 
-	let buffer = G::project(ctx, snapshots, session, mode, kind, value, background)?;
+	let (buffer, mode) = G::project(ctx, snapshots, session, mode, kind, value, background)?;
 
-	Ok(Some(buffer.into()))
+	Ok(Some((buffer.into(), mode)))
 }

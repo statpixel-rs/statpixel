@@ -48,6 +48,10 @@ pub fn get_level(xp: u64) -> Level {
 
 #[must_use]
 pub fn get_xp(level: Level) -> u64 {
+	if level.0 <= 1 {
+		return 0;
+	}
+
 	(HALF_GROWTH * (level.0 - 2) + BASE) * (level.0 - 1)
 }
 

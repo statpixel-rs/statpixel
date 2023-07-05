@@ -24,6 +24,9 @@ error-skyblock-profile-not-found = {$name}のSkyBlockプロファイルが見つ
 error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。 </daily bedwars:1113624864272683065>で作成してください。
 error-leaderboard-not-found = 名前{$name}のリーダーボードが見つかりませんでした。
 error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、APIが無効になっているか、新しいプロファイルシステム以降ログインしていません。
+error-identifier-too-long =
+  このインタラクションの生成された識別子の1つが長すぎます。
+  コンポーネントの数またはカスタムテキストの量を減らしてみてください。
 
 # Quick tips
 
@@ -46,7 +49,7 @@ tip-bazaar = <:knowledge_book:1117179094556233828> </skyblock bazaar:11136248648
 
 # /custom
 
-custom = custom
+execute = execute
   .description = 識別子によってコマンドを実行します
   .id = id
   .id-description = コマンドの識別子
@@ -54,6 +57,10 @@ custom = custom
 invalid-identifier = 無効な識別子が提供されました
 invalid-identifier-description = 提供された識別子は無効です。 StatPixelからこの識別子が与えられた場合は、識別スキームが更新されているため、新しい識別子を取得する必要があります。
 invalid-identifier-command-description = 提供された識別子はコマンドではありません。
+
+deprecated-interaction = インタラクションが廃止されました
+deprecated-interaction-description = このインタラクションは廃止され、機能しません。 元のコマンドをもう一度実行してください。
+identifier = <:id:1125971775755407390> 識別子: `{$identifier}`
 
 # /builder
 
@@ -123,10 +130,10 @@ invalid-game-type =
   無効なゲームタイプ{$game}。 ドキュメントを確認して、もう一度お試しください。
 
 image-created =
-  あなたの画像が作成されました！
+  あなたの画像が作成されました！ </execute:1113624864524357708>で試してみてください。
 
-  識別子：{$id}
-  リンク：{$link}
+  識別子: {$id}
+  リンク: {$link}
 
 # /about
 
