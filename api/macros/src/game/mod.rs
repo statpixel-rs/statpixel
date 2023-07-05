@@ -962,45 +962,37 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let kind_into_int_impl = overall_fields
-			.iter()
-			.filter(|f| f.skip_chart.is_none())
-			.enumerate()
-			.map(|(idx, f)| {
-				let idx = idx as u32 + 1;
-				let name = &f.ident;
-				let id = if let Some(ref tr) = f.tr {
-					let id = &tr.replace('-', "_");
+		let kind_into_int_impl = overall_fields.iter().enumerate().map(|(idx, f)| {
+			let idx = idx as u32 + 1;
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
 
-					ident!(id)
-				} else {
-					name.clone()
-				};
+				ident!(id)
+			} else {
+				name.clone()
+			};
 
-				quote! {
-					&#enum_kind_ident ::#id => #idx,
-				}
-			});
+			quote! {
+				&#enum_kind_ident ::#id => #idx,
+			}
+		});
 
-		let kind_from_int_impl = overall_fields
-			.iter()
-			.filter(|f| f.skip_chart.is_none())
-			.enumerate()
-			.map(|(idx, f)| {
-				let idx = idx as u32 + 1;
-				let name = &f.ident;
-				let id = if let Some(ref tr) = f.tr {
-					let id = &tr.replace('-', "_");
+		let kind_from_int_impl = overall_fields.iter().enumerate().map(|(idx, f)| {
+			let idx = idx as u32 + 1;
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
 
-					ident!(id)
-				} else {
-					name.clone()
-				};
+				ident!(id)
+			} else {
+				name.clone()
+			};
 
-				quote! {
-					#idx => #enum_kind_ident ::#id,
-				}
-			});
+			quote! {
+				#idx => #enum_kind_ident ::#id,
+			}
+		});
 
 		let impl_mode_enum = if modes_len > 25 {
 			// There can only be 25 options in a ChoiceParameter, so we need to use
@@ -1032,23 +1024,24 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		let static_kinds_iter = overall_fields
-			.iter()
-			.filter(|f| f.skip_chart.is_none())
-			.map(|f| {
-				let name = &f.ident;
-				let id = if let Some(ref tr) = f.tr {
-					let id = &tr.replace('-', "_");
+		let static_kinds_iter = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			}
 
-					ident!(id)
-				} else {
-					name.clone()
-				};
+			let name = &f.ident;
+			let id = if let Some(ref tr) = f.tr {
+				let id = &tr.replace('-', "_");
 
-				quote! {
-					#enum_kind_ident ::#id,
-				}
-			});
+				ident!(id)
+			} else {
+				name.clone()
+			};
+
+			Some(quote! {
+				#enum_kind_ident ::#id,
+			})
+		});
 
 		let kinds_len = overall_fields
 			.iter()
@@ -1397,6 +1390,7 @@ impl ToTokens for GameInputReceiver {
 						match kind {
 							#kind_level_match_project,
 							#(#kind_enum_match_project)*
+							_ => unimplemented!(),
 						}
 					}
 
@@ -1516,11 +1510,7 @@ impl ToTokens for GameInputReceiver {
 			}
 		};
 
-		let kind_enum_rows = overall_fields.iter().filter_map(|f| {
-			if f.skip_chart.is_some() {
-				return None;
-			}
-
+		let kind_enum_rows = overall_fields.iter().map(|f| {
 			let name = &f.ident;
 			let tr = if let Some(ref tr) = f.tr {
 				let id = &tr.replace('-', "_");
@@ -1530,7 +1520,7 @@ impl ToTokens for GameInputReceiver {
 				name.clone()
 			};
 
-			Some(quote! { #tr, })
+			quote! { #tr, }
 		});
 
 		let default_kind = overall_fields
@@ -1925,11 +1915,7 @@ impl ToTokens for GameInputReceiver {
 				})
 			});
 
-		let impl_kind = overall_fields.iter().filter_map(|f| {
-			if f.skip_chart.is_some() {
-				return None;
-			}
-
+		let impl_kind = overall_fields.iter().map(|f| {
 			let name = &f.ident;
 			let id = if let Some(ref tr) = f.tr {
 				let id = &tr.replace('-', "_");
@@ -1940,35 +1926,30 @@ impl ToTokens for GameInputReceiver {
 			};
 			let tr = get_tr_with_fallback(f.tr.as_deref(), Some(name));
 
-			Some(quote! {
+			quote! {
 				#enum_kind_ident ::#id => #tr,
-			})
+			}
 		});
 
-		let impl_kind_try_from_str_lower = overall_fields.iter().filter_map(|f| {
-			if f.skip_chart.is_some() {
-				return None;
-			}
-
+		let impl_kind_try_from_str_lower = overall_fields.iter().map(|f| {
 			let name = &f.ident;
 			let id = if let Some(ref tr) = f.tr {
-				let id = &tr.replace('-', " ");
+				let id = &tr.replace('-', "_");
 
 				ident!(id)
 			} else {
 				name.clone()
 			};
 
-			let name = f.ident.to_string().replace('_', " ");
 			let string = if let Some(ref tr) = f.tr {
 				tr.replace('-', " ")
 			} else {
-				name
+				f.ident.to_string().replace('_', " ")
 			};
 
-			Some(quote! {
+			quote! {
 				#string => #enum_kind_ident ::#id
-			})
+			}
 		});
 
 		let kind_level_match_project = {
@@ -2085,11 +2066,7 @@ impl ToTokens for GameInputReceiver {
 			}
 		};
 
-		let kind_enum_match = overall_fields.iter().filter_map(|f| {
-			if f.skip_chart.is_some() {
-				return None;
-			}
-
+		let kind_enum_match = overall_fields.iter().map(|f| {
 			let name = &f.ident;
 			let id = if let Some(ref tr) = f.tr {
 				let id = &tr.replace('-', "_");
@@ -2191,18 +2168,14 @@ impl ToTokens for GameInputReceiver {
 				}
 			};
 
-			Some(quote! {
+			quote! {
 				#enum_kind_ident ::#id => {
 					std::borrow::Cow::Owned(crate::canvas::label::ToFormatted::to_formatted_label(&#val, ctx).into_owned())
 				}
-			})
+			}
 		});
 
-		let kind_diff_enum_match = overall_fields.iter().filter_map(|f| {
-			if f.skip_chart.is_some() {
-				return None;
-			}
-
+		let kind_diff_enum_match = overall_fields.iter().map(|f| {
 			let name = &f.ident;
 			let id = if let Some(ref tr) = f.tr {
 				let id = &tr.replace('-', "_");
@@ -2234,13 +2207,13 @@ impl ToTokens for GameInputReceiver {
 					let first = apply.next().unwrap();
 					let other = apply.map(|ident| {
 						quote! {
-							min = min.min(stats.#ident.#name);
+							min = min.min(stats_new.#ident.#name);
 						}
 					});
 
 					quote! {
 						{
-							let mut min = stats.#first.#name;
+							let mut min = stats_new.#first.#name;
 
 							#(#other)*
 
@@ -2382,11 +2355,11 @@ impl ToTokens for GameInputReceiver {
 				}
 			};
 
-			Some(quote! {
+			quote! {
 				#enum_kind_ident ::#id => {
 					std::borrow::Cow::Owned(crate::canvas::label::ToFormatted::to_formatted_label(&#val, ctx).into_owned())
 				}
-			})
+			}
 		});
 
 		tokens.extend(quote! {
@@ -2415,6 +2388,7 @@ impl ToTokens for GameInputReceiver {
 					match kind {
 						#kind_level_match_project,
 						#(#kind_enum_match_project)*
+						_ => unimplemented!(),
 					}
 				}
 
