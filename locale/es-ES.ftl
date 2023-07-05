@@ -441,7 +441,7 @@ help-snapshot-description = Las instantáneas son una forma de ver los cambios e
 help-history = Historia <a:clock:1115091329958019253>
 help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1113624864524357708>.
 
-help-image-builder = Constructor de imágenes 🖌️
+help-image-builder = Constructor de imágenes <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de imágenes! Usa </builder:1113624864524357709> para comenzar o ve a https://statpixel.xyz/docs/builder para obtener más información.
 
 # /history

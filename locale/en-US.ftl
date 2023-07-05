@@ -453,7 +453,7 @@ help-snapshot-description = Snapshots are a way to view the changes in your stat
 help-history = History <a:clock:1115091329958019253>
 help-history-description = To view a graph of how specific statistics changed over time, try out </history network:1113624864524357708>.
 
-help-image-builder = Image Builder 🖌️
+help-image-builder = Image Builder <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Build your own dynamic images with the Image Builder! Use </builder:1113624864524357709> to get started or go to https://statpixel.xyz/docs/builder for more information.
 
 # /display

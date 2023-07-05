@@ -445,7 +445,7 @@ help-snapshot-description = スナップショットは、統計の変更を時�
 help-history = 履歴 <a:clock:1115091329958019253>
 help-history-description = 特定の統計が時間の経過とともにどのように変化したかをグラフで表示するには、</history network:1113624864524357708>などを試してみてください。
 
-help-image-builder = イメージビルダー 🖌️
+help-image-builder = イメージビルダー <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = イメージビルダーを使用して、独自の動的イメージを作成します！ </builder:1113624864524357709>を使用して開始するか、https://statpixel.xyz/docs/builder で詳細を確認してください。
 
 # /history

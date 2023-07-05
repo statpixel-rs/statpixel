@@ -443,7 +443,7 @@ help-snapshot-description = Schnappschüsse sind eine Möglichkeit, die Änderun
 help-history = Verlauf <a:clock:1115091329958019253>
 help-history-description = Um eine Grafik anzuzeigen, wie sich bestimmte Statistiken im Laufe der Zeit geändert haben, versuche es mit </history network:1113624864524357708>.
 
-help-image-builder = Image Builder 🖌️
+help-image-builder = Image Builder <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Erstelle deine eigenen dynamischen Bilder mit dem Image Builder! Verwende </builder:1113624864524357709>, um loszulegen, oder gehe zu https://statpixel.xyz/docs/builder für weitere Informationen.
 
 # /history
