@@ -39,6 +39,11 @@ pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
 					tr!(ctx, "help-history"),
 					tr!(ctx, "help-history-description"),
 					false,
+				)
+				.field(
+					tr!(ctx, "help-image-builder"),
+					tr!(ctx, "help-image-builder-description"),
+					false,
 				),
 		),
 	)

@@ -1,7 +1,7 @@
 # Étiquettes générales
 not-linked = Arguments manquants
 not-linked-description = Comme vous n'êtes pas lié, vous devez fournir un profil pour afficher.
-showing-statistics = Affichage des statistiques de {$from} à {$to}.
+showing-statistics = <a:clock:1110754973794451557> Affichage des statistiques de {$from} à {$to}.
 no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, elle a donc été insérée.
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
@@ -74,6 +74,7 @@ builder-welcome =
   Une fois créé, utilisez l'identifiant fourni pour afficher cette image avec vos statistiques mises à jour à tout moment, et partagez-la avec vos amis !
   Vous pouvez également l'utiliser avec notre API d'images pour l'afficher dans votre signature de forum ou n'importe où ailleurs sur Internet.
 
+documentation = Documentation
 down = Bas
 down-description = Ajoute une forme directement en dessous de la forme précédente.
 down-start = Bas (début)
@@ -441,6 +442,9 @@ help-snapshot-description = Les instantanés sont un moyen de visualiser les cha
 
 help-history = Historique <a:clock:1115091329958019253>
 help-history-description = Pour afficher un graphique de l'évolution de statistiques spécifiques au fil du temps, essayez </history network:1113624864524357708>.
+
+help-image-builder = Image Builder 🖌️
+help-image-builder-description = Créez vos propres images dynamiques avec l'Image Builder ! Utilisez </builder:1113624864524357709> pour commencer ou allez sur https://statpixel.xyz/docs/builder pour plus d'informations.
 
 # /history
 

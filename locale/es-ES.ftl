@@ -1,7 +1,7 @@
 # Etiquetas generales
 not-linked = Argumentos faltantes
 not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para ver.
-showing-statistics = Mostrando estadísticas de {$from} a {$to}.
+showing-statistics = <a:clock:1110754973794451557> Mostrando estadísticas de {$from} a {$to}.
 no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
@@ -76,6 +76,7 @@ builder-welcome =
   Una vez creado, use el identificador proporcionado para mostrar esa imagen con sus estadísticas actualizadas en cualquier momento y compártala con sus amigos.
   También puede usarlo con nuestra API de imágenes para mostrarlo en su firma del foro o en cualquier otro lugar de Internet.
 
+documentation = Documentación
 down = Abajo
 down-description = Agrega una forma directamente debajo de la forma anterior.
 down-start = Abajo (inicio)
@@ -439,6 +440,9 @@ help-snapshot-description = Las instantáneas son una forma de ver los cambios e
 
 help-history = Historia <a:clock:1115091329958019253>
 help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1113624864524357708>.
+
+help-image-builder = Constructor de imágenes 🖌️
+help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de imágenes! Usa </builder:1113624864524357709> para comenzar o ve a https://statpixel.xyz/docs/builder para obtener más información.
 
 # /history
 

@@ -1,7 +1,7 @@
 # General labels
 not-linked = Missing arguments
 not-linked-description = Since you're not linked, you need to provide a profile to view.
-showing-statistics = Showing statistics change from {$from} to {$to}.
+showing-statistics = <a:clock:1110754973794451557> Showing statistics change from {$from} to {$to}.
 no-previous-statistics = No previous data found for **{$name}**, so it has been inserted.
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
@@ -76,6 +76,7 @@ builder-welcome =
   Once created, use the provided identifier to display that image with your updated statistics at any time, and share it with your friends!
   You can also use it with our image API to display it in your forum signature or anywhere else on the internet.
 
+documentation = Documentation
 down = Down
 down-description = Adds a shape directly below the previous shape.
 down-start = Down (start)
@@ -451,6 +452,9 @@ help-snapshot-description = Snapshots are a way to view the changes in your stat
 
 help-history = History <a:clock:1115091329958019253>
 help-history-description = To view a graph of how specific statistics changed over time, try out </history network:1113624864524357708>.
+
+help-image-builder = Image Builder 🖌️
+help-image-builder-description = Build your own dynamic images with the Image Builder! Use </builder:1113624864524357709> to get started or go to https://statpixel.xyz/docs/builder for more information.
 
 # /display
 display = display

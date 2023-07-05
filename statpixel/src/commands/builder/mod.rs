@@ -155,6 +155,8 @@ pub fn create_components(
 				.label(tr!(ctx, "create"))
 				.style(serenity::ButtonStyle::Success)
 				.disabled(empty),
+			CreateButton::new_link("https://statpixel.xyz/docs/builder".to_string())
+				.label(tr!(ctx, "documentation")),
 		]),
 	])
 }
@@ -318,7 +320,7 @@ pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Res
 			poise::CreateReply::new()
 				.components(vec![])
 				.content(
-					tr_fmt!(ctx, "image-created", id: format!("`{id}`"), link: format!("<https://images.statpixel.xyz/{id}>")),
+					tr_fmt!(ctx, "image-created", id: format!("`{id}`"), link: format!("<https://api.statpixel.xyz/image/{id}>")),
 				)
 				.attachment(serenity::CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
 		)

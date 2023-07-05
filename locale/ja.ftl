@@ -1,7 +1,7 @@
 # 一般ラベル
 not-linked = 引数が不足しています
 not-linked-description = リンクされていないため、プロフィールを表示するにはプロフィールを提供する必要があります。
-showing-statistics = {$from}から{$to}までの統計を表示しています。
+showing-statistics = <a:clock:1110754973794451557> {$from}から{$to}までの統計を表示しています。
 no-previous-statistics = **{$name}**の以前のデータが見つからなかったため、挿入されました。
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
@@ -76,6 +76,7 @@ builder-welcome =
   作成されたら、提供された識別子を使用して、いつでも更新された統計でその画像を表示し、友達と共有します！
   また、画像APIと共に使用して、フォーラム署名やインターネット上の他の場所に表示することもできます。
 
+documentation = ドキュメンテーション
 down = 下
 down-description = 直前の形状の下に形状を追加します。
 down-start = 下（開始）
@@ -443,6 +444,9 @@ help-snapshot-description = スナップショットは、統計の変更を時�
 
 help-history = 履歴 <a:clock:1115091329958019253>
 help-history-description = 特定の統計が時間の経過とともにどのように変化したかをグラフで表示するには、</history network:1113624864524357708>などを試してみてください。
+
+help-image-builder = イメージビルダー 🖌️
+help-image-builder-description = イメージビルダーを使用して、独自の動的イメージを作成します！ </builder:1113624864524357709>を使用して開始するか、https://statpixel.xyz/docs/builder で詳細を確認してください。
 
 # /history
 
