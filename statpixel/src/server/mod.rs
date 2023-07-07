@@ -1,4 +1,5 @@
 mod image;
+mod metrics;
 mod topgg;
 
 use axum::{
@@ -14,6 +15,7 @@ pub async fn run(data: Data) {
 	let app = Router::new()
 		.route("/internal/vote", post(add_vote))
 		.route("/image/:id", get(image::get))
+		.route("/metrics", get(metrics::get))
 		.with_state(Arc::new(data));
 
 	let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
