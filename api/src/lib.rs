@@ -10,7 +10,6 @@
 // See: https://github.com/SoftbearStudios/bitcode/issues/7
 // TODO: Remember to remove this once it has been fixed
 #![allow(clippy::verbose_bit_mask)]
-#![allow(unused_must_use)]
 
 mod extras;
 
