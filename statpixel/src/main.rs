@@ -9,7 +9,11 @@ use std::sync::Arc;
 
 pub use api::command::Id;
 use api::skyblock;
-use database::{get_pool, schema::usage};
+use database::{
+	get_pool,
+	models::MetricKind,
+	schema::{metric, usage},
+};
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use poise::serenity_prelude::{
@@ -308,6 +312,15 @@ async fn event_handler(
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
+
+				diesel::insert_into(metric::table)
+					.values((
+						metric::discord_id.eq(guild.id.0.get() as i64),
+						metric::kind.eq(i16::from(MetricKind::GuildJoin)),
+					))
+					.execute(&mut data.pool.get().await?)
+					.await
+					.ok();
 			}
 		}
 		FullEvent::GuildDelete {
@@ -317,6 +330,15 @@ async fn event_handler(
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
+
+				diesel::insert_into(metric::table)
+					.values((
+						metric::discord_id.eq(guild.id.0.get() as i64),
+						metric::kind.eq(i16::from(MetricKind::GuildLeave)),
+					))
+					.execute(&mut data.pool.get().await?)
+					.await
+					.ok();
 			}
 		}
 		FullEvent::ShardStageUpdate { event, .. } => {

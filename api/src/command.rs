@@ -41,7 +41,7 @@ impl SkyBlockMode {
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String {
 				options: vec![
 					serenity::CreateSelectMenuOption::new(
@@ -177,7 +177,7 @@ impl SkyBlockMode {
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String {
 				options: vec![
 					serenity::CreateSelectMenuOption::new(
@@ -328,7 +328,7 @@ impl SkyBlockMode {
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String {
 				options: vec![
 					serenity::CreateSelectMenuOption::new(
@@ -464,7 +464,7 @@ impl SkyBlockMode {
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String {
 				options: vec![
 					serenity::CreateSelectMenuOption::new(
@@ -639,7 +639,7 @@ impl GuildMode {
 		]);
 
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String { options },
 		)
 		.min_values(1)
@@ -709,7 +709,7 @@ impl GuildMode {
 		]);
 
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String { options },
 		)
 		.min_values(1)
@@ -775,7 +775,7 @@ impl GuildMode {
 		]);
 
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String { options },
 		)
 		.min_values(1)
@@ -801,7 +801,7 @@ impl GuildMode {
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
-			ctx.id().to_string(),
+			"select",
 			serenity::CreateSelectMenuKind::String {
 				options: vec![
 					serenity::CreateSelectMenuOption::new(

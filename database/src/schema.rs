@@ -1,6 +1,9 @@
+// @generated automatically by Diesel CLI.
+
 diesel::table! {
 	autocomplete (uuid) {
 		uuid -> Uuid,
+		#[max_length = 16]
 		name -> Varchar,
 		searches -> Int4,
 	}
@@ -30,6 +33,7 @@ diesel::table! {
 diesel::table! {
 	guild_autocomplete (uuid) {
 		uuid -> Uuid,
+		#[max_length = 32]
 		name -> Varchar,
 		xp -> Int4,
 		searches -> Int4,
@@ -58,6 +62,15 @@ diesel::table! {
 		updated_at -> Timestamptz,
 		days_since_epoch -> Int4,
 		version -> Int2,
+	}
+}
+
+diesel::table! {
+	metric (id) {
+		id -> Int4,
+		discord_id -> Int8,
+		kind -> Int2,
+		created_at -> Timestamptz,
 	}
 }
 
@@ -101,6 +114,7 @@ diesel::table! {
 		updated_at -> Timestamptz,
 		created_at -> Timestamptz,
 		display -> Int2,
+		#[max_length = 4]
 		suffix -> Nullable<Varchar>,
 		colour -> Nullable<Int4>,
 		votes -> Int2,
