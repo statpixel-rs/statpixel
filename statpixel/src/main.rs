@@ -5,6 +5,7 @@
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 
+use std::collections::HashSet;
 use std::sync::Arc;
 
 pub use api::command::Id;
@@ -16,13 +17,14 @@ use database::{
 };
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
+use once_cell::sync::Lazy;
 use poise::serenity_prelude::{
 	self as serenity, ConnectionStage, FullEvent, GatewayIntents, Interaction,
 };
 use snapshot::user;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
-use translate::{context, Context, Data};
+use translate::{context, Context, Data, Error};
 
 mod commands;
 mod constants;
@@ -37,8 +39,11 @@ mod tip;
 mod util;
 
 pub use constants::*;
-pub use statpixel::*;
 use util::deprecated_interaction;
+
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub static GUILDS: Lazy<tokio::sync::RwLock<HashSet<u64>>> = Lazy::new(Default::default);
+pub static SHARDS: Lazy<tokio::sync::RwLock<u64>> = Lazy::new(Default::default);
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";

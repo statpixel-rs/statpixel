@@ -156,6 +156,55 @@ pub async fn get_player_with_username_from_input(
 	}
 }
 
+pub async fn get_guild_with_member_opt_from_input(
+	ctx: &Context<'_>,
+	name: Option<String>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+	guild_id: Option<Uuid>,
+) -> Result<(Arc<Guild>, Option<Player>), Error> {
+	match (
+		guild_id,
+		name,
+		uuid,
+		username
+			.as_ref()
+			.and_then(|username| Username::try_from_str(username).ok()),
+		username,
+	) {
+		(Some(uuid), _, _, _, _) => Ok((Guild::from_uuid(uuid).await?, None)),
+		(_, Some(name), _, _, _) => Ok((Guild::from_name(&name).await?, None)),
+		(_, _, Some(uuid), _, _) => Ok((
+			Guild::from_member_uuid(uuid).await?,
+			Some(Player::from_uuid_unchecked(uuid)),
+		)),
+		(_, _, _, Some(username), _) => {
+			let player = Player::from_username(username.as_str()).await?;
+
+			Ok((Guild::from_member_uuid(player.uuid).await?, Some(player)))
+		}
+		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
+		_ => {
+			let uuid = schema::user::table
+				.filter(
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+				)
+				.select(schema::user::uuid)
+				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.await;
+
+			if let Ok(Some(uuid)) = uuid {
+				Ok((
+					Guild::from_member_uuid(uuid).await?,
+					Some(Player::from_uuid_unchecked(uuid)),
+				))
+			} else {
+				Err(Error::NotLinked)
+			}
+		}
+	}
+}
+
 pub async fn get_guild_from_input(
 	ctx: &Context<'_>,
 	name: Option<String>,

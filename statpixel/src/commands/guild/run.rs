@@ -16,16 +16,18 @@ pub async fn top(
 	limit: usize,
 	guild_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
-		Ok(guild) => guild,
-		Err(Error::NotLinked) => {
-			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
-				.await?;
+	let (guild, player) =
+		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
+		{
+			Ok(data) => data,
+			Err(Error::NotLinked) => {
+				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+					.await?;
 
-			return Ok(());
-		}
-		Err(e) => return Err(e),
-	};
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
 
 	guild.increase_searches(ctx).await?;
 
@@ -50,7 +52,7 @@ pub async fn top(
 		Uuid::from_u128(guild.id),
 		Some(limit),
 		past.num_nanoseconds(),
-		uuid,
+		uuid.or_else(|| player.map(|p| p.uuid)),
 		Some(GuildMode::Top),
 	);
 
@@ -79,16 +81,18 @@ pub async fn members(
 	limit: Option<usize>,
 	past_nanos: Option<i64>,
 ) -> Result<(), Error> {
-	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
-		Ok(guild) => guild,
-		Err(Error::NotLinked) => {
-			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
-				.await?;
+	let (guild, player) =
+		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
+		{
+			Ok(data) => data,
+			Err(Error::NotLinked) => {
+				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+					.await?;
 
-			return Ok(());
-		}
-		Err(e) => return Err(e),
-	};
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
 
 	guild.increase_searches(ctx).await?;
 
@@ -99,7 +103,7 @@ pub async fn members(
 		Uuid::from_u128(guild.id),
 		limit,
 		past_nanos,
-		uuid,
+		uuid.or_else(|| player.map(|p| p.uuid)),
 		Some(GuildMode::Members),
 	);
 
@@ -128,16 +132,18 @@ pub async fn general(
 	limit: Option<usize>,
 	past_nanos: Option<i64>,
 ) -> Result<(), Error> {
-	let guild = match crate::commands::get_guild(ctx, name, uuid, username, guild_id).await {
-		Ok(guild) => guild,
-		Err(Error::NotLinked) => {
-			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
-				.await?;
+	let (guild, player) =
+		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
+		{
+			Ok(data) => data,
+			Err(Error::NotLinked) => {
+				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+					.await?;
 
-			return Ok(());
-		}
-		Err(e) => return Err(e),
-	};
+				return Ok(());
+			}
+			Err(e) => return Err(e),
+		};
 
 	guild.increase_searches(ctx).await?;
 
@@ -148,7 +154,7 @@ pub async fn general(
 		Uuid::from_u128(guild.id),
 		limit,
 		past_nanos,
-		uuid,
+		uuid.or_else(|| player.map(|p| p.uuid)),
 		Some(GuildMode::General),
 	);
 

@@ -1,11 +1,11 @@
 use std::sync::Arc;
 
+use crate::GUILDS;
 use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
 use database::schema::usage;
 use diesel::{dsl::sum, NullableExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use serde::Serialize;
-use statpixel::GUILDS;
 
 #[derive(Serialize)]
 pub struct Metrics {
