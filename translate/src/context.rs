@@ -124,22 +124,20 @@ impl<'c> Context<'c> {
 		self.locale.as_ref()
 	}
 
-	pub fn author(&self) -> &serenity::User {
+	pub fn author(&self) -> Option<&serenity::User> {
 		match self {
 			Self {
 				interaction: ContextInteraction::Command(ctx),
 				..
-			} => ctx.author(),
+			} => Some(ctx.author()),
 			Self {
 				interaction: ContextInteraction::Component { interaction, .. },
 				..
-			} => &interaction.user,
+			} => Some(&interaction.user),
 			Self {
 				interaction: ContextInteraction::External(..) | ContextInteraction::Modal { .. },
 				..
-			} => {
-				unreachable!("Context::author() called on external context")
-			}
+			} => None,
 		}
 	}
 
@@ -171,16 +169,6 @@ impl<'c> Context<'c> {
 			ContextInteraction::Modal { ctx, .. } => ctx,
 			ContextInteraction::External(..) => {
 				unreachable!("Context::discord() called on external context")
-			}
-		}
-	}
-
-	pub fn id(&self) -> u64 {
-		match self.interaction {
-			ContextInteraction::Command(ctx) => ctx.id(),
-			ContextInteraction::Component { interaction, .. } => interaction.id.0.get(),
-			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => {
-				unreachable!("Context::id() called on external context")
 			}
 		}
 	}

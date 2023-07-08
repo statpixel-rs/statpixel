@@ -65,8 +65,12 @@ pub async fn get_format_colour_from_input(ctx: &Context<'_>) -> (format::Display
 		return (format::Display::default(), None);
 	};
 
+	let Some(author) = ctx.author() else {
+		return (format::Display::default(), None);
+	};
+
 	let result = schema::user::table
-		.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+		.filter(schema::user::id.eq(author.id.0.get() as i64))
 		.select((schema::user::display, schema::user::colour))
 		.get_result::<(format::Display, Option<i32>)>(&mut connection)
 		.await;
@@ -103,7 +107,9 @@ pub async fn get_player_from_input(
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+				.filter(
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -134,7 +140,9 @@ pub async fn get_player_with_username_from_input(
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+				.filter(
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -175,7 +183,9 @@ pub async fn get_guild_from_input(
 		(_, _, _, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+				.filter(
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
@@ -213,7 +223,9 @@ pub async fn get_guild_with_member_from_input(
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
 			let uuid = schema::user::table
-				.filter(schema::user::id.eq(ctx.author().id.0.get() as i64))
+				.filter(
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
 				.await;
