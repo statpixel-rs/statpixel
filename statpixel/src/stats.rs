@@ -14,7 +14,7 @@ pub struct Payload {
 	pub shards: u64,
 }
 
-pub async fn post(token: &HeaderValue) -> Result<(), statpixel::ApiError> {
+pub async fn post(token: &HeaderValue) -> Result<(), api::Error> {
 	let payload = Payload {
 		guilds: crate::GUILDS.read().await.len() as u64,
 		shards: *crate::SHARDS.read().await,
