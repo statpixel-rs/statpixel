@@ -53,6 +53,10 @@ pub enum ApiError {
 	GuildNotFound(String),
 	#[error("An internal error occurred while interacting with Redis.")]
 	Redis(#[from] redis::RedisError),
+	#[error("An error occurred while interacting with Diesel: {0:?}")]
+	Diesel(#[from] diesel::result::Error),
+	#[error("An error occurred while interacting with the database.")]
+	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
 }
 
 #[derive(Error, Debug)]

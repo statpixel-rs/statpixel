@@ -76,6 +76,11 @@ pub async fn update<S: std::hash::BuildHasher>(
 		.json::<Response>()
 		.await?;
 
+	diesel::delete(bazaar::table)
+		.filter(bazaar::created_at.lt(Utc::now() - chrono::Duration::days(14)))
+		.execute(&mut pool.get().await?)
+		.await?;
+
 	let insert = tokio::sync::Mutex::new(vec![]);
 
 	futures::stream::iter(products.into_iter().map(|(name, product)| {
