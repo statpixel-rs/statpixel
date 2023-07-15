@@ -45,6 +45,8 @@ paint_colour!(BACKGROUND, (128, 15, 24, 32));
 paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
 #[derive(
+	serde::Serialize,
+	serde::Deserialize,
 	Default,
 	Clone,
 	Copy,
@@ -58,6 +60,7 @@ paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 	bitcode::Decode,
 )]
 #[darling(default)]
+#[serde(rename_all = "snake_case")]
 pub enum Paint {
 	Black,
 	DarkBlue,

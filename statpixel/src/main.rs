@@ -142,7 +142,7 @@ async fn main() {
 	);
 
 	let mut client = serenity::Client::builder(
-		std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN"),
+		dotenvy_macro::dotenv!("DISCORD_TOKEN"),
 		GatewayIntents::GUILDS,
 	)
 	.framework(framework)
@@ -190,10 +190,7 @@ async fn main() {
 	tokio::task::spawn(async move {
 		info!("starting topgg stats loop");
 
-		let token = std::env::var("TOPGG_TOKEN")
-			.expect("missing TOPGG_TOKEN")
-			.try_into()
-			.unwrap();
+		let token = dotenvy_macro::dotenv!("TOPGG_TOKEN").try_into().unwrap();
 
 		loop {
 			if let Err(e) = stats::post(&token).await {

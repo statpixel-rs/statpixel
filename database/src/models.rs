@@ -1,11 +1,19 @@
-use diesel::prelude::Queryable;
+use chrono::{DateTime, Utc};
+use diesel::prelude::{Queryable, Selectable};
 use uuid::Uuid;
 
-#[derive(Queryable)]
+#[derive(Queryable, Selectable)]
+#[diesel(table_name = super::schema::user)]
+#[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct User {
 	pub id: i64,
 	pub uuid: Option<Uuid>,
-	pub text: bool,
+	pub updated_at: DateTime<Utc>,
+	pub created_at: DateTime<Utc>,
+	pub display: i16,
+	pub suffix: Option<String>,
+	pub colour: Option<i32>,
+	pub votes: i16,
 }
 
 #[derive(Queryable)]

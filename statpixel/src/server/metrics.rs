@@ -1,12 +1,7 @@
 use std::sync::Arc;
 
 use crate::GUILDS;
-use axum::{
-	extract::State,
-	http::{header, StatusCode},
-	response::IntoResponse,
-	Json,
-};
+use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
 use database::schema::usage;
 use diesel::{dsl::sum, NullableExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
@@ -32,9 +27,5 @@ pub async fn get(State(state): State<Arc<super::Data>>) -> Result<impl IntoRespo
 		.await
 		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 
-	Ok((
-		StatusCode::OK,
-		[(header::ACCESS_CONTROL_ALLOW_ORIGIN, "*")],
-		Json(Metrics { guilds, commands }),
-	))
+	Ok((StatusCode::OK, Json(Metrics { guilds, commands })))
 }

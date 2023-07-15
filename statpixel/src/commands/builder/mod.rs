@@ -421,7 +421,7 @@ macro_rules! impl_type_branch {
 			$id.state.shapes.push(builder::Shape {
 				location: *$location,
 				colour: *$colour,
-				data: ShapeData::Bubble(Statistic::$variant (statistic)),
+				data: ShapeData::Bubble { statistic: Statistic::$variant { kind: statistic } },
 			});
 		}
 	};
@@ -467,7 +467,7 @@ pub async fn modal_handler(
 			id.state.shapes.push(builder::Shape {
 				location: *location,
 				colour: *colour,
-				data: ShapeData::Subtitle(subtitle),
+				data: ShapeData::Subtitle { text: subtitle },
 			});
 		}
 		(
@@ -511,7 +511,7 @@ pub async fn modal_handler(
 			id.state.shapes.push(builder::Shape {
 				location: *location,
 				colour: Paint::White,
-				data: ShapeData::Level(level),
+				data: ShapeData::Level { kind: level },
 			});
 		}
 		(

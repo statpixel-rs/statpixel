@@ -20,12 +20,14 @@ panic = "abort"
 base64 = "0.21"
 darling = "0.20"
 dotenvy = "0.15"
+dotenvy_macro = "0.15"
 fastnbt = "2"
 flate2 = "1"
 fluent = "0.16"
 futures = "0.3"
 fxhash = "0.2"
 intl-memoizer = "0.5"
+jsonwebtoken = "8"
 konst = "0.3"
 once_cell = "1"
 proc-macro2 = "1"
@@ -42,7 +44,10 @@ tower = "0.4.13"
 
 [workspace.dependencies.axum]
 version = "0.6"
-features = ["headers"]
+features = ["headers", "macros"]
+
+[workspace.dependencies.axum-extra]
+version = "0.7"
 
 [workspace.dependencies.bincode]
 version = "2.0.0-rc.3"
@@ -115,12 +120,13 @@ version = "1"
 features = ["macros", "rt-multi-thread", "parking_lot"]
 
 [workspace.dependencies.tower-http]
-version = "0.4.1"
+version = "0.4"
 features = [
 	"compression-br",
 	"compression-deflate",
 	"compression-gzip",
 	"compression-zstd",
+	"cors",
 ]
 
 [workspace.dependencies.uuid]

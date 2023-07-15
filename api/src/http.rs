@@ -1,4 +1,5 @@
 use once_cell::sync::Lazy;
+use reqwest::header::HeaderValue;
 
 use crate::ratelimiter::Ratelimiter;
 
@@ -10,9 +11,6 @@ pub static HTTP: Lazy<Ratelimiter> = Lazy::new(|| {
 
 	Ratelimiter::new(
 		client,
-		std::env::var("HYPIXEL_API_KEY")
-			.expect("missing HYPIXEL_API_KEY")
-			.parse()
-			.expect("failed to parse HYPIXEL_API_KEY"),
+		HeaderValue::from_static(dotenvy_macro::dotenv!("HYPIXEL_API_KEY")),
 	)
 });

@@ -13,7 +13,7 @@ pub type PostgresPool = Pool<AsyncPgConnection>;
 
 #[must_use]
 pub fn get_pool(max_size: usize) -> PostgresPool {
-	let url = std::env::var("DATABASE_URL").expect("environment variable DATABASE_URL not found");
+	let url = dotenvy_macro::dotenv!("DATABASE_URL");
 	let manager = AsyncDieselConnectionManager::<AsyncPgConnection>::new(url);
 
 	Pool::builder(manager)

@@ -1,6 +1,6 @@
 [package]
 name = "statpixel"
-version = "0.21.0"
+version = "0.22.0"
 edition = "2021"
 license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
@@ -40,6 +40,10 @@ bitcode.workspace = true
 axum.workspace = true
 tower.workspace = true
 tower-http.workspace = true
+jsonwebtoken.workspace = true
+thiserror.workspace = true
+axum-extra.workspace = true
+dotenvy_macro.workspace = true
 
 [dev-dependencies]
 criterion = "0.5"

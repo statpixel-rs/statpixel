@@ -64,7 +64,7 @@ pub fn build_diff(
 					}
 				}
 			}
-			ShapeData::Level(ref kind) => {
+			ShapeData::Level { ref kind } => {
 				let (level, current, needed, progress, colours) = match kind {
 					LevelKind::BedWars => {
 						let xp = calc::bed_wars::convert(
@@ -254,7 +254,7 @@ pub fn build_diff(
 					}
 				}
 			}
-			ShapeData::Subtitle(ref text) => {
+			ShapeData::Subtitle { ref text } => {
 				let kind = shape::Subtitle;
 				let body = shape::Subtitle::from_text(&[Text {
 					text,
@@ -277,93 +277,93 @@ pub fn build_diff(
 					}
 				}
 			}
-			ShapeData::Bubble(ref statistic) => {
+			ShapeData::Bubble { ref statistic } => {
 				use api::player::stats::*;
 
 				let (value, label) = match statistic {
-					Statistic::Arcade(kind) => (
+					Statistic::Arcade { kind } => (
 						arcade::Arcade::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Arena(kind) => (
+					Statistic::Arena { kind } => (
 						arena::Arena::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::BedWars(kind) => (
+					Statistic::BedWars { kind } => (
 						bed_wars::BedWars::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::BlitzSg(kind) => (
+					Statistic::BlitzSg { kind } => (
 						blitz_sg::BlitzSg::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::BuildBattle(kind) => (
+					Statistic::BuildBattle { kind } => (
 						build_battle::BuildBattle::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::CopsAndCrims(kind) => (
+					Statistic::CopsAndCrims { kind } => (
 						cops_and_crims::CopsAndCrims::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Duels(kind) => (
+					Statistic::Duels { kind } => (
 						duels::Duels::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::MegaWalls(kind) => (
+					Statistic::MegaWalls { kind } => (
 						mega_walls::MegaWalls::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::MurderMystery(kind) => (
+					Statistic::MurderMystery { kind } => (
 						murder_mystery::MurderMystery::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Paintball(kind) => (
+					Statistic::Paintball { kind } => (
 						paintball::Paintball::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Pit(kind) => {
+					Statistic::Pit { kind } => {
 						(pit::Pit::from_kind_diff(ctx, new, old, kind), kind.get_tr())
 					}
-					Statistic::Quake(kind) => (
+					Statistic::Quake { kind } => (
 						quake::Quake::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::SkyWars(kind) => (
+					Statistic::SkyWars { kind } => (
 						sky_wars::SkyWars::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::SmashHeroes(kind) => (
+					Statistic::SmashHeroes { kind } => (
 						smash_heroes::SmashHeroes::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::SpeedUhc(kind) => (
+					Statistic::SpeedUhc { kind } => (
 						speed_uhc::SpeedUhc::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::TntGames(kind) => (
+					Statistic::TntGames { kind } => (
 						tnt_games::TntGames::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::TurboKartRacers(kind) => (
+					Statistic::TurboKartRacers { kind } => (
 						turbo_kart_racers::TurboKartRacers::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Uhc(kind) => {
+					Statistic::Uhc { kind } => {
 						(uhc::Uhc::from_kind_diff(ctx, new, old, kind), kind.get_tr())
 					}
-					Statistic::VampireZ(kind) => (
+					Statistic::VampireZ { kind } => (
 						vampire_z::VampireZ::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Walls(kind) => (
+					Statistic::Walls { kind } => (
 						walls::Walls::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::Warlords(kind) => (
+					Statistic::Warlords { kind } => (
 						warlords::Warlords::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),
-					Statistic::WoolWars(kind) => (
+					Statistic::WoolWars { kind } => (
 						wool_wars::WoolWars::from_kind_diff(ctx, new, old, kind),
 						kind.get_tr(),
 					),

@@ -2509,7 +2509,8 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			#[allow(non_camel_case_types)]
-			#[derive(::std::fmt::Debug, ::poise::ChoiceParameter, bincode::Encode, bincode::Decode, bitcode::Encode, bitcode::Decode, Clone, Copy)]
+			#[derive(::serde::Deserialize, ::serde::Serialize, ::std::fmt::Debug, ::poise::ChoiceParameter, bincode::Encode, bincode::Decode, bitcode::Encode, bitcode::Decode, Clone, Copy)]
+			#[serde(rename_all = "snake_case")]
 			pub enum #enum_kind_ident {
 				level,
 				#(#kind_enum_rows)*

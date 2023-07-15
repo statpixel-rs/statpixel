@@ -7,10 +7,10 @@ use axum::{
 	response::IntoResponse,
 	Json, TypedHeader,
 };
+use axum_extra::extract::WithRejection;
 use database::schema::user;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
-use once_cell::sync::Lazy;
 use serde::Deserialize;
 
 pub struct Plain(pub String);
@@ -34,14 +34,14 @@ pub struct Vote {
 	pub is_weekend: bool,
 }
 
-static SECRET: Lazy<String> = Lazy::new(|| std::env::var("TOPGG_SECRET").unwrap());
+const SECRET: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
 
 pub async fn add_vote(
 	State(state): State<Arc<super::Data>>,
 	TypedHeader(token): TypedHeader<Authorization<Plain>>,
-	Json(vote): Json<Vote>,
+	WithRejection(Json(vote), _): super::extract::Json<Vote>,
 ) -> Result<impl IntoResponse, StatusCode> {
-	if token.0 .0 != SECRET.as_str() {
+	if token.0 .0 != SECRET {
 		return Err(StatusCode::UNAUTHORIZED);
 	}
 

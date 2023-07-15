@@ -1,8 +1,10 @@
 use minecraft::paint::Paint;
+use serde::{Deserialize, Serialize};
 
 use crate::player::stats::*;
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+#[serde(rename_all = "snake_case")]
 pub enum Location {
 	Down,
 	DownStart,
@@ -10,7 +12,8 @@ pub enum Location {
 	RightStart,
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+#[serde(rename_all = "snake_case")]
 pub enum LevelKind {
 	BedWars,
 	BuildBattle,
@@ -21,54 +24,101 @@ pub enum LevelKind {
 	WoolWars,
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[serde(rename_all = "snake_case", tag = "type")]
 pub enum Statistic {
-	Arcade(arcade::ArcadeKind),
-	Arena(arena::ArenaKind),
-	BedWars(bed_wars::BedWarsKind),
-	BlitzSg(blitz_sg::BlitzSgKind),
-	BuildBattle(build_battle::BuildBattleKind),
-	CopsAndCrims(cops_and_crims::CopsAndCrimsKind),
-	Duels(duels::DuelsKind),
-	MegaWalls(mega_walls::MegaWallsKind),
-	MurderMystery(murder_mystery::MurderMysteryKind),
-	Paintball(paintball::PaintballKind),
-	Pit(pit::PitKind),
-	Quake(quake::QuakeKind),
-	SkyWars(sky_wars::SkyWarsKind),
-	SmashHeroes(smash_heroes::SmashHeroesKind),
-	SpeedUhc(speed_uhc::SpeedUhcKind),
-	TntGames(tnt_games::TntGamesKind),
-	TurboKartRacers(turbo_kart_racers::TurboKartRacersKind),
-	Uhc(uhc::UhcKind),
-	VampireZ(vampire_z::VampireZKind),
-	Walls(walls::WallsKind),
-	Warlords(warlords::WarlordsKind),
-	WoolWars(wool_wars::WoolWarsKind),
+	Arcade {
+		kind: arcade::ArcadeKind,
+	},
+	Arena {
+		kind: arena::ArenaKind,
+	},
+	BedWars {
+		kind: bed_wars::BedWarsKind,
+	},
+	BlitzSg {
+		kind: blitz_sg::BlitzSgKind,
+	},
+	BuildBattle {
+		kind: build_battle::BuildBattleKind,
+	},
+	CopsAndCrims {
+		kind: cops_and_crims::CopsAndCrimsKind,
+	},
+	Duels {
+		kind: duels::DuelsKind,
+	},
+	MegaWalls {
+		kind: mega_walls::MegaWallsKind,
+	},
+	MurderMystery {
+		kind: murder_mystery::MurderMysteryKind,
+	},
+	Paintball {
+		kind: paintball::PaintballKind,
+	},
+	Pit {
+		kind: pit::PitKind,
+	},
+	Quake {
+		kind: quake::QuakeKind,
+	},
+	SkyWars {
+		kind: sky_wars::SkyWarsKind,
+	},
+	SmashHeroes {
+		kind: smash_heroes::SmashHeroesKind,
+	},
+	SpeedUhc {
+		kind: speed_uhc::SpeedUhcKind,
+	},
+	TntGames {
+		kind: tnt_games::TntGamesKind,
+	},
+	TurboKartRacers {
+		kind: turbo_kart_racers::TurboKartRacersKind,
+	},
+	Uhc {
+		kind: uhc::UhcKind,
+	},
+	VampireZ {
+		kind: vampire_z::VampireZKind,
+	},
+	Walls {
+		kind: walls::WallsKind,
+	},
+	Warlords {
+		kind: warlords::WarlordsKind,
+	},
+	WoolWars {
+		kind: wool_wars::WoolWarsKind,
+	},
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[serde(rename_all = "snake_case", tag = "type")]
 pub enum ShapeData {
 	/// Always the player's username
 	Title,
 	/// Arbitrary text up to 16 characters,
-	Subtitle(String),
+	Subtitle { text: String },
 	/// One of the player levels
-	Level(LevelKind),
+	Level { kind: LevelKind },
 	/// The player's skin
 	Skin,
 	/// A bubble with an arbitrary piece of the user's data
-	Bubble(Statistic),
+	Bubble { statistic: Statistic },
 }
 
 impl ShapeData {
 	#[must_use]
 	pub fn is_subtitle(&self) -> bool {
-		matches!(self, Self::Subtitle(..))
+		matches!(self, Self::Subtitle { .. })
 	}
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[serde(rename_all = "snake_case")]
 pub enum ShapeKind {
 	Title,
 	Subtitle,
@@ -77,7 +127,7 @@ pub enum ShapeKind {
 	Bubble,
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[derive(Deserialize, Serialize, bitcode::Encode, bitcode::Decode, Debug, Clone)]
 pub struct Shape {
 	pub location: Location,
 	pub colour: Paint,
