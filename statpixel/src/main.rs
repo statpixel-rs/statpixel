@@ -21,6 +21,8 @@ use once_cell::sync::Lazy;
 use poise::serenity_prelude::{
 	self as serenity, ConnectionStage, FullEvent, GatewayIntents, Interaction,
 };
+#[cfg(not(debug_assertions))]
+use reqwest::header::HeaderValue;
 use snapshot::user;
 use tracing::{error, info, warn, Level};
 use tracing_subscriber::FmtSubscriber;
@@ -190,7 +192,8 @@ async fn main() {
 	tokio::task::spawn(async move {
 		info!("starting topgg stats loop");
 
-		let token = dotenvy_macro::dotenv!("TOPGG_TOKEN").try_into().unwrap();
+		let token =
+			HeaderValue::from_static(concat!("Bearer ", dotenvy_macro::dotenv!("TOPGG_TOKEN")));
 
 		loop {
 			if let Err(e) = stats::post(&token).await {
