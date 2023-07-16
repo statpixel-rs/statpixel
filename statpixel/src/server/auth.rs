@@ -1,6 +1,6 @@
 use std::sync::Arc;
 
-use api::http::HTTP;
+use api::{http::HTTP, Player};
 use axum::{
 	extract::{FromRequestParts, Json, State},
 	headers::{authorization, Authorization},
@@ -24,6 +24,7 @@ pub struct Claims {
 	pub iat: usize,
 	pub iss: String,
 	pub id: u64,
+	pub name: String,
 }
 
 #[allow(clippy::module_name_repetitions)]
@@ -94,6 +95,8 @@ pub struct LoginResponse {
 #[derive(Deserialize)]
 pub struct DiscordUser {
 	pub id: String,
+	pub username: String,
+	pub discriminator: String,
 }
 
 static URL: Lazy<Url> =
@@ -118,6 +121,7 @@ impl Keys {
 #[derive(Serialize)]
 pub struct MeResponse {
 	pub background: Option<u32>,
+	pub is_owner: bool,
 	pub uuid: Option<uuid::Uuid>,
 	pub created_at: DateTime<Utc>,
 	pub updated_at: DateTime<Utc>,
@@ -141,9 +145,22 @@ pub async fn me(
 		.await
 		.map_err(|_| StatusCode::NOT_FOUND)?;
 
+	let is_owner = if let Some(uuid) = user.uuid {
+		let player = Player::from_uuid_unchecked(uuid);
+		let data = player
+			.get_data()
+			.await
+			.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+
+		Some(claims.name) == data.socials.discord
+	} else {
+		false
+	};
+
 	#[allow(clippy::cast_sign_loss)]
 	Ok(Json(MeResponse {
 		uuid: user.uuid,
+		is_owner,
 		background: user.colour.map(|c| c as u32),
 		created_at: user.created_at,
 		updated_at: user.updated_at,
@@ -225,7 +242,14 @@ pub async fn login(
 		.parse::<u64>()
 		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 
-	let token = create_token(id);
+	let token = create_token(
+		id,
+		if user.discriminator == "0" {
+			user.username
+		} else {
+			format!("{}#{}", user.username, user.discriminator)
+		},
+	);
 
 	Ok((
 		StatusCode::PERMANENT_REDIRECT,
@@ -236,7 +260,7 @@ pub async fn login(
 	))
 }
 
-pub fn create_token(id: u64) -> String {
+pub fn create_token(id: u64, name: String) -> String {
 	let now = Utc::now();
 
 	#[allow(clippy::cast_possible_truncation)]
@@ -246,6 +270,7 @@ pub fn create_token(id: u64) -> String {
 		iat: now.timestamp() as usize,
 		iss: "https://statpixel.xyz".to_string(),
 		id,
+		name,
 	};
 
 	jsonwebtoken::encode(

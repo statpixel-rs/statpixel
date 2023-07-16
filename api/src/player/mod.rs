@@ -1,6 +1,7 @@
 pub mod data;
 pub mod games;
 pub mod language;
+pub mod socials;
 pub mod stats;
 pub mod status;
 
@@ -23,7 +24,7 @@ use crate::{
 
 use self::status::Status;
 
-pub const VERSION: i16 = 11;
+pub const VERSION: i16 = 12;
 pub static DEFAULT_SKIN: Lazy<crate::image::Image> =
 	include_image!("../../../assets/skins/steve.png");
 

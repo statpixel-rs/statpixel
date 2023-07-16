@@ -4,7 +4,7 @@ use serde::Deserialize;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 9;
+pub const VERSION: i16 = 11;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
@@ -28,6 +28,11 @@ pub struct Data {
 	pub playtime: Minutes,
 	pub rewards: u32,
 	pub friend_requests: u32,
+	pub challenges: u32,
+	pub quests: u32,
+	pub gifting: crate::player::data::Gifting,
+	pub achivement_points: u32,
+	pub language: crate::player::language::Language,
 }
 
 impl From<Data> for crate::player::data::Data {
@@ -48,11 +53,12 @@ impl From<Data> for crate::player::data::Data {
 			playtime: value.playtime,
 			rewards: value.rewards,
 			friend_requests: value.friend_requests,
-			challenges: 0,
-			quests: 0,
-			gifting: crate::player::data::Gifting::default(),
-			achivement_points: 0,
-			language: crate::player::language::Language::default(),
+			challenges: value.challenges,
+			quests: value.quests,
+			gifting: value.gifting,
+			achivement_points: value.achivement_points,
+			language: value.language,
+			socials: crate::player::socials::Socials::default(),
 		}
 	}
 }

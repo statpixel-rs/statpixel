@@ -52,6 +52,8 @@ pub struct Data {
 	pub achivement_points: u32,
 	#[serde(rename = "userLanguage", default)]
 	pub language: super::language::Language,
+	#[serde(rename = "socialMedia", default)]
+	pub socials: super::socials::Socials,
 }
 
 impl Data {
