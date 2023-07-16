@@ -39,6 +39,24 @@ pub async fn preview(
 			.into_response();
 	}
 
+	if shapes.iter().any(|s| {
+		if let ShapeData::Subtitle { ref text } = s.data {
+			text.len() > 16
+		} else {
+			false
+		}
+	}) {
+		return (
+			StatusCode::BAD_REQUEST,
+			Json(super::error::ErrorMessage {
+				success: false,
+				origin: "with_rejection",
+				message: "subtitle too long".to_string(),
+			}),
+		)
+			.into_response();
+	}
+
 	let id = api::id::command(api::command::Id::Builder {
 		shapes,
 		uuid: uuid.unwrap_or(DEFAULT_UUID),
