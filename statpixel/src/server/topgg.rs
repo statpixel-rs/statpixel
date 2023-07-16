@@ -2,7 +2,10 @@ use std::sync::Arc;
 
 use axum::{
 	extract::State,
-	headers::{authorization::Credentials, Authorization},
+	headers::{
+		authorization::{self, Credentials},
+		Authorization,
+	},
 	http::{HeaderValue, StatusCode},
 	response::IntoResponse,
 	Json, TypedHeader,
@@ -38,10 +41,10 @@ const SECRET: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
 
 pub async fn add_vote(
 	State(state): State<Arc<super::Data>>,
-	TypedHeader(token): TypedHeader<Authorization<Plain>>,
+	TypedHeader(bearer): TypedHeader<Authorization<authorization::Bearer>>,
 	WithRejection(Json(vote), _): super::extract::Json<Vote>,
 ) -> Result<impl IntoResponse, StatusCode> {
-	if token.0 .0 != SECRET {
+	if bearer.token() != SECRET {
 		return Err(StatusCode::UNAUTHORIZED);
 	}
 
@@ -53,7 +56,7 @@ pub async fn add_vote(
 		.values((&user::id.eq(id as i64), &user::votes.eq(1)))
 		.on_conflict(user::id)
 		.do_update()
-		.set(user::votes.eq(user::votes + 1))
+		.set(user::votes.eq(user::votes + if vote.is_weekend { 2 } else { 1 }))
 		.execute(
 			&mut state
 				.pool
