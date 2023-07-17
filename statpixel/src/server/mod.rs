@@ -1,5 +1,6 @@
 mod auth;
 mod builder;
+mod debug;
 mod error;
 mod extract;
 mod image;
@@ -12,7 +13,6 @@ use axum::{
 	Router,
 };
 use std::{net::SocketAddr, sync::Arc};
-use topgg::add_vote;
 use tower::ServiceBuilder;
 use tower_http::{
 	compression::CompressionLayer,
@@ -23,7 +23,8 @@ pub type Data = translate::Data;
 
 pub async fn run(data: Data) {
 	let app = Router::new()
-		.route("/internal/vote", post(add_vote))
+		.route("/internal/vote", post(topgg::add_vote))
+		.route("/internal/debug", get(debug::get))
 		.route("/image/:id", get(image::get))
 		.route("/metrics", get(metrics::get))
 		.route("/auth/login", get(auth::login))
