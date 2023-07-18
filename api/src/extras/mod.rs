@@ -157,16 +157,7 @@ macro_rules! impl_time_unit_opt {
 
 		impl PartialOrd for $name {
 			fn partial_cmp(&self, other: &Self) -> Option<::std::cmp::Ordering> {
-				self.0.unwrap_or(i64::MAX)
-					.partial_cmp(&other.0.unwrap_or(i64::MAX))
-					.and_then(|o| match o {
-						::std::cmp::Ordering::Equal => {
-							self.0
-								.unwrap_or_default()
-								.partial_cmp(&other.0.unwrap_or(i64::MAX))
-						}
-						_ => Some(o),
-					})
+				Some(self.cmp(other))
 			}
 		}
 
