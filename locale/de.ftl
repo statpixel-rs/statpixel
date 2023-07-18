@@ -1094,6 +1094,7 @@ online = Online
 level = Stufe
 progress = Fortschritt
 total = Gesamt
+levels-gained = Erhaltene Stufen
 
 wins = Siege
 losses = Niederlagen

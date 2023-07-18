@@ -1093,6 +1093,7 @@ online = En ligne
 level = Niveau
 progress = Progrès
 total = Total
+levels-gagnés = Niveaux gagnés
 
 wins = Victoires
 losses = Défaites

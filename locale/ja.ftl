@@ -1094,6 +1094,7 @@ online = オンライン
 level = レベル
 progress = 進行状況
 total = 合計
+levels-gained = レベル獲得
 
 wins = 勝利
 losses = 敗北

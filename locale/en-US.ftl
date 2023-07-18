@@ -1338,6 +1338,7 @@ online = Online
 level = Level
 progress = Progress
 total = Total
+levels-gained = Levels Gained
 
 wins = Wins
 losses = Losses

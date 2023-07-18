@@ -490,7 +490,7 @@ impl WideBubbleProgress {
 
 	#[must_use]
 	pub fn from_level_total(ctx: &Context<'_>, level: &str, total: &impl ToFormatted) -> Paragraph {
-		let label = tr!(ctx, "level");
+		let label = tr!(ctx, "levels-gained");
 		let mut text = vec![
 			Text {
 				text: &label,

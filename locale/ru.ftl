@@ -1095,6 +1095,7 @@ online = Онлайн
 level = Уровень
 progress = Прогресс
 total = Всего
+levels-gained = Полученные уровни
 
 wins = Победы
 losses = Поражения
