@@ -26,6 +26,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Create empty .env
+        run: touch .env
       - name: Install nightly
         uses: actions-rs/toolchain@v1
         with:
