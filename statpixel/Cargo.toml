@@ -44,6 +44,7 @@ jsonwebtoken.workspace = true
 thiserror.workspace = true
 axum-extra.workspace = true
 dotenvy_macro.workspace = true
+tower_governor.workspace = true
 
 [dev-dependencies]
 criterion = "0.5"

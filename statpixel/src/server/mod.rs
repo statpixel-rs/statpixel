@@ -1,6 +1,5 @@
 mod auth;
 mod builder;
-mod debug;
 mod error;
 mod extract;
 mod image;
@@ -8,23 +7,35 @@ mod metrics;
 mod topgg;
 
 use axum::{
+	error_handling::HandleErrorLayer,
 	http::header::{AUTHORIZATION, CONTENT_TYPE},
 	routing::{get, post},
 	Router,
 };
 use std::{net::SocketAddr, sync::Arc};
-use tower::ServiceBuilder;
+use tower::{BoxError, ServiceBuilder};
+use tower_governor::{governor::GovernorConfigBuilder, GovernorLayer};
 use tower_http::{
 	compression::CompressionLayer,
 	cors::{Any, CorsLayer},
 };
 
+use self::error::display_error;
+
 pub type Data = translate::Data;
 
 pub async fn run(data: Data) {
+	let governor = Box::new(
+		GovernorConfigBuilder::default()
+			.per_second(2)
+			.burst_size(60)
+			.use_headers()
+			.finish()
+			.unwrap(),
+	);
+
 	let app = Router::new()
 		.route("/internal/vote", post(topgg::add_vote))
-		.route("/internal/debug", get(debug::get))
 		.route("/image/:id", get(image::get))
 		.route("/metrics", get(metrics::get))
 		.route("/auth/login", get(auth::login))
@@ -45,12 +56,21 @@ pub async fn run(data: Data) {
 					Any,
 				),
 		)
+		.layer(
+			ServiceBuilder::new()
+				.layer(HandleErrorLayer::new(|e: BoxError| async move {
+					display_error(e)
+				}))
+				.layer(GovernorLayer {
+					config: Box::leak(governor),
+				}),
+		)
 		.with_state(Arc::new(data));
 
 	let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 
 	axum::Server::bind(&addr)
-		.serve(app.into_make_service())
+		.serve(app.into_make_service_with_connect_info::<SocketAddr>())
 		.await
 		.unwrap();
 }
