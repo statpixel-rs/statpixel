@@ -1,7 +1,7 @@
 # Allgemeine Beschriftungen
 not-linked = Fehlende Argumente
 not-linked-description = Da du nicht verknüpft bist, musst du ein Profil angeben, um es anzuzeigen.
-showing-statistics = <a:clock:1110754973794451557> Zeigt Statistikänderungen von {$from} bis {$to} an.
+showing-statistics = <a:clock:1115091329958019253> Zeigt Statistikänderungen von {$from} bis {$to} an.
 no-previous-statistics = Keine vorherigen Daten für **{$name}** gefunden, daher wurden sie eingefügt.
 showing-guild-statistics = Zeigt Gildenstatistikänderungen von {$from} bis {$to} an.
 no-previous-guild-statistics = Keine vorherigen Daten für die Gilde **{$name}** gefunden, daher wurden sie eingefügt.

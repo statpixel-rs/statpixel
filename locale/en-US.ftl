@@ -1,7 +1,7 @@
 # General labels
 not-linked = Missing arguments
 not-linked-description = Since you're not linked, you need to provide a profile to view.
-showing-statistics = <a:clock:1110754973794451557> Showing statistics change from {$from} to {$to}.
+showing-statistics = <a:clock:1115091329958019253> Showing statistics change from {$from} to {$to}.
 no-previous-statistics = No previous data found for **{$name}**, so it has been inserted.
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.

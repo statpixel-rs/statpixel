@@ -1,7 +1,7 @@
 # 一般ラベル
 not-linked = 引数が不足しています
 not-linked-description = リンクされていないため、プロフィールを表示するにはプロフィールを提供する必要があります。
-showing-statistics = <a:clock:1110754973794451557> {$from}から{$to}までの統計を表示しています。
+showing-statistics = <a:clock:1115091329958019253> {$from}から{$to}までの統計を表示しています。
 no-previous-statistics = **{$name}**の以前のデータが見つからなかったため、挿入されました。
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。

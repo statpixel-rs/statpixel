@@ -129,7 +129,7 @@ pub fn minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 
 			'f'
 		} else {
-			chars.next().expect("string cannot be empty")
+			chars.next()?
 		};
 
 		let (paint, font) = if let Ok(paint) = paint::Paint::try_from(hex) {

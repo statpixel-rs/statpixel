@@ -1,7 +1,7 @@
 # Etiquetas generales
 not-linked = Argumentos faltantes
 not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para ver.
-showing-statistics = <a:clock:1110754973794451557> Mostrando estadísticas de {$from} a {$to}.
+showing-statistics = <a:clock:1115091329958019253> Mostrando estadísticas de {$from} a {$to}.
 no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
