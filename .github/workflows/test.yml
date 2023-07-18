@@ -3,6 +3,7 @@ on:
     paths:
       - "**.rs"
       - "**.toml"
+      - "**.yml"
     branches:
       - main
 
