@@ -489,6 +489,55 @@ impl WideBubbleProgress {
 	}
 
 	#[must_use]
+	pub fn from_level_total(ctx: &Context<'_>, level: &str, total: &impl ToFormatted) -> Paragraph {
+		let label = tr!(ctx, "level");
+		let mut text = vec![
+			Text {
+				text: &label,
+				paint: Paint::White,
+				..Default::default()
+			},
+			Text {
+				text: ": ",
+				paint: Paint::White,
+				..Default::default()
+			},
+		];
+
+		text.extend(minecraft_string(level));
+		text.reserve_exact(7);
+
+		let label = tr!(ctx, "total");
+		let total = total.to_formatted_label(ctx);
+
+		text.push(Text {
+			text: "\n",
+			paint: Paint::White,
+			..Default::default()
+		});
+
+		text.push(Text {
+			text: &label,
+			paint: Paint::White,
+			..Default::default()
+		});
+
+		text.push(Text {
+			text: ": ",
+			paint: Paint::White,
+			..Default::default()
+		});
+
+		text.push(Text {
+			text: &total,
+			paint: Paint::Green,
+			..Default::default()
+		});
+
+		Self::from_text(text.as_slice())
+	}
+
+	#[must_use]
 	pub fn from_level_progress(
 		ctx: &Context<'_>,
 		level: &str,

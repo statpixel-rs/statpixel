@@ -1092,6 +1092,7 @@ offline = Hors ligne
 online = En ligne
 level = Niveau
 progress = Progrès
+total = Total
 
 wins = Victoires
 losses = Défaites

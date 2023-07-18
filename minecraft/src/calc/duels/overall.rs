@@ -1,4 +1,4 @@
-pub use super::{convert, get_colours, get_level_format, Level};
+pub use super::{convert, get_colours, get_level_format, get_total_xp, Level};
 
 const TOTAL_XP: [u32; 47] = [
 	0,

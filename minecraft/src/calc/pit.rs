@@ -203,6 +203,11 @@ pub fn get_level(level: LevelSimple) -> LevelData {
 }
 
 #[must_use]
+pub fn get_total_xp(level: LevelSimple) -> u64 {
+	level.xp
+}
+
+#[must_use]
 pub fn convert(xp: &Level) -> LevelSimple {
 	xp.into()
 }

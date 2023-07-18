@@ -1093,6 +1093,7 @@ offline = オフライン
 online = オンライン
 level = レベル
 progress = 進行状況
+total = 合計
 
 wins = 勝利
 losses = 敗北

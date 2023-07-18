@@ -1337,6 +1337,7 @@ offline = Offline
 online = Online
 level = Level
 progress = Progress
+total = Total
 
 wins = Wins
 losses = Losses

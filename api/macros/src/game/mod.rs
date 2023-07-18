@@ -305,6 +305,7 @@ impl ToTokens for GameInputReceiver {
 
 				quote! {
 					#enum_ident ::#ty => data.stats. #path. #ident .apply(
+						diff,
 						ctx,
 						canvas,
 						data,
@@ -1301,8 +1302,10 @@ impl ToTokens for GameInputReceiver {
 						#tr
 					}
 
+					#[allow(clippy::too_many_arguments)]
 					pub fn apply<'c>(
 						&self,
+						diff: bool,
 						ctx: &::translate::context::Context<'_>,
 						mut canvas: crate::canvas::Canvas<'c>,
 						data: &'c crate::player::data::Data,
@@ -1322,12 +1325,20 @@ impl ToTokens for GameInputReceiver {
 							)
 							.push_down_post_draw(
 								progress,
-								crate::canvas::shape::WideBubbleProgress::from_level_progress(
-									ctx,
-									&#level_fmt_field,
-									&#calc ::get_curr_level_xp(xp),
-									&#calc ::get_level_xp(xp),
-								),
+								if diff {
+									crate::canvas::shape::WideBubbleProgress::from_level_total(
+										ctx,
+										&#level_fmt_field,
+										&#calc ::get_total_xp(xp),
+									)
+								} else {
+									crate::canvas::shape::WideBubbleProgress::from_level_progress(
+										ctx,
+										&#level_fmt_field,
+										&#calc ::get_curr_level_xp(xp),
+										&#calc ::get_level_xp(xp),
+									)
+								},
 							)
 							.push_right_start(
 								&crate::canvas::shape::Sidebar,
@@ -2392,7 +2403,9 @@ impl ToTokens for GameInputReceiver {
 					}
 				}
 
+				#[allow(clippy::too_many_arguments)]
 				pub fn apply<'c>(
+					diff: bool,
 					ctx: &::translate::context::Context<'_>,
 					mut canvas: crate::canvas::Canvas<'c>,
 					data: &'c crate::player::data::Data,
@@ -2412,12 +2425,20 @@ impl ToTokens for GameInputReceiver {
 						)
 						.push_down_post_draw(
 							progress,
-							crate::canvas::shape::WideBubbleProgress::from_level_progress(
-								ctx,
-								&#level_fmt_field_overall,
-								&#calc ::get_curr_level_xp(xp),
-								&#calc ::get_level_xp(xp),
-							),
+							if diff {
+								crate::canvas::shape::WideBubbleProgress::from_level_total(
+									ctx,
+									&#level_fmt_field_overall,
+									&#calc ::get_total_xp(xp),
+								)
+							} else {
+								crate::canvas::shape::WideBubbleProgress::from_level_progress(
+									ctx,
+									&#level_fmt_field_overall,
+									&#calc ::get_curr_level_xp(xp),
+									&#calc ::get_level_xp(xp),
+								)
+							},
 						)
 						.push_right_start(
 							&crate::canvas::shape::Sidebar,
@@ -2967,10 +2988,12 @@ impl ToTokens for GameInputReceiver {
 					};
 
 					let status = crate::canvas::shape::Status(session, skin);
+					let diff = true;
 
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
+								diff,
 								ctx,
 								canvas,
 								data,
@@ -3010,10 +3033,12 @@ impl ToTokens for GameInputReceiver {
 					};
 
 					let status = crate::canvas::shape::Status(session, skin);
+					let diff = false;
 
 					let mut canvas = match mode {
 						#enum_ident ::Overall => {
 							Overall::apply(
+								diff,
 								ctx,
 								canvas,
 								data,

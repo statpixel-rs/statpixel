@@ -47,7 +47,7 @@ pub fn build_diff(
 				}
 			}
 			ShapeData::Skin => {
-				let body = Body::empty();
+				let body = Body::from_status(ctx, session);
 
 				match shape.location {
 					Location::Down => {

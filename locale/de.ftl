@@ -1093,6 +1093,7 @@ offline = Offline
 online = Online
 level = Stufe
 progress = Fortschritt
+total = Gesamt
 
 wins = Siege
 losses = Niederlagen

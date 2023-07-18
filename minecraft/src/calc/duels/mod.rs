@@ -243,6 +243,11 @@ pub fn get_level_progress(xp: u32) -> f32 {
 }
 
 #[must_use]
+pub fn get_total_xp(xp: u32) -> u32 {
+	xp
+}
+
+#[must_use]
 pub fn convert(xp: &u32) -> u32 {
 	*xp
 }
