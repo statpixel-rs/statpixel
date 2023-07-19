@@ -55,7 +55,6 @@ pub struct SkyWars {
 	#[game(label(colour = "yellow"))]
 	pub eggs_thrown: u32,
 	#[serde(rename = "levelFormatted", default = "default_level_fmt")]
-	#[game(level)]
 	pub level_fmt: String,
 	#[serde(
 		rename = "skywars_experience",
