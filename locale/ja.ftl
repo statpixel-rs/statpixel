@@ -27,6 +27,17 @@ error-profile-not-found = {$name}の{$profile} SkyBlockプロファイルは、A
 error-identifier-too-long =
   このインタラクションの生成された識別子の1つが長すぎます。
   コンポーネントの数またはカスタムテキストの量を減らしてみてください。
+error-user-track-limit-reached = あなたは{$limit}の最大トラック数に達しました。この制限を解除するには、StatPixel+を購入してください。 <https://statpixel.xyz/plus>
+error-guild-track-limit-reached =
+  このギルドは{$limit}の最大トラック数に達しました。
+  StatPixel+を持っている場合は、</boost:1113624864524357708>でギルドをブーストしてこの制限を解除するか、<https://statpixel.xyz/plus>に移動してください。
+error-boost-limit-reached =
+  あなたは{$limit}の最大ブースト数に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boosts>。
+error-track-already-exists =
+  あなたはすでにこのチャンネルでこのプレイヤーを追跡しています。
+error-not-premium = このアクションを実行するにはStatPixel+の購読者である必要があります。詳細については、<https://statpixel.xyz/plus>をご覧ください。
+error-not-in-a-guild = このアクションを実行するにはギルドに参加する必要があります。
+error-boost-already-exists = あなたはすでにこのギルドをブーストしています。
 
 # Quick tips
 
@@ -46,6 +57,34 @@ tip-project = <:knowledge_book:1117179094556233828> </project bedwars:1118417616
 tip-winstreak = <:knowledge_book:1117179094556233828> </winstreaks:1124767485384724520>で勝利ストリークを表示します。
 tip-recent = <:knowledge_book:1117179094556233828> </recent:1123839349428080690>で最近のゲームを表示します。
 tip-bazaar = <:knowledge_book:1117179094556233828> </skyblock bazaar:1113624864826327074>でSkyBlockバザー価格を表示します。
+tip-boost = <:knowledge_book:1117179094556233828> </boost:1113624864524357708>でギルドをブーストします。
+tip-track = <:knowledge_book:1117179094556233828> </track:1113624864524357708>でプレイヤーを追跡します。
+tip-builder = <:knowledge_book:1117179094556233828> </builder:1125992506501365891>で独自のカスタム画像を作成します。
+tip-dashboard = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/dashboard>のダッシュボードでアカウントを管理します。
+
+# /boost
+
+boost-success-title = {$name}をブーストしました
+boost-success-description =
+  このギルドは、より高いトラック制限を持ち、より多くの機能を使用できるようになります。
+  このブーストを削除するには、ダッシュボードに移動してください：https://statpixel.xyz/dashboard/boosts。
+
+boost = boost
+  .description = ギルドをブーストして、トラック制限を増やし、より多くの機能を解除します
+
+# /track
+
+track-success-title = {$username}をトラックしています
+track-success-description =
+  このプレイヤーの統計情報は、現在のチャンネルに追跡され、送信されます。
+  追跡を停止するには、ダッシュボードで削除してください：https://statpixel.xyz/dashboard/tracking。
+
+track = track
+  .description = プレイヤーの統計情報を追跡し、変更を現在のチャンネルに送信します。
+  .username = username
+  .username-description = 追跡するMinecraftのユーザー名
+  .uuid = uuid
+  .uuid-description = 追跡するMinecraftのUUID
 
 # /custom
 

@@ -99,6 +99,20 @@ pub enum Error {
 	Base64(#[from] base64::DecodeError),
 	#[error("The generated identifier is too long.")]
 	IdentifierTooLong,
+	#[error("A track for this channel and uuid already exists.")]
+	TrackAlreadyExists,
+	#[error("The number of tracks for this user has been reached, at {0}.")]
+	UserTrackLimitReached(i16),
+	#[error("The tracks for this guild has been reached, at {0}.")]
+	GuildTrackLimitReached(i64),
+	#[error("The boosts for this user has been reached, at {0}.")]
+	BoostLimitReached(i16),
+	#[error("You are not a premium user.")]
+	NotPremium,
+	#[error("You are not in a guild.")]
+	NotInAGuild,
+	#[error("You have already boosted this guild.")]
+	BoostAlreadyExists,
 }
 
 #[derive(Debug, thiserror::Error)]

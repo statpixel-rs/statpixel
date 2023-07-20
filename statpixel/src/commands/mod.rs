@@ -15,6 +15,7 @@ use crate::util;
 
 pub mod about;
 pub mod background;
+pub mod boost;
 pub mod builder;
 pub mod display;
 pub mod execute;
@@ -30,6 +31,7 @@ pub mod project;
 pub mod recent;
 pub mod skyblock;
 pub mod snapshot;
+pub mod track;
 pub mod unlink;
 pub mod winstreaks;
 

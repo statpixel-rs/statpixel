@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use rand::prelude::SliceRandom;
-use translate::{context::Context, tr};
+use translate::{prelude::GetLocale, tr};
 
 const TIPS: &[&str] = &[
 	"tip-background",
@@ -20,8 +20,12 @@ const TIPS: &[&str] = &[
 	"tip-winstreak",
 	"tip-recent",
 	"tip-bazaar",
+	"tip-boost",
+	"tip-track",
+	"tip-builder",
+	"tip-dashboard",
 ];
 
-pub fn random<'c>(ctx: &'c Context<'_>) -> Cow<'c, str> {
+pub fn random(ctx: &impl GetLocale) -> Cow<str> {
 	tr!(ctx, TIPS.choose(&mut rand::thread_rng()).unwrap())
 }

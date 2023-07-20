@@ -27,6 +27,17 @@ error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} h
 error-identifier-too-long =
   One of the generated identifiers for this interaction is too long.
   Try reducing the number of components or the amount of custom text.
+error-user-track-limit-reached = You have reached the maximum number of tracks of {$limit}. Purchase StatPixel+ to remove this limit at <https://statpixel.xyz/plus>.
+error-guild-track-limit-reached =
+  This guild has reached the maximum number of tracks of {$limit}.
+  If you have StatPixel+, boost the guild with </boost:1113624864524357708> to remove this restriction or go to <https://statpixel.xyz/plus>.
+error-boost-limit-reached =
+  You have reached the maximum number of boosts of {$limit}. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boosts>.
+error-track-already-exists =
+  You are already tracking this player in this channel.
+error-not-premium = You must be a StatPixel+ subscriber to perform this action. Go to <https://statpixel.xyz/plus> for more information.
+error-not-in-a-guild = You must be in a guild to perform this action.
+error-boost-already-exists = You are already boosting this guild.
 
 # Quick tips
 
@@ -46,6 +57,34 @@ tip-project = <:knowledge_book:1117179094556233828> View estimates of all of you
 tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
+tip-boost = <:knowledge_book:1117179094556233828> Boost a guild with </boost:1113624864524357708>.
+tip-track = <:knowledge_book:1117179094556233828> Track a player with </track:1113624864524357708>.
+tip-builder = <:knowledge_book:1117179094556233828> Create your own custom images with </builder:1125992506501365891>.
+tip-dashboard = <:knowledge_book:1117179094556233828> Manage your account on the dashboard at <https://statpixel.xyz/dashboard>.
+
+# /boost
+
+boost-success-title = Boosted {$name}
+boost-success-description =
+  This guild will now have a higher track limit and will be able to use more features.
+  To remove this boost, go to the dashboard at https://statpixel.xyz/dashboard/boosts.
+
+boost = boost
+  .description = Boosts a guild to increase its track limit and unlock more features
+
+# /track
+
+track-success-title = Tracking {$username}
+track-success-description =
+  This player's statistics will now be tracked and sent to this channel.
+  To stop tracking them, remove it on the dashboard at https://statpixel.xyz/dashboard/tracking.
+
+track = track
+  .description = Tracks a player's statistics and sends their changes to the current channel.
+  .username = username
+  .username-description = The Minecraft username to track
+  .uuid = uuid
+  .uuid-description = The Minecraft UUID to track
 
 # /custom
 

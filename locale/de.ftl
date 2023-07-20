@@ -27,6 +27,17 @@ error-profile-not-found = Das {$profile} SkyBlock-Profil von {$name} hat seine A
 error-identifier-too-long =
   Einer der generierten Bezeichner für diese Interaktion ist zu lang.
   Versuchen Sie, die Anzahl der Komponenten oder die Menge des benutzerdefinierten Texts zu reduzieren.
+error-user-track-limit-reached = Du hast die maximale Anzahl von Statistiken von {$limit} erreicht. Kaufe StatPixel+, um dieses Limit unter <https://statpixel.xyz/plus> zu entfernen.
+error-guild-track-limit-reached =
+  Diese Gilde hat die maximale Anzahl von Statistiken von {$limit} erreicht.
+  Wenn du StatPixel+ hast, booste die Gilde mit </boost:1113624864524357708>, um diese Einschränkung zu entfernen oder gehe zu <https://statpixel.xyz/plus>.
+error-boost-limit-reached =
+  Du hast die maximale Anzahl von Boosts von {$limit} erreicht. Du kannst einen Boost auf dem Dashboard entfernen: <https://statpixel.xyz/dashboard/boosts>.
+error-track-already-exists =
+  Du verfolgst diesen Spieler bereits in diesem Kanal.
+error-not-premium = Du musst ein StatPixel+ Abonnent sein, um diese Aktion auszuführen. Gehe zu <https://statpixel.xyz/plus> für weitere Informationen.
+error-not-in-a-guild = Du musst in einer Gilde sein, um diese Aktion auszuführen.
+error-boost-already-exists = Du boostest diese Gilde bereits.
 
 # Quick tips
 
@@ -46,6 +57,34 @@ tip-project = <:knowledge_book:1117179094556233828> Zeige Schätzungen aller dei
 tip-winstreak = <:knowledge_book:1117179094556233828> Zeige deine Winstreaks mit </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Zeige deine letzten Spiele mit </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Zeige SkyBlock Bazaar Preise mit </skyblock bazaar:1113624864826327074>.
+tip-boost = <:knowledge_book:1117179094556233828> Booste eine Gilde mit </boost:1113624864524357708>.
+tip-track = <:knowledge_book:1117179094556233828> Verfolge einen Spieler mit </track:1113624864524357708>.
+tip-builder = <:knowledge_book:1117179094556233828> Erstelle deine eigenen Bilder mit </builder:1125992506501365891>.
+tip-dashboard = <:knowledge_book:1117179094556233828> Verwalte deinen Account auf dem Dashboard unter <https://statpixel.xyz/dashboard>.
+
+# /boost
+
+boost-success-title = Boosted {$name}
+boost-success-description =
+  Diese Gilde hat jetzt ein höheres Track-Limit und kann mehr Funktionen nutzen.
+  Um diesen Boost zu entfernen, gehe zum Dashboard unter https://statpixel.xyz/dashboard/boosts.
+
+boost = boost
+  .description = Boostet eine Gilde, um ihr Track-Limit zu erhöhen und mehr Funktionen freizuschalten
+
+# /track
+
+track-success-title = Verfolge {$username}
+track-success-description =
+  Die Statistiken dieses Spielers werden jetzt verfolgt und an diesen Kanal gesendet.
+  Um die Verfolgung zu beenden, entferne sie auf dem Dashboard unter https://statpixel.xyz/dashboard/tracking.
+
+track = track
+  .description = Verfolgt die Statistiken eines Spielers und sendet ihre Änderungen an den aktuellen Kanal.
+  .username = Benutzername
+  .username-description = Der Minecraft-Benutzername, der verfolgt werden soll
+  .uuid = UUID
+  .uuid-description = Die Minecraft-UUID, die verfolgt werden soll
 
 # /custom
 

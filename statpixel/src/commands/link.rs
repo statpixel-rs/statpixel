@@ -14,10 +14,12 @@ use crate::{
 #[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn link(
 	ctx: Context<'_>,
+	#[max_length = 16]
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	username: Option<String>,
 	#[min_length = 32]
 	#[max_length = 36]
 	uuid: Option<String>,
-	#[max_length = 16] username: Option<String>,
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 

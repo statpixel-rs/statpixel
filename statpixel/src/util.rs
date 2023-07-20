@@ -344,6 +344,27 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		Error::IdentifierTooLong => {
 			tr!(ctx, "error-identifier-too-long")
 		}
+		Error::UserTrackLimitReached(ref limit) => {
+			tr_fmt!(ctx, "error-user-track-limit-reached", limit: format!("`{}`", limit))
+		}
+		Error::GuildTrackLimitReached(ref limit) => {
+			tr_fmt!(ctx, "error-guild-track-limit-reached", limit: format!("`{}`", limit))
+		}
+		Error::TrackAlreadyExists => {
+			tr!(ctx, "error-track-already-exists")
+		}
+		Error::BoostLimitReached(ref limit) => {
+			tr_fmt!(ctx, "error-boost-limit-reached", limit: format!("`{}`", limit))
+		}
+		Error::NotPremium => {
+			tr!(ctx, "error-not-premium")
+		}
+		Error::NotInAGuild => {
+			tr!(ctx, "error-not-in-a-guild")
+		}
+		Error::BoostAlreadyExists => {
+			tr!(ctx, "error-boost-already-exists")
+		}
 		ref error => {
 			error!(error = ?error, "internal error");
 			tr!(ctx, "error-internal")

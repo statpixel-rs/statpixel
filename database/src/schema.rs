@@ -31,6 +31,14 @@ diesel::table! {
 }
 
 diesel::table! {
+	boost (user_id, guild_id) {
+		user_id -> Int8,
+		guild_id -> Int8,
+		created_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
 	guild_autocomplete (uuid) {
 		uuid -> Uuid,
 		#[max_length = 32]
@@ -100,6 +108,17 @@ diesel::table! {
 }
 
 diesel::table! {
+	track (channel_id, uuid, user_id) {
+		user_id -> Int8,
+		guild_id -> Nullable<Int8>,
+		channel_id -> Int8,
+		uuid -> Uuid,
+		state -> Int2,
+		created_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
 	usage (user_id, command_name) {
 		user_id -> Int8,
 		command_name -> Text,
@@ -118,5 +137,10 @@ diesel::table! {
 		suffix -> Nullable<Varchar>,
 		colour -> Nullable<Int4>,
 		votes -> Int2,
+		tracks -> Int2,
+		max_tracks -> Int2,
+		premium_until -> Nullable<Timestamptz>,
+		boosts -> Int2,
+		max_boosts -> Int2,
 	}
 }

@@ -27,6 +27,17 @@ error-profile-not-found = El perfil de SkyBlock {$profile} perteneciente a {$nam
 error-identifier-too-long =
   Uno de los identificadores generados para esta interacción es demasiado largo.
   Intente reducir el número de componentes o la cantidad de texto personalizado.
+error-user-track-limit-reached = Has alcanzado el número máximo de rastreos de {$limit}. Compra StatPixel+ para eliminar este límite en <https://statpixel.xyz/plus>.
+error-guild-track-limit-reached =
+  Este gremio ha alcanzado el número máximo de rastreos de {$limit}.
+  Si tienes StatPixel+, impulsa el gremio con </boost:1113624864524357708> para eliminar esta restricción o ve a <https://statpixel.xyz/plus>.
+error-boost-limit-reached =
+  Has alcanzado el número máximo de impulsos de {$limit}. Puedes eliminar un impulso en el panel: <https://statpixel.xyz/dashboard/boosts>.
+error-track-already-exists =
+  Ya estás rastreando a este jugador en este canal.
+error-not-premium = Debes ser un suscriptor de StatPixel+ para realizar esta acción. Ve a <https://statpixel.xyz/plus> para obtener más información.
+error-not-in-a-guild = Debes estar en un gremio para realizar esta acción.
+error-boost-already-exists = Ya estás impulsando este gremio.
 
 # Quick tips
 
@@ -46,6 +57,34 @@ tip-project = <:knowledge_book:1117179094556233828> Ver estimaciones de todos tu
 tip-winstreak = <:knowledge_book:1117179094556233828> Ver tus rachas de victorias con </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Ver tus juegos recientes con </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Ver los precios del bazar de SkyBlock con </skyblock bazaar:1113624864826327074>.
+tip-boost = <:knowledge_book:1117179094556233828> Impulsa un gremio con </boost:1113624864524357708>.
+tip-track = <:knowledge_book:1117179094556233828> Rastrea a un jugador con </track:1113624864524357708>.
+tip-builder = <:knowledge_book:1117179094556233828> Crea tus propias imágenes personalizadas con </builder:1125992506501365891>.
+tip-dashboard = <:knowledge_book:1117179094556233828> Administra tu cuenta en el panel en <https://statpixel.xyz/dashboard>.
+
+# /boost
+
+boost-success-title = Impulsado {$name}
+boost-success-description =
+  Este gremio ahora tendrá un límite de rastreo más alto y podrá usar más funciones.
+  Para eliminar este impulso, vaya al panel en https://statpixel.xyz/dashboard/boosts.
+
+boost = boost
+  .description = Impulsa un gremio para aumentar su límite de rastreo y desbloquear más funciones
+
+# /track
+
+track-success-title = Rastreando {$username}
+track-success-description =
+  Las estadísticas de este jugador ahora se rastrearán y se enviarán a este canal.
+  Para dejar de rastrearlos, elimínelos en el panel en https://statpixel.xyz/dashboard/tracking.
+
+track = track
+  .description = Rastrea las estadísticas de un jugador y envía sus cambios al canal actual.
+  .username = username
+  .username-description = El nombre de usuario de Minecraft para rastrear
+  .uuid = uuid
+  .uuid-description = El UUID de Minecraft para rastrear
 
 # /custom
 
