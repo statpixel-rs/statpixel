@@ -60,8 +60,7 @@ async fn update(
 	connection
 		.transaction::<(), Error, _>(|conn| {
 			async move {
-				diesel::update(guild_schedule::table)
-					.filter(guild_schedule::uuid.eq(&uuid))
+				diesel::update(guild_schedule::table.filter(guild_schedule::uuid.eq(&uuid)))
 					.set((
 						guild_schedule::update_at.eq(next),
 						guild_schedule::snapshots.eq(guild_schedule::snapshots + 1),

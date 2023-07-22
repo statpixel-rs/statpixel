@@ -32,7 +32,7 @@ error-guild-track-limit-reached =
   Este gremio ha alcanzado el número máximo de rastreos de {$limit}.
   Si tienes StatPixel+, impulsa el gremio con </boost:1113624864524357708> para eliminar esta restricción o ve a <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Has alcanzado el número máximo de impulsos de {$limit}. Puedes eliminar un impulso en el panel: <https://statpixel.xyz/dashboard/boosts>.
+  Has alcanzado el número máximo de impulsos de {$limit}. Puedes eliminar un impulso en el panel: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Ya estás rastreando a este jugador en este canal.
 error-not-premium = Debes ser un suscriptor de StatPixel+ para realizar esta acción. Ve a <https://statpixel.xyz/plus> para obtener más información.
@@ -67,7 +67,7 @@ tip-dashboard = <:knowledge_book:1117179094556233828> Administra tu cuenta en el
 boost-success-title = Impulsado {$name}
 boost-success-description =
   Este gremio ahora tendrá un límite de rastreo más alto y podrá usar más funciones.
-  Para eliminar este impulso, vaya al panel en https://statpixel.xyz/dashboard/boosts.
+  Para eliminar este impulso, vaya al panel en https://statpixel.xyz/dashboard/boost.
 
 boost = boost
   .description = Impulsa un gremio para aumentar su límite de rastreo y desbloquear más funciones
@@ -77,7 +77,7 @@ boost = boost
 track-success-title = Rastreando {$username}
 track-success-description =
   Las estadísticas de este jugador ahora se rastrearán y se enviarán a este canal.
-  Para dejar de rastrearlos, elimínelos en el panel en https://statpixel.xyz/dashboard/tracking.
+  Para dejar de rastrearlos, elimínelos en el panel en https://statpixel.xyz/dashboard/track.
 
 track = track
   .description = Rastrea las estadísticas de un jugador y envía sus cambios al canal actual.

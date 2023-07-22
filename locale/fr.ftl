@@ -32,7 +32,7 @@ error-guild-track-limit-reached =
   Cette guilde a atteint le nombre maximum de pistes de {$limit}.
   Si vous avez StatPixel+, boostez la guilde avec </boost:1113624864524357708> pour supprimer cette restriction ou rendez-vous sur <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Vous avez atteint le nombre maximum de boosts de {$limit}. Vous pouvez supprimer un boost sur le tableau de bord : <https://statpixel.xyz/dashboard/boosts>.
+  Vous avez atteint le nombre maximum de boosts de {$limit}. Vous pouvez supprimer un boost sur le tableau de bord : <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Vous suivez déjà ce joueur dans ce canal.
 error-not-premium = Vous devez être abonné à StatPixel+ pour effectuer cette action. Rendez-vous sur <https://statpixel.xyz/plus> pour plus d'informations.
@@ -67,7 +67,7 @@ tip-dashboard = <:knowledge_book:1117179094556233828> Gérez votre compte sur le
 boost-success-title = Guilde boostée {$name}
 boost-success-description =
   Cette guilde aura désormais une limite de pistes plus élevée et pourra utiliser plus de fonctionnalités.
-  Pour supprimer ce boost, rendez-vous sur le tableau de bord à l'adresse <https://statpixel.xyz/dashboard/boosts>.
+  Pour supprimer ce boost, rendez-vous sur le tableau de bord à l'adresse <https://statpixel.xyz/dashboard/boost>.
 
 boost = boost
   .description = Booste une guilde pour augmenter sa limite de pistes et débloquer plus de fonctionnalités
@@ -77,11 +77,11 @@ boost = boost
 track-success-title = Suivi de {$username}
 track-success-description =
   Les statistiques de ce joueur seront désormais suivies et envoyées sur ce canal.
-  Pour arrêter de le suivre, supprimez-le sur le tableau de bord à l'adresse <https://statpixel.xyz/dashboard/tracking>.
+  Pour arrêter de le suivre, supprimez-le sur le tableau de bord à l'adresse <https://statpixel.xyz/dashboard/track>.
 
 track = track
   .description = Suit les statistiques d'un joueur et envoie ses modifications sur le canal actuel.
-  .username = nom d'utilisateur
+  .username = username
   .username-description = Le nom d'utilisateur Minecraft à suivre
   .uuid = uuid
   .uuid-description = L'UUID Minecraft à suivre

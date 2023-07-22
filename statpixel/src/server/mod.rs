@@ -1,10 +1,12 @@
 mod auth;
+mod boosts;
 mod builder;
 mod error;
 mod extract;
 mod image;
 mod metrics;
 mod topgg;
+mod tracks;
 
 use axum::{
 	error_handling::HandleErrorLayer,
@@ -42,6 +44,8 @@ pub async fn run(data: Data) {
 		.route("/auth/me", get(auth::me).patch(auth::update_me))
 		.route("/builder/preview", post(builder::preview))
 		.route("/builder/test", post(builder::get))
+		.route("/tracks", get(tracks::get).delete(tracks::delete))
+		.route("/boosts", get(boosts::get).delete(boosts::delete))
 		.layer(ServiceBuilder::new().layer(CompressionLayer::new()))
 		.layer(
 			CorsLayer::new()

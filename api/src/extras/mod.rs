@@ -27,6 +27,14 @@ macro_rules! impl_time_unit {
 			}
 		}
 
+		impl ::std::ops::Sub for $name {
+			type Output = Self;
+
+			fn sub(self, rhs: Self) -> Self::Output {
+				$name(self.0 - rhs.0)
+			}
+		}
+
 		impl ::std::convert::From<$name> for i64 {
 			fn from(s: $name) -> Self {
 				s.0
@@ -134,6 +142,14 @@ macro_rules! impl_time_unit_opt {
 
 			fn add(self, rhs: Self) -> Self::Output {
 				$name(Some((self.0.unwrap_or_default() + rhs.0.unwrap_or_default()).abs()))
+			}
+		}
+
+		impl ::std::ops::Sub for $name {
+			type Output = Self;
+
+			fn sub(self, rhs: Self) -> Self::Output {
+				$name(Some((self.0.unwrap_or_default() - rhs.0.unwrap_or_default()).abs()))
 			}
 		}
 

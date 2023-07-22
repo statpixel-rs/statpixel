@@ -62,7 +62,6 @@ impl ToTokens for DiffInputReceiver {
 					#ident: self.#ident.diff(&other.#ident)
 				}
 			});
-
 			tokens.extend(quote! {
 				impl #generics #api ::canvas::diff::Diff for #ident #generics {
 					fn diff(&self, other: &Self) -> Self {

@@ -32,7 +32,7 @@ error-guild-track-limit-reached =
   This guild has reached the maximum number of tracks of {$limit}.
   If you have StatPixel+, boost the guild with </boost:1113624864524357708> to remove this restriction or go to <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  You have reached the maximum number of boosts of {$limit}. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boosts>.
+  You have reached the maximum number of boosts of {$limit}. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   You are already tracking this player in this channel.
 error-not-premium = You must be a StatPixel+ subscriber to perform this action. Go to <https://statpixel.xyz/plus> for more information.
@@ -67,7 +67,7 @@ tip-dashboard = <:knowledge_book:1117179094556233828> Manage your account on the
 boost-success-title = Boosted {$name}
 boost-success-description =
   This guild will now have a higher track limit and will be able to use more features.
-  To remove this boost, go to the dashboard at https://statpixel.xyz/dashboard/boosts.
+  To remove this boost, go to the dashboard at https://statpixel.xyz/dashboard/boost.
 
 boost = boost
   .description = Boosts a guild to increase its track limit and unlock more features
@@ -77,7 +77,7 @@ boost = boost
 track-success-title = Tracking {$username}
 track-success-description =
   This player's statistics will now be tracked and sent to this channel.
-  To stop tracking them, remove it on the dashboard at https://statpixel.xyz/dashboard/tracking.
+  To stop tracking them, remove it on the dashboard at https://statpixel.xyz/dashboard/track.
 
 track = track
   .description = Tracks a player's statistics and sends their changes to the current channel.

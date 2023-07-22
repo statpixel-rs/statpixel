@@ -12,6 +12,18 @@ type Bundle = fluent::bundle::FluentBundle<
 	intl_memoizer::concurrent::IntlLangMemoizer,
 >;
 
+pub struct English<'c>(&'c Data);
+
+impl GetLocale for English<'_> {
+	fn data(&self) -> &crate::Data {
+		self.0
+	}
+
+	fn locale(&self) -> Option<&crate::context::Locale> {
+		Some(&crate::context::Locale::en_US)
+	}
+}
+
 #[macro_export]
 macro_rules! tr_fmt {
 	($ctx: expr, $id: expr $(, $argname:ident: $argvalue:expr )* $(,)?) => {{

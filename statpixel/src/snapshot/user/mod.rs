@@ -1,19 +1,22 @@
 pub mod upgrade;
 
-use std::ops::Mul;
+use std::{ops::Mul, sync::Arc};
 
 use api::player::{data::Data, Player, VERSION};
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
-	schema::{schedule, snapshot},
+	schema::{schedule, snapshot, track},
 	PostgresPool,
 };
-use diesel::{ExpressionMethods, NullableExpressionMethods, QueryDsl};
+use diesel::{
+	query_dsl::methods::DistinctOnDsl, ExpressionMethods, NullableExpressionMethods, QueryDsl,
+};
 use diesel_async::{
 	scoped_futures::ScopedFutureExt, AsyncConnection, AsyncPgConnection, RunQueryDsl,
 };
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
+use poise::serenity_prelude::ChannelId;
 use tracing::{info, warn};
 use translate::{context::Context, Error};
 use uuid::Uuid;
@@ -51,7 +54,7 @@ async fn update(
 	snapshots: i32,
 	hash: i64,
 	weekly_schedule: i32,
-) -> Result<(), Error> {
+) -> Result<Option<(Vec<ChannelId>, Data, Arc<Data>)>, Error> {
 	let player = Player::from_uuid_unchecked(uuid);
 	let data = player.get_data().await?;
 
@@ -123,7 +126,6 @@ async fn update(
 			.await?;
 
 		let time = Utc::now();
-
 		let weekday = time.weekday();
 
 		weekday.num_days_from_monday();
@@ -153,12 +155,11 @@ async fn update(
 	};
 
 	// Make sure both the snapshot is inserted and the player is updated.
-	connection
-		.transaction::<(), Error, _>(|conn| {
+	let result = connection
+		.transaction::<_, Error, _>(|conn| {
 			async move {
 				if let Some(bitfield) = bitfield {
-					diesel::update(schedule::table)
-						.filter(schedule::uuid.eq(player.uuid))
+					diesel::update(schedule::table.filter(schedule::uuid.eq(player.uuid)))
 						.set((
 							schedule::update_at.eq(next),
 							schedule::snapshots.eq(schedule::snapshots + 1),
@@ -169,8 +170,7 @@ async fn update(
 						.execute(conn)
 						.await?;
 				} else {
-					diesel::update(schedule::table)
-						.filter(schedule::uuid.eq(player.uuid))
+					diesel::update(schedule::table.filter(schedule::uuid.eq(player.uuid)))
 						.set((
 							schedule::update_at.eq(next),
 							schedule::snapshots.eq(schedule::snapshots + 1),
@@ -180,6 +180,26 @@ async fn update(
 						.execute(conn)
 						.await?;
 				}
+
+				let result = if did_update {
+					let data: Vec<u8> = snapshot::table
+						.filter(snapshot::uuid.eq(player.uuid))
+						.order(snapshot::created_at.desc())
+						.select(snapshot::data)
+						.first(conn)
+						.await?;
+
+					let channels: Vec<i64> = track::table
+						.filter(track::uuid.eq(player.uuid))
+						.distinct_on(track::channel_id)
+						.select(track::channel_id)
+						.get_results(conn)
+						.await?;
+
+					Some((channels, decode(&data)?))
+				} else {
+					None
+				};
 
 				diesel::insert_into(snapshot::table)
 					.values((
@@ -192,13 +212,22 @@ async fn update(
 					.execute(conn)
 					.await?;
 
-				Ok(())
+				Ok(result)
 			}
 			.scope_boxed()
 		})
 		.await?;
 
-	Ok(())
+	Ok(result.map(|(channels, old)| {
+		(
+			channels
+				.into_iter()
+				.map(|id| ChannelId::new(id as u64))
+				.collect(),
+			old,
+			data,
+		)
+	}))
 }
 
 /// Begins the update loop for the snapshot system.
@@ -255,19 +284,32 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 						}
 					};
 
-					while let Err(e) = Box::pin(update(
-						&mut connection,
-						uuid,
-						update_at,
-						snapshots,
-						hash,
-						weekly_schedule,
-					))
-					.await
-					{
-						warn!("Failed to update player {uuid}: {e}");
+					loop {
+						let result = Box::pin(update(
+							&mut connection,
+							uuid,
+							update_at,
+							snapshots,
+							hash,
+							weekly_schedule,
+						))
+						.await;
 
-						tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
+						match result {
+							Ok(Some((channels, old, new))) => {
+								// send update to every channel if different
+
+								break;
+							}
+							Ok(..) => {
+								break;
+							}
+							Err(e) => {
+								warn!("Failed to update player {uuid}: {e}");
+
+								tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
+							}
+						}
 					}
 				},
 			)

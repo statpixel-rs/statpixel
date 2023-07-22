@@ -6,7 +6,7 @@ use thiserror::Error;
 use uuid::Uuid;
 
 pub mod context;
-mod locale;
+pub mod locale;
 pub mod prelude;
 
 pub use fluent;

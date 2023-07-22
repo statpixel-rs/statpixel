@@ -11,6 +11,16 @@ pub trait Diff {
 	fn diff(&self, other: &Self) -> Self;
 }
 
+#[allow(clippy::module_name_repetitions)]
+pub trait DiffLog {
+	fn diff_log(
+		new: &crate::player::data::Data,
+		other: &crate::player::data::Data,
+		ctx: &translate::context::Context<'_>,
+		log: &mut Vec<String>,
+	);
+}
+
 macro_rules! impl_to_formatted_label_for_number {
 	($int:ty) => {
 		impl Diff for $int {

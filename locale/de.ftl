@@ -32,7 +32,7 @@ error-guild-track-limit-reached =
   Diese Gilde hat die maximale Anzahl von Statistiken von {$limit} erreicht.
   Wenn du StatPixel+ hast, booste die Gilde mit </boost:1113624864524357708>, um diese Einschränkung zu entfernen oder gehe zu <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Du hast die maximale Anzahl von Boosts von {$limit} erreicht. Du kannst einen Boost auf dem Dashboard entfernen: <https://statpixel.xyz/dashboard/boosts>.
+  Du hast die maximale Anzahl von Boosts von {$limit} erreicht. Du kannst einen Boost auf dem Dashboard entfernen: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Du verfolgst diesen Spieler bereits in diesem Kanal.
 error-not-premium = Du musst ein StatPixel+ Abonnent sein, um diese Aktion auszuführen. Gehe zu <https://statpixel.xyz/plus> für weitere Informationen.
@@ -67,7 +67,7 @@ tip-dashboard = <:knowledge_book:1117179094556233828> Verwalte deinen Account au
 boost-success-title = Boosted {$name}
 boost-success-description =
   Diese Gilde hat jetzt ein höheres Track-Limit und kann mehr Funktionen nutzen.
-  Um diesen Boost zu entfernen, gehe zum Dashboard unter https://statpixel.xyz/dashboard/boosts.
+  Um diesen Boost zu entfernen, gehe zum Dashboard unter https://statpixel.xyz/dashboard/boost.
 
 boost = boost
   .description = Boostet eine Gilde, um ihr Track-Limit zu erhöhen und mehr Funktionen freizuschalten
@@ -77,13 +77,13 @@ boost = boost
 track-success-title = Verfolge {$username}
 track-success-description =
   Die Statistiken dieses Spielers werden jetzt verfolgt und an diesen Kanal gesendet.
-  Um die Verfolgung zu beenden, entferne sie auf dem Dashboard unter https://statpixel.xyz/dashboard/tracking.
+  Um die Verfolgung zu beenden, entferne sie auf dem Dashboard unter https://statpixel.xyz/dashboard/track.
 
 track = track
   .description = Verfolgt die Statistiken eines Spielers und sendet ihre Änderungen an den aktuellen Kanal.
-  .username = Benutzername
+  .username = username
   .username-description = Der Minecraft-Benutzername, der verfolgt werden soll
-  .uuid = UUID
+  .uuid = uuid
   .uuid-description = Die Minecraft-UUID, die verfolgt werden soll
 
 # /custom

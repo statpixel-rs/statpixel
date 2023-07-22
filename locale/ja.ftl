@@ -32,7 +32,7 @@ error-guild-track-limit-reached =
   このギルドは{$limit}の最大トラック数に達しました。
   StatPixel+を持っている場合は、</boost:1113624864524357708>でギルドをブーストしてこの制限を解除するか、<https://statpixel.xyz/plus>に移動してください。
 error-boost-limit-reached =
-  あなたは{$limit}の最大ブースト数に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boosts>。
+  あなたは{$limit}の最大ブースト数に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
   あなたはすでにこのチャンネルでこのプレイヤーを追跡しています。
 error-not-premium = このアクションを実行するにはStatPixel+の購読者である必要があります。詳細については、<https://statpixel.xyz/plus>をご覧ください。
@@ -67,7 +67,7 @@ tip-dashboard = <:knowledge_book:1117179094556233828> <https://statpixel.xyz/das
 boost-success-title = {$name}をブーストしました
 boost-success-description =
   このギルドは、より高いトラック制限を持ち、より多くの機能を使用できるようになります。
-  このブーストを削除するには、ダッシュボードに移動してください：https://statpixel.xyz/dashboard/boosts。
+  このブーストを削除するには、ダッシュボードに移動してください：https://statpixel.xyz/dashboard/boost。
 
 boost = boost
   .description = ギルドをブーストして、トラック制限を増やし、より多くの機能を解除します
@@ -77,7 +77,7 @@ boost = boost
 track-success-title = {$username}をトラックしています
 track-success-description =
   このプレイヤーの統計情報は、現在のチャンネルに追跡され、送信されます。
-  追跡を停止するには、ダッシュボードで削除してください：https://statpixel.xyz/dashboard/tracking。
+  追跡を停止するには、ダッシュボードで削除してください：https://statpixel.xyz/dashboard/track。
 
 track = track
   .description = プレイヤーの統計情報を追跡し、変更を現在のチャンネルに送信します。

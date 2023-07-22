@@ -432,6 +432,14 @@ impl ToTokens for GameInputReceiver {
 				},
 			);
 
+			let mode_diff_log = modes.iter().map(|mode| {
+				let ty = &mode.ty;
+
+				quote! {
+					<#ty as crate::canvas::diff::DiffLog>::diff_log(data_new, data_old, ctx, log);
+				}
+			});
+
 		let series_tuple_mode = overall_fields
 			.iter()
 			.filter_map(|field| {
@@ -1296,7 +1304,73 @@ impl ToTokens for GameInputReceiver {
 				}
 			};
 
+			let diff_log_fields = overall_fields.iter().filter_map(|field| {
+				if field.skip_chart.is_some() {
+					return None;
+				};
+	
+				let f_ident = &field.ident;
+				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(f_ident));
+	
+				let value_new = if let Some(div) = field.div.as_ref() {
+					if field.percent.is_some() {
+						sum::div_u32_single_field(&quote!(stats_new), f_ident, div)
+					} else {
+						sum::div_f32_single_field(&quote!(stats_new), f_ident, div)
+					}
+				} else {
+					quote! { stats_new.#f_ident }
+				};
+	
+				let value_old = if let Some(div) = field.div.as_ref() {
+					if field.percent.is_some() {
+						sum::div_u32_single_field(&quote!(stats_old), f_ident, div)
+					} else {
+						sum::div_f32_single_field(&quote!(stats_old), f_ident, div)
+					}
+				} else {
+					quote! { stats_old.#f_ident }
+				};
+
+				Some(quote! {
+					let new = #value_new;
+					let old = #value_old;
+
+					if new < old {
+						log.push(format!(
+							"{} {} {}: -{}",
+							::translate::tr!(ctx, #ty ::get_tr()),
+							PRETTY,
+							::translate::tr!(ctx, #tr),
+							crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx)
+						));
+					} else if new > old {
+						log.push(format!(
+							"{} {} {}: {}",
+							::translate::tr!(ctx, #ty ::get_tr()),
+							PRETTY,
+							::translate::tr!(ctx, #tr),
+							crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx)
+						));
+					}
+				})
+			});
+
 			quote! {
+				impl crate::canvas::diff::DiffLog for #ty {
+					#[allow(clippy::ptr_arg)]
+					fn diff_log(new: &crate::player::data::Data, old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+						let stats_new = &new.stats.#path.#ident;
+						let stats_old = &old.stats.#path.#ident;
+
+						{
+							#(#diff_log_fields)*
+						}
+
+						stats_new.diff_log_own_fields(&stats_old, new, old, ctx, log);
+					}
+				}
+
 				impl #ty {
 					pub fn get_tr() -> &'static str {
 						#tr
@@ -2373,6 +2447,200 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
+		let diff_log_fields = overall_fields.iter().filter_map(|f| {
+			if f.skip_chart.is_some() {
+				return None;
+			};
+
+			let name = &f.ident;
+			let tr = get_tr_with_fallback(f.tr.as_deref(), Some(name));
+
+			let val = {
+				let sum_new = if f.path.is_some() {
+					return None;
+				} else if f.min.is_some() {
+					let mut apply = modes.iter().filter_map(|m| {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some() || mode.skip_field.iter().any(|f| f.eq(name))
+						{
+							None
+						} else {
+							let ident = m.ident.as_ref().unwrap();
+
+							Some(ident)
+						}
+					});
+
+					let first = apply.next().unwrap();
+					let other = apply.map(|ident| {
+						quote! {
+							min = min.min(stats_new.#ident.#name);
+						}
+					});
+
+					quote! {
+						{
+							let mut min = stats_new.#first.#name;
+
+							#(#other)*
+
+							min
+						}
+					}
+				} else {
+					sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(name))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_new")),
+						name,
+					)
+				};
+
+				let sum_old = if f.path.is_some() {
+					return None;
+				} else if f.min.is_some() {
+					let mut apply = modes.iter().filter_map(|m| {
+						let mode = m.mode.as_ref().unwrap();
+
+						if mode.skip_overall.is_some() || mode.skip_field.iter().any(|f| f.eq(name))
+						{
+							None
+						} else {
+							let ident = m.ident.as_ref().unwrap();
+
+							Some(ident)
+						}
+					});
+
+					let first = apply.next().unwrap();
+					let other = apply.map(|ident| {
+						quote! {
+							min = min.min(stats_old.#ident.#name);
+						}
+					});
+
+					quote! {
+						{
+							let mut min = stats_old.#first.#name;
+
+							#(#other)*
+
+							min
+						}
+					}
+				} else {
+					sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(name))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_old")),
+						name,
+					)
+				};
+
+				if let Some(div) = f.div.as_ref() {
+					let sum_bottom_new = sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(div))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_new")),
+						div,
+					);
+
+					let sum_bottom_old = sum::sum_fields(
+						modes
+							.iter()
+							.filter_map(|m| {
+								let mode = m.mode.as_ref().unwrap();
+
+								if mode.skip_overall.is_some()
+									|| mode.skip_field.iter().any(|f| f.eq(div))
+								{
+									None
+								} else {
+									Some(m.ident.as_ref().unwrap())
+								}
+							})
+							.peekable(),
+						Some(&ident!("stats_old")),
+						div,
+					);
+
+					quote! {
+						{
+							let stats_new = &data_new.stats.#path;
+							let stats_old = &data_old.stats.#path;
+
+							let new = f64::from(#sum_new) / if #sum_bottom_new == 0 { 1. } else { f64::from(#sum_bottom_new) };
+							let old = f64::from(#sum_old) / if #sum_bottom_old == 0 { 1. } else { f64::from(#sum_bottom_old) };
+						}
+					}
+				} else {
+					quote! {
+						let new = #sum_new;
+						let old = #sum_old;
+					}
+				}
+			};
+
+			Some(quote! {
+				#val
+
+				if new < old {
+					log.push(format!(
+						"{} {} {}: -{}",
+						::translate::tr!(ctx, Overall::get_tr()),
+						PRETTY,
+						::translate::tr!(ctx, #tr),
+						crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx),
+					));
+				} else if new > old {
+					log.push(format!(
+						"{} {} {}: {}",
+						::translate::tr!(ctx, Overall::get_tr()),
+						PRETTY,
+						::translate::tr!(ctx, #tr),
+						crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx),
+					));
+				}
+			})
+		});
+
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
@@ -2380,6 +2648,16 @@ impl ToTokens for GameInputReceiver {
 			#(#apply_all_modes)*
 
 			pub struct Overall;
+
+			impl crate::canvas::diff::DiffLog for Overall {
+				#[allow(clippy::ptr_arg)]
+				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+					let stats_new = &data_new.stats.#path;
+					let stats_old = &data_old.stats.#path;
+
+					#(#diff_log_fields)*
+				}
+			}
 
 			impl Overall {
 				pub fn get_tr() -> &'static str {
@@ -2827,6 +3105,14 @@ impl ToTokens for GameInputReceiver {
 						#(#mode_from_str_impl)*
 						_ => Self::Overall,
 					}
+				}
+			}
+
+			impl crate::canvas::diff::DiffLog for #ident {
+				#[allow(clippy::ptr_arg)]
+				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+					Overall::diff_log(data_new, data_old, ctx, log);
+					#(#mode_diff_log)*
 				}
 			}
 

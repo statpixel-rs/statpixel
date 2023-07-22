@@ -1,4 +1,7 @@
-use std::{borrow::Cow, ops::Add};
+use std::{
+	borrow::Cow,
+	ops::{Add, Sub},
+};
 
 use macros::Diff;
 use serde::{Deserialize, Deserializer};
@@ -37,6 +40,14 @@ impl Add for Meters {
 
 	fn add(self, rhs: Self) -> Self::Output {
 		Meters(self.0 + rhs.0)
+	}
+}
+
+impl Sub for Meters {
+	type Output = Self;
+
+	fn sub(self, rhs: Self) -> Self::Output {
+		Meters(self.0 - rhs.0)
 	}
 }
 

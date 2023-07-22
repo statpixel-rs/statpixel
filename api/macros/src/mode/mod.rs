@@ -223,8 +223,111 @@ impl ToTokens for ModeInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
+		let mode_ident = &ident;
+		let diff_log_fields = field_data.iter().map(|field| {
+			let mut split = field.ident.split('.');
+			let (ident, (parent_new, parent_old)) = match (split.next_back(), split.next()) {
+				(Some(ident), Some(first)) => (ident!(ident), {
+					let first = syn::Ident::new(first, proc_macro2::Span::call_site());
+
+					let rest = split
+						.map(|p| {
+							let ident = syn::Ident::new(p, proc_macro2::Span::call_site());
+
+							quote! { .#ident }
+						})
+						.collect::<Vec<_>>();
+
+					(
+						quote! { data_new.stats.#first #(#rest)* },
+						quote! { data_old.stats.#first #(#rest)* },
+					)
+				}),
+				_ => (ident!(&field.ident), (quote!(self), quote!(old))),
+			};
+			let ident = &ident;
+			let tr = get_tr_with_fallback(field.tr.as_deref(), Some(ident));
+
+			let value_new = if let Some(div) = field.div.as_ref() {
+				if field.percent.is_some() {
+					sum::div_u32_single_field(&parent_new, ident, div)
+				} else {
+					sum::div_f32_single_field(&parent_new, ident, div)
+				}
+			} else {
+				quote! { #parent_new .#ident }
+			};
+
+			let value_old = if let Some(div) = field.div.as_ref() {
+				if field.percent.is_some() {
+					sum::div_u32_single_field(&parent_old, ident, div)
+				} else {
+					sum::div_f32_single_field(&parent_old, ident, div)
+				}
+			} else {
+				quote! { #parent_old .#ident }
+			};
+
+			if field.div.is_some() {
+				if let Some(ty) = field.percent.as_ref() {
+					let struct_name = get_percent_ident_for_str(ty);
+
+					return quote! {
+						let new = #value_new;
+						let old = #value_old;
+
+						if new < old {
+							log.push(format!(
+								"{} {} {}: -{}",
+								::translate::tr!(ctx, #mode_ident ::get_tr()),
+								PRETTY,
+								::translate::tr!(ctx, #tr),
+								crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (old - new), ctx)
+							));
+						} else if new > old {
+							log.push(format!(
+								"{} {} {}: {}",
+								::translate::tr!(ctx, #mode_ident ::get_tr()),
+								PRETTY,
+								::translate::tr!(ctx, #tr),
+								crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (new - old), ctx)
+							));
+						}
+					};
+				}
+			}
+
+			quote! {
+				let new = #value_new;
+				let old = #value_old;
+
+				if new < old {
+					log.push(format!(
+						"{} {} {}: -{}",
+						::translate::tr!(ctx, #mode_ident ::get_tr()),
+						PRETTY,
+						::translate::tr!(ctx, #tr),
+						crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx)
+					));
+				} else if new > old {
+					log.push(format!(
+						"{} {} {}: {}",
+						::translate::tr!(ctx, #mode_ident ::get_tr()),
+						PRETTY,
+						::translate::tr!(ctx, #tr),
+						crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx)
+					));
+				}
+			}
+		});
+
 		tokens.extend(quote! {
 			impl #ident #generics {
+				#[allow(clippy::ptr_arg)]
+				pub fn diff_log_own_fields(&self, old: &Self, data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+					#(#diff_log_fields)*
+				}
+
 				pub fn apply_own_fields<'c>(
 					&self,
 					ctx: &::translate::context::Context<'_>,
