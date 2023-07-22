@@ -432,13 +432,13 @@ impl ToTokens for GameInputReceiver {
 				},
 			);
 
-			let mode_diff_log = modes.iter().map(|mode| {
-				let ty = &mode.ty;
+		let mode_diff_log = modes.iter().map(|mode| {
+			let ty = &mode.ty;
 
-				quote! {
-					let embed = <#ty as crate::canvas::diff::DiffLog>::diff_log(data_new, data_old, ctx, embed);
-				}
-			});
+			quote! {
+				let embed = <#ty as crate::canvas::diff::DiffLog>::diff_log(data_new, data_old, ctx, embed);
+			}
+		});
 
 		let series_tuple_mode = overall_fields
 			.iter()
@@ -1308,10 +1308,10 @@ impl ToTokens for GameInputReceiver {
 				if field.skip_chart.is_some() {
 					return None;
 				};
-	
+
 				let f_ident = &field.ident;
 				let tr = get_tr_with_fallback(field.tr.as_deref(), Some(f_ident));
-	
+
 				let value_new = if let Some(div) = field.div.as_ref() {
 					if field.percent.is_some() {
 						sum::div_u32_single_field(&quote!(stats_new), f_ident, div)
@@ -1321,7 +1321,7 @@ impl ToTokens for GameInputReceiver {
 				} else {
 					quote! { stats_new.#f_ident }
 				};
-	
+
 				let value_old = if let Some(div) = field.div.as_ref() {
 					if field.percent.is_some() {
 						sum::div_u32_single_field(&quote!(stats_old), f_ident, div)
@@ -1376,11 +1376,11 @@ impl ToTokens for GameInputReceiver {
 
 						if !log.is_empty() {
 							let mut title = String::new();
-	
+
 							title.push_str(PLAIN);
 							title.push(' ');
 							title.push_str(::translate::tr!(ctx, #ty ::get_tr()).as_ref());
-	
+
 							embed.fields.push(::poise::serenity_prelude::EmbedField::new(title, log, true));
 							embed
 						} else {
