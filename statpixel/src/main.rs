@@ -153,13 +153,19 @@ async fn main() {
 	.await
 	.unwrap();
 
-	tokio::task::spawn(async move {
-		let pool = get_pool(2);
+	tokio::task::spawn({
+		let http = Arc::clone(&client.http);
+		let data = data.clone();
 
-		while let Err(e) = snapshot::user::begin(&pool).await {
-			error!(error = ?e, "error in user snapshot update loop");
+		async move {
+			let ctx = context::Context::external(&data);
+			let pool = get_pool(2);
 
-			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+			while let Err(e) = snapshot::user::begin(&pool, &ctx, &http).await {
+				error!(error = ?e, "error in user snapshot update loop");
+
+				tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+			}
 		}
 	});
 

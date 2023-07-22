@@ -223,7 +223,6 @@ impl ToTokens for ModeInputReceiver {
 			})
 			.collect::<Vec<_>>();
 
-		let mode_ident = &ident;
 		let diff_log_fields = field_data.iter().map(|field| {
 			let mut split = field.ident.split('.');
 			let (ident, (parent_new, parent_old)) = match (split.next_back(), split.next()) {
@@ -277,21 +276,25 @@ impl ToTokens for ModeInputReceiver {
 						let old = #value_old;
 
 						if new < old {
-							log.push(format!(
-								"{} {} {}: -{}",
-								::translate::tr!(ctx, #mode_ident ::get_tr()),
-								PRETTY,
-								::translate::tr!(ctx, #tr),
-								crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (old - new), ctx)
-							));
+							log.push_str("- ");
+							log.push_str(::translate::tr!(ctx, #tr).as_ref());
+							log.push_str(": `");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (old), ctx).as_ref());
+							log.push_str("` ⇢ `");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (new), ctx).as_ref());
+							log.push_str("` (`-");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (old - new), ctx).as_ref());
+							log.push_str("`)\n");
 						} else if new > old {
-							log.push(format!(
-								"{} {} {}: {}",
-								::translate::tr!(ctx, #mode_ident ::get_tr()),
-								PRETTY,
-								::translate::tr!(ctx, #tr),
-								crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (new - old), ctx)
-							));
+							log.push_str("- ");
+							log.push_str(::translate::tr!(ctx, #tr).as_ref());
+							log.push_str(": `");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (old), ctx).as_ref());
+							log.push_str("` ⇢ `");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (new), ctx).as_ref());
+							log.push_str("` (`+");
+							log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&crate::extras::percent::#struct_name (new - old), ctx).as_ref());
+							log.push_str("`)\n");
 						}
 					};
 				}
@@ -302,21 +305,25 @@ impl ToTokens for ModeInputReceiver {
 				let old = #value_old;
 
 				if new < old {
-					log.push(format!(
-						"{} {} {}: -{}",
-						::translate::tr!(ctx, #mode_ident ::get_tr()),
-						PRETTY,
-						::translate::tr!(ctx, #tr),
-						crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx)
-					));
+					log.push_str("- ");
+					log.push_str(::translate::tr!(ctx, #tr).as_ref());
+					log.push_str(": `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+					log.push_str("` ⇢ `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+					log.push_str("` (`-");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx).as_ref());
+					log.push_str("`)\n");
 				} else if new > old {
-					log.push(format!(
-						"{} {} {}: {}",
-						::translate::tr!(ctx, #mode_ident ::get_tr()),
-						PRETTY,
-						::translate::tr!(ctx, #tr),
-						crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx)
-					));
+					log.push_str("- ");
+					log.push_str(::translate::tr!(ctx, #tr).as_ref());
+					log.push_str(": `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+					log.push_str("` ⇢ `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+					log.push_str("` (`+");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx).as_ref());
+					log.push_str("`)\n");
 				}
 			}
 		});
@@ -324,7 +331,7 @@ impl ToTokens for ModeInputReceiver {
 		tokens.extend(quote! {
 			impl #ident #generics {
 				#[allow(clippy::ptr_arg)]
-				pub fn diff_log_own_fields(&self, old: &Self, data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+				pub fn diff_log_own_fields(&self, old: &Self, data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut String) {
 					#(#diff_log_fields)*
 				}
 

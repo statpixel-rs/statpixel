@@ -1,8 +1,11 @@
 pub mod upgrade;
 
-use std::{ops::Mul, sync::Arc};
+use std::{ops::Mul, sync::Arc, time::Duration};
 
-use api::player::{data::Data, Player, VERSION};
+use api::{
+	canvas::diff::DiffLog,
+	player::{data::Data, Player, VERSION},
+};
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
 	schema::{schedule, snapshot, track},
@@ -16,9 +19,14 @@ use diesel_async::{
 };
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
-use poise::serenity_prelude::ChannelId;
+use poise::serenity_prelude::{
+	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage,
+};
 use tracing::{info, warn};
-use translate::{context::Context, Error};
+use translate::{
+	context::{self, Context},
+	Error,
+};
 use uuid::Uuid;
 
 const HOURS_PER_DAY: i32 = 24;
@@ -218,6 +226,7 @@ async fn update(
 		})
 		.await?;
 
+	#[allow(clippy::cast_sign_loss)]
 	Ok(result.map(|(channels, old)| {
 		(
 			channels
@@ -232,7 +241,11 @@ async fn update(
 
 /// Begins the update loop for the snapshot system.
 /// This function will return an Err if
-pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
+pub async fn begin(
+	pool: &PostgresPool,
+	ctx: &context::Context<'_>,
+	http: &serenity::Http,
+) -> Result<(), Error> {
 	loop {
 		let mut connection = pool.get().await?;
 
@@ -242,7 +255,7 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 		// However, we can only fetch ones that update within 3 hours, since other profiles
 		// could be added while this is active that might need to update in 3 hours.
 		let players = schedule::table
-			.filter(schedule::update_at.le(Utc::now() + chrono::Duration::hours(3)))
+			.filter(schedule::uuid.eq(Uuid::from_u128(0x2320b86eea7c4d7ca75630ae86281d78)))
 			.select((
 				schedule::uuid,
 				schedule::update_at,
@@ -254,6 +267,8 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 			.limit(PLAYER_BATCH_LIMIT)
 			.get_results::<(Uuid, DateTime<Utc>, i32, i64, i32)>(&mut connection)
 			.await?;
+
+		println!("players: {:?}", players);
 
 		if players.is_empty() {
 			// Sleep for an hour, since that's the earliest a profile could be added.
@@ -269,9 +284,9 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 				|(uuid, update_at, snapshots, hash, weekly_schedule)| async move {
 					// Wait until `update_at` to update the player.
 					// If it's an Err, then the time has already passed so we don't need to wait.
-					if let Ok(duration) = update_at.signed_duration_since(Utc::now()).to_std() {
-						tokio::time::sleep(duration).await;
-					}
+					//if let Ok(duration) = update_at.signed_duration_since(Utc::now()).to_std() {
+					tokio::time::sleep(Duration::from_secs(10)).await;
+					//}
 
 					let mut connection = loop {
 						match pool.get().await {
@@ -296,8 +311,30 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 						.await;
 
 						match result {
-							Ok(Some((channels, old, new))) => {
-								// send update to every channel if different
+							Ok(Some((channels, old, new))) if !channels.is_empty() => {
+								let embed = Data::diff_log(&new, &old, ctx, &mut log);
+
+								if !embed.fields.is_empty() {
+									let player = Player::new(uuid, None);
+									let message = CreateMessage::default().embed(
+										embed
+											.into()
+											.author(
+												CreateEmbedAuthor::new(&new.username)
+													.icon_url(player.get_head_url()),
+											)
+											.description(log)
+											.colour(crate::EMBED_COLOUR),
+									);
+
+									for channel in channels {
+										if let Err(e) =
+											channel.send_message(http, message.clone()).await
+										{
+											warn!("Failed to send message: {}", e);
+										}
+									}
+								}
 
 								break;
 							}

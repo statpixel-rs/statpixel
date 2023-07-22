@@ -1,8 +1,10 @@
 use chrono::{DateTime, Utc};
 use minecraft::{colour::Colour, text::rank::Rank};
+use poise::serenity_prelude::Embed;
 use serde::{Deserialize, Deserializer};
+use translate::context;
 
-use crate::minutes::Minutes;
+use crate::{canvas::diff::DiffLog, minutes::Minutes};
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
 #[serde(default)]
@@ -56,16 +58,32 @@ pub struct Data {
 	pub socials: super::socials::Socials,
 }
 
-impl Data {
-	#[must_use]
-	pub fn placeholder() -> Self {
-		Self {
-			username: "StatPixel".to_string(),
-			rank: Some("MVP_PLUS".to_string()),
-			package_rank: Some("MVP_PLUS_PLUS".to_string()),
-			monthly_rank_colour: Some(Colour::Gold),
-			..Self::default()
-		}
+impl DiffLog for Data {
+	fn diff_log(new: &Data, other: &Data, ctx: &context::Context<'_>, embed: Embed) -> Embed {
+		use super::stats::*;
+
+		let embed = arcade::Arcade::diff_log(new, other, ctx, embed);
+		let embed = arena::Arena::diff_log(new, other, ctx, embed);
+		let embed = bed_wars::BedWars::diff_log(new, other, ctx, embed);
+		let embed = blitz_sg::BlitzSg::diff_log(new, other, ctx, embed);
+		let embed = build_battle::BuildBattle::diff_log(new, other, ctx, embed);
+		let embed = cops_and_crims::CopsAndCrims::diff_log(new, other, ctx, embed);
+		let embed = duels::Duels::diff_log(new, other, ctx, embed);
+		let embed = mega_walls::MegaWalls::diff_log(new, other, ctx, embed);
+		let embed = murder_mystery::MurderMystery::diff_log(new, other, ctx, embed);
+		let embed = paintball::Paintball::diff_log(new, other, ctx, embed);
+		let embed = pit::Pit::diff_log(new, other, ctx, embed);
+		let embed = quake::Quake::diff_log(new, other, ctx, embed);
+		let embed = sky_wars::SkyWars::diff_log(new, other, ctx, embed);
+		let embed = smash_heroes::SmashHeroes::diff_log(new, other, ctx, embed);
+		let embed = speed_uhc::SpeedUhc::diff_log(new, other, ctx, embed);
+		let embed = tnt_games::TntGames::diff_log(new, other, ctx, embed);
+		let embed = turbo_kart_racers::TurboKartRacers::diff_log(new, other, ctx, embed);
+		let embed = uhc::Uhc::diff_log(new, other, ctx, embed);
+		let embed = vampire_z::VampireZ::diff_log(new, other, ctx, embed);
+		let embed = walls::Walls::diff_log(new, other, ctx, embed);
+		let embed = warlords::Warlords::diff_log(new, other, ctx, embed);
+		wool_wars::WoolWars::diff_log(new, other, ctx, embed)
 	}
 }
 
@@ -79,6 +97,17 @@ pub struct Gifting {
 }
 
 impl Data {
+	#[must_use]
+	pub fn placeholder() -> Self {
+		Self {
+			username: "StatPixel".to_string(),
+			rank: Some("MVP_PLUS".to_string()),
+			package_rank: Some("MVP_PLUS_PLUS".to_string()),
+			monthly_rank_colour: Some(Colour::Gold),
+			..Self::default()
+		}
+	}
+
 	#[must_use]
 	pub fn get_rank(&self) -> Rank {
 		if let Some(prefix) = self.prefix.as_ref() {

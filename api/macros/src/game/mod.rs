@@ -436,7 +436,7 @@ impl ToTokens for GameInputReceiver {
 				let ty = &mode.ty;
 
 				quote! {
-					<#ty as crate::canvas::diff::DiffLog>::diff_log(data_new, data_old, ctx, log);
+					let embed = <#ty as crate::canvas::diff::DiffLog>::diff_log(data_new, data_old, ctx, embed);
 				}
 			});
 
@@ -1337,21 +1337,25 @@ impl ToTokens for GameInputReceiver {
 					let old = #value_old;
 
 					if new < old {
-						log.push(format!(
-							"{} {} {}: -{}",
-							::translate::tr!(ctx, #ty ::get_tr()),
-							PRETTY,
-							::translate::tr!(ctx, #tr),
-							crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx)
-						));
+						log.push_str("- ");
+						log.push_str(::translate::tr!(ctx, #tr).as_ref());
+						log.push_str(": `");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+						log.push_str("` ⇢ `");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+						log.push_str("` (`-");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx).as_ref());
+						log.push_str("`)\n");
 					} else if new > old {
-						log.push(format!(
-							"{} {} {}: {}",
-							::translate::tr!(ctx, #ty ::get_tr()),
-							PRETTY,
-							::translate::tr!(ctx, #tr),
-							crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx)
-						));
+						log.push_str("- ");
+						log.push_str(::translate::tr!(ctx, #tr).as_ref());
+						log.push_str(": `");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+						log.push_str("` ⇢ `");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+						log.push_str("` (`+");
+						log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx).as_ref());
+						log.push_str("`)\n");
 					}
 				})
 			});
@@ -1359,7 +1363,8 @@ impl ToTokens for GameInputReceiver {
 			quote! {
 				impl crate::canvas::diff::DiffLog for #ty {
 					#[allow(clippy::ptr_arg)]
-					fn diff_log(new: &crate::player::data::Data, old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+					fn diff_log(new: &crate::player::data::Data, old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, mut embed: ::poise::serenity_prelude::Embed) -> ::poise::serenity_prelude::Embed {
+						let mut log = String::new();
 						let stats_new = &new.stats.#path.#ident;
 						let stats_old = &old.stats.#path.#ident;
 
@@ -1367,7 +1372,20 @@ impl ToTokens for GameInputReceiver {
 							#(#diff_log_fields)*
 						}
 
-						stats_new.diff_log_own_fields(&stats_old, new, old, ctx, log);
+						stats_new.diff_log_own_fields(&stats_old, new, old, ctx, &mut log);
+
+						if !log.is_empty() {
+							let mut title = String::new();
+	
+							title.push_str(PLAIN);
+							title.push(' ');
+							title.push_str(::translate::tr!(ctx, #ty ::get_tr()).as_ref());
+	
+							embed.fields.push(::poise::serenity_prelude::EmbedField::new(title, log, true));
+							embed
+						} else {
+							embed
+						}
 					}
 				}
 
@@ -2602,13 +2620,18 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					quote! {
-						{
+						let (new, old) = {
 							let stats_new = &data_new.stats.#path;
 							let stats_old = &data_old.stats.#path;
 
-							let new = f64::from(#sum_new) / if #sum_bottom_new == 0 { 1. } else { f64::from(#sum_bottom_new) };
-							let old = f64::from(#sum_old) / if #sum_bottom_old == 0 { 1. } else { f64::from(#sum_bottom_old) };
-						}
+							let sum_bottom_new = #sum_bottom_new;
+							let sum_bottom_old = #sum_bottom_old;
+
+							let new = f64::from(#sum_new) / if sum_bottom_new == 0 { 1. } else { f64::from(sum_bottom_new) };
+							let old = f64::from(#sum_old) / if sum_bottom_old == 0 { 1. } else { f64::from(sum_bottom_old) };
+
+							(new, old)
+						};
 					}
 				} else {
 					quote! {
@@ -2622,21 +2645,25 @@ impl ToTokens for GameInputReceiver {
 				#val
 
 				if new < old {
-					log.push(format!(
-						"{} {} {}: -{}",
-						::translate::tr!(ctx, Overall::get_tr()),
-						PRETTY,
-						::translate::tr!(ctx, #tr),
-						crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx),
-					));
+					log.push_str("- ");
+					log.push_str(::translate::tr!(ctx, #tr).as_ref());
+					log.push_str(": `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+					log.push_str("` ⇢ `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+					log.push_str("` (`-");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(old - new), ctx).as_ref());
+					log.push_str("`)\n");
 				} else if new > old {
-					log.push(format!(
-						"{} {} {}: {}",
-						::translate::tr!(ctx, Overall::get_tr()),
-						PRETTY,
-						::translate::tr!(ctx, #tr),
-						crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx),
-					));
+					log.push_str("- ");
+					log.push_str(::translate::tr!(ctx, #tr).as_ref());
+					log.push_str(": `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&old, ctx).as_ref());
+					log.push_str("` ⇢ `");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&new, ctx).as_ref());
+					log.push_str("` (`+");
+					log.push_str(crate::canvas::label::ToFormatted::to_formatted_label(&(new - old), ctx).as_ref());
+					log.push_str("`)\n");
 				}
 			})
 		});
@@ -2644,6 +2671,7 @@ impl ToTokens for GameInputReceiver {
 		tokens.extend(quote! {
 			const LABEL: [::minecraft::text::Text; #label_size] = ::minecraft::text::parse::minecraft_text(#pretty);
 			const PRETTY: &'static str = #pretty;
+			const PLAIN: &'static str = #plain;
 
 			#(#apply_all_modes)*
 
@@ -2651,11 +2679,25 @@ impl ToTokens for GameInputReceiver {
 
 			impl crate::canvas::diff::DiffLog for Overall {
 				#[allow(clippy::ptr_arg)]
-				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
+				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, mut embed: ::poise::serenity_prelude::Embed) -> ::poise::serenity_prelude::Embed {
+					let mut log = String::new();
 					let stats_new = &data_new.stats.#path;
 					let stats_old = &data_old.stats.#path;
 
 					#(#diff_log_fields)*
+
+					if !log.is_empty() {
+						let mut title = String::new();
+
+						title.push_str(PLAIN);
+						title.push(' ');
+						title.push_str(::translate::tr!(ctx, Overall::get_tr()).as_ref());
+
+						embed.fields.push(::poise::serenity_prelude::EmbedField::new(title, log, true));
+						embed
+					} else {
+						embed
+					}
 				}
 			}
 
@@ -3110,9 +3152,10 @@ impl ToTokens for GameInputReceiver {
 
 			impl crate::canvas::diff::DiffLog for #ident {
 				#[allow(clippy::ptr_arg)]
-				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, log: &mut Vec<String>) {
-					Overall::diff_log(data_new, data_old, ctx, log);
+				fn diff_log(data_new: &crate::player::data::Data, data_old: &crate::player::data::Data, ctx: &::translate::context::Context<'_>, mut embed: ::poise::serenity_prelude::Embed) -> ::poise::serenity_prelude::Embed {
+					let embed = Overall::diff_log(data_new, data_old, ctx, embed);
 					#(#mode_diff_log)*
+					embed
 				}
 			}
 

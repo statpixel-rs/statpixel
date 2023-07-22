@@ -5,6 +5,7 @@ use minecraft::{
 	calc::pit::{Level, Prestige},
 	colour::Colour,
 };
+use poise::serenity_prelude::Embed;
 
 pub trait Diff {
 	#[must_use]
@@ -17,8 +18,8 @@ pub trait DiffLog {
 		new: &crate::player::data::Data,
 		other: &crate::player::data::Data,
 		ctx: &translate::context::Context<'_>,
-		log: &mut Vec<String>,
-	);
+		mut embed: Embed,
+	) -> Embed;
 }
 
 macro_rules! impl_to_formatted_label_for_number {
