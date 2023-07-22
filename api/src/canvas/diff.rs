@@ -18,7 +18,7 @@ pub trait DiffLog {
 		new: &crate::player::data::Data,
 		other: &crate::player::data::Data,
 		ctx: &translate::context::Context<'_>,
-		mut embed: Embed,
+		embed: Embed,
 	) -> Embed;
 }
 

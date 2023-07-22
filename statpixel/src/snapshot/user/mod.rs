@@ -1,6 +1,6 @@
 pub mod upgrade;
 
-use std::{ops::Mul, sync::Arc, time::Duration};
+use std::{ops::Mul, sync::Arc};
 
 use api::{
 	canvas::diff::DiffLog,
@@ -8,11 +8,13 @@ use api::{
 };
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
+	models::TrackState,
 	schema::{schedule, snapshot, track},
 	PostgresPool,
 };
 use diesel::{
-	query_dsl::methods::DistinctOnDsl, ExpressionMethods, NullableExpressionMethods, QueryDsl,
+	query_dsl::methods::DistinctOnDsl, BoolExpressionMethods, ExpressionMethods,
+	NullableExpressionMethods, QueryDsl,
 };
 use diesel_async::{
 	scoped_futures::ScopedFutureExt, AsyncConnection, AsyncPgConnection, RunQueryDsl,
@@ -20,7 +22,7 @@ use diesel_async::{
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
 use poise::serenity_prelude::{
-	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage,
+	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage, Embed,
 };
 use tracing::{info, warn};
 use translate::{
@@ -198,7 +200,11 @@ async fn update(
 						.await?;
 
 					let channels: Vec<i64> = track::table
-						.filter(track::uuid.eq(player.uuid))
+						.filter(
+							track::uuid
+								.eq(player.uuid)
+								.and(track::state.eq(i16::from(TrackState::Active))),
+						)
 						.distinct_on(track::channel_id)
 						.select(track::channel_id)
 						.get_results(conn)
@@ -241,6 +247,7 @@ async fn update(
 
 /// Begins the update loop for the snapshot system.
 /// This function will return an Err if
+#[allow(clippy::too_many_lines)]
 pub async fn begin(
 	pool: &PostgresPool,
 	ctx: &context::Context<'_>,
@@ -255,7 +262,7 @@ pub async fn begin(
 		// However, we can only fetch ones that update within 3 hours, since other profiles
 		// could be added while this is active that might need to update in 3 hours.
 		let players = schedule::table
-			.filter(schedule::uuid.eq(Uuid::from_u128(0x2320b86eea7c4d7ca75630ae86281d78)))
+			.filter(schedule::update_at.le(Utc::now() + chrono::Duration::hours(3)))
 			.select((
 				schedule::uuid,
 				schedule::update_at,
@@ -267,8 +274,6 @@ pub async fn begin(
 			.limit(PLAYER_BATCH_LIMIT)
 			.get_results::<(Uuid, DateTime<Utc>, i32, i64, i32)>(&mut connection)
 			.await?;
-
-		println!("players: {:?}", players);
 
 		if players.is_empty() {
 			// Sleep for an hour, since that's the earliest a profile could be added.
@@ -284,9 +289,9 @@ pub async fn begin(
 				|(uuid, update_at, snapshots, hash, weekly_schedule)| async move {
 					// Wait until `update_at` to update the player.
 					// If it's an Err, then the time has already passed so we don't need to wait.
-					//if let Ok(duration) = update_at.signed_duration_since(Utc::now()).to_std() {
-					tokio::time::sleep(Duration::from_secs(10)).await;
-					//}
+					if let Ok(duration) = update_at.signed_duration_since(Utc::now()).to_std() {
+						tokio::time::sleep(duration).await;
+					}
 
 					let mut connection = loop {
 						match pool.get().await {
@@ -312,18 +317,16 @@ pub async fn begin(
 
 						match result {
 							Ok(Some((channels, old, new))) if !channels.is_empty() => {
-								let embed = Data::diff_log(&new, &old, ctx, &mut log);
+								let embed = Data::diff_log(&new, &old, ctx, Embed::default());
 
 								if !embed.fields.is_empty() {
 									let player = Player::new(uuid, None);
 									let message = CreateMessage::default().embed(
-										embed
-											.into()
+										<Embed as Into<CreateEmbed>>::into(embed)
 											.author(
 												CreateEmbedAuthor::new(&new.username)
 													.icon_url(player.get_head_url()),
 											)
-											.description(log)
 											.colour(crate::EMBED_COLOUR),
 									);
 
@@ -331,7 +334,39 @@ pub async fn begin(
 										if let Err(e) =
 											channel.send_message(http, message.clone()).await
 										{
-											warn!("Failed to send message: {}", e);
+											match e {
+												serenity::Error::Http(
+													serenity::HttpError::UnsuccessfulRequest(
+														serenity::ErrorResponse {
+															status_code:
+																s @ (serenity::StatusCode::NOT_FOUND
+																| serenity::StatusCode::FORBIDDEN),
+															..
+														},
+													),
+												) => {
+													diesel::update(track::table)
+														.filter(track::uuid.eq(uuid))
+														.filter(
+															track::channel_id
+																.eq(channel.0.get() as i64),
+														)
+														.set(track::state.eq(i16::from(
+															if s == serenity::StatusCode::NOT_FOUND
+															{
+																TrackState::ChannelNotFound
+															} else {
+																TrackState::InsufficientPermission
+															},
+														)))
+														.execute(&mut connection)
+														.await
+														.ok();
+												}
+												e => {
+													warn!("Failed to send message: {}", e);
+												}
+											}
 										}
 									}
 								}

@@ -12,8 +12,8 @@ use crate::{
 
 pub static PLAYER_DATA_CACHE: Lazy<Cache<Uuid, Arc<Data>>> = Lazy::new(|| {
 	CacheBuilder::new(100_000)
-		.time_to_idle(Duration::from_secs(5))
-		.time_to_live(Duration::from_secs(5))
+		.time_to_idle(Duration::from_secs(60 * 5))
+		.time_to_live(Duration::from_secs(60 * 10))
 		.build()
 });
 

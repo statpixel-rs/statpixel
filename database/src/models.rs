@@ -62,3 +62,39 @@ impl From<MetricKind> for i16 {
 		}
 	}
 }
+
+pub enum TrackState {
+	Active,
+	ManuallyDisabled,
+	PlayerNotFound,
+	ChannelNotFound,
+	InsufficientPermission,
+	LimitReached,
+}
+
+impl From<i16> for TrackState {
+	fn from(kind: i16) -> Self {
+		match kind {
+			0 => Self::Active,
+			1 => Self::ManuallyDisabled,
+			2 => Self::PlayerNotFound,
+			3 => Self::ChannelNotFound,
+			4 => Self::InsufficientPermission,
+			5 => Self::LimitReached,
+			_ => unreachable!(),
+		}
+	}
+}
+
+impl From<TrackState> for i16 {
+	fn from(kind: TrackState) -> Self {
+		match kind {
+			TrackState::Active => 0,
+			TrackState::ManuallyDisabled => 1,
+			TrackState::PlayerNotFound => 2,
+			TrackState::ChannelNotFound => 3,
+			TrackState::InsufficientPermission => 4,
+			TrackState::LimitReached => 5,
+		}
+	}
+}

@@ -15,6 +15,7 @@ pub struct Track {
 	pub channel_id: u64,
 	pub uuid: Uuid,
 	pub created_at: DateTime<Utc>,
+	pub state: i16,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -28,13 +29,15 @@ pub async fn get(
 	State(state): State<Arc<super::Data>>,
 	claims: super::auth::Claims,
 ) -> Result<impl IntoResponse, StatusCode> {
-	let tracks: Vec<(Option<i64>, i64, Uuid, DateTime<Utc>)> = track::table
+	#[allow(clippy::type_complexity)]
+	let tracks: Vec<(Option<i64>, i64, Uuid, DateTime<Utc>, i16)> = track::table
 		.filter(track::user_id.eq(claims.id as i64))
 		.select((
 			track::guild_id,
 			track::channel_id,
 			track::uuid,
 			track::created_at,
+			track::state,
 		))
 		.load(
 			&mut state
@@ -55,6 +58,7 @@ pub async fn get(
 				channel_id: t.1 as u64,
 				uuid: t.2,
 				created_at: t.3,
+				state: t.4,
 			})
 			.collect::<Vec<_>>(),
 	))
