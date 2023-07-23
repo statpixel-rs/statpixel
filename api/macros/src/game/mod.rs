@@ -1748,7 +1748,7 @@ impl ToTokens for GameInputReceiver {
 							quote! {
 								{
 									let stats = &data.stats.#path;
-	
+
 									(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
 								}
 							}
@@ -1845,7 +1845,7 @@ impl ToTokens for GameInputReceiver {
 							quote! {
 								{
 									let stats = &last.1.stats.#path;
-	
+
 									(f64::from(#sum) * 100. / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
 								}
 							}
@@ -1853,7 +1853,7 @@ impl ToTokens for GameInputReceiver {
 							quote! {
 								{
 									let stats = &last.1.stats.#path;
-	
+
 									(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
 								}
 							}
@@ -1950,7 +1950,7 @@ impl ToTokens for GameInputReceiver {
 							quote! {
 								{
 									let stats = &first.1.stats.#path;
-	
+
 									(f64::from(#sum) * 100. / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
 								}
 							}
@@ -1958,7 +1958,7 @@ impl ToTokens for GameInputReceiver {
 							quote! {
 								{
 									let stats = &first.1.stats.#path;
-	
+
 									(f64::from(#sum) / if #sum_bottom == 0 { 1. } else { f64::from(#sum_bottom) })
 								}
 							}
@@ -2487,7 +2487,7 @@ impl ToTokens for GameInputReceiver {
 							{
 								let stats_new = &data_new.stats.#path;
 								let stats_old = &data_old.stats.#path;
-	
+
 								crate::extras::percent::#struct_name (crate::canvas::diff::Diff::diff(
 									&(#sum_new * 100 / if #sum_bottom_new == 0 { 1 } else { #sum_bottom_new }),
 									&(#sum_old * 100 / if #sum_bottom_old == 0 { 1 } else { #sum_bottom_old }),
@@ -2499,7 +2499,7 @@ impl ToTokens for GameInputReceiver {
 							{
 								let stats_new = &data_new.stats.#path;
 								let stats_old = &data_old.stats.#path;
-	
+
 								crate::canvas::diff::Diff::diff(
 									&(f64::from(#sum_new) / if #sum_bottom_new == 0 { 1. } else { f64::from(#sum_bottom_new) }),
 									&(f64::from(#sum_old) / if #sum_bottom_old == 0 { 1. } else { f64::from(#sum_bottom_old) }),
@@ -2684,13 +2684,13 @@ impl ToTokens for GameInputReceiver {
 							let (new, old) = {
 								let stats_new = &data_new.stats.#path;
 								let stats_old = &data_old.stats.#path;
-	
+
 								let sum_bottom_new = #sum_bottom_new;
 								let sum_bottom_old = #sum_bottom_old;
-	
+
 								let new = crate::extras::percent::#struct_name (#sum_new * 100 / if sum_bottom_new == 0 { 1 } else { sum_bottom_new });
 								let old = crate::extras::percent::#struct_name (#sum_old * 100 / if sum_bottom_old == 0 { 1 } else { sum_bottom_old });
-	
+
 								(new, old)
 							};
 						}
@@ -2699,13 +2699,13 @@ impl ToTokens for GameInputReceiver {
 							let (new, old) = {
 								let stats_new = &data_new.stats.#path;
 								let stats_old = &data_old.stats.#path;
-	
+
 								let sum_bottom_new = #sum_bottom_new;
 								let sum_bottom_old = #sum_bottom_old;
-	
+
 								let new = f64::from(#sum_new) / if sum_bottom_new == 0 { 1. } else { f64::from(sum_bottom_new) };
 								let old = f64::from(#sum_old) / if sum_bottom_old == 0 { 1. } else { f64::from(sum_bottom_old) };
-	
+
 								(new, old)
 							};
 						}
