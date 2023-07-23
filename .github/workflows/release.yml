@@ -32,76 +32,76 @@ jobs:
           tag_name: ${{ github.ref }}
           name: ${{ steps.get_version.outputs.version }} 🎉
           body: ${{ steps.github_release.outputs.changelog }}
-  create-binaries:
-    name: release ${{ matrix.target }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - target: x86_64-pc-windows-msvc
-            archive: zip
-            os: windows-latest
-            bin: .exe
-            ext: .zip
-          - target: x86_64-unknown-linux-gnu
-            archive: tar
-            ext: .tar.gz
-            os: ubuntu-latest
-            bin: ""
-          - target: x86_64-apple-darwin
-            archive: zip
-            ext: .zip
-            os: macos-latest
-            bin: ""
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Install nightly
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          override: true
-          profile: minimal
-          target: ${{ matrix.target }}
-      - name: Set up cargo cache
-        uses: actions/cache@v3
-        continue-on-error: false
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: ${{ matrix.target }}-cargo-
-      - uses: ikalnytskyi/action-setup-postgres@v4
-        if: matrix.target == 'x86_64-pc-windows-msvc'
-      - name: Build in release mode
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release
-      - name: Move release files
-        run: |
-          mkdir release
-          mv target/release/statpixel${{ matrix.bin }} release/statpixel${{ matrix.bin }}
-          cp README.md release/README.md
-          cp LICENSE release/LICENSE
-      - name: Archive release
-        uses: thedoctor0/zip-release@main
-        with:
-          type: ${{ matrix.archive }}
-          filename: release${{ matrix.ext }}
-          directory: release
-          path: "*"
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: release/release${{ matrix.ext }}
-          asset_name: ${{ matrix.target }}${{ matrix.ext }}
-          tag: ${{ github.ref }}
-          overwrite: false
+#  create-binaries:
+#    name: release ${{ matrix.target }}
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        include:
+#          - target: x86_64-pc-windows-msvc
+#            archive: zip
+#            os: windows-latest
+#            bin: .exe
+#            ext: .zip
+#          - target: x86_64-unknown-linux-gnu
+#            archive: tar
+#            ext: .tar.gz
+#            os: ubuntu-latest
+#            bin: ""
+#          - target: x86_64-apple-darwin
+#            archive: zip
+#            ext: .zip
+#            os: macos-latest
+#            bin: ""
+#    steps:
+#      - uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+#      - name: Install nightly
+#        uses: actions-rs/toolchain@v1
+#        with:
+#          toolchain: nightly
+#          override: true
+#          profile: minimal
+#          target: ${{ matrix.target }}
+#      - name: Set up cargo cache
+#        uses: actions/cache@v3
+#        continue-on-error: false
+#        with:
+#          path: |
+#            ~/.cargo/bin/
+#            ~/.cargo/registry/index/
+#            ~/.cargo/registry/cache/
+#            ~/.cargo/git/db/
+#            target/
+#          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+#          restore-keys: ${{ matrix.target }}-cargo-
+#      - uses: ikalnytskyi/action-setup-postgres@v4
+#        if: matrix.target == 'x86_64-pc-windows-msvc'
+#      - name: Build in release mode
+#        uses: actions-rs/cargo@v1
+#        with:
+#          command: build
+#          args: --release
+#      - name: Move release files
+#        run: |
+#          mkdir release
+#          mv target/release/statpixel${{ matrix.bin }} release/statpixel${{ matrix.bin }}
+#          cp README.md release/README.md
+#          cp LICENSE release/LICENSE
+#      - name: Archive release
+#        uses: thedoctor0/zip-release@main
+#        with:
+#          type: ${{ matrix.archive }}
+#          filename: release${{ matrix.ext }}
+#          directory: release
+#          path: "*"
+#      - name: Upload binaries to release
+#        uses: svenstaro/upload-release-action@v2
+#        with:
+#          repo_token: ${{ secrets.GITHUB_TOKEN }}
+#          file: release/release${{ matrix.ext }}
+#          asset_name: ${{ matrix.target }}${{ matrix.ext }}
+#          tag: ${{ github.ref }}
+#          overwrite: false
