@@ -12,7 +12,11 @@ use crate::{
 const MAX_TRACKS_PER_GUILD: i64 = 100;
 
 /// Tracks a Minecraft account and submits their data to a channel.
-#[poise::command(on_error = "crate::util::error_handler", slash_command)]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	default_member_permissions = "MANAGE_GUILD"
+)]
 pub async fn track(
 	ctx: Context<'_>,
 	#[max_length = 16]

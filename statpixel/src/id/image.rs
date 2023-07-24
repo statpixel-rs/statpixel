@@ -536,6 +536,41 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Option<Cow<'static, [u8]>> {
 					None,
 				))
 			}
+			Mode::RecentGames => {
+				let (_, data, games, session, skin, suffix) =
+					crate::commands::get_player_data_games_session_skin_suffix(
+						ctx,
+						Some(uuid),
+						None,
+					)
+					.await
+					.ok()?;
+
+				Some(crate::commands::recent::image::recent(
+					ctx,
+					&data,
+					&games,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+					None,
+				))
+			}
+			Mode::Winstreaks => {
+				let (_, data, session, skin, suffix) =
+					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
+						.await
+						.ok()?;
+
+				Some(crate::commands::winstreaks::image::winstreaks(
+					ctx,
+					&data,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+					None,
+				))
+			}
 		},
 		Id::Snapshot { kind, uuid, past } => {
 			let past = Duration::nanoseconds(past);

@@ -8,21 +8,22 @@ use translate::{context, tr_fmt};
 use uuid::Uuid;
 
 #[allow(clippy::too_many_lines)]
-pub async fn winstreaks(
+pub async fn recent(
 	ctx: &context::Context<'_>,
 	username: Option<String>,
 	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 
-	let (player, data, session, skin, suffix) =
-		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
+	let (player, data, games, session, skin, suffix) =
+		crate::commands::get_player_data_games_session_skin_suffix(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
-	let png = super::image::winstreaks(
+	let png = super::image::recent(
 		ctx,
 		&data,
+		&games,
 		&session,
 		skin.image(),
 		suffix.as_deref(),
@@ -31,7 +32,7 @@ pub async fn winstreaks(
 
 	let id = id::command(Id::Root {
 		uuid: player.uuid,
-		kind: Mode::Winstreaks,
+		kind: Mode::RecentGames,
 	});
 
 	ctx.send(

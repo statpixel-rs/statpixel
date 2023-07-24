@@ -195,6 +195,10 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				}
 			},
 			Mode::Network => super::commands::network::run::network(ctx, None, Some(uuid)).await,
+			Mode::RecentGames => super::commands::recent::run::recent(ctx, None, Some(uuid)).await,
+			Mode::Winstreaks => {
+				super::commands::winstreaks::run::winstreaks(ctx, None, Some(uuid)).await
+			}
 		},
 		Id::Snapshot { kind, uuid, past } => {
 			let past = Duration::nanoseconds(past);

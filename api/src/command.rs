@@ -882,6 +882,9 @@ pub enum Mode {
 	Warlords(warlords::WarlordsMode),
 	WoolWars(wool_wars::WoolWarsMode),
 
+	RecentGames,
+	Winstreaks,
+
 	// profile id
 	SkyBlock(SkyBlockMode, #[bitcode(with_serde)] Option<Uuid>),
 	// `top.limit`, `top.past` as nanos
