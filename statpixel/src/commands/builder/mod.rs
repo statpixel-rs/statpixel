@@ -312,6 +312,7 @@ pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Res
 	let id = api::id::command(api::command::Id::Builder {
 		shapes: state.shapes,
 		uuid,
+		background: None,
 	});
 	let id = id.as_str();
 

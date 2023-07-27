@@ -17,6 +17,8 @@ pub mod about;
 pub mod background;
 pub mod boost;
 pub mod builder;
+// TODO: Add player comparison
+// pub mod compare;
 pub mod display;
 pub mod execute;
 pub mod from;

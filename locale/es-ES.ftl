@@ -5,6 +5,7 @@ showing-statistics = <a:clock:1115091329958019253> Mostrando estadísticas de {$
 no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
 showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
+showing-comparison = <a:clock:1115091329958019253> Mostrando estadísticas de {$from} en comparación con {$to}.
 
 # Errors
 

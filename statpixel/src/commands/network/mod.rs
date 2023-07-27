@@ -19,7 +19,7 @@ pub async fn network(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::network(ctx, username, uuid).await

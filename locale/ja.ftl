@@ -5,6 +5,7 @@ showing-statistics = <a:clock:1115091329958019253> {$from}から{$to}までの�
 no-previous-statistics = **{$name}**の以前のデータが見つからなかったため、挿入されました。
 showing-guild-statistics = {$from}から{$to}までのギルド統計を表示しています。
 no-previous-guild-statistics = ギルド **{$name}** の以前のデータが見つからなかったため、挿入されました。
+showing-comparison = <a:clock:1115091329958019253> {$from}と{$to}を比較した統計を表示しています。
 
 # Errors
 

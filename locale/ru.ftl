@@ -5,6 +5,7 @@ showing-statistics = <a:clock:1115091329958019253> Показаны измене
 no-previous-statistics = Нет предыдущих данных для **{$name}**, поэтому они были вставлены.
 showing-guild-statistics = Показаны изменения статистики гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Нет предыдущих данных для гильдии **{$name}**, поэтому они были вставлены.
+showing-comparison = <a:clock:1115091329958019253> Показаны статистики {$from} по сравнению с {$to}.
 
 # Errors
 

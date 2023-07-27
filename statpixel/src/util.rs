@@ -82,12 +82,12 @@ pub async fn get_format_colour_from_input(ctx: &Context<'_>) -> (format::Display
 	}
 }
 
-pub fn parse_uuid(uuid: Option<String>) -> Result<Option<Uuid>, Error> {
+pub fn parse_uuid(uuid: Option<&str>) -> Result<Option<Uuid>, Error> {
 	let Some(uuid) = uuid else {
 		return Ok(None);
 	};
 
-	Some(Uuid::parse_str(&uuid).map_err(|_| Error::InvalidUuid(uuid))).transpose()
+	Some(Uuid::parse_str(uuid).map_err(|_| Error::InvalidUuid(uuid.to_string()))).transpose()
 }
 
 pub async fn get_player_from_input(

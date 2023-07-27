@@ -5,6 +5,7 @@ showing-statistics = <a:clock:1115091329958019253> Affichage des statistiques de
 no-previous-statistics = Aucune donnée précédente trouvée pour **{$name}**, elle a donc été insérée.
 showing-guild-statistics = Affichage des statistiques de guilde de {$from} à {$to}.
 no-previous-guild-statistics = Aucune donnée précédente trouvée pour la guilde **{$name}**, elle a donc été insérée.
+showing-comparison = <a:clock:1115091329958019253> Affichage des statistiques de {$from} par rapport à {$to}.
 
 # Errors
 

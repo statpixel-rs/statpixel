@@ -29,7 +29,7 @@ macro_rules! generate_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let ctx = &context::Context::from_poise(&ctx);
 
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let mut duration = ::chrono::Duration::zero();
 
 			if let Some(hours) = hours {
@@ -86,7 +86,7 @@ macro_rules! generate_large_command {
 			let ctx = &context::Context::from_poise(&ctx);
 
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let mut duration = ::chrono::Duration::zero();
 
 			if let Some(hours) = hours {
@@ -134,7 +134,7 @@ pub async fn guild(
 ) -> Result<(), Error> {
 	let ctx = &context::Context::from_poise(&ctx);
 
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let mut duration = chrono::Duration::zero();
 
 	if let Some(hours) = hours {

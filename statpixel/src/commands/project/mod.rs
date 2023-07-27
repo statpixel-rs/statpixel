@@ -53,7 +53,7 @@ macro_rules! generate_large_command {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 				let kind: ::std::option::Option<$kind> = kind.map(|m| m.into());
 
-				let uuid = util::parse_uuid(uuid)?;
+				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
 
 				run::command::<$game>(ctx, username, uuid, mode, kind, value).await
@@ -96,7 +96,7 @@ macro_rules! generate_command {
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let kind: ::std::option::Option<$kind> = kind.map(|m| m.into());
-				let uuid = util::parse_uuid(uuid)?;
+				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
 
 				run::command::<$game>(ctx, username, uuid, mode, kind, value).await

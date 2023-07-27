@@ -43,7 +43,7 @@ macro_rules! generate_large_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode).await
@@ -68,7 +68,7 @@ macro_rules! generate_command {
 			uuid: Option<String>,
 			mode: Option<$mode>,
 		) -> Result<(), Error> {
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode).await
@@ -94,7 +94,7 @@ async fn network(
 ) -> ::std::result::Result<(), ::translate::Error> {
 	ctx.defer().await?;
 
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;

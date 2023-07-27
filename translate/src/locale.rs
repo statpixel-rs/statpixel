@@ -161,7 +161,7 @@ impl Locale {
 	) {
 		for command in commands.iter_mut() {
 			match command.name.as_str() {
-				"daily" | "weekly" | "monthly" | "history" | "from" | "project" => {
+				"daily" | "weekly" | "monthly" | "history" | "from" | "project" | "compare" => {
 					self.apply_translations(command.subcommands.as_mut(), true);
 
 					continue;
@@ -306,6 +306,8 @@ impl Locale {
 							|| parameter.name == "kind" || parameter.name == "value")
 					{
 						Some(".".to_string())
+					} else if subcommand && (parameter.name == "from" || parameter.name == "to") {
+						Some(command.name.clone())
 					} else {
 						format(
 							bundle,
@@ -319,8 +321,8 @@ impl Locale {
 					parameter.description = Some(description);
 				} else {
 					panic!(
-						"missing parameter description localization for `{}` in en-US",
-						parameter.name
+						"missing parameter description localization for `{}` (command `{}`) in en-US",
+						parameter.name, command.name
 					);
 				}
 

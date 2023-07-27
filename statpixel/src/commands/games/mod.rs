@@ -35,7 +35,7 @@ macro_rules! generate_large_command {
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<<$game as api::prelude::Game>::Mode> =
 				mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode).await
@@ -60,7 +60,7 @@ macro_rules! generate_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<<$game as api::prelude::Game>::Mode>,
 		) -> ::std::result::Result<(), ::translate::Error> {
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode).await

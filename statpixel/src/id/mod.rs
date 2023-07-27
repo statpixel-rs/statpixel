@@ -48,13 +48,29 @@ macro_rules! impl_project {
 	};
 }
 
+macro_rules! impl_compare {
+	($ctx: expr, $from: expr, $to: expr, $mode: expr, $game: ty) => {
+		Ok(())
+
+		/*super::commands::compare::run::command::<$game>(
+			$ctx,
+			None,
+			None,
+			Some($mode),
+			Some($from),
+			Some($to),
+		)
+		.await*/
+	};
+}
+
 /// Dispatches a command based on a deserialized `custom_id`
 #[allow(clippy::too_many_lines)]
 pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 	info!(id = ?id, "dispatching command");
 
 	match id {
-		Id::Builder { shapes, uuid } => {
+		Id::Builder { shapes, uuid, .. } => {
 			let (_, data, session, skin, _) =
 				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
 			let bytes =
@@ -69,7 +85,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 
 			Ok(())
 		}
-		Id::Root { kind, uuid } => match kind {
+		Id::Root { kind, uuid, .. } => match kind {
 			Mode::Arcade(mode) => impl_root!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_root!(ctx, uuid, mode, arena::Arena),
 			Mode::BedWars(mode) => impl_root!(ctx, uuid, mode, bed_wars::BedWars),
@@ -200,7 +216,9 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				super::commands::winstreaks::run::winstreaks(ctx, None, Some(uuid)).await
 			}
 		},
-		Id::Snapshot { kind, uuid, past } => {
+		Id::Snapshot {
+			kind, uuid, past, ..
+		} => {
 			let past = Duration::nanoseconds(past);
 			match kind {
 				Mode::Arcade(mode) => {
@@ -244,7 +262,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				_ => Ok(()),
 			}
 		}
-		Id::History { kind, uuid } => match kind {
+		Id::History { kind, uuid, .. } => match kind {
 			Mode::Arcade(mode) => impl_history!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_history!(ctx, uuid, mode, arena::Arena),
 			Mode::BedWars(mode) => impl_history!(ctx, uuid, mode, bed_wars::BedWars),
@@ -275,7 +293,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::WoolWars(mode) => impl_history!(ctx, uuid, mode, wool_wars::WoolWars),
 			_ => Ok(()),
 		},
-		Id::Project { kind, uuid } => match kind {
+		Id::Project { kind, uuid, .. } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
 				impl_project!(ctx, uuid, mode, kind, arcade::Arcade)
 			}
@@ -340,5 +358,42 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			}
 			_ => Ok(()),
 		},
+		#[allow(unused_variables)]
+		Id::Compare { kind, from, to, .. } => match kind {
+			Mode::Arcade(mode) => impl_compare!(ctx, from, to, mode, arcade::Arcade),
+			Mode::Arena(mode) => impl_compare!(ctx, from, to, mode, arena::Arena),
+			Mode::BedWars(mode) => impl_compare!(ctx, from, to, mode, bed_wars::BedWars),
+			Mode::BlitzSg(mode) => impl_compare!(ctx, from, to, mode, blitz_sg::BlitzSg),
+			Mode::BuildBattle(mode) => {
+				impl_compare!(ctx, from, to, mode, build_battle::BuildBattle)
+			}
+			Mode::CopsAndCrims(mode) => {
+				impl_compare!(ctx, from, to, mode, cops_and_crims::CopsAndCrims)
+			}
+			Mode::Duels(mode) => impl_compare!(ctx, from, to, mode, duels::Duels),
+			Mode::MegaWalls(mode) => impl_compare!(ctx, from, to, mode, mega_walls::MegaWalls),
+			Mode::MurderMystery(mode) => {
+				impl_compare!(ctx, from, to, mode, murder_mystery::MurderMystery)
+			}
+			Mode::Paintball(mode) => impl_compare!(ctx, from, to, mode, paintball::Paintball),
+			Mode::Pit(mode) => impl_compare!(ctx, from, to, mode, pit::Pit),
+			Mode::Quake(mode) => impl_compare!(ctx, from, to, mode, quake::Quake),
+			Mode::SkyWars(mode) => impl_compare!(ctx, from, to, mode, sky_wars::SkyWars),
+			Mode::SmashHeroes(mode) => {
+				impl_compare!(ctx, from, to, mode, smash_heroes::SmashHeroes)
+			}
+			Mode::SpeedUhc(mode) => impl_compare!(ctx, from, to, mode, speed_uhc::SpeedUhc),
+			Mode::TntGames(mode) => impl_compare!(ctx, from, to, mode, tnt_games::TntGames),
+			Mode::TurboKartRacers(mode) => {
+				impl_compare!(ctx, from, to, mode, turbo_kart_racers::TurboKartRacers)
+			}
+			Mode::Uhc(mode) => impl_compare!(ctx, from, to, mode, uhc::Uhc),
+			Mode::VampireZ(mode) => impl_compare!(ctx, from, to, mode, vampire_z::VampireZ),
+			Mode::Walls(mode) => impl_compare!(ctx, from, to, mode, walls::Walls),
+			Mode::Warlords(mode) => impl_compare!(ctx, from, to, mode, warlords::Warlords),
+			Mode::WoolWars(mode) => impl_compare!(ctx, from, to, mode, wool_wars::WoolWars),
+			_ => Ok(()),
+		},
+		Id::Between { .. } => Ok(()),
 	}
 }

@@ -373,6 +373,7 @@ impl ToTokens for GameInputReceiver {
 				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::Root {
 					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
+					background: None,
 				}))
 			}
 		});
@@ -387,6 +388,7 @@ impl ToTokens for GameInputReceiver {
 					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
 					past,
+					background: None,
 				}))
 			}
 		});
@@ -400,6 +402,7 @@ impl ToTokens for GameInputReceiver {
 				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::History {
 					kind: crate::command::Mode::#ident (#enum_ident ::#ty),
 					uuid,
+					background: None,
 				}))
 			}
 		});
@@ -413,6 +416,7 @@ impl ToTokens for GameInputReceiver {
 				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), crate::id::command(crate::command::Id::Project {
 					kind: crate::command::ProjectMode::#ident (#enum_ident ::#ty, kind),
 					uuid,
+					background: None,
 				}))
 			}
 		});
@@ -3055,6 +3059,7 @@ impl ToTokens for GameInputReceiver {
 								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::Root {
 									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
+									background: None,
 								})),
 								#(#mode_menu_root),*
 							]
@@ -3072,6 +3077,7 @@ impl ToTokens for GameInputReceiver {
 						crate::id::Id::Command(crate::command::Id::Root {
 							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
 							uuid,
+							background: None,
 						})
 					)
 				}
@@ -3090,6 +3096,7 @@ impl ToTokens for GameInputReceiver {
 									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
 									past,
+									background: None,
 								})),
 								#(#mode_menu_snapshot),*
 							]
@@ -3108,6 +3115,7 @@ impl ToTokens for GameInputReceiver {
 							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
 							uuid,
 							past,
+							background: None,
 						})
 					)
 				}
@@ -3124,6 +3132,7 @@ impl ToTokens for GameInputReceiver {
 								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::History {
 									kind: crate::command::Mode::#ident (#enum_ident ::Overall),
 									uuid,
+									background: None,
 								})),
 								#(#mode_menu_history),*
 							]
@@ -3141,6 +3150,7 @@ impl ToTokens for GameInputReceiver {
 						crate::id::Id::Command(crate::command::Id::History {
 							kind: crate::command::Mode::#ident (selected.unwrap_or(#enum_ident ::Overall)),
 							uuid,
+							background: None,
 						})
 					)
 				}
@@ -3158,6 +3168,7 @@ impl ToTokens for GameInputReceiver {
 								::poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, Overall::get_tr()), crate::id::command(crate::command::Id::Project {
 									kind: crate::command::ProjectMode::#ident (#enum_ident ::Overall, kind),
 									uuid,
+									background: None,
 								})),
 								#(#mode_menu_project),*
 							]
@@ -3175,6 +3186,7 @@ impl ToTokens for GameInputReceiver {
 						crate::id::Id::Command(crate::command::Id::Project {
 							kind: crate::command::ProjectMode::#ident (selected.unwrap_or(#enum_ident ::Overall), kind),
 							uuid,
+							background: None,
 						})
 					)
 				}

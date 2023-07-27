@@ -23,7 +23,7 @@ macro_rules! generate_history_command {
 			uuid: Option<::std::string::String>,
 			mode: Option<$mode>,
 		) -> Result<(), ::translate::Error> {
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode, $duration).await
@@ -59,7 +59,7 @@ macro_rules! generate_large_history_command {
 			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 		) -> ::std::result::Result<(), ::translate::Error> {
 			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::command::<$game>(ctx, username, uuid, mode, $duration).await
@@ -88,7 +88,7 @@ macro_rules! generate_guild_history_command {
 			#[max_length = 36]
 			uuid: Option<::std::string::String>,
 		) -> Result<(), ::translate::Error> {
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::guild_command(ctx, name, username, uuid, Utc::now() - $duration, None).await

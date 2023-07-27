@@ -72,7 +72,7 @@ pub async fn auctions(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::auctions(ctx, username, uuid, None).await
@@ -93,7 +93,7 @@ pub async fn profile(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::profile(ctx, username, profile, uuid, None).await
@@ -114,7 +114,7 @@ pub async fn bank(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::bank(ctx, username, profile, uuid, None).await
@@ -135,7 +135,7 @@ pub async fn networth(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::networth(ctx, username, profile, uuid, None).await
@@ -156,7 +156,7 @@ pub async fn pets(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::pets(ctx, username, profile, uuid, None).await
@@ -197,7 +197,7 @@ macro_rules! inventory_command {
 			#[max_length = 36]
 			uuid: Option<String>,
 		) -> Result<(), Error> {
-			let uuid = util::parse_uuid(uuid)?;
+			let uuid = util::parse_uuid(uuid.as_deref())?;
 			let ctx = &context::Context::from_poise(&ctx);
 
 			run::$fn(ctx, username, profile, uuid, None).await

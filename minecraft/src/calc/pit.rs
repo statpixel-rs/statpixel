@@ -18,7 +18,7 @@ pub struct Level {
 	pub prestiges: Vec<Prestige>,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct LevelSimple {
 	pub xp: u64,
 	pub prestige: usize,

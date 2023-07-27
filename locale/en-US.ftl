@@ -5,6 +5,7 @@ showing-statistics = <a:clock:1115091329958019253> Showing statistics change fro
 no-previous-statistics = No previous data found for **{$name}**, so it has been inserted.
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
+showing-comparison = <a:clock:1115091329958019253> Showing statistics of {$from} compared to {$to}.
 
 # Errors
 
@@ -577,6 +578,10 @@ arcade = arcade
   .value-description = value
   .mode = mode
   .mode-description = The Arcade mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /arena
 
@@ -602,6 +607,10 @@ arena = arena
   .value-description = value
   .mode = mode
   .mode-description = The Arena Brawl mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /bedwars
 
@@ -658,6 +667,10 @@ bedwars = bedwars
   .value-description = value
   .mode = mode
   .mode-description = The Bed Wars mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /blitz
 
@@ -708,6 +721,10 @@ blitz = blitz
   .value-description = value
   .mode = mode
   .mode-description = The Blitz Survival Games mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /buildbattle
 
@@ -736,6 +753,10 @@ buildbattle = buildbattle
   .value-description = value
   .mode = mode
   .mode-description = The Build Battle mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /copsandcrims
 
@@ -768,6 +789,10 @@ copsandcrims = copsandcrims
   .value-description = value
   .mode = mode
   .mode-description = The Cops and Crims mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /duels
 
@@ -821,6 +846,10 @@ duels = duels
   .value-description = value
   .mode = mode
   .mode-description = The Duels mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /megawalls
 
@@ -850,6 +879,10 @@ megawalls = megawalls
   .value-description = value
   .mode = mode
   .mode-description = The Mega Walls mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /murdermystery
 
@@ -880,6 +913,10 @@ murdermystery = murdermystery
   .value-description = value
   .mode = mode
   .mode-description = The Murder Mystery mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /paintball
 
@@ -918,6 +955,10 @@ paintball = paintball
   .value-description = value
   .mode = mode
   .mode-description = The Paintball mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /pit
 
@@ -947,6 +988,10 @@ pit = pit
   .value-description = value
   .mode = mode
   .mode-description = The Pit mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /quake
 
@@ -974,6 +1019,10 @@ quake = quake
   .value-description = value
   .mode = mode
   .mode-description = The Quakecraft mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /skywars
 Overall = Overall
@@ -1014,6 +1063,10 @@ skywars = skywars
   .value-description = value
   .mode = mode
   .mode-description = The SkyWars mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /smash
 
@@ -1039,6 +1092,10 @@ smash = smash
   .value-description = value
   .mode = mode
   .mode-description = The Smash Heroes mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /speeduhc
 
@@ -1063,6 +1120,10 @@ speeduhc = speeduhc
   .value-description = value
   .mode = mode
   .mode-description = The SpeedUHC mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /tntgames
 
@@ -1096,6 +1157,10 @@ tntgames = tntgames
   .value-description = value
   .mode = mode
   .mode-description = The TNT Games mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /turbokartracers
 
@@ -1125,6 +1190,10 @@ turbokartracers = turbokartracers
   .value-description = value
   .mode = mode
   .mode-description = The Turbo Kart Racers mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /uhc
 
@@ -1156,6 +1225,10 @@ uhc = uhc
   .value-description = value
   .mode = mode
   .mode-description = The UHC Champions mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /vampirez
 
@@ -1193,6 +1266,10 @@ vampirez = vampirez
   .value-description = value
   .mode = mode
   .mode-description = The VampireZ mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /walls
 
@@ -1219,6 +1296,10 @@ walls = walls
   .value-description = value
   .mode = mode
   .mode-description = The Walls mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /warlords
 
@@ -1249,6 +1330,10 @@ warlords = warlords
   .value-description = value
   .mode = mode
   .mode-description = The Warlords mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /woolwars
 
@@ -1274,6 +1359,10 @@ woolwars = woolwars
   .value-description = value
   .mode = mode
   .mode-description = The Wool Wars mode to view
+  .from = from
+  .from-description = The player to compare from
+  .to = to
+  .to-description = The player to compare to
 
 # /guild
 

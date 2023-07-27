@@ -72,6 +72,7 @@ async fn main() {
 		commands::games::blitz(),
 		commands::boost::boost(),
 		commands::games::buildbattle(),
+		// commands::compare::compare(),
 		commands::games::copsandcrims(),
 		commands::execute::execute(),
 		commands::snapshot::daily::daily(),

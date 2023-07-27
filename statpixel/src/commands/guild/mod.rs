@@ -125,7 +125,7 @@ async fn general(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::general(ctx, name, username, uuid, None, None, None).await
@@ -151,7 +151,7 @@ async fn members(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::members(ctx, name, username, uuid, None, None, None).await
@@ -173,7 +173,7 @@ async fn member(
 	#[max_length = 36]
 	uuid: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::member(ctx, username, uuid, None, None).await
@@ -205,7 +205,7 @@ async fn top(
 ) -> Result<(), Error> {
 	let limit = limit.map_or(30, |l| if l % 2 == 0 { l } else { l + 1 });
 
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::top(

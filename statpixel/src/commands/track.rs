@@ -31,7 +31,7 @@ pub async fn track(
 	let guild_id = ctx.guild_id();
 	let channel_id = ctx.channel_id();
 
-	let uuid = util::parse_uuid(uuid)?;
+	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let lctx = &context::Context::from_poise(&ctx);
 	let player = util::get_player_with_username_from_input(lctx, uuid, username).await?;
 
