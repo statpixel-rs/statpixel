@@ -291,6 +291,7 @@ pub async fn get_guild_with_member_from_input(
 	}
 }
 
+#[allow(clippy::too_many_lines)]
 pub async fn error(ctx: &context::Context<'_>, error: Error) {
 	let content = match error {
 		Error::Api(err) => match *err {
@@ -365,6 +366,28 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		Error::BoostAlreadyExists => {
 			tr!(ctx, "error-boost-already-exists")
 		}
+		Error::TimeParse(error) => match error {
+			humantime::DurationError::InvalidCharacter(position) => {
+				tr_fmt!(ctx, "error-time-invalid-character", position: format!("`{}`", position))
+			}
+			humantime::DurationError::NumberExpected(position) => {
+				tr_fmt!(ctx, "error-time-expected-number", position: format!("`{}`", position))
+			}
+			humantime::DurationError::UnknownUnit {
+				start: position,
+				unit,
+				value,
+				..
+			} => {
+				tr_fmt!(ctx, "error-time-unknown-unit", position: format!("`{}`", position), unit: format!("`{}`", unit), value: format!("`{}`", value))
+			}
+			humantime::DurationError::NumberOverflow => {
+				tr!(ctx, "error-time-overflow")
+			}
+			humantime::DurationError::Empty => {
+				tr!(ctx, "error-time-empty")
+			}
+		},
 		ref error => {
 			error!(error = ?error, "internal error");
 			tr!(ctx, "error-internal")

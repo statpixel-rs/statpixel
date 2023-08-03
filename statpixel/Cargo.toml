@@ -45,6 +45,7 @@ tower_governor.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
 uuid.workspace = true
+humantime.workspace = true
 
 [dev-dependencies]
 criterion = "0.5"

@@ -16,7 +16,7 @@ use translate::{context, Context, Error};
 
 use crate::util;
 
-macro_rules! generate_large_command {
+macro_rules! large_command {
 	($game: ty, $mode: ty, $fn: ident) => {
 		async fn autocomplete_mode<'a>(
 			ctx: $crate::Context<'a>,
@@ -30,7 +30,8 @@ macro_rules! generate_large_command {
 		#[poise::command(
 			on_error = "crate::util::error_handler",
 			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
+			required_bot_permissions = "ATTACH_FILES",
+			rename = "history"
 		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -51,12 +52,13 @@ macro_rules! generate_large_command {
 	};
 }
 
-macro_rules! generate_command {
+macro_rules! command {
 	($game: ty, $mode: ty, $fn: ident) => {
 		#[poise::command(
 			on_error = "crate::util::error_handler",
 			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
+			required_bot_permissions = "ATTACH_FILES",
+			rename = "history"
 		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -81,9 +83,10 @@ macro_rules! generate_command {
 #[poise::command(
 	on_error = "crate::util::error_handler",
 	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
+	required_bot_permissions = "ATTACH_FILES",
+	rename = "history"
 )]
-async fn network(
+pub async fn network(
 	ctx: Context<'_>,
 	#[max_length = 16]
 	#[autocomplete = "crate::commands::autocomplete_username"]
@@ -196,79 +199,45 @@ async fn network(
 	Ok(())
 }
 
-generate_command!(arcade::Arcade, arcade::ArcadeMode, arcade);
-generate_command!(arena::Arena, arena::ArenaMode, arena);
-generate_command!(bed_wars::BedWars, bed_wars::BedWarsMode, bedwars);
-generate_command!(blitz_sg::BlitzSg, blitz_sg::BlitzSgMode, blitz);
-generate_command!(
+command!(arcade::Arcade, arcade::ArcadeMode, arcade);
+command!(arena::Arena, arena::ArenaMode, arena);
+command!(bed_wars::BedWars, bed_wars::BedWarsMode, bedwars);
+command!(blitz_sg::BlitzSg, blitz_sg::BlitzSgMode, blitz);
+command!(
 	build_battle::BuildBattle,
 	build_battle::BuildBattleMode,
 	buildbattle
 );
-generate_command!(
+command!(
 	cops_and_crims::CopsAndCrims,
 	cops_and_crims::CopsAndCrimsMode,
 	copsandcrims
 );
-generate_large_command!(duels::Duels, duels::DuelsMode, duels);
-generate_command!(mega_walls::MegaWalls, mega_walls::MegaWallsMode, megawalls);
-generate_command!(
+large_command!(duels::Duels, duels::DuelsMode, duels);
+command!(mega_walls::MegaWalls, mega_walls::MegaWallsMode, megawalls);
+command!(
 	murder_mystery::MurderMystery,
 	murder_mystery::MurderMysteryMode,
 	murdermystery
 );
-generate_command!(paintball::Paintball, paintball::PaintballMode, paintball);
-generate_command!(pit::Pit, pit::PitMode, pit);
-generate_command!(quake::Quake, quake::QuakeMode, quake);
-generate_command!(sky_wars::SkyWars, sky_wars::SkyWarsMode, skywars);
-generate_command!(
+command!(paintball::Paintball, paintball::PaintballMode, paintball);
+command!(pit::Pit, pit::PitMode, pit);
+command!(quake::Quake, quake::QuakeMode, quake);
+command!(sky_wars::SkyWars, sky_wars::SkyWarsMode, skywars);
+command!(
 	smash_heroes::SmashHeroes,
 	smash_heroes::SmashHeroesMode,
 	smash
 );
-generate_command!(speed_uhc::SpeedUhc, speed_uhc::SpeedUhcMode, speeduhc);
-generate_command!(tnt_games::TntGames, tnt_games::TntGamesMode, tntgames);
-generate_command!(
+command!(speed_uhc::SpeedUhc, speed_uhc::SpeedUhcMode, speeduhc);
+command!(tnt_games::TntGames, tnt_games::TntGamesMode, tntgames);
+command!(
 	turbo_kart_racers::TurboKartRacers,
 	turbo_kart_racers::TurboKartRacersMode,
 	turbokartracers
 );
-generate_command!(uhc::Uhc, uhc::UhcMode, uhc);
-generate_command!(vampire_z::VampireZ, vampire_z::VampireZMode, vampirez);
-generate_command!(walls::Walls, walls::WallsMode, walls);
-generate_command!(warlords::Warlords, warlords::WarlordsMode, warlords);
-generate_command!(wool_wars::WoolWars, wool_wars::WoolWarsMode, woolwars);
-
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	subcommands(
-		"arcade",
-		"arena",
-		"bedwars",
-		"blitz",
-		"buildbattle",
-		"copsandcrims",
-		"duels",
-		"megawalls",
-		"murdermystery",
-		"paintball",
-		"pit",
-		"quake",
-		"skywars",
-		"smash",
-		"speeduhc",
-		"tntgames",
-		"turbokartracers",
-		"uhc",
-		"vampirez",
-		"walls",
-		"warlords",
-		"woolwars",
-		"network"
-	)
-)]
-#[allow(clippy::unused_async)]
-pub async fn history(_ctx: Context<'_>) -> Result<(), Error> {
-	Ok(())
-}
+command!(uhc::Uhc, uhc::UhcMode, uhc);
+command!(vampire_z::VampireZ, vampire_z::VampireZMode, vampirez);
+command!(walls::Walls, walls::WallsMode, walls);
+command!(warlords::Warlords, warlords::WarlordsMode, warlords);
+command!(wool_wars::WoolWars, wool_wars::WoolWarsMode, woolwars);

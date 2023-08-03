@@ -1,16 +1,14 @@
 pub mod image;
 pub mod run;
 
-#[allow(clippy::wildcard_imports)]
-use api::player::stats::*;
-
-use translate::{context, Context, Error};
+use api::player::stats;
+use translate::context;
 
 use crate::util;
 
-macro_rules! generate_large_command {
-	($m: ident, $game: ty, $mode: ty, $kind: ty, $fn: ident) => {
-		pub mod $m {
+macro_rules! large_command {
+	($game: ty, $mode: ty, $kind: ty, $fn: ident) => {
+		pub mod $fn {
 			use super::*;
 
 			async fn autocomplete_mode<'a>(
@@ -34,9 +32,10 @@ macro_rules! generate_large_command {
 			#[poise::command(
 				on_error = "crate::util::error_handler",
 				slash_command,
-				required_bot_permissions = "ATTACH_FILES"
+				required_bot_permissions = "ATTACH_FILES",
+				rename = "project"
 			)]
-			pub async fn $fn(
+			pub async fn command(
 				ctx: $crate::Context<'_>,
 				#[max_length = 16]
 				#[autocomplete = "crate::commands::autocomplete_username"]
@@ -62,9 +61,9 @@ macro_rules! generate_large_command {
 	};
 }
 
-macro_rules! generate_command {
-	($m: ident, $game: ty, $mode: ty, $kind: ty, $fn: ident) => {
-		pub mod $m {
+macro_rules! command {
+	($game: ty, $mode: ty, $kind: ty, $fn: ident) => {
+		pub mod $fn {
 			use super::*;
 
 			async fn autocomplete_kind<'a>(
@@ -79,9 +78,10 @@ macro_rules! generate_command {
 			#[poise::command(
 				on_error = "crate::util::error_handler",
 				slash_command,
-				required_bot_permissions = "ATTACH_FILES"
+				required_bot_permissions = "ATTACH_FILES",
+				rename = "project"
 			)]
-			pub async fn $fn(
+			pub async fn command(
 				ctx: $crate::Context<'_>,
 				#[max_length = 16]
 				#[autocomplete = "crate::commands::autocomplete_username"]
@@ -105,178 +105,135 @@ macro_rules! generate_command {
 	};
 }
 
-generate_command!(
-	arcade_command,
-	arcade::Arcade,
-	arcade::ArcadeMode,
-	arcade::ArcadeKind,
+command!(
+	stats::arcade::Arcade,
+	stats::arcade::ArcadeMode,
+	stats::arcade::ArcadeKind,
 	arcade
 );
-generate_command!(
-	arena_command,
-	arena::Arena,
-	arena::ArenaMode,
-	arena::ArenaKind,
+command!(
+	stats::arena::Arena,
+	stats::arena::ArenaMode,
+	stats::arena::ArenaKind,
 	arena
 );
-generate_command!(
-	bed_wars_command,
-	bed_wars::BedWars,
-	bed_wars::BedWarsMode,
-	bed_wars::BedWarsKind,
+command!(
+	stats::bed_wars::BedWars,
+	stats::bed_wars::BedWarsMode,
+	stats::bed_wars::BedWarsKind,
 	bedwars
 );
-generate_command!(
-	blitz_sg_command,
-	blitz_sg::BlitzSg,
-	blitz_sg::BlitzSgMode,
-	blitz_sg::BlitzSgKind,
+command!(
+	stats::blitz_sg::BlitzSg,
+	stats::blitz_sg::BlitzSgMode,
+	stats::blitz_sg::BlitzSgKind,
 	blitz
 );
-generate_command!(
-	build_battle_command,
-	build_battle::BuildBattle,
-	build_battle::BuildBattleMode,
-	build_battle::BuildBattleKind,
+command!(
+	stats::build_battle::BuildBattle,
+	stats::build_battle::BuildBattleMode,
+	stats::build_battle::BuildBattleKind,
 	buildbattle
 );
-generate_command!(
-	cops_and_crims_command,
-	cops_and_crims::CopsAndCrims,
-	cops_and_crims::CopsAndCrimsMode,
-	cops_and_crims::CopsAndCrimsKind,
+command!(
+	stats::cops_and_crims::CopsAndCrims,
+	stats::cops_and_crims::CopsAndCrimsMode,
+	stats::cops_and_crims::CopsAndCrimsKind,
 	copsandcrims
 );
-generate_large_command!(
-	duels_command,
-	duels::Duels,
-	duels::DuelsMode,
-	duels::DuelsKind,
+large_command!(
+	stats::duels::Duels,
+	stats::duels::DuelsMode,
+	stats::duels::DuelsKind,
 	duels
 );
-generate_command!(
-	mega_walls_command,
-	mega_walls::MegaWalls,
-	mega_walls::MegaWallsMode,
-	mega_walls::MegaWallsKind,
+command!(
+	stats::mega_walls::MegaWalls,
+	stats::mega_walls::MegaWallsMode,
+	stats::mega_walls::MegaWallsKind,
 	megawalls
 );
-generate_command!(
-	murder_mystery_command,
-	murder_mystery::MurderMystery,
-	murder_mystery::MurderMysteryMode,
-	murder_mystery::MurderMysteryKind,
+command!(
+	stats::murder_mystery::MurderMystery,
+	stats::murder_mystery::MurderMysteryMode,
+	stats::murder_mystery::MurderMysteryKind,
 	murdermystery
 );
-generate_command!(
-	paintball_command,
-	paintball::Paintball,
-	paintball::PaintballMode,
-	paintball::PaintballKind,
+command!(
+	stats::paintball::Paintball,
+	stats::paintball::PaintballMode,
+	stats::paintball::PaintballKind,
 	paintball
 );
-generate_command!(pit_command, pit::Pit, pit::PitMode, pit::PitKind, pit);
-generate_command!(
-	quake_command,
-	quake::Quake,
-	quake::QuakeMode,
-	quake::QuakeKind,
+command!(
+	stats::pit::Pit,
+	stats::pit::PitMode,
+	stats::pit::PitKind,
+	pit
+);
+command!(
+	stats::quake::Quake,
+	stats::quake::QuakeMode,
+	stats::quake::QuakeKind,
 	quake
 );
-generate_command!(
-	sky_wars_command,
-	sky_wars::SkyWars,
-	sky_wars::SkyWarsMode,
-	sky_wars::SkyWarsKind,
+command!(
+	stats::sky_wars::SkyWars,
+	stats::sky_wars::SkyWarsMode,
+	stats::sky_wars::SkyWarsKind,
 	skywars
 );
-generate_command!(
-	smash_heroes_command,
-	smash_heroes::SmashHeroes,
-	smash_heroes::SmashHeroesMode,
-	smash_heroes::SmashHeroesKind,
+command!(
+	stats::smash_heroes::SmashHeroes,
+	stats::smash_heroes::SmashHeroesMode,
+	stats::smash_heroes::SmashHeroesKind,
 	smash
 );
-generate_command!(
-	speed_uhc_command,
-	speed_uhc::SpeedUhc,
-	speed_uhc::SpeedUhcMode,
-	speed_uhc::SpeedUhcKind,
+command!(
+	stats::speed_uhc::SpeedUhc,
+	stats::speed_uhc::SpeedUhcMode,
+	stats::speed_uhc::SpeedUhcKind,
 	speeduhc
 );
-generate_command!(
-	tnt_games_command,
-	tnt_games::TntGames,
-	tnt_games::TntGamesMode,
-	tnt_games::TntGamesKind,
+command!(
+	stats::tnt_games::TntGames,
+	stats::tnt_games::TntGamesMode,
+	stats::tnt_games::TntGamesKind,
 	tntgames
 );
-generate_command!(
-	turbo_kart_racers_command,
-	turbo_kart_racers::TurboKartRacers,
-	turbo_kart_racers::TurboKartRacersMode,
-	turbo_kart_racers::TurboKartRacersKind,
+command!(
+	stats::turbo_kart_racers::TurboKartRacers,
+	stats::turbo_kart_racers::TurboKartRacersMode,
+	stats::turbo_kart_racers::TurboKartRacersKind,
 	turbokartracers
 );
-generate_command!(uhc_command, uhc::Uhc, uhc::UhcMode, uhc::UhcKind, uhc);
-generate_command!(
-	vampire_z_command,
-	vampire_z::VampireZ,
-	vampire_z::VampireZMode,
-	vampire_z::VampireZKind,
+command!(
+	stats::uhc::Uhc,
+	stats::uhc::UhcMode,
+	stats::uhc::UhcKind,
+	uhc
+);
+command!(
+	stats::vampire_z::VampireZ,
+	stats::vampire_z::VampireZMode,
+	stats::vampire_z::VampireZKind,
 	vampirez
 );
-generate_command!(
-	walls_command,
-	walls::Walls,
-	walls::WallsMode,
-	walls::WallsKind,
+command!(
+	stats::walls::Walls,
+	stats::walls::WallsMode,
+	stats::walls::WallsKind,
 	walls
 );
-generate_command!(
-	warlords_command,
-	warlords::Warlords,
-	warlords::WarlordsMode,
-	warlords::WarlordsKind,
+command!(
+	stats::warlords::Warlords,
+	stats::warlords::WarlordsMode,
+	stats::warlords::WarlordsKind,
 	warlords
 );
-generate_command!(
-	wool_wars_command,
-	wool_wars::WoolWars,
-	wool_wars::WoolWarsMode,
-	wool_wars::WoolWarsKind,
+command!(
+	stats::wool_wars::WoolWars,
+	stats::wool_wars::WoolWarsMode,
+	stats::wool_wars::WoolWarsKind,
 	woolwars
 );
-
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	subcommands(
-		"arcade_command::arcade",
-		"arena_command::arena",
-		"bed_wars_command::bedwars",
-		"blitz_sg_command::blitz",
-		"build_battle_command::buildbattle",
-		"cops_and_crims_command::copsandcrims",
-		"duels_command::duels",
-		"mega_walls_command::megawalls",
-		"murder_mystery_command::murdermystery",
-		"paintball_command::paintball",
-		"pit_command::pit",
-		"quake_command::quake",
-		"sky_wars_command::skywars",
-		"smash_heroes_command::smash",
-		"speed_uhc_command::speeduhc",
-		"tnt_games_command::tntgames",
-		"turbo_kart_racers_command::turbokartracers",
-		"uhc_command::uhc",
-		"vampire_z_command::vampirez",
-		"walls_command::walls",
-		"warlords_command::warlords",
-		"wool_wars_command::woolwars",
-	)
-)]
-#[allow(clippy::unused_async)]
-pub async fn project(_ctx: Context<'_>) -> Result<(), Error> {
-	Ok(())
-}

@@ -1,131 +1,138 @@
 # Etiquetas generales
 not-linked = Argumentos faltantes
-not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para ver.
-showing-statistics = <a:clock:1115091329958019253> Mostrando estadísticas de {$from} a {$to}.
-no-previous-statistics = No se encontraron datos anteriores para **{$name}**, por lo que se han insertado.
-showing-guild-statistics = Mostrando estadísticas de gremio de {$from} a {$to}.
-no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, por lo que se han insertado.
+not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para verlo.
+showing-statistics = <a:clock:1115091329958019253> Mostrando cambios en estadísticas de {$from} a {$to}.
+no-previous-statistics = No se encontraron datos anteriores para **{$name}**, así que se han insertado.
+showing-guild-statistics = Mostrando cambios en estadísticas del gremio de {$from} a {$to}.
+no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **{$name}**, así que se han insertado.
 showing-comparison = <a:clock:1115091329958019253> Mostrando estadísticas de {$from} en comparación con {$to}.
 
-# Errors
+# Errores
 
 error-player-not-found = No se encontró un perfil perteneciente a {$name}.
 error-session-not-found = No se encontró una sesión perteneciente a {$name}.
 error-player-uuid-not-found = No se encontró un jugador con el UUID {$uuid}.
 error-player-username-not-found = No se encontró un jugador con el nombre de usuario {$name}.
-error-guild-by-member-uuid-not-found = No se encontró un miembro de gremio con el UUID {$uuid}.
-error-guild-by-member-username-not-found = No se encontró un miembro de gremio con el nombre de usuario {$name}.
+error-guild-by-member-uuid-not-found = No se encontró un miembro del gremio con el UUID {$uuid}.
+error-guild-by-member-username-not-found = No se encontró un miembro del gremio con el nombre de usuario {$name}.
 error-guild-not-found = No se encontró un gremio con el nombre {$name}.
-error-internal = Se produjo un error interno. Se ha registrado y se resolverá en breve.
+error-internal = Ocurrió un error interno. Se ha registrado y se resolverá pronto.
 error-not-linked = No estás vinculado a una cuenta de Minecraft. Usa </link:1113624864524357710> para vincular tu cuenta.
 error-invalid-uuid = El UUID {$uuid} no es válido.
 error-invalid-username = El nombre de usuario {$name} no es válido.
-error-member-player-not-found = El miembro {$name} no se encontró en el perfil.
+error-member-player-not-found = No se encontró el miembro {$name} en el perfil.
 error-skyblock-profile-not-found = No se encontró un perfil de SkyBlock perteneciente a {$name}.
 error-player-snapshot-not-found = No se encontraron instantáneas para {$name}. Crea una con </daily bedwars:1113624864272683065>.
-error-leaderboard-not-found = No se encontró una clasificación con el nombre {$name}.
+error-leaderboard-not-found = No se encontró una tabla de clasificación con el nombre {$name}.
 error-profile-not-found = El perfil de SkyBlock {$profile} perteneciente a {$name} tiene su API desactivada o no ha iniciado sesión desde el nuevo sistema de perfiles.
 error-identifier-too-long =
   Uno de los identificadores generados para esta interacción es demasiado largo.
-  Intente reducir el número de componentes o la cantidad de texto personalizado.
-error-user-track-limit-reached = Has alcanzado el número máximo de rastreos de {$limit}. Compra StatPixel+ para eliminar este límite en <https://statpixel.xyz/plus>.
+  Intenta reducir el número de componentes o la cantidad de texto personalizado.
+error-user-track-limit-reached = Has alcanzado el número máximo de seguimientos de {$limit}. Adquiere StatPixel+ para eliminar este límite en <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Este gremio ha alcanzado el número máximo de rastreos de {$limit}.
-  Si tienes StatPixel+, impulsa el gremio con </boost:1113624864524357708> para eliminar esta restricción o ve a <https://statpixel.xyz/plus>.
+  Este gremio ha alcanzado el número máximo de seguimientos de {$limit}.
+  Si tienes StatPixel+, potencia el gremio con </boost:1113624864524357708> para eliminar esta restricción o ve a <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Has alcanzado el número máximo de impulsos de {$limit}. Puedes eliminar un impulso en el panel: <https://statpixel.xyz/dashboard/boost>.
+  Has alcanzado el número máximo de mejoras de {$limit}. Puedes eliminar una mejora en el panel de control: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
-  Ya estás rastreando a este jugador en este canal.
-error-not-premium = Debes ser un suscriptor de StatPixel+ para realizar esta acción. Ve a <https://statpixel.xyz/plus> para obtener más información.
+  Ya estás siguiendo a este jugador en este canal.
+error-not-premium = Debes ser suscriptor de StatPixel+ para realizar esta acción. Ve a <https://statpixel.xyz/plus> para obtener más información.
 error-not-in-a-guild = Debes estar en un gremio para realizar esta acción.
-error-boost-already-exists = Ya estás impulsando este gremio.
+error-boost-already-exists = Ya estás mejorando este gremio.
+error-time-invalid-character = Se encontró un carácter no válido en el argumento de tiempo en la posición {$position}.
+error-time-expected-number = Se esperaba un número en el argumento de tiempo en la posición {$position}.
+error-time-unknown-unit = Unidad de tiempo desconocida {$unit} en la posición {$position} con valor {$value}.
+error-time-empty = El argumento de tiempo no puede estar vacío.
+error-time-overflow = La duración del argumento de tiempo es demasiado larga. Intenta mantenerla por debajo de 3,000 años.
 
-# Quick tips
+# Consejos rápidos
 
 tip-background = <:knowledge_book:1117179094556233828> Cambia el fondo de las imágenes generadas con </background:1117174166056075335>.
 tip-history = <:knowledge_book:1117179094556233828> Ver un gráfico histórico de tus estadísticas con </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Ver el cambio de estadísticas desde una fecha específica con </from bedwars:1113624864524357705>.
-tip-leaderboard = <:knowledge_book:1117179094556233828> Ver toneladas de clasificaciones con </leaderboard:1113624864524357709>.
+tip-from = <:knowledge_book:1117179094556233828> Ver el cambio en estadísticas desde una fecha específica con </from bedwars:1113624864524357705>.
+tip-leaderboard = <:knowledge_book:1117179094556233828> Ver muchas tablas de clasificación con </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> ¡Soportamos SkyBlock! Ver un perfil con </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Vincula tu cuenta de Minecraft con </link:1113624864524357710>.
-tip-guild = <:knowledge_book:1117179094556233828> Ver estadísticas de gremio con </guild general:1113624864524357706>.
+tip-guild = <:knowledge_book:1117179094556233828> Ver estadísticas del gremio con </guild general:1113624864524357706>.
 tip-snapshot = <:knowledge_book:1117179094556233828> Accede a tus estadísticas diarias con </daily bedwars:1113624864272683065>.
-tip-display = <:knowledge_book:1117179094556233828> Cambia tu formato de visualización con </display:1113624864272683066>.
+tip-display = <:knowledge_book:1117179094556233828> Cambia el formato de visualización con </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Obtén más ayuda con </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Visita nuestro sitio web en <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Únete a nuestro servidor de soporte en <https://statpixel.xyz/discord>.
 tip-project = <:knowledge_book:1117179094556233828> Ver estimaciones de todos tus datos con </project bedwars:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Ver tus rachas de victorias con </winstreaks:1124767485384724520>.
-tip-recent = <:knowledge_book:1117179094556233828> Ver tus juegos recientes con </recent:1123839349428080690>.
+tip-recent = <:knowledge_book:1117179094556233828> Ver tus partidas recientes con </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Ver los precios del bazar de SkyBlock con </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Impulsa un gremio con </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Rastrea a un jugador con </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Potenciar un gremio con </boost:1113624864524357708>.
+tip-track = <:knowledge_book:1117179094556233828> Seguir a un jugador con </track:1113624864524357708>.
 tip-builder = <:knowledge_book:1117179094556233828> Crea tus propias imágenes personalizadas con </builder:1125992506501365891>.
-tip-dashboard = <:knowledge_book:1117179094556233828> Administra tu cuenta en el panel en <https://statpixel.xyz/dashboard>.
+tip-dashboard = <:knowledge_book:1117179094556233828> Administra tu cuenta en el panel de control en <https://statpixel.xyz/dashboard>.
 
 # /boost
 
-boost-success-title = Impulsado {$name}
+boost-success-title = Gremio {$name} potenciado
 boost-success-description =
-  Este gremio ahora tendrá un límite de rastreo más alto y podrá usar más funciones.
-  Para eliminar este impulso, vaya al panel en https://statpixel.xyz/dashboard/boost.
+  Este gremio ahora tendrá un límite de seguimiento más alto y podrá usar más funciones.
+  Para eliminar esta mejora, ve al panel de control en https://statpixel.xyz/dashboard/boost.
 
-boost = boost
-  .description = Impulsa un gremio para aumentar su límite de rastreo y desbloquear más funciones
+boost = Potenciar
+  .description = Potencia un gremio para aumentar su límite de seguimiento y desbloquear más funciones
 
 # /track
 
-track-success-title = Rastreando {$username}
+track-success-title = Siguiendo a {$username}
 track-success-description =
-  Las estadísticas de este jugador ahora se rastrearán y se enviarán a este canal.
-  Para dejar de rastrearlos, elimínelos en el panel en https://statpixel.xyz/dashboard/track.
+  Las estadísticas de este jugador ahora se seguirán y se enviarán a este canal.
+  Para dejar de seguirlo, elimínalo en el panel de control en https://statpixel.xyz/dashboard/track.
+
+# Spanish localization
 
 track = track
-  .description = Rastrea las estadísticas de un jugador y envía sus cambios al canal actual.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para rastrear
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft para rastrear
+  .description = Registra las estadísticas de un jugador y envía los cambios al canal actual.
+  .username = nombre de usuario
+  .username-description = El nombre de usuario de Minecraft para rastrear.
+  .uuid = UUID
+  .uuid-description = El UUID de Minecraft para rastrear.
 
 # /custom
 
-execute = execute
-  .description = Ejecuta un comando por su identificador
+execute = ejecutar
+  .description = Ejecuta un comando por su identificador.
   .id = id
-  .id-description = El identificador del comando
+  .id-description = El identificador del comando.
 
-invalid-identifier = Identificador no válido
-invalid-identifier-description = El identificador proporcionado no es válido. Si te dieron este identificador de StatPixel, entonces el esquema de identificación se ha actualizado y necesitarás obtener uno nuevo.
+invalid-identifier = Identificador inválido proporcionado
+invalid-identifier-description = El identificador proporcionado no es válido. Si recibiste este identificador de StatPixel, es probable que el esquema de identificación se haya actualizado y necesitarás obtener uno nuevo.
 invalid-identifier-command-description = El identificador proporcionado no es un comando.
 
 deprecated-interaction = Interacción obsoleta
-deprecated-interaction-description = Esta interacción está obsoleta y no funcionará. Ejecute el comando original nuevamente.
+deprecated-interaction-description = Esta interacción está obsoleta y no funcionará. Por favor, ejecuta el comando original de nuevo.
 identifier = <:id:1125971775755407390> Identificador: `{$identifier}`
 
 # /builder
 
-builder = builder
-  .description = Crea un nuevo constructor de imágenes personalizadas
+builder = constructor
+  .description = Crea un nuevo constructor de imágenes personalizadas.
 
 builder-welcome =
   Bienvenido al constructor de imágenes de StatPixel.
 
-  Haga clic en los botones de abajo para agregar su primer componente, luego use el botón Crear para finalizarlo una vez que haya terminado.
-  Si algo sale mal, use Deshacer para deshacerlo. Actualmente no hay un botón Rehacer, ¡así que tenga cuidado!
+  Haz clic en los botones de abajo para agregar tu primer componente y luego usa el botón "Crear" para finalizar una vez que hayas terminado.
+  Si cometes un error, utiliza "Deshacer" para revertirlo. Actualmente, no hay un botón "Rehacer", ¡así que ten cuidado!
 
-  Una vez creado, use el identificador proporcionado para mostrar esa imagen con sus estadísticas actualizadas en cualquier momento y compártala con sus amigos.
-  También puede usarlo con nuestra API de imágenes para mostrarlo en su firma del foro o en cualquier otro lugar de Internet.
+  Una vez creada, utiliza el identificador proporcionado para mostrar esa imagen con tus estadísticas actualizadas en cualquier momento y compártela con tus amigos.
+  También puedes usarla con nuestra API de imágenes para mostrarla en tu firma del foro o en cualquier otro lugar de internet.
 
 documentation = Documentación
 down = Abajo
-down-description = Agrega una forma directamente debajo de la forma anterior.
+down-description = Agrega una forma justo debajo de la forma anterior.
 down-start = Abajo (inicio)
-down-start-description = Agrega una forma debajo de la anterior, pero todo el camino a la izquierda.
+down-start-description = Agrega una forma debajo de la anterior, pero en la parte inferior izquierda.
 right = Derecha
 right-description = Agrega una forma a la derecha de la forma anterior.
 right-start = Derecha (inicio)
-right-start-description = Agrega una forma a la derecha de la forma anterior, pero todo el camino en la parte superior.
-select-position = Seleccione la posición para la forma
+right-start-description = Agrega una forma a la derecha de la forma anterior, pero en la parte superior.
+select-position = Selecciona la posición para la forma
 
 title = Título
 title-description = Muestra un nombre de usuario.
@@ -133,45 +140,45 @@ level-description = Muestra el nivel de cualquier juego.
 skin = Piel
 skin-description = Una imagen de la piel del jugador.
 bubble = Burbuja
-bubble-description = Una caja para mostrar cualquier estadística en cualquier juego.
+bubble-description = Un recuadro para mostrar cualquier estadística de cualquier juego.
 subtitle = Subtítulo
-subtitle-description = Un subtítulo, utilizado para mostrar texto arbitrario de hasta 16 caracteres.
-select-shape = Seleccione un tipo de forma
-select-colour = Seleccione un color
+subtitle-description = Un subtítulo, usado para mostrar texto arbitrario de hasta 16 caracteres.
+select-shape = Selecciona un tipo de forma
+select-colour = Selecciona un color
 
-add-shape = Agregar forma
+add-shape = Añadir forma
 undo = Deshacer
 create = Crear
 
-subtitle-modal-title = Crea una nueva forma de subtítulo
+subtitle-modal-title = Crear una nueva forma de subtítulo
 subtitle-text = Texto del subtítulo
-subtitle-placeholder = Ingrese hasta 16 caracteres
+subtitle-placeholder = Ingresa hasta 16 caracteres
 
-level-modal-title = Crea una nueva forma de nivel
+level-modal-title = Crear una nueva forma de nivel
 level-type = Tipo de nivel
 level-type-placeholder = Uno de: bedwars, buildbattle, duels, network, pit, skywars, woolwars
 
-bubble-modal-title = Crea una nueva forma de burbuja
+bubble-modal-title = Crear una nueva forma de burbuja
 game-type = Tipo de juego
-game-type-placeholder = Ver documentación: https://statpixel.xyz/docs/builder
+game-type-placeholder = Consulta la documentación: https://statpixel.xyz/docs/builder
 statistic = Estadística
-statistic-placeholder = Ver documentación: https://statpixel.xyz/docs/builder
+statistic-placeholder = Consulta la documentación: https://statpixel.xyz/docs/builder
 
-create-modal-title = Termine de construir su imagen
+create-modal-title = Termina de construir tu imagen
 username = Nombre de usuario
-username-placeholder = Ingrese el nombre de usuario a utilizar
+username-placeholder = Ingresa el nombre de usuario a utilizar
 
 invalid-statistic =
-  Estadística no válida {$statistic} para {$game}. Consulte la documentación e intente nuevamente.
+  Estadística inválida {$statistic} para {$game}. Consulta la documentación e intenta nuevamente.
 
 invalid-level-type =
-  Tipo de nivel no válido {$kind}. Consulte la documentación e intente nuevamente.
+  Tipo de nivel inválido {$kind}. Consulta la documentación e intenta nuevamente.
 
 invalid-game-type =
-  Tipo de juego no válido {$game}. Consulte la documentación e intente nuevamente.
+  Tipo de juego inválido {$game}. Consulta la documentación e intenta nuevamente.
 
 image-created =
-  ¡Tu imagen ha sido creada! Pruébalo con </execute:1125992506501365892>.
+  ¡Tu imagen ha sido creada! Pruébala con </execute:1125992506501365892>.
 
   Identificador: {$id}
   Enlace: {$link}
@@ -182,21 +189,21 @@ author = Autor 🤖
 guilds = Gremios 🏰
 profiles = Perfiles 🤺
 users = Usuarios 🤸
-snapshots = Instantáneas 📒
+snapshots = Capturas 📒
 
 about-description =
-  StatPixel soporta todos los juegos de la red Hypixel, incluyendo Wool Wars y SkyBlock. Para más información, usa </help:1113624864524357707> o visita la documentación en <https://statpixel.xyz/docs/commands>.
+  StatPixel soporta todos los juegos de la red Hypixel, incluyendo Wool Wars y SkyBlock. Para obtener más información, usa </help:1113624864524357707> o visita la documentación en <https://statpixel.xyz/docs/commands>.
 
-about = about
+about = acerca de
   .description = Ver información sobre el bot
 
 # /winstreaks
 
-winstreaks = winstreaks
-  .description = Ver rachas de victorias
-  .username = username
+winstreaks = rachas
+  .description = Ver rachas de victoria
+  .username = nombre de usuario
   .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
+  .uuid = UUID
   .uuid-description = UUID de Minecraft
 
 # /recent
@@ -205,16 +212,16 @@ mode = Modo
 map = Mapa
 started = Comenzó
 duration = Duración
-playing = Activo
+playing = Jugando
 
-recent = recent
-  .description = Ver juegos recientes
-  .username = username
+recent = reciente
+  .description = Ver partidas recientes
+  .username = nombre de usuario
   .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
+  .uuid = UUID
   .uuid-description = UUID de Minecraft
 
-# /project
+# Etiquetas de proyección
 
 accuracy = Precisión
 estimate = Estimación
@@ -222,13 +229,13 @@ never = Nunca
 
 # /background
 
-background = background
-  .description = Cambia el fondo de las imágenes generadas
-  .colour = colour
+background = fondo
+  .description = Cambiar el fondo de las imágenes generadas
+  .colour = color
   .colour-description = El color del fondo
 
-error-invalid-colour = Color no válido
-error-invalid-colour-description = El color proporcionado no es válido. Intenta proporcionar uno de [estos colores](https://simple.wikipedia.org/wiki/List_of_colors) o un color hexadecimal con el prefijo `#`.
+error-invalid-colour = Color inválido proporcionado
+error-invalid-colour-description = El color proporcionado no es válido. Intenta proporcionar uno de [estos colores](https://simple.wikipedia.org/wiki/List_of_colors) o un color en formato hexadecimal precedido por `#`.
 colour-changed = Color de fondo cambiado
 colour-changed-description = Tu color de fondo ha sido cambiado a {$colour}.
 
@@ -240,8 +247,8 @@ last-hour = Última hora
 last-day = Último día
 last-week = Última semana
 
-bazaar = bazaar
-  .description = Ver precios de subasta de SkyBlock
+skyblock-bazaar = bazar
+  .description = Ver precios del bazar de SkyBlock
   .product = producto
   .product-description = El producto a ver
 
@@ -249,25 +256,25 @@ bazaar = bazaar
 
 Auctions = Subastas
 Bank = Banco
-Candy = Caramelos
-EnderChest = Cofre de Ender
-Equipment = Equipo
+Candy = Dulces
+EnderChest = EnderChest
+Equipment = Equipamiento
 Fishing = Pesca
 Inventory = Inventario
-Networth = Valor neto
+Networth = Valor total
 Pets = Mascotas
 Potions = Pociones
 Profile = Perfil
 Quiver = Carcaj
 Talisman = Talismán
-Vault = Bóveda
-Wardrobe = Armario
+Vault = Cámara
+Wardrobe = Vestuario
 
-auctions = auctions
-  .description = Muestra subastas de SkyBlock
-  .username = username
+skyblock-auctions = subastas
+  .description = Ver subastas de SkyBlock
+  .username = nombre de usuario
   .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
+  .uuid = UUID
   .uuid-description = UUID de Minecraft
 
 player-auctions = Subastas
@@ -275,292 +282,358 @@ highest-bid = Oferta más alta
 
 # /skyblock inventory
 
-inventory = inventory
-  .description = Ver un inventario de SkyBlock
-  .username = username
+skyblock-inventory = inventario
+  .description = Ver inventario de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-enderchest = enderchest
+  .description = Ver el enderchest de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-quiver = carcaj
+  .description = Ver el carcaj de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-talisman = talismán
+  .description = Ver la bolsa de talismanes de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-fishing = pesca
+  .description = Ver la bolsa de pesca de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-potions = pociones
+  .description = Ver la bolsa de pociones de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+skyblock-equipment = equipamiento
+  .description = Ver equipamiento de SkyBlock
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .profile = perfil
+  .profile-description = El perfil a ver
+
+# Spanish Translation
+
+skyblock-wardrobe = armario
+  .description = Ver el armario de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-enderchest = enderchest
-  .description = Ver un cofre de Ender de SkyBlock
-  .username = username
+skyblock-candy = dulces
+  .description = Ver el inventario de dulces de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-quiver = quiver
-  .description = Ver un carcaj de SkyBlock
-  .username = username
+skyblock-vault = bóveda
+  .description = Ver la bóveda personal de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-talisman = talisman
-  .description = Ver una bolsa de talismanes de SkyBlock
-  .username = username
+skyblock-pets = mascotas
+  .description = Ver las mascotas de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-fishing = fishing
-  .description = Ver una bolsa de pesca de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-potions = potions
-  .description = Ver una bolsa de pociones de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-equipment = equipment
-  .description = Ver el equipo de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-wardrobe = wardrobe
-  .description = Ver un armario de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-candy = candy
-  .description = Ver un inventario de caramelos de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-vault = vault
-  .description = Ver una bóveda personal de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-pets = pets
-  .description = Ver mascotas de SkyBlock
-  .username = username
-  .username-description = Nombre de usuario de Minecraft
-  .uuid = uuid
-  .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
-
-networth = networth
+skyblock-networth = valor_neto
   .description = Ver el valor neto del perfil de SkyBlock
-  .username = username
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-# /skyblock profile
+# /skyblock perfil
 
-profile = profile
-  .description = Muestra un perfil de SkyBlock
-  .username = username
+skyblock-profile = perfil
+  .description = Ver un perfil de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-member-profile = Perfil de miembro
-fairy-souls = Almas de hadas
+member-profile = Perfil del Miembro
+fairy-souls = Almas de Hadas
 fairy-exchanges = Intercambios
-fishing-treasure = Tesoro
-zones-visited = Zonas
+fishing-treasure = Tesoro de Pesca
+zones-visited = Zonas Visitadas
 generators-crafted = Generadores
-highest-crit = Crit más alto
+highest-crit = Mayor Crítico
 
 farming = Agricultura
 mining = Minería
 combat = Combate
-foraging = Forrajeo
+foraging = Recolecta
 fishing-skill = Pesca
 enchanting = Encantamiento
 alchemy = Alquimia
 taming = Domesticación
+dungeoneering = Mazmorras
+carpentry = Carpintería
+runecrafting = Runecrafting
+social = Social
 
-# /skyblock bank
+# /skyblock banco
 
-bank = bank
-  .description = Muestra un banco de SkyBlock
-  .username = username
+skyblock-bank = banco
+  .description = Ver el banco de SkyBlock
+  .username = nombre_de_usuario
   .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
   .uuid-description = UUID de Minecraft
-  .profile = profile
-  .profile-description = El perfil para ver
+  .profile = perfil
+  .profile-description = El perfil a ver
 
-island-bank-balance = Saldo del banco de isla
-bank-balance = Saldo del banco
+island-bank-balance = Saldo del Banco de la Isla
+bank-balance = Saldo del Banco
 
-# /leaderboard
+# /clasificación
 
-leaderboard = leaderboard
-  .description = Muestra la clasificación de varios juegos
-  .board = board
-  .board-description = La clasificación para ver
+leaderboard = clasificación
+  .description = Ver la clasificación para varios juegos
+  .board = tabla
+  .board-description = La tabla de clasificación a ver
 
-# /network
+# /red
 
-network = network
-  .description = Muestra las estadísticas de la red de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+network-general = general
+  .description = Ver estadísticas generales de la red
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .hours = hours
-  .hours-description = Las horas de juego para ver
-  .days = days
-  .days-description = Los días de juego para ver
-  .weeks = weeks
-  .weeks-description = Las semanas de juego para ver
+  .uuid-description = UUID de Minecraft
+
+network-history = historial
+  .description = Ver estadísticas históricas de la red
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
 
 karma = Karma
 rewards = Recompensas
-friend-requests = Solicitudes de amistad
-first-login = Primera conexión
-last-login = Última conexión
+friend-requests = Solicitudes de Amigos
+first-login = Primera Conexión
+last-login = Última Conexión
 quests = Misiones
 challenges = Desafíos
-achievement-points = Puntos de logro
+achievement-points = Puntos de Logros
 language = Idioma
-gifts-given = Regalos dados
-ranks-given = Rangos dados
+gifts-given = Regalos Entregados
+ranks-given = Rangos Otorgados
 
-# /help
+# /historial
 
-help = help
+statistics-history = historial de {" "}
+
+# /ayuda
+
+help = ayuda
   .description = Muestra el menú de ayuda.
 
 help-general = General <:cookie:1115091335565811775>
-help-general-description = StatPixel admite todos los juegos de la red Hypixel. Puedes ver las estadísticas de cada juego usando `/<juego>`. Por ejemplo, ¡prueba </bedwars:1113624864272683060>!
+help-general-description = StatPixel admite todos los juegos de la Red Hypixel. Puedes ver estadísticas para cada juego usando `/<juego> general`. Por ejemplo, prueba </bedwars general:1113624864272683060>!
 
-help-display = Visualización <:spyglass:1115091333657411625>
-help-display-description = Si estás en una conexión medida o simplemente quieres ahorrar algunos datos, puedes recibir respuestas en diferentes formatos, como texto o imágenes condensadas, con </display:1113624864524357705>.
+help-display = Mostrar <:spyglass:1115091333657411625>
+help-display-description = Si tienes una conexión limitada o simplemente deseas ahorrar datos, puedes recibir respuestas en diferentes formatos, como texto o imágenes condensadas, con </display:1113624864272683066>.
 
 help-link = Vinculación <a:recovery_compass:1115091332680126504>
-help-link-description = Escribir tu nombre de usuario para cada comando puede volverse tedioso. Para facilitar esto, puedes vincular una cuenta sin verificación con </link:1113624864524357710> y desvincularla más tarde con </unlink:1113624865262538854>.
+help-link-description = Es molesto escribir tu nombre de usuario para cada comando. Para hacerlo más fácil, puedes vincular una cuenta sin verificación con </link:1113624864524357710> y desvincularla más tarde con </unlink:1113624865262538854>.
 
-help-snapshot = Instantáneas <:book_and_quill:1110754805724479569>
-help-snapshot-description = Las instantáneas son una forma de ver los cambios en tus estadísticas a lo largo del tiempo. Hay algunos comandos de utilidad para facilitar tu vida: </daily bedwars:1113624864272683065>, </weekly bedwars:1113624865262538858> y </monthly bedwars:1113624864524357712>. ¡Estos también funcionan para tu gremio, así que prueba </daily guild:1113624864272683065>!
+help-snapshot = Instantáneas <:book_and_quill:1115091331379900428>
+help-snapshot-description = Las instantáneas son una forma de ver los cambios en tus estadísticas con el tiempo. Hay algunos comandos de utilidad para facilitar esto: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> y </bedwars monthly:1113624864524357712>. Estos también funcionan para tu hermandad, así que prueba </guild daily:1113624864272683065>!
   
-  Si quieres ver un rango más específico, prueba </from bedwars:1113624864524357705>.
+  Si deseas ver un rango de tiempo más específico, prueba </bedwars from:1113624864524357705>.
 
-help-history = Historia <a:clock:1115091329958019253>
-help-history-description = Para ver un gráfico de cómo cambiaron las estadísticas específicas con el tiempo, prueba </history network:1113624864524357708>.
+help-history = Historial <a:clock:1115091329958019253>
+help-history-description = Para ver un gráfico de cómo cambian específicamente las estadísticas con el tiempo, prueba </network history:1113624864524357708>.
 
-help-image-builder = Constructor de imágenes <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de imágenes! Usa </builder:1125992506501365891> para comenzar o ve a https://statpixel.xyz/docs/builder para obtener más información.
+help-image-builder = Constructor de Imágenes <:gold_pickaxe:1125980780435345488>
+help-image-builder-description = ¡Construye tus propias imágenes dinámicas con el Constructor de Imágenes! Usa </builder:1125992506501365891> para empezar o visita https://statpixel.xyz/docs/builder para más información.
 
-# /history
-
-statistics-history = {" "}historia para{" "}
-
-# /display
-
-display = display
+# /mostrar
+display = mostrar
   .description = Cambia la forma en que se muestran las respuestas.
-  .format = format
+  .format = formato
   .format-description = El formato de respuesta a utilizar
 
-display-changed = Cambio de visualización
-display-changed-text-description = Las respuestas se enviarán ahora como texto.
-display-changed-image-description = Las respuestas ahora se enviarán como imágenes cuando corresponda.
-display-changed-compact-description = Las respuestas ahora se enviarán como imágenes compactas cuando corresponda.
+display-changed = Cambio de Mostrar
+display-changed-text-description = Las respuestas ahora se enviarán como texto.
+display-changed-image-description = Las respuestas ahora se enviarán como imágenes cuando sea aplicable.
+display-changed-compact-description = Las respuestas ahora se enviarán como imágenes compactas.
 
-Image = Imagen
-Compact = Compacto
-Text = Texto
+Imagen = Imagen
+Compacto = Compacto
+Texto = Texto
 
-# /unlink
-unlink = unlink
+# /desvincular
+unlink = desvincular
   .description = Desvincula tu cuenta de Discord de una cuenta de Minecraft.
 
-unlinking-failed = Desvinculación fallida
+unlinking-failed = Desvinculación Fallida
 unlinking-failed-description = No estás vinculado a una cuenta de Minecraft.
-unlinking-succeeded = Desvinculación exitosa
+unlinking-succeeded = Desvinculación Exitosa
 unlinking-succeeded-description = Ya no estás vinculado a una cuenta de Minecraft.
 
-# /link
-link = link
+# /vincular
+link = vincular
   .description = Vincula tu cuenta de Discord a una cuenta de Minecraft.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para vincular
+  .username = nombre_de_usuario
+  .username-description = El nombre de usuario de Minecraft a vincular
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para vincular
+  .uuid-description = El UUID de Minecraft a vincular
 
-linking-failed = Vinculación fallida
+linking-failed = Vinculación Fallida
 linking-failed-uuid-description = El UUID `{$uuid}` no pertenece a una cuenta de Minecraft.
 linking-failed-username-description = El nombre de usuario **{$username}** no pertenece a una cuenta de Minecraft.
 linking-failed-description = Debes proporcionar un UUID o nombre de usuario válido.
-linking-succeeded = Vinculación exitosa
+linking-succeeded = Vinculación Exitosa
 linking-succeeded-description = Tu cuenta de Discord ahora está vinculada a la cuenta de Minecraft **{$name}**.
 
 # /arcade
 
 Party = Fiesta
-SantaSays = Dice Santa
-SimonSays = Dice Simon
-MiniWalls = Mini muros
+SantaSays = Santa Dice
+SimonSays = Simon Dice
+MiniWalls = Mini Muros
 Soccer = Fútbol
-OneInTheQuiver = Uno en la aljaba
+OneInTheQuiver = Uno en el Carcaj
 EnderSpleef = Ender Spleef
-FarmHunt = Caza de granjas
-DragonWars = Guerras de dragones
-BlockingDead = Bloqueo de los muertos
+FarmHunt = Caza en la Granja
+DragonWars = Guerras de Dragones
+BlockingDead = Bloqueando a los Muertos
 Zombies = Zombis
-ZombiesBadBlood = Zombis: Sangre mala
-ZombiesDeadEnd = Zombis: callejón sin salida
-PixelPainters = Pintores de píxeles
-HoleInTheWall = Agujero en la pared
+ZombiesBadBlood = Zombis: Sangre Mala
+ZombiesDeadEnd = Zombis: Camino sin Salida
+PixelPainters = Pintores de Píxeles
+HoleInTheWall = Agujero en la Pared
 ThrowOut = Lanzamiento
 EasterSimulator = Simulador de Pascua
-ScubaSimulator = Simulador de buceo
+ScubaSimulator = Simulador de Buceo
 HalloweenSimulator = Simulador de Halloween
-GrinchSimulator = Simulador del Grinch
+GrinchSimulator = Simulador de Grinch
 
-mystery-gifts = Regalos misteriosos
+mystery-gifts = Regalos Misteriosos
 
-arcade = arcade
-  .description = Muestra las estadísticas del Arcade de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+arcade-general = general
+  .description = Ver estadísticas de Arcade
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .mode = mode
-  .mode-description = El modo Arcade para ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+
+arcade-from = desde
+  .description = Ver el desarrollo de las estadísticas de Arcade desde un tiempo específico
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (ej. 1h 12min 5s)
+
+arcade-history = historial
+  .description = Ver el desarrollo de las estadísticas de Arcade a lo largo del tiempo
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+
+arcade-project = proyección
+  .description = Proyectar las estadísticas de Arcade hacia el futuro
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+  .kind = estadística
+  .kind-description = La estadística de Arcade a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+arcade-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Arcade en el último día
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+
+arcade-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Arcade en la última semana
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
+
+arcade-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Arcade en el último mes
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arcade para ver
 
 # /arena
 
@@ -568,100 +641,274 @@ magical-keys = Llaves Mágicas
 magical-chests = Cofres Mágicos
 rating = Clasificación
 
-arena = arena
-  .description = Muestra las estadísticas de Arena Brawl de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+arena-general = general
+  .description = Ver estadísticas de Arena
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo Arena Brawl a ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+
+arena-from = desde
+  .description = Ver el desarrollo de las estadísticas de Arena desde un tiempo específico
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (ej. 1h 12min 5s)
+
+arena-history = historial
+  .description = Ver el desarrollo de las estadísticas de Arena a lo largo del tiempo
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+
+arena-project = proyección
+  .description = Proyectar las estadísticas de Arena hacia el futuro
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+  .kind = estadística
+  .kind-description = La estadística de Arena a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+arena-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Arena en el último día
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+
+arena-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Arena en la última semana
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
+
+arena-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Arena en el último mes
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Arena para ver
 
 # /bedwars
 
 Solo = Solo
 Double = Dobles
-Three = Tríos
-Four = Cuartetos
+Three = Tres
+Four = Cuatro
 SoloRush = Solo Rush
 DoubleRush = Dobles Rush
-FourRush = Cuartetos Rush
+FourRush = Cuatros Rush
 SoloUltimate = Solo Ultimate
 DoubleUltimate = Dobles Ultimate
-FourUltimate = Cuartetos Ultimate
+FourUltimate = Cuatros Ultimate
 Castle = Castillo
 DoubleLucky = Dobles Lucky
-FourLucky = Cuartetos Lucky
+FourLucky = Cuatros Lucky
 DoubleVoidless = Dobles Voidless
-FourVoidless = Cuartetos Voidless
+FourVoidless = Cuatros Voidless
 DoubleArmed = Dobles Armed
-FourArmed = Cuartetos Armed
+FourArmed = Cuatros Armed
 DoubleUnderworld = Dobles Underworld
-FourUnderworld = Cuartetos Underworld
+FourUnderworld = Cuatros Underworld
 DoubleSwap = Dobles Swap
-FourSwap = Cuartetos Swap
+FourSwap = Cuatros Swap
 
 final-kills = Muertes Finales
 final-deaths = Muertes Finales
 fkdr = FKDR
-beds-broken = Camas Destruidas
+beds-broken = Camas Destrozadas
 beds-lost = Camas Perdidas
 bblr = BBLR
 
-iron-collected = Hierro
-gold-collected = Oro
-diamond-collected = Diamantes
-emerald-collected = Esmeraldas
-items-purchased = Compras
-
-bedwars = bedwars
-  .description = Muestra las estadísticas de BedWars de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+bedwars-general = general
+  .description = Ver estadísticas de Bed Wars
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo BedWars a ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+
+bedwars-from = desde
+  .description = Ver el desarrollo de las estadísticas de Bed Wars desde un tiempo específico
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (ej. 1h 12min 5s)
+
+bedwars-history = historial
+  .description = Ver el desarrollo de las estadísticas de Bed Wars a lo largo del tiempo
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+
+bedwars-project = proyección
+  .description = Proyectar las estadísticas de Bed Wars hacia el futuro
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+  .kind = estadística
+  .kind-description = La estadística de Bed Wars a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+bedwars-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Bed Wars en el último día
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+
+bedwars-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Bed Wars en la última semana
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
+
+bedwars-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Bed Wars en el último mes
+  .username = nombre_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Bed Wars para ver
 
 # /blitz
 
-Armorer = Armador
+Armorer = Armadura
 Scout = Explorador
 Speleologist = Espeleólogo
 Random = Aleatorio
 Rogue = Pícaro
 Rambo = Rambo
-Troll = Troll
-HorseTamer = Domesticador de Caballos
-WolfTamer = Domesticador de Lobos
+Troll = Trol
+HorseTamer = Domador de Caballos
+WolfTamer = Domador de Lobos
 Warrior = Guerrero
 Phoenix = Fénix
-DonkeyTamer = Domesticador de Burros
+DonkeyTamer = Domador de Burros
 Ranger = Guardabosques
 Archer = Arquero
 Necromancer = Nigromante
-Meatmaster = Maestro de la Carne
+Meatmaster = Maestro Carnicero
 Tim = Tim
-Pigman = HombreCerdo
-CreeperTamer = Domesticador de Creeper
+Pigman = Hombre Cerdo
+CreeperTamer = Domador de Creepers
 Florist = Florista
 Warlock = Brujo
 Milkman = Lechero
 Astronaut = Astronauta
 Blaze = Blaze
 
-potions-drunk = Pociones Bebidas
+potions-drunk = Pociones Tomadas
 chests-opened = Cofres Abiertos
 time-played = Tiempo de Juego
 
-blitz = blitz
-  .description = Muestra las estadísticas de Blitz Survival Games de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+blitz-general = general
+  .description = Ver estadísticas de Blitz Survival Games
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo Blitz Survival Games a ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+
+blitz-from = desde
+  .description = Ver el desarrollo de estadísticas de Blitz Survival Games desde un momento específico
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+blitz-history = historia
+  .description = Ver el desarrollo de estadísticas de Blitz Survival Games a lo largo del tiempo
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+
+blitz-project = proyección
+  .description = Proyectar estadísticas de Blitz Survival Games hacia el futuro
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+  .kind = estadística
+  .kind-description = La estadística de Blitz Survival Games a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+blitz-daily = diario
+  .description = Ver el desarrollo de estadísticas de Blitz Survival Games en el último día
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+
+blitz-weekly = semanal
+  .description = Ver el desarrollo de estadísticas de Blitz Survival Games en la última semana
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
+
+blitz-monthly = mensual
+  .description = Ver el desarrollo de estadísticas de Blitz Survival Games en el último mes
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Blitz Survival Games para ver
 
 # /buildbattle
 
@@ -672,83 +919,263 @@ votes = Votos
 most-points-solo = Mayor Puntuación (Individual)
 most-points-team = Mayor Puntuación (Equipo)
 
-buildbattle = buildbattle
-  .description = Muestra las estadísticas de Build Battle de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+buildbattle-general = general
+  .description = Ver estadísticas de Build Battle
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo Build Battle a ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+
+buildbattle-from = desde
+  .description = Ver el desarrollo de estadísticas de Build Battle desde un momento específico
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+buildbattle-history = historia
+  .description = Ver el desarrollo de estadísticas de Build Battle a lo largo del tiempo
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+
+buildbattle-project = proyección
+  .description = Proyectar estadísticas de Build Battle hacia el futuro
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+  .kind = estadística
+  .kind-description = La estadística de Build Battle a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+buildbattle-daily = diario
+  .description = Ver el desarrollo de estadísticas de Build Battle en el último día
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+
+buildbattle-weekly = semanal
+  .description = Ver el desarrollo de estadísticas de Build Battle en la última semana
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
+
+buildbattle-monthly = mensual
+  .description = Ver el desarrollo de estadísticas de Build Battle en el último mes
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Build Battle para ver
 
 # /copsandcrims
 
-Defusal = Defusal
-GunGame = Gun Game
-Deathmatch = Deathmatch
+Defusal = Desactivación
+GunGame = Juego de Armas
+Deathmatch = Combate a Muerte
 
-cop-kills = Asesinatos de policías
-criminal-kills = Asesinatos de criminales
-headshot-kills = Asesinatos por disparo en la cabeza
-grenade-kills = Asesinatos con granada
-bombs-defused = Bombas desactivadas
-bombs-planted = Bombas colocadas
+cop-kills = Muertes de Policías
+criminal-kills = Muertes de Criminales
+headshot-kills = Muertes por Disparo en la Cabeza
+grenade-kills = Muertes por Granada
+bombs-defused = Bombas Desactivadas
+bombs-planted = Bombas Plantadas
 
-copsandcrims = copsandcrims
-  .description = Muestra las estadísticas de Cops and Crims de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a visualizar
+copsandcrims-general = general
+  .description = Ver estadísticas de Cops and Crims
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a visualizar
-  .mode = mode
-  .mode-description = El modo de Cops and Crims a visualizar
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+
+copsandcrims-from = desde
+  .description = Ver el desarrollo de estadísticas de Cops and Crims desde un momento específico
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+copsandcrims-history = historia
+  .description = Ver el desarrollo de estadísticas de Cops and Crims a lo largo del tiempo
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+
+copsandcrims-project = proyección
+  .description = Proyectar estadísticas de Cops and Crims hacia el futuro
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+  .kind = estadística
+  .kind-description = La estadística de Cops and Crims a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+copsandcrims-daily = diario
+  .description = Ver el desarrollo de estadísticas de Cops and Crims en el último día
+  .username = nombreDeUsuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+
+copsandcrims-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Cops and Crims durante la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
+
+copsandcrims-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Cops and Crims durante el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Cops and Crims para ver
 
 # /duels
 
-UhcSolo = Duelo UHC
-OpSolo = Duelo OP
-UhcDouble = Dobles UHC
-BowSolo = Duelo de arcos
-ClassicSolo = Duelo clásico
-OpDouble = Dobles OP
-UhcFour = 4v4 UHC
-SkyWarsDouble = Dobles de SkyWars
-SumoSolo = Duelo de sumo
-SkyWarsSolo = Duelo de SkyWars
-BridgeDoubleDuel = 2v2 de Bridge
-BridgeFourDuel = 4v4 de Bridge
-BridgeSolo = Duelo de Bridge
-BridgeThree = Tres de Bridge
-BridgeDouble = Dobles de Bridge
-ComboSolo = Duelo de combos
-SumoTournament = Torneo de sumo
-SkyWarsTournament = Torneo de SkyWars
+UhcSolo = Duelo UHC individual
+OpSolo = Duelo OP individual
+UhcDouble = Duelo UHC en parejas
+BowSolo = Duelo de arcos individual
+ClassicSolo = Duelo clásico individual
+OpDouble = Duelo OP en parejas
+UhcFour = Duelo UHC 4v4
+SkyWarsDouble = Duelo de Sky Wars en parejas
+SumoSolo = Duelo Sumo individual
+SkyWarsSolo = Duelo de Sky Wars individual
+BridgeDoubleDuel = Duelo de Bridge 2v2
+BridgeFourDuel = Duelo de Bridge 4v4
+BridgeSolo = Duelo de Bridge individual
+BridgeThree = Bridge en grupos de tres
+BridgeDouble = Duelo de Bridge en parejas
+ComboSolo = Duelo Combo individual
+SumoTournament = Torneo de Sumo
+SkyWarsTournament = Torneo de Sky Wars
 UhcMeetup = Encuentro UHC
-PotionSolo = Duelo de pociones
-BlitzSolo = Duelo de Blitz
-BowSpleefSolo = Duelo de Bow Spleef
-MegaWallsSolo = Duelo de Mega Walls
-BoxingSolo = Duelo de boxeo
+PotionSolo = Duelo de pociones individual
+BlitzSolo = Duelo Blitz individual
+BowSpleefSolo = Duelo de Bow Spleef individual
+MegaWallsSolo = Duelo de Mega Walls individual
+BoxingSolo = Duelo de boxeo individual
 Parkour = Parkour
-ArenaSolo = Duelo de arena
-CaptureThree = Captura Tres
-BridgeThreeDuel = 3v3 de Bridge
+ArenaSolo = Duelo de arena individual
+CaptureThree = Captura en grupos de tres
+BridgeThreeDuel = Duelo de Bridge 3v3
 
-melee-accuracy = Precisión con arma cuerpo a cuerpo
+melee-accuracy = Precisión en combate cuerpo a cuerpo
 health-regenerated = Salud regenerada
 
-duels = duels
-  .description = Muestra las estadísticas de Duels de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a visualizar
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a visualizar
-  .mode = mode
-  .mode-description = El modo de Duels a visualizar
+duels-general = general
+  .description = Ver estadísticas de Duelos
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+
+duels-from = desde
+  .description = Ver el desarrollo de las estadísticas de Duelos desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+duels-history = historial
+  .description = Ver el desarrollo de las estadísticas de Duelos a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+
+duels-project = proyección
+  .description = Proyectar estadísticas de Duelos hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+  .kind = estadística
+  .kind-description = La estadística de Duelos para proyectar
+  .value = valor
+  .value-description = El valor de la estadística para proyectar
+
+duels-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Duelos durante el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+
+duels-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Duelos durante la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
+
+duels-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Duelos durante el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Duelos para ver
 
 # /megawalls
 
-FaceOff = Enfrentamiento
+FaceOff = Cara a cara
 
 distance-walked = Distancia recorrida
 distance-fallen = Distancia caída
@@ -756,34 +1183,154 @@ bread-eaten = Pan comido
 wood-chopped = Madera cortada
 treasures-found = Tesoros encontrados
 
-megawalls = megawalls
-  .description = Muestra las estadísticas de Mega Walls de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a visualizar
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a visualizar
-  .mode = mode
-  .mode-description = El modo de Mega Walls a visualizar
+megawalls-general = general
+  .description = Ver estadísticas de Mega Walls
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+
+megawalls-from = desde
+  .description = Ver el desarrollo de las estadísticas de Mega Walls desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+megawalls-history = historial
+  .description = Ver el desarrollo de las estadísticas de Mega Walls a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+
+megawalls-project = proyección
+  .description = Proyectar estadísticas de Mega Walls hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+  .kind = estadística
+  .kind-description = La estadística de Mega Walls para proyectar
+  .value = valor
+  .value-description = El valor de la estadística para proyectar
+
+megawalls-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Mega Walls durante el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+
+megawalls-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Mega Walls durante la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
+
+megawalls-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Mega Walls durante el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Mega Walls para ver
 
 # /murdermystery
 
 Assassins = Asesinos
 Classic = Clásico
-DoubleUp = Doble
+DoubleUp = Duplicar
 Infection = Infección
 
-time-survived = Tiempo Sobrevivido
-murderer-wins = Asesino Gana
-detective-wins = Detective Gana
+time-survived = Tiempo sobrevivido
+murderer-wins = Victorias del asesino
+detective-wins = Victorias del detective
 
-murdermystery = murdermystery
-  .description = Muestra las estadísticas del asesinato misterioso de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+murdermystery-general = general
+  .description = Ver estadísticas de Murder Mystery
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Murder Mystery para ver
+
+murdermystery-from = desde
+  .description = Ver el desarrollo de las estadísticas de Murder Mystery desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Murder Mystery para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+murdermystery-history = historial
+  .description = Ver el desarrollo de las estadísticas de Murder Mystery a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Murder Mystery para ver
+
+murdermystery-project = proyecto
+  .description = Proyectar estadísticas del Proyecto Misterio del Asesinato hacia el futuro
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .mode = mode
-  .mode-description = El modo de asesinato misterioso para ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Misterio del Asesinato para ver
+  .kind = estadística
+  .kind-description = La estadística del Misterio del Asesinato para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+murdermystery-daily = diario
+  .description = Ver el desarrollo de las estadísticas del Misterio del Asesinato durante el último día
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Misterio del Asesinato para ver
+
+murdermystery-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas del Misterio del Asesinato durante la última semana
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Misterio del Asesinato para ver
+
+murdermystery-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas del Misterio del Asesinato durante el último mes
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Misterio del Asesinato para ver
 
 # /paintball
 
@@ -793,119 +1340,479 @@ fortune = Fortuna
 godfather = Padrino
 superluck = Super Suerte
 transfusion = Transfusión
-kill-prefix = Prefijo de Muerte
-show-kill-prefix = Mostrar Prefijo de Muerte
+kill-prefix = Prefijo de Asesinato
+show-kill-prefix = Mostrar Prefijo de Asesinato
 
 shots-fired = Disparos Realizados
-killstreaks = Racha de Muertes
+killstreaks = Racha de Asesinatos
 forcefield-time = Tiempo de Campo de Fuerza
 chat-messages = Mensajes de Chat
 soups-drank = Sopas Bebidas
 cash-earned = Dinero Ganado
-highest-killstreak = Mejor Racha de Muertes
+highest-killstreak = Mejor Racha
 
-paintball = paintball
-  .description = Muestra las estadísticas de Paintball de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+paintball-general = general
+  .description = Ver estadísticas de Paintball
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .mode = mode
-  .mode-description = El modo de Paintball para ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+
+paintball-from = desde
+  .description = Ver el desarrollo de las estadísticas de Paintball desde un momento específico
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+paintball-history = historial
+  .description = Ver el desarrollo de las estadísticas de Paintball a lo largo del tiempo
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+
+paintball-project = proyecto
+  .description = Proyectar estadísticas de Paintball hacia el futuro
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+  .kind = estadística
+  .kind-description = La estadística de Paintball para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+paintball-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Paintball durante el último día
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+
+paintball-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Paintball durante la última semana
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
+
+paintball-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Paintball durante el último mes
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Paintball para ver
 
 # /pit
 
 cash = Dinero
-bow-damage-dealt = Daño con Arco Infligido
-bow-damage-taken = Daño con Arco Recibido
+bow-damage-dealt = Daño de Arco Infligido
+bow-damage-taken = Daño de Arco Recibido
 bdr = BDR
 contracts-completed = Contratos Completados
 contracts-started = Contratos Iniciados
-cr = Tasa de Completado
+cr = Tasa de Cumplimiento
 
-pit = pit
-  .description = Muestra las estadísticas de The Pit de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+pit-general = general
+  .description = Ver estadísticas de The Pit
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .mode = mode
-  .mode-description = El modo de The Pit para ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+
+pit-from = desde
+  .description = Ver el desarrollo de las estadísticas de The Pit desde un momento específico
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+pit-history = historial
+  .description = Ver el desarrollo de las estadísticas de The Pit a lo largo del tiempo
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+
+pit-project = proyecto
+  .description = Proyectar estadísticas de The Pit hacia el futuro
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+  .kind = estadística
+  .kind-description = La estadística de The Pit para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+pit-daily = diario
+  .description = Ver el desarrollo de las estadísticas de The Pit durante el último día
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+
+pit-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de The Pit durante la última semana
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
+
+pit-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de The Pit durante el último mes
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo The Pit para ver
 
 # /quake
 
 SoloTournament = Torneo Individual
 
-hr = Tasa de Disparos a la Cabeza
-headshots = Disparos a la Cabeza
-sight = Vista
+hr = Tasa de Tiros a la Cabeza
+headshots = Tiros a la Cabeza
+sight = Precisión
 
-quake = quake
-  .description = Muestra las estadísticas de Quakecraft de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft para ver
+quake-general = general
+  .description = Ver estadísticas de Quakecraft
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft para ver
-  .mode = mode
-  .mode-description = El modo de Quakecraft para ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Quakecraft para ver
+
+quake-from = desde
+  .description = Ver el desarrollo de las estadísticas de Quakecraft desde un momento específico
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Quakecraft para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo para retroceder (por ejemplo, 1hora 12min 5s)
+
+quake-history = historial
+  .description = Ver el desarrollo de las estadísticas de Quakecraft a lo largo del tiempo
+  .username = nombre_de_usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo Quakecraft para ver
+
+quake-project = proyecto
+  .description = Estadísticas del proyecto Quakecraft hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Quakecraft a visualizar
+  .kind = estadística
+  .kind-description = La estadística de Quakecraft a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+quake-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Quakecraft en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Quakecraft a visualizar
+
+quake-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Quakecraft en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Quakecraft a visualizar
+
+quake-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Quakecraft en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Quakecraft a visualizar
 
 # /skywars
-Overall = Overall
+Overall = Global
 SoloNormal = Solo Normal
 SoloInsane = Solo Insane
 TeamNormal = Team Normal
 TeamInsane = Team Insane
 MegaNormal = Mega Normal
 MegaDouble = Mega Dobles
-Ranked = Ranked
+Ranked = Clasificado
 SoloLab = Solo Lab
 TeamLab = Team Lab
 Tourney = Torneo
 
-opals = Opals
+opals = Opalos
 heads = Cabezas
 souls = Almas
 tokens = Fichas
-bow-accuracy = Precisión con arco
+bow-accuracy = Precisión del Arco
 eggs-thrown = Huevos Lanzados
-fastest-win = Victoria Más Rápida
+fastest-win = Victoria más Rápida
 
-skywars = skywars
-  .description = Muestra las estadísticas de SkyWars de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de SkyWars a ver
+skywars-general = general
+  .description = Ver estadísticas de SkyWars
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+
+skywars-from = desde
+  .description = Ver el desarrollo de las estadísticas de SkyWars desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+  .time = tiempo
+  .time-description = La cantidad de tiempo a retroceder (ej. 1 hora 12 minutos 5 segundos)
+
+skywars-history = historia
+  .description = Ver el desarrollo de las estadísticas de SkyWars a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+
+skywars-project = proyecto
+  .description = Proyectar estadísticas de SkyWars hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+  .kind = estadística
+  .kind-description = La estadística de SkyWars a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+skywars-daily = diario
+  .description = Ver el desarrollo de las estadísticas de SkyWars en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+
+skywars-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de SkyWars en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
+
+skywars-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de SkyWars en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SkyWars a visualizar
 
 # /smash
 
-smasher = Golpeador
+smasher = Machacador
 smashed = Aplastado
 ssr = SSR
 
-smash = smash
-  .description = Muestra las estadísticas de Smash Heroes de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de Smash Heroes a ver
+smash-general = general
+  .description = Ver estadísticas de Smash Heroes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+
+smash-from = desde
+  .description = Ver el desarrollo de las estadísticas de Smash Heroes desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+  .time = tiempo
+  .time-description = La cantidad de tiempo a retroceder (ej. 1 hora 12 minutos 5 segundos)
+
+smash-history = historia
+  .description = Ver el desarrollo de las estadísticas de Smash Heroes a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+
+smash-project = proyecto
+  .description = Proyectar estadísticas de Smash Heroes hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+  .kind = estadística
+  .kind-description = La estadística de Smash Heroes a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+smash-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Smash Heroes en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+
+smash-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Smash Heroes en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
+
+smash-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Smash Heroes en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Smash Heroes a visualizar
 
 # /speeduhc
 
 tears = Lágrimas
 survived-players = Jugadores sobrevivientes
 
-speeduhc = speeduhc
-  .description = Muestra las estadísticas de SpeedUHC de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+speeduhc-general = general
+  .description = Ver estadísticas de SpeedUHC
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a visualizar
+
+speeduhc-from = desde
+  .description = Ver el desarrollo de las estadísticas de SpeedUHC desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a visualizar
+  .time = tiempo
+  .time-description = La cantidad de tiempo a retroceder (ej. 1 hora 12 minutos 5 segundos)
+
+speeduhc-history = historia
+  .description = Ver el desarrollo de las estadísticas de SpeedUHC a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a visualizar
+
+speeduhc-project = proyecto
+  .description = Estadísticas del proyecto SpeedUHC hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a ver
+  .kind = estadística
+  .kind-description = La estadística de SpeedUHC a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+speeduhc-daily = diario
+  .description = Ver el desarrollo de las estadísticas de SpeedUHC en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a ver
+
+speeduhc-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de SpeedUHC en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de SpeedUHC a ver
+
+speeduhc-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de SpeedUHC en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
   .mode-description = El modo de SpeedUHC a ver
 
 # /tntgames
@@ -914,236 +1821,718 @@ TntRun = TNT Run
 TntTag = TNT Tag
 PvpRun = PvP Run
 BowSpleef = Bow Spleef
-Wizard = Magos
+Wizard = Wizards
 
-record = Registro
-double-jumps = Saltos dobles
+record = Récord
+double-jumps = Doble Saltos
 tags = Etiquetas
 air-time = Tiempo en el aire
 points = Puntos
 
-tntgames = tntgames
-  .description = Muestra las estadísticas de TNT Games de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+tntgames-general = general
+  .description = Ver estadísticas de TNT Games
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+
+tntgames-from = desde
+  .description = Ver el desarrollo de las estadísticas de TNT Games desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+tntgames-history = historial
+  .description = Ver el desarrollo de las estadísticas de TNT Games a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+
+tntgames-project = proyecto
+  .description = Proyectar estadísticas de TNT Games hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+  .kind = estadística
+  .kind-description = La estadística de TNT Games a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+tntgames-daily = diario
+  .description = Ver el desarrollo de las estadísticas de TNT Games en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+
+tntgames-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de TNT Games en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de TNT Games a ver
+
+tntgames-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de TNT Games en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
   .mode-description = El modo de TNT Games a ver
 
 # /turbokartracers
 
-box-pickups = Recolección de cajas
-coin-pickups = Recolección de monedas
+box-pickups = Recoger Cajas
+coin-pickups = Recoger Monedas
 grand-prix = Gran Premio
 show-prefix = Mostrar Prefijo
 bronze-trophies = Trofeos de Bronce
 silver-trophies = Trofeos de Plata
 gold-trophies = Trofeos de Oro
 
-turbokartracers = turbokartracers
-  .description = Muestra las estadísticas de Turbo Kart Racers de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+turbokartracers-general = general
+  .description = Ver estadísticas de Turbo Kart Racers
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+
+turbokartracers-from = desde
+  .description = Ver el desarrollo de las estadísticas de Turbo Kart Racers desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+turbokartracers-history = historial
+  .description = Ver el desarrollo de las estadísticas de Turbo Kart Racers a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+
+turbokartracers-project = proyecto
+  .description = Proyectar estadísticas de Turbo Kart Racers hacia el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+  .kind = estadística
+  .kind-description = La estadística de Turbo Kart Racers a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+turbokartracers-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Turbo Kart Racers en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+
+turbokartracers-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Turbo Kart Racers en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Turbo Kart Racers a ver
+
+turbokartracers-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Turbo Kart Racers en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
   .mode-description = El modo de Turbo Kart Racers a ver
 
 # /uhc
+
 RedVsBlue = Rojo vs Azul
-NoDiamonds = Sin diamantes
-VanillaDouble = Doble vainilla
+NoDiamonds = Sin Diamantes
+VanillaDouble = Doble Vanilla
 Brawl = Pelea
-SoloBrawl = Pelea individual
-DoubleBrawl = Pelea doble
+SoloBrawl = Pelea Individual
+DoubleBrawl = Pelea Doble
 
-heads-eaten = Cabezas comidas
-ultimates-crafted = Últimos creados
+heads-eaten = Cabezas Comidas
+ultimates-crafted = Últimas Creadas
 
-uhc = uhc
-  .description = Muestra las estadísticas de los Campeones de UHC de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
+uhc-general = general
+  .description = Ver estadísticas de UHC Champions
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
   .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de Campeones de UHC a ver
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions a ver
+
+uhc-from = desde
+  .description = Ver el desarrollo de las estadísticas de UHC Champions desde un tiempo específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = uuid
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions a ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+# uhc-history
+uhc-history = historial
+  .description = Ver el desarrollo de las estadísticas de UHC Champions a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions para ver
+
+# uhc-project
+uhc-project = proyecto
+  .description = Proyectar las estadísticas de UHC Champions en el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions para ver
+  .kind = estadística
+  .kind-description = La estadística de UHC Champions para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+# uhc-daily
+uhc-daily = diario
+  .description = Ver el desarrollo de las estadísticas de UHC Champions en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions para ver
+
+# uhc-weekly
+uhc-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de UHC Champions en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions para ver
+
+# uhc-monthly
+uhc-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de UHC Champions en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de UHC Champions para ver
 
 # /vampirez
-human-wins = Victorias humanas
-vampire-wins = Victorias vampiro
-zombie-kills = Muertes de zombies
-human-kills = Muertes humanas
-human-deaths = Muertes humanas
-vampire-kills = Muertes vampiro
-vampire-deaths = Muertes vampiro
+# Note: I'm keeping the game-specific terms in English, as they might be recognizable for players.
+human-wins = Victorias Humanas
+vampire-wins = Victorias de Vampiros
+zombie-kills = Asesinatos de Zombis
+human-kills = Asesinatos de Humanos
+human-deaths = Muertes de Humanos
+vampire-kills = Asesinatos de Vampiros
+vampire-deaths = Muertes de Vampiros
 blood = Sangre
-starting-compass = Brújula de inicio
-starting-gear = Equipo de inicio
+starting-compass = Brújula de Inicio
+starting-gear = Equipamiento de Inicio
 tracker = Rastreador
 updated = Actualizado
-old-vampire = Vampiro antiguo
-hkdr = HKDR
-vkdr = VKDR
+old-vampire = Vampiro Antiguo
+hkdr = HKDR (Asesinatos de Humanos por Muerte de Humanos)
+vkdr = VKDR (Asesinatos de Vampiros por Muerte de Vampiros)
 
-vampirez = vampirez
-  .description = Muestra las estadísticas de VampireZ de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de VampireZ a ver
+# vampirez-general
+vampirez-general = general
+  .description = Ver estadísticas de VampireZ
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+
+# vampirez-from
+vampirez-from = desde
+  .description = Ver el desarrollo de las estadísticas de VampireZ desde un momento específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1hora 12min 5s)
+
+# vampirez-history
+vampirez-history = historial
+  .description = Ver el desarrollo de las estadísticas de VampireZ a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+
+# vampirez-project
+vampirez-project = proyecto
+  .description = Proyectar las estadísticas de VampireZ en el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+  .kind = estadística
+  .kind-description = La estadística de VampireZ para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+# vampirez-daily
+vampirez-daily = diario
+  .description = Ver el desarrollo de las estadísticas de VampireZ en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+
+# vampirez-weekly
+vampirez-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de VampireZ en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
+
+# vampirez-monthly
+vampirez-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de VampireZ en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de VampireZ para ver
 
 # /walls
+# Note: I'm keeping the game-specific term "Standard" in English, as it might be recognizable for players.
 Standard = Estándar
 
 activations = Activaciones
-iron-broken = Hierro roto
+iron-broken = Hierro Roto
 
-walls = walls
-  .description = Muestra las estadísticas de The Walls de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de The Walls a ver
+# walls-general
+walls-general = general
+  .description = Ver estadísticas de The Walls
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+
+# walls-from
+walls-from = desde
+  .description = Ver el desarrollo de las estadísticas de The Walls desde un momento específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1hora 12min 5s)
+
+# walls-history
+walls-history = historial
+  .description = Ver el desarrollo de las estadísticas de The Walls a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+
+# walls-project
+walls-project = proyecto
+  .description = Proyectar las estadísticas de The Walls en el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+  .kind = estadística
+  .kind-description = La estadística de The Walls para proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+# walls-daily
+walls-daily = diario
+  .description = Ver el desarrollo de las estadísticas de The Walls en el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+
+# walls-weekly
+walls-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de The Walls en la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
+
+# walls-monthly
+walls-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de The Walls en el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de The Walls para ver
 
 # /warlords
-CaptureTheFlag = Captura la bandera
+# Note: I'm keeping the game-specific terms in English, as they might be recognizable for players.
+CaptureTheFlag = Capturar la Bandera
 Domination = Dominación
-TeamDeathmatch = Combate a muerte en equipo
+TeamDeathmatch = Combate de Equipos
 
 wins-blue = Victorias (Azul)
 wins-red = Victorias (Rojo)
-hide-prestige = Ocultar prestigio
-mvps = MVP
+hide-prestige = Ocultar Prestigio
+mvps = MVPs (Jugadores Más Valiosos)
 
-warlords = warlords
-  .description = Muestra las estadísticas de Warlords de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de Warlords a ver
+# warlords-general
+warlords-general = general
+  .description = Ver estadísticas de Warlords
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords para ver
+
+# warlords-from
+warlords-from = desde
+  .description = Ver el desarrollo de las estadísticas de Warlords desde un momento específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords para ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo hacia atrás (por ejemplo, 1hora 12min 5s)
+
+warlords-history = historia
+  .description = Ver el desarrollo de las estadísticas de Warlords a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords que deseas ver
+
+warlords-project = proyecto
+  .description = Proyectar las estadísticas de Warlords en el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords que deseas ver
+  .kind = estadística
+  .kind-description = La estadística de Warlords que deseas proyectar
+  .value = valor
+  .value-description = El valor de la estadística que deseas proyectar
+
+warlords-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Warlords durante el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords que deseas ver
+
+warlords-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Warlords durante la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords que deseas ver
+
+warlords-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Warlords durante el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Warlords que deseas ver
 
 # /woolwars
-layers = Capas
-powerups-collected = Powerups recogidos
-wool-placed = Lana colocada
 
-woolwars = woolwars
-  .description = Muestra las estadísticas de Wool Wars de un jugador.
-  .username = username
-  .username-description = El nombre de usuario de Minecraft a ver
-  .uuid = uuid
-  .uuid-description = El UUID de Minecraft a ver
-  .mode = mode
-  .mode-description = El modo de Wool Wars a ver
+layers = Capas
+powerups-collected = Powerups Recolectados
+wool-placed = Lana Colocada
+
+woolwars-general = general
+  .description = Ver estadísticas de Wool Wars
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+
+woolwars-from = desde
+  .description = Ver el desarrollo de las estadísticas de Wool Wars desde un momento específico
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo que deseas retroceder (por ejemplo, 1 hora 12 minutos 5 segundos)
+
+woolwars-history = historia
+  .description = Ver el desarrollo de las estadísticas de Wool Wars a lo largo del tiempo
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+
+woolwars-project = proyecto
+  .description = Proyectar las estadísticas de Wool Wars en el futuro
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+  .kind = estadística
+  .kind-description = La estadística de Wool Wars que deseas proyectar
+  .value = valor
+  .value-description = El valor de la estadística que deseas proyectar
+
+woolwars-daily = diario
+  .description = Ver el desarrollo de las estadísticas de Wool Wars durante el último día
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+
+woolwars-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas de Wool Wars durante la última semana
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
+
+woolwars-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas de Wool Wars durante el último mes
+  .username = nombre de usuario
+  .username-description = Nombre de usuario de Minecraft
+  .uuid = UUID
+  .uuid-description = UUID de Minecraft
+  .mode = modo
+  .mode-description = El modo de Wool Wars que deseas ver
 
 # /guild
 
-daily-xp = XP Diaria
+daily-xp = XP Diario
 weekly-xp = XP Semanal
 monthly-xp = XP Mensual
-xp-since = XP desde
+xp-since = XP Desde
 members_label = Miembros
 date = Fecha
 weekly-gexp = GEXP Semanal
 position = Posición
-guild-quests = Misiones de gremio
+guild-quests = Misiones del Gremio
 
 Member = Miembro
 General = General
 Members = Miembros
-Top = Top
+Top = Mejores
 
-member = member
-  .description = Muestra el miembro de un gremio.
-  .username = username
-  .username-description = El nombre de usuario del miembro del gremio a ver.
-  .uuid = uuid
-  .uuid-description = El UUID del miembro del gremio a ver.
+member = miembro
+  .description = Muestra al miembro de un gremio.
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
 
-guild = guild
+guild-general = general
   .description = Muestra las estadísticas de un gremio.
-  .name = name
-  .name-description = El nombre del gremio a ver
-  .username = username
-  .username-description = El nombre de usuario del miembro del gremio a ver.
-  .uuid = uuid
-  .uuid-description = El UUID del miembro del gremio a ver.
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
 
-general = general
-  .description = Muestra las estadísticas de un gremio.
-  .name = name
-  .name-description = El nombre del gremio a ver
-  .username = username
-  .username-description = El nombre de usuario del miembro del gremio a ver.
-  .uuid = uuid
-  .uuid-description = El UUID del miembro del gremio a ver.
+guild-from = desde
+  .description = Ver el desarrollo de las estadísticas del gremio desde un momento específico
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo que deseas retroceder (por ejemplo, 1 hora 12 minutos 5 segundos)
 
-members = members
-  .description = Muestra los miembros de un gremio.
-  .name = name
-  .name-description = El nombre del gremio a ver
-  .username = username
-  .username-description = El nombre de usuario del miembro del gremio a ver
-  .uuid = uuid
-  .uuid-description = El UUID del miembro del gremio a ver
+guild-members = miembros
+  .description = Muestra a los miembros de un gremio.
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
 
-top = top
-  .description = Muestra los miembros principales de un gremio por experiencia.
-  .name = name
-  .name-description = El nombre del gremio a ver
-  .username = username
-  .username-description = El nombre de usuario del miembro del gremio a ver
-  .uuid = uuid
-  .uuid-description = El UUID del miembro del gremio a ver
-  .days = days
+guild-member = miembro
+  .description = Muestra las estadísticas de un miembro del gremio.
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
+
+guild-top = mejores
+  .description = Muestra a los miembros principales de un gremio por XP.
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
+  .days = días
   .days-description = días
-  .limit = limit
-  .limit-description = El número de miembros a mostrar
+  .limit = límite
+  .limit-description = La cantidad de miembros que deseas mostrar
 
-showing-guild-xp-statistics = Mostrando la experiencia ganada por el gremio desde {$from} hasta {$to}.
+guild-daily = diario
+  .description = Ver el desarrollo de las estadísticas del gremio durante el último día
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
 
-# Etiquetas de lienzo compartido
+guild-weekly = semanal
+  .description = Ver el desarrollo de las estadísticas del gremio durante la última semana
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
+
+guild-monthly = mensual
+  .description = Ver el desarrollo de las estadísticas del gremio durante el último mes
+  .name = nombre
+  .name-description = El nombre del gremio que deseas ver
+  .username = nombre de usuario
+  .username-description = El nombre de usuario del miembro del gremio que deseas ver
+  .uuid = UUID
+  .uuid-description = El UUID del miembro del gremio que deseas ver
+
+showing-guild-xp-statistics = Mostrando ganancia de XP del gremio desde {$from} hasta {$to}.
+
+# Etiquetas compartidas para canvas
 
 Normal = Normal
 Team = Equipo
 
-blocks-broken = Bloques rotos
-blocks-placed = Bloques colocados
+blocks-broken = Bloques Destrozados
+blocks-placed = Bloques Colocados
 
 coins = Monedas
-loot-chests = Cofres de botín
+loot-chests = Cofres de Botín
 
 offline = Desconectado
 online = En línea
 level = Nivel
 progress = Progreso
 total = Total
-levels-gained = Niveles ganados
+levels-gained = Niveles Ganados
 
 wins = Victorias
 losses = Derrotas
-wlr = Tasa de Victorias/Derrotas
-win-streak = Racha de victorias
-kills = Asesinatos
+wlr = TVP (Tasa de Victorias por Partida)
+win-streak = Racha de Victorias
+kills = Eliminaciones
 deaths = Muertes
-kdr = Ratio de Asesinatos/Muertes
+kdr = TDE (Tasa de Eliminaciones por Muerte)
 assists = Asistencias
-games-played = Juegos jugados
-wr = Tasa de victorias
-damage-dealt = Daño infligido
-damage-taken = Daño recibido
-ddtr = Tasa de Daño infligido/Recibido
-games = Juegos
+games-played = Partidas Jugadas
+wr = Tasa de Victorias
+damage-dealt = Daño Infligido
+damage-taken = Daño Recibido
+ddtr = TDRE (Tasa de Daño Recibido por Eliminación)
+games = Partidas
 score = Puntuación
-created-at = Creado en
+created-at = Creado el
 experience = Experiencia
 
 yes = Sí
@@ -1153,18 +2542,18 @@ none = Ninguno
 # Colores
 
 black = Negro
-dark-blue = Azul oscuro
-dark-green = Verde oscuro
-dark-aqua = Aqua oscuro
-dark-red = Rojo oscuro
-dark-purple = Púrpura oscuro
+dark-blue = Azul Oscuro
+dark-green = Verde Oscuro
+dark-aqua = Aguamarina Oscuro
+dark-red = Rojo Oscuro
+dark-purple = Púrpura Oscuro
 gold = Oro
 gray = Gris
-dark-gray = Gris oscuro
+dark-gray = Gris Oscuro
 blue = Azul
 green = Verde
-aqua = Aqua
+aqua = Aguamarina
 red = Rojo
-light-purple = Púrpura claro
+light-purple = Púrpura Claro
 yellow = Amarillo
 white = Blanco

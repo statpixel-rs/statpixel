@@ -10,7 +10,7 @@ use translate::{context, Context};
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES"
 )]
-pub async fn network(
+async fn general(
 	ctx: Context<'_>,
 	#[max_length = 16]
 	#[autocomplete = "crate::commands::autocomplete_username"]
@@ -23,4 +23,15 @@ pub async fn network(
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::network(ctx, username, uuid).await
+}
+
+#[allow(clippy::unused_async)]
+#[poise::command(
+	on_error = "crate::util::error_handler",
+	slash_command,
+	required_bot_permissions = "ATTACH_FILES",
+	subcommands("general", "super::history::network")
+)]
+pub async fn network(_ctx: Context<'_>) -> Result<(), Error> {
+	Ok(())
 }

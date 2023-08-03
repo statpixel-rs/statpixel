@@ -9,3 +9,5 @@
 !package.json
 /assets/materials
 /assets/textures
+_locale
+scripts/chunks

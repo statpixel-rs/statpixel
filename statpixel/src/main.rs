@@ -64,54 +64,48 @@ async fn main() {
 
 	let mut commands = vec![
 		commands::about::about(),
-		commands::games::arcade(),
-		commands::games::arena(),
+		commands::games::arcade::parent(),
+		commands::games::arena::parent(),
 		commands::background::background(),
-		commands::games::bedwars(),
+		commands::games::bedwars::parent(),
 		commands::builder::builder(),
-		commands::games::blitz(),
+		commands::games::blitz::parent(),
 		commands::boost::boost(),
-		commands::games::buildbattle(),
+		commands::games::buildbattle::parent(),
 		// commands::compare::compare(),
-		commands::games::copsandcrims(),
+		commands::games::copsandcrims::parent(),
 		commands::execute::execute(),
-		commands::snapshot::daily::daily(),
 		commands::display::display(),
-		commands::games::duels(),
-		commands::from::from(),
+		commands::games::duels::parent(),
 		commands::guild::guild(),
 		commands::help::help(),
-		commands::history::history(),
 		commands::leaderboard::leaderboard(),
 		commands::link::link(),
-		commands::games::megawalls(),
-		commands::snapshot::monthly::monthly(),
-		commands::games::murdermystery(),
+		commands::games::megawalls::parent(),
+		commands::games::murdermystery::parent(),
 		commands::network::network(),
-		commands::games::paintball(),
-		commands::games::pit(),
-		commands::project::project(),
-		commands::games::quake(),
+		commands::games::paintball::parent(),
+		commands::games::pit::parent(),
+		commands::games::quake::parent(),
 		commands::recent::recent(),
 		commands::skyblock::skyblock(),
-		commands::games::skywars(),
-		commands::games::smash(),
-		commands::games::speeduhc(),
+		commands::games::skywars::parent(),
+		commands::games::smash::parent(),
+		commands::games::speeduhc::parent(),
 		commands::track::track(),
-		commands::games::tntgames(),
-		commands::games::turbokartracers(),
-		commands::games::uhc(),
+		commands::games::tntgames::parent(),
+		commands::games::turbokartracers::parent(),
+		commands::games::uhc::parent(),
 		commands::unlink::unlink(),
-		commands::games::vampirez(),
-		commands::games::walls(),
-		commands::games::warlords(),
-		commands::snapshot::weekly::weekly(),
+		commands::games::vampirez::parent(),
+		commands::games::walls::parent(),
+		commands::games::warlords::parent(),
 		commands::winstreaks::winstreaks(),
-		commands::games::woolwars(),
+		commands::games::woolwars::parent(),
 	];
 
 	let locale = translate::read_ftl().unwrap();
-	locale.apply_translations(&mut commands, false);
+	locale.apply_translations(&mut commands, None);
 
 	let pool = user::upgrade::all(get_pool(20)).await.unwrap();
 	let data = Data {
@@ -133,6 +127,10 @@ async fn main() {
 
 			move |ctx, _ready, framework| {
 				Box::pin(async move {
+					/*
+					GuildId(std::num::NonZeroU64::new(1114619532502388777).unwrap())
+						.set_commands
+					 */
 					serenity::Command::set_global_commands(
 						&ctx.http,
 						poise::builtins::create_application_commands(&framework.options().commands),

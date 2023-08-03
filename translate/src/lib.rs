@@ -113,6 +113,8 @@ pub enum Error {
 	NotInAGuild,
 	#[error("You have already boosted this guild.")]
 	BoostAlreadyExists,
+	#[error("The provided time is invalid.")]
+	TimeParse(#[from] humantime::DurationError),
 }
 
 #[derive(Debug, thiserror::Error)]

@@ -225,7 +225,16 @@ async fn top(
 	on_error = "crate::util::error_handler",
 	slash_command,
 	required_bot_permissions = "ATTACH_FILES",
-	subcommands("general", "members", "member", "top")
+	subcommands(
+		"general",
+		"members",
+		"member",
+		"top",
+		"super::from::guild",
+		"super::snapshot::daily::guild",
+		"super::snapshot::weekly::guild",
+		"super::snapshot::monthly::guild"
+	)
 )]
 pub async fn guild(_ctx: Context<'_>) -> Result<(), Error> {
 	Ok(())

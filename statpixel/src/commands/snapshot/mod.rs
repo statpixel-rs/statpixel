@@ -5,13 +5,15 @@ use translate::context;
 
 use crate::util;
 
-macro_rules! generate_history_command {
-	($game: ty, $mode: ty, $fn: ident, $duration: expr) => {
+#[rustfmt::skip]
+macro_rules! command {
+	($game: ty, $mode: ty, $fn: ident, $duration: expr, $name: literal) => {
 		#[allow(clippy::too_many_lines)]
 		#[poise::command(
 			on_error = "crate::util::error_handler",
 			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
+			required_bot_permissions = "ATTACH_FILES",
+			rename = $name
 		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -31,8 +33,9 @@ macro_rules! generate_history_command {
 	};
 }
 
-macro_rules! generate_large_history_command {
-	($game: ty, $mode: ty, $fn: ident, $duration: expr) => {
+#[rustfmt::skip]
+macro_rules! large_command {
+	($game: ty, $mode: ty, $fn: ident, $duration: expr, $name: literal) => {
 		async fn autocomplete_mode<'a>(
 			ctx: $crate::Context<'a>,
 			partial: &'a str,
@@ -46,7 +49,8 @@ macro_rules! generate_large_history_command {
 		#[poise::command(
 			on_error = "crate::util::error_handler",
 			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
+			required_bot_permissions = "ATTACH_FILES",
+			rename = $name
 		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -67,13 +71,15 @@ macro_rules! generate_large_history_command {
 	};
 }
 
-macro_rules! generate_guild_history_command {
-	($fn: ident, $duration: expr) => {
+#[rustfmt::skip]
+macro_rules! guild_command {
+	($fn: ident, $duration: expr, $name: literal) => {
 		#[allow(clippy::too_many_lines)]
 		#[poise::command(
 			on_error = "crate::util::error_handler",
 			slash_command,
-			required_bot_permissions = "ATTACH_FILES"
+			required_bot_permissions = "ATTACH_FILES",
+			rename = $name
 		)]
 		pub async fn $fn(
 			ctx: $crate::Context<'_>,
@@ -97,184 +103,170 @@ macro_rules! generate_guild_history_command {
 }
 
 #[macro_export]
-macro_rules! generate_history_commands {
-	($fn: ident, $duration: expr) => {
+macro_rules! commands {
+	($fn: ident, $duration: expr, $name: literal) => {
 		pub mod $fn {
 			use super::*;
 
-			generate_history_command!(
+			command!(
 				::api::player::stats::arcade::Arcade,
 				::api::player::stats::arcade::ArcadeMode,
 				arcade,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::arena::Arena,
 				::api::player::stats::arena::ArenaMode,
 				arena,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::bed_wars::BedWars,
 				::api::player::stats::bed_wars::BedWarsMode,
 				bedwars,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::blitz_sg::BlitzSg,
 				::api::player::stats::blitz_sg::BlitzSgMode,
 				blitz,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::build_battle::BuildBattle,
 				::api::player::stats::build_battle::BuildBattleMode,
 				buildbattle,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::cops_and_crims::CopsAndCrims,
 				::api::player::stats::cops_and_crims::CopsAndCrimsMode,
 				copsandcrims,
-				$duration
+				$duration,
+				$name
 			);
-			generate_large_history_command!(
+			large_command!(
 				::api::player::stats::duels::Duels,
 				::api::player::stats::duels::DuelsMode,
 				duels,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::mega_walls::MegaWalls,
 				::api::player::stats::mega_walls::MegaWallsMode,
 				megawalls,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::murder_mystery::MurderMystery,
 				::api::player::stats::murder_mystery::MurderMysteryMode,
 				murdermystery,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::paintball::Paintball,
 				::api::player::stats::paintball::PaintballMode,
 				paintball,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::pit::Pit,
 				::api::player::stats::pit::PitMode,
 				pit,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::quake::Quake,
 				::api::player::stats::quake::QuakeMode,
 				quake,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::sky_wars::SkyWars,
 				::api::player::stats::sky_wars::SkyWarsMode,
 				skywars,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::smash_heroes::SmashHeroes,
 				::api::player::stats::smash_heroes::SmashHeroesMode,
 				smash,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::speed_uhc::SpeedUhc,
 				::api::player::stats::speed_uhc::SpeedUhcMode,
 				speeduhc,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::tnt_games::TntGames,
 				::api::player::stats::tnt_games::TntGamesMode,
 				tntgames,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::turbo_kart_racers::TurboKartRacers,
 				::api::player::stats::turbo_kart_racers::TurboKartRacersMode,
 				turbokartracers,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::uhc::Uhc,
 				::api::player::stats::uhc::UhcMode,
 				uhc,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::vampire_z::VampireZ,
 				::api::player::stats::vampire_z::VampireZMode,
 				vampirez,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::walls::Walls,
 				::api::player::stats::walls::WallsMode,
 				walls,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::warlords::Warlords,
 				::api::player::stats::warlords::WarlordsMode,
 				warlords,
-				$duration
+				$duration,
+				$name
 			);
-			generate_history_command!(
+			command!(
 				::api::player::stats::wool_wars::WoolWars,
 				::api::player::stats::wool_wars::WoolWarsMode,
 				woolwars,
-				$duration
+				$duration,
+				$name
 			);
-			generate_guild_history_command!(guild, $duration);
-
-			#[poise::command(
-				on_error = "crate::util::error_handler",
-				slash_command,
-				subcommands(
-					"arcade",
-					"arena",
-					"bedwars",
-					"blitz",
-					"buildbattle",
-					"copsandcrims",
-					"duels",
-					"megawalls",
-					"murdermystery",
-					"paintball",
-					"pit",
-					"quake",
-					"skywars",
-					"smash",
-					"speeduhc",
-					"tntgames",
-					"turbokartracers",
-					"uhc",
-					"vampirez",
-					"walls",
-					"warlords",
-					"woolwars",
-					"guild"
-				)
-			)]
-			#[allow(clippy::unused_async)]
-			pub async fn $fn(
-				_ctx: ::translate::Context<'_>,
-			) -> ::std::result::Result<(), ::translate::Error> {
-				::std::result::Result::Ok(())
-			}
+			guild_command!(guild, $duration, $name);
 		}
 	};
 }
 
-generate_history_commands!(daily, ::chrono::Duration::days(1));
-generate_history_commands!(weekly, ::chrono::Duration::weeks(1));
-generate_history_commands!(monthly, ::chrono::Duration::days(30));
+commands!(daily, ::chrono::Duration::days(1), "daily");
+commands!(weekly, ::chrono::Duration::weeks(1), "weekly");
+commands!(monthly, ::chrono::Duration::days(30), "monthly");

@@ -1,8 +1,10 @@
 {
 	"type": "module",
 	"dependencies": {
+		"@fluent/bundle": "^0.18.0",
 		"axios": "^1.4.0",
 		"fdir": "^6.0.1",
+		"gpt-3-encoder": "^1.1.4",
 		"prismarine-nbt": "^2.2.1",
 		"sharp": "^0.32.1"
 	}

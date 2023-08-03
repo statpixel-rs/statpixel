@@ -9,6 +9,7 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 pub const DEFAULT_UUID: Uuid = Uuid::from_u128(0xf7c77d99_9f15_4a66_a87d_c4a51ef30d19);
+pub const MAX_SUBTITLE_LENGTH: usize = 32;
 
 #[derive(Serialize)]
 pub struct PreviewResponse {
@@ -41,7 +42,7 @@ pub async fn preview(
 
 	if shapes.iter().any(|s| {
 		if let ShapeData::Subtitle { ref text } = s.data {
-			text.len() > 16
+			text.len() > MAX_SUBTITLE_LENGTH
 		} else {
 			false
 		}
