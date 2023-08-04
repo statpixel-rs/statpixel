@@ -51,64 +51,77 @@ const SUPPORTED_LANGUAGES = [
 		name: 'Italian',
 		code: 'it',
 	},
+	// done
 	{
 		name: 'Lithuanian',
 		code: 'lt',
 	},
+	// done
 	{
 		name: 'Hungarian',
 		code: 'hu',
 	},
+	// done
 	{
 		name: 'Dutch',
 		code: 'nl',
 	},
+	// done
 	{
 		name: 'Norwegian',
 		code: 'no',
 	},
+	// done
 	{
 		name: 'Polish',
 		code: 'pl',
 	},
+	// done
 	{
 		name: 'Portuguese (Brazilian)',
 		code: 'pt-BR',
 	},
+	// done
 	{
-
 		name: 'Romanian',
 		code: 'ro',
 	},
+	// done
 	{
 		name: 'Finnish',
 		code: 'fi',
 	},
+	// done
 	{
 		name: 'Swedish',
 		code: 'sv-SE',
 	},
+	// done
 	{
 		name: 'Turkish',
 		code: 'tr',
 	},
+	// done
 	{
 		name: 'Czech',
 		code: 'cs',
 	},
+	// done
 	{
 		name: 'Greek',
 		code: 'el',
 	},
+	// done
 	{
-
 		name: 'Bulgarian',
 		code: 'bg',
 	},
+	// done
 	{
 		name: 'Russian',
 		code: 'ru',
 	},
+	// done
 	{
 		name: 'Ukrainian',
 		code: 'uk',
@@ -147,13 +160,13 @@ const chunks = fs.readFileSync('../locale/en-US.ftl', 'utf8').split('\n\n').map(
 	tokens: encode(c).length,
 }));
 
-const BASE = `Translate the entire following Fluent localization file into Lithuanian. Return the entire response in a code block using the original format.
+const BASE = `Translate the entire following Fluent localization file into Ukrainian. Return the entire response in a code block using the original format.
 
 ---`;
 
 const END = `---
 
-Remember, only translate into Lithuanian.`;
+Remember, only translate into Ukrainian.`;
 
 const BASE_TOKENS = encode(BASE).length + encode(END).length;
 

@@ -1,6 +1,9 @@
 //! Portions of this implementation are taken from the Poise + Fluent example.
 //! https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 
+// https://discord.com/developers/docs/interactions/application-commands#application-command-object
+// ^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$
+
 use core::panic;
 use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
