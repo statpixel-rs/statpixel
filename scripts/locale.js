@@ -126,22 +126,27 @@ const SUPPORTED_LANGUAGES = [
 		name: 'Ukrainian',
 		code: 'uk',
 	},
+	// done
 	{
 		name: 'Hindi',
 		code: 'hi',
 	},
+	// done
 	{
 		name: 'Thai',
 		code: 'th',
 	},
+	// done
 	{
 		name: 'Chinese (China)',
 		code: 'zh-CN',
 	},
+	// done
 	{
 		name: 'Chinese (Taiwan)',
 		code: 'zh-TW',
 	},
+	// done
 	{
 		name: 'Japanese',
 		code: 'ja',
@@ -160,13 +165,13 @@ const chunks = fs.readFileSync('../locale/en-US.ftl', 'utf8').split('\n\n').map(
 	tokens: encode(c).length,
 }));
 
-const BASE = `Translate the entire following Fluent localization file into Ukrainian. Return the entire response in a code block using the original format.
+const BASE = `Translate the entire following Fluent localization file into Korean. Return the entire response in a code block using the original format.
 
 ---`;
 
 const END = `---
 
-Remember, only translate into Ukrainian.`;
+Remember, only translate into Korean.`;
 
 const BASE_TOKENS = encode(BASE).length + encode(END).length;
 
