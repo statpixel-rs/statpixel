@@ -233,7 +233,7 @@ background = fundal
   .colour-description = Culoarea fundalului
 
 error-invalid-colour = Culoare nevalidă furnizată
-error-invalid-colour-description = Culoarea furnizată nu este validă. Încercați să furnizați una dintre [aceste culori](https://simple.wikipedia.org/wiki/List_of-colors) sau o culoare hexagonală cu prefixul `#`.
+error-invalid-colour-description = Culoarea furnizată nu este validă. Încercați să furnizați una dintre [aceste culori](https://simple.wikipedia.org/wiki/List_of_colors) sau o culoare hexagonală cu prefixul `#`.
 colour-changed = Culoare fundal schimbată
 colour-changed-description = Culoarea fundalului dvs. a fost schimbată în {$colour}.
 
@@ -370,7 +370,7 @@ skyblock-vault = seif
   .profile = profil
   .profile-description = Profilul de vizualizat
 
-skyblock-pets = animale_de-companie
+skyblock-pets = animale-de-companie
   .description = Vizualizați animalele de companie SkyBlock
   .username = numeutilizator
   .username-description = Numele utilizatorului Minecraft
@@ -845,7 +845,7 @@ time-played = Timp de joc
 
 blitz-general = general
   .description = Vizualizați statisticile Blitz Survival Games
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -854,7 +854,7 @@ blitz-general = general
 
 blitz-from = de-la
   .description = Vizualizați dezvoltarea statisticilor Blitz Survival Games începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -865,7 +865,7 @@ blitz-from = de-la
 
 blitz-history = istoric
   .description = Vizualizați dezvoltarea statisticilor Blitz Survival Games de-a lungul timpului
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -874,7 +874,7 @@ blitz-history = istoric
 
 blitz-project = proiect
   .description = Proiectați statistici Blitz Survival Games în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -887,7 +887,7 @@ blitz-project = proiect
 
 blitz-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor Blitz Survival Games în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -896,7 +896,7 @@ blitz-daily = zilnic
 
 blitz-weekly = săptămânal
   .description = Vizualizați dezvoltarea statisticilor Blitz Survival Games în ultima săptămână
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -905,7 +905,7 @@ blitz-weekly = săptămânal
 
 blitz-monthly = lunar
   .description = Vizualizați dezvoltarea statisticilor Blitz Survival Games în ultima lună
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -923,7 +923,7 @@ most-points-team = Cei mai mulți puncte (Echipă)
 
 buildbattle-general = general
   .description = Vizualizați statisticile Build Battle
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -932,7 +932,7 @@ buildbattle-general = general
 
 buildbattle-from = de-la
   .description = Vizualizați dezvoltarea statisticilor Build Battle începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -943,7 +943,7 @@ buildbattle-from = de-la
 
 buildbattle-history = istoric
   .description = Vizualizați dezvoltarea statisticilor Build Battle de-a lungul timpului
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -952,7 +952,7 @@ buildbattle-history = istoric
 
 buildbattle-project = proiect
   .description = Proiectați statistici Build Battle în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -965,7 +965,7 @@ buildbattle-project = proiect
 
 buildbattle-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor Build Battle în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -974,7 +974,7 @@ buildbattle-daily = zilnic
 
 buildbattle-weekly = săptămânal
   .description = Vizualizați dezvoltarea statisticilor Build Battle în ultima săptămână
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -983,7 +983,7 @@ buildbattle-weekly = săptămânal
 
 buildbattle-monthly = lunar
   .description = Vizualizați dezvoltarea statisticilor Build Battle în ultima lună
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -1005,7 +1005,7 @@ bombs-planted = Bombe plasate
 
 copsandcrims-general = general
   .description = Vizualizați statisticile Cops and Crims
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -1014,7 +1014,7 @@ copsandcrims-general = general
 
 copsandcrims-from = de-la
   .description = Vizualizați dezvoltarea statisticilor Cops and Crims începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -1025,7 +1025,7 @@ copsandcrims-from = de-la
 
 copsandcrims-history = istoric
   .description = Vizualizați dezvoltarea statisticilor Cops and Crims de-a lungul timpului
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -1034,7 +1034,7 @@ copsandcrims-history = istoric
 
 copsandcrims-project = proiect
   .description = Proiectați statistici Cops and Crims în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -1047,7 +1047,7 @@ copsandcrims-project = proiect
 
 copsandcrims-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor Cops and Crims în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2012,7 +2012,7 @@ uhc-from = de-la
 
 uhc-history = istoric
   .description = Vizualizați dezvoltarea statisticilor UHC Champions în timp
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2021,7 +2021,7 @@ uhc-history = istoric
 
 uhc-project = proiect
   .description = Proiectați statisticile UHC Champions în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2034,7 +2034,7 @@ uhc-project = proiect
 
 uhc-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor UHC Champions în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2043,7 +2043,7 @@ uhc-daily = zilnic
 
 uhc-weekly = săptămânal
   .description = Vizualizați dezvoltarea statisticilor UHC Champions în ultima săptămână
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2052,7 +2052,7 @@ uhc-weekly = săptămânal
 
 uhc-monthly = lunar
   .description = Vizualizați dezvoltarea statisticilor UHC Champions în ultima lună
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2079,7 +2079,7 @@ vkdr = VKDR
 
 vampirez-general = general
   .description = Vizualizați statisticile VampireZ
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2088,7 +2088,7 @@ vampirez-general = general
 
 vampirez-from = de-la
   .description = Vizualizați dezvoltarea statisticilor VampireZ începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2099,7 +2099,7 @@ vampirez-from = de-la
 
 vampirez-history = istoric
   .description = Vizualizați dezvoltarea statisticilor VampireZ în timp
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2108,7 +2108,7 @@ vampirez-history = istoric
 
 vampirez-project = proiect
   .description = Proiectați statisticile VampireZ în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2121,7 +2121,7 @@ vampirez-project = proiect
 
 vampirez-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor VampireZ în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2130,7 +2130,7 @@ vampirez-daily = zilnic
 
 vampirez-weekly = săptămânal
   .description = Vizualizați dezvoltarea statisticilor VampireZ în ultima săptămână
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2139,7 +2139,7 @@ vampirez-weekly = săptămânal
 
 vampirez-monthly = lunar
   .description = Vizualizați dezvoltarea statisticilor VampireZ în ultima lună
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2155,7 +2155,7 @@ iron-broken = Fier rupt
 
 walls-general = general
   .description = Vizualizați statisticile The Walls
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2164,7 +2164,7 @@ walls-general = general
 
 walls-from = de-la
   .description = Vizualizați dezvoltarea statisticilor The Walls începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2175,7 +2175,7 @@ walls-from = de-la
 
 walls-history = istoric
   .description = Vizualizați dezvoltarea statisticilor The Walls în timp
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2184,7 +2184,7 @@ walls-history = istoric
 
 walls-project = proiect
   .description = Proiectați statisticile The Walls în viitor
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2197,7 +2197,7 @@ walls-project = proiect
 
 walls-daily = zilnic
   .description = Vizualizați dezvoltarea statisticilor The Walls în ultima zi
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2206,7 +2206,7 @@ walls-daily = zilnic
 
 walls-weekly = săptămânal
   .description = Vizualizați dezvoltarea statisticilor The Walls în ultima săptămână
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2215,7 +2215,7 @@ walls-weekly = săptămânal
 
 walls-monthly = lunar
   .description = Vizualizați dezvoltarea statisticilor The Walls în ultima lună
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2236,7 +2236,7 @@ mvps = MVP-uri
 
 warlords-general = general
   .description = Vizualizați statisticile Warlords
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
@@ -2245,7 +2245,7 @@ warlords-general = general
 
 warlords-from = de-la
   .description = Vizualizați dezvoltarea statisticilor Warlords începând cu un moment specific
-  .username = nume_de-utilizator
+  .username = nume-de-utilizator
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft

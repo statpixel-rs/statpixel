@@ -233,7 +233,7 @@ background = background
   .colour-description = Il colore dello sfondo
 
 error-invalid-colour = Colore non valido fornito
-error-invalid-colour-description = Il colore fornito non è valido. Prova a fornire uno di [questi colori](https://simple.wikipedia.org/wiki/List_of-colors) o un colore esadecimale preceduto da `#`.
+error-invalid-colour-description = Il colore fornito non è valido. Prova a fornire uno di [questi colori](https://simple.wikipedia.org/wiki/List_of_colors) o un colore esadecimale preceduto da `#`.
 colour-changed = Colore di sfondo modificato
 colour-changed-description = Il colore di sfondo è stato cambiato in {$colour}.
 

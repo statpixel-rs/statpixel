@@ -233,7 +233,7 @@ background = background
   .colour-description = สีของพื้นหลัง
 
 error-invalid-colour = สีที่ให้มาไม่ถูกต้อง
-error-invalid-colour-description = สีที่ให้มาไม่ถูกต้อง ลองให้กำหนดหนึ่งใน [สีเหล่านี้] (https://simple.wikipedia.org/wiki/List_of-colors) หรือสีฮักเซียเพิ่มต้นทางด้วย `#`
+error-invalid-colour-description = สีที่ให้มาไม่ถูกต้อง ลองให้กำหนดหนึ่งใน [สีเหล่านี้] (https://simple.wikipedia.org/wiki/List_of_colors) หรือสีฮักเซียเพิ่มต้นทางด้วย `#`
 colour-changed = เปลี่ยนสีพื้นหลังแล้ว
 colour-changed-description = สีพื้นหลังของคุณถูกเปลี่ยนเป็น {$colour}.
 

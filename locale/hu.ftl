@@ -234,7 +234,7 @@ background = háttér
   .colour-description = A háttér színe
 
 error-invalid-colour = Érvénytelen szín megadva
-error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of-colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
+error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of_colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
 colour-changed = Háttérszín megváltozott
 colour-changed-description = A háttérszíne megváltozott {$colour}.
 

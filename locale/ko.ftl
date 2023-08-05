@@ -229,7 +229,7 @@ background = 배경
   .colour-description = 배경의 색상
 
 error-invalid-colour = 잘못된 색상이 제공되었습니다
-error-invalid-colour-description = 제공된 색상이 잘못되었습니다. [다음 색상](https://simple.wikipedia.org/wiki/List_of-colors) 또는 `#`으로 시작하는 16진수 색상 중 하나를 입력하세요.
+error-invalid-colour-description = 제공된 색상이 잘못되었습니다. [다음 색상](https://simple.wikipedia.org/wiki/List_of_colors) 또는 `#`으로 시작하는 16진수 색상 중 하나를 입력하세요.
 colour-changed = 배경 색상 변경됨
 colour-changed-description = 배경 색상이 {$colour}(으)로 변경되었습니다.
 

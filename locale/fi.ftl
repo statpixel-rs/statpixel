@@ -231,7 +231,7 @@ background = tausta
   .colour-description = Taustan väri
 
 error-invalid-colour = Virheellinen väri annettu
-error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of-colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
+error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of_colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
 colour-changed = Taustan väri vaihdettu
 colour-changed-description = Taustan väri on vaihdettu muotoon {$colour}.
 

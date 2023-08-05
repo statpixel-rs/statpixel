@@ -233,7 +233,7 @@ background = pozadina
   .colour-description = Boja pozadine
 
 error-invalid-colour = Neispravna boja navedena
-error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of-colors) ili heksadecimalnu boju s prefiksom `#`.
+error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of_colors) ili heksadecimalnu boju s prefiksom `#`.
 colour-changed = Boja pozadine promijenjena
 colour-changed-description = Boja vaše pozadine promijenjena je u {$colour}.
 

@@ -233,7 +233,7 @@ background = background
   .colour-description = Цветът на фона
 
 error-invalid-colour = Предоставеният цвят е невалиден
-error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of-colors) или шестнадесетичен цвят с префикс "#".
+error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of_colors) или шестнадесетичен цвят с префикс "#".
 colour-changed = Променен цвят на фона
 colour-changed-description = Вашият цвят на фона е променен на {$colour}.
 

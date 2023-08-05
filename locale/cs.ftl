@@ -233,7 +233,7 @@ background = background
   .colour-description = Barva pozadí
 
 error-invalid-colour = Poskytnuta neplatná barva
-error-invalid-colour-description = Poskytnutá barva je neplatná. Zkuste zadat jednu z [těchto barev](https://simple.wikipedia.org/wiki/List_of-colors) nebo hexadecimální barvu s prefixem `#`.
+error-invalid-colour-description = Poskytnutá barva je neplatná. Zkuste zadat jednu z [těchto barev](https://simple.wikipedia.org/wiki/List_of_colors) nebo hexadecimální barvu s prefixem `#`.
 colour-changed = Barva pozadí změněna
 colour-changed-description = Vaše barva pozadí byla změněna na {$colour}.
 

@@ -87,7 +87,7 @@ track-success-description =
 
 track = track
   .description = Rastreia as estatísticas de um jogador e envia suas mudanças para o canal atual.
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = O nome de usuário do Minecraft para rastrear
   .uuid = uuid
   .uuid-description = O UUID do Minecraft para rastrear
@@ -197,9 +197,9 @@ about = sobre
 
 # /winstreaks
 
-winstreaks = sequência_de-vitórias
+winstreaks = sequência-de-vitórias
   .description = Ver sequências de vitórias
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -214,7 +214,7 @@ playing = Jogando
 
 recent = recente
   .description = Ver jogos recentes
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -233,7 +233,7 @@ background = fundo
   .colour-description = A cor do fundo
 
 error-invalid-colour = Cor inválida fornecida
-error-invalid-colour-description = A cor fornecida é inválida. Tente fornecer uma das [cores disponíveis](https://simple.wikipedia.org/wiki/List_of-colors) ou uma cor hexadecimal precedida por `#`.
+error-invalid-colour-description = A cor fornecida é inválida. Tente fornecer uma das [cores disponíveis](https://simple.wikipedia.org/wiki/List_of_colors) ou uma cor hexadecimal precedida por `#`.
 colour-changed = Cor do fundo alterada
 colour-changed-description = Sua cor de fundo foi alterada para {$colour}.
 
@@ -270,7 +270,7 @@ Wardrobe = Guarda-roupas
 
 skyblock-auctions = leilões
   .description = Ver leilões do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -282,16 +282,16 @@ highest-bid = Maior Lance
 
 skyblock-inventory = inventário
   .description = Ver o inventário do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .profile = perfil
   .profile-description = O perfil a ser visualizado
 
-skyblock-enderchest = baú_do-fim
+skyblock-enderchest = baú-do-fim
   .description = Ver o baú do fim do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -300,7 +300,7 @@ skyblock-enderchest = baú_do-fim
 
 skyblock-quiver = aljava
   .description = Ver a aljava do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -309,7 +309,7 @@ skyblock-quiver = aljava
 
 skyblock-talisman = talismã
   .description = Ver a bolsa de talismãs do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -318,7 +318,7 @@ skyblock-talisman = talismã
 
 skyblock-fishing = pesca
   .description = Ver a bolsa de pesca do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -327,7 +327,7 @@ skyblock-fishing = pesca
 
 skyblock-potions = poções
   .description = Ver a bolsa de poções do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -336,7 +336,7 @@ skyblock-potions = poções
 
 skyblock-equipment = equipamentos
   .description = Ver equipamentos do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -345,7 +345,7 @@ skyblock-equipment = equipamentos
 
 skyblock-wardrobe = guarda-roupa
   .description = Ver o guarda-roupa do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -354,7 +354,7 @@ skyblock-wardrobe = guarda-roupa
 
 skyblock-candy = doces
   .description = Ver o inventário de doces do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -363,16 +363,16 @@ skyblock-candy = doces
 
 skyblock-vault = cofre
   .description = Ver o cofre pessoal do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .profile = perfil
   .profile-description = O perfil a ser visualizado
 
-skyblock-pets = animais_de-estimação
+skyblock-pets = animais-de-estimação
   .description = Ver os animais de estimação do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -381,7 +381,7 @@ skyblock-pets = animais_de-estimação
 
 skyblock-networth = valor-líquido
   .description = Ver o valor líquido do perfil do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -392,7 +392,7 @@ skyblock-networth = valor-líquido
 
 skyblock-profile = perfil
   .description = Ver o perfil do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -424,7 +424,7 @@ social = Social
 
 skyblock-bank = banco
   .description = Ver o banco do SkyBlock
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -445,14 +445,14 @@ leaderboard = classificação
 
 network-general = geral
   .description = Ver estatísticas gerais da rede
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
 
 network-history = histórico
   .description = Ver estatísticas históricas da rede
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -525,7 +525,7 @@ unlinking-succeeded-description = Você não está mais vinculado a uma conta do
 # /link
 link = vincular
   .description = Vincula sua conta do Discord a uma conta do Minecraft.
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = O nome de usuário do Minecraft a ser vinculado
   .uuid = uuid
   .uuid-description = O UUID do Minecraft a ser vinculado
@@ -564,7 +564,7 @@ mystery-gifts = Presentes Misteriosos
 
 arcade-general = geral
   .description = Ver estatísticas do Arcade
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -573,7 +573,7 @@ arcade-general = geral
 
 arcade-from = de
   .description = Ver o desenvolvimento das estatísticas do Arcade desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -584,7 +584,7 @@ arcade-from = de
 
 arcade-history = histórico
   .description = Ver o desenvolvimento das estatísticas do Arcade ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -593,7 +593,7 @@ arcade-history = histórico
 
 arcade-project = projeto
   .description = Projetar estatísticas do Arcade para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -606,7 +606,7 @@ arcade-project = projeto
 
 arcade-daily = diário
   .description = Ver o desenvolvimento das estatísticas do Arcade nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -615,7 +615,7 @@ arcade-daily = diário
 
 arcade-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas do Arcade na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -624,7 +624,7 @@ arcade-weekly = semanal
 
 arcade-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas do Arcade no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -639,7 +639,7 @@ rating = Classificação
 
 arena-general = geral
   .description = Ver estatísticas da Arena
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -648,7 +648,7 @@ arena-general = geral
 
 arena-from = de
   .description = Ver o desenvolvimento das estatísticas da Arena desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -659,7 +659,7 @@ arena-from = de
 
 arena-history = histórico
   .description = Ver o desenvolvimento das estatísticas da Arena ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -668,7 +668,7 @@ arena-history = histórico
 
 arena-project = projeto
   .description = Projetar estatísticas da Arena para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -681,7 +681,7 @@ arena-project = projeto
 
 arena-daily = diário
   .description = Ver o desenvolvimento das estatísticas da Arena nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -690,7 +690,7 @@ arena-daily = diário
 
 arena-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas da Arena na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -699,7 +699,7 @@ arena-weekly = semanal
 
 arena-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas da Arena no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -745,7 +745,7 @@ items-purchased = Itens comprados
 
 bedwars-general = geral
   .description = Ver estatísticas de Bed Wars
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -754,7 +754,7 @@ bedwars-general = geral
 
 bedwars-from = de
   .description = Ver o desenvolvimento das estatísticas de Bed Wars desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -765,7 +765,7 @@ bedwars-from = de
 
 bedwars-history = histórico
   .description = Ver o desenvolvimento das estatísticas de Bed Wars ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -774,7 +774,7 @@ bedwars-history = histórico
 
 bedwars-project = projeto
   .description = Projetar estatísticas de Bed Wars para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -787,7 +787,7 @@ bedwars-project = projeto
 
 bedwars-daily = diário
   .description = Ver o desenvolvimento das estatísticas de Bed Wars nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -796,7 +796,7 @@ bedwars-daily = diário
 
 bedwars-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas de Bed Wars na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -805,7 +805,7 @@ bedwars-weekly = semanal
 
 bedwars-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas de Bed Wars no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário no Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -845,16 +845,16 @@ time-played = Tempo de Jogo
 
 blitz-general = geral
   .description = Ver estatísticas de Blitz Survival Games
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo de Blitz Survival Games para visualizar
 
-blitz-from = a_partir-de
+blitz-from = a-partir-de
   .description = Ver o desenvolvimento de estatísticas de Blitz Survival Games desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -865,7 +865,7 @@ blitz-from = a_partir-de
 
 blitz-history = histórico
   .description = Ver o desenvolvimento de estatísticas de Blitz Survival Games ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -874,7 +874,7 @@ blitz-history = histórico
 
 blitz-project = projetar
   .description = Projetar estatísticas de Blitz Survival Games para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -887,7 +887,7 @@ blitz-project = projetar
 
 blitz-daily = diariamente
   .description = Ver o desenvolvimento de estatísticas de Blitz Survival Games nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -896,7 +896,7 @@ blitz-daily = diariamente
 
 blitz-weekly = semanalmente
   .description = Ver o desenvolvimento de estatísticas de Blitz Survival Games na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -905,7 +905,7 @@ blitz-weekly = semanalmente
 
 blitz-monthly = mensalmente
   .description = Ver o desenvolvimento de estatísticas de Blitz Survival Games no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -923,16 +923,16 @@ most-points-team = Maior Pontuação (Equipe)
 
 buildbattle-general = geral
   .description = Ver estatísticas de Build Battle
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo de Build Battle para visualizar
 
-buildbattle-from = a_partir-de
+buildbattle-from = a-partir-de
   .description = Ver o desenvolvimento de estatísticas de Build Battle desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -943,7 +943,7 @@ buildbattle-from = a_partir-de
 
 buildbattle-history = histórico
   .description = Ver o desenvolvimento de estatísticas de Build Battle ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -952,7 +952,7 @@ buildbattle-history = histórico
 
 buildbattle-project = projetar
   .description = Projetar estatísticas de Build Battle para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -965,7 +965,7 @@ buildbattle-project = projetar
 
 buildbattle-daily = diariamente
   .description = Ver o desenvolvimento de estatísticas de Build Battle nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -974,7 +974,7 @@ buildbattle-daily = diariamente
 
 buildbattle-weekly = semanalmente
   .description = Ver o desenvolvimento de estatísticas de Build Battle na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -983,7 +983,7 @@ buildbattle-weekly = semanalmente
 
 buildbattle-monthly = mensalmente
   .description = Ver o desenvolvimento de estatísticas de Build Battle no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1005,16 +1005,16 @@ bombs-planted = Bombas Plantadas
 
 copsandcrims-general = geral
   .description = Ver estatísticas de Cops and Crims
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo de Cops and Crims para visualizar
 
-copsandcrims-from = a_partir-de
+copsandcrims-from = a-partir-de
   .description = Ver o desenvolvimento de estatísticas de Cops and Crims desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1025,7 +1025,7 @@ copsandcrims-from = a_partir-de
 
 copsandcrims-history = histórico
   .description = Ver o desenvolvimento de estatísticas de Cops and Crims ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1034,7 +1034,7 @@ copsandcrims-history = histórico
 
 copsandcrims-project = projetar
   .description = Projetar estatísticas de Cops and Crims para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1047,7 +1047,7 @@ copsandcrims-project = projetar
 
 copsandcrims-daily = diariamente
   .description = Ver o desenvolvimento de estatísticas de Cops and Crims nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1056,7 +1056,7 @@ copsandcrims-daily = diariamente
 
 copsandcrims-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas de Cops and Crims na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1065,7 +1065,7 @@ copsandcrims-weekly = semanal
 
 copsandcrims-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas de Cops and Crims no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1108,7 +1108,7 @@ health-regenerated = Vida Regenerada
 
 duels-general = geral
   .description = Veja estatísticas de Duelos
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1117,7 +1117,7 @@ duels-general = geral
 
 duels-from = de
   .description = Veja o desenvolvimento das estatísticas de Duelos desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1128,7 +1128,7 @@ duels-from = de
 
 duels-history = histórico
   .description = Veja o desenvolvimento das estatísticas de Duelos ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1137,7 +1137,7 @@ duels-history = histórico
 
 duels-project = projeto
   .description = Projete estatísticas de Duelos para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1150,7 +1150,7 @@ duels-project = projeto
 
 duels-daily = diário
   .description = Veja o desenvolvimento das estatísticas de Duelos no último dia
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1159,7 +1159,7 @@ duels-daily = diário
 
 duels-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas de Duelos na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1168,7 +1168,7 @@ duels-weekly = semanal
 
 duels-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas de Duelos no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1186,7 +1186,7 @@ treasures-found = Tesouros Encontrados
 
 megawalls-general = geral
   .description = Veja estatísticas de Mega Walls
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1195,7 +1195,7 @@ megawalls-general = geral
 
 megawalls-from = de
   .description = Veja o desenvolvimento das estatísticas de Mega Walls desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1206,7 +1206,7 @@ megawalls-from = de
 
 megawalls-history = histórico
   .description = Veja o desenvolvimento das estatísticas de Mega Walls ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1215,7 +1215,7 @@ megawalls-history = histórico
 
 megawalls-project = projeto
   .description = Projete estatísticas de Mega Walls para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1228,7 +1228,7 @@ megawalls-project = projeto
 
 megawalls-daily = diário
   .description = Veja o desenvolvimento das estatísticas de Mega Walls no último dia
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1237,7 +1237,7 @@ megawalls-daily = diário
 
 megawalls-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas de Mega Walls na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1246,7 +1246,7 @@ megawalls-weekly = semanal
 
 megawalls-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas de Mega Walls no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1266,7 +1266,7 @@ detective-wins = Vitórias do Detetive
 
 murdermystery-general = geral
   .description = Veja estatísticas de Murder Mystery
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1275,7 +1275,7 @@ murdermystery-general = geral
 
 murdermystery-from = de
   .description = Veja o desenvolvimento das estatísticas de Murder Mystery desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1286,7 +1286,7 @@ murdermystery-from = de
 
 murdermystery-history = histórico
   .description = Veja o desenvolvimento das estatísticas de Murder Mystery ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1295,7 +1295,7 @@ murdermystery-history = histórico
 
 murdermystery-project = projeto
   .description = Projeto de estatísticas do Murder Mystery para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1308,7 +1308,7 @@ murdermystery-project = projeto
 
 murdermystery-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas do Murder Mystery nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1317,7 +1317,7 @@ murdermystery-daily = diariamente
 
 murdermystery-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas do Murder Mystery na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1326,7 +1326,7 @@ murdermystery-weekly = semanalmente
 
 murdermystery-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas do Murder Mystery no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1354,16 +1354,16 @@ highest-killstreak = Maior Sequência de Mortes
 
 paintball-general = geral
   .description = Visualize estatísticas do Paintball
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo do Paintball a ser visualizado
 
-paintball-from = a_partir-de
+paintball-from = a-partir-de
   .description = Veja o desenvolvimento das estatísticas do Paintball desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1374,7 +1374,7 @@ paintball-from = a_partir-de
 
 paintball-history = histórico
   .description = Veja o desenvolvimento das estatísticas do Paintball ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1383,7 +1383,7 @@ paintball-history = histórico
 
 paintball-project = projetar
   .description = Projete estatísticas do Paintball para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1396,7 +1396,7 @@ paintball-project = projetar
 
 paintball-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas do Paintball nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1405,7 +1405,7 @@ paintball-daily = diariamente
 
 paintball-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas do Paintball na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1414,7 +1414,7 @@ paintball-weekly = semanalmente
 
 paintball-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas do Paintball no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1433,16 +1433,16 @@ cr = Taxa de Conclusão
 
 pit-general = geral
   .description = Visualize estatísticas de The Pit
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo de The Pit a ser visualizado
 
-pit-from = a_partir-de
+pit-from = a-partir-de
   .description = Veja o desenvolvimento das estatísticas de The Pit desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1453,7 +1453,7 @@ pit-from = a_partir-de
 
 pit-history = histórico
   .description = Veja o desenvolvimento das estatísticas de The Pit ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1462,7 +1462,7 @@ pit-history = histórico
 
 pit-project = projetar
   .description = Projete estatísticas de The Pit para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1475,7 +1475,7 @@ pit-project = projetar
 
 pit-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas de The Pit nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1484,7 +1484,7 @@ pit-daily = diariamente
 
 pit-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas de The Pit na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1493,7 +1493,7 @@ pit-weekly = semanalmente
 
 pit-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas de The Pit no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1510,16 +1510,16 @@ sight = Visão
 
 quake-general = geral
   .description = Visualize estatísticas do Quakecraft
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
   .mode = modo
   .mode-description = O modo do Quakecraft a ser visualizado
 
-quake-from = a_partir-de
+quake-from = a-partir-de
   .description = Veja o desenvolvimento das estatísticas do Quakecraft desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1530,7 +1530,7 @@ quake-from = a_partir-de
 
 quake-history = histórico
   .description = Veja o desenvolvimento das estatísticas do Quakecraft ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1539,7 +1539,7 @@ quake-history = histórico
 
 quake-project = projeto
   .description = Estatísticas do Projeto Quakecraft para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1552,7 +1552,7 @@ quake-project = projeto
 
 quake-daily = diário
   .description = Veja o desenvolvimento das estatísticas do Quakecraft nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1561,7 +1561,7 @@ quake-daily = diário
 
 quake-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas do Quakecraft na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1570,7 +1570,7 @@ quake-weekly = semanal
 
 quake-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas do Quakecraft no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1600,7 +1600,7 @@ fastest-win = Vitória Mais Rápida
 
 skywars-general = geral
   .description = Veja estatísticas do SkyWars
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1609,7 +1609,7 @@ skywars-general = geral
 
 skywars-from = desde
   .description = Veja o desenvolvimento das estatísticas do SkyWars desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1620,7 +1620,7 @@ skywars-from = desde
 
 skywars-history = histórico
   .description = Veja o desenvolvimento das estatísticas do SkyWars ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1629,7 +1629,7 @@ skywars-history = histórico
 
 skywars-project = projeto
   .description = Estatísticas do Projeto SkyWars para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1642,7 +1642,7 @@ skywars-project = projeto
 
 skywars-daily = diário
   .description = Veja o desenvolvimento das estatísticas do SkyWars nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1651,7 +1651,7 @@ skywars-daily = diário
 
 skywars-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas do SkyWars na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1660,7 +1660,7 @@ skywars-weekly = semanal
 
 skywars-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas do SkyWars no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1675,7 +1675,7 @@ ssr = SSR
 
 smash-general = geral
   .description = Veja estatísticas do Smash Heroes
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1684,7 +1684,7 @@ smash-general = geral
 
 smash-from = desde
   .description = Veja o desenvolvimento das estatísticas do Smash Heroes desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1695,7 +1695,7 @@ smash-from = desde
 
 smash-history = histórico
   .description = Veja o desenvolvimento das estatísticas do Smash Heroes ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1704,7 +1704,7 @@ smash-history = histórico
 
 smash-project = projeto
   .description = Estatísticas do Projeto Smash Heroes para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1717,7 +1717,7 @@ smash-project = projeto
 
 smash-daily = diário
   .description = Veja o desenvolvimento das estatísticas do Smash Heroes nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1726,7 +1726,7 @@ smash-daily = diário
 
 smash-weekly = semanal
   .description = Veja o desenvolvimento das estatísticas do Smash Heroes na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1735,7 +1735,7 @@ smash-weekly = semanal
 
 smash-monthly = mensal
   .description = Veja o desenvolvimento das estatísticas do Smash Heroes no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1749,7 +1749,7 @@ survived-players = Jogadores Sobreviventes
 
 speeduhc-general = geral
   .description = Veja estatísticas do SpeedUHC
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1758,7 +1758,7 @@ speeduhc-general = geral
 
 speeduhc-from = desde
   .description = Veja o desenvolvimento das estatísticas do SpeedUHC desde um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1769,7 +1769,7 @@ speeduhc-from = desde
 
 speeduhc-history = histórico
   .description = Veja o desenvolvimento das estatísticas do SpeedUHC ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1778,7 +1778,7 @@ speeduhc-history = histórico
 
 speeduhc-project = projeto
   .description = Projeto de estatísticas do SpeedUHC para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1791,7 +1791,7 @@ speeduhc-project = projeto
 
 speeduhc-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas do SpeedUHC no último dia
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1800,7 +1800,7 @@ speeduhc-daily = diariamente
 
 speeduhc-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas do SpeedUHC na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1809,7 +1809,7 @@ speeduhc-weekly = semanalmente
 
 speeduhc-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas do SpeedUHC no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1832,7 +1832,7 @@ points = Pontos
 
 tntgames-general = geral
   .description = Veja as estatísticas do TNT Games
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1841,7 +1841,7 @@ tntgames-general = geral
 
 tntgames-from = desde
   .description = Veja o desenvolvimento das estatísticas do TNT Games desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1852,7 +1852,7 @@ tntgames-from = desde
 
 tntgames-history = histórico
   .description = Veja o desenvolvimento das estatísticas do TNT Games ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1861,7 +1861,7 @@ tntgames-history = histórico
 
 tntgames-project = projeto
   .description = Projete estatísticas do TNT Games para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1874,7 +1874,7 @@ tntgames-project = projeto
 
 tntgames-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas do TNT Games no último dia
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1883,7 +1883,7 @@ tntgames-daily = diariamente
 
 tntgames-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas do TNT Games na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1892,7 +1892,7 @@ tntgames-weekly = semanalmente
 
 tntgames-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas do TNT Games no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1911,7 +1911,7 @@ gold-trophies = Troféus de Ouro
 
 turbokartracers-general = geral
   .description = Veja as estatísticas do Turbo Kart Racers
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1920,7 +1920,7 @@ turbokartracers-general = geral
 
 turbokartracers-from = desde
   .description = Veja o desenvolvimento das estatísticas do Turbo Kart Racers desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1931,7 +1931,7 @@ turbokartracers-from = desde
 
 turbokartracers-history = histórico
   .description = Veja o desenvolvimento das estatísticas do Turbo Kart Racers ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1940,7 +1940,7 @@ turbokartracers-history = histórico
 
 turbokartracers-project = projeto
   .description = Projete estatísticas do Turbo Kart Racers para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1953,7 +1953,7 @@ turbokartracers-project = projeto
 
 turbokartracers-daily = diariamente
   .description = Veja o desenvolvimento das estatísticas do Turbo Kart Racers no último dia
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1962,7 +1962,7 @@ turbokartracers-daily = diariamente
 
 turbokartracers-weekly = semanalmente
   .description = Veja o desenvolvimento das estatísticas do Turbo Kart Racers na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1971,7 +1971,7 @@ turbokartracers-weekly = semanalmente
 
 turbokartracers-monthly = mensalmente
   .description = Veja o desenvolvimento das estatísticas do Turbo Kart Racers no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -1992,7 +1992,7 @@ ultimates-crafted = Ultimates Criadas
 
 uhc-general = geral
   .description = Veja as estatísticas do UHC Champions
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2001,7 +2001,7 @@ uhc-general = geral
 
 uhc-from = desde
   .description = Veja o desenvolvimento das estatísticas do UHC Champions desde um horário específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2012,7 +2012,7 @@ uhc-from = desde
 
 uhc-history = histórico
   .description = Ver o desenvolvimento das estatísticas do UHC Champions ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2021,7 +2021,7 @@ uhc-history = histórico
 
 uhc-project = projeto
   .description = Projetar as estatísticas do UHC Champions para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2034,7 +2034,7 @@ uhc-project = projeto
 
 uhc-daily = diário
   .description = Ver o desenvolvimento das estatísticas do UHC Champions nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2043,7 +2043,7 @@ uhc-daily = diário
 
 uhc-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas do UHC Champions na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2052,7 +2052,7 @@ uhc-weekly = semanal
 
 uhc-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas do UHC Champions no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2079,7 +2079,7 @@ vkdr = VKDR
 
 vampirez-general = geral
   .description = Ver estatísticas do VampireZ
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2088,7 +2088,7 @@ vampirez-general = geral
 
 vampirez-from = de
   .description = Ver o desenvolvimento das estatísticas do VampireZ a partir de um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2099,7 +2099,7 @@ vampirez-from = de
 
 vampirez-history = histórico
   .description = Ver o desenvolvimento das estatísticas do VampireZ ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2108,7 +2108,7 @@ vampirez-history = histórico
 
 vampirez-project = projeto
   .description = Projetar as estatísticas do VampireZ para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2121,7 +2121,7 @@ vampirez-project = projeto
 
 vampirez-daily = diário
   .description = Ver o desenvolvimento das estatísticas do VampireZ nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2130,7 +2130,7 @@ vampirez-daily = diário
 
 vampirez-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas do VampireZ na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2139,7 +2139,7 @@ vampirez-weekly = semanal
 
 vampirez-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas do VampireZ no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2155,7 +2155,7 @@ iron-broken = Ferro Quebrado
 
 walls-general = geral
   .description = Ver estatísticas do The Walls
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2164,7 +2164,7 @@ walls-general = geral
 
 walls-from = de
   .description = Ver o desenvolvimento das estatísticas do The Walls a partir de um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2175,7 +2175,7 @@ walls-from = de
 
 walls-history = histórico
   .description = Ver o desenvolvimento das estatísticas do The Walls ao longo do tempo
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2184,7 +2184,7 @@ walls-history = histórico
 
 walls-project = projeto
   .description = Projetar as estatísticas do The Walls para o futuro
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2197,7 +2197,7 @@ walls-project = projeto
 
 walls-daily = diário
   .description = Ver o desenvolvimento das estatísticas do The Walls nas últimas 24 horas
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2206,7 +2206,7 @@ walls-daily = diário
 
 walls-weekly = semanal
   .description = Ver o desenvolvimento das estatísticas do The Walls na última semana
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2215,7 +2215,7 @@ walls-weekly = semanal
 
 walls-monthly = mensal
   .description = Ver o desenvolvimento das estatísticas do The Walls no último mês
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2235,7 +2235,7 @@ mvps = MVPs
 
 warlords-general = geral
   .description = Ver estatísticas do Warlords
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2244,7 +2244,7 @@ warlords-general = geral
 
 warlords-from = de
   .description = Ver o desenvolvimento das estatísticas do Warlords a partir de um momento específico
-  .username = nome_de-usuário
+  .username = nome-de-usuário
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2255,7 +2255,7 @@ warlords-from = de
 
 warlords-history = histórico
   .description = Visualize o desenvolvimento das estatísticas de Warlords ao longo do tempo
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2264,7 +2264,7 @@ warlords-history = histórico
 
 warlords-project = projeto
   .description = Projete as estatísticas futuras de Warlords
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2277,7 +2277,7 @@ warlords-project = projeto
 
 warlords-daily = diário
   .description = Visualize o desenvolvimento das estatísticas de Warlords nas últimas 24 horas
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2286,7 +2286,7 @@ warlords-daily = diário
 
 warlords-weekly = semanal
   .description = Visualize o desenvolvimento das estatísticas de Warlords na última semana
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2295,7 +2295,7 @@ warlords-weekly = semanal
 
 warlords-monthly = mensal
   .description = Visualize o desenvolvimento das estatísticas de Warlords no último mês
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2310,7 +2310,7 @@ wool-placed = Lã Colocada
 
 woolwars-general = geral
   .description = Visualize as estatísticas do Wool Wars
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2319,7 +2319,7 @@ woolwars-general = geral
 
 woolwars-from = de
   .description = Visualize o desenvolvimento das estatísticas do Wool Wars desde um momento específico
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2330,7 +2330,7 @@ woolwars-from = de
 
 woolwars-history = histórico
   .description = Visualize o desenvolvimento das estatísticas do Wool Wars ao longo do tempo
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2339,7 +2339,7 @@ woolwars-history = histórico
 
 woolwars-project = projeto
   .description = Projete as estatísticas futuras do Wool Wars
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2352,7 +2352,7 @@ woolwars-project = projeto
 
 woolwars-daily = diário
   .description = Visualize o desenvolvimento das estatísticas do Wool Wars nas últimas 24 horas
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2361,7 +2361,7 @@ woolwars-daily = diário
 
 woolwars-weekly = semanal
   .description = Visualize o desenvolvimento das estatísticas do Wool Wars na última semana
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2370,7 +2370,7 @@ woolwars-weekly = semanal
 
 woolwars-monthly = mensal
   .description = Visualize o desenvolvimento das estatísticas do Wool Wars no último mês
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = Nome de usuário do Minecraft
   .uuid = uuid
   .uuid-description = UUID do Minecraft
@@ -2398,7 +2398,7 @@ guild-general = geral
   .description = Mostra as estatísticas de uma guilda
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2407,7 +2407,7 @@ guild-from = de
   .description = Visualize o desenvolvimento das estatísticas da guilda desde um momento específico
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2418,14 +2418,14 @@ guild-members = membros
   .description = Mostra os membros de uma guilda
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
 
 guild-member = membro
   .description = Mostra as estatísticas de um membro da guilda
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2434,7 +2434,7 @@ guild-top = top
   .description = Mostra os principais membros de uma guilda por XP
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2447,7 +2447,7 @@ guild-daily = diário
   .description = Visualize o desenvolvimento das estatísticas da guilda nas últimas 24 horas
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2456,7 +2456,7 @@ guild-weekly = semanal
   .description = Visualize o desenvolvimento das estatísticas da guilda na última semana
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar
@@ -2465,7 +2465,7 @@ guild-monthly = mensal
   .description = Visualize o desenvolvimento das estatísticas da guilda no último mês
   .name = nome
   .name-description = O nome da guilda para visualizar
-  .username = nome_de-usuario
+  .username = nome-de-usuario
   .username-description = O nome de usuário da guilda do membro para visualizar
   .uuid = uuid
   .uuid-description = O UUID da guilda do membro para visualizar

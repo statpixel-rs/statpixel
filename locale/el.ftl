@@ -233,7 +233,7 @@ background = background
   .colour-description = Το χρώμα του φόντου
 
 error-invalid-colour = Μη έγκυρο χρώμα
-error-invalid-colour-description = Το παρεχόμενο χρώμα δεν είναι έγκυρο. Δοκιμάστε να δώσετε ένα από [αυτά τα χρώματα](https://simple.wikipedia.org/wiki/List_of-colors) ή ένα χρώμα hex προεπιλεγμένο με το `#`.
+error-invalid-colour-description = Το παρεχόμενο χρώμα δεν είναι έγκυρο. Δοκιμάστε να δώσετε ένα από [αυτά τα χρώματα](https://simple.wikipedia.org/wiki/List_of_colors) ή ένα χρώμα hex προεπιλεγμένο με το `#`.
 colour-changed = Άλλαξε το χρώμα του φόντου
 colour-changed-description = Το χρώμα του φόντου σας άλλαξε σε {$colour}.
 

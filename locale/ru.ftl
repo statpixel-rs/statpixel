@@ -235,7 +235,7 @@ background = фон
   .colour-description = Цвет фона
 
 error-invalid-colour = Предоставлен недопустимый цвет
-error-invalid-colour-description = Предоставленный цвет недопустим. Попробуйте использовать один из [этих цветов](https://simple.wikipedia.org/wiki/List_of-colors) или цвет в формате hex с префиксом `#`.
+error-invalid-colour-description = Предоставленный цвет недопустим. Попробуйте использовать один из [этих цветов](https://simple.wikipedia.org/wiki/List_of_colors) или цвет в формате hex с префиксом `#`.
 colour-changed = Изменен цвет фона
 colour-changed-description = Цвет фона изменен на {$colour}.
 

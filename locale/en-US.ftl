@@ -233,7 +233,7 @@ background = background
   .colour-description = The colour of the background
 
 error-invalid-colour = Invalid colour provided
-error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of-colors) or a hex colour prefixed with `#`.
+error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of_colors) or a hex colour prefixed with `#`.
 colour-changed = Background colour changed
 colour-changed-description = Your background colour has been changed to {$colour}.
 

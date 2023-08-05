@@ -233,7 +233,7 @@ background = 背景
   .colour-description = 背景顏色
 
 error-invalid-colour = 無效的顏色
-error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of-colors)中的一種或以“＃”為前綴的十六進制顏色。
+error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of_colors)中的一種或以“＃”為前綴的十六進制顏色。
 colour-changed = 背景顏色已更改
 colour-changed-description = 您的背景顏色已更改為 {$colour}。
 

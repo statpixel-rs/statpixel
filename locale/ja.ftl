@@ -233,7 +233,7 @@ background = 背景
   .colour-description = 背景の色
 
 error-invalid-colour = 無効な色が指定されました
-error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of-colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
+error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of_colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
 colour-changed = 背景色が変更されました
 colour-changed-description = 背景色が{$colour}に変更されました。
 

@@ -229,7 +229,7 @@ background = पृष्ठभूमि
   .colour-description = पृष्ठभूमि का रंग
 
 error-invalid-colour = अमान्य रंग प्रदान किया गया
-error-invalid-colour-description = प्रदान किया गया रंग अमान्य है। कृपया [इन रंगों](https://simple.wikipedia.org/wiki/List_of-colors) में से एक प्रदान करें या `#` से प्रारंभ होने वाला हेक्स रंग दें।
+error-invalid-colour-description = प्रदान किया गया रंग अमान्य है। कृपया [इन रंगों](https://simple.wikipedia.org/wiki/List_of_colors) में से एक प्रदान करें या `#` से प्रारंभ होने वाला हेक्स रंग दें।
 colour-changed = पृष्ठभूमि रंग बदल गया
 colour-changed-description = आपकी पृष्ठभूमि का रंग बदल दिया गया है: {$colour}।
 

@@ -233,7 +233,7 @@ background = background
   .colour-description = Fono spalva
 
 error-invalid-colour = Pateikta neteisinga spalva
-error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of-colors) arba šešioliktainį spalvos kodą su simboliu `#`.
+error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of_colors) arba šešioliktainį spalvos kodą su simboliu `#`.
 colour-changed = Fono spalva pakeista
 colour-changed-description = Jūsų fono spalva pakeista į {$colour}.
 

@@ -233,7 +233,7 @@ background = hintergrund
   .colour-description = Die Farbe des Hintergrunds
 
 error-invalid-colour = Ungültige Farbe angegeben
-error-invalid-colour-description = Die angegebene Farbe ist ungültig. Versuchen Sie, eine der folgenden Farben [hier](https://simple.wikipedia.org/wiki/List-of-colors) oder eine Hex-Farbe mit dem Präfix `#` anzugeben.
+error-invalid-colour-description = Die angegebene Farbe ist ungültig. Versuchen Sie, eine der folgenden Farben [hier](https://simple.wikipedia.org/wiki/List_of_colors) oder eine Hex-Farbe mit dem Präfix `#` anzugeben.
 colour-changed = Hintergrundfarbe geändert
 colour-changed-description = Ihre Hintergrundfarbe wurde zu {$colour} geändert.
 

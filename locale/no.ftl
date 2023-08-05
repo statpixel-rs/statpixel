@@ -233,7 +233,7 @@ background = background
   .colour-description = Fargen på bakgrunnen
 
 error-invalid-colour = Ugyldig farge oppgitt
-error-invalid-colour-description = Den oppgitte fargen er ugyldig. Prøv å oppgi en av [disse fargene](https://simple.wikipedia.org/wiki/List_of-colors) eller en heksadesimal farge som starter med `#`.
+error-invalid-colour-description = Den oppgitte fargen er ugyldig. Prøv å oppgi en av [disse fargene](https://simple.wikipedia.org/wiki/List_of_colors) eller en heksadesimal farge som starter med `#`.
 colour-changed = Bakgrunnsfargen er endret
 colour-changed-description = Bakgrunnsfargen din er endret til {$colour}.
 

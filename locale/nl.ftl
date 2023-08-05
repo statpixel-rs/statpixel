@@ -233,7 +233,7 @@ background = achtergrond
   .colour-description = De kleur van de achtergrond
 
 error-invalid-colour = Ongeldige kleur opgegeven
-error-invalid-colour-description = De opgegeven kleur is ongeldig. Probeer een van [deze kleuren](https://simple.wikipedia.org/wiki/List_of-colors) of een hexadecimale kleur met voorvoegsel `#`.
+error-invalid-colour-description = De opgegeven kleur is ongeldig. Probeer een van [deze kleuren](https://simple.wikipedia.org/wiki/List_of_colors) of een hexadecimale kleur met voorvoegsel `#`.
 colour-changed = Achtergrondkleur gewijzigd
 colour-changed-description = Je achtergrondkleur is veranderd naar {$colour}.
 

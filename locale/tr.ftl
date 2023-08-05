@@ -232,7 +232,7 @@ background = background
   .colour-description = Arka plan rengi
 
 error-invalid-colour = Geçersiz renk sağlandı
-error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of-colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
+error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of_colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
 colour-changed = Arka plan rengi değiştirildi
 colour-changed-description = Arka plan renginiz {$colour} olarak değiştirildi.
 

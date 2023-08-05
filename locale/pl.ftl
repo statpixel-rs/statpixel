@@ -233,7 +233,7 @@ background = tło
   .colour-description = Kolor tła
 
 error-invalid-colour = Nieprawidłowy kolor podany
-error-invalid-colour-description = Podany kolor jest nieprawidłowy. Spróbuj podać jeden z [tych kolorów](https://simple.wikipedia.org/wiki/List_of-colors) lub kolor heksadecymalny z prefiksem `#`.
+error-invalid-colour-description = Podany kolor jest nieprawidłowy. Spróbuj podać jeden z [tych kolorów](https://simple.wikipedia.org/wiki/List_of_colors) lub kolor heksadecymalny z prefiksem `#`.
 colour-changed = Zmiana koloru tła
 colour-changed-description = Twój kolor tła został zmieniony na {$colour}.
 
