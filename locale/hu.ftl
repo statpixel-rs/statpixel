@@ -2024,6 +2024,10 @@ uhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
+  .kind = statisztika
+  .kind-description = A megjelenítendő UHC Champions statisztika
+  .value = érték
+  .value-description = A statisztikához tartozó érték
 
 uhc-daily = napi
   .description = Tekintse meg az UHC Champions statisztikák alakulását az elmúlt nap alatt
@@ -2263,6 +2267,10 @@ warlords-project = projekt
   .uuid-description = Minecraft azonosító
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
+  .kind = statisztika
+  .kind-description = A Warlords statisztika, amit szeretne projektálni
+  .value = érték
+  .value-description = Az érték, amit a statisztikához szeretne hozzárendelni
 
 warlords-daily = napi
   .description = Nézd meg a Warlords statisztikák fejlődését az elmúlt nap alatt

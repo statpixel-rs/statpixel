@@ -2025,6 +2025,10 @@ uhc-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
+  .kind = 통계
+  .kind-description = 예측할 UHC Champions 통계
+  .value = 값
+  .value-description = 예측할 통계값
 
 uhc-daily = 일일
   .description = 지난 하루 동안의 UHC Champions 통계 보기
@@ -2264,6 +2268,10 @@ warlords-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
+  .kind = 통계
+  .kind-description = 예측할 Warlords 통계
+  .value = 값
+  .value-description = 예측할 통계값
 
 warlords-daily = 일일
   .description = 지난 하루 동안의 Warlords 통계 보기

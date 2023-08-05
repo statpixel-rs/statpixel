@@ -1060,6 +1060,8 @@ copsandcrims-weekly = สัปดาห์ล่าสุด
   .username-description = ชื่อผู้เล่น Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
+  .mode = โหมด
+  .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
 
 copsandcrims-monthly = เดือนล่าสุด
   .description = ดูการพัฒนาสถิติ Cops and Crims ในช่วงเดือนที่ผ่านมา

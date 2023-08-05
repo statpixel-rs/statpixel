@@ -339,6 +339,9 @@ skyblock-equipment = equipment
   .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .profile = профил
+  .profile-description = Профилът за преглед
 
 skyblock-wardrobe = гардероб
   .description = Преглед на гардероба на SkyBlock
