@@ -1,3 +1,4 @@
+use serde::Deserialize;
 use std::{
 	str::FromStr,
 	sync::atomic::{AtomicBool, Ordering},
@@ -6,7 +7,8 @@ use std::{
 use poise::serenity_prelude as serenity;
 
 #[allow(non_camel_case_types)]
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default, Deserialize)]
+#[serde(rename_all = "kebab-case")]
 pub enum Locale {
 	bg,
 	cs,
@@ -182,6 +184,13 @@ impl<'c> Context<'c> {
 	pub fn external(data: &'c super::Data) -> Self {
 		Self {
 			locale: None,
+			interaction: ContextInteraction::External(data),
+		}
+	}
+
+	pub fn external_with_locale(data: &'c super::Data, locale: Option<Locale>) -> Self {
+		Self {
+			locale,
 			interaction: ContextInteraction::External(data),
 		}
 	}

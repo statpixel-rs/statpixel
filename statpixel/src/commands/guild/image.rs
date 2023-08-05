@@ -15,7 +15,7 @@ use minecraft::{
 	style::MinecraftFont,
 	text::{parse::minecraft_string, Text, ESCAPE},
 };
-use skia_safe::textlayout::TextAlign;
+use skia_safe::{textlayout::TextAlign, Color};
 use tokio::join;
 use tracing::error;
 use translate::{context, tr};
@@ -30,8 +30,8 @@ pub async fn top(
 	guild: &Guild,
 	limit: usize,
 	after: DateTime<Utc>,
+	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let guilds =
 		crate::commands::guild::get_snapshots_multiple_of_weekday(ctx, guild, after).await?;
 
@@ -151,8 +151,8 @@ pub async fn top(
 pub async fn members(
 	ctx: &context::Context<'_>,
 	guild: &Guild,
+	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let mut members =
 		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
 			|p| async {
@@ -253,8 +253,8 @@ pub async fn members(
 pub async fn general(
 	ctx: &context::Context<'_>,
 	guild: &Guild,
+	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let guilds =
 		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
@@ -415,8 +415,8 @@ pub async fn member(
 	ctx: &context::Context<'_>,
 	guild: &Guild,
 	player: &Player,
+	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
 	let guilds =
 		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
 			.await?;
