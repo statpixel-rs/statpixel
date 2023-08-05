@@ -22,7 +22,7 @@ error-invalid-uuid = Невалиден идентификатор {$uuid}.
 error-invalid-username = Невалидно потребителско име {$name}.
 error-member-player-not-found = Членът {$name} не е намерен в профила.
 error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на {$name}.
-error-player-snapshot-not-found = Няма намерени снимки за {$name}. Създайте една с </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Няма намерени снимки за {$name}. Създайте една с </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = Не е намерен класиране с име {$name}.
 error-profile-not-found = Профилът на SkyBlock {$profile}, принадлежащ на {$name}, има изключена API или не се е вписвал след новата система за профили.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Продължителността на аргумента
 # Бързи съвети
 
 tip-background = <:knowledge_book:1117179094556233828> Променете фона на генерираните изображения с </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Вижте хронологичен график на вашите статистики с </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Вижте промяната в статистиката от определена дата с </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Вижте хронологичен график на вашите статистики с </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Вижте промяната в статистиката от определена дата с </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Вижте множество класирания с </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Поддържаме SkyBlock! Вижте профил с </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Свържете профила си на Minecraft с </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Вижте статистиките на гилдията си с </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Достъп до вашите дневни статистики с </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Достъп до вашите дневни статистики с </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Промяна на формата на екрана с </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Получете повече помощ с </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Посетете нашия уебсайт на <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Присъединете се към нашия сървър за поддръжка на <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Вижте оценки на всичките си данни с </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Вижте оценки на всичките си данни с </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Вижте вашите поредни победи с </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Вижте вашите последни игри с </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Вижте цените в SkyBlock Bazaar с </skyblock bazaar:1113624864826327074>.
@@ -87,7 +87,7 @@ track-success-description =
 
 track = track
   .description = Проследява статистиката на играч и изпраща промените й към текущия канал.
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име, което да се проследява
   .uuid = uuid
   .uuid-description = Minecraft UUID, което да се проследява
@@ -199,7 +199,7 @@ about = about
 
 winstreaks = winstreaks
   .description = Преглед на поредиците от победи
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -214,7 +214,7 @@ playing = Играе
 
 recent = recent
   .description = Преглед на последни игри
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -233,7 +233,7 @@ background = background
   .colour-description = Цветът на фона
 
 error-invalid-colour = Предоставеният цвят е невалиден
-error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of_colors) или шестнадесетичен цвят с префикс "#".
+error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of-colors) или шестнадесетичен цвят с префикс "#".
 colour-changed = Променен цвят на фона
 colour-changed-description = Вашият цвят на фона е променен на {$colour}.
 
@@ -270,7 +270,7 @@ Wardrobe = Гардероб
 
 skyblock-auctions = auctions
   .description = Преглед на SkyBlock търгове
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -282,7 +282,7 @@ highest-bid = Най-висока оферта
 
 skyblock-inventory = inventory
   .description = Преглед на SkyBlock инвентар
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -291,7 +291,7 @@ skyblock-inventory = inventory
 
 skyblock-enderchest = enderchest
   .description = Преглед на SkyBlock enderchest
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -300,7 +300,7 @@ skyblock-enderchest = enderchest
 
 skyblock-quiver = quiver
   .description = Преглед на SkyBlock колчан
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -309,7 +309,7 @@ skyblock-quiver = quiver
 
 skyblock-talisman = talisman
   .description = Преглед на SkyBlock талисман чанта
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -318,7 +318,7 @@ skyblock-talisman = talisman
 
 skyblock-fishing = fishing
   .description = Преглед на SkyBlock рибарска чанта
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -327,7 +327,7 @@ skyblock-fishing = fishing
 
 skyblock-potions = potions
   .description = Преглед на SkyBlock зелия чанта
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -336,13 +336,13 @@ skyblock-potions = potions
 
 skyblock-equipment = equipment
   .description = Преглед на SkyBlock екипировка
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = uuid
 
 skyblock-wardrobe = гардероб
   .description = Преглед на гардероба на SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -351,7 +351,7 @@ skyblock-wardrobe = гардероб
 
 skyblock-candy = сладкиши
   .description = Преглед на сладкишите на SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -360,16 +360,16 @@ skyblock-candy = сладкиши
 
 skyblock-vault = сейф
   .description = Преглед на личния сейф на SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .profile = профил
   .profile-description = Профилът за преглед
 
-skyblock-pets = домашни любимци
+skyblock-pets = домашни-любимци
   .description = Преглед на домашните любимци на SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -378,7 +378,7 @@ skyblock-pets = домашни любимци
 
 skyblock-networth = стойност
   .description = Преглед на стойността на профила в SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -389,7 +389,7 @@ skyblock-networth = стойност
 
 skyblock-profile = профил
   .description = Преглед на профил в SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -421,7 +421,7 @@ social = Социални
 
 skyblock-bank = банка
   .description = Преглед на банката в SkyBlock
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -442,14 +442,14 @@ leaderboard = класация
 
 network-general = общо
   .description = Преглед на общите мрежови статистики
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
 
 network-history = история
   .description = Преглед на историческите мрежови статистики
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -476,24 +476,24 @@ help = помощ
   .description = Показва помощното меню.
 
 help-general = Общо <:cookie:1115091335565811775>
-help-general-description = StatPixel поддържа всяка игра на Hypixel Network. Можете да видите статистика за всяка игра, като използвате `/<game> общо`. Например, опитайте с </bedwars общо:1113624864272683060>!
+help-general-description = StatPixel поддържа всяка игра на Hypixel Network. Можете да видите статистика за всяка игра, като използвате `/<game> общо`. Например, опитайте с </bedwars general:1113624864272683060>!
 
 help-display = Показване <:spyglass:1115091333657411625>
-help-display-description = Ако използвате ограничено интернет съединение или просто искате да спестите данни, можете да получавате отговори в различни формати, като текст или компактни изображения, с помощта на </покажи:1113624864272683066>.
+help-display-description = Ако използвате ограничено интернет съединение или просто искате да спестите данни, можете да получавате отговори в различни формати, като текст или компактни изображения, с помощта на </display:1113624864272683066>.
 
 help-link = Връзка <a:recovery_compass:1115091332680126504>
-help-link-description = Писането на потребителско име за всеки командуване може да стане напрегнато. За да го направите по-лесно, можете да свържете акаунт без да го потвърждавате с помощта на </връзка:1113624864524357710> и после да го разкачите с </откачете:1113624865262538854>.
+help-link-description = Писането на потребителско име за всеки командуване може да стане напрегнато. За да го направите по-лесно, можете да свържете акаунт без да го потвърждавате с помощта на </link:1113624864524357710> и после да го разкачите с </unlink:1113624865262538854>.
 
 help-snapshot = Моментни снимки <:book_and_quill:1115091331379900428>
-help-snapshot-description = Моментните снимки са начин да видите промените в статистиката си с течение на времето. Има няколко команди за удобство, които ще ви улеснят: </bedwars дневно:1113624864272683065>, </bedwars седмично:1113624865262538858> и </bedwars месечно:1113624864524357712>. Те работят и за вашата гилдия, така че опитайте с </гилдия дневно:1113624864272683065>!
+help-snapshot-description = Моментните снимки са начин да видите промените в статистиката си с течение на времето. Има няколко команди за удобство, които ще ви улеснят: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> и </bedwars monthly:1113624864524357712>. Те работят и за вашата гилдия, така че опитайте с </guild daily:1113624864272683065>!
   
-  Ако искате да видите по-специфичен период, опитайте с </bedwars от:1113624864524357705>.
+  Ако искате да видите по-специфичен период, опитайте с </bedwars from:1113624864524357705>.
 
 help-history = История <a:clock:1115091329958019253>
-help-history-description = За да видите графика на промените на конкретна статистика с течение на времето, опитайте с </история мрежа:1113624864524357708>.
+help-history-description = За да видите графика на промените на конкретна статистика с течение на времето, опитайте с </network history:1113624864524357708>.
 
 help-image-builder = Създател на изображения <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Създайте свои собствени динамични изображения с Image Builder! Започнете с </създател:1125992506501365891> или отидете на https://statpixel.xyz/docs/builder за повече информация.
+help-image-builder-description = Създайте свои собствени динамични изображения с Image Builder! Започнете с </builder:1125992506501365891> или отидете на https://statpixel.xyz/docs/builder за повече информация.
 
 # /display
 display = покажи
@@ -522,7 +522,7 @@ unlinking-succeeded-description = Вече не сте свързани с Minec
 # /link
 link = свързване
   .description = Свързва вашия Discord акаунт с Minecraft акаунт.
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име за свързване
   .uuid = uuid
   .uuid-description = Minecraft UUID за свързване
@@ -545,7 +545,7 @@ OneInTheQuiver = Един в Точен
 EnderSpleef = Ендър Spleef
 FarmHunt = Ферма Лов
 DragonWars = Войни на Дракони
-BlockingDead = Зомбита
+BlockingDead = Блокиращи Мъртви
 Zombies = Зомбита
 ZombiesBadBlood = Зомбита: Лоша Кръв
 ZombiesDeadEnd = Зомбита: Слеп Улица
@@ -561,7 +561,7 @@ mystery-gifts = Тайни Подаръци
 
 arcade-general = общо
   .description = Вижте статистиката на Arcade
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -570,18 +570,18 @@ arcade-general = общо
 
 arcade-from = от
   .description = Вижте развитието на статистиката на Arcade от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Arcade, който да се покаже
   .time = време
-  .time-description = Времевият интервал (например: 1ч 12мин 5сек)
+  .time-description = Времевият интервал (1h 12m 5s)
 
 arcade-history = история
   .description = Вижте развитието на статистиката на Arcade във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -590,7 +590,7 @@ arcade-history = история
 
 arcade-project = проект
   .description = Прогнозиране на статистиката на Arcade в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -603,7 +603,7 @@ arcade-project = проект
 
 arcade-daily = дневно
   .description = Вижте развитието на статистиката на Arcade през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -612,7 +612,7 @@ arcade-daily = дневно
 
 arcade-weekly = седмично
   .description = Вижте развитието на статистиката на Arcade през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -621,7 +621,7 @@ arcade-weekly = седмично
 
 arcade-monthly = месечно
   .description = Вижте развитието на статистиката на Arcade през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -636,7 +636,7 @@ rating = Рейтинг
 
 arena-general = общо
   .description = Вижте статистиката на Arena
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -645,18 +645,18 @@ arena-general = общо
 
 arena-from = от
   .description = Вижте развитието на статистиката на Arena от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Arena, който да се покаже
   .time = време
-  .time-description = Времевият интервал (например: 1ч 12мин 5сек)
+  .time-description = Времевият интервал (1h 12m 5s)
 
 arena-history = история
   .description = Вижте развитието на статистиката на Arena във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -665,7 +665,7 @@ arena-history = история
 
 arena-project = проект
   .description = Прогнозиране на статистиката на Arena в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -678,7 +678,7 @@ arena-project = проект
 
 arena-daily = дневно
   .description = Вижте развитието на статистиката на Arena през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -687,7 +687,7 @@ arena-daily = дневно
 
 arena-weekly = седмично
   .description = Вижте развитието на статистиката на Arena през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -696,7 +696,7 @@ arena-weekly = седмично
 
 arena-monthly = месечно
   .description = Вижте развитието на статистиката на Arena през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -742,7 +742,7 @@ items-purchased = Купени Артикули
 
 bedwars-general = общо
   .description = Вижте статистиката на Bed Wars
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -751,18 +751,18 @@ bedwars-general = общо
 
 bedwars-from = от
   .description = Вижте развитието на статистиката на Bed Wars от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Bed Wars, който да се покаже
   .time = време
-  .time-description = Времевият интервал (например: 1ч 12мин 5сек)
+  .time-description = Времевият интервал (1h 12m 5s)
 
 bedwars-history = история
   .description = Вижте развитието на статистиката на Bed Wars във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -771,7 +771,7 @@ bedwars-history = история
 
 bedwars-project = проект
   .description = Прогнозиране на статистиката на Bed Wars в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -784,7 +784,7 @@ bedwars-project = проект
 
 bedwars-daily = дневно
   .description = Вижте развитието на статистиката на Bed Wars през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -793,7 +793,7 @@ bedwars-daily = дневно
 
 bedwars-weekly = седмично
   .description = Вижте развитието на статистиката на Bed Wars през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -802,7 +802,7 @@ bedwars-weekly = седмично
 
 bedwars-monthly = месечно
   .description = Вижте развитието на статистиката на Bed Wars през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -842,7 +842,7 @@ time-played = Време на игра
 
 blitz-general = общо
   .description = Преглед на статистиката на Blitz Survival Games
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -851,18 +851,18 @@ blitz-general = общо
 
 blitz-from = от
   .description = Преглед на развитието на статистиката на Blitz Survival Games от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Blitz Survival Games за преглед
   .time = време
-  .time-description = Времето, за което да се върнете назад (например 1час 12мин 5с)
+  .time-description = Времето, за което да се върнете назад (1h 12m 5s)
 
 blitz-history = история
   .description = Преглед на развитието на статистиката на Blitz Survival Games във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -871,7 +871,7 @@ blitz-history = история
 
 blitz-project = проект
   .description = Прожектиране на статистиката на Blitz Survival Games в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -884,7 +884,7 @@ blitz-project = проект
 
 blitz-daily = дневно
   .description = Преглед на развитието на статистиката на Blitz Survival Games през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -893,7 +893,7 @@ blitz-daily = дневно
 
 blitz-weekly = седмично
   .description = Преглед на развитието на статистиката на Blitz Survival Games през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -902,7 +902,7 @@ blitz-weekly = седмично
 
 blitz-monthly = месечно
   .description = Преглед на развитието на статистиката на Blitz Survival Games през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -920,7 +920,7 @@ most-points-team = Най-много точки (Отборен режим)
 
 buildbattle-general = общо
   .description = Преглед на статистиката на Build Battle
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -929,18 +929,18 @@ buildbattle-general = общо
 
 buildbattle-from = от
   .description = Преглед на развитието на статистиката на Build Battle от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Build Battle за преглед
   .time = време
-  .time-description = Времето, за което да се върнете назад (например 1час 12мин 5с)
+  .time-description = Времето, за което да се върнете назад (1h 12m 5s)
 
 buildbattle-history = история
   .description = Преглед на развитието на статистиката на Build Battle във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -949,7 +949,7 @@ buildbattle-history = история
 
 buildbattle-project = проект
   .description = Прожектиране на статистиката на Build Battle в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -962,7 +962,7 @@ buildbattle-project = проект
 
 buildbattle-daily = дневно
   .description = Преглед на развитието на статистиката на Build Battle през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -971,7 +971,7 @@ buildbattle-daily = дневно
 
 buildbattle-weekly = седмично
   .description = Преглед на развитието на статистиката на Build Battle през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -980,7 +980,7 @@ buildbattle-weekly = седмично
 
 buildbattle-monthly = месечно
   .description = Преглед на развитието на статистиката на Build Battle през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1002,7 +1002,7 @@ bombs-planted = Заложени бомби
 
 copsandcrims-general = общо
   .description = Преглед на статистиката на Cops and Crims
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1011,18 +1011,18 @@ copsandcrims-general = общо
 
 copsandcrims-from = от
   .description = Преглед на развитието на статистиката на Cops and Crims от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Cops and Crims за преглед
   .time = време
-  .time-description = Времето, за което да се върнете назад (например 1час 12мин 5с)
+  .time-description = Времето, за което да се върнете назад (1h 12m 5s)
 
 copsandcrims-history = история
   .description = Преглед на развитието на статистиката на Cops and Crims във времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1031,7 +1031,7 @@ copsandcrims-history = история
 
 copsandcrims-project = проект
   .description = Прожектиране на статистиката на Cops and Crims в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1044,7 +1044,7 @@ copsandcrims-project = проект
 
 copsandcrims-daily = дневно
   .description = Преглед на развитието на статистиката на Cops and Crims през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Потребителско име на Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1053,7 +1053,7 @@ copsandcrims-daily = дневно
 
 copsandcrims-weekly = седмично
   .description = Вижте развитието на статистиката на Cops and Crims през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1062,7 +1062,7 @@ copsandcrims-weekly = седмично
 
 copsandcrims-monthly = месечно
   .description = Вижте развитието на статистиката на Cops and Crims през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1105,7 +1105,7 @@ health-regenerated = Възстановено здраве
 
 duels-general = общи
   .description = Вижте статистиката на Duels
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1114,18 +1114,18 @@ duels-general = общи
 
 duels-from = от
   .description = Вижте развитието на статистиката на Duels от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Duels за преглед
   .time = време
-  .time-description = Времето, от което да се върнете назад (например 1ч 12мин 5с)
+  .time-description = Времето, от което да се върнете назад (1h 12m 5s)
 
 duels-history = история
   .description = Вижте развитието на статистиката на Duels с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1134,7 +1134,7 @@ duels-history = история
 
 duels-project = проекция
   .description = Проектирайте статистиката на Duels в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1147,7 +1147,7 @@ duels-project = проекция
 
 duels-daily = дневно
   .description = Вижте развитието на статистиката на Duels през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1156,7 +1156,7 @@ duels-daily = дневно
 
 duels-weekly = седмично
   .description = Вижте развитието на статистиката на Duels през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1165,7 +1165,7 @@ duels-weekly = седмично
 
 duels-monthly = месечно
   .description = Вижте развитието на статистиката на Duels през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1183,7 +1183,7 @@ treasures-found = Намерени съкровища
 
 megawalls-general = общи
   .description = Вижте статистиката на Mega Walls
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1192,18 +1192,18 @@ megawalls-general = общи
 
 megawalls-from = от
   .description = Вижте развитието на статистиката на Mega Walls от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Mega Walls за преглед
   .time = време
-  .time-description = Времето, от което да се върнете назад (например 1ч 12мин 5с)
+  .time-description = Времето, от което да се върнете назад (1h 12m 5s)
 
 megawalls-history = история
   .description = Вижте развитието на статистиката на Mega Walls с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1212,7 +1212,7 @@ megawalls-history = история
 
 megawalls-project = проекция
   .description = Проектирайте статистиката на Mega Walls в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1225,7 +1225,7 @@ megawalls-project = проекция
 
 megawalls-daily = дневно
   .description = Вижте развитието на статистиката на Mega Walls през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1234,7 +1234,7 @@ megawalls-daily = дневно
 
 megawalls-weekly = седмично
   .description = Вижте развитието на статистиката на Mega Walls през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1243,7 +1243,7 @@ megawalls-weekly = седмично
 
 megawalls-monthly = месечно
   .description = Вижте развитието на статистиката на Mega Walls през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1263,7 +1263,7 @@ detective-wins = Победи на детектив
 
 murdermystery-general = общи
   .description = Вижте статистиката на Murder Mystery
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -1272,27 +1272,27 @@ murdermystery-general = общи
 
 murdermystery-from = от
   .description = Вижте развитието на статистиката на Murder Mystery от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Murder Mystery за преглед
   .time = време
-  .time-description = Времето, от което да се върнете назад (например 1ч 12мин 5с)
+  .time-description = Времето, от което да се върнете назад (1h 12m 5s)
 
 murdermystery-history = история
   .description = Вижте развитието на статистиката на Murder Mystery с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Murder Mystery за преглед
 
-murdermystery-project = Проект Murder Mystery статистики в бъдещето
+murdermystery-project = проект
   .description = Проект за статистиката на Murder Mystery в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1305,7 +1305,7 @@ murdermystery-project = Проект Murder Mystery статистики в бъ
 
 murdermystery-daily = дневен
   .description = Преглед на развитието на статистиката на Murder Mystery през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1314,7 +1314,7 @@ murdermystery-daily = дневен
 
 murdermystery-weekly = седмичен
   .description = Преглед на развитието на статистиката на Murder Mystery през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1323,7 +1323,7 @@ murdermystery-weekly = седмичен
 
 murdermystery-monthly = месечен
   .description = Преглед на развитието на статистиката на Murder Mystery през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1351,7 +1351,7 @@ highest-killstreak = Най-добра серия от убийства
 
 paintball-general = общ
   .description = Преглед на статистиката на Paintball
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1360,18 +1360,18 @@ paintball-general = общ
 
 paintball-from = от
   .description = Преглед на развитието на статистиката на Paintball от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Paintball за преглед
   .time = време
-  .time-description = Времеви период за връщане (напр. 1ч 12мин 5сек)
+  .time-description = Времеви период за връщане (1h 12m 5s)
 
 paintball-history = история
   .description = Преглед на развитието на статистиката на Paintball с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1380,7 +1380,7 @@ paintball-history = история
 
 paintball-project = проект
   .description = Проект на статистиката на Paintball в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1393,7 +1393,7 @@ paintball-project = проект
 
 paintball-daily = дневен
   .description = Преглед на развитието на статистиката на Paintball през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1402,7 +1402,7 @@ paintball-daily = дневен
 
 paintball-weekly = седмичен
   .description = Преглед на развитието на статистиката на Paintball през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1411,7 +1411,7 @@ paintball-weekly = седмичен
 
 paintball-monthly = месечен
   .description = Преглед на развитието на статистиката на Paintball през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1430,7 +1430,7 @@ cr = Степен на изпълнение
 
 pit-general = общ
   .description = Преглед на статистиката на The Pit
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1439,18 +1439,18 @@ pit-general = общ
 
 pit-from = от
   .description = Преглед на развитието на статистиката на The Pit от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на The Pit за преглед
   .time = време
-  .time-description = Времеви период за връщане (напр. 1ч 12мин 5сек)
+  .time-description = Времеви период за връщане (1h 12m 5s)
 
 pit-history = история
   .description = Преглед на развитието на статистиката на The Pit с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1459,7 +1459,7 @@ pit-history = история
 
 pit-project = проект
   .description = Проект на статистиката на The Pit в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1472,7 +1472,7 @@ pit-project = проект
 
 pit-daily = дневен
   .description = Преглед на развитието на статистиката на The Pit през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1481,7 +1481,7 @@ pit-daily = дневен
 
 pit-weekly = седмичен
   .description = Преглед на развитието на статистиката на The Pit през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1490,7 +1490,7 @@ pit-weekly = седмичен
 
 pit-monthly = месечен
   .description = Преглед на развитието на статистиката на The Pit през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1507,7 +1507,7 @@ sight = Прицел
 
 quake-general = общ
   .description = Преглед на статистиката на Quakecraft
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1516,18 +1516,18 @@ quake-general = общ
 
 quake-from = от
   .description = Преглед на развитието на статистиката на Quakecraft от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Quakecraft за преглед
   .time = време
-  .time-description = Времеви период за връщане (напр. 1ч 12мин 5сек)
+  .time-description = Времеви период за връщане (1h 12m 5s)
 
 quake-history = история
   .description = Преглед на развитието на статистиката на Quakecraft с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1536,9 +1536,9 @@ quake-history = история
 
 quake-project = проект
   .description = Статистика за Quakecraft в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Quakecraft режим за преглед
@@ -1549,27 +1549,27 @@ quake-project = проект
 
 quake-daily = дневно
   .description = Преглед на развитието на Quakecraft статистиките през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Quakecraft режим за преглед
 
 quake-weekly = седмично
   .description = Преглед на развитието на Quakecraft статистиките през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Quakecraft режим за преглед
 
 quake-monthly = месечно
   .description = Преглед на развитието на Quakecraft статистиките през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Quakecraft режим за преглед
@@ -1595,40 +1595,40 @@ bow-accuracy = Точност с лък
 eggs-thrown = Хвърлени яйца
 fastest-win = Най-бърза победа
 
-skywars-general = обща_статистика
+skywars-general = обща-статистика
   .description = Преглед на SkyWars статистиките
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
 
 skywars-from = от
   .description = Преглед на развитието на SkyWars статистиките от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
   .time = време
-  .time-description = Времето за връщане назад (например 1ч 12мин 5сек)
+  .time-description = Времето за връщане назад (1h 12m 5s)
 
 skywars-history = история
   .description = Преглед на развитието на SkyWars статистиките с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
 
 skywars-project = проект
   .description = Статистика за SkyWars в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
@@ -1639,27 +1639,27 @@ skywars-project = проект
 
 skywars-daily = дневно
   .description = Преглед на развитието на SkyWars статистиките през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
 
 skywars-weekly = седмично
   .description = Преглед на развитието на SkyWars статистиките през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
 
 skywars-monthly = месечно
   .description = Преглед на развитието на SkyWars статистиките през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
@@ -1670,40 +1670,40 @@ smasher = Разбиващи
 smashed = Разбити
 ssr = SSR
 
-smash-general = обща_статистика
+smash-general = обща-статистика
   .description = Преглед на Smash Heroes статистиките
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
 
 smash-from = от
   .description = Преглед на развитието на Smash Heroes статистиките от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
   .time = време
-  .time-description = Времето за връщане назад (например 1ч 12мин 5сек)
+  .time-description = Времето за връщане назад (1h 12m 5s)
 
 smash-history = история
   .description = Преглед на развитието на Smash Heroes статистиките с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
 
 smash-project = проект
   .description = Статистика за Smash Heroes в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
@@ -1714,27 +1714,27 @@ smash-project = проект
 
 smash-daily = дневно
   .description = Преглед на развитието на Smash Heroes статистиките през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
 
 smash-weekly = седмично
   .description = Преглед на развитието на Smash Heroes статистиките през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
 
 smash-monthly = месечно
   .description = Преглед на развитието на Smash Heroes статистиките през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
@@ -1744,38 +1744,38 @@ smash-monthly = месечно
 tears = Сълзи
 survived-players = Оцелели играчи
 
-speeduhc-general = обща_статистика
+speeduhc-general = обща-статистика
   .description = Преглед на SpeedUHC статистиките
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SpeedUHC режим за преглед
 
 speeduhc-from = от
   .description = Преглед на развитието на SpeedUHC статистиките от определено време
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SpeedUHC режим за преглед
   .time = време
-  .time-description = Времето за връщане назад (например 1ч 12мин 5сек)
+  .time-description = Времето за връщане назад (1h 12m 5s)
 
 speeduhc-history = история
   .description = Преглед на развитието на SpeedUHC статистиките с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
-  .uuid = уникален_идентификатор
+  .uuid = уникален-идентификатор
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SpeedUHC режим за преглед
 
 speeduhc-project = проект
   .description = Статистика на проекта SpeedUHC в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1788,7 +1788,7 @@ speeduhc-project = проект
 
 speeduhc-daily = дневно
   .description = Преглед на развитието на SpeedUHC статистиките през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1797,7 +1797,7 @@ speeduhc-daily = дневно
 
 speeduhc-weekly = седмично
   .description = Преглед на развитието на SpeedUHC статистиките през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1806,7 +1806,7 @@ speeduhc-weekly = седмично
 
 speeduhc-monthly = месечно
   .description = Преглед на развитието на SpeedUHC статистиките през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1829,7 +1829,7 @@ points = Точки
 
 tntgames-general = общи
   .description = Преглед на статистиките от TNT Games
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1838,18 +1838,18 @@ tntgames-general = общи
 
 tntgames-from = от
   .description = Преглед на развитието на статистиките от TNT Games от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на TNT Games за преглед
   .time = време
-  .time-description = Време за връщане назад (например 1ч 12мин 5с)
+  .time-description = Време за връщане назад (1h 12m 5s)
 
 tntgames-history = история
   .description = Преглед на развитието на статистиките от TNT Games през времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1858,7 +1858,7 @@ tntgames-history = история
 
 tntgames-project = проект
   .description = Прожекция на статистиките от TNT Games в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1871,7 +1871,7 @@ tntgames-project = проект
 
 tntgames-daily = дневно
   .description = Преглед на развитието на статистиките от TNT Games през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1880,7 +1880,7 @@ tntgames-daily = дневно
 
 tntgames-weekly = седмично
   .description = Преглед на развитието на статистиките от TNT Games през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1889,7 +1889,7 @@ tntgames-weekly = седмично
 
 tntgames-monthly = месечно
   .description = Преглед на развитието на статистиките от TNT Games през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1908,7 +1908,7 @@ gold-trophies = Трофеи от злато
 
 turbokartracers-general = общи
   .description = Преглед на статистиките от Turbo Kart Racers
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1917,18 +1917,18 @@ turbokartracers-general = общи
 
 turbokartracers-from = от
   .description = Преглед на развитието на статистиките от Turbo Kart Racers от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Turbo Kart Racers за преглед
   .time = време
-  .time-description = Време за връщане назад (например 1ч 12мин 5с)
+  .time-description = Време за връщане назад (1h 12m 5s)
 
 turbokartracers-history = история
   .description = Преглед на развитието на статистиките от Turbo Kart Racers през времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1937,7 +1937,7 @@ turbokartracers-history = история
 
 turbokartracers-project = проект
   .description = Прожекция на статистиките от Turbo Kart Racers в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1950,7 +1950,7 @@ turbokartracers-project = проект
 
 turbokartracers-daily = дневно
   .description = Преглед на развитието на статистиките от Turbo Kart Racers през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1959,7 +1959,7 @@ turbokartracers-daily = дневно
 
 turbokartracers-weekly = седмично
   .description = Преглед на развитието на статистиките от Turbo Kart Racers през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1968,7 +1968,7 @@ turbokartracers-weekly = седмично
 
 turbokartracers-monthly = месечно
   .description = Преглед на развитието на статистиките от Turbo Kart Racers през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1989,7 +1989,7 @@ ultimates-crafted = Изработени ултимативни
 
 uhc-general = общи
   .description = Преглед на статистиките от UHC Champions
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1998,18 +1998,18 @@ uhc-general = общи
 
 uhc-from = от
   .description = Преглед на развитието на статистиките от UHC Champions от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на UHC Champions за преглед
   .time = време
-  .time-description = Време за връщане назад (например 1ч 12мин 5с)
+  .time-description = Време за връщане назад (1h 12m 5s)
 
 uhc-history = история
   .description = Преглед на развитието на статистиката на UHC Champions с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2018,7 +2018,7 @@ uhc-history = история
 
 uhc-project = проект
   .description = Прогнозиране на статистиката на UHC Champions в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2031,7 +2031,7 @@ uhc-project = проект
 
 uhc-daily = дневен
   .description = Преглед на развитието на статистиката на UHC Champions през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2040,7 +2040,7 @@ uhc-daily = дневен
 
 uhc-weekly = седмичен
   .description = Преглед на развитието на статистиката на UHC Champions през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2049,7 +2049,7 @@ uhc-weekly = седмичен
 
 uhc-monthly = месечен
   .description = Преглед на развитието на статистиката на UHC Champions през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2076,7 +2076,7 @@ vkdr = VKDR
 
 vampirez-general = общи
   .description = Преглед на статистиката на VampireZ
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2085,18 +2085,18 @@ vampirez-general = общи
 
 vampirez-from = от
   .description = Преглед на развитието на статистиката на VampireZ от определено време назад
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на VampireZ за преглед
   .time = време
-  .time-description = Времето, за което да се върнете (например 1час 12мин 5сек)
+  .time-description = Времето, за което да се върнете (1h 12m 5s)
 
 vampirez-history = история
   .description = Преглед на развитието на статистиката на VampireZ с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2105,7 +2105,7 @@ vampirez-history = история
 
 vampirez-project = проект
   .description = Прогнозиране на статистиката на VampireZ в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2118,7 +2118,7 @@ vampirez-project = проект
 
 vampirez-daily = дневен
   .description = Преглед на развитието на статистиката на VampireZ през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2127,7 +2127,7 @@ vampirez-daily = дневен
 
 vampirez-weekly = седмичен
   .description = Преглед на развитието на статистиката на VampireZ през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2136,7 +2136,7 @@ vampirez-weekly = седмичен
 
 vampirez-monthly = месечен
   .description = Преглед на развитието на статистиката на VampireZ през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2152,7 +2152,7 @@ iron-broken = Счупен желязо
 
 walls-general = общи
   .description = Преглед на статистиката на The Walls
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2161,18 +2161,18 @@ walls-general = общи
 
 walls-from = от
   .description = Преглед на развитието на статистиката на The Walls от определено време назад
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на The Walls за преглед
   .time = време
-  .time-description = Времето, за което да се върнете (например 1час 12мин 5сек)
+  .time-description = Времето, за което да се върнете (1h 12m 5s)
 
 walls-history = история
   .description = Преглед на развитието на статистиката на The Walls с течение на времето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2181,7 +2181,7 @@ walls-history = история
 
 walls-project = проект
   .description = Прогнозиране на статистиката на The Walls в бъдещето
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2194,7 +2194,7 @@ walls-project = проект
 
 walls-daily = дневен
   .description = Преглед на развитието на статистиката на The Walls през последния ден
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2203,7 +2203,7 @@ walls-daily = дневен
 
 walls-weekly = седмичен
   .description = Преглед на развитието на статистиката на The Walls през последната седмица
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2212,7 +2212,7 @@ walls-weekly = седмичен
 
 walls-monthly = месечен
   .description = Преглед на развитието на статистиката на The Walls през последния месец
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2233,7 +2233,7 @@ mvps = MVP-та
 
 warlords-general = общи
   .description = Преглед на статистиката на Warlords
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
@@ -2242,18 +2242,18 @@ warlords-general = общи
 
 warlords-from = от
   .description = Преглед на развитието на статистиката на Warlords от определено време назад
-  .username = потребителско_име
+  .username = потребителско-име
   .username-description = Minecraft потребителско име
   .uuid = ууид
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на Warlords за преглед
   .time = време
-  .time-description = Времето, за което да се върнете (например 1час 12мин 5сек)
+  .time-description = Времето, за което да се върнете (1h 12m 5s)
 
 warlords-history = история
   .description = Преглед на развитието на статистиката на Warlords с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2262,7 +2262,7 @@ warlords-history = история
 
 warlords-project = проект
   .description = Проектиране на статистиката на Warlords в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2275,7 +2275,7 @@ warlords-project = проект
 
 warlords-daily = дневно
   .description = Преглед на развитието на статистиката на Warlords през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2284,7 +2284,7 @@ warlords-daily = дневно
 
 warlords-weekly = седмично
   .description = Преглед на развитието на статистиката на Warlords през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2293,7 +2293,7 @@ warlords-weekly = седмично
 
 warlords-monthly = месечно
   .description = Преглед на развитието на статистиката на Warlords през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2308,7 +2308,7 @@ wool-placed = Поставени вълни
 
 woolwars-general = общо
   .description = Преглед на статистиката на Wool Wars
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2317,18 +2317,18 @@ woolwars-general = общо
 
 woolwars-from = от
   .description = Преглед на развитието на статистиката на Wool Wars от определено време назад
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Wool Wars за преглед
   .time = време
-  .time-description = Интервалът от време за връщане (например 1час 12мин 5сек)
+  .time-description = Интервалът от време за връщане (1h 12m 5s)
 
 woolwars-history = история
   .description = Преглед на развитието на статистиката на Wool Wars с течение на времето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2337,7 +2337,7 @@ woolwars-history = история
 
 woolwars-project = проект
   .description = Проектиране на статистиката на Wool Wars в бъдещето
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2350,7 +2350,7 @@ woolwars-project = проект
 
 woolwars-daily = дневно
   .description = Преглед на развитието на статистиката на Wool Wars през последния ден
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2359,7 +2359,7 @@ woolwars-daily = дневно
 
 woolwars-weekly = седмично
   .description = Преглед на развитието на статистиката на Wool Wars през последната седмица
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2368,7 +2368,7 @@ woolwars-weekly = седмично
 
 woolwars-monthly = месечно
   .description = Преглед на развитието на статистиката на Wool Wars през последния месец
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
@@ -2392,18 +2392,11 @@ General = Общо
 Members = Членове
 Top = Най-добри
 
-member = член
-  .description = Показва член на гилдията.
-  .username = потребителско име
-  .username-description = Потребителско име на член на гилдията за преглед
-  .uuid = uuid
-  .uuid-description = UUID на член на гилдията за преглед
-
 guild-general = общо
   .description = Показва статистиката на гилдия.
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
@@ -2412,25 +2405,25 @@ guild-from = от
   .description = Преглед на развитието на статистиката на гилдията от определено време назад
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
   .time = време
-  .time-description = Интервал от време за връщане (например 1час 12мин 5сек)
+  .time-description = Интервал от време за връщане (1h 12m 5s)
 
 guild-members = членове
   .description = Показва членовете на гилдията.
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
 
 guild-member = член
   .description = Показва статистиката на член на гилдия.
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
@@ -2439,7 +2432,7 @@ guild-top = топ
   .description = Показва най-добрите членове на гилдията по XP.
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
@@ -2452,7 +2445,7 @@ guild-daily = дневно
   .description = Преглед на развитието на статистиката на гилдията през последния ден
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
@@ -2461,7 +2454,7 @@ guild-weekly = седмично
   .description = Преглед на развитието на статистиката на гилдията през последната седмица
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
@@ -2470,7 +2463,7 @@ guild-monthly = месечно
   .description = Преглед на развитието на статистиката на гилдията през последния месец
   .name = име
   .name-description = Име на гилдията за преглед
-  .username = потребителско име
+  .username = потребителско-име
   .username-description = Потребителско име на член на гилдията за преглед
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед

@@ -38,40 +38,49 @@ macro_rules! command {
 
 macro_rules! large_command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		async fn autocomplete_mode<'a>(
-			ctx: $crate::Context<'a>,
-			partial: &'a str,
-		) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
-			let partial = partial.to_ascii_lowercase();
+		pub mod $fn {
+			use super::*;
+			use api::player::stats;
 
-			<$game>::autocomplete(ctx, partial).await
-		}
+			async fn autocomplete_mode<'a>(
+				ctx: $crate::Context<'a>,
+				partial: &'a str,
+			) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+				let partial = partial.to_ascii_lowercase();
 
-		#[allow(clippy::too_many_lines)]
-		#[poise::command(
-			on_error = "crate::util::error_handler",
-			slash_command,
-			required_bot_permissions = "ATTACH_FILES",
-			rename = "from"
-		)]
-		pub async fn $fn(
-			ctx: $crate::Context<'_>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
-			username: Option<::std::string::String>,
-			#[min_length = 32]
-			#[max_length = 36]
-			uuid: Option<::std::string::String>,
-			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
-			time: String,
-		) -> ::std::result::Result<(), ::translate::Error> {
-			let ctx = &context::Context::from_poise(&ctx);
+				<$game>::autocomplete(ctx, partial).await
+			}
 
-			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid.as_deref())?;
-			let duration = ::chrono::Duration::from_std(humantime::parse_duration(&time)?).unwrap();
+			#[allow(clippy::too_many_lines)]
+			#[poise::command(
+				on_error = "crate::util::error_handler",
+				slash_command,
+				required_bot_permissions = "ATTACH_FILES",
+				rename = "from"
+			)]
+			pub async fn command(
+				ctx: $crate::Context<'_>,
+				#[max_length = 16]
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				username: Option<::std::string::String>,
+				#[min_length = 32]
+				#[max_length = 36]
+				uuid: Option<::std::string::String>,
+				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+				time: String,
+			) -> ::std::result::Result<(), ::translate::Error> {
+				let ctx = &context::Context::from_poise(&ctx);
 
-			super::snapshot::run::command::<$game>(ctx, username, uuid, mode, duration).await
+				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
+				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let duration =
+					::chrono::Duration::from_std(humantime::parse_duration(&time)?).unwrap();
+
+				crate::commands::snapshot::run::command::<$game>(
+					ctx, username, uuid, mode, duration,
+				)
+				.await
+			}
 		}
 	};
 }
@@ -106,10 +115,18 @@ pub async fn guild(
 		.await
 }
 
-command!(arcade::Arcade, arcade::ArcadeMode, arcade);
+large_command!(stats::arcade::Arcade, stats::arcade::ArcadeMode, arcade);
 command!(arena::Arena, arena::ArenaMode, arena);
-command!(bed_wars::BedWars, bed_wars::BedWarsMode, bedwars);
-command!(blitz_sg::BlitzSg, blitz_sg::BlitzSgMode, blitz);
+large_command!(
+	stats::bed_wars::BedWars,
+	stats::bed_wars::BedWarsMode,
+	bedwars
+);
+large_command!(
+	stats::blitz_sg::BlitzSg,
+	stats::blitz_sg::BlitzSgMode,
+	blitz
+);
 command!(
 	build_battle::BuildBattle,
 	build_battle::BuildBattleMode,
@@ -120,7 +137,7 @@ command!(
 	cops_and_crims::CopsAndCrimsMode,
 	copsandcrims
 );
-large_command!(duels::Duels, duels::DuelsMode, duels);
+large_command!(stats::duels::Duels, stats::duels::DuelsMode, duels);
 command!(mega_walls::MegaWalls, mega_walls::MegaWallsMode, megawalls);
 command!(
 	murder_mystery::MurderMystery,

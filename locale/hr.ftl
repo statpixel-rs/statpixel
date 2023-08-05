@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} nije valjan.
 error-invalid-username = Korisničko ime {$name} nije valjano.
 error-member-player-not-found = Član {$name} nije pronađen u profilu.
 error-skyblock-profile-not-found = SkyBlock profil pripadajući korisniku {$name} nije pronađen.
-error-player-snapshot-not-found = Nema snimki za korisnika {$name}. Napravite jednu s </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Nema snimki za korisnika {$name}. Napravite jednu s </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = Leaderboard s imenom {$name} nije pronađen.
 error-profile-not-found = SkyBlock profil {$profile} pripadajući korisniku {$name} ima isključenu API podršku ili se korisnik nije prijavio od uvođenja novog profilnog sustava.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Trajanje vremenskog argumenta je predugo. Pokušajte da os
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> Promijenite pozadinu generiranih slika s </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Pogledajte povijesni grafikon vaše statistike s </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Pogledajte promjenu statistike određenog datuma s </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Pogledajte povijesni grafikon vaše statistike s </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Pogledajte promjenu statistike određenog datuma s </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Pogledajte tonu leaderboarda s </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Podržavamo SkyBlock! Pogledajte profil s </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Povežite svoj Minecraft račun s </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Pogledajte statistiku gilde s </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Pristupite svojoj dnevnoj statistici s </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Pristupite svojoj dnevnoj statistici s </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Promijenite format prikaza s </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Potražite više pomoći s </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Posjetite našu web stranicu na <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Pridružite nam se našem podrščitnom poslužitelju na <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Pogledajte procjene svih vaših podataka s </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Pogledajte procjene svih vaših podataka s </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Pogledajte svoje pobjedničke serije s </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Pogledajte svoje nedavne igre s </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Pogledajte cijene SkyBlock bazara s </skyblock bazaar:1113624864826327074>.
@@ -87,7 +87,7 @@ track-success-description =
 
 track = pratiti
   .description = Prati statistiku igrača i šalje promjene na trenutni kanal.
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime za praćenje
   .uuid = uuid
   .uuid-description = Minecraft UUID za praćenje
@@ -199,7 +199,7 @@ about = o
 
 winstreaks = pobjednički-nizovi
   .description = Prikaz pobjedničkih nizova
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -214,7 +214,7 @@ playing = Igranje
 
 recent = nedavno
   .description = Prikaz nedavnih igara
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -233,7 +233,7 @@ background = pozadina
   .colour-description = Boja pozadine
 
 error-invalid-colour = Neispravna boja navedena
-error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of_colors) ili heksadecimalnu boju s prefiksom `#`.
+error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of-colors) ili heksadecimalnu boju s prefiksom `#`.
 colour-changed = Boja pozadine promijenjena
 colour-changed-description = Boja vaše pozadine promijenjena je u {$colour}.
 
@@ -270,7 +270,7 @@ Wardrobe = Garderoba
 
 skyblock-auctions = aukcije
   .description = Prikaz aukcija SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -282,7 +282,7 @@ highest-bid = Najviša ponuda
 
 skyblock-inventory = inventar
   .description = Prikaz inventara SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -291,7 +291,7 @@ skyblock-inventory = inventar
 
 skyblock-enderchest = ender-sanduk
   .description = Prikaz ender sanduka SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -300,7 +300,7 @@ skyblock-enderchest = ender-sanduk
 
 skyblock-quiver = kožuh
   .description = Prikaz kožuha SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -309,7 +309,7 @@ skyblock-quiver = kožuh
 
 skyblock-talisman = talisman
   .description = Prikaz torbe sa talismanima SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -318,7 +318,7 @@ skyblock-talisman = talisman
 
 skyblock-fishing = ribolov
   .description = Prikaz torbe za ribolov SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -327,7 +327,7 @@ skyblock-fishing = ribolov
 
 skyblock-potions = napitci
   .description = Prikaz torbe za napitke SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -336,7 +336,7 @@ skyblock-potions = napitci
 
 skyblock-equipment = oprema
   .description = Prikaz opreme SkyBlocka
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -345,7 +345,7 @@ skyblock-equipment = oprema
 
 skyblock-wardrobe = ormar
   .description = Pregledaj ormar u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -354,7 +354,7 @@ skyblock-wardrobe = ormar
 
 skyblock-candy = slatkiši
   .description = Pregledaj inventar slatkiša u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -363,7 +363,7 @@ skyblock-candy = slatkiši
 
 skyblock-vault = trezor
   .description = Pregledaj osobni trezor u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -372,16 +372,16 @@ skyblock-vault = trezor
 
 skyblock-pets = ljubimci
   .description = Pregledaj ljubimce u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .profile = profil
   .profile-description = Profil koji želite pregledati
 
-skyblock-networth = ukupno_vlasništvo
+skyblock-networth = ukupno-vlasništvo
   .description = Pregledaj ukupno vlasništvo profila u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -392,7 +392,7 @@ skyblock-networth = ukupno_vlasništvo
 
 skyblock-profile = profil
   .description = Pregledaj SkyBlock profil
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -424,7 +424,7 @@ social = Druženje
 
 skyblock-bank = banka
   .description = Pregledaj banku u SkyBlocku
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -445,14 +445,14 @@ leaderboard = ljestvica
 
 network-general = općenito
   .description = Pregledaj opće statistike mreže
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
 
 network-history = povijest
   .description = Pregledaj povijesne statistike mreže
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -479,24 +479,24 @@ help = pomoć
   .description = Prikazuje izbornik pomoći.
 
 help-general = Općenito <:cookie:1115091335565811775>
-help-general-description = StatPixel podržava svaku igru na Hypixel mreži. Možete pregledati statistike za svaku igru koristeći `/<igra> općenito`. Na primjer, isprobajte </bedwars općenito:1113624864272683060>!
+help-general-description = StatPixel podržava svaku igru na Hypixel mreži. Možete pregledati statistike za svaku igru koristeći `/<igra> općenito`. Na primjer, isprobajte </bedwars general:1113624864272683060>!
 
 help-display = Prikaz <:spyglass:1115091333657411625>
-help-display-description = Ako koristite ograničenu internetsku vezu ili želite uštedjeti podatke, možete primati odgovore u različitim formatima, poput teksta ili smanjenih slika, s pomoću </prikaz:1113624864272683066>.
+help-display-description = Ako koristite ograničenu internetsku vezu ili želite uštedjeti podatke, možete primati odgovore u različitim formatima, poput teksta ili smanjenih slika, s pomoću </display:1113624864272683066>.
 
 help-link = Povezivanje <a:recovery_compass:1115091332680126504>
-help-link-description = Ponavljanje korisničkog imena za svaku naredbu može postati zamorno. Kako bi olakšali to, možete povezati svoj Minecraft račun bez provjere s pomoću </povezi:1113624864524357710> i kasnije ga poništiti s pomoću </poništi-povezivanje:1113624865262538854>.
+help-link-description = Ponavljanje korisničkog imena za svaku naredbu može postati zamorno. Kako bi olakšali to, možete povezati svoj Minecraft račun bez provjere s pomoću </link:1113624864524357710> i kasnije ga poništiti s pomoću </unlink:1113624865262538854>.
 
 help-snapshot = Snimke <:book_and_quill:1115091331379900428>
-help-snapshot-description = Snimke su način za pregled promjena u vašim statistikama tijekom vremena. Postoje nekoliko korisnih naredbi koje će vam olakšati život: </bedwars dnevno:1113624864272683065>, </bedwars tjedno:1113624865262538858> i </bedwars mjesečno:1113624864524357712>. Ove naredbe također funkcioniraju za vašu guildu, pa isprobajte </guild dnevno:1113624864272683065>!
+help-snapshot-description = Snimke su način za pregled promjena u vašim statistikama tijekom vremena. Postoje nekoliko korisnih naredbi koje će vam olakšati život: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> i </bedwars monthly:1113624864524357712>. Ove naredbe također funkcioniraju za vašu guildu, pa isprobajte </guild daily:1113624864272683065>!
   
-  Ako želite vidjeti precizniji raspon, isprobajte </bedwars od:1113624864524357705>.
+  Ako želite vidjeti precizniji raspon, isprobajte </bedwars from:1113624864524357705>.
 
 help-history = Povijest <a:clock:1115091329958019253>
-help-history-description = Da biste vidjeli grafikon kako su se određene statistike mijenjale tijekom vremena, isprobajte </povijest-mreže:1113624864524357708>.
+help-history-description = Da biste vidjeli grafikon kako su se određene statistike mijenjale tijekom vremena, isprobajte </network history:1113624864524357708>.
 
 help-image-builder = Graditelj slika <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Izgradite vlastite dinamičke slike pomoću Graditelja slika! Upotrijebite </graditelj:1125992506501365891> kako biste započeli ili posjetite https://statpixel.xyz/docs/builder za više informacija.
+help-image-builder-description = Izgradite vlastite dinamičke slike pomoću Graditelja slika! Upotrijebite </builder:1125992506501365891> kako biste započeli ili posjetite https://statpixel.xyz/docs/builder za više informacija.
 
 # /display
 display = prikaz
@@ -525,7 +525,7 @@ unlinking-succeeded-description = Više niste povezani s Minecraft računom.
 # /link
 link = povezi
   .description = Povezuje vaš Discord račun s Minecraft računom.
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime za povezivanje
   .uuid = uuid
   .uuid-description = Minecraft UUID za povezivanje
@@ -564,7 +564,7 @@ mystery-gifts = Misteriozni darovi
 
 arcade-general = općenito
   .description = Pregled statistike Arkada
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -573,18 +573,18 @@ arcade-general = općenito
 
 arcade-from = od
   .description = Pregled razvoja statistike Arkade od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Arkade za pregled
   .time = vrijeme
-  .time-description = Vrijeme za koje se vraća unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme za koje se vraća unatrag (1h 12m 5s)
 
 arcade-history = povijest
   .description = Pregled razvoja statistike Arkade tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -593,7 +593,7 @@ arcade-history = povijest
 
 arcade-project = projekt
   .description = Projektiranje statistike Arkade u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -606,7 +606,7 @@ arcade-project = projekt
 
 arcade-daily = dnevno
   .description = Pregled razvoja statistike Arkade u proteklih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -615,7 +615,7 @@ arcade-daily = dnevno
 
 arcade-weekly = tjedno
   .description = Pregled razvoja statistike Arkade u proteklih tjedan dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -624,7 +624,7 @@ arcade-weekly = tjedno
 
 arcade-monthly = mjesečno
   .description = Pregled razvoja statistike Arkade u proteklih mjesec dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -639,7 +639,7 @@ rating = Ocjena
 
 arena-general = općenito
   .description = Pregled statistike Arene
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -648,18 +648,18 @@ arena-general = općenito
 
 arena-from = od
   .description = Pregled razvoja statistike Arene od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Arene za pregled
   .time = vrijeme
-  .time-description = Vrijeme za koje se vraća unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme za koje se vraća unatrag (1h 12m 5s)
 
 arena-history = povijest
   .description = Pregled razvoja statistike Arene tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -668,7 +668,7 @@ arena-history = povijest
 
 arena-project = projekt
   .description = Projektiranje statistike Arene u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -681,7 +681,7 @@ arena-project = projekt
 
 arena-daily = dnevno
   .description = Pregled razvoja statistike Arene u proteklih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -690,7 +690,7 @@ arena-daily = dnevno
 
 arena-weekly = tjedno
   .description = Pregled razvoja statistike Arene u proteklih tjedan dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -699,7 +699,7 @@ arena-weekly = tjedno
 
 arena-monthly = mjesečno
   .description = Pregled razvoja statistike Arene u proteklih mjesec dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -745,7 +745,7 @@ items-purchased = Kupnje
 
 bedwars-general = općenito
   .description = Pregled statistike Bed Wars
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -754,18 +754,18 @@ bedwars-general = općenito
 
 bedwars-from = od
   .description = Pregled razvoja statistike Bed Wars od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Bed Wars za pregled
   .time = vrijeme
-  .time-description = Vrijeme za koje se vraća unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme za koje se vraća unatrag (1h 12m 5s)
 
 bedwars-history = povijest
   .description = Pregled razvoja statistike Bed Wars tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -774,7 +774,7 @@ bedwars-history = povijest
 
 bedwars-project = projekt
   .description = Projektiranje statistike Bed Wars u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -787,7 +787,7 @@ bedwars-project = projekt
 
 bedwars-daily = dnevno
   .description = Pregled razvoja statistike Bed Wars u proteklih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -796,7 +796,7 @@ bedwars-daily = dnevno
 
 bedwars-weekly = tjedno
   .description = Pregled razvoja statistike Bed Wars u proteklih tjedan dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -805,7 +805,7 @@ bedwars-weekly = tjedno
 
 bedwars-monthly = mjesečno
   .description = Pregled razvoja statistike Bed Wars u proteklih mjesec dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -845,40 +845,40 @@ time-played = Vrijeme igranja
 
 blitz-general = općenito
   .description = Pregled statistike igre Blitz Survival Games
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
 
 blitz-from = od
   .description = Pregled razvoja statistike igre Blitz Survival Games određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 blitz-history = povijest
   .description = Pregled razvoja statistike igre Blitz Survival Games tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
 
 blitz-project = projekt
   .description = Projektiranje statistike igre Blitz Survival Games u budućnosti
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
   .kind = statistika
   .kind-description = Statistika igre Blitz Survival Games koju želite projektirati
@@ -887,29 +887,29 @@ blitz-project = projekt
 
 blitz-daily = dnevno
   .description = Pregled razvoja statistike igre Blitz Survival Games tijekom posljednjeg dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
 
 blitz-weekly = tjedno
   .description = Pregled razvoja statistike igre Blitz Survival Games tijekom posljednjeg tjedna
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
 
 blitz-monthly = mjesečno
   .description = Pregled razvoja statistike igre Blitz Survival Games tijekom posljednjeg mjeseca
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
 
 # /buildbattle
@@ -923,40 +923,40 @@ most-points-team = Najviše bodova (Tim)
 
 buildbattle-general = općenito
   .description = Pregled statistike igre Build Battle
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
 
 buildbattle-from = od
   .description = Pregled razvoja statistike igre Build Battle određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 buildbattle-history = povijest
   .description = Pregled razvoja statistike igre Build Battle tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
 
 buildbattle-project = projekt
   .description = Projektiranje statistike igre Build Battle u budućnosti
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
   .kind = statistika
   .kind-description = Statistika igre Build Battle koju želite projektirati
@@ -965,29 +965,29 @@ buildbattle-project = projekt
 
 buildbattle-daily = dnevno
   .description = Pregled razvoja statistike igre Build Battle tijekom posljednjeg dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
 
 buildbattle-weekly = tjedno
   .description = Pregled razvoja statistike igre Build Battle tijekom posljednjeg tjedna
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
 
 buildbattle-monthly = mjesečno
   .description = Pregled razvoja statistike igre Build Battle tijekom posljednjeg mjeseca
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
 
 # /copsandcrims
@@ -1005,40 +1005,40 @@ bombs-planted = Postavljene bombe
 
 copsandcrims-general = općenito
   .description = Pregled statistike igre Cops and Crims
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
 
 copsandcrims-from = od
   .description = Pregled razvoja statistike igre Cops and Crims određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 copsandcrims-history = povijest
   .description = Pregled razvoja statistike igre Cops and Crims tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
 
 copsandcrims-project = projekt
   .description = Projektiranje statistike igre Cops and Crims u budućnosti
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
   .kind = statistika
   .kind-description = Statistika igre Cops and Crims koju želite projektirati
@@ -1047,16 +1047,16 @@ copsandcrims-project = projekt
 
 copsandcrims-daily = dnevno
   .description = Pregled razvoja statistike igre Cops and Crims tijekom posljednjeg dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
-  .mode = način rada
+  .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
 
 copsandcrims-weekly = tjedno
   .description = Pogledajte razvoj statistike Cops and Crimsa u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1065,7 +1065,7 @@ copsandcrims-weekly = tjedno
 
 copsandcrims-monthly = mjesečno
   .description = Pogledajte razvoj statistike Cops and Crimsa u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1108,7 +1108,7 @@ health-regenerated = Obnovljeno zdravlje
 
 duels-general = opće
   .description = Pogledajte statistiku Duelsa
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1117,18 +1117,18 @@ duels-general = opće
 
 duels-from = od
   .description = Pogledajte razvoj statistike Duelsa od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Duels mod za prikaz
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 minuta 5 sekundi)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 duels-history = povijest
   .description = Pogledajte razvoj statistike Duelsa tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1137,7 +1137,7 @@ duels-history = povijest
 
 duels-project = projekcija
   .description = Projicirajte statistiku Duelsa u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1150,7 +1150,7 @@ duels-project = projekcija
 
 duels-daily = dnevno
   .description = Pogledajte razvoj statistike Duelsa u posljednjem danu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1159,7 +1159,7 @@ duels-daily = dnevno
 
 duels-weekly = tjedno
   .description = Pogledajte razvoj statistike Duelsa u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1168,7 +1168,7 @@ duels-weekly = tjedno
 
 duels-monthly = mjesečno
   .description = Pogledajte razvoj statistike Duelsa u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1187,7 +1187,7 @@ treasures-found = Pronađenih blaga
 
 megawalls-general = opće
   .description = Pogledajte statistiku Mega Zidova
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1196,18 +1196,18 @@ megawalls-general = opće
 
 megawalls-from = od
   .description = Pogledajte razvoj statistike Mega Zidova od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Mega Zidovi mod za prikaz
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 minuta 5 sekundi)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 megawalls-history = povijest
   .description = Pogledajte razvoj statistike Mega Zidova tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1216,7 +1216,7 @@ megawalls-history = povijest
 
 megawalls-project = projekcija
   .description = Projicirajte statistiku Mega Zidova u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1229,7 +1229,7 @@ megawalls-project = projekcija
 
 megawalls-daily = dnevno
   .description = Pogledajte razvoj statistike Mega Zidova u posljednjem danu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1238,7 +1238,7 @@ megawalls-daily = dnevno
 
 megawalls-weekly = tjedno
   .description = Pogledajte razvoj statistike Mega Zidova u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1247,7 +1247,7 @@ megawalls-weekly = tjedno
 
 megawalls-monthly = mjesečno
   .description = Pogledajte razvoj statistike Mega Zidova u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1267,7 +1267,7 @@ detective-wins = Pobjede detektiva
 
 murdermystery-general = opće
   .description = Pogledajte statistiku ubojstava misterija
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1276,18 +1276,18 @@ murdermystery-general = opće
 
 murdermystery-from = od
   .description = Pogledajte razvoj statistike ubojstava misterija od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Ubojstva misterija mod za prikaz
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1 sat 12 minuta 5 sekundi)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 murdermystery-history = povijest
   .description = Pogledajte razvoj statistike ubojstava misterija tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1296,7 +1296,7 @@ murdermystery-history = povijest
 
 murdermystery-project = projekt
   .description = Projektiranje statistike igre Murder Mystery u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1309,7 +1309,7 @@ murdermystery-project = projekt
 
 murdermystery-daily = dnevno
   .description = Pregled razvoja statistike igre Murder Mystery u posljednji dan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1318,7 +1318,7 @@ murdermystery-daily = dnevno
 
 murdermystery-weekly = tjedno
   .description = Pregled razvoja statistike igre Murder Mystery u posljednji tjedan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1327,7 +1327,7 @@ murdermystery-weekly = tjedno
 
 murdermystery-monthly = mjesečno
   .description = Pregled razvoja statistike igre Murder Mystery u posljednji mjesec
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1355,7 +1355,7 @@ highest-killstreak = Najveći niz ubojstava
 
 paintball-general = općenito
   .description = Pregled statistike igre Paintball
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1364,18 +1364,18 @@ paintball-general = općenito
 
 paintball-from = od
   .description = Pregled razvoja statistike igre Paintball određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre Paintball za pregled
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 paintball-history = povijest
   .description = Pregled razvoja statistike igre Paintball tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1384,7 +1384,7 @@ paintball-history = povijest
 
 paintball-project = projekt
   .description = Projektiranje statistike igre Paintball u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1397,7 +1397,7 @@ paintball-project = projekt
 
 paintball-daily = dnevno
   .description = Pregled razvoja statistike igre Paintball u posljednji dan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1406,7 +1406,7 @@ paintball-daily = dnevno
 
 paintball-weekly = tjedno
   .description = Pregled razvoja statistike igre Paintball u posljednji tjedan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1415,7 +1415,7 @@ paintball-weekly = tjedno
 
 paintball-monthly = mjesečno
   .description = Pregled razvoja statistike igre Paintball u posljednji mjesec
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1434,7 +1434,7 @@ cr = Postotak izvršenih ugovora
 
 pit-general = općenito
   .description = Pregled statistike igre The Pit
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1443,18 +1443,18 @@ pit-general = općenito
 
 pit-from = od
   .description = Pregled razvoja statistike igre The Pit određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre The Pit za pregled
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 pit-history = povijest
   .description = Pregled razvoja statistike igre The Pit tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1463,7 +1463,7 @@ pit-history = povijest
 
 pit-project = projekt
   .description = Projektiranje statistike igre The Pit u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1476,7 +1476,7 @@ pit-project = projekt
 
 pit-daily = dnevno
   .description = Pregled razvoja statistike igre The Pit u posljednji dan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1485,7 +1485,7 @@ pit-daily = dnevno
 
 pit-weekly = tjedno
   .description = Pregled razvoja statistike igre The Pit u posljednji tjedan
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1494,7 +1494,7 @@ pit-weekly = tjedno
 
 pit-monthly = mjesečno
   .description = Pregled razvoja statistike igre The Pit u posljednji mjesec
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1511,7 +1511,7 @@ sight = Cilj
 
 quake-general = općenito
   .description = Pregled statistike igre Quakecraft
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1520,18 +1520,18 @@ quake-general = općenito
 
 quake-from = od
   .description = Pregled razvoja statistike igre Quakecraft određenog vremena unatrag
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre Quakecraft za pregled
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1 sat 12 min 5 s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 quake-history = povijest
   .description = Pregled razvoja statistike igre Quakecraft tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime u Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1540,7 +1540,7 @@ quake-history = povijest
 
 quake-project = projekt
   .description = Statistike projekta Quakecraft u budućnosti
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1553,7 +1553,7 @@ quake-project = projekt
 
 quake-daily = dnevno
   .description = Pregled razvoja statistika Quakecrafta tijekom posljednjeg dana
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1562,7 +1562,7 @@ quake-daily = dnevno
 
 quake-weekly = tjedno
   .description = Pregled razvoja statistika Quakecrafta tijekom posljednjeg tjedna
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1571,7 +1571,7 @@ quake-weekly = tjedno
 
 quake-monthly = mjesečno
   .description = Pregled razvoja statistika Quakecrafta tijekom posljednjeg mjeseca
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1601,7 +1601,7 @@ fastest-win = Najbrža pobjeda
 
 skywars-general = općenito
   .description = Pregled statistika SkyWarsa
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1610,18 +1610,18 @@ skywars-general = općenito
 
 skywars-from = od
   .description = Pregled razvoja statistika SkyWarsa određeno vrijeme unatrag
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = SkyWars mod za prikaz
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 skywars-history = povijest
   .description = Pregled razvoja statistika SkyWarsa kroz vrijeme
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1630,7 +1630,7 @@ skywars-history = povijest
 
 skywars-project = projekt
   .description = Statistike projekcije SkyWarsa u budućnosti
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1643,7 +1643,7 @@ skywars-project = projekt
 
 skywars-daily = dnevno
   .description = Pregled razvoja statistika SkyWarsa tijekom posljednjeg dana
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1652,7 +1652,7 @@ skywars-daily = dnevno
 
 skywars-weekly = tjedno
   .description = Pregled razvoja statistika SkyWarsa tijekom posljednjeg tjedna
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1661,7 +1661,7 @@ skywars-weekly = tjedno
 
 skywars-monthly = mjesečno
   .description = Pregled razvoja statistika SkyWarsa tijekom posljednjeg mjeseca
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1676,7 +1676,7 @@ ssr = SSR
 
 smash-general = općenito
   .description = Pregled statistika Smash Heroesa
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1685,18 +1685,18 @@ smash-general = općenito
 
 smash-from = od
   .description = Pregled razvoja statistika Smash Heroesa određeno vrijeme unatrag
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Smash Heroes mod za prikaz
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 smash-history = povijest
   .description = Pregled razvoja statistika Smash Heroesa kroz vrijeme
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1705,7 +1705,7 @@ smash-history = povijest
 
 smash-project = projekt
   .description = Statistike projekcije Smash Heroesa u budućnosti
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1718,7 +1718,7 @@ smash-project = projekt
 
 smash-daily = dnevno
   .description = Pregled razvoja statistika Smash Heroesa tijekom posljednjeg dana
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1727,7 +1727,7 @@ smash-daily = dnevno
 
 smash-weekly = tjedno
   .description = Pregled razvoja statistika Smash Heroesa tijekom posljednjeg tjedna
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1736,7 +1736,7 @@ smash-weekly = tjedno
 
 smash-monthly = mjesečno
   .description = Pregled razvoja statistika Smash Heroesa tijekom posljednjeg mjeseca
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1750,7 +1750,7 @@ survived-players = Preživjeli igrači
 
 speeduhc-general = općenito
   .description = Pregled statistika SpeedUHC-a
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1759,18 +1759,18 @@ speeduhc-general = općenito
 
 speeduhc-from = od
   .description = Pregled razvoja statistika SpeedUHC-a određeno vrijeme unatrag
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = SpeedUHC mod za prikaz
   .time = vrijeme
-  .time-description = Vrijeme unatrag (npr. 1sat 12min 5s)
+  .time-description = Vrijeme unatrag (1h 12m 5s)
 
 speeduhc-history = povijest
   .description = Pregled razvoja statistika SpeedUHC-a kroz vrijeme
-  .username = korisničko_ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1849,7 +1849,7 @@ tntgames-from = od
   .mode = način
   .mode-description = TNT način igara za pregled
   .time = vrijeme
-  .time-description = Količina vremena za povratak (npr. 1sat 12min 5s)
+  .time-description = Količina vremena za povratak (1h 12m 5s)
 
 tntgames-history = povijest
   .description = Pregled razvoja statistike TNT igara kroz vrijeme
@@ -1928,7 +1928,7 @@ turbokartracers-from = od
   .mode = način
   .mode-description = Turbo Kart Racers način za pregled
   .time = vrijeme
-  .time-description = Količina vremena za povratak (npr. 1sat 12min 5s)
+  .time-description = Količina vremena za povratak (1h 12m 5s)
 
 turbokartracers-history = povijest
   .description = Pregled razvoja statistike Turbo Kart Racersa kroz vrijeme
@@ -2009,11 +2009,11 @@ uhc-from = od
   .mode = način
   .mode-description = UHC Champions način za pregled
   .time = vrijeme
-  .time-description = Količina vremena za povratak (npr. 1sat 12min 5s)
+  .time-description = Količina vremena za povratak (1h 12m 5s)
 
 uhc-history = povijest
   .description = Pregled razvoja statistika UHC Champions tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2022,7 +2022,7 @@ uhc-history = povijest
 
 uhc-project = projekt
   .description = Projekcija statistika UHC Champions u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2035,7 +2035,7 @@ uhc-project = projekt
 
 uhc-daily = dnevno
   .description = Pregled razvoja statistika UHC Champions u posljednjih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2044,7 +2044,7 @@ uhc-daily = dnevno
 
 uhc-weekly = tjedno
   .description = Pregled razvoja statistika UHC Champions u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2053,7 +2053,7 @@ uhc-weekly = tjedno
 
 uhc-monthly = mjesečno
   .description = Pregled razvoja statistika UHC Champions u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2080,7 +2080,7 @@ vkdr = VKDR
 
 vampirez-general = općenito
   .description = Pregled statistika VampireZ
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2089,18 +2089,18 @@ vampirez-general = općenito
 
 vampirez-from = od
   .description = Pregled razvoja statistika VampireZ od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način VampireZ za pregled
   .time = vrijeme
-  .time-description = Razdoblje za koje želite pogledati (npr. 1sat 12min 5s)
+  .time-description = Razdoblje za koje želite pogledati (1h 12m 5s)
 
 vampirez-history = povijest
   .description = Pregled razvoja statistika VampireZ tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2109,7 +2109,7 @@ vampirez-history = povijest
 
 vampirez-project = projekt
   .description = Projekcija statistika VampireZ u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2122,7 +2122,7 @@ vampirez-project = projekt
 
 vampirez-daily = dnevno
   .description = Pregled razvoja statistika VampireZ u posljednjih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2131,7 +2131,7 @@ vampirez-daily = dnevno
 
 vampirez-weekly = tjedno
   .description = Pregled razvoja statistika VampireZ u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2140,7 +2140,7 @@ vampirez-weekly = tjedno
 
 vampirez-monthly = mjesečno
   .description = Pregled razvoja statistika VampireZ u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2156,7 +2156,7 @@ iron-broken = Slomljeno željezo
 
 walls-general = općenito
   .description = Pregled statistika The Walls
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2165,18 +2165,18 @@ walls-general = općenito
 
 walls-from = od
   .description = Pregled razvoja statistika The Walls od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način The Walls za pregled
   .time = vrijeme
-  .time-description = Razdoblje za koje želite pogledati (npr. 1sat 12min 5s)
+  .time-description = Razdoblje za koje želite pogledati (1h 12m 5s)
 
 walls-history = povijest
   .description = Pregled razvoja statistika The Walls tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2185,7 +2185,7 @@ walls-history = povijest
 
 walls-project = projekt
   .description = Projekcija statistika The Walls u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2198,7 +2198,7 @@ walls-project = projekt
 
 walls-daily = dnevno
   .description = Pregled razvoja statistika The Walls u posljednjih 24 sata
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2207,7 +2207,7 @@ walls-daily = dnevno
 
 walls-weekly = tjedno
   .description = Pregled razvoja statistika The Walls u posljednjem tjednu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2216,7 +2216,7 @@ walls-weekly = tjedno
 
 walls-monthly = mjesečno
   .description = Pregled razvoja statistika The Walls u posljednjem mjesecu
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2236,7 +2236,7 @@ mvps = MVP-ovi
 
 warlords-general = općenito
   .description = Pregled statistika Warlords
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2245,18 +2245,18 @@ warlords-general = općenito
 
 warlords-from = od
   .description = Pregled razvoja statistika Warlords od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Warlords za pregled
   .time = vrijeme
-  .time-description = Razdoblje za koje želite pregledati (npr. 1sat 12min 5s)
+  .time-description = Razdoblje za koje želite pregledati (1h 12m 5s)
 
 warlords-history = povijest
   .description = Pregled razvoja statistike Ratnika tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2265,7 +2265,7 @@ warlords-history = povijest
 
 warlords-project = projekt
   .description = Projicirajte statistiku Ratnika u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2278,7 +2278,7 @@ warlords-project = projekt
 
 warlords-daily = dnevno
   .description = Pregled razvoja statistike Ratnika tijekom zadnjeg dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2287,7 +2287,7 @@ warlords-daily = dnevno
 
 warlords-weekly = tjedno
   .description = Pregled razvoja statistike Ratnika tijekom zadnjeg tjedna
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2296,7 +2296,7 @@ warlords-weekly = tjedno
 
 warlords-monthly = mjesečno
   .description = Pregled razvoja statistike Ratnika tijekom zadnjeg mjeseca
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2311,7 +2311,7 @@ wool-placed = Postavljena vuna
 
 woolwars-general = općenito
   .description = Pregled statistike Vunenih ratova
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2320,18 +2320,18 @@ woolwars-general = općenito
 
 woolwars-from = od
   .description = Pregled razvoja statistike Vunenih ratova od određenog vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Vunenih ratova za pregled
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1sat 12min 5s)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 woolwars-history = povijest
   .description = Pregled razvoja statistike Vunenih ratova tijekom vremena
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2340,7 +2340,7 @@ woolwars-history = povijest
 
 woolwars-project = projekt
   .description = Projicirajte statistiku Vunenih ratova u budućnost
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2353,7 +2353,7 @@ woolwars-project = projekt
 
 woolwars-daily = dnevno
   .description = Pregled razvoja statistike Vunenih ratova tijekom zadnjeg dana
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2362,7 +2362,7 @@ woolwars-daily = dnevno
 
 woolwars-weekly = tjedno
   .description = Pregled razvoja statistike Vunenih ratova tijekom zadnjeg tjedna
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2371,7 +2371,7 @@ woolwars-weekly = tjedno
 
 woolwars-monthly = mjesečno
   .description = Pregled razvoja statistike Vunenih ratova tijekom zadnjeg mjeseca
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2395,18 +2395,11 @@ General = Općenito
 Members = Članovi
 Top = Vrh
 
-member = član
-  .description = Prikazuje člana gilda.
-  .username = korisničko ime
-  .username-description = Korisničko ime člana gilda za pregled
-  .uuid = uuid
-  .uuid-description = UUID člana gilda za pregled
-
 guild-general = općenito
   .description = Prikazuje statistiku gilda.
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2415,25 +2408,25 @@ guild-from = od
   .description = Pregled razvoja statistike gilda od određenog vremena
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
   .time = vrijeme
-  .time-description = Količina vremena unatrag (npr. 1sat 12min 5s)
+  .time-description = Količina vremena unatrag (1h 12m 5s)
 
 guild-members = članovi
   .description = Prikazuje članove gilda.
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
 
 guild-member = član
   .description = Prikazuje statistiku člana gilda.
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2442,7 +2435,7 @@ guild-top = vrh
   .description = Prikazuje najbolje članove gilda prema iskustvu.
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2455,7 +2448,7 @@ guild-daily = dnevno
   .description = Pregled razvoja statistike gilda tijekom zadnjeg dana
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2464,7 +2457,7 @@ guild-weekly = tjedno
   .description = Pregled razvoja statistike gilda tijekom zadnjeg tjedna
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2473,7 +2466,7 @@ guild-monthly = mjesečno
   .description = Pregled razvoja statistike gilda tijekom zadnjeg mjeseca
   .name = ime
   .name-description = Ime gilda za pregled
-  .username = korisničko ime
+  .username = korisničko-ime
   .username-description = Korisničko ime člana gilda za pregled
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
@@ -2482,8 +2475,8 @@ showing-guild-xp-statistics = Prikazivanje stjecanja iskustva gilda od {$from} d
 
 # Oznake zajedničkog platna
 
-Normalno = Normalno
-Tim = Tim
+Normal = Normalno
+Team = Tim
 
 blocks-broken = Razbijeni blokovi
 blocks-placed = Postavljeni blokovi

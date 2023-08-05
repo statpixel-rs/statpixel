@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} 无效。
 error-invalid-username = 用户名 {$name} 无效。
 error-member-player-not-found = 未在个人资料中找到成员 {$name}。
 error-skyblock-profile-not-found = 未找到属于 {$name} 的 SkyBlock 个人资料。
-error-player-snapshot-not-found = 未找到 {$name} 的快照。使用 </daily bedwars:1113624864272683065> 创建一个。
+error-player-snapshot-not-found = 未找到 {$name} 的快照。使用 </bedwars daily:1113624864272683065> 创建一个。
 error-leaderboard-not-found = 未找到名为 {$name} 的排行榜。
 error-profile-not-found = {$name} 的 {$profile} SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = 时间参数的持续时间过长。请尝试保持在 3,0
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> 使用 </background:1117174166056075335> 更改生成图像的背景。
-tip-history = <:knowledge_book:1117179094556233828> 使用 </history bedwars:1113624864524357708> 查看统计数据的历史图表。
-tip-from = <:knowledge_book:1117179094556233828> 使用 </from bedwars:1113624864524357705> 查看从特定日期开始的统计数据变化。
+tip-history = <:knowledge_book:1117179094556233828> 使用 </bedwars history:1113624864524357708> 查看统计数据的历史图表。
+tip-from = <:knowledge_book:1117179094556233828> 使用 </bedwars from:1113624864524357705> 查看从特定日期开始的统计数据变化。
 tip-leaderboard = <:knowledge_book:1117179094556233828> 使用 </leaderboard:1113624864524357709> 查看众多排行榜。
 tip-skyblock = <:knowledge_book:1117179094556233828> 我们支持 SkyBlock！使用 </skyblock profile:1113624864826327074> 查看个人资料。
 tip-link = <:knowledge_book:1117179094556233828> 使用 </link:1113624864524357710> 链接您的 Minecraft 账户。
 tip-guild = <:knowledge_book:1117179094556233828> 使用 </guild general:1113624864524357706> 查看公会统计。
-tip-snapshot = <:knowledge_book:1117179094556233828> 使用 </daily bedwars:1113624864272683065> 访问您的每日统计数据。
+tip-snapshot = <:knowledge_book:1117179094556233828> 使用 </bedwars daily:1113624864272683065> 访问您的每日统计数据。
 tip-display = <:knowledge_book:1117179094556233828> 使用 </display:1113624864272683066> 更改显示格式。
 tip-help = <:knowledge_book:1117179094556233828> 使用 </help:1113624864524357707> 获取更多帮助。
 tip-website = <:knowledge_book:1117179094556233828> 访问我们的网站：<https://statpixel.xyz>。
 tip-support-discord = <:knowledge_book:1117179094556233828> 加入我们的支持服务器：<https://statpixel.xyz/discord>。
-tip-project = <:knowledge_book:1117179094556233828> 使用 </project bedwars:1118417616541843477> 查看所有数据的估计值。
+tip-project = <:knowledge_book:1117179094556233828> 使用 </bedwars project:1118417616541843477> 查看所有数据的估计值。
 tip-winstreak = <:knowledge_book:1117179094556233828> 使用 </winstreaks:1124767485384724520> 查看您的连胜次数。
 tip-recent = <:knowledge_book:1117179094556233828> 使用 </recent:1123839349428080690> 查看您最近的游戏。
 tip-bazaar = <:knowledge_book:1117179094556233828> 使用 </skyblock bazaar:1113624864826327074> 查看 SkyBlock 市场价格。
@@ -96,7 +96,7 @@ track = 追蹤
 
 execute = 執行
   .description = 執行指定的指令
-  .id = ID
+  .id = id
   .id-description = 指令的識別碼
 
 invalid-identifier = 提供的識別碼無效
@@ -233,7 +233,7 @@ background = 背景
   .colour-description = 背景顏色
 
 error-invalid-colour = 無效的顏色
-error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of_colors)中的一種或以“＃”為前綴的十六進制顏色。
+error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of-colors)中的一種或以“＃”為前綴的十六進制顏色。
 colour-changed = 背景顏色已更改
 colour-changed-description = 您的背景顏色已更改為 {$colour}。
 
@@ -479,7 +479,7 @@ help = 幫助
   .description = 顯示幫助選單。
 
 help-general = 一般 <:cookie:1115091335565811775>
-help-general-description = StatPixel 支援 Hypixel 網路上的所有遊戲。您可以使用 `/<遊戲> 一般` 查看每個遊戲的統計數據。例如，試試 </bedwars 一般:1113624864272683060>！
+help-general-description = StatPixel 支援 Hypixel 網路上的所有遊戲。您可以使用 `/<遊戲> 一般` 查看每個遊戲的統計數據。例如，試試 </bedwars general:1113624864272683060>！
 
 help-display = 顯示方式 <:spyglass:1115091333657411625>
 help-display-description = 如果您在計量連線上或只想節省一些數據，您可以使用不同格式接收回應，例如文字或簡化圖像，使用 </display:1113624864272683066>。
@@ -580,7 +580,7 @@ arcade-from = 起始日期
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
   .time = 時間
-  .time-description = 回溯的時間量 (例如 1 小時 12 分鐘 5 秒)
+  .time-description = 回溯的時間量 (1h 12m 5s)
 
 arcade-history = 歷史
   .description = 查看 Arcade 統計數據的發展歷程
@@ -655,7 +655,7 @@ arena-from = 起始日期
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
   .time = 時間
-  .time-description = 回溯的時間量 (例如 1 小時 12 分鐘 5 秒)
+  .time-description = 回溯的時間量 (1h 12m 5s)
 
 arena-history = 歷史
   .description = 查看 Arena 統計數據的發展歷程
@@ -761,7 +761,7 @@ bedwars-from = 起始日期
   .mode = 模式
   .mode-description = 要查看的床戰模式
   .time = 時間
-  .time-description = 回溯的時間量 (例如 1 小時 12 分鐘 5 秒)
+  .time-description = 回溯的時間量 (1h 12m 5s)
 
 bedwars-history = 歷史
   .description = 查看床戰統計數據的發展歷程
@@ -1003,7 +1003,7 @@ grenade-kills = 榴彈擊殺數
 bombs-defused = 拆除炸彈數
 bombs-planted = 放置炸彈數
 
-copsandcrims-general = 一般
+copsandcrims-general = 常規
   .description = 查看警察與犯罪者統計數據
   .username = 使用者名稱
   .username-description = Minecraft 使用者名稱
@@ -2096,7 +2096,7 @@ vampirez-from = 自
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
   .time = 時間
-  .time-description = 往回查看的時間量 (例如：1小時 12分 5秒)
+  .time-description = 往回查看的時間量 (1h 12m 5s)
 
 vampirez-history = 歷史
   .description = 查看 VampireZ 統計數據隨時間變化
@@ -2172,7 +2172,7 @@ walls-from = 自
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
   .time = 時間
-  .time-description = 往回查看的時間量 (例如：1小時 12分 5秒)
+  .time-description = 往回查看的時間量 (1h 12m 5s)
 
 walls-history = 歷史
   .description = 查看 The Walls 統計數據隨時間變化
@@ -2252,7 +2252,7 @@ warlords-from = 自
   .mode = 模式
   .mode-description = 要查看的 Warlords 模式
   .time = 時間
-  .time-description = 往回查看的時間量 (例如：1小時 12分 5秒)
+  .time-description = 往回查看的時間量 (1h 12m 5s)
 
 warlords-history = 歷史紀錄
   .description = 查看戰爭領主統計數據的發展趨勢
@@ -2395,13 +2395,6 @@ General = 一般
 Members = 成員數
 Top = 前幾名
 
-member = 成員
-  .description = 顯示公會成員的信息
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
 guild-general = 一般
   .description = 顯示公會的統計數據
   .name = 名稱
@@ -2422,7 +2415,7 @@ guild-from = 從
   .time = 時間
   .time-description = 要回溯的時間（例如：1小時12分5秒）
 
-guild-members = 成員
+guild-members = 會員
   .description = 顯示公會的成員
   .name = 名稱
   .name-description = 要查看的公會名稱

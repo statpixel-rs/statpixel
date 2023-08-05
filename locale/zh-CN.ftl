@@ -21,7 +21,7 @@ error-invalid-uuid = UUID {$uuid} 无效。
 error-invalid-username = 用户名 {$name} 无效。
 error-member-player-not-found = 在配置文件中未找到成员{$name}。
 error-skyblock-profile-not-found = 未找到属于{$name}的SkyBlock配置文件。
-error-player-snapshot-not-found = 未找到{$name}的快照。使用</daily bedwars:1113624864272683065> 来创建一个。
+error-player-snapshot-not-found = 未找到{$name}的快照。使用</bedwars daily:1113624864272683065> 来创建一个。
 error-leaderboard-not-found = 未找到名称为{$name}的排行榜。
 error-profile-not-found = 属于{$name}的{$profile} SkyBlock配置文件已禁用其API或者他们自从新配置文件系统上线以来尚未登录。
 error-identifier-too-long =
@@ -46,18 +46,18 @@ error-time-overflow = 时间参数的持续时间太长。尝试将其保持在3
 
 # Quick tips
 tip-background = <:knowledge_book:1117179094556233828> 使用</background:1117174166056075335> 更改生成图像的背景。
-tip-history = <:knowledge_book:1117179094556233828> 使用</history bedwars:1113624864524357708> 查看你的统计数据历史图表。
-tip-from = <:knowledge_book:1117179094556233828> 使用</from bedwars:1113624864524357705> 查看从特定日期开始的统计数据变化。
+tip-history = <:knowledge_book:1117179094556233828> 使用</bedwars history:1113624864524357708> 查看你的统计数据历史图表。
+tip-from = <:knowledge_book:1117179094556233828> 使用</bedwars from:1113624864524357705> 查看从特定日期开始的统计数据变化。
 tip-leaderboard = <:knowledge_book:1117179094556233828> 使用</leaderboard:1113624864524357709> 查看大量排行榜。
 tip-skyblock = <:knowledge_book:1117179094556233828> 我们支持SkyBlock！使用</skyblock profile:1113624864826327074> 查看配置文件。
 tip-link = <:knowledge_book:1117179094556233828> 使用</link:1113624864524357710> 链接你的Minecraft帐户。
 tip-guild = <:knowledge_book:1117179094556233828> 使用</guild general:1113624864524357706> 查看公会统计信息。
-tip-snapshot = <:knowledge_book:1117179094556233828> 使用</daily bedwars:1113624864272683065> 访问每日统计数据。
+tip-snapshot = <:knowledge_book:1117179094556233828> 使用</bedwars daily:1113624864272683065> 访问每日统计数据。
 tip-display = <:knowledge_book:1117179094556233828> 使用</display:1113624864272683066> 更改显示格式。
 tip-help = <:knowledge_book:1117179094556233828> 使用</help:1113624864524357707> 获取更多帮助。
 tip-website = <:knowledge_book:1117179094556233828> 在<https://statpixel.xyz> 访问我们的网站。
 tip-support-discord = <:knowledge_book:1117179094556233828> 加入我们的支持服务器：<https://statpixel.xyz/discord>。
-tip-project = <:knowledge_book:1117179094556233828> 使用</project bedwars:1118417616541843477> 查看所有数据的估计值。
+tip-project = <:knowledge_book:1117179094556233828> 使用</bedwars project:1118417616541843477> 查看所有数据的估计值。
 tip-winstreak = <:knowledge_book:1117179094556233828> 使用</winstreaks:1124767485384724520> 查看你的连胜数据。
 tip-recent = <:knowledge_book:1117179094556233828> 使用</recent:1123839349428080690> 查看你最近的游戏。
 tip-bazaar = <:knowledge_book:1117179094556233828> 使用</skyblock bazaar:1113624864826327074> 查看SkyBlock市场价格。
@@ -231,7 +231,7 @@ background = 背景
   .colour-description = 背景颜色
 
 error-invalid-colour = 提供的颜色无效
-error-invalid-colour-description = 提供的颜色无效。请尝试使用[这些颜色](https://simple.wikipedia.org/wiki/List_of_colors)之一或以 `#` 为前缀的十六进制颜色。
+error-invalid-colour-description = 提供的颜色无效。请尝试使用[这些颜色](https://simple.wikipedia.org/wiki/List_of-colors)之一或以 `#` 为前缀的十六进制颜色。
 colour-changed = 背景颜色已更改
 colour-changed-description = 您的背景颜色已更改为 {$colour}。
 
@@ -1054,24 +1054,6 @@ copsandcrims-daily = 每日
   .mode = 模式
   .mode-description = 要查看的警察与罪犯游戏模式
 
-copsandcrims-weekly = 每周
-  .description = 查看过去一周内的警察与罪犯游戏统计数据
-  .username = 用户名
-  .username-description = Minecraft 用户名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-  .mode = 模式
-  .mode-description = 要查看的警察与罪犯游戏模式
-
-copsandcrims-monthly = 每月
-  .description = 查看过去一个月内的警察与罪犯游戏统计数据
-  .username = 用户名
-  .username-description = Minecraft 用户名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-  .mode = 模式
-  .mode-description = 要查看的警察与罪犯游戏模式
-
 copsandcrims-weekly = 每周统计
   .description = 查看Cops和Crims的上周统计数据
   .username = 用户名
@@ -1133,7 +1115,7 @@ duels-general = 综合
   .mode = 模式
   .mode-description = 要查看的Duels模式
 
-duels-from = 从...
+duels-from = 自
   .description = 查看从特定时间开始的Duels统计数据
   .username = 用户名
   .username-description = Minecraft用户名
@@ -1212,7 +1194,7 @@ megawalls-general = 综合
   .mode = 模式
   .mode-description = 要查看的Mega Walls模式
 
-megawalls-from = 从...
+megawalls-from = 自
   .description = 查看从特定时间开始的Mega Walls统计数据
   .username = 用户名
   .username-description = Minecraft用户名
@@ -1292,7 +1274,7 @@ murdermystery-general = 综合
   .mode = 模式
   .mode-description = 要查看的Murder Mystery模式
 
-murdermystery-from = 从...
+murdermystery-from = 自
   .description = 查看从特定时间开始的Murder Mystery统计数据
   .username = 用户名
   .username-description = Minecraft用户名
@@ -2051,7 +2033,7 @@ uhc-from = 起始
   .time-description = 要回溯的时间量（例如1小时12分钟5秒）
 
 uhc-history = 历史
-  .description = 查看UHC Champions统计数据的历史发展
+  .description = 查看UHC Champions统计数据的发展历程
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2060,20 +2042,20 @@ uhc-history = 历史
   .mode-description = 要查看的UHC Champions模式
 
 uhc-project = 项目
-  .description = 将UHC Champions统计数据投影到未来
+  .description = 将UHC Champions统计数据投射到未来
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的UHC Champions模式
-  .kind = 统计项
-  .kind-description = 要投影的UHC Champions统计项
+  .kind = 统计数据
+  .kind-description = 要投射的UHC Champions统计数据
   .value = 值
-  .value-description = 要投影的统计项的值
+  .value-description = 要投射的统计数据值
 
 uhc-daily = 每日
-  .description = 查看UHC Champions统计数据的过去一天发展
+  .description = 查看UHC Champions统计数据的过去一天发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2082,7 +2064,7 @@ uhc-daily = 每日
   .mode-description = 要查看的UHC Champions模式
 
 uhc-weekly = 每周
-  .description = 查看UHC Champions统计数据的过去一周发展
+  .description = 查看UHC Champions统计数据的过去一周发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2091,7 +2073,7 @@ uhc-weekly = 每周
   .mode-description = 要查看的UHC Champions模式
 
 uhc-monthly = 每月
-  .description = 查看UHC Champions统计数据的过去一个月发展
+  .description = 查看UHC Champions统计数据的过去一个月发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2101,23 +2083,23 @@ uhc-monthly = 每月
 
 # /vampirez
 
-human-wins = 人类获胜次数
-vampire-wins = 吸血鬼获胜次数
+human-wins = 人类胜利
+vampire-wins = 吸血鬼胜利
 zombie-kills = 僵尸击杀数
 human-kills = 人类击杀数
 human-deaths = 人类死亡数
 vampire-kills = 吸血鬼击杀数
 vampire-deaths = 吸血鬼死亡数
-blood = 血液
+blood = 血量
 starting-compass = 起始指南针
 starting-gear = 起始装备
-tracker = 追踪器
+tracker = 追踪者
 updated = 更新时间
-old-vampire = 旧吸血鬼
-hkdr = 人类击杀死亡比
-vkdr = 吸血鬼击杀死亡比
+old-vampire = 古老吸血鬼
+hkdr = 人类击杀/死亡比
+vkdr = 吸血鬼击杀/死亡比
 
-vampirez-general = 通用
+vampirez-general = 常规
   .description = 查看VampireZ统计数据
   .username = 用户名
   .username-description = Minecraft用户名
@@ -2127,7 +2109,7 @@ vampirez-general = 通用
   .mode-description = 要查看的VampireZ模式
 
 vampirez-from = 从
-  .description = 查看自特定时间以来的VampireZ统计数据
+  .description = 查看VampireZ统计数据从特定时间开始的发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2135,10 +2117,10 @@ vampirez-from = 从
   .mode = 模式
   .mode-description = 要查看的VampireZ模式
   .time = 时间
-  .time-description = 回溯的时间量（例如：1小时12分钟5秒）
+  .time-description = 要回溯的时间（例如：1小时12分钟5秒）
 
 vampirez-history = 历史
-  .description = 查看VampireZ统计数据的历史发展
+  .description = 查看VampireZ统计数据的发展历程
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2147,20 +2129,20 @@ vampirez-history = 历史
   .mode-description = 要查看的VampireZ模式
 
 vampirez-project = 项目
-  .description = 将VampireZ统计数据投影到未来
+  .description = 将VampireZ统计数据投射到未来
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的VampireZ模式
-  .kind = 统计项
-  .kind-description = 要投影的VampireZ统计项
+  .kind = 统计数据
+  .kind-description = 要投射的VampireZ统计数据
   .value = 值
-  .value-description = 要投影的统计项的值
+  .value-description = 要投射的统计数据值
 
 vampirez-daily = 每日
-  .description = 查看VampireZ统计数据的过去一天发展
+  .description = 查看VampireZ统计数据的过去一天发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2169,7 +2151,7 @@ vampirez-daily = 每日
   .mode-description = 要查看的VampireZ模式
 
 vampirez-weekly = 每周
-  .description = 查看VampireZ统计数据的过去一周发展
+  .description = 查看VampireZ统计数据的过去一周发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
@@ -2178,13 +2160,120 @@ vampirez-weekly = 每周
   .mode-description = 要查看的VampireZ模式
 
 vampirez-monthly = 每月
-  .description = 查看VampireZ统计数据的过去一个月发展
+  .description = 查看VampireZ统计数据的过去一个月发展情况
   .username = 用户名
   .username-description = Minecraft用户名
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = 模式
-  .mode-description = 
+  .mode-description = 要查看的VampireZ模式
+
+# /walls
+
+Standard = 标准
+
+activations = 激活数
+iron-broken = 破坏的铁块数
+
+walls-general = 常规
+  .description = 查看The Walls统计数据
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+
+walls-from = 从
+  .description = 查看The Walls统计数据从特定时间开始的发展情况
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+  .time = 时间
+  .time-description = 要回溯的时间（例如：1小时12分钟5秒）
+
+walls-history = 历史
+  .description = 查看The Walls统计数据的发展历程
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+
+walls-project = 项目
+  .description = 将The Walls统计数据投射到未来
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+  .kind = 统计数据
+  .kind-description = 要投射的The Walls统计数据
+  .value = 值
+  .value-description = 要投射的统计数据值
+
+walls-daily = 每日
+  .description = 查看The Walls统计数据的过去一天发展情况
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+
+walls-weekly = 每周
+  .description = 查看The Walls统计数据的过去一周发展情况
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+
+walls-monthly = 每月
+  .description = 查看The Walls统计数据的过去一个月发展情况
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的The Walls模式
+
+# /warlords
+
+CaptureTheFlag = 夺旗
+Domination = 主宰
+TeamDeathmatch = 团队死斗
+
+wins-blue = 胜利数（蓝队）
+wins-red = 胜利数（红队）
+hide-prestige = 隐藏威望
+mvps = 最有价值球员
+
+warlords-general = 常规
+  .description = 查看Warlords统计数据
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的Warlords模式
+
+warlords-from = 从
+  .description = 查看Warlords统计数据从特定时间开始的发展情况
+  .username = 用户名
+  .username-description = Minecraft用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .mode = 模式
+  .mode-description = 要查看的Warlords模式
+  .time = 时间
+  .time-description = 要回溯的时间（例如：1小时12分钟5秒）
 
 warlords-history = 历史
   .description = 查看Warlords统计数据的历史记录
@@ -2324,15 +2413,8 @@ guild-quests = 公会任务
 
 Member = 成员
 General = 综合
-Members = 成员
+Members = 成员们
 Top = 排名前列
-
-member = 成员
-  .description = 显示公会成员信息。
-  .username = 用户名
-  .username-description = 要查看的公会成员的用户名
-  .uuid = uuid
-  .uuid-description = 要查看的公会成员的UUID
 
 guild-general = 综合
   .description = 显示公会的统计信息。
@@ -2354,7 +2436,7 @@ guild-from = 从
   .time = 时间
   .time-description = 要回溯的时间范围（例如1小时12分钟5秒）
 
-guild-members = 成员
+guild-members = 成员们
   .description = 显示公会的成员。
   .name = 名称
   .name-description = 要查看的公会的名称

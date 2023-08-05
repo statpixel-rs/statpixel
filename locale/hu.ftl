@@ -22,7 +22,7 @@ error-invalid-uuid = A(z) {$uuid} azonosító érvénytelen.
 error-invalid-username = A(z) {$name} felhasználónév érvénytelen.
 error-member-player-not-found = A(z) {$name} nevű tag nem található a profilban.
 error-skyblock-profile-not-found = A(z) {$name} nevű SkyBlock profil nem található.
-error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) {$name} nevű játékoshoz. Hozz létre egyet itt: </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) {$name} nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = A(z) {$name} nevű ranglista nem található.
 error-profile-not-found = A(z) {$name} {$profile} SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
 error-identifier-too-long =
@@ -49,18 +49,18 @@ error-time-overflow = Az idő argumentum időtartama túl hosszú. Próbáld meg
 # Gyors tippek
 
 tip-background = <:knowledge_book:1117179094556233828> Változtasd meg a generált képek háttérét ezzel: </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák történelmi grafikonját így: </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák változását egy adott dátumtól így: </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák történelmi grafikonját így: </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák változását egy adott dátumtól így: </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Tekintsd meg a sok ranglistát így: </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Támogatjuk a SkyBlock-ot! Tekintsd meg a profilokat így: </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Kapcsold össze a Minecraft fiókodat így: </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Tekintsd meg a guild statisztikákat így: </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Tekintsd meg a napi statisztikáidat így: </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Tekintsd meg a napi statisztikáidat így: </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Változtasd meg a megjelenítési formátumot így: </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> További segítségért használd ezt: </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Látogass el weboldalunkra: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Csatlakozz a támogatói szerverünkhöz: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Tekintsd meg az összes adatod becslését így: </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Tekintsd meg az összes adatod becslését így: </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Tekintsd meg a győzelmi sorozataidat így: </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Tekintsd meg az utóbbi játékaidat így: </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Tekintsd meg a SkyBlock bazár árakat így: </skyblock bazaar:1113624864826327074>.
@@ -234,7 +234,7 @@ background = háttér
   .colour-description = A háttér színe
 
 error-invalid-colour = Érvénytelen szín megadva
-error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of_colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
+error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of-colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
 colour-changed = Háttérszín megváltozott
 colour-changed-description = A háttérszíne megváltozott {$colour}.
 
@@ -480,7 +480,7 @@ help = segítség
   .description = Megjeleníti a súgó menüt.
 
 help-general = Általános <:cookie:1115091335565811775>
-help-general-description = A StatPixel minden játékot támogat a Hypixel hálózaton. Megtekintheti a statisztikákat minden játékhoz a `/<játék> általános` parancs használatával. Például próbálja ki a </bedwars általános:1113624864272683060> parancsot!
+help-general-description = A StatPixel minden játékot támogat a Hypixel hálózaton. Megtekintheti a statisztikákat minden játékhoz a `/<játék> általános` parancs használatával. Például próbálja ki a </bedwars general:1113624864272683060> parancsot!
 
 help-display = Megjelenítés <:spyglass:1115091333657411625>
 help-display-description = Ha korlátozott adatforgalmú kapcsolaton vagy, vagy csak adatot szeretne megtakarítani, különböző formátumokban, például szövegként vagy tömörített képeken kaphat válaszokat a </display:1113624864272683066> paranccsal.
@@ -489,12 +489,12 @@ help-link = Kapcsolat <a:recovery_compass:1115091332680126504>
 help-link-description = Ha minden parancsra szeretné megadni a felhasználónevet, akkor ez időigényes lehet. Hogy könnyebbé tegye ezt, kapcsolódhat egy fiókhoz a megerősítés nélküli </link:1113624864524357710> paranccsal, majd később szétkapcsolhatja a </unlink:1113624865262538854> paranccsal.
 
 help-snapshot = Pillanatképek <:book_and_quill:1115091331379900428>
-help-snapshot-description = A pillanatképek lehetővé teszik a statisztikák idővel történő változásainak megtekintését. Van néhány segédparancs, amely megkönnyíti az életét: </bedwars napi:1113624864272683065>, </bedwars heti:1113624865262538858> és </bedwars havi:1113624864524357712>. Ezek működnek a guild-hez is, próbálja ki a </guild napi:1113624864272683065> parancsot!
+help-snapshot-description = A pillanatképek lehetővé teszik a statisztikák idővel történő változásainak megtekintését. Van néhány segédparancs, amely megkönnyíti az életét: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> és </bedwars monthly:1113624864524357712>. Ezek működnek a guild-hez is, próbálja ki a </guild daily:1113624864272683065> parancsot!
 
-  Ha egy specifikusabb időszakot szeretne megtekinteni, próbálja ki a </bedwars ettől:1113624864524357705> parancsot.
+  Ha egy specifikusabb időszakot szeretne megtekinteni, próbálja ki a </bedwars from:1113624864524357705> parancsot.
 
 help-history = Történet <a:clock:1115091329958019253>
-help-history-description = Ha grafikont szeretne megtekinteni a statisztikák idővel történő változásairól, próbálja ki a </network történet:1113624864524357708> parancsot.
+help-history-description = Ha grafikont szeretne megtekinteni a statisztikák idővel történő változásairól, próbálja ki a </network history:1113624864524357708> parancsot.
 
 help-image-builder = Kép Készítő <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Építsen saját dinamikus képeket a Kép Készítő segítségével! A kezdéshez használja a </builder:1125992506501365891> parancsot, vagy keresse fel az https://statpixel.xyz/docs/builder oldalt további információért.
@@ -510,9 +510,9 @@ display-changed-text-description = A válaszok mostantól szövegként lesznek e
 display-changed-image-description = A válaszok mostantól képekként lesznek elküldve, ha lehetséges.
 display-changed-compact-description = A válaszok mostantól tömörített képekként lesznek elküldve.
 
-Kép = Kép
-Tömörített = Tömörített
-Szöveg = Szöveg
+Image = Kép
+Compact = Tömörített
+Text = Szöveg
 
 # /unlink
 unlink = szétcsatolás
@@ -581,7 +581,7 @@ arcade-from = -tól
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az idő, amennyivel vissza szeretnél menni (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyivel vissza szeretnél menni (1h 12m 5s)
 
 arcade-history = történelem
   .description = Arcade statisztikák megtekintése az idő függvényében
@@ -656,7 +656,7 @@ arena-from = -tól
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az idő, amennyivel vissza szeretnél menni (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyivel vissza szeretnél menni (1h 12m 5s)
 
 arena-history = történelem
   .description = Aréna statisztikák megtekintése az idő függvényében
@@ -762,7 +762,7 @@ bedwars-from = -tól
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az idő, amennyivel vissza szeretnél menni (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyivel vissza szeretnél menni (1h 12m 5s)
 
 bedwars-history = történelem
   .description = Bed Wars statisztikák megtekintése az idő függvényében
@@ -862,7 +862,7 @@ blitz-from = innen
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (1h 12m 5s)
 
 blitz-history = történet
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését az idő során
@@ -940,7 +940,7 @@ buildbattle-from = innen
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (1h 12m 5s)
 
 buildbattle-history = történet
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését az idő során
@@ -1022,7 +1022,7 @@ copsandcrims-from = innen
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
   .time = idő
-  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, amire vissza szeretnél tekinteni (1h 12m 5s)
 
 copsandcrims-history = történet
   .description = Tekintsd meg a Cops and Crims statisztikáinak fejlődését az idő során
@@ -1125,7 +1125,7 @@ duels-from = kezdődik
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
   .time = idő
-  .time-description = Az az időtartam, ameddig vissza szeretne nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, ameddig vissza szeretne nézni (1h 12m 5s)
 
 duels-history = történet
   .description = Nézze meg a Döntők statisztikák fejlődését az idő során
@@ -1204,7 +1204,7 @@ megawalls-from = kezdődik
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
   .time = idő
-  .time-description = Az az időtartam, ameddig vissza szeretne nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, ameddig vissza szeretne nézni (1h 12m 5s)
 
 megawalls-history = történet
   .description = Nézze meg a Mega Falak statisztikák fejlődését az idő során
@@ -1284,7 +1284,7 @@ murdermystery-from = kezdődik
   .mode = mód
   .mode-description = A Gyilkosság Rejtély mód, amit meg szeretne tekinteni
   .time = idő
-  .time-description = Az az időtartam, ameddig vissza szeretne nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az az időtartam, ameddig vissza szeretne nézni (1h 12m 5s)
 
 murdermystery-history = történet
   .description = Nézze meg a Gyilkosság Rejtély statisztikák fejlődését az idő során
@@ -1372,7 +1372,7 @@ paintball-from = kezdettől
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
   .time = idő
-  .time-description = Az eltelt idő (pl. 1óra 12perc 5mp)
+  .time-description = Az eltelt idő (1h 12m 5s)
 
 paintball-history = történelem
   .description = Tekintse meg a Paintball statisztikák fejlődését az idők során
@@ -1451,7 +1451,7 @@ pit-from = kezdettől
   .mode = mód
   .mode-description = A megtekintendő Pit mód
   .time = idő
-  .time-description = Az eltelt idő (pl. 1óra 12perc 5mp)
+  .time-description = Az eltelt idő (1h 12m 5s)
 
 pit-history = történelem
   .description = Tekintse meg a Pit statisztikák fejlődését az idők során
@@ -1528,7 +1528,7 @@ quake-from = kezdettől
   .mode = mód
   .mode-description = A megtekintendő Quakecraft mód
   .time = idő
-  .time-description = Az eltelt idő (pl. 1óra 12perc 5mp)
+  .time-description = Az eltelt idő (1h 12m 5s)
 
 quake-history = történelem
   .description = Tekintse meg a Quakecraft statisztikák fejlődését az idők során
@@ -1617,7 +1617,7 @@ skywars-from = ettől
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
   .time = idő
-  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (1h 12m 5s)
 
 skywars-history = történelem
   .description = Nézd meg a SkyWars statisztikák fejlődését az idő során
@@ -1690,7 +1690,7 @@ smash-from = ettől
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
   .time = idő
-  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (1h 12m 5s)
 
 smash-history = történelem
   .description = Nézd meg a Smash Heroes statisztikák fejlődését az idő során
@@ -1762,7 +1762,7 @@ speeduhc-from = ettől
   .mode = mód
   .mode-description = A SpeedUHC mód, amit meg szeretnél tekinteni
   .time = idő
-  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (pl. 1óra 12perc 5mp)
+  .time-description = Az idő, amennyivel visszamenőleg szeretnél nézni (1h 12m 5s)
 
 speeduhc-history = történelem
   .description = Nézd meg a SpeedUHC statisztikák fejlődését az idő során
@@ -1845,7 +1845,7 @@ tntgames-from = kezdettől
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
   .time = idő
-  .time-description = Az az idő, amennyit visszamenőleg nézel (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyit visszamenőleg nézel (1h 12m 5s)
 
 tntgames-history = történet
   .description = Nézd meg a TNT Games statisztikák fejlődését az időben
@@ -1924,7 +1924,7 @@ turbokartracers-from = kezdettől
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
   .time = idő
-  .time-description = Az az idő, amennyit visszamenőleg nézel (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyit visszamenőleg nézel (1h 12m 5s)
 
 turbokartracers-history = történet
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését az időben
@@ -2005,7 +2005,7 @@ uhc-from = kezdettől
   .mode = mód
   .mode-description = A megjelenítendő UHC Champions mód
   .time = idő
-  .time-description = Az az idő, amennyit visszamenőleg nézel (pl. 1óra 12perc 5mp)
+  .time-description = Az az idő, amennyit visszamenőleg nézel (1h 12m 5s)
 
 uhc-history = történelem
   .description = Tekintse meg az UHC Champions statisztikák alakulását az idővel
@@ -2088,7 +2088,7 @@ vampirez-from = ettől
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
   .time = idő
-  .time-description = Az időtartam, amire vissza szeretne tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az időtartam, amire vissza szeretne tekinteni (1h 12m 5s)
 
 vampirez-history = történelem
   .description = Tekintse meg a VampireZ statisztikák alakulását az idővel
@@ -2164,7 +2164,7 @@ walls-from = ettől
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
   .time = idő
-  .time-description = Az időtartam, amire vissza szeretne tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az időtartam, amire vissza szeretne tekinteni (1h 12m 5s)
 
 walls-history = történelem
   .description = Tekintse meg a The Walls statisztikákat az idővel
@@ -2244,7 +2244,7 @@ warlords-from = ettől
   .mode = mód
   .mode-description = A Warlords módot, amit szeretne megtekinteni
   .time = idő
-  .time-description = Az időtartam, amire vissza szeretne tekinteni (pl. 1óra 12perc 5mp)
+  .time-description = Az időtartam, amire vissza szeretne tekinteni (1h 12m 5s)
 
 warlords-history = történelem
   .description = Nézd meg a Warlords statisztikák fejlődését az idő múlásával
@@ -2315,7 +2315,7 @@ woolwars-from = ettől
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
   .time = idő
-  .time-description = Az idő, amennyivel visszamenőleg nézni kívánsz (pl. 1óra 12perc 5mp)
+  .time-description = Az idő, amennyivel visszamenőleg nézni kívánsz (1h 12m 5s)
 
 woolwars-history = történelem
   .description = Nézd meg a Wool Wars statisztikák fejlődését az idő múlásával
@@ -2383,13 +2383,6 @@ General = Általános
 Members = Tagok
 Top = Legjobbak
 
-member = tag
-  .description = Egy guild tagjának megjelenítése
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
 guild-general = általános
   .description = Egy guild statisztikáinak megjelenítése
   .name = név
@@ -2408,7 +2401,7 @@ guild-from = ettől
   .uuid = azonosító
   .uuid-description = A megjelenítendő guild tag azonosítója
   .time = idő
-  .time-description = Az idő, amennyivel visszamenőleg nézni kívánsz (pl. 1óra 12perc 5mp)
+  .time-description = Az idő, amennyivel visszamenőleg nézni kívánsz (1h 12m 5s)
 
 guild-members = tagok
   .description = Egy guild tagjainak megjelenítése

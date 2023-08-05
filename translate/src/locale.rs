@@ -8,6 +8,7 @@ use core::panic;
 use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
 use crate::{prelude::GetLocale, Data, Error};
+use once_cell::sync::Lazy;
 use tracing::warn;
 
 type Bundle = fluent::bundle::FluentBundle<
@@ -16,6 +17,9 @@ type Bundle = fluent::bundle::FluentBundle<
 >;
 
 pub struct English<'c>(&'c Data);
+
+static NAME_REGEX: Lazy<regex::Regex> =
+	Lazy::new(|| regex::Regex::new(r"^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$").unwrap());
 
 impl GetLocale for English<'_> {
 	fn data(&self) -> &crate::Data {
@@ -194,6 +198,14 @@ impl Locale {
 					}
 				};
 
+				if !NAME_REGEX.is_match(&localized_command_name) {
+					panic!(
+						"invalid localized command name `{}` in {}",
+						localized_command_name,
+						locale.as_str(),
+					);
+				}
+
 				command
 					.name_localizations
 					.insert(locale.as_str().to_string(), localized_command_name);
@@ -216,6 +228,14 @@ impl Locale {
 					let name = format(bundle, &command_name, Some(&parameter.name), None);
 
 					if let Some(name) = name {
+						if !NAME_REGEX.is_match(&name) {
+							panic!(
+								"invalid localized parameter name `{}` in {}",
+								name,
+								locale.as_str(),
+							);
+						}
+
 						parameter
 							.name_localizations
 							.insert(locale.as_str().to_string(), name);

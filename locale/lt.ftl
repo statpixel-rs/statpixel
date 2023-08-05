@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} yra neteisingas.
 error-invalid-username = Vardas {$name} yra neteisingas.
 error-member-player-not-found = Narys {$name} nerastas profilyje.
 error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio {$name} vardu, nerasta.
-error-player-snapshot-not-found = Nėra momentinių vaizdų su {$name}. Sukurkite vieną naudodami </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Nėra momentinių vaizdų su {$name}. Sukurkite vieną naudodami </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = Lentele su pavadinimu {$name} nebuvo rasta.
 error-profile-not-found = Šiaurės blokų profilio {$profile}, priklausančio {$name} vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Laiko argumento trukmė pernelyg ilga. Bandykite, kad ji n
 # Greitos patarimai
 
 tip-background = <:knowledge_book:1117179094556233828> Keiskite sugeneruotų vaizdų foną naudodami </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Peržiūrėkite savo statistikos istorijos grafiką naudodami </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Peržiūrėkite statistikos pokyčius nuo tam tikros datos naudodami </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Peržiūrėkite savo statistikos istorijos grafiką naudodami </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Peržiūrėkite statistikos pokyčius nuo tam tikros datos naudodami </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Peržiūrėkite daugybę lyderių lentelių naudodami </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Mes palaikome SkyBlock! Peržiūrėkite profilį naudodami </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Susiekite savo „Minecraft“ paskyrą naudodami </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Peržiūrėkite gildijos statistiką naudodami </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Gauti savo kasdieninius statistikos duomenis naudodami </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Gauti savo kasdieninius statistikos duomenis naudodami </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Keiskite savo rodymo formatą naudodami </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Gauti daugiau pagalbos naudodami </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Apsilankykite mūsų svetainėje: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Prisijunkite prie mūsų pagalbos serverio: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Peržiūrėkite visų savo duomenų įvertinimus naudodami </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Peržiūrėkite visų savo duomenų įvertinimus naudodami </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Peržiūrėkite savo laimėjimų serijas naudodami </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Peržiūrėkite savo naujausius žaidimus naudodami </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Peržiūrėkite „SkyBlock“ bazaro kainas naudodami </skyblock bazaar:1113624864826327074>.
@@ -87,7 +87,7 @@ track-success-description =
 
 track = track
   .description = Seko žaidėjo statistiką ir siunčia jo pakeitimus į dabartinį kanalą.
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas, kurį sekti
   .uuid = uuid
   .uuid-description = Minecraft UUID, kurį sekti
@@ -199,7 +199,7 @@ about = about
 
 winstreaks = winstreaks
   .description = Peržiūrėti pergalės serijas
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -214,7 +214,7 @@ playing = Žaidžiama
 
 recent = recent
   .description = Peržiūrėti naujausius žaidimus
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -233,7 +233,7 @@ background = background
   .colour-description = Fono spalva
 
 error-invalid-colour = Pateikta neteisinga spalva
-error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of_colors) arba šešioliktainį spalvos kodą su simboliu `#`.
+error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of-colors) arba šešioliktainį spalvos kodą su simboliu `#`.
 colour-changed = Fono spalva pakeista
 colour-changed-description = Jūsų fono spalva pakeista į {$colour}.
 
@@ -270,7 +270,7 @@ Wardrobe = Spinta
 
 skyblock-auctions = auctions
   .description = Peržiūrėti SkyBlock aukcionus
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -282,7 +282,7 @@ highest-bid = Aukščiausias pasiūlymas
 
 skyblock-inventory = inventory
   .description = Peržiūrėti SkyBlock inventorius
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -291,7 +291,7 @@ skyblock-inventory = inventory
 
 skyblock-enderchest = enderchest
   .description = Peržiūrėti SkyBlock Ender skrynelę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -300,7 +300,7 @@ skyblock-enderchest = enderchest
 
 skyblock-quiver = quiver
   .description = Peržiūrėti SkyBlock Briaunas
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -309,7 +309,7 @@ skyblock-quiver = quiver
 
 skyblock-talisman = talisman
   .description = Peržiūrėti SkyBlock Talismanus
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -318,7 +318,7 @@ skyblock-talisman = talisman
 
 skyblock-fishing = fishing
   .description = Peržiūrėti SkyBlock Žūklės krepšelį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -327,7 +327,7 @@ skyblock-fishing = fishing
 
 skyblock-potions = potions
   .description = Peržiūrėti SkyBlock Skilties krepšelį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -336,7 +336,7 @@ skyblock-potions = potions
 
 skyblock-equipment = equipment
   .description = Peržiūrėti SkyBlock Įrangą
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -379,7 +379,7 @@ skyblock-pets = gyvūnai
   .profile = profilis
   .profile-description = Profilis, kurį peržiūrėti
 
-skyblock-networth = turto vertė
+skyblock-networth = turto-vertė
   .description = Peržiūrėti SkyBlock profilio turto vertę
   .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
@@ -436,7 +436,7 @@ bank-balance = Banko Balansas
 
 # /leaderboard
 
-leaderboard = lyderių lentelė
+leaderboard = lyderių-lentelė
   .description = Peržiūrėti lyderių lentelę skirtingiems žaidimams
   .board = lentelė
   .board-description = Lyderių lentelė, kurią peržiūrėti
@@ -479,24 +479,24 @@ help = pagalba
   .description = Parodo pagalbos meniu.
 
 help-general = Bendra <:cookie:1115091335565811775>
-help-general-description = StatPixel palaiko visus žaidimus Hypixel Tinkle. Galite peržiūrėti statistiką kiekvienam žaidimui naudodami `/<žaidimas> bendras`. Pvz., išbandykite </bedwars bendras:1113624864272683060>!
+help-general-description = StatPixel palaiko visus žaidimus Hypixel Tinkle. Galite peržiūrėti statistiką kiekvienam žaidimui naudodami `/<žaidimas> bendras`. Pvz., išbandykite </bedwars general:1113624864272683060>!
 
 help-display = Rodymas <:spyglass:1115091333657411625>
-help-display-description = Jei naudojate ribojamąjį ryšį arba norite sutaupyti duomenis, galite gauti atsakymus skirtingais formatas, pavyzdžiui, tekstiniu arba sutrauktais paveiksliukais, naudodami </rodyti:1113624864272683066>.
+help-display-description = Jei naudojate ribojamąjį ryšį arba norite sutaupyti duomenis, galite gauti atsakymus skirtingais formatas, pavyzdžiui, tekstiniu arba sutrauktais paveiksliukais, naudodami </display:1113624864272683066>.
 
 help-link = Sujungimas <a:recovery_compass:1115091332680126504>
-help-link-description = Nuolat rašyti savo naudotojo vardą kiekvienai komandai gali tapti varginančiu. Norėdami tai padaryti lengviau, galite sujungti paskyrą be patvirtinimo su </sujungti:1113624864524357710> ir vėliau ją atsieti su </atsieti:1113624865262538854>.
+help-link-description = Nuolat rašyti savo naudotojo vardą kiekvienai komandai gali tapti varginančiu. Norėdami tai padaryti lengviau, galite sujungti paskyrą be patvirtinimo su </link:1113624864524357710> ir vėliau ją atsieti su </unlink:1113624865262538854>.
 
 help-snapshot = Momentiniai pranešimai <:book_and_quill:1115091331379900428>
-help-snapshot-description = Momentiniai pranešimai leidžia peržiūrėti statistikos pokyčius laiko eigoje. Yra keletas naudingų komandų, kad gyvenimas būtų lengvesnis: </bedwars kasdien:1113624864272683065>, </bedwars savaitės:1113624865262538858> ir </bedwars mėnesio:1113624864524357712>. Tai taip pat veikia jūsų gildijai, tad išbandykite </gildija kasdien:1113624864272683065>!
+help-snapshot-description = Momentiniai pranešimai leidžia peržiūrėti statistikos pokyčius laiko eigoje. Yra keletas naudingų komandų, kad gyvenimas būtų lengvesnis: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ir </bedwars monthly:1113624864524357712>. Tai taip pat veikia jūsų gildijai, tad išbandykite </guild daily:1113624864272683065>!
 
-  Jei norite pamatyti konkrečią laiko intervalo statistiką, išbandykite </bedwars nuo:1113624864524357705>.
+  Jei norite pamatyti konkrečią laiko intervalo statistiką, išbandykite </bedwars from:1113624864524357705>.
 
 help-history = Istorija <a:clock:1115091329958019253>
-help-history-description = Norėdami pamatyti grafiką, kaip keičiasi konkrečios statistikos laikui bėgant, išbandykite </tinklo istorija:1113624864524357708>.
+help-history-description = Norėdami pamatyti grafiką, kaip keičiasi konkrečios statistikos laikui bėgant, išbandykite </network history:1113624864524357708>.
 
 help-image-builder = Paveikslėlių Kūrėjas <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Sukurkite savo dinaminius paveikslėlius naudodami Paveikslėlių Kūrėją! Naudokite </kūrėjas:1125992506501365891> pradėti arba eikite į https://statpixel.xyz/docs/kūrėjas norėdami gauti daugiau informacijos.
+help-image-builder-description = Sukurkite savo dinaminius paveikslėlius naudodami Paveikslėlių Kūrėją! Naudokite </builder:1125992506501365891> pradėti arba eikite į https://statpixel.xyz/docs/builder norėdami gauti daugiau informacijos.
 
 # /display
 display = rodyti
@@ -564,7 +564,7 @@ mystery-gifts = Paslėptos Dovanos
 
 arcade-general = bendras
   .description = Peržiūrėti Arcade statistiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -573,18 +573,18 @@ arcade-general = bendras
 
 arcade-from = nuo
   .description = Peržiūrėti Arcade statistikos vystymąsi nuo konkretaus laiko
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Arcade režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, kurį norite peržiūrėti (pvz., 1 valanda 12 min. 5 s.)
+  .time-description = Laiko intervalas, kurį norite peržiūrėti (1h 12m 5s)
 
 arcade-history = istorija
   .description = Peržiūrėti Arcade statistikos vystymąsi per laiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -593,7 +593,7 @@ arcade-history = istorija
 
 arcade-project = projektas
   .description = Projekuoti Arcade statistiką į ateitį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -606,7 +606,7 @@ arcade-project = projektas
 
 arcade-daily = kasdien
   .description = Peržiūrėti Arcade statistikos vystymąsi per paskutinę dieną
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -615,7 +615,7 @@ arcade-daily = kasdien
 
 arcade-weekly = savaitės
   .description = Peržiūrėti Arcade statistikos vystymąsi per paskutinę savaitę
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -624,7 +624,7 @@ arcade-weekly = savaitės
 
 arcade-monthly = mėnesio
   .description = Peržiūrėti Arcade statistikos vystymąsi per paskutinį mėnesį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -639,7 +639,7 @@ rating = Reitingas
 
 arena-general = bendras
   .description = Peržiūrėti Arena statistiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -648,18 +648,18 @@ arena-general = bendras
 
 arena-from = nuo
   .description = Peržiūrėti Arena statistikos vystymąsi nuo konkretaus laiko
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Arena režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, kurį norite peržiūrėti (pvz., 1 valanda 12 min. 5 s.)
+  .time-description = Laiko intervalas, kurį norite peržiūrėti (1h 12m 5s)
 
 arena-history = istorija
   .description = Peržiūrėti Arena statistikos vystymąsi per laiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -668,7 +668,7 @@ arena-history = istorija
 
 arena-project = projektas
   .description = Projekuoti Arena statistiką į ateitį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -681,7 +681,7 @@ arena-project = projektas
 
 arena-daily = kasdien
   .description = Peržiūrėti Arena statistikos vystymąsi per paskutinę dieną
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -690,7 +690,7 @@ arena-daily = kasdien
 
 arena-weekly = savaitės
   .description = Peržiūrėti Arena statistikos vystymąsi per paskutinę savaitę
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -699,7 +699,7 @@ arena-weekly = savaitės
 
 arena-monthly = mėnesio
   .description = Peržiūrėti Arena statistikos vystymąsi per paskutinį mėnesį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -745,7 +745,7 @@ items-purchased = Pirkimai
 
 bedwars-general = bendras
   .description = Peržiūrėti Bed Wars statistiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -754,18 +754,18 @@ bedwars-general = bendras
 
 bedwars-from = nuo
   .description = Peržiūrėti Bed Wars statistikos vystymąsi nuo konkretaus laiko
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Bed Wars režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, kurį norite peržiūrėti (pvz., 1 valanda 12 min. 5 s.)
+  .time-description = Laiko intervalas, kurį norite peržiūrėti (1h 12m 5s)
 
 bedwars-history = istorija
   .description = Peržiūrėti Bed Wars statistikos vystymąsi per laiką
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -774,7 +774,7 @@ bedwars-history = istorija
 
 bedwars-project = projektas
   .description = Projekuoti Bed Wars statistiką į ateitį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -787,7 +787,7 @@ bedwars-project = projektas
 
 bedwars-daily = kasdien
   .description = Peržiūrėti Bed Wars statistikos vystymąsi per paskutinę dieną
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -796,7 +796,7 @@ bedwars-daily = kasdien
 
 bedwars-weekly = savaitės
   .description = Peržiūrėti Bed Wars statistikos vystymąsi per paskutinę savaitę
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -805,7 +805,7 @@ bedwars-weekly = savaitės
 
 bedwars-monthly = mėnesio
   .description = Peržiūrėti Bed Wars statistikos vystymąsi per paskutinį mėnesį
-  .username = naudotojo vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -845,7 +845,7 @@ time-played = Žaidimo laikas
 
 blitz-general = bendras
   .description = Peržiūrėti Blitz Survival Games statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -854,18 +854,18 @@ blitz-general = bendras
 
 blitz-from = nuo
   .description = Peržiūrėti Blitz Survival Games statistiką nuo konkretaus laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Blitz Survival Games režimas
   .time = laikas
-  .time-description = Laikas, per kurį norima grįžti atgal (pvz., 1 val. 12 min. 5 s.)
+  .time-description = Laikas, per kurį norima grįžti atgal (1h 12m 5s)
 
 blitz-history = istorija
   .description = Peržiūrėti Blitz Survival Games statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -874,7 +874,7 @@ blitz-history = istorija
 
 blitz-project = projektas
   .description = Prognozuoti Blitz Survival Games statistiką ateityje
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -887,7 +887,7 @@ blitz-project = projektas
 
 blitz-daily = kasdien
   .description = Peržiūrėti Blitz Survival Games statistiką per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -896,7 +896,7 @@ blitz-daily = kasdien
 
 blitz-weekly = savaitinis
   .description = Peržiūrėti Blitz Survival Games statistiką per paskutinę savaitę
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -905,7 +905,7 @@ blitz-weekly = savaitinis
 
 blitz-monthly = mėnesinis
   .description = Peržiūrėti Blitz Survival Games statistiką per paskutinį mėnesį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -923,7 +923,7 @@ most-points-team = Daugiausia taškų (Komanda)
 
 buildbattle-general = bendras
   .description = Peržiūrėti Build Battle statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -932,18 +932,18 @@ buildbattle-general = bendras
 
 buildbattle-from = nuo
   .description = Peržiūrėti Build Battle statistiką nuo konkretaus laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Build Battle režimas
   .time = laikas
-  .time-description = Laikas, per kurį norima grįžti atgal (pvz., 1 val. 12 min. 5 s.)
+  .time-description = Laikas, per kurį norima grįžti atgal (1h 12m 5s)
 
 buildbattle-history = istorija
   .description = Peržiūrėti Build Battle statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -952,7 +952,7 @@ buildbattle-history = istorija
 
 buildbattle-project = projektas
   .description = Prognozuoti Build Battle statistiką ateityje
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -965,7 +965,7 @@ buildbattle-project = projektas
 
 buildbattle-daily = kasdien
   .description = Peržiūrėti Build Battle statistiką per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -974,7 +974,7 @@ buildbattle-daily = kasdien
 
 buildbattle-weekly = savaitinis
   .description = Peržiūrėti Build Battle statistiką per paskutinę savaitę
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -983,7 +983,7 @@ buildbattle-weekly = savaitinis
 
 buildbattle-monthly = mėnesinis
   .description = Peržiūrėti Build Battle statistiką per paskutinį mėnesį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1005,7 +1005,7 @@ bombs-planted = Įdetos Bombos
 
 copsandcrims-general = bendras
   .description = Peržiūrėti Cops and Crims statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1014,18 +1014,18 @@ copsandcrims-general = bendras
 
 copsandcrims-from = nuo
   .description = Peržiūrėti Cops and Crims statistiką nuo konkretaus laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Cops and Crims režimas
   .time = laikas
-  .time-description = Laikas, per kurį norima grįžti atgal (pvz., 1 val. 12 min. 5 s.)
+  .time-description = Laikas, per kurį norima grįžti atgal (1h 12m 5s)
 
 copsandcrims-history = istorija
   .description = Peržiūrėti Cops and Crims statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1034,7 +1034,7 @@ copsandcrims-history = istorija
 
 copsandcrims-project = projektas
   .description = Prognozuoti Cops and Crims statistiką ateityje
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1047,7 +1047,7 @@ copsandcrims-project = projektas
 
 copsandcrims-daily = kasdien
   .description = Peržiūrėti Cops and Crims statistiką per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1056,7 +1056,7 @@ copsandcrims-daily = kasdien
 
 copsandcrims-weekly = savaitės
   .description = Peržiūrėkite Cops and Crims statistikos pokyčius per paskutinę savaitę
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1065,7 +1065,7 @@ copsandcrims-weekly = savaitės
 
 copsandcrims-monthly = mėnesio
   .description = Peržiūrėkite Cops and Crims statistikos pokyčius per paskutinį mėnesį
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1108,7 +1108,7 @@ health-regenerated = Sveikata Atgauta
 
 duels-general = bendras
   .description = Peržiūrėkite Duels statistiką
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1117,18 +1117,18 @@ duels-general = bendras
 
 duels-from = nuo
   .description = Peržiūrėkite Duels statistikos pokyčius nuo konkretaus laiko
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Duels režimas, kurį peržiūrėti
   .time = laikas
-  .time-description = Laikas, į kurį norite grįžti atgal (pvz. 1val 12min 5s)
+  .time-description = Laikas, į kurį norite grįžti atgal (1h 12m 5s)
 
 duels-history = istorija
   .description = Peržiūrėkite Duels statistikos pokyčius laiko atžvilgiu
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1137,7 +1137,7 @@ duels-history = istorija
 
 duels-project = projektuoti
   .description = Prognozuokite Duels statistiką ateityje
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1150,7 +1150,7 @@ duels-project = projektuoti
 
 duels-daily = kasdien
   .description = Peržiūrėkite Duels statistikos pokyčius per paskutinę dieną
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1159,7 +1159,7 @@ duels-daily = kasdien
 
 duels-weekly = savaitės
   .description = Peržiūrėkite Duels statistikos pokyčius per paskutinę savaitę
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1168,7 +1168,7 @@ duels-weekly = savaitės
 
 duels-monthly = mėnesio
   .description = Peržiūrėkite Duels statistikos pokyčius per paskutinį mėnesį
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1187,7 +1187,7 @@ treasures-found = Rasta Lobis
 
 megawalls-general = bendras
   .description = Peržiūrėkite Mega Walls statistiką
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1196,18 +1196,18 @@ megawalls-general = bendras
 
 megawalls-from = nuo
   .description = Peržiūrėkite Mega Walls statistikos pokyčius nuo konkretaus laiko
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Mega Walls režimas, kurį peržiūrėti
   .time = laikas
-  .time-description = Laikas, į kurį norite grįžti atgal (pvz. 1val 12min 5s)
+  .time-description = Laikas, į kurį norite grįžti atgal (1h 12m 5s)
 
 megawalls-history = istorija
   .description = Peržiūrėkite Mega Walls statistikos pokyčius laiko atžvilgiu
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1216,7 +1216,7 @@ megawalls-history = istorija
 
 megawalls-project = projektuoti
   .description = Prognozuokite Mega Walls statistiką ateityje
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1229,7 +1229,7 @@ megawalls-project = projektuoti
 
 megawalls-daily = kasdien
   .description = Peržiūrėkite Mega Walls statistikos pokyčius per paskutinę dieną
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1238,7 +1238,7 @@ megawalls-daily = kasdien
 
 megawalls-weekly = savaitės
   .description = Peržiūrėkite Mega Walls statistikos pokyčius per paskutinę savaitę
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1247,7 +1247,7 @@ megawalls-weekly = savaitės
 
 megawalls-monthly = mėnesio
   .description = Peržiūrėkite Mega Walls statistikos pokyčius per paskutinį mėnesį
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1267,7 +1267,7 @@ detective-wins = Detektyvas Laimėjo
 
 murdermystery-general = bendras
   .description = Peržiūrėkite Murder Mystery statistiką
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1276,18 +1276,18 @@ murdermystery-general = bendras
 
 murdermystery-from = nuo
   .description = Peržiūrėkite Murder Mystery statistikos pokyčius nuo konkretaus laiko
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Murder Mystery režimas, kurį peržiūrėti
   .time = laikas
-  .time-description = Laikas, į kurį norite grįžti atgal (pvz. 1val 12min 5s)
+  .time-description = Laikas, į kurį norite grįžti atgal (1h 12m 5s)
 
 murdermystery-history = istorija
   .description = Peržiūrėkite Murder Mystery statistikos pokyčius laiko atžvilgiu
-  .username = naudotojo_vardas
+  .username = naudotojo-vardas
   .username-description = Minecraft naudotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1296,7 +1296,7 @@ murdermystery-history = istorija
 
 murdermystery-project = projektas
   .description = Projekto "Mįslių nužudymas" statistika į ateitį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1309,7 +1309,7 @@ murdermystery-project = projektas
 
 murdermystery-daily = dieninis
   .description = Peržiūrėkite "Mįslių nužudymo" statistikos pokytį per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1318,7 +1318,7 @@ murdermystery-daily = dieninis
 
 murdermystery-weekly = savaitinis
   .description = Peržiūrėkite "Mįslių nužudymo" statistikos pokytį per paskutinę savaitę
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1327,7 +1327,7 @@ murdermystery-weekly = savaitinis
 
 murdermystery-monthly = mėnesinis
   .description = Peržiūrėkite "Mįslių nužudymo" statistikos pokytį per paskutinį mėnesį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1355,7 +1355,7 @@ highest-killstreak = Geriausias žudymo serijos rezultatas
 
 paintball-general = bendra
   .description = Peržiūrėkite Paintball statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1364,18 +1364,18 @@ paintball-general = bendra
 
 paintball-from = nuo
   .description = Peržiūrėkite Paintball statistikos pokytį nuo tam tikro laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = Paintball veiksmas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laikas, per kurį norite grįžti atgal (pvz., 1val 12min 5s)
+  .time-description = Laikas, per kurį norite grįžti atgal (1h 12m 5s)
 
 paintball-history = istorija
   .description = Peržiūrėkite Paintball statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1384,7 +1384,7 @@ paintball-history = istorija
 
 paintball-project = projektas
   .description = Projekto "Paintball" statistika į ateitį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1397,7 +1397,7 @@ paintball-project = projektas
 
 paintball-daily = dieninis
   .description = Peržiūrėkite Paintball statistikos pokytį per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1406,7 +1406,7 @@ paintball-daily = dieninis
 
 paintball-weekly = savaitinis
   .description = Peržiūrėkite Paintball statistikos pokytį per paskutinę savaitę
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1415,7 +1415,7 @@ paintball-weekly = savaitinis
 
 paintball-monthly = mėnesinis
   .description = Peržiūrėkite Paintball statistikos pokytį per paskutinį mėnesį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1434,7 +1434,7 @@ cr = Užbaigimo koeficientas
 
 pit-general = bendra
   .description = Peržiūrėkite "The Pit" statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1443,18 +1443,18 @@ pit-general = bendra
 
 pit-from = nuo
   .description = Peržiūrėkite "The Pit" statistikos pokytį nuo tam tikro laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = "The Pit" veiksmas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laikas, per kurį norite grįžti atgal (pvz., 1val 12min 5s)
+  .time-description = Laikas, per kurį norite grįžti atgal (1h 12m 5s)
 
 pit-history = istorija
   .description = Peržiūrėkite "The Pit" statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1463,7 +1463,7 @@ pit-history = istorija
 
 pit-project = projektas
   .description = Projekto "The Pit" statistika į ateitį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1476,7 +1476,7 @@ pit-project = projektas
 
 pit-daily = dieninis
   .description = Peržiūrėkite "The Pit" statistikos pokytį per paskutinę dieną
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1485,7 +1485,7 @@ pit-daily = dieninis
 
 pit-weekly = savaitinis
   .description = Peržiūrėkite "The Pit" statistikos pokytį per paskutinę savaitę
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1494,7 +1494,7 @@ pit-weekly = savaitinis
 
 pit-monthly = mėnesinis
   .description = Peržiūrėkite "The Pit" statistikos pokytį per paskutinį mėnesį
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1511,7 +1511,7 @@ sight = Taikinys
 
 quake-general = bendra
   .description = Peržiūrėkite Quakecraft statistiką
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1520,18 +1520,18 @@ quake-general = bendra
 
 quake-from = nuo
   .description = Peržiūrėkite Quakecraft statistikos pokytį nuo tam tikro laiko
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = Quakecraft veiksmas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laikas, per kurį norite grįžti atgal (pvz., 1val 12min 5s)
+  .time-description = Laikas, per kurį norite grįžti atgal (1h 12m 5s)
 
 quake-history = istorija
   .description = Peržiūrėkite Quakecraft statistikos istoriją
-  .username = vartotojo vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1617,7 +1617,7 @@ skywars-from = nuo
   .mode = režimas
   .mode-description = "SkyWars" režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, į kurį norite grįžti atgal (pvz. 1 valanda 12 min 5 sekundės)
+  .time-description = Laiko intervalas, į kurį norite grįžti atgal (1h 12m 5s)
 
 skywars-history = istorija
   .description = Peržiūrėkite "SkyWars" statistikos vystymąsi per laiką
@@ -1692,7 +1692,7 @@ smash-from = nuo
   .mode = režimas
   .mode-description = "Smash Heroes" režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, į kurį norite grįžti atgal (pvz. 1 valanda 12 min 5 sekundės)
+  .time-description = Laiko intervalas, į kurį norite grįžti atgal (1h 12m 5s)
 
 smash-history = istorija
   .description = Peržiūrėkite "Smash Heroes" statistikos vystymąsi per laiką
@@ -1766,7 +1766,7 @@ speeduhc-from = nuo
   .mode = režimas
   .mode-description = "SpeedUHC" režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko intervalas, į kurį norite grįžti atgal (pvz. 1 valanda 12 min 5 sekundės)
+  .time-description = Laiko intervalas, į kurį norite grįžti atgal (1h 12m 5s)
 
 speeduhc-history = istorija
   .description = Peržiūrėkite "SpeedUHC" statistikos vystymąsi per laiką
@@ -1779,7 +1779,7 @@ speeduhc-history = istorija
 
 speeduhc-project = projektas
   .description = Projektas „SpeedUHC“ statistikai į ateitį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1792,7 +1792,7 @@ speeduhc-project = projektas
 
 speeduhc-daily = kasdien
   .description = Peržiūrėti „SpeedUHC“ statistikos kaitą per pastarąją dieną
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1801,7 +1801,7 @@ speeduhc-daily = kasdien
 
 speeduhc-weekly = savaitė
   .description = Peržiūrėti „SpeedUHC“ statistikos kaitą per pastarąją savaitę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1810,7 +1810,7 @@ speeduhc-weekly = savaitė
 
 speeduhc-monthly = mėnuo
   .description = Peržiūrėti „SpeedUHC“ statistikos kaitą per pastarąjį mėnesį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1833,7 +1833,7 @@ points = Taškai
 
 tntgames-general = bendras
   .description = Peržiūrėti „TNT Games“ statistiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1842,18 +1842,18 @@ tntgames-general = bendras
 
 tntgames-from = nuo
   .description = Peržiūrėti „TNT Games“ statistikos kaitą nuo konkretaus momento
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „TNT Games“ režimo pavadinimas
   .time = laikas
-  .time-description = Laikas, nuo kurio norite žiūrėti atgal (pvz., 1 val 12 min 5 s)
+  .time-description = Laikas, nuo kurio norite žiūrėti atgal (1h 12m 5s)
 
 tntgames-history = istorija
   .description = Peržiūrėti „TNT Games“ statistikos kaitą per laiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1862,7 +1862,7 @@ tntgames-history = istorija
 
 tntgames-project = projektas
   .description = Projektuoti „TNT Games“ statistiką į ateitį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1875,7 +1875,7 @@ tntgames-project = projektas
 
 tntgames-daily = kasdien
   .description = Peržiūrėti „TNT Games“ statistikos kaitą per pastarąją dieną
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1884,7 +1884,7 @@ tntgames-daily = kasdien
 
 tntgames-weekly = savaitė
   .description = Peržiūrėti „TNT Games“ statistikos kaitą per pastarąją savaitę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1893,7 +1893,7 @@ tntgames-weekly = savaitė
 
 tntgames-monthly = mėnuo
   .description = Peržiūrėti „TNT Games“ statistikos kaitą per pastarąjį mėnesį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1912,7 +1912,7 @@ gold-trophies = Auksiniai Trofėjai
 
 turbokartracers-general = bendras
   .description = Peržiūrėti „Turbo Kart Racers“ statistiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1921,18 +1921,18 @@ turbokartracers-general = bendras
 
 turbokartracers-from = nuo
   .description = Peržiūrėti „Turbo Kart Racers“ statistikos kaitą nuo konkretaus momento
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „Turbo Kart Racers“ režimo pavadinimas
   .time = laikas
-  .time-description = Laikas, nuo kurio norite žiūrėti atgal (pvz., 1 val 12 min 5 s)
+  .time-description = Laikas, nuo kurio norite žiūrėti atgal (1h 12m 5s)
 
 turbokartracers-history = istorija
   .description = Peržiūrėti „Turbo Kart Racers“ statistikos kaitą per laiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1941,7 +1941,7 @@ turbokartracers-history = istorija
 
 turbokartracers-project = projektas
   .description = Projektuoti „Turbo Kart Racers“ statistiką į ateitį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1954,7 +1954,7 @@ turbokartracers-project = projektas
 
 turbokartracers-daily = kasdien
   .description = Peržiūrėti „Turbo Kart Racers“ statistikos kaitą per pastarąją dieną
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1963,7 +1963,7 @@ turbokartracers-daily = kasdien
 
 turbokartracers-weekly = savaitė
   .description = Peržiūrėti „Turbo Kart Racers“ statistikos kaitą per pastarąją savaitę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1972,7 +1972,7 @@ turbokartracers-weekly = savaitė
 
 turbokartracers-monthly = mėnuo
   .description = Peržiūrėti „Turbo Kart Racers“ statistikos kaitą per pastarąjį mėnesį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -1993,7 +1993,7 @@ ultimates-crafted = Gaminti Išskirtinę galią
 
 uhc-general = bendras
   .description = Peržiūrėti „UHC Champions“ statistiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
@@ -2002,14 +2002,14 @@ uhc-general = bendras
 
 uhc-from = nuo
   .description = Peržiūrėti „UHC Champions“ statistikos kaitą nuo konkretaus momento
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = „Minecraft“ vartotojo vardas
   .uuid = uuid
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „UHC Champions“ režimo pavadinimas
   .time = laikas
-  .time-description = Laikas, nuo kurio norite žiūrėti atgal (pvz., 1 val 12 min 5 s)
+  .time-description = Laikas, nuo kurio norite žiūrėti atgal (1h 12m 5s)
 
 uhc-history = istorija
   .description = Peržiūrėkite UHC Champions statistikos raidą laiko atžvilgiu
@@ -2096,7 +2096,7 @@ vampirez-from = nuo
   .mode = režimas
   .mode-description = VampireZ režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (pvz., 1 val. 12 min. 5 s)
+  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (1h 12m 5s)
 
 vampirez-history = istorija
   .description = Peržiūrėkite VampireZ statistikos raidą laiko atžvilgiu
@@ -2172,7 +2172,7 @@ walls-from = nuo
   .mode = režimas
   .mode-description = The Walls režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (pvz., 1 val. 12 min. 5 s)
+  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (1h 12m 5s)
 
 walls-history = istorija
   .description = Peržiūrėkite The Walls statistikos raidą laiko atžvilgiu
@@ -2233,7 +2233,7 @@ TeamDeathmatch = Komandinė mirtynė
 wins-blue = Pergalės (Mėlynos)
 wins-red = Pergalės (Raudonos)
 hide-prestige = Paslėpti Prestižą
-mvps = NAUJAS_MVPs
+mvps = NAUJAS-MVPs
 
 warlords-general = bendras
   .description = Peržiūrėkite Warlords statistiką
@@ -2253,11 +2253,11 @@ warlords-from = nuo
   .mode = režimas
   .mode-description = Warlords režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (pvz., 1 val. 12 min. 5 s)
+  .time-description = Laiko tarpas, kurį norite atgaliniu būdu (1h 12m 5s)
 
 warlords-history = istorija
   .description = Peržiūrėkite Warlords statistikos vystymąsi laiko atžvilgiu
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2266,7 +2266,7 @@ warlords-history = istorija
 
 warlords-project = projektas
   .description = Projektuokite Warlords statistiką į ateitį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2279,7 +2279,7 @@ warlords-project = projektas
 
 warlords-daily = diena
   .description = Peržiūrėkite Warlords statistikos vystymąsi per pastarąją dieną
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2288,7 +2288,7 @@ warlords-daily = diena
 
 warlords-weekly = savaitė
   .description = Peržiūrėkite Warlords statistikos vystymąsi per pastarąją savaitę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2297,7 +2297,7 @@ warlords-weekly = savaitė
 
 warlords-monthly = mėnuo
   .description = Peržiūrėkite Warlords statistikos vystymąsi per pastarąjį mėnesį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2312,7 +2312,7 @@ wool-placed = Vilnos Dėklas
 
 woolwars-general = bendra
   .description = Peržiūrėkite Wool Wars statistiką
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2321,18 +2321,18 @@ woolwars-general = bendra
 
 woolwars-from = nuo
   .description = Peržiūrėkite Wool Wars statistikos vystymąsi nuo tam tikro laiko momento
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Wool Wars režimas, kurį norite peržiūrėti
   .time = laikas
-  .time-description = Laikotarpis, kurį norite atgal grįžti (pvz., 1val 12min 5s)
+  .time-description = Laikotarpis, kurį norite atgal grįžti (1h 12m 5s)
 
 woolwars-history = istorija
   .description = Peržiūrėkite Wool Wars statistikos vystymąsi laiko atžvilgiu
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2341,7 +2341,7 @@ woolwars-history = istorija
 
 woolwars-project = projektas
   .description = Projektuokite Wool Wars statistiką į ateitį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2354,7 +2354,7 @@ woolwars-project = projektas
 
 woolwars-daily = diena
   .description = Peržiūrėkite Wool Wars statistikos vystymąsi per pastarąją dieną
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2363,7 +2363,7 @@ woolwars-daily = diena
 
 woolwars-weekly = savaitė
   .description = Peržiūrėkite Wool Wars statistikos vystymąsi per pastarąją savaitę
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2372,7 +2372,7 @@ woolwars-weekly = savaitė
 
 woolwars-monthly = mėnuo
   .description = Peržiūrėkite Wool Wars statistikos vystymąsi per pastarąjį mėnesį
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2396,18 +2396,11 @@ General = Bendra
 Members = Nariai
 Top = Top
 
-member = narys
-  .description = Rodyti gildijos nario informaciją.
-  .username = vartotojo_vardas
-  .username-description = Gildijos nario vartotojo vardas, kurį norite peržiūrėti
-  .uuid = uuid
-  .uuid-description = Gildijos nario UUID, kurį norite peržiūrėti
-
 guild-general = bendra
   .description = Rodyti gildijos statistiką.
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurį norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio gildijos statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio gildijos statistiką norite peržiūrėti
@@ -2416,25 +2409,25 @@ guild-from = nuo
   .description = Peržiūrėkite gildijos statistikos vystymąsi nuo tam tikro laiko momento
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurį norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio gildijos statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio gildijos statistiką norite peržiūrėti
   .time = laikas
-  .time-description = Laikotarpis, kurį norite atgal grįžti (pvz., 1val 12min 5s)
+  .time-description = Laikotarpis, kurį norite atgal grįžti (1h 12m 5s)
 
 guild-members = nariai
   .description = Rodyti gildijos narius.
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurio narius norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio narius norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio narius norite peržiūrėti
 
 guild-member = narys
   .description = Rodyti gildijos nario statistiką.
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti
@@ -2443,7 +2436,7 @@ guild-top = top
   .description = Rodyti gildijos top narius pagal XP.
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurio top narius norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio top narius norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio top narius norite peržiūrėti
@@ -2456,7 +2449,7 @@ guild-daily = diena
   .description = Peržiūrėkite gildijos statistikos vystymąsi per pastarąją dieną
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurio statistiką norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti
@@ -2465,7 +2458,7 @@ guild-weekly = savaitė
   .description = Peržiūrėkite gildijos statistikos vystymąsi per pastarąją savaitę
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurio statistiką norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti
@@ -2474,7 +2467,7 @@ guild-monthly = mėnuo
   .description = Peržiūrėkite gildijos statistikos vystymąsi per pastarąjį mėnesį
   .name = pavadinimas
   .name-description = Gildijos pavadinimas, kurio statistiką norite peržiūrėti
-  .username = vartotojo_vardas
+  .username = vartotojo-vardas
   .username-description = Gildijos nario vartotojo vardas, kurio statistiką norite peržiūrėti
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti

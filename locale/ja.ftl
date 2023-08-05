@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid}は無効です。
 error-invalid-username = ユーザー名{$name}は無効です。
 error-member-player-not-found = プロフィール内でメンバー{$name}が見つかりませんでした。
 error-skyblock-profile-not-found = {$name}のSkyBlockプロフィールが見つかりませんでした。
-error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</daily bedwars:1113624864272683065>
+error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683065>
 error-leaderboard-not-found = 名前が{$name}のリーダーボードが見つかりませんでした。
 error-profile-not-found = {$name}の{$profile} SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = 時間引数の期間が長すぎます。3000年以下に
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> 生成された画像の背景を変更するには</background:1117174166056075335>を使用してください。
-tip-history = <:knowledge_book:1117179094556233828> 統計の履歴グラフを</history bedwars:1113624864524357708>で表示できます。
-tip-from = <:knowledge_book:1117179094556233828> 特定の日付からの統計変更を</from bedwars:1113624864524357705>で表示できます。
+tip-history = <:knowledge_book:1117179094556233828> 統計の履歴グラフを</bedwars history:1113624864524357708>で表示できます。
+tip-from = <:knowledge_book:1117179094556233828> 特定の日付からの統計変更を</bedwars from:1113624864524357705>で表示できます。
 tip-leaderboard = <:knowledge_book:1117179094556233828> 多数のリーダーボードを</leaderboard:1113624864524357709>で表示できます。
 tip-skyblock = <:knowledge_book:1117179094556233828> SkyBlockをサポートしています！</skyblock profile:1113624864826327074>でプロフィールを表示できます。
 tip-link = <:knowledge_book:1117179094556233828> Minecraftアカウントを</link:1113624864524357710>でリンクしてください。
 tip-guild = <:knowledge_book:1117179094556233828> ギルドの統計情報を</guild general:1113624864524357706>で表示できます。
-tip-snapshot = <:knowledge_book:1117179094556233828> 毎日の統計情報を</daily bedwars:1113624864272683065>でアクセスできます。
+tip-snapshot = <:knowledge_book:1117179094556233828> 毎日の統計情報を</bedwars daily:1113624864272683065>でアクセスできます。
 tip-display = <:knowledge_book:1117179094556233828> 表示形式を</display:1113624864272683066>で変更できます。
 tip-help = <:knowledge_book:1117179094556233828> より詳細なヘルプを</help:1113624864524357707>で取得できます。
 tip-website = <:knowledge_book:1117179094556233828> ウェブサイトは<https://statpixel.xyz>でご覧いただけます。
 tip-support-discord = <:knowledge_book:1117179094556233828> サポートサーバーには<https://statpixel.xyz/discord>から参加できます。
-tip-project = <:knowledge_book:1117179094556233828> 全データの推定を</project bedwars:1118417616541843477>で表示できます。
+tip-project = <:knowledge_book:1117179094556233828> 全データの推定を</bedwars project:1118417616541843477>で表示できます。
 tip-winstreak = <:knowledge_book:1117179094556233828> 勝利連勝数を</winstreaks:1124767485384724520>で表示できます。
 tip-recent = <:knowledge_book:1117179094556233828> 直近の試合を</recent:1123839349428080690>で表示できます。
 tip-bazaar = <:knowledge_book:1117179094556233828> SkyBlockの市場価格を</skyblock bazaar:1113624864826327074>で表示できます。
@@ -233,7 +233,7 @@ background = 背景
   .colour-description = 背景の色
 
 error-invalid-colour = 無効な色が指定されました
-error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of_colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
+error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of-colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
 colour-changed = 背景色が変更されました
 colour-changed-description = 背景色が{$colour}に変更されました。
 
@@ -490,13 +490,13 @@ help-link-description = 各コマンドのたびにユーザー名を入力す�
 help-snapshot = スナップショット <:book_and_quill:1115091331379900428>
 help-snapshot-description = スナップショットは統計情報の変化を時間の経過に沿って表示する方法です。いくつかの便利なコマンドがあります：`</bedwars daily:1113624864272683065>`、`</bedwars weekly:1113624865262538858>`、`</bedwars monthly:1113624864524357712>`。これらはギルドに対しても機能しますので、`</guild daily:1113624864272683065>`を試してみてください！
 
-  より具体的な範囲を表示したい場合は、`</bedwars from:1113624864524357705>`を試してみてください。
+  より具体的な範囲を表示したい場合は、</bedwars from:1113624864524357705>を試してみてください。
 
 help-history = 履歴 <a:clock:1115091329958019253>
-help-history-description = 特定の統計情報が時間の経過に沿ってどのように変化したかをグラフで表示するには、`</network history:1113624864524357708>`を試してみてください。
+help-history-description = 特定の統計情報が時間の経過に沿ってどのように変化したかをグラフで表示するには、</network history:1113624864524357708>を試してみてください。
 
 help-image-builder = 画像ビルダー <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = 画像ビルダーを使用して独自の動的な画像を作成できます！始めるには`</builder:1125992506501365891>`を使用するか、https://statpixel.xyz/docs/builderにアクセスしてください。
+help-image-builder-description = 画像ビルダーを使用して独自の動的な画像を作成できます！始めるには`</builder:1125992506501365891>`を使用するか、<https://statpixel.xyz/docs/builder>にアクセスしてください。
 
 # /display
 display = 表示
@@ -2327,7 +2327,7 @@ woolwars-from = 開始
   .mode = モード
   .mode-description = 表示するWool Warsのモード
   .time = 時間
-  .time-description = 戻る期間を指定します (例：1時間 12分 5秒)
+  .time-description = 戻る期間を指定します (1h 12m 5s)
 
 woolwars-history = 履歴
   .description = 時間の経過によるWool Warsの統計情報を表示します
@@ -2392,15 +2392,8 @@ guild-quests = ギルドクエスト
 
 Member = メンバー
 General = 一般
-Members = メンバー
+Members = メンバー達
 Top = トップ
-
-member = メンバー
-  .description = ギルドメンバーを表示します
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
 
 guild-general = 一般
   .description = ギルドの統計情報を表示します
@@ -2420,9 +2413,9 @@ guild-from = 開始
   .uuid = uuid
   .uuid-description = 表示するギルドメンバーのMinecraft UUID
   .time = 時間
-  .time-description = 戻る期間を指定します (例：1時間 12分 5秒)
+  .time-description = 戻る期間を指定します (1h 12m 5s)
 
-guild-members = メンバー
+guild-members = メンバー達
   .description = ギルドのメンバーを表示します
   .name = 名前
   .name-description = 表示するギルドの名前

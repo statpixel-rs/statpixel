@@ -12,7 +12,7 @@ macro_rules! large_command {
 	($game: ty, $fn: ident, $name: literal) => {
 		pub mod $fn {
 			use super::*;
-			use crate::commands::from::$fn as from;
+			use crate::commands::from::$fn::command as from;
 			use crate::commands::history::$fn as history;
 			use crate::commands::project::$fn::command as project;
 			use crate::commands::snapshot::daily::$fn as daily;
@@ -114,10 +114,10 @@ macro_rules! command {
 	};
 }
 
-command!(stats::arcade::Arcade, arcade, "arcade");
+large_command!(stats::arcade::Arcade, arcade, "arcade");
 command!(stats::arena::Arena, arena, "arena");
-command!(stats::bed_wars::BedWars, bedwars, "bedwars");
-command!(stats::blitz_sg::BlitzSg, blitz, "blitz");
+large_command!(stats::bed_wars::BedWars, bedwars, "bedwars");
+large_command!(stats::blitz_sg::BlitzSg, blitz, "blitz");
 command!(stats::build_battle::BuildBattle, buildbattle, "buildbattle");
 command!(
 	stats::cops_and_crims::CopsAndCrims,

@@ -165,13 +165,13 @@ const chunks = fs.readFileSync('../locale/en-US.ftl', 'utf8').split('\n\n').map(
 	tokens: encode(c).length,
 }));
 
-const BASE = `Translate the entire following Fluent localization file into Korean. Return the entire response in a code block using the original format.
+const BASE = `Translate the entire following Fluent localization file into Greek. Return the entire response in a code block using the original format.
 
 ---`;
 
 const END = `---
 
-Remember, only translate into Korean.`;
+Remember, only translate into Greek.`;
 
 const BASE_TOKENS = encode(BASE).length + encode(END).length;
 

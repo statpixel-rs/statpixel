@@ -131,6 +131,20 @@ async fn main() {
 					GuildId(std::num::NonZeroU64::new(1114619532502388777).unwrap())
 						.set_commands
 					 */
+					/*
+										std::fs::File::create("commands.json")
+											.unwrap()
+											.write_all(
+												serde_json::to_string_pretty(
+													&poise::builtins::create_application_commands(
+														&framework.options().commands,
+													),
+												)
+												.unwrap()
+												.as_bytes(),
+											)
+											.unwrap();
+					*/
 					serenity::Command::set_global_commands(
 						&ctx.http,
 						poise::builtins::create_application_commands(&framework.options().commands),

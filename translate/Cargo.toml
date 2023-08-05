@@ -23,3 +23,5 @@ tracing.workspace = true
 uuid.workspace = true
 tokio.workspace = true
 humantime.workspace = true
+regex.workspace = true
+once_cell.workspace = true

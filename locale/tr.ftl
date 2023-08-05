@@ -22,7 +22,7 @@ error-invalid-uuid = Geçersiz UUID: {$uuid}.
 error-invalid-username = Geçersiz kullanıcı adı: {$name}.
 error-member-player-not-found = Profilde {$name} adlı üye bulunamadı.
 error-skyblock-profile-not-found = {$name} adlı bir SkyBlock profil bulunamadı.
-error-player-snapshot-not-found = {$name} için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </daily bedwars:1113624864272683065> komutunu kullanın.
+error-player-snapshot-not-found = {$name} için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683065> komutunu kullanın.
 error-leaderboard-not-found = {$name} adlı bir lider tablosu bulunamadı.
 error-profile-not-found = {$name} adlı {$profile} SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Zaman argümanının süresi çok uzun. 3,000 yılın alt�
 # Hızlı ipuçları
 
 tip-background = <:knowledge_book:1117179094556233828> Oluşturulan resimlerin arka planını değiştirin: </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> İstatistiklerinizin tarihçesini görmek için: </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Belirli bir tarihten itibaren istatistik değişikliklerini görüntülemek için: </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> İstatistiklerinizin tarihçesini görmek için: </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Belirli bir tarihten itibaren istatistik değişikliklerini görüntülemek için: </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Çok sayıda lider tablosunu görüntülemek için: </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> SkyBlock'u destekliyoruz! Profil görüntülemek için: </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Minecraft hesabınızı bağlamak için: </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Sunucu istatistiklerini görüntülemek için: </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Günlük istatistiklerinize erişmek için: </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Günlük istatistiklerinize erişmek için: </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Görüntü formatınızı değiştirmek için: </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Daha fazla yardım almak için: </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Web sitemizi ziyaret edin: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Destek sunucumuza katılın: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Tüm verilerinizin tahmini görüntülemek için: </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Tüm verilerinizin tahmini görüntülemek için: </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Kazanma serilerinizi görüntülemek için: </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Son oyunlarınızı görüntülemek için: </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> SkyBlock bazar fiyatlarını görüntülemek için: </skyblock bazaar:1113624864826327074>.
@@ -87,7 +87,7 @@ track-success-description =
 
 track = track
   .description = Bir oyuncunun istatistiklerini takip eder ve değişiklikleri mevcut kanala gönderir.
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Takip edilecek Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Takip edilecek Minecraft UUID'si
@@ -198,7 +198,7 @@ about = about
 
 winstreaks = winstreaks
   .description = Winstreak'leri görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -213,7 +213,7 @@ playing = Oynama
 
 recent = recent
   .description = Son oyunları görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -232,7 +232,7 @@ background = background
   .colour-description = Arka plan rengi
 
 error-invalid-colour = Geçersiz renk sağlandı
-error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of_colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
+error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of-colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
 colour-changed = Arka plan rengi değiştirildi
 colour-changed-description = Arka plan renginiz {$colour} olarak değiştirildi.
 
@@ -269,7 +269,7 @@ Wardrobe = Gardırop
 
 skyblock-auctions = auctions
   .description = SkyBlock müzayedelerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -281,7 +281,7 @@ highest-bid = En Yüksek Teklif
 
 skyblock-inventory = inventory
   .description = Bir SkyBlock envanterini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -290,7 +290,7 @@ skyblock-inventory = inventory
 
 skyblock-enderchest = enderchest
   .description = Bir SkyBlock ender sandığını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -299,7 +299,7 @@ skyblock-enderchest = enderchest
 
 skyblock-quiver = quiver
   .description = Bir SkyBlock ok kınını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -308,7 +308,7 @@ skyblock-quiver = quiver
 
 skyblock-talisman = talisman
   .description = Bir SkyBlock tılsım çantasını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -317,7 +317,7 @@ skyblock-talisman = talisman
 
 skyblock-fishing = fishing
   .description = Bir SkyBlock balık tutma çantasını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -326,7 +326,7 @@ skyblock-fishing = fishing
 
 skyblock-potions = potions
   .description = Bir SkyBlock iksir çantasını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -335,7 +335,7 @@ skyblock-potions = potions
 
 skyblock-equipment = equipment
   .description = SkyBlock ekipmanlarını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -344,7 +344,7 @@ skyblock-equipment = equipment
 
 skyblock-wardrobe = dolap
   .description = Bir SkyBlock dolabını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -353,34 +353,34 @@ skyblock-wardrobe = dolap
 
 skyblock-candy = şeker
   .description = Bir SkyBlock şeker envanterini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .profile = profil
   .profile-description = Görüntülenecek profil
 
-skyblock-vault = kasalı çanta
+skyblock-vault = kasalı-çanta
   .description = Bir SkyBlock kişisel kasalı çantasını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .profile = profil
   .profile-description = Görüntülenecek profil
 
-skyblock-pets = evcil hayvanlar
+skyblock-pets = evcil-hayvanlar
   .description = SkyBlock evcil hayvanları görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .profile = profil
   .profile-description = Görüntülenecek profil
 
-skyblock-networth = varlık değeri
+skyblock-networth = varlık-değeri
   .description = SkyBlock profil varlık değerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -391,7 +391,7 @@ skyblock-networth = varlık değeri
 
 skyblock-profile = profil
   .description = Bir SkyBlock profilini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -423,7 +423,7 @@ social = Sosyal
 
 skyblock-bank = banka
   .description = Bir SkyBlock bankasını görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -435,7 +435,7 @@ bank-balance = Banka Bakiyesi
 
 # /leaderboard
 
-leaderboard = liderlik tablosu
+leaderboard = liderlik-tablosu
   .description = Farklı oyunlar için liderlik tablosunu görüntüle
   .board = tablo
   .board-description = Görüntülenecek liderlik tablosu
@@ -444,14 +444,14 @@ leaderboard = liderlik tablosu
 
 network-general = genel
   .description = Genel ağ istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
 
 network-history = geçmiş
   .description = Tarihsel ağ istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -478,7 +478,7 @@ help = yardım
   .description = Yardım menüsünü gösterir.
 
 help-general = Genel <:cookie:1115091335565811775>
-help-general-description = StatPixel Hypixel Ağı'ndaki her oyunu destekler. Her oyun için istatistikleri görmek için `/<oyun> genel` komutunu kullanabilirsiniz. Örneğin, </bedwars genel:1113624864272683060>'ı deneyin!
+help-general-description = StatPixel Hypixel Ağı'ndaki her oyunu destekler. Her oyun için istatistikleri görmek için `/<oyun> genel` komutunu kullanabilirsiniz. Örneğin, </bedwars general:1113624864272683060>'ı deneyin!
 
 help-display = Görünüm <:spyglass:1115091333657411625>
 help-display-description = Sınırlı bir bağlantıda ya da veri tasarrufu yapmak istiyorsanız, yanıtları metin veya yoğunlaştırılmış resimler gibi farklı formatlarda alabilirsiniz. Bunun için </display:1113624864272683066> komutunu kullanın.
@@ -489,7 +489,7 @@ help-link-description = Her komut için kullanıcı adınızı yazmak zorlayıc�
 help-snapshot = Anlık Görüntüler <:book_and_quill:1115091331379900428>
 help-snapshot-description = Anlık görüntüler, istatistiklerinizdeki değişiklikleri zaman içinde görüntülemenin bir yoludur. Birkaç yardımcı komutla hayatınızı kolaylaştırabilirsiniz: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ve </bedwars monthly:1113624864524357712>. Bu komutlar aynı şekilde gildeniz için de çalışır, dolayısıyla </guild daily:1113624864272683065>'u deneyin!
 
-Eğer daha spesifik bir aralık görmek isterseniz, </bedwars from:1113624864524357705>'i deneyin.
+  Eğer daha spesifik bir aralık görmek isterseniz, </bedwars from:1113624864524357705>'i deneyin.
 
 help-history = Geçmiş <a:clock:1115091329958019253>
 help-history-description = Belirli istatistiklerin zaman içinde nasıl değiştiğini bir grafikte görmek için, </network history:1113624864524357708> komutunu deneyin.
@@ -513,7 +513,7 @@ Compact = Yoğunlaştırılmış
 Text = Metin
 
 # /unlink
-unlink = bağlantıyı kaldır
+unlink = bağlantıyı-kaldır
   .description = Discord hesabınızı bir Minecraft hesabından ayırır.
 
 unlinking-failed = Bağlantı Kaldırma Başarısız
@@ -524,7 +524,7 @@ unlinking-succeeded-description = Artık bir Minecraft hesabına bağlı değils
 # /link
 link = bağlantı
   .description = Discord hesabınızı bir Minecraft hesabına bağlar.
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Bağlanmak için Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Bağlanmak için Minecraft UUID
@@ -563,7 +563,7 @@ mystery-gifts = Gizemli Hediyeler
 
 arcade-general = genel
   .description = Arcade istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -572,18 +572,18 @@ arcade-general = genel
 
 arcade-from = şuradan
   .description = Belirli bir zamandan beri Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dak 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 arcade-history = geçmiş
   .description = Zaman içinde Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -592,7 +592,7 @@ arcade-history = geçmiş
 
 arcade-project = projeksiyon
   .description = Arcade istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -605,7 +605,7 @@ arcade-project = projeksiyon
 
 arcade-daily = günlük
   .description = Son gün içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -614,7 +614,7 @@ arcade-daily = günlük
 
 arcade-weekly = haftalık
   .description = Son hafta içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -623,7 +623,7 @@ arcade-weekly = haftalık
 
 arcade-monthly = aylık
   .description = Son ay içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -638,7 +638,7 @@ rating = Derecelendirme
 
 arena-general = genel
   .description = Arena istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -647,18 +647,18 @@ arena-general = genel
 
 arena-from = şuradan
   .description = Belirli bir zamandan beri Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dak 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 arena-history = geçmiş
   .description = Zaman içinde Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -667,7 +667,7 @@ arena-history = geçmiş
 
 arena-project = projeksiyon
   .description = Arena istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -680,7 +680,7 @@ arena-project = projeksiyon
 
 arena-daily = günlük
   .description = Son gün içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -689,7 +689,7 @@ arena-daily = günlük
 
 arena-weekly = haftalık
   .description = Son hafta içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -698,7 +698,7 @@ arena-weekly = haftalık
 
 arena-monthly = aylık
   .description = Son ay içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -744,7 +744,7 @@ items-purchased = Satın Alınanlar
 
 bedwars-general = genel
   .description = Bed Wars istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -753,18 +753,18 @@ bedwars-general = genel
 
 bedwars-from = şuradan
   .description = Belirli bir zamandan beri Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dak 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 bedwars-history = geçmiş
   .description = Zaman içinde Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -773,7 +773,7 @@ bedwars-history = geçmiş
 
 bedwars-project = projeksiyon
   .description = Bed Wars istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -786,7 +786,7 @@ bedwars-project = projeksiyon
 
 bedwars-daily = günlük
   .description = Son gün içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -795,7 +795,7 @@ bedwars-daily = günlük
 
 bedwars-weekly = haftalık
   .description = Son hafta içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -804,7 +804,7 @@ bedwars-weekly = haftalık
 
 bedwars-monthly = aylık
   .description = Son ay içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -844,7 +844,7 @@ time-played = Oynama Süresi
 
 blitz-general = genel
   .description = Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -853,18 +853,18 @@ blitz-general = genel
 
 blitz-from = itibaren
   .description = Belirli bir zamandan itibaren Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 blitz-history = tarihçe
   .description = Zaman içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -873,7 +873,7 @@ blitz-history = tarihçe
 
 blitz-project = projeksiyon
   .description = Geleceğe yönelik Blitz Survival Games istatistik projeksiyonu yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -886,7 +886,7 @@ blitz-project = projeksiyon
 
 blitz-daily = günlük
   .description = Son gün içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -895,7 +895,7 @@ blitz-daily = günlük
 
 blitz-weekly = haftalık
   .description = Son hafta içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -904,7 +904,7 @@ blitz-weekly = haftalık
 
 blitz-monthly = aylık
   .description = Son ay içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -922,7 +922,7 @@ most-points-team = En Yüksek Puan (Takım)
 
 buildbattle-general = genel
   .description = Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -931,18 +931,18 @@ buildbattle-general = genel
 
 buildbattle-from = itibaren
   .description = Belirli bir zamandan itibaren Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 buildbattle-history = tarihçe
   .description = Zaman içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -951,7 +951,7 @@ buildbattle-history = tarihçe
 
 buildbattle-project = projeksiyon
   .description = Geleceğe yönelik Build Battle istatistik projeksiyonu yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -964,7 +964,7 @@ buildbattle-project = projeksiyon
 
 buildbattle-daily = günlük
   .description = Son gün içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -973,7 +973,7 @@ buildbattle-daily = günlük
 
 buildbattle-weekly = haftalık
   .description = Son hafta içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -982,7 +982,7 @@ buildbattle-weekly = haftalık
 
 buildbattle-monthly = aylık
   .description = Son ay içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1004,7 +1004,7 @@ bombs-planted = Döşenen Bombalar
 
 copsandcrims-general = genel
   .description = Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1013,18 +1013,18 @@ copsandcrims-general = genel
 
 copsandcrims-from = itibaren
   .description = Belirli bir zamandan itibaren Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 copsandcrims-history = tarihçe
   .description = Zaman içindeki Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1033,7 +1033,7 @@ copsandcrims-history = tarihçe
 
 copsandcrims-project = projeksiyon
   .description = Geleceğe yönelik Cops and Crims istatistik projeksiyonu yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1046,7 +1046,7 @@ copsandcrims-project = projeksiyon
 
 copsandcrims-daily = günlük
   .description = Son gün içindeki Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1055,7 +1055,7 @@ copsandcrims-daily = günlük
 
 copsandcrims-weekly = haftalık
   .description = Geçen hafta Cops and Crims istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1064,7 +1064,7 @@ copsandcrims-weekly = haftalık
 
 copsandcrims-monthly = aylık
   .description = Geçen ay Cops and Crims istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1107,27 +1107,27 @@ health-regenerated = Yenilen Sağlık
 
 duels-general = genel
   .description = Düellos istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
-duels-from = tarihten beri
+duels-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 duels-history = geçmiş
   .description = Zaman içinde Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1136,7 +1136,7 @@ duels-history = geçmiş
 
 duels-project = projeksiyon
   .description = Düellos istatistiklerini geleceğe projeksiyonla
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1149,7 +1149,7 @@ duels-project = projeksiyon
 
 duels-daily = günlük
   .description = Geçen gün Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1158,7 +1158,7 @@ duels-daily = günlük
 
 duels-weekly = haftalık
   .description = Geçen hafta Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1167,7 +1167,7 @@ duels-weekly = haftalık
 
 duels-monthly = aylık
   .description = Geçen ay Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1186,27 +1186,27 @@ treasures-found = Keşfedilen Hazine
 
 megawalls-general = genel
   .description = Mega Duvarlar istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
-megawalls-from = tarihten beri
+megawalls-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 megawalls-history = geçmiş
   .description = Zaman içinde Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1215,7 +1215,7 @@ megawalls-history = geçmiş
 
 megawalls-project = projeksiyon
   .description = Mega Duvarlar istatistiklerini geleceğe projeksiyonla
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1228,7 +1228,7 @@ megawalls-project = projeksiyon
 
 megawalls-daily = günlük
   .description = Geçen gün Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1237,7 +1237,7 @@ megawalls-daily = günlük
 
 megawalls-weekly = haftalık
   .description = Geçen hafta Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1246,7 +1246,7 @@ megawalls-weekly = haftalık
 
 megawalls-monthly = aylık
   .description = Geçen ay Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1266,27 +1266,27 @@ detective-wins = Dedektif Kazançları
 
 murdermystery-general = genel
   .description = Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
-murdermystery-from = tarihten beri
+murdermystery-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Murder Mystery istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
   .time = zaman
-  .time-description = Geri gitmek için süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için süre (1h 12m 5s)
 
 murdermystery-history = geçmiş
   .description = Zaman içinde Murder Mystery istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1295,7 +1295,7 @@ murdermystery-history = geçmiş
 
 murdermystery-project = proje
   .description = Murder Mystery istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1308,7 +1308,7 @@ murdermystery-project = proje
 
 murdermystery-daily = günlük
   .description = Son 24 saat içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1317,7 +1317,7 @@ murdermystery-daily = günlük
 
 murdermystery-weekly = haftalık
   .description = Son bir hafta içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1326,7 +1326,7 @@ murdermystery-weekly = haftalık
 
 murdermystery-monthly = aylık
   .description = Son bir ay içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1354,27 +1354,27 @@ highest-killstreak = En Yüksek Seri
 
 paintball-general = genel
   .description = Paintball istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
-paintball-from = zaman aralığı
+paintball-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren Paintball istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
   .time = zaman
-  .time-description = Geri gitmek istediğiniz süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek istediğiniz süre (1h 12m 5s)
 
 paintball-history = tarihçe
   .description = Paintball istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1383,7 +1383,7 @@ paintball-history = tarihçe
 
 paintball-project = proje
   .description = Paintball istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1396,7 +1396,7 @@ paintball-project = proje
 
 paintball-daily = günlük
   .description = Son 24 saat içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1405,7 +1405,7 @@ paintball-daily = günlük
 
 paintball-weekly = haftalık
   .description = Son bir hafta içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1414,7 +1414,7 @@ paintball-weekly = haftalık
 
 paintball-monthly = aylık
   .description = Son bir ay içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1433,27 +1433,27 @@ cr = Tamamlama Oranı
 
 pit-general = genel
   .description = The Pit istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
-pit-from = zaman aralığı
+pit-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren The Pit istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
   .time = zaman
-  .time-description = Geri gitmek istediğiniz süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek istediğiniz süre (1h 12m 5s)
 
 pit-history = tarihçe
   .description = The Pit istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1462,7 +1462,7 @@ pit-history = tarihçe
 
 pit-project = proje
   .description = The Pit istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1475,7 +1475,7 @@ pit-project = proje
 
 pit-daily = günlük
   .description = Son 24 saat içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1484,7 +1484,7 @@ pit-daily = günlük
 
 pit-weekly = haftalık
   .description = Son bir hafta içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1493,7 +1493,7 @@ pit-weekly = haftalık
 
 pit-monthly = aylık
   .description = Son bir ay içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1510,27 +1510,27 @@ sight = Hedef
 
 quake-general = genel
   .description = Quakecraft istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
-quake-from = zaman aralığı
+quake-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren Quakecraft istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
   .time = zaman
-  .time-description = Geri gitmek istediğiniz süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek istediğiniz süre (1h 12m 5s)
 
 quake-history = tarihçe
   .description = Quakecraft istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1539,7 +1539,7 @@ quake-history = tarihçe
 
 quake-project = proje
   .description = Geleceğe yönelik Quakecraft istatistikleri
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1552,7 +1552,7 @@ quake-project = proje
 
 quake-daily = günlük
   .description = Son bir günde Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1561,7 +1561,7 @@ quake-daily = günlük
 
 quake-weekly = haftalık
   .description = Son bir haftada Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1570,7 +1570,7 @@ quake-weekly = haftalık
 
 quake-monthly = aylık
   .description = Son bir ayda Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1600,7 +1600,7 @@ fastest-win = En Hızlı Galibiyet
 
 skywars-general = genel
   .description = SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1609,18 +1609,18 @@ skywars-general = genel
 
 skywars-from = tarihten
   .description = Belirli bir zamandan itibaren SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
   .time = zaman
-  .time-description = Geriye gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geriye gitmek için geçen süre (1h 12m 5s)
 
 skywars-history = geçmiş
   .description = Zaman içindeki SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1629,7 +1629,7 @@ skywars-history = geçmiş
 
 skywars-project = projeksiyon
   .description = Geleceğe yönelik SkyWars istatistiklerinin yansıtılması
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1642,7 +1642,7 @@ skywars-project = projeksiyon
 
 skywars-daily = günlük
   .description = Son bir günde SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1651,7 +1651,7 @@ skywars-daily = günlük
 
 skywars-weekly = haftalık
   .description = Son bir haftada SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1660,7 +1660,7 @@ skywars-weekly = haftalık
 
 skywars-monthly = aylık
   .description = Son bir ayda SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1675,7 +1675,7 @@ ssr = SSR
 
 smash-general = genel
   .description = Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1684,18 +1684,18 @@ smash-general = genel
 
 smash-from = tarihten
   .description = Belirli bir zamandan itibaren Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
   .time = zaman
-  .time-description = Geriye gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geriye gitmek için geçen süre (1h 12m 5s)
 
 smash-history = geçmiş
   .description = Zaman içindeki Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1704,7 +1704,7 @@ smash-history = geçmiş
 
 smash-project = projeksiyon
   .description = Geleceğe yönelik Smash Heroes istatistiklerinin yansıtılması
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1717,7 +1717,7 @@ smash-project = projeksiyon
 
 smash-daily = günlük
   .description = Son bir günde Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1726,7 +1726,7 @@ smash-daily = günlük
 
 smash-weekly = haftalık
   .description = Son bir haftada Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1735,7 +1735,7 @@ smash-weekly = haftalık
 
 smash-monthly = aylık
   .description = Son bir ayda Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1749,7 +1749,7 @@ survived-players = Hayatta Kalan Oyuncular
 
 speeduhc-general = genel
   .description = SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1758,18 +1758,18 @@ speeduhc-general = genel
 
 speeduhc-from = tarihten
   .description = Belirli bir zamandan itibaren SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek SpeedUHC modu
   .time = zaman
-  .time-description = Geriye gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geriye gitmek için geçen süre (1h 12m 5s)
 
 speeduhc-history = geçmiş
   .description = Zaman içindeki SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1778,7 +1778,7 @@ speeduhc-history = geçmiş
 
 speeduhc-project = proje
   .description = Geleceğe yönelik SpeedUHC istatistikleri
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1791,7 +1791,7 @@ speeduhc-project = proje
 
 speeduhc-daily = günlük
   .description = Son gün içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1800,7 +1800,7 @@ speeduhc-daily = günlük
 
 speeduhc-weekly = haftalık
   .description = Son hafta içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1809,7 +1809,7 @@ speeduhc-weekly = haftalık
 
 speeduhc-monthly = aylık
   .description = Son ay içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1832,7 +1832,7 @@ points = Puanlar
 
 tntgames-general = genel
   .description = TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1841,18 +1841,18 @@ tntgames-general = genel
 
 tntgames-from = başlangıç
   .description = Belirli bir zamandan itibaren TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
   .time = zaman
-  .time-description = Geri gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için geçen süre (1h 12m 5s)
 
 tntgames-history = geçmiş
   .description = Zaman içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1861,7 +1861,7 @@ tntgames-history = geçmiş
 
 tntgames-project = projeksiyon
   .description = Geleceğe yönelik TNT Oyunları istatistikleri
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1874,7 +1874,7 @@ tntgames-project = projeksiyon
 
 tntgames-daily = günlük
   .description = Son gün içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1883,7 +1883,7 @@ tntgames-daily = günlük
 
 tntgames-weekly = haftalık
   .description = Son hafta içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1892,7 +1892,7 @@ tntgames-weekly = haftalık
 
 tntgames-monthly = aylık
   .description = Son ay içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1911,7 +1911,7 @@ gold-trophies = Altın Kupalar
 
 turbokartracers-general = genel
   .description = Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1920,18 +1920,18 @@ turbokartracers-general = genel
 
 turbokartracers-from = başlangıç
   .description = Belirli bir zamandan itibaren Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
   .time = zaman
-  .time-description = Geri gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için geçen süre (1h 12m 5s)
 
 turbokartracers-history = geçmiş
   .description = Zaman içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1940,7 +1940,7 @@ turbokartracers-history = geçmiş
 
 turbokartracers-project = projeksiyon
   .description = Geleceğe yönelik Turbo Kart Yarışçıları istatistikleri
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1953,7 +1953,7 @@ turbokartracers-project = projeksiyon
 
 turbokartracers-daily = günlük
   .description = Son gün içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1962,7 +1962,7 @@ turbokartracers-daily = günlük
 
 turbokartracers-weekly = haftalık
   .description = Son hafta içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1971,7 +1971,7 @@ turbokartracers-weekly = haftalık
 
 turbokartracers-monthly = aylık
   .description = Son ay içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -1992,7 +1992,7 @@ ultimates-crafted = Ultimatelar Oluşturuldu
 
 uhc-general = genel
   .description = UHC Şampiyonları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2001,18 +2001,18 @@ uhc-general = genel
 
 uhc-from = başlangıç
   .description = Belirli bir zamandan itibaren UHC Şampiyonları istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için UHC Şampiyonları modu
   .time = zaman
-  .time-description = Geri gitmek için geçen süre (örn. 1saat 12dk 5sn)
+  .time-description = Geri gitmek için geçen süre (1h 12m 5s)
 
 uhc-history = geçmiş
   .description = UHC Champions istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2021,7 +2021,7 @@ uhc-history = geçmiş
 
 uhc-project = proje
   .description = UHC Champions istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2034,7 +2034,7 @@ uhc-project = proje
 
 uhc-daily = günlük
   .description = UHC Champions istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2043,7 +2043,7 @@ uhc-daily = günlük
 
 uhc-weekly = haftalık
   .description = UHC Champions istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2052,7 +2052,7 @@ uhc-weekly = haftalık
 
 uhc-monthly = aylık
   .description = UHC Champions istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2079,7 +2079,7 @@ vkdr = VKDR
 
 vampirez-general = genel
   .description = VampireZ istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2088,18 +2088,18 @@ vampirez-general = genel
 
 vampirez-from = tarihinden
   .description = VampireZ istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
   .time = zaman
-  .time-description = Geriye gitmek için geçerli süre bilgisi (örn. 1saat 12dak 5sn)
+  .time-description = Geriye gitmek için geçerli süre bilgisi (1h 12m 5s)
 
 vampirez-history = geçmiş
   .description = VampireZ istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2108,7 +2108,7 @@ vampirez-history = geçmiş
 
 vampirez-project = projeksiyon
   .description = VampireZ istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2121,7 +2121,7 @@ vampirez-project = projeksiyon
 
 vampirez-daily = günlük
   .description = VampireZ istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2130,7 +2130,7 @@ vampirez-daily = günlük
 
 vampirez-weekly = haftalık
   .description = VampireZ istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2139,7 +2139,7 @@ vampirez-weekly = haftalık
 
 vampirez-monthly = aylık
   .description = VampireZ istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2155,7 +2155,7 @@ iron-broken = Kırılan Demirler
 
 walls-general = genel
   .description = The Walls istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2164,18 +2164,18 @@ walls-general = genel
 
 walls-from = tarihinden
   .description = The Walls istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
   .time = zaman
-  .time-description = Geriye gitmek için geçerli süre bilgisi (örn. 1saat 12dak 5sn)
+  .time-description = Geriye gitmek için geçerli süre bilgisi (1h 12m 5s)
 
 walls-history = geçmiş
   .description = The Walls istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2184,7 +2184,7 @@ walls-history = geçmiş
 
 walls-project = projeksiyon
   .description = The Walls istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2197,7 +2197,7 @@ walls-project = projeksiyon
 
 walls-daily = günlük
   .description = The Walls istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2206,7 +2206,7 @@ walls-daily = günlük
 
 walls-weekly = haftalık
   .description = The Walls istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2215,7 +2215,7 @@ walls-weekly = haftalık
 
 walls-monthly = aylık
   .description = The Walls istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2236,7 +2236,7 @@ mvps = En Değerli Oyuncular
 
 warlords-general = genel
   .description = Warlords istatistiklerini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2245,18 +2245,18 @@ warlords-general = genel
 
 warlords-from = tarihinden
   .description = Warlords istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Warlords modu
   .time = zaman
-  .time-description = Geriye gitmek için geçerli süre bilgisi (örn. 1saat 12dak 5sn)
+  .time-description = Geriye gitmek için geçerli süre bilgisi (1h 12m 5s)
 
 warlords-history = tarih
   .description = Zaman içinde Savaşçıların istatistik gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2265,7 +2265,7 @@ warlords-history = tarih
 
 warlords-project = proje
   .description = Savaşçıların istatistiklerini geleceğe projeksiyon yapın
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2278,7 +2278,7 @@ warlords-project = proje
 
 warlords-daily = günlük
   .description = Savaşçıların son gün içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2287,7 +2287,7 @@ warlords-daily = günlük
 
 warlords-weekly = haftalık
   .description = Savaşçıların son hafta içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2296,7 +2296,7 @@ warlords-weekly = haftalık
 
 warlords-monthly = aylık
   .description = Savaşçıların son ay içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2311,7 +2311,7 @@ wool-placed = Yerleştirilen Yünler
 
 woolwars-general = genel
   .description = Wool Wars istatistiklerini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2320,18 +2320,18 @@ woolwars-general = genel
 
 woolwars-from = itibaren
   .description = Belirli bir zamandan beri Wool Wars istatistiklerinin gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
   .time = zaman
-  .time-description = Geriye gitmek için zaman miktarı (örn. 1 saat 12 dakika 5 saniye)
+  .time-description = Geriye gitmek için zaman miktarı (1h 12m 5s)
 
 woolwars-history = tarih
   .description = Zaman içinde Wool Wars istatistiklerinin gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2340,7 +2340,7 @@ woolwars-history = tarih
 
 woolwars-project = proje
   .description = Wool Wars istatistiklerini geleceğe projeksiyon yapın
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2353,7 +2353,7 @@ woolwars-project = proje
 
 woolwars-daily = günlük
   .description = Wool Wars istatistiklerinin son gün içindeki gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2362,7 +2362,7 @@ woolwars-daily = günlük
 
 woolwars-weekly = haftalık
   .description = Wool Wars istatistiklerinin son hafta içindeki gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2371,7 +2371,7 @@ woolwars-weekly = haftalık
 
 woolwars-monthly = aylık
   .description = Wool Wars istatistiklerinin son ay içindeki gelişimini görüntüleyin
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
@@ -2395,18 +2395,11 @@ General = Genel
 Members = Üyeler
 Top = En İyi
 
-member = üye
-  .description = Bir loncanın üyesini gösterir.
-  .username = kullanıcı adı
-  .username-description = Görüntülenecek lonca üyesinin kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin UUID'si
-
 guild-general = genel
   .description = Bir loncanın istatistiklerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2415,25 +2408,25 @@ guild-from = itibaren
   .description = Belirli bir zamandan beri lonca istatistiklerinin gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
   .time = zaman
-  .time-description = Geriye gitmek için zaman miktarı (örn. 1 saat 12 dakika 5 saniye)
+  .time-description = Geriye gitmek için zaman miktarı (1h 12m 5s)
 
 guild-members = üyeler
   .description = Bir loncanın üyelerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
 
 guild-member = üye
   .description = Bir lonca üyesinin istatistiklerini gösterir.
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2442,7 +2435,7 @@ guild-top = eniyi
   .description = Bir loncanın XP bakımından en iyi üyelerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2455,7 +2448,7 @@ guild-daily = günlük
   .description = Bir loncanın son gün içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2464,7 +2457,7 @@ guild-weekly = haftalık
   .description = Bir loncanın son hafta içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2473,7 +2466,7 @@ guild-monthly = aylık
   .description = Bir loncanın son ay içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı adı
+  .username = kullanıcı-adı
   .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
@@ -2483,7 +2476,7 @@ showing-guild-xp-statistics = {$from} ile {$to} arasındaki lonca XP kazancını
 # Paylaşılan tuval etiketleri
 
 Normal = Normal
-Takım = Takım
+Team = Takım
 
 blocks-broken = Kırılan Bloklar
 blocks-placed = Yerleştirilen Bloklar

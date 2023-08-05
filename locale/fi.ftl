@@ -21,7 +21,7 @@ error-invalid-uuid = Annettu uuid {$uuid} ei ole kelvollinen.
 error-invalid-username = Annettu pelaajanimi {$name} ei ole kelvollinen.
 error-member-player-not-found = Pelaajaa nimellä {$name} ei löytynyt profiilista.
 error-skyblock-profile-not-found = SkyBlock-profiilia nimellä {$name} ei löytynyt.
-error-player-snapshot-not-found = Pelaajalle {$name} ei löytynyt tilastolukemia. Luo tilastolukema komennolla </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Pelaajalle {$name} ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = Top-listaa nimellä {$name} ei löytynyt.
 error-profile-not-found = SkyBlock-profiilia nimeltä {$profile} pelaajalle {$name} ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
 error-identifier-too-long =
@@ -46,18 +46,18 @@ error-time-overflow = Aikamääreen kesto on liian pitkä. Yritä pitää se all
 
 # Pikavinkit
 tip-background = <:knowledge_book:1117179094556233828> Vaihda luotujen kuvien taustaa komennolla </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Katso tilastojen historiakäyrä komennolla </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Näytä tilastojen muutokset tiettynä päivänä komennolla </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Katso tilastojen historiakäyrä komennolla </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Näytä tilastojen muutokset tiettynä päivänä komennolla </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Näytä monia eri top-listoja komennolla </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Tukeamme SkyBlockia! Näytä profiili komennolla </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Linkitä Minecraft-tilisi komennolla </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Näytä killan tilastotietoja komennolla </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Näytä päivittäiset tilastotiedot komennolla </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Näytä päivittäiset tilastotiedot komennolla </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Vaihda näyttömuotoasi komennolla </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Saat lisää apua komennolla </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Vieraile verkkosivustollamme osoitteessa <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Liity tukipalvelimeellemme osoitteessa <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Näytä arviot kaikista tiedoistasi komennolla </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Näytä arviot kaikista tiedoistasi komennolla </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Näytä voittoputkesi komennolla </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Näytä viimeisimmät pelisi komennolla </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Näytä SkyBlock bazaar-hinnat komennolla </skyblock bazaar:1113624864826327074>.
@@ -73,7 +73,7 @@ boost-success-description =
   Tämä kilta saa nyt korkeamman seurantakapasiteetin ja pääsee käyttämään enemmän toimintoja.
   Poistaaksesi tämän parannuksen, mene hallintapaneeliin osoitteessa https://statpixel.xyz/dashboard/boost.
 
-boost = Paranna
+boost = paranna
   .description = Parantaa kiltaa lisätäkseen sen seurantakapasiteettia ja avatakseen enemmän toimintoja.
 
 # /track
@@ -231,7 +231,7 @@ background = tausta
   .colour-description = Taustan väri
 
 error-invalid-colour = Virheellinen väri annettu
-error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of_colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
+error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of-colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
 colour-changed = Taustan väri vaihdettu
 colour-changed-description = Taustan väri on vaihdettu muotoon {$colour}.
 
@@ -477,24 +477,24 @@ help = apu
   .description = Näyttää ohjevalikon.
 
 help-general = Yleistä <:cookie:1115091335565811775>
-help-general-description = StatPixel tukee kaikkia pelejä Hypixel-verkossa. Voit nähdä tilastot jokaisesta pelistä käyttämällä `/<peli> yleinen` -komentoa. Kokeile esimerkiksi </bedwars yleinen:1113624864272683060>!
+help-general-description = StatPixel tukee kaikkia pelejä Hypixel-verkossa. Voit nähdä tilastot jokaisesta pelistä käyttämällä `/<peli> yleinen` -komentoa. Kokeile esimerkiksi </bedwars general:1113624864272683060>!
 
 help-display = Näyttö <:spyglass:1115091333657411625>
-help-display-description = Jos käytät rajattua yhteyttä tai haluat säästää dataa, voit vastaanottaa vastauksia eri muodoissa, kuten tekstinä tai tiivistettyinä kuvina, käyttämällä </näyttö:1113624864272683066>.
+help-display-description = Jos käytät rajattua yhteyttä tai haluat säästää dataa, voit vastaanottaa vastauksia eri muodoissa, kuten tekstinä tai tiivistettyinä kuvina, käyttämällä </display:1113624864272683066>.
 
 help-link = Linkitys <a:recovery_compass:1115091332680126504>
-help-link-description = Kirjoittaminen käyttäjänimeä jokaisen komennon yhteydessä voi olla työlästä. Helpottaaksesi tätä voit linkittää tilin ilman varmennusta käyttämällä </linkki:1113624864524357710> ja poistaa linkityksen myöhemmin käyttämällä </linkittämätön:1113624865262538854>.
+help-link-description = Kirjoittaminen käyttäjänimeä jokaisen komennon yhteydessä voi olla työlästä. Helpottaaksesi tätä voit linkittää tilin ilman varmennusta käyttämällä </link:1113624864524357710> ja poistaa linkityksen myöhemmin käyttämällä </unlink:1113624865262538854>.
 
 help-snapshot = Hetket <:book_and_quill:1115091331379900428>
-help-snapshot-description = Hetket ovat tapa tarkastella tilastojen muutoksia ajan myötä. On muutamia hyödyllisiä komentoja, jotka helpottavat elämääsi: </bedwars päivittäin:1113624864272683065>, </bedwars viikoittain:1113624865262538858> ja </bedwars kuukausittain:1113624864524357712>. Nämä toimivat myös kiltaasi varten, joten kokeile </kilta päivittäin:1113624864272683065>!
+help-snapshot-description = Hetket ovat tapa tarkastella tilastojen muutoksia ajan myötä. On muutamia hyödyllisiä komentoja, jotka helpottavat elämääsi: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ja </bedwars monthly:1113624864524357712>. Nämä toimivat myös kiltaasi varten, joten kokeile </guild daily:1113624864272683065>!
   
-  Jos haluat nähdä tarkemman ajanjakson, kokeile komentoa </bedwars alkaen:1113624864524357705>.
+  Jos haluat nähdä tarkemman ajanjakson, kokeile komentoa </bedwars from:1113624864524357705>.
 
 help-history = Historia <a:clock:1115091329958019253>
-help-history-description = Voit nähdä kuinka tietyn tilaston muutokset ovat vaihdelleet ajan myötä graafisessa muodossa käyttämällä komentoa </verkko historia:1113624864524357708>.
+help-history-description = Voit nähdä kuinka tietyn tilaston muutokset ovat vaihdelleet ajan myötä graafisessa muodossa käyttämällä komentoa </network history:1113624864524357708>.
 
 help-image-builder = Kuvan luonti <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Luo omia dynaamisia kuvia kuvan luojalla! Aloita käyttämällä komentoa </luoja:1125992506501365891> tai siirry osoitteeseen https://statpixel.xyz/docs/builder saadaksesi lisätietoja.
+help-image-builder-description = Luo omia dynaamisia kuvia kuvan luojalla! Aloita käyttämällä komentoa </builder:1125992506501365891> tai siirry osoitteeseen https://statpixel.xyz/docs/builder saadaksesi lisätietoja.
 
 # /display
 display = näyttö
@@ -578,7 +578,7 @@ arcade-from = ajasta
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 arcade-history = historia
   .description = Katso Arcade-tilastojen kehitystä ajan kuluessa
@@ -653,7 +653,7 @@ arena-from = ajasta
   .mode = tila
   .mode-description = Näytettävä Arena-tila
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 arena-history = historia
   .description = Katso Arena-tilastojen kehitystä ajan kuluessa
@@ -759,7 +759,7 @@ bedwars-from = ajasta
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 bedwars-history = historia
   .description = Katso Bed Wars -tilastojen kehitystä ajan kuluessa
@@ -848,7 +848,7 @@ blitz-general = yleinen
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-from = lähtien
   .description = Näytä Blitz Survival Games -tilastojen kehitys tietyltä ajalta
@@ -857,9 +857,9 @@ blitz-from = lähtien
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
   .time = aika
-  .time-description = Aika, jonka verran haluat mennä taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran haluat mennä taaksepäin (1h 12m 5s)
 
 blitz-history = historia
   .description = Näytä Blitz Survival Games -tilastojen kehitys ajan kuluessa
@@ -868,7 +868,7 @@ blitz-history = historia
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-project = projekti
   .description = Projektio Blitz Survival Games -tilastoista tulevaisuuteen
@@ -877,7 +877,7 @@ blitz-project = projekti
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
   .kind = tilasto
   .kind-description = Blitz Survival Games -tilasto, jonka haluat projektoida
   .value = arvo
@@ -890,7 +890,7 @@ blitz-daily = päivittäin
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-weekly = viikoittain
   .description = Näytä Blitz Survival Games -tilastojen kehitys viimeisen viikon aikana
@@ -899,7 +899,7 @@ blitz-weekly = viikoittain
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-monthly = kuukausittain
   .description = Näytä Blitz Survival Games -tilastojen kehitys viimeisen kuukauden aikana
@@ -908,7 +908,7 @@ blitz-monthly = kuukausittain
   .uuid = uuid
   .uuid-description = Minecraft UUID
   .mode = tila
-  .mode-description = Blitz Survival Games -tila, jonka tilastoja haluat tarkastella
+  .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 # /buildbattle
 
@@ -937,7 +937,7 @@ buildbattle-from = lähtien
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
   .time = aika
-  .time-description = Aika, jonka verran haluat mennä taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran haluat mennä taaksepäin (1h 12m 5s)
 
 buildbattle-history = historia
   .description = Näytä Build Battle -tilastojen kehitys ajan kuluessa
@@ -1019,7 +1019,7 @@ copsandcrims-from = lähtien
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
   .time = aika
-  .time-description = Aika, jonka verran haluat mennä taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika, jonka verran haluat mennä taaksepäin (1h 12m 5s)
 
 copsandcrims-history = historia
   .description = Näytä Cops and Crims -tilastojen kehitys ajan kuluessa
@@ -1122,7 +1122,7 @@ duels-from = lähtien
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 duels-history = historia
   .description = Näytä Duels-tilastojen kehitys ajan myötä
@@ -1201,7 +1201,7 @@ megawalls-from = lähtien
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 megawalls-history = historia
   .description = Näytä Mega Walls -tilastojen kehitys ajan myötä
@@ -1281,7 +1281,7 @@ murdermystery-from = lähtien
   .mode = tila
   .mode-description = Murder Mystery -tila, jota tarkastellaan
   .time = aika
-  .time-description = Aika, jonka verran mennään taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika, jonka verran mennään taaksepäin (1h 12m 5s)
 
 murdermystery-history = historia
   .description = Näytä Murder Mystery -tilastojen kehitys ajan myötä
@@ -1296,7 +1296,7 @@ murdermystery-project = projekti
   .description = Projisoi Murder Mystery tilastoja tulevaisuuteen
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
@@ -1309,7 +1309,7 @@ murdermystery-daily = päivittäin
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen päivän aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
@@ -1318,7 +1318,7 @@ murdermystery-weekly = viikoittain
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen viikon aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
@@ -1327,7 +1327,7 @@ murdermystery-monthly = kuukausittain
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen kuukauden aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
@@ -1355,7 +1355,7 @@ paintball-general = yleinen
   .description = Näytä Paintball-tilastoja
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1364,18 +1364,18 @@ paintball-from = ajasta
   .description = Näytä Paintball-tilastojen kehitys tietyltä ajalta
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
   .time = aika
-  .time-description = Aika, jolta haluat katsoa tilastoja (esim. 1tunti 12min 5s)
+  .time-description = Aika, jolta haluat katsoa tilastoja (1h 12m 5s)
 
 paintball-history = historia
   .description = Näytä Paintball-tilastojen kehitys ajan kuluessa
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1384,7 +1384,7 @@ paintball-project = projekti
   .description = Projisoi Paintball-tilastoja tulevaisuuteen
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1397,7 +1397,7 @@ paintball-daily = päivittäin
   .description = Näytä Paintball-tilastojen kehitys viimeisen päivän aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1406,7 +1406,7 @@ paintball-weekly = viikoittain
   .description = Näytä Paintball-tilastojen kehitys viimeisen viikon aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1415,7 +1415,7 @@ paintball-monthly = kuukausittain
   .description = Näytä Paintball-tilastojen kehitys viimeisen kuukauden aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
@@ -1434,7 +1434,7 @@ pit-general = yleinen
   .description = Näytä The Pit -tilastoja
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1443,18 +1443,18 @@ pit-from = ajasta
   .description = Näytä The Pit -tilastojen kehitys tietyltä ajalta
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
   .time = aika
-  .time-description = Aika, jolta haluat katsoa tilastoja (esim. 1tunti 12min 5s)
+  .time-description = Aika, jolta haluat katsoa tilastoja (1h 12m 5s)
 
 pit-history = historia
   .description = Näytä The Pit -tilastojen kehitys ajan kuluessa
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1463,7 +1463,7 @@ pit-project = projekti
   .description = Projisoi The Pit -tilastoja tulevaisuuteen
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1476,7 +1476,7 @@ pit-daily = päivittäin
   .description = Näytä The Pit -tilastojen kehitys viimeisen päivän aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1485,7 +1485,7 @@ pit-weekly = viikoittain
   .description = Näytä The Pit -tilastojen kehitys viimeisen viikon aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1494,7 +1494,7 @@ pit-monthly = kuukausittain
   .description = Näytä The Pit -tilastojen kehitys viimeisen kuukauden aikana
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
@@ -1511,7 +1511,7 @@ quake-general = yleinen
   .description = Näytä Quakecraft-tilastoja
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
@@ -1520,18 +1520,18 @@ quake-from = ajasta
   .description = Näytä Quakecraft-tilastojen kehitys tietyltä ajalta
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
   .time = aika
-  .time-description = Aika, jolta haluat katsoa tilastoja (esim. 1tunti 12min 5s)
+  .time-description = Aika, jolta haluat katsoa tilastoja (1h 12m 5s)
 
 quake-history = historia
   .description = Näytä Quakecraft-tilastojen kehitys ajan kuluessa
   .username = käyttäjänimi
   .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste (UUID)
+  .uuid = tunniste
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
@@ -1615,7 +1615,7 @@ skywars-from = alkaen
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 skywars-history = historia
   .description = Näytä SkyWars-tilastojen kehitys ajan kuluessa
@@ -1690,7 +1690,7 @@ smash-from = alkaen
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 smash-history = historia
   .description = Näytä Smash Heroes -tilastojen kehitys ajan kuluessa
@@ -1764,7 +1764,7 @@ speeduhc-from = alkaen
   .mode = tila
   .mode-description = SpeedUHC-tila näkymälle
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1t 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 speeduhc-history = historia
   .description = Näytä SpeedUHC-tilastojen kehitys ajan kuluessa
@@ -1847,7 +1847,7 @@ tntgames-from = lähtien
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 tntgames-history = historia
   .description = Näytä TNT-pelien tilastojen kehitys ajan kuluessa
@@ -1926,7 +1926,7 @@ turbokartracers-from = lähtien
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 turbokartracers-history = historia
   .description = Näytä Turbo Kart Racers -tilastojen kehitys ajan kuluessa
@@ -2007,7 +2007,7 @@ uhc-from = lähtien
   .mode = tila
   .mode-description = UHC Champions -tila näytettäväksi
   .time = aika
-  .time-description = Aika taaksepäin (esim. 1h 12min 5s)
+  .time-description = Aika taaksepäin (1h 12m 5s)
 
 uhc-history = historia
   .description = Katso kehitys UHC Champions -tilastoissa ajan myötä
@@ -2094,7 +2094,7 @@ vampirez-from = lähtien
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
   .time = aika
-  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (esim. 1t 12min 5s)
+  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (1h 12m 5s)
 
 vampirez-history = historia
   .description = Katso VampireZ-tilastojen kehitys ajan myötä
@@ -2170,7 +2170,7 @@ walls-from = lähtien
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
   .time = aika
-  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (esim. 1t 12min 5s)
+  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (1h 12m 5s)
 
 walls-history = historia
   .description = Katso The Walls -tilastojen kehitys ajan myötä
@@ -2250,7 +2250,7 @@ warlords-from = lähtien
   .mode = tila
   .mode-description = Näytettävä Warlords-tila
   .time = aika
-  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (esim. 1t 12min 5s)
+  .time-description = Aika, jolta lähtien tilastoja tarkastellaan (1h 12m 5s)
 
 # /warlords-history
 
@@ -2327,7 +2327,7 @@ woolwars-from = ajasta
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
   .time = aika
-  .time-description = Ajanjakso taaksepäin (esim. 1h 12min 5s)
+  .time-description = Ajanjakso taaksepäin (1h 12m 5s)
 
 woolwars-history = historia
   .description = Näytä Wool Wars -tilastojen kehitys ajan myötä
@@ -2395,13 +2395,6 @@ General = Yleinen
 Members = Jäsenet
 Top = Top
 
-member = jäsen
-  .description = Näytä killan jäsenen tilastot
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID
-
 guild-general = yleinen
   .description = Näytä killan tilastot
   .name = nimi
@@ -2420,7 +2413,7 @@ guild-from = ajasta
   .uuid = uuid
   .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
   .time = aika
-  .time-description = Ajanjakso taaksepäin (esim. 1h 12min 5s)
+  .time-description = Ajanjakso taaksepäin (1h 12m 5s)
 
 guild-members = jäsenet
   .description = Näytä killan jäsenet

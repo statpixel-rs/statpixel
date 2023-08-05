@@ -8,13 +8,35 @@ use poise::serenity_prelude as serenity;
 #[allow(non_camel_case_types)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default)]
 pub enum Locale {
+	bg,
+	cs,
+	da,
 	de,
+	el,
 	#[default]
 	en_US,
 	es_ES,
+	fi,
 	fr,
+	hi,
+	hr,
+	hu,
+	it,
 	ja,
+	ko,
+	lt,
+	nl,
+	no,
+	pl,
+	pt_BR,
+	ro,
 	ru,
+	sv_SE,
+	th,
+	tr,
+	uk,
+	zh_CN,
+	zh_TW,
 }
 
 impl Default for &'_ Locale {
@@ -28,12 +50,34 @@ impl Locale {
 		use Locale::*;
 
 		match self {
+			bg => "bg",
+			cs => "cs",
+			da => "da",
 			de => "de",
+			el => "el",
 			en_US => "en-US",
 			es_ES => "es-ES",
+			fi => "fi",
 			fr => "fr",
+			hi => "hi",
+			hr => "hr",
+			hu => "hu",
+			it => "it",
 			ja => "ja",
+			ko => "ko",
+			lt => "lt",
+			nl => "nl",
+			no => "no",
+			pl => "pl",
+			pt_BR => "pt-BR",
+			ro => "ro",
 			ru => "ru",
+			sv_SE => "sv-SE",
+			th => "th",
+			tr => "tr",
+			uk => "uk",
+			zh_CN => "zh-CN",
+			zh_TW => "zh-TW",
 		}
 	}
 }
@@ -43,12 +87,34 @@ impl FromStr for Locale {
 
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
 		Ok(match s {
-			"de" => Self::de,
-			"es-ES" => Self::es_ES,
-			"fr" => Self::fr,
-			"ja" => Self::ja,
-			"ru" => Self::ru,
-			_ => Self::en_US,
+			"bg" => Locale::bg,
+			"cs" => Locale::cs,
+			"da" => Locale::da,
+			"de" => Locale::de,
+			"el" => Locale::el,
+			"es-ES" => Locale::es_ES,
+			"fi" => Locale::fi,
+			"fr" => Locale::fr,
+			"hi" => Locale::hi,
+			"hr" => Locale::hr,
+			"hu" => Locale::hu,
+			"it" => Locale::it,
+			"ja" => Locale::ja,
+			"ko" => Locale::ko,
+			"lt" => Locale::lt,
+			"nl" => Locale::nl,
+			"no" => Locale::no,
+			"pl" => Locale::pl,
+			"pt-BR" => Locale::pt_BR,
+			"ro" => Locale::ro,
+			"ru" => Locale::ru,
+			"sv-SE" => Locale::sv_SE,
+			"th" => Locale::th,
+			"tr" => Locale::tr,
+			"uk" => Locale::uk,
+			"zh-CN" => Locale::zh_CN,
+			"zh-TW" => Locale::zh_TW,
+			_ => Locale::en_US,
 		})
 	}
 }

@@ -22,7 +22,7 @@ error-invalid-uuid = uuid {$uuid} är ogiltig.
 error-invalid-username = Användarnamnet {$name} är ogiltigt.
 error-member-player-not-found = Medlemmen {$name} kunde inte hittas i profilen.
 error-skyblock-profile-not-found = En SkyBlock-profil för {$name} kunde inte hittas.
-error-player-snapshot-not-found = Inga snapshots hittades för {$name}. Skapa en med </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Inga snapshots hittades för {$name}. Skapa en med </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = En leaderboard med namnet {$name} kunde inte hittas.
 error-profile-not-found = SkyBlock-profilen {$profile} för {$name} har inaktiverad API eller så har personen inte loggat in sedan det nya profilsystemet.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Tidsargumentets längd är för lång. Försök hålla den
 # Snabba tips
 
 tip-background = <:knowledge_book:1117179094556233828> Ändra bakgrunden på genererade bilder med </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Visa en historisk graf över dina statistik med </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Visa statistikändringar från ett specifikt datum med </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Visa en historisk graf över dina statistik med </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Visa statistikändringar från ett specifikt datum med </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Visa massor av leaderboards med </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Vi stödjer SkyBlock! Visa en profil med </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Länka ditt Minecraft-konto med </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Visa guildstatistik med </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Få tillgång till dina dagliga statistik med </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Få tillgång till dina dagliga statistik med </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Ändra din visningsformat med </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Få mer hjälp med </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Besök vår webbplats på <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Gå med i vår supportserver på <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Visa uppskattningar av all din data med </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Visa uppskattningar av all din data med </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Visa dina vinstreaks med </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Visa dina senaste spel med </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Visa SkyBlock bazaar-priser med </skyblock bazaar:1113624864826327074>.
@@ -233,7 +233,7 @@ background = bakgrund
   .colour-description = Färgen på bakgrunden
 
 error-invalid-colour = Ogiltig färg angiven
-error-invalid-colour-description = Den angivna färgen är ogiltig. Försök med en av [dessa färger](https://simple.wikipedia.org/wiki/List_of_colors) eller en hexfärg föregången av `#`.
+error-invalid-colour-description = Den angivna färgen är ogiltig. Försök med en av [dessa färger](https://simple.wikipedia.org/wiki/List_of-colors) eller en hexfärg föregången av `#`.
 colour-changed = Bakgrundsfärg ändrad
 colour-changed-description = Din bakgrundsfärg har ändrats till {$colour}.
 
@@ -471,7 +471,7 @@ ranks-given = Givna Rangar
 
 # /history
 
-statistics-history = Statistikhistoria för
+statistics-history = {" "}statistikhistoria för{" "}
 
 # /help
 
@@ -479,24 +479,24 @@ help = hjälp
   .description = Visa hjälpmenyn.
 
 help-general = Allmänt <:cookie:1115091335565811775>
-help-general-description = StatPixel stödjer varje spel på Hypixel-nätverket. Du kan visa statistik för varje spel genom att använda `/<spel> allmän`. Prova till exempel </bedwars allmän:1113624864272683060>!
+help-general-description = StatPixel stödjer varje spel på Hypixel-nätverket. Du kan visa statistik för varje spel genom att använda `/<spel> allmän`. Prova till exempel </bedwars general:1113624864272683060>!
 
 help-display = Visa <:spyglass:1115091333657411625>
-help-display-description = Om du har en begränsad anslutning eller bara vill spara data kan du få svar i olika format, som text eller komprimerade bilder, med </visning:1113624864272683066>.
+help-display-description = Om du har en begränsad anslutning eller bara vill spara data kan du få svar i olika format, som text eller komprimerade bilder, med </display:1113624864272683066>.
 
 help-link = Länkning <a:recovery_compass:1115091332680126504>
-help-link-description = Att skriva in ditt användarnamn för varje kommando kan bli tråkigt. För att göra det enklare kan du länka ett konto utan verifiering med </länka:1113624864524357710> och senare avlänka det med </avlänka:1113624865262538854>.
+help-link-description = Att skriva in ditt användarnamn för varje kommando kan bli tråkigt. För att göra det enklare kan du länka ett konto utan verifiering med </link:1113624864524357710> och senare avlänka det med </unlink:1113624865262538854>.
 
 help-snapshot = Ögonblicksbilder <:book_and_quill:1115091331379900428>
-help-snapshot-description = Ögonblicksbilder är ett sätt att se förändringarna i din statistik över tiden. Det finns några hjälpkommandon som gör ditt liv enklare: </bedwars daglig:1113624864272683065>, </bedwars veckovis:1113624865262538858> och </bedwars månatlig:1113624864524357712>. Dessa fungerar också för din guild, så prova </guild daglig:1113624864272683065>!
+help-snapshot-description = Ögonblicksbilder är ett sätt att se förändringarna i din statistik över tiden. Det finns några hjälpkommandon som gör ditt liv enklare: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> och </bedwars månatlig:1113624864524357712>. Dessa fungerar också för din guild, så prova </guild monthly:1113624864272683065>!
 
-Om du vill se ett mer specifikt intervall, prova </bedwars från:1113624864524357705>.
+  Om du vill se ett mer specifikt intervall, prova </bedwars from:1113624864524357705>.
 
 help-history = Historik <a:clock:1115091329958019253>
-help-history-description = För att visa en graf över hur specifika statistik har förändrats över tid, prova </nätverkshistoria:1113624864524357708>.
+help-history-description = För att visa en graf över hur specifika statistik har förändrats över tid, prova </network history:1113624864524357708>.
 
 help-image-builder = Bildskapare <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Bygg dina egna dynamiska bilder med Bildskaparen! Använd </skapare:1125992506501365891> för att komma igång eller gå till https://statpixel.xyz/docs/builder för mer information.
+help-image-builder-description = Bygg dina egna dynamiska bilder med Bildskaparen! Använd </builder:1125992506501365891> för att komma igång eller gå till https://statpixel.xyz/docs/builder för mer information.
 
 # /display
 display = visning
@@ -580,7 +580,7 @@ arcade-from = från
   .mode = läge
   .mode-description = Arcade-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 arcade-history = historia
   .description = Visa utvecklingen av Arcade-statistik över tid
@@ -655,7 +655,7 @@ arena-from = från
   .mode = läge
   .mode-description = Arena-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 arena-history = historia
   .description = Visa utvecklingen av Arena-statistik över tid
@@ -737,6 +737,12 @@ beds-broken = Sängar Söndras
 beds-lost = Sängar Förloras
 bblr = BBLR
 
+iron-collected = Järn
+gold-collected = Guld
+diamond-collected = Diamanter
+emerald-collected = Smaragder
+items-purchased = Köp
+
 bedwars-general = allmän
   .description = Visa Bed Wars-statistik
   .username = användarnamn
@@ -755,7 +761,7 @@ bedwars-from = från
   .mode = läge
   .mode-description = Bed Wars-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 bedwars-history = historia
   .description = Visa utvecklingen av Bed Wars-statistik över tid
@@ -828,7 +834,7 @@ Tim = Tim
 Pigman = Grismänniska
 CreeperTamer = Creeper-tämjare
 Florist = Florist
-Warlock = Trollkarl
+Warlock = Krigshäxa
 Milkman = Mjölkman
 Astronaut = Astronaut
 Blaze = Blaze
@@ -855,7 +861,7 @@ blitz-from = från
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 blitz-history = historia
   .description = Visa utvecklingen av statistik för Blitz Survival Games över tiden
@@ -933,7 +939,7 @@ buildbattle-from = från
   .mode = läge
   .mode-description = Läget för Build Battle att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 buildbattle-history = historia
   .description = Visa utvecklingen av statistik för Build Battle över tiden
@@ -1015,7 +1021,7 @@ copsandcrims-from = från
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 copsandcrims-history = historia
   .description = Visa utvecklingen av statistik för Cops and Crims över tiden
@@ -1118,7 +1124,7 @@ duels-from = från
   .mode = läge
   .mode-description = Duels-läge att visa
   .time = tid
-  .time-description = Tidsperioden att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperioden att gå tillbaka (1h 12m 5s)
 
 duels-history = historia
   .description = Visa utvecklingen av Duels-statistik över tid
@@ -1197,7 +1203,7 @@ megawalls-from = från
   .mode = läge
   .mode-description = Mega Walls-läge att visa
   .time = tid
-  .time-description = Tidsperioden att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperioden att gå tillbaka (1h 12m 5s)
 
 megawalls-history = historia
   .description = Visa utvecklingen av Mega Walls-statistik över tid
@@ -1277,7 +1283,7 @@ murdermystery-from = från
   .mode = läge
   .mode-description = Murder Mystery-läge att visa
   .time = tid
-  .time-description = Tidsperioden att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperioden att gå tillbaka (1h 12m 5s)
 
 murdermystery-history = historia
   .description = Visa utvecklingen av Murder Mystery-statistik över tid
@@ -1365,7 +1371,7 @@ paintball-from = från
   .mode = läge
   .mode-description = Paintball-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 paintball-history = historik
   .description = Visa utvecklingen av Paintball-statistik över tid
@@ -1444,7 +1450,7 @@ pit-from = från
   .mode = läge
   .mode-description = The Pit-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 pit-history = historik
   .description = Visa utvecklingen av The Pit-statistik över tid
@@ -1521,7 +1527,7 @@ quake-from = från
   .mode = läge
   .mode-description = Quakecraft-läge att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 quake-history = historik
   .description = Visa utvecklingen av Quakecraft-statistik över tid
@@ -1611,7 +1617,7 @@ skywars-from = från
   .mode = läge
   .mode-description = SkyWars-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 skywars-history = historia
   .description = Visa utvecklingen av SkyWars-statistik över tid
@@ -1686,7 +1692,7 @@ smash-from = från
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 smash-history = historia
   .description = Visa utvecklingen av Smash Heroes-statistik över tid
@@ -1760,7 +1766,7 @@ speeduhc-from = från
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 speeduhc-history = historia
   .description = Visa utvecklingen av SpeedUHC-statistik över tid
@@ -1843,7 +1849,7 @@ tntgames-from = från
   .mode = läge
   .mode-description = TNT Games-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 tntgames-history = historia
   .description = Visa utvecklingen av TNT Games statistik över tiden
@@ -1922,7 +1928,7 @@ turbokartracers-from = från
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 turbokartracers-history = historia
   .description = Visa utvecklingen av Turbo Kart Racers statistik över tiden
@@ -2003,7 +2009,7 @@ uhc-from = från
   .mode = läge
   .mode-description = UHC Champions-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1timme 12min 5s)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 uhc-history = historia
   .description = Se utvecklingen av UHC Champions-statistik över tiden
@@ -2090,7 +2096,7 @@ vampirez-from = från
   .mode = läge
   .mode-description = VampireZ-läge att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 vampirez-history = historia
   .description = Visa utvecklingen av VampireZ-statistik över tiden
@@ -2166,7 +2172,7 @@ walls-from = från
   .mode = läge
   .mode-description = The Walls-läge att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 walls-history = historia
   .description = Visa utvecklingen av The Walls statistik över tiden
@@ -2246,7 +2252,7 @@ warlords-from = från
   .mode = läge
   .mode-description = Warlords-läge att visa
   .time = tid
-  .time-description = Tidsperiod att gå tillbaka (t.ex. 1 timme 12 minuter 5 sekunder)
+  .time-description = Tidsperiod att gå tillbaka (1h 12m 5s)
 
 warlords-history = historik
   .description = Visa utvecklingen av Warlords-statistik över tiden
@@ -2321,7 +2327,7 @@ woolwars-from = från
   .mode = läge
   .mode-description = Wool Wars-läget att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 woolwars-history = historik
   .description = Visa utvecklingen av Wool Wars-statistik över tiden
@@ -2389,13 +2395,6 @@ General = Allmän
 Members = Medlemmar
 Top = Topp
 
-member = medlem
-  .description = Visa medlem i en guild.
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
 guild-general = allmän
   .description = Visa statistik för en guild.
   .name = namn
@@ -2414,7 +2413,7 @@ guild-from = från
   .uuid = uuid
   .uuid-description = UUID för guildmedlem att visa
   .time = tid
-  .time-description = Tiden att gå tillbaka (t.ex. 1 timme 12 min 5 sek)
+  .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
 guild-members = medlemmar
   .description = Visa medlemmar i en guild.

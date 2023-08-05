@@ -22,7 +22,7 @@ error-invalid-uuid = The uuid {$uuid} is invalid.
 error-invalid-username = The username {$name} is invalid.
 error-member-player-not-found = The member {$name} was not found in the profile.
 error-skyblock-profile-not-found = A SkyBlock profile belonging to {$name} was not found.
-error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = The duration of the time argument is too long. Try keeping
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> Change the background of generated images with </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> View a historical graph of your statistics with </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> View the statistics change from a specific date with </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> View a historical graph of your statistics with </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> View the statistics change from a specific date with </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> View tons of leaderboards with </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> We support SkyBlock! View a profile with </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Link your Minecraft account with </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> View guild statistics with </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Access your daily statistics with </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Access your daily statistics with </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Change your display format with </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Get more help with </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Visit our website at <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Join our support server at <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
@@ -233,7 +233,7 @@ background = background
   .colour-description = The colour of the background
 
 error-invalid-colour = Invalid colour provided
-error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of_colors) or a hex colour prefixed with `#`.
+error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of-colors) or a hex colour prefixed with `#`.
 colour-changed = Background colour changed
 colour-changed-description = Your background colour has been changed to {$colour}.
 
@@ -580,7 +580,7 @@ arcade-from = from
   .mode = mode
   .mode-description = The Arcade mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 arcade-history = history
   .description = View the development of Arcade statistics over time
@@ -655,7 +655,7 @@ arena-from = from
   .mode = mode
   .mode-description = The Arena mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 arena-history = history
   .description = View the development of Arena statistics over time
@@ -761,7 +761,7 @@ bedwars-from = from
   .mode = mode
   .mode-description = The Bed Wars mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 bedwars-history = history
   .description = View the development of Bed Wars statistics over time
@@ -861,7 +861,7 @@ blitz-from = from
   .mode = mode
   .mode-description = The Blitz Survival Games mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 blitz-history = history
   .description = View the development of Blitz Survival Games statistics over time
@@ -939,7 +939,7 @@ buildbattle-from = from
   .mode = mode
   .mode-description = The Build Battle mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 buildbattle-history = history
   .description = View the development of Build Battle statistics over time
@@ -1021,7 +1021,7 @@ copsandcrims-from = from
   .mode = mode
   .mode-description = The Cops and Crims mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 copsandcrims-history = history
   .description = View the development of Cops and Crims statistics over time
@@ -1124,7 +1124,7 @@ duels-from = from
   .mode = mode
   .mode-description = The Duels mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 duels-history = history
   .description = View the development of Duels statistics over time
@@ -1203,7 +1203,7 @@ megawalls-from = from
   .mode = mode
   .mode-description = The Mega Walls mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 megawalls-history = history
   .description = View the development of Mega Walls statistics over time
@@ -1283,7 +1283,7 @@ murdermystery-from = from
   .mode = mode
   .mode-description = The Murder Mystery mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 murdermystery-history = history
   .description = View the development of Murder Mystery statistics over time
@@ -1371,7 +1371,7 @@ paintball-from = from
   .mode = mode
   .mode-description = The Paintball mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 paintball-history = history
   .description = View the development of Paintball statistics over time
@@ -1450,7 +1450,7 @@ pit-from = from
   .mode = mode
   .mode-description = The Pit mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 pit-history = history
   .description = View the development of The Pit statistics over time
@@ -1527,7 +1527,7 @@ quake-from = from
   .mode = mode
   .mode-description = The Quakecraft mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 quake-history = history
   .description = View the development of Quakecraft statistics over time
@@ -1617,7 +1617,7 @@ skywars-from = from
   .mode = mode
   .mode-description = The SkyWars mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 skywars-history = history
   .description = View the development of SkyWars statistics over time
@@ -1692,7 +1692,7 @@ smash-from = from
   .mode = mode
   .mode-description = The Smash Heroes mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 smash-history = history
   .description = View the development of Smash Heroes statistics over time
@@ -1766,7 +1766,7 @@ speeduhc-from = from
   .mode = mode
   .mode-description = The SpeedUHC mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 speeduhc-history = history
   .description = View the development of SpeedUHC statistics over time
@@ -1849,7 +1849,7 @@ tntgames-from = from
   .mode = mode
   .mode-description = The TNT Games mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 tntgames-history = history
   .description = View the development of TNT Games statistics over time
@@ -1928,7 +1928,7 @@ turbokartracers-from = from
   .mode = mode
   .mode-description = The Turbo Kart Racers mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 turbokartracers-history = history
   .description = View the development of Turbo Kart Racers statistics over time
@@ -2009,7 +2009,7 @@ uhc-from = from
   .mode = mode
   .mode-description = The UHC Champions mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 uhc-history = history
   .description = View the development of UHC Champions statistics over time
@@ -2096,7 +2096,7 @@ vampirez-from = from
   .mode = mode
   .mode-description = The VampireZ mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 vampirez-history = history
   .description = View the development of VampireZ statistics over time
@@ -2172,7 +2172,7 @@ walls-from = from
   .mode = mode
   .mode-description = The Walls mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 walls-history = history
   .description = View the development of The Walls statistics over time
@@ -2253,7 +2253,7 @@ warlords-from = from
   .mode = mode
   .mode-description = The Warlords mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 warlords-history = history
   .description = View the development of Warlords statistics over time
@@ -2328,7 +2328,7 @@ woolwars-from = from
   .mode = mode
   .mode-description = The Wool Wars mode to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 woolwars-history = history
   .description = View the development of Wool Wars statistics over time
@@ -2396,13 +2396,6 @@ General = General
 Members = Members
 Top = Top
 
-member = member
-  .description = Shows the member of a guild.
-  .username = username
-  .username-description = The username of the guild member to view
-  .uuid = uuid
-  .uuid-description = The uuid of the guild member to view
-
 guild-general = general
   .description = Shows the stats of a guild.
   .name = name
@@ -2421,7 +2414,7 @@ guild-from = from
   .uuid = uuid
   .uuid-description = The uuid of the guild member's guild to view
   .time = time
-  .time-description = The amount of time to go back (e.g. 1hour 12min 5s)
+  .time-description = The amount of time to go back (1h 12m 5s)
 
 guild-members = members
   .description = Shows the members of a guild.

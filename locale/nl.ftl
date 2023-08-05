@@ -22,7 +22,7 @@ error-invalid-uuid = De UUID {$uuid} is ongeldig.
 error-invalid-username = De gebruikersnaam {$name} is ongeldig.
 error-member-player-not-found = Het lid {$name} is niet gevonden in het profiel.
 error-skyblock-profile-not-found = Een SkyBlock-profiel van {$name} is niet gevonden.
-error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor {$name}. Maak er een aan met </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor {$name}. Maak er een aan met </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = Een leaderboard met de naam {$name} is niet gevonden.
 error-profile-not-found = Het {$profile} SkyBlock-profiel van {$name} heeft de API uitgeschakeld of ze hebben niet ingelogd sinds het nieuwe profielsysteem.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = De duur van het tijdsargument is te lang. Probeer het onde
 # Snelle tips
 
 tip-background = <:knowledge_book:1117179094556233828> Verander de achtergrond van gegenereerde afbeeldingen met </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Bekijk een historische grafiek van je statistieken met </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Bekijk de statistiekenverandering vanaf een specifieke datum met </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Bekijk een historische grafiek van je statistieken met </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Bekijk de statistiekenverandering vanaf een specifieke datum met </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Bekijk talloze leaderboards met </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> We ondersteunen SkyBlock! Bekijk een profiel met </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Koppel je Minecraft-account met </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Bekijk guild-statistieken met </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Bekijk je dagelijkse statistieken met </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Bekijk je dagelijkse statistieken met </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Verander je weergaveformaat met </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Krijg meer hulp met </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Bezoek onze website op <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Kom bij onze ondersteuningsserver op <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Bekijk schattingen van al je gegevens met </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Bekijk schattingen van al je gegevens met </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Bekijk je winstreken met </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Bekijk je recente games met </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Bekijk SkyBlock bazaar prijzen met </skyblock bazaar:1113624864826327074>.
@@ -233,7 +233,7 @@ background = achtergrond
   .colour-description = De kleur van de achtergrond
 
 error-invalid-colour = Ongeldige kleur opgegeven
-error-invalid-colour-description = De opgegeven kleur is ongeldig. Probeer een van [deze kleuren](https://simple.wikipedia.org/wiki/List_of_colors) of een hexadecimale kleur met voorvoegsel `#`.
+error-invalid-colour-description = De opgegeven kleur is ongeldig. Probeer een van [deze kleuren](https://simple.wikipedia.org/wiki/List_of-colors) of een hexadecimale kleur met voorvoegsel `#`.
 colour-changed = Achtergrondkleur gewijzigd
 colour-changed-description = Je achtergrondkleur is veranderd naar {$colour}.
 
@@ -479,24 +479,24 @@ help = help
   .description = Toont het helpmenu.
 
 help-general = Algemeen <:cookie:1115091335565811775>
-help-general-description = StatPixel ondersteunt elk spel op het Hypixel-netwerk. U kunt statistieken bekijken voor elk spel door `/<spel> algemeen` te gebruiken. Probeer bijvoorbeeld eens </bedwars algemeen:1113624864272683060>!
+help-general-description = StatPixel ondersteunt elk spel op het Hypixel-netwerk. U kunt statistieken bekijken voor elk spel door `/<spel> algemeen` te gebruiken. Probeer bijvoorbeeld eens </bedwars general:1113624864272683060>!
 
 help-display = Weergave <:spyglass:1115091333657411625>
-help-display-description = Als u een gemeten verbinding heeft of gewoon wat gegevens wilt besparen, kunt u reacties in verschillende formaten ontvangen, zoals tekst of gecondenseerde afbeeldingen, met </weergave:1113624864272683066>.
+help-display-description = Als u een gemeten verbinding heeft of gewoon wat gegevens wilt besparen, kunt u reacties in verschillende formaten ontvangen, zoals tekst of gecondenseerde afbeeldingen, met </display:1113624864272683066>.
 
 help-link = Koppelen <a:recovery_compass:1115091332680126504>
-help-link-description = Het intypen van uw gebruikersnaam voor elke opdracht kan vervelend worden. Om dit gemakkelijker te maken, kunt u een account koppelen zonder verificatie met </koppelen:1113624864524357710> en later weer loskoppelen met </ontkoppelen:1113624865262538854>.
+help-link-description = Het intypen van uw gebruikersnaam voor elke opdracht kan vervelend worden. Om dit gemakkelijker te maken, kunt u een account koppelen zonder verificatie met </link:1113624864524357710> en later weer loskoppelen met </unlink:1113624865262538854>.
 
 help-snapshot = Momentopnames <:book_and_quill:1115091331379900428>
-help-snapshot-description = Momentopnames zijn een manier om de veranderingen in uw statistieken in de loop van de tijd te bekijken. Er zijn een paar hulpprogramma-opdrachten om uw leven gemakkelijker te maken: </bedwars dagelijks:1113624864272683065>, </bedwars wekelijks:1113624865262538858> en </bedwars maandelijks:1113624864524357712>. Deze werken ook voor uw guild, dus probeer eens </guild dagelijks:1113624864272683065>!
+help-snapshot-description = Momentopnames zijn een manier om de veranderingen in uw statistieken in de loop van de tijd te bekijken. Er zijn een paar hulpprogramma-opdrachten om uw leven gemakkelijker te maken: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> en </bedwars monthly:1113624864524357712>. Deze werken ook voor uw guild, dus probeer eens </guild daily:1113624864272683065>!
   
-  Als u een meer specifiek bereik wilt bekijken, probeer dan </bedwars vanaf:1113624864524357705>.
+  Als u een meer specifiek bereik wilt bekijken, probeer dan </bedwars from:1113624864524357705>.
 
 help-history = Geschiedenis <a:clock:1115091329958019253>
-help-history-description = Om een grafiek te bekijken van hoe specifieke statistieken in de loop van de tijd zijn veranderd, probeer </netwerk geschiedenis:1113624864524357708>.
+help-history-description = Om een grafiek te bekijken van hoe specifieke statistieken in de loop van de tijd zijn veranderd, probeer </network history:1113624864524357708>.
 
 help-image-builder = Beeldbouwer <:gold_pickaxe:1125980780435345488>
-help-image-builder-description = Bouw uw eigen dynamische afbeeldingen met de Beeldbouwer! Gebruik </bouwer:1125992506501365891> om te beginnen of ga naar https://statpixel.xyz/docs/builder voor meer informatie.
+help-image-builder-description = Bouw uw eigen dynamische afbeeldingen met de Beeldbouwer! Gebruik </builder:1125992506501365891> om te beginnen of ga naar https://statpixel.xyz/docs/builder voor meer informatie.
 
 # /display
 display = weergave
@@ -580,7 +580,7 @@ arcade-from = vanaf
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 arcade-history = geschiedenis
   .description = Bekijk de ontwikkeling van Arcade-statistieken in de loop van de tijd
@@ -655,7 +655,7 @@ arena-from = vanaf
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 arena-history = geschiedenis
   .description = Bekijk de ontwikkeling van Arena-statistieken in de loop van de tijd
@@ -737,6 +737,12 @@ beds-broken = Bedden Vernield
 beds-lost = Bedden Verloren
 bblr = BBLR
 
+iron-collected = IJzer
+gold-collected = Goud
+diamond-collected = Diamanten
+emerald-collected = Smaragden
+items-purchased = Aankopen
+
 bedwars-general = algemeen
   .description = Bekijk Bed Wars-statistieken
   .username = gebruikersnaam
@@ -755,7 +761,7 @@ bedwars-from = vanaf
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 bedwars-history = geschiedenis
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken in de loop van de tijd
@@ -855,10 +861,10 @@ blitz-from = vanaf
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 blitz-history = geschiedenis
-  .description = Bekijk de ontwikkeling van statistieken van Blitz Survival Games in de loop van de tijd
+  .description = Bekijk de Blitz Survival Games-statistieken in de tijd
   .username = gebruikersnaam
   .username-description = Minecraft gebruikersnaam
   .uuid = uuid
@@ -880,7 +886,7 @@ blitz-project = project
   .value-description = De waarde van de statistiek om te projecteren naar
 
 blitz-daily = dagelijks
-  .description = Bekijk de ontwikkeling van statistieken van Blitz Survival Games gedurende de laatste dag
+  .description = Bekijk Blitz Survival Games' dagstatistieken
   .username = gebruikersnaam
   .username-description = Minecraft gebruikersnaam
   .uuid = uuid
@@ -889,7 +895,7 @@ blitz-daily = dagelijks
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-weekly = wekelijks
-  .description = Bekijk de ontwikkeling van statistieken van Blitz Survival Games gedurende de laatste week
+  .description = Bekijk Blitz Survival Games' weekstatistieken
   .username = gebruikersnaam
   .username-description = Minecraft gebruikersnaam
   .uuid = uuid
@@ -898,7 +904,7 @@ blitz-weekly = wekelijks
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-monthly = maandelijks
-  .description = Bekijk de ontwikkeling van statistieken van Blitz Survival Games gedurende de laatste maand
+  .description = Bekijk Blitz Survival Games' laatste maand statistieken
   .username = gebruikersnaam
   .username-description = Minecraft gebruikersnaam
   .uuid = uuid
@@ -933,7 +939,7 @@ buildbattle-from = vanaf
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 buildbattle-history = geschiedenis
   .description = Bekijk de ontwikkeling van statistieken van Build Battle in de loop van de tijd
@@ -1015,7 +1021,7 @@ copsandcrims-from = vanaf
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 copsandcrims-history = geschiedenis
   .description = Bekijk de ontwikkeling van statistieken van Cops and Crims in de loop van de tijd
@@ -1118,7 +1124,7 @@ duels-from = vanaf
   .mode = modus
   .mode-description = De Duels modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 duels-history = geschiedenis
   .description = Bekijk de ontwikkeling van Duels statistieken in de loop van de tijd
@@ -1197,7 +1203,7 @@ megawalls-from = vanaf
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 megawalls-history = geschiedenis
   .description = Bekijk de ontwikkeling van Mega Walls statistieken in de loop van de tijd
@@ -1277,7 +1283,7 @@ murdermystery-from = vanaf
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 murdermystery-history = geschiedenis
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken in de loop van de tijd
@@ -1365,7 +1371,7 @@ paintball-from = vanaf
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 paintball-history = geschiedenis
   .description = Bekijk de ontwikkeling van Paintball statistieken in de loop der tijd
@@ -1444,7 +1450,7 @@ pit-from = vanaf
   .mode = modus
   .mode-description = De Pit modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 pit-history = geschiedenis
   .description = Bekijk de ontwikkeling van The Pit statistieken in de loop der tijd
@@ -1521,7 +1527,7 @@ quake-from = vanaf
   .mode = modus
   .mode-description = De Quakecraft modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1 uur 12 min 5 sec)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 quake-history = geschiedenis
   .description = Bekijk de ontwikkeling van Quakecraft statistieken in de loop der tijd
@@ -1611,7 +1617,7 @@ skywars-from = vanaf
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 skywars-history = geschiedenis
   .description = Bekijk de ontwikkeling van SkyWars-statistieken in de loop van de tijd
@@ -1686,7 +1692,7 @@ smash-from = vanaf
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 smash-history = geschiedenis
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken in de loop van de tijd
@@ -1760,7 +1766,7 @@ speeduhc-from = vanaf
   .mode = modus
   .mode-description = De SpeedUHC-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 speeduhc-history = geschiedenis
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken in de loop van de tijd
@@ -1843,7 +1849,7 @@ tntgames-from = vanaf
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 tntgames-history = geschiedenis
   .description = Bekijk de ontwikkeling van TNT Games-statistieken in de loop van de tijd
@@ -1922,7 +1928,7 @@ turbokartracers-from = vanaf
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 turbokartracers-history = geschiedenis
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken in de loop van de tijd
@@ -2003,7 +2009,7 @@ uhc-from = vanaf
   .mode = modus
   .mode-description = De UHC Champions-modus om weer te geven
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 uhc-history = geschiedenis
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken in de loop van de tijd
@@ -2090,7 +2096,7 @@ vampirez-from = vanaf
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 vampirez-history = geschiedenis
   .description = Bekijk de ontwikkeling van VampireZ-statistieken in de loop van de tijd
@@ -2166,7 +2172,7 @@ walls-from = vanaf
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 walls-history = geschiedenis
   .description = Bekijk de ontwikkeling van The Walls-statistieken in de loop van de tijd
@@ -2246,7 +2252,7 @@ warlords-from = vanaf
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 warlords-history = geschiedenis
   .description = Bekijk de ontwikkeling van Warlords-statistieken in de loop van de tijd
@@ -2321,7 +2327,7 @@ woolwars-from = vanaf
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 woolwars-history = geschiedenis
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken in de loop van de tijd
@@ -2389,13 +2395,6 @@ General = Algemeen
 Members = Leden
 Top = Top
 
-member = lid
-  .description = Toont de gegevens van een gildelid.
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
 guild-general = algemeen
   .description = Toont de statistieken van een gilde.
   .name = naam
@@ -2414,7 +2413,7 @@ guild-from = vanaf
   .uuid = uuid
   .uuid-description = De UUID van het gildelid om te bekijken
   .time = tijd
-  .time-description = De hoeveelheid tijd om terug te gaan (bijv. 1uur 12min 5s)
+  .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
 guild-members = leden
   .description = Toont de leden van een gilde.

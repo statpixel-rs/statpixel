@@ -105,7 +105,7 @@ macro_rules! command {
 	};
 }
 
-command!(
+large_command!(
 	stats::arcade::Arcade,
 	stats::arcade::ArcadeMode,
 	stats::arcade::ArcadeKind,
@@ -117,13 +117,13 @@ command!(
 	stats::arena::ArenaKind,
 	arena
 );
-command!(
+large_command!(
 	stats::bed_wars::BedWars,
 	stats::bed_wars::BedWarsMode,
 	stats::bed_wars::BedWarsKind,
 	bedwars
 );
-command!(
+large_command!(
 	stats::blitz_sg::BlitzSg,
 	stats::blitz_sg::BlitzSgMode,
 	stats::blitz_sg::BlitzSgKind,

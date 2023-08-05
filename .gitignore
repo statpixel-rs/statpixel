@@ -1,6 +1,7 @@
 /target
 .env
 /*.json
+/scripts/*.json
 *.txt
 !.release.json
 /data

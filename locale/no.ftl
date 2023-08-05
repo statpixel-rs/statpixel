@@ -22,7 +22,7 @@ error-invalid-uuid = Uuid-en {$uuid} er ugyldig.
 error-invalid-username = Brukernavnet {$name} er ugyldig.
 error-member-player-not-found = Medlemmet {$name} ble ikke funnet i profilen.
 error-skyblock-profile-not-found = En SkyBlock-profil tilhørende {$name} ble ikke funnet.
-error-player-snapshot-not-found = Ingen øyeblikksbilder funnet for {$name}. Opprett en med </daily bedwars:1113624864272683065>.
+error-player-snapshot-not-found = Ingen øyeblikksbilder funnet for {$name}. Opprett en med </bedwars daily:1113624864272683065>.
 error-leaderboard-not-found = En ledertavle med navnet {$name} ble ikke funnet.
 error-profile-not-found = {$profile}-SkyBlock-profilen tilhørende {$name} har API-et deaktivert eller de har ikke logget inn siden det nye profilsystemet ble innført.
 error-identifier-too-long =
@@ -48,18 +48,18 @@ error-time-overflow = Varigheten av tidsargumentet er for lang. Prøv å holde d
 # Raske tips
 
 tip-background = <:knowledge_book:1117179094556233828> Endre bakgrunnen på genererte bilder med </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Se en historisk graf over statistikken din med </history bedwars:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Se statistikkendringer fra en bestemt dato med </from bedwars:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Se en historisk graf over statistikken din med </bedwars history:1113624864524357708>.
+tip-from = <:knowledge_book:1117179094556233828> Se statistikkendringer fra en bestemt dato med </bedwars from:1113624864524357705>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Se mange ledertavler med </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Vi støtter SkyBlock! Se en profil med </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Lenk Minecraft-kontoen din med </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Se guild-statistikk med </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Få tilgang til daglige statistikker med </daily bedwars:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Få tilgang til daglige statistikker med </bedwars daily:1113624864272683065>.
 tip-display = <:knowledge_book:1117179094556233828> Endre visningsformatet ditt med </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Få mer hjelp med </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Besøk nettstedet vårt på <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Bli med i vår støtteserver på <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Se estimater for alle dataene dine med </project bedwars:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Se estimater for alle dataene dine med </bedwars project:1118417616541843477>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Se dine seiersrekker med </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Se dine siste kamper med </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Se SkyBlock bazaar-priser med </skyblock bazaar:1113624864826327074>.
@@ -233,7 +233,7 @@ background = background
   .colour-description = Fargen på bakgrunnen
 
 error-invalid-colour = Ugyldig farge oppgitt
-error-invalid-colour-description = Den oppgitte fargen er ugyldig. Prøv å oppgi en av [disse fargene](https://simple.wikipedia.org/wiki/List_of_colors) eller en heksadesimal farge som starter med `#`.
+error-invalid-colour-description = Den oppgitte fargen er ugyldig. Prøv å oppgi en av [disse fargene](https://simple.wikipedia.org/wiki/List_of-colors) eller en heksadesimal farge som starter med `#`.
 colour-changed = Bakgrunnsfargen er endret
 colour-changed-description = Bakgrunnsfargen din er endret til {$colour}.
 
@@ -348,45 +348,45 @@ skyblock-wardrobe = garderobe
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
 skyblock-candy = godteri
   .description = Se en SkyBlock-godteri-inventar
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
-skyblock-vault = hvelv
-  .description = Se en SkyBlock personlig hvelv
+skyblock-vault = skattkammer
+  .description = Se en SkyBlock-personlig skattkammer
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
 skyblock-pets = kjæledyr
-  .description = Se SkyBlock kjæledyr
+  .description = Se SkyBlock-kjæledyr
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
 skyblock-networth = nettoverdi
-  .description = Se SkyBlock profilenettverdi
+  .description = Se nettoverdien til SkyBlock-profilen
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
 # /skyblock profile
 
@@ -395,20 +395,172 @@ skyblock-profile = profil
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .uuid-description = Minecraft-UUID
   .profile = profil
-  .profile-description = Profilen å se
+  .profile-description = Profilen som skal vises
 
 member-profile = Medlemsprofil
 fairy-souls = Fe-sjeler
 fairy-exchanges = Bytter
-fishing-treasure = Skatt
-zones-visited = Områder
-generators-crafted = Generatorer
-highest-crit = Høyeste Kritisk
+fishing-treasure = Skatter
+zones-visited = Besøkte soner
+generators-crafted = Generatorskapt
+highest-crit = Høyeste krit
 
 farming = Jordbruk
-mining = Gru<|endoftext|>
+mining = Gruvdrift
+combat = Kamp
+foraging = Skogbruk
+fishing-skill = Fiskeferdighet
+enchanting = Forheksing
+alchemy = Alkymi
+taming = Temming
+dungeoneering = Dungeoneering
+carpentry = Snekkerarbeid
+runecrafting = Runekunst
+social = Sosial
+
+# /skyblock bank
+
+skyblock-bank = bank
+  .description = Se en SkyBlock-bank
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .profile = profil
+  .profile-description = Profilen som skal vises
+
+island-bank-balance = Øybankbalanse
+bank-balance = Bankbalanse
+
+# /leaderboard
+
+leaderboard = rangering
+  .description = Se rangeringen for ulike spill
+  .board = liste
+  .board-description = Rangeringslisten som skal vises
+
+# /network
+
+network-general = generelt
+  .description = Se generelle nettverksstatistikker
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+
+network-history = historie
+  .description = Se historiske nettverksstatistikker
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+
+karma = Karma
+rewards = Belønninger
+friend-requests = Vennforespørsler
+first-login = Første pålogging
+last-login = Siste pålogging
+quests = Oppdrag
+challenges = Utfordringer
+achievement-points = Prestasjonspoeng
+language = Språk
+gifts-given = Gaver gitt
+ranks-given = Rang gitt
+
+# /history
+
+statistics-history = {" "}historie for{" "}
+
+# /help
+
+help = hjelp
+  .description = Vis hjelpemenyen
+
+help-general = Generell <:cookie:1115091335565811775>
+help-general-description = StatPixel støtter alle spillene på Hypixel-nettverket. Du kan se statistikk for hvert spill ved å bruke `/<spillnavn> generell`. For eksempel, prøv </bedwars general:1113624864272683060>!
+
+help-display = Visning <:spyglass:1115091333657411625>
+help-display-description = Hvis du har begrenset data eller bare vil spare litt, kan du motta svar i ulike formater, som tekst eller komprimerte bilder, med </display:1113624864272683066>.
+
+help-link = Kobling <a:recovery_compass:1115091332680126504>
+help-link-description = Det kan bli kjedelig å skrive inn brukernavnet ditt for hver kommando. For å gjøre dette enklere kan du lenke en konto uten verifisering med </link:1113624864524357710> og senere fjerne koblingen med </unlink:1113624865262538854>.
+
+help-snapshot = Øyeblikksbilde <:book_and_quill:1115091331379900428>
+help-snapshot-description = Øyeblikksbilder viser endringene i statistikken din over tid. Det finnes noen nyttige kommandoer for å gjøre det enklere: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858>, og </bedwars monthly:1113624864524357712>. Disse fungerer også for din guild, så prøv </guild daily:1113624864272683065>!
+  
+  Hvis du vil se en mer spesifikk periode, prøv </bedwars from:1113624864524357705>.
+
+help-history = Historie <a:clock:1115091329958019253>
+help-history-description = For å se en graf over hvordan spesifikke statistikker har endret seg over tid, prøv </network history:1113624864524357708>.
+
+help-image-builder = Bildebygger <:gold_pickaxe:1125980780435345488>
+help-image-builder-description = Bygg dine egne dynamiske bilder med Bildebyggeren! Bruk </builder:1125992506501365891> for å komme i gang eller gå til https://statpixel.xyz/docs/builder for mer informasjon.
+
+# /display
+display = visning
+  .description = Endrer måten svar blir vist.
+  .format = format
+  .format-description = Formatet for svarene
+
+display-changed = Visning endret
+display-changed-text-description = Svar vil nå bli sendt som tekst.
+display-changed-image-description = Svar vil nå bli sendt som bilder der det er relevant.
+display-changed-compact-description = Svar vil nå bli sendt som komprimerte bilder.
+
+Image = Bilde
+Compact = Komprimert
+Text = Tekst
+
+# /unlink
+unlink = fjernkobling
+  .description = Fjerner koblingen mellom Discord-kontoen din og en Minecraft-konto.
+
+unlinking-failed = Fjerning mislyktes
+unlinking-failed-description = Du er ikke koblet til en Minecraft-konto.
+unlinking-succeeded = Fjerning vellykket
+unlinking-succeeded-description = Du er ikke lenger koblet til en Minecraft-konto.
+
+# /link
+link = kobling
+  .description = Kobler Discord-kontoen din til en Minecraft-konto.
+  .username = brukernavn
+  .username-description = Minecraft-brukernavnet du vil koble til
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID-en du vil koble til
+
+linking-failed = Kobling mislyktes
+linking-failed-uuid-description = UUID-en `{$uuid}` tilhører ikke en Minecraft-konto.
+linking-failed-username-description = Brukernavnet **{$username}** tilhører ikke en Minecraft-konto.
+linking-failed-description = Du må oppgi en gyldig UUID eller brukernavn.
+linking-succeeded = Kobling vellykket
+linking-succeeded-description = Discord-kontoen din er nå koblet til Minecraft-kontoen **{$name}**.
+
+# /arcade
+
+Party = Fest
+SantaSays = Nissen sier
+SimonSays = Simon sier
+MiniWalls = Mini vegger
+Soccer = Fotball
+OneInTheQuiver = Én i buen
+EnderSpleef = Ender Spleef
+FarmHunt = Gårdssøk
+DragonWars = Dragekrig
+BlockingDead = Blokkerende døde
+Zombies = Zombier
+ZombiesBadBlood = Zombier: Dårlig blod
+ZombiesDeadEnd = Zombier: Blindgate
+PixelPainters = Pikselmaler
+HoleInTheWall = Hull i veggen
+ThrowOut = Kast ut
+EasterSimulator = Påske-simulator
+ScubaSimulator = Dykker-simulator
+HalloweenSimulator = Halloween-simulator
+GrinchSimulator = Grinchen-simulator
+
+mystery-gifts = Mystiske gaver
 
 arcade-general = generell
   .description = Vis Arcade-statistikk
@@ -428,7 +580,7 @@ arcade-from = fra
   .mode = modus
   .mode-description = Arcade-modusen å vise
   .time = tid
-  .time-description = Mengden tid å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Mengden tid å gå tilbake (1h 12m 5s)
 
 arcade-history = historie
   .description = Vis utviklingen av Arcade-statistikk over tid
@@ -503,7 +655,7 @@ arena-from = fra
   .mode = modus
   .mode-description = Arena-modusen å vise
   .time = tid
-  .time-description = Mengden tid å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Mengden tid å gå tilbake (1h 12m 5s)
 
 arena-history = historie
   .description = Vis utviklingen av Arena-statistikk over tid
@@ -609,7 +761,7 @@ bedwars-from = fra
   .mode = modus
   .mode-description = Bed Wars-modusen å vise
   .time = tid
-  .time-description = Mengden tid å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Mengden tid å gå tilbake (1h 12m 5s)
 
 bedwars-history = historie
   .description = Vis utviklingen av Bed Wars-statistikk over tid
@@ -709,7 +861,7 @@ blitz-from = fra
   .mode = modus
   .mode-description = Blitz Survival Games-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1 time 12 minutter 5 sekunder)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 blitz-history = historie
   .description = Vis utviklingen av statistikk for Blitz Survival Games over tid
@@ -787,7 +939,7 @@ buildbattle-from = fra
   .mode = modus
   .mode-description = Build Battle-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1 time 12 minutter 5 sekunder)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 buildbattle-history = historie
   .description = Vis utviklingen av statistikk for Build Battle over tid
@@ -869,7 +1021,7 @@ copsandcrims-from = fra
   .mode = modus
   .mode-description = Cops and Crims-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1 time 12 minutter 5 sekunder)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 copsandcrims-history = historie
   .description = Vis utviklingen av statistikk for Cops and Crims over tid
@@ -895,24 +1047,6 @@ copsandcrims-project = prosjekt
 
 copsandcrims-daily = daglig
   .description = Vis utviklingen av statistikk for Cops and Crims de siste 24 timene
-  .username = brukernavn
-  .username-description = Minecraft-brukernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-  .mode = modus
-  .mode-description = Cops and Crims-modus å vise
-
-copsandcrims-weekly = ukentlig
-  .description = Vis utviklingen av statistikk for Cops and Crims de siste 7 dagene
-  .username = brukernavn
-  .username-description = Minecraft-brukernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-  .mode = modus
-  .mode-description = Cops and Crims-modus å vise
-
-copsandcrims-monthly = månedlig
-  .description = Vis utviklingen av statistikk for Cops and Crims de siste 30 dagene
   .username = brukernavn
   .username-description = Minecraft-brukernavn
   .uuid = uuid
@@ -990,7 +1124,7 @@ duels-from = fra
   .mode = modus
   .mode-description = Duels-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 duels-history = historie
   .description = Se utviklingen av Duels-statistikk over tid
@@ -1069,7 +1203,7 @@ megawalls-from = fra
   .mode = modus
   .mode-description = Mega Walls-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 megawalls-history = historie
   .description = Se utviklingen av Mega Walls-statistikk over tid
@@ -1149,7 +1283,7 @@ murdermystery-from = fra
   .mode = modus
   .mode-description = Murder Mystery-modus å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 murdermystery-history = historie
   .description = Se utviklingen av Murder Mystery-statistikk over tid
@@ -1237,7 +1371,7 @@ paintball-from = fra
   .mode = modus
   .mode-description = Paintball-modusen å vise
   .time = tid
-  .time-description = Tidsintervallet å gå tilbake (f.eks. 1 time 12 min 5 s)
+  .time-description = Tidsintervallet å gå tilbake (1h 12m 5s)
 
 paintball-history = historie
   .description = Se utviklingen av Paintball-statistikk over tid
@@ -1316,7 +1450,7 @@ pit-from = fra
   .mode = modus
   .mode-description = The Pit-modusen å vise
   .time = tid
-  .time-description = Tidsintervallet å gå tilbake (f.eks. 1 time 12 min 5 s)
+  .time-description = Tidsintervallet å gå tilbake (1h 12m 5s)
 
 pit-history = historie
   .description = Se utviklingen av The Pit-statistikk over tid
@@ -1393,7 +1527,7 @@ quake-from = fra
   .mode = modus
   .mode-description = Quakecraft-modusen å vise
   .time = tid
-  .time-description = Tidsintervallet å gå tilbake (f.eks. 1 time 12 min 5 s)
+  .time-description = Tidsintervallet å gå tilbake (1h 12m 5s)
 
 quake-history = historie
   .description = Se utviklingen av Quakecraft-statistikk over tid
@@ -1483,7 +1617,7 @@ skywars-from = fra
   .mode = modus
   .mode-description = SkyWars-modusen å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 skywars-history = historie
   .description = Vis utviklingen av SkyWars-statistikk over tid
@@ -1558,7 +1692,7 @@ smash-from = fra
   .mode = modus
   .mode-description = Smash Heroes-modusen å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 smash-history = historie
   .description = Vis utviklingen av Smash Heroes-statistikk over tid
@@ -1632,7 +1766,7 @@ speeduhc-from = fra
   .mode = modus
   .mode-description = SpeedUHC-modusen å vise
   .time = tid
-  .time-description = Tiden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden å gå tilbake (1h 12m 5s)
 
 speeduhc-history = historie
   .description = Vis utviklingen av SpeedUHC-statistikk over tid
@@ -1715,7 +1849,7 @@ tntgames-from = fra
   .mode = modus
   .mode-description = TNT Games-modusen å vise
   .time = tid
-  .time-description = Antall tid tilbake (f.eks. 1time 12min 5s)
+  .time-description = Antall tid tilbake (1h 12m 5s)
 
 tntgames-history = historie
   .description = Vis utviklingen av TNT Games-statistikk over tid
@@ -1794,7 +1928,7 @@ turbokartracers-from = fra
   .mode = modus
   .mode-description = Turbo Kart Racers-modusen å vise
   .time = tid
-  .time-description = Antall tid tilbake (f.eks. 1time 12min 5s)
+  .time-description = Antall tid tilbake (1h 12m 5s)
 
 turbokartracers-history = historie
   .description = Vis utviklingen av Turbo Kart Racers-statistikk over tid
@@ -1875,7 +2009,7 @@ uhc-from = fra
   .mode = modus
   .mode-description = UHC Champions-modusen å vise
   .time = tid
-  .time-description = Antall tid tilbake (f.eks. 1time 12min 5s)
+  .time-description = Antall tid tilbake (1h 12m 5s)
 
 uhc-history = historie
   .description = Se utviklingen av UHC Champions-statistikk over tid
@@ -1962,7 +2096,7 @@ vampirez-from = fra
   .mode = modus
   .mode-description = VampireZ-modus å vise
   .time = tid
-  .time-description = Tidsperioden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tidsperioden å gå tilbake (1h 12m 5s)
 
 vampirez-history = historie
   .description = Se utviklingen av VampireZ-statistikk over tid
@@ -2038,7 +2172,7 @@ walls-from = fra
   .mode = modus
   .mode-description = The Walls-modus å vise
   .time = tid
-  .time-description = Tidsperioden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tidsperioden å gå tilbake (1h 12m 5s)
 
 walls-history = historie
   .description = Se utviklingen av The Walls-statistikk over tid
@@ -2118,7 +2252,7 @@ warlords-from = fra
   .mode = modus
   .mode-description = Warlords-modus å vise
   .time = tid
-  .time-description = Tidsperioden å gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tidsperioden å gå tilbake (1h 12m 5s)
 
 warlords-history = historie
   .description = Vis utviklingen av Warlords-statistikker over tid
@@ -2193,7 +2327,7 @@ woolwars-from = fra
   .mode = modus
   .mode-description = Wool Wars-modus å vise
   .time = tid
-  .time-description = Tiden som skal gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden som skal gå tilbake (1h 12m 5s)
 
 woolwars-history = historie
   .description = Vis utviklingen av Wool Wars-statistikker over tid
@@ -2261,13 +2395,6 @@ General = Generelt
 Members = Medlemmer
 Top = Topp
 
-member = medlem
-  .description = Vis medlemmet av et gilde.
-  .username = brukernavn
-  .username-description = Brukernavnet til gildemedlemmet å vise
-  .uuid = uuid
-  .uuid-description = UUID-en til gildemedlemmet å vise
-
 guild-general = generelt
   .description = Vis statistikkene til et gilde.
   .name = navn
@@ -2286,7 +2413,7 @@ guild-from = fra
   .uuid = uuid
   .uuid-description = UUID-en til gildemedlemmet for å vise gildet
   .time = tid
-  .time-description = Tiden som skal gå tilbake (f.eks. 1time 12min 5s)
+  .time-description = Tiden som skal gå tilbake (1h 12m 5s)
 
 guild-members = medlemmer
   .description = Vis medlemmene av et gilde.
