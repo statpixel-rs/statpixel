@@ -22,7 +22,7 @@ error-invalid-uuid = A(z) {$uuid} azonosító érvénytelen.
 error-invalid-username = A(z) {$name} felhasználónév érvénytelen.
 error-member-player-not-found = A(z) {$name} nevű tag nem található a profilban.
 error-skyblock-profile-not-found = A(z) {$name} nevű SkyBlock profil nem található.
-error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) {$name} nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) {$name} nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = A(z) {$name} nevű ranglista nem található.
 error-profile-not-found = A(z) {$name} {$profile} SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Elérted a maximális {$limit} nyomon követési számot. A korlát eltávolításához vásárolj StatPixel+-t a következő helyen: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Ez a guild elért egy {$limit} nyomon követési számot.
-  Ha van StatPixel+-od, fokozd a guildet így: </boost:1113624864524357708> és távolítsd el ezt a korlátozást, vagy látogasd meg ezt a linket: <https://statpixel.xyz/plus>.
+  Ha van StatPixel+-od, fokozd a guildet így: </boost:1132443666997321809> és távolítsd el ezt a korlátozást, vagy látogasd meg ezt a linket: <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Elérted a maximális {$limit} fokozat számot. Törölhetsz egy fokozatot a vezérlőpulton: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -49,23 +49,23 @@ error-time-overflow = Az idő argumentum időtartama túl hosszú. Próbáld meg
 # Gyors tippek
 
 tip-background = <:knowledge_book:1117179094556233828> Változtasd meg a generált képek háttérét ezzel: </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák történelmi grafikonját így: </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák változását egy adott dátumtól így: </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák történelmi grafikonját így: </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Tekintsd meg a statisztikák változását egy adott dátumtól így: </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Tekintsd meg a sok ranglistát így: </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Támogatjuk a SkyBlock-ot! Tekintsd meg a profilokat így: </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Kapcsold össze a Minecraft fiókodat így: </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Tekintsd meg a guild statisztikákat így: </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Tekintsd meg a napi statisztikáidat így: </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Tekintsd meg a napi statisztikáidat így: </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Változtasd meg a megjelenítési formátumot így: </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> További segítségért használd ezt: </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Látogass el weboldalunkra: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Csatlakozz a támogatói szerverünkhöz: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Tekintsd meg az összes adatod becslését így: </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Tekintsd meg az összes adatod becslését így: </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Tekintsd meg a győzelmi sorozataidat így: </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Tekintsd meg az utóbbi játékaidat így: </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Tekintsd meg a SkyBlock bazár árakat így: </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Boostold a guildet így: </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Kövesd nyomon a játékost így: </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Boostold a guildet így: </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Kövesd nyomon a játékost így: </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Hozz létre saját egyedi képeket így: </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Kezeld fiókodat a vezérlőpulton: <https://statpixel.xyz/dashboard>.
 
@@ -489,12 +489,12 @@ help-link = Kapcsolat <a:recovery_compass:1115091332680126504>
 help-link-description = Ha minden parancsra szeretné megadni a felhasználónevet, akkor ez időigényes lehet. Hogy könnyebbé tegye ezt, kapcsolódhat egy fiókhoz a megerősítés nélküli </link:1113624864524357710> paranccsal, majd később szétkapcsolhatja a </unlink:1113624865262538854> paranccsal.
 
 help-snapshot = Pillanatképek <:book_and_quill:1115091331379900428>
-help-snapshot-description = A pillanatképek lehetővé teszik a statisztikák idővel történő változásainak megtekintését. Van néhány segédparancs, amely megkönnyíti az életét: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> és </bedwars monthly:1113624864524357712>. Ezek működnek a guild-hez is, próbálja ki a </guild daily:1113624864272683065> parancsot!
+help-snapshot-description = A pillanatképek lehetővé teszik a statisztikák idővel történő változásainak megtekintését. Van néhány segédparancs, amely megkönnyíti az életét: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> és </bedwars monthly:1113624864272683060>. Ezek működnek a guild-hez is, próbálja ki a </guild daily:1113624864524357706> parancsot!
 
-  Ha egy specifikusabb időszakot szeretne megtekinteni, próbálja ki a </bedwars from:1113624864524357705> parancsot.
+  Ha egy specifikusabb időszakot szeretne megtekinteni, próbálja ki a </bedwars from:1113624864272683060> parancsot.
 
 help-history = Történet <a:clock:1115091329958019253>
-help-history-description = Ha grafikont szeretne megtekinteni a statisztikák idővel történő változásairól, próbálja ki a </network history:1113624864524357708> parancsot.
+help-history-description = Ha grafikont szeretne megtekinteni a statisztikák idővel történő változásairól, próbálja ki a </network history:1113624864524357714> parancsot.
 
 help-image-builder = Kép Készítő <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Építsen saját dinamikus képeket a Kép Készítő segítségével! A kezdéshez használja a </builder:1125992506501365891> parancsot, vagy keresse fel az https://statpixel.xyz/docs/builder oldalt további információért.

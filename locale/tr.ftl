@@ -22,7 +22,7 @@ error-invalid-uuid = Geçersiz UUID: {$uuid}.
 error-invalid-username = Geçersiz kullanıcı adı: {$name}.
 error-member-player-not-found = Profilde {$name} adlı üye bulunamadı.
 error-skyblock-profile-not-found = {$name} adlı bir SkyBlock profil bulunamadı.
-error-player-snapshot-not-found = {$name} için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683065> komutunu kullanın.
+error-player-snapshot-not-found = {$name} için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683060> komutunu kullanın.
 error-leaderboard-not-found = {$name} adlı bir lider tablosu bulunamadı.
 error-profile-not-found = {$name} adlı {$profile} SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = {$limit} adet izleme limitine ulaştınız. Bu limiti kaldırmak için StatPixel+ satın alın: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Bu sunucu, {$limit} adet izleme limitine ulaştı.
-  Eğer StatPixel+ sahibiyseniz, sınırlamayı kaldırmak için sunucuyu yükseltin: </boost:1113624864524357708> veya <https://statpixel.xyz/plus> adresine gidin.
+  Eğer StatPixel+ sahibiyseniz, sınırlamayı kaldırmak için sunucuyu yükseltin: </boost:1132443666997321809> veya <https://statpixel.xyz/plus> adresine gidin.
 error-boost-limit-reached =
   {$limit} adet yükseltme limitine ulaştınız. Yükseltmeyi kaldırmak için şu adrese gidin: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Zaman argümanının süresi çok uzun. 3,000 yılın alt�
 # Hızlı ipuçları
 
 tip-background = <:knowledge_book:1117179094556233828> Oluşturulan resimlerin arka planını değiştirin: </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> İstatistiklerinizin tarihçesini görmek için: </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Belirli bir tarihten itibaren istatistik değişikliklerini görüntülemek için: </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> İstatistiklerinizin tarihçesini görmek için: </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Belirli bir tarihten itibaren istatistik değişikliklerini görüntülemek için: </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Çok sayıda lider tablosunu görüntülemek için: </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> SkyBlock'u destekliyoruz! Profil görüntülemek için: </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Minecraft hesabınızı bağlamak için: </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Sunucu istatistiklerini görüntülemek için: </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Günlük istatistiklerinize erişmek için: </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Günlük istatistiklerinize erişmek için: </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Görüntü formatınızı değiştirmek için: </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Daha fazla yardım almak için: </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Web sitemizi ziyaret edin: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Destek sunucumuza katılın: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Tüm verilerinizin tahmini görüntülemek için: </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Tüm verilerinizin tahmini görüntülemek için: </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Kazanma serilerinizi görüntülemek için: </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Son oyunlarınızı görüntülemek için: </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> SkyBlock bazar fiyatlarını görüntülemek için: </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Bir sunucuyu yükseltmek için: </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Bir oyuncuyu takip etmek için: </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Bir sunucuyu yükseltmek için: </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Bir oyuncuyu takip etmek için: </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Kendi özel resimlerinizi oluşturmak için: </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Hesabınızı yönetmek için: <https://statpixel.xyz/dashboard> adresine gidin.
 
@@ -487,12 +487,12 @@ help-link = Bağlantı <a:recovery_compass:1115091332680126504>
 help-link-description = Her komut için kullanıcı adınızı yazmak zorlayıcı olabilir. Bunun daha kolay yapılması için, hesabınızı doğrulama olmaksızın </link:1113624864524357710> komutuyla bağlayabilir ve sonradan </unlink:1113624865262538854> komutuyla bağlantıyı kaldırabilirsiniz.
 
 help-snapshot = Anlık Görüntüler <:book_and_quill:1115091331379900428>
-help-snapshot-description = Anlık görüntüler, istatistiklerinizdeki değişiklikleri zaman içinde görüntülemenin bir yoludur. Birkaç yardımcı komutla hayatınızı kolaylaştırabilirsiniz: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ve </bedwars monthly:1113624864524357712>. Bu komutlar aynı şekilde gildeniz için de çalışır, dolayısıyla </guild daily:1113624864272683065>'u deneyin!
+help-snapshot-description = Anlık görüntüler, istatistiklerinizdeki değişiklikleri zaman içinde görüntülemenin bir yoludur. Birkaç yardımcı komutla hayatınızı kolaylaştırabilirsiniz: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> ve </bedwars monthly:1113624864272683060>. Bu komutlar aynı şekilde gildeniz için de çalışır, dolayısıyla </guild daily:1113624864524357706>'u deneyin!
 
-  Eğer daha spesifik bir aralık görmek isterseniz, </bedwars from:1113624864524357705>'i deneyin.
+  Eğer daha spesifik bir aralık görmek isterseniz, </bedwars from:1113624864272683060>'i deneyin.
 
 help-history = Geçmiş <a:clock:1115091329958019253>
-help-history-description = Belirli istatistiklerin zaman içinde nasıl değiştiğini bir grafikte görmek için, </network history:1113624864524357708> komutunu deneyin.
+help-history-description = Belirli istatistiklerin zaman içinde nasıl değiştiğini bir grafikte görmek için, </network history:1113624864524357714> komutunu deneyin.
 
 help-image-builder = Resim Oluşturucu <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Kendi dinamik resimlerinizi oluşturun! Başlamak için </builder:1125992506501365891> komutunu kullanın veya https://statpixel.xyz/docs/builder adresine gidin.

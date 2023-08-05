@@ -22,7 +22,7 @@ error-invalid-uuid = De UUID {$uuid} is ongeldig.
 error-invalid-username = De gebruikersnaam {$name} is ongeldig.
 error-member-player-not-found = Het lid {$name} is niet gevonden in het profiel.
 error-skyblock-profile-not-found = Een SkyBlock-profiel van {$name} is niet gevonden.
-error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor {$name}. Maak er een aan met </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor {$name}. Maak er een aan met </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Een leaderboard met de naam {$name} is niet gevonden.
 error-profile-not-found = Het {$profile} SkyBlock-profiel van {$name} heeft de API uitgeschakeld of ze hebben niet ingelogd sinds het nieuwe profielsysteem.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Je hebt het maximale aantal tracks van {$limit} bereikt. Koop StatPixel+ om deze limiet te verwijderen op <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Deze guild heeft het maximale aantal tracks van {$limit} bereikt.
-  Als je StatPixel+ hebt, boost dan de guild met </boost:1113624864524357708> om deze beperking te verwijderen of ga naar <https://statpixel.xyz/plus>.
+  Als je StatPixel+ hebt, boost dan de guild met </boost:1132443666997321809> om deze beperking te verwijderen of ga naar <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Je hebt het maximale aantal boosts van {$limit} bereikt. Je kunt een boost verwijderen op het dashboard: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = De duur van het tijdsargument is te lang. Probeer het onde
 # Snelle tips
 
 tip-background = <:knowledge_book:1117179094556233828> Verander de achtergrond van gegenereerde afbeeldingen met </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Bekijk een historische grafiek van je statistieken met </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Bekijk de statistiekenverandering vanaf een specifieke datum met </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Bekijk een historische grafiek van je statistieken met </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Bekijk de statistiekenverandering vanaf een specifieke datum met </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Bekijk talloze leaderboards met </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> We ondersteunen SkyBlock! Bekijk een profiel met </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Koppel je Minecraft-account met </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Bekijk guild-statistieken met </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Bekijk je dagelijkse statistieken met </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Bekijk je dagelijkse statistieken met </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Verander je weergaveformaat met </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Krijg meer hulp met </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Bezoek onze website op <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Kom bij onze ondersteuningsserver op <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Bekijk schattingen van al je gegevens met </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Bekijk schattingen van al je gegevens met </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Bekijk je winstreken met </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Bekijk je recente games met </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Bekijk SkyBlock bazaar prijzen met </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Boost een guild met </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Volg een speler met </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Boost een guild met </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Volg een speler met </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Maak je eigen aangepaste afbeeldingen met </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Beheer je account op het dashboard op <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Koppelen <a:recovery_compass:1115091332680126504>
 help-link-description = Het intypen van uw gebruikersnaam voor elke opdracht kan vervelend worden. Om dit gemakkelijker te maken, kunt u een account koppelen zonder verificatie met </link:1113624864524357710> en later weer loskoppelen met </unlink:1113624865262538854>.
 
 help-snapshot = Momentopnames <:book_and_quill:1115091331379900428>
-help-snapshot-description = Momentopnames zijn een manier om de veranderingen in uw statistieken in de loop van de tijd te bekijken. Er zijn een paar hulpprogramma-opdrachten om uw leven gemakkelijker te maken: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> en </bedwars monthly:1113624864524357712>. Deze werken ook voor uw guild, dus probeer eens </guild daily:1113624864272683065>!
+help-snapshot-description = Momentopnames zijn een manier om de veranderingen in uw statistieken in de loop van de tijd te bekijken. Er zijn een paar hulpprogramma-opdrachten om uw leven gemakkelijker te maken: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> en </bedwars monthly:1113624864272683060>. Deze werken ook voor uw guild, dus probeer eens </guild daily:1113624864524357706>!
   
-  Als u een meer specifiek bereik wilt bekijken, probeer dan </bedwars from:1113624864524357705>.
+  Als u een meer specifiek bereik wilt bekijken, probeer dan </bedwars from:1113624864272683060>.
 
 help-history = Geschiedenis <a:clock:1115091329958019253>
-help-history-description = Om een grafiek te bekijken van hoe specifieke statistieken in de loop van de tijd zijn veranderd, probeer </network history:1113624864524357708>.
+help-history-description = Om een grafiek te bekijken van hoe specifieke statistieken in de loop van de tijd zijn veranderd, probeer </network history:1113624864524357714>.
 
 help-image-builder = Beeldbouwer <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Bouw uw eigen dynamische afbeeldingen met de Beeldbouwer! Gebruik </builder:1125992506501365891> om te beginnen of ga naar https://statpixel.xyz/docs/builder voor meer informatie.

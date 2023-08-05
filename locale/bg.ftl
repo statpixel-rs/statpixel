@@ -22,7 +22,7 @@ error-invalid-uuid = Невалиден идентификатор {$uuid}.
 error-invalid-username = Невалидно потребителско име {$name}.
 error-member-player-not-found = Членът {$name} не е намерен в профила.
 error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на {$name}.
-error-player-snapshot-not-found = Няма намерени снимки за {$name}. Създайте една с </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Няма намерени снимки за {$name}. Създайте една с </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Не е намерен класиране с име {$name}.
 error-profile-not-found = Профилът на SkyBlock {$profile}, принадлежащ на {$name}, има изключена API или не се е вписвал след новата система за профили.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Достигнали сте максималния брой проследявания от {$limit}. Закупете StatPixel+ , за да премахнете този лимит на <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Тази гилдия е достигнала максималния брой проследявания от {$limit}.
-  Ако имате StatPixel+, увеличете гилдията си с </boost:1113624864524357708>, за да премахнете това ограничение или посетете <https://statpixel.xyz/plus>.
+  Ако имате StatPixel+, увеличете гилдията си с </boost:1132443666997321809>, за да премахнете това ограничение или посетете <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Достигнали сте максималния брой усилвания от {$limit}. Можете да премахнете усилване на контролния панел: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Продължителността на аргумента
 # Бързи съвети
 
 tip-background = <:knowledge_book:1117179094556233828> Променете фона на генерираните изображения с </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Вижте хронологичен график на вашите статистики с </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Вижте промяната в статистиката от определена дата с </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Вижте хронологичен график на вашите статистики с </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Вижте промяната в статистиката от определена дата с </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Вижте множество класирания с </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Поддържаме SkyBlock! Вижте профил с </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Свържете профила си на Minecraft с </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Вижте статистиките на гилдията си с </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Достъп до вашите дневни статистики с </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Достъп до вашите дневни статистики с </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Промяна на формата на екрана с </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Получете повече помощ с </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Посетете нашия уебсайт на <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Присъединете се към нашия сървър за поддръжка на <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Вижте оценки на всичките си данни с </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Вижте оценки на всичките си данни с </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Вижте вашите поредни победи с </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Вижте вашите последни игри с </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Вижте цените в SkyBlock Bazaar с </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Усилете гилдията си с </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Проследете играч с </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Усилете гилдията си с </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Проследете играч с </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Създайте свои собствени изображения с </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Управлявайте акаунта си на контролния панел на <https://statpixel.xyz/dashboard>.
 
@@ -485,12 +485,12 @@ help-link = Връзка <a:recovery_compass:1115091332680126504>
 help-link-description = Писането на потребителско име за всеки командуване може да стане напрегнато. За да го направите по-лесно, можете да свържете акаунт без да го потвърждавате с помощта на </link:1113624864524357710> и после да го разкачите с </unlink:1113624865262538854>.
 
 help-snapshot = Моментни снимки <:book_and_quill:1115091331379900428>
-help-snapshot-description = Моментните снимки са начин да видите промените в статистиката си с течение на времето. Има няколко команди за удобство, които ще ви улеснят: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> и </bedwars monthly:1113624864524357712>. Те работят и за вашата гилдия, така че опитайте с </guild daily:1113624864272683065>!
+help-snapshot-description = Моментните снимки са начин да видите промените в статистиката си с течение на времето. Има няколко команди за удобство, които ще ви улеснят: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> и </bedwars monthly:1113624864272683060>. Те работят и за вашата гилдия, така че опитайте с </guild daily:1113624864524357706>!
   
-  Ако искате да видите по-специфичен период, опитайте с </bedwars from:1113624864524357705>.
+  Ако искате да видите по-специфичен период, опитайте с </bedwars from:1113624864272683060>.
 
 help-history = История <a:clock:1115091329958019253>
-help-history-description = За да видите графика на промените на конкретна статистика с течение на времето, опитайте с </network history:1113624864524357708>.
+help-history-description = За да видите графика на промените на конкретна статистика с течение на времето, опитайте с </network history:1113624864524357714>.
 
 help-image-builder = Създател на изображения <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Създайте свои собствени динамични изображения с Image Builder! Започнете с </builder:1125992506501365891> или отидете на https://statpixel.xyz/docs/builder за повече информация.

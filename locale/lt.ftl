@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} yra neteisingas.
 error-invalid-username = Vardas {$name} yra neteisingas.
 error-member-player-not-found = Narys {$name} nerastas profilyje.
 error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio {$name} vardu, nerasta.
-error-player-snapshot-not-found = Nėra momentinių vaizdų su {$name}. Sukurkite vieną naudodami </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Nėra momentinių vaizdų su {$name}. Sukurkite vieną naudodami </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Lentele su pavadinimu {$name} nebuvo rasta.
 error-profile-not-found = Šiaurės blokų profilio {$profile}, priklausančio {$name} vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Jūs pasiekėte maksimalų {$limit} trasų skaičių. Norėdami pašalinti šią apribojimą, įsigykite StatPixel+ čia: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Ši gildija pasiekė maksimalų {$limit} trasų skaičių.
-  Jei turite StatPixel+, pakelkite gildiją su </boost:1113624864524357708>, kad pašalintumėte šį apribojimą, arba apsilankykite <https://statpixel.xyz/plus>.
+  Jei turite StatPixel+, pakelkite gildiją su </boost:1132443666997321809>, kad pašalintumėte šį apribojimą, arba apsilankykite <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Jūs pasiekėte maksimalų {$limit} skaičių stiprinimų. Stiprinimą galite pašalinti žemiau pateiktame skydelyje: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Laiko argumento trukmė pernelyg ilga. Bandykite, kad ji n
 # Greitos patarimai
 
 tip-background = <:knowledge_book:1117179094556233828> Keiskite sugeneruotų vaizdų foną naudodami </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Peržiūrėkite savo statistikos istorijos grafiką naudodami </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Peržiūrėkite statistikos pokyčius nuo tam tikros datos naudodami </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Peržiūrėkite savo statistikos istorijos grafiką naudodami </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Peržiūrėkite statistikos pokyčius nuo tam tikros datos naudodami </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Peržiūrėkite daugybę lyderių lentelių naudodami </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Mes palaikome SkyBlock! Peržiūrėkite profilį naudodami </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Susiekite savo „Minecraft“ paskyrą naudodami </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Peržiūrėkite gildijos statistiką naudodami </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Gauti savo kasdieninius statistikos duomenis naudodami </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Gauti savo kasdieninius statistikos duomenis naudodami </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Keiskite savo rodymo formatą naudodami </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Gauti daugiau pagalbos naudodami </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Apsilankykite mūsų svetainėje: <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Prisijunkite prie mūsų pagalbos serverio: <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Peržiūrėkite visų savo duomenų įvertinimus naudodami </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Peržiūrėkite visų savo duomenų įvertinimus naudodami </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Peržiūrėkite savo laimėjimų serijas naudodami </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Peržiūrėkite savo naujausius žaidimus naudodami </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Peržiūrėkite „SkyBlock“ bazaro kainas naudodami </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Stiprinkite gildiją naudodami </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Sekite žaidėją naudodami </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Stiprinkite gildiją naudodami </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Sekite žaidėją naudodami </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Sukurkite savo pasirinktinius vaizdus naudodami </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Valdykite savo paskyrą naudodami skydelį: <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Sujungimas <a:recovery_compass:1115091332680126504>
 help-link-description = Nuolat rašyti savo naudotojo vardą kiekvienai komandai gali tapti varginančiu. Norėdami tai padaryti lengviau, galite sujungti paskyrą be patvirtinimo su </link:1113624864524357710> ir vėliau ją atsieti su </unlink:1113624865262538854>.
 
 help-snapshot = Momentiniai pranešimai <:book_and_quill:1115091331379900428>
-help-snapshot-description = Momentiniai pranešimai leidžia peržiūrėti statistikos pokyčius laiko eigoje. Yra keletas naudingų komandų, kad gyvenimas būtų lengvesnis: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ir </bedwars monthly:1113624864524357712>. Tai taip pat veikia jūsų gildijai, tad išbandykite </guild daily:1113624864272683065>!
+help-snapshot-description = Momentiniai pranešimai leidžia peržiūrėti statistikos pokyčius laiko eigoje. Yra keletas naudingų komandų, kad gyvenimas būtų lengvesnis: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> ir </bedwars monthly:1113624864272683060>. Tai taip pat veikia jūsų gildijai, tad išbandykite </guild daily:1113624864524357706>!
 
-  Jei norite pamatyti konkrečią laiko intervalo statistiką, išbandykite </bedwars from:1113624864524357705>.
+  Jei norite pamatyti konkrečią laiko intervalo statistiką, išbandykite </bedwars from:1113624864272683060>.
 
 help-history = Istorija <a:clock:1115091329958019253>
-help-history-description = Norėdami pamatyti grafiką, kaip keičiasi konkrečios statistikos laikui bėgant, išbandykite </network history:1113624864524357708>.
+help-history-description = Norėdami pamatyti grafiką, kaip keičiasi konkrečios statistikos laikui bėgant, išbandykite </network history:1113624864524357714>.
 
 help-image-builder = Paveikslėlių Kūrėjas <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Sukurkite savo dinaminius paveikslėlius naudodami Paveikslėlių Kūrėją! Naudokite </builder:1125992506501365891> pradėti arba eikite į https://statpixel.xyz/docs/builder norėdami gauti daugiau informacijos.

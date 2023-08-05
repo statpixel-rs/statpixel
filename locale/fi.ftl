@@ -21,7 +21,7 @@ error-invalid-uuid = Annettu uuid {$uuid} ei ole kelvollinen.
 error-invalid-username = Annettu pelaajanimi {$name} ei ole kelvollinen.
 error-member-player-not-found = Pelaajaa nimellä {$name} ei löytynyt profiilista.
 error-skyblock-profile-not-found = SkyBlock-profiilia nimellä {$name} ei löytynyt.
-error-player-snapshot-not-found = Pelaajalle {$name} ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Pelaajalle {$name} ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Top-listaa nimellä {$name} ei löytynyt.
 error-profile-not-found = SkyBlock-profiilia nimeltä {$profile} pelaajalle {$name} ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
 error-identifier-too-long =
@@ -30,7 +30,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Olet saavuttanut maksimimäärän pelaajaseurantoja ({$limit}). Poista rajoitus hankkimalla StatPixel+ osoitteessa <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Tämä kilta on saavuttanut maksimimäärän seurantoja ({$limit}).
-  Jos sinulla on StatPixel+, voit poistaa tämän rajoituksen parantamalla kiltaa komennolla </boost:1113624864524357708> tai siirtymällä osoitteeseen <https://statpixel.xyz/plus>.
+  Jos sinulla on StatPixel+, voit poistaa tämän rajoituksen parantamalla kiltaa komennolla </boost:1132443666997321809> tai siirtymällä osoitteeseen <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Olet saavuttanut maksimimäärän kiltaan liittyviä parannuksia ({$limit}). Voit poistaa parannuksen hallintapaneelista: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -46,23 +46,23 @@ error-time-overflow = Aikamääreen kesto on liian pitkä. Yritä pitää se all
 
 # Pikavinkit
 tip-background = <:knowledge_book:1117179094556233828> Vaihda luotujen kuvien taustaa komennolla </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Katso tilastojen historiakäyrä komennolla </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Näytä tilastojen muutokset tiettynä päivänä komennolla </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Katso tilastojen historiakäyrä komennolla </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Näytä tilastojen muutokset tiettynä päivänä komennolla </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Näytä monia eri top-listoja komennolla </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Tukeamme SkyBlockia! Näytä profiili komennolla </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Linkitä Minecraft-tilisi komennolla </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Näytä killan tilastotietoja komennolla </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Näytä päivittäiset tilastotiedot komennolla </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Näytä päivittäiset tilastotiedot komennolla </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Vaihda näyttömuotoasi komennolla </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Saat lisää apua komennolla </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Vieraile verkkosivustollamme osoitteessa <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Liity tukipalvelimeellemme osoitteessa <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Näytä arviot kaikista tiedoistasi komennolla </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Näytä arviot kaikista tiedoistasi komennolla </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Näytä voittoputkesi komennolla </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Näytä viimeisimmät pelisi komennolla </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Näytä SkyBlock bazaar-hinnat komennolla </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Paranna kiltaa komennolla </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Seuraa pelaajaa komennolla </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Paranna kiltaa komennolla </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Seuraa pelaajaa komennolla </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Luo omia kustomoituja kuvia komennolla </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Hallinnoi tiliäsi hallintapaneelissa osoitteessa <https://statpixel.xyz/dashboard>.
 
@@ -486,12 +486,12 @@ help-link = Linkitys <a:recovery_compass:1115091332680126504>
 help-link-description = Kirjoittaminen käyttäjänimeä jokaisen komennon yhteydessä voi olla työlästä. Helpottaaksesi tätä voit linkittää tilin ilman varmennusta käyttämällä </link:1113624864524357710> ja poistaa linkityksen myöhemmin käyttämällä </unlink:1113624865262538854>.
 
 help-snapshot = Hetket <:book_and_quill:1115091331379900428>
-help-snapshot-description = Hetket ovat tapa tarkastella tilastojen muutoksia ajan myötä. On muutamia hyödyllisiä komentoja, jotka helpottavat elämääsi: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> ja </bedwars monthly:1113624864524357712>. Nämä toimivat myös kiltaasi varten, joten kokeile </guild daily:1113624864272683065>!
+help-snapshot-description = Hetket ovat tapa tarkastella tilastojen muutoksia ajan myötä. On muutamia hyödyllisiä komentoja, jotka helpottavat elämääsi: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> ja </bedwars monthly:1113624864272683060>. Nämä toimivat myös kiltaasi varten, joten kokeile </guild daily:1113624864524357706>!
   
-  Jos haluat nähdä tarkemman ajanjakson, kokeile komentoa </bedwars from:1113624864524357705>.
+  Jos haluat nähdä tarkemman ajanjakson, kokeile komentoa </bedwars from:1113624864272683060>.
 
 help-history = Historia <a:clock:1115091329958019253>
-help-history-description = Voit nähdä kuinka tietyn tilaston muutokset ovat vaihdelleet ajan myötä graafisessa muodossa käyttämällä komentoa </network history:1113624864524357708>.
+help-history-description = Voit nähdä kuinka tietyn tilaston muutokset ovat vaihdelleet ajan myötä graafisessa muodossa käyttämällä komentoa </network history:1113624864524357714>.
 
 help-image-builder = Kuvan luonti <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Luo omia dynaamisia kuvia kuvan luojalla! Aloita käyttämällä komentoa </builder:1125992506501365891> tai siirry osoitteeseen https://statpixel.xyz/docs/builder saadaksesi lisätietoja.

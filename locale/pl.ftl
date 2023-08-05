@@ -22,7 +22,7 @@ error-invalid-uuid = Nieprawidłowy identyfikator UUID: {$uuid}.
 error-invalid-username = Nieprawidłowa nazwa użytkownika: {$name}.
 error-member-player-not-found = Członek {$name} nie został znaleziony w profilu.
 error-skyblock-profile-not-found = Nie znaleziono profilu SkyBlock należącego do {$name}.
-error-player-snapshot-not-found = Nie znaleziono migawek dla {$name}. Utwórz jedną za pomocą </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Nie znaleziono migawek dla {$name}. Utwórz jedną za pomocą </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Nie znaleziono tabeli wyników o nazwie {$name}.
 error-profile-not-found = Profil SkyBlock {$profile} należący do {$name} ma wyłączone API lub nie logował się od wprowadzenia nowego systemu profilu.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Osiągnąłeś maksymalną liczbę śledzonych graczy: {$limit}. Zakup StatPixel+, aby usunąć ten limit na stronie <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Ta gildia osiągnęła maksymalną liczbę śledzonych graczy: {$limit}.
-  Jeśli masz StatPixel+, wzmocnij gildię za pomocą </boost:1113624864524357708>, aby usunąć to ograniczenie lub przejdź na stronę <https://statpixel.xyz/plus>.
+  Jeśli masz StatPixel+, wzmocnij gildię za pomocą </boost:1132443666997321809>, aby usunąć to ograniczenie lub przejdź na stronę <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Osiągnąłeś maksymalną liczbę wzmocnień: {$limit}. Możesz usunąć jedno wzmocnienie na stronie: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Czas trwania argumentu czasu jest zbyt długi. Spróbuj og
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> Zmień tło generowanych obrazów za pomocą </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Wyświetl wykres historyczny swoich statystyk za pomocą </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Wyświetl statystyki zmiany od określonej daty za pomocą </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Wyświetl wykres historyczny swoich statystyk za pomocą </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Wyświetl statystyki zmiany od określonej daty za pomocą </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Przeglądaj wiele rankingów za pomocą </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Wspieramy SkyBlock! Wyświetl profil za pomocą </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Połącz swoje konto Minecraft za pomocą </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Wyświetl statystyki gildii za pomocą </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Uzyskaj dostęp do swoich codziennych statystyk za pomocą </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Uzyskaj dostęp do swoich codziennych statystyk za pomocą </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Zmień format wyświetlania za pomocą </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Uzyskaj więcej pomocy za pomocą </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Odwiedź naszą stronę internetową pod adresem <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Dołącz do naszego serwera wsparcia na stronie <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Wyświetl szacunki wszystkich swoich danych za pomocą </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Wyświetl szacunki wszystkich swoich danych za pomocą </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Wyświetl swoje serie zwycięstw za pomocą </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Wyświetl swoje niedawne gry za pomocą </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Wyświetl ceny przedmiotów na bazarze SkyBlock za pomocą </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Wzmocnij gildię za pomocą </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Śledź gracza za pomocą </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Wzmocnij gildię za pomocą </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Śledź gracza za pomocą </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Twórz własne obrazy niestandardowe za pomocą </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Zarządzaj swoim kontem na tablicy rozdzielczej pod adresem <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Połączenia <a:recovery_compass:1115091332680126504>
 help-link-description = Wpisywanie swojej nazwy użytkownika dla każdej komendy może być uciążliwe. Aby ułatwić to, możesz połączyć konto bez weryfikacji za pomocą </link:1113624864524357710> i później je odłączyć za pomocą </unlink:1113624865262538854>.
 
 help-snapshot = Zrzuty ekranu <:book_and_quill:1115091331379900428>
-help-snapshot-description = Zrzuty ekranu pozwalają zobaczyć zmiany w twoich statystykach w czasie. Są dostępne kilka przydatnych komend, które ułatwią ci życie: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> i </bedwars monthly:1113624864524357712>. Te same komendy działają również dla twojej gildii, więc spróbuj </guild daily:1113624864272683065>!
+help-snapshot-description = Zrzuty ekranu pozwalają zobaczyć zmiany w twoich statystykach w czasie. Są dostępne kilka przydatnych komend, które ułatwią ci życie: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> i </bedwars monthly:1113624864272683060>. Te same komendy działają również dla twojej gildii, więc spróbuj </guild daily:1113624864524357706>!
   
-  Jeśli chcesz zobaczyć bardziej szczegółowy zakres, spróbuj </bedwars from:1113624864524357705>.
+  Jeśli chcesz zobaczyć bardziej szczegółowy zakres, spróbuj </bedwars from:1113624864272683060>.
 
 help-history = Historia <a:clock:1115091329958019253>
-help-history-description = Aby zobaczyć wykres zmiany określonych statystyk w czasie, spróbuj </network history:1113624864524357708>.
+help-history-description = Aby zobaczyć wykres zmiany określonych statystyk w czasie, spróbuj </network history:1113624864524357714>.
 
 help-image-builder = Kreator obrazów <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Buduj własne dynamiczne obrazy za pomocą Kreatora obrazów! Rozpocznij używając </builder:1125992506501365891> lub odwiedź https://statpixel.xyz/docs/builder, aby uzyskać więcej informacji.

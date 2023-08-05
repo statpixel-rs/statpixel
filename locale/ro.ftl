@@ -22,7 +22,7 @@ error-invalid-uuid = UUID-ul {$uuid} nu este valid.
 error-invalid-username = Numele de utilizator {$name} nu este valid.
 error-member-player-not-found = Membrul {$name} nu a fost găsit în profil.
 error-skyblock-profile-not-found = Un profil SkyBlock aparținând lui {$name} nu a fost găsit.
-error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru {$name}. Creează una cu </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru {$name}. Creează una cu </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Un clasament cu numele {$name} nu a fost găsit.
 error-profile-not-found = Profilul {$profile} SkyBlock aparținând lui {$name} are API-ul dezactivat sau nu s-a conectat de la introducerea noului sistem de profiluri.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Ai atins numărul maxim de track-uri, {$limit}. Achiziționează StatPixel+ pentru a elimina această limită la <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Acest guild a atins numărul maxim de track-uri, {$limit}.
-  Dacă ai StatPixel+, mărește guild-ul cu </boost:1113624864524357708> pentru a elimina această restricție sau mergi la <https://statpixel.xyz/plus>.
+  Dacă ai StatPixel+, mărește guild-ul cu </boost:1132443666997321809> pentru a elimina această restricție sau mergi la <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Ai atins numărul maxim de boost-uri, {$limit}. Poți elimina un boost pe tabloul de bord: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Durata argumentului de timp este prea mare. Încearcă să
 # Sfaturi rapide
 
 tip-background = <:knowledge_book:1117179094556233828> Schimbă fundalul imaginilor generate cu </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Vezi un grafic istoric al statisticilor tale cu </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Vezi schimbarea statisticilor de la o anumită dată cu </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Vezi un grafic istoric al statisticilor tale cu </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Vezi schimbarea statisticilor de la o anumită dată cu </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Vezi o mulțime de clasamente cu </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Sprijinim SkyBlock! Vezi un profil cu </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Leagă-ți contul Minecraft cu </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Vezi statisticile guild-ului cu </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Accesează statisticile tale zilnice cu </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Accesează statisticile tale zilnice cu </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Schimbă formatul afișajului cu </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Obține mai multă ajutor cu </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Vizitează site-ul nostru la <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Alătură-te serverului nostru de suport la <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Vezi estimările pentru toate datele tale cu </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Vezi estimările pentru toate datele tale cu </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Vezi seria ta de victorii cu </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Vezi jocurile tale recente cu </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Vezi prețurile din bursa SkyBlock cu </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Crește un guild cu </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Urmărește un jucător cu </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Crește un guild cu </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Urmărește un jucător cu </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Creează-ți propriile imagini personalizate cu </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Gestionează-ți contul pe tabloul de bord la <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Conectare <a:recovery_compass:1115091332680126504>
 help-link-description = Tastarea numelui de utilizator pentru fiecare comandă poate deveni plictisitoare. Pentru a face acest lucru mai ușor, puteți conecta un cont fără verificare cu </link:1113624864524357710> și deconectați-l mai târziu cu </unlink:1113624865262538854>.
 
 help-snapshot = Momentan <:book_and_quill:1115091331379900428>
-help-snapshot-description = Momentan reprezintă o modalitate de a vizualiza modificările statisticilor în timp. Există câteva comenzi de utilitate pentru a vă ușura viața: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858>, și </bedwars monthly:1113624864524357712>. Acestea funcționează și pentru gilda dvs., deci încercați </guild daily:1113624864272683065>!
+help-snapshot-description = Momentan reprezintă o modalitate de a vizualiza modificările statisticilor în timp. Există câteva comenzi de utilitate pentru a vă ușura viața: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060>, și </bedwars monthly:1113624864272683060>. Acestea funcționează și pentru gilda dvs., deci încercați </guild daily:1113624864524357706>!
 
-  Dacă doriți să vizualizați un interval de timp mai specific, încercați </bedwars from:1113624864524357705>.
+  Dacă doriți să vizualizați un interval de timp mai specific, încercați </bedwars from:1113624864272683060>.
 
 help-history = Istoric <a:clock:1115091329958019253>
-help-history-description = Pentru a vizualiza un grafic al modului în care s-au schimbat statisticile specifice de-a lungul timpului, încercați </network history:1113624864524357708>.
+help-history-description = Pentru a vizualiza un grafic al modului în care s-au schimbat statisticile specifice de-a lungul timpului, încercați </network history:1113624864524357714>.
 
 help-image-builder = Constructor de Imagini <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Construiți propriile imagini dinamice cu Constructorul de Imagini! Utilizați </builder:1125992506501365891> pentru a începe sau mergeți la https://statpixel.xyz/docs/builder pentru mai multe informații.

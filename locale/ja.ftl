@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid}は無効です。
 error-invalid-username = ユーザー名{$name}は無効です。
 error-member-player-not-found = プロフィール内でメンバー{$name}が見つかりませんでした。
 error-skyblock-profile-not-found = {$name}のSkyBlockプロフィールが見つかりませんでした。
-error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683065>
+error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683060>
 error-leaderboard-not-found = 名前が{$name}のリーダーボードが見つかりませんでした。
 error-profile-not-found = {$name}の{$profile} SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = トラック数が上限の{$limit}に達しました。この制限を解除するにはStatPixel+を購入してください。詳細は<https://statpixel.xyz/plus>をご覧ください。
 error-guild-track-limit-reached =
   このギルドはトラック数の上限の{$limit}に達しました。
-  もしStatPixel+を持っている場合は、ギルドを</boost:1113624864524357708>でブーストして制限を解除するか、<https://statpixel.xyz/plus>にアクセスしてください。
+  もしStatPixel+を持っている場合は、ギルドを</boost:1132443666997321809>でブーストして制限を解除するか、<https://statpixel.xyz/plus>にアクセスしてください。
 error-boost-limit-reached =
   ブースト数が上限の{$limit}に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = 時間引数の期間が長すぎます。3000年以下に
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> 生成された画像の背景を変更するには</background:1117174166056075335>を使用してください。
-tip-history = <:knowledge_book:1117179094556233828> 統計の履歴グラフを</bedwars history:1113624864524357708>で表示できます。
-tip-from = <:knowledge_book:1117179094556233828> 特定の日付からの統計変更を</bedwars from:1113624864524357705>で表示できます。
+tip-history = <:knowledge_book:1117179094556233828> 統計の履歴グラフを</bedwars history:1113624864272683060>で表示できます。
+tip-from = <:knowledge_book:1117179094556233828> 特定の日付からの統計変更を</bedwars from:1113624864272683060>で表示できます。
 tip-leaderboard = <:knowledge_book:1117179094556233828> 多数のリーダーボードを</leaderboard:1113624864524357709>で表示できます。
 tip-skyblock = <:knowledge_book:1117179094556233828> SkyBlockをサポートしています！</skyblock profile:1113624864826327074>でプロフィールを表示できます。
 tip-link = <:knowledge_book:1117179094556233828> Minecraftアカウントを</link:1113624864524357710>でリンクしてください。
 tip-guild = <:knowledge_book:1117179094556233828> ギルドの統計情報を</guild general:1113624864524357706>で表示できます。
-tip-snapshot = <:knowledge_book:1117179094556233828> 毎日の統計情報を</bedwars daily:1113624864272683065>でアクセスできます。
+tip-snapshot = <:knowledge_book:1117179094556233828> 毎日の統計情報を</bedwars daily:1113624864272683060>でアクセスできます。
 tip-display = <:knowledge_book:1117179094556233828> 表示形式を</display:1113624864272683066>で変更できます。
 tip-help = <:knowledge_book:1117179094556233828> より詳細なヘルプを</help:1113624864524357707>で取得できます。
 tip-website = <:knowledge_book:1117179094556233828> ウェブサイトは<https://statpixel.xyz>でご覧いただけます。
 tip-support-discord = <:knowledge_book:1117179094556233828> サポートサーバーには<https://statpixel.xyz/discord>から参加できます。
-tip-project = <:knowledge_book:1117179094556233828> 全データの推定を</bedwars project:1118417616541843477>で表示できます。
+tip-project = <:knowledge_book:1117179094556233828> 全データの推定を</bedwars project:1113624864272683060>で表示できます。
 tip-winstreak = <:knowledge_book:1117179094556233828> 勝利連勝数を</winstreaks:1124767485384724520>で表示できます。
 tip-recent = <:knowledge_book:1117179094556233828> 直近の試合を</recent:1123839349428080690>で表示できます。
 tip-bazaar = <:knowledge_book:1117179094556233828> SkyBlockの市場価格を</skyblock bazaar:1113624864826327074>で表示できます。
-tip-boost = <:knowledge_book:1117179094556233828> ギルドを</boost:1113624864524357708>でブーストできます。
-tip-track = <:knowledge_book:1117179094556233828> プレイヤーを</track:1113624864524357708>でトラッキングできます。
+tip-boost = <:knowledge_book:1117179094556233828> ギルドを</boost:1132443666997321809>でブーストできます。
+tip-track = <:knowledge_book:1117179094556233828> プレイヤーを</track:1132443666997321810>でトラッキングできます。
 tip-builder = <:knowledge_book:1117179094556233828> カスタム画像を</builder:1125992506501365891>で作成できます。
 tip-dashboard = <:knowledge_book:1117179094556233828> ダッシュボードでアカウントを管理できます：<https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = リンク <a:recovery_compass:1115091332680126504>
 help-link-description = 各コマンドのたびにユーザー名を入力するのは面倒です。`</link:1113624864524357710>`を使用して、認証なしでアカウントをリンクし、後で`</unlink:1113624865262538854>`を使用してリンクを解除できます。
 
 help-snapshot = スナップショット <:book_and_quill:1115091331379900428>
-help-snapshot-description = スナップショットは統計情報の変化を時間の経過に沿って表示する方法です。いくつかの便利なコマンドがあります：`</bedwars daily:1113624864272683065>`、`</bedwars weekly:1113624865262538858>`、`</bedwars monthly:1113624864524357712>`。これらはギルドに対しても機能しますので、`</guild daily:1113624864272683065>`を試してみてください！
+help-snapshot-description = スナップショットは統計情報の変化を時間の経過に沿って表示する方法です。いくつかの便利なコマンドがあります：`</bedwars daily:1113624864272683060>`、`</bedwars weekly:1113624864272683060>`、`</bedwars monthly:1113624864272683060>`。これらはギルドに対しても機能しますので、`</guild daily:1113624864524357706>`を試してみてください！
 
-  より具体的な範囲を表示したい場合は、</bedwars from:1113624864524357705>を試してみてください。
+  より具体的な範囲を表示したい場合は、</bedwars from:1113624864272683060>を試してみてください。
 
 help-history = 履歴 <a:clock:1115091329958019253>
-help-history-description = 特定の統計情報が時間の経過に沿ってどのように変化したかをグラフで表示するには、</network history:1113624864524357708>を試してみてください。
+help-history-description = 特定の統計情報が時間の経過に沿ってどのように変化したかをグラフで表示するには、</network history:1113624864524357714>を試してみてください。
 
 help-image-builder = 画像ビルダー <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = 画像ビルダーを使用して独自の動的な画像を作成できます！始めるには`</builder:1125992506501365891>`を使用するか、<https://statpixel.xyz/docs/builder>にアクセスしてください。

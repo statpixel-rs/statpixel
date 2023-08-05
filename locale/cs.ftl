@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} je neplatné.
 error-invalid-username = Uživatelské jméno {$name} je neplatné.
 error-member-player-not-found = Člen {$name} nebyl nalezen v profilu.
 error-skyblock-profile-not-found = Profil SkyBlock hráče {$name} nebyl nalezen.
-error-player-snapshot-not-found = Pro hráče {$name} nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Pro hráče {$name} nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Žebříček s názvem {$name} nebyl nalezen.
 error-profile-not-found = Profil SkyBlock {$profile}, patřící hráči {$name}, má vypnuté API nebo se od nového profilového systému nepřihlásil.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Dosáhli jste maximálního počtu sledování v hodnotě {$limit}. K odstranění tohoto omezení si zakupte StatPixel+ na adrese <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Tento cech dosáhl maximálního počtu sledování v hodnotě {$limit}.
-  Pokud máte StatPixel+, povzbuďte cech pomocí </boost:1113624864524357708> a omezení odstraníte, nebo jděte na <https://statpixel.xyz/plus>.
+  Pokud máte StatPixel+, povzbuďte cech pomocí </boost:1132443666997321809> a omezení odstraníte, nebo jděte na <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Dosáhli jste maximálního počtu povzbuzení v hodnotě {$limit}. Můžete jedno povzbuzení odebrat na ovládacím panelu: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Doba trvání časového argumentu je příliš dlouhá. Z
 # Rychlé tipy
 
 tip-background = <:knowledge_book:1117179094556233828> Změňte pozadí generovaných obrázků pomocí </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Zobrazte historický graf vašich statistik pomocí </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Zobrazte změnu statistik od určitého data pomocí </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Zobrazte historický graf vašich statistik pomocí </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Zobrazte změnu statistik od určitého data pomocí </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Zobrazte spoustu žebříčků pomocí </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Podporujeme SkyBlock! Zobrazte profil pomocí </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Propojte svůj účet Minecraft pomocí </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Zobrazte statistiky cechu pomocí </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Získáte denní statistiky pomocí </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Získáte denní statistiky pomocí </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Změňte formát zobrazení pomocí </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Získejte více nápovědy pomocí </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Navštivte naše webové stránky na adrese <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Připojte se k našemu podpůrnému serveru na adrese <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Zobrazte odhady všech vašich dat pomocí </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Zobrazte odhady všech vašich dat pomocí </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Zobrazte své sérii výher pomocí </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Zobrazte své nedávné hry pomocí </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Zobrazte ceny na trhu SkyBlock pomocí </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Povzbuďte cech pomocí </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Sledujte hráče pomocí </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Povzbuďte cech pomocí </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Sledujte hráče pomocí </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Vytvořte vlastní vlastní obrázky pomocí </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Spravujte svůj účet na ovládacím panelu na adrese <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Propojení <a:recovery_compass:1115091332680126504>
 help-link-description = Psaní svého uživatelského jména pro každý příkaz může být zdlouhavé. Pro usnadnění můžete bez ověření propojit účet pomocí </link:1113624864524357710> a později ho zrušit pomocí </unlink:1113624865262538854>.
 
 help-snapshot = Snímky <:book_and_quill:1115091331379900428>
-help-snapshot-description = Snímky jsou způsobem, jak zobrazit změny ve statistikách v čase. Existují několik užitečných příkazů, které vám usnadní život: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> a </bedwars monthly:1113624864524357712>. Tyto příkazy fungují také pro vaši guild, takže vyzkoušejte </guild daily:1113624864272683065>!
+help-snapshot-description = Snímky jsou způsobem, jak zobrazit změny ve statistikách v čase. Existují několik užitečných příkazů, které vám usnadní život: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> a </bedwars monthly:1113624864272683060>. Tyto příkazy fungují také pro vaši guild, takže vyzkoušejte </guild daily:1113624864524357706>!
   
-  Pokud chcete zobrazit specifičtější rozsah, vyzkoušejte </bedwars from:1113624864524357705>.
+  Pokud chcete zobrazit specifičtější rozsah, vyzkoušejte </bedwars from:1113624864272683060>.
 
 help-history = Historie <a:clock:1115091329958019253>
-help-history-description = Pokud chcete zobrazit graf, jak se konkrétní statistiky měnily v čase, vyzkoušejte </network history:1113624864524357708>.
+help-history-description = Pokud chcete zobrazit graf, jak se konkrétní statistiky měnily v čase, vyzkoušejte </network history:1113624864524357714>.
 
 help-image-builder = Stavitel obrázků <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Postavte si vlastní dynamické obrázky pomocí Stavitele obrázků! Začněte pomocí </builder:1125992506501365891> nebo navštivte https://statpixel.xyz/docs/builder pro více informací.

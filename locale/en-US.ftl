@@ -22,7 +22,7 @@ error-invalid-uuid = The uuid {$uuid} is invalid.
 error-invalid-username = The username {$name} is invalid.
 error-member-player-not-found = The member {$name} was not found in the profile.
 error-skyblock-profile-not-found = A SkyBlock profile belonging to {$name} was not found.
-error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
 error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = You have reached the maximum number of tracks of {$limit}. Purchase StatPixel+ to remove this limit at <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   This guild has reached the maximum number of tracks of {$limit}.
-  If you have StatPixel+, boost the guild with </boost:1113624864524357708> to remove this restriction or go to <https://statpixel.xyz/plus>.
+  If you have StatPixel+, boost the guild with </boost:1132443666997321809> to remove this restriction or go to <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   You have reached the maximum number of boosts of {$limit}. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = The duration of the time argument is too long. Try keeping
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> Change the background of generated images with </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> View a historical graph of your statistics with </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> View the statistics change from a specific date with </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> View a historical graph of your statistics with </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> View the statistics change from a specific date with </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> View tons of leaderboards with </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> We support SkyBlock! View a profile with </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Link your Minecraft account with </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> View guild statistics with </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Access your daily statistics with </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Access your daily statistics with </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Change your display format with </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Get more help with </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Visit our website at <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Join our support server at <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> View estimates of all of your data with </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> View your winstreaks with </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> View your recent games with </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> View SkyBlock bazaar prices with </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Boost a guild with </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Track a player with </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Boost a guild with </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Track a player with </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Create your own custom images with </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Manage your account on the dashboard at <https://statpixel.xyz/dashboard>.
 
@@ -488,12 +488,12 @@ help-link = Linking <a:recovery_compass:1115091332680126504>
 help-link-description = Typing in your username for every command can become tedious. To make this easier, you can link an account without verification with </link:1113624864524357710> and unlink it later on with </unlink:1113624865262538854>.
 
 help-snapshot = Snapshots <:book_and_quill:1115091331379900428>
-help-snapshot-description = Snapshots are a way to view the changes in your statistics over time. There are a few utility commands to make your life easier: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858>, and </bedwars monthly:1113624864524357712>. These also work for your guild, so try out </guild daily:1113624864272683065>!
+help-snapshot-description = Snapshots are a way to view the changes in your statistics over time. There are a few utility commands to make your life easier: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060>, and </bedwars monthly:1113624864272683060>. These also work for your guild, so try out </guild daily:1113624864524357706>!
   
-  If you want to view a more specific range, try out </bedwars from:1113624864524357705>.
+  If you want to view a more specific range, try out </bedwars from:1113624864272683060>.
 
 help-history = History <a:clock:1115091329958019253>
-help-history-description = To view a graph of how specific statistics changed over time, try out </network history:1113624864524357708>.
+help-history-description = To view a graph of how specific statistics changed over time, try out </network history:1113624864524357714>.
 
 help-image-builder = Image Builder <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Build your own dynamic images with the Image Builder! Use </builder:1125992506501365891> to get started or go to https://statpixel.xyz/docs/builder for more information.

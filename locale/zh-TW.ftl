@@ -22,7 +22,7 @@ error-invalid-uuid = UUID {$uuid} 无效。
 error-invalid-username = 用户名 {$name} 无效。
 error-member-player-not-found = 未在个人资料中找到成员 {$name}。
 error-skyblock-profile-not-found = 未找到属于 {$name} 的 SkyBlock 个人资料。
-error-player-snapshot-not-found = 未找到 {$name} 的快照。使用 </bedwars daily:1113624864272683065> 创建一个。
+error-player-snapshot-not-found = 未找到 {$name} 的快照。使用 </bedwars daily:1113624864272683060> 创建一个。
 error-leaderboard-not-found = 未找到名为 {$name} 的排行榜。
 error-profile-not-found = {$name} 的 {$profile} SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = 您已达到最大跟踪数 {$limit}。购买 StatPixel+ 以解除此限制，请访问 <https://statpixel.xyz/plus>。
 error-guild-track-limit-reached =
   此公会已达到最大跟踪数 {$limit}。
-  如果您有 StatPixel+，请使用 </boost:1113624864524357708> 提升公会以解除此限制，或者前往 <https://statpixel.xyz/plus>。
+  如果您有 StatPixel+，请使用 </boost:1132443666997321809> 提升公会以解除此限制，或者前往 <https://statpixel.xyz/plus>。
 error-boost-limit-reached =
   您已达到最大增益数 {$limit}。您可以在仪表板上移除一个增益：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = 时间参数的持续时间过长。请尝试保持在 3,0
 # Quick tips
 
 tip-background = <:knowledge_book:1117179094556233828> 使用 </background:1117174166056075335> 更改生成图像的背景。
-tip-history = <:knowledge_book:1117179094556233828> 使用 </bedwars history:1113624864524357708> 查看统计数据的历史图表。
-tip-from = <:knowledge_book:1117179094556233828> 使用 </bedwars from:1113624864524357705> 查看从特定日期开始的统计数据变化。
+tip-history = <:knowledge_book:1117179094556233828> 使用 </bedwars history:1113624864272683060> 查看统计数据的历史图表。
+tip-from = <:knowledge_book:1117179094556233828> 使用 </bedwars from:1113624864272683060> 查看从特定日期开始的统计数据变化。
 tip-leaderboard = <:knowledge_book:1117179094556233828> 使用 </leaderboard:1113624864524357709> 查看众多排行榜。
 tip-skyblock = <:knowledge_book:1117179094556233828> 我们支持 SkyBlock！使用 </skyblock profile:1113624864826327074> 查看个人资料。
 tip-link = <:knowledge_book:1117179094556233828> 使用 </link:1113624864524357710> 链接您的 Minecraft 账户。
 tip-guild = <:knowledge_book:1117179094556233828> 使用 </guild general:1113624864524357706> 查看公会统计。
-tip-snapshot = <:knowledge_book:1117179094556233828> 使用 </bedwars daily:1113624864272683065> 访问您的每日统计数据。
+tip-snapshot = <:knowledge_book:1117179094556233828> 使用 </bedwars daily:1113624864272683060> 访问您的每日统计数据。
 tip-display = <:knowledge_book:1117179094556233828> 使用 </display:1113624864272683066> 更改显示格式。
 tip-help = <:knowledge_book:1117179094556233828> 使用 </help:1113624864524357707> 获取更多帮助。
 tip-website = <:knowledge_book:1117179094556233828> 访问我们的网站：<https://statpixel.xyz>。
 tip-support-discord = <:knowledge_book:1117179094556233828> 加入我们的支持服务器：<https://statpixel.xyz/discord>。
-tip-project = <:knowledge_book:1117179094556233828> 使用 </bedwars project:1118417616541843477> 查看所有数据的估计值。
+tip-project = <:knowledge_book:1117179094556233828> 使用 </bedwars project:1113624864272683060> 查看所有数据的估计值。
 tip-winstreak = <:knowledge_book:1117179094556233828> 使用 </winstreaks:1124767485384724520> 查看您的连胜次数。
 tip-recent = <:knowledge_book:1117179094556233828> 使用 </recent:1123839349428080690> 查看您最近的游戏。
 tip-bazaar = <:knowledge_book:1117179094556233828> 使用 </skyblock bazaar:1113624864826327074> 查看 SkyBlock 市场价格。
-tip-boost = <:knowledge_book:1117179094556233828> 使用 </boost:1113624864524357708> 给公会增加增益。
-tip-track = <:knowledge_book:1117179094556233828> 使用 </track:1113624864524357708> 跟踪一个玩家。
+tip-boost = <:knowledge_book:1117179094556233828> 使用 </boost:1132443666997321809> 给公会增加增益。
+tip-track = <:knowledge_book:1117179094556233828> 使用 </track:1132443666997321810> 跟踪一个玩家。
 tip-builder = <:knowledge_book:1117179094556233828> 使用 </builder:1125992506501365891> 创建自己的自定义图像。
 tip-dashboard = <:knowledge_book:1117179094556233828> 在仪表板上管理您的账户：<https://statpixel.xyz/dashboard>。
 
@@ -488,12 +488,12 @@ help-link = 鏈接 <a:recovery_compass:1115091332680126504>
 help-link-description = 每個命令都要輸入您的使用者名稱可能變得繁瑣。為了方便起見，您可以使用 </link:1113624864524357710> 連結帳戶，不需驗證，以後還可以使用 </unlink:1113624865262538854> 取消連結。
 
 help-snapshot = 快照 <:book_and_quill:1115091331379900428>
-help-snapshot-description = 快照是查看統計數據隨時間變化的一種方式。有一些實用命令可以讓您輕鬆操作： </bedwars daily:1113624864272683065>、 </bedwars weekly:1113624865262538858> 和 </bedwars monthly:1113624864524357712>。這些命令也適用於您的公會，所以試試 </guild daily:1113624864272683065>！
+help-snapshot-description = 快照是查看統計數據隨時間變化的一種方式。有一些實用命令可以讓您輕鬆操作： </bedwars daily:1113624864272683060>、 </bedwars weekly:1113624864272683060> 和 </bedwars monthly:1113624864272683060>。這些命令也適用於您的公會，所以試試 </guild daily:1113624864524357706>！
 
-  如果您想查看更具體的範圍，試試 </bedwars from:1113624864524357705>。
+  如果您想查看更具體的範圍，試試 </bedwars from:1113624864272683060>。
 
 help-history = 歷史紀錄 <a:clock:1115091329958019253>
-help-history-description = 若要查看特定統計數據隨時間變化的圖表，試試 </network history:1113624864524357708>。
+help-history-description = 若要查看特定統計數據隨時間變化的圖表，試試 </network history:1113624864524357714>。
 
 help-image-builder = 圖像製作器 <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = 使用圖像製作器建立自己的動態圖像！使用 </builder:1125992506501365891> 開始，或前往 https://statpixel.xyz/docs/builder 了解更多資訊。

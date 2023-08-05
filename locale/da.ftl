@@ -22,7 +22,7 @@ error-invalid-uuid = UUID'en {$uuid} er ugyldig.
 error-invalid-username = Brugernavnet {$name} er ugyldigt.
 error-member-player-not-found = Medlemmet {$name} blev ikke fundet i profilen.
 error-skyblock-profile-not-found = SkyBlock-profil med navnet {$name} blev ikke fundet.
-error-player-snapshot-not-found = Der blev ikke fundet nogen snapshots for {$name}. Opret en med </bedwars daily:1113624864272683065>.
+error-player-snapshot-not-found = Der blev ikke fundet nogen snapshots for {$name}. Opret en med </bedwars daily:1113624864272683060>.
 error-leaderboard-not-found = Leaderboard med navnet {$name} blev ikke fundet.
 error-profile-not-found = {$profile} SkyBlock-profilen tilhørende {$name} har deaktiveret sin API eller har ikke logget ind siden det nye profilsystem.
 error-identifier-too-long =
@@ -31,7 +31,7 @@ error-identifier-too-long =
 error-user-track-limit-reached = Du har nået det maksimale antal spor på {$limit}. Køb StatPixel+ for at fjerne denne begrænsning på <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
   Denne guild har nået det maksimale antal spor på {$limit}.
-  Hvis du har StatPixel+, kan du booste guilden med </boost:1113624864524357708> for at fjerne denne begrænsning eller gå til <https://statpixel.xyz/plus>.
+  Hvis du har StatPixel+, kan du booste guilden med </boost:1132443666997321809> for at fjerne denne begrænsning eller gå til <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
   Du har nået det maksimale antal boost på {$limit}. Du kan fjerne en boost på kontrolpanelet: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
@@ -48,23 +48,23 @@ error-time-overflow = Varigheden af tidsargumentet er for lang. Prøv at holde d
 # Hurtige tips
 
 tip-background = <:knowledge_book:1117179094556233828> Skift baggrunden på genererede billeder med </background:1117174166056075335>.
-tip-history = <:knowledge_book:1117179094556233828> Se en historisk graf over dine statistikker med </bedwars history:1113624864524357708>.
-tip-from = <:knowledge_book:1117179094556233828> Se statistikændringen fra en bestemt dato med </bedwars from:1113624864524357705>.
+tip-history = <:knowledge_book:1117179094556233828> Se en historisk graf over dine statistikker med </bedwars history:1113624864272683060>.
+tip-from = <:knowledge_book:1117179094556233828> Se statistikændringen fra en bestemt dato med </bedwars from:1113624864272683060>.
 tip-leaderboard = <:knowledge_book:1117179094556233828> Se tonvis af leaderboards med </leaderboard:1113624864524357709>.
 tip-skyblock = <:knowledge_book:1117179094556233828> Vi understøtter SkyBlock! Se en profil med </skyblock profile:1113624864826327074>.
 tip-link = <:knowledge_book:1117179094556233828> Link din Minecraft-konto med </link:1113624864524357710>.
 tip-guild = <:knowledge_book:1117179094556233828> Se guild statistikker med </guild general:1113624864524357706>.
-tip-snapshot = <:knowledge_book:1117179094556233828> Få adgang til dine daglige statistikker med </bedwars daily:1113624864272683065>.
+tip-snapshot = <:knowledge_book:1117179094556233828> Få adgang til dine daglige statistikker med </bedwars daily:1113624864272683060>.
 tip-display = <:knowledge_book:1117179094556233828> Skift din visningsformat med </display:1113624864272683066>.
 tip-help = <:knowledge_book:1117179094556233828> Få mere hjælp med </help:1113624864524357707>.
 tip-website = <:knowledge_book:1117179094556233828> Besøg vores hjemmeside på <https://statpixel.xyz>.
 tip-support-discord = <:knowledge_book:1117179094556233828> Deltag i vores support server på <https://statpixel.xyz/discord>.
-tip-project = <:knowledge_book:1117179094556233828> Se estimeringer af alle dine data med </bedwars project:1118417616541843477>.
+tip-project = <:knowledge_book:1117179094556233828> Se estimeringer af alle dine data med </bedwars project:1113624864272683060>.
 tip-winstreak = <:knowledge_book:1117179094556233828> Se dine winstreaks med </winstreaks:1124767485384724520>.
 tip-recent = <:knowledge_book:1117179094556233828> Se dine seneste spil med </recent:1123839349428080690>.
 tip-bazaar = <:knowledge_book:1117179094556233828> Se SkyBlock bazaar priser med </skyblock bazaar:1113624864826327074>.
-tip-boost = <:knowledge_book:1117179094556233828> Boost en guild med </boost:1113624864524357708>.
-tip-track = <:knowledge_book:1117179094556233828> Spor en spiller med </track:1113624864524357708>.
+tip-boost = <:knowledge_book:1117179094556233828> Boost en guild med </boost:1132443666997321809>.
+tip-track = <:knowledge_book:1117179094556233828> Spor en spiller med </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Lav dine egne tilpassede billeder med </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Administrer din konto på kontrolpanelet på <https://statpixel.xyz/dashboard>.
 
@@ -490,12 +490,12 @@ help-link = Linkning <a:recovery_compass:1115091332680126504>
 help-link-description = Det kan blive kedeligt at indtaste dit brugernavn for hver kommando. For at gøre dette nemmere kan du linke en konto uden bekræftelse med </link:1113624864524357710> og senere fjerne linket med </unlink:1113624865262538854>.
 
 help-snapshot = Øjebliksbillede <:book_and_quill:1115091331379900428>
-help-snapshot-description = Øjebliksbilleder er en måde at se ændringerne i dine statistikker over tid. Der er nogle hjælpekommandoer for at gøre det nemmere: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> og </bedwars monthly:1113624864524357712>. Disse virker også for dit guild, så prøv </guild daily:1113624864272683065>!
+help-snapshot-description = Øjebliksbilleder er en måde at se ændringerne i dine statistikker over tid. Der er nogle hjælpekommandoer for at gøre det nemmere: </bedwars daily:1113624864272683060>, </bedwars weekly:1113624864272683060> og </bedwars monthly:1113624864272683060>. Disse virker også for dit guild, så prøv </guild daily:1113624864524357706>!
   
-  Hvis du vil se en mere specifik periode, prøv </bedwars from:1113624864524357705>.
+  Hvis du vil se en mere specifik periode, prøv </bedwars from:1113624864272683060>.
 
 help-history = Historik <a:clock:1115091329958019253>
-help-history-description = For at se en graf over, hvordan specifikke statistikker har ændret sig over tid, prøv </network history:1113624864524357708>.
+help-history-description = For at se en graf over, hvordan specifikke statistikker har ændret sig over tid, prøv </network history:1113624864524357714>.
 
 help-image-builder = Billedopbygning <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Byg dine egne dynamiske billeder med Billedopbygningen! Brug </builder:1125992506501365891> for at komme i gang eller gå til https://statpixel.xyz/docs/builder for mere information.
