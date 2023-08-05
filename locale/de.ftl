@@ -484,10 +484,10 @@ help-general-description = StatPixel unterstützt jedes Spiel im Hypixel-Netzwer
 help-display = Anzeige <:spyglass:1115091333657411625>
 help-display-description = Wenn du eine begrenzte Internetverbindung hast oder Daten sparen möchtest, kannst du die Antworten in verschiedenen Formaten erhalten, wie Text oder komprimierte Bilder, mit </display:1113624864272683066>.
 
-help-link = Verlinkung <a:recovery-compass:1115091332680126504>
+help-link = Verlinkung <a:recovery_compass:1115091332680126504>
 help-link-description = Das Eintippen deines Benutzernamens für jede Anfrage kann mühsam sein. Um das zu erleichtern, kannst du ein Konto ohne Verifizierung verlinken mit </link:1113624864524357710> und es später mit </unlink:1113624865262538854> entlinken.
 
-help-snapshot = Momentaufnahmen <:book-and-quill:1115091331379900428>
+help-snapshot = Momentaufnahmen <:book_and_quill:1115091331379900428>
 help-snapshot-description = Momentaufnahmen sind eine Möglichkeit, die Veränderungen deiner Statistiken im Laufe der Zeit zu betrachten. Es gibt einige nützliche Befehle, um dein Leben zu erleichtern: </bedwars daily:1113624864272683065>, </bedwars weekly:1113624865262538858> und </bedwars monthly:1113624864524357712>. Diese funktionieren auch für deine Gilde, also probiere </guild daily:1113624864272683065> aus!
   
   Wenn du einen bestimmten Zeitraum betrachten möchtest, probiere </bedwars from:1113624864524357705> aus.
@@ -495,7 +495,7 @@ help-snapshot-description = Momentaufnahmen sind eine Möglichkeit, die Verände
 help-history = Verlauf <a:clock:1115091329958019253>
 help-history-description = Um eine Grafik zu sehen, wie sich bestimmte Statistiken im Laufe der Zeit verändert haben, probiere </network history:1113624864524357708> aus.
 
-help-image-builder = Bildgenerator <:gold-pickaxe:1125980780435345488>
+help-image-builder = Bildgenerator <:gold_pickaxe:1125980780435345488>
 help-image-builder-description = Erstelle deine eigenen dynamischen Bilder mit dem Bildgenerator! Benutze </builder:1125992506501365891>, um loszulegen, oder besuche https://statpixel.xyz/docs/builder für weitere Informationen.
 
 # /display
