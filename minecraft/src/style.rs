@@ -99,7 +99,7 @@ impl MinecraftFont {
 		let offset = (style.font_size() / 9.) as i32;
 
 		style.add_shadow(TextShadow::new(paint.shadow(), (offset, offset), 0.));
-		style.set_foreground_color(paint.into());
+		style.set_foreground_paint(paint.into());
 		style
 	}
 }

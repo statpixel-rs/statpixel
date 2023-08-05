@@ -183,7 +183,7 @@ pub fn canvas_with_size(
 		None,
 	);
 
-	skia_safe::Surface::new_raster_direct(&info, buffer, size.0 * 4, None).ok_or(Error::Canvas)
+	skia_safe::surfaces::wrap_pixels(&info, buffer, size.0 * 4, None).ok_or(Error::Canvas)
 }
 
 /// # Errors
@@ -191,7 +191,7 @@ pub fn canvas_with_size(
 pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	let info = ImageInfo::new((750, 400), ColorType::RGBA8888, AlphaType::Premul, None);
 
-	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
+	skia_safe::surfaces::wrap_pixels(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
 pub fn apply_title(

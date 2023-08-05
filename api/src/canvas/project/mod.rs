@@ -75,7 +75,7 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 		None,
 	);
 
-	skia_safe::Surface::new_raster_direct(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
+	skia_safe::surfaces::wrap_pixels(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
 #[allow(clippy::cast_precision_loss)]

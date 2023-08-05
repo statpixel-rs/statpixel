@@ -115,7 +115,7 @@ version = "1"
 features = ["derive"]
 
 [workspace.dependencies.skia-safe]
-version = "0.63"
+version = "0.64"
 features = ["textlayout"]
 
 [workspace.dependencies.tokio]

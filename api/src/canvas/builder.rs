@@ -339,7 +339,7 @@ impl<'c> Canvas<'c> {
 		)
 			.into();
 
-		let mut surface = Surface::new_raster_n32_premul(size)?;
+		let mut surface = skia_safe::surfaces::raster_n32_premul(size)?;
 		let canvas = surface.canvas();
 		let background = background.into();
 		let colour: Color = background.unwrap_or(Self::BACKGROUND);

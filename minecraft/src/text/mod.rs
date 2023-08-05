@@ -50,7 +50,7 @@ impl<'t> Text<'t> {
 			style.set_font_size(size);
 		}
 
-		style.set_foreground_color(paint.into());
+		style.set_foreground_paint(paint.into());
 		style
 	}
 }
