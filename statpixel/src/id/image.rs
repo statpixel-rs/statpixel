@@ -141,8 +141,9 @@ pub async fn map(
 				crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
 					.await
 					.ok()?;
-			let bytes =
-				crate::commands::builder::build::build(ctx, &shapes, &data, &session, &skin, background);
+			let bytes = crate::commands::builder::build::build(
+				ctx, &shapes, &data, &session, &skin, background,
+			);
 
 			Some(bytes)
 		}
