@@ -7,6 +7,7 @@ use api::{
 	shape, Data, Session,
 };
 use minecraft::{calc, text::Text};
+use skia_safe::Color;
 use translate::{context, tr};
 
 #[allow(clippy::too_many_lines)]
@@ -16,6 +17,7 @@ pub fn build(
 	data: &Data,
 	session: &Session,
 	skin: &Image,
+	background: Option<Color>,
 ) -> Cow<'static, [u8]> {
 	let mut canvas = Canvas::new(750.);
 	let skin = shape::Status(session, skin.image());
@@ -328,5 +330,5 @@ pub fn build(
 		};
 	}
 
-	canvas::to_png(&mut canvas.build(None, None).unwrap()).into()
+	canvas::to_png(&mut canvas.build(None, background).unwrap()).into()
 }

@@ -8,7 +8,6 @@ use poise::serenity_prelude as serenity;
 
 #[allow(non_camel_case_types)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default, Deserialize)]
-#[serde(rename_all = "kebab-case")]
 pub enum Locale {
 	bg,
 	cs,
@@ -16,7 +15,9 @@ pub enum Locale {
 	de,
 	el,
 	#[default]
+	#[serde(rename = "en-US")]
 	en_US,
+	#[serde(rename = "es-ES")]
 	es_ES,
 	fi,
 	fr,
@@ -30,14 +31,18 @@ pub enum Locale {
 	nl,
 	no,
 	pl,
+	#[serde(rename = "pt-BR")]
 	pt_BR,
 	ro,
 	ru,
+	#[serde(rename = "sv-SE")]
 	sv_SE,
 	th,
 	tr,
 	uk,
+	#[serde(rename = "zh-CN")]
 	zh_CN,
+	#[serde(rename = "zh-TW")]
 	zh_TW,
 }
 

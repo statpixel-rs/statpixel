@@ -288,7 +288,7 @@ pub async fn handler(
 			game_type: None,
 			game_mode: None,
 		};
-		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN);
+		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN, None);
 
 		ctx.send(
 			poise::CreateReply::new()
@@ -307,7 +307,7 @@ pub async fn handler(
 pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Result<(), Error> {
 	let (_, data, session, skin, _) =
 		super::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
-	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin);
+	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin, None);
 
 	let id = api::id::command(api::command::Id::Builder {
 		shapes: state.shapes,
@@ -802,7 +802,14 @@ pub async fn modal_handler(
 			game_mode: None,
 		};
 
-		build::build(local_ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN)
+		build::build(
+			local_ctx,
+			&id.state.shapes,
+			&data,
+			&session,
+			&DEFAULT_SKIN,
+			None,
+		)
 	};
 
 	local_ctx

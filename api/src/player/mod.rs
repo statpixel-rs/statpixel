@@ -311,7 +311,7 @@ impl Player {
 
 		let response = HTTP
 			.get(url)
-			.timeout(Duration::from_millis(500))
+			.timeout(Duration::from_millis(1_000))
 			.send()
 			.await;
 

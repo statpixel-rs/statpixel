@@ -142,7 +142,7 @@ pub async fn map(
 					.await
 					.ok()?;
 			let bytes =
-				crate::commands::builder::build::build(ctx, &shapes, &data, &session, &skin);
+				crate::commands::builder::build::build(ctx, &shapes, &data, &session, &skin, background);
 
 			Some(bytes)
 		}
