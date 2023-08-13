@@ -13,8 +13,8 @@ pub trait Game {
 
 	fn canvas_diff(
 		ctx: &context::Context,
-		prev: &data::Data,
-		curr: &mut data::Data,
+		data_lhs: &data::Data,
+		data_rhs: &data::Data,
 		session: &status::Session,
 		skin: &skia_safe::Image,
 		mode: Option<Self::Mode>,
@@ -65,8 +65,8 @@ pub trait Game {
 	fn embed_diff(
 		ctx: &context::Context,
 		player: &player::Player,
-		prev: &data::Data,
-		curr: &mut data::Data,
+		data_lhs: &data::Data,
+		data_rhs: &data::Data,
 	) -> serenity::CreateEmbed;
 }
 

@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 #[derive(
@@ -41,9 +41,7 @@ pub struct Arena {
 	pub four: Four,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_1v1")]
@@ -58,9 +56,7 @@ pub struct Solo {
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "wins_2v2")]
@@ -75,9 +71,7 @@ pub struct Double {
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Four {
 	#[serde(rename = "wins_4v4")]

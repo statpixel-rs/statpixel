@@ -45,13 +45,13 @@ pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 				.title(TITLE)
 				.description(tr!(ctx, "about-description"))
 				.field(tr!(ctx, "author"), "@walfakoot (GoogleSites#7707)", true)
-				.field(tr!(ctx, "guilds"), guilds.to_formatted_label(ctx), true)
+				.field(tr!(ctx, "guilds"), guilds.to_formatted(ctx), true)
 				.field("\u{200b}", "\u{200b}", true)
-				.field(tr!(ctx, "profiles"), profiles.to_formatted_label(ctx), true)
-				.field(tr!(ctx, "users"), users.to_formatted_label(ctx), true)
+				.field(tr!(ctx, "profiles"), profiles.to_formatted(ctx), true)
+				.field(tr!(ctx, "users"), users.to_formatted(ctx), true)
 				.field(
 					tr!(ctx, "snapshots"),
-					snapshots.to_formatted_label(ctx),
+					snapshots.to_formatted(ctx),
 					true,
 				),
 		),

@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 use crate::meters::Meters;
@@ -41,9 +41,7 @@ pub struct Walls {
 	pub standard: Standard,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Standard {
 	#[serde(rename = "wins_standard")]

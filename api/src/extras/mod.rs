@@ -54,7 +54,7 @@ macro_rules! impl_time_unit {
 		}
 
 		impl $crate::canvas::label::ToFormatted for $name {
-			fn to_formatted_label<'t, 'c: 't>(
+			fn to_formatted<'t, 'c: 't>(
 				&'t self,
 				_ctx: &::translate::context::Context<'c>,
 			) -> ::std::borrow::Cow<'t, str> {
@@ -186,7 +186,7 @@ macro_rules! impl_time_unit_opt {
 		}
 
 		impl $crate::canvas::label::ToFormatted for $name {
-			fn to_formatted_label<'t, 'c: 't>(
+			fn to_formatted<'t, 'c: 't>(
 				&'t self,
 				ctx: &'c ::translate::context::Context<'c>,
 			) -> ::std::borrow::Cow<'t, str> {

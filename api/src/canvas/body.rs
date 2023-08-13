@@ -144,7 +144,7 @@ impl Body {
 					..Default::default()
 				},
 				Text {
-					text: &value.to_formatted_label(ctx),
+					text: &value.to_formatted(ctx),
 					paint,
 					font: MinecraftFont::Normal,
 					size: None,
@@ -174,7 +174,7 @@ impl Body {
 					..Default::default()
 				},
 				Text {
-					text: &value.to_formatted_label(ctx),
+					text: &value.to_formatted(ctx),
 					paint,
 					font: MinecraftFont::Normal,
 					size: None,

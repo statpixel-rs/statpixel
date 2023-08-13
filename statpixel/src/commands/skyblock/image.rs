@@ -110,7 +110,7 @@ fn create<const BUBBLE: bool>(
 
 	chart
 		.configure_mesh()
-		.y_label_formatter(&|y| y.to_formatted_label(ctx).into_owned())
+		.y_label_formatter(&|y| y.to_formatted(ctx).into_owned())
 		.x_label_formatter(&|x| x.format_localized("%d/%m %H:%M", locale).to_string())
 		.x_labels(5)
 		.light_line_style(foreground.mix(0.05))
@@ -313,7 +313,7 @@ pub async fn auctions(
 	for auction in auctions.iter() {
 		let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
 		let bid = max(auction.starting_bid, auction.highest_bid);
-		let bid = bid.to_formatted_label(ctx);
+		let bid = bid.to_formatted(ctx);
 
 		text.extend([
 			Text {
@@ -403,46 +403,37 @@ pub async fn profile(
 			canvas::body::Body::new(17., None)
 				.append_item(
 					&::translate::tr!(ctx, "coins"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.coin_purse, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 					&Paint::Gold,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fairy-souls"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.fairy_souls_collected,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.fairy_souls_collected, ctx),
 					&Paint::Aqua,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fairy-exchanges"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.fairy_exchanges, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 					&Paint::LightPurple,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fishing-treasure"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.fishing_treasure_caught,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.fishing_treasure_caught, ctx),
 					&Paint::Blue,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "zones-visited"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.zones_visited, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 					&Paint::Green,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "generators-crafted"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.generators_crafted,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.generators_crafted, ctx),
 					&Paint::White,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "highest-crit"),
-					&canvas::label::ToFormatted::to_formatted_label(
+					&canvas::label::ToFormatted::to_formatted(
 						&member.stats.highest_critical_damage,
 						ctx,
 					),
@@ -902,46 +893,37 @@ pub async fn pets(
 			canvas::body::Body::new(17., None)
 				.append_item(
 					&::translate::tr!(ctx, "coins"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.coin_purse, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 					&Paint::Gold,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fairy-souls"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.fairy_souls_collected,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.fairy_souls_collected, ctx),
 					&Paint::Aqua,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fairy-exchanges"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.fairy_exchanges, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 					&Paint::LightPurple,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "fishing-treasure"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.fishing_treasure_caught,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.fishing_treasure_caught, ctx),
 					&Paint::Blue,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "zones-visited"),
-					&canvas::label::ToFormatted::to_formatted_label(&member.zones_visited, ctx),
+					&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 					&Paint::Green,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "generators-crafted"),
-					&canvas::label::ToFormatted::to_formatted_label(
-						&member.generators_crafted,
-						ctx,
-					),
+					&canvas::label::ToFormatted::to_formatted(&member.generators_crafted, ctx),
 					&Paint::White,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "highest-crit"),
-					&canvas::label::ToFormatted::to_formatted_label(
+					&canvas::label::ToFormatted::to_formatted(
 						&member.stats.highest_critical_damage,
 						ctx,
 					),
@@ -1149,15 +1131,12 @@ macro_rules! inventory_command {
 					canvas::body::Body::new(17., None)
 						.append_item(
 							&::translate::tr!(ctx, "coins"),
-							&canvas::label::ToFormatted::to_formatted_label(
-								&member.coin_purse,
-								ctx,
-							),
+							&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 							&Paint::Gold,
 						)
 						.append_item(
 							&::translate::tr!(ctx, "fairy-souls"),
-							&canvas::label::ToFormatted::to_formatted_label(
+							&canvas::label::ToFormatted::to_formatted(
 								&member.fairy_souls_collected,
 								ctx,
 							),
@@ -1165,15 +1144,12 @@ macro_rules! inventory_command {
 						)
 						.append_item(
 							&::translate::tr!(ctx, "fairy-exchanges"),
-							&canvas::label::ToFormatted::to_formatted_label(
-								&member.fairy_exchanges,
-								ctx,
-							),
+							&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 							&Paint::LightPurple,
 						)
 						.append_item(
 							&::translate::tr!(ctx, "fishing-treasure"),
-							&canvas::label::ToFormatted::to_formatted_label(
+							&canvas::label::ToFormatted::to_formatted(
 								&member.fishing_treasure_caught,
 								ctx,
 							),
@@ -1181,15 +1157,12 @@ macro_rules! inventory_command {
 						)
 						.append_item(
 							&::translate::tr!(ctx, "zones-visited"),
-							&canvas::label::ToFormatted::to_formatted_label(
-								&member.zones_visited,
-								ctx,
-							),
+							&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 							&Paint::Green,
 						)
 						.append_item(
 							&::translate::tr!(ctx, "generators-crafted"),
-							&canvas::label::ToFormatted::to_formatted_label(
+							&canvas::label::ToFormatted::to_formatted(
 								&member.generators_crafted,
 								ctx,
 							),
@@ -1197,7 +1170,7 @@ macro_rules! inventory_command {
 						)
 						.append_item(
 							&::translate::tr!(ctx, "highest-crit"),
-							&canvas::label::ToFormatted::to_formatted_label(
+							&canvas::label::ToFormatted::to_formatted(
 								&member.stats.highest_critical_damage,
 								ctx,
 							),

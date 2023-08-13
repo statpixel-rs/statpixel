@@ -311,7 +311,7 @@ impl From<&str> for Mode {
 			"PIT" => Self::Pit,
 			"SKYBLOCK" => Self::SkyBlock,
 			"dynamic" => Self::PrivateIsland,
-			"HUB" => Self::Hub,
+			"HUB" | "hub" => Self::Hub,
 			"farming_1" => Self::TheFarmingIslands,
 			"mining_1" => Self::GoldMine,
 			"mining_2" => Self::DeepCaverns,

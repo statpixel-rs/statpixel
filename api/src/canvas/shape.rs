@@ -117,7 +117,7 @@ impl Sidebar {
 		if let Some((game, xp)) = iter.next() {
 			body = body.append_item(
 				game.as_short_clean_name(),
-				xp.to_formatted_label(ctx).as_ref(),
+				xp.to_formatted(ctx).as_ref(),
 				&Paint::Gold,
 			);
 		}
@@ -125,7 +125,7 @@ impl Sidebar {
 		if let Some((game, xp)) = iter.next() {
 			body = body.append_item(
 				game.as_short_clean_name(),
-				xp.to_formatted_label(ctx).as_ref(),
+				xp.to_formatted(ctx).as_ref(),
 				&Paint::Gray,
 			);
 		}
@@ -133,7 +133,7 @@ impl Sidebar {
 		if let Some((game, xp)) = iter.next() {
 			body = body.append_item(
 				game.as_short_clean_name(),
-				xp.to_formatted_label(ctx).as_ref(),
+				xp.to_formatted(ctx).as_ref(),
 				&Paint::Red,
 			);
 		}
@@ -141,7 +141,7 @@ impl Sidebar {
 		for (game, xp) in iter.take(4) {
 			body = body.append_item(
 				game.as_short_clean_name(),
-				xp.to_formatted_label(ctx).as_ref(),
+				xp.to_formatted(ctx).as_ref(),
 				&Paint::DarkGray,
 			);
 		}
@@ -241,7 +241,7 @@ impl RecentGame<'_> {
 				Text {
 					text: duration
 						.as_ref()
-						.map_or_else(|| tr!(ctx, "playing"), |e| e.to_formatted_label(ctx))
+						.map_or_else(|| tr!(ctx, "playing"), |e| e.to_formatted(ctx))
 						.as_ref(),
 					paint: if duration.is_none() {
 						Paint::Green
@@ -272,7 +272,7 @@ impl WideTallBubble {
 				.iter()
 				.map(|h| h.1)
 				.sum::<u32>();
-			let text = text.to_formatted_label(ctx);
+			let text = text.to_formatted(ctx);
 
 			body = body.extend_owned(minecraft_string(player)).extend(&[
 				Text {
@@ -320,7 +320,7 @@ impl Title {
 					..Default::default()
 				},
 				Text {
-					text: category.value.to_formatted_label(ctx).as_ref(),
+					text: category.value.to_formatted(ctx).as_ref(),
 					paint: Paint::Gold,
 					..Default::default()
 				},
@@ -371,7 +371,7 @@ impl FullWidthBigTitle {
 
 		let mut text = minecraft_string(&text).collect::<Vec<_>>();
 		let members = guild.members.len();
-		let members = members.to_formatted_label(ctx);
+		let members = members.to_formatted(ctx);
 
 		text.extend([
 			Text {
@@ -402,7 +402,7 @@ impl Subtitle {
 	pub fn from_formatted(ctx: &Context<'_>, text: &impl ToFormatted, paint: Paint) -> Paragraph {
 		Body::new(20., TextAlign::Center)
 			.append(Text {
-				text: text.to_formatted_label(ctx).as_ref(),
+				text: text.to_formatted(ctx).as_ref(),
 				paint,
 				..Default::default()
 			})
@@ -513,7 +513,7 @@ impl WideBubbleProgress {
 		text.reserve_exact(7);
 
 		let label = tr!(ctx, "total");
-		let total = total.to_formatted_label(ctx);
+		let total = total.to_formatted(ctx);
 
 		text.push(Text {
 			text: "\n",
@@ -568,7 +568,7 @@ impl WideBubbleProgress {
 		text.reserve_exact(7);
 
 		let label = tr!(ctx, "total");
-		let total = total.to_formatted_label(ctx);
+		let total = total.to_formatted(ctx);
 
 		text.push(Text {
 			text: "\n",
@@ -622,8 +622,8 @@ impl WideBubbleProgress {
 		text.reserve_exact(7);
 
 		let label = tr!(ctx, "progress");
-		let current = current.to_formatted_label(ctx);
-		let needed = needed.to_formatted_label(ctx);
+		let current = current.to_formatted(ctx);
+		let needed = needed.to_formatted(ctx);
 
 		text.push(Text {
 			text: "\n",
@@ -700,7 +700,7 @@ impl LeaderboardValue {
 	pub fn from_value(ctx: &Context<'_>, value: &impl ToFormatted) -> Paragraph {
 		Body::new(20., TextAlign::Center)
 			.extend(&[Text {
-				text: &value.to_formatted_label(ctx),
+				text: &value.to_formatted(ctx),
 				paint: Paint::White,
 				..Default::default()
 			}])

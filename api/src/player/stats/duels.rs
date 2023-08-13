@@ -1,5 +1,30 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
+
+fn uhc_xp(stats: &Duels) -> u32 {
+	stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins
+}
+
+fn op_xp(stats: &Duels) -> u32 {
+	stats.op_solo.wins + stats.op_double.wins
+}
+
+fn sky_wars_xp(stats: &Duels) -> u32 {
+	stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins
+}
+
+fn sumo_xp(stats: &Duels) -> u32 {
+	stats.sumo_solo.wins + stats.sumo_tournament.wins
+}
+
+fn bridge_xp(stats: &Duels) -> u32 {
+	stats.bridge_double_duel.wins
+		+ stats.bridge_four.wins
+		+ stats.bridge_solo.wins
+		+ stats.bridge_three.wins
+		+ stats.bridge_double.wins
+		+ stats.bridge_three_duel.wins
+}
 
 #[derive(
 	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
@@ -44,40 +69,22 @@ pub struct Duels {
 	pub coins: i32,
 
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "uhc_xp"))]
 	pub uhc_solo: UhcSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "uhc_xp"))]
 	pub uhc_double: UhcDouble,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "uhc_xp"))]
 	pub uhc_four: UhcFour,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.uhc_solo.wins + stats.uhc_double.wins + stats.uhc_four.wins + stats.uhc_meetup.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "uhc_xp"))]
 	pub uhc_meetup: UhcMeetup,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.op_solo.wins + stats.op_double.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "op_xp"))]
 	pub op_solo: OpSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.op_solo.wins + stats.op_double.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "op_xp"))]
 	pub op_double: OpDouble,
 	#[serde(flatten)]
 	#[game(mode(calc = "minecraft::calc::duels"))]
@@ -86,71 +93,38 @@ pub struct Duels {
 	#[game(mode(calc = "minecraft::calc::duels"))]
 	pub classic_solo: ClassicSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "sky_wars_xp"))]
 	pub sky_wars_solo: SkyWarsSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "sky_wars_xp"))]
 	pub sky_wars_double: SkyWarsDouble,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.sky_wars_solo.wins + stats.sky_wars_double.wins + stats.sky_wars_tournament.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "sky_wars_xp"))]
 	pub sky_wars_tournament: SkyWarsTournament,
 
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.sumo_solo.wins + stats.sumo_tournament.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "sumo_xp"))]
 	pub sumo_solo: SumoSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.sumo_solo.wins + stats.sumo_tournament.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "sumo_xp"))]
 	pub sumo_tournament: SumoTournament,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_double_duel: BridgeDoubleDuel,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_four: BridgeFourDuel,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_solo: BridgeSolo,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_three: BridgeThree,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_double: BridgeDouble,
 	#[serde(flatten)]
-	#[game(mode(
-		calc = "minecraft::calc::duels",
-		xp = "stats.bridge_double_duel.wins + stats.bridge_four.wins + stats.bridge_solo.wins + stats.bridge_three.wins + stats.bridge_double.wins + stats.bridge_three_duel.wins"
-	))]
+	#[game(mode(calc = "minecraft::calc::duels", xp = "bridge_xp"))]
 	pub bridge_three_duel: BridgeThreeDuel,
 
 	#[serde(flatten)]
@@ -182,9 +156,7 @@ pub struct Duels {
 	pub capture_three: CaptureThree,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct UhcSolo {
 	#[serde(rename = "uhc_duel_wins")]
@@ -209,9 +181,7 @@ pub struct UhcSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct OpSolo {
 	#[serde(rename = "op_duel_wins")]
@@ -236,9 +206,7 @@ pub struct OpSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct UhcDouble {
 	#[serde(rename = "uhc_doubles_wins")]
@@ -263,9 +231,7 @@ pub struct UhcDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BowSolo {
 	#[serde(rename = "bow_duel_wins")]
@@ -290,9 +256,7 @@ pub struct BowSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct ClassicSolo {
 	#[serde(rename = "classic_duel_wins")]
@@ -317,9 +281,7 @@ pub struct ClassicSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct OpDouble {
 	#[serde(rename = "op_doubles_wins")]
@@ -344,9 +306,7 @@ pub struct OpDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct UhcFour {
 	#[serde(rename = "uhc_four_wins")]
@@ -371,9 +331,7 @@ pub struct UhcFour {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SkyWarsDouble {
 	#[serde(rename = "sw_doubles_wins")]
@@ -398,9 +356,7 @@ pub struct SkyWarsDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SumoSolo {
 	#[serde(rename = "sumo_duel_wins")]
@@ -425,9 +381,7 @@ pub struct SumoSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SkyWarsSolo {
 	#[serde(rename = "sw_duel_wins")]
@@ -452,9 +406,7 @@ pub struct SkyWarsSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeDoubleDuel {
 	#[serde(rename = "bridge_doubles_wins")]
@@ -479,9 +431,7 @@ pub struct BridgeDoubleDuel {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeFourDuel {
 	#[serde(rename = "bridge_four_wins")]
@@ -506,9 +456,7 @@ pub struct BridgeFourDuel {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeSolo {
 	#[serde(rename = "bridge_duel_wins")]
@@ -533,9 +481,7 @@ pub struct BridgeSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeThree {
 	#[serde(rename = "bridge_3v3v3v3_wins")]
@@ -560,9 +506,7 @@ pub struct BridgeThree {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeDouble {
 	#[serde(rename = "bridge_2v2v2v2_wins")]
@@ -587,9 +531,7 @@ pub struct BridgeDouble {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct ComboSolo {
 	#[serde(rename = "combo_duel_wins")]
@@ -614,9 +556,7 @@ pub struct ComboSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SumoTournament {
 	#[serde(rename = "sumo_tournament_wins")]
@@ -641,9 +581,7 @@ pub struct SumoTournament {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SkyWarsTournament {
 	#[serde(rename = "sw_tournament_wins")]
@@ -668,9 +606,7 @@ pub struct SkyWarsTournament {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct UhcMeetup {
 	#[serde(rename = "uhc_meetup_wins")]
@@ -695,9 +631,7 @@ pub struct UhcMeetup {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct PotionSolo {
 	#[serde(rename = "potion_duel_wins")]
@@ -722,9 +656,7 @@ pub struct PotionSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BlitzSolo {
 	#[serde(rename = "blitz_duel_wins")]
@@ -749,9 +681,7 @@ pub struct BlitzSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BowSpleefSolo {
 	#[serde(rename = "bowspleef_duel_wins")]
@@ -776,9 +706,7 @@ pub struct BowSpleefSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct MegaWallsSolo {
 	#[serde(rename = "mw_duel_wins")]
@@ -803,9 +731,7 @@ pub struct MegaWallsSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BoxingSolo {
 	#[serde(rename = "boxing_duel_wins")]
@@ -830,9 +756,7 @@ pub struct BoxingSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Parkour {
 	#[serde(rename = "parkour_eight_wins")]
@@ -857,9 +781,7 @@ pub struct Parkour {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct ArenaSolo {
 	#[serde(rename = "duel_arena_wins")]
@@ -884,9 +806,7 @@ pub struct ArenaSolo {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct CaptureThree {
 	#[serde(rename = "capture_threes_wins")]
@@ -911,9 +831,7 @@ pub struct CaptureThree {
 	pub damage_dealt: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BridgeThreeDuel {
 	#[serde(rename = "bridge_threes_wins")]

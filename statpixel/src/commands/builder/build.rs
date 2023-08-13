@@ -230,83 +230,72 @@ pub fn build(
 
 				let (value, label) = match statistic {
 					Statistic::Arcade { kind } => {
-						(arcade::Arcade::from_kind(ctx, data, kind), kind.get_tr())
+						(arcade::Arcade::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::Arena { kind } => {
-						(arena::Arena::from_kind(ctx, data, kind), kind.get_tr())
+						(arena::Arena::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::BedWars { kind } => {
-						(bed_wars::BedWars::from_kind(ctx, data, kind), kind.get_tr())
+						(bed_wars::BedWars::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::BlitzSg { kind } => {
-						(blitz_sg::BlitzSg::from_kind(ctx, data, kind), kind.get_tr())
+						(blitz_sg::BlitzSg::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::BuildBattle { kind } => (
 						build_battle::BuildBattle::from_kind(ctx, data, kind),
-						kind.get_tr(),
+						kind.tr(),
 					),
 					Statistic::CopsAndCrims { kind } => (
 						cops_and_crims::CopsAndCrims::from_kind(ctx, data, kind),
-						kind.get_tr(),
+						kind.tr(),
 					),
 					Statistic::Duels { kind } => {
-						(duels::Duels::from_kind(ctx, data, kind), kind.get_tr())
+						(duels::Duels::from_kind(ctx, data, kind), kind.tr())
 					}
-					Statistic::MegaWalls { kind } => (
-						mega_walls::MegaWalls::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
+					Statistic::MegaWalls { kind } => {
+						(mega_walls::MegaWalls::from_kind(ctx, data, kind), kind.tr())
+					}
 					Statistic::MurderMystery { kind } => (
 						murder_mystery::MurderMystery::from_kind(ctx, data, kind),
-						kind.get_tr(),
+						kind.tr(),
 					),
-					Statistic::Paintball { kind } => (
-						paintball::Paintball::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::Pit { kind } => {
-						(pit::Pit::from_kind(ctx, data, kind), kind.get_tr())
+					Statistic::Paintball { kind } => {
+						(paintball::Paintball::from_kind(ctx, data, kind), kind.tr())
 					}
+					Statistic::Pit { kind } => (pit::Pit::from_kind(ctx, data, kind), kind.tr()),
 					Statistic::Quake { kind } => {
-						(quake::Quake::from_kind(ctx, data, kind), kind.get_tr())
+						(quake::Quake::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::SkyWars { kind } => {
-						(sky_wars::SkyWars::from_kind(ctx, data, kind), kind.get_tr())
+						(sky_wars::SkyWars::from_kind(ctx, data, kind), kind.tr())
 					}
 					Statistic::SmashHeroes { kind } => (
 						smash_heroes::SmashHeroes::from_kind(ctx, data, kind),
-						kind.get_tr(),
+						kind.tr(),
 					),
-					Statistic::SpeedUhc { kind } => (
-						speed_uhc::SpeedUhc::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::TntGames { kind } => (
-						tnt_games::TntGames::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
+					Statistic::SpeedUhc { kind } => {
+						(speed_uhc::SpeedUhc::from_kind(ctx, data, kind), kind.tr())
+					}
+					Statistic::TntGames { kind } => {
+						(tnt_games::TntGames::from_kind(ctx, data, kind), kind.tr())
+					}
 					Statistic::TurboKartRacers { kind } => (
 						turbo_kart_racers::TurboKartRacers::from_kind(ctx, data, kind),
-						kind.get_tr(),
+						kind.tr(),
 					),
-					Statistic::Uhc { kind } => {
-						(uhc::Uhc::from_kind(ctx, data, kind), kind.get_tr())
+					Statistic::Uhc { kind } => (uhc::Uhc::from_kind(ctx, data, kind), kind.tr()),
+					Statistic::VampireZ { kind } => {
+						(vampire_z::VampireZ::from_kind(ctx, data, kind), kind.tr())
 					}
-					Statistic::VampireZ { kind } => (
-						vampire_z::VampireZ::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
 					Statistic::Walls { kind } => {
-						(walls::Walls::from_kind(ctx, data, kind), kind.get_tr())
+						(walls::Walls::from_kind(ctx, data, kind), kind.tr())
 					}
-					Statistic::Warlords { kind } => (
-						warlords::Warlords::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
-					Statistic::WoolWars { kind } => (
-						wool_wars::WoolWars::from_kind(ctx, data, kind),
-						kind.get_tr(),
-					),
+					Statistic::Warlords { kind } => {
+						(warlords::Warlords::from_kind(ctx, data, kind), kind.tr())
+					}
+					Statistic::WoolWars { kind } => {
+						(wool_wars::WoolWars::from_kind(ctx, data, kind), kind.tr())
+					}
 				};
 
 				let kind = shape::Bubble;

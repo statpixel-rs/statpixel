@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 #[derive(
@@ -49,9 +49,7 @@ pub struct Uhc {
 	pub double_brawl: DoubleBrawl,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_solo", deserialize_with = "crate::de::from::f32_to_u32")]
@@ -69,9 +67,7 @@ pub struct Solo {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Team {
 	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
@@ -83,9 +79,7 @@ pub struct Team {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct RedVsBlue {
 	#[serde(
@@ -106,9 +100,7 @@ pub struct RedVsBlue {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct NoDiamonds {
 	#[serde(
@@ -129,9 +121,7 @@ pub struct NoDiamonds {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct VanillaDouble {
 	#[serde(
@@ -152,9 +142,7 @@ pub struct VanillaDouble {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Brawl {
 	#[serde(
@@ -175,9 +163,7 @@ pub struct Brawl {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SoloBrawl {
 	#[serde(
@@ -198,9 +184,7 @@ pub struct SoloBrawl {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct DoubleBrawl {
 	#[serde(

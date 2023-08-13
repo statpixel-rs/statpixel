@@ -77,7 +77,7 @@ macro_rules! impl_chart_create {
 
 				chart
 					.configure_mesh()
-					.y_label_formatter(&|y| y.to_formatted_label(ctx).into_owned())
+					.y_label_formatter(&|y| y.to_formatted(ctx).into_owned())
 					.x_label_formatter(&|x| x.format_localized("%b %e", locale).to_string())
 					.x_labels(7)
 					.light_line_style(foreground.mix(0.05))

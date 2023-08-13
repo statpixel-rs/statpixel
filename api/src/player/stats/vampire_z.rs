@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 use crate::inverse_bool;
@@ -36,22 +36,22 @@ pub struct VampireZ {
 	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
-	#[game(label(colour = "red"))]
+	#[game(label(colour = "red"), nominal)]
 	pub blood: bool,
 	#[serde(rename = "no_starting_compass")]
-	#[game(label(colour = "yellow"))]
+	#[game(label(colour = "yellow"), nominal)]
 	pub starting_compass: inverse_bool::InverseBool,
 	#[serde(rename = "no_starting_gear")]
-	#[game(label(colour = "blue"))]
+	#[game(label(colour = "blue"), nominal)]
 	pub starting_gear: inverse_bool::InverseBool,
 	#[serde(rename = "combatTracker")]
-	#[game(label(colour = "green"))]
+	#[game(label(colour = "green"), nominal)]
 	pub tracker: bool,
 	#[serde(rename = "updated_stats")]
-	#[game(label(colour = "red"))]
+	#[game(label(colour = "red"), nominal)]
 	pub updated: bool,
 	#[serde(rename = "using_old_vamp")]
-	#[game(label(colour = "aqua"))]
+	#[game(label(colour = "aqua"), nominal)]
 	pub old_vampire: bool,
 
 	#[serde(flatten)]
@@ -59,9 +59,7 @@ pub struct VampireZ {
 	pub normal: Normal,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Normal {
 	pub human_wins: u32,

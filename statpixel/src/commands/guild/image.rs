@@ -352,7 +352,7 @@ pub async fn general(
 						..Default::default()
 					},
 					Text {
-						text: &guild.created_at.to_formatted_label(ctx),
+						text: &guild.created_at.to_formatted(ctx),
 						paint: Paint::Aqua,
 						font: MinecraftFont::Normal,
 						size: None,
@@ -480,7 +480,7 @@ pub async fn member(
 						..Default::default()
 					},
 					Text {
-						text: &guild.created_at.to_formatted_label(ctx),
+						text: &guild.created_at.to_formatted(ctx),
 						paint: Paint::Aqua,
 						font: MinecraftFont::Normal,
 						size: None,
@@ -583,7 +583,7 @@ pub async fn member(
 						..Default::default()
 					},
 					Text {
-						text: position.to_formatted_label(ctx).as_ref(),
+						text: position.to_formatted(ctx).as_ref(),
 						paint: match position {
 							1 => Paint::Gold,
 							2 => Paint::Gray,
@@ -599,7 +599,7 @@ pub async fn member(
 						..Default::default()
 					},
 					Text {
-						text: guild.members.len().to_formatted_label(ctx).as_ref(),
+						text: guild.members.len().to_formatted(ctx).as_ref(),
 						paint: Paint::Gray,
 						..Default::default()
 					},

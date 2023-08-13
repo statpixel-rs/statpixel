@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 #[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
@@ -52,8 +52,12 @@ pub struct Inner {
 	field(ident = "assists", colour = "green"),
 	field(ident = "powerups_collected", colour = "red"),
 	field(ident = "wool_placed", colour = "gold"),
-	label(ident = "coins", path = "wool_wars", colour = "gold"),
-	label(ident = "layers", path = "wool_wars.progression", colour = "blue"),
+	label(ident = "coins", path = "stats.wool_wars", colour = "gold"),
+	label(
+		ident = "layers",
+		path = "stats.wool_wars.progression",
+		colour = "blue"
+	),
 	xp = "wool_wars.progression.xp"
 )]
 #[serde(default)]
@@ -66,9 +70,7 @@ pub struct WoolWars {
 	pub normal: Normal,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

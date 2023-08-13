@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 use crate::seconds::Seconds;
@@ -19,108 +19,103 @@ pub struct TntGames {
 	pub coins: i32,
 
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		field(colour = "red", ident = "deaths"),
+		field(colour = "gold", ident = "record")
+	))]
 	pub tnt_run: TntRun,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		field(colour = "red", ident = "double_jumps"),
+		field(colour = "gold", ident = "record"),
+		field(colour = "green", ident = "kills"),
+		field(colour = "red", ident = "deaths"),
+		field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths")
+	))]
 	pub pvp_run: PvpRun,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		field(colour = "red", ident = "deaths"),
+		field(colour = "gold", ident = "tags")
+	))]
 	pub bow_spleef: BowSpleef,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		field(colour = "red", ident = "air_time"),
+		field(colour = "gold", ident = "points"),
+		field(colour = "green", ident = "kills"),
+		field(colour = "red", ident = "deaths"),
+		field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths")
+	))]
 	pub wizard: Wizard,
 	#[serde(flatten)]
-	#[game(mode())]
+	#[game(mode(
+		field(colour = "green", ident = "kills"),
+		field(colour = "red", ident = "deaths"),
+		field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths")
+	))]
 	pub tnt_tag: TntTag,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct TntRun {
 	#[serde(rename = "wins_tntrun")]
 	pub wins: u32,
 	#[serde(rename = "deaths_tntrun")]
-	#[mode(field(colour = "red"))]
 	pub deaths: u32,
 	#[serde(rename = "record_tntrun")]
-	#[mode(field(colour = "gold"))]
 	pub record: Seconds,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
-#[mode(field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths"))]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct TntTag {
 	#[serde(rename = "wins_tntag")]
 	pub wins: u32,
 	#[serde(rename = "kills_tntag")]
-	#[mode(field(colour = "green"))]
 	pub kills: u32,
 	#[serde(rename = "deaths_tntag")]
-	#[mode(field(colour = "red"))]
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
-#[mode(field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths"))]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct PvpRun {
 	#[serde(rename = "wins_pvprun")]
 	pub wins: u32,
 	#[serde(rename = "new_pvprun_double_jumps")]
-	#[mode(field(colour = "red"))]
 	pub double_jumps: u32,
 	#[serde(rename = "record_pvprun")]
-	#[mode(field(colour = "gold"))]
 	pub record: Seconds,
 	#[serde(rename = "kills_pvprun")]
-	#[mode(field(colour = "green"))]
 	pub kills: u32,
 	#[serde(rename = "deaths_pvprun")]
-	#[mode(field(colour = "red"))]
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct BowSpleef {
 	#[serde(rename = "wins_bowspleef")]
 	pub wins: u32,
 	#[serde(rename = "deaths_bowspleef")]
-	#[mode(field(colour = "red"))]
 	pub deaths: u32,
 	#[serde(rename = "tags_bowspleef")]
-	#[mode(field(colour = "gold"))]
 	pub tags: Seconds,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
-#[mode(field(tr = "kdr", colour = "gold", ident = "kills", div = "deaths"))]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Wizard {
 	#[serde(rename = "wins_capture")]
 	pub wins: u32,
 	#[serde(rename = "air_time_capture")]
-	#[mode(field(colour = "red"))]
 	pub air_time: Seconds,
 	#[serde(rename = "points_capture")]
-	#[mode(field(colour = "gold"))]
 	pub points: u32,
 	#[serde(rename = "kills_capture")]
-	#[mode(field(colour = "green"))]
 	pub kills: u32,
 	#[serde(rename = "deaths_capture")]
-	#[mode(field(colour = "red"))]
 	pub deaths: u32,
 }

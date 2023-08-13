@@ -64,37 +64,37 @@ pub fn network(
 			canvas::body::Body::new(17., None)
 				.append_item(
 					&::translate::tr!(ctx, "experience"),
-					&data.xp.to_formatted_label(ctx),
+					&data.xp.to_formatted(ctx),
 					&Paint::Yellow,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "karma"),
-					&data.karma.to_formatted_label(ctx),
+					&data.karma.to_formatted(ctx),
 					&Paint::LightPurple,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "rewards"),
-					&data.rewards.to_formatted_label(ctx),
+					&data.rewards.to_formatted(ctx),
 					&Paint::Gold,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "friend-requests"),
-					&data.friend_requests.to_formatted_label(ctx),
+					&data.friend_requests.to_formatted(ctx),
 					&Paint::Green,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "time-played"),
-					&data.playtime.to_formatted_label(ctx),
+					&data.playtime.to_formatted(ctx),
 					&Paint::Gold,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "first-login"),
-					&data.first_login.to_formatted_label(ctx),
+					&data.first_login.to_formatted(ctx),
 					&Paint::Aqua,
 				)
 				.append_item(
 					&::translate::tr!(ctx, "last-login"),
-					&data.last_login.to_formatted_label(ctx),
+					&data.last_login.to_formatted(ctx),
 					&Paint::Blue,
 				)
 				.build(),

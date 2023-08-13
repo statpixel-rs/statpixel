@@ -22,7 +22,7 @@ pub trait DiffLog {
 	) -> Embed;
 }
 
-macro_rules! impl_to_formatted_label_for_number {
+macro_rules! impl_to_formatted_for_number {
 	($int:ty) => {
 		impl Diff for $int {
 			fn diff(&self, other: &Self) -> Self {
@@ -32,20 +32,20 @@ macro_rules! impl_to_formatted_label_for_number {
 	};
 }
 
-impl_to_formatted_label_for_number!(u8);
-impl_to_formatted_label_for_number!(u16);
-impl_to_formatted_label_for_number!(u32);
-impl_to_formatted_label_for_number!(u64);
-impl_to_formatted_label_for_number!(u128);
-impl_to_formatted_label_for_number!(usize);
-impl_to_formatted_label_for_number!(i8);
-impl_to_formatted_label_for_number!(i16);
-impl_to_formatted_label_for_number!(i32);
-impl_to_formatted_label_for_number!(i64);
-impl_to_formatted_label_for_number!(i128);
-impl_to_formatted_label_for_number!(isize);
-impl_to_formatted_label_for_number!(f32);
-impl_to_formatted_label_for_number!(f64);
+impl_to_formatted_for_number!(u8);
+impl_to_formatted_for_number!(u16);
+impl_to_formatted_for_number!(u32);
+impl_to_formatted_for_number!(u64);
+impl_to_formatted_for_number!(u128);
+impl_to_formatted_for_number!(usize);
+impl_to_formatted_for_number!(i8);
+impl_to_formatted_for_number!(i16);
+impl_to_formatted_for_number!(i32);
+impl_to_formatted_for_number!(i64);
+impl_to_formatted_for_number!(i128);
+impl_to_formatted_for_number!(isize);
+impl_to_formatted_for_number!(f32);
+impl_to_formatted_for_number!(f64);
 
 impl Diff for Colour {
 	fn diff(&self, _other: &Self) -> Self {

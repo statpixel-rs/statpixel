@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 use crate::seconds::{Seconds, SecondsOption};
@@ -19,16 +19,28 @@ fn default_level_fmt() -> String {
 	field(ident = "kills", colour = "green"),
 	field(ident = "deaths", colour = "red"),
 	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
-	field(ident = "time_played", colour = "green", skip_chart),
+	field(
+		ident = "time_played",
+		colour = "green",
+		skip_mode = "solo_insane",
+		skip_mode = "team_insane"
+	),
 	field(
 		tr = "bow-accuracy",
 		ident = "arrows_hit",
 		div = "arrows_shot",
 		percent = "u32",
 		colour = "red",
-		skip_chart
+		skip_mode = "solo_insane",
+		skip_mode = "team_insane"
 	),
-	field(ident = "fastest_win", colour = "gold", skip_chart, min)
+	field(
+		ident = "fastest_win",
+		colour = "gold",
+		min,
+		skip_mode = "solo_insane",
+		skip_mode = "team_insane"
+	)
 )]
 #[serde(default)]
 pub struct SkyWars {
@@ -70,10 +82,24 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(
 		hypixel = "solo_insane",
-		skip_field = "time_played",
-		skip_field = "arrows_hit",
-		skip_field = "arrows_shot",
-		skip_field = "fastest_win"
+		field(
+			ident = "time_played",
+			colour = "green",
+			path = "stats.sky_wars.solo_normal"
+		),
+		field(
+			ident = "arrows_hit",
+			colour = "red",
+			div = "arrows_shot",
+			percent = "u32",
+			tr = "bow-accuracy",
+			path = "stats.sky_wars.solo_normal"
+		),
+		field(
+			ident = "fastest_win",
+			colour = "gold",
+			path = "stats.sky_wars.solo_normal"
+		)
 	))]
 	pub solo_insane: SoloInsane,
 	#[serde(flatten)]
@@ -82,10 +108,24 @@ pub struct SkyWars {
 	#[serde(flatten)]
 	#[game(mode(
 		hypixel = "teams_insane",
-		skip_field = "time_played",
-		skip_field = "arrows_hit",
-		skip_field = "arrows_shot",
-		skip_field = "fastest_win"
+		field(
+			ident = "time_played",
+			colour = "green",
+			path = "stats.sky_wars.solo_normal"
+		),
+		field(
+			ident = "arrows_hit",
+			colour = "red",
+			div = "arrows_shot",
+			percent = "u32",
+			tr = "bow-accuracy",
+			path = "stats.sky_wars.solo_normal"
+		),
+		field(
+			ident = "fastest_win",
+			colour = "gold",
+			path = "stats.sky_wars.solo_normal"
+		)
 	))]
 	pub team_insane: TeamInsane,
 	#[serde(flatten)]
@@ -136,9 +176,7 @@ impl Default for SkyWars {
 	}
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
@@ -149,36 +187,20 @@ pub struct SoloNormal {
 	pub kills: u32,
 	#[serde(rename = "deaths_solo_normal")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_solo")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_solo")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_solo")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_solo")]
 	pub fastest_win: SecondsOption,
 	#[serde(rename = "winstreak_solo")]
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
-#[mode(
-	field(ident = "sky_wars.solo_normal.time_played", colour = "green"),
-	field(
-		ident = "sky_wars.solo_normal.arrows_hit",
-		colour = "red",
-		div = "arrows_shot",
-		percent = "u32",
-		tr = "bow-accuracy"
-	),
-	field(ident = "sky_wars.solo_normal.fastest_win", colour = "gold")
-)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
 	pub losses: u32,
@@ -190,9 +212,7 @@ pub struct SoloInsane {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
@@ -203,36 +223,20 @@ pub struct TeamNormal {
 	pub kills: u32,
 	#[serde(rename = "deaths_team_normal")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_team")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_team")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_team")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_team")]
 	pub fastest_win: SecondsOption,
 	#[serde(rename = "winstreak_team")]
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
-#[mode(
-	field(ident = "sky_wars.team_normal.time_played", colour = "green"),
-	field(
-		ident = "sky_wars.team_normal.arrows_hit",
-		colour = "red",
-		div = "arrows_shot",
-		percent = "u32",
-		tr = "bow-accuracy"
-	),
-	field(ident = "sky_wars.team_normal.fastest_win", colour = "gold")
-)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]
 	pub losses: u32,
@@ -244,9 +248,7 @@ pub struct TeamInsane {
 	pub deaths: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct MegaDouble {
 	#[serde(rename = "losses_mega_doubles")]
@@ -257,22 +259,17 @@ pub struct MegaDouble {
 	pub kills: u32,
 	#[serde(rename = "deaths_mega_doubles")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_mega_doubles")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_mega_doubles")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_mega_doubles")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_mega_doubles")]
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct MegaNormal {
 	#[serde(rename = "losses_mega")]
@@ -283,22 +280,17 @@ pub struct MegaNormal {
 	pub kills: u32,
 	#[serde(rename = "deaths_mega")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_mega")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_mega")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_mega")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_mega")]
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Ranked {
 	#[serde(rename = "losses_ranked")]
@@ -309,22 +301,17 @@ pub struct Ranked {
 	pub kills: u32,
 	#[serde(rename = "deaths_ranked")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_ranked")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_ranked")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_ranked")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_ranked")]
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct SoloLab {
 	#[serde(rename = "losses_lab_solo")]
@@ -335,24 +322,19 @@ pub struct SoloLab {
 	pub kills: u32,
 	#[serde(rename = "deaths_lab_solo")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_lab_solo")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_lab_solo")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_lab_solo")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_solo")]
 	pub fastest_win: SecondsOption,
 	#[serde(rename = "winstreak_lab_solo")]
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct TeamLab {
 	#[serde(rename = "losses_lab_team")]
@@ -363,24 +345,19 @@ pub struct TeamLab {
 	pub kills: u32,
 	#[serde(rename = "deaths_lab_team")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_lab_team")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_lab_team")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_lab_team")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_lab_team")]
 	pub fastest_win: SecondsOption,
 	#[serde(rename = "winstreak_lab_team")]
 	pub win_streak: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Tourney {
 	#[serde(rename = "losses_tourney")]
@@ -391,15 +368,12 @@ pub struct Tourney {
 	pub kills: u32,
 	#[serde(rename = "deaths_tourney")]
 	pub deaths: u32,
-	#[mode(field(colour = "green"))]
 	#[serde(rename = "time_played_tourney")]
 	pub time_played: Seconds,
 	#[serde(rename = "arrows_shot_tourney")]
 	pub arrows_shot: u32,
-	#[mode(field(colour = "red", div = "arrows_shot", percent, tr = "bow-accuracy"))]
 	#[serde(rename = "arrows_hit_tourney")]
 	pub arrows_hit: u32,
-	#[mode(field(colour = "gold"))]
 	#[serde(rename = "fastest_win_tourney")]
 	pub fastest_win: SecondsOption,
 	#[serde(rename = "winstreak_tourney")]

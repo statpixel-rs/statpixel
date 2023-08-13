@@ -168,7 +168,7 @@ pub async fn leaderboard(
 								.get_value(&leaderboard.game, leaderboard.path.as_str())
 								.unwrap_or_else(|| Box::new(0));
 
-							let value = value.to_formatted_label(ctx);
+							let value = value.to_formatted(ctx);
 
 							if let Some(prefix) = player.get_rank().as_str() {
 								format!(

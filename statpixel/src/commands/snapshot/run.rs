@@ -33,17 +33,17 @@ pub async fn command<G: api::prelude::Game>(
 
 	match format {
 		format::Display::Image | format::Display::Compact => {
-			let (player, data, session, skin, suffix) =
+			let (player, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
-			let status = snapshot::user::get_or_insert(ctx, &player, &data, after).await?;
+			let status = snapshot::user::get_or_insert(ctx, &player, &data_rhs, after).await?;
 
-			let snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
+			let snapshot::user::Status::Found((ref data_lhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data.username),
+					name: util::escape_username(&data_rhs.username),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -60,8 +60,8 @@ pub async fn command<G: api::prelude::Game>(
 			let (png, mode): (Cow<_>, _) = {
 				let (mut surface, mode) = G::canvas_diff(
 					ctx,
-					snapshot,
-					&mut api::Data::clone(&data),
+					data_lhs,
+					&data_rhs,
 					&session,
 					skin.image(),
 					mode,
@@ -268,7 +268,7 @@ pub async fn guild_command(
 							..Default::default()
 						},
 						Text {
-							text: &guild.created_at.to_formatted_label(ctx),
+							text: &guild.created_at.to_formatted(ctx),
 							paint: Paint::Aqua,
 							font: MinecraftFont::Normal,
 							size: None,

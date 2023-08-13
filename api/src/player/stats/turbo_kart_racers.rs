@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 #[derive(
@@ -22,10 +22,10 @@ pub struct TurboKartRacers {
 	#[serde(rename = "coins_picked_up")]
 	#[game(label(colour = "blue"))]
 	pub coin_pickups: u32,
-	#[game(label(colour = "yellow"))]
+	#[game(label(colour = "yellow"), nominal)]
 	pub grand_prix: bool,
 	#[serde(rename = "show_win_prefix")]
-	#[game(label(colour = "light_purple"))]
+	#[game(label(colour = "light_purple"), nominal)]
 	pub show_prefix: bool,
 	#[game(label(colour = "green"))]
 	pub wins: u32,
@@ -37,9 +37,7 @@ pub struct TurboKartRacers {
 	pub normal: Normal,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Normal {
 	#[serde(rename = "bronze_trophy")]

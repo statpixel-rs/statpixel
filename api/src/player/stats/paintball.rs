@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use minecraft::colour::Colour;
 use serde::Deserialize;
 
@@ -12,8 +12,18 @@ use crate::seconds;
 	pretty = "§f§lPa§e§li§6§lnt§b§lba§3§lll",
 	plain = "Paintball",
 	field(ident = "wins", colour = "green"),
-	field(ident = "kill_prefix", colour = "red", skip_chart),
-	field(ident = "show_kill_prefix", colour = "gold", skip_chart),
+	field(
+		ident = "kill_prefix",
+		path = "stats.paintball.normal",
+		colour = "red",
+		nominal
+	),
+	field(
+		ident = "show_kill_prefix",
+		path = "stats.paintball.normal",
+		colour = "gold",
+		nominal
+	),
 	field(ident = "kills", colour = "green"),
 	field(ident = "deaths", colour = "red"),
 	field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold"),
@@ -44,9 +54,7 @@ pub struct Paintball {
 	pub normal: Normal,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

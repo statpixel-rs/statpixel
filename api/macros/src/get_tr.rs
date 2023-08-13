@@ -35,7 +35,7 @@ impl ToTokens for GetTrInputReceiver {
 
 		tokens.extend(quote! {
 			impl #generics #ident #generics {
-				pub fn get_tr(&self) -> &'static str {
+				pub fn tr(&self) -> &'static str {
 					match self {
 						#(#get_tr)*
 					}

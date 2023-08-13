@@ -1,4 +1,4 @@
-use std::cmp::min;
+use std::{cmp::min, ops::Sub};
 
 use serde::Deserialize;
 use skia_safe::Color;
@@ -40,6 +40,30 @@ impl From<&Level> for LevelSimple {
 impl From<LevelData> for f64 {
 	fn from(value: LevelData) -> Self {
 		value.0 as f64 * 120. + value.1 as f64
+	}
+}
+
+impl PartialOrd for LevelSimple {
+	fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+		Some(self.cmp(other))
+	}
+}
+
+impl Ord for LevelSimple {
+	fn cmp(&self, other: &Self) -> std::cmp::Ordering {
+		self.xp.cmp(&other.xp)
+	}
+}
+
+impl Sub for LevelSimple {
+	type Output = Self;
+
+	// FIXME: I don't think the prestige calculation is correct
+	fn sub(self, rhs: Self) -> Self::Output {
+		Self {
+			xp: self.xp - rhs.xp,
+			prestige: self.prestige - rhs.prestige,
+		}
 	}
 }
 

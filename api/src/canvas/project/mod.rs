@@ -115,7 +115,7 @@ pub fn apply_bubbles(
 						..Default::default()
 					},
 					Text {
-						text: &date.to_formatted_label(ctx),
+						text: &date.to_formatted(ctx),
 						paint: Paint::LightPurple,
 						font: MinecraftFont::Normal,
 						size: None,
@@ -194,7 +194,7 @@ macro_rules! impl_project_create {
 
 				chart
 					.configure_mesh()
-					.y_label_formatter(&|y| y.to_formatted_label(ctx).into_owned())
+					.y_label_formatter(&|y| y.to_formatted(ctx).into_owned())
 					.x_label_formatter(&|x| x.format_localized("%b %e", locale).to_string())
 					.x_labels(7)
 					.light_line_style(foreground.mix(0.05))

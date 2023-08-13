@@ -73,13 +73,13 @@ impl From<Meters> for f64 {
 
 impl ToFormatted for Meters {
 	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let m = self.0;
 
 		if let 0..1_000 = m {
-			return Cow::Owned(format!("{}m", m.to_formatted_label(ctx)));
+			return Cow::Owned(format!("{}m", m.to_formatted(ctx)));
 		}
 
-		Cow::Owned(format!("{}km", (m as f64 / 1_000.).to_formatted_label(ctx)))
+		Cow::Owned(format!("{}km", (m as f64 / 1_000.).to_formatted(ctx)))
 	}
 }

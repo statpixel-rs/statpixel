@@ -1,4 +1,4 @@
-use macros::{Diff, Game, Mode};
+use macros::{Diff, Game};
 use serde::Deserialize;
 
 #[derive(
@@ -29,7 +29,7 @@ pub struct Warlords {
 	#[serde(rename = "heal", deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "red"))]
 	pub health_regenerated: u32,
-	#[game(label(colour = "aqua"))]
+	#[game(label(colour = "aqua"), nominal)]
 	pub hide_prestige: bool,
 	#[game(label(tr = "kdr", div = "deaths", colour = "gold"))]
 	pub kills: u32,
@@ -50,9 +50,7 @@ pub struct Warlords {
 	pub team_deathmatch: TeamDeathmatch,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct CaptureTheFlag {
 	#[serde(rename = "wins_capturetheflag_blu")]
@@ -63,9 +61,7 @@ pub struct CaptureTheFlag {
 	pub kills: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct Domination {
 	#[serde(rename = "wins_domination_blu")]
@@ -76,9 +72,7 @@ pub struct Domination {
 	pub kills: u32,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Mode, Diff,
-)]
+#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
 #[serde(default)]
 pub struct TeamDeathmatch {
 	#[serde(rename = "wins_teamdeathmatch_blu")]

@@ -20,11 +20,11 @@ impl<'de> Deserialize<'de> for InverseBool {
 }
 
 impl ToFormatted for InverseBool {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		if self.0 {
-			false.to_formatted_label(ctx)
+			false.to_formatted(ctx)
 		} else {
-			true.to_formatted_label(ctx)
+			true.to_formatted(ctx)
 		}
 	}
 }

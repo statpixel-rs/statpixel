@@ -171,7 +171,7 @@ impl SkyBlockMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -338,7 +338,7 @@ impl SkyBlockMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -490,7 +490,7 @@ impl SkyBlockMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -642,7 +642,7 @@ impl SkyBlockMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -714,7 +714,7 @@ impl GuildMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -789,7 +789,7 @@ impl GuildMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -860,7 +860,7 @@ impl GuildMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(
@@ -914,7 +914,7 @@ impl GuildMode {
 		.max_values(1);
 
 		if let Some(ref selected) = selected {
-			menu = menu.placeholder(tr!(ctx, selected.get_tr()));
+			menu = menu.placeholder(tr!(ctx, selected.tr()));
 		}
 
 		(

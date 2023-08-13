@@ -3,7 +3,10 @@ use std::borrow::Cow;
 #[allow(clippy::wildcard_imports)]
 use api::player::stats::*;
 
-use api::command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode};
+use api::{
+	command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode},
+	prelude::Game,
+};
 use chrono::{Duration, Utc};
 use skia_safe::Color;
 use translate::context::Context;

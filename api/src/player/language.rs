@@ -39,7 +39,7 @@ pub enum Language {
 }
 
 impl ToFormatted for Language {
-	fn to_formatted_label<'t, 'c: 't>(&'t self, _ctx: &'c Context<'c>) -> Cow<'t, str> {
+	fn to_formatted<'t, 'c: 't>(&'t self, _ctx: &'c Context<'c>) -> Cow<'t, str> {
 		use Language::*;
 
 		match self {

@@ -49,10 +49,10 @@ impl From<Xp> for u32 {
 
 impl ToFormatted for Xp {
 	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted_label<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let xp = self.0;
 
-		Cow::Owned(format!("{} XP", xp.to_formatted_label(ctx)))
+		Cow::Owned(format!("{} XP", xp.to_formatted(ctx)))
 	}
 }
 
