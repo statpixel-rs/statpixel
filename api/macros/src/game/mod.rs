@@ -896,7 +896,7 @@ impl ToTokens for GameInputReceiver {
 
 					match kind {
 						#(#project,)*
-						_ => unimplemented!(),
+						_ => Err(#translate::Error::NotImplemented),
 					}
 				}
 

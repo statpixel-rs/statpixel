@@ -44,13 +44,13 @@ macro_rules! large_command {
 				#[max_length = 36]
 				uuid: Option<::std::string::String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
-				#[autocomplete = "autocomplete_kind"] kind: Option<u32>,
+				#[autocomplete = "autocomplete_kind"] statistic: Option<u32>,
 				#[min = 0.0f64]
 				#[max = 1_000_000_000.0f64]
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-				let kind: ::std::option::Option<$kind> = kind.map(|m| m.into());
+				let kind: ::std::option::Option<$kind> = statistic.map(|m| m.into());
 
 				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
@@ -90,12 +90,12 @@ macro_rules! command {
 				#[max_length = 36]
 				uuid: Option<::std::string::String>,
 				mode: Option<$mode>,
-				#[autocomplete = "autocomplete_kind"] kind: Option<u32>,
+				#[autocomplete = "autocomplete_kind"] statistic: Option<u32>,
 				#[min = 0.0f64]
 				#[max = 1_000_000_000.0f64]
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
-				let kind: ::std::option::Option<$kind> = kind.map(|m| m.into());
+				let kind: ::std::option::Option<$kind> = statistic.map(|m| m.into());
 				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
 

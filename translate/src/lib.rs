@@ -115,6 +115,8 @@ pub enum Error {
 	BoostAlreadyExists,
 	#[error("The provided time is invalid.")]
 	TimeParse(#[from] humantime::DurationError),
+	#[error("This branch is not implemented yet.")]
+	NotImplemented,
 }
 
 #[derive(Debug, thiserror::Error)]

@@ -339,7 +339,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				match kind {
 					#(#project,)*
-					_ => unimplemented!(),
+					_ => Err(#translate::Error::NotImplemented),
 				}
 			}
 
