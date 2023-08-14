@@ -2532,3 +2532,203 @@ red = Rouge
 light-purple = Violet clair
 yellow = Jaune
 white = Blanc
+
+# Commandes de comparaison
+
+arcade-compare = comparer
+  .description = Comparer les statistiques Arcade de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Arcade à afficher
+
+arena-compare = comparer
+  .description = Comparer les statistiques Arena de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Arena à afficher
+
+bedwars-compare = comparer
+  .description = Comparer les statistiques Bed Wars de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Bed Wars à afficher
+
+blitz-compare = comparer
+  .description = Comparer les statistiques Blitz Survival Games de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Blitz Survival Games à afficher
+
+buildbattle-compare = comparer
+  .description = Comparer les statistiques Build Battle de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Build Battle à afficher
+
+copsandcrims-compare = comparer
+  .description = Comparer les statistiques Cops and Crims de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Cops and Crims à afficher
+
+duels-compare = comparer
+  .description = Comparer les statistiques Duels de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Duels à afficher
+
+megawalls-compare = comparer
+  .description = Comparer les statistiques Mega Walls de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Mega Walls à afficher
+
+murdermystery-compare = comparer
+  .description = Comparer les statistiques Murder Mystery de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Murder Mystery à afficher
+
+paintball-compare = comparer
+  .description = Comparer les statistiques Paintball de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Paintball à afficher
+
+pit-compare = comparer
+  .description = Comparer les statistiques The Pit de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode The Pit à afficher
+
+quake-compare = comparer
+  .description = Comparer les statistiques Quakecraft de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Quakecraft à afficher
+
+skywars-compare = comparer
+  .description = Comparer les statistiques SkyWars de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode SkyWars à afficher
+
+smash-compare = comparer
+  .description = Comparer les statistiques Smash Heroes de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Smash Heroes à afficher
+
+speeduhc-compare = comparer
+  .description = Comparer les statistiques SpeedUHC de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode SpeedUHC à afficher
+
+tntgames-compare = comparer
+  .description = Comparer les statistiques TNT Games de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode TNT Games à afficher
+
+turbokartracers-compare = comparer
+  .description = Comparer les statistiques Turbo Kart Racers de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Turbo Kart Racers à afficher
+
+uhc-compare = comparer
+  .description = Comparer les statistiques UHC Champions de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode UHC Champions à afficher
+
+vampirez-compare = comparer
+  .description = Comparer les statistiques VampireZ de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode VampireZ à afficher
+
+walls-compare = comparer
+  .description = Comparer les statistiques The Walls de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode The Walls à afficher
+
+warlords-compare = comparer
+  .description = Comparer les statistiques Warlords de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Warlords à afficher
+
+woolwars-compare = comparer
+  .description = Comparer les statistiques Wool Wars de deux joueurs
+  .from = de
+  .from-description = Joueur Minecraft
+  .to = à
+  .to-description = Joueur Minecraft à comparer
+  .mode = mode
+  .mode-description = Le mode Wool Wars à afficher

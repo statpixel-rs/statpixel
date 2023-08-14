@@ -24,7 +24,7 @@ use crate::{
 
 use self::status::Status;
 
-pub const VERSION: i16 = 12;
+pub const VERSION: i16 = 13;
 pub static DEFAULT_SKIN: Lazy<crate::image::Image> =
 	include_image!("../../../assets/skins/steve.png");
 

@@ -2531,3 +2531,203 @@ red = Crvena
 light-purple = Svetloljubičasta
 yellow = Žuta
 white = Bijela
+
+# Usporedni naredbe
+
+arcade-compare = usporedi
+  .description = Usporedi statistike igrača u Arcadi
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Arcade
+
+arena-compare = usporedi
+  .description = Usporedi statistike igrača u Areni
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Arene
+
+bedwars-compare = usporedi
+  .description = Usporedi statistike igrača u Bed Wars
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Bed Wars
+
+blitz-compare = usporedi
+  .description = Usporedi statistike igrača u Blitz Survival Games
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Blitz Survival Games
+
+buildbattle-compare = usporedi
+  .description = Usporedi statistike igrača u Build Battle
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Build Battle
+
+copsandcrims-compare = usporedi
+  .description = Usporedi statistike igrača u Cops and Crims
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Cops and Crims
+
+duels-compare = usporedi
+  .description = Usporedi statistike igrača u Duels
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Duels
+
+megawalls-compare = usporedi
+  .description = Usporedi statistike igrača u Mega Walls
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Mega Walls
+
+murdermystery-compare = usporedi
+  .description = Usporedi statistike igrača u Murder Mystery
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Murder Mystery
+
+paintball-compare = usporedi
+  .description = Usporedi statistike igrača u Paintball
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Paintball
+
+pit-compare = usporedi
+  .description = Usporedi statistike igrača u The Pit
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza The Pit
+
+quake-compare = usporedi
+  .description = Usporedi statistike igrača u Quakecraft
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Quakecraft
+
+skywars-compare = usporedi
+  .description = Usporedi statistike igrača u SkyWars
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza SkyWars
+
+smash-compare = usporedi
+  .description = Usporedi statistike igrača u Smash Heroes
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Smash Heroes
+
+speeduhc-compare = usporedi
+  .description = Usporedi statistike igrača u SpeedUHC
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza SpeedUHC
+
+tntgames-compare = usporedi
+  .description = Usporedi statistike igrača u TNT Games
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza TNT Games
+
+turbokartracers-compare = usporedi
+  .description = Usporedi statistike igrača u Turbo Kart Racers
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Turbo Kart Racers
+
+uhc-compare = usporedi
+  .description = Usporedi statistike igrača u UHC Champions
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza UHC Champions
+
+vampirez-compare = usporedi
+  .description = Usporedi statistike igrača u VampireZ
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza VampireZ
+
+walls-compare = usporedi
+  .description = Usporedi statistike igrača u The Walls
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza The Walls
+
+warlords-compare = usporedi
+  .description = Usporedi statistike igrača u Warlords
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Warlords
+
+woolwars-compare = usporedi
+  .description = Usporedi statistike igrača u Wool Wars
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način prikaza Wool Wars

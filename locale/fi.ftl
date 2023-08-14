@@ -2531,3 +2531,203 @@ red = Punainen
 light-purple = Vaalean violetti
 yellow = Keltainen
 white = Valkoinen
+
+# Vertailukomennot
+
+arcade-compare = vertaa
+  .description = Vertaa kahden pelaajan Arcade-tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Arcade-tila näkymä
+
+arena-compare = vertaa
+  .description = Vertaa kahden pelaajan Arena-tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Arena-tila näkymä
+
+bedwars-compare = vertaa
+  .description = Vertaa kahden pelaajan Bed Wars -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Bed Wars -tila näkymä
+
+blitz-compare = vertaa
+  .description = Vertaa kahden pelaajan Blitz Survival Games -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Blitz Survival Games -tila näkymä
+
+buildbattle-compare = vertaa
+  .description = Vertaa kahden pelaajan Build Battle -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Build Battle -tila näkymä
+
+copsandcrims-compare = vertaa
+  .description = Vertaa kahden pelaajan Cops and Crims -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Cops and Crims -tila näkymä
+
+duels-compare = vertaa
+  .description = Vertaa kahden pelaajan Duels -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Duels -tila näkymä
+
+megawalls-compare = vertaa
+  .description = Vertaa kahden pelaajan Mega Walls -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Mega Walls -tila näkymä
+
+murdermystery-compare = vertaa
+  .description = Vertaa kahden pelaajan Murder Mystery -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Murder Mystery -tila näkymä
+
+paintball-compare = vertaa
+  .description = Vertaa kahden pelaajan Paintball -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Paintball -tila näkymä
+
+pit-compare = vertaa
+  .description = Vertaa kahden pelaajan The Pit -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = The Pit -tila näkymä
+
+quake-compare = vertaa
+  .description = Vertaa kahden pelaajan Quakecraft -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Quakecraft -tila näkymä
+
+skywars-compare = vertaa
+  .description = Vertaa kahden pelaajan SkyWars -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = SkyWars -tila näkymä
+
+smash-compare = vertaa
+  .description = Vertaa kahden pelaajan Smash Heroes -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Smash Heroes -tila näkymä
+
+speeduhc-compare = vertaa
+  .description = Vertaa kahden pelaajan SpeedUHC -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = SpeedUHC -tila näkymä
+
+tntgames-compare = vertaa
+  .description = Vertaa kahden pelaajan TNT Games -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = TNT Games -tila näkymä
+
+turbokartracers-compare = vertaa
+  .description = Vertaa kahden pelaajan Turbo Kart Racers -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Turbo Kart Racers -tila näkymä
+
+uhc-compare = vertaa
+  .description = Vertaa kahden pelaajan UHC Champions -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = UHC Champions -tila näkymä
+
+vampirez-compare = vertaa
+  .description = Vertaa kahden pelaajan VampireZ -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = VampireZ -tila näkymä
+
+walls-compare = vertaa
+  .description = Vertaa kahden pelaajan The Walls -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = The Walls -tila näkymä
+
+warlords-compare = vertaa
+  .description = Vertaa kahden pelaajan Warlords -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Warlords -tila näkymä
+
+woolwars-compare = vertaa
+  .description = Vertaa kahden pelaajan Wool Wars -tilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jonka kanssa vertailla
+  .mode = tila
+  .mode-description = Wool Wars -tila näkymä

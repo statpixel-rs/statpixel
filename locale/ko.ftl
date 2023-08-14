@@ -2528,3 +2528,203 @@ red = 빨간색
 light-purple = 연보라색
 yellow = 노란색
 white = 흰색
+
+# 비교 명령어
+
+arcade-compare = 비교
+  .description = 두 플레이어의 Arcade 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Arcade 모드
+
+arena-compare = 비교
+  .description = 두 플레이어의 Arena 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Arena 모드
+
+bedwars-compare = 비교
+  .description = 두 플레이어의 Bed Wars 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Bed Wars 모드
+
+blitz-compare = 비교
+  .description = 두 플레이어의 Blitz Survival Games 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Blitz Survival Games 모드
+
+buildbattle-compare = 비교
+  .description = 두 플레이어의 Build Battle 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Build Battle 모드
+
+copsandcrims-compare = 비교
+  .description = 두 플레이어의 Cops and Crims 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Cops and Crims 모드
+
+duels-compare = 비교
+  .description = 두 플레이어의 Duels 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Duels 모드
+
+megawalls-compare = 비교
+  .description = 두 플레이어의 Mega Walls 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Mega Walls 모드
+
+murdermystery-compare = 비교
+  .description = 두 플레이어의 Murder Mystery 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Murder Mystery 모드
+
+paintball-compare = 비교
+  .description = 두 플레이어의 Paintball 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Paintball 모드
+
+pit-compare = 비교
+  .description = 두 플레이어의 The Pit 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 The Pit 모드
+
+quake-compare = 비교
+  .description = 두 플레이어의 Quakecraft 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Quakecraft 모드
+
+skywars-compare = 비교
+  .description = 두 플레이어의 SkyWars 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 SkyWars 모드
+
+smash-compare = 비교
+  .description = 두 플레이어의 Smash Heroes 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Smash Heroes 모드
+
+speeduhc-compare = 비교
+  .description = 두 플레이어의 SpeedUHC 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 SpeedUHC 모드
+
+tntgames-compare = 비교
+  .description = 두 플레이어의 TNT Games 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 TNT Games 모드
+
+turbokartracers-compare = 비교
+  .description = 두 플레이어의 Turbo Kart Racers 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Turbo Kart Racers 모드
+
+uhc-compare = 비교
+  .description = 두 플레이어의 UHC Champions 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 UHC Champions 모드
+
+vampirez-compare = 비교
+  .description = 두 플레이어의 VampireZ 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 VampireZ 모드
+
+walls-compare = 비교
+  .description = 두 플레이어의 The Walls 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 The Walls 모드
+
+warlords-compare = 비교
+  .description = 두 플레이어의 Warlords 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Warlords 모드
+
+woolwars-compare = 비교
+  .description = 두 플레이어의 Wool Wars 통계를 비교합니다
+  .from = 출발
+  .from-description = Minecraft 플레이어
+  .to = 대상
+  .to-description = 비교할 Minecraft 플레이어
+  .mode = 모드
+  .mode-description = 보기 위한 Wool Wars 모드

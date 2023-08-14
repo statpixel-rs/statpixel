@@ -29,8 +29,8 @@ use serde::Deserialize;
 	field(tr = "bblr", ident = "beds_broken", div = "beds_lost", colour = "gold"),
 	label(ident = "iron_collected", colour = "gray"),
 	label(ident = "gold_collected", colour = "gold"),
-	label(ident = "emerald_collected", colour = "dark_green"),
 	label(ident = "diamond_collected", colour = "aqua"),
+	label(ident = "emerald_collected", colour = "dark_green"),
 	label(ident = "items_purchased", colour = "red")
 )]
 pub struct BedWars {

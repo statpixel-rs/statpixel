@@ -2531,3 +2531,203 @@ red = Czerwony
 light-purple = Jasnopurpurowy
 yellow = Żółty
 white = Biały
+
+# Komendy porównania
+
+arcade-compare = porównaj
+  .description = Porównaj statystyki Arcade dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Arcade do wyświetlenia
+
+arena-compare = porównaj
+  .description = Porównaj statystyki Arenek dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Areny do wyświetlenia
+
+bedwars-compare = porównaj
+  .description = Porównaj statystyki Bed Wars dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Bed Wars do wyświetlenia
+
+blitz-compare = porównaj
+  .description = Porównaj statystyki Blitz Survival Games dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Blitz Survival Games do wyświetlenia
+
+buildbattle-compare = porównaj
+  .description = Porównaj statystyki Build Battle dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Build Battle do wyświetlenia
+
+copsandcrims-compare = porównaj
+  .description = Porównaj statystyki Cops and Crims dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Cops and Crims do wyświetlenia
+
+duels-compare = porównaj
+  .description = Porównaj statystyki Duels dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Duels do wyświetlenia
+
+megawalls-compare = porównaj
+  .description = Porównaj statystyki Mega Walls dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Mega Walls do wyświetlenia
+
+murdermystery-compare = porównaj
+  .description = Porównaj statystyki Murder Mystery dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Murder Mystery do wyświetlenia
+
+paintball-compare = porównaj
+  .description = Porównaj statystyki Paintball dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Paintball do wyświetlenia
+
+pit-compare = porównaj
+  .description = Porównaj statystyki The Pit dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb The Pit do wyświetlenia
+
+quake-compare = porównaj
+  .description = Porównaj statystyki Quakecraft dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Quakecraft do wyświetlenia
+
+skywars-compare = porównaj
+  .description = Porównaj statystyki SkyWars dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb SkyWars do wyświetlenia
+
+smash-compare = porównaj
+  .description = Porównaj statystyki Smash Heroes dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Smash Heroes do wyświetlenia
+
+speeduhc-compare = porównaj
+  .description = Porównaj statystyki SpeedUHC dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb SpeedUHC do wyświetlenia
+
+tntgames-compare = porównaj
+  .description = Porównaj statystyki TNT Games dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb TNT Games do wyświetlenia
+
+turbokartracers-compare = porównaj
+  .description = Porównaj statystyki Turbo Kart Racers dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Turbo Kart Racers do wyświetlenia
+
+uhc-compare = porównaj
+  .description = Porównaj statystyki UHC Champions dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb UHC Champions do wyświetlenia
+
+vampirez-compare = porównaj
+  .description = Porównaj statystyki VampireZ dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb VampireZ do wyświetlenia
+
+walls-compare = porównaj
+  .description = Porównaj statystyki The Walls dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb The Walls do wyświetlenia
+
+warlords-compare = porównaj
+  .description = Porównaj statystyki Warlords dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Warlords do wyświetlenia
+
+woolwars-compare = porównaj
+  .description = Porównaj statystyki Wool Wars dwóch graczy
+  .from = z
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb Wool Wars do wyświetlenia

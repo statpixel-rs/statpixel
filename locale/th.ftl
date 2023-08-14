@@ -2531,3 +2531,203 @@ red = แดง
 light-purple = ม่วงอ่อน
 yellow = เหลือง
 white = ขาว
+
+# คำสั่งเปรียบเทียบ
+
+arcade-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Arcade ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Arcade ที่จะดู
+
+arena-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Arena ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Arena ที่จะดู
+
+bedwars-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Bed Wars ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Bed Wars ที่จะดู
+
+blitz-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Blitz Survival Games ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Blitz Survival Games ที่จะดู
+
+buildbattle-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Build Battle ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Build Battle ที่จะดู
+
+copsandcrims-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Cops and Crims ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Cops and Crims ที่จะดู
+
+duels-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Duels ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Duels ที่จะดู
+
+megawalls-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Mega Walls ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Mega Walls ที่จะดู
+
+murdermystery-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Murder Mystery ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Murder Mystery ที่จะดู
+
+paintball-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Paintball ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Paintball ที่จะดู
+
+pit-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ The Pit ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด The Pit ที่จะดู
+
+quake-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Quakecraft ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Quakecraft ที่จะดู
+
+skywars-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ SkyWars ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด SkyWars ที่จะดู
+
+smash-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Smash Heroes ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Smash Heroes ที่จะดู
+
+speeduhc-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ SpeedUHC ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด SpeedUHC ที่จะดู
+
+tntgames-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ TNT Games ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด TNT Games ที่จะดู
+
+turbokartracers-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Turbo Kart Racers ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Turbo Kart Racers ที่จะดู
+
+uhc-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ UHC Champions ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด UHC Champions ที่จะดู
+
+vampirez-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ VampireZ ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด VampireZ ที่จะดู
+
+walls-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ The Walls ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด The Walls ที่จะดู
+
+warlords-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Warlords ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Warlords ที่จะดู
+
+woolwars-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติ Wool Wars ของผู้เล่นสองคน
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมด Wool Wars ที่จะดู

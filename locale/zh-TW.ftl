@@ -2531,3 +2531,203 @@ red = 紅色
 light-purple = 淺紫色
 yellow = 黃色
 white = 白色
+
+# 比較指令
+
+arcade-compare = 比較
+  .description = 比較兩位玩家的 Arcade 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Arcade 模式
+
+arena-compare = 比較
+  .description = 比較兩位玩家的 Arena 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Arena 模式
+
+bedwars-compare = 比較
+  .description = 比較兩位玩家的 Bed Wars 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Bed Wars 模式
+
+blitz-compare = 比較
+  .description = 比較兩位玩家的 Blitz 生存遊戲統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Blitz 生存遊戲模式
+
+buildbattle-compare = 比較
+  .description = 比較兩位玩家的 Build Battle 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Build Battle 模式
+
+copsandcrims-compare = 比較
+  .description = 比較兩位玩家的 Cops and Crims 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Cops and Crims 模式
+
+duels-compare = 比較
+  .description = 比較兩位玩家的 Duels 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Duels 模式
+
+megawalls-compare = 比較
+  .description = 比較兩位玩家的 Mega Walls 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Mega Walls 模式
+
+murdermystery-compare = 比較
+  .description = 比較兩位玩家的 Murder Mystery 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Murder Mystery 模式
+
+paintball-compare = 比較
+  .description = 比較兩位玩家的 Paintball 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Paintball 模式
+
+pit-compare = 比較
+  .description = 比較兩位玩家的 The Pit 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 The Pit 模式
+
+quake-compare = 比較
+  .description = 比較兩位玩家的 Quakecraft 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Quakecraft 模式
+
+skywars-compare = 比較
+  .description = 比較兩位玩家的 SkyWars 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 SkyWars 模式
+
+smash-compare = 比較
+  .description = 比較兩位玩家的 Smash Heroes 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Smash Heroes 模式
+
+speeduhc-compare = 比較
+  .description = 比較兩位玩家的 SpeedUHC 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 SpeedUHC 模式
+
+tntgames-compare = 比較
+  .description = 比較兩位玩家的 TNT Games 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 TNT Games 模式
+
+turbokartracers-compare = 比較
+  .description = 比較兩位玩家的 Turbo Kart Racers 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Turbo Kart Racers 模式
+
+uhc-compare = 比較
+  .description = 比較兩位玩家的 UHC Champions 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 UHC Champions 模式
+
+vampirez-compare = 比較
+  .description = 比較兩位玩家的 VampireZ 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 VampireZ 模式
+
+walls-compare = 比較
+  .description = 比較兩位玩家的 The Walls 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 The Walls 模式
+
+warlords-compare = 比較
+  .description = 比較兩位玩家的 Warlords 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Warlords 模式
+
+woolwars-compare = 比較
+  .description = 比較兩位玩家的 Wool Wars 統計數據
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 Wool Wars 模式

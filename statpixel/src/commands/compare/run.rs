@@ -12,45 +12,45 @@ use crate::{
 
 pub async fn command<G: api::prelude::Game>(
 	ctx: &context::Context<'_>,
-	from: Option<String>,
-	to: Option<String>,
+	lhs: Option<String>,
+	rhs: Option<String>,
 	mode: Option<G::Mode>,
-	from_uuid: Option<Uuid>,
-	to_uuid: Option<Uuid>,
+	uuid_lhs: Option<Uuid>,
+	uuid_rhs: Option<Uuid>,
 ) -> Result<(), Error> {
 	let (format, background) = util::get_format_colour_from_input(ctx).await;
 
 	match format {
 		format::Display::Image | format::Display::Compact => {
-			let (player, data, session, skin, suffix) =
+			let (player_rhs, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(
 					ctx,
-					from_uuid.or_else(|| parse_uuid(from.as_deref()).ok().flatten()),
-					from,
+					uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+					lhs,
 				)
 				.await?;
 
-			let (player_to, data_to) = commands::get_player_data(
+			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				to_uuid.or_else(|| parse_uuid(to.as_deref()).ok().flatten()),
-				to,
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				rhs,
 			)
 			.await?;
 
-			player.increase_searches(ctx).await?;
-			player_to.increase_searches(ctx).await?;
+			player_lhs.increase_searches(ctx).await?;
+			player_rhs.increase_searches(ctx).await?;
 
 			let content = tr_fmt!(
 				ctx, "showing-comparison",
-				from: data.username.as_str(),
-				to: data_to.username.as_str(),
+				from: data_lhs.username.as_str(),
+				to: data_rhs.username.as_str(),
 			);
 
 			let (png, mode): (Cow<_>, _) = {
 				let (mut surface, mode) = G::canvas_diff(
 					ctx,
-					&data_to,
-					&mut api::Data::clone(&data),
+					&data_lhs,
+					&data_rhs,
 					&session,
 					skin.image(),
 					mode,
@@ -61,7 +61,7 @@ pub async fn command<G: api::prelude::Game>(
 				(canvas::to_png(&mut surface).into(), mode)
 			};
 
-			let (row, id) = G::Mode::as_compare(ctx, player.uuid, player_to.uuid, Some(mode));
+			let (row, id) = G::Mode::as_compare(ctx, player_lhs.uuid, player_rhs.uuid, Some(mode));
 
 			ctx.send(
 				poise::CreateReply::new()
@@ -75,31 +75,31 @@ pub async fn command<G: api::prelude::Game>(
 			.await?;
 		}
 		format::Display::Text => {
-			let (player, data) = commands::get_player_data(
+			let (player_rhs, data_rhs) = commands::get_player_data(
 				ctx,
-				from_uuid.or_else(|| parse_uuid(from.as_deref()).ok().flatten()),
-				from,
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				lhs,
 			)
 			.await?;
 
-			let (player_to, data_to) = commands::get_player_data(
+			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				to_uuid.or_else(|| parse_uuid(to.as_deref()).ok().flatten()),
-				to,
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				rhs,
 			)
 			.await?;
 
-			player.increase_searches(ctx).await?;
-			player_to.increase_searches(ctx).await?;
+			player_lhs.increase_searches(ctx).await?;
+			player_rhs.increase_searches(ctx).await?;
 
 			let content = tr_fmt!(
 				ctx, "showing-comparison",
-				from: data.username.as_str(),
-				to: data_to.username.as_str(),
+				from: data_lhs.username.as_str(),
+				to: data_rhs.username.as_str(),
 			);
 
-			let embed = G::embed_diff(ctx, &player, &data_to, &mut api::Data::clone(&data))
-				.colour(crate::EMBED_COLOUR);
+			let embed =
+				G::embed_diff(ctx, &player_lhs, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
 
 			ctx.send(poise::CreateReply::new().content(content).embed(embed))
 				.await?;

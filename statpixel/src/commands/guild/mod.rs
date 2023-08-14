@@ -95,7 +95,7 @@ pub fn apply_member_xp(guild: &mut Guild, guilds: &[Guild]) {
 			*xp = 0;
 		}
 
-		for g in guilds.iter() {
+		for g in guilds {
 			if let Some(m) = g.members.iter().find(|m| m.uuid == member.uuid) {
 				for (idx, (_, xp)) in m.xp_history.into_iter().enumerate().skip(1) {
 					member.xp_history[idx].1 += xp;

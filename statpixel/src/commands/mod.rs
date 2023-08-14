@@ -17,8 +17,7 @@ pub mod about;
 pub mod background;
 pub mod boost;
 pub mod builder;
-// TODO: Add player comparison
-// pub mod compare;
+pub mod compare;
 pub mod display;
 pub mod execute;
 pub mod from;
@@ -69,7 +68,7 @@ pub async fn autocomplete_username(
 				.await;
 
 			if let Ok(result) = result {
-				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
+				return Box::new(std::iter::once(partial.to_string()).chain(result));
 			}
 		}
 	}
@@ -110,7 +109,7 @@ pub async fn autocomplete_guild_name(
 				.await;
 
 			if let Ok(result) = result {
-				return Box::new(std::iter::once(partial.to_string()).chain(result.into_iter()));
+				return Box::new(std::iter::once(partial.to_string()).chain(result));
 			}
 		}
 	}

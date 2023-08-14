@@ -91,16 +91,16 @@ pub async fn command<G: api::prelude::Game>(
 			.await?;
 		}
 		format::Display::Text => {
-			let (player, data) = commands::get_player_data(ctx, uuid, username).await?;
+			let (player, data_lhs) = commands::get_player_data(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
-			let status = snapshot::user::get_or_insert(ctx, &player, &data, after).await?;
+			let status = snapshot::user::get_or_insert(ctx, &player, &data_lhs, after).await?;
 
-			let snapshot::user::Status::Found((ref snapshot, created_at)) = status else {
+			let snapshot::user::Status::Found((data_rhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data.username),
+					name: util::escape_username(&data_lhs.username),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -114,8 +114,8 @@ pub async fn command<G: api::prelude::Game>(
 				to: format!("<t:{}:f>", Utc::now().timestamp()),
 			);
 
-			let embed = G::embed_diff(ctx, &player, snapshot, &mut api::Data::clone(&data))
-				.colour(crate::EMBED_COLOUR);
+			let embed =
+				G::embed_diff(ctx, &player, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
 
 			ctx.send(poise::CreateReply::new().content(content).embed(embed))
 				.await?;

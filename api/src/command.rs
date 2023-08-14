@@ -1035,9 +1035,9 @@ pub enum Id {
 	Compare {
 		kind: Mode,
 		#[bitcode(with_serde)]
-		from: Uuid,
+		uuid_lhs: Uuid,
 		#[bitcode(with_serde)]
-		to: Uuid,
+		uuid_rhs: Uuid,
 		background: Option<u32>,
 	},
 	// TODO: Add support for "Between"

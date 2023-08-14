@@ -49,18 +49,16 @@ macro_rules! impl_project {
 }
 
 macro_rules! impl_compare {
-	($ctx: expr, $from: expr, $to: expr, $mode: expr, $game: ty) => {
-		Ok(())
-
-		/*super::commands::compare::run::command::<$game>(
+	($ctx: expr, $lhs: expr, $rhs: expr, $mode: expr, $game: ty) => {
+		super::commands::compare::run::command::<$game>(
 			$ctx,
 			None,
 			None,
 			Some($mode),
-			Some($from),
-			Some($to),
+			Some($lhs),
+			Some($rhs),
 		)
-		.await*/
+		.await
 	};
 }
 
@@ -359,39 +357,64 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			_ => Ok(()),
 		},
 		#[allow(unused_variables)]
-		Id::Compare { kind, from, to, .. } => match kind {
-			Mode::Arcade(mode) => impl_compare!(ctx, from, to, mode, arcade::Arcade),
-			Mode::Arena(mode) => impl_compare!(ctx, from, to, mode, arena::Arena),
-			Mode::BedWars(mode) => impl_compare!(ctx, from, to, mode, bed_wars::BedWars),
-			Mode::BlitzSg(mode) => impl_compare!(ctx, from, to, mode, blitz_sg::BlitzSg),
+		Id::Compare {
+			kind,
+			uuid_lhs,
+			uuid_rhs,
+			..
+		} => match kind {
+			Mode::Arcade(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, arcade::Arcade),
+			Mode::Arena(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, arena::Arena),
+			Mode::BedWars(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, bed_wars::BedWars),
+			Mode::BlitzSg(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, blitz_sg::BlitzSg),
 			Mode::BuildBattle(mode) => {
-				impl_compare!(ctx, from, to, mode, build_battle::BuildBattle)
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, build_battle::BuildBattle)
 			}
 			Mode::CopsAndCrims(mode) => {
-				impl_compare!(ctx, from, to, mode, cops_and_crims::CopsAndCrims)
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, cops_and_crims::CopsAndCrims)
 			}
-			Mode::Duels(mode) => impl_compare!(ctx, from, to, mode, duels::Duels),
-			Mode::MegaWalls(mode) => impl_compare!(ctx, from, to, mode, mega_walls::MegaWalls),
+			Mode::Duels(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, duels::Duels),
+			Mode::MegaWalls(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, mega_walls::MegaWalls)
+			}
 			Mode::MurderMystery(mode) => {
-				impl_compare!(ctx, from, to, mode, murder_mystery::MurderMystery)
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, murder_mystery::MurderMystery)
 			}
-			Mode::Paintball(mode) => impl_compare!(ctx, from, to, mode, paintball::Paintball),
-			Mode::Pit(mode) => impl_compare!(ctx, from, to, mode, pit::Pit),
-			Mode::Quake(mode) => impl_compare!(ctx, from, to, mode, quake::Quake),
-			Mode::SkyWars(mode) => impl_compare!(ctx, from, to, mode, sky_wars::SkyWars),
+			Mode::Paintball(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, paintball::Paintball)
+			}
+			Mode::Pit(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, pit::Pit),
+			Mode::Quake(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, quake::Quake),
+			Mode::SkyWars(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, sky_wars::SkyWars),
 			Mode::SmashHeroes(mode) => {
-				impl_compare!(ctx, from, to, mode, smash_heroes::SmashHeroes)
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, smash_heroes::SmashHeroes)
 			}
-			Mode::SpeedUhc(mode) => impl_compare!(ctx, from, to, mode, speed_uhc::SpeedUhc),
-			Mode::TntGames(mode) => impl_compare!(ctx, from, to, mode, tnt_games::TntGames),
+			Mode::SpeedUhc(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, speed_uhc::SpeedUhc)
+			}
+			Mode::TntGames(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, tnt_games::TntGames)
+			}
 			Mode::TurboKartRacers(mode) => {
-				impl_compare!(ctx, from, to, mode, turbo_kart_racers::TurboKartRacers)
+				impl_compare!(
+					ctx,
+					uuid_lhs,
+					uuid_rhs,
+					mode,
+					turbo_kart_racers::TurboKartRacers
+				)
 			}
-			Mode::Uhc(mode) => impl_compare!(ctx, from, to, mode, uhc::Uhc),
-			Mode::VampireZ(mode) => impl_compare!(ctx, from, to, mode, vampire_z::VampireZ),
-			Mode::Walls(mode) => impl_compare!(ctx, from, to, mode, walls::Walls),
-			Mode::Warlords(mode) => impl_compare!(ctx, from, to, mode, warlords::Warlords),
-			Mode::WoolWars(mode) => impl_compare!(ctx, from, to, mode, wool_wars::WoolWars),
+			Mode::Uhc(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, uhc::Uhc),
+			Mode::VampireZ(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, vampire_z::VampireZ)
+			}
+			Mode::Walls(mode) => impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, walls::Walls),
+			Mode::Warlords(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, warlords::Warlords)
+			}
+			Mode::WoolWars(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, wool_wars::WoolWars)
+			}
 			_ => Ok(()),
 		},
 		Id::Between { .. } => Ok(()),

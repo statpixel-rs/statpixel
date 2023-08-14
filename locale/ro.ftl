@@ -2531,3 +2531,203 @@ red = Roșu
 light-purple = Purpuriu deschis
 yellow = Galben
 white = Alb
+
+# Comenzi de comparare
+
+arcade-compare = compară
+  .description = Compară statisticile din Arcade ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Arcade de vizualizat
+
+arena-compare = compară
+  .description = Compară statisticile din Arena ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Arena de vizualizat
+
+bedwars-compare = compară
+  .description = Compară statisticile din Bed Wars ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Bed Wars de vizualizat
+
+blitz-compare = compară
+  .description = Compară statisticile din Blitz Survival Games ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Blitz Survival Games de vizualizat
+
+buildbattle-compare = compară
+  .description = Compară statisticile din Build Battle ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Build Battle de vizualizat
+
+copsandcrims-compare = compară
+  .description = Compară statisticile din Cops and Crims ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Cops and Crims de vizualizat
+
+duels-compare = compară
+  .description = Compară statisticile din Duels ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Duels de vizualizat
+
+megawalls-compare = compară
+  .description = Compară statisticile din Mega Walls ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Mega Walls de vizualizat
+
+murdermystery-compare = compară
+  .description = Compară statisticile din Murder Mystery ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Murder Mystery de vizualizat
+
+paintball-compare = compară
+  .description = Compară statisticile din Paintball ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Paintball de vizualizat
+
+pit-compare = compară
+  .description = Compară statisticile din The Pit ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul The Pit de vizualizat
+
+quake-compare = compară
+  .description = Compară statisticile din Quakecraft ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Quakecraft de vizualizat
+
+skywars-compare = compară
+  .description = Compară statisticile din SkyWars ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul SkyWars de vizualizat
+
+smash-compare = compară
+  .description = Compară statisticile din Smash Heroes ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Smash Heroes de vizualizat
+
+speeduhc-compare = compară
+  .description = Compară statisticile din SpeedUHC ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul SpeedUHC de vizualizat
+
+tntgames-compare = compară
+  .description = Compară statisticile din TNT Games ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul TNT Games de vizualizat
+
+turbokartracers-compare = compară
+  .description = Compară statisticile din Turbo Kart Racers ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Turbo Kart Racers de vizualizat
+
+uhc-compare = compară
+  .description = Compară statisticile din UHC Champions ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul UHC Champions de vizualizat
+
+vampirez-compare = compară
+  .description = Compară statisticile din VampireZ ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul VampireZ de vizualizat
+
+walls-compare = compară
+  .description = Compară statisticile din The Walls ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul The Walls de vizualizat
+
+warlords-compare = compară
+  .description = Compară statisticile din Warlords ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Warlords de vizualizat
+
+woolwars-compare = compară
+  .description = Compară statisticile din Wool Wars ale doi jucători
+  .from = de_la
+  .from-description = Jucător Minecraft
+  .to = către
+  .to-description = Jucător Minecraft pentru a compara cu
+  .mode = mod
+  .mode-description = Modul Wool Wars de vizualizat

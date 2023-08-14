@@ -2531,3 +2531,203 @@ red = Κόκκινο
 light-purple = Ανοικτό Μωβ
 yellow = Κίτρινο
 white = Λευκό
+
+# Εντολές σύγκρισης
+
+arcade-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Arcade δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Arcade για προβολή
+
+arena-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Arena δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Arena για προβολή
+
+bedwars-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Bed Wars δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Bed Wars για προβολή
+
+blitz-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Blitz Survival Games δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Blitz Survival Games για προβολή
+
+buildbattle-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Build Battle δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Build Battle για προβολή
+
+copsandcrims-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Cops and Crims δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Cops and Crims για προβολή
+
+duels-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Duels δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Duels για προβολή
+
+megawalls-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Mega Walls δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Mega Walls για προβολή
+
+murdermystery-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Murder Mystery δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Murder Mystery για προβολή
+
+paintball-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Paintball δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Paintball για προβολή
+
+pit-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών The Pit δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία The Pit για προβολή
+
+quake-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Quakecraft δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Quakecraft για προβολή
+
+skywars-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών SkyWars δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία SkyWars για προβολή
+
+smash-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Smash Heroes δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Smash Heroes για προβολή
+
+speeduhc-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών SpeedUHC δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία SpeedUHC για προβολή
+
+tntgames-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών TNT Games δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία TNT Games για προβολή
+
+turbokartracers-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Turbo Kart Racers δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Turbo Kart Racers για προβολή
+
+uhc-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών UHC Champions δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία UHC Champions για προβολή
+
+vampirez-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών VampireZ δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία VampireZ για προβολή
+
+walls-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών The Walls δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία The Walls για προβολή
+
+warlords-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Warlords δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Warlords για προβολή
+
+woolwars-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών Wool Wars δύο παικτών
+  .from = από
+  .from-description = Παίκτης Minecraft
+  .to = προς
+  .to-description = Παίκτης Minecraft για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Wool Wars για προβολή

@@ -102,7 +102,7 @@ pub struct BowSpleef {
 	#[serde(rename = "deaths_bowspleef")]
 	pub deaths: u32,
 	#[serde(rename = "tags_bowspleef")]
-	pub tags: Seconds,
+	pub tags: u32,
 }
 
 #[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]

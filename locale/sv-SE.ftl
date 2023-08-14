@@ -2531,3 +2531,203 @@ red = Röd
 light-purple = Ljuslila
 yellow = Gul
 white = Vit
+
+# Jämförelsekommandon
+
+arcade-compare = jämför
+  .description = Jämför Arcade-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Arcadeläget att visa
+
+arena-compare = jämför
+  .description = Jämför Arena-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Arenaläget att visa
+
+bedwars-compare = jämför
+  .description = Jämför Bed Wars-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Bed Wars-läget att visa
+
+blitz-compare = jämför
+  .description = Jämför Blitz Survival Games-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Blitz Survival Games-läget att visa
+
+buildbattle-compare = jämför
+  .description = Jämför Build Battle-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Build Battle-läget att visa
+
+copsandcrims-compare = jämför
+  .description = Jämför Cops and Crims-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Cops and Crims-läget att visa
+
+duels-compare = jämför
+  .description = Jämför Duels-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Duels-läget att visa
+
+megawalls-compare = jämför
+  .description = Jämför Mega Walls-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Mega Walls-läget att visa
+
+murdermystery-compare = jämför
+  .description = Jämför Murder Mystery-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Murder Mystery-läget att visa
+
+paintball-compare = jämför
+  .description = Jämför Paintball-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Paintball-läget att visa
+
+pit-compare = jämför
+  .description = Jämför The Pit-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = The Pit-läget att visa
+
+quake-compare = jämför
+  .description = Jämför Quakecraft-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Quakecraft-läget att visa
+
+skywars-compare = jämför
+  .description = Jämför SkyWars-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = SkyWars-läget att visa
+
+smash-compare = jämför
+  .description = Jämför Smash Heroes-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Smash Heroes-läget att visa
+
+speeduhc-compare = jämför
+  .description = Jämför SpeedUHC-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = SpeedUHC-läget att visa
+
+tntgames-compare = jämför
+  .description = Jämför TNT Games-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = TNT Games-läget att visa
+
+turbokartracers-compare = jämför
+  .description = Jämför Turbo Kart Racers-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Turbo Kart Racers-läget att visa
+
+uhc-compare = jämför
+  .description = Jämför UHC Champions-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = UHC Champions-läget att visa
+
+vampirez-compare = jämför
+  .description = Jämför VampireZ-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = VampireZ-läget att visa
+
+walls-compare = jämför
+  .description = Jämför The Walls-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = The Walls-läget att visa
+
+warlords-compare = jämför
+  .description = Jämför Warlords-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Warlords-läget att visa
+
+woolwars-compare = jämför
+  .description = Jämför Wool Wars-statistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Wool Wars-läget att visa

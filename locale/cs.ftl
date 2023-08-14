@@ -2532,3 +2532,203 @@ red = Červená
 light-purple = Světle purpurová
 yellow = Žlutá
 white = Bílá
+
+# Příkazy pro srovnání
+
+arcade-compare = porovnat
+  .description = Porovnat statistiky hráčů v Arcade
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Arcade k zobrazení
+
+arena-compare = porovnat
+  .description = Porovnat statistiky hráčů v Aréně
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Arény k zobrazení
+
+bedwars-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Bed Wars
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Bed Wars k zobrazení
+
+blitz-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Blitz Survival Games
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Blitz Survival Games k zobrazení
+
+buildbattle-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Build Battle
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Build Battle k zobrazení
+
+copsandcrims-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Cops and Crims
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Cops and Crims k zobrazení
+
+duels-compare = porovnat
+  .description = Porovnat statistiky hráčů v soubojích (Duels)
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim soubojů (Duels) k zobrazení
+
+megawalls-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Mega Walls
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Mega Walls k zobrazení
+
+murdermystery-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Murder Mystery
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Murder Mystery k zobrazení
+
+paintball-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Paintball
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Paintball k zobrazení
+
+pit-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře The Pit
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim The Pit k zobrazení
+
+quake-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Quakecraft
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Quakecraft k zobrazení
+
+skywars-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře SkyWars
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim SkyWars k zobrazení
+
+smash-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Smash Heroes
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Smash Heroes k zobrazení
+
+speeduhc-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře SpeedUHC
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim SpeedUHC k zobrazení
+
+tntgames-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře TNT Games
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim TNT Games k zobrazení
+
+turbokartracers-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Turbo Kart Racers
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Turbo Kart Racers k zobrazení
+
+uhc-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře UHC Champions
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim UHC Champions k zobrazení
+
+vampirez-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře VampireZ
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim VampireZ k zobrazení
+
+walls-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře The Walls
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim The Walls k zobrazení
+
+warlords-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Warlords
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Warlords k zobrazení
+
+woolwars-compare = porovnat
+  .description = Porovnat statistiky hráčů ve hře Wool Wars
+  .from = od
+  .from-description = Hráč v Minecraftu
+  .to = s
+  .to-description = Hráč v Minecraftu pro porovnání
+  .mode = režim
+  .mode-description = Režim Wool Wars k zobrazení

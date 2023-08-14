@@ -2532,3 +2532,203 @@ red = Raudona
 light-purple = Šviesiai Violetinė
 yellow = Geltona
 white = Balta
+
+# Lyginimo komandos
+
+arcade-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Arcade statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Arcade" režimas, kurį norite peržiūrėti
+
+arena-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Arena statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Arena" režimas, kurį norite peržiūrėti
+
+bedwars-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Bed Wars statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Bed Wars" režimas, kurį norite peržiūrėti
+
+blitz-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Blitz Survival Games statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Blitz Survival Games" režimas, kurį norite peržiūrėti
+
+buildbattle-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Build Battle statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Build Battle" režimas, kurį norite peržiūrėti
+
+copsandcrims-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Cops and Crims statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Cops and Crims" režimas, kurį norite peržiūrėti
+
+duels-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Duels statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Duels" režimas, kurį norite peržiūrėti
+
+megawalls-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Mega Walls statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Mega Walls" režimas, kurį norite peržiūrėti
+
+murdermystery-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Murder Mystery statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Murder Mystery" režimas, kurį norite peržiūrėti
+
+paintball-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Paintball statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Paintball" režimas, kurį norite peržiūrėti
+
+pit-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Pit statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Pit" režimas, kurį norite peržiūrėti
+
+quake-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Quakecraft statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Quakecraft" režimas, kurį norite peržiūrėti
+
+skywars-compare = palyginti
+  .description = Palyginti dviejų žaidėjų SkyWars statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "SkyWars" režimas, kurį norite peržiūrėti
+
+smash-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Smash Heroes statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Smash Heroes" režimas, kurį norite peržiūrėti
+
+speeduhc-compare = palyginti
+  .description = Palyginti dviejų žaidėjų SpeedUHC statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "SpeedUHC" režimas, kurį norite peržiūrėti
+
+tntgames-compare = palyginti
+  .description = Palyginti dviejų žaidėjų TNT Games statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "TNT Games" režimas, kurį norite peržiūrėti
+
+turbokartracers-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Turbo Kart Racers statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Turbo Kart Racers" režimas, kurį norite peržiūrėti
+
+uhc-compare = palyginti
+  .description = Palyginti dviejų žaidėjų UHC Champions statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "UHC Champions" režimas, kurį norite peržiūrėti
+
+vampirez-compare = palyginti
+  .description = Palyginti dviejų žaidėjų VampireZ statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "VampireZ" režimas, kurį norite peržiūrėti
+
+walls-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Walls statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Walls" režimas, kurį norite peržiūrėti
+
+warlords-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Warlords statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Warlords" režimas, kurį norite peržiūrėti
+
+woolwars-compare = palyginti
+  .description = Palyginti dviejų žaidėjų Wool Wars statistiką
+  .from = nuo
+  .from-description = "Minecraft" žaidėjas
+  .to = į
+  .to-description = "Minecraft" žaidėjas, su kuo palyginti
+  .mode = režimas
+  .mode-description = "Wool Wars" režimas, kurį norite peržiūrėti

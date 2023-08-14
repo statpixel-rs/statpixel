@@ -2531,3 +2531,203 @@ red = Червоний
 light-purple = Світло-пурпурний
 yellow = Жовтий
 white = Білий
+
+# Команди порівняння
+
+arcade-compare = порівняти
+  .description = Порівняти статистику Arcade двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Arcade для перегляду
+
+arena-compare = порівняти
+  .description = Порівняти статистику Arena двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Arena для перегляду
+
+bedwars-compare = порівняти
+  .description = Порівняти статистику Bed Wars двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Bed Wars для перегляду
+
+blitz-compare = порівняти
+  .description = Порівняти статистику Blitz Survival Games двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Blitz Survival Games для перегляду
+
+buildbattle-compare = порівняти
+  .description = Порівняти статистику Build Battle двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Build Battle для перегляду
+
+copsandcrims-compare = порівняти
+  .description = Порівняти статистику Cops and Crims двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Cops and Crims для перегляду
+
+duels-compare = порівняти
+  .description = Порівняти статистику Duels двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Duels для перегляду
+
+megawalls-compare = порівняти
+  .description = Порівняти статистику Mega Walls двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Mega Walls для перегляду
+
+murdermystery-compare = порівняти
+  .description = Порівняти статистику Murder Mystery двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Murder Mystery для перегляду
+
+paintball-compare = порівняти
+  .description = Порівняти статистику Paintball двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Paintball для перегляду
+
+pit-compare = порівняти
+  .description = Порівняти статистику The Pit двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим The Pit для перегляду
+
+quake-compare = порівняти
+  .description = Порівняти статистику Quakecraft двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Quakecraft для перегляду
+
+skywars-compare = порівняти
+  .description = Порівняти статистику SkyWars двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим SkyWars для перегляду
+
+smash-compare = порівняти
+  .description = Порівняти статистику Smash Heroes двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Smash Heroes для перегляду
+
+speeduhc-compare = порівняти
+  .description = Порівняти статистику SpeedUHC двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим SpeedUHC для перегляду
+
+tntgames-compare = порівняти
+  .description = Порівняти статистику TNT Games двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим TNT Games для перегляду
+
+turbokartracers-compare = порівняти
+  .description = Порівняти статистику Turbo Kart Racers двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Turbo Kart Racers для перегляду
+
+uhc-compare = порівняти
+  .description = Порівняти статистику UHC Champions двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим UHC Champions для перегляду
+
+vampirez-compare = порівняти
+  .description = Порівняти статистику VampireZ двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим VampireZ для перегляду
+
+walls-compare = порівняти
+  .description = Порівняти статистику The Walls двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим The Walls для перегляду
+
+warlords-compare = порівняти
+  .description = Порівняти статистику Warlords двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Warlords для перегляду
+
+woolwars-compare = порівняти
+  .description = Порівняти статистику Wool Wars двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим Wool Wars для перегляду

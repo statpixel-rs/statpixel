@@ -2531,3 +2531,203 @@ red = Kırmızı
 light-purple = Açık Mor
 yellow = Sarı
 white = Beyaz
+
+# Karşılaştırma komutları
+
+arcade-compare = karşılaştır
+  .description = İki oyuncunun Arcade istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Arcade modu
+
+arena-compare = karşılaştır
+  .description = İki oyuncunun Arena istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Arena modu
+
+bedwars-compare = karşılaştır
+  .description = İki oyuncunun Bed Wars istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Bed Wars modu
+
+blitz-compare = karşılaştır
+  .description = İki oyuncunun Blitz Survival Games istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Blitz Survival Games modu
+
+buildbattle-compare = karşılaştır
+  .description = İki oyuncunun Build Battle istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Build Battle modu
+
+copsandcrims-compare = karşılaştır
+  .description = İki oyuncunun Cops and Crims istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Cops and Crims modu
+
+duels-compare = karşılaştır
+  .description = İki oyuncunun Duels istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Duels modu
+
+megawalls-compare = karşılaştır
+  .description = İki oyuncunun Mega Walls istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Mega Walls modu
+
+murdermystery-compare = karşılaştır
+  .description = İki oyuncunun Murder Mystery istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Murder Mystery modu
+
+paintball-compare = karşılaştır
+  .description = İki oyuncunun Paintball istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Paintball modu
+
+pit-compare = karşılaştır
+  .description = İki oyuncunun The Pit istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için The Pit modu
+
+quake-compare = karşılaştır
+  .description = İki oyuncunun Quakecraft istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Quakecraft modu
+
+skywars-compare = karşılaştır
+  .description = İki oyuncunun SkyWars istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için SkyWars modu
+
+smash-compare = karşılaştır
+  .description = İki oyuncunun Smash Heroes istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Smash Heroes modu
+
+speeduhc-compare = karşılaştır
+  .description = İki oyuncunun SpeedUHC istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için SpeedUHC modu
+
+tntgames-compare = karşılaştır
+  .description = İki oyuncunun TNT Games istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için TNT Games modu
+
+turbokartracers-compare = karşılaştır
+  .description = İki oyuncunun Turbo Kart Racers istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Turbo Kart Racers modu
+
+uhc-compare = karşılaştır
+  .description = İki oyuncunun UHC Champions istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için UHC Champions modu
+
+vampirez-compare = karşılaştır
+  .description = İki oyuncunun VampireZ istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için VampireZ modu
+
+walls-compare = karşılaştır
+  .description = İki oyuncunun The Walls istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için The Walls modu
+
+warlords-compare = karşılaştır
+  .description = İki oyuncunun Warlords istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Warlords modu
+
+woolwars-compare = karşılaştır
+  .description = İki oyuncunun Wool Wars istatistiklerini karşılaştır
+  .from = -dan
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülemek için Wool Wars modu

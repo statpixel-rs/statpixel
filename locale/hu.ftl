@@ -2527,3 +2527,203 @@ red = Vörös
 light-purple = Világoslila
 yellow = Sárga
 white = Fehér
+
+# Összehasonlító parancsok
+
+arcade-compare = összehasonlítás
+  .description = Két játékos Arcade statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = Az Arcade mód megtekintése
+
+arena-compare = összehasonlítás
+  .description = Két játékos Arena statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = Az Arena mód megtekintése
+
+bedwars-compare = összehasonlítás
+  .description = Két játékos Bed Wars statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Bed Wars mód megtekintése
+
+blitz-compare = összehasonlítás
+  .description = Két játékos Blitz Survival Games statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Blitz Survival Games mód megtekintése
+
+buildbattle-compare = összehasonlítás
+  .description = Két játékos Build Battle statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Build Battle mód megtekintése
+
+copsandcrims-compare = összehasonlítás
+  .description = Két játékos Cops and Crims statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Cops and Crims mód megtekintése
+
+duels-compare = összehasonlítás
+  .description = Két játékos Duels statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Duels mód megtekintése
+
+megawalls-compare = összehasonlítás
+  .description = Két játékos Mega Walls statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Mega Walls mód megtekintése
+
+murdermystery-compare = összehasonlítás
+  .description = Két játékos Murder Mystery statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Murder Mystery mód megtekintése
+
+paintball-compare = összehasonlítás
+  .description = Két játékos Paintball statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Paintball mód megtekintése
+
+pit-compare = összehasonlítás
+  .description = Két játékos The Pit statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A The Pit mód megtekintése
+
+quake-compare = összehasonlítás
+  .description = Két játékos Quakecraft statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Quakecraft mód megtekintése
+
+skywars-compare = összehasonlítás
+  .description = Két játékos SkyWars statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A SkyWars mód megtekintése
+
+smash-compare = összehasonlítás
+  .description = Két játékos Smash Heroes statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Smash Heroes mód megtekintése
+
+speeduhc-compare = összehasonlítás
+  .description = Két játékos SpeedUHC statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A SpeedUHC mód megtekintése
+
+tntgames-compare = összehasonlítás
+  .description = Két játékos TNT Games statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A TNT Games mód megtekintése
+
+turbokartracers-compare = összehasonlítás
+  .description = Két játékos Turbo Kart Racers statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Turbo Kart Racers mód megtekintése
+
+uhc-compare = összehasonlítás
+  .description = Két játékos UHC Champions statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = Az UHC Champions mód megtekintése
+
+vampirez-compare = összehasonlítás
+  .description = Két játékos VampireZ statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A VampireZ mód megtekintése
+
+walls-compare = összehasonlítás
+  .description = Két játékos The Walls statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A The Walls mód megtekintése
+
+warlords-compare = összehasonlítás
+  .description = Két játékos Warlords statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Warlords mód megtekintése
+
+woolwars-compare = összehasonlítás
+  .description = Két játékos Wool Wars statisztikájának összehasonlítása
+  .from = innen
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos az összehasonlításhoz
+  .mode = mód
+  .mode-description = A Wool Wars mód megtekintése

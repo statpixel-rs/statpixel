@@ -2552,3 +2552,203 @@ red = 红色
 light-purple = 浅紫色
 yellow = 黄色
 white = 白色
+
+# 对比命令
+
+arcade-compare = 比较
+  .description = 比较两位玩家的竞技场统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的竞技场模式
+
+arena-compare = 比较
+  .description = 比较两位玩家的竞技场统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的竞技场模式
+
+bedwars-compare = 比较
+  .description = 比较两位玩家的床战统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的床战模式
+
+blitz-compare = 比较
+  .description = 比较两位玩家的闪电生存游戏统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的闪电生存游戏模式
+
+buildbattle-compare = 比较
+  .description = 比较两位玩家的建造大赛统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的建造大赛模式
+
+copsandcrims-compare = 比较
+  .description = 比较两位玩家的警察与罪犯统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的警察与罪犯模式
+
+duels-compare = 比较
+  .description = 比较两位玩家的决斗统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的决斗模式
+
+megawalls-compare = 比较
+  .description = 比较两位玩家的超级墙统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的超级墙模式
+
+murdermystery-compare = 比较
+  .description = 比较两位玩家的谋杀之谜统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的谋杀之谜模式
+
+paintball-compare = 比较
+  .description = 比较两位玩家的彩弹统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的彩弹模式
+
+pit-compare = 比较
+  .description = 比较两位玩家的深坑统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的深坑模式
+
+quake-compare = 比较
+  .description = 比较两位玩家的震荡射击统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的震荡射击模式
+
+skywars-compare = 比较
+  .description = 比较两位玩家的天空战争统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的天空战争模式
+
+smash-compare = 比较
+  .description = 比较两位玩家的粉碎英雄统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的粉碎英雄模式
+
+speeduhc-compare = 比较
+  .description = 比较两位玩家的速度 UHC 统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的速度 UHC 模式
+
+tntgames-compare = 比较
+  .description = 比较两位玩家的 TNT 游戏统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 TNT 游戏模式
+
+turbokartracers-compare = 比较
+  .description = 比较两位玩家的超级卡丁车竞赛统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的超级卡丁车竞赛模式
+
+uhc-compare = 比较
+  .description = 比较两位玩家的 UHC 冠军统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的 UHC 冠军模式
+
+vampirez-compare = 比较
+  .description = 比较两位玩家的吸血鬼统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的吸血鬼模式
+
+walls-compare = 比较
+  .description = 比较两位玩家的墙统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的墙模式
+
+warlords-compare = 比较
+  .description = 比较两位玩家的军阀统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的军阀模式
+
+woolwars-compare = 比较
+  .description = 比较两位玩家的羊毛大战统计数据
+  .from = 来自
+  .from-description = Minecraft 玩家
+  .to = 至
+  .to-description = 要进行比较的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的羊毛大战模式

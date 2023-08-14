@@ -2522,3 +2522,203 @@ red = लाल
 light-purple = हल्का जामुनी
 yellow = पीला
 white = सफेद
+
+# तुलना कमांड
+
+arcade-compare = तुलना_करें
+  .description = दो खिलाड़ियों के आर्केड सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए आर्केड मोड
+
+arena-compare = तुलना_करें
+  .description = दो खिलाड़ियों के अरेना सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए अरेना मोड
+
+bedwars-compare = तुलना_करें
+  .description = दो खिलाड़ियों के बेड वॉर्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए बेड वॉर्स मोड
+
+blitz-compare = तुलना_करें
+  .description = दो खिलाड़ियों के ब्लिट्ज सर्वाइवल गेम्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए ब्लिट्ज सर्वाइवल गेम्स मोड
+
+buildbattle-compare = तुलना_करें
+  .description = दो खिलाड़ियों के बिल्ड बैटल सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए बिल्ड बैटल मोड
+
+copsandcrims-compare = तुलना_करें
+  .description = दो खिलाड़ियों के कॉप्स और क्रिम्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए कॉप्स और क्रिम्स मोड
+
+duels-compare = तुलना_करें
+  .description = दो खिलाड़ियों के ड्यूल्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए ड्यूल्स मोड
+
+megawalls-compare = तुलना_करें
+  .description = दो खिलाड़ियों के मेगा वॉल्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए मेगा वॉल्स मोड
+
+murdermystery-compare = तुलना_करें
+  .description = दो खिलाड़ियों के मर्डर मिस्ट्री सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए मर्डर मिस्ट्री मोड
+
+paintball-compare = तुलना_करें
+  .description = दो खिलाड़ियों के पेंटबॉल सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए पेंटबॉल मोड
+
+pit-compare = तुलना_करें
+  .description = दो खिलाड़ियों के द पिट सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए द पिट मोड
+
+quake-compare = तुलना_करें
+  .description = दो खिलाड़ियों के क्वेकक्राफ्ट सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए क्वेकक्राफ्ट मोड
+
+skywars-compare = तुलना_करें
+  .description = दो खिलाड़ियों के स्काईवॉर्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए स्काईवॉर्स मोड
+
+smash-compare = तुलना_करें
+  .description = दो खिलाड़ियों के स्मैश हीरोज़ सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए स्मैश हीरोज़ मोड
+
+speeduhc-compare = तुलना_करें
+  .description = दो खिलाड़ियों के स्पीडयूएचसी सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए स्पीडयूएचसी मोड
+
+tntgames-compare = तुलना_करें
+  .description = दो खिलाड़ियों के टीएनटी गेम्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए टीएनटी गेम्स मोड
+
+turbokartracers-compare = तुलना_करें
+  .description = दो खिलाड़ियों के टर्बो कार्ट रेसर्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए टर्बो कार्ट रेसर्स मोड
+
+uhc-compare = तुलना_करें
+  .description = दो खिलाड़ियों के यूएचसी चैम्पियंस सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए यूएचसी चैम्पियंस मोड
+
+vampirez-compare = तुलना_करें
+  .description = दो खिलाड़ियों के वैम्पायरज़ सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए वैम्पायरज़ मोड
+
+walls-compare = तुलना_करें
+  .description = दो खिलाड़ियों के द वॉल्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए द वॉल्स मोड
+
+warlords-compare = तुलना_करें
+  .description = दो खिलाड़ियों के वॉरलॉर्ड्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए वॉरलॉर्ड्स मोड
+
+woolwars-compare = तुलना_करें
+  .description = दो खिलाड़ियों के वूल वॉर्स सांख्यिकियों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = दृश्य करने के लिए वूल वॉर्स मोड

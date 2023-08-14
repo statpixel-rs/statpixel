@@ -98,4 +98,11 @@ pub trait Mode: Sized + Copy {
 		kind: Self::Kind,
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id);
+
+	fn as_compare(
+		ctx: &context::Context,
+		uuid_lhs: Uuid,
+		uuid_rhs: Uuid,
+		selected: Option<Self>,
+	) -> (serenity::CreateActionRow, crate::id::Id);
 }

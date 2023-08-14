@@ -2531,3 +2531,203 @@ red = 赤
 light-purple = 明るい紫
 yellow = 黄色
 white = 白
+
+# 比較コマンド
+
+arcade-compare = 比較
+  .description = 2人のプレイヤーのアーケード統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示するアーケードモード
+
+arena-compare = 比較
+  .description = 2人のプレイヤーのアリーナ統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示するアリーナモード
+
+bedwars-compare = 比較
+  .description = 2人のプレイヤーの Bed Wars 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Bed Wars モード
+
+blitz-compare = 比較
+  .description = 2人のプレイヤーの Blitz Survival Games 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Blitz Survival Games モード
+
+buildbattle-compare = 比較
+  .description = 2人のプレイヤーの Build Battle 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Build Battle モード
+
+copsandcrims-compare = 比較
+  .description = 2人のプレイヤーの Cops and Crims 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Cops and Crims モード
+
+duels-compare = 比較
+  .description = 2人のプレイヤーの Duels 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Duels モード
+
+megawalls-compare = 比較
+  .description = 2人のプレイヤーの Mega Walls 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Mega Walls モード
+
+murdermystery-compare = 比較
+  .description = 2人のプレイヤーの Murder Mystery 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Murder Mystery モード
+
+paintball-compare = 比較
+  .description = 2人のプレイヤーの Paintball 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Paintball モード
+
+pit-compare = 比較
+  .description = 2人のプレイヤーの The Pit 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する The Pit モード
+
+quake-compare = 比較
+  .description = 2人のプレイヤーの Quakecraft 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Quakecraft モード
+
+skywars-compare = 比較
+  .description = 2人のプレイヤーの SkyWars 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する SkyWars モード
+
+smash-compare = 比較
+  .description = 2人のプレイヤーの Smash Heroes 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Smash Heroes モード
+
+speeduhc-compare = 比較
+  .description = 2人のプレイヤーの SpeedUHC 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する SpeedUHC モード
+
+tntgames-compare = 比較
+  .description = 2人のプレイヤーの TNT Games 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する TNT Games モード
+
+turbokartracers-compare = 比較
+  .description = 2人のプレイヤーの Turbo Kart Racers 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Turbo Kart Racers モード
+
+uhc-compare = 比較
+  .description = 2人のプレイヤーの UHC Champions 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する UHC Champions モード
+
+vampirez-compare = 比較
+  .description = 2人のプレイヤーの VampireZ 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する VampireZ モード
+
+walls-compare = 比較
+  .description = 2人のプレイヤーの The Walls 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する The Walls モード
+
+warlords-compare = 比較
+  .description = 2人のプレイヤーの Warlords 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Warlords モード
+
+woolwars-compare = 比較
+  .description = 2人のプレイヤーの Wool Wars 統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較対象の Minecraft プレイヤー
+  .mode = モード
+  .mode-description = 表示する Wool Wars モード

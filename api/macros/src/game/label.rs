@@ -97,6 +97,14 @@ pub struct Label<'a> {
 	pub measurable: bool,
 }
 
+impl ToTokens for Label<'_> {
+	fn to_tokens(&self, tokens: &mut proc_macro2::TokenStream) {
+		let id = self.var_id();
+
+		tokens.extend_one(quote!(#id));
+	}
+}
+
 impl Label<'_> {
 	/// Returns an `append_item` call for a `Body`
 	pub fn item(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {

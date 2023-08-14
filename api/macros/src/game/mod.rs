@@ -93,8 +93,27 @@ impl ToTokens for GameInputReceiver {
 
 		let game_ident = &self.ident;
 		let blocks = self.blocks();
+		let labels = self.labels();
 		let modes = self.modes();
 		let overall_modes = self.overall_modes();
+
+		let overall_block_idents = blocks.iter().map(|b| b.var_id().to_string()).collect::<Vec<_>>();
+		#[allow(clippy::unnecessary_to_owned)]
+		let mode_blocks = modes.iter()
+			.flat_map(|m| m.blocks().into_owned().into_iter())
+			.filter_map(|b| {
+				let var_id = b.var_id().to_string();
+
+				if overall_block_idents.iter().any(|id| id.eq(&var_id)) {
+					None
+				} else {
+					Some((var_id, b))
+				}
+			})
+			.collect::<std::collections::HashMap<_, _>>();
+
+		let mode_blocks = mode_blocks.values()
+			.collect::<Vec<_>>();
 
 		let overall_ident = syn::parse_str::<syn::Type>("Overall").unwrap();
 
@@ -216,29 +235,79 @@ impl ToTokens for GameInputReceiver {
 
 		tokens.extend({
 			let slice = blocks.iter().map(|id| quote!(#kind_enum::#id));
-			let kind_enum_tr = blocks.iter().map(|b| {
-				let tr = b.tr();
+			let blocks_len = blocks.len();
+			let labels_len = labels.len();
 
-				quote!(#kind_enum::#b => #tr)
-			});
+			let kind_enum_tr = blocks.iter()
+				.map(|b| (b.var_id(), b.tr()))
+				.chain(labels.iter().map(|l| (l.var_id(), l.tr())))
+				.filter_map(|(id, tr)| {
+					if tr == "level" {
+						None
+					} else {
+						Some(quote!(#kind_enum::#id => #tr))
+					}
+				});
 
-			let to_u32 = blocks.iter().enumerate().map(|(i, id)| {
-				let i = i as u32 + 1;
+			let mode_kind_enum_tr = mode_blocks.iter()
+				.map(|b| {
+					let tr = b.tr();
 
-				quote!(#kind_enum::#id => #i)
-			});
+					quote!(#kind_enum::#b => #tr)
+				});
 
-			let from_u32 = blocks.iter().enumerate().map(|(i, id)| {
-				let i = i as u32 + 1;
+			let to_u32 = blocks.iter()
+				.map(|b| (b.var_id(), b.tr()))
+				.chain(labels.iter().map(|l| (l.var_id(), l.tr())))
+				.enumerate()
+				.filter_map(|(i, (id, tr))| {
+					let i = i as u32 + 1;
 
-				quote!(#i => #kind_enum::#id)
-			});
+					if tr == "level" {
+						None
+					} else {
+						Some(quote!(#kind_enum::#id => #i))
+					}
+				});
 
-			let try_from_str_lower = blocks.iter().map(|b| {
-				let tr = b.tr().replace('_', " ");
+			let mode_to_u32 = mode_blocks.iter()
+				.enumerate()
+				.map(|(i, id)| {
+					let i = i as u32 + 1 + blocks_len as u32 + labels_len as u32;
 
-				quote!(#tr => #kind_enum::#b)
-			});
+					quote!(#kind_enum::#id => #i)
+				});
+
+			let from_u32 = blocks.iter()
+				.map(|b| (b.var_id(), b.tr()))
+				.chain(labels.iter().map(|l| (l.var_id(), l.tr())))
+				.enumerate()
+				.filter_map(|(i, (id, tr))| {
+					let i = i as u32 + 1;
+
+					if tr == "level" {
+						None
+					} else {
+						Some(quote!(#i => #kind_enum::#id))
+					}
+				});
+
+			let mode_from_u32 = mode_blocks.iter()
+				.enumerate()
+				.map(|(i, id)| {
+					let i = i as u32 + 1 + blocks_len as u32 + labels_len as u32;
+
+					quote!(#i => #kind_enum::#id)
+				});
+
+			let try_from_str_lower = blocks.iter()
+				.map(|b| (b.var_id(), b.var_id().to_string()))
+				.chain(labels.iter().map(|l| (l.var_id(), l.var_id().to_string())))
+				.map(|(id, string)| {
+					quote!(#string => #kind_enum::#id)
+				});
+
+			let labels_no_level = labels.iter().filter(|l| l.tr() != "level");
 
 			quote! {
 				#[allow(non_camel_case_types)]
@@ -247,7 +316,9 @@ impl ToTokens for GameInputReceiver {
 				pub enum #kind_enum {
 					level,
 					#[default]
-					#(#blocks),*
+					#(#blocks,)*
+					#(#labels_no_level,)*
+					#(#mode_blocks,)*
 				}
 
 				impl #kind_enum {
@@ -264,6 +335,7 @@ impl ToTokens for GameInputReceiver {
 						match self {
 							#kind_enum::level => "level",
 							#(#kind_enum_tr,)*
+							#(#mode_kind_enum_tr,)*
 						}
 					}
 
@@ -280,6 +352,7 @@ impl ToTokens for GameInputReceiver {
 						match value {
 							#kind_enum::level => 0,
 							#(#to_u32,)*
+							#(#mode_to_u32,)*
 						}
 					}
 				}
@@ -288,6 +361,7 @@ impl ToTokens for GameInputReceiver {
 					fn from(value: u32) -> #kind_enum {
 						match value {
 							#(#from_u32,)*
+							#(#mode_from_u32,)*
 							_ => #kind_enum::level,
 						}
 					}
@@ -304,7 +378,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Root {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Root {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					background: None,
@@ -317,7 +391,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Snapshot {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Snapshot {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					past,
@@ -331,7 +405,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::History {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::History {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					background: None,
@@ -344,9 +418,23 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Project {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Project {
 					kind: #api::command::ProjectMode::#game_ident(#mode_enum::#ty, kind),
 					uuid,
+					background: None,
+				}))
+			}
+		});
+
+		let as_compare = modes.iter().take(24).map(|mode| {
+			let ty = mode.ty();
+			let tr = mode.tr();
+
+			quote! {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Compare {
+					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
+					uuid_lhs,
+					uuid_rhs,
 					background: None,
 				}))
 			}
@@ -502,6 +590,44 @@ impl ToTokens for GameInputReceiver {
 						})
 					)
 				}
+
+				fn as_compare(
+					ctx: &#translate::context::Context<'_>,
+					uuid_lhs: #uuid::Uuid,
+					uuid_rhs: #uuid::Uuid,
+					selected: Option<#mode_enum>
+				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
+						"select",
+						#poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Compare {
+									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
+									uuid_lhs,
+									uuid_rhs,
+									background: None,
+								})),
+								#(#as_compare),*
+							]
+						}
+					);
+
+					if let Some(selected) = selected {
+						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+					}
+
+					menu = menu.max_values(1).min_values(1);
+
+					(
+						#poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						#api::id::Id::Command(#api::command::Id::Compare {
+							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
+							uuid_lhs,
+							uuid_rhs,
+							background: None,
+						})
+					)
+				}
 			}
 		});
 
@@ -523,9 +649,9 @@ impl ToTokens for GameInputReceiver {
 
 		let embed = blocks
 			.iter()
-			.filter_map(|b| b.value_fmt_sum(Side::None, &overall_modes, Access::None))
+			.filter_map(|b| Some((b.value_fmt_sum(Side::None, &overall_modes, Access::None)?, b.as_tr())))
 			.enumerate()
-			.map(|(i, v)| {
+			.map(|(i, (v, tr))| {
 				let extra = if i % 3 == 0 {
 					quote!(field.push('\n');)
 				} else {
@@ -535,7 +661,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#extra
 
-					field.push_str(#translate::tr!(ctx, Self::tr()).as_ref());
+					field.push_str(#tr.as_ref());
 					field.push_str(": **");
 					field.push_str(#v.as_ref());
 					field.push_str("**\n");
@@ -967,19 +1093,39 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
-			let from_kind_match = blocks.iter().filter_map(|b| {
-				let id = ident(&b.tr().replace('-', "_"));
-				let value = b.value_fmt_sum(Side::None, &overall_modes, Access::None)?;
+			let from_kind_match = blocks.iter()
+				.filter_map(|b| {
+					let id = b.var_id();
+					let value = b.value_fmt_sum(Side::None, &overall_modes, Access::None)?;
 
-				Some(quote!(#kind_enum::#id => #value.into_owned()))
-			});
+					Some(quote!(#kind_enum::#id => #value.into_owned()))
+				})
+				.chain(
+					labels.iter()
+						.filter_map(|l| {
+							let id = l.var_id();
+							let value = l.value_fmt_sum(Side::None, &overall_modes, Access::None)?;
 
-			let from_kind_diff_match = blocks.iter().filter_map(|b| {
-				let id = ident(&b.tr().replace('-', "_"));
-				let value = b.diff_fmt_sum(&overall_modes)?;
+							Some(quote!(#kind_enum::#id => #value.into_owned()))
+						})
+				);
 
-				Some(quote!(#kind_enum::#id => #value))
-			});
+			let from_kind_diff_match = blocks.iter()
+				.filter_map(|b| {
+					let id = b.var_id();
+					let value = b.diff_fmt_sum(&overall_modes)?;
+
+					Some(quote!(#kind_enum::#id => #value))
+				})
+				.chain(
+					labels.iter()
+						.filter_map(|l| {
+							let id = l.var_id();
+							let value = l.diff_fmt_sum(&overall_modes)?;
+
+							Some(quote!(#kind_enum::#id => #value))
+						})
+				);
 
 			let diff_log = overall_modes.iter().map(|mode| {
 				let ty = mode.ty();

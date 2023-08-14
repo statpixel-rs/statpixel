@@ -2531,3 +2531,203 @@ red = Rood
 light-purple = Lichtpaars
 yellow = Geel
 white = Wit
+
+# Vergelijkingsopdrachten
+
+arcade-compare = vergelijk
+  .description = Vergelijk de Arcade-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Arcade-modus om te bekijken
+
+arena-compare = vergelijk
+  .description = Vergelijk de Arena-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Arena-modus om te bekijken
+
+bedwars-compare = vergelijk
+  .description = Vergelijk de Bed Wars-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Bed Wars-modus om te bekijken
+
+blitz-compare = vergelijk
+  .description = Vergelijk de Blitz Survival Games-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Blitz Survival Games-modus om te bekijken
+
+buildbattle-compare = vergelijk
+  .description = Vergelijk de Build Battle-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Build Battle-modus om te bekijken
+
+copsandcrims-compare = vergelijk
+  .description = Vergelijk de Cops and Crims-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Cops and Crims-modus om te bekijken
+
+duels-compare = vergelijk
+  .description = Vergelijk de Duels-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Duels-modus om te bekijken
+
+megawalls-compare = vergelijk
+  .description = Vergelijk de Mega Walls-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Mega Walls-modus om te bekijken
+
+murdermystery-compare = vergelijk
+  .description = Vergelijk de Murder Mystery-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Murder Mystery-modus om te bekijken
+
+paintball-compare = vergelijk
+  .description = Vergelijk de Paintball-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Paintball-modus om te bekijken
+
+pit-compare = vergelijk
+  .description = Vergelijk de Pit-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Pit-modus om te bekijken
+
+quake-compare = vergelijk
+  .description = Vergelijk de Quakecraft-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Quakecraft-modus om te bekijken
+
+skywars-compare = vergelijk
+  .description = Vergelijk de SkyWars-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De SkyWars-modus om te bekijken
+
+smash-compare = vergelijk
+  .description = Vergelijk de Smash Heroes-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Smash Heroes-modus om te bekijken
+
+speeduhc-compare = vergelijk
+  .description = Vergelijk de SpeedUHC-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De SpeedUHC-modus om te bekijken
+
+tntgames-compare = vergelijk
+  .description = Vergelijk de TNT Games-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De TNT Games-modus om te bekijken
+
+turbokartracers-compare = vergelijk
+  .description = Vergelijk de Turbo Kart Racers-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Turbo Kart Racers-modus om te bekijken
+
+uhc-compare = vergelijk
+  .description = Vergelijk de UHC Champions-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De UHC Champions-modus om te bekijken
+
+vampirez-compare = vergelijk
+  .description = Vergelijk de VampireZ-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De VampireZ-modus om te bekijken
+
+walls-compare = vergelijk
+  .description = Vergelijk de Walls-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Walls-modus om te bekijken
+
+warlords-compare = vergelijk
+  .description = Vergelijk de Warlords-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Warlords-modus om te bekijken
+
+woolwars-compare = vergelijk
+  .description = Vergelijk de Wool Wars-statistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken
+  .mode = modus
+  .mode-description = De Wool Wars-modus om te bekijken

@@ -16,8 +16,6 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 	let id = mode.id();
 	let ty = &mode.ty();
 	let tr = mode.tr();
-	let self_blocks = mode.block_shapes(mode);
-	let self_blocks_diff = mode.block_shapes_diff(mode);
 
 	let min = state.receiver.min(&ident("min"), mode);
 	let self_min = mode.min(&ident("min"), mode);
@@ -69,6 +67,8 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 		..
 	} = state;
 
+	let self_blocks = mode.block_shapes(mode);
+	let self_blocks_diff = mode.block_shapes_diff(mode);
 	let blocks = state.receiver.block_shapes(mode);
 	let blocks_diff = state.receiver.block_shapes_diff(mode);
 	let labels = state.receiver.label_shapes(mode);
@@ -85,9 +85,9 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 	let embed = game_blocks
 		.iter()
 		.chain(mode_blocks.iter())
-		.filter_map(|b| b.value_fmt(Access::Mode(mode)))
+		.filter_map(|b| Some((b.value_fmt(Access::Mode(mode))?, b.as_tr())))
 		.enumerate()
-		.map(|(i, v)| {
+		.map(|(i, (v, tr))| {
 			let extra = if i % 3 == 0 {
 				quote!(field.push('\n');)
 			} else {
@@ -97,7 +97,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 			quote! {
 				#extra
 
-				field.push_str(#translate::tr!(ctx, Self::tr()).as_ref());
+				field.push_str(#tr.as_ref());
 				field.push_str(": **");
 				field.push_str(#v.as_ref());
 				field.push_str("**\n");

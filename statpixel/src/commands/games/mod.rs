@@ -13,11 +13,12 @@ macro_rules! large_command {
 		pub mod $fn {
 			use super::*;
 			use crate::commands::from::$fn::command as from;
-			use crate::commands::history::$fn as history;
+			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
-			use crate::commands::snapshot::daily::$fn as daily;
-			use crate::commands::snapshot::monthly::$fn as monthly;
-			use crate::commands::snapshot::weekly::$fn as weekly;
+			use crate::commands::snapshot::daily::$fn::command as daily;
+			use crate::commands::snapshot::monthly::$fn::command as monthly;
+			use crate::commands::snapshot::weekly::$fn::command as weekly;
+			use crate::commands::compare::$fn::command as compare;
 
 			async fn autocomplete_mode<'a>(
 				ctx: $crate::Context<'a>,
@@ -56,7 +57,7 @@ macro_rules! large_command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
@@ -71,12 +72,13 @@ macro_rules! command {
 	($game: ty, $fn: ident, $name: literal) => {
 		pub mod $fn {
 			use super::*;
-			use crate::commands::from::$fn as from;
-			use crate::commands::history::$fn as history;
+			use crate::commands::from::$fn::command as from;
+			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
-			use crate::commands::snapshot::daily::$fn as daily;
-			use crate::commands::snapshot::monthly::$fn as monthly;
-			use crate::commands::snapshot::weekly::$fn as weekly;
+			use crate::commands::snapshot::daily::$fn::command as daily;
+			use crate::commands::snapshot::monthly::$fn::command as monthly;
+			use crate::commands::snapshot::weekly::$fn::command as weekly;
+			use crate::commands::compare::$fn::command as compare;
 
 			#[poise::command(
 				on_error = "crate::util::error_handler",
@@ -104,7 +106,7 @@ macro_rules! command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {

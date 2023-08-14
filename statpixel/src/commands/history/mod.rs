@@ -3,8 +3,7 @@ pub mod run;
 
 use std::borrow::Cow;
 
-#[allow(clippy::wildcard_imports)]
-use api::player::stats::*;
+use api::player::stats;
 
 use api::canvas::{self, chart};
 use chrono::{DateTime, Utc};
@@ -18,62 +17,70 @@ use crate::util;
 
 macro_rules! large_command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		async fn autocomplete_mode<'a>(
-			ctx: $crate::Context<'a>,
-			partial: &'a str,
-		) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
-			let partial = partial.to_ascii_lowercase();
+		pub mod $fn {
+			use super::*;
 
-			<$game>::autocomplete(ctx, partial).await
-		}
+			async fn autocomplete_mode<'a>(
+				ctx: $crate::Context<'a>,
+				partial: &'a str,
+			) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+				let partial = partial.to_ascii_lowercase();
 
-		#[poise::command(
-			on_error = "crate::util::error_handler",
-			slash_command,
-			required_bot_permissions = "ATTACH_FILES",
-			rename = "history"
-		)]
-		pub async fn $fn(
-			ctx: $crate::Context<'_>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
-			username: Option<String>,
-			#[min_length = 32]
-			#[max_length = 36]
-			uuid: Option<String>,
-			#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
-		) -> ::std::result::Result<(), ::translate::Error> {
-			let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-			let uuid = util::parse_uuid(uuid.as_deref())?;
-			let ctx = &context::Context::from_poise(&ctx);
+				<$game>::autocomplete(ctx, partial).await
+			}
 
-			run::command::<$game>(ctx, username, uuid, mode).await
+			#[poise::command(
+				on_error = "crate::util::error_handler",
+				slash_command,
+				required_bot_permissions = "ATTACH_FILES",
+				rename = "history"
+			)]
+			pub async fn command(
+				ctx: $crate::Context<'_>,
+				#[max_length = 16]
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				username: Option<String>,
+				#[min_length = 32]
+				#[max_length = 36]
+				uuid: Option<String>,
+				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+			) -> ::std::result::Result<(), ::translate::Error> {
+				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
+				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let ctx = &context::Context::from_poise(&ctx);
+
+				run::command::<$game>(ctx, username, uuid, mode).await
+			}
 		}
 	};
 }
 
 macro_rules! command {
 	($game: ty, $mode: ty, $fn: ident) => {
-		#[poise::command(
-			on_error = "crate::util::error_handler",
-			slash_command,
-			required_bot_permissions = "ATTACH_FILES",
-			rename = "history"
-		)]
-		pub async fn $fn(
-			ctx: $crate::Context<'_>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
-			username: Option<String>,
-			#[min_length = 32]
-			#[max_length = 36]
-			uuid: Option<String>,
-			mode: Option<$mode>,
-		) -> Result<(), Error> {
-			let uuid = util::parse_uuid(uuid.as_deref())?;
-			let ctx = &context::Context::from_poise(&ctx);
+		pub mod $fn {
+			use super::*;
 
-			run::command::<$game>(ctx, username, uuid, mode).await
+			#[poise::command(
+				on_error = "crate::util::error_handler",
+				slash_command,
+				required_bot_permissions = "ATTACH_FILES",
+				rename = "history"
+			)]
+			pub async fn command(
+				ctx: $crate::Context<'_>,
+				#[max_length = 16]
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				username: Option<String>,
+				#[min_length = 32]
+				#[max_length = 36]
+				uuid: Option<String>,
+				mode: Option<$mode>,
+			) -> Result<(), Error> {
+				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let ctx = &context::Context::from_poise(&ctx);
+
+				run::command::<$game>(ctx, username, uuid, mode).await
+			}
 		}
 	};
 }
@@ -199,45 +206,85 @@ pub async fn network(
 	Ok(())
 }
 
-command!(arcade::Arcade, arcade::ArcadeMode, arcade);
-command!(arena::Arena, arena::ArenaMode, arena);
-command!(bed_wars::BedWars, bed_wars::BedWarsMode, bedwars);
-command!(blitz_sg::BlitzSg, blitz_sg::BlitzSgMode, blitz);
+large_command!(stats::arcade::Arcade, stats::arcade::ArcadeMode, arcade);
+command!(stats::arena::Arena, stats::arena::ArenaMode, arena);
+large_command!(
+	stats::bed_wars::BedWars,
+	stats::bed_wars::BedWarsMode,
+	bedwars
+);
+large_command!(
+	stats::blitz_sg::BlitzSg,
+	stats::blitz_sg::BlitzSgMode,
+	blitz
+);
 command!(
-	build_battle::BuildBattle,
-	build_battle::BuildBattleMode,
+	stats::build_battle::BuildBattle,
+	stats::build_battle::BuildBattleMode,
 	buildbattle
 );
 command!(
-	cops_and_crims::CopsAndCrims,
-	cops_and_crims::CopsAndCrimsMode,
+	stats::cops_and_crims::CopsAndCrims,
+	stats::cops_and_crims::CopsAndCrimsMode,
 	copsandcrims
 );
-large_command!(duels::Duels, duels::DuelsMode, duels);
-command!(mega_walls::MegaWalls, mega_walls::MegaWallsMode, megawalls);
+large_command!(stats::duels::Duels, stats::duels::DuelsMode, duels);
 command!(
-	murder_mystery::MurderMystery,
-	murder_mystery::MurderMysteryMode,
+	stats::mega_walls::MegaWalls,
+	stats::mega_walls::MegaWallsMode,
+	megawalls
+);
+command!(
+	stats::murder_mystery::MurderMystery,
+	stats::murder_mystery::MurderMysteryMode,
 	murdermystery
 );
-command!(paintball::Paintball, paintball::PaintballMode, paintball);
-command!(pit::Pit, pit::PitMode, pit);
-command!(quake::Quake, quake::QuakeMode, quake);
-command!(sky_wars::SkyWars, sky_wars::SkyWarsMode, skywars);
 command!(
-	smash_heroes::SmashHeroes,
-	smash_heroes::SmashHeroesMode,
+	stats::paintball::Paintball,
+	stats::paintball::PaintballMode,
+	paintball
+);
+command!(stats::pit::Pit, stats::pit::PitMode, pit);
+command!(stats::quake::Quake, stats::quake::QuakeMode, quake);
+command!(
+	stats::sky_wars::SkyWars,
+	stats::sky_wars::SkyWarsMode,
+	skywars
+);
+command!(
+	stats::smash_heroes::SmashHeroes,
+	stats::smash_heroes::SmashHeroesMode,
 	smash
 );
-command!(speed_uhc::SpeedUhc, speed_uhc::SpeedUhcMode, speeduhc);
-command!(tnt_games::TntGames, tnt_games::TntGamesMode, tntgames);
 command!(
-	turbo_kart_racers::TurboKartRacers,
-	turbo_kart_racers::TurboKartRacersMode,
+	stats::speed_uhc::SpeedUhc,
+	stats::speed_uhc::SpeedUhcMode,
+	speeduhc
+);
+command!(
+	stats::tnt_games::TntGames,
+	stats::tnt_games::TntGamesMode,
+	tntgames
+);
+command!(
+	stats::turbo_kart_racers::TurboKartRacers,
+	stats::turbo_kart_racers::TurboKartRacersMode,
 	turbokartracers
 );
-command!(uhc::Uhc, uhc::UhcMode, uhc);
-command!(vampire_z::VampireZ, vampire_z::VampireZMode, vampirez);
-command!(walls::Walls, walls::WallsMode, walls);
-command!(warlords::Warlords, warlords::WarlordsMode, warlords);
-command!(wool_wars::WoolWars, wool_wars::WoolWarsMode, woolwars);
+command!(stats::uhc::Uhc, stats::uhc::UhcMode, uhc);
+command!(
+	stats::vampire_z::VampireZ,
+	stats::vampire_z::VampireZMode,
+	vampirez
+);
+command!(stats::walls::Walls, stats::walls::WallsMode, walls);
+command!(
+	stats::warlords::Warlords,
+	stats::warlords::WarlordsMode,
+	warlords
+);
+command!(
+	stats::wool_wars::WoolWars,
+	stats::wool_wars::WoolWarsMode,
+	woolwars
+);

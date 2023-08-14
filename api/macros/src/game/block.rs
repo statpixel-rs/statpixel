@@ -22,6 +22,7 @@ pub struct Block<'a> {
 	pub measurable: bool,
 	pub skip_modes: &'a [String],
 	pub is_root: bool,
+	pub is_mode: bool,
 }
 
 impl ToTokens for Block<'_> {
@@ -71,10 +72,11 @@ impl Block<'_> {
 
 	fn skip_mode(&self, mode: &Mode<'_>) -> bool {
 		self.skip_modes.contains(&mode.id().to_string())
-			|| mode
-				.blocks()
-				.iter()
-				.any(|b| b.id().to_string().eq(&self.id().to_string()))
+			|| (!self.is_mode
+				&& mode
+					.blocks()
+					.iter()
+					.any(|b| b.id().to_string().eq(&self.id().to_string())))
 	}
 }
 
@@ -191,6 +193,7 @@ impl<'a> TryFrom<&'a OverallFieldData> for Block<'a> {
 			is_root: value.path.is_some(),
 			measurable: !value.nominal.is_present(),
 			skip_modes: &value.skip_mode,
+			is_mode: false,
 		})
 	}
 }
@@ -227,6 +230,7 @@ impl<'a> From<&'a ModeFieldData> for Block<'a> {
 			measurable: true,
 			skip_modes: &[],
 			is_root: value.path.is_some(),
+			is_mode: true,
 		}
 	}
 }

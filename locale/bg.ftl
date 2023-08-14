@@ -2531,3 +2531,203 @@ red = Червен
 light-purple = Светлолилав
 yellow = Жълт
 white = Бял
+
+# Команди за сравнение
+
+arcade-compare = сравни
+  .description = Сравни статистиките на двама играчи в Аркадни режими
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Аркадни режими за преглед
+
+arena-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Арена
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Арена за преглед
+
+bedwars-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Легло Войни
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Легло Войни за преглед
+
+blitz-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Блиц Игри за Оцеляване
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Блиц Игри за Оцеляване за преглед
+
+buildbattle-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Строителска Битка
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Строителска Битка за преглед
+
+copsandcrims-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Полица и Престъпници
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Полица и Престъпници за преглед
+
+duels-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Дуели
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Дуели за преглед
+
+megawalls-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Гигантски Стени
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Гигантски Стени за преглед
+
+murdermystery-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Убийствена Мистерия
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Убийствена Мистерия за преглед
+
+paintball-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Боядисване
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Боядисване за преглед
+
+pit-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Яма
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Яма за преглед
+
+quake-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Quakecraft
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Quakecraft за преглед
+
+skywars-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Небесни Войни
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Небесни Войни за преглед
+
+smash-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Smash Heroes
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Smash Heroes за преглед
+
+speeduhc-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим SpeedUHC
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим SpeedUHC за преглед
+
+tntgames-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим TNT Игри
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим TNT Игри за преглед
+
+turbokartracers-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Turbo Kart Racers
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Turbo Kart Racers за преглед
+
+uhc-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим UHC Champions
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим UHC Champions за преглед
+
+vampirez-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим VampireZ
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим VampireZ за преглед
+
+walls-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим The Walls
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим The Walls за преглед
+
+warlords-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Warlords
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Warlords за преглед
+
+woolwars-compare = сравни
+  .description = Сравни статистиките на двама играчи в Режим Wool Wars
+  .from = от
+  .from-description = Играч в Minecraft
+  .to = до
+  .to-description = Играч в Minecraft за сравнение
+  .mode = режим
+  .mode-description = Режимът в Режим Wool Wars за преглед

@@ -2533,3 +2533,203 @@ red = Красный
 light-purple = Светло-пурпурный
 yellow = Желтый
 white = Белый
+
+# Команды сравнения
+
+arcade-compare = сравнить
+  .description = Сравнить статистику Arcade двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Arcade для просмотра
+
+arena-compare = сравнить
+  .description = Сравнить статистику Арены двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Арены для просмотра
+
+bedwars-compare = сравнить
+  .description = Сравнить статистику Bed Wars двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Bed Wars для просмотра
+
+blitz-compare = сравнить
+  .description = Сравнить статистику Blitz Survival Games двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Blitz Survival Games для просмотра
+
+buildbattle-compare = сравнить
+  .description = Сравнить статистику Build Battle двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Build Battle для просмотра
+
+copsandcrims-compare = сравнить
+  .description = Сравнить статистику Cops and Crims двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Cops and Crims для просмотра
+
+duels-compare = сравнить
+  .description = Сравнить статистику Duels двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Duels для просмотра
+
+megawalls-compare = сравнить
+  .description = Сравнить статистику Mega Walls двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Mega Walls для просмотра
+
+murdermystery-compare = сравнить
+  .description = Сравнить статистику Murder Mystery двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Murder Mystery для просмотра
+
+paintball-compare = сравнить
+  .description = Сравнить статистику Paintball двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Paintball для просмотра
+
+pit-compare = сравнить
+  .description = Сравнить статистику The Pit двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим The Pit для просмотра
+
+quake-compare = сравнить
+  .description = Сравнить статистику Quakecraft двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Quakecraft для просмотра
+
+skywars-compare = сравнить
+  .description = Сравнить статистику SkyWars двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим SkyWars для просмотра
+
+smash-compare = сравнить
+  .description = Сравнить статистику Smash Heroes двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Smash Heroes для просмотра
+
+speeduhc-compare = сравнить
+  .description = Сравнить статистику SpeedUHC двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим SpeedUHC для просмотра
+
+tntgames-compare = сравнить
+  .description = Сравнить статистику TNT Games двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим TNT Games для просмотра
+
+turbokartracers-compare = сравнить
+  .description = Сравнить статистику Turbo Kart Racers двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Turbo Kart Racers для просмотра
+
+uhc-compare = сравнить
+  .description = Сравнить статистику UHC Champions двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим UHC Champions для просмотра
+
+vampirez-compare = сравнить
+  .description = Сравнить статистику VampireZ двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим VampireZ для просмотра
+
+walls-compare = сравнить
+  .description = Сравнить статистику The Walls двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим The Walls для просмотра
+
+warlords-compare = сравнить
+  .description = Сравнить статистику Warlords двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Warlords для просмотра
+
+woolwars-compare = сравнить
+  .description = Сравнить статистику Wool Wars двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим Wool Wars для просмотра

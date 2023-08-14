@@ -2532,3 +2532,203 @@ red = Red
 light-purple = Light Purple
 yellow = Yellow
 white = White
+
+# Comparison commands
+
+arcade-compare = compare
+  .description = Compare the Arcade statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Arcade mode to view
+
+arena-compare = compare
+  .description = Compare the Arena statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Arena mode to view
+
+bedwars-compare = compare
+  .description = Compare the Bed Wars statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Bed Wars mode to view
+
+blitz-compare = compare
+  .description = Compare the Blitz Survival Games statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Blitz Survival Games mode to view
+
+buildbattle-compare = compare
+  .description = Compare the Build Battle statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Build Battle mode to view
+
+copsandcrims-compare = compare
+  .description = Compare the Cops and Crims statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Cops and Crims mode to view
+
+duels-compare = compare
+  .description = Compare the Duels statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Duels mode to view
+
+megawalls-compare = compare
+  .description = Compare the Mega Walls statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Mega Walls mode to view
+
+murdermystery-compare = compare
+  .description = Compare the Murder Mystery statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Murder Mystery mode to view
+
+paintball-compare = compare
+  .description = Compare the Paintball statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Paintball mode to view
+
+pit-compare = compare
+  .description = Compare The Pit statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Pit mode to view
+
+quake-compare = compare
+  .description = Compare the Quakecraft statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Quakecraft mode to view
+
+skywars-compare = compare
+  .description = Compare the SkyWars statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The SkyWars mode to view
+
+smash-compare = compare
+  .description = Compare the Smash Heroes statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Smash Heroes mode to view
+
+speeduhc-compare = compare
+  .description = Compare the SpeedUHC statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The SpeedUHC mode to view
+
+tntgames-compare = compare
+  .description = Compare the TNT Games statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The TNT Games mode to view
+
+turbokartracers-compare = compare
+  .description = Compare the Turbo Kart Racers statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Turbo Kart Racers mode to view
+
+uhc-compare = compare
+  .description = Compare the UHC Champions statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The UHC Champions mode to view
+
+vampirez-compare = compare
+  .description = Compare the VampireZ statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The VampireZ mode to view
+
+walls-compare = compare
+  .description = Compare The Walls statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Walls mode to view
+
+warlords-compare = compare
+  .description = Compare the Warlords statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Warlords mode to view
+
+woolwars-compare = compare
+  .description = Compare the Wool Wars statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Wool Wars mode to view

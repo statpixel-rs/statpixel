@@ -2535,3 +2535,203 @@ red = Rød
 light-purple = Lys Lilla
 yellow = Gul
 white = Hvid
+
+# Sammenligningskommandoer
+
+arcade-compare = sammenlign
+  .description = Sammenlign Arcade-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Arcade-tilstand at se
+
+arena-compare = sammenlign
+  .description = Sammenlign Arena-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Arena-tilstand at se
+
+bedwars-compare = sammenlign
+  .description = Sammenlign Bed Wars-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Bed Wars-tilstand at se
+
+blitz-compare = sammenlign
+  .description = Sammenlign Blitz Survival Games-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Blitz Survival Games-tilstand at se
+
+buildbattle-compare = sammenlign
+  .description = Sammenlign Build Battle-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Build Battle-tilstand at se
+
+copsandcrims-compare = sammenlign
+  .description = Sammenlign Cops and Crims-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Cops and Crims-tilstand at se
+
+duels-compare = sammenlign
+  .description = Sammenlign Duels-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Duels-tilstand at se
+
+megawalls-compare = sammenlign
+  .description = Sammenlign Mega Walls-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Mega Walls-tilstand at se
+
+murdermystery-compare = sammenlign
+  .description = Sammenlign Murder Mystery-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Murder Mystery-tilstand at se
+
+paintball-compare = sammenlign
+  .description = Sammenlign Paintball-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Paintball-tilstand at se
+
+pit-compare = sammenlign
+  .description = Sammenlign The Pit-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = The Pit-tilstand at se
+
+quake-compare = sammenlign
+  .description = Sammenlign Quakecraft-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Quakecraft-tilstand at se
+
+skywars-compare = sammenlign
+  .description = Sammenlign SkyWars-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = SkyWars-tilstand at se
+
+smash-compare = sammenlign
+  .description = Sammenlign Smash Heroes-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Smash Heroes-tilstand at se
+
+speeduhc-compare = sammenlign
+  .description = Sammenlign SpeedUHC-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = SpeedUHC-tilstand at se
+
+tntgames-compare = sammenlign
+  .description = Sammenlign TNT Games-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = TNT Games-tilstand at se
+
+turbokartracers-compare = sammenlign
+  .description = Sammenlign Turbo Kart Racers-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Turbo Kart Racers-tilstand at se
+
+uhc-compare = sammenlign
+  .description = Sammenlign UHC Champions-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = UHC Champions-tilstand at se
+
+vampirez-compare = sammenlign
+  .description = Sammenlign VampireZ-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = VampireZ-tilstand at se
+
+walls-compare = sammenlign
+  .description = Sammenlign The Walls-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = The Walls-tilstand at se
+
+warlords-compare = sammenlign
+  .description = Sammenlign Warlords-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Warlords-tilstand at se
+
+woolwars-compare = sammenlign
+  .description = Sammenlign Wool Wars-statistikkerne for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller at sammenligne med
+  .mode = tilstand
+  .mode-description = Wool Wars-tilstand at se
