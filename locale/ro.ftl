@@ -2,46 +2,46 @@
 not-linked = Argumente lipsă
 not-linked-description = Deoarece nu ești conectat, trebuie să furnizezi un profil pentru a vizualiza.
 showing-statistics = <a:clock:1115091329958019253> Se afișează statisticile de la {$from} la {$to}.
-no-previous-statistics = Nu s-au găsit date anterioare pentru **{$name}**, așa că au fost adăugate.
-showing-guild-statistics = Se afișează statisticile guild-ului de la {$from} la {$to}.
-no-previous-guild-statistics = Nu s-au găsit date anterioare pentru guild-ul **{$name}**, așa că a fost adăugat.
-showing-comparison = <a:clock:1115091329958019253> Se afișează statisticile lui {$from} în comparație cu cele ale lui {$to}.
+no-previous-statistics = Nu s-au găsit date anterioare pentru **`{$name}`**, așa că au fost adăugate.
+showing-guild-statistics = Se afișează statisticile guild-ului de la `{$from}` la `{$to}`.
+no-previous-guild-statistics = Nu s-au găsit date anterioare pentru guild-ul **`{$name}`**, așa că a fost adăugat.
+showing-comparison = <a:clock:1115091329958019253> Se afișează statisticile lui `{$from}` în comparație cu cele ale lui `{$to}`.
 
 # Erori
 
-error-player-not-found = Profilul aparținând lui {$name} nu a fost găsit.
-error-session-not-found = O sesiune aparținând lui {$name} nu a fost găsită.
-error-player-uuid-not-found = Un jucător cu UUID-ul {$uuid} nu a fost găsit.
-error-player-username-not-found = Un jucător cu numele de utilizator {$name} nu a fost găsit.
-error-guild-by-member-uuid-not-found = Un membru al guild-ului cu UUID-ul {$uuid} nu a fost găsit.
-error-guild-by-member-username-not-found = Un membru al guild-ului cu numele de utilizator {$name} nu a fost găsit.
-error-guild-not-found = Un guild cu numele {$name} nu a fost găsit.
+error-player-not-found = Profilul aparținând lui `{$name}` nu a fost găsit.
+error-session-not-found = O sesiune aparținând lui `{$name}` nu a fost găsită.
+error-player-uuid-not-found = Un jucător cu UUID-ul `{$uuid}` nu a fost găsit.
+error-player-username-not-found = Un jucător cu numele de utilizator `{$name}` nu a fost găsit.
+error-guild-by-member-uuid-not-found = Un membru al guild-ului cu UUID-ul `{$uuid}` nu a fost găsit.
+error-guild-by-member-username-not-found = Un membru al guild-ului cu numele de utilizator `{$name}` nu a fost găsit.
+error-guild-not-found = Un guild cu numele `{$name}` nu a fost găsit.
 error-internal = A apărut o eroare internă. Aceasta a fost înregistrată și va fi rezolvată în curând.
 error-not-linked = Nu ești conectat la un cont Minecraft. Folosește </link:1113624864524357710> pentru a-ți lega contul.
-error-invalid-uuid = UUID-ul {$uuid} nu este valid.
-error-invalid-username = Numele de utilizator {$name} nu este valid.
-error-member-player-not-found = Membrul {$name} nu a fost găsit în profil.
-error-skyblock-profile-not-found = Un profil SkyBlock aparținând lui {$name} nu a fost găsit.
-error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru {$name}. Creează una cu </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Un clasament cu numele {$name} nu a fost găsit.
-error-profile-not-found = Profilul {$profile} SkyBlock aparținând lui {$name} are API-ul dezactivat sau nu s-a conectat de la introducerea noului sistem de profiluri.
+error-invalid-uuid = UUID-ul `{$uuid}` nu este valid.
+error-invalid-username = Numele de utilizator `{$name}` nu este valid.
+error-member-player-not-found = Membrul `{$name}` nu a fost găsit în profil.
+error-skyblock-profile-not-found = Un profil SkyBlock aparținând lui `{$name}` nu a fost găsit.
+error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru `{$name}`. Creează una cu </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Un clasament cu numele `{$name}` nu a fost găsit.
+error-profile-not-found = Profilul `{$profile}` SkyBlock aparținând lui `{$name}` are API-ul dezactivat sau nu s-a conectat de la introducerea noului sistem de profiluri.
 error-identifier-too-long =
   Unul dintre identificatorii generați pentru această interacțiune este prea lung.
   Încearcă să reduci numărul de componente sau cantitatea de text personalizat.
-error-user-track-limit-reached = Ai atins numărul maxim de track-uri, {$limit}. Achiziționează StatPixel+ pentru a elimina această limită la <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Ai atins numărul maxim de track-uri, `{$limit}`. Achiziționează StatPixel+ pentru a elimina această limită la <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Acest guild a atins numărul maxim de track-uri, {$limit}.
+  Acest guild a atins numărul maxim de track-uri, `{$limit}`.
   Dacă ai StatPixel+, mărește guild-ul cu </boost:1132443666997321809> pentru a elimina această restricție sau mergi la <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Ai atins numărul maxim de boost-uri, {$limit}. Poți elimina un boost pe tabloul de bord: <https://statpixel.xyz/dashboard/boost>.
+  Ai atins numărul maxim de boost-uri, `{$limit}`. Poți elimina un boost pe tabloul de bord: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Deja urmărești acest jucător în acest canal.
 error-not-premium = Trebuie să fii abonat la StatPixel+ pentru a efectua această acțiune. Accesează <https://statpixel.xyz/plus> pentru mai multe informații.
 error-not-in-a-guild = Trebuie să fii într-un guild pentru a efectua această acțiune.
 error-boost-already-exists = Deja ești în curs de a mări acest guild.
-error-time-invalid-character = S-a găsit un caracter nevalid în argumentul de timp la poziția {$position}.
-error-time-expected-number = S-aștepta un număr în argumentul de timp la poziția {$position}.
-error-time-unknown-unit = Unitate de timp necunoscută {$unit} la poziția {$position} cu valoarea {$value}.
+error-time-invalid-character = S-a găsit un caracter nevalid în argumentul de timp la poziția `{$position}`.
+error-time-expected-number = S-aștepta un număr în argumentul de timp la poziția `{$position}`.
+error-time-unknown-unit = Unitate de timp necunoscută `{$unit}` la poziția `{$position}` cu valoarea `{$value}`.
 error-time-empty = Argumentul de timp nu poate fi gol.
 error-time-overflow = Durata argumentului de timp este prea mare. Încearcă să o ții sub 3,000 de ani.
 
@@ -167,19 +167,19 @@ username = Nume-utilizator
 username-placeholder = Introduceți numele de utilizator pentru a utiliza
 
 invalid-statistic =
-  Statistică nevalidă {$statistic} pentru {$game}. Verificați documentația și încercați din nou.
+  Statistică nevalidă `{$statistic}` pentru `{$game}`. Verificați documentația și încercați din nou.
 
 invalid-level-type =
-  Tip de nivel nevalid {$kind}. Verificați documentația și încercați din nou.
+  Tip de nivel nevalid `{$kind}`. Verificați documentația și încercați din nou.
 
 invalid-game-type =
-  Tip de joc nevalid {$game}. Verificați documentația și încercați din nou.
+  Tip de joc nevalid `{$game}`. Verificați documentația și încercați din nou.
 
 image-created =
   Imaginea dvs. a fost creată! Încercați-o cu </execute:1125992506501365892>.
 
-  Identificator: {$id}
-  Link: {$link}
+  Identificator: `{$id}`
+  Link: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = fundal
 error-invalid-colour = Culoare nevalidă furnizată
 error-invalid-colour-description = Culoarea furnizată nu este validă. Încercați să furnizați una dintre [aceste culori](https://simple.wikipedia.org/wiki/List_of_colors) sau o culoare hexagonală cu prefixul `#`.
 colour-changed = Culoare fundal schimbată
-colour-changed-description = Culoarea fundalului dvs. a fost schimbată în {$colour}.
+colour-changed-description = Culoarea fundalului dvs. a fost schimbată în `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = conectare
 
 linking-failed = Conectare eșuată
 linking-failed-uuid-description = UUID-ul `{$uuid}` nu aparține unui cont Minecraft.
-linking-failed-username-description = Numele utilizator **{$username}** nu aparține unui cont Minecraft.
+linking-failed-username-description = Numele utilizator **`{$username}`** nu aparține unui cont Minecraft.
 linking-failed-description = Trebuie să furnizați un UUID sau un nume de utilizator valid.
 linking-succeeded = Conectare cu succes
-linking-succeeded-description = Contul dvs. Discord este acum conectat la contul Minecraft **{$name}**.
+linking-succeeded-description = Contul dvs. Discord este acum conectat la contul Minecraft **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = proiect
   .uuid-description = UUID-ul dvs. Minecraft
   .mode = mod
   .mode-description = Modul Arcade de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Arcade de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Arcade de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -674,8 +674,8 @@ arena-project = proiect
   .uuid-description = UUID-ul dvs. Minecraft
   .mode = mod
   .mode-description = Modul Arenei de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Arenei de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Arenei de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -780,8 +780,8 @@ bedwars-project = proiect
   .uuid-description = UUID-ul dvs. Minecraft
   .mode = mod
   .mode-description = Modul Bed Wars de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Bed Wars de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Bed Wars de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -880,8 +880,8 @@ blitz-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Blitz Survival Games de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Blitz Survival Games de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Blitz Survival Games de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -958,8 +958,8 @@ buildbattle-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Build Battle de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Build Battle de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Build Battle de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Cops and Crims de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Cops and Crims de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Cops and Crims de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1143,8 +1143,8 @@ duels-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Duelurilor de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Duelurilor de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Duelurilor de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1221,8 +1221,8 @@ megawalls-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Mega Walls de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Mega Walls de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Mega Walls de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1301,8 +1301,8 @@ murdermystery-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Misterul crimei pentru vizualizare
-  .kind = statistică
-  .kind-description = Statistica Misterul crimei de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Misterul crimei de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1389,8 +1389,8 @@ paintball-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Paintball pentru vizualizare
-  .kind = statistică
-  .kind-description = Statistica Paintball de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Paintball de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1468,8 +1468,8 @@ pit-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul The Pit pentru vizualizare
-  .kind = statistică
-  .kind-description = Statistica The Pit de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica The Pit de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1545,8 +1545,8 @@ quake-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Quakecraft de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Quakecraft de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Quakecraft de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1635,8 +1635,8 @@ skywars-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul SkyWars de vizualizat
-  .kind = statistică
-  .kind-description = Statistica SkyWars de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica SkyWars de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1710,8 +1710,8 @@ smash-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Smash Heroes de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Smash Heroes de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Smash Heroes de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1784,8 +1784,8 @@ speeduhc-project = proiect
   .uuid-description = UUID-ul tău Minecraft
   .mode = mod
   .mode-description = Modul SpeedUHC de vizualizat
-  .kind = statistică
-  .kind-description = Statistica SpeedUHC de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica SpeedUHC de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1867,8 +1867,8 @@ tntgames-project = proiect
   .uuid-description = UUID-ul tău Minecraft
   .mode = mod
   .mode-description = Modul TNT Games de vizualizat
-  .kind = statistică
-  .kind-description = Statistica TNT Games de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica TNT Games de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -1946,8 +1946,8 @@ turbokartracers-project = proiect
   .uuid-description = UUID-ul tău Minecraft
   .mode = mod
   .mode-description = Modul Turbo Kart Racers de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Turbo Kart Racers de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Turbo Kart Racers de proiectat
   .value = valoare
   .value-description = Valoarea statisticii de proiectat
 
@@ -2027,8 +2027,8 @@ uhc-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul UHC Champions de vizualizat
-  .kind = statistică
-  .kind-description = Statistica UHC Champions de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica UHC Champions de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -2114,8 +2114,8 @@ vampirez-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul VampireZ de vizualizat
-  .kind = statistică
-  .kind-description = Statistica VampireZ de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica VampireZ de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -2190,8 +2190,8 @@ walls-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul The Walls de vizualizat
-  .kind = statistică
-  .kind-description = Statistica The Walls de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica The Walls de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -2271,8 +2271,8 @@ warlords-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Warlords de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Warlords de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Warlords de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -2346,8 +2346,8 @@ woolwars-project = proiect
   .uuid-description = UUID Minecraft
   .mode = mod
   .mode-description = Modul Wool Wars de vizualizat
-  .kind = statistică
-  .kind-description = Statistica Wool Wars de proiectat
+  .statistic = statistică
+  .statistic-description = Statistica Wool Wars de proiectat
   .value = valoare
   .value-description = Valoarea statisticilor de proiectat
 
@@ -2471,7 +2471,7 @@ guild-monthly = lunar
   .uuid = uuid
   .uuid-description = UUID-ul membrului guildă de vizualizat
 
-showing-guild-xp-statistics = Se afișează câștigul de XP al guildelor de la {$from} până la {$to}.
+showing-guild-xp-statistics = Se afișează câștigul de XP al guildelor de la `{$from}` până la `{$to}`.
 
 # Etichete comune pentru canvas
 

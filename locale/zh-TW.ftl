@@ -2,46 +2,46 @@
 not-linked = 缺少参数
 not-linked-description = 由于您未链接账户，您需要提供一个个人资料以查看。
 showing-statistics = <a:clock:1115091329958019253> 正在显示 {$from} 到 {$to} 的统计数据变化。
-no-previous-statistics = 未找到有关 **{$name}** 的历史数据，因此已插入新数据。
-showing-guild-statistics = 正在显示公会 {$from} 到 {$to} 的统计数据变化。
-no-previous-guild-statistics = 未找到有关公会 **{$name}** 的历史数据，因此已插入新数据。
-showing-comparison = <a:clock:1115091329958019253> 正在显示 {$from} 和 {$to} 的统计数据对比。
+no-previous-statistics = 未找到有关 **`{$name}`** 的历史数据，因此已插入新数据。
+showing-guild-statistics = 正在显示公会 `{$from}` 到 `{$to}` 的统计数据变化。
+no-previous-guild-statistics = 未找到有关公会 **`{$name}`** 的历史数据，因此已插入新数据。
+showing-comparison = <a:clock:1115091329958019253> 正在显示 `{$from}` 和 `{$to}` 的统计数据对比。
 
 # Errors
 
-error-player-not-found = 未找到属于 {$name} 的个人资料。
-error-session-not-found = 未找到属于 {$name} 的会话。
-error-player-uuid-not-found = 未找到 UUID 为 {$uuid} 的玩家。
-error-player-username-not-found = 未找到用户名为 {$name} 的玩家。
-error-guild-by-member-uuid-not-found = 未找到 UUID 为 {$uuid} 的公会成员。
-error-guild-by-member-username-not-found = 未找到用户名为 {$name} 的公会成员。
-error-guild-not-found = 未找到名为 {$name} 的公会。
+error-player-not-found = 未找到属于 `{$name}` 的个人资料。
+error-session-not-found = 未找到属于 `{$name}` 的会话。
+error-player-uuid-not-found = 未找到 UUID 为 `{$uuid}` 的玩家。
+error-player-username-not-found = 未找到用户名为 `{$name}` 的玩家。
+error-guild-by-member-uuid-not-found = 未找到 UUID 为 `{$uuid}` 的公会成员。
+error-guild-by-member-username-not-found = 未找到用户名为 `{$name}` 的公会成员。
+error-guild-not-found = 未找到名为 `{$name}` 的公会。
 error-internal = 发生了内部错误。它已被记录并将很快解决。
 error-not-linked = 您尚未链接 Minecraft 账户。请使用 </link:1113624864524357710> 来链接您的账户。
-error-invalid-uuid = UUID {$uuid} 无效。
-error-invalid-username = 用户名 {$name} 无效。
-error-member-player-not-found = 未在个人资料中找到成员 {$name}。
-error-skyblock-profile-not-found = 未找到属于 {$name} 的 SkyBlock 个人资料。
-error-player-snapshot-not-found = 未找到 {$name} 的快照。使用 </bedwars daily:1113624864272683060> 创建一个。
-error-leaderboard-not-found = 未找到名为 {$name} 的排行榜。
-error-profile-not-found = {$name} 的 {$profile} SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
+error-invalid-uuid = UUID `{$uuid}` 无效。
+error-invalid-username = 用户名 `{$name}` 无效。
+error-member-player-not-found = 未在个人资料中找到成员 `{$name}`。
+error-skyblock-profile-not-found = 未找到属于 `{$name}` 的 SkyBlock 个人资料。
+error-player-snapshot-not-found = 未找到 `{$name}` 的快照。使用 </bedwars daily:1113624864272683060> 创建一个。
+error-leaderboard-not-found = 未找到名为 `{$name}` 的排行榜。
+error-profile-not-found = `{$name}` 的 `{$profile}` SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
 error-identifier-too-long =
   此交互的某个生成的标识符过长。
   尝试减少组件数量或自定义文本的长度。
-error-user-track-limit-reached = 您已达到最大跟踪数 {$limit}。购买 StatPixel+ 以解除此限制，请访问 <https://statpixel.xyz/plus>。
+error-user-track-limit-reached = 您已达到最大跟踪数 `{$limit}`。购买 StatPixel+ 以解除此限制，请访问 <https://statpixel.xyz/plus>。
 error-guild-track-limit-reached =
-  此公会已达到最大跟踪数 {$limit}。
+  此公会已达到最大跟踪数 `{$limit}`。
   如果您有 StatPixel+，请使用 </boost:1132443666997321809> 提升公会以解除此限制，或者前往 <https://statpixel.xyz/plus>。
 error-boost-limit-reached =
-  您已达到最大增益数 {$limit}。您可以在仪表板上移除一个增益：<https://statpixel.xyz/dashboard/boost>。
+  您已达到最大增益数 `{$limit}`。您可以在仪表板上移除一个增益：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
   您已在此频道中跟踪此玩家。
 error-not-premium = 您必须成为 StatPixel+ 订户才能执行此操作。请前往 <https://statpixel.xyz/plus> 获取更多信息。
 error-not-in-a-guild = 您必须加入一个公会才能执行此操作。
 error-boost-already-exists = 您已经在增益此公会。
-error-time-invalid-character = 时间参数中发现了无效字符，位置为 {$position}。
-error-time-expected-number = 时间参数中的位置 {$position} 需要一个数字。
-error-time-unknown-unit = 时间参数中的位置 {$position} 存在未知的时间单位 {$unit}，值为 {$value}。
+error-time-invalid-character = 时间参数中发现了无效字符，位置为 `{$position}`。
+error-time-expected-number = 时间参数中的位置 `{$position}` 需要一个数字。
+error-time-unknown-unit = 时间参数中的位置 `{$position}` 存在未知的时间单位 `{$unit}`，值为 `{$value}`。
 error-time-empty = 时间参数不能为空。
 error-time-overflow = 时间参数的持续时间过长。请尝试保持在 3,000 年以下。
 
@@ -167,19 +167,19 @@ username = 使用者名稱
 username-placeholder = 輸入要使用的使用者名稱
 
 invalid-statistic =
-  無效的 {$game} 遊戲統計 {$statistic}。請檢查文檔後重試。
+  無效的 `{$game}` 遊戲統計 `{$statistic}`。請檢查文檔後重試。
 
 invalid-level-type =
-  無效的等級類型 {$kind}。請檢查文檔後重試。
+  無效的等級類型 `{$kind}`。請檢查文檔後重試。
 
 invalid-game-type =
-  無效的遊戲類型 {$game}。請檢查文檔後重試。
+  無效的遊戲類型 `{$game}`。請檢查文檔後重試。
 
 image-created =
   圖像已建立！嘗試使用 </execute:1125992506501365892> 查看。
 
-  識別碼：{$id}
-  鏈結：{$link}
+  識別碼：`{$id}`
+  鏈結：`{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = 背景
 error-invalid-colour = 無效的顏色
 error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of_colors)中的一種或以“＃”為前綴的十六進制顏色。
 colour-changed = 背景顏色已更改
-colour-changed-description = 您的背景顏色已更改為 {$colour}。
+colour-changed-description = 您的背景顏色已更改為 `{$colour}`。
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = 鏈接
 
 linking-failed = 鏈接失敗
 linking-failed-uuid-description = UUID `{$uuid}` 不屬於 Minecraft 帳戶。
-linking-failed-username-description = 使用者名稱 **{$username}** 不屬於 Minecraft 帳戶。
+linking-failed-username-description = 使用者名稱 **`{$username}`** 不屬於 Minecraft 帳戶。
 linking-failed-description = 您必須提供有效的 UUID 或使用者名稱。
 linking-succeeded = 鏈接成功
-linking-succeeded-description = 您的 Discord 帳戶已成功鏈接至 Minecraft 帳戶 **{$name}**。
+linking-succeeded-description = 您的 Discord 帳戶已成功鏈接至 Minecraft 帳戶 **`{$name}`**。
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
-  .kind = 統計指標
-  .kind-description = 要投影的 Arcade 統計指標
+  .statistic = 統計指標
+  .statistic-description = 要投影的 Arcade 統計指標
   .value = 值
   .value-description = 要投影的統計指標值
 
@@ -674,8 +674,8 @@ arena-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
-  .kind = 統計指標
-  .kind-description = 要投影的 Arena 統計指標
+  .statistic = 統計指標
+  .statistic-description = 要投影的 Arena 統計指標
   .value = 值
   .value-description = 要投影的統計指標值
 
@@ -780,8 +780,8 @@ bedwars-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的床戰模式
-  .kind = 統計指標
-  .kind-description = 要投影的床戰統計指標
+  .statistic = 統計指標
+  .statistic-description = 要投影的床戰統計指標
   .value = 值
   .value-description = 要投影的統計指標值
 
@@ -880,8 +880,8 @@ blitz-project = 預測
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
-  .kind = 統計數據
-  .kind-description = 要預測的 Blitz 生存遊戲統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 Blitz 生存遊戲統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -958,8 +958,8 @@ buildbattle-project = 預測
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
-  .kind = 統計數據
-  .kind-description = 要預測的建築對戰統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的建築對戰統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = 預測
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
-  .kind = 統計數據
-  .kind-description = 要預測的警察與犯罪者統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的警察與犯罪者統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -1143,8 +1143,8 @@ duels-project = 預測
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
-  .kind = 統計數據
-  .kind-description = 要預測的 Duels 統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 Duels 統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -1222,8 +1222,8 @@ megawalls-project = 預測
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
-  .kind = 統計數據
-  .kind-description = 要預測的 Mega Walls 統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 Mega Walls 統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -1302,8 +1302,8 @@ murdermystery-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的「謀殺之謎」模式
-  .kind = 統計數據
-  .kind-description = 要投影的「謀殺之謎」統計數據
+  .statistic = 統計數據
+  .statistic-description = 要投影的「謀殺之謎」統計數據
   .value = 數值
   .value-description = 要投影的統計數據的數值
 
@@ -1390,8 +1390,8 @@ paintball-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的彩弹模式
-  .kind = 統計數據
-  .kind-description = 要投影的彩弹統計數據
+  .statistic = 統計數據
+  .statistic-description = 要投影的彩弹統計數據
   .value = 數值
   .value-description = 要投影的統計數據的數值
 
@@ -1469,8 +1469,8 @@ pit-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
-  .kind = 統計數據
-  .kind-description = 要投影的「坑洞」統計數據
+  .statistic = 統計數據
+  .statistic-description = 要投影的「坑洞」統計數據
   .value = 數值
   .value-description = 要投影的統計數據的數值
 
@@ -1546,8 +1546,8 @@ quake-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的地震戰爭模式
-  .kind = 統計數據
-  .kind-description = 要預測的地震戰爭統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的地震戰爭統計數據
   .value = 數值
   .value-description = 要預測的統計數據數值
 
@@ -1636,8 +1636,8 @@ skywars-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
-  .kind = 統計數據
-  .kind-description = 要預測的天空戰爭統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的天空戰爭統計數據
   .value = 數值
   .value-description = 要預測的統計數據數值
 
@@ -1711,8 +1711,8 @@ smash-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
-  .kind = 統計數據
-  .kind-description = 要預測的Smash Heroes統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的Smash Heroes統計數據
   .value = 數值
   .value-description = 要預測的統計數據數值
 
@@ -1785,8 +1785,8 @@ speeduhc-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
-  .kind = 統計
-  .kind-description = 要投影的SpeedUHC統計項目
+  .statistic = 統計
+  .statistic-description = 要投影的SpeedUHC統計項目
   .value = 數值
   .value-description = 要投影的統計項目數值
 
@@ -1868,8 +1868,8 @@ tntgames-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
-  .kind = 統計
-  .kind-description = 要投影的TNT遊戲統計項目
+  .statistic = 統計
+  .statistic-description = 要投影的TNT遊戲統計項目
   .value = 數值
   .value-description = 要投影的統計項目數值
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
-  .kind = 統計
-  .kind-description = 要投影的Turbo Kart Racers統計項目
+  .statistic = 統計
+  .statistic-description = 要投影的Turbo Kart Racers統計項目
   .value = 數值
   .value-description = 要投影的統計項目數值
 
@@ -2028,8 +2028,8 @@ uhc-project = 項目
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
-  .kind = 統計數據
-  .kind-description = 要預測的 UHC Champions 統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 UHC Champions 統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -2115,8 +2115,8 @@ vampirez-project = 項目
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
-  .kind = 統計數據
-  .kind-description = 要預測的 VampireZ 統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 VampireZ 統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -2191,8 +2191,8 @@ walls-project = 項目
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
-  .kind = 統計數據
-  .kind-description = 要預測的 The Walls 統計數據
+  .statistic = 統計數據
+  .statistic-description = 要預測的 The Walls 統計數據
   .value = 數值
   .value-description = 要預測的統計數據值
 
@@ -2271,8 +2271,8 @@ warlords-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
-  .kind = 統計數據
-  .kind-description = 要投影的戰爭領主統計數據
+  .statistic = 統計數據
+  .statistic-description = 要投影的戰爭領主統計數據
   .value = 數值
   .value-description = 要投影的統計數據值
 
@@ -2346,8 +2346,8 @@ woolwars-project = 專案
   .uuid-description = Minecraft UUID
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
-  .kind = 統計數據
-  .kind-description = 要投影的羊毛大戰統計數據
+  .statistic = 統計數據
+  .statistic-description = 要投影的羊毛大戰統計數據
   .value = 數值
   .value-description = 要投影的統計數據值
 
@@ -2471,7 +2471,7 @@ guild-monthly = 每月
   .uuid = uuid
   .uuid-description = 要查看的公會成員的 UUID
 
-showing-guild-xp-statistics = 顯示公會自{$from}到{$to}的經驗值增長。
+showing-guild-xp-statistics = 顯示公會自`{$from}`到`{$to}`的經驗值增長。
 
 # 共用畫布標籤
 

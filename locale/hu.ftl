@@ -2,47 +2,47 @@
 not-linked = Hiányzó argumentumok
 not-linked-description = Mivel nincs összekapcsolva, meg kell adnod egy profilját a megtekintéshez.
 showing-statistics = <a:clock:1115091329958019253> Statisztikák megjelenítése innen: {$from} erre: {$to}.
-no-previous-statistics = Nincsenek előző adatok találhatók **{$name}** nevű játékoshoz, ezért beillesztve lett.
-showing-guild-statistics = Egy guild statisztika megjelenítése innen: {$from} erre: {$to}.
-no-previous-guild-statistics = Nincsenek előző adatok találhatók **{$name}** guildhez, ezért beillesztve lett.
-showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése: {$from} összehasonlítva: {$to}.
+no-previous-statistics = Nincsenek előző adatok találhatók **`{$name}`** nevű játékoshoz, ezért beillesztve lett.
+showing-guild-statistics = Egy guild statisztika megjelenítése innen: `{$from}` erre: `{$to}`.
+no-previous-guild-statistics = Nincsenek előző adatok találhatók **`{$name}`** guildhez, ezért beillesztve lett.
+showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése: `{$from}` összehasonlítva: `{$to}`.
 
 # Hibák
 
-error-player-not-found = A(z) {$name} nevű játékos profilja nem található.
-error-session-not-found = A(z) {$name} nevű játékos munkamenetét nem található.
-error-player-uuid-not-found = A(z) {$uuid} azonosítójú játékos nem található.
-error-player-username-not-found = A(z) {$name} nevű játékos nem található.
-error-guild-by-member-uuid-not-found = A(z) {$uuid} azonosítójú guild tag nem található.
-error-guild-by-member-username-not-found = A(z) {$name} nevű guild tag nem található.
-error-guild-not-found = A(z) {$name} nevű guild nem található.
+error-player-not-found = A(z) `{$name}` nevű játékos profilja nem található.
+error-session-not-found = A(z) `{$name}` nevű játékos munkamenetét nem található.
+error-player-uuid-not-found = A(z) `{$uuid}` azonosítójú játékos nem található.
+error-player-username-not-found = A(z) `{$name}` nevű játékos nem található.
+error-guild-by-member-uuid-not-found = A(z) `{$uuid}` azonosítójú guild tag nem található.
+error-guild-by-member-username-not-found = A(z) `{$name}` nevű guild tag nem található.
+error-guild-not-found = A(z) `{$name}` nevű guild nem található.
 error-internal = Belső hiba történt. Rögzítettük, és hamarosan megoldjuk.
 error-not-linked = Nincs összekapcsolva egy Minecraft fiókkal sem. Használd a következőt: </link:1113624864524357710> a fiókod összekapcsolásához.
-error-invalid-uuid = A(z) {$uuid} azonosító érvénytelen.
-error-invalid-username = A(z) {$name} felhasználónév érvénytelen.
-error-member-player-not-found = A(z) {$name} nevű tag nem található a profilban.
-error-skyblock-profile-not-found = A(z) {$name} nevű SkyBlock profil nem található.
-error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) {$name} nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = A(z) {$name} nevű ranglista nem található.
-error-profile-not-found = A(z) {$name} {$profile} SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
+error-invalid-uuid = A(z) `{$uuid}` azonosító érvénytelen.
+error-invalid-username = A(z) `{$name}` felhasználónév érvénytelen.
+error-member-player-not-found = A(z) `{$name}` nevű tag nem található a profilban.
+error-skyblock-profile-not-found = A(z) `{$name}` nevű SkyBlock profil nem található.
+error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) `{$name}` nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = A(z) `{$name}` nevű ranglista nem található.
+error-profile-not-found = A(z) `{$name}` `{$profile}` SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
 error-identifier-too-long =
   Az egyik generált azonosító túl hosszú ebben az interakcióban.
   Próbáld csökkenteni a komponensek számát vagy a saját szöveg mennyiségét.
-error-user-track-limit-reached = Elérted a maximális {$limit} nyomon követési számot. A korlát eltávolításához vásárolj StatPixel+-t a következő helyen: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Elérted a maximális `{$limit}` nyomon követési számot. A korlát eltávolításához vásárolj StatPixel+-t a következő helyen: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ez a guild elért egy {$limit} nyomon követési számot.
+  Ez a guild elért egy `{$limit}` nyomon követési számot.
   Ha van StatPixel+-od, fokozd a guildet így: </boost:1132443666997321809> és távolítsd el ezt a korlátozást, vagy látogasd meg ezt a linket: <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Elérted a maximális {$limit} fokozat számot. Törölhetsz egy fokozatot a vezérlőpulton: <https://statpixel.xyz/dashboard/boost>.
+  Elérted a maximális `{$limit}` fokozat számot. Törölhetsz egy fokozatot a vezérlőpulton: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Már nyomon követed ezt a játékost ezen a csatornán.
 
 error-not-premium = Ezt a műveletet csak a StatPixel+ előfizetői végezhetik el. További információért látogasd meg a <https://statpixel.xyz/plus> oldalt.
 error-not-in-a-guild = Egy guildben kell lenned ennek a műveletnek a végrehajtásához.
 error-boost-already-exists = Már fokozod ezt a guildet.
-error-time-invalid-character = Érvénytelen karakter található a megadott időben a(z) {$position}. pozícióban.
-error-time-expected-number = Egy számot vártunk a megadott időben a(z) {$position}. pozícióban.
-error-time-unknown-unit = Ismeretlen időegység: {$unit}, a(z) {$position}. pozícióban, érték: {$value}.
+error-time-invalid-character = Érvénytelen karakter található a megadott időben a(z) `{$position}`. pozícióban.
+error-time-expected-number = Egy számot vártunk a megadott időben a(z) `{$position}`. pozícióban.
+error-time-unknown-unit = Ismeretlen időegység: `{$unit}`, a(z) `{$position}`. pozícióban, érték: `{$value}`.
 error-time-empty = Az idő argumentum nem lehet üres.
 error-time-overflow = Az idő argumentum időtartama túl hosszú. Próbáld meg 3000 év alatt tartani.
 
@@ -168,19 +168,19 @@ username = Felhasználónév
 username-placeholder = Adja meg a felhasználónevet
 
 invalid-statistic =
-  Érvénytelen statisztika {$statistic} a(z) {$game} játékhoz. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen statisztika `{$statistic}` a(z) `{$game}` játékhoz. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 invalid-level-type =
-  Érvénytelen szint típus {$kind}. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen szint típus `{$kind}`. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 invalid-game-type =
-  Érvénytelen játék típus {$game}. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen játék típus `{$game}`. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 image-created =
   Elkészült a képe! Próbálja ki a </execute:1125992506501365892> parancs segítségével.
 
-  Azonosító: {$id}
-  Link: {$link}
+  Azonosító: `{$id}`
+  Link: `{$link}`
 
 # /about
 
@@ -236,7 +236,7 @@ background = háttér
 error-invalid-colour = Érvénytelen szín megadva
 error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of_colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
 colour-changed = Háttérszín megváltozott
-colour-changed-description = A háttérszíne megváltozott {$colour}.
+colour-changed-description = A háttérszíne megváltozott `{$colour}`.
 
 # /skyblock bazaar
 
@@ -533,10 +533,10 @@ link = kapcsolat
 
 linking-failed = Kapcsolat létrehozása sikertelen
 linking-failed-uuid-description = A megadott uuid `{$uuid}` nem tartozik egy Minecraft fiókhoz.
-linking-failed-username-description = A megadott felhasználónév **{$username}** nem tartozik egy Minecraft fiókhoz.
+linking-failed-username-description = A megadott felhasználónév **`{$username}`** nem tartozik egy Minecraft fiókhoz.
 linking-failed-description = Érvényes UUID-t vagy felhasználónevet kell megadnia.
 linking-succeeded = Kapcsolat létrehozása sikeres
-linking-succeeded-description = A Discord fiókja mostantól kapcsolódva van a Minecraft fiókhoz: **{$name}**.
+linking-succeeded-description = A Discord fiókja mostantól kapcsolódva van a Minecraft fiókhoz: **`{$name}`**.
 
 # /arcade
 
@@ -600,8 +600,8 @@ arcade-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = Az Arcade statisztika, amit előrejelzel
+  .statistic = statisztika
+  .statistic-description = Az Arcade statisztika, amit előrejelzel
   .value = érték
   .value-description = Az előrejelzett statisztika értéke
 
@@ -675,8 +675,8 @@ arena-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = Az Aréna statisztika, amit előrejelzel
+  .statistic = statisztika
+  .statistic-description = Az Aréna statisztika, amit előrejelzel
   .value = érték
   .value-description = Az előrejelzett statisztika értéke
 
@@ -781,8 +781,8 @@ bedwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = Az Bed Wars statisztika, amit előrejelzel
+  .statistic = statisztika
+  .statistic-description = Az Bed Wars statisztika, amit előrejelzel
   .value = érték
   .value-description = Az előrejelzett statisztika értéke
 
@@ -881,8 +881,8 @@ blitz-project = projekció
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = A projekcióra kiválasztott Blitz Survival Games statisztika
+  .statistic = statisztika
+  .statistic-description = A projekcióra kiválasztott Blitz Survival Games statisztika
   .value = érték
   .value-description = Az érték, amit a projekcióhoz használsz
 
@@ -959,8 +959,8 @@ buildbattle-project = projekció
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = A projekcióra kiválasztott Build Battle statisztika
+  .statistic = statisztika
+  .statistic-description = A projekcióra kiválasztott Build Battle statisztika
   .value = érték
   .value-description = Az érték, amit a projekcióhoz használsz
 
@@ -1041,8 +1041,8 @@ copsandcrims-project = projekció
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
-  .kind = statisztika
-  .kind-description = A projekcióra kiválasztott Cops and Crims statisztika
+  .statistic = statisztika
+  .statistic-description = A projekcióra kiválasztott Cops and Crims statisztika
   .value = érték
   .value-description = Az érték, amit a projekcióhoz használsz
 
@@ -1144,8 +1144,8 @@ duels-project = projekció
   .uuid-description = Minecraft azonosító
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
-  .kind = statisztika
-  .kind-description = A Döntők statisztika, amit meg szeretne jósolni
+  .statistic = statisztika
+  .statistic-description = A Döntők statisztika, amit meg szeretne jósolni
   .value = érték
   .value-description = Az érték, amire projekciózni szeretne
 
@@ -1223,8 +1223,8 @@ megawalls-project = projekció
   .uuid-description = Minecraft azonosító
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
-  .kind = statisztika
-  .kind-description = A Mega Falak statisztika, amit meg szeretne jósolni
+  .statistic = statisztika
+  .statistic-description = A Mega Falak statisztika, amit meg szeretne jósolni
   .value = érték
   .value-description = Az érték, amire projekciózni szeretne
 
@@ -1303,8 +1303,8 @@ murdermystery-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megtekintendő Murder Mystery mód
-  .kind = statisztika
-  .kind-description = A vetített Murder Mystery statisztika
+  .statistic = statisztika
+  .statistic-description = A vetített Murder Mystery statisztika
   .value = érték
   .value-description = A statisztika értéke a projekcióhoz
 
@@ -1391,8 +1391,8 @@ paintball-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
-  .kind = statisztika
-  .kind-description = A vetített Paintball statisztika
+  .statistic = statisztika
+  .statistic-description = A vetített Paintball statisztika
   .value = érték
   .value-description = A statisztika értéke a projekcióhoz
 
@@ -1470,8 +1470,8 @@ pit-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megtekintendő Pit mód
-  .kind = statisztika
-  .kind-description = A vetített Pit statisztika
+  .statistic = statisztika
+  .statistic-description = A vetített Pit statisztika
   .value = érték
   .value-description = A statisztika értéke a projekcióhoz
 
@@ -1547,8 +1547,8 @@ quake-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A Quakecraft mód, amit meg szeretnél tekinteni
-  .kind = statisztika
-  .kind-description = A Quakecraft statisztika, amit előrejelzel
+  .statistic = statisztika
+  .statistic-description = A Quakecraft statisztika, amit előrejelzel
   .value = érték
   .value-description = A statisztika előrejelzett értéke
 
@@ -1636,8 +1636,8 @@ skywars-project = előrejelzés
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
-  .kind = statisztika
-  .kind-description = A SkyWars statisztika, amit előrejelzünk
+  .statistic = statisztika
+  .statistic-description = A SkyWars statisztika, amit előrejelzünk
   .value = érték
   .value-description = A statisztika előrejelzett értéke
 
@@ -1709,8 +1709,8 @@ smash-project = előrejelzés
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
-  .kind = statisztika
-  .kind-description = A Smash Heroes statisztika, amit előrejelzünk
+  .statistic = statisztika
+  .statistic-description = A Smash Heroes statisztika, amit előrejelzünk
   .value = érték
   .value-description = A statisztika előrejelzett értéke
 
@@ -1781,8 +1781,8 @@ speeduhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megjelenítendő SpeedUHC mód
-  .kind = statisztika
-  .kind-description = A megjelenítendő SpeedUHC statisztika
+  .statistic = statisztika
+  .statistic-description = A megjelenítendő SpeedUHC statisztika
   .value = érték
   .value-description = A statisztikához tartozó érték
 
@@ -1864,8 +1864,8 @@ tntgames-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
-  .kind = statisztika
-  .kind-description = A megjelenítendő TNT Games statisztika
+  .statistic = statisztika
+  .statistic-description = A megjelenítendő TNT Games statisztika
   .value = érték
   .value-description = A statisztikához tartozó érték
 
@@ -1943,8 +1943,8 @@ turbokartracers-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
-  .kind = statisztika
-  .kind-description = A megjelenítendő Turbo Kart Racers statisztika
+  .statistic = statisztika
+  .statistic-description = A megjelenítendő Turbo Kart Racers statisztika
   .value = érték
   .value-description = A statisztikához tartozó érték
 
@@ -2024,8 +2024,8 @@ uhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
-  .kind = statisztika
-  .kind-description = A megjelenítendő UHC Champions statisztika
+  .statistic = statisztika
+  .statistic-description = A megjelenítendő UHC Champions statisztika
   .value = érték
   .value-description = A statisztikához tartozó érték
 
@@ -2111,8 +2111,8 @@ vampirez-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
-  .kind = statisztika
-  .kind-description = A VampireZ statisztika, amit szeretne projektálni
+  .statistic = statisztika
+  .statistic-description = A VampireZ statisztika, amit szeretne projektálni
   .value = érték
   .value-description = Az érték, amit a statisztikához szeretne hozzárendelni
 
@@ -2187,8 +2187,8 @@ walls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
-  .kind = statisztika
-  .kind-description = A The Walls statisztika, amit szeretne projektálni
+  .statistic = statisztika
+  .statistic-description = A The Walls statisztika, amit szeretne projektálni
   .value = érték
   .value-description = Az érték, amit a statisztikához szeretne hozzárendelni
 
@@ -2267,8 +2267,8 @@ warlords-project = projekt
   .uuid-description = Minecraft azonosító
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
-  .kind = statisztika
-  .kind-description = A Warlords statisztika, amit szeretne projektálni
+  .statistic = statisztika
+  .statistic-description = A Warlords statisztika, amit szeretne projektálni
   .value = érték
   .value-description = Az érték, amit a statisztikához szeretne hozzárendelni
 
@@ -2342,8 +2342,8 @@ woolwars-project = projekt
   .uuid-description = Minecraft azonosító
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
-  .kind = statisztika
-  .kind-description = A Wool Wars statisztika, amit projekcióba helyezel
+  .statistic = statisztika
+  .statistic-description = A Wool Wars statisztika, amit projekcióba helyezel
   .value = érték
   .value-description = Az érték, amit projekcióba helyezel
 
@@ -2467,7 +2467,7 @@ guild-monthly = havi
   .uuid = azonosító
   .uuid-description = A megjelenítendő guild tag azonosítója
 
-showing-guild-xp-statistics = A guild XP növekedésének megjelenítése a következő időszakban: {$from} - {$to}.
+showing-guild-xp-statistics = A guild XP növekedésének megjelenítése a következő időszakban: `{$from}` - `{$to}`.
 
 # Shared canvas labels
 

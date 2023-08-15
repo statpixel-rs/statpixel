@@ -25,15 +25,15 @@ pub async fn command<G: api::prelude::Game>(
 			let (player_rhs, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(
 					ctx,
-					uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
-					lhs,
+					uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+					rhs,
 				)
 				.await?;
 
 			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
-				rhs,
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				lhs,
 			)
 			.await?;
 
@@ -42,8 +42,8 @@ pub async fn command<G: api::prelude::Game>(
 
 			let content = tr_fmt!(
 				ctx, "showing-comparison",
-				from: data_lhs.username.as_str(),
-				to: data_rhs.username.as_str(),
+				from: data_rhs.username.as_str(),
+				to: data_lhs.username.as_str(),
 			);
 
 			let (png, mode): (Cow<_>, _) = {
@@ -77,15 +77,15 @@ pub async fn command<G: api::prelude::Game>(
 		format::Display::Text => {
 			let (player_rhs, data_rhs) = commands::get_player_data(
 				ctx,
-				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
-				lhs,
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				rhs,
 			)
 			.await?;
 
 			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
-				rhs,
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				lhs,
 			)
 			.await?;
 
@@ -94,12 +94,12 @@ pub async fn command<G: api::prelude::Game>(
 
 			let content = tr_fmt!(
 				ctx, "showing-comparison",
-				from: data_lhs.username.as_str(),
-				to: data_rhs.username.as_str(),
+				from: data_rhs.username.as_str(),
+				to: data_lhs.username.as_str(),
 			);
 
 			let embed =
-				G::embed_diff(ctx, &player_lhs, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
+				G::embed_diff(ctx, &player_rhs, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
 
 			ctx.send(poise::CreateReply::new().content(content).embed(embed))
 				.await?;

@@ -36,6 +36,7 @@ pub fn winstreaks(
 	let progress = shape::WideBubbleProgress(
 		network::get_level_progress(data.xp),
 		network::get_colours(level),
+		false,
 	);
 
 	let mut win_streaks = vec![

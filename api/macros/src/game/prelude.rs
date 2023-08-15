@@ -218,7 +218,7 @@ pub trait Field: Debug {
 				#log.push_str(lhs.to_formatted(ctx).as_ref());
 				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
-				#log.push_str("` (`+");
+				#log.push_str("` (`-");
 				#log.push_str((lhs - rhs).to_formatted(ctx).as_ref());
 				#log.push_str("`)\n");
 			}
@@ -257,7 +257,7 @@ pub trait Field: Debug {
 				#log.push_str(lhs.to_formatted(ctx).as_ref());
 				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
-				#log.push_str("` (`+");
+				#log.push_str("` (`-");
 				#log.push_str((lhs - rhs).to_formatted(ctx).as_ref());
 				#log.push_str("`)\n");
 			}

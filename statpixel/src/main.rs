@@ -266,8 +266,9 @@ async fn event_handler(
 				.extend(ready.guilds.iter().map(|g| g.id.0.get()));
 
 			ctx.set_activity(Some(serenity::ActivityData {
-				name: format!("Shard #{} | v{VERSION}", ctx.shard_id.0 + 1),
-				kind: serenity::ActivityType::Watching,
+				name: format!("statpixel.xyz | v{VERSION}"),
+				kind: serenity::ActivityType::Custom,
+				state: Some(format!("statpixel.xyz | v{VERSION}")),
 				url: None,
 			}));
 		}

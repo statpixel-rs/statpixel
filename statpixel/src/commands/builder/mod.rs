@@ -1,5 +1,4 @@
 pub mod build;
-pub mod build_diff;
 
 use crate::Error;
 use api::{
@@ -321,7 +320,7 @@ pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Res
 			poise::CreateReply::new()
 				.components(vec![])
 				.content(
-					tr_fmt!(ctx, "image-created", id: format!("`{id}`"), link: format!("<https://api.statpixel.xyz/image/{id}>")),
+					tr_fmt!(ctx, "image-created", id: id, link: format!("<https://api.statpixel.xyz/image/{id}>")),
 				)
 				.attachment(serenity::CreateAttachment::bytes(bytes, crate::IMAGE_NAME)),
 		)
@@ -413,7 +412,7 @@ macro_rules! impl_type_branch {
 					$ctx.discord(),
 					serenity::CreateInteractionResponse::Message(
 						CreateInteractionResponseMessage::new()
-							.content(tr_fmt!($ctx, "invalid-statistic", statistic: format!("`{}`", $statistic), game: format!("`{}`", $game_type.as_clean_name())))
+							.content(tr_fmt!($ctx, "invalid-statistic", statistic: $statistic.as_str(), game: $game_type.as_clean_name()))
 							.ephemeral(true),
 					),
 				).await?);
@@ -499,9 +498,7 @@ pub async fn modal_handler(
 							ctx,
 							serenity::CreateInteractionResponse::Message(
 								CreateInteractionResponseMessage::new()
-									.content(
-										tr_fmt!(local_ctx, "invalid-level-type", kind: format!("`{level}`")),
-									)
+									.content(tr_fmt!(local_ctx, "invalid-level-type", kind: level))
 									.ephemeral(true),
 							),
 						)
@@ -548,7 +545,7 @@ pub async fn modal_handler(
 						serenity::CreateInteractionResponse::Message(
 							CreateInteractionResponseMessage::new()
 								.content(
-									tr_fmt!(local_ctx, "invalid-game-type", game: format!("`{game_type}`")),
+									tr_fmt!(local_ctx, "invalid-game-type", game: game_type.as_str()),
 								)
 								.ephemeral(true),
 						),

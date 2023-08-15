@@ -2,46 +2,46 @@
 not-linked = Λείπουν ορίσματα
 not-linked-description = Επειδή δεν είστε συνδεδεμένοι, πρέπει να παρέχετε ένα προφίλ για να δείτε.
 showing-statistics = <a:clock:1115091329958019253> Εμφάνιση αλλαγής στατιστικών από {$from} σε {$to}.
-no-previous-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για τον χρήστη **{$name}**, οπότε προστέθηκε.
-showing-guild-statistics = Εμφάνιση αλλαγής στατιστικών ομάδας από {$from} σε {$to}.
-no-previous-guild-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για την ομάδα **{$name}**, οπότε προστέθηκε.
-showing-comparison = <a:clock:1115091329958019253> Εμφάνιση στατιστικών του {$from} συγκρινόμενα με το {$to}.
+no-previous-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για τον χρήστη **`{$name}`**, οπότε προστέθηκε.
+showing-guild-statistics = Εμφάνιση αλλαγής στατιστικών ομάδας από `{$from}` σε `{$to}`.
+no-previous-guild-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για την ομάδα **`{$name}`**, οπότε προστέθηκε.
+showing-comparison = <a:clock:1115091329958019253> Εμφάνιση στατιστικών του `{$from}` συγκρινόμενα με το `{$to}`.
 
 # Σφάλματα
 
-error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη {$name}.
-error-session-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη {$name}.
-error-player-uuid-not-found = Δεν βρέθηκε παίκτης με το UUID {$uuid}.
-error-player-username-not-found = Δεν βρέθηκε παίκτης με το όνομα χρήστη {$name}.
-error-guild-by-member-uuid-not-found = Δεν βρέθηκε μέλος της ομάδας με το UUID {$uuid}.
-error-guild-by-member-username-not-found = Δεν βρέθηκε μέλος της ομάδας με το όνομα χρήστη {$name}.
-error-guild-not-found = Δεν βρέθηκε ομάδα με το όνομα {$name}.
+error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη `{$name}`.
+error-session-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη `{$name}`.
+error-player-uuid-not-found = Δεν βρέθηκε παίκτης με το UUID `{$uuid}`.
+error-player-username-not-found = Δεν βρέθηκε παίκτης με το όνομα χρήστη `{$name}`.
+error-guild-by-member-uuid-not-found = Δεν βρέθηκε μέλος της ομάδας με το UUID `{$uuid}`.
+error-guild-by-member-username-not-found = Δεν βρέθηκε μέλος της ομάδας με το όνομα χρήστη `{$name}`.
+error-guild-not-found = Δεν βρέθηκε ομάδα με το όνομα `{$name}`.
 error-internal = Παρουσιάστηκε εσωτερικό σφάλμα. Έχει καταγραφεί και θα επιλυθεί σύντομα.
 error-not-linked = Δεν είστε συνδεδεμένοι σε έναν λογαριασμό Minecraft. Χρησιμοποιήστε </link:1113624864524357710> για να συνδέσετε το λογαριασμό σας.
-error-invalid-uuid = Το UUID {$uuid} δεν είναι έγκυρο.
-error-invalid-username = Το όνομα χρήστη {$name} δεν είναι έγκυρο.
-error-member-player-not-found = Δεν βρέθηκε το μέλος {$name} στο προφίλ.
-error-skyblock-profile-not-found = Δεν βρέθηκε προφίλ SkyBlock για τον χρήστη {$name}.
-error-player-snapshot-not-found = Δεν βρέθηκαν στιγμιότυπα για τον χρήστη {$name}. Δημιουργήστε ένα με </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Δεν βρέθηκε κατάταξη με το όνομα {$name}.
-error-profile-not-found = Το προφίλ SkyBlock {$profile} που ανήκει στον χρήστη {$name} έχει απενεργοποιημένο το API ή δεν έχει συνδεθεί από τότε που ισχύει το νέο σύστημα προφίλ.
+error-invalid-uuid = Το UUID `{$uuid}` δεν είναι έγκυρο.
+error-invalid-username = Το όνομα χρήστη `{$name}` δεν είναι έγκυρο.
+error-member-player-not-found = Δεν βρέθηκε το μέλος `{$name}` στο προφίλ.
+error-skyblock-profile-not-found = Δεν βρέθηκε προφίλ SkyBlock για τον χρήστη `{$name}`.
+error-player-snapshot-not-found = Δεν βρέθηκαν στιγμιότυπα για τον χρήστη `{$name}`. Δημιουργήστε ένα με </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Δεν βρέθηκε κατάταξη με το όνομα `{$name}`.
+error-profile-not-found = Το προφίλ SkyBlock `{$profile}` που ανήκει στον χρήστη `{$name}` έχει απενεργοποιημένο το API ή δεν έχει συνδεθεί από τότε που ισχύει το νέο σύστημα προφίλ.
 error-identifier-too-long =
   Ένα από τα δημιουργημένα αναγνωριστικά για αυτήν την αλληλεπίδραση είναι πολύ μεγάλο.
   Δοκιμάστε να μειώσετε τον αριθμό των στοιχείων ή το ποσό του προσαρμοσμένου κειμένου.
-error-user-track-limit-reached = Έχετε φτάσει τον μέγιστο αριθμό παρακολούθησης των {$limit}. Αγοράστε το StatPixel+ για να αφαιρέσετε αυτόν τον περιορισμό στη διεύθυνση <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Έχετε φτάσει τον μέγιστο αριθμό παρακολούθησης των `{$limit}`. Αγοράστε το StatPixel+ για να αφαιρέσετε αυτόν τον περιορισμό στη διεύθυνση <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Αυτή η ομάδα έχει φτάσει τον μέγιστο αριθμό παρακολούθησης των {$limit}.
+  Αυτή η ομάδα έχει φτάσει τον μέγιστο αριθμό παρακολούθησης των `{$limit}`.
   Εάν έχετε το StatPixel+, ενισχύστε την ομάδα με </boost:1132443666997321809> για να αφαιρέσετε αυτόν τον περιορισμό ή μεταβείτε στο <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Έχετε φτάσει τον μέγιστο αριθμό ενίσχυσης των {$limit}. Μπορείτε να αφαιρέσετε μια ενίσχυση στον πίνακα ελέγχου: <https://statpixel.xyz/dashboard/boost>.
+  Έχετε φτάσει τον μέγιστο αριθμό ενίσχυσης των `{$limit}`. Μπορείτε να αφαιρέσετε μια ενίσχυση στον πίνακα ελέγχου: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Ήδη παρακολουθείτε αυτόν τον παίκτη σε αυτό το κανάλι.
 error-not-premium = Πρέπει να είστε συνδρομητής StatPixel+ για να πραγματοποιήσετε αυτήν την ενέργεια. Μεταβείτε στο <https://statpixel.xyz/plus> για περισσότερες πληροφορίες.
 error-not-in-a-guild = Πρέπει να είστε σε μια ομάδα για να πραγματοποιήσετε αυτήν την ενέργεια.
 error-boost-already-exists = Ήδη ενισχύετε αυτήν την ομάδα.
-error-time-invalid-character = Βρέθηκε μη έγκυρος χαρακτήρας στο όρισμα χρόνου στη θέση {$position}.
-error-time-expected-number = Αναμενόταν ένας αριθμός στο όρισμα χρόνου στη θέση {$position}.
-error-time-unknown-unit = Άγνωστη μονάδα χρόνου {$unit} στη θέση {$position} με τιμή {$value}.
+error-time-invalid-character = Βρέθηκε μη έγκυρος χαρακτήρας στο όρισμα χρόνου στη θέση `{$position}`.
+error-time-expected-number = Αναμενόταν ένας αριθμός στο όρισμα χρόνου στη θέση `{$position}`.
+error-time-unknown-unit = Άγνωστη μονάδα χρόνου `{$unit}` στη θέση `{$position}` με τιμή `{$value}`.
 error-time-empty = Το όρισμα χρόνου δεν μπορεί να είναι κενό.
 error-time-overflow = Η διάρκεια του ορίσματος χρόνου είναι πολύ μεγάλη. Δοκιμάστε να το κρατήσετε κάτω από 3.000 χρόνια.
 
@@ -167,19 +167,19 @@ username = Όνομα χρήστη
 username-placeholder = Εισαγάγετε το όνομα χρήστη
 
 invalid-statistic =
-  Μη έγκυρη στατιστική πληροφορία {$statistic} για το παιχνίδι {$game}. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρη στατιστική πληροφορία `{$statistic}` για το παιχνίδι `{$game}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 invalid-level-type =
-  Μη έγκυρος τύπος επιπέδου {$kind}. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρος τύπος επιπέδου `{$kind}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 invalid-game-type =
-  Μη έγκυρος τύπος παιχνιδιού {$game}. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρος τύπος παιχνιδιού `{$game}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 image-created =
   Η εικόνα σας δημιουργήθηκε! Δοκιμάστε την με </execute:1125992506501365892>.
 
-  Αναγνωριστικό: {$id}
-  Σύνδεσμος: {$link}
+  Αναγνωριστικό: `{$id}`
+  Σύνδεσμος: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = Μη έγκυρο χρώμα
 error-invalid-colour-description = Το παρεχόμενο χρώμα δεν είναι έγκυρο. Δοκιμάστε να δώσετε ένα από [αυτά τα χρώματα](https://simple.wikipedia.org/wiki/List_of_colors) ή ένα χρώμα hex προεπιλεγμένο με το `#`.
 colour-changed = Άλλαξε το χρώμα του φόντου
-colour-changed-description = Το χρώμα του φόντου σας άλλαξε σε {$colour}.
+colour-changed-description = Το χρώμα του φόντου σας άλλαξε σε `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = σύνδεση
 
 linking-failed = Η σύνδεση απέτυχε
 linking-failed-uuid-description = Το UUID `{$uuid}` δεν ανήκει σε λογαριασμό Minecraft.
-linking-failed-username-description = Το όνομα χρήστη **{$username}** δεν ανήκει σε λογαριασμό Minecraft.
+linking-failed-username-description = Το όνομα χρήστη **`{$username}`** δεν ανήκει σε λογαριασμό Minecraft.
 linking-failed-description = Πρέπει να παρέχετε ένα έγκυρο UUID ή όνομα χρήστη.
 linking-succeeded = Η σύνδεση ήταν επιτυχής
-linking-succeeded-description = Ο λογαριασμός Discord σας είναι πλέον συνδεδεμένος με το λογαριασμό Minecraft **{$name}**.
+linking-succeeded-description = Ο λογαριασμός Discord σας είναι πλέον συνδεδεμένος με το λογαριασμό Minecraft **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Arcade προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Arcade προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού που θα προβληθεί
 
@@ -674,8 +674,8 @@ arena-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Arena προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Arena προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού που θα προβληθεί
 
@@ -780,8 +780,8 @@ bedwars-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Bed Wars προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Bed Wars προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού που θα προβληθεί
 
@@ -880,8 +880,8 @@ blitz-project = έργο
   .uuid-description = Minecraft UUID
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Blitz Survival Games που θέλετε να προβάλετε
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Blitz Survival Games που θέλετε να προβάλετε
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -958,8 +958,8 @@ buildbattle-project = έργο
   .uuid-description = Minecraft UUID
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Build Battle που θέλετε να προβάλετε
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Build Battle που θέλετε να προβάλετε
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = έργο
   .uuid-description = Minecraft UUID
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Cops and Crims που θέλετε να προβάλετε
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Cops and Crims που θέλετε να προβάλετε
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1143,8 +1143,8 @@ duels-project = προβολή
   .uuid-description = UUID Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
-  .kind = στατιστική
-  .kind-description = Η στατιστική Duel που θα προβληθεί
+  .statistic = στατιστική
+  .statistic-description = Η στατιστική Duel που θα προβληθεί
   .value = τιμή
   .value-description = Η τιμή της στατιστικής που θα προβληθεί
 
@@ -1222,8 +1222,8 @@ megawalls-project = προβολή
   .uuid-description = UUID Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
-  .kind = στατιστική
-  .kind-description = Η στατιστική Mega Walls που θα προβληθεί
+  .statistic = στατιστική
+  .statistic-description = Η στατιστική Mega Walls που θα προβληθεί
   .value = τιμή
   .value-description = Η τιμή της στατιστικής που θα προβληθεί
 
@@ -1302,8 +1302,8 @@ murdermystery-project = έργο
   .uuid-description = UUID στο Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Murder Mystery προς προβολή
-  .kind = στατιστικά
-  .kind-description = Η στατιστική του Murder Mystery που θα προβληθεί
+  .statistic = στατιστικά
+  .statistic-description = Η στατιστική του Murder Mystery που θα προβληθεί
   .value = τιμή
   .value-description = Η τιμή της στατιστικής που θα προβληθεί
 
@@ -1390,8 +1390,8 @@ paintball-project = έργο
   .uuid-description = UUID στο Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
-  .kind = στατιστικά
-  .kind-description = Η στατιστική του Paintball που θα προβληθεί
+  .statistic = στατιστικά
+  .statistic-description = Η στατιστική του Paintball που θα προβληθεί
   .value = τιμή
   .value-description = Η τιμή της στατιστικής που θα προβληθεί
 
@@ -1469,8 +1469,8 @@ pit-project = έργο
   .uuid-description = UUID στο Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
-  .kind = στατιστικά
-  .kind-description = Η στατιστική του The Pit που θα προβληθεί
+  .statistic = στατιστικά
+  .statistic-description = Η στατιστική του The Pit που θα προβληθεί
   .value = τιμή
   .value-description = Η τιμή της στατιστικής που θα προβληθεί
 
@@ -1546,8 +1546,8 @@ quake-project = project
   .uuid-description = UUID Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία Quakecraft προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Quakecraft που πρέπει να προβληθεί
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Quakecraft που πρέπει να προβληθεί
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1636,8 +1636,8 @@ skywars-project = έργο
   .uuid-description = UUID Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό SkyWars που πρέπει να προβληθεί
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό SkyWars που πρέπει να προβληθεί
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1711,8 +1711,8 @@ smash-project = έργο
   .uuid-description = UUID Minecraft
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Smash Heroes που πρέπει να προβληθεί
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Smash Heroes που πρέπει να προβληθεί
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1785,8 +1785,8 @@ speeduhc-project = project
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό SpeedUHC προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό SpeedUHC προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1868,8 +1868,8 @@ tntgames-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό TNT Games προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό TNT Games προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό Turbo Kart Racers προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό Turbo Kart Racers προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -2028,8 +2028,8 @@ uhc-project = εκτίμηση
   .uuid-description = UUID Minecraft
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό του UHC Champions προς εκτίμηση
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό του UHC Champions προς εκτίμηση
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς εκτίμηση
 
@@ -2115,8 +2115,8 @@ vampirez-project = προβλέψη
   .uuid-description = UUID Minecraft
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό του VampireZ προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό του VampireZ προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -2191,8 +2191,8 @@ walls-project = προβλέψη
   .uuid-description = UUID Minecraft
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό του Walls προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό του Walls προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -2271,8 +2271,8 @@ warlords-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό των Warlords προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό των Warlords προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -2346,8 +2346,8 @@ woolwars-project = έργο
   .uuid-description = Minecraft UUID
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
-  .kind = στατιστικό
-  .kind-description = Το στατιστικό των Wool Wars προς προβολή
+  .statistic = στατιστικό
+  .statistic-description = Το στατιστικό των Wool Wars προς προβολή
   .value = τιμή
   .value-description = Η τιμή του στατιστικού προς προβολή
 
@@ -2471,7 +2471,7 @@ guild-monthly = μηνιαία
   .uuid = uuid
   .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
 
-showing-guild-xp-statistics = Εμφάνιση της κέρδισης XP της συντεχνίας από {$from} έως {$to}.
+showing-guild-xp-statistics = Εμφάνιση της κέρδισης XP της συντεχνίας από `{$from}` έως `{$to}`.
 
 # Κοινές ετικέτες καμβά
 

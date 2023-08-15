@@ -447,8 +447,9 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				let stats_rhs = &data_rhs.stats.#path_to_game.#id;
 				let game_lhs = &data_lhs.stats.#path_to_game;
 				let game_rhs = &data_rhs.stats.#path_to_game;
+				let is_different = data_lhs.uuid != data_rhs.uuid;
 
-				let (xp, level) = {
+				let (xp, positive, level) = {
 					let xp_lhs = #calc::convert(&#xp_lhs);
 					let xp_rhs = #calc::convert(&#xp_rhs);
 					let xp = if xp_lhs > xp_rhs {
@@ -457,7 +458,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 						xp_rhs - xp_lhs
 					};
 
-					(xp, #calc::get_level(xp))
+					(xp, xp_rhs >= xp_lhs, #calc::get_level(xp))
 				};
 
 				canvas
@@ -467,11 +468,12 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 					)
 					.push_down_post_draw(
 						progress,
-						#api::canvas::shape::WideBubbleProgress::from_level_progress(
+						#api::canvas::shape::WideBubbleProgress::from_level_diff(
 							ctx,
 							&#calc::get_level_format(level),
-							&#calc::get_curr_level_xp(xp),
-							&#calc::get_level_xp(xp),
+							&#calc::get_total_xp(xp),
+							positive,
+							is_different,
 						)
 					)
 					#labels_diff

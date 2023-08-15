@@ -2,46 +2,46 @@
 not-linked = Eksik argümanlar
 not-linked-description = Bağlantınız olmadığı için profil sağlamanız gerekmektedir.
 showing-statistics = <a:clock:1115091329958019253> İstatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
-no-previous-statistics = **{$name}** için önceki veriler bulunamadığından dolayı eklendi.
-showing-guild-statistics = <a:clock:1115091329958019253> Sunucu istatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
-no-previous-guild-statistics = **{$name}** sunucusu için önceki veriler bulunamadığından dolayı eklendi.
-showing-comparison = <a:clock:1115091329958019253> {$from} ile {$to} arasındaki istatistik karşılaştırması gösteriliyor.
+no-previous-statistics = **`{$name}`** için önceki veriler bulunamadığından dolayı eklendi.
+showing-guild-statistics = <a:clock:1115091329958019253> Sunucu istatistikleri `{$from}` tarihinden `{$to}` tarihine göre görüntüleniyor.
+no-previous-guild-statistics = **`{$name}`** sunucusu için önceki veriler bulunamadığından dolayı eklendi.
+showing-comparison = <a:clock:1115091329958019253> `{$from}` ile `{$to}` arasındaki istatistik karşılaştırması gösteriliyor.
 
 # Hatalar
 
-error-player-not-found = {$name} adlı bir profille ilgili bilgi bulunamadı.
-error-session-not-found = {$name} adlı bir oturum bulunamadı.
-error-player-uuid-not-found = UUID'si {$uuid} olan bir oyuncu bulunamadı.
-error-player-username-not-found = {$name} kullanıcı adına sahip bir oyuncu bulunamadı.
-error-guild-by-member-uuid-not-found = UUID'si {$uuid} olan bir sunucu üyesi bulunamadı.
-error-guild-by-member-username-not-found = {$name} kullanıcı adına sahip bir sunucu üyesi bulunamadı.
-error-guild-not-found = {$name} adlı bir sunucu bulunamadı.
+error-player-not-found = `{$name}` adlı bir profille ilgili bilgi bulunamadı.
+error-session-not-found = `{$name}` adlı bir oturum bulunamadı.
+error-player-uuid-not-found = UUID'si `{$uuid}` olan bir oyuncu bulunamadı.
+error-player-username-not-found = `{$name}` kullanıcı adına sahip bir oyuncu bulunamadı.
+error-guild-by-member-uuid-not-found = UUID'si `{$uuid}` olan bir sunucu üyesi bulunamadı.
+error-guild-by-member-username-not-found = `{$name}` kullanıcı adına sahip bir sunucu üyesi bulunamadı.
+error-guild-not-found = `{$name}` adlı bir sunucu bulunamadı.
 error-internal = Bir iç hata oluştu. Bu hata kaydedildi ve yakında çözülecek.
 error-not-linked = Minecraft hesabınıza bağlı değilsiniz. Hesabınızı bağlamak için </link:1113624864524357710> komutunu kullanın.
-error-invalid-uuid = Geçersiz UUID: {$uuid}.
-error-invalid-username = Geçersiz kullanıcı adı: {$name}.
-error-member-player-not-found = Profilde {$name} adlı üye bulunamadı.
-error-skyblock-profile-not-found = {$name} adlı bir SkyBlock profil bulunamadı.
-error-player-snapshot-not-found = {$name} için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683060> komutunu kullanın.
-error-leaderboard-not-found = {$name} adlı bir lider tablosu bulunamadı.
-error-profile-not-found = {$name} adlı {$profile} SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
+error-invalid-uuid = Geçersiz UUID: `{$uuid}`.
+error-invalid-username = Geçersiz kullanıcı adı: `{$name}`.
+error-member-player-not-found = Profilde `{$name}` adlı üye bulunamadı.
+error-skyblock-profile-not-found = `{$name}` adlı bir SkyBlock profil bulunamadı.
+error-player-snapshot-not-found = `{$name}` için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683060> komutunu kullanın.
+error-leaderboard-not-found = `{$name}` adlı bir lider tablosu bulunamadı.
+error-profile-not-found = `{$name}` adlı `{$profile}` SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
 error-identifier-too-long =
   Bu etkileşim için oluşturulan kimliklerden biri çok uzun.
   Bileşen sayısını veya özel metin miktarını azaltmayı deneyin.
-error-user-track-limit-reached = {$limit} adet izleme limitine ulaştınız. Bu limiti kaldırmak için StatPixel+ satın alın: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = `{$limit}` adet izleme limitine ulaştınız. Bu limiti kaldırmak için StatPixel+ satın alın: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Bu sunucu, {$limit} adet izleme limitine ulaştı.
+  Bu sunucu, `{$limit}` adet izleme limitine ulaştı.
   Eğer StatPixel+ sahibiyseniz, sınırlamayı kaldırmak için sunucuyu yükseltin: </boost:1132443666997321809> veya <https://statpixel.xyz/plus> adresine gidin.
 error-boost-limit-reached =
-  {$limit} adet yükseltme limitine ulaştınız. Yükseltmeyi kaldırmak için şu adrese gidin: <https://statpixel.xyz/dashboard/boost>.
+  `{$limit}` adet yükseltme limitine ulaştınız. Yükseltmeyi kaldırmak için şu adrese gidin: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Bu kanalda zaten bu oyuncuyu izliyorsunuz.
 error-not-premium = Bu işlemi gerçekleştirmek için StatPixel+ abonesi olmalısınız. Daha fazla bilgi için <https://statpixel.xyz/plus> adresine gidin.
 error-not-in-a-guild = Bu işlemi gerçekleştirmek için bir sunucuda olmalısınız.
 error-boost-already-exists = Bu sunucuyu zaten yükseltiyorsunuz.
-error-time-invalid-character = Zaman argümanında geçersiz bir karakter {$position}. pozisyonda bulundu.
-error-time-expected-number = Zaman argümanında {$position}. pozisyonda bir sayı bekleniyor.
-error-time-unknown-unit = {$position}. pozisyonda {$value} değerinde bilinmeyen bir zaman birimi {$unit}.
+error-time-invalid-character = Zaman argümanında geçersiz bir karakter `{$position}`. pozisyonda bulundu.
+error-time-expected-number = Zaman argümanında `{$position}`. pozisyonda bir sayı bekleniyor.
+error-time-unknown-unit = `{$position}`. pozisyonda `{$value}` değerinde bilinmeyen bir zaman birimi `{$unit}`.
 error-time-empty = Zaman argümanı boş olamaz.
 error-time-overflow = Zaman argümanının süresi çok uzun. 3,000 yılın altında tutmaya çalışın.
 
@@ -166,19 +166,19 @@ username = Kullanıcı Adı
 username-placeholder = Kullanıcı adınızı girin
 
 invalid-statistic =
-  {$game} oyunu için geçersiz istatistik {$statistic}. Belgelemeyi kontrol edin ve tekrar deneyin.
+  `{$game}` oyunu için geçersiz istatistik `{$statistic}`. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 invalid-level-type =
-  Geçersiz seviye türü {$kind}. Belgelemeyi kontrol edin ve tekrar deneyin.
+  Geçersiz seviye türü `{$kind}`. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 invalid-game-type =
-  Geçersiz oyun türü {$game}. Belgelemeyi kontrol edin ve tekrar deneyin.
+  Geçersiz oyun türü `{$game}`. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 image-created =
   Görüntünüz oluşturuldu! </execute:1125992506501365892> ile deneyin.
 
-  Kimlik: {$id}
-  Bağlantı: {$link}
+  Kimlik: `{$id}`
+  Bağlantı: `{$link}`
 
 # /about
 
@@ -234,7 +234,7 @@ background = background
 error-invalid-colour = Geçersiz renk sağlandı
 error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of_colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
 colour-changed = Arka plan rengi değiştirildi
-colour-changed-description = Arka plan renginiz {$colour} olarak değiştirildi.
+colour-changed-description = Arka plan renginiz `{$colour}` olarak değiştirildi.
 
 # /skyblock bazaar
 
@@ -531,10 +531,10 @@ link = bağlantı
 
 linking-failed = Bağlantı Başarısız
 linking-failed-uuid-description = Verilen UUID `{$uuid}` bir Minecraft hesabına ait değil.
-linking-failed-username-description = Verilen kullanıcı adı **{$username}** bir Minecraft hesabına ait değil.
+linking-failed-username-description = Verilen kullanıcı adı **`{$username}`** bir Minecraft hesabına ait değil.
 linking-failed-description = Geçerli bir UUID veya kullanıcı adı sağlamalısınız.
 linking-succeeded = Bağlantı Başarılı
-linking-succeeded-description = Discord hesabınız şimdi Minecraft hesabı **{$name}** ile bağlantılıdır.
+linking-succeeded-description = Discord hesabınız şimdi Minecraft hesabı **`{$name}`** ile bağlantılıdır.
 
 # /arcade
 
@@ -598,8 +598,8 @@ arcade-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Arcade istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Arcade istatistiği
   .value = değer
   .value-description = Projeksiyon yapmak için istatistik değeri
 
@@ -673,8 +673,8 @@ arena-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Arena istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Arena istatistiği
   .value = değer
   .value-description = Projeksiyon yapmak için istatistik değeri
 
@@ -779,8 +779,8 @@ bedwars-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Bed Wars istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Bed Wars istatistiği
   .value = değer
   .value-description = Projeksiyon yapmak için istatistik değeri
 
@@ -879,8 +879,8 @@ blitz-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Blitz Survival Games istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Blitz Survival Games istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -957,8 +957,8 @@ buildbattle-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Build Battle istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Build Battle istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -1039,8 +1039,8 @@ copsandcrims-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Cops and Crims istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Cops and Crims istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -1142,8 +1142,8 @@ duels-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Düellos istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Düellos istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -1221,8 +1221,8 @@ megawalls-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Mega Duvarlar istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Mega Duvarlar istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -1301,8 +1301,8 @@ murdermystery-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
-  .kind = istatistik
-  .kind-description = Projelendirilecek Murder Mystery istatistiği
+  .statistic = istatistik
+  .statistic-description = Projelendirilecek Murder Mystery istatistiği
   .value = değer
   .value-description = Projelendirilecek istatistiğin değeri
 
@@ -1389,8 +1389,8 @@ paintball-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
-  .kind = istatistik
-  .kind-description = Projelendirilecek Paintball istatistiği
+  .statistic = istatistik
+  .statistic-description = Projelendirilecek Paintball istatistiği
   .value = değer
   .value-description = Projelendirilecek istatistiğin değeri
 
@@ -1468,8 +1468,8 @@ pit-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
-  .kind = istatistik
-  .kind-description = Projelendirilecek The Pit istatistiği
+  .statistic = istatistik
+  .statistic-description = Projelendirilecek The Pit istatistiği
   .value = değer
   .value-description = Projelendirilecek istatistiğin değeri
 
@@ -1545,8 +1545,8 @@ quake-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak Quakecraft istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak Quakecraft istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistiğin değeri
 
@@ -1635,8 +1635,8 @@ skywars-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak SkyWars istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak SkyWars istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistiğin değeri
 
@@ -1710,8 +1710,8 @@ smash-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak Smash Heroes istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak Smash Heroes istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistiğin değeri
 
@@ -1784,8 +1784,8 @@ speeduhc-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için SpeedUHC modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak SpeedUHC istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak SpeedUHC istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistik değeri
 
@@ -1867,8 +1867,8 @@ tntgames-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak TNT Oyunları istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak TNT Oyunları istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistik değeri
 
@@ -1946,8 +1946,8 @@ turbokartracers-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
-  .kind = istatistik
-  .kind-description = Yansıtılacak Turbo Kart Yarışçıları istatistiği
+  .statistic = istatistik
+  .statistic-description = Yansıtılacak Turbo Kart Yarışçıları istatistiği
   .value = değer
   .value-description = Yansıtılacak istatistik değeri
 
@@ -2027,8 +2027,8 @@ uhc-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak UHC Champions istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak UHC Champions istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -2114,8 +2114,8 @@ vampirez-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak VampireZ istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak VampireZ istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -2190,8 +2190,8 @@ walls-project = projeksiyon
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak The Walls istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak The Walls istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -2271,8 +2271,8 @@ warlords-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Savaşçı istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Savaşçı istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -2346,8 +2346,8 @@ woolwars-project = proje
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
-  .kind = istatistik
-  .kind-description = Projeksiyon yapılacak Wool Wars istatistiği
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Wool Wars istatistiği
   .value = değer
   .value-description = Projeksiyon yapılacak istatistik değeri
 
@@ -2471,7 +2471,7 @@ guild-monthly = aylık
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
 
-showing-guild-xp-statistics = {$from} ile {$to} arasındaki lonca XP kazancını gösteriliyor.
+showing-guild-xp-statistics = `{$from}` ile `{$to}` arasındaki lonca XP kazancını gösteriliyor.
 
 # Paylaşılan tuval etiketleri
 

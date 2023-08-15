@@ -183,7 +183,7 @@ pub fn build(
 					}
 				};
 
-				let kind = shape::WideBubbleProgress(progress, colours);
+				let kind = shape::WideBubbleProgress(progress, colours, false);
 				let body =
 					shape::WideBubbleProgress::from_level_progress(ctx, &level, &current, &needed);
 

@@ -2,46 +2,46 @@
 not-linked = Saknade argument
 not-linked-description = Eftersom du inte är länkad måste du ange en profil för att visa information.
 showing-statistics = <a:clock:1115091329958019253> Visar statistikändringar från {$from} till {$to}.
-no-previous-statistics = Inga tidigare data hittades för **{$name}**, så det har lagts till.
-showing-guild-statistics = Visar gilldestatistikändringar från {$from} till {$to}.
-no-previous-guild-statistics = Inga tidigare data hittades för gildet **{$name}**, så det har lagts till.
-showing-comparison = <a:clock:1115091329958019253> Visar statistik för {$from} jämfört med {$to}.
+no-previous-statistics = Inga tidigare data hittades för **`{$name}`**, så det har lagts till.
+showing-guild-statistics = Visar gilldestatistikändringar från `{$from}` till `{$to}`.
+no-previous-guild-statistics = Inga tidigare data hittades för gildet **`{$name}`**, så det har lagts till.
+showing-comparison = <a:clock:1115091329958019253> Visar statistik för `{$from}` jämfört med `{$to}`.
 
 # Felmeddelanden
 
-error-player-not-found = Profilen för {$name} kunde inte hittas.
-error-session-not-found = En session för {$name} kunde inte hittas.
-error-player-uuid-not-found = En spelare med uuid {$uuid} kunde inte hittas.
-error-player-username-not-found = En spelare med användarnamnet {$name} kunde inte hittas.
-error-guild-by-member-uuid-not-found = En guildmedlem med uuid {$uuid} kunde inte hittas.
-error-guild-by-member-username-not-found = En guildmedlem med användarnamnet {$name} kunde inte hittas.
-error-guild-not-found = En guild med namnet {$name} kunde inte hittas.
+error-player-not-found = Profilen för `{$name}` kunde inte hittas.
+error-session-not-found = En session för `{$name}` kunde inte hittas.
+error-player-uuid-not-found = En spelare med uuid `{$uuid}` kunde inte hittas.
+error-player-username-not-found = En spelare med användarnamnet `{$name}` kunde inte hittas.
+error-guild-by-member-uuid-not-found = En guildmedlem med uuid `{$uuid}` kunde inte hittas.
+error-guild-by-member-username-not-found = En guildmedlem med användarnamnet `{$name}` kunde inte hittas.
+error-guild-not-found = En guild med namnet `{$name}` kunde inte hittas.
 error-internal = Ett internt fel uppstod. Det har loggats och kommer att åtgärdas snart.
 error-not-linked = Du är inte länkad till ett Minecraft-konto. Använd </link:1113624864524357710> för att länka ditt konto.
-error-invalid-uuid = uuid {$uuid} är ogiltig.
-error-invalid-username = Användarnamnet {$name} är ogiltigt.
-error-member-player-not-found = Medlemmen {$name} kunde inte hittas i profilen.
-error-skyblock-profile-not-found = En SkyBlock-profil för {$name} kunde inte hittas.
-error-player-snapshot-not-found = Inga snapshots hittades för {$name}. Skapa en med </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = En leaderboard med namnet {$name} kunde inte hittas.
-error-profile-not-found = SkyBlock-profilen {$profile} för {$name} har inaktiverad API eller så har personen inte loggat in sedan det nya profilsystemet.
+error-invalid-uuid = uuid `{$uuid}` är ogiltig.
+error-invalid-username = Användarnamnet `{$name}` är ogiltigt.
+error-member-player-not-found = Medlemmen `{$name}` kunde inte hittas i profilen.
+error-skyblock-profile-not-found = En SkyBlock-profil för `{$name}` kunde inte hittas.
+error-player-snapshot-not-found = Inga snapshots hittades för `{$name}`. Skapa en med </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = En leaderboard med namnet `{$name}` kunde inte hittas.
+error-profile-not-found = SkyBlock-profilen `{$profile}` för `{$name}` har inaktiverad API eller så har personen inte loggat in sedan det nya profilsystemet.
 error-identifier-too-long =
   En av de genererade identifierarna för denna interaktion är för lång.
   Försök minska antalet komponenter eller den anpassade textens mängd.
-error-user-track-limit-reached = Du har nått det maximala antalet spårningar, {$limit}. Köp StatPixel+ för att ta bort detta begränsning på <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Du har nått det maximala antalet spårningar, `{$limit}`. Köp StatPixel+ för att ta bort detta begränsning på <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Den här guilden har nått det maximala antalet spårningar, {$limit}.
+  Den här guilden har nått det maximala antalet spårningar, `{$limit}`.
   Om du har StatPixel+ kan du öka guildens begränsning med </boost:1132443666997321809> eller gå till <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Du har nått det maximala antalet förstärkningar, {$limit}. Du kan ta bort en förstärkning på instrumentpanelen: <https://statpixel.xyz/dashboard/boost>.
+  Du har nått det maximala antalet förstärkningar, `{$limit}`. Du kan ta bort en förstärkning på instrumentpanelen: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Du spårar redan den här spelaren i den här kanalen.
 error-not-premium = Du måste vara en StatPixel+ prenumerant för att utföra denna åtgärd. Gå till <https://statpixel.xyz/plus> för mer information.
 error-not-in-a-guild = Du måste vara med i en guild för att utföra denna åtgärd.
 error-boost-already-exists = Du förstärker redan den här guilden.
-error-time-invalid-character = Ett ogiltigt tecken hittades i tidsargumentet på position {$position}.
-error-time-expected-number = Ett nummer förväntades i tidsargumentet på position {$position}.
-error-time-unknown-unit = Okänd tidsenhet {$unit} på position {$position} med värdet {$value}.
+error-time-invalid-character = Ett ogiltigt tecken hittades i tidsargumentet på position `{$position}`.
+error-time-expected-number = Ett nummer förväntades i tidsargumentet på position `{$position}`.
+error-time-unknown-unit = Okänd tidsenhet `{$unit}` på position `{$position}` med värdet `{$value}`.
 error-time-empty = Tidsargumentet får inte vara tomt.
 error-time-overflow = Tidsargumentets längd är för lång. Försök hålla den under 3 000 år.
 
@@ -167,19 +167,19 @@ username = Användarnamn
 username-placeholder = Ange användarnamn att använda
 
 invalid-statistic =
-  Ogiltig statistik {$statistic} för {$game}. Kolla dokumentationen och försök igen.
+  Ogiltig statistik `{$statistic}` för `{$game}`. Kolla dokumentationen och försök igen.
 
 invalid-level-type =
-  Ogiltig nivåtyp {$kind}. Kolla dokumentationen och försök igen.
+  Ogiltig nivåtyp `{$kind}`. Kolla dokumentationen och försök igen.
 
 invalid-game-type =
-  Ogiltig speltyp {$game}. Kolla dokumentationen och försök igen.
+  Ogiltig speltyp `{$game}`. Kolla dokumentationen och försök igen.
 
 image-created =
   Din bild har skapats! Testa den med </execute:1125992506501365892>.
 
-  Identifierare: {$id}
-  Länk: {$link}
+  Identifierare: `{$id}`
+  Länk: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = bakgrund
 error-invalid-colour = Ogiltig färg angiven
 error-invalid-colour-description = Den angivna färgen är ogiltig. Försök med en av [dessa färger](https://simple.wikipedia.org/wiki/List_of_colors) eller en hexfärg föregången av `#`.
 colour-changed = Bakgrundsfärg ändrad
-colour-changed-description = Din bakgrundsfärg har ändrats till {$colour}.
+colour-changed-description = Din bakgrundsfärg har ändrats till `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = länka
 
 linking-failed = Länkning misslyckades
 linking-failed-uuid-description = UUID:n `{$uuid}` tillhör inte ett Minecraft-konto.
-linking-failed-username-description = Användarnamnet **{$username}** tillhör inte ett Minecraft-konto.
+linking-failed-username-description = Användarnamnet **`{$username}`** tillhör inte ett Minecraft-konto.
 linking-failed-description = Du måste ange en giltig UUID eller användarnamn.
 linking-succeeded = Länkning lyckades
-linking-succeeded-description = Ditt Discord-konto är nu länkat till Minecraft-kontot **{$name}**.
+linking-succeeded-description = Ditt Discord-konto är nu länkat till Minecraft-kontot **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = projekt
   .uuid-description = Minecraft-UUID
   .mode = läge
   .mode-description = Arcade-läge att visa
-  .kind = statistik
-  .kind-description = Arcade-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Arcade-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -674,8 +674,8 @@ arena-project = projekt
   .uuid-description = Minecraft-UUID
   .mode = läge
   .mode-description = Arena-läge att visa
-  .kind = statistik
-  .kind-description = Arena-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Arena-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -780,8 +780,8 @@ bedwars-project = projekt
   .uuid-description = Minecraft-UUID
   .mode = läge
   .mode-description = Bed Wars-läge att visa
-  .kind = statistik
-  .kind-description = Bed Wars-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Bed Wars-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -880,8 +880,8 @@ blitz-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
-  .kind = statistik
-  .kind-description = Den statistik för Blitz Survival Games att projicera
+  .statistic = statistik
+  .statistic-description = Den statistik för Blitz Survival Games att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -958,8 +958,8 @@ buildbattle-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Läget för Build Battle att visa
-  .kind = statistik
-  .kind-description = Den statistik för Build Battle att projicera
+  .statistic = statistik
+  .statistic-description = Den statistik för Build Battle att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
-  .kind = statistik
-  .kind-description = Den statistik för Cops and Crims att projicera
+  .statistic = statistik
+  .statistic-description = Den statistik för Cops and Crims att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1143,8 +1143,8 @@ duels-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Duels-läge att visa
-  .kind = statistik
-  .kind-description = Den Duels-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Duels-statistik att projicera
   .value = värde
   .value-description = Det värde av statistiken som ska projiceras
 
@@ -1222,8 +1222,8 @@ megawalls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Mega Walls-läge att visa
-  .kind = statistik
-  .kind-description = Den Mega Walls-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Mega Walls-statistik att projicera
   .value = värde
   .value-description = Det värde av statistiken som ska projiceras
 
@@ -1302,8 +1302,8 @@ murdermystery-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Mordmysteriets läge att visa
-  .kind = statistik
-  .kind-description = Mordmysteriets statistik att projicera
+  .statistic = statistik
+  .statistic-description = Mordmysteriets statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera
 
@@ -1390,8 +1390,8 @@ paintball-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Paintball-läge att visa
-  .kind = statistik
-  .kind-description = Paintball-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Paintball-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera
 
@@ -1469,8 +1469,8 @@ pit-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = The Pit-läge att visa
-  .kind = statistik
-  .kind-description = The Pit-statistik att projicera
+  .statistic = statistik
+  .statistic-description = The Pit-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera
 
@@ -1546,8 +1546,8 @@ quake-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Quakecraft-läget att visa
-  .kind = statistik
-  .kind-description = Den Quakecraft-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Quakecraft-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1636,8 +1636,8 @@ skywars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = SkyWars-läget att visa
-  .kind = statistik
-  .kind-description = Den SkyWars-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den SkyWars-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1711,8 +1711,8 @@ smash-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
-  .kind = statistik
-  .kind-description = Den Smash Heroes-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Smash Heroes-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1785,8 +1785,8 @@ speeduhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
-  .kind = statistik
-  .kind-description = SpeedUHC-statistiken att projicera
+  .statistic = statistik
+  .statistic-description = SpeedUHC-statistiken att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1868,8 +1868,8 @@ tntgames-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = TNT Games-läget att visa
-  .kind = statistik
-  .kind-description = TNT Games-statistiken att projicera
+  .statistic = statistik
+  .statistic-description = TNT Games-statistiken att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
-  .kind = statistik
-  .kind-description = Turbo Kart Racers-statistiken att projicera
+  .statistic = statistik
+  .statistic-description = Turbo Kart Racers-statistiken att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2028,8 +2028,8 @@ uhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = UHC Champions-läge att visa
-  .kind = statistik
-  .kind-description = UHC Champions-statistik att projicera
+  .statistic = statistik
+  .statistic-description = UHC Champions-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2115,8 +2115,8 @@ vampirez-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = VampireZ-läge att visa
-  .kind = statistik
-  .kind-description = VampireZ-statistik att projicera
+  .statistic = statistik
+  .statistic-description = VampireZ-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2191,8 +2191,8 @@ walls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = The Walls-läge att visa
-  .kind = statistik
-  .kind-description = The Walls-statistik att projicera
+  .statistic = statistik
+  .statistic-description = The Walls-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2271,8 +2271,8 @@ warlords-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Warlords-läget att visa
-  .kind = statistik
-  .kind-description = Den Warlords-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Warlords-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2346,8 +2346,8 @@ woolwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = läge
   .mode-description = Wool Wars-läget att visa
-  .kind = statistik
-  .kind-description = Den Wool Wars-statistik att projicera
+  .statistic = statistik
+  .statistic-description = Den Wool Wars-statistik att projicera
   .value = värde
   .value-description = Värdet av statistiken att projicera till
 
@@ -2471,7 +2471,7 @@ guild-monthly = månadsvis
   .uuid = uuid
   .uuid-description = UUID för guildmedlem att visa
 
-showing-guild-xp-statistics = Visar guild XP-förvärv från {$from} till {$to}.
+showing-guild-xp-statistics = Visar guild XP-förvärv från `{$from}` till `{$to}`.
 
 # Delade canvas-etiketter
 

@@ -5,6 +5,7 @@ use diesel_async::RunQueryDsl;
 use flate2::read::ZlibDecoder;
 use futures::StreamExt;
 use tracing::info;
+use uuid::Uuid;
 
 pub fn decode_old(data: &[u8]) -> Result<player_old::data::Data, crate::Error> {
 	let mut decoder = ZlibDecoder::new(data);
@@ -20,19 +21,24 @@ pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 	loop {
 		let snapshots = snapshot::table
 			.filter(snapshot::version.eq(player_old::data::VERSION))
-			.select((snapshot::data, snapshot::id))
+			.select((snapshot::data, snapshot::id, snapshot::uuid))
 			.limit(1_000)
-			.load::<(Vec<u8>, i32)>(&mut pool.get().await?)
+			.load::<(Vec<u8>, i32, Uuid)>(&mut pool.get().await?)
 			.await?;
 
 		let len = snapshots.len();
 
 		futures::stream::iter(snapshots)
-			.map(|(snapshot, id)| {
+			.map(|(snapshot, id, uuid)| {
 				let pool = &pool;
 
 				async move {
-					let data: player::data::Data = decode_old(snapshot.as_slice()).unwrap().into();
+					let mut data: player::data::Data =
+						decode_old(snapshot.as_slice()).unwrap().into();
+
+					// FIXME: Remove this after converting from v12 to v14
+					data.uuid = uuid;
+
 					let encoded = encode(&data).unwrap();
 					let new_hash = fxhash::hash64(&encoded) as i64;
 

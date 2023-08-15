@@ -2,45 +2,45 @@
 not-linked = गुम गए आर्ग्युमेंट्स
 not-linked-description = आप जुड़े नहीं हैं, इसलिए देखने के लिए एक प्रोफ़ाइल प्रदान करने की आवश्यकता है।
 showing-statistics = <a:clock:1115091329958019253> आंकड़े दिखाएं जिनका बदलाव {$from} से {$to} तक हुआ है।
-no-previous-statistics = **{$name}** के लिए कोई पिछले डेटा नहीं मिला, इसलिए यह जोड़ दिया गया है।
-showing-guild-statistics = <a:clock:1115091329958019253> गिल्ड आंकड़े दिखाएं जिनका बदलाव {$from} से {$to} तक हुआ है।
-no-previous-guild-statistics = गिल्ड **{$name}** के लिए कोई पिछले डेटा नहीं मिला, इसलिए यह जोड़ दिया गया है।
-showing-comparison = <a:clock:1115091329958019253> {$from} की तुलना में {$to} के आंकड़े दिखाएं।
+no-previous-statistics = **`{$name}`** के लिए कोई पिछले डेटा नहीं मिला, इसलिए यह जोड़ दिया गया है।
+showing-guild-statistics = <a:clock:1115091329958019253> गिल्ड आंकड़े दिखाएं जिनका बदलाव `{$from}` से `{$to}` तक हुआ है।
+no-previous-guild-statistics = गिल्ड **`{$name}`** के लिए कोई पिछले डेटा नहीं मिला, इसलिए यह जोड़ दिया गया है।
+showing-comparison = <a:clock:1115091329958019253> `{$from}` की तुलना में `{$to}` के आंकड़े दिखाएं।
 
 # Errors
-error-player-not-found = {$name} के लिए प्रोफ़ाइल नहीं मिली।
-error-session-not-found = {$name} के लिए सत्र नहीं मिला।
-error-player-uuid-not-found = यूआईडी {$uuid} के साथ एक खिलाड़ी नहीं मिला।
-error-player-username-not-found = उपयोगकर्ता नाम {$name} के साथ एक खिलाड़ी नहीं मिला।
-error-guild-by-member-uuid-not-found = यूआईडी {$uuid} के साथ एक गिल्ड सदस्य नहीं मिला।
-error-guild-by-member-username-not-found = उपयोगकर्ता नाम {$name} के साथ एक गिल्ड सदस्य नहीं मिला।
-error-guild-not-found = नाम {$name} के साथ एक गिल्ड नहीं मिला।
+error-player-not-found = `{$name}` के लिए प्रोफ़ाइल नहीं मिली।
+error-session-not-found = `{$name}` के लिए सत्र नहीं मिला।
+error-player-uuid-not-found = यूआईडी `{$uuid}` के साथ एक खिलाड़ी नहीं मिला।
+error-player-username-not-found = उपयोगकर्ता नाम `{$name}` के साथ एक खिलाड़ी नहीं मिला।
+error-guild-by-member-uuid-not-found = यूआईडी `{$uuid}` के साथ एक गिल्ड सदस्य नहीं मिला।
+error-guild-by-member-username-not-found = उपयोगकर्ता नाम `{$name}` के साथ एक गिल्ड सदस्य नहीं मिला।
+error-guild-not-found = नाम `{$name}` के साथ एक गिल्ड नहीं मिला।
 error-internal = एक आंतरिक त्रुटि हुई। इसे लॉग किया गया है और जल्द ही सुलझाया जाएगा।
 error-not-linked = आप Minecraft खाते से जुड़े नहीं हैं। खाता जोड़ने के लिए </link:1113624864524357710> का उपयोग करें।
-error-invalid-uuid = यूआईडी {$uuid} अमान्य है।
-error-invalid-username = उपयोगकर्ता नाम {$name} अमान्य है।
-error-member-player-not-found = उपयोगकर्ता {$name} प्रोफ़ाइल में नहीं मिला।
-error-skyblock-profile-not-found = {$name} के लिए SkyBlock प्रोफ़ाइल नहीं मिली।
-error-player-snapshot-not-found = {$name} के लिए कोई स्नैपशॉट नहीं मिला। </bedwars daily:1113624864272683060> के साथ एक बनाएँ।
-error-leaderboard-not-found = नाम {$name} के साथ एक लीडरबोर्ड नहीं मिला।
-error-profile-not-found = {$name} के लिए {$profile} SkyBlock प्रोफ़ाइल का API अक्षम है या वे नए प्रोफ़ाइल सिस्टम के बाद से लॉगिन नहीं किए गए हैं।
+error-invalid-uuid = यूआईडी `{$uuid}` अमान्य है।
+error-invalid-username = उपयोगकर्ता नाम `{$name}` अमान्य है।
+error-member-player-not-found = उपयोगकर्ता `{$name}` प्रोफ़ाइल में नहीं मिला।
+error-skyblock-profile-not-found = `{$name}` के लिए SkyBlock प्रोफ़ाइल नहीं मिली।
+error-player-snapshot-not-found = `{$name}` के लिए कोई स्नैपशॉट नहीं मिला। </bedwars daily:1113624864272683060> के साथ एक बनाएँ।
+error-leaderboard-not-found = नाम `{$name}` के साथ एक लीडरबोर्ड नहीं मिला।
+error-profile-not-found = `{$name}` के लिए `{$profile}` SkyBlock प्रोफ़ाइल का API अक्षम है या वे नए प्रोफ़ाइल सिस्टम के बाद से लॉगिन नहीं किए गए हैं।
 error-identifier-too-long =
   इस इंटरैक्शन के लिए उत्पन्न किए गए पहचानकर्ता में से एक बहुत लंबा है।
   कृपया अंशों की संख्या कम करें या कस्टम पाठ की मात्रा कम करें।
-error-user-track-limit-reached = आपने {$limit} की अधिकतम ट्रैक्स तक पहुंच गए हैं। इस लिमिट को हटाने के लिए StatPixel+ खरीदें: <https://statpixel.xyz/plus>।
+error-user-track-limit-reached = आपने `{$limit}` की अधिकतम ट्रैक्स तक पहुंच गए हैं। इस लिमिट को हटाने के लिए StatPixel+ खरीदें: <https://statpixel.xyz/plus>।
 error-guild-track-limit-reached =
-  इस गिल्ड ने {$limit} की अधिकतम ट्रैक्स तक पहुंच लिया है।
+  इस गिल्ड ने `{$limit}` की अधिकतम ट्रैक्स तक पहुंच लिया है।
   यदि आपके पास StatPixel+ है, तो रोकने के लिए गिल्ड को </boost:1132443666997321809> से बूस्ट करें या <https://statpixel.xyz/plus> पर जाएं।
 error-boost-limit-reached =
-  आपने {$limit} की अधिकतम बूस्ट्स तक पहुंच गए हैं। आप डैशबोर्ड पर एक बूस्ट हटा सकते हैं: <https://statpixel.xyz/dashboard/boost>।
+  आपने `{$limit}` की अधिकतम बूस्ट्स तक पहुंच गए हैं। आप डैशबोर्ड पर एक बूस्ट हटा सकते हैं: <https://statpixel.xyz/dashboard/boost>।
 error-track-already-exists =
   आप इस चैनल में पहले से ही इस खिलाड़ी का ट्रैकिंग कर रहे हैं।
 error-not-premium = इस कार्रवाई को करने के लिए आपको StatPixel+ सब्सक्राइबर होना चाहिए। अधिक जानकारी के लिए <https://statpixel.xyz/plus> पर जाएं।
 error-not-in-a-guild = इस कार्रवाई को करने के लिए आपको एक गिल्ड में होना चाहिए।
 error-boost-already-exists = आप पहले से ही इस गिल्ड को बूस्ट कर रहे हैं।
-error-time-invalid-character = समय तर्क में एक अमान्य वर्ण मिला है, स्थान {$position} में।
-error-time-expected-number = समय तर्क में स्थान {$position} में एक संख्या की उम्मीद है।
-error-time-unknown-unit = स्थान {$position} में अज्ञात समय इकाई {$unit} और मूल्य {$value}।
+error-time-invalid-character = समय तर्क में एक अमान्य वर्ण मिला है, स्थान `{$position}` में।
+error-time-expected-number = समय तर्क में स्थान `{$position}` में एक संख्या की उम्मीद है।
+error-time-unknown-unit = स्थान `{$position}` में अज्ञात समय इकाई `{$unit}` और मूल्य `{$value}`।
 error-time-empty = समय तर्क खाली नहीं हो सकता।
 error-time-overflow = समय तर्क की अवधि बहुत लंबी है। इसे 3,000 साल से कम रखने का प्रयास करें।
 
@@ -163,19 +163,19 @@ username = उपयोगकर्ता नाम
 username-placeholder = उपयोगकर्ता नाम दर्ज करें
 
 invalid-statistic =
-  खेल {$game} के लिए अमान्य आंकड़ा {$statistic}। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
+  खेल `{$game}` के लिए अमान्य आंकड़ा `{$statistic}`। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
 
 invalid-level-type =
-  अमान्य स्तर प्रकार {$kind}। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
+  अमान्य स्तर प्रकार `{$kind}`। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
 
 invalid-game-type =
-  अमान्य खेल प्रकार {$game}। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
+  अमान्य खेल प्रकार `{$game}`। दस्तावेज़ीकरण देखें और पुनः प्रयास करें।
 
 image-created =
   आपका चित्र बन गया है! </execute:1125992506501365892> के साथ इसे आज़माएं।
 
-  पहचानकर्ता: {$id}
-  लिंक: {$link}
+  पहचानकर्ता: `{$id}`
+  लिंक: `{$link}`
 
 # /about
 
@@ -231,7 +231,7 @@ background = पृष्ठभूमि
 error-invalid-colour = अमान्य रंग प्रदान किया गया
 error-invalid-colour-description = प्रदान किया गया रंग अमान्य है। कृपया [इन रंगों](https://simple.wikipedia.org/wiki/List_of_colors) में से एक प्रदान करें या `#` से प्रारंभ होने वाला हेक्स रंग दें।
 colour-changed = पृष्ठभूमि रंग बदल गया
-colour-changed-description = आपकी पृष्ठभूमि का रंग बदल दिया गया है: {$colour}।
+colour-changed-description = आपकी पृष्ठभूमि का रंग बदल दिया गया है: `{$colour}`।
 
 # /skyblock bazaar
 
@@ -528,10 +528,10 @@ link = लिंक
 
 linking-failed = लिंक करने में विफल
 linking-failed-uuid-description = UUID `{$uuid}` माइनक्राफ्ट अकाउंट से संबंधित नहीं है।
-linking-failed-username-description = उपयोगकर्ता नाम **{$username}** माइनक्राफ्ट अकाउंट से संबंधित नहीं है।
+linking-failed-username-description = उपयोगकर्ता नाम **`{$username}`** माइनक्राफ्ट अकाउंट से संबंधित नहीं है।
 linking-failed-description = आपको एक वैध UUID या उपयोगकर्ता नाम प्रदान करना होगा।
 linking-succeeded = लिंक करने में सफल
-linking-succeeded-description = आपका डिस्कॉर्ड अकाउंट अब माइनक्राफ्ट अकाउंट **{$name}** से लिंक है।
+linking-succeeded-description = आपका डिस्कॉर्ड अकाउंट अब माइनक्राफ्ट अकाउंट **`{$name}`** से लिंक है।
 
 # /arcade
 
@@ -595,8 +595,8 @@ arcade-project = प्रोजेक्ट
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए आर्केड मोड
-  .kind = सांख्यिकी
-  .kind-description = भविष्य में प्रोजेक्ट करने के लिए आर्केड सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = भविष्य में प्रोजेक्ट करने के लिए आर्केड सांख्यिकी
   .value = मान
   .value-description = प्रोजेक्ट करने के लिए सांख्यिकी का मूल्य
 
@@ -670,8 +670,8 @@ arena-project = प्रोजेक्ट
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए एरीना मोड
-  .kind = सांख्यिकी
-  .kind-description = भविष्य में प्रोजेक्ट करने के लिए एरीना सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = भविष्य में प्रोजेक्ट करने के लिए एरीना सांख्यिकी
   .value = मान
   .value-description = प्रोजेक्ट करने के लिए सांख्यिकी का मूल्य
 
@@ -776,8 +776,8 @@ bedwars-project = प्रोजेक्ट
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए बेड वॉर्स मोड
-  .kind = सांख्यिकी
-  .kind-description = भविष्य में प्रोजेक्ट करने के लिए बेड वॉर्स सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = भविष्य में प्रोजेक्ट करने के लिए बेड वॉर्स सांख्यिकी
   .value = मान
   .value-description = प्रोजेक्ट करने के लिए सांख्यिकी का मूल्य
 
@@ -874,8 +874,8 @@ blitz-project = परियोजना
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए ब्लित्ज सर्वाइवल गेम्स मोड
-  .kind = आंकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए ब्लित्ज सर्वाइवल गेम्स आंकड़ा
+  .statistic = आंकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए ब्लित्ज सर्वाइवल गेम्स आंकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आंकड़े का मूल्य
 
@@ -952,8 +952,8 @@ buildbattle-project = परियोजना
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए बिल्ड बैटल मोड
-  .kind = आंकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए बिल्ड बैटल आंकड़ा
+  .statistic = आंकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए बिल्ड बैटल आंकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आंकड़े का मूल्य
 
@@ -1034,8 +1034,8 @@ copsandcrims-project = परियोजना
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए कॉप्स और क्रिम्स मोड
-  .kind = आंकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए कॉप्स और क्रिम्स आंकड़ा
+  .statistic = आंकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए कॉप्स और क्रिम्स आंकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आंकड़े का मूल्य
 
@@ -1137,8 +1137,8 @@ duels-project = परियोजना
   .uuid-description = Minecraft UUID
   .mode = मोड
   .mode-description = देखने के लिए ड्यूल्स मोड
-  .kind = सांख्यिकी
-  .kind-description = परियोजित करने के लिए ड्यूल्स सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजित करने के लिए ड्यूल्स सांख्यिकी
   .value = मूल्य
   .value-description = परियोजित करने के लिए सांख्यिकी का मूल्य
 
@@ -1216,8 +1216,8 @@ megawalls-project = परियोजना
   .uuid-description = Minecraft UUID
   .mode = मोड
   .mode-description = देखने के लिए मेगा वॉल्स मोड
-  .kind = सांख्यिकी
-  .kind-description = परियोजित करने के लिए मेगा वॉल्स सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजित करने के लिए मेगा वॉल्स सांख्यिकी
   .value = मूल्य
   .value-description = परियोजित करने के लिए सांख्यिकी का मूल्य
 
@@ -1296,8 +1296,8 @@ murdermystery-project = प्रोजेक्ट
   .uuid-description = Minecraft यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए मर्डर मिस्ट्री मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए मर्डर मिस्ट्री आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए मर्डर मिस्ट्री आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मूल्य
 
@@ -1384,8 +1384,8 @@ paintball-project = प्रोजेक्ट
   .uuid-description = Minecraft यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए पेंटबॉल मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए पेंटबॉल आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए पेंटबॉल आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मूल्य
 
@@ -1463,8 +1463,8 @@ pit-project = प्रोजेक्ट
   .uuid-description = Minecraft यूयूआईडी
   .mode = मोड
   .mode-description = देखने के लिए द पिट मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए द पिट आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए द पिट आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मूल्य
 
@@ -1540,8 +1540,8 @@ quake-project = परियोजना
   .uuid-description = Minecraft यूएवीआईडी
   .mode = मोड
   .mode-description = देखने के लिए Quakecraft मोड
-  .kind = सांख्यिकी
-  .kind-description = देखने के लिए Quakecraft सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = देखने के लिए Quakecraft सांख्यिकी
   .value = मान
   .value-description = देखने के लिए सांख्यिकी का मूल्य
 
@@ -1629,8 +1629,8 @@ skywars-project = परियोजना
   .uuid-description = Minecraft यूएवीआईडी
   .mode = मोड
   .mode-description = देखने के लिए SkyWars मोड
-  .kind = सांख्यिकी
-  .kind-description = देखने के लिए SkyWars सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = देखने के लिए SkyWars सांख्यिकी
   .value = मान
   .value-description = देखने के लिए सांख्यिकी का मूल्य
 
@@ -1702,8 +1702,8 @@ smash-project = परियोजना
   .uuid-description = Minecraft यूएवीआईडी
   .mode = मोड
   .mode-description = देखने के लिए Smash Heroes मोड
-  .kind = सांख्यिकी
-  .kind-description = देखने के लिए Smash Heroes सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = देखने के लिए Smash Heroes सांख्यिकी
   .value = मान
   .value-description = देखने के लिए सांख्यिकी का मूल्य
 
@@ -1774,8 +1774,8 @@ speeduhc-project = प्रोजेक्ट
   .uuid-description = Minecraft UUID
   .mode = मोड
   .mode-description = देखने के लिए SpeedUHC मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए SpeedUHC आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए SpeedUHC आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मान
 
@@ -1857,8 +1857,8 @@ tntgames-project = प्रोजेक्ट
   .uuid-description = Minecraft UUID
   .mode = मोड
   .mode-description = देखने के लिए टीएनटी गेम्स मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए TNT गेम्स आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए TNT गेम्स आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मान
 
@@ -1936,8 +1936,8 @@ turbokartracers-project = प्रोजेक्ट
   .uuid-description = Minecraft UUID
   .mode = मोड
   .mode-description = देखने के लिए टर्बो कार्ट रेसर्स मोड
-  .kind = आँकड़ा
-  .kind-description = प्रोजेक्ट करने के लिए Turbo Kart Racers आँकड़ा
+  .statistic = आँकड़ा
+  .statistic-description = प्रोजेक्ट करने के लिए Turbo Kart Racers आँकड़ा
   .value = मूल्य
   .value-description = प्रोजेक्ट करने के लिए आँकड़े की मान
 
@@ -2017,8 +2017,8 @@ uhc-project = परियोजना
   .uuid-description = माइनक्राफ्ट UUID
   .mode = मोड
   .mode-description = देखने के लिए UHC Champions मोड
-  .kind = सांख्यिकी
-  .kind-description = परियोजना करने के लिए UHC Champions सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजना करने के लिए UHC Champions सांख्यिकी
   .value = मूल्य
   .value-description = परियोजना करने के लिए सांख्यिकी का मूल्य
 
@@ -2104,8 +2104,8 @@ vampirez-project = परियोजना
   .uuid-description = माइनक्राफ्ट UUID
   .mode = मोड
   .mode-description = देखने के लिए VampireZ मोड
-  .kind = सांख्यिकी
-  .kind-description = परियोजना करने के लिए VampireZ सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजना करने के लिए VampireZ सांख्यिकी
   .value = मूल्य
   .value-description = परियोजना करने के लिए सांख्यिकी का मूल्य
 
@@ -2180,8 +2180,8 @@ walls-project = परियोजना
   .uuid-description = माइनक्राफ्ट UUID
   .mode = मोड
   .mode-description = देखने के लिए The Walls मोड
-  .kind = सांख्यिकी
-  .kind-description = परियोजना करने के लिए The Walls सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजना करने के लिए The Walls सांख्यिकी
   .value = मूल्य
   .value-description = परियोजना करने के लिए सांख्यिकी का मूल्य
 
@@ -2262,8 +2262,8 @@ warlords-project = परियोजना
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = वारलॉर्ड्स मोड देखने के लिए
-  .kind = सांख्यिकी
-  .kind-description = परियोजना करने के लिए वारलॉर्ड्स सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजना करने के लिए वारलॉर्ड्स सांख्यिकी
   .value = मूल्य
   .value-description = परियोजना करने के लिए सांख्यिकी का मूल्य
 
@@ -2337,8 +2337,8 @@ woolwars-project = परियोजना
   .uuid-description = माइंक्राफ्ट यूयूआईडी
   .mode = मोड
   .mode-description = वूलवॉर्स मोड देखने के लिए
-  .kind = सांख्यिकी
-  .kind-description = परियोजना करने के लिए वूलवॉर्स सांख्यिकी
+  .statistic = सांख्यिकी
+  .statistic-description = परियोजना करने के लिए वूलवॉर्स सांख्यिकी
   .value = मूल्य
   .value-description = परियोजना करने के लिए सांख्यिकी का मूल्य
 
@@ -2462,7 +2462,7 @@ guild-monthly = मासिक
   .uuid = यूयूआईडी
   .uuid-description = गिल्ड सदस्य के गिल्ड का यूयूआईडी देखने के लिए
 
-showing-guild-xp-statistics = {$from} से {$to} तक गिल्ड XP गेन दिखा रहा है।
+showing-guild-xp-statistics = `{$from}` से `{$to}` तक गिल्ड XP गेन दिखा रहा है।
 
 # साझा कैनवास लेबल
 

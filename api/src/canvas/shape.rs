@@ -79,7 +79,7 @@ pub struct GuildXpName;
 pub struct GuildXpValue;
 pub struct GuildXpTitle;
 
-pub struct WideBubbleProgress(pub f32, pub [Color; 2]);
+pub struct WideBubbleProgress(pub f32, pub [Color; 2], pub bool);
 
 impl Custom {
 	#[must_use]
@@ -494,6 +494,7 @@ impl WideBubbleProgress {
 		level: &str,
 		total: &impl ToFormatted,
 		positive: bool,
+		short: bool,
 	) -> Paragraph {
 		let label = tr!(ctx, "levels-gained");
 		let mut text = vec![
@@ -507,94 +508,49 @@ impl WideBubbleProgress {
 				paint: Paint::White,
 				..Default::default()
 			},
+			Text {
+				text: if positive { "+" } else { "-" },
+				paint: Paint::White,
+				..Default::default()
+			},
 		];
 
 		text.extend(minecraft_string(level));
-		text.reserve_exact(7);
 
-		let label = tr!(ctx, "total");
-		let total = total.to_formatted(ctx);
+		if short {
+			Self::from_text(text.as_slice())
+		} else {
+			text.reserve_exact(7);
 
-		text.push(Text {
-			text: "\n",
-			paint: Paint::White,
-			..Default::default()
-		});
+			let label = tr!(ctx, "total");
+			let total = total.to_formatted(ctx);
 
-		text.push(Text {
-			text: &label,
-			paint: Paint::White,
-			..Default::default()
-		});
+			text.push(Text {
+				text: "\n",
+				paint: Paint::White,
+				..Default::default()
+			});
 
-		text.push(Text {
-			text: ": ",
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		text.push(Text {
-			text: if positive { "+" } else { "-" },
-			paint: Paint::Green,
-			..Default::default()
-		});
-
-		text.push(Text {
-			text: &total,
-			paint: Paint::Green,
-			..Default::default()
-		});
-
-		Self::from_text(text.as_slice())
-	}
-
-	#[must_use]
-	pub fn from_level_total(ctx: &Context<'_>, level: &str, total: &impl ToFormatted) -> Paragraph {
-		let label = tr!(ctx, "levels-gained");
-		let mut text = vec![
-			Text {
+			text.push(Text {
 				text: &label,
 				paint: Paint::White,
 				..Default::default()
-			},
-			Text {
+			});
+
+			text.push(Text {
 				text: ": ",
 				paint: Paint::White,
 				..Default::default()
-			},
-		];
+			});
 
-		text.extend(minecraft_string(level));
-		text.reserve_exact(7);
+			text.push(Text {
+				text: &total,
+				paint: Paint::Green,
+				..Default::default()
+			});
 
-		let label = tr!(ctx, "total");
-		let total = total.to_formatted(ctx);
-
-		text.push(Text {
-			text: "\n",
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		text.push(Text {
-			text: &label,
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		text.push(Text {
-			text: ": ",
-			paint: Paint::White,
-			..Default::default()
-		});
-
-		text.push(Text {
-			text: &total,
-			paint: Paint::Green,
-			..Default::default()
-		});
-
-		Self::from_text(text.as_slice())
+			Self::from_text(text.as_slice())
+		}
 	}
 
 	#[must_use]
@@ -1260,7 +1216,11 @@ impl Shape for WideBubbleProgress {
 	fn size(&self) -> Size {
 		Size {
 			width: BUBBLE_WIDTH * 1.5 + GAP / 2.,
-			height: BUBBLE_HEIGHT,
+			height: if self.2 {
+				BUBBLE_HEIGHT - 33. - GAP
+			} else {
+				BUBBLE_HEIGHT
+			},
 		}
 	}
 

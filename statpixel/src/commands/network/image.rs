@@ -31,6 +31,7 @@ pub fn network(
 	let progress = shape::WideBubbleProgress(
 		network::get_level_progress(data.xp),
 		network::get_colours(level),
+		false,
 	);
 
 	let member = guild.and_then(|g| g.members.iter().find(|m| m.uuid == player.uuid));

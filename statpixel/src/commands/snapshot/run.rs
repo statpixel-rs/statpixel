@@ -91,16 +91,16 @@ pub async fn command<G: api::prelude::Game>(
 			.await?;
 		}
 		format::Display::Text => {
-			let (player, data_lhs) = commands::get_player_data(ctx, uuid, username).await?;
+			let (player, data_rhs) = commands::get_player_data(ctx, uuid, username).await?;
 
 			player.increase_searches(ctx).await?;
 
-			let status = snapshot::user::get_or_insert(ctx, &player, &data_lhs, after).await?;
+			let status = snapshot::user::get_or_insert(ctx, &player, &data_rhs, after).await?;
 
-			let snapshot::user::Status::Found((data_rhs, created_at)) = status else {
+			let snapshot::user::Status::Found((data_lhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data_lhs.username),
+					name: util::escape_username(&data_rhs.username),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -212,6 +212,7 @@ pub async fn guild_command(
 		let progress = shape::WideBubbleProgress(
 			calc::guild::get_level_progress(guild.xp),
 			[Colour::Gold.into(), Colour::Gold.into()],
+			false,
 		);
 
 		let mut canvas = Canvas::new(720.)

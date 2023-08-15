@@ -2,46 +2,46 @@
 not-linked = ขาดอาร์กิวเมนต์
 not-linked-description = เนื่องจากคุณไม่ได้เชื่อมโยงอาร์กิวเมนต์ คุณต้องให้ข้อมูลโปรไฟล์เพื่อดู
 showing-statistics = <a:clock:1115091329958019253> แสดงการเปลี่ยนแปลงสถิติจาก {$from} ถึง {$to}
-no-previous-statistics = ไม่พบข้อมูลที่แล้วสำหรับ **{$name}** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
-showing-guild-statistics = แสดงการเปลี่ยนแปลงสถิติกิลด์จาก {$from} ถึง {$to}
-no-previous-guild-statistics = ไม่พบข้อมูลที่แล้วสำหรับกิลด์ **{$name}** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
-showing-comparison = <a:clock:1115091329958019253> แสดงสถิติของ {$from} กับ {$to}
+no-previous-statistics = ไม่พบข้อมูลที่แล้วสำหรับ **`{$name}`** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
+showing-guild-statistics = แสดงการเปลี่ยนแปลงสถิติกิลด์จาก `{$from}` ถึง `{$to}`
+no-previous-guild-statistics = ไม่พบข้อมูลที่แล้วสำหรับกิลด์ **`{$name}`** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
+showing-comparison = <a:clock:1115091329958019253> แสดงสถิติของ `{$from}` กับ `{$to}`
 
 # ข้อผิดพลาด
 
-error-player-not-found = ไม่พบโปรไฟล์ที่เป็นของ {$name}
-error-session-not-found = ไม่พบเซสชั่นที่เป็นของ {$name}
-error-player-uuid-not-found = ไม่พบผู้เล่นด้วย UUID {$uuid}
-error-player-username-not-found = ไม่พบผู้เล่นด้วยชื่อผู้ใช้ {$name}
-error-guild-by-member-uuid-not-found = ไม่พบสมาชิกกิลด์ด้วย UUID {$uuid}
-error-guild-by-member-username-not-found = ไม่พบสมาชิกกิลด์ด้วยชื่อผู้ใช้ {$name}
-error-guild-not-found = ไม่พบกิลด์ที่ชื่อ {$name}
+error-player-not-found = ไม่พบโปรไฟล์ที่เป็นของ `{$name}`
+error-session-not-found = ไม่พบเซสชั่นที่เป็นของ `{$name}`
+error-player-uuid-not-found = ไม่พบผู้เล่นด้วย UUID `{$uuid}`
+error-player-username-not-found = ไม่พบผู้เล่นด้วยชื่อผู้ใช้ `{$name}`
+error-guild-by-member-uuid-not-found = ไม่พบสมาชิกกิลด์ด้วย UUID `{$uuid}`
+error-guild-by-member-username-not-found = ไม่พบสมาชิกกิลด์ด้วยชื่อผู้ใช้ `{$name}`
+error-guild-not-found = ไม่พบกิลด์ที่ชื่อ `{$name}`
 error-internal = เกิดข้อผิดพลาดภายใน ได้ทำการบันทึกข้อผิดพลาดและจะถูกแก้ไขในไม่ช้า
 error-not-linked = คุณยังไม่ได้เชื่อมโยงไปยังบัญชี Minecraft ใช้คำสั่ง </link:1113624864524357710> เพื่อเชื่อมโยงบัญชีของคุณ
-error-invalid-uuid = UUID {$uuid} ไม่ถูกต้อง
-error-invalid-username = ชื่อผู้ใช้ {$name} ไม่ถูกต้อง
-error-member-player-not-found = ไม่พบสมาชิก {$name} ในโปรไฟล์
-error-skyblock-profile-not-found = ไม่พบโปรไฟล์ SkyBlock ที่เป็นของ {$name}
-error-player-snapshot-not-found = ไม่พบสแนปช็อตสำหรับ {$name} สร้างด้วยคำสั่ง </bedwars daily:1113624864272683060>
-error-leaderboard-not-found = ไม่พบตารางคะแนนสูงสุดที่ชื่อ {$name}
-error-profile-not-found = โปรไฟล์ SkyBlock {$profile} ที่เป็นของ {$name} มี API ถูกปิดใช้งานหรือเขาไม่ได้เข้าสู่ระบบตั้งแต่ระบบโปรไฟล์ใหม่
+error-invalid-uuid = UUID `{$uuid}` ไม่ถูกต้อง
+error-invalid-username = ชื่อผู้ใช้ `{$name}` ไม่ถูกต้อง
+error-member-player-not-found = ไม่พบสมาชิก `{$name}` ในโปรไฟล์
+error-skyblock-profile-not-found = ไม่พบโปรไฟล์ SkyBlock ที่เป็นของ `{$name}`
+error-player-snapshot-not-found = ไม่พบสแนปช็อตสำหรับ `{$name}` สร้างด้วยคำสั่ง </bedwars daily:1113624864272683060>
+error-leaderboard-not-found = ไม่พบตารางคะแนนสูงสุดที่ชื่อ `{$name}`
+error-profile-not-found = โปรไฟล์ SkyBlock `{$profile}` ที่เป็นของ `{$name}` มี API ถูกปิดใช้งานหรือเขาไม่ได้เข้าสู่ระบบตั้งแต่ระบบโปรไฟล์ใหม่
 error-identifier-too-long =
   หนึ่งในตัวระบุที่สร้างขึ้นสำหรับการกระทำนี้ยาวเกินไป
   ลองลดจำนวนส่วนประกอบหรือปริมาณข้อความที่กำหนดเอง
-error-user-track-limit-reached = คุณได้ถึงจำนวนการติดตามสูงสุดของ {$limit} ซื้อ StatPixel+ เพื่อลบข้อจำกัดนี้ที่ <https://statpixel.xyz/plus>
+error-user-track-limit-reached = คุณได้ถึงจำนวนการติดตามสูงสุดของ `{$limit}` ซื้อ StatPixel+ เพื่อลบข้อจำกัดนี้ที่ <https://statpixel.xyz/plus>
 error-guild-track-limit-reached =
-  กิลด์นี้ได้ถึงจำนวนการติดตามสูงสุดของ {$limit}
+  กิลด์นี้ได้ถึงจำนวนการติดตามสูงสุดของ `{$limit}`
   หากคุณมี StatPixel+ เพิ่มพลังให้กิลด์ด้วยคำสั่ง </boost:1132443666997321809> เพื่อลบข้อจำกัดนี้ หรือไปที่ <https://statpixel.xyz/plus>
 error-boost-limit-reached =
-  คุณได้ถึงจำนวนการเพิ่มพลังสูงสุดของ {$limit} คุณสามารถลบพลังที่แสดงบนแดชบอร์ด: <https://statpixel.xyz/dashboard/boost>
+  คุณได้ถึงจำนวนการเพิ่มพลังสูงสุดของ `{$limit}` คุณสามารถลบพลังที่แสดงบนแดชบอร์ด: <https://statpixel.xyz/dashboard/boost>
 error-track-already-exists =
   คุณกำลังติดตามผู้เล่นคนนี้ในช่องนี้อยู่แล้ว
 error-not-premium = คุณต้องเป็นสมาชิก StatPixel+ เพื่อทำการดำเนินการนี้ ไปที่ <https://statpixel.xyz/plus> เพื่อดูข้อมูลเพิ่มเติม
 error-not-in-a-guild = คุณต้องเป็นสมาชิกในกิลด์เพื่อทำการดำเนินการนี้
 error-boost-already-exists = คุณกำลังเพิ่มพลังให้กับกิลด์นี้อยู่แล้ว
-error-time-invalid-character = พบอักขระไม่ถูกต้องในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ {$position}
-error-time-expected-number = คาดหวังว่าจะเป็นตัวเลขในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ {$position}
-error-time-unknown-unit = หน่วยเวลาที่ไม่รู้จัก {$unit} ในตำแหน่งที่ {$position} ค่า {$value}
+error-time-invalid-character = พบอักขระไม่ถูกต้องในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ `{$position}`
+error-time-expected-number = คาดหวังว่าจะเป็นตัวเลขในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ `{$position}`
+error-time-unknown-unit = หน่วยเวลาที่ไม่รู้จัก `{$unit}` ในตำแหน่งที่ `{$position}` ค่า `{$value}`
 error-time-empty = อาร์กิวเมนต์ของเวลาต้องไม่เป็นค่าว่างเปล่า
 error-time-overflow = ระยะเวลาในอาร์กิวเมนต์สั่งการนี้ยาวเกินไป โปรดลองให้ระยะเวลาน้อยกว่า 3,000 ปี
 
@@ -167,19 +167,19 @@ username = ชื่อผู้ใช้
 username-placeholder = กรอกชื่อผู้ใช้เพื่อใช้งาน
 
 invalid-statistic =
-  สถิติ {$statistic} ที่ไม่ถูกต้องสำหรับ {$game} ตรวจสอบเอกสารและลองอีกครั้ง
+  สถิติ `{$statistic}` ที่ไม่ถูกต้องสำหรับ `{$game}` ตรวจสอบเอกสารและลองอีกครั้ง
 
 invalid-level-type =
-  ประเภทระดับ {$kind} ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
+  ประเภทระดับ `{$kind}` ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
 
 invalid-game-type =
-  ประเภทเกม {$game} ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
+  ประเภทเกม `{$game}` ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
 
 image-created =
   รูปภาพของคุณได้รับการสร้างแล้ว! ลองใช้งานกับ </execute:1125992506501365892>.
 
-  ตัวแทน: {$id}
-  ลิงก์: {$link}
+  ตัวแทน: `{$id}`
+  ลิงก์: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = สีที่ให้มาไม่ถูกต้อง
 error-invalid-colour-description = สีที่ให้มาไม่ถูกต้อง ลองให้กำหนดหนึ่งใน [สีเหล่านี้] (https://simple.wikipedia.org/wiki/List_of_colors) หรือสีฮักเซียเพิ่มต้นทางด้วย `#`
 colour-changed = เปลี่ยนสีพื้นหลังแล้ว
-colour-changed-description = สีพื้นหลังของคุณถูกเปลี่ยนเป็น {$colour}.
+colour-changed-description = สีพื้นหลังของคุณถูกเปลี่ยนเป็น `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = เชื่อมโยง
 
 linking-failed = การเชื่อมโยงล้มเหลว
 linking-failed-uuid-description = UUID `{$uuid}` ไม่ใช่บัญชี Minecraft
-linking-failed-username-description = ชื่อผู้เล่น **{$username}** ไม่ใช่บัญชี Minecraft
+linking-failed-username-description = ชื่อผู้เล่น **`{$username}`** ไม่ใช่บัญชี Minecraft
 linking-failed-description = คุณต้องให้ UUID หรือชื่อผู้เล่นที่ถูกต้อง
 linking-succeeded = เชื่อมโยงสำเร็จ
-linking-succeeded-description = บัญชี Discord ของคุณได้เชื่อมโยงกับบัญชี Minecraft **{$name}**.
+linking-succeeded-description = บัญชี Discord ของคุณได้เชื่อมโยงกับบัญชี Minecraft **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = โปรเจกต์
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Arcade ที่ต้องการทำนาย
+  .statistic = สถิติ
+  .statistic-description = สถิติ Arcade ที่ต้องการทำนาย
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการทำนายไป
 
@@ -674,8 +674,8 @@ arena-project = โปรเจกต์
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Arena ที่ต้องการทำนาย
+  .statistic = สถิติ
+  .statistic-description = สถิติ Arena ที่ต้องการทำนาย
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการทำนายไป
 
@@ -780,8 +780,8 @@ bedwars-project = โปรเจกต์
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Bed Wars ที่ต้องการทำนาย
+  .statistic = สถิติ
+  .statistic-description = สถิติ Bed Wars ที่ต้องการทำนาย
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการทำนายไป
 
@@ -880,8 +880,8 @@ blitz-project = โครงการ
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Blitz Survival Games ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ Blitz Survival Games ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโครงการไป
 
@@ -958,8 +958,8 @@ buildbattle-project = โครงการ
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Build Battle ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ Build Battle ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโครงการไป
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = โครงการ
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Cops and Crims ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ Cops and Crims ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโครงการไป
 
@@ -1143,8 +1143,8 @@ duels-project = โครงการ
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Duels ที่ต้องการคาดการณ์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Duels ที่ต้องการคาดการณ์
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการคาดการณ์ไป
 
@@ -1222,8 +1222,8 @@ megawalls-project = โครงการ
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Mega Walls ที่ต้องการคาดการณ์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Mega Walls ที่ต้องการคาดการณ์
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการคาดการณ์ไป
 
@@ -1302,8 +1302,8 @@ murdermystery-project = โปรเจค
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Murder Mystery ที่ต้องการดู
+  .statistic = สถิติ
+  .statistic-description = สถิติ Murder Mystery ที่ต้องการดู
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจคไป
 
@@ -1390,8 +1390,8 @@ paintball-project = โปรเจค
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Paintball ที่ต้องการโปรเจคไป
+  .statistic = สถิติ
+  .statistic-description = สถิติ Paintball ที่ต้องการโปรเจคไป
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจคไป
 
@@ -1469,8 +1469,8 @@ pit-project = โปรเจค
   .uuid-description = UUID Minecraft
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ The Pit ที่ต้องการโปรเจคไป
+  .statistic = สถิติ
+  .statistic-description = สถิติ The Pit ที่ต้องการโปรเจคไป
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจคไป
 
@@ -1546,8 +1546,8 @@ quake-project = โปรเจกต์
   .uuid-description = รหัส-uuid ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Quakecraft ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Quakecraft ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโปรเจกต์ไป
 
@@ -1636,8 +1636,8 @@ skywars-project = โปรเจกต์
   .uuid-description = รหัส-uuid ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ SkyWars ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ SkyWars ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโปรเจกต์ไป
 
@@ -1711,8 +1711,8 @@ smash-project = โปรเจกต์
   .uuid-description = รหัส-uuid ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Smash Heroes ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Smash Heroes ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโปรเจกต์ไป
 
@@ -1785,8 +1785,8 @@ speeduhc-project = project
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ SpeedUHC ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ SpeedUHC ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจกต์ไปยัง
 
@@ -1868,8 +1868,8 @@ tntgames-project = project
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติเกม TNT ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติเกม TNT ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจกต์ไปยัง
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = project
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Turbo Kart Racers ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Turbo Kart Racers ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าของสถิติที่ต้องการโปรเจกต์ไปยัง
 
@@ -2028,8 +2028,8 @@ uhc-project = โครงการ
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
-  .kind = สถิติ
-  .kind-description = สถิติ UHC Champions ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ UHC Champions ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโครงการไป
 
@@ -2115,8 +2115,8 @@ vampirez-project = โครงการ
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
-  .kind = สถิติ
-  .kind-description = สถิติ VampireZ ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ VampireZ ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโครงการไป
 
@@ -2191,8 +2191,8 @@ walls-project = โครงการ
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
-  .kind = สถิติ
-  .kind-description = สถิติ The Walls ที่ต้องการโครงการ
+  .statistic = สถิติ
+  .statistic-description = สถิติ The Walls ที่ต้องการโครงการ
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโครงการไป
 
@@ -2271,8 +2271,8 @@ warlords-project = โครงการ
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Warlords ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Warlords ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโปรเจกต์ไป
 
@@ -2346,8 +2346,8 @@ woolwars-project = โครงการ
   .uuid-description = UUID ของ Minecraft
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
-  .kind = สถิติ
-  .kind-description = สถิติ Wool Wars ที่ต้องการโปรเจกต์
+  .statistic = สถิติ
+  .statistic-description = สถิติ Wool Wars ที่ต้องการโปรเจกต์
   .value = ค่า
   .value-description = ค่าสถิติที่ต้องการโปรเจกต์ไป
 
@@ -2471,7 +2471,7 @@ guild-monthly = รายเดือน
   .uuid = รหัส-uuid
   .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
 
-showing-guild-xp-statistics = แสดงคะแนนประสบความสำเร็จของกิลด์ตั้งแต่ {$from} ถึง {$to}.
+showing-guild-xp-statistics = แสดงคะแนนประสบความสำเร็จของกิลด์ตั้งแต่ `{$from}` ถึง `{$to}`.
 
 # ป้ายชื่อส่วนที่ใช้ร่วมกัน
 

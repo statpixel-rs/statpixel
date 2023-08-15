@@ -2,46 +2,46 @@
 not-linked = Ontbrekende argumenten
 not-linked-description = Omdat je niet gekoppeld bent, moet je een profiel verstrekken om te bekijken.
 showing-statistics = <a:clock:1115091329958019253> Statistieken tonen van {$from} naar {$to}.
-no-previous-statistics = Geen vorige gegevens gevonden voor **{$name}**, dus deze zijn ingevoegd.
-showing-guild-statistics = Guild-statistieken tonen van {$from} naar {$to}.
-no-previous-guild-statistics = Geen vorige gegevens gevonden voor guild **{$name}**, dus deze zijn ingevoegd.
-showing-comparison = <a:clock:1115091329958019253> Statistieken tonen van {$from} vergeleken met {$to}.
+no-previous-statistics = Geen vorige gegevens gevonden voor **`{$name}`**, dus deze zijn ingevoegd.
+showing-guild-statistics = Guild-statistieken tonen van `{$from}` naar `{$to}`.
+no-previous-guild-statistics = Geen vorige gegevens gevonden voor guild **`{$name}`**, dus deze zijn ingevoegd.
+showing-comparison = <a:clock:1115091329958019253> Statistieken tonen van `{$from}` vergeleken met `{$to}`.
 
 # Fouten
 
-error-player-not-found = Een profiel van {$name} is niet gevonden.
-error-session-not-found = Een sessie van {$name} is niet gevonden.
-error-player-uuid-not-found = Een speler met de UUID {$uuid} is niet gevonden.
-error-player-username-not-found = Een speler met de gebruikersnaam {$name} is niet gevonden.
-error-guild-by-member-uuid-not-found = Een guild-lid met UUID {$uuid} is niet gevonden.
-error-guild-by-member-username-not-found = Een guild-lid met gebruikersnaam {$name} is niet gevonden.
-error-guild-not-found = Een guild met de naam {$name} is niet gevonden.
+error-player-not-found = Een profiel van `{$name}` is niet gevonden.
+error-session-not-found = Een sessie van `{$name}` is niet gevonden.
+error-player-uuid-not-found = Een speler met de UUID `{$uuid}` is niet gevonden.
+error-player-username-not-found = Een speler met de gebruikersnaam `{$name}` is niet gevonden.
+error-guild-by-member-uuid-not-found = Een guild-lid met UUID `{$uuid}` is niet gevonden.
+error-guild-by-member-username-not-found = Een guild-lid met gebruikersnaam `{$name}` is niet gevonden.
+error-guild-not-found = Een guild met de naam `{$name}` is niet gevonden.
 error-internal = Er is een interne fout opgetreden. Deze is gelogd en wordt binnenkort opgelost.
 error-not-linked = Je bent niet gekoppeld aan een Minecraft-account. Gebruik </link:1113624864524357710> om je account te koppelen.
-error-invalid-uuid = De UUID {$uuid} is ongeldig.
-error-invalid-username = De gebruikersnaam {$name} is ongeldig.
-error-member-player-not-found = Het lid {$name} is niet gevonden in het profiel.
-error-skyblock-profile-not-found = Een SkyBlock-profiel van {$name} is niet gevonden.
-error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor {$name}. Maak er een aan met </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Een leaderboard met de naam {$name} is niet gevonden.
-error-profile-not-found = Het {$profile} SkyBlock-profiel van {$name} heeft de API uitgeschakeld of ze hebben niet ingelogd sinds het nieuwe profielsysteem.
+error-invalid-uuid = De UUID `{$uuid}` is ongeldig.
+error-invalid-username = De gebruikersnaam `{$name}` is ongeldig.
+error-member-player-not-found = Het lid `{$name}` is niet gevonden in het profiel.
+error-skyblock-profile-not-found = Een SkyBlock-profiel van `{$name}` is niet gevonden.
+error-player-snapshot-not-found = Er zijn geen momentopnames gevonden voor `{$name}`. Maak er een aan met </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Een leaderboard met de naam `{$name}` is niet gevonden.
+error-profile-not-found = Het `{$profile}` SkyBlock-profiel van `{$name}` heeft de API uitgeschakeld of ze hebben niet ingelogd sinds het nieuwe profielsysteem.
 error-identifier-too-long =
   Een van de gegenereerde identificatoren voor deze interactie is te lang.
   Probeer het aantal componenten of de hoeveelheid aangepaste tekst te verminderen.
-error-user-track-limit-reached = Je hebt het maximale aantal tracks van {$limit} bereikt. Koop StatPixel+ om deze limiet te verwijderen op <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Je hebt het maximale aantal tracks van `{$limit}` bereikt. Koop StatPixel+ om deze limiet te verwijderen op <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Deze guild heeft het maximale aantal tracks van {$limit} bereikt.
+  Deze guild heeft het maximale aantal tracks van `{$limit}` bereikt.
   Als je StatPixel+ hebt, boost dan de guild met </boost:1132443666997321809> om deze beperking te verwijderen of ga naar <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Je hebt het maximale aantal boosts van {$limit} bereikt. Je kunt een boost verwijderen op het dashboard: <https://statpixel.xyz/dashboard/boost>.
+  Je hebt het maximale aantal boosts van `{$limit}` bereikt. Je kunt een boost verwijderen op het dashboard: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Je volgt deze speler al in dit kanaal.
 error-not-premium = Je moet een StatPixel+ abonnee zijn om deze actie uit te voeren. Ga naar <https://statpixel.xyz/plus> voor meer informatie.
 error-not-in-a-guild = Je moet in een guild zitten om deze actie uit te voeren.
 error-boost-already-exists = Je boost deze guild al.
-error-time-invalid-character = Een ongeldig teken is gevonden in het tijdsargument op positie {$position}.
-error-time-expected-number = Een nummer werd verwacht in het tijdsargument op positie {$position}.
-error-time-unknown-unit = Onbekende tijdsunit {$unit} op positie {$position} met waarde {$value}.
+error-time-invalid-character = Een ongeldig teken is gevonden in het tijdsargument op positie `{$position}`.
+error-time-expected-number = Een nummer werd verwacht in het tijdsargument op positie `{$position}`.
+error-time-unknown-unit = Onbekende tijdsunit `{$unit}` op positie `{$position}` met waarde `{$value}`.
 error-time-empty = Het tijdsargument kan niet leeg zijn.
 error-time-overflow = De duur van het tijdsargument is te lang. Probeer het onder de 3000 jaar te houden.
 
@@ -167,19 +167,19 @@ username = Gebruikersnaam
 username-placeholder = Voer de gebruikersnaam in
 
 invalid-statistic =
-  Ongeldige statistiek {$statistic} voor {$game}. Controleer de documentatie en probeer het opnieuw.
+  Ongeldige statistiek `{$statistic}` voor `{$game}`. Controleer de documentatie en probeer het opnieuw.
 
 invalid-level-type =
-  Ongeldig niveautype {$kind}. Controleer de documentatie en probeer het opnieuw.
+  Ongeldig niveautype `{$kind}`. Controleer de documentatie en probeer het opnieuw.
 
 invalid-game-type =
-  Ongeldig speltype {$game}. Controleer de documentatie en probeer het opnieuw.
+  Ongeldig speltype `{$game}`. Controleer de documentatie en probeer het opnieuw.
 
 image-created =
   Je afbeelding is gemaakt! Probeer het uit met </execute:1125992506501365892>.
 
-  Identifier: {$id}
-  Link: {$link}
+  Identifier: `{$id}`
+  Link: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = achtergrond
 error-invalid-colour = Ongeldige kleur opgegeven
 error-invalid-colour-description = De opgegeven kleur is ongeldig. Probeer een van [deze kleuren](https://simple.wikipedia.org/wiki/List_of_colors) of een hexadecimale kleur met voorvoegsel `#`.
 colour-changed = Achtergrondkleur gewijzigd
-colour-changed-description = Je achtergrondkleur is veranderd naar {$colour}.
+colour-changed-description = Je achtergrondkleur is veranderd naar `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = koppelen
 
 linking-failed = Koppelen mislukt
 linking-failed-uuid-description = De UUID `{$uuid}` behoort niet toe aan een Minecraft-account.
-linking-failed-username-description = De gebruikersnaam **{$username}** behoort niet toe aan een Minecraft-account.
+linking-failed-username-description = De gebruikersnaam **`{$username}`** behoort niet toe aan een Minecraft-account.
 linking-failed-description = U moet een geldige UUID of gebruikersnaam opgeven.
 linking-succeeded = Koppelen gelukt
-linking-succeeded-description = Uw Discord-account is nu gekoppeld aan het Minecraft-account **{$name}**.
+linking-succeeded-description = Uw Discord-account is nu gekoppeld aan het Minecraft-account **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = projecteren
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Arcade-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Arcade-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om naar te projecteren
 
@@ -674,8 +674,8 @@ arena-project = projecteren
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Arena-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Arena-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om naar te projecteren
 
@@ -780,8 +780,8 @@ bedwars-project = projecteren
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Bed Wars-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Bed Wars-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om naar te projecteren
 
@@ -880,8 +880,8 @@ blitz-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Blitz Survival Games statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Blitz Survival Games statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -958,8 +958,8 @@ buildbattle-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Build Battle statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Build Battle statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Cops and Crims statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Cops and Crims statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -1143,8 +1143,8 @@ duels-project = projecteren
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Duels modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Duels statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Duels statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om naar te projecteren
 
@@ -1222,8 +1222,8 @@ megawalls-project = projecteren
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Mega Walls statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Mega Walls statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om naar te projecteren
 
@@ -1302,8 +1302,8 @@ murdermystery-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Murder Mystery statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Murder Mystery statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -1390,8 +1390,8 @@ paintball-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Paintball statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Paintball statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -1469,8 +1469,8 @@ pit-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Pit modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Pit statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Pit statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -1546,8 +1546,8 @@ quake-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Quakecraft-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Quakecraft-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Quakecraft-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -1636,8 +1636,8 @@ skywars-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De SkyWars-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De SkyWars-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -1711,8 +1711,8 @@ smash-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Smash Heroes-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Smash Heroes-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -1785,8 +1785,8 @@ speeduhc-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De SpeedUHC-modus om weer te geven
-  .kind = statistiek
-  .kind-description = De SpeedUHC-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De SpeedUHC-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -1868,8 +1868,8 @@ tntgames-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
-  .kind = statistiek
-  .kind-description = De TNT Games-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De TNT Games-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
-  .kind = statistiek
-  .kind-description = De Turbo Kart Racers-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Turbo Kart Racers-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -2028,8 +2028,8 @@ uhc-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De UHC Champions-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De UHC Champions-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -2115,8 +2115,8 @@ vampirez-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De VampireZ-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De VampireZ-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -2191,8 +2191,8 @@ walls-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Walls-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Walls-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren naar
 
@@ -2271,8 +2271,8 @@ warlords-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Warlords-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Warlords-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -2346,8 +2346,8 @@ woolwars-project = project
   .uuid-description = Minecraft UUID
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
-  .kind = statistiek
-  .kind-description = De Wool Wars-statistiek om te projecteren
+  .statistic = statistiek
+  .statistic-description = De Wool Wars-statistiek om te projecteren
   .value = waarde
   .value-description = De waarde van de statistiek om te projecteren
 
@@ -2471,7 +2471,7 @@ guild-monthly = maandelijks
   .uuid = uuid
   .uuid-description = De UUID van het gildelid om te bekijken
 
-showing-guild-xp-statistics = Toont de gilde-XP van {$from} tot {$to}.
+showing-guild-xp-statistics = Toont de gilde-XP van `{$from}` tot `{$to}`.
 
 # Gedeelde canvas labels
 

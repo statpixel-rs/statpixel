@@ -2,46 +2,46 @@
 not-linked = Chybějící argumenty
 not-linked-description = Protože nejste propojeni, musíte poskytnout profil pro zobrazení.
 showing-statistics = <a:clock:1115091329958019253> Zobrazuji statistiky změny od {$from} do {$to}.
-no-previous-statistics = Pro **{$name}** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
-showing-guild-statistics = Zobrazuji statistiky změny cechu od {$from} do {$to}.
-no-previous-guild-statistics = Pro cech **{$name}** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
-showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče {$from} ve srovnání s hráčem {$to}.
+no-previous-statistics = Pro **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
+showing-guild-statistics = Zobrazuji statistiky změny cechu od `{$from}` do `{$to}`.
+no-previous-guild-statistics = Pro cech **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
+showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče `{$from}` ve srovnání s hráčem `{$to}`.
 
 # Chyby
 
-error-player-not-found = Profil hráče {$name} nebyl nalezen.
-error-session-not-found = Relace hráče {$name} nebyla nalezena.
-error-player-uuid-not-found = Hráč s UUID {$uuid} nebyl nalezen.
-error-player-username-not-found = Hráč s uživatelským jménem {$name} nebyl nalezen.
-error-guild-by-member-uuid-not-found = Člen cechu s UUID {$uuid} nebyl nalezen.
-error-guild-by-member-username-not-found = Člen cechu s uživatelským jménem {$name} nebyl nalezen.
-error-guild-not-found = Cech s názvem {$name} nebyl nalezen.
+error-player-not-found = Profil hráče `{$name}` nebyl nalezen.
+error-session-not-found = Relace hráče `{$name}` nebyla nalezena.
+error-player-uuid-not-found = Hráč s UUID `{$uuid}` nebyl nalezen.
+error-player-username-not-found = Hráč s uživatelským jménem `{$name}` nebyl nalezen.
+error-guild-by-member-uuid-not-found = Člen cechu s UUID `{$uuid}` nebyl nalezen.
+error-guild-by-member-username-not-found = Člen cechu s uživatelským jménem `{$name}` nebyl nalezen.
+error-guild-not-found = Cech s názvem `{$name}` nebyl nalezen.
 error-internal = Došlo k interní chybě. Byla zaznamenána a brzy bude vyřešena.
 error-not-linked = Nejste propojeni s účtem Minecraft. Použijte </link:1113624864524357710> k propojení vašeho účtu.
-error-invalid-uuid = UUID {$uuid} je neplatné.
-error-invalid-username = Uživatelské jméno {$name} je neplatné.
-error-member-player-not-found = Člen {$name} nebyl nalezen v profilu.
-error-skyblock-profile-not-found = Profil SkyBlock hráče {$name} nebyl nalezen.
-error-player-snapshot-not-found = Pro hráče {$name} nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Žebříček s názvem {$name} nebyl nalezen.
-error-profile-not-found = Profil SkyBlock {$profile}, patřící hráči {$name}, má vypnuté API nebo se od nového profilového systému nepřihlásil.
+error-invalid-uuid = UUID `{$uuid}` je neplatné.
+error-invalid-username = Uživatelské jméno `{$name}` je neplatné.
+error-member-player-not-found = Člen `{$name}` nebyl nalezen v profilu.
+error-skyblock-profile-not-found = Profil SkyBlock hráče `{$name}` nebyl nalezen.
+error-player-snapshot-not-found = Pro hráče `{$name}` nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Žebříček s názvem `{$name}` nebyl nalezen.
+error-profile-not-found = Profil SkyBlock `{$profile}`, patřící hráči `{$name}`, má vypnuté API nebo se od nového profilového systému nepřihlásil.
 error-identifier-too-long =
   Jeden z vygenerovaných identifikátorů pro tuto interakci je příliš dlouhý.
   Zkuste snížit počet komponent nebo množství vlastního textu.
-error-user-track-limit-reached = Dosáhli jste maximálního počtu sledování v hodnotě {$limit}. K odstranění tohoto omezení si zakupte StatPixel+ na adrese <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Dosáhli jste maximálního počtu sledování v hodnotě `{$limit}`. K odstranění tohoto omezení si zakupte StatPixel+ na adrese <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Tento cech dosáhl maximálního počtu sledování v hodnotě {$limit}.
+  Tento cech dosáhl maximálního počtu sledování v hodnotě `{$limit}`.
   Pokud máte StatPixel+, povzbuďte cech pomocí </boost:1132443666997321809> a omezení odstraníte, nebo jděte na <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Dosáhli jste maximálního počtu povzbuzení v hodnotě {$limit}. Můžete jedno povzbuzení odebrat na ovládacím panelu: <https://statpixel.xyz/dashboard/boost>.
+  Dosáhli jste maximálního počtu povzbuzení v hodnotě `{$limit}`. Můžete jedno povzbuzení odebrat na ovládacím panelu: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Tento hráč je již sledován v tomto kanále.
 error-not-premium = Pro provedení této akce musíte být odběratelem StatPixel+. Jděte na <https://statpixel.xyz/plus> pro více informací.
 error-not-in-a-guild = Pro provedení této akce musíte být v cechu.
 error-boost-already-exists = Tento cech již povzbuzujete.
-error-time-invalid-character = V čase v pozici {$position} byl nalezen neplatný znak.
-error-time-expected-number = Očekáváno číslo v časovém argumentu v pozici {$position}.
-error-time-unknown-unit = Neznámá časová jednotka {$unit} v pozici {$position} s hodnotou {$value}.
+error-time-invalid-character = V čase v pozici `{$position}` byl nalezen neplatný znak.
+error-time-expected-number = Očekáváno číslo v časovém argumentu v pozici `{$position}`.
+error-time-unknown-unit = Neznámá časová jednotka `{$unit}` v pozici `{$position}` s hodnotou `{$value}`.
 error-time-empty = Časový argument nemůže být prázdný.
 error-time-overflow = Doba trvání časového argumentu je příliš dlouhá. Zkuste ji udržet pod 3000 let.
 
@@ -167,19 +167,19 @@ username = Uživatelské jméno
 username-placeholder = Zadejte uživatelské jméno pro použití
 
 invalid-statistic =
-  Poskytnuta neplatná statistika {$statistic} pro hru {$game}. Zkuste to prosím znovu podle dokumentace.
+  Poskytnuta neplatná statistika `{$statistic}` pro hru `{$game}`. Zkuste to prosím znovu podle dokumentace.
 
 invalid-level-type =
-  Poskytnut neplatný typ úrovně {$kind}. Zkuste to prosím znovu podle dokumentace.
+  Poskytnut neplatný typ úrovně `{$kind}`. Zkuste to prosím znovu podle dokumentace.
 
 invalid-game-type =
-  Poskytnut neplatný typ hry {$game}. Zkuste to prosím znovu podle dokumentace.
+  Poskytnut neplatný typ hry `{$game}`. Zkuste to prosím znovu podle dokumentace.
 
 image-created =
   Váš obrázek byl vytvořen! Vyzkoušejte ho s </execute:1125992506501365892>.
 
-  Identifikátor: {$id}
-  Odkaz: {$link}
+  Identifikátor: `{$id}`
+  Odkaz: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = Poskytnuta neplatná barva
 error-invalid-colour-description = Poskytnutá barva je neplatná. Zkuste zadat jednu z [těchto barev](https://simple.wikipedia.org/wiki/List_of_colors) nebo hexadecimální barvu s prefixem `#`.
 colour-changed = Barva pozadí změněna
-colour-changed-description = Vaše barva pozadí byla změněna na {$colour}.
+colour-changed-description = Vaše barva pozadí byla změněna na `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = propojení
 
 linking-failed = Propojení selhalo
 linking-failed-uuid-description = UUID `{$uuid}` nepatří k účtu Minecraftu.
-linking-failed-username-description = Uživatelské jméno **{$username}** nepatří k účtu Minecraftu.
+linking-failed-username-description = Uživatelské jméno **`{$username}`** nepatří k účtu Minecraftu.
 linking-failed-description = Musíte poskytnout platné UUID nebo uživatelské jméno.
 linking-succeeded = Propojení bylo úspěšné
-linking-succeeded-description = Váš Discord účet je nyní propojen s účtem Minecraftu **{$name}**.
+linking-succeeded-description = Váš Discord účet je nyní propojen s účtem Minecraftu **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Arkád k projetí
+  .statistic = statistika
+  .statistic-description = Statistika Arkád k projetí
   .value = hodnota
   .value-description = Hodnota statistiky k projetí
 
@@ -674,8 +674,8 @@ arena-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Arény k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Arény k projetí
+  .statistic = statistika
+  .statistic-description = Statistika Arény k projetí
   .value = hodnota
   .value-description = Hodnota statistiky k projetí
 
@@ -780,8 +780,8 @@ bedwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Bed Wars k projetí
+  .statistic = statistika
+  .statistic-description = Statistika Bed Wars k projetí
   .value = hodnota
   .value-description = Hodnota statistiky k projetí
 
@@ -880,8 +880,8 @@ blitz-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Blitz Survival Games k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Blitz Survival Games k projekci
   .value = hodnota
   .value-description = Hodnota statistiky, kterou chcete projektovat
 
@@ -958,8 +958,8 @@ buildbattle-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Build Battle k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Build Battle k projekci
   .value = hodnota
   .value-description = Hodnota statistiky, kterou chcete projektovat
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Cops and Crims k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Cops and Crims k projekci
   .value = hodnota
   .value-description = Hodnota statistiky, kterou chcete projektovat
 
@@ -1143,8 +1143,8 @@ duels-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Duels k prohlížení
-  .kind = statistika
-  .kind-description = Statistika Duels k prohlášení
+  .statistic = statistika
+  .statistic-description = Statistika Duels k prohlášení
   .value = hodnota
   .value-description = Hodnota statistiky, kterou chceme prohlásit
 
@@ -1222,8 +1222,8 @@ megawalls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
-  .kind = statistika
-  .kind-description = Statistika Mega Walls k prohlášení
+  .statistic = statistika
+  .statistic-description = Statistika Mega Walls k prohlášení
   .value = hodnota
   .value-description = Hodnota statistiky, kterou chceme prohlásit
 
@@ -1302,8 +1302,8 @@ murdermystery-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Murder Mystery k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Murder Mystery k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Murder Mystery k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1390,8 +1390,8 @@ paintball-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Paintballu k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Paintballu k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1469,8 +1469,8 @@ pit-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
-  .kind = statistika
-  .kind-description = Statistika The Pit k projekci
+  .statistic = statistika
+  .statistic-description = Statistika The Pit k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1546,8 +1546,8 @@ quake-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Quakecraftu k prohlížení
-  .kind = statistika
-  .kind-description = Statistika Quakecraftu k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Quakecraftu k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1636,8 +1636,8 @@ skywars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
-  .kind = statistika
-  .kind-description = Statistika SkyWars k projekci
+  .statistic = statistika
+  .statistic-description = Statistika SkyWars k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1711,8 +1711,8 @@ smash-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
-  .kind = statistika
-  .kind-description = Statistika Smash Heroes k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Smash Heroes k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -1785,8 +1785,8 @@ speeduhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód SpeedUHC pro zobrazení
-  .kind = statistika
-  .kind-description = Statistika SpeedUHC pro projekci
+  .statistic = statistika
+  .statistic-description = Statistika SpeedUHC pro projekci
   .value = hodnota
   .value-description = Hodnota statistiky pro projekci
 
@@ -1868,8 +1868,8 @@ tntgames-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
-  .kind = statistika
-  .kind-description = Statistika TNT Games pro projekci
+  .statistic = statistika
+  .statistic-description = Statistika TNT Games pro projekci
   .value = hodnota
   .value-description = Hodnota statistiky pro projekci
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
-  .kind = statistika
-  .kind-description = Statistika Turbo Kart Racers pro projekci
+  .statistic = statistika
+  .statistic-description = Statistika Turbo Kart Racers pro projekci
   .value = hodnota
   .value-description = Hodnota statistiky pro projekci
 
@@ -2028,8 +2028,8 @@ uhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
-  .kind = statistika
-  .kind-description = UHC Champions statistika k projekci
+  .statistic = statistika
+  .statistic-description = UHC Champions statistika k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -2115,8 +2115,8 @@ vampirez-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
-  .kind = statistika
-  .kind-description = VampireZ statistika k projekci
+  .statistic = statistika
+  .statistic-description = VampireZ statistika k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -2191,8 +2191,8 @@ walls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mód
   .mode-description = The Walls mód k zobrazení
-  .kind = statistika
-  .kind-description = The Walls statistika k projekci
+  .statistic = statistika
+  .statistic-description = The Walls statistika k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -2272,8 +2272,8 @@ warlords-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Warlords k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Warlords k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -2347,8 +2347,8 @@ woolwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
-  .kind = statistika
-  .kind-description = Statistika Wool Wars k projekci
+  .statistic = statistika
+  .statistic-description = Statistika Wool Wars k projekci
   .value = hodnota
   .value-description = Hodnota statistiky k projekci
 
@@ -2472,7 +2472,7 @@ guild-monthly = měsíčně
   .uuid = uuid
   .uuid-description = UUID člena guildy k zobrazení
 
-showing-guild-xp-statistics = Zobrazuji zisky XP guildy od {$from} do {$to}.
+showing-guild-xp-statistics = Zobrazuji zisky XP guildy od `{$from}` do `{$to}`.
 
 # Společné popisky pro canvas
 

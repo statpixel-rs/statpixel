@@ -27,7 +27,7 @@ macro_rules! command {
 			) -> Result<(), ::translate::Error> {
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, from, to, mode, None, None).await
+				run::command::<$game>(ctx, to, from, mode, None, None).await
 			}
 		}
 	};
@@ -67,7 +67,7 @@ macro_rules! large_command {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, from, to, mode, None, None).await
+				run::command::<$game>(ctx, to, from, mode, None, None).await
 			}
 		}
 	};

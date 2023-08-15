@@ -289,6 +289,7 @@ pub async fn general(
 	let progress = shape::WideBubbleProgress(
 		calc::guild::get_level_progress(guild.xp),
 		[Colour::Gold.into(), Colour::Gold.into()],
+		false,
 	);
 
 	let daily_xp = guild.members.iter().map(|m| m.xp_history[0].1).sum::<u32>();
@@ -429,6 +430,7 @@ pub async fn member(
 	let progress = shape::WideBubbleProgress(
 		calc::guild::get_level_progress(guild.xp),
 		[Colour::Gold.into(), Colour::Gold.into()],
+		false,
 	);
 
 	let member_data = guild

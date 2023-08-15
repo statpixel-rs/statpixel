@@ -997,8 +997,9 @@ impl ToTokens for GameInputReceiver {
 				) -> #api::canvas::Canvas<'c> {
 					let game_lhs = &data_lhs.stats.#path_to_game;
 					let game_rhs = &data_rhs.stats.#path_to_game;
+					let is_different = data_lhs.uuid != data_rhs.uuid;
 
-					let (xp, level) = {
+					let (xp, positive, level) = {
 						let xp_lhs = #calc::convert(&#xp_lhs);
 						let xp_rhs = #calc::convert(&#xp_rhs);
 						let xp = if xp_lhs > xp_rhs {
@@ -1007,7 +1008,7 @@ impl ToTokens for GameInputReceiver {
 							xp_rhs - xp_lhs
 						};
 
-						(xp, #calc::get_level(xp))
+						(xp, xp_rhs >= xp_lhs, #calc::get_level(xp))
 					};
 
 					canvas
@@ -1017,12 +1018,13 @@ impl ToTokens for GameInputReceiver {
 						)
 						.push_down_post_draw(
 							progress,
-							#api::canvas::shape::WideBubbleProgress::from_level_progress(
+							#api::canvas::shape::WideBubbleProgress::from_level_diff(
 								ctx,
 								&#calc::get_level_format(level),
-								&#calc::get_curr_level_xp(xp),
-								&#calc::get_level_xp(xp),
-							)
+								&#calc::get_total_xp(xp),
+								positive,
+								is_different,
+							),
 						)
 						#labels_diff_sum
 						.push_right_post_draw(
@@ -1266,14 +1268,22 @@ impl ToTokens for GameInputReceiver {
 					) -> (#skia::Surface, Self::Mode) {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
+						let is_different = data_lhs.uuid != data_rhs.uuid;
 
 						let mode = #mode_enum::get_mode(mode, session);
 						let mut canvas = #api::canvas::Canvas::new(720.)
 							.gap(7.)
 							.push_down(
 								&#api::canvas::shape::Title,
-								#api::canvas::shape::Title::from_text(&#api::canvas::text::from_data(&data_lhs, &data_lhs.username, suffix)),
+								#api::canvas::shape::Title::from_text(&#api::canvas::text::from_data(&data_rhs, &data_rhs.username, suffix)),
 							);
+
+						if is_different {
+							canvas = canvas.push_down(
+								&#api::canvas::shape::Subtitle,
+								#api::canvas::shape::Subtitle::from_text(&#api::canvas::text::from_data(&data_lhs, &data_lhs.username, suffix)),
+							);
+						}
 
 						let (xp, level, progress) = {
 							let xp_lhs = #calc::convert(&#xp_lhs);
@@ -1288,6 +1298,7 @@ impl ToTokens for GameInputReceiver {
 							let progress = #api::canvas::shape::WideBubbleProgress(
 								#calc::get_level_progress(xp),
 								#calc::get_colours(level),
+								is_different,
 							);
 
 							(xp, level, progress)
@@ -1339,6 +1350,7 @@ impl ToTokens for GameInputReceiver {
 							let progress = #api::canvas::shape::WideBubbleProgress(
 								#calc::get_level_progress(xp),
 								#calc::get_colours(level),
+								false,
 							);
 
 							(xp, level, progress)
@@ -1456,17 +1468,17 @@ impl ToTokens for GameInputReceiver {
 						let mut embed = #poise::serenity_prelude::CreateEmbed::default()
 							.thumbnail(player.get_body_url());
 
-						if let Some(prefix) = data_lhs.get_rank().as_str() {
+						if let Some(prefix) = data_rhs.get_rank().as_str() {
 							embed = embed.author(
 								#poise::serenity_prelude::CreateEmbedAuthor::new(
-									format!(concat!("{} {} :: ", #plain), prefix, &data_lhs.username)
+									format!(concat!("{} {} :: ", #plain), prefix, &data_rhs.username)
 								)
 								.icon_url(player.get_head_url())
 							);
 						} else {
 							embed = embed.author(
 								#poise::serenity_prelude::CreateEmbedAuthor::new(
-									format!(concat!("{} :: ", #plain), &data_lhs.username)
+									format!(concat!("{} :: ", #plain), &data_rhs.username)
 								)
 								.icon_url(player.get_head_url())
 							);

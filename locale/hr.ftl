@@ -2,46 +2,46 @@
 not-linked = Nedostajući argumenti
 not-linked-description = Budući da niste povezani, morate pružiti profil da biste ga vidjeli.
 showing-statistics = <a:clock:1115091329958019253> Prikaz statistike promjene od {$from} do {$to}.
-no-previous-statistics = Nema prethodnih podataka za **{$name}**, pa su uneseni novi.
-showing-guild-statistics = Prikaz statistike promjene za gildu od {$from} do {$to}.
-no-previous-guild-statistics = Nisu pronađeni prethodni podaci za gildu **{$name}**, pa je unesena nova.
-showing-comparison = <a:clock:1115091329958019253> Prikaz statistike za {$from} u usporedbi s {$to}.
+no-previous-statistics = Nema prethodnih podataka za **`{$name}`**, pa su uneseni novi.
+showing-guild-statistics = Prikaz statistike promjene za gildu od `{$from}` do `{$to}`.
+no-previous-guild-statistics = Nisu pronađeni prethodni podaci za gildu **`{$name}`**, pa je unesena nova.
+showing-comparison = <a:clock:1115091329958019253> Prikaz statistike za `{$from}` u usporedbi s `{$to}`.
 
 # Errors
 
-error-player-not-found = Profil pripadajući korisniku {$name} nije pronađen.
-error-session-not-found = Sjednica pripadajuća korisniku {$name} nije pronađena.
-error-player-uuid-not-found = Igrač s UUID-om {$uuid} nije pronađen.
-error-player-username-not-found = Igrač s korisničkim imenom {$name} nije pronađen.
-error-guild-by-member-uuid-not-found = Član gilde s UUID-om {$uuid} nije pronađen.
-error-guild-by-member-username-not-found = Član gilde s korisničkim imenom {$name} nije pronađen.
-error-guild-not-found = Gilde s imenom {$name} nije pronađena.
+error-player-not-found = Profil pripadajući korisniku `{$name}` nije pronađen.
+error-session-not-found = Sjednica pripadajuća korisniku `{$name}` nije pronađena.
+error-player-uuid-not-found = Igrač s UUID-om `{$uuid}` nije pronađen.
+error-player-username-not-found = Igrač s korisničkim imenom `{$name}` nije pronađen.
+error-guild-by-member-uuid-not-found = Član gilde s UUID-om `{$uuid}` nije pronađen.
+error-guild-by-member-username-not-found = Član gilde s korisničkim imenom `{$name}` nije pronađen.
+error-guild-not-found = Gilde s imenom `{$name}` nije pronađena.
 error-internal = Došlo je do interne pogreške. Ona je zabilježena i bit će riješena uskoro.
 error-not-linked = Niste povezani s Minecraft računom. Koristite </link:1113624864524357710> za povezivanje računa.
-error-invalid-uuid = UUID {$uuid} nije valjan.
-error-invalid-username = Korisničko ime {$name} nije valjano.
-error-member-player-not-found = Član {$name} nije pronađen u profilu.
-error-skyblock-profile-not-found = SkyBlock profil pripadajući korisniku {$name} nije pronađen.
-error-player-snapshot-not-found = Nema snimki za korisnika {$name}. Napravite jednu s </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Leaderboard s imenom {$name} nije pronađen.
-error-profile-not-found = SkyBlock profil {$profile} pripadajući korisniku {$name} ima isključenu API podršku ili se korisnik nije prijavio od uvođenja novog profilnog sustava.
+error-invalid-uuid = UUID `{$uuid}` nije valjan.
+error-invalid-username = Korisničko ime `{$name}` nije valjano.
+error-member-player-not-found = Član `{$name}` nije pronađen u profilu.
+error-skyblock-profile-not-found = SkyBlock profil pripadajući korisniku `{$name}` nije pronađen.
+error-player-snapshot-not-found = Nema snimki za korisnika `{$name}`. Napravite jednu s </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Leaderboard s imenom `{$name}` nije pronađen.
+error-profile-not-found = SkyBlock profil `{$profile}` pripadajući korisniku `{$name}` ima isključenu API podršku ili se korisnik nije prijavio od uvođenja novog profilnog sustava.
 error-identifier-too-long =
   Jedan od generiranih identifikatora za ovu interakciju je predugačak.
   Pokušajte smanjiti broj komponenata ili količinu prilagođenog teksta.
-error-user-track-limit-reached = Dosegli ste maksimalan broj praćenih igrača od {$limit}. Kupite StatPixel+ da biste uklonili ovaj limit na <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Dosegli ste maksimalan broj praćenih igrača od `{$limit}`. Kupite StatPixel+ da biste uklonili ovaj limit na <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ova gilda je dostigla maksimalan broj praćenih igrača od {$limit}.
+  Ova gilda je dostigla maksimalan broj praćenih igrača od `{$limit}`.
   Ako imate StatPixel+, ojačajte gildu s </boost:1132443666997321809> kako biste uklonili ovo ograničenje ili posjetite <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Dosegli ste maksimalan broj pojačanja od {$limit}. Možete ukloniti jedno pojačanje na nadzornoj ploči: <https://statpixel.xyz/dashboard/boost>.
+  Dosegli ste maksimalan broj pojačanja od `{$limit}`. Možete ukloniti jedno pojačanje na nadzornoj ploči: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Već pratite ovog igrača na ovom kanalu.
 error-not-premium = Morate biti pretplatnik na StatPixel+ da biste izvršili ovu radnju. Posjetite <https://statpixel.xyz/plus> za više informacija.
 error-not-in-a-guild = Morate biti u gildi da biste izvršili ovu radnju.
 error-boost-already-exists = Već pojačavate ovu gildu.
-error-time-invalid-character = U vremenskom argumentu na poziciji {$position} pronađen je nevažeći znak.
-error-time-expected-number = Očekivani broj u vremenskom argumentu na poziciji {$position}.
-error-time-unknown-unit = Nepoznata vremenska jedinica {$unit} na poziciji {$position} s vrijednošću {$value}.
+error-time-invalid-character = U vremenskom argumentu na poziciji `{$position}` pronađen je nevažeći znak.
+error-time-expected-number = Očekivani broj u vremenskom argumentu na poziciji `{$position}`.
+error-time-unknown-unit = Nepoznata vremenska jedinica `{$unit}` na poziciji `{$position}` s vrijednošću `{$value}`.
 error-time-empty = Vremenski argument ne može biti prazan.
 error-time-overflow = Trajanje vremenskog argumenta je predugo. Pokušajte da ostane ispod 3000 godina.
 
@@ -167,19 +167,19 @@ username = Korisničko ime
 username-placeholder = Unesite korisničko ime za korištenje
 
 invalid-statistic =
-  Neispravna statistika {$statistic} za {$game}. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna statistika `{$statistic}` za `{$game}`. Provjerite dokumentaciju i pokušajte ponovno.
 
 invalid-level-type =
-  Neispravna vrsta razine {$kind}. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna vrsta razine `{$kind}`. Provjerite dokumentaciju i pokušajte ponovno.
 
 invalid-game-type =
-  Neispravna vrsta igre {$game}. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna vrsta igre `{$game}`. Provjerite dokumentaciju i pokušajte ponovno.
 
 image-created =
   Vaša slika je stvorena! Isprobajte je s </execute:1125992506501365892>.
 
-  Identifikator: {$id}
-  Poveznica: {$link}
+  Identifikator: `{$id}`
+  Poveznica: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = pozadina
 error-invalid-colour = Neispravna boja navedena
 error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of_colors) ili heksadecimalnu boju s prefiksom `#`.
 colour-changed = Boja pozadine promijenjena
-colour-changed-description = Boja vaše pozadine promijenjena je u {$colour}.
+colour-changed-description = Boja vaše pozadine promijenjena je u `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = povezi
 
 linking-failed = Povezivanje nije uspjelo
 linking-failed-uuid-description = UUID `{$uuid}` ne pripada Minecraft računu.
-linking-failed-username-description = Korisničko ime **{$username}** ne pripada Minecraft računu.
+linking-failed-username-description = Korisničko ime **`{$username}`** ne pripada Minecraft računu.
 linking-failed-description = Morate pružiti valjani UUID ili korisničko ime.
 linking-succeeded = Uspješno povezivanje
-linking-succeeded-description = Vaš Discord račun sada je povezan s Minecraft računom **{$name}**.
+linking-succeeded-description = Vaš Discord račun sada je povezan s Minecraft računom **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Arkade za pregled
-  .kind = statistika
-  .kind-description = Arkadna statistika za projektiranje
+  .statistic = statistika
+  .statistic-description = Arkadna statistika za projektiranje
   .value = vrijednost
   .value-description = Vrijednost statistike za projektiranje
 
@@ -674,8 +674,8 @@ arena-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Arene za pregled
-  .kind = statistika
-  .kind-description = Arena statistika za projektiranje
+  .statistic = statistika
+  .statistic-description = Arena statistika za projektiranje
   .value = vrijednost
   .value-description = Vrijednost statistike za projektiranje
 
@@ -780,8 +780,8 @@ bedwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Bed Wars za pregled
-  .kind = statistika
-  .kind-description = Bed Wars statistika za projektiranje
+  .statistic = statistika
+  .statistic-description = Bed Wars statistika za projektiranje
   .value = vrijednost
   .value-description = Vrijednost statistike za projektiranje
 
@@ -880,8 +880,8 @@ blitz-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način-rada
   .mode-description = Način igre Blitz Survival Games koji želite vidjeti
-  .kind = statistika
-  .kind-description = Statistika igre Blitz Survival Games koju želite projektirati
+  .statistic = statistika
+  .statistic-description = Statistika igre Blitz Survival Games koju želite projektirati
   .value = vrijednost
   .value-description = Vrijednost statistike koju želite projektirati
 
@@ -958,8 +958,8 @@ buildbattle-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način-rada
   .mode-description = Način igre Build Battle koji želite vidjeti
-  .kind = statistika
-  .kind-description = Statistika igre Build Battle koju želite projektirati
+  .statistic = statistika
+  .statistic-description = Statistika igre Build Battle koju želite projektirati
   .value = vrijednost
   .value-description = Vrijednost statistike koju želite projektirati
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način-rada
   .mode-description = Način igre Cops and Crims koji želite vidjeti
-  .kind = statistika
-  .kind-description = Statistika igre Cops and Crims koju želite projektirati
+  .statistic = statistika
+  .statistic-description = Statistika igre Cops and Crims koju želite projektirati
   .value = vrijednost
   .value-description = Vrijednost statistike koju želite projektirati
 
@@ -1143,8 +1143,8 @@ duels-project = projekcija
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Duels mod za prikaz
-  .kind = statistika
-  .kind-description = Duels statistika za projekciju
+  .statistic = statistika
+  .statistic-description = Duels statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projiciranje
 
@@ -1222,8 +1222,8 @@ megawalls-project = projekcija
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Mega Zidovi mod za prikaz
-  .kind = statistika
-  .kind-description = Mega Zidovi statistika za projekciju
+  .statistic = statistika
+  .statistic-description = Mega Zidovi statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projiciranje
 
@@ -1302,8 +1302,8 @@ murdermystery-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre Murder Mystery za pregled
-  .kind = statistika
-  .kind-description = Statistika igre Murder Mystery za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika igre Murder Mystery za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1390,8 +1390,8 @@ paintball-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre Paintball za pregled
-  .kind = statistika
-  .kind-description = Statistika igre Paintball za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika igre Paintball za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1469,8 +1469,8 @@ pit-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način igre The Pit za pregled
-  .kind = statistika
-  .kind-description = Statistika igre The Pit za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika igre The Pit za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1546,8 +1546,8 @@ quake-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Quakecraft mod za prikaz
-  .kind = statistika
-  .kind-description = Quakecraft statistika za projekciju
+  .statistic = statistika
+  .statistic-description = Quakecraft statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1636,8 +1636,8 @@ skywars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = SkyWars mod za prikaz
-  .kind = statistika
-  .kind-description = SkyWars statistika za projekciju
+  .statistic = statistika
+  .statistic-description = SkyWars statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1711,8 +1711,8 @@ smash-project = projekt
   .uuid-description = Minecraft UUID
   .mode = mod
   .mode-description = Smash Heroes mod za prikaz
-  .kind = statistika
-  .kind-description = Smash Heroes statistika za projekciju
+  .statistic = statistika
+  .statistic-description = Smash Heroes statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1785,8 +1785,8 @@ speeduhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = SpeedUHC način za pregled
-  .kind = statistika
-  .kind-description = SpeedUHC statistika za projekciju
+  .statistic = statistika
+  .statistic-description = SpeedUHC statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1868,8 +1868,8 @@ tntgames-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = TNT način igara za pregled
-  .kind = statistika
-  .kind-description = TNT igre statistika za projekciju
+  .statistic = statistika
+  .statistic-description = TNT igre statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Turbo Kart Racers način za pregled
-  .kind = statistika
-  .kind-description = Turbo Kart Racers statistika za projekciju
+  .statistic = statistika
+  .statistic-description = Turbo Kart Racers statistika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2028,8 +2028,8 @@ uhc-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način UHC Champions za pregled
-  .kind = statistika
-  .kind-description = Statistika UHC Champions za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika UHC Champions za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2115,8 +2115,8 @@ vampirez-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način VampireZ za pregled
-  .kind = statistika
-  .kind-description = Statistika VampireZ za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika VampireZ za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2191,8 +2191,8 @@ walls-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način The Walls za pregled
-  .kind = statistika
-  .kind-description = Statistika The Walls za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika The Walls za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2271,8 +2271,8 @@ warlords-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Ratnika za pregled
-  .kind = statistika
-  .kind-description = Statistika Ratnika za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika Ratnika za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2346,8 +2346,8 @@ woolwars-project = projekt
   .uuid-description = Minecraft UUID
   .mode = način
   .mode-description = Način Vunenih ratova za pregled
-  .kind = statistika
-  .kind-description = Statistika Vunenih ratova za projekciju
+  .statistic = statistika
+  .statistic-description = Statistika Vunenih ratova za projekciju
   .value = vrijednost
   .value-description = Vrijednost statistike za projekciju
 
@@ -2471,7 +2471,7 @@ guild-monthly = mjesečno
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
 
-showing-guild-xp-statistics = Prikazivanje stjecanja iskustva gilda od {$from} do {$to}.
+showing-guild-xp-statistics = Prikazivanje stjecanja iskustva gilda od `{$from}` do `{$to}`.
 
 # Oznake zajedničkog platna
 

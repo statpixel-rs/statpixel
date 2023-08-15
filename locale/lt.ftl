@@ -2,46 +2,46 @@
 not-linked = Trūksta argumentų
 not-linked-description = Kad galėtum pamatyti, turite būti susietas su paskyra.
 showing-statistics = <a:clock:1115091329958019253> Rodo statistikos pokyčius nuo {$from} iki {$to}.
-no-previous-statistics = Statistikos duomenų nerasta **{$name}** vardu, todėl jie buvo įterpti.
-showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo {$from} iki {$to}.
-no-previous-guild-statistics = Gildijos **{$name}** statistikos duomenų nerasta, todėl jie buvo įterpti.
-showing-comparison = <a:clock:1115091329958019253> Rodo {$from} statistiką, palygintą su {$to}.
+no-previous-statistics = Statistikos duomenų nerasta **`{$name}`** vardu, todėl jie buvo įterpti.
+showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo `{$from}` iki `{$to}`.
+no-previous-guild-statistics = Gildijos **`{$name}`** statistikos duomenų nerasta, todėl jie buvo įterpti.
+showing-comparison = <a:clock:1115091329958019253> Rodo `{$from}` statistiką, palygintą su `{$to}`.
 
 # Klaidos
 
-error-player-not-found = Profilis priklausantis {$name} nebuvo rastas.
-error-session-not-found = Sesionas priklausantis {$name} nebuvo rastas.
-error-player-uuid-not-found = Žaidėjas su UUID {$uuid} nebuvo rastas.
-error-player-username-not-found = Žaidėjas su vardu {$name} nebuvo rastas.
-error-guild-by-member-uuid-not-found = Gildijos narys su UUID {$uuid} nebuvo rastas.
-error-guild-by-member-username-not-found = Gildijos narys su vardu {$name} nebuvo rastas.
-error-guild-not-found = Gildija su pavadinimu {$name} nebuvo rasta.
+error-player-not-found = Profilis priklausantis `{$name}` nebuvo rastas.
+error-session-not-found = Sesionas priklausantis `{$name}` nebuvo rastas.
+error-player-uuid-not-found = Žaidėjas su UUID `{$uuid}` nebuvo rastas.
+error-player-username-not-found = Žaidėjas su vardu `{$name}` nebuvo rastas.
+error-guild-by-member-uuid-not-found = Gildijos narys su UUID `{$uuid}` nebuvo rastas.
+error-guild-by-member-username-not-found = Gildijos narys su vardu `{$name}` nebuvo rastas.
+error-guild-not-found = Gildija su pavadinimu `{$name}` nebuvo rasta.
 error-internal = Įvyko vidinė klaida. Ji yra užregistruota ir bus išspręsta netrukus.
 error-not-linked = Jūs nesate susietas su „Minecraft“ paskyra. Norėdami susieti savo paskyrą, naudokite </link:1113624864524357710>.
-error-invalid-uuid = UUID {$uuid} yra neteisingas.
-error-invalid-username = Vardas {$name} yra neteisingas.
-error-member-player-not-found = Narys {$name} nerastas profilyje.
-error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio {$name} vardu, nerasta.
-error-player-snapshot-not-found = Nėra momentinių vaizdų su {$name}. Sukurkite vieną naudodami </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Lentele su pavadinimu {$name} nebuvo rasta.
-error-profile-not-found = Šiaurės blokų profilio {$profile}, priklausančio {$name} vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
+error-invalid-uuid = UUID `{$uuid}` yra neteisingas.
+error-invalid-username = Vardas `{$name}` yra neteisingas.
+error-member-player-not-found = Narys `{$name}` nerastas profilyje.
+error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio `{$name}` vardu, nerasta.
+error-player-snapshot-not-found = Nėra momentinių vaizdų su `{$name}`. Sukurkite vieną naudodami </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Lentele su pavadinimu `{$name}` nebuvo rasta.
+error-profile-not-found = Šiaurės blokų profilio `{$profile}`, priklausančio `{$name}` vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
 error-identifier-too-long =
   Viena iš generuojamų šios sąveikos identifikatorių yra per ilga.
   Bandykite sumažinti komponentų skaičių arba pritaikytos teksto apimtis.
-error-user-track-limit-reached = Jūs pasiekėte maksimalų {$limit} trasų skaičių. Norėdami pašalinti šią apribojimą, įsigykite StatPixel+ čia: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Jūs pasiekėte maksimalų `{$limit}` trasų skaičių. Norėdami pašalinti šią apribojimą, įsigykite StatPixel+ čia: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ši gildija pasiekė maksimalų {$limit} trasų skaičių.
+  Ši gildija pasiekė maksimalų `{$limit}` trasų skaičių.
   Jei turite StatPixel+, pakelkite gildiją su </boost:1132443666997321809>, kad pašalintumėte šį apribojimą, arba apsilankykite <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Jūs pasiekėte maksimalų {$limit} skaičių stiprinimų. Stiprinimą galite pašalinti žemiau pateiktame skydelyje: <https://statpixel.xyz/dashboard/boost>.
+  Jūs pasiekėte maksimalų `{$limit}` skaičių stiprinimų. Stiprinimą galite pašalinti žemiau pateiktame skydelyje: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Jūs jau stebite šį žaidėją šiame kanale.
 error-not-premium = Norint atlikti šį veiksmą, turite būti StatPixel+ prenumeratorius. Užsukite į šią nuorodą: <https://statpixel.xyz/plus>, norėdami gauti daugiau informacijos.
 error-not-in-a-guild = Norėdami atlikti šį veiksmą, turite būti gildijos narys.
 error-boost-already-exists = Jūs jau stiprinatę šią gildiją.
-error-time-invalid-character = Laiko argumente pozicijoje {$position} rastas neteisingas simbolis.
-error-time-expected-number = Laiko argumente pozicijoje {$position} turi būti skaičius.
-error-time-unknown-unit = Nežinoma laiko vienetai {$unit} pozicijoje {$position} su reikšme {$value}.
+error-time-invalid-character = Laiko argumente pozicijoje `{$position}` rastas neteisingas simbolis.
+error-time-expected-number = Laiko argumente pozicijoje `{$position}` turi būti skaičius.
+error-time-unknown-unit = Nežinoma laiko vienetai `{$unit}` pozicijoje `{$position}` su reikšme `{$value}`.
 error-time-empty = Laiko argumentas negali būti tuščias.
 error-time-overflow = Laiko argumento trukmė pernelyg ilga. Bandykite, kad ji neviršytų 3,000 metų.
 
@@ -167,19 +167,19 @@ username = Vartotojo vardas
 username-placeholder = Įveskite naudojamo vartotojo vardą
 
 invalid-statistic =
-  Neteisinga statistika {$statistic} žaidimui {$game}. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisinga statistika `{$statistic}` žaidimui `{$game}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 invalid-level-type =
-  Neteisingas lygio tipas {$kind}. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisingas lygio tipas `{$kind}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 invalid-game-type =
-  Neteisingas žaidimo tipas {$game}. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisingas žaidimo tipas `{$game}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 image-created =
   Jūsų paveikslėlis sukurtas! Pabandykite jį atvaizduoti naudodami komandą </execute:1125992506501365892>.
 
-  Identifikatorius: {$id}
-  Nuoroda: {$link}
+  Identifikatorius: `{$id}`
+  Nuoroda: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = Pateikta neteisinga spalva
 error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of_colors) arba šešioliktainį spalvos kodą su simboliu `#`.
 colour-changed = Fono spalva pakeista
-colour-changed-description = Jūsų fono spalva pakeista į {$colour}.
+colour-changed-description = Jūsų fono spalva pakeista į `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = susieti
 
 linking-failed = Sujungimas nepavyko
 linking-failed-uuid-description = UUID `{$uuid}` nepriklauso Minecraft paskyrai.
-linking-failed-username-description = Naudotojas **{$username}** nepriklauso Minecraft paskyrai.
+linking-failed-username-description = Naudotojas **`{$username}`** nepriklauso Minecraft paskyrai.
 linking-failed-description = Turite pateikti galiojantį UUID arba naudotojo vardą.
 linking-succeeded = Sujungimas sėkmingas
-linking-succeeded-description = Jūsų Discord paskyra dabar susieta su Minecraft paskyra **{$name}**.
+linking-succeeded-description = Jūsų Discord paskyra dabar susieta su Minecraft paskyra **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Arcade režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Arcade statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Arcade statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -674,8 +674,8 @@ arena-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Arena režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Arena statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Arena statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -780,8 +780,8 @@ bedwars-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Bed Wars režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Bed Wars statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Bed Wars statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -880,8 +880,8 @@ blitz-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Blitz Survival Games režimas
-  .kind = statistika
-  .kind-description = Blitz Survival Games statistika, kurią prognozuoti
+  .statistic = statistika
+  .statistic-description = Blitz Survival Games statistika, kurią prognozuoti
   .value = vertė
   .value-description = Vertė, kurią prognozuoti
 
@@ -958,8 +958,8 @@ buildbattle-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Build Battle režimas
-  .kind = statistika
-  .kind-description = Build Battle statistika, kurią prognozuoti
+  .statistic = statistika
+  .statistic-description = Build Battle statistika, kurią prognozuoti
   .value = vertė
   .value-description = Vertė, kurią prognozuoti
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Žaidimo Cops and Crims režimas
-  .kind = statistika
-  .kind-description = Cops and Crims statistika, kurią prognozuoti
+  .statistic = statistika
+  .statistic-description = Cops and Crims statistika, kurią prognozuoti
   .value = vertė
   .value-description = Vertė, kurią prognozuoti
 
@@ -1143,8 +1143,8 @@ duels-project = projektuoti
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Duels režimas, kurį peržiūrėti
-  .kind = statistika
-  .kind-description = Duels statistika, kurią prognozuoti
+  .statistic = statistika
+  .statistic-description = Duels statistika, kurią prognozuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite prognozuoti
 
@@ -1222,8 +1222,8 @@ megawalls-project = projektuoti
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Mega Walls režimas, kurį peržiūrėti
-  .kind = statistika
-  .kind-description = Mega Walls statistika, kurią prognozuoti
+  .statistic = statistika
+  .statistic-description = Mega Walls statistika, kurią prognozuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite prognozuoti
 
@@ -1302,8 +1302,8 @@ murdermystery-project = projektas
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = Mįslių nužudymo veiksmas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Mįslių nužudymo statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Mįslių nužudymo statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1390,8 +1390,8 @@ paintball-project = projektas
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = Paintball veiksmas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Paintball statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Paintball statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1469,8 +1469,8 @@ pit-project = projektas
   .uuid-description = Minecraft UUID
   .mode = veiksmas
   .mode-description = "The Pit" veiksmas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = "The Pit" statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = "The Pit" statistika, kurią norite projekuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1546,8 +1546,8 @@ quake-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = "Quakecraft" režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Statistika "Quakecraft", kurią norite projektuoti
+  .statistic = statistika
+  .statistic-description = Statistika "Quakecraft", kurią norite projektuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1636,8 +1636,8 @@ skywars-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = "SkyWars" režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = "SkyWars" statistika, kurią norite projektuoti
+  .statistic = statistika
+  .statistic-description = "SkyWars" statistika, kurią norite projektuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1711,8 +1711,8 @@ smash-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = "Smash Heroes" režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = "Smash Heroes" statistika, kurią norite projektuoti
+  .statistic = statistika
+  .statistic-description = "Smash Heroes" statistika, kurią norite projektuoti
   .value = reikšmė
   .value-description = Statistikos reikšmė, kurią norite projekuoti
 
@@ -1785,8 +1785,8 @@ speeduhc-project = projektas
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „SpeedUHC“ režimo pavadinimas
-  .kind = statistika
-  .kind-description = Projektuojamos „SpeedUHC“ statistikos tipas
+  .statistic = statistika
+  .statistic-description = Projektuojamos „SpeedUHC“ statistikos tipas
   .value = reikšmė
   .value-description = Projektuojamos statistikos reikšmė
 
@@ -1868,8 +1868,8 @@ tntgames-project = projektas
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „TNT Games“ režimo pavadinimas
-  .kind = statistika
-  .kind-description = Projektuojamos „TNT Games“ statistikos rūšis
+  .statistic = statistika
+  .statistic-description = Projektuojamos „TNT Games“ statistikos rūšis
   .value = reikšmė
   .value-description = Projektuojamos statistikos reikšmė
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = projektas
   .uuid-description = „Minecraft“ UUID
   .mode = režimas
   .mode-description = Rodomo „Turbo Kart Racers“ režimo pavadinimas
-  .kind = statistika
-  .kind-description = Projektuojamos „Turbo Kart Racers“ statistikos rūšis
+  .statistic = statistika
+  .statistic-description = Projektuojamos „Turbo Kart Racers“ statistikos rūšis
   .value = reikšmė
   .value-description = Projektuojamos statistikos reikšmė
 
@@ -2028,8 +2028,8 @@ uhc-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = UHC Champions režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = UHC Champions statistika, kurią norite prognozuoti
+  .statistic = statistika
+  .statistic-description = UHC Champions statistika, kurią norite prognozuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite prognozuoti
 
@@ -2115,8 +2115,8 @@ vampirez-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = VampireZ režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = VampireZ statistika, kurią norite prognozuoti
+  .statistic = statistika
+  .statistic-description = VampireZ statistika, kurią norite prognozuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite prognozuoti
 
@@ -2191,8 +2191,8 @@ walls-project = projektas
   .uuid-description = "Minecraft" UUID
   .mode = režimas
   .mode-description = The Walls režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = The Walls statistika, kurią norite prognozuoti
+  .statistic = statistika
+  .statistic-description = The Walls statistika, kurią norite prognozuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite prognozuoti
 
@@ -2272,8 +2272,8 @@ warlords-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Warlords režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Warlords statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Warlords statistika, kurią norite projekuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite projekuoti
 
@@ -2347,8 +2347,8 @@ woolwars-project = projektas
   .uuid-description = Minecraft UUID
   .mode = režimas
   .mode-description = Wool Wars režimas, kurį norite peržiūrėti
-  .kind = statistika
-  .kind-description = Wool Wars statistika, kurią norite projekuoti
+  .statistic = statistika
+  .statistic-description = Wool Wars statistika, kurią norite projekuoti
   .value = vertė
   .value-description = Statistikos vertė, kurią norite projekuoti
 
@@ -2472,7 +2472,7 @@ guild-monthly = mėnuo
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti
 
-showing-guild-xp-statistics = Rodyti gildijos XP pokytį nuo {$from} iki {$to}.
+showing-guild-xp-statistics = Rodyti gildijos XP pokytį nuo `{$from}` iki `{$to}`.
 
 # Bendros etikečių žymės
 

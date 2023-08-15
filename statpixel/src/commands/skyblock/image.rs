@@ -287,6 +287,7 @@ pub async fn auctions(
 	let progress = shape::WideBubbleProgress(
 		network::get_level_progress(data.xp),
 		network::get_colours(level),
+		false,
 	);
 
 	let mut canvas = Canvas::new(720.)
@@ -376,6 +377,7 @@ pub async fn profile(
 	let progress = shape::WideBubbleProgress(
 		sky_block::get_level_progress(member.leveling.xp),
 		sky_block::get_colours(level),
+		false,
 	);
 
 	let ctx = &ctx;
@@ -699,6 +701,7 @@ pub async fn networth(
 	let progress = shape::WideBubbleProgress(
 		sky_block::get_level_progress(member.leveling.xp),
 		sky_block::get_colours(level),
+		false,
 	);
 
 	let mut canvas = Canvas::new(720.)
@@ -867,6 +870,7 @@ pub async fn pets(
 	let progress = shape::WideBubbleProgress(
 		sky_block::get_level_progress(member.leveling.xp),
 		sky_block::get_colours(level),
+		false,
 	);
 
 	let mut canvas = Canvas::new(720.)
@@ -1100,6 +1104,7 @@ macro_rules! inventory_command {
 			let progress = shape::WideBubbleProgress(
 				sky_block::get_level_progress(member.leveling.xp),
 				sky_block::get_colours(level),
+				false,
 			);
 
 			let ctx = &ctx;

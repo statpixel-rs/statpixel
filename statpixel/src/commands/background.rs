@@ -167,7 +167,7 @@ pub async fn background(
 			serenity::CreateEmbed::new()
 				.title(tr!(&ctx, "colour-changed"))
 				.description(
-					tr_fmt!(&ctx, "colour-changed-description", colour: format!("`#{:0>8x}`", colour)),
+					tr_fmt!(&ctx, "colour-changed-description", colour: format!("#{:0>8x}", colour)),
 				)
 				.colour(colour & 0x00_ffffff),
 		),

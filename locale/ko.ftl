@@ -2,45 +2,45 @@
 not-linked = 링크되지 않음
 not-linked-description = 링크되지 않았으므로 프로필을 제공해야 합니다.
 showing-statistics = <a:clock:1115091329958019253> {$from}에서 {$to}까지의 통계를 표시합니다.
-no-previous-statistics = **{$name}**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-guild-statistics = <a:clock:1115091329958019253> 길드 **{$name}**의 통계를 {$from}에서 {$to}까지 표시합니다.
-no-previous-guild-statistics = 길드 **{$name}**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-comparison = <a:clock:1115091329958019253> {$from}의 통계를 {$to}와 비교하여 표시합니다.
+no-previous-statistics = **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
+showing-guild-statistics = <a:clock:1115091329958019253> 길드 **`{$name}`**의 통계를 `{$from}`에서 `{$to}`까지 표시합니다.
+no-previous-guild-statistics = 길드 **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
+showing-comparison = <a:clock:1115091329958019253> `{$from}`의 통계를 `{$to}`와 비교하여 표시합니다.
 
 # Errors
-error-player-not-found = {$name} 님의 프로필을 찾을 수 없습니다.
-error-session-not-found = {$name} 님의 세션을 찾을 수 없습니다.
-error-player-uuid-not-found = UUID가 {$uuid}인 플레이어를 찾을 수 없습니다.
-error-player-username-not-found = 사용자명이 {$name}인 플레이어를 찾을 수 없습니다.
-error-guild-by-member-uuid-not-found = UUID가 {$uuid}인 길드 멤버를 찾을 수 없습니다.
-error-guild-by-member-username-not-found = 사용자명이 {$name}인 길드 멤버를 찾을 수 없습니다.
-error-guild-not-found = {$name} 이름의 길드를 찾을 수 없습니다.
+error-player-not-found = `{$name}` 님의 프로필을 찾을 수 없습니다.
+error-session-not-found = `{$name}` 님의 세션을 찾을 수 없습니다.
+error-player-uuid-not-found = UUID가 `{$uuid}`인 플레이어를 찾을 수 없습니다.
+error-player-username-not-found = 사용자명이 `{$name}`인 플레이어를 찾을 수 없습니다.
+error-guild-by-member-uuid-not-found = UUID가 `{$uuid}`인 길드 멤버를 찾을 수 없습니다.
+error-guild-by-member-username-not-found = 사용자명이 `{$name}`인 길드 멤버를 찾을 수 없습니다.
+error-guild-not-found = `{$name}` 이름의 길드를 찾을 수 없습니다.
 error-internal = 내부 오류가 발생했습니다. 기록되었으며 곧 해결될 것입니다.
 error-not-linked = 마인크래프트 계정에 연결되어 있지 않습니다. 계정을 연결하려면 </link:1113624864524357710> 명령어를 사용하세요.
-error-invalid-uuid = 잘못된 UUID입니다: {$uuid}.
-error-invalid-username = 잘못된 사용자명입니다: {$name}.
-error-member-player-not-found = {$name} 님은 프로필에 존재하지 않습니다.
-error-skyblock-profile-not-found = {$name} 님의 SkyBlock 프로필을 찾을 수 없습니다.
-error-player-snapshot-not-found = {$name} 님에 대한 스냅샷이 없습니다. </bedwars daily:1113624864272683060>를 사용하여 스냅샷을 생성하세요.
-error-leaderboard-not-found = 이름이 {$name}인 리더보드를 찾을 수 없습니다.
-error-profile-not-found = {$name} 님의 {$profile} SkyBlock 프로필은 API가 비활성화되어 있거나 새로운 프로필 시스템 이후로 로그인하지 않은 상태입니다.
+error-invalid-uuid = 잘못된 UUID입니다: `{$uuid}`.
+error-invalid-username = 잘못된 사용자명입니다: `{$name}`.
+error-member-player-not-found = `{$name}` 님은 프로필에 존재하지 않습니다.
+error-skyblock-profile-not-found = `{$name}` 님의 SkyBlock 프로필을 찾을 수 없습니다.
+error-player-snapshot-not-found = `{$name}` 님에 대한 스냅샷이 없습니다. </bedwars daily:1113624864272683060>를 사용하여 스냅샷을 생성하세요.
+error-leaderboard-not-found = 이름이 `{$name}`인 리더보드를 찾을 수 없습니다.
+error-profile-not-found = `{$name}` 님의 `{$profile}` SkyBlock 프로필은 API가 비활성화되어 있거나 새로운 프로필 시스템 이후로 로그인하지 않은 상태입니다.
 error-identifier-too-long =
   이 상호작용의 생성된 식별자 중 하나가 너무 깁니다.
   구성 요소의 수나 사용자 정의 텍스트 양을 줄여 보세요.
-error-user-track-limit-reached = 최대 {$limit}개의 추적 기록을 도달했습니다. 제한을 해제하려면 StatPixel+를 구매하세요: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = 최대 `{$limit}`개의 추적 기록을 도달했습니다. 제한을 해제하려면 StatPixel+를 구매하세요: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  이 길드는 최대 {$limit}개의 추적 기록을 도달했습니다.
+  이 길드는 최대 `{$limit}`개의 추적 기록을 도달했습니다.
   StatPixel+를 가지고 있다면 </boost:1132443666997321809>를 사용하여 길드를 강화하여 제한을 해제하거나 <https://statpixel.xyz/plus>로 이동하세요.
 error-boost-limit-reached =
-  최대 {$limit}개의 강화를 도달했습니다. 대시보드에서 강화를 제거하세요: <https://statpixel.xyz/dashboard/boost>.
+  최대 `{$limit}`개의 강화를 도달했습니다. 대시보드에서 강화를 제거하세요: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   이미 이 채널에서 이 플레이어를 추적하고 있습니다.
 error-not-premium = 이 작업을 수행하려면 StatPixel+ 구독자여야 합니다. 자세한 정보는 <https://statpixel.xyz/plus>를 확인하세요.
 error-not-in-a-guild = 이 작업을 수행하려면 길드에 속해야 합니다.
 error-boost-already-exists = 이미 이 길드를 강화하고 있습니다.
-error-time-invalid-character = 시간 인수에서 잘못된 문자가 발견되었습니다. 위치: {$position}.
-error-time-expected-number = 시간 인수에서 숫자를 입력해야 합니다. 위치: {$position}.
-error-time-unknown-unit = 알 수 없는 시간 단위: {$unit}. 위치: {$position}, 값: {$value}.
+error-time-invalid-character = 시간 인수에서 잘못된 문자가 발견되었습니다. 위치: `{$position}`.
+error-time-expected-number = 시간 인수에서 숫자를 입력해야 합니다. 위치: `{$position}`.
+error-time-unknown-unit = 알 수 없는 시간 단위: `{$unit}`. 위치: `{$position}`, 값: `{$value}`.
 error-time-empty = 시간 인수는 비워둘 수 없습니다.
 error-time-overflow = 시간 인수의 기간이 너무 깁니다. 3,000년 이하로 설정하세요.
 
@@ -163,19 +163,19 @@ username = 사용자 이름
 username-placeholder = 사용할 사용자 이름 입력
 
 invalid-statistic =
-  {$game}의 잘못된 통계 {$statistic}. 문서를 확인한 후 다시 시도하세요.
+  `{$game}`의 잘못된 통계 `{$statistic}`. 문서를 확인한 후 다시 시도하세요.
 
 invalid-level-type =
-  잘못된 레벨 유형 {$kind}. 문서를 확인한 후 다시 시도하세요.
+  잘못된 레벨 유형 `{$kind}`. 문서를 확인한 후 다시 시도하세요.
 
 invalid-game-type =
-  잘못된 게임 유형 {$game}. 문서를 확인한 후 다시 시도하세요.
+  잘못된 게임 유형 `{$game}`. 문서를 확인한 후 다시 시도하세요.
 
 image-created =
   이미지가 생성되었습니다! </execute:1125992506501365892>로 시도해보세요.
 
-  식별자: {$id}
-  링크: {$link}
+  식별자: `{$id}`
+  링크: `{$link}`
 
 # /about
 
@@ -231,7 +231,7 @@ background = 배경
 error-invalid-colour = 잘못된 색상이 제공되었습니다
 error-invalid-colour-description = 제공된 색상이 잘못되었습니다. [다음 색상](https://simple.wikipedia.org/wiki/List_of_colors) 또는 `#`으로 시작하는 16진수 색상 중 하나를 입력하세요.
 colour-changed = 배경 색상 변경됨
-colour-changed-description = 배경 색상이 {$colour}(으)로 변경되었습니다.
+colour-changed-description = 배경 색상이 `{$colour}`(으)로 변경되었습니다.
 
 # /skyblock bazaar
 
@@ -528,10 +528,10 @@ link = 연결
 
 linking-failed = 연결 실패
 linking-failed-uuid-description = UUID `{$uuid}`는 Minecraft 계정에 속하지 않습니다.
-linking-failed-username-description = 사용자 이름 **{$username}**은 Minecraft 계정에 속하지 않습니다.
+linking-failed-username-description = 사용자 이름 **`{$username}`**은 Minecraft 계정에 속하지 않습니다.
 linking-failed-description = 유효한 UUID 또는 사용자 이름을 제공해야 합니다.
 linking-succeeded = 연결 성공
-linking-succeeded-description = 이제 Discord 계정이 Minecraft 계정 **{$name}**에 연결되었습니다.
+linking-succeeded-description = 이제 Discord 계정이 Minecraft 계정 **`{$name}`**에 연결되었습니다.
 
 # /arcade
 
@@ -595,8 +595,8 @@ arcade-project = 예측
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
-  .kind = 통계
-  .kind-description = 예측할 아케이드 통계
+  .statistic = 통계
+  .statistic-description = 예측할 아케이드 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -670,8 +670,8 @@ arena-project = 예측
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
-  .kind = 통계
-  .kind-description = 예측할 아레나 통계
+  .statistic = 통계
+  .statistic-description = 예측할 아레나 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -776,8 +776,8 @@ bedwars-project = 예측
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
-  .kind = 통계
-  .kind-description = 예측할 베드 워즈 통계
+  .statistic = 통계
+  .statistic-description = 예측할 베드 워즈 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -876,8 +876,8 @@ blitz-project = 예측
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
-  .kind = 통계-종류
-  .kind-description = 예측할 블리츠 서바이벌 게임 통계 종류
+  .statistic = 통계-종류
+  .statistic-description = 예측할 블리츠 서바이벌 게임 통계 종류
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -954,8 +954,8 @@ buildbattle-project = 예측
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
-  .kind = 통계-종류
-  .kind-description = 예측할 빌드 배틀 통계 종류
+  .statistic = 통계-종류
+  .statistic-description = 예측할 빌드 배틀 통계 종류
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -1036,8 +1036,8 @@ copsandcrims-project = 예측
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
-  .kind = 통계-종류
-  .kind-description = 예측할 콥스 앤 크림 통계 종류
+  .statistic = 통계-종류
+  .statistic-description = 예측할 콥스 앤 크림 통계 종류
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -1139,8 +1139,8 @@ duels-project = 예상
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
-  .kind = 통계
-  .kind-description = 예상할 듀얼 통계
+  .statistic = 통계
+  .statistic-description = 예상할 듀얼 통계
   .value = 값
   .value-description = 예상할 통계 값
 
@@ -1217,8 +1217,8 @@ megawalls-project = 예상
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
-  .kind = 통계
-  .kind-description = 예상할 메가 월즈 통계
+  .statistic = 통계
+  .statistic-description = 예상할 메가 월즈 통계
   .value = 값
   .value-description = 예상할 통계 값
 
@@ -1297,8 +1297,8 @@ murdermystery-project = 프로젝트
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 볼 살인 미스터리 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 살인 미스터리 통계
+  .statistic = 통계
+  .statistic-description = 프로젝트할 살인 미스터리 통계
   .value = 값
   .value-description = 프로젝트할 통계 값
 
@@ -1385,8 +1385,8 @@ paintball-project = 프로젝트
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 페인트볼 통계
+  .statistic = 통계
+  .statistic-description = 프로젝트할 페인트볼 통계
   .value = 값
   .value-description = 프로젝트할 통계 값
 
@@ -1464,8 +1464,8 @@ pit-project = 프로젝트
   .uuid-description = 마인크래프트 UUID
   .mode = 모드
   .mode-description = 볼 더 피트 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 더 피트 통계
+  .statistic = 통계
+  .statistic-description = 프로젝트할 더 피트 통계
   .value = 값
   .value-description = 프로젝트할 통계 값
 
@@ -1541,8 +1541,8 @@ quake-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 확인할 Quakecraft 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 Quakecraft 통계 항목
+  .statistic = 통계
+  .statistic-description = 프로젝트할 Quakecraft 통계 항목
   .value = 값
   .value-description = 프로젝트할 통계 항목의 값
 
@@ -1631,8 +1631,8 @@ skywars-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 SkyWars 통계 항목
+  .statistic = 통계
+  .statistic-description = 프로젝트할 SkyWars 통계 항목
   .value = 값
   .value-description = 프로젝트할 통계 항목의 값
 
@@ -1706,8 +1706,8 @@ smash-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
-  .kind = 통계
-  .kind-description = 프로젝트할 Smash Heroes 통계 항목
+  .statistic = 통계
+  .statistic-description = 프로젝트할 Smash Heroes 통계 항목
   .value = 값
   .value-description = 프로젝트할 통계 항목의 값
 
@@ -1780,8 +1780,8 @@ speeduhc-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 SpeedUHC 모드
-  .kind = 통계
-  .kind-description = 예측할 SpeedUHC 통계
+  .statistic = 통계
+  .statistic-description = 예측할 SpeedUHC 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -1863,8 +1863,8 @@ tntgames-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
-  .kind = 통계
-  .kind-description = 예측할 TNT 게임 통계
+  .statistic = 통계
+  .statistic-description = 예측할 TNT 게임 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -1942,8 +1942,8 @@ turbokartracers-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
-  .kind = 통계
-  .kind-description = 예측할 Turbo Kart Racers 통계
+  .statistic = 통계
+  .statistic-description = 예측할 Turbo Kart Racers 통계
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -2025,8 +2025,8 @@ uhc-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
-  .kind = 통계
-  .kind-description = 예측할 UHC Champions 통계
+  .statistic = 통계
+  .statistic-description = 예측할 UHC Champions 통계
   .value = 값
   .value-description = 예측할 통계값
 
@@ -2112,8 +2112,8 @@ vampirez-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
-  .kind = 통계
-  .kind-description = 예측할 VampireZ 통계
+  .statistic = 통계
+  .statistic-description = 예측할 VampireZ 통계
   .value = 값
   .value-description = 예측할 통계값
 
@@ -2188,8 +2188,8 @@ walls-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 볼 The Walls 모드
-  .kind = 통계
-  .kind-description = 예측할 The Walls 통계
+  .statistic = 통계
+  .statistic-description = 예측할 The Walls 통계
   .value = 값
   .value-description = 예측할 통계값
 
@@ -2268,8 +2268,8 @@ warlords-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
-  .kind = 통계
-  .kind-description = 예측할 Warlords 통계
+  .statistic = 통계
+  .statistic-description = 예측할 Warlords 통계
   .value = 값
   .value-description = 예측할 통계값
 
@@ -2343,8 +2343,8 @@ woolwars-project = 프로젝트
   .uuid-description = Minecraft UUID
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
-  .kind = 통계
-  .kind-description = 예측할 Wool Wars 통계 항목
+  .statistic = 통계
+  .statistic-description = 예측할 Wool Wars 통계 항목
   .value = 값
   .value-description = 예측할 통계 값
 
@@ -2468,7 +2468,7 @@ guild-monthly = 월간
   .uuid = uuid
   .uuid-description = 길드 멤버의 Minecraft UUID
 
-showing-guild-xp-statistics = {$from}부터 {$to}까지의 길드 경험치 획득 표시.
+showing-guild-xp-statistics = `{$from}`부터 `{$to}`까지의 길드 경험치 획득 표시.
   
 # 공유 캔버스 라벨
 

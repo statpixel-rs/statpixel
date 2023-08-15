@@ -296,28 +296,28 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 	let content = match error {
 		Error::Api(err) => match *err {
 			ApiError::PlayerNotFound(ref name) => {
-				tr_fmt!(ctx, "error-player-not-found", name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-player-not-found", name: name.as_str())
 			}
 			ApiError::SessionNotFound(ref name) => {
-				tr_fmt!(ctx, "error-session-not-found", name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-session-not-found", name: name.as_str())
 			}
 			ApiError::ProfileNotFound(ref profile, ref name) => {
-				tr_fmt!(ctx, "error-profile-not-found", profile: format!("`{}`", profile), name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-profile-not-found", profile: profile.as_str(), name: name.as_str())
 			}
 			ApiError::UuidNotFound(ref uuid) => {
-				tr_fmt!(ctx, "error-player-uuid-not-found", uuid: format!("`{}`", uuid))
+				tr_fmt!(ctx, "error-player-uuid-not-found", uuid: uuid.to_string())
 			}
 			ApiError::UsernameNotFound(ref name) => {
-				tr_fmt!(ctx, "error-player-username-not-found", name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-player-username-not-found", name: name.as_str())
 			}
 			ApiError::GuildByMemberUuidNotFound(ref uuid) => {
-				tr_fmt!(ctx, "error-guild-by-member-uuid-not-found", uuid: format!("`{}`", uuid))
+				tr_fmt!(ctx, "error-guild-by-member-uuid-not-found", uuid: uuid.to_string())
 			}
 			ApiError::GuildByMemberUsernameNotFound(ref name) => {
-				tr_fmt!(ctx, "error-guild-by-member-username-not-found", name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-guild-by-member-username-not-found", name: name.as_str())
 			}
 			ApiError::GuildNotFound(ref name) => {
-				tr_fmt!(ctx, "error-guild-not-found", name: format!("`{}`", name))
+				tr_fmt!(ctx, "error-guild-not-found", name: name.as_str())
 			}
 			ref error => {
 				error!(error = ?error, "internal error");
@@ -328,34 +328,34 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 			tr!(ctx, "error-not-linked")
 		}
 		Error::InvalidUuid(ref uuid) => {
-			tr_fmt!(ctx, "error-invalid-uuid", uuid: format!("`{}`", uuid))
+			tr_fmt!(ctx, "error-invalid-uuid", uuid: uuid.to_string())
 		}
 		Error::InvalidUsername(ref name) => {
-			tr_fmt!(ctx, "error-invalid-username", name: format!("`{}`", name))
+			tr_fmt!(ctx, "error-invalid-username", name: name.as_str())
 		}
 		Error::MemberPlayerNotFound(ref name) => {
-			tr_fmt!(ctx, "error-member-player-not-found", name: format!("`{}`", name))
+			tr_fmt!(ctx, "error-member-player-not-found", name: name.as_str())
 		}
 		Error::SkyBlockProfileNotFound(ref name) => {
-			tr_fmt!(ctx, "error-skyblock-profile-not-found", name: format!("`{}`", name))
+			tr_fmt!(ctx, "error-skyblock-profile-not-found", name: name.as_str())
 		}
 		Error::LeaderboardNotFound(ref name) => {
-			tr_fmt!(ctx, "error-leaderboard-not-found", name: format!("`{}`", name))
+			tr_fmt!(ctx, "error-leaderboard-not-found", name: name.as_str())
 		}
 		Error::IdentifierTooLong => {
 			tr!(ctx, "error-identifier-too-long")
 		}
 		Error::UserTrackLimitReached(ref limit) => {
-			tr_fmt!(ctx, "error-user-track-limit-reached", limit: format!("`{}`", limit))
+			tr_fmt!(ctx, "error-user-track-limit-reached", limit: limit)
 		}
 		Error::GuildTrackLimitReached(ref limit) => {
-			tr_fmt!(ctx, "error-guild-track-limit-reached", limit: format!("`{}`", limit))
+			tr_fmt!(ctx, "error-guild-track-limit-reached", limit: limit)
 		}
 		Error::TrackAlreadyExists => {
 			tr!(ctx, "error-track-already-exists")
 		}
 		Error::BoostLimitReached(ref limit) => {
-			tr_fmt!(ctx, "error-boost-limit-reached", limit: format!("`{}`", limit))
+			tr_fmt!(ctx, "error-boost-limit-reached", limit: limit)
 		}
 		Error::NotPremium => {
 			tr!(ctx, "error-not-premium")
@@ -368,10 +368,10 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		}
 		Error::TimeParse(error) => match error {
 			humantime::DurationError::InvalidCharacter(position) => {
-				tr_fmt!(ctx, "error-time-invalid-character", position: format!("`{}`", position))
+				tr_fmt!(ctx, "error-time-invalid-character", position: position)
 			}
 			humantime::DurationError::NumberExpected(position) => {
-				tr_fmt!(ctx, "error-time-expected-number", position: format!("`{}`", position))
+				tr_fmt!(ctx, "error-time-expected-number", position: position)
 			}
 			humantime::DurationError::UnknownUnit {
 				start: position,
@@ -379,7 +379,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 				value,
 				..
 			} => {
-				tr_fmt!(ctx, "error-time-unknown-unit", position: format!("`{}`", position), unit: format!("`{}`", unit), value: format!("`{}`", value))
+				tr_fmt!(ctx, "error-time-unknown-unit", position: position, unit: unit, value: value)
 			}
 			humantime::DurationError::NumberOverflow => {
 				tr!(ctx, "error-time-overflow")

@@ -2,46 +2,46 @@
 not-linked = Липсващи аргументи
 not-linked-description = Понеже не сте свързани, трябва да предоставите профил, за да го видите.
 showing-statistics = <a:clock:1115091329958019253> Показване на статистиката от {$from} до {$to}.
-no-previous-statistics = Не са намерени предишни данни за **{$name}**, затова са били вмъкнати.
-showing-guild-statistics = Показване на статистиката на гилдията от {$from} до {$to}.
-no-previous-guild-statistics = Не са намерени предишни данни за гилдия **{$name}**, затова са били вмъкнати.
-showing-comparison = <a:clock:1115091329958019253> Показване на статистиката на {$from} спрямо {$to}.
+no-previous-statistics = Не са намерени предишни данни за **`{$name}`**, затова са били вмъкнати.
+showing-guild-statistics = Показване на статистиката на гилдията от `{$from}` до `{$to}`.
+no-previous-guild-statistics = Не са намерени предишни данни за гилдия **`{$name}`**, затова са били вмъкнати.
+showing-comparison = <a:clock:1115091329958019253> Показване на статистиката на `{$from}` спрямо `{$to}`.
 
 # Грешки
 
-error-player-not-found = Не е намерен профил, принадлежащ на {$name}.
-error-session-not-found = Не е намерена сесия, принадлежаща на {$name}.
-error-player-uuid-not-found = Не е намерен играч с идентификатор {$uuid}.
-error-player-username-not-found = Не е намерен играч с потребителско име {$name}.
-error-guild-by-member-uuid-not-found = Не е намерен член на гилдията с идентификатор {$uuid}.
-error-guild-by-member-username-not-found = Не е намерен член на гилдията с потребителско име {$name}.
-error-guild-not-found = Не е намерена гилдия с име {$name}.
+error-player-not-found = Не е намерен профил, принадлежащ на `{$name}`.
+error-session-not-found = Не е намерена сесия, принадлежаща на `{$name}`.
+error-player-uuid-not-found = Не е намерен играч с идентификатор `{$uuid}`.
+error-player-username-not-found = Не е намерен играч с потребителско име `{$name}`.
+error-guild-by-member-uuid-not-found = Не е намерен член на гилдията с идентификатор `{$uuid}`.
+error-guild-by-member-username-not-found = Не е намерен член на гилдията с потребителско име `{$name}`.
+error-guild-not-found = Не е намерена гилдия с име `{$name}`.
 error-internal = Възникна вътрешна грешка. Тя е записана и ще бъде отстранена скоро.
 error-not-linked = Вие не сте свързани с профил на Minecraft. Използвайте </link:1113624864524357710>, за да свържете вашия профил.
-error-invalid-uuid = Невалиден идентификатор {$uuid}.
-error-invalid-username = Невалидно потребителско име {$name}.
-error-member-player-not-found = Членът {$name} не е намерен в профила.
-error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на {$name}.
-error-player-snapshot-not-found = Няма намерени снимки за {$name}. Създайте една с </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Не е намерен класиране с име {$name}.
-error-profile-not-found = Профилът на SkyBlock {$profile}, принадлежащ на {$name}, има изключена API или не се е вписвал след новата система за профили.
+error-invalid-uuid = Невалиден идентификатор `{$uuid}`.
+error-invalid-username = Невалидно потребителско име `{$name}`.
+error-member-player-not-found = Членът `{$name}` не е намерен в профила.
+error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на `{$name}`.
+error-player-snapshot-not-found = Няма намерени снимки за `{$name}`. Създайте една с </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Не е намерен класиране с име `{$name}`.
+error-profile-not-found = Профилът на SkyBlock `{$profile}`, принадлежащ на `{$name}`, има изключена API или не се е вписвал след новата система за профили.
 error-identifier-too-long =
   Един от генерираните идентификатори за тази интеракция е твърде дълъг.
   Опитайте да намалите броя на компонентите или количество на персонализирания текст.
-error-user-track-limit-reached = Достигнали сте максималния брой проследявания от {$limit}. Закупете StatPixel+ , за да премахнете този лимит на <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Достигнали сте максималния брой проследявания от `{$limit}`. Закупете StatPixel+ , за да премахнете този лимит на <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Тази гилдия е достигнала максималния брой проследявания от {$limit}.
+  Тази гилдия е достигнала максималния брой проследявания от `{$limit}`.
   Ако имате StatPixel+, увеличете гилдията си с </boost:1132443666997321809>, за да премахнете това ограничение или посетете <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Достигнали сте максималния брой усилвания от {$limit}. Можете да премахнете усилване на контролния панел: <https://statpixel.xyz/dashboard/boost>.
+  Достигнали сте максималния брой усилвания от `{$limit}`. Можете да премахнете усилване на контролния панел: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Вече проследявате този играч в този канал.
 error-not-premium = Трябва да сте абонат на StatPixel+, за да изпълните това действие. Посетете <https://statpixel.xyz/plus> за повече информация.
 error-not-in-a-guild = Трябва да сте в гилдия, за да изпълните това действие.
 error-boost-already-exists = Вече усилвате тази гилдия.
-error-time-invalid-character = Намерен е невалиден символ в аргумента за времето на позиция {$position}.
-error-time-expected-number = Очаквано е число в аргумента за времето на позиция {$position}.
-error-time-unknown-unit = Непозната единица за време {$unit} на позиция {$position} със стойност {$value}.
+error-time-invalid-character = Намерен е невалиден символ в аргумента за времето на позиция `{$position}`.
+error-time-expected-number = Очаквано е число в аргумента за времето на позиция `{$position}`.
+error-time-unknown-unit = Непозната единица за време `{$unit}` на позиция `{$position}` със стойност `{$value}`.
 error-time-empty = Аргументът за времето не може да бъде празен.
 error-time-overflow = Продължителността на аргумента за времето е твърде дълга. Опитайте да я запазите под 3000 години.
 
@@ -167,19 +167,19 @@ username = Потребителско име
 username-placeholder = Въведете потребителско име за използване
 
 invalid-statistic =
-  Невалидна статистика {$statistic} за {$game}. Проверете документацията и опитайте отново.
+  Невалидна статистика `{$statistic}` за `{$game}`. Проверете документацията и опитайте отново.
 
 invalid-level-type =
-  Невалиден тип на ниво {$kind}. Проверете документацията и опитайте отново.
+  Невалиден тип на ниво `{$kind}`. Проверете документацията и опитайте отново.
 
 invalid-game-type =
-  Невалиден тип на игра {$game}. Проверете документацията и опитайте отново.
+  Невалиден тип на игра `{$game}`. Проверете документацията и опитайте отново.
 
 image-created =
   Вашето изображение е създадено! Опитайте го с </execute:1125992506501365892>.
 
-  Идентификатор: {$id}
-  Връзка: {$link}
+  Идентификатор: `{$id}`
+  Връзка: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = Предоставеният цвят е невалиден
 error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of_colors) или шестнадесетичен цвят с префикс "#".
 colour-changed = Променен цвят на фона
-colour-changed-description = Вашият цвят на фона е променен на {$colour}.
+colour-changed-description = Вашият цвят на фона е променен на `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = свързване
 
 linking-failed = Свързването неуспешно
 linking-failed-uuid-description = UUID `{$uuid}` не принадлежи на Minecraft акаунт.
-linking-failed-username-description = Потребителското име **{$username}** не принадлежи на Minecraft акаунт.
+linking-failed-username-description = Потребителското име **`{$username}`** не принадлежи на Minecraft акаунт.
 linking-failed-description = Трябва да предоставите валиден UUID или потребителско име.
 linking-succeeded = Свързване успешно
-linking-succeeded-description = Вашият Discord акаунт е свързан с Minecraft акаунта **{$name}**.
+linking-succeeded-description = Вашият Discord акаунт е свързан с Minecraft акаунта **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Arcade, който да се покаже
-  .kind = статистика
-  .kind-description = Статистиката на Arcade, която да се прогнозира
+  .statistic = статистика
+  .statistic-description = Статистиката на Arcade, която да се прогнозира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прогнозира
 
@@ -674,8 +674,8 @@ arena-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Arena, който да се покаже
-  .kind = статистика
-  .kind-description = Статистиката на Arena, която да се прогнозира
+  .statistic = статистика
+  .statistic-description = Статистиката на Arena, която да се прогнозира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прогнозира
 
@@ -780,8 +780,8 @@ bedwars-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Bed Wars, който да се покаже
-  .kind = статистика
-  .kind-description = Статистиката на Bed Wars, която да се прогнозира
+  .statistic = статистика
+  .statistic-description = Статистиката на Bed Wars, която да се прогнозира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прогнозира
 
@@ -880,8 +880,8 @@ blitz-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Blitz Survival Games за преглед
-  .kind = статистика
-  .kind-description = Статистика на Blitz Survival Games за проекция
+  .statistic = статистика
+  .statistic-description = Статистика на Blitz Survival Games за проекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -958,8 +958,8 @@ buildbattle-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Build Battle за преглед
-  .kind = статистика
-  .kind-description = Статистика на Build Battle за проекция
+  .statistic = статистика
+  .statistic-description = Статистика на Build Battle за проекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режим на Cops and Crims за преглед
-  .kind = статистика
-  .kind-description = Статистика на Cops and Crims за проекция
+  .statistic = статистика
+  .statistic-description = Статистика на Cops and Crims за проекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -1143,8 +1143,8 @@ duels-project = проекция
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Duels за преглед
-  .kind = статистика
-  .kind-description = Статистиката на Duels за проекция
+  .statistic = статистика
+  .statistic-description = Статистиката на Duels за проекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -1221,8 +1221,8 @@ megawalls-project = проекция
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Mega Walls за преглед
-  .kind = статистика
-  .kind-description = Статистиката на Mega Walls за проекция
+  .statistic = статистика
+  .statistic-description = Статистиката на Mega Walls за проекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -1301,8 +1301,8 @@ murdermystery-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Murder Mystery за преглед
-  .kind = статистика
-  .kind-description = Статистика на Murder Mystery за прожекция
+  .statistic = статистика
+  .statistic-description = Статистика на Murder Mystery за прожекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -1389,8 +1389,8 @@ paintball-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Paintball за преглед
-  .kind = статистика
-  .kind-description = Статистика на Paintball за прожекция
+  .statistic = статистика
+  .statistic-description = Статистика на Paintball за прожекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -1468,8 +1468,8 @@ pit-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на The Pit за преглед
-  .kind = статистика
-  .kind-description = Статистика на The Pit за прожекция
+  .statistic = статистика
+  .statistic-description = Статистика на The Pit за прожекция
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -1545,8 +1545,8 @@ quake-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Quakecraft режим за преглед
-  .kind = статистика
-  .kind-description = Quakecraft статистика за проекция
+  .statistic = статистика
+  .statistic-description = Quakecraft статистика за проекция
   .value = стойност
   .value-description = Стойността на статистиката за проекция
 
@@ -1635,8 +1635,8 @@ skywars-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = SkyWars режим за преглед
-  .kind = статистика
-  .kind-description = SkyWars статистика за проекция
+  .statistic = статистика
+  .statistic-description = SkyWars статистика за проекция
   .value = стойност
   .value-description = Стойността на статистиката за проекция
 
@@ -1710,8 +1710,8 @@ smash-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Smash Heroes режим за преглед
-  .kind = статистика
-  .kind-description = Smash Heroes статистика за проекция
+  .statistic = статистика
+  .statistic-description = Smash Heroes статистика за проекция
   .value = стойност
   .value-description = Стойността на статистиката за проекция
 
@@ -1784,8 +1784,8 @@ speeduhc-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на SpeedUHC за преглед
-  .kind = статистика
-  .kind-description = Статистиката на SpeedUHC, която да се прожектира
+  .statistic = статистика
+  .statistic-description = Статистиката на SpeedUHC, която да се прожектира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -1867,8 +1867,8 @@ tntgames-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на TNT Games за преглед
-  .kind = статистика
-  .kind-description = Статистиката на TNT Games, която да се прожектира
+  .statistic = статистика
+  .statistic-description = Статистиката на TNT Games, която да се прожектира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -1946,8 +1946,8 @@ turbokartracers-project = проект
   .uuid-description = Minecraft UUID
   .mode = режим
   .mode-description = Режимът на Turbo Kart Racers за преглед
-  .kind = статистика
-  .kind-description = Статистиката на Turbo Kart Racers, която да се прожектира
+  .statistic = статистика
+  .statistic-description = Статистиката на Turbo Kart Racers, която да се прожектира
   .value = стойност
   .value-description = Стойността на статистиката, която да се прожектира
 
@@ -2027,8 +2027,8 @@ uhc-project = проект
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на UHC Champions за преглед
-  .kind = статистика
-  .kind-description = Статистика на UHC Champions за прогнозиране
+  .statistic = статистика
+  .statistic-description = Статистика на UHC Champions за прогнозиране
   .value = стойност
   .value-description = Стойността на статистиката за прогнозиране
 
@@ -2114,8 +2114,8 @@ vampirez-project = проект
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на VampireZ за преглед
-  .kind = статистика
-  .kind-description = Статистика на VampireZ за прогнозиране
+  .statistic = статистика
+  .statistic-description = Статистика на VampireZ за прогнозиране
   .value = стойност
   .value-description = Стойността на статистиката за прогнозиране
 
@@ -2190,8 +2190,8 @@ walls-project = проект
   .uuid-description = Minecraft УУИД
   .mode = режим
   .mode-description = Режим на The Walls за преглед
-  .kind = статистика
-  .kind-description = Статистика на The Walls за прогнозиране
+  .statistic = статистика
+  .statistic-description = Статистика на The Walls за прогнозиране
   .value = стойност
   .value-description = Стойността на статистиката за прогнозиране
 
@@ -2271,8 +2271,8 @@ warlords-project = проект
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Warlords за преглед
-  .kind = статистика
-  .kind-description = Статистиката на Warlords, която да се проектира
+  .statistic = статистика
+  .statistic-description = Статистиката на Warlords, която да се проектира
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -2346,8 +2346,8 @@ woolwars-project = проект
   .uuid-description = UUID в Minecraft
   .mode = режим
   .mode-description = Режимът на Wool Wars за преглед
-  .kind = статистика
-  .kind-description = Статистиката на Wool Wars, която да се проектира
+  .statistic = статистика
+  .statistic-description = Статистиката на Wool Wars, която да се проектира
   .value = стойност
   .value-description = Стойността на статистиката, която да се проектира
 
@@ -2471,7 +2471,7 @@ guild-monthly = месечно
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
 
-showing-guild-xp-statistics = Показване на придобития от гилдията XP от {$from} до {$to}.
+showing-guild-xp-statistics = Показване на придобития от гилдията XP от `{$from}` до `{$to}`.
 
 # Общи етикети за платното
 

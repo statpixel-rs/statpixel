@@ -2,45 +2,45 @@
 not-linked = Puuttuvat argumentit
 not-linked-description = Koska et ole linkitetty, sinun on annettava profiili nähdäksesi tiedot.
 showing-statistics = <a:clock:1115091329958019253> Näytetään tilastotietoja ajalta {$from} - {$to}.
-no-previous-statistics = Ei aiempia tietoja pelaajalle **{$name}**, joten ne on lisätty.
-showing-guild-statistics = Näytetään killan tilastotietoja ajalta {$from} - {$to}.
-no-previous-guild-statistics = Ei aiempia tietoja killalle **{$name}**, joten ne on lisätty.
-showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja pelaajalta {$from} pelaajalle {$to}.
+no-previous-statistics = Ei aiempia tietoja pelaajalle **`{$name}`**, joten ne on lisätty.
+showing-guild-statistics = Näytetään killan tilastotietoja ajalta `{$from}` - `{$to}`.
+no-previous-guild-statistics = Ei aiempia tietoja killalle **`{$name}`**, joten ne on lisätty.
+showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja pelaajalta `{$from}` pelaajalle `{$to}`.
 
 # Virheet
-error-player-not-found = Profiilia nimellä {$name} ei löytynyt.
-error-session-not-found = Istuntoa nimellä {$name} ei löytynyt.
-error-player-uuid-not-found = Pelaajaa uuid:lla {$uuid} ei löytynyt.
-error-player-username-not-found = Pelaajaa nimellä {$name} ei löytynyt.
-error-guild-by-member-uuid-not-found = Killan jäsentä uuid:lla {$uuid} ei löytynyt.
-error-guild-by-member-username-not-found = Killan jäsentä nimellä {$name} ei löytynyt.
-error-guild-not-found = Killaa nimellä {$name} ei löytynyt.
+error-player-not-found = Profiilia nimellä `{$name}` ei löytynyt.
+error-session-not-found = Istuntoa nimellä `{$name}` ei löytynyt.
+error-player-uuid-not-found = Pelaajaa uuid:lla `{$uuid}` ei löytynyt.
+error-player-username-not-found = Pelaajaa nimellä `{$name}` ei löytynyt.
+error-guild-by-member-uuid-not-found = Killan jäsentä uuid:lla `{$uuid}` ei löytynyt.
+error-guild-by-member-username-not-found = Killan jäsentä nimellä `{$name}` ei löytynyt.
+error-guild-not-found = Killaa nimellä `{$name}` ei löytynyt.
 error-internal = Sisäinen virhe tapahtui. Se on kirjattu ja korjataan pian.
 error-not-linked = Et ole linkitetty Minecraft-tiliin. Käytä </link:1113624864524357710> linkittääksesi tilisi.
-error-invalid-uuid = Annettu uuid {$uuid} ei ole kelvollinen.
-error-invalid-username = Annettu pelaajanimi {$name} ei ole kelvollinen.
-error-member-player-not-found = Pelaajaa nimellä {$name} ei löytynyt profiilista.
-error-skyblock-profile-not-found = SkyBlock-profiilia nimellä {$name} ei löytynyt.
-error-player-snapshot-not-found = Pelaajalle {$name} ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Top-listaa nimellä {$name} ei löytynyt.
-error-profile-not-found = SkyBlock-profiilia nimeltä {$profile} pelaajalle {$name} ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
+error-invalid-uuid = Annettu uuid `{$uuid}` ei ole kelvollinen.
+error-invalid-username = Annettu pelaajanimi `{$name}` ei ole kelvollinen.
+error-member-player-not-found = Pelaajaa nimellä `{$name}` ei löytynyt profiilista.
+error-skyblock-profile-not-found = SkyBlock-profiilia nimellä `{$name}` ei löytynyt.
+error-player-snapshot-not-found = Pelaajalle `{$name}` ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Top-listaa nimellä `{$name}` ei löytynyt.
+error-profile-not-found = SkyBlock-profiilia nimeltä `{$profile}` pelaajalle `{$name}` ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
 error-identifier-too-long =
   Yksi tämän vuorovaikutuksen luoduista tunnisteista on liian pitkä.
   Yritä vähentää komponenttien määrää tai räätälöidyn tekstin määrää.
-error-user-track-limit-reached = Olet saavuttanut maksimimäärän pelaajaseurantoja ({$limit}). Poista rajoitus hankkimalla StatPixel+ osoitteessa <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Olet saavuttanut maksimimäärän pelaajaseurantoja (`{$limit}`). Poista rajoitus hankkimalla StatPixel+ osoitteessa <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Tämä kilta on saavuttanut maksimimäärän seurantoja ({$limit}).
+  Tämä kilta on saavuttanut maksimimäärän seurantoja (`{$limit}`).
   Jos sinulla on StatPixel+, voit poistaa tämän rajoituksen parantamalla kiltaa komennolla </boost:1132443666997321809> tai siirtymällä osoitteeseen <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Olet saavuttanut maksimimäärän kiltaan liittyviä parannuksia ({$limit}). Voit poistaa parannuksen hallintapaneelista: <https://statpixel.xyz/dashboard/boost>.
+  Olet saavuttanut maksimimäärän kiltaan liittyviä parannuksia (`{$limit}`). Voit poistaa parannuksen hallintapaneelista: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Olet jo seuraamassa tätä pelaajaa tässä kanavassa.
 error-not-premium = Sinun on oltava StatPixel+ tilaaja suorittaaksesi tämän toiminnon. Siirry osoitteeseen <https://statpixel.xyz/plus> lisätietoja varten.
 error-not-in-a-guild = Sinun on oltava killan jäsen suorittaaksesi tämän toiminnon.
 error-boost-already-exists = Olet jo parantamassa tätä kiltaa.
-error-time-invalid-character = Aikamääreessä havaittiin virheellinen merkki sijainnissa {$position}.
-error-time-expected-number = Aikamääreessä oletettiin numero sijainnissa {$position}.
-error-time-unknown-unit = Tuntematon aikayksikkö {$unit} sijainnissa {$position} arvolla {$value}.
+error-time-invalid-character = Aikamääreessä havaittiin virheellinen merkki sijainnissa `{$position}`.
+error-time-expected-number = Aikamääreessä oletettiin numero sijainnissa `{$position}`.
+error-time-unknown-unit = Tuntematon aikayksikkö `{$unit}` sijainnissa `{$position}` arvolla `{$value}`.
 error-time-empty = Aikamääre ei voi olla tyhjä.
 error-time-overflow = Aikamääreen kesto on liian pitkä. Yritä pitää se alle 3 000 vuotta.
 
@@ -165,19 +165,19 @@ username = Käyttäjänimi
 username-placeholder = Syötä käyttäjänimi käytettäväksi
 
 invalid-statistic =
-  Virheellinen tilasto {$statistic} pelissä {$game}. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen tilasto `{$statistic}` pelissä `{$game}`. Tarkista dokumentaatio ja yritä uudelleen.
 
 invalid-level-type =
-  Virheellinen tason tyyppi {$kind}. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen tason tyyppi `{$kind}`. Tarkista dokumentaatio ja yritä uudelleen.
 
 invalid-game-type =
-  Virheellinen pelin tyyppi {$game}. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen pelin tyyppi `{$game}`. Tarkista dokumentaatio ja yritä uudelleen.
 
 image-created =
   Kuvasi on luotu! Kokeile sitä komennolla </execute:1125992506501365892>.
 
-  Tunniste: {$id}
-  Linkki: {$link}
+  Tunniste: `{$id}`
+  Linkki: `{$link}`
 
 # /about
 
@@ -233,7 +233,7 @@ background = tausta
 error-invalid-colour = Virheellinen väri annettu
 error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of_colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
 colour-changed = Taustan väri vaihdettu
-colour-changed-description = Taustan väri on vaihdettu muotoon {$colour}.
+colour-changed-description = Taustan väri on vaihdettu muotoon `{$colour}`.
 
 # /skyblock bazaar
 
@@ -530,10 +530,10 @@ link = linkki
 
 linking-failed = Linkitys epäonnistui
 linking-failed-uuid-description = UUID `{$uuid}` ei kuulu Minecraft-tiliin.
-linking-failed-username-description = Käyttäjänimi **{$username}** ei kuulu Minecraft-tiliin.
+linking-failed-username-description = Käyttäjänimi **`{$username}`** ei kuulu Minecraft-tiliin.
 linking-failed-description = Sinun on annettava voimassa oleva UUID tai käyttäjänimi.
 linking-succeeded = Linkitys onnistui
-linking-succeeded-description = Discord-tilisi on nyt linkitetty Minecraft-tiliin **{$name}**.
+linking-succeeded-description = Discord-tilisi on nyt linkitetty Minecraft-tiliin **`{$name}`**.
 
 # /arcade
 
@@ -597,8 +597,8 @@ arcade-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
-  .kind = tilasto
-  .kind-description = Arcade-tilasto, joka projisoidaan
+  .statistic = tilasto
+  .statistic-description = Arcade-tilasto, joka projisoidaan
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -672,8 +672,8 @@ arena-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Arena-tila
-  .kind = tilasto
-  .kind-description = Arena-tilasto, joka projisoidaan
+  .statistic = tilasto
+  .statistic-description = Arena-tilasto, joka projisoidaan
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -778,8 +778,8 @@ bedwars-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
-  .kind = tilasto
-  .kind-description = Bed Wars -tilasto, joka projisoidaan
+  .statistic = tilasto
+  .statistic-description = Bed Wars -tilasto, joka projisoidaan
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -878,8 +878,8 @@ blitz-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
-  .kind = tilasto
-  .kind-description = Blitz Survival Games -tilasto, jonka haluat projektoida
+  .statistic = tilasto
+  .statistic-description = Blitz Survival Games -tilasto, jonka haluat projektoida
   .value = arvo
   .value-description = Arvo, jonka haluat projektoida
 
@@ -956,8 +956,8 @@ buildbattle-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
-  .kind = tilasto
-  .kind-description = Build Battle -tilasto, jonka haluat projektoida
+  .statistic = tilasto
+  .statistic-description = Build Battle -tilasto, jonka haluat projektoida
   .value = arvo
   .value-description = Arvo, jonka haluat projektoida
 
@@ -1038,8 +1038,8 @@ copsandcrims-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
-  .kind = tilasto
-  .kind-description = Cops and Crims -tilasto, jonka haluat projektoida
+  .statistic = tilasto
+  .statistic-description = Cops and Crims -tilasto, jonka haluat projektoida
   .value = arvo
   .value-description = Arvo, jonka haluat projektoida
 
@@ -1141,8 +1141,8 @@ duels-project = projekti
   .uuid-description = Minecraftin UUID
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
-  .kind = tilasto
-  .kind-description = Projektoitava Duels-tilasto
+  .statistic = tilasto
+  .statistic-description = Projektoitava Duels-tilasto
   .value = arvo
   .value-description = Projektoitava arvo tilastosta
 
@@ -1220,8 +1220,8 @@ megawalls-project = projekti
   .uuid-description = Minecraftin UUID
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
-  .kind = tilasto
-  .kind-description = Projektoitava Mega Walls -tilasto
+  .statistic = tilasto
+  .statistic-description = Projektoitava Mega Walls -tilasto
   .value = arvo
   .value-description = Projektoitava arvo tilastosta
 
@@ -1300,8 +1300,8 @@ murdermystery-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
-  .kind = tilasto
-  .kind-description = Projisoitava Murder Mystery tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava Murder Mystery tilasto
   .value = arvo
   .value-description = Tilastoon projisoitava arvo
 
@@ -1388,8 +1388,8 @@ paintball-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
-  .kind = tilasto
-  .kind-description = Projisoitava Paintball-tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava Paintball-tilasto
   .value = arvo
   .value-description = Tilastoon projisoitava arvo
 
@@ -1467,8 +1467,8 @@ pit-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
-  .kind = tilasto
-  .kind-description = Projisoitava The Pit -tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava The Pit -tilasto
   .value = arvo
   .value-description = Tilastoon projisoitava arvo
 
@@ -1544,8 +1544,8 @@ quake-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Quakecraft-tila näkymälle
-  .kind = tilasto
-  .kind-description = Quakecraft-tilasto projisointia varten
+  .statistic = tilasto
+  .statistic-description = Quakecraft-tilasto projisointia varten
   .value = arvo
   .value-description = Projisoitavan tilaston arvo
 
@@ -1634,8 +1634,8 @@ skywars-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
-  .kind = tilasto
-  .kind-description = SkyWars-tilasto projisointia varten
+  .statistic = tilasto
+  .statistic-description = SkyWars-tilasto projisointia varten
   .value = arvo
   .value-description = Projisoitavan tilaston arvo
 
@@ -1709,8 +1709,8 @@ smash-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
-  .kind = tilasto
-  .kind-description = Smash Heroes -tilasto projisointia varten
+  .statistic = tilasto
+  .statistic-description = Smash Heroes -tilasto projisointia varten
   .value = arvo
   .value-description = Projisoitavan tilaston arvo
 
@@ -1783,8 +1783,8 @@ speeduhc-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = SpeedUHC-tila näytettäväksi
-  .kind = tilasto
-  .kind-description = SpeedUHC-tilasto projektoitavaksi
+  .statistic = tilasto
+  .statistic-description = SpeedUHC-tilasto projektoitavaksi
   .value = arvo
   .value-description = Projektoitava tilaston arvo
 
@@ -1866,8 +1866,8 @@ tntgames-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
-  .kind = tilasto
-  .kind-description = TNT-pelin tilasto projektoitavaksi
+  .statistic = tilasto
+  .statistic-description = TNT-pelin tilasto projektoitavaksi
   .value = arvo
   .value-description = Projektoitava tilaston arvo
 
@@ -1945,8 +1945,8 @@ turbokartracers-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
-  .kind = tilasto
-  .kind-description = Turbo Kart Racers -tilasto projektoitavaksi
+  .statistic = tilasto
+  .statistic-description = Turbo Kart Racers -tilasto projektoitavaksi
   .value = arvo
   .value-description = Projektoitava tilaston arvo
 
@@ -2026,8 +2026,8 @@ uhc-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
-  .kind = tilasto
-  .kind-description = Projisoitava UHC Champions -tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava UHC Champions -tilasto
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -2113,8 +2113,8 @@ vampirez-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
-  .kind = tilasto
-  .kind-description = Projisoitava VampireZ-tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava VampireZ-tilasto
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -2189,8 +2189,8 @@ walls-project = projekti
   .uuid-description = Minecraft UUID
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
-  .kind = tilasto
-  .kind-description = Projisoitava The Walls -tilasto
+  .statistic = tilasto
+  .statistic-description = Projisoitava The Walls -tilasto
   .value = arvo
   .value-description = Projisoitava tilaston arvo
 
@@ -2271,8 +2271,8 @@ warlords-project = projekti
   .uuid-description = Minecraft-UUID
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
-  .kind = tilasto
-  .kind-description = Projektoida Warlords-tilasto tulevaisuuteen
+  .statistic = tilasto
+  .statistic-description = Projektoida Warlords-tilasto tulevaisuuteen
   .value = arvo
   .value-description = Projektoida tilaston arvo
 
@@ -2346,8 +2346,8 @@ woolwars-project = projekti
   .uuid-description = Minecraft-UUID
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
-  .kind = tilasto
-  .kind-description = Projektoida Wool Wars -tilasto tulevaisuuteen
+  .statistic = tilasto
+  .statistic-description = Projektoida Wool Wars -tilasto tulevaisuuteen
   .value = arvo
   .value-description = Projektoida tilaston arvo
 
@@ -2471,7 +2471,7 @@ guild-monthly = kuukausittain
   .uuid = uuid
   .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
 
-showing-guild-xp-statistics = Näytetään killan XP:n kehitys ajalta {$from} - {$to}.
+showing-guild-xp-statistics = Näytetään killan XP:n kehitys ajalta `{$from}` - `{$to}`.
 
 # Yhteiset kankaanmerkintäliput
 

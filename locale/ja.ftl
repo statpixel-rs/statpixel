@@ -2,46 +2,46 @@
 not-linked = 必要な引数が不足しています
 not-linked-description = Minecraftアカウントとのリンクがされていないため、プロフィールを提供して表示する必要があります。
 showing-statistics = <a:clock:1115091329958019253> {$from}から{$to}までの統計情報を表示中。
-no-previous-statistics = **{$name}**に関する以前のデータが見つからなかったため、挿入されました。
-showing-guild-statistics = <a:clock:1115091329958019253> {$from}から{$to}までのギルド統計情報を表示中。
-no-previous-guild-statistics = ギルド**{$name}**に関する以前のデータが見つからなかったため、挿入されました。
-showing-comparison = <a:clock:1115091329958019253> {$from}の統計情報を{$to}と比較して表示中。
+no-previous-statistics = **`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
+showing-guild-statistics = <a:clock:1115091329958019253> `{$from}`から`{$to}`までのギルド統計情報を表示中。
+no-previous-guild-statistics = ギルド**`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
+showing-comparison = <a:clock:1115091329958019253> `{$from}`の統計情報を`{$to}`と比較して表示中。
 
 # Errors
 
-error-player-not-found = {$name}のプロフィールが見つかりませんでした。
-error-session-not-found = {$name}のセッションが見つかりませんでした。
-error-player-uuid-not-found = UUID {$uuid}を持つプレイヤーが見つかりませんでした。
-error-player-username-not-found = ユーザー名{$name}を持つプレイヤーが見つかりませんでした。
-error-guild-by-member-uuid-not-found = UUID {$uuid}を持つギルドメンバーが見つかりませんでした。
-error-guild-by-member-username-not-found = ユーザー名{$name}を持つギルドメンバーが見つかりませんでした。
-error-guild-not-found = 名前が{$name}のギルドが見つかりませんでした。
+error-player-not-found = `{$name}`のプロフィールが見つかりませんでした。
+error-session-not-found = `{$name}`のセッションが見つかりませんでした。
+error-player-uuid-not-found = UUID `{$uuid}`を持つプレイヤーが見つかりませんでした。
+error-player-username-not-found = ユーザー名`{$name}`を持つプレイヤーが見つかりませんでした。
+error-guild-by-member-uuid-not-found = UUID `{$uuid}`を持つギルドメンバーが見つかりませんでした。
+error-guild-by-member-username-not-found = ユーザー名`{$name}`を持つギルドメンバーが見つかりませんでした。
+error-guild-not-found = 名前が`{$name}`のギルドが見つかりませんでした。
 error-internal = 内部エラーが発生しました。記録され、すぐに解決されます。
 error-not-linked = Minecraftアカウントとのリンクがされていません。アカウントをリンクするには</link:1113624864524357710>を使用してください。
-error-invalid-uuid = UUID {$uuid}は無効です。
-error-invalid-username = ユーザー名{$name}は無効です。
-error-member-player-not-found = プロフィール内でメンバー{$name}が見つかりませんでした。
-error-skyblock-profile-not-found = {$name}のSkyBlockプロフィールが見つかりませんでした。
-error-player-snapshot-not-found = {$name}のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683060>
-error-leaderboard-not-found = 名前が{$name}のリーダーボードが見つかりませんでした。
-error-profile-not-found = {$name}の{$profile} SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
+error-invalid-uuid = UUID `{$uuid}`は無効です。
+error-invalid-username = ユーザー名`{$name}`は無効です。
+error-member-player-not-found = プロフィール内でメンバー`{$name}`が見つかりませんでした。
+error-skyblock-profile-not-found = `{$name}`のSkyBlockプロフィールが見つかりませんでした。
+error-player-snapshot-not-found = `{$name}`のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683060>
+error-leaderboard-not-found = 名前が`{$name}`のリーダーボードが見つかりませんでした。
+error-profile-not-found = `{$name}`の`{$profile}` SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
 error-identifier-too-long =
   このインタラクションの生成された識別子の1つが長すぎます。
   要素の数やカスタムテキストの量を減らしてください。
-error-user-track-limit-reached = トラック数が上限の{$limit}に達しました。この制限を解除するにはStatPixel+を購入してください。詳細は<https://statpixel.xyz/plus>をご覧ください。
+error-user-track-limit-reached = トラック数が上限の`{$limit}`に達しました。この制限を解除するにはStatPixel+を購入してください。詳細は<https://statpixel.xyz/plus>をご覧ください。
 error-guild-track-limit-reached =
-  このギルドはトラック数の上限の{$limit}に達しました。
+  このギルドはトラック数の上限の`{$limit}`に達しました。
   もしStatPixel+を持っている場合は、ギルドを</boost:1132443666997321809>でブーストして制限を解除するか、<https://statpixel.xyz/plus>にアクセスしてください。
 error-boost-limit-reached =
-  ブースト数が上限の{$limit}に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
+  ブースト数が上限の`{$limit}`に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
   このプレイヤーはすでにこのチャンネルでトラッキングされています。
 error-not-premium = このアクションを実行するにはStatPixel+のサブスクリバーである必要があります。詳細は<https://statpixel.xyz/plus>をご覧ください。
 error-not-in-a-guild = このアクションを実行するにはギルドに所属している必要があります。
 error-boost-already-exists = このギルドはすでにブーストされています。
-error-time-invalid-character = 時間引数に無効な文字が見つかりました。位置{$position}にて。
-error-time-expected-number = 時間引数の位置{$position}には数値が必要です。
-error-time-unknown-unit = 時間引数の位置{$position}にて不明な時間単位{$unit}が使用されました。値は{$value}です。
+error-time-invalid-character = 時間引数に無効な文字が見つかりました。位置`{$position}`にて。
+error-time-expected-number = 時間引数の位置`{$position}`には数値が必要です。
+error-time-unknown-unit = 時間引数の位置`{$position}`にて不明な時間単位`{$unit}`が使用されました。値は`{$value}`です。
 error-time-empty = 時間引数は空にできません。
 error-time-overflow = 時間引数の期間が長すぎます。3000年以下にしてください。
 
@@ -167,19 +167,19 @@ username = ユーザー名
 username-placeholder = 使用するユーザー名を入力してください
 
 invalid-statistic =
-  {$game}の統計情報 {$statistic} は無効です。ドキュメントを確認してもう一度試してください。
+  `{$game}`の統計情報 `{$statistic}` は無効です。ドキュメントを確認してもう一度試してください。
 
 invalid-level-type =
-  レベルタイプ {$kind} は無効です。ドキュメントを確認してもう一度試してください。
+  レベルタイプ `{$kind}` は無効です。ドキュメントを確認してもう一度試してください。
 
 invalid-game-type =
-  ゲームタイプ {$game} は無効です。ドキュメントを確認してもう一度試してください。
+  ゲームタイプ `{$game}` は無効です。ドキュメントを確認してもう一度試してください。
 
 image-created =
   イメージが作成されました！ </execute:1125992506501365892> を使用して試してみてください。
 
-  識別子：{$id}
-  リンク：{$link}
+  識別子：`{$id}`
+  リンク：`{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = 背景
 error-invalid-colour = 無効な色が指定されました
 error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of_colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
 colour-changed = 背景色が変更されました
-colour-changed-description = 背景色が{$colour}に変更されました。
+colour-changed-description = 背景色が`{$colour}`に変更されました。
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = リンク
 
 linking-failed = リンクに失敗しました
 linking-failed-uuid-description = UUID `{$uuid}`はMinecraftアカウントに属していません。
-linking-failed-username-description = ユーザー名 **{$username}** はMinecraftアカウントに属していません。
+linking-failed-username-description = ユーザー名 **`{$username}`** はMinecraftアカウントに属していません。
 linking-failed-description = 有効なUUIDまたはユーザー名を提供する必要があります。
 linking-succeeded = リンクに成功しました
-linking-succeeded-description = DiscordアカウントがMinecraftアカウント **{$name}** にリンクされました。
+linking-succeeded-description = DiscordアカウントがMinecraftアカウント **`{$name}`** にリンクされました。
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するアーケードモード
-  .kind = 統計
-  .kind-description = 予測するアーケード統計
+  .statistic = 統計
+  .statistic-description = 予測するアーケード統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -674,8 +674,8 @@ arena-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するアリーナモード
-  .kind = 統計
-  .kind-description = 予測するアリーナ統計
+  .statistic = 統計
+  .statistic-description = 予測するアリーナ統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -780,8 +780,8 @@ bedwars-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
-  .kind = 統計
-  .kind-description = 予測するベッドウォーズ統計
+  .statistic = 統計
+  .statistic-description = 予測するベッドウォーズ統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -880,8 +880,8 @@ blitz-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
-  .kind = 統計
-  .kind-description = 予測するブリッツサバイバルゲームの統計
+  .statistic = 統計
+  .statistic-description = 予測するブリッツサバイバルゲームの統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -958,8 +958,8 @@ buildbattle-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
-  .kind = 統計
-  .kind-description = 予測するビルドバトルの統計
+  .statistic = 統計
+  .statistic-description = 予測するビルドバトルの統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = 予測
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
-  .kind = 統計
-  .kind-description = 予測するCops and Crimsの統計
+  .statistic = 統計
+  .statistic-description = 予測するCops and Crimsの統計
   .value = 値
   .value-description = 予測する統計の値
 
@@ -1143,8 +1143,8 @@ duels-project = 予測
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するデュエルのモード
-  .kind = 統計項目
-  .kind-description = 予測するデュエルの統計項目
+  .statistic = 統計項目
+  .statistic-description = 予測するデュエルの統計項目
   .value = 値
   .value-description = 予測する統計項目の値
 
@@ -1222,8 +1222,8 @@ megawalls-project = 予測
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
-  .kind = 統計項目
-  .kind-description = 予測するメガウォールズの統計項目
+  .statistic = 統計項目
+  .statistic-description = 予測するメガウォールズの統計項目
   .value = 値
   .value-description = 予測する統計項目の値
 
@@ -1302,8 +1302,8 @@ murdermystery-project = プロジェクト
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示する殺人ミステリーモード
-  .kind = 統計
-  .kind-description = 表示する殺人ミステリー統計情報
+  .statistic = 統計
+  .statistic-description = 表示する殺人ミステリー統計情報
   .value = 値
   .value-description = 表示する統計情報の値
 
@@ -1390,8 +1390,8 @@ paintball-project = プロジェクト
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するペイントボールモード
-  .kind = 統計
-  .kind-description = 表示するペイントボール統計情報
+  .statistic = 統計
+  .statistic-description = 表示するペイントボール統計情報
   .value = 値
   .value-description = 表示する統計情報の値
 
@@ -1469,8 +1469,8 @@ pit-project = プロジェクト
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するザ・ピットモード
-  .kind = 統計
-  .kind-description = 表示するザ・ピット統計情報
+  .statistic = 統計
+  .statistic-description = 表示するザ・ピット統計情報
   .value = 値
   .value-description = 表示する統計情報の値
 
@@ -1546,8 +1546,8 @@ quake-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するQuakecraftのモード
-  .kind = 統計データ
-  .kind-description = プロジェクトするQuakecraftの統計データ
+  .statistic = 統計データ
+  .statistic-description = プロジェクトするQuakecraftの統計データ
   .value = 値
   .value-description = プロジェクトする統計データの値
 
@@ -1636,8 +1636,8 @@ skywars-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
-  .kind = 統計データ
-  .kind-description = プロジェクトするSkyWarsの統計データ
+  .statistic = 統計データ
+  .statistic-description = プロジェクトするSkyWarsの統計データ
   .value = 値
   .value-description = プロジェクトする統計データの値
 
@@ -1711,8 +1711,8 @@ smash-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
-  .kind = 統計データ
-  .kind-description = プロジェクトするSmash Heroesの統計データ
+  .statistic = 統計データ
+  .statistic-description = プロジェクトするSmash Heroesの統計データ
   .value = 値
   .value-description = プロジェクトする統計データの値
 
@@ -1785,8 +1785,8 @@ speeduhc-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するSpeedUHCモード
-  .kind = 統計
-  .kind-description = プロジェクトするSpeedUHCの統計
+  .statistic = 統計
+  .statistic-description = プロジェクトするSpeedUHCの統計
   .value = 値
   .value-description = プロジェクトする統計の値
 
@@ -1868,8 +1868,8 @@ tntgames-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
-  .kind = 統計
-  .kind-description = プロジェクトするTNT Gamesの統計
+  .statistic = 統計
+  .statistic-description = プロジェクトするTNT Gamesの統計
   .value = 値
   .value-description = プロジェクトする統計の値
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
-  .kind = 統計
-  .kind-description = プロジェクトするTurbo Kart Racersの統計
+  .statistic = 統計
+  .statistic-description = プロジェクトするTurbo Kart Racersの統計
   .value = 値
   .value-description = プロジェクトする統計の値
 
@@ -2028,8 +2028,8 @@ uhc-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
-  .kind = 統計
-  .kind-description = プロジェクトするUHC Championsの統計情報
+  .statistic = 統計
+  .statistic-description = プロジェクトするUHC Championsの統計情報
   .value = 値
   .value-description = 予測する統計情報の値
 
@@ -2115,8 +2115,8 @@ vampirez-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するVampireZのモード
-  .kind = 統計
-  .kind-description = プロジェクトするVampireZの統計情報
+  .statistic = 統計
+  .statistic-description = プロジェクトするVampireZの統計情報
   .value = 値
   .value-description = 予測する統計情報の値
 
@@ -2191,8 +2191,8 @@ walls-project = プロジェクト
   .uuid-description = Minecraft UUID
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
-  .kind = 統計
-  .kind-description = プロジェクトするThe Wallsの統計情報
+  .statistic = 統計
+  .statistic-description = プロジェクトするThe Wallsの統計情報
   .value = 値
   .value-description = 予測する統計情報の値
 
@@ -2271,8 +2271,8 @@ warlords-project = プロジェクト
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するWarlordsのモード
-  .kind = 統計情報
-  .kind-description = 予測するWarlordsの統計情報
+  .statistic = 統計情報
+  .statistic-description = 予測するWarlordsの統計情報
   .value = 値
   .value-description = 予測する統計情報の値
 
@@ -2346,8 +2346,8 @@ woolwars-project = プロジェクト
   .uuid-description = MinecraftのUUID
   .mode = モード
   .mode-description = 表示するWool Warsのモード
-  .kind = 統計情報
-  .kind-description = 予測するWool Warsの統計情報
+  .statistic = 統計情報
+  .statistic-description = 予測するWool Warsの統計情報
   .value = 値
   .value-description = 予測する統計情報の値
 
@@ -2471,7 +2471,7 @@ guild-monthly = マンスリー
   .uuid = uuid
   .uuid-description = 表示するギルドメンバーのMinecraft UUID
 
-showing-guild-xp-statistics = {$from}から{$to}までのギルドXPの獲得を表示しています。
+showing-guild-xp-statistics = `{$from}`から`{$to}`までのギルドXPの獲得を表示しています。
 
 # 共有キャンバスラベル
 

@@ -2,46 +2,46 @@
 not-linked = Missing arguments
 not-linked-description = Since you're not linked, you need to provide a profile to view.
 showing-statistics = <a:clock:1115091329958019253> Showing statistics change from {$from} to {$to}.
-no-previous-statistics = No previous data found for **{$name}**, so it has been inserted.
-showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
-no-previous-guild-statistics = No previous data found for guild **{$name}**, so it has been inserted.
-showing-comparison = <a:clock:1115091329958019253> Showing statistics of {$from} compared to {$to}.
+no-previous-statistics = No previous data found for **`{$name}`**, so it has been inserted.
+showing-guild-statistics = Showing guild statistics change from `{$from}` to `{$to}`.
+no-previous-guild-statistics = No previous data found for guild **`{$name}`**, so it has been inserted.
+showing-comparison = <a:clock:1115091329958019253> Showing statistics of `{$from}` compared to `{$to}`.
 
 # Errors
 
-error-player-not-found = A profile belonging to {$name} was not found.
-error-session-not-found = A session belonging to {$name} was not found.
-error-player-uuid-not-found = A player with the uuid {$uuid} was not found.
-error-player-username-not-found = A player with the username {$name} was not found.
-error-guild-by-member-uuid-not-found = A guild member with uuid {$uuid} was not found.
-error-guild-by-member-username-not-found = A guild member with username {$name} was not found.
-error-guild-not-found = A guild with the name {$name} was not found.
+error-player-not-found = A profile belonging to `{$name}` was not found.
+error-session-not-found = A session belonging to `{$name}` was not found.
+error-player-uuid-not-found = A player with the uuid `{$uuid}` was not found.
+error-player-username-not-found = A player with the username `{$name}` was not found.
+error-guild-by-member-uuid-not-found = A guild member with uuid `{$uuid}` was not found.
+error-guild-by-member-username-not-found = A guild member with username `{$name}` was not found.
+error-guild-not-found = A guild with the name `{$name}` was not found.
 error-internal = An internal error occurred. It has been logged and will be resolved shortly.
 error-not-linked = You are not linked to a Minecraft account. Use </link:1113624864524357710> to link your account.
-error-invalid-uuid = The uuid {$uuid} is invalid.
-error-invalid-username = The username {$name} is invalid.
-error-member-player-not-found = The member {$name} was not found in the profile.
-error-skyblock-profile-not-found = A SkyBlock profile belonging to {$name} was not found.
-error-player-snapshot-not-found = No snapshots were found for {$name}. Create one with </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = A leaderboard with the name {$name} was not found.
-error-profile-not-found = The {$profile} SkyBlock profile belonging to {$name} has its API disabled or they have not logged in since the new profile system.
+error-invalid-uuid = The uuid `{$uuid}` is invalid.
+error-invalid-username = The username `{$name}` is invalid.
+error-member-player-not-found = The member `{$name}` was not found in the profile.
+error-skyblock-profile-not-found = A SkyBlock profile belonging to `{$name}` was not found.
+error-player-snapshot-not-found = No snapshots were found for `{$name}`. Create one with </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = A leaderboard with the name `{$name}` was not found.
+error-profile-not-found = The `{$profile}` SkyBlock profile belonging to `{$name}` has its API disabled or they have not logged in since the new profile system.
 error-identifier-too-long =
   One of the generated identifiers for this interaction is too long.
   Try reducing the number of components or the amount of custom text.
-error-user-track-limit-reached = You have reached the maximum number of tracks of {$limit}. Purchase StatPixel+ to remove this limit at <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = You have reached the maximum number of tracks of `{$limit}`. Purchase StatPixel+ to remove this limit at <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  This guild has reached the maximum number of tracks of {$limit}.
+  This guild has reached the maximum number of tracks of `{$limit}`.
   If you have StatPixel+, boost the guild with </boost:1132443666997321809> to remove this restriction or go to <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  You have reached the maximum number of boosts of {$limit}. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boost>.
+  You have reached the maximum number of boosts of `{$limit}`. You can remove a boost on the dashboard: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   You are already tracking this player in this channel.
 error-not-premium = You must be a StatPixel+ subscriber to perform this action. Go to <https://statpixel.xyz/plus> for more information.
 error-not-in-a-guild = You must be in a guild to perform this action.
 error-boost-already-exists = You are already boosting this guild.
-error-time-invalid-character = An invalid character was found in the time argument in position {$position}.
-error-time-expected-number = Expected a number in the time argument in position {$position}.
-error-time-unknown-unit = Unknown time unit {$unit} in position {$position} with value {$value}.
+error-time-invalid-character = An invalid character was found in the time argument in position `{$position}`.
+error-time-expected-number = Expected a number in the time argument in position `{$position}`.
+error-time-unknown-unit = Unknown time unit `{$unit}` in position `{$position}` with value `{$value}`.
 error-time-empty = The time argument cannot be empty.
 error-time-overflow = The duration of the time argument is too long. Try keeping it under 3,000 years.
 
@@ -167,19 +167,19 @@ username = Username
 username-placeholder = Enter username to use
 
 invalid-statistic =
-  Invalid statistic {$statistic} for {$game}. Check the documentation and try again.
+  Invalid statistic `{$statistic}` for `{$game}`. Check the documentation and try again.
 
 invalid-level-type =
-  Invalid level type {$kind}. Check the documentation and try again.
+  Invalid level type `{$kind}`. Check the documentation and try again.
 
 invalid-game-type =
-  Invalid game type {$game}. Check the documentation and try again.
+  Invalid game type `{$game}`. Check the documentation and try again.
 
 image-created =
   Your image has been created! Try it out with </execute:1125992506501365892>.
 
-  Identifier: {$id}
-  Link: {$link}
+  Identifier: `{$id}`
+  Link: `{$link}`
 
 # /about
 
@@ -235,7 +235,7 @@ background = background
 error-invalid-colour = Invalid colour provided
 error-invalid-colour-description = The colour provided is invalid. Try providing one of [these colours](https://simple.wikipedia.org/wiki/List_of_colors) or a hex colour prefixed with `#`.
 colour-changed = Background colour changed
-colour-changed-description = Your background colour has been changed to {$colour}.
+colour-changed-description = Your background colour has been changed to `{$colour}`.
 
 # /skyblock bazaar
 
@@ -532,10 +532,10 @@ link = link
 
 linking-failed = Linking failed
 linking-failed-uuid-description = The uuid `{$uuid}` does not belong to a Minecraft account.
-linking-failed-username-description = The username **{$username}** does not belong to a Minecraft account.
+linking-failed-username-description = The username **`{$username}`** does not belong to a Minecraft account.
 linking-failed-description = You must provide a valid UUID or username.
 linking-succeeded = Linking successful
-linking-succeeded-description = Your Discord account is now linked to the Minecraft account **{$name}**.
+linking-succeeded-description = Your Discord account is now linked to the Minecraft account **`{$name}`**.
 
 # /arcade
 
@@ -599,8 +599,8 @@ arcade-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Arcade mode to view
-  .kind = statistic
-  .kind-description = The Arcade statistic to project
+  .statistic = statistic
+  .statistic-description = The Arcade statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -674,8 +674,8 @@ arena-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Arena mode to view
-  .kind = statistic
-  .kind-description = The Arena statistic to project
+  .statistic = statistic
+  .statistic-description = The Arena statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -780,8 +780,8 @@ bedwars-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Bed Wars mode to view
-  .kind = statistic
-  .kind-description = The Bed Wars statistic to project
+  .statistic = statistic
+  .statistic-description = The Bed Wars statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -880,8 +880,8 @@ blitz-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Blitz Survival Games mode to view
-  .kind = statistic
-  .kind-description = The Blitz Survival Games statistic to project
+  .statistic = statistic
+  .statistic-description = The Blitz Survival Games statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -958,8 +958,8 @@ buildbattle-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Build Battle mode to view
-  .kind = statistic
-  .kind-description = The Build Battle statistic to project
+  .statistic = statistic
+  .statistic-description = The Build Battle statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1040,8 +1040,8 @@ copsandcrims-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Cops and Crims mode to view
-  .kind = statistic
-  .kind-description = The Cops and Crims statistic to project
+  .statistic = statistic
+  .statistic-description = The Cops and Crims statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1143,8 +1143,8 @@ duels-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Duels mode to view
-  .kind = statistic
-  .kind-description = The Duels statistic to project
+  .statistic = statistic
+  .statistic-description = The Duels statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1222,8 +1222,8 @@ megawalls-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Mega Walls mode to view
-  .kind = statistic
-  .kind-description = The Mega Walls statistic to project
+  .statistic = statistic
+  .statistic-description = The Mega Walls statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1302,8 +1302,8 @@ murdermystery-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Murder Mystery mode to view
-  .kind = statistic
-  .kind-description = The Murder Mystery statistic to project
+  .statistic = statistic
+  .statistic-description = The Murder Mystery statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1390,8 +1390,8 @@ paintball-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Paintball mode to view
-  .kind = statistic
-  .kind-description = The Paintball statistic to project
+  .statistic = statistic
+  .statistic-description = The Paintball statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1469,8 +1469,8 @@ pit-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Pit mode to view
-  .kind = statistic
-  .kind-description = The Pit statistic to project
+  .statistic = statistic
+  .statistic-description = The Pit statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1546,8 +1546,8 @@ quake-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Quakecraft mode to view
-  .kind = statistic
-  .kind-description = The Quakecraft statistic to project
+  .statistic = statistic
+  .statistic-description = The Quakecraft statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1636,8 +1636,8 @@ skywars-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The SkyWars mode to view
-  .kind = statistic
-  .kind-description = The SkyWars statistic to project
+  .statistic = statistic
+  .statistic-description = The SkyWars statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1711,8 +1711,8 @@ smash-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Smash Heroes mode to view
-  .kind = statistic
-  .kind-description = The Smash Heroes statistic to project
+  .statistic = statistic
+  .statistic-description = The Smash Heroes statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1785,8 +1785,8 @@ speeduhc-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The SpeedUHC mode to view
-  .kind = statistic
-  .kind-description = The SpeedUHC statistic to project
+  .statistic = statistic
+  .statistic-description = The SpeedUHC statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1868,8 +1868,8 @@ tntgames-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The TNT Games mode to view
-  .kind = statistic
-  .kind-description = The TNT Games statistic to project
+  .statistic = statistic
+  .statistic-description = The TNT Games statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -1947,8 +1947,8 @@ turbokartracers-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Turbo Kart Racers mode to view
-  .kind = statistic
-  .kind-description = The Turbo Kart Racers statistic to project
+  .statistic = statistic
+  .statistic-description = The Turbo Kart Racers statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2028,8 +2028,8 @@ uhc-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The UHC Champions mode to view
-  .kind = statistic
-  .kind-description = The UHC Champions statistic to project
+  .statistic = statistic
+  .statistic-description = The UHC Champions statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2115,8 +2115,8 @@ vampirez-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The VampireZ mode to view
-  .kind = statistic
-  .kind-description = The VampireZ statistic to project
+  .statistic = statistic
+  .statistic-description = The VampireZ statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2191,8 +2191,8 @@ walls-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Walls mode to view
-  .kind = statistic
-  .kind-description = The Walls statistic to project
+  .statistic = statistic
+  .statistic-description = The Walls statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2272,8 +2272,8 @@ warlords-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Warlords mode to view
-  .kind = statistic
-  .kind-description = The Warlords statistic to project
+  .statistic = statistic
+  .statistic-description = The Warlords statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2347,8 +2347,8 @@ woolwars-project = project
   .uuid-description = Minecraft UUID
   .mode = mode
   .mode-description = The Wool Wars mode to view
-  .kind = statistic
-  .kind-description = The Wool Wars statistic to project
+  .statistic = statistic
+  .statistic-description = The Wool Wars statistic to project
   .value = value
   .value-description = The value of the statistic to project to
 
@@ -2472,7 +2472,7 @@ guild-monthly = monthly
   .uuid = uuid
   .uuid-description = The uuid of the guild member's guild to view
 
-showing-guild-xp-statistics = Showing guild xp gain from {$from} to {$to}.
+showing-guild-xp-statistics = Showing guild xp gain from `{$from}` to `{$to}`.
 
 # Shared canvas labels
 
@@ -2490,7 +2490,7 @@ online = Online
 level = Level
 progress = Progress
 total = Total
-levels-gained = Levels Gained
+levels-gained = Levels
 
 wins = Wins
 losses = Losses

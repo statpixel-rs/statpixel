@@ -3,6 +3,7 @@ use minecraft::{colour::Colour, text::rank::Rank};
 use poise::serenity_prelude::Embed;
 use serde::{Deserialize, Deserializer};
 use translate::context;
+use uuid::Uuid;
 
 use crate::{canvas::diff::DiffLog, minutes::Minutes};
 
@@ -11,6 +12,8 @@ use crate::{canvas::diff::DiffLog, minutes::Minutes};
 pub struct Data {
 	#[serde(rename = "displayname")]
 	pub username: String,
+	#[bincode(with_serde)]
+	pub uuid: Uuid,
 	#[serde(default)]
 	pub stats: super::stats::Stats,
 	#[serde(rename = "rank")]
@@ -59,31 +62,36 @@ pub struct Data {
 }
 
 impl DiffLog for Data {
-	fn diff_log(new: &Data, other: &Data, ctx: &context::Context<'_>, embed: Embed) -> Embed {
+	fn diff_log(
+		data_lhs: &Data,
+		data_rhs: &Data,
+		ctx: &context::Context<'_>,
+		embed: Embed,
+	) -> Embed {
 		use super::stats::*;
 
-		let embed = arcade::Arcade::diff_log(new, other, ctx, embed);
-		let embed = arena::Arena::diff_log(new, other, ctx, embed);
-		let embed = bed_wars::BedWars::diff_log(new, other, ctx, embed);
-		let embed = blitz_sg::BlitzSg::diff_log(new, other, ctx, embed);
-		let embed = build_battle::BuildBattle::diff_log(new, other, ctx, embed);
-		let embed = cops_and_crims::CopsAndCrims::diff_log(new, other, ctx, embed);
-		let embed = duels::Duels::diff_log(new, other, ctx, embed);
-		let embed = mega_walls::MegaWalls::diff_log(new, other, ctx, embed);
-		let embed = murder_mystery::MurderMystery::diff_log(new, other, ctx, embed);
-		let embed = paintball::Paintball::diff_log(new, other, ctx, embed);
-		let embed = pit::Pit::diff_log(new, other, ctx, embed);
-		let embed = quake::Quake::diff_log(new, other, ctx, embed);
-		let embed = sky_wars::SkyWars::diff_log(new, other, ctx, embed);
-		let embed = smash_heroes::SmashHeroes::diff_log(new, other, ctx, embed);
-		let embed = speed_uhc::SpeedUhc::diff_log(new, other, ctx, embed);
-		let embed = tnt_games::TntGames::diff_log(new, other, ctx, embed);
-		let embed = turbo_kart_racers::TurboKartRacers::diff_log(new, other, ctx, embed);
-		let embed = uhc::Uhc::diff_log(new, other, ctx, embed);
-		let embed = vampire_z::VampireZ::diff_log(new, other, ctx, embed);
-		let embed = walls::Walls::diff_log(new, other, ctx, embed);
-		let embed = warlords::Warlords::diff_log(new, other, ctx, embed);
-		wool_wars::WoolWars::diff_log(new, other, ctx, embed)
+		let embed = arcade::Arcade::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = arena::Arena::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = bed_wars::BedWars::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = blitz_sg::BlitzSg::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = build_battle::BuildBattle::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = cops_and_crims::CopsAndCrims::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = duels::Duels::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = mega_walls::MegaWalls::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = murder_mystery::MurderMystery::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = paintball::Paintball::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = pit::Pit::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = quake::Quake::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = sky_wars::SkyWars::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = smash_heroes::SmashHeroes::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = speed_uhc::SpeedUhc::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = tnt_games::TntGames::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = turbo_kart_racers::TurboKartRacers::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = uhc::Uhc::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = vampire_z::VampireZ::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = walls::Walls::diff_log(data_lhs, data_rhs, ctx, embed);
+		let embed = warlords::Warlords::diff_log(data_lhs, data_rhs, ctx, embed);
+		wool_wars::WoolWars::diff_log(data_lhs, data_rhs, ctx, embed)
 	}
 }
 

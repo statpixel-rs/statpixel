@@ -316,15 +316,16 @@ pub async fn begin(
 						.await;
 
 						match result {
-							Ok(Some((channels, old, new))) if !channels.is_empty() => {
-								let embed = Data::diff_log(&new, &old, ctx, Embed::default());
+							Ok(Some((channels, data_lhs, data_rhs))) if !channels.is_empty() => {
+								let embed =
+									Data::diff_log(&data_lhs, &data_rhs, ctx, Embed::default());
 
 								if !embed.fields.is_empty() {
 									let player = Player::new(uuid, None);
 									let message = CreateMessage::default().embed(
 										<Embed as Into<CreateEmbed>>::into(embed)
 											.author(
-												CreateEmbedAuthor::new(&new.username)
+												CreateEmbedAuthor::new(&data_rhs.username)
 													.icon_url(player.get_head_url()),
 											)
 											.colour(crate::EMBED_COLOUR),

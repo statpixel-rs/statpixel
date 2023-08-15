@@ -1,10 +1,11 @@
 use chrono::{DateTime, Utc};
 use minecraft::colour::Colour;
 use serde::Deserialize;
+use uuid::Uuid;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 12;
+pub const VERSION: i16 = 13;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
@@ -40,6 +41,7 @@ impl From<Data> for crate::player::data::Data {
 	fn from(value: Data) -> Self {
 		Self {
 			username: value.username,
+			uuid: Uuid::nil(),
 			stats: value.stats.into(),
 			status_rank: value.status_rank,
 			rank: value.rank,
