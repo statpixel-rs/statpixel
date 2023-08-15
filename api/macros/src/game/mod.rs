@@ -97,9 +97,13 @@ impl ToTokens for GameInputReceiver {
 		let modes = self.modes();
 		let overall_modes = self.overall_modes();
 
-		let overall_block_idents = blocks.iter().map(|b| b.var_id().to_string()).collect::<Vec<_>>();
+		let overall_block_idents = blocks
+			.iter()
+			.map(|b| b.var_id().to_string())
+			.collect::<Vec<_>>();
 		#[allow(clippy::unnecessary_to_owned)]
-		let mode_blocks = modes.iter()
+		let mode_blocks = modes
+			.iter()
 			.flat_map(|m| m.blocks().into_owned().into_iter())
 			.filter_map(|b| {
 				let var_id = b.var_id().to_string();
@@ -112,8 +116,7 @@ impl ToTokens for GameInputReceiver {
 			})
 			.collect::<std::collections::HashMap<_, _>>();
 
-		let mode_blocks = mode_blocks.values()
-			.collect::<Vec<_>>();
+		let mode_blocks = mode_blocks.values().collect::<Vec<_>>();
 
 		let overall_ident = syn::parse_str::<syn::Type>("Overall").unwrap();
 
@@ -649,7 +652,12 @@ impl ToTokens for GameInputReceiver {
 
 		let embed = blocks
 			.iter()
-			.filter_map(|b| Some((b.value_fmt_sum(Side::None, &overall_modes, Access::None)?, b.as_tr())))
+			.filter_map(|b| {
+				Some((
+					b.value_fmt_sum(Side::None, &overall_modes, Access::None)?,
+					b.as_tr(),
+				))
+			})
 			.enumerate()
 			.map(|(i, (v, tr))| {
 				let extra = if i % 3 == 0 {
@@ -711,10 +719,10 @@ impl ToTokens for GameInputReceiver {
 			.iter()
 			.filter_map(|b| Some(({
 				let value = b.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
-	
+
 				quote!({
 					let game = &data.stats.#path_to_game;
-	
+
 					f64::from(#value)
 				})
 			}, b.tr(), b.var_id())))
