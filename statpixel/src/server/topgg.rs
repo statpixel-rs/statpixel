@@ -11,8 +11,13 @@ use axum::{
 	Json, TypedHeader,
 };
 use axum_extra::extract::WithRejection;
+use chrono::{Duration, Utc};
 use database::schema::user;
-use diesel::ExpressionMethods;
+use diesel::{
+	dsl::sql,
+	sql_types::{Nullable, Timestamptz},
+	ExpressionMethods,
+};
 use diesel_async::RunQueryDsl;
 use serde::Deserialize;
 
@@ -53,10 +58,19 @@ pub async fn add_vote(
 	};
 
 	diesel::insert_into(user::table)
-		.values((&user::id.eq(id as i64), &user::votes.eq(1)))
+		.values((
+			user::id.eq(id as i64),
+			user::votes.eq(1),
+			user::premium_until.eq(Utc::now() + Duration::days(3)),
+		))
 		.on_conflict(user::id)
 		.do_update()
-		.set(user::votes.eq(user::votes + if vote.is_weekend { 2 } else { 1 }))
+		.set((
+			user::votes.eq(user::votes + if vote.is_weekend { 2 } else { 1 }),
+			user::premium_until.eq(
+				sql::<Nullable<Timestamptz>>("CASE WHEN premium_until IS NULL THEN NULL WHEN premium_until < NOW() THEN NOW() + INTERVAL '3 days' ELSE premium_until + INTERVAL '3 days' END")
+			),
+		))
 		.execute(
 			&mut state
 				.pool
