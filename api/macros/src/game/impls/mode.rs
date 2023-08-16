@@ -240,6 +240,10 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 		.iter()
 		.chain(mode_blocks.iter())
 		.filter_map(|b| {
+			if b.skip_chart() {
+				return None;
+			}
+
 			let value = b.value_trunc(Side::None, Access::ModeDiff(mode))?;
 			let tr = b.as_tr();
 

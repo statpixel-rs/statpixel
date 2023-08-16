@@ -26,7 +26,7 @@ pub struct Response {
 
 #[derive(Deserialize, Debug)]
 pub struct Game {
-	#[serde(rename = "date", with = "chrono::serde::ts_milliseconds")]
+	#[serde(rename(deserialize = "date"), with = "chrono::serde::ts_milliseconds")]
 	pub started: DateTime<Utc>,
 	#[serde(rename = "gameType")]
 	pub kind: crate::game::r#type::Type,

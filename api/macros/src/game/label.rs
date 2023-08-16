@@ -244,6 +244,10 @@ impl Field for Label<'_> {
 	fn is_measurable(&self) -> bool {
 		self.measurable
 	}
+
+	fn skip_chart(&self) -> bool {
+		false
+	}
 }
 
 impl<'a> TryFrom<&'a GameFieldReceiver> for Label<'a> {

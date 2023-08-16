@@ -698,6 +698,10 @@ impl ToTokens for GameInputReceiver {
 			});
 
 		let chart = blocks.iter().filter_map(|b| {
+			if b.skip_chart() {
+				return None;
+			}
+
 			let value = b.value_trunc_sum(Side::None, &overall_modes, Access::NoneDiff)?;
 			let tr = b.as_tr();
 
@@ -1289,7 +1293,7 @@ impl ToTokens for GameInputReceiver {
 						if is_different {
 							canvas = canvas.push_down(
 								&#api::canvas::shape::Subtitle,
-								#api::canvas::shape::Subtitle::from_text(&#api::canvas::text::from_data(&data_lhs, &data_lhs.username, suffix)),
+								#api::canvas::shape::Subtitle::from_text(&#api::canvas::text::from_data(&data_lhs, &data_lhs.username, None)),
 							);
 						}
 

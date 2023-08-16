@@ -23,6 +23,7 @@ pub struct Block<'a> {
 	pub skip_modes: &'a [String],
 	pub is_root: bool,
 	pub is_mode: bool,
+	pub skip_chart: bool,
 }
 
 impl ToTokens for Block<'_> {
@@ -147,6 +148,10 @@ impl Field for Block<'_> {
 	fn is_measurable(&self) -> bool {
 		self.measurable
 	}
+
+	fn skip_chart(&self) -> bool {
+		self.skip_chart || self.div().is_some()
+	}
 }
 
 impl<'a> TryFrom<&'a GameFieldReceiver> for Block<'a> {
@@ -194,6 +199,7 @@ impl<'a> TryFrom<&'a OverallFieldData> for Block<'a> {
 			measurable: !value.nominal.is_present(),
 			skip_modes: &value.skip_mode,
 			is_mode: false,
+			skip_chart: value.skip_chart.is_present(),
 		})
 	}
 }
@@ -231,6 +237,7 @@ impl<'a> From<&'a ModeFieldData> for Block<'a> {
 			skip_modes: &[],
 			is_root: value.path.is_some(),
 			is_mode: true,
+			skip_chart: value.skip_chart.is_present(),
 		}
 	}
 }

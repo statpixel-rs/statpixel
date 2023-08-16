@@ -85,6 +85,10 @@ pub trait FieldGroup {
 		self.blocks()
 			.iter()
 			.filter_map(|b| {
+				if b.skip_chart() {
+					return None;
+				}
+
 				let value = b.value_trunc(Side::None, Access::ModeDiff(mode))?;
 
 				Some(quote!({
@@ -102,6 +106,10 @@ pub trait FieldGroup {
 		self.blocks()
 			.iter()
 			.filter_map(|b| {
+				if b.skip_chart() {
+					return None;
+				}
+
 				let value = b.value_trunc_sum(Side::None, modes, Access::NoneDiff)?;
 
 				Some(quote!({
@@ -119,6 +127,10 @@ pub trait FieldGroup {
 		self.blocks()
 			.iter()
 			.filter_map(|b| {
+				if b.skip_chart() {
+					return None;
+				}
+
 				let value = b.value_trunc(Side::None, Access::ModeDiff(mode))?;
 
 				Some(quote!({
@@ -136,6 +148,10 @@ pub trait FieldGroup {
 		self.blocks()
 			.iter()
 			.filter_map(|b| {
+				if b.skip_chart() {
+					return None;
+				}
+
 				let value = b.value_trunc_sum(Side::None, modes, Access::NoneDiff)?;
 
 				Some(quote!({
@@ -183,6 +199,7 @@ pub trait Field: Debug {
 	/// `mode` is only present for the current mode in a sum.
 	/// For fields that are not sums, it is [`None`]
 	fn key<'m>(&self, side: Side, access: Access<'m>) -> Option<Key<'m>>;
+	fn skip_chart(&self) -> bool;
 
 	/// Determines whether the field's value is measurable.
 	///
@@ -205,8 +222,6 @@ pub trait Field: Debug {
 				#log.push_str("- ");
 				#log.push_str(#tr.as_ref());
 				#log.push_str(": `");
-				#log.push_str(lhs.to_formatted(ctx).as_ref());
-				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
 				#log.push_str("` (`+");
 				#log.push_str((rhs - lhs).to_formatted(ctx).as_ref());
@@ -215,8 +230,6 @@ pub trait Field: Debug {
 				#log.push_str("- ");
 				#log.push_str(#tr.as_ref());
 				#log.push_str(": `");
-				#log.push_str(lhs.to_formatted(ctx).as_ref());
-				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
 				#log.push_str("` (`-");
 				#log.push_str((lhs - rhs).to_formatted(ctx).as_ref());
@@ -244,8 +257,6 @@ pub trait Field: Debug {
 				#log.push_str("- ");
 				#log.push_str(#tr.as_ref());
 				#log.push_str(": `");
-				#log.push_str(lhs.to_formatted(ctx).as_ref());
-				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
 				#log.push_str("` (`+");
 				#log.push_str((rhs - lhs).to_formatted(ctx).as_ref());
@@ -254,8 +265,6 @@ pub trait Field: Debug {
 				#log.push_str("- ");
 				#log.push_str(#tr.as_ref());
 				#log.push_str(": `");
-				#log.push_str(lhs.to_formatted(ctx).as_ref());
-				#log.push_str("` ⇢ `");
 				#log.push_str(rhs.to_formatted(ctx).as_ref());
 				#log.push_str("` (`-");
 				#log.push_str((lhs - rhs).to_formatted(ctx).as_ref());

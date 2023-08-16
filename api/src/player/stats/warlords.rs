@@ -17,16 +17,22 @@ pub struct Warlords {
 	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
-	#[serde(rename = "damage", deserialize_with = "crate::de::from::f32_to_u32")]
+	#[serde(
+		rename(deserialize = "damage"),
+		deserialize_with = "crate::de::from::f32_to_u32"
+	)]
 	#[game(label(colour = "green"))]
 	pub damage_dealt: u32,
 	#[serde(
-		rename = "damage_taken",
+		rename(deserialize = "damage_taken"),
 		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	#[game(label(colour = "blue"))]
 	pub damage_taken: u32,
-	#[serde(rename = "heal", deserialize_with = "crate::de::from::f32_to_u32")]
+	#[serde(
+		rename(deserialize = "heal"),
+		deserialize_with = "crate::de::from::f32_to_u32"
+	)]
 	#[game(label(colour = "red"))]
 	pub health_regenerated: u32,
 	#[game(label(colour = "aqua"), nominal)]

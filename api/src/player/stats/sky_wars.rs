@@ -23,7 +23,8 @@ fn default_level_fmt() -> String {
 		ident = "time_played",
 		colour = "green",
 		skip_mode = "solo_insane",
-		skip_mode = "team_insane"
+		skip_mode = "team_insane",
+		skip_chart
 	),
 	field(
 		tr = "bow-accuracy",
@@ -39,7 +40,8 @@ fn default_level_fmt() -> String {
 		colour = "gold",
 		min,
 		skip_mode = "solo_insane",
-		skip_mode = "team_insane"
+		skip_mode = "team_insane",
+		skip_chart
 	)
 )]
 #[serde(default)]
@@ -48,7 +50,7 @@ pub struct SkyWars {
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[serde(
-		rename = "skywars_chests",
+		rename(deserialize = "skywars_chests"),
 		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	#[game(label(colour = "yellow"))]
@@ -66,10 +68,10 @@ pub struct SkyWars {
 	#[serde(rename = "egg_thrown")]
 	#[game(label(colour = "yellow"))]
 	pub eggs_thrown: u32,
-	#[serde(rename = "levelFormatted", default = "default_level_fmt")]
+	#[serde(rename(deserialize = "levelFormatted"), default = "default_level_fmt")]
 	pub level_fmt: String,
 	#[serde(
-		rename = "skywars_experience",
+		rename(deserialize = "skywars_experience"),
 		deserialize_with = "crate::de::from::f64_to_u64"
 	)]
 	#[game(xp)]
@@ -85,7 +87,8 @@ pub struct SkyWars {
 		field(
 			ident = "time_played",
 			colour = "green",
-			path = "stats.sky_wars.solo_normal"
+			path = "stats.sky_wars.solo_normal",
+			skip_chart
 		),
 		field(
 			ident = "arrows_hit",
@@ -98,7 +101,8 @@ pub struct SkyWars {
 		field(
 			ident = "fastest_win",
 			colour = "gold",
-			path = "stats.sky_wars.solo_normal"
+			path = "stats.sky_wars.solo_normal",
+			skip_chart
 		)
 	))]
 	pub solo_insane: SoloInsane,
@@ -111,7 +115,8 @@ pub struct SkyWars {
 		field(
 			ident = "time_played",
 			colour = "green",
-			path = "stats.sky_wars.solo_normal"
+			path = "stats.sky_wars.solo_normal",
+			skip_chart
 		),
 		field(
 			ident = "arrows_hit",
@@ -124,7 +129,8 @@ pub struct SkyWars {
 		field(
 			ident = "fastest_win",
 			colour = "gold",
-			path = "stats.sky_wars.solo_normal"
+			path = "stats.sky_wars.solo_normal",
+			skip_chart
 		)
 	))]
 	pub team_insane: TeamInsane,

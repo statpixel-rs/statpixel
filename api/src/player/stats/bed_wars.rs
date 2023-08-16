@@ -38,13 +38,13 @@ pub struct BedWars {
 	#[game(label(colour = "gold"))]
 	pub coins: i32,
 	#[serde(
-		rename = "bedwars_boxes",
+		rename(deserialize = "bedwars_boxes"),
 		deserialize_with = "crate::de::from::f32_to_u32"
 	)]
 	#[game(label(colour = "yellow"))]
 	pub loot_chests: u32,
 	#[serde(
-		rename = "Experience",
+		rename(deserialize = "Experience"),
 		deserialize_with = "crate::de::from::f64_to_u64"
 	)]
 	#[game(xp)]

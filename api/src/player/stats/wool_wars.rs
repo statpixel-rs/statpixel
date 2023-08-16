@@ -7,7 +7,7 @@ pub struct Progression {
 	#[serde(rename = "available_layers")]
 	pub layers: u32,
 	#[serde(
-		rename = "experience",
+		rename(deserialize = "experience"),
 		deserialize_with = "crate::de::from::f64_to_u64"
 	)]
 	pub xp: u64,

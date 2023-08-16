@@ -68,7 +68,7 @@ pub async fn add_vote(
 		.set((
 			user::votes.eq(user::votes + if vote.is_weekend { 2 } else { 1 }),
 			user::premium_until.eq(
-				sql::<Nullable<Timestamptz>>("CASE WHEN premium_until IS NULL THEN NULL WHEN premium_until < NOW() THEN NOW() + INTERVAL '3 days' ELSE premium_until + INTERVAL '3 days' END")
+				sql::<Nullable<Timestamptz>>(r#"CASE WHEN "user"."premium_until" IS NULL THEN NULL WHEN "user"."premium_until" < NOW() THEN NOW() + INTERVAL '3 days' ELSE "user"."premium_until" + INTERVAL '3 days' END"#)
 			),
 		))
 		.execute(

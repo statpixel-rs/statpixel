@@ -76,6 +76,7 @@ pub(crate) struct ModeFieldData {
 
 	pub percent: Option<String>,
 	pub path: Option<String>,
+	pub skip_chart: darling::util::Flag,
 }
 
 #[derive(Debug, FromMeta)]
@@ -95,6 +96,7 @@ pub(crate) struct OverallFieldData {
 	pub path: Option<String>,
 
 	pub nominal: darling::util::Flag,
+	pub skip_chart: darling::util::Flag,
 	/// A list of modes to skip. These should be equal to the
 	/// key used for their data in the game data struct.
 	#[darling(multiple)]
