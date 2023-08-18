@@ -25,7 +25,7 @@ pub async fn get(
 		return Err(StatusCode::NOT_FOUND);
 	};
 
-	let Some(image) = crate::id::image::map(
+	let Ok(image) = crate::id::image::map(
 		&context::Context::external_with_locale(&state, tl),
 		id,
 		bg.map(std::convert::Into::into),

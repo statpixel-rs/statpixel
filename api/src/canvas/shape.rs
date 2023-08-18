@@ -172,7 +172,7 @@ impl RecentGame<'_> {
 					..Default::default()
 				},
 				Text {
-					text: tr!(ctx, "mode").as_ref(),
+					text: tr(ctx, "mode").as_ref(),
 					..Default::default()
 				},
 				Text {
@@ -189,7 +189,7 @@ impl RecentGame<'_> {
 					..Default::default()
 				},
 				Text {
-					text: tr!(ctx, "map").as_ref(),
+					text: tr(ctx, "map").as_ref(),
 					..Default::default()
 				},
 				Text {
@@ -200,7 +200,7 @@ impl RecentGame<'_> {
 					text: game
 						.map
 						.as_ref()
-						.map_or_else(|| tr!(ctx, "none"), |s| Cow::Borrowed(s))
+						.map_or_else(|| tr(ctx, "none"), |s| Cow::Borrowed(s))
 						.as_ref(),
 					paint: Paint::LightPurple,
 					..Default::default()
@@ -210,7 +210,7 @@ impl RecentGame<'_> {
 					..Default::default()
 				},
 				Text {
-					text: tr!(ctx, "started").as_ref(),
+					text: tr(ctx, "started").as_ref(),
 					..Default::default()
 				},
 				Text {
@@ -231,7 +231,7 @@ impl RecentGame<'_> {
 					..Default::default()
 				},
 				Text {
-					text: tr!(ctx, "duration").as_ref(),
+					text: tr(ctx, "duration").as_ref(),
 					..Default::default()
 				},
 				Text {
@@ -241,7 +241,7 @@ impl RecentGame<'_> {
 				Text {
 					text: duration
 						.as_ref()
-						.map_or_else(|| tr!(ctx, "playing"), |e| e.to_formatted(ctx))
+						.map_or_else(|| tr(ctx, "playing"), |e| e.to_formatted(ctx))
 						.as_ref(),
 					paint: if duration.is_none() {
 						Paint::Green
@@ -427,8 +427,8 @@ impl Subtitle {
 	}
 
 	#[must_use]
-	pub fn from_label(ctx: &Context<'_>, label: &[Text], tr: &str) -> Paragraph {
-		let text = tr!(ctx, tr);
+	pub fn from_label(ctx: &Context<'_>, label: &[Text], id: &str) -> Paragraph {
+		let text = tr(ctx, id);
 		let text = [
 			label,
 			&[
@@ -496,7 +496,7 @@ impl WideBubbleProgress {
 		positive: bool,
 		short: bool,
 	) -> Paragraph {
-		let label = tr!(ctx, "levels-gained");
+		let label = tr(ctx, "levels-gained");
 		let mut text = vec![
 			Text {
 				text: &label,
@@ -522,7 +522,7 @@ impl WideBubbleProgress {
 		} else {
 			text.reserve_exact(7);
 
-			let label = tr!(ctx, "total");
+			let label = tr(ctx, "total");
 			let total = total.to_formatted(ctx);
 
 			text.push(Text {
@@ -560,7 +560,7 @@ impl WideBubbleProgress {
 		current: &impl ToFormatted,
 		needed: &impl ToFormatted,
 	) -> Paragraph {
-		let label = tr!(ctx, "level");
+		let label = tr(ctx, "level");
 		let mut text = vec![
 			Text {
 				text: &label,
@@ -577,7 +577,7 @@ impl WideBubbleProgress {
 		text.extend(minecraft_string(level));
 		text.reserve_exact(7);
 
-		let label = tr!(ctx, "progress");
+		let label = tr(ctx, "progress");
 		let current = current.to_formatted(ctx);
 		let needed = needed.to_formatted(ctx);
 

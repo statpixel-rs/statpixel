@@ -58,6 +58,7 @@ pub const DEFAULT_SCHEDULE: i32 = 0b00000000000_000_000_000_000_000_000_000;
 
 #[allow(clippy::too_many_lines)]
 async fn update(
+	ctx: &context::Context<'_>,
 	connection: &mut AsyncPgConnection,
 	uuid: Uuid,
 	timestamp: DateTime<Utc>,
@@ -66,7 +67,7 @@ async fn update(
 	weekly_schedule: i32,
 ) -> Result<Option<(Vec<ChannelId>, Data, Arc<Data>)>, Error> {
 	let player = Player::from_uuid_unchecked(uuid);
-	let data = player.get_data().await?;
+	let data = player.get_data(ctx).await?;
 
 	let encoded = encode(&data)?;
 	// Converting the u64 to i64 is OK since we're always comparing
@@ -306,6 +307,7 @@ pub async fn begin(
 
 					loop {
 						let result = Box::pin(update(
+							ctx,
 							&mut connection,
 							uuid,
 							update_at,

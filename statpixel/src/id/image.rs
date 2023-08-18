@@ -14,57 +14,45 @@ use translate::context::Context;
 macro_rules! impl_root {
 	($ctx: expr, $uuid: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let (_, data, session, skin, suffix) =
-			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None)
-				.await
-				.ok()?;
+			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None).await?;
 
-		Some(
-			$crate::commands::games::image::command::<$game>(
-				$ctx,
-				Some($mode),
-				$bg,
-				&data,
-				&session,
-				skin.image(),
-				suffix.as_deref(),
-			)
-			.0,
+		Ok($crate::commands::games::image::command::<$game>(
+			$ctx,
+			Some($mode),
+			$bg,
+			&data,
+			&session,
+			skin.image(),
+			suffix.as_deref(),
 		)
+		.0)
 	}};
 }
 
 macro_rules! impl_history {
 	($ctx: expr, $uuid: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let (player, session) =
-			$crate::commands::get_player_username_session($ctx, Some($uuid), None)
-				.await
-				.ok()?;
+			$crate::commands::get_player_username_session($ctx, Some($uuid), None).await?;
 
-		Some(
-			$crate::commands::history::image::command::<$game>(
-				$ctx,
-				Some($mode),
-				&player,
-				&session,
-				$bg,
-			)
-			.await
-			.ok()??
-			.0,
+		Ok($crate::commands::history::image::command::<$game>(
+			$ctx,
+			Some($mode),
+			&player,
+			&session,
+			$bg,
 		)
+		.await?
+		.ok_or($crate::Error::NotImplemented)?
+		.0)
 	}};
 }
 
 macro_rules! impl_compare {
 	($ctx: expr, $lhs: expr, $rhs: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let (_, data_lhs, session, skin, suffix) =
-			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($lhs), None)
-				.await
-				.ok()?;
+			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($lhs), None).await?;
 
-		let (_, data_rhs) = $crate::commands::get_player_data($ctx, Some($rhs), None)
-			.await
-			.ok()?;
+		let (_, data_rhs) = $crate::commands::get_player_data($ctx, Some($rhs), None).await?;
 
 		let (mut surface, _) = <$game>::canvas_diff(
 			$ctx,
@@ -77,7 +65,7 @@ macro_rules! impl_compare {
 			$bg,
 		);
 
-		Some(api::canvas::to_png(&mut surface).into())
+		Ok(api::canvas::to_png(&mut surface).into())
 	}};
 }
 
@@ -85,13 +73,11 @@ macro_rules! impl_snapshot {
 	($ctx: expr, $uuid: expr, $from: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let after = Utc::now() - $from;
 		let (player, data_lhs, session, skin, suffix) =
-			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None)
-				.await
-				.ok()?;
+			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None).await?;
 		let (data_rhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_lhs, after)
-			.await
-			.ok()?
-			.ok()?;
+			.await?
+			.ok()
+			.ok_or($crate::Error::NotImplemented)?;
 
 		let (mut surface, _) = <$game>::canvas_diff(
 			$ctx,
@@ -104,30 +90,27 @@ macro_rules! impl_snapshot {
 			$bg,
 		);
 
-		Some(api::canvas::to_png(&mut surface).into())
+		Ok(api::canvas::to_png(&mut surface).into())
 	}};
 }
 
 macro_rules! impl_project {
 	($ctx: expr, $uuid: expr, $mode: expr, $kind: expr, $game: ty, $bg: expr) => {{
-		let (player, session) = $crate::commands::get_player_session($ctx, Some($uuid), None)
-			.await
-			.ok()?;
+		let (player, session) =
+			$crate::commands::get_player_session($ctx, Some($uuid), None).await?;
 
-		Some(
-			$crate::commands::project::image::command::<$game>(
-				$ctx,
-				&player,
-				&session,
-				$bg,
-				Some($mode),
-				Some($kind),
-				None,
-			)
-			.await
-			.ok()??
-			.0,
+		Ok($crate::commands::project::image::command::<$game>(
+			$ctx,
+			&player,
+			&session,
+			$bg,
+			Some($mode),
+			Some($kind),
+			None,
 		)
+		.await?
+		.ok_or($crate::Error::NotImplemented)?
+		.0)
 	}};
 }
 
@@ -137,18 +120,16 @@ pub async fn map(
 	ctx: &Context<'_>,
 	id: Id,
 	background: Option<Color>,
-) -> Option<Cow<'static, [u8]>> {
+) -> Result<Cow<'static, [u8]>, crate::Error> {
 	match id {
 		Id::Builder { shapes, uuid, .. } => {
 			let (_, data, session, skin, _) =
-				crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-					.await
-					.ok()?;
+				crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
 			let bytes = crate::commands::builder::build::build(
 				ctx, &shapes, &data, &session, &skin, background,
-			);
+			)?;
 
-			Some(bytes)
+			Ok(bytes)
 		}
 		Id::Root { kind, uuid, .. } => match kind {
 			Mode::Arcade(mode) => impl_root!(ctx, uuid, mode, arcade::Arcade, background),
@@ -191,37 +172,26 @@ pub async fn map(
 			Mode::WoolWars(mode) => impl_root!(ctx, uuid, mode, wool_wars::WoolWars, background),
 			Mode::Guild(mode, limit, nanos, member_id) => match mode {
 				GuildMode::General => {
-					let guild = crate::commands::get_guild(ctx, None, member_id, None, Some(uuid))
-						.await
-						.ok()?;
+					let guild =
+						crate::commands::get_guild(ctx, None, member_id, None, Some(uuid)).await?;
 
-					crate::commands::guild::image::general(ctx, &guild, background)
-						.await
-						.ok()
+					crate::commands::guild::image::general(ctx, &guild, background).await
 				}
 				GuildMode::Member => {
 					let (guild, player) =
-						crate::commands::get_guild_with_member(ctx, member_id, None)
-							.await
-							.ok()?;
+						crate::commands::get_guild_with_member(ctx, member_id, None).await?;
 
-					crate::commands::guild::image::member(ctx, &guild, &player, background)
-						.await
-						.ok()
+					crate::commands::guild::image::member(ctx, &guild, &player, background).await
 				}
 				GuildMode::Members => {
-					let guild = crate::commands::get_guild(ctx, None, member_id, None, Some(uuid))
-						.await
-						.ok()?;
+					let guild =
+						crate::commands::get_guild(ctx, None, member_id, None, Some(uuid)).await?;
 
-					crate::commands::guild::image::members(ctx, &guild, background)
-						.await
-						.ok()
+					crate::commands::guild::image::members(ctx, &guild, background).await
 				}
 				GuildMode::Top => {
-					let guild = crate::commands::get_guild(ctx, None, member_id, None, Some(uuid))
-						.await
-						.ok()?;
+					let guild =
+						crate::commands::get_guild(ctx, None, member_id, None, Some(uuid)).await?;
 
 					crate::commands::guild::image::top(
 						ctx,
@@ -231,15 +201,13 @@ pub async fn map(
 						background,
 					)
 					.await
-					.ok()
 				}
 			},
 			Mode::SkyBlock(mode, profile) => match mode {
 				SkyBlockMode::Auctions => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
 					crate::commands::skyblock::image::auctions(
 						ctx,
@@ -251,320 +219,262 @@ pub async fn map(
 						background,
 					)
 					.await
-					.ok()
 				}
 				SkyBlockMode::Bank => {
-					let (_, data) = crate::commands::get_player_data(ctx, Some(uuid), None)
-						.await
-						.ok()?;
+					let (_, data) = crate::commands::get_player_data(ctx, Some(uuid), None).await?;
 
-					Some(
-						crate::commands::skyblock::image::bank(
-							ctx, &data, background, profile, None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::bank(
+						ctx, &data, background, profile, None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Candy => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::candy(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::candy(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::EnderChest => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::enderchest(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::enderchest(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Equipment => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::equipment(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::equipment(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Fishing => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::fishing(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::fishing(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Inventory => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::inventory(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::inventory(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Networth => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::networth(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::networth(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Pets => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::pets(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::pets(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Potions => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::potions(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::potions(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Profile => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::profile(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::profile(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Quiver => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::quiver(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::quiver(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Talisman => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::talisman(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::talisman(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Vault => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::vault(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::vault(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 				SkyBlockMode::Wardrobe => {
 					let (player, data, session, skin, suffix) =
 						crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-							.await
-							.ok()?;
+							.await?;
 
-					Some(
-						crate::commands::skyblock::image::wardrobe(
-							ctx,
-							&player,
-							&data,
-							&session,
-							skin.image(),
-							suffix.as_deref(),
-							background,
-							profile,
-							None,
-						)
-						.await
-						.ok()?
-						.0,
+					Ok(crate::commands::skyblock::image::wardrobe(
+						ctx,
+						&player,
+						&data,
+						&session,
+						skin.image(),
+						suffix.as_deref(),
+						background,
+						profile,
+						None,
 					)
+					.await?
+					.0)
 				}
 			},
 			Mode::Network => {
@@ -574,10 +484,9 @@ pub async fn map(
 						Some(uuid),
 						None,
 					)
-					.await
-					.ok()?;
+					.await?;
 
-				Some(crate::commands::network::image::network(
+				Ok(crate::commands::network::image::network(
 					ctx,
 					&player,
 					guild.as_deref(),
@@ -595,10 +504,9 @@ pub async fn map(
 						Some(uuid),
 						None,
 					)
-					.await
-					.ok()?;
+					.await?;
 
-				Some(crate::commands::recent::image::recent(
+				Ok(crate::commands::recent::image::recent(
 					ctx,
 					&data,
 					&games,
@@ -611,10 +519,9 @@ pub async fn map(
 			Mode::Winstreaks => {
 				let (_, data, session, skin, suffix) =
 					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
-						.await
-						.ok()?;
+						.await?;
 
-				Some(crate::commands::winstreaks::image::winstreaks(
+				Ok(crate::commands::winstreaks::image::winstreaks(
 					ctx,
 					&data,
 					&session,
@@ -713,7 +620,7 @@ pub async fn map(
 				Mode::WoolWars(mode) => {
 					impl_snapshot!(ctx, uuid, past, mode, wool_wars::WoolWars, background)
 				}
-				_ => None,
+				_ => Err(crate::Error::NotImplemented),
 			}
 		}
 		Id::History { kind, uuid, .. } => match kind {
@@ -759,7 +666,7 @@ pub async fn map(
 			Mode::Walls(mode) => impl_history!(ctx, uuid, mode, walls::Walls, background),
 			Mode::Warlords(mode) => impl_history!(ctx, uuid, mode, warlords::Warlords, background),
 			Mode::WoolWars(mode) => impl_history!(ctx, uuid, mode, wool_wars::WoolWars, background),
-			_ => None,
+			_ => Err(crate::Error::NotImplemented),
 		},
 		Id::Project { kind, uuid, .. } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
@@ -849,7 +756,7 @@ pub async fn map(
 			ProjectMode::WoolWars(mode, kind) => {
 				impl_project!(ctx, uuid, mode, kind, wool_wars::WoolWars, background)
 			}
-			_ => None,
+			_ => Err(crate::Error::NotImplemented),
 		},
 		Id::Compare {
 			kind,
@@ -1003,8 +910,8 @@ pub async fn map(
 					background
 				)
 			}
-			_ => None,
+			_ => Err(crate::Error::NotImplemented),
 		},
-		Id::Between { .. } => None,
+		Id::Between { .. } => Err(crate::Error::NotImplemented),
 	}
 }

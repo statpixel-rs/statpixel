@@ -1,9 +1,6 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[serde(default)]
 #[game(
 	path = "bed_wars",
@@ -34,9 +31,9 @@ use serde::Deserialize;
 	label(ident = "items_purchased", colour = "red")
 )]
 pub struct BedWars {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[serde(
 		rename(deserialize = "bedwars_boxes"),
 		deserialize_with = "crate::de::from::f32_to_u32"
@@ -117,7 +114,7 @@ pub struct BedWars {
 	pub four_swap: FourSwap,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "eight_one_wins_bedwars")]
@@ -150,7 +147,7 @@ pub struct Solo {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "eight_two_wins_bedwars")]
@@ -183,7 +180,7 @@ pub struct Double {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Three {
 	#[serde(rename = "four_three_wins_bedwars")]
@@ -216,7 +213,7 @@ pub struct Three {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Four {
 	#[serde(rename = "four_four_wins_bedwars")]
@@ -249,7 +246,7 @@ pub struct Four {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloRush {
 	#[serde(rename = "eight_one_rush_wins_bedwars")]
@@ -282,7 +279,7 @@ pub struct SoloRush {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleRush {
 	#[serde(rename = "eight_two_rush_wins_bedwars")]
@@ -315,7 +312,7 @@ pub struct DoubleRush {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourRush {
 	#[serde(rename = "four_four_rush_wins_bedwars")]
@@ -348,7 +345,7 @@ pub struct FourRush {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloUltimate {
 	#[serde(rename = "eight_one_ultimate_wins_bedwars")]
@@ -381,7 +378,7 @@ pub struct SoloUltimate {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleUltimate {
 	#[serde(rename = "eight_two_ultimate_wins_bedwars")]
@@ -414,7 +411,7 @@ pub struct DoubleUltimate {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourUltimate {
 	#[serde(rename = "four_four_ultimate_wins_bedwars")]
@@ -447,7 +444,7 @@ pub struct FourUltimate {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Castle {
 	#[serde(rename = "castle_wins_bedwars")]
@@ -480,7 +477,7 @@ pub struct Castle {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleLucky {
 	#[serde(rename = "eight_two_lucky_wins_bedwars")]
@@ -513,7 +510,7 @@ pub struct DoubleLucky {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourLucky {
 	#[serde(rename = "four_four_lucky_wins_bedwars")]
@@ -546,7 +543,7 @@ pub struct FourLucky {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleVoidless {
 	#[serde(rename = "eight_two_voidless_wins_bedwars")]
@@ -579,7 +576,7 @@ pub struct DoubleVoidless {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourVoidless {
 	#[serde(rename = "four_four_voidless_wins_bedwars")]
@@ -612,7 +609,7 @@ pub struct FourVoidless {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleArmed {
 	#[serde(rename = "eight_two_armed_wins_bedwars")]
@@ -645,7 +642,7 @@ pub struct DoubleArmed {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourArmed {
 	#[serde(rename = "four_four_armed_wins_bedwars")]
@@ -678,7 +675,7 @@ pub struct FourArmed {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleUnderworld {
 	#[serde(rename = "eight_two_underworld_wins_bedwars")]
@@ -711,7 +708,7 @@ pub struct DoubleUnderworld {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourUnderworld {
 	#[serde(rename = "four_four_underworld_wins_bedwars")]
@@ -744,7 +741,7 @@ pub struct FourUnderworld {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleSwap {
 	#[serde(rename = "eight_two_swap_wins_bedwars")]
@@ -777,7 +774,7 @@ pub struct DoubleSwap {
 	pub win_streak: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FourSwap {
 	#[serde(rename = "four_four_swap_wins_bedwars")]

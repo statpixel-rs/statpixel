@@ -228,9 +228,9 @@ impl ToFormatted for &str {
 impl ToFormatted for bool {
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		if *self {
-			tr!(ctx, "yes")
+			tr(ctx, "yes")
 		} else {
-			tr!(ctx, "no")
+			tr(ctx, "no")
 		}
 	}
 }
@@ -238,22 +238,22 @@ impl ToFormatted for bool {
 impl ToFormatted for Colour {
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		match self {
-			Colour::Black => tr!(ctx, "black"),
-			Colour::DarkBlue => tr!(ctx, "dark-blue"),
-			Colour::DarkGreen => tr!(ctx, "dark-green"),
-			Colour::DarkAqua => tr!(ctx, "dark-aqua"),
-			Colour::DarkRed => tr!(ctx, "dark-red"),
-			Colour::DarkPurple => tr!(ctx, "dark-purple"),
-			Colour::Gold => tr!(ctx, "gold"),
-			Colour::Gray => tr!(ctx, "gray"),
-			Colour::DarkGray => tr!(ctx, "dark-gray"),
-			Colour::Blue => tr!(ctx, "blue"),
-			Colour::Green => tr!(ctx, "green"),
-			Colour::Aqua => tr!(ctx, "aqua"),
-			Colour::Red => tr!(ctx, "red"),
-			Colour::LightPurple => tr!(ctx, "light-purple"),
-			Colour::Yellow => tr!(ctx, "yellow"),
-			Colour::White => tr!(ctx, "white"),
+			Colour::Black => tr(ctx, "black"),
+			Colour::DarkBlue => tr(ctx, "dark-blue"),
+			Colour::DarkGreen => tr(ctx, "dark-green"),
+			Colour::DarkAqua => tr(ctx, "dark-aqua"),
+			Colour::DarkRed => tr(ctx, "dark-red"),
+			Colour::DarkPurple => tr(ctx, "dark-purple"),
+			Colour::Gold => tr(ctx, "gold"),
+			Colour::Gray => tr(ctx, "gray"),
+			Colour::DarkGray => tr(ctx, "dark-gray"),
+			Colour::Blue => tr(ctx, "blue"),
+			Colour::Green => tr(ctx, "green"),
+			Colour::Aqua => tr(ctx, "aqua"),
+			Colour::Red => tr(ctx, "red"),
+			Colour::LightPurple => tr(ctx, "light-purple"),
+			Colour::Yellow => tr(ctx, "yellow"),
+			Colour::White => tr(ctx, "white"),
 		}
 	}
 }
@@ -265,7 +265,7 @@ where
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		match self {
 			Some(value) => value.to_formatted(ctx),
-			None => tr!(ctx, "none"),
+			None => tr(ctx, "none"),
 		}
 	}
 }

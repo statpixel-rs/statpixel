@@ -38,8 +38,8 @@ pub async fn link(
 					.content(crate::tip::random(ctx))
 					.embed(
 						serenity::CreateEmbed::new()
-							.title(tr!(ctx, "linking-failed"))
-							.description(tr!(ctx, "linking-failed-description"))
+							.title(tr(ctx, "linking-failed"))
+							.description(tr(ctx, "linking-failed-description"))
 							.colour(crate::EMBED_COLOUR),
 					),
 			)
@@ -65,13 +65,13 @@ pub async fn link(
 			.await?;
 
 		ctx.send(success_embed(
-			tr!(ctx, "linking-succeeded"),
+			tr(ctx, "linking-succeeded"),
 			tr_fmt!(ctx, "linking-succeeded-description", name: escape_username(player.username.as_deref().unwrap())),
 		))
 		.await?;
 	} else {
 		ctx.send(error_embed(
-			tr!(ctx, "linking-failed"),
+			tr(ctx, "linking-failed"),
 			match (uuid, username) {
 				(Some(uuid), _) => {
 					tr_fmt!(ctx, "linking-failed-uuid-description", uuid: uuid.to_string())
@@ -81,7 +81,7 @@ pub async fn link(
 					"linking-failed-username-description",
 					name: escape_username(&username)
 				),
-				(None, None) => tr!(ctx, "linking-failed-description"),
+				(None, None) => tr(ctx, "linking-failed-description"),
 			},
 		))
 		.await?;

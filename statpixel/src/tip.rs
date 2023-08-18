@@ -27,5 +27,5 @@ const TIPS: &[&str] = &[
 ];
 
 pub fn random(ctx: &impl GetLocale) -> Cow<str> {
-	tr!(ctx, TIPS.choose(&mut rand::thread_rng()).unwrap())
+	tr(ctx, TIPS.choose(&mut rand::thread_rng()).unwrap())
 }

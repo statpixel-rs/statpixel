@@ -152,7 +152,15 @@ impl ToTokens for GameInputReceiver {
 				Some(quote!(#st => #mode_enum::#ty))
 			});
 
-			let slice = rows.iter().map(|r| quote!(#mode_enum::#r));
+			let mut slice = rows
+				.iter()
+				.map(|id| (quote!(#id).to_string(), quote!(#mode_enum::#id)))
+				.collect::<Vec<_>>();
+
+			slice.sort_by(|a, b| a.0.cmp(&b.0));
+
+			let slice = slice.into_iter().map(|(_, id)| id);
+
 			let to_u32 = rows.iter().enumerate().map(|(i, r)| {
 				let i = i as u32 + 1;
 
@@ -237,7 +245,20 @@ impl ToTokens for GameInputReceiver {
 		});
 
 		tokens.extend({
-			let slice = blocks.iter().map(|id| quote!(#kind_enum::#id));
+			let mut slice = blocks
+				.iter()
+				.map(|id| (id.var_id().to_string(), quote!(#kind_enum::#id)))
+				.chain(
+					labels
+						.iter()
+						.map(|id| (id.var_id().to_string(), quote!(#kind_enum::#id)))
+				)
+				.collect::<Vec<_>>();
+
+			slice.sort_by(|a, b| a.0.cmp(&b.0));
+
+			let slice = slice.into_iter().map(|(_, id)| id);
+
 			let blocks_len = blocks.len();
 			let labels_len = labels.len();
 
@@ -381,7 +402,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Root {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Root {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					background: None,
@@ -394,7 +415,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Snapshot {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Snapshot {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					past,
@@ -408,7 +429,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::History {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::History {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					background: None,
@@ -421,7 +442,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Project {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Project {
 					kind: #api::command::ProjectMode::#game_ident(#mode_enum::#ty, kind),
 					uuid,
 					background: None,
@@ -434,7 +455,7 @@ impl ToTokens for GameInputReceiver {
 			let tr = mode.tr();
 
 			quote! {
-				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #tr), #api::id::command(#api::command::Id::Compare {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Compare {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid_lhs,
 					uuid_rhs,
@@ -459,7 +480,7 @@ impl ToTokens for GameInputReceiver {
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Root {
+								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Root {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
 									background: None,
@@ -470,7 +491,7 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -495,7 +516,7 @@ impl ToTokens for GameInputReceiver {
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Snapshot {
+								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Snapshot {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
 									past,
@@ -507,7 +528,7 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -532,7 +553,7 @@ impl ToTokens for GameInputReceiver {
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::History {
+								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::History {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
 									background: None,
@@ -543,7 +564,7 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -568,7 +589,7 @@ impl ToTokens for GameInputReceiver {
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Project {
+								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Project {
 									kind: #api::command::ProjectMode::#game_ident(#mode_enum::#overall_ident, kind),
 									uuid,
 									background: None,
@@ -579,7 +600,7 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -604,7 +625,7 @@ impl ToTokens for GameInputReceiver {
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
-								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr!(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Compare {
+								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Compare {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid_lhs,
 									uuid_rhs,
@@ -616,7 +637,7 @@ impl ToTokens for GameInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr!(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -690,7 +711,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#extra
 
-					field.push_str(#translate::tr!(ctx, Self::tr()).as_ref());
+					field.push_str(#translate::tr(ctx, Self::tr()).as_ref());
 					field.push_str(": **");
 					field.push_str(#v.as_ref());
 					field.push_str("**\n");
@@ -730,6 +751,19 @@ impl ToTokens for GameInputReceiver {
 					f64::from(#value)
 				})
 			}, b.tr(), b.var_id())))
+			.chain(
+				labels
+					.iter()
+					.filter_map(|l| Some(({
+						let value = l.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+
+						quote!({
+							let game = &data.stats.#path_to_game;
+
+							f64::from(#value)
+						})
+					}, l.tr(), l.var_id()))),
+			)
 			.chain(std::iter::once((
 				quote!({
 					let game = &data.stats.#path_to_game;
@@ -771,7 +805,7 @@ impl ToTokens for GameInputReceiver {
 						let mut buffer = #api::canvas::project::f64::create(
 							ctx,
 							::std::vec![(
-								#translate::tr!(ctx, #tr),
+								#translate::tr(ctx, #tr),
 								snapshots
 									.iter()
 									.map(|(time, data)| (*time, #value))
@@ -780,13 +814,7 @@ impl ToTokens for GameInputReceiver {
 								predict_y,
 							)],
 							first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
-							({
-								let data = &first.1;
-								#value
-							} * (7. / 8.))..(predict_y.max({
-								let data = &last.1;
-								#value
-							}) * (8. / 7.)),
+							(low * (7. / 8.))..(predict_y.max(high) * (8. / 7.)),
 							None,
 							background,
 						)?;
@@ -801,7 +829,7 @@ impl ToTokens for GameInputReceiver {
 							#api::canvas::project::apply_bubbles(
 								&mut surface,
 								ctx,
-								#translate::tr!(ctx, #tr).as_ref(),
+								#translate::tr(ctx, #tr).as_ref(),
 								&predict_y,
 								&r,
 								&x,
@@ -811,10 +839,10 @@ impl ToTokens for GameInputReceiver {
 							#api::canvas::project::apply_bubbles(
 								&mut surface,
 								ctx,
-								#translate::tr!(ctx, #tr).as_ref(),
+								#translate::tr(ctx, #tr).as_ref(),
 								&predict_y,
 								&r,
-								&#translate::tr!(ctx, "never").as_ref(),
+								&#translate::tr(ctx, "never").as_ref(),
 								background,
 							);
 						}
@@ -847,7 +875,7 @@ impl ToTokens for GameInputReceiver {
 
 						title.push_str(PLAIN);
 						title.push(' ');
-						title.push_str(#translate::tr!(ctx, Overall::tr()).as_ref());
+						title.push_str(#translate::tr(ctx, Overall::tr()).as_ref());
 
 						embed.fields.push(#poise::serenity_prelude::EmbedField::new(title, log, true));
 						embed
@@ -875,7 +903,7 @@ impl ToTokens for GameInputReceiver {
 					#(#embed)*
 
 					embed.field(
-						#translate::tr!(ctx, Self::tr()),
+						#translate::tr(ctx, Self::tr()),
 						field,
 						true,
 					)
@@ -893,7 +921,7 @@ impl ToTokens for GameInputReceiver {
 
 					#(#embed_diff)*
 
-					embed.field(#translate::tr!(ctx, Self::tr()), field, true)
+					embed.field(#translate::tr(ctx, Self::tr()), field, true)
 				}
 
 				pub fn project(
@@ -920,11 +948,17 @@ impl ToTokens for GameInputReceiver {
 					let first = snapshots.first().unwrap();
 					let last = snapshots.last().unwrap();
 
-					let lower = Self::min_fields(&#overall_ident, &first.1);
-					let upper = ::std::cmp::max(Self::max_fields(&#overall_ident, &last.1), 100);
+					let mut lower = Self::min_fields(&#overall_ident, &first.1);
+					let mut upper = ::std::cmp::max(Self::max_fields(&#overall_ident, &first.1), 100);
+
+					for (_, data) in snapshots.iter().skip(1) {
+						let stats = &#overall_ident;
+
+						lower = lower.min(Self::min_fields(stats, data));
+						upper = upper.max(Self::max_fields(stats, data));
+					}
 
 					let x_range = first.0.clone()..last.0.clone();
-					let last_data = last.1.clone();
 
 					let v = ::std::vec![
 						#(#chart,)*
@@ -941,7 +975,7 @@ impl ToTokens for GameInputReceiver {
 
 					let mut surface = #api::canvas::chart::canvas(&mut buffer)?;
 
-					#api::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL, background);
+					#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 					#api::canvas::chart::round_corners(&mut surface);
 
 					Ok(#api::canvas::to_png(&mut surface))
@@ -1182,16 +1216,15 @@ impl ToTokens for GameInputReceiver {
 						ctx: &'c #translate::context::Context<'c>,
 						data: &'t #api::player::data::Data,
 						kind: &#kind_enum
-					) -> ::std::borrow::Cow<'static, str> {
+					) -> Result<::std::borrow::Cow<'static, str>, #translate::Error> {
 						let game = &data.stats.#path_to_game;
 
 						let value: String = match kind {
-							#kind_enum::level => unreachable!(),
 							#(#from_kind_match,)*
-							_ => panic!("unknown kind"),
+							_ => return Err(#translate::Error::NotImplemented),
 						};
 
-						::std::borrow::Cow::Owned(value)
+						Ok(::std::borrow::Cow::Owned(value))
 					}
 
 					pub fn from_kind_diff<'t, 'c: 't>(
@@ -1199,15 +1232,14 @@ impl ToTokens for GameInputReceiver {
 						data_lhs: &'t #api::player::data::Data,
 						data_rhs: &'t #api::player::data::Data,
 						kind: &#kind_enum
-					) -> String {
+					) -> Result<String, #translate::Error> {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
 
-						match kind {
-							#kind_enum::level => unreachable!(),
+						Ok(match kind {
 							#(#from_kind_diff_match,)*
-							_ => panic!("unknown kind"),
-						}
+							_ => return Err(#translate::Error::NotImplemented),
+						})
 					}
 
 					pub async fn autocomplete<'a>(ctx: #translate::Context<'a>, partial: String) -> impl #futures::Stream<Item = #poise::AutocompleteChoice<u32>> + 'a {
@@ -1215,7 +1247,7 @@ impl ToTokens for GameInputReceiver {
 
 						#futures::stream::iter(#mode_enum::slice())
 							.filter_map(move |mode| {
-								let name = #translate::tr!(&ctx, mode.tr());
+								let name = #translate::tr(&ctx, mode.tr());
 								let mode: u32 = mode.into();
 
 								#futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
@@ -1235,7 +1267,7 @@ impl ToTokens for GameInputReceiver {
 
 						#futures::stream::iter(#kind_enum::slice())
 							.filter_map(move |kind| {
-								let name = #translate::tr!(&ctx, kind.tr());
+								let name = #translate::tr(&ctx, kind.tr());
 								let kind: u32 = kind.into();
 
 								#futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {

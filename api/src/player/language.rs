@@ -1,11 +1,19 @@
 use std::borrow::Cow;
 
-use serde::Deserialize;
 use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
-#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Debug,
+	Clone,
+	PartialEq,
+	Default,
+)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Language {
 	#[default]

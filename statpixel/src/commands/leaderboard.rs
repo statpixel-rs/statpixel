@@ -74,7 +74,7 @@ pub async fn leaderboard(
 		leaders
 			.into_iter()
 			.map(Player::from_uuid_unchecked)
-			.map(Player::get_data_owned),
+			.map(|p| p.get_data_owned(ctx)),
 	)
 	.buffered(10)
 	.filter_map(|r| async { r.ok() })

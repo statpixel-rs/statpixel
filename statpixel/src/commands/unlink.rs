@@ -24,14 +24,14 @@ pub async fn unlink(ctx: Context<'_>) -> Result<(), Error> {
 
 	if removed > 0 {
 		ctx.send(success_embed(
-			tr!(&ctx, "unlinking-succeeded"),
-			tr!(&ctx, "unlinking-succeeded-description"),
+			tr(&ctx, "unlinking-succeeded"),
+			tr(&ctx, "unlinking-succeeded-description"),
 		))
 		.await?;
 	} else {
 		ctx.send(error_embed(
-			tr!(&ctx, "unlinking-failed"),
-			tr!(&ctx, "unlinking-failed-description"),
+			tr(&ctx, "unlinking-failed"),
+			tr(&ctx, "unlinking-failed-description"),
 		))
 		.await?;
 	}

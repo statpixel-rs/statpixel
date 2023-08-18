@@ -41,13 +41,6 @@ macro_rules! tr_fmt {
 	}};
 }
 
-#[macro_export]
-macro_rules! tr {
-	($ctx: expr, $id: expr) => {{
-		$crate::get_str($ctx, $id)
-	}};
-}
-
 pub struct Locale {
 	main: Bundle,
 	other: std::collections::HashMap<super::context::Locale, Bundle>,
@@ -79,7 +72,7 @@ pub fn format(
 	)
 }
 
-pub fn get_str<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
+pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
 	let locale = &ctx.data().locale;
 
 	ctx.locale()

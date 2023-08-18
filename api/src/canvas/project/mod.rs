@@ -97,14 +97,14 @@ pub fn apply_bubbles(
 		)
 		.push_right(
 			&shape::Bubble,
-			body::Body::from_bubble(ctx, acc, tr!(ctx, "accuracy").as_ref(), Paint::Gold),
+			body::Body::from_bubble(ctx, acc, tr(ctx, "accuracy").as_ref(), Paint::Gold),
 		)
 		.push_right(
 			&shape::Bubble,
 			body::Body::new(30., TextAlign::Center)
 				.extend(&[
 					Text {
-						text: tr!(ctx, "estimate").as_ref(),
+						text: tr(ctx, "estimate").as_ref(),
 						paint: Paint::LightPurple,
 						font: MinecraftFont::Normal,
 						size: Some(20.),

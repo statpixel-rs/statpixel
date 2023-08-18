@@ -41,8 +41,8 @@ where
 pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
-			.title(tr!(ctx, "deprecated-interaction"))
-			.description(tr!(ctx, "deprecated-interaction-description"))
+			.title(tr(ctx, "deprecated-interaction"))
+			.description(tr(ctx, "deprecated-interaction-description"))
 			.colour(crate::EMBED_COLOUR_ERROR),
 	)
 }
@@ -50,8 +50,8 @@ pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply {
 pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
-			.title(tr!(ctx, "invalid-identifier"))
-			.description(tr!(ctx, "invalid-identifier-description"))
+			.title(tr(ctx, "invalid-identifier"))
+			.description(tr(ctx, "invalid-identifier-description"))
 			.colour(crate::EMBED_COLOUR_ERROR),
 	)
 }
@@ -321,12 +321,10 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 			}
 			ref error => {
 				error!(error = ?error, "internal error");
-				tr!(ctx, "error-internal")
+				tr(ctx, "error-internal")
 			}
 		},
-		Error::NotLinked => {
-			tr!(ctx, "error-not-linked")
-		}
+		Error::NotLinked => tr(ctx, "error-not-linked"),
 		Error::InvalidUuid(ref uuid) => {
 			tr_fmt!(ctx, "error-invalid-uuid", uuid: uuid.to_string())
 		}
@@ -342,30 +340,20 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		Error::LeaderboardNotFound(ref name) => {
 			tr_fmt!(ctx, "error-leaderboard-not-found", name: name.as_str())
 		}
-		Error::IdentifierTooLong => {
-			tr!(ctx, "error-identifier-too-long")
-		}
+		Error::IdentifierTooLong => tr(ctx, "error-identifier-too-long"),
 		Error::UserTrackLimitReached(ref limit) => {
 			tr_fmt!(ctx, "error-user-track-limit-reached", limit: limit)
 		}
 		Error::GuildTrackLimitReached(ref limit) => {
 			tr_fmt!(ctx, "error-guild-track-limit-reached", limit: limit)
 		}
-		Error::TrackAlreadyExists => {
-			tr!(ctx, "error-track-already-exists")
-		}
+		Error::TrackAlreadyExists => tr(ctx, "error-track-already-exists"),
 		Error::BoostLimitReached(ref limit) => {
 			tr_fmt!(ctx, "error-boost-limit-reached", limit: limit)
 		}
-		Error::NotPremium => {
-			tr!(ctx, "error-not-premium")
-		}
-		Error::NotInAGuild => {
-			tr!(ctx, "error-not-in-a-guild")
-		}
-		Error::BoostAlreadyExists => {
-			tr!(ctx, "error-boost-already-exists")
-		}
+		Error::NotPremium => tr(ctx, "error-not-premium"),
+		Error::NotInAGuild => tr(ctx, "error-not-in-a-guild"),
+		Error::BoostAlreadyExists => tr(ctx, "error-boost-already-exists"),
 		Error::TimeParse(error) => match error {
 			humantime::DurationError::InvalidCharacter(position) => {
 				tr_fmt!(ctx, "error-time-invalid-character", position: position)
@@ -381,16 +369,12 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 			} => {
 				tr_fmt!(ctx, "error-time-unknown-unit", position: position, unit: unit, value: value)
 			}
-			humantime::DurationError::NumberOverflow => {
-				tr!(ctx, "error-time-overflow")
-			}
-			humantime::DurationError::Empty => {
-				tr!(ctx, "error-time-empty")
-			}
+			humantime::DurationError::NumberOverflow => tr(ctx, "error-time-overflow"),
+			humantime::DurationError::Empty => tr(ctx, "error-time-empty"),
 		},
 		ref error => {
 			error!(error = ?error, "internal error");
-			tr!(ctx, "error-internal")
+			tr(ctx, "error-internal")
 		}
 	};
 

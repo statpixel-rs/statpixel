@@ -27,7 +27,7 @@ pub async fn command<G: api::prelude::Game>(
 		.await?;
 
 	if snapshots.is_empty() {
-		let data = player.get_data().await?;
+		let data = player.get_data(ctx).await?;
 
 		snapshot::user::insert(ctx, player, &data).await?;
 

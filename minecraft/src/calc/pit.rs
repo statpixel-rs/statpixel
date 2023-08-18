@@ -1,17 +1,34 @@
 use std::{cmp::min, ops::Sub};
 
-use serde::Deserialize;
 use skia_safe::Color;
 
 use crate::{colour::Colour, text::ESCAPE};
 
-#[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Decode,
+	bincode::Encode,
+	Default,
+	Debug,
+	Clone,
+	PartialEq,
+)]
 pub struct Prestige {
 	#[serde(rename = "xp_on_prestige")]
 	pub xp: u64,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Default,
+	Debug,
+	Clone,
+	PartialEq,
+)]
 #[serde(default)]
 pub struct Level {
 	pub xp: u64,

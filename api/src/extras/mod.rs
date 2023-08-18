@@ -5,7 +5,7 @@ pub mod xp;
 
 macro_rules! impl_time_unit {
 	($name: ident, $op: tt, $val: expr) => {
-		#[derive(bincode::Decode, bincode::Encode, Debug, Clone, Copy, Default, PartialEq, Eq, ::macros::Diff, PartialOrd, Ord)]
+		#[derive(bincode::Decode, bincode::Encode, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord)]
 		pub struct $name(pub i64);
 
 		impl<'de> ::serde::Deserialize<'de> for $name {
@@ -16,6 +16,15 @@ macro_rules! impl_time_unit {
 				let s: i64 = ::serde::Deserialize::deserialize(deserializer)?;
 
 				Ok($name(s))
+			}
+		}
+
+		impl ::serde::Serialize for $name {
+			fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+			where
+				S: ::serde::Serializer,
+			{
+				serializer.serialize_i64(self.0)
 			}
 		}
 
@@ -116,13 +125,11 @@ macro_rules! impl_time_unit_opt {
 		#[derive(
 			bincode::Decode,
 			bincode::Encode,
-			Debug,
 			Clone,
 			Copy,
 			Default,
 			PartialEq,
 			Eq,
-			::macros::Diff,
 		)]
 		pub struct $name(pub Option<i64>);
 
@@ -134,6 +141,15 @@ macro_rules! impl_time_unit_opt {
 				let s: Option<i64> = ::serde::Deserialize::deserialize(deserializer)?;
 
 				Ok($name(s))
+			}
+		}
+
+		impl ::serde::Serialize for $name {
+			fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+			where
+				S: ::serde::Serializer,
+			{
+				serializer.serialize_i64(self.0.unwrap_or_default())
 			}
 		}
 
@@ -192,7 +208,7 @@ macro_rules! impl_time_unit_opt {
 			) -> ::std::borrow::Cow<'t, str> {
 				let mut result = ::std::string::String::with_capacity(3);
 				let Some(value) = self.0 else {
-					return ::translate::tr!(ctx, "none");
+					return ::translate::tr(ctx, "none");
 				};
 
 				let (s, neg) = {

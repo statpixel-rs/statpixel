@@ -1,9 +1,6 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "cops_and_crims",
 	pretty = "§9§lCops §f§land §c§lCrims",
@@ -26,9 +23,9 @@ use serde::Deserialize;
 )]
 #[serde(default)]
 pub struct CopsAndCrims {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[game(label(colour = "aqua"))]
 	pub shots_fired: u32,
 	#[game(label(colour = "red"))]
@@ -51,7 +48,7 @@ pub struct CopsAndCrims {
 	pub deathmatch: Deathmatch,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Defusal {
 	#[serde(rename = "game_wins")]
@@ -65,7 +62,7 @@ pub struct Defusal {
 	pub criminal_kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct GunGame {
 	#[serde(rename = "game_wins_gungame")]
@@ -84,7 +81,7 @@ pub struct GunGame {
 	pub criminal_kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Deathmatch {
 	#[serde(rename = "game_wins_deathmatch")]

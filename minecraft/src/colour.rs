@@ -45,7 +45,7 @@ colour!(BACKGROUND, (31, 48, 64));
 	Eq,
 	FromMeta,
 )]
-#[serde(try_from = "&str")]
+#[serde(try_from = "String", rename_all = "SCREAMING_SNAKE_CASE")]
 #[darling(default)]
 pub enum Colour {
 	Black,
@@ -185,6 +185,32 @@ impl From<Colour> for char {
 			Colour::LightPurple => 'd',
 			Colour::Yellow => 'e',
 			Colour::White => 'f',
+		}
+	}
+}
+
+impl TryFrom<String> for Colour {
+	type Error = &'static str;
+
+	fn try_from(value: String) -> Result<Self, Self::Error> {
+		match value.as_str() {
+			"BLACK" => Ok(Self::Black),
+			"DARK_BLUE" => Ok(Self::DarkBlue),
+			"DARK_GREEN" | "EMERALD" => Ok(Self::DarkGreen),
+			"DARK_AQUA" | "CYAN" => Ok(Self::DarkAqua),
+			"DARK_RED" => Ok(Self::DarkRed),
+			"DARK_PURPLE" | "PURPLE" => Ok(Self::DarkPurple),
+			"GOLD" | "ORANGE" => Ok(Self::Gold),
+			"GRAY" | "SILVER" => Ok(Self::Gray),
+			"DARK_GRAY" => Ok(Self::DarkGray),
+			"BLUE" => Ok(Self::Blue),
+			"GREEN" => Ok(Self::Green),
+			"AQUA" | "DIAMOND" => Ok(Self::Aqua),
+			"RED" => Ok(Self::Red),
+			"LIGHT_PURPLE" | "PINK" => Ok(Self::LightPurple),
+			"YELLOW" => Ok(Self::Yellow),
+			"WHITE" => Ok(Self::White),
+			_ => Err("invalid colour code"),
 		}
 	}
 }

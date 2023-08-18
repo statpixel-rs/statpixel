@@ -57,6 +57,8 @@ pub enum ApiError {
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
 	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
+	#[error("An error occurred with serde_json. {0:?}")]
+	SerdeJson(#[from] serde_json::Error),
 }
 
 #[derive(Error, Debug)]

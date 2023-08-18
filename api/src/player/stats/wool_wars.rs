@@ -1,7 +1,6 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
-#[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Progression {
 	#[serde(rename = "available_layers")]
@@ -13,25 +12,23 @@ pub struct Progression {
 	pub xp: u64,
 }
 
-#[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Outer {
 	#[serde(rename = "wool_wars")]
 	pub inner: Inner,
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
-	pub coins: i32,
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
+	pub coins: u32,
 	pub progression: Progression,
 }
 
-#[derive(bincode::Decode, bincode::Encode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Inner {
 	pub stats: WoolWars,
 }
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "wool_wars.inner.stats",
 	pretty = "§f§lWool §7§lWars",
@@ -70,7 +67,7 @@ pub struct WoolWars {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

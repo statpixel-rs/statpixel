@@ -441,6 +441,11 @@ leaderboard = leaderboard
   .board = board
   .board-description = The leaderboard to view
 
+lleaderboard = lleaderboard
+  .description = View the locally-created leaderboard for various games
+  .board = board
+  .board-description = The leaderboard to view
+
 # /network
 
 network-general = general

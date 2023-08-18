@@ -241,7 +241,7 @@ pub async fn from_player_data_session_skin_suffix(
 	Error,
 > {
 	let (data, session, skin, suffix) = tokio::join!(
-		player.get_data(),
+		player.get_data(ctx),
 		player.get_session(),
 		player.get_skin(),
 		player.get_suffix(ctx),
@@ -267,7 +267,7 @@ pub async fn from_player_data_guild_session_skin_suffix(
 	Error,
 > {
 	let (data, guild, session, skin, suffix) = tokio::join!(
-		player.get_data(),
+		player.get_data(ctx),
 		player.get_guild(),
 		player.get_session(),
 		player.get_skin(),
@@ -294,7 +294,7 @@ pub async fn from_player_data_games_session_skin_suffix(
 	Error,
 > {
 	let (data, games, session, skin, suffix) = tokio::join!(
-		player.get_data(),
+		player.get_data(ctx),
 		player.get_games(),
 		player.get_session(),
 		player.get_skin(),
@@ -388,7 +388,7 @@ async fn player_data(
 	username: Option<String>,
 ) -> Result<(Player, Arc<Data>), Error> {
 	let player = util::get_player_from_input(ctx, uuid, username).await?;
-	let data = player.get_data().await?;
+	let data = player.get_data(ctx).await?;
 
 	Ok((player, data))
 }

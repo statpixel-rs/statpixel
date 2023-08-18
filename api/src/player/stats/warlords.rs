@@ -1,9 +1,6 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "warlords",
 	pretty = "§b§lWarlords",
@@ -14,9 +11,9 @@ use serde::Deserialize;
 )]
 #[serde(default)]
 pub struct Warlords {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[serde(
 		rename(deserialize = "damage"),
 		deserialize_with = "crate::de::from::f32_to_u32"
@@ -56,7 +53,7 @@ pub struct Warlords {
 	pub team_deathmatch: TeamDeathmatch,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct CaptureTheFlag {
 	#[serde(rename = "wins_capturetheflag_blu")]
@@ -67,7 +64,7 @@ pub struct CaptureTheFlag {
 	pub kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Domination {
 	#[serde(rename = "wins_domination_blu")]
@@ -78,7 +75,7 @@ pub struct Domination {
 	pub kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamDeathmatch {
 	#[serde(rename = "wins_teamdeathmatch_blu")]

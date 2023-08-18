@@ -1,6 +1,6 @@
 [package]
 name = "translate"
-version = "0.25.0"
+version = "0.26.0"
 edition = "2021"
 license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
@@ -24,3 +24,4 @@ uuid.workspace = true
 tokio.workspace = true
 humantime.workspace = true
 serde.workspace = true
+serde_json.workspace = true

@@ -43,14 +43,14 @@ pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 				.colour(crate::EMBED_COLOUR)
 				.thumbnail("https://cdn.discordapp.com/avatars/718687348883193916/63ca5ae665b90ce664e449039651129d.png?size=256")
 				.title(TITLE)
-				.description(tr!(ctx, "about-description"))
-				.field(tr!(ctx, "author"), "@walfakoot (GoogleSites#7707)", true)
-				.field(tr!(ctx, "guilds"), guilds.to_formatted(ctx), true)
+				.description(tr(ctx, "about-description"))
+				.field(tr(ctx, "author"), "@walfakoot (GoogleSites#7707)", true)
+				.field(tr(ctx, "guilds"), guilds.to_formatted(ctx), true)
 				.field("\u{200b}", "\u{200b}", true)
-				.field(tr!(ctx, "profiles"), profiles.to_formatted(ctx), true)
-				.field(tr!(ctx, "users"), users.to_formatted(ctx), true)
+				.field(tr(ctx, "profiles"), profiles.to_formatted(ctx), true)
+				.field(tr(ctx, "users"), users.to_formatted(ctx), true)
 				.field(
-					tr!(ctx, "snapshots"),
+					tr(ctx, "snapshots"),
 					snapshots.to_formatted(ctx),
 					true,
 				),

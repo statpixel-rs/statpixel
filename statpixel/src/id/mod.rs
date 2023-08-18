@@ -72,7 +72,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			let (_, data, session, skin, _) =
 				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
 			let bytes =
-				super::commands::builder::build::build(ctx, &shapes, &data, &session, &skin, None);
+				super::commands::builder::build::build(ctx, &shapes, &data, &session, &skin, None)?;
 
 			ctx.send(
 				poise::CreateReply::new()

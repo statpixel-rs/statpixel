@@ -37,7 +37,7 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Root {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Root {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
 				}))
@@ -50,7 +50,7 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Snapshot {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Snapshot {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
 					past,
@@ -64,7 +64,7 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::History {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #ty_str), #api ::id::encode(#api ::id::Id::History {
 					kind: #api ::id::Mode::#mode_ty (Self::#ty),
 					uuid,
 				}))
@@ -77,7 +77,7 @@ impl ToTokens for ModeTraitInputReceiver {
 			let ty_str = ty_str.as_str();
 
 			quote! {
-				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr!(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Project {
+				poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #ty_str), #api ::id::encode(#api ::id::Id::Project {
 					kind: #api ::id::ProjectMode::#mode_ty (Self::#ty, kind),
 					uuid,
 				}))
@@ -120,7 +120,7 @@ impl ToTokens for ModeTraitInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr(ctx, selected.get_tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -144,7 +144,7 @@ impl ToTokens for ModeTraitInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr(ctx, selected.get_tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -167,7 +167,7 @@ impl ToTokens for ModeTraitInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr(ctx, selected.get_tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -191,7 +191,7 @@ impl ToTokens for ModeTraitInputReceiver {
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(::translate::tr!(ctx, selected.get_tr()));
+						menu = menu.placeholder(::translate::tr(ctx, selected.get_tr()));
 					}
 
 					menu = menu.max_values(1).min_values(1);

@@ -120,7 +120,7 @@ pub async fn network(
 	.await?;
 
 	if snapshots.is_empty() {
-		let data = player.get_data().await?;
+		let data = player.get_data(ctx).await?;
 
 		crate::snapshot::user::insert(ctx, &player, &data).await?;
 

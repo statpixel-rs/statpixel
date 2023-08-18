@@ -48,7 +48,7 @@ pub async fn top(
 			.map(|(p, v)| async move {
 				let uuid = p.uuid;
 
-				match p.get_display_string_owned().await {
+				match p.get_display_string_owned(ctx).await {
 					Ok(s) => Ok((uuid, s, v)),
 					Err(e) => Err(e),
 				}
@@ -156,7 +156,7 @@ pub async fn members(
 	let mut members =
 		futures::stream::iter(guild.members.iter().map(Member::get_player_unchecked).map(
 			|p| async {
-				match p.get_display_string_owned().await {
+				match p.get_display_string_owned(ctx).await {
 					Ok(s) => {
 						let paragraph =
 							shape::Custom::from_text(&minecraft_string(&s).collect::<Vec<_>>());
@@ -267,7 +267,7 @@ pub async fn general(
 			.rev()
 			.take(14)
 			.map(Member::get_player_unchecked)
-			.map(Player::get_display_string_owned),
+			.map(|p| p.get_display_string_owned(ctx)),
 	)
 	.buffered(14)
 	.filter_map(|r| async { r.ok() })
@@ -275,7 +275,7 @@ pub async fn general(
 
 	let leader = guild
 		.get_leader()
-		.map(|m| m.get_player_unchecked().get_display_string_owned());
+		.map(|m| m.get_player_unchecked().get_display_string_owned(ctx));
 
 	let (members, leader) = if let Some(leader) = leader {
 		let (members, leader) = join!(members, leader);
@@ -311,7 +311,7 @@ pub async fn general(
 			} else {
 				Body::new(20., TextAlign::Center)
 					.append(Text {
-						text: tr!(ctx, "none").as_ref(),
+						text: tr(ctx, "none").as_ref(),
 						paint: Paint::Gray,
 						font: MinecraftFont::Bold,
 						..Default::default()
@@ -335,14 +335,14 @@ pub async fn general(
 		)
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &guild.coins, tr!(ctx, "coins").as_ref(), Paint::Gold),
+			Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
 		)
 		.push_right(
 			&shape::Bubble,
 			Body::new(30., TextAlign::Center)
 				.extend(&[
 					Text {
-						text: tr!(ctx, "created-at").as_ref(),
+						text: tr(ctx, "created-at").as_ref(),
 						paint: Paint::Aqua,
 						font: MinecraftFont::Normal,
 						size: Some(20.),
@@ -366,7 +366,7 @@ pub async fn general(
 			Body::from_bubble(
 				ctx,
 				&format!("{}/125", guild.members.len()),
-				tr!(ctx, "members_label").as_ref(),
+				tr(ctx, "members_label").as_ref(),
 				Paint::LightPurple,
 			),
 		)
@@ -375,7 +375,7 @@ pub async fn general(
 			Body::from_bubble(
 				ctx,
 				&daily_xp,
-				tr!(ctx, "daily-xp").as_ref(),
+				tr(ctx, "daily-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		)
@@ -384,7 +384,7 @@ pub async fn general(
 			Body::from_bubble(
 				ctx,
 				&weekly_xp,
-				tr!(ctx, "weekly-xp").as_ref(),
+				tr(ctx, "weekly-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		)
@@ -393,7 +393,7 @@ pub async fn general(
 			Body::from_bubble(
 				ctx,
 				&monthly_xp,
-				tr!(ctx, "monthly-xp").as_ref(),
+				tr(ctx, "monthly-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		)
@@ -423,7 +423,7 @@ pub async fn member(
 			.await?;
 
 	let member_xp = get_member_monthly_xp(guild, &guilds);
-	let member = player.get_display_string().await?;
+	let member = player.get_display_string(ctx).await?;
 
 	let preferred = shape::PreferredGames(&guild.preferred_games);
 	let level = calc::guild::get_level(guild.xp);
@@ -464,14 +464,14 @@ pub async fn member(
 		.push_right_post_draw(&preferred, Body::empty())
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &guild.coins, tr!(ctx, "coins").as_ref(), Paint::Gold),
+			Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
 		)
 		.push_right(
 			&shape::Bubble,
 			Body::new(30., TextAlign::Center)
 				.extend(&[
 					Text {
-						text: tr!(ctx, "created-at").as_ref(),
+						text: tr(ctx, "created-at").as_ref(),
 						paint: Paint::Aqua,
 						font: MinecraftFont::Normal,
 						size: Some(20.),
@@ -495,7 +495,7 @@ pub async fn member(
 			Body::from_bubble(
 				ctx,
 				&format!("{}/125", guild.members.len()),
-				tr!(ctx, "members_label").as_ref(),
+				tr(ctx, "members_label").as_ref(),
 				Paint::LightPurple,
 			),
 		)
@@ -504,7 +504,7 @@ pub async fn member(
 			Body::from_bubble(
 				ctx,
 				&daily_xp,
-				tr!(ctx, "daily-xp").as_ref(),
+				tr(ctx, "daily-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		)
@@ -513,7 +513,7 @@ pub async fn member(
 			Body::from_bubble(
 				ctx,
 				&weekly_xp,
-				tr!(ctx, "weekly-xp").as_ref(),
+				tr(ctx, "weekly-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		)
@@ -522,7 +522,7 @@ pub async fn member(
 			Body::from_bubble(
 				ctx,
 				&member_xp.get(&player.uuid).copied().unwrap_or(0),
-				tr!(ctx, "monthly-xp").as_ref(),
+				tr(ctx, "monthly-xp").as_ref(),
 				Paint::DarkGreen,
 			),
 		);
@@ -531,21 +531,21 @@ pub async fn member(
 		.push_down_start(
 			&shape::BubbleSubtitle,
 			shape::Subtitle::from_text(&[Text {
-				text: tr!(ctx, "date").as_ref(),
+				text: tr(ctx, "date").as_ref(),
 				..Default::default()
 			}]),
 		)
 		.push_right(
 			&shape::BubbleSubtitle,
 			shape::Subtitle::from_text(&[Text {
-				text: tr!(ctx, "weekly-gexp").as_ref(),
+				text: tr(ctx, "weekly-gexp").as_ref(),
 				..Default::default()
 			}]),
 		)
 		.push_right(
 			&shape::BubbleSubtitle,
 			shape::Subtitle::from_text(&[Text {
-				text: tr!(ctx, "position").as_ref(),
+				text: tr(ctx, "position").as_ref(),
 				..Default::default()
 			}]),
 		);

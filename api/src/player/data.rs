@@ -7,10 +7,10 @@ use uuid::Uuid;
 
 use crate::{canvas::diff::DiffLog, minutes::Minutes};
 
-#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(default)]
 pub struct Data {
-	#[serde(rename = "displayname")]
+	#[serde(rename(deserialize = "displayname"), alias = "username")]
 	pub username: String,
 	#[bincode(with_serde)]
 	pub uuid: Uuid,
@@ -20,15 +20,19 @@ pub struct Data {
 	pub(crate) status_rank: Option<String>,
 	#[serde(rename = "newPackageRank")]
 	pub(crate) rank: Option<String>,
-	#[serde(rename = "monthlyPackageRank")]
+	#[serde(rename(deserialize = "monthlyPackageRank"), alias = "package_rank")]
 	pub(crate) package_rank: Option<String>,
-	#[serde(rename = "rankPlusColor")]
+	#[serde(rename(deserialize = "rankPlusColor"), alias = "rank_colour")]
 	pub(crate) rank_colour: Option<Colour>,
-	#[serde(rename = "monthlyRankColor")]
+	#[serde(
+		rename(deserialize = "monthlyRankColor"),
+		alias = "monthly_rank_colour"
+	)]
 	pub(crate) monthly_rank_colour: Option<Colour>,
 	pub prefix: Option<String>,
 	#[serde(
 		rename(deserialize = "networkExp"),
+		alias = "xp",
 		deserialize_with = "crate::de::from::f64_to_u64",
 		default
 	)]
@@ -37,19 +41,21 @@ pub struct Data {
 	pub karma: u64,
 	#[serde(
 		rename(deserialize = "firstLogin"),
+		alias = "first_login",
 		with = "chrono::serde::ts_milliseconds_option"
 	)]
 	#[bincode(with_serde)]
 	pub first_login: Option<DateTime<Utc>>,
 	#[serde(
 		rename(deserialize = "lastLogin"),
+		alias = "last_login",
 		with = "chrono::serde::ts_milliseconds_option"
 	)]
 	#[bincode(with_serde)]
 	pub last_login: Option<DateTime<Utc>>,
-	#[serde(rename(deserialize = "timePlaying"), default)]
+	#[serde(rename(deserialize = "timePlaying"), alias = "playtime", default)]
 	pub playtime: Minutes,
-	#[serde(rename(deserialize = "totalRewards"), default)]
+	#[serde(rename(deserialize = "totalRewards"), alias = "rewards", default)]
 	pub rewards: u32,
 	#[serde(deserialize_with = "vec_len_to_u32", default)]
 	pub friend_requests: u32,
@@ -57,13 +63,21 @@ pub struct Data {
 	pub challenges: u32,
 	#[serde(deserialize_with = "from_quests", default)]
 	pub quests: u32,
-	#[serde(rename(deserialize = "giftingMeta"), default)]
+	#[serde(rename(deserialize = "giftingMeta"), alias = "gifting", default)]
 	pub gifting: Gifting,
-	#[serde(rename = "achievementPoints")]
+	#[serde(
+		rename(deserialize = "achievementPoints"),
+		alias = "achievement_points"
+	)]
 	pub achivement_points: u32,
-	#[serde(rename(deserialize = "userLanguage"), default)]
+	#[serde(rename(deserialize = "userLanguage"), alias = "language", default)]
 	pub language: super::language::Language,
-	#[serde(rename(deserialize = "socialMedia"), default)]
+	#[serde(
+		rename(deserialize = "socialMedia"),
+		alias = "socials",
+		default,
+		skip_serializing
+	)]
 	pub socials: super::socials::Socials,
 }
 
@@ -101,7 +115,16 @@ impl DiffLog for Data {
 	}
 }
 
-#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone, PartialEq, Default)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Debug,
+	Clone,
+	PartialEq,
+	Default,
+)]
 #[serde(default)]
 pub struct Gifting {
 	#[serde(rename = "giftsGiven")]
@@ -155,9 +178,34 @@ pub(crate) fn vec_len_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>
 where
 	D: Deserializer<'de>,
 {
-	let s: Vec<serde::de::IgnoredAny> = Deserialize::deserialize(deserializer)?;
+	struct V;
 
-	Ok(s.len() as u32)
+	impl<'de> serde::de::Visitor<'de> for V {
+		type Value = u32;
+
+		fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+			formatter.write_str("a number or a sequence")
+		}
+
+		fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
+		where
+			E: serde::de::Error,
+		{
+			v.try_into().map_err(serde::de::Error::custom)
+		}
+
+		fn visit_seq<A>(self, map: A) -> Result<Self::Value, A::Error>
+		where
+			A: serde::de::SeqAccess<'de>,
+		{
+			let s: Vec<serde::de::IgnoredAny> =
+				Deserialize::deserialize(serde::de::value::SeqAccessDeserializer::new(map))?;
+
+			s.len().try_into().map_err(serde::de::Error::custom)
+		}
+	}
+
+	deserializer.deserialize_any(V)
 }
 
 #[allow(clippy::cast_possible_truncation)]
@@ -171,9 +219,34 @@ where
 		all_time: Vec<u32>,
 	}
 
-	let c: Challenges = Deserialize::deserialize(deserializer)?;
+	struct V;
 
-	Ok(c.all_time.into_iter().sum::<u32>())
+	impl<'de> serde::de::Visitor<'de> for V {
+		type Value = u32;
+
+		fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+			formatter.write_str("a number or object with an `all_time` field")
+		}
+
+		fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
+		where
+			E: serde::de::Error,
+		{
+			v.try_into().map_err(serde::de::Error::custom)
+		}
+
+		fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+		where
+			A: serde::de::MapAccess<'de>,
+		{
+			let c: Challenges =
+				Deserialize::deserialize(serde::de::value::MapAccessDeserializer::new(map))?;
+
+			Ok(c.all_time.into_iter().sum::<u32>())
+		}
+	}
+
+	deserializer.deserialize_any(V)
 }
 
 #[allow(clippy::cast_possible_truncation)]
@@ -190,7 +263,33 @@ where
 	#[derive(Deserialize)]
 	struct Quests(#[serde(with = "crate::de::vec_map_no_key")] Vec<Quest>);
 
-	let c: Quests = Deserialize::deserialize(deserializer)?;
+	struct V;
 
-	Ok(c.0.into_iter().map(|q| q.completions).sum::<u32>())
+	impl<'de> serde::de::Visitor<'de> for V {
+		type Value = u32;
+
+		fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+			formatter.write_str("a number or map")
+		}
+
+		fn visit_u64<E>(self, v: u64) -> Result<Self::Value, E>
+		where
+			E: serde::de::Error,
+		{
+			v.try_into().map_err(serde::de::Error::custom)
+		}
+
+		fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
+		where
+			A: serde::de::MapAccess<'de>,
+		{
+			let q: Vec<Quest> = crate::de::vec_map_no_key::deserialize(
+				serde::de::value::MapAccessDeserializer::new(map),
+			)?;
+
+			Ok(q.into_iter().map(|q| q.completions).sum::<u32>())
+		}
+	}
+
+	deserializer.deserialize_any(V)
 }

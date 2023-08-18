@@ -1,11 +1,8 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
 use crate::seconds::Seconds;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[serde(default)]
 #[game(
 	path = "blitz_sg",
@@ -40,9 +37,9 @@ use crate::seconds::Seconds;
 	)
 )]
 pub struct BlitzSg {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 
 	#[serde(flatten)]
 	pub solo: Solo,
@@ -123,7 +120,7 @@ pub struct BlitzSg {
 	pub blaze: Blaze,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_solo_normal")]
@@ -132,7 +129,7 @@ pub struct Solo {
 	pub kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Team {
 	#[serde(rename = "wins_teams_normal")]
@@ -141,7 +138,7 @@ pub struct Team {
 	pub kills: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Armorer {
 	#[serde(rename = "wins_armorer")]
@@ -164,7 +161,7 @@ pub struct Armorer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Scout {
 	#[serde(rename = "wins_scout")]
@@ -187,7 +184,7 @@ pub struct Scout {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Speleologist {
 	#[serde(rename = "wins_speleologist")]
@@ -210,7 +207,7 @@ pub struct Speleologist {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Random {
 	#[serde(rename = "wins_random")]
@@ -233,7 +230,7 @@ pub struct Random {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Rogue {
 	#[serde(rename = "wins_rogue")]
@@ -256,7 +253,7 @@ pub struct Rogue {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Rambo {
 	#[serde(rename = "wins_rambo")]
@@ -279,7 +276,7 @@ pub struct Rambo {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Troll {
 	#[serde(rename = "wins_troll")]
@@ -302,7 +299,7 @@ pub struct Troll {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct HorseTamer {
 	#[serde(rename = "wins_horsetamer")]
@@ -325,7 +322,7 @@ pub struct HorseTamer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct WolfTamer {
 	#[serde(rename = "wins_wolftamer")]
@@ -348,7 +345,7 @@ pub struct WolfTamer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Warrior {
 	#[serde(rename = "wins_warrior")]
@@ -371,7 +368,7 @@ pub struct Warrior {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Phoenix {
 	#[serde(rename = "wins_phoenix")]
@@ -394,7 +391,7 @@ pub struct Phoenix {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DonkeyTamer {
 	#[serde(rename = "wins_donkeytamer")]
@@ -417,7 +414,7 @@ pub struct DonkeyTamer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Ranger {
 	#[serde(rename = "wins_ranger")]
@@ -440,7 +437,7 @@ pub struct Ranger {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Archer {
 	#[serde(rename = "wins_archer")]
@@ -463,7 +460,7 @@ pub struct Archer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Necromancer {
 	#[serde(rename = "wins_necromancer")]
@@ -486,7 +483,7 @@ pub struct Necromancer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Meatmaster {
 	#[serde(rename = "wins_meatmaster")]
@@ -509,7 +506,7 @@ pub struct Meatmaster {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Tim {
 	#[serde(rename = "wins_tim")]
@@ -532,7 +529,7 @@ pub struct Tim {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Pigman {
 	#[serde(rename = "wins_pigman")]
@@ -555,7 +552,7 @@ pub struct Pigman {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct CreeperTamer {
 	#[serde(rename = "wins_creepertamer")]
@@ -578,7 +575,7 @@ pub struct CreeperTamer {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Florist {
 	#[serde(rename = "wins_florist")]
@@ -601,7 +598,7 @@ pub struct Florist {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Warlock {
 	#[serde(rename = "wins_warlock")]
@@ -624,7 +621,7 @@ pub struct Warlock {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Milkman {
 	#[serde(rename = "wins_milkman")]
@@ -647,7 +644,7 @@ pub struct Milkman {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Astronaut {
 	#[serde(rename = "wins_astronaut")]
@@ -670,7 +667,7 @@ pub struct Astronaut {
 	pub arrows_hit: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Blaze {
 	#[serde(rename = "wins_blaze")]

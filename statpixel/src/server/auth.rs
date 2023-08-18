@@ -17,6 +17,7 @@ use jsonwebtoken::{DecodingKey, EncodingKey, Validation};
 use once_cell::sync::Lazy;
 use reqwest::Url;
 use serde::{Deserialize, Serialize};
+use translate::context;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Claims {
@@ -132,6 +133,7 @@ pub async fn me(
 	State(state): State<Arc<super::Data>>,
 	claims: super::auth::Claims,
 ) -> Result<impl IntoResponse, StatusCode> {
+	let ctx = context::Context::external(&state);
 	let user = user::table
 		.filter(user::id.eq(claims.id as i64))
 		.select(User::as_select())
@@ -148,7 +150,7 @@ pub async fn me(
 	let is_owner = if let Some(uuid) = user.uuid {
 		let player = Player::from_uuid_unchecked(uuid);
 		let data = player
-			.get_data()
+			.get_data(&ctx)
 			.await
 			.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
 

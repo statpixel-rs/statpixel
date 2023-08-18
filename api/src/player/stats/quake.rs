@@ -1,12 +1,9 @@
-use macros::{Diff, Game};
+use macros::Game;
 use minecraft::colour::Colour;
-use serde::Deserialize;
 
 use crate::meters::Meters;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "quake",
 	pretty = "§a§lQuake§2§lcraft",
@@ -29,9 +26,9 @@ use crate::meters::Meters;
 )]
 #[serde(default)]
 pub struct Quake {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[game(label(colour = "yellow"), nominal)]
 	pub sight: Option<Colour>,
 	#[serde(rename = "selectedKillPrefix")]
@@ -49,7 +46,7 @@ pub struct Quake {
 	pub solo_tournament: SoloTournament,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	pub wins: u32,
@@ -62,7 +59,7 @@ pub struct Solo {
 	pub headshots: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Team {
 	#[serde(rename = "wins_teams")]
@@ -81,7 +78,7 @@ pub struct Team {
 	pub headshots: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloTournament {
 	#[serde(rename = "wins_solo_tourney")]

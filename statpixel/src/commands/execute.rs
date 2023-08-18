@@ -20,8 +20,8 @@ pub async fn execute(ctx: Context<'_>, id: String) -> Result<(), Error> {
 
 	let api::id::Id::Command(id) = id else {
 		ctx.send(error_embed(
-			tr!(&ctx, "invalid-identifier"),
-			tr!(&ctx, "invalid-identifier-command-description"),
+			tr(&ctx, "invalid-identifier"),
+			tr(&ctx, "invalid-identifier-command-description"),
 		))
 		.await?;
 

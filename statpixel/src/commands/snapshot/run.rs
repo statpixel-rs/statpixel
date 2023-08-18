@@ -3,7 +3,7 @@ use std::borrow::Cow;
 use api::{
 	canvas::{self, body::Body, diff::Diff, label::ToFormatted, Canvas},
 	prelude::Mode,
-	shape, Guild, Member, Player,
+	shape, Guild, Member,
 };
 use chrono::{DateTime, Utc};
 use futures::StreamExt;
@@ -139,8 +139,8 @@ pub async fn guild_command(
 		Result::Ok(guild) => guild,
 		Result::Err(Error::NotLinked) => {
 			ctx.send(util::error_embed(
-				tr!(ctx, "not-linked"),
-				tr!(ctx, "not-linked"),
+				tr(ctx, "not-linked"),
+				tr(ctx, "not-linked"),
 			))
 			.await?;
 
@@ -172,7 +172,7 @@ pub async fn guild_command(
 			.rev()
 			.take(14)
 			.map(Member::get_player_unchecked)
-			.map(Player::get_display_string_owned),
+			.map(|p| p.get_display_string_owned(ctx)),
 	)
 	.buffered(14)
 	.filter_map(|r| async { r.ok() })
@@ -180,7 +180,7 @@ pub async fn guild_command(
 
 	let leader = guild
 		.get_leader()
-		.map(|m| m.get_player_unchecked().get_display_string_owned());
+		.map(|m| m.get_player_unchecked().get_display_string_owned(ctx));
 
 	let (members, leader) = if let Some(leader) = leader {
 		let (members, leader) = tokio::join!(members, leader);
@@ -227,7 +227,7 @@ pub async fn guild_command(
 				} else {
 					Body::new(20., TextAlign::Center)
 						.append(Text {
-							text: tr!(ctx, "none").as_ref(),
+							text: tr(ctx, "none").as_ref(),
 							paint: Paint::Gray,
 							font: MinecraftFont::Bold,
 							..Default::default()
@@ -251,14 +251,14 @@ pub async fn guild_command(
 			)
 			.push_down_start(
 				&shape::Bubble,
-				Body::from_bubble(ctx, &guild.coins, tr!(ctx, "coins").as_ref(), Paint::Gold),
+				Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
 			)
 			.push_right(
 				&shape::Bubble,
 				Body::new(30., TextAlign::Center)
 					.extend(&[
 						Text {
-							text: tr!(ctx, "created-at").as_ref(),
+							text: tr(ctx, "created-at").as_ref(),
 							paint: Paint::Aqua,
 							font: MinecraftFont::Normal,
 							size: Some(20.),
@@ -282,7 +282,7 @@ pub async fn guild_command(
 				Body::from_bubble(
 					ctx,
 					&format!("{}/125", guild.members.len()),
-					tr!(ctx, "members").as_ref(),
+					tr(ctx, "members").as_ref(),
 					Paint::LightPurple,
 				),
 			)
@@ -291,7 +291,7 @@ pub async fn guild_command(
 				Body::from_bubble(
 					ctx,
 					&daily_xp,
-					tr!(ctx, "daily-xp").as_ref(),
+					tr(ctx, "daily-xp").as_ref(),
 					Paint::DarkGreen,
 				),
 			)
@@ -300,7 +300,7 @@ pub async fn guild_command(
 				Body::from_bubble(
 					ctx,
 					&weekly_xp,
-					tr!(ctx, "weekly-xp").as_ref(),
+					tr(ctx, "weekly-xp").as_ref(),
 					Paint::DarkGreen,
 				),
 			)
@@ -309,7 +309,7 @@ pub async fn guild_command(
 				Body::from_bubble(
 					ctx,
 					&xp_since,
-					tr!(ctx, "xp-since").as_ref(),
+					tr(ctx, "xp-since").as_ref(),
 					Paint::DarkGreen,
 				),
 			)

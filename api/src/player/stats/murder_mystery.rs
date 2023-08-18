@@ -1,11 +1,8 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
 use crate::seconds;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "murder_mystery",
 	pretty = "§4§lMurder Mystery",
@@ -25,9 +22,9 @@ use crate::seconds;
 )]
 #[serde(default)]
 pub struct MurderMystery {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[serde(
 		rename(deserialize = "mm_chests"),
 		deserialize_with = "crate::de::from::f32_to_u32"
@@ -58,7 +55,7 @@ pub struct MurderMystery {
 	pub infection: Infection,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Assassins {
 	#[serde(rename = "wins_MURDER_ASSASSINS")]
@@ -71,7 +68,7 @@ pub struct Assassins {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Classic {
 	#[serde(rename = "wins_MURDER_CLASSIC")]
@@ -84,7 +81,7 @@ pub struct Classic {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleUp {
 	#[serde(rename = "wins_MURDER_DOUBLE_UP")]
@@ -97,7 +94,7 @@ pub struct DoubleUp {
 	pub deaths: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Infection {
 	#[serde(rename = "wins_MURDER_INFECTION")]

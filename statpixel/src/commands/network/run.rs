@@ -74,19 +74,19 @@ pub async fn network(
 
 				embed.description(format!(
 					"{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**\n{}: **{}**",
-					tr!(ctx, "experience"),
+					tr(ctx, "experience"),
 					data.xp.to_formatted(ctx),
-					tr!(ctx, "karma"),
+					tr(ctx, "karma"),
 					data.karma.to_formatted(ctx),
-					tr!(ctx, "rewards"),
+					tr(ctx, "rewards"),
 					data.rewards.to_formatted(ctx),
-					tr!(ctx, "friend-requests"),
+					tr(ctx, "friend-requests"),
 					data.friend_requests.to_formatted(ctx),
-					tr!(ctx, "time-played"),
+					tr(ctx, "time-played"),
 					data.playtime.to_formatted(ctx),
-					tr!(ctx, "first-login"),
+					tr(ctx, "first-login"),
 					data.first_login.to_formatted(ctx),
-					tr!(ctx, "last-login"),
+					tr(ctx, "last-login"),
 					data.last_login.to_formatted(ctx),
 				))
 			};

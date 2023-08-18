@@ -220,25 +220,20 @@ pub fn apply_bazaar_data(
 			Body::from_bubble(
 				ctx,
 				&sell_avg_hour,
-				tr!(ctx, "last-hour").as_ref(),
+				tr(ctx, "last-hour").as_ref(),
 				Paint::Red,
 			),
 		)
 		.push_right(
 			&shape::Bubble,
-			Body::from_bubble(
-				ctx,
-				&sell_avg_day,
-				tr!(ctx, "last-day").as_ref(),
-				Paint::Red,
-			),
+			Body::from_bubble(ctx, &sell_avg_day, tr(ctx, "last-day").as_ref(), Paint::Red),
 		)
 		.push_right(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
 				&sell_avg_week,
-				tr!(ctx, "last-week").as_ref(),
+				tr(ctx, "last-week").as_ref(),
 				Paint::Red,
 			),
 		)
@@ -247,7 +242,7 @@ pub fn apply_bazaar_data(
 			Body::from_bubble(
 				ctx,
 				&buy_avg_hour,
-				tr!(ctx, "last-hour").as_ref(),
+				tr(ctx, "last-hour").as_ref(),
 				Paint::Green,
 			),
 		)
@@ -256,7 +251,7 @@ pub fn apply_bazaar_data(
 			Body::from_bubble(
 				ctx,
 				&buy_avg_day,
-				tr!(ctx, "last-day").as_ref(),
+				tr(ctx, "last-day").as_ref(),
 				Paint::Green,
 			),
 		)
@@ -265,7 +260,7 @@ pub fn apply_bazaar_data(
 			Body::from_bubble(
 				ctx,
 				&buy_avg_week,
-				tr!(ctx, "last-week").as_ref(),
+				tr(ctx, "last-week").as_ref(),
 				Paint::Green,
 			),
 		)
@@ -404,37 +399,37 @@ pub async fn profile(
 			&canvas::shape::Sidebar,
 			canvas::body::Body::new(17., None)
 				.append_item(
-					&::translate::tr!(ctx, "coins"),
+					&::translate::tr(ctx, "coins"),
 					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 					&Paint::Gold,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fairy-souls"),
+					&::translate::tr(ctx, "fairy-souls"),
 					&canvas::label::ToFormatted::to_formatted(&member.fairy_souls_collected, ctx),
 					&Paint::Aqua,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fairy-exchanges"),
+					&::translate::tr(ctx, "fairy-exchanges"),
 					&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 					&Paint::LightPurple,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fishing-treasure"),
+					&::translate::tr(ctx, "fishing-treasure"),
 					&canvas::label::ToFormatted::to_formatted(&member.fishing_treasure_caught, ctx),
 					&Paint::Blue,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "zones-visited"),
+					&::translate::tr(ctx, "zones-visited"),
 					&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 					&Paint::Green,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "generators-crafted"),
+					&::translate::tr(ctx, "generators-crafted"),
 					&canvas::label::ToFormatted::to_formatted(&member.generators_crafted, ctx),
 					&Paint::White,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "highest-crit"),
+					&::translate::tr(ctx, "highest-crit"),
 					&canvas::label::ToFormatted::to_formatted(
 						&member.stats.highest_critical_damage,
 						ctx,
@@ -449,7 +444,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.farming),
-				tr!(ctx, "farming").as_ref(),
+				tr(ctx, "farming").as_ref(),
 				Paint::Gold,
 			),
 		)
@@ -458,7 +453,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.mining),
-				tr!(ctx, "mining").as_ref(),
+				tr(ctx, "mining").as_ref(),
 				Paint::Gray,
 			),
 		)
@@ -467,7 +462,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.combat),
-				tr!(ctx, "combat").as_ref(),
+				tr(ctx, "combat").as_ref(),
 				Paint::Gray,
 			),
 		)
@@ -476,7 +471,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.foraging),
-				tr!(ctx, "foraging").as_ref(),
+				tr(ctx, "foraging").as_ref(),
 				Paint::Green,
 			),
 		)
@@ -485,7 +480,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.fishing),
-				tr!(ctx, "fishing-skill").as_ref(),
+				tr(ctx, "fishing-skill").as_ref(),
 				Paint::White,
 			),
 		)
@@ -494,7 +489,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.enchanting),
-				tr!(ctx, "enchanting").as_ref(),
+				tr(ctx, "enchanting").as_ref(),
 				Paint::DarkPurple,
 			),
 		)
@@ -503,7 +498,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.alchemy),
-				tr!(ctx, "alchemy").as_ref(),
+				tr(ctx, "alchemy").as_ref(),
 				Paint::Yellow,
 			),
 		)
@@ -512,7 +507,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.taming),
-				tr!(ctx, "taming").as_ref(),
+				tr(ctx, "taming").as_ref(),
 				Paint::Gray,
 			),
 		)
@@ -523,7 +518,7 @@ pub async fn profile(
 				&sky_block::skills::get_level_dungeoneering(
 					member.dungeons.types.catacombs.experience,
 				),
-				tr!(ctx, "dungeoneering").as_ref(),
+				tr(ctx, "dungeoneering").as_ref(),
 				Paint::Gray,
 			),
 		)
@@ -532,7 +527,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.carpentry),
-				tr!(ctx, "carpentry").as_ref(),
+				tr(ctx, "carpentry").as_ref(),
 				Paint::Red,
 			),
 		)
@@ -541,7 +536,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.runecrafting),
-				tr!(ctx, "runecrafting").as_ref(),
+				tr(ctx, "runecrafting").as_ref(),
 				Paint::LightPurple,
 			),
 		)
@@ -550,7 +545,7 @@ pub async fn profile(
 			Body::from_bubble(
 				ctx,
 				&sky_block::skills::get_level_general(member.skills.social),
-				tr!(ctx, "social").as_ref(),
+				tr(ctx, "social").as_ref(),
 				Paint::Green,
 			),
 		)
@@ -625,7 +620,7 @@ pub async fn bank(
 	let mut buffer = chart::u64::create::<true>(
 		ctx,
 		vec![(
-			tr!(ctx, "bank-balance"),
+			tr(ctx, "bank-balance"),
 			bank.transactions
 				.iter()
 				.map(|t| (t.timestamp, t.amount))
@@ -644,7 +639,7 @@ pub async fn bank(
 		&mut surface,
 		data,
 		&[Text {
-			text: tr!(&ctx, "island-bank-balance").as_ref(),
+			text: tr(&ctx, "island-bank-balance").as_ref(),
 			paint: Paint::Gold,
 			..Default::default()
 		}],
@@ -896,37 +891,37 @@ pub async fn pets(
 			&canvas::shape::Sidebar,
 			canvas::body::Body::new(17., None)
 				.append_item(
-					&::translate::tr!(ctx, "coins"),
+					&::translate::tr(ctx, "coins"),
 					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 					&Paint::Gold,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fairy-souls"),
+					&::translate::tr(ctx, "fairy-souls"),
 					&canvas::label::ToFormatted::to_formatted(&member.fairy_souls_collected, ctx),
 					&Paint::Aqua,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fairy-exchanges"),
+					&::translate::tr(ctx, "fairy-exchanges"),
 					&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 					&Paint::LightPurple,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "fishing-treasure"),
+					&::translate::tr(ctx, "fishing-treasure"),
 					&canvas::label::ToFormatted::to_formatted(&member.fishing_treasure_caught, ctx),
 					&Paint::Blue,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "zones-visited"),
+					&::translate::tr(ctx, "zones-visited"),
 					&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 					&Paint::Green,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "generators-crafted"),
+					&::translate::tr(ctx, "generators-crafted"),
 					&canvas::label::ToFormatted::to_formatted(&member.generators_crafted, ctx),
 					&Paint::White,
 				)
 				.append_item(
-					&::translate::tr!(ctx, "highest-crit"),
+					&::translate::tr(ctx, "highest-crit"),
 					&canvas::label::ToFormatted::to_formatted(
 						&member.stats.highest_critical_damage,
 						ctx,
@@ -1006,14 +1001,14 @@ pub async fn bazaar(
 		ctx,
 		vec![
 			(
-				::translate::tr!(ctx, "sell-price"),
+				::translate::tr(ctx, "sell-price"),
 				history
 					.iter()
 					.map(|(_, _, price, _, created_at)| (*created_at, *price))
 					.collect(),
 			),
 			(
-				::translate::tr!(ctx, "buy-price"),
+				::translate::tr(ctx, "buy-price"),
 				history
 					.iter()
 					.map(|(price, _, _, _, created_at)| (*created_at, *price))
@@ -1042,7 +1037,7 @@ pub async fn bazaar(
 				..Default::default()
 			},
 			Text {
-				text: tr!(ctx, "statistics-history").as_ref(),
+				text: tr(ctx, "statistics-history").as_ref(),
 				..Default::default()
 			},
 			Text {
@@ -1135,12 +1130,12 @@ macro_rules! inventory_command {
 					&canvas::shape::Sidebar,
 					canvas::body::Body::new(17., None)
 						.append_item(
-							&::translate::tr!(ctx, "coins"),
+							&::translate::tr(ctx, "coins"),
 							&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
 							&Paint::Gold,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "fairy-souls"),
+							&::translate::tr(ctx, "fairy-souls"),
 							&canvas::label::ToFormatted::to_formatted(
 								&member.fairy_souls_collected,
 								ctx,
@@ -1148,12 +1143,12 @@ macro_rules! inventory_command {
 							&Paint::Aqua,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "fairy-exchanges"),
+							&::translate::tr(ctx, "fairy-exchanges"),
 							&canvas::label::ToFormatted::to_formatted(&member.fairy_exchanges, ctx),
 							&Paint::LightPurple,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "fishing-treasure"),
+							&::translate::tr(ctx, "fishing-treasure"),
 							&canvas::label::ToFormatted::to_formatted(
 								&member.fishing_treasure_caught,
 								ctx,
@@ -1161,12 +1156,12 @@ macro_rules! inventory_command {
 							&Paint::Blue,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "zones-visited"),
+							&::translate::tr(ctx, "zones-visited"),
 							&canvas::label::ToFormatted::to_formatted(&member.zones_visited, ctx),
 							&Paint::Green,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "generators-crafted"),
+							&::translate::tr(ctx, "generators-crafted"),
 							&canvas::label::ToFormatted::to_formatted(
 								&member.generators_crafted,
 								ctx,
@@ -1174,7 +1169,7 @@ macro_rules! inventory_command {
 							&Paint::White,
 						)
 						.append_item(
-							&::translate::tr!(ctx, "highest-crit"),
+							&::translate::tr(ctx, "highest-crit"),
 							&canvas::label::ToFormatted::to_formatted(
 								&member.stats.highest_critical_damage,
 								ctx,

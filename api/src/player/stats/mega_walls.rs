@@ -1,11 +1,8 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
 use crate::{meters, minutes};
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "mega_walls",
 	pretty = "§3§lMega Walls",
@@ -33,9 +30,9 @@ use crate::{meters, minutes};
 )]
 #[serde(default)]
 pub struct MegaWalls {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 
 	#[serde(flatten)]
 	#[game(mode())]
@@ -48,7 +45,7 @@ pub struct MegaWalls {
 	pub brawl: Brawl,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	#[serde(rename = "wins_standard")]
@@ -77,7 +74,7 @@ pub struct Normal {
 	pub treasures_found: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FaceOff {
 	#[serde(rename = "wins_face_off")]
@@ -106,7 +103,7 @@ pub struct FaceOff {
 	pub treasures_found: u32,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Brawl {
 	#[serde(rename = "wins_gvg")]

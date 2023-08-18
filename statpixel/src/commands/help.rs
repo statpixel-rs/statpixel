@@ -16,33 +16,33 @@ pub async fn help(ctx: Context<'_>) -> Result<(), Error> {
 				.colour(crate::EMBED_COLOUR)
 				.title(TITLE)
 				.field(
-					tr!(ctx, "help-general"),
-					tr!(ctx, "help-general-description"),
+					tr(ctx, "help-general"),
+					tr(ctx, "help-general-description"),
 					false,
 				)
 				.field(
-					tr!(ctx, "help-display"),
-					tr!(ctx, "help-display-description"),
+					tr(ctx, "help-display"),
+					tr(ctx, "help-display-description"),
 					false,
 				)
 				.field(
-					tr!(ctx, "help-link"),
-					tr!(ctx, "help-link-description"),
+					tr(ctx, "help-link"),
+					tr(ctx, "help-link-description"),
 					false,
 				)
 				.field(
-					tr!(ctx, "help-snapshot"),
-					tr!(ctx, "help-snapshot-description"),
+					tr(ctx, "help-snapshot"),
+					tr(ctx, "help-snapshot-description"),
 					false,
 				)
 				.field(
-					tr!(ctx, "help-history"),
-					tr!(ctx, "help-history-description"),
+					tr(ctx, "help-history"),
+					tr(ctx, "help-history-description"),
 					false,
 				)
 				.field(
-					tr!(ctx, "help-image-builder"),
-					tr!(ctx, "help-image-builder-description"),
+					tr(ctx, "help-image-builder"),
+					tr(ctx, "help-image-builder-description"),
 					false,
 				),
 		),

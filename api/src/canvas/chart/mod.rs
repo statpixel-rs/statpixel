@@ -205,7 +205,7 @@ pub fn apply_title(
 	let username_paint = rank.get_username_paint();
 
 	let mut text = Vec::new();
-	let tr = tr!(ctx, "statistics-history");
+	let tr = tr(ctx, "statistics-history");
 
 	text.extend(label);
 

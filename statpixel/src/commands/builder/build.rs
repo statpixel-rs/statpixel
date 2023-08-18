@@ -18,7 +18,7 @@ pub fn build(
 	session: &Session,
 	skin: &Image,
 	background: Option<Color>,
-) -> Cow<'static, [u8]> {
+) -> Result<Cow<'static, [u8]>, crate::Error> {
 	let mut canvas = Canvas::new(750.);
 	let skin = shape::Status(session, skin.image());
 
@@ -230,76 +230,77 @@ pub fn build(
 
 				let (value, label) = match statistic {
 					Statistic::Arcade { kind } => {
-						(arcade::Arcade::from_kind(ctx, data, kind), kind.tr())
+						(arcade::Arcade::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::Arena { kind } => {
-						(arena::Arena::from_kind(ctx, data, kind), kind.tr())
+						(arena::Arena::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::BedWars { kind } => {
-						(bed_wars::BedWars::from_kind(ctx, data, kind), kind.tr())
+						(bed_wars::BedWars::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::BlitzSg { kind } => {
-						(blitz_sg::BlitzSg::from_kind(ctx, data, kind), kind.tr())
+						(blitz_sg::BlitzSg::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::BuildBattle { kind } => (
-						build_battle::BuildBattle::from_kind(ctx, data, kind),
+						build_battle::BuildBattle::from_kind(ctx, data, kind)?,
 						kind.tr(),
 					),
 					Statistic::CopsAndCrims { kind } => (
-						cops_and_crims::CopsAndCrims::from_kind(ctx, data, kind),
+						cops_and_crims::CopsAndCrims::from_kind(ctx, data, kind)?,
 						kind.tr(),
 					),
 					Statistic::Duels { kind } => {
-						(duels::Duels::from_kind(ctx, data, kind), kind.tr())
+						(duels::Duels::from_kind(ctx, data, kind)?, kind.tr())
 					}
-					Statistic::MegaWalls { kind } => {
-						(mega_walls::MegaWalls::from_kind(ctx, data, kind), kind.tr())
-					}
+					Statistic::MegaWalls { kind } => (
+						mega_walls::MegaWalls::from_kind(ctx, data, kind)?,
+						kind.tr(),
+					),
 					Statistic::MurderMystery { kind } => (
-						murder_mystery::MurderMystery::from_kind(ctx, data, kind),
+						murder_mystery::MurderMystery::from_kind(ctx, data, kind)?,
 						kind.tr(),
 					),
 					Statistic::Paintball { kind } => {
-						(paintball::Paintball::from_kind(ctx, data, kind), kind.tr())
+						(paintball::Paintball::from_kind(ctx, data, kind)?, kind.tr())
 					}
-					Statistic::Pit { kind } => (pit::Pit::from_kind(ctx, data, kind), kind.tr()),
+					Statistic::Pit { kind } => (pit::Pit::from_kind(ctx, data, kind)?, kind.tr()),
 					Statistic::Quake { kind } => {
-						(quake::Quake::from_kind(ctx, data, kind), kind.tr())
+						(quake::Quake::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::SkyWars { kind } => {
-						(sky_wars::SkyWars::from_kind(ctx, data, kind), kind.tr())
+						(sky_wars::SkyWars::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::SmashHeroes { kind } => (
-						smash_heroes::SmashHeroes::from_kind(ctx, data, kind),
+						smash_heroes::SmashHeroes::from_kind(ctx, data, kind)?,
 						kind.tr(),
 					),
 					Statistic::SpeedUhc { kind } => {
-						(speed_uhc::SpeedUhc::from_kind(ctx, data, kind), kind.tr())
+						(speed_uhc::SpeedUhc::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::TntGames { kind } => {
-						(tnt_games::TntGames::from_kind(ctx, data, kind), kind.tr())
+						(tnt_games::TntGames::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::TurboKartRacers { kind } => (
-						turbo_kart_racers::TurboKartRacers::from_kind(ctx, data, kind),
+						turbo_kart_racers::TurboKartRacers::from_kind(ctx, data, kind)?,
 						kind.tr(),
 					),
-					Statistic::Uhc { kind } => (uhc::Uhc::from_kind(ctx, data, kind), kind.tr()),
+					Statistic::Uhc { kind } => (uhc::Uhc::from_kind(ctx, data, kind)?, kind.tr()),
 					Statistic::VampireZ { kind } => {
-						(vampire_z::VampireZ::from_kind(ctx, data, kind), kind.tr())
+						(vampire_z::VampireZ::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::Walls { kind } => {
-						(walls::Walls::from_kind(ctx, data, kind), kind.tr())
+						(walls::Walls::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::Warlords { kind } => {
-						(warlords::Warlords::from_kind(ctx, data, kind), kind.tr())
+						(warlords::Warlords::from_kind(ctx, data, kind)?, kind.tr())
 					}
 					Statistic::WoolWars { kind } => {
-						(wool_wars::WoolWars::from_kind(ctx, data, kind), kind.tr())
+						(wool_wars::WoolWars::from_kind(ctx, data, kind)?, kind.tr())
 					}
 				};
 
 				let kind = shape::Bubble;
-				let body = Body::from_bubble_cow(value, tr!(ctx, label).as_ref(), shape.colour);
+				let body = Body::from_bubble_cow(value, tr(ctx, label).as_ref(), shape.colour);
 
 				match shape.location {
 					Location::Down => {
@@ -319,5 +320,5 @@ pub fn build(
 		};
 	}
 
-	canvas::to_png(&mut canvas.build(None, background).unwrap()).into()
+	Ok(canvas::to_png(&mut canvas.build(None, background).unwrap()).into())
 }

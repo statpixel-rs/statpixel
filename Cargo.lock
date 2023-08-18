@@ -70,7 +70,7 @@ checksum = "3a30da5c5f2d5e72842e00bcb57657162cdabef0931f40e2deb9b4140440cecd"
 
 [[package]]
 name = "api"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "base64 0.21.2",
  "bincode",
@@ -875,7 +875,7 @@ dependencies = [
 
 [[package]]
 name = "database"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "chrono",
  "diesel",
@@ -934,6 +934,7 @@ dependencies = [
  "chrono",
  "diesel_derives",
  "itoa",
+ "serde_json",
  "uuid",
 ]
 
@@ -1940,7 +1941,7 @@ dependencies = [
 
 [[package]]
 name = "macros"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "darling 0.20.3",
  "minecraft",
@@ -1998,7 +1999,7 @@ dependencies = [
 
 [[package]]
 name = "minecraft"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "bincode",
  "bitcode",
@@ -3342,7 +3343,7 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
 name = "statpixel"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "api",
  "axum",
@@ -3368,6 +3369,7 @@ dependencies = [
  "rand",
  "reqwest",
  "serde",
+ "serde_json",
  "skia-safe",
  "thiserror",
  "tokio",
@@ -3841,7 +3843,7 @@ dependencies = [
 
 [[package]]
 name = "translate"
-version = "0.25.0"
+version = "0.26.0"
 dependencies = [
  "base64 0.21.2",
  "bincode",
@@ -3857,6 +3859,7 @@ dependencies = [
  "redis",
  "reqwest",
  "serde",
+ "serde_json",
  "thiserror",
  "tokio",
  "tracing",

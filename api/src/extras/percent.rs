@@ -1,15 +1,12 @@
 use std::borrow::Cow;
 
-use macros::Diff;
 use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
 macro_rules! impl_percent {
 	($name: ident, $ty: ty) => {
-		#[derive(
-			bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq, Eq, Diff,
-		)]
+		#[derive(bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq)]
 		pub struct $name(pub $ty);
 
 		impl ToFormatted for $name {

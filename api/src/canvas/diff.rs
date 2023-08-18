@@ -15,8 +15,8 @@ pub trait Diff {
 #[allow(clippy::module_name_repetitions)]
 pub trait DiffLog {
 	fn diff_log(
-		new: &crate::player::data::Data,
-		other: &crate::player::data::Data,
+		data_lhs: &crate::player::data::Data,
+		data_rhs: &crate::player::data::Data,
 		ctx: &translate::context::Context<'_>,
 		embed: Embed,
 	) -> Embed;

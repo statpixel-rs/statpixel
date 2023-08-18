@@ -217,7 +217,7 @@ impl Body {
 			Self::new(18., TextAlign::Center)
 				.extend(&[
 					Text {
-						text: &tr!(ctx, "online"),
+						text: &tr(ctx, "online"),
 						paint: Paint::Green,
 						..Default::default()
 					},

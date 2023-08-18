@@ -77,6 +77,12 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 	let mode_blocks = mode.blocks();
 	let game_blocks = state.receiver.blocks();
 
+	let game_labels = state.receiver.labels();
+	let game_labels = game_labels
+		.iter()
+		.filter(|l| l.tr() != "level")
+		.collect::<Vec<_>>();
+
 	let diff_log = game_blocks
 		.iter()
 		.chain(mode_blocks.iter())
@@ -119,7 +125,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 			quote! {
 				#extra
 
-				field.push_str(#translate::tr!(ctx, Self::tr()).as_ref());
+				field.push_str(#translate::tr(ctx, Self::tr()).as_ref());
 				field.push_str(": **");
 				field.push_str(#v.as_ref());
 				field.push_str("**\n");
@@ -139,6 +145,20 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				f64::from(#value)
 			})
 		}, b.tr(), b.var_id())))
+		.chain(
+			game_labels
+				.iter()
+				.filter_map(|l| Some(({
+					let value = l.value(Side::None, Access::ModeDiff(mode))?;
+
+					quote!({
+						let stats = &data.stats.#path_to_game.#id;
+						let game = &data.stats.#path_to_game;
+
+						f64::from(#value)
+					})
+				}, l.tr(), l.var_id())))
+		)
 		.chain(std::iter::once((
 			quote!({
 				let stats = &data.stats.#path_to_game.#id;
@@ -181,7 +201,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 					let mut buffer = #api::canvas::project::f64::create(
 						ctx,
 						::std::vec![(
-							#translate::tr!(ctx, #tr),
+							#translate::tr(ctx, #tr),
 							snapshots
 								.iter()
 								.map(|(time, data)| (*time, #value))
@@ -190,13 +210,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 							predict_y,
 						)],
 						first.0..predict_x.map_or(last.0, |x| x.max(last.0)),
-						({
-							let data = &first.1;
-							#value
-						} * (7. / 8.))..(predict_y.max({
-							let data = &last.1;
-							#value
-						}) * (8. / 7.)),
+						(low * (7. / 8.))..(predict_y.max(high) * (8. / 7.)),
 						None,
 						background,
 					)?;
@@ -211,7 +225,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 						#api::canvas::project::apply_bubbles(
 							&mut surface,
 							ctx,
-							#translate::tr!(ctx, #tr).as_ref(),
+							#translate::tr(ctx, #tr).as_ref(),
 							&predict_y,
 							&r,
 							&x,
@@ -221,10 +235,10 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 						#api::canvas::project::apply_bubbles(
 							&mut surface,
 							ctx,
-							#translate::tr!(ctx, #tr).as_ref(),
+							#translate::tr(ctx, #tr).as_ref(),
 							&predict_y,
 							&r,
-							&#translate::tr!(ctx, "never").as_ref(),
+							&#translate::tr(ctx, "never").as_ref(),
 							background,
 						);
 					}
@@ -283,7 +297,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 					title.push_str(PLAIN);
 					title.push(' ');
-					title.push_str(#translate::tr!(ctx, Self::tr()).as_ref());
+					title.push_str(#translate::tr(ctx, Self::tr()).as_ref());
 
 					embed.fields.push(#poise::serenity_prelude::EmbedField::new(title, log, true));
 					embed
@@ -311,7 +325,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				#(#embed)*
 
-				embed.field(#translate::tr!(ctx, Self::tr()), field, true)
+				embed.field(#translate::tr(ctx, Self::tr()), field, true)
 			}
 
 			pub fn embed_diff(
@@ -328,7 +342,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				#(#embed_diff)*
 
-				embed.field(#translate::tr!(ctx, Self::tr()), field, true)
+				embed.field(#translate::tr(ctx, Self::tr()), field, true)
 			}
 
 			pub fn project(
@@ -355,11 +369,17 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				let first = snapshots.first().unwrap();
 				let last = snapshots.last().unwrap();
 
-				let lower = Self::min_fields(&first.1.stats.#path_to_game.#id, &first.1);
-				let upper = ::std::cmp::max(Self::max_fields(&last.1.stats.#path_to_game.#id, &last.1), 100);
+				let mut lower = Self::min_fields(&first.1.stats.#path_to_game.#id, &first.1);
+				let mut upper = ::std::cmp::max(Self::max_fields(&first.1.stats.#path_to_game.#id, &first.1), 100);
+
+				for (_, data) in snapshots.iter().skip(1) {
+					let stats = &data.stats.#path_to_game.#id;
+
+					lower = lower.min(Self::min_fields(stats, data));
+					upper = upper.max(Self::max_fields(stats, data));
+				}
 
 				let x_range = first.0.clone()..last.0.clone();
-				let last_data = last.1.clone();
 
 				let v = ::std::vec![
 					#(#chart,)*
@@ -376,7 +396,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				let mut surface = #api::canvas::chart::canvas(&mut buffer)?;
 
-				#api::canvas::chart::apply_title(ctx, &mut surface, &last_data, &LABEL, background);
+				#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
 				#api::canvas::chart::round_corners(&mut surface);
 
 				Ok(#api::canvas::to_png(&mut surface))

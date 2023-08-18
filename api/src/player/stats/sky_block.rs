@@ -1,13 +1,31 @@
-use serde::{Deserialize, Deserializer};
+use serde::Deserializer;
 use uuid::Uuid;
 
-#[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Default,
+	Debug,
+	Clone,
+	PartialEq,
+)]
 pub struct SkyBlock {
-	#[serde(deserialize_with = "from_profile_map")]
+	#[serde(deserialize_with = "from_profile_map", skip_serializing)]
 	pub profiles: Vec<Profile>,
 }
 
-#[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(
+	serde::Deserialize,
+	serde::Serialize,
+	bincode::Encode,
+	bincode::Decode,
+	Default,
+	Debug,
+	Clone,
+	PartialEq,
+)]
 pub struct Profile {
 	#[serde(rename = "profile_id")]
 	#[bincode(with_serde)]

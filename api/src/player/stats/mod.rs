@@ -22,9 +22,7 @@ pub mod walls;
 pub mod warlords;
 pub mod wool_wars;
 
-use serde::Deserialize;
-
-#[derive(bincode::Encode, bincode::Decode, Deserialize, Default, Debug, Clone, PartialEq)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
 	pub quake: quake::Quake,
@@ -58,6 +56,7 @@ pub struct Stats {
 	#[serde(rename = "BuildBattle")]
 	pub build_battle: build_battle::BuildBattle,
 	pub duels: duels::Duels,
+	#[serde(skip_serializing)]
 	pub sky_block: sky_block::SkyBlock,
 	pub pit: pit::Outer,
 	#[serde(rename = "WoolGames")]

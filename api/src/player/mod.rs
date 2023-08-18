@@ -47,7 +47,7 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 static PLAYER_SKIN_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://visage.surgeplay.com/full/157/").unwrap());
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize)]
 pub struct Response {
 	pub player: Option<data::Data>,
 	pub success: bool,
@@ -251,17 +251,23 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
-	pub async fn get_data(&self) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(&self.uuid, self.get_data_raw())).await
+	pub async fn get_data(
+		&self,
+		ctx: &context::Context<'_>,
+	) -> Result<Arc<data::Data>, Arc<Error>> {
+		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(&self.uuid, self.get_data_raw(ctx))).await
 	}
 
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
-	pub async fn get_data_owned(self) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with(self.uuid, self.get_data_raw())).await
+	pub async fn get_data_owned(
+		self,
+		ctx: &context::Context<'_>,
+	) -> Result<Arc<data::Data>, Arc<Error>> {
+		Box::pin(PLAYER_DATA_CACHE.try_get_with(self.uuid, self.get_data_raw(ctx))).await
 	}
 
-	async fn get_data_raw(&self) -> Result<Arc<data::Data>, Error> {
+	async fn get_data_raw(&self, ctx: &context::Context<'_>) -> Result<Arc<data::Data>, Error> {
 		let url = {
 			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
@@ -298,6 +304,7 @@ impl Player {
 		};
 
 		self.set_display_str(&player).await?;
+		self.update_leaderboard(ctx, &player).await?;
 
 		Ok(Arc::new(player))
 	}
@@ -390,13 +397,5 @@ mod tests {
 
 		assert_matches!(player, Ok(_));
 		assert_eq!(player.unwrap().username, Some("Notch".to_string()));
-	}
-
-	#[tokio::test]
-	async fn test_player_data() {
-		let uuid = Uuid::parse_str("b876ec32-e396-476b-a115-8438d83c67d4").unwrap();
-		let player = Player::new(uuid, Some("Technoblade".to_string()));
-
-		assert_matches!(player.get_data().await, Ok(_));
 	}
 }

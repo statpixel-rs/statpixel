@@ -1,7 +1,11 @@
 use std::sync::Arc;
 
+use database::schema::leaderboard;
+use diesel::ExpressionMethods;
+use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use redis::{aio::Connection, AsyncCommands, Client, RedisError};
+use translate::context;
 
 use crate::{
 	player::{data::Data, Player},
@@ -21,13 +25,19 @@ async fn get_connection() -> Result<Connection, RedisError> {
 impl Player {
 	/// # Errors
 	/// Returns an error if the player's data could not be fetched
-	pub async fn get_display_string_owned(self) -> Result<String, Arc<Error>> {
-		self.get_display_string().await
+	pub async fn get_display_string_owned(
+		self,
+		ctx: &context::Context<'_>,
+	) -> Result<String, Arc<Error>> {
+		self.get_display_string(ctx).await
 	}
 
 	/// # Errors
 	/// Returns an error if the player's data could not be fetched
-	pub async fn get_display_string(&self) -> Result<String, Arc<Error>> {
+	pub async fn get_display_string(
+		&self,
+		ctx: &context::Context<'_>,
+	) -> Result<String, Arc<Error>> {
 		let mut conn = get_connection()
 			.await
 			.map_err(|e| Arc::new(Error::Redis(e)))?;
@@ -36,7 +46,7 @@ impl Player {
 			return Ok(display);
 		}
 
-		let data = self.get_data().await?;
+		let data = self.get_data(ctx).await?;
 		let display = if let Some(display) = data.get_rank().as_coloured_str() {
 			format!("{} {}", display, data.username)
 		} else {
@@ -62,6 +72,29 @@ impl Player {
 		};
 
 		conn.set(self.uuid.as_bytes(), &display).await?;
+
+		Ok(())
+	}
+
+	/// # Errors
+	/// Returns an error if the player's data could not be saved to the leaderboard.
+	pub async fn update_leaderboard(
+		&self,
+		ctx: &context::Context<'_>,
+		data: &Data,
+	) -> Result<(), Error> {
+		let value = serde_json::to_value(data)?;
+
+		diesel::insert_into(leaderboard::table)
+			.values((
+				leaderboard::uuid.eq(&self.uuid),
+				leaderboard::data.eq(&value),
+			))
+			.on_conflict(leaderboard::uuid)
+			.do_update()
+			.set(leaderboard::data.eq(&value))
+			.execute(&mut ctx.data().pool.get().await?)
+			.await?;
 
 		Ok(())
 	}

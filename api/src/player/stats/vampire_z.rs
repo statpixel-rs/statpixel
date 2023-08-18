@@ -1,11 +1,8 @@
-use macros::{Diff, Game};
-use serde::Deserialize;
+use macros::Game;
 
 use crate::inverse_bool;
 
-#[derive(
-	Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, Game, PartialEq, Diff,
-)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[game(
 	path = "vampire_z",
 	pretty = "§c§lVampire§4§lZ",
@@ -33,9 +30,9 @@ use crate::inverse_bool;
 #[serde(default)]
 #[allow(clippy::struct_excessive_bools)]
 pub struct VampireZ {
-	#[serde(deserialize_with = "crate::de::from::f32_to_i32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[game(label(colour = "gold"))]
-	pub coins: i32,
+	pub coins: u32,
 	#[game(label(colour = "red"), nominal)]
 	pub blood: bool,
 	#[serde(rename = "no_starting_compass")]
@@ -59,7 +56,7 @@ pub struct VampireZ {
 	pub normal: Normal,
 }
 
-#[derive(Deserialize, bincode::Decode, bincode::Encode, Default, Debug, Clone, PartialEq, Diff)]
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	pub human_wins: u32,

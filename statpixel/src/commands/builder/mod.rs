@@ -29,7 +29,7 @@ pub async fn builder(ctx: Context<'_>) -> Result<(), Error> {
 	ctx.send(
 		poise::CreateReply::new()
 			.components(create_components(ctx, State::default())?)
-			.content(tr!(&ctx, "builder-welcome")),
+			.content(tr(&ctx, "builder-welcome")),
 	)
 	.await?;
 
@@ -49,23 +49,23 @@ pub fn create_components(
 				builder::set_next_position(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
 					options: vec![
-						CreateSelectMenuOption::new(tr!(ctx, "down"), "down")
-							.description(tr!(ctx, "down-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "down-start"), "down_start")
-							.description(tr!(ctx, "down-start-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "right"), "right")
-							.description(tr!(ctx, "right-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "right-start"), "right_start")
-							.description(tr!(ctx, "right-start-description")),
+						CreateSelectMenuOption::new(tr(ctx, "down"), "down")
+							.description(tr(ctx, "down-description")),
+						CreateSelectMenuOption::new(tr(ctx, "down-start"), "down_start")
+							.description(tr(ctx, "down-start-description")),
+						CreateSelectMenuOption::new(tr(ctx, "right"), "right")
+							.description(tr(ctx, "right-description")),
+						CreateSelectMenuOption::new(tr(ctx, "right-start"), "right_start")
+							.description(tr(ctx, "right-start-description")),
 					],
 				},
 			)
 			.placeholder(match state.next.location {
-				None => tr!(ctx, "select-position"),
-				Some(Location::Down) => tr!(ctx, "down"),
-				Some(Location::DownStart) => tr!(ctx, "down-start"),
-				Some(Location::Right) => tr!(ctx, "right"),
-				Some(Location::RightStart) => tr!(ctx, "right-start"),
+				None => tr(ctx, "select-position"),
+				Some(Location::Down) => tr(ctx, "down"),
+				Some(Location::DownStart) => tr(ctx, "down-start"),
+				Some(Location::Right) => tr(ctx, "right"),
+				Some(Location::RightStart) => tr(ctx, "right-start"),
 			}),
 		),
 		CreateActionRow::SelectMenu(
@@ -73,26 +73,26 @@ pub fn create_components(
 				builder::set_next_shape(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
 					options: vec![
-						CreateSelectMenuOption::new(tr!(ctx, "title"), "title")
-							.description(tr!(ctx, "title-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "level"), "level")
-							.description(tr!(ctx, "level-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "skin"), "skin")
-							.description(tr!(ctx, "skin-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "bubble"), "bubble")
-							.description(tr!(ctx, "bubble-description")),
-						CreateSelectMenuOption::new(tr!(ctx, "subtitle"), "subtitle")
-							.description(tr!(ctx, "subtitle-description")),
+						CreateSelectMenuOption::new(tr(ctx, "title"), "title")
+							.description(tr(ctx, "title-description")),
+						CreateSelectMenuOption::new(tr(ctx, "level"), "level")
+							.description(tr(ctx, "level-description")),
+						CreateSelectMenuOption::new(tr(ctx, "skin"), "skin")
+							.description(tr(ctx, "skin-description")),
+						CreateSelectMenuOption::new(tr(ctx, "bubble"), "bubble")
+							.description(tr(ctx, "bubble-description")),
+						CreateSelectMenuOption::new(tr(ctx, "subtitle"), "subtitle")
+							.description(tr(ctx, "subtitle-description")),
 					],
 				},
 			)
 			.placeholder(match state.next.kind {
-				None => tr!(ctx, "select-shape"),
-				Some(ShapeKind::Title) => tr!(ctx, "title"),
-				Some(ShapeKind::Subtitle) => tr!(ctx, "subtitle"),
-				Some(ShapeKind::Level) => tr!(ctx, "level"),
-				Some(ShapeKind::Skin) => tr!(ctx, "skin"),
-				Some(ShapeKind::Bubble) => tr!(ctx, "bubble"),
+				None => tr(ctx, "select-shape"),
+				Some(ShapeKind::Title) => tr(ctx, "title"),
+				Some(ShapeKind::Subtitle) => tr(ctx, "subtitle"),
+				Some(ShapeKind::Level) => tr(ctx, "level"),
+				Some(ShapeKind::Skin) => tr(ctx, "skin"),
+				Some(ShapeKind::Bubble) => tr(ctx, "bubble"),
 			}),
 		),
 		CreateActionRow::SelectMenu(
@@ -100,62 +100,62 @@ pub fn create_components(
 				builder::set_next_colour(state.clone())?,
 				serenity::CreateSelectMenuKind::String {
 					options: vec![
-						CreateSelectMenuOption::new(tr!(ctx, "aqua"), "AQUA"),
-						CreateSelectMenuOption::new(tr!(ctx, "black"), "BLACK"),
-						CreateSelectMenuOption::new(tr!(ctx, "blue"), "BLUE"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-aqua"), "DARK_AQUA"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-blue"), "DARK_BLUE"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-gray"), "DARK_GRAY"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-green"), "DARK_GREEN"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-red"), "DARK_RED"),
-						CreateSelectMenuOption::new(tr!(ctx, "gold"), "GOLD"),
-						CreateSelectMenuOption::new(tr!(ctx, "gray"), "GRAY"),
-						CreateSelectMenuOption::new(tr!(ctx, "green"), "GREEN"),
-						CreateSelectMenuOption::new(tr!(ctx, "light-purple"), "LIGHT_PURPLE"),
-						CreateSelectMenuOption::new(tr!(ctx, "dark-purple"), "DARK_PURPLE"),
-						CreateSelectMenuOption::new(tr!(ctx, "red"), "RED"),
-						CreateSelectMenuOption::new(tr!(ctx, "white"), "WHITE"),
-						CreateSelectMenuOption::new(tr!(ctx, "yellow"), "YELLOW"),
+						CreateSelectMenuOption::new(tr(ctx, "aqua"), "AQUA"),
+						CreateSelectMenuOption::new(tr(ctx, "black"), "BLACK"),
+						CreateSelectMenuOption::new(tr(ctx, "blue"), "BLUE"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-aqua"), "DARK_AQUA"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-blue"), "DARK_BLUE"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-gray"), "DARK_GRAY"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-green"), "DARK_GREEN"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-red"), "DARK_RED"),
+						CreateSelectMenuOption::new(tr(ctx, "gold"), "GOLD"),
+						CreateSelectMenuOption::new(tr(ctx, "gray"), "GRAY"),
+						CreateSelectMenuOption::new(tr(ctx, "green"), "GREEN"),
+						CreateSelectMenuOption::new(tr(ctx, "light-purple"), "LIGHT_PURPLE"),
+						CreateSelectMenuOption::new(tr(ctx, "dark-purple"), "DARK_PURPLE"),
+						CreateSelectMenuOption::new(tr(ctx, "red"), "RED"),
+						CreateSelectMenuOption::new(tr(ctx, "white"), "WHITE"),
+						CreateSelectMenuOption::new(tr(ctx, "yellow"), "YELLOW"),
 					],
 				},
 			)
 			.placeholder(match state.next.colour {
-				None => tr!(ctx, "select-colour"),
-				Some(Paint::Aqua) => tr!(ctx, "aqua"),
-				Some(Paint::Black) => tr!(ctx, "black"),
-				Some(Paint::Blue) => tr!(ctx, "blue"),
-				Some(Paint::DarkAqua) => tr!(ctx, "dark-aqua"),
-				Some(Paint::DarkBlue) => tr!(ctx, "dark-blue"),
-				Some(Paint::DarkGray) => tr!(ctx, "dark-gray"),
-				Some(Paint::DarkGreen) => tr!(ctx, "dark-green"),
-				Some(Paint::DarkRed) => tr!(ctx, "dark-red"),
-				Some(Paint::Gold) => tr!(ctx, "gold"),
-				Some(Paint::Gray) => tr!(ctx, "gray"),
-				Some(Paint::Green) => tr!(ctx, "green"),
-				Some(Paint::LightPurple) => tr!(ctx, "light-purple"),
-				Some(Paint::DarkPurple) => tr!(ctx, "dark-purple"),
-				Some(Paint::Red) => tr!(ctx, "red"),
-				Some(Paint::White) => tr!(ctx, "white"),
-				Some(Paint::Yellow) => tr!(ctx, "yellow"),
+				None => tr(ctx, "select-colour"),
+				Some(Paint::Aqua) => tr(ctx, "aqua"),
+				Some(Paint::Black) => tr(ctx, "black"),
+				Some(Paint::Blue) => tr(ctx, "blue"),
+				Some(Paint::DarkAqua) => tr(ctx, "dark-aqua"),
+				Some(Paint::DarkBlue) => tr(ctx, "dark-blue"),
+				Some(Paint::DarkGray) => tr(ctx, "dark-gray"),
+				Some(Paint::DarkGreen) => tr(ctx, "dark-green"),
+				Some(Paint::DarkRed) => tr(ctx, "dark-red"),
+				Some(Paint::Gold) => tr(ctx, "gold"),
+				Some(Paint::Gray) => tr(ctx, "gray"),
+				Some(Paint::Green) => tr(ctx, "green"),
+				Some(Paint::LightPurple) => tr(ctx, "light-purple"),
+				Some(Paint::DarkPurple) => tr(ctx, "dark-purple"),
+				Some(Paint::Red) => tr(ctx, "red"),
+				Some(Paint::White) => tr(ctx, "white"),
+				Some(Paint::Yellow) => tr(ctx, "yellow"),
 				// This colour is not used in the builder
-				Some(Paint::Bronze) => tr!(ctx, "bronze"),
+				Some(Paint::Bronze) => tr(ctx, "bronze"),
 			}),
 		),
 		CreateActionRow::Buttons(vec![
 			CreateButton::new(builder::add_shape(state.clone())?)
-				.label(tr!(ctx, "add-shape"))
+				.label(tr(ctx, "add-shape"))
 				.style(serenity::ButtonStyle::Primary)
 				.disabled(state.shapes.len() >= MAX_SHAPES || !state.next.is_complete()),
 			CreateButton::new(builder::undo(state.clone())?)
-				.label(tr!(ctx, "undo"))
+				.label(tr(ctx, "undo"))
 				.style(serenity::ButtonStyle::Danger)
 				.disabled(empty),
 			CreateButton::new(builder::create(state)?)
-				.label(tr!(ctx, "create"))
+				.label(tr(ctx, "create"))
 				.style(serenity::ButtonStyle::Success)
 				.disabled(empty),
 			CreateButton::new_link("https://statpixel.xyz/docs/builder".to_string())
-				.label(tr!(ctx, "documentation")),
+				.label(tr(ctx, "documentation")),
 		]),
 	])
 }
@@ -287,7 +287,7 @@ pub async fn handler(
 			game_type: None,
 			game_mode: None,
 		};
-		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN, None);
+		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN, None)?;
 
 		ctx.send(
 			poise::CreateReply::new()
@@ -306,7 +306,7 @@ pub async fn handler(
 pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Result<(), Error> {
 	let (_, data, session, skin, _) =
 		super::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
-	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin, None);
+	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin, None)?;
 
 	let id = api::id::command(api::command::Id::Builder {
 		shapes: state.shapes,
@@ -333,70 +333,70 @@ pub fn create_subtitle_modal(
 ) -> Result<CreateModal, Error> {
 	Ok(CreateModal::new(
 		builder::set_subtitle_data(state)?,
-		tr!(ctx, "subtitle-modal-title"),
+		tr(ctx, "subtitle-modal-title"),
 	)
 	.components(vec![CreateActionRow::InputText(
 		CreateInputText::new(
 			serenity::InputTextStyle::Short,
-			tr!(ctx, "subtitle-text"),
+			tr(ctx, "subtitle-text"),
 			"subtitle_text",
 		)
 		.max_length(16)
-		.placeholder(tr!(ctx, "subtitle-placeholder")),
+		.placeholder(tr(ctx, "subtitle-placeholder")),
 	)]))
 }
 
 pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
 	Ok(CreateModal::new(
 		builder::set_level_data(state)?,
-		tr!(ctx, "level-modal-title"),
+		tr(ctx, "level-modal-title"),
 	)
 	.components(vec![CreateActionRow::InputText(
 		CreateInputText::new(
 			serenity::InputTextStyle::Short,
-			tr!(ctx, "level-type"),
+			tr(ctx, "level-type"),
 			"level_type",
 		)
 		.max_length(16)
-		.placeholder(tr!(ctx, "level-type-placeholder")),
+		.placeholder(tr(ctx, "level-type-placeholder")),
 	)]))
 }
 
 pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
 	Ok(CreateModal::new(
 		builder::set_bubble_data(state)?,
-		tr!(ctx, "bubble-modal-title"),
+		tr(ctx, "bubble-modal-title"),
 	)
 	.components(vec![
 		CreateActionRow::InputText(
 			CreateInputText::new(
 				serenity::InputTextStyle::Short,
-				tr!(ctx, "game-type"),
+				tr(ctx, "game-type"),
 				"game_type",
 			)
-			.placeholder(tr!(ctx, "game-type-placeholder")),
+			.placeholder(tr(ctx, "game-type-placeholder")),
 		),
 		CreateActionRow::InputText(
 			CreateInputText::new(
 				serenity::InputTextStyle::Short,
-				tr!(ctx, "statistic"),
+				tr(ctx, "statistic"),
 				"statistic",
 			)
-			.placeholder(tr!(ctx, "statistic-placeholder")),
+			.placeholder(tr(ctx, "statistic-placeholder")),
 		),
 	]))
 }
 
 pub fn create_create_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
 	Ok(
-		CreateModal::new(builder::create(state)?, tr!(ctx, "create-modal-title")).components(vec![
+		CreateModal::new(builder::create(state)?, tr(ctx, "create-modal-title")).components(vec![
 			CreateActionRow::InputText(
 				CreateInputText::new(
 					serenity::InputTextStyle::Short,
-					tr!(ctx, "username"),
+					tr(ctx, "username"),
 					"username",
 				)
-				.placeholder(tr!(ctx, "username-placeholder")),
+				.placeholder(tr(ctx, "username-placeholder")),
 			),
 		]),
 	)
@@ -807,7 +807,7 @@ pub async fn modal_handler(
 			&DEFAULT_SKIN,
 			None,
 		)
-	};
+	}?;
 
 	local_ctx
 		.send(

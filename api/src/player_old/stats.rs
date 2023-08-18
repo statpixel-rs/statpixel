@@ -59,7 +59,7 @@ impl From<Stats> for crate::player::stats::Stats {
 
 #[derive(bincode::Encode, bincode::Decode, Default)]
 pub struct TntGames {
-	pub coins: i32,
+	pub coins: u32,
 
 	pub tnt_run: tnt_games::TntRun,
 	pub pvp_run: tnt_games::PvpRun,

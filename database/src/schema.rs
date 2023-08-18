@@ -1,5 +1,3 @@
-// @generated automatically by Diesel CLI.
-
 diesel::table! {
 	autocomplete (uuid) {
 		uuid -> Uuid,
@@ -70,6 +68,15 @@ diesel::table! {
 		updated_at -> Timestamptz,
 		days_since_epoch -> Int4,
 		version -> Int2,
+	}
+}
+
+diesel::table! {
+	leaderboard (uuid) {
+		uuid -> Uuid,
+		data -> Jsonb,
+		updated_at -> Timestamptz,
+		created_at -> Timestamptz,
 	}
 }
 

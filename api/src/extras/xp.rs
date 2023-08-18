@@ -1,23 +1,12 @@
 use std::{borrow::Cow, ops::SubAssign};
 
-use macros::Diff;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
 #[derive(
-	bincode::Encode,
-	bincode::Decode,
-	Debug,
-	Clone,
-	Copy,
-	Default,
-	Diff,
-	PartialEq,
-	Eq,
-	PartialOrd,
-	Ord,
+	bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord,
 )]
 pub struct Xp(pub u32);
 

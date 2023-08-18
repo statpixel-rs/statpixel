@@ -138,8 +138,8 @@ pub async fn background(
 		colour_from_str(&c)
 	}) else {
 		ctx.send(error_embed(
-			tr!(&ctx, "error-invalid-colour"),
-			tr!(&ctx, "error-invalid-colour-description"),
+			tr(&ctx, "error-invalid-colour"),
+			tr(&ctx, "error-invalid-colour-description"),
 		))
 		.await?;
 
@@ -165,7 +165,7 @@ pub async fn background(
 	ctx.send(
 		poise::CreateReply::new().embed(
 			serenity::CreateEmbed::new()
-				.title(tr!(&ctx, "colour-changed"))
+				.title(tr(&ctx, "colour-changed"))
 				.description(
 					tr_fmt!(&ctx, "colour-changed-description", colour: format!("#{:0>8x}", colour)),
 				)

@@ -179,7 +179,7 @@ pub trait Field: Debug {
 		let translate = crate_ident("translate");
 		let tr = self.tr().into_owned();
 
-		quote!(#translate ::tr!(ctx, #tr))
+		quote!(#translate ::tr(ctx, #tr))
 	}
 
 	fn var_id(&self) -> Cow<proc_macro2::TokenStream> {

@@ -3,35 +3,33 @@ use std::{
 	ops::{Add, Sub},
 };
 
-use macros::Diff;
-use serde::{Deserialize, Deserializer};
+use serde::Deserializer;
 use translate::context::Context;
 
 use crate::canvas::label::ToFormatted;
 
 #[derive(
-	bincode::Encode,
-	bincode::Decode,
-	Debug,
-	Clone,
-	Copy,
-	Default,
-	PartialEq,
-	Diff,
-	Eq,
-	PartialOrd,
-	Ord,
+	bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord,
 )]
 pub struct Meters(pub u64);
 
-impl<'de> Deserialize<'de> for Meters {
+impl<'de> serde::Deserialize<'de> for Meters {
 	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
 	where
 		D: Deserializer<'de>,
 	{
-		let s: u64 = Deserialize::deserialize(deserializer)?;
+		let s: u64 = serde::Deserialize::deserialize(deserializer)?;
 
 		Ok(Meters(s))
+	}
+}
+
+impl serde::Serialize for Meters {
+	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+	where
+		S: serde::Serializer,
+	{
+		self.0.serialize(serializer)
 	}
 }
 

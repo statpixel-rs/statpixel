@@ -6,7 +6,7 @@ use uuid::Uuid;
 
 use crate::{player::Player, Error};
 
-#[derive(Deserialize, bincode::Encode, bincode::Decode, Debug, Clone)]
+#[derive(Deserialize, bincode::Encode, bincode::Decode, Clone)]
 pub struct Member {
 	#[bincode(with_serde)]
 	pub uuid: Uuid,

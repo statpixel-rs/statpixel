@@ -22,7 +22,7 @@ pub async fn top(
 		{
 			Ok(data) => data,
 			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
 					.await?;
 
 				return Ok(());
@@ -88,7 +88,7 @@ pub async fn members(
 		{
 			Ok(data) => data,
 			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
 					.await?;
 
 				return Ok(());
@@ -140,7 +140,7 @@ pub async fn general(
 		{
 			Ok(data) => data,
 			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
 					.await?;
 
 				return Ok(());
@@ -188,7 +188,7 @@ pub async fn member(
 	let (guild, player) = match crate::commands::get_guild_with_member(ctx, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
-			ctx.send(error_embed(tr!(ctx, "not-linked"), tr!(ctx, "not-linked")))
+			ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
 				.await?;
 
 			return Ok(());
