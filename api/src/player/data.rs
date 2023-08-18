@@ -10,7 +10,7 @@ use crate::{canvas::diff::DiffLog, minutes::Minutes};
 #[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(default)]
 pub struct Data {
-	#[serde(rename(deserialize = "displayname"), alias = "username")]
+	#[serde(rename(deserialize = "displayname"))]
 	pub username: String,
 	#[bincode(with_serde)]
 	pub uuid: Uuid,
@@ -20,19 +20,15 @@ pub struct Data {
 	pub(crate) status_rank: Option<String>,
 	#[serde(rename = "newPackageRank")]
 	pub(crate) rank: Option<String>,
-	#[serde(rename(deserialize = "monthlyPackageRank"), alias = "package_rank")]
+	#[serde(rename(deserialize = "monthlyPackageRank"))]
 	pub(crate) package_rank: Option<String>,
-	#[serde(rename(deserialize = "rankPlusColor"), alias = "rank_colour")]
+	#[serde(rename(deserialize = "rankPlusColor"))]
 	pub(crate) rank_colour: Option<Colour>,
-	#[serde(
-		rename(deserialize = "monthlyRankColor"),
-		alias = "monthly_rank_colour"
-	)]
+	#[serde(rename(deserialize = "monthlyRankColor"))]
 	pub(crate) monthly_rank_colour: Option<Colour>,
 	pub prefix: Option<String>,
 	#[serde(
 		rename(deserialize = "networkExp"),
-		alias = "xp",
 		deserialize_with = "crate::de::from::f64_to_u64",
 		default
 	)]
@@ -41,21 +37,19 @@ pub struct Data {
 	pub karma: u64,
 	#[serde(
 		rename(deserialize = "firstLogin"),
-		alias = "first_login",
 		with = "chrono::serde::ts_milliseconds_option"
 	)]
 	#[bincode(with_serde)]
 	pub first_login: Option<DateTime<Utc>>,
 	#[serde(
 		rename(deserialize = "lastLogin"),
-		alias = "last_login",
 		with = "chrono::serde::ts_milliseconds_option"
 	)]
 	#[bincode(with_serde)]
 	pub last_login: Option<DateTime<Utc>>,
-	#[serde(rename(deserialize = "timePlaying"), alias = "playtime", default)]
+	#[serde(rename(deserialize = "timePlaying"), default)]
 	pub playtime: Minutes,
-	#[serde(rename(deserialize = "totalRewards"), alias = "rewards", default)]
+	#[serde(rename(deserialize = "totalRewards"), default)]
 	pub rewards: u32,
 	#[serde(deserialize_with = "vec_len_to_u32", default)]
 	pub friend_requests: u32,
@@ -63,21 +57,13 @@ pub struct Data {
 	pub challenges: u32,
 	#[serde(deserialize_with = "from_quests", default)]
 	pub quests: u32,
-	#[serde(rename(deserialize = "giftingMeta"), alias = "gifting", default)]
+	#[serde(rename(deserialize = "giftingMeta"), default)]
 	pub gifting: Gifting,
-	#[serde(
-		rename(deserialize = "achievementPoints"),
-		alias = "achievement_points"
-	)]
+	#[serde(rename(deserialize = "achievementPoints"))]
 	pub achivement_points: u32,
-	#[serde(rename(deserialize = "userLanguage"), alias = "language", default)]
+	#[serde(rename(deserialize = "userLanguage"), default)]
 	pub language: super::language::Language,
-	#[serde(
-		rename(deserialize = "socialMedia"),
-		alias = "socials",
-		default,
-		skip_serializing
-	)]
+	#[serde(rename(deserialize = "socialMedia"), default, skip_serializing)]
 	pub socials: super::socials::Socials,
 }
 
