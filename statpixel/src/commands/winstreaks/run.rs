@@ -13,7 +13,7 @@ pub async fn winstreaks(
 	username: Option<String>,
 	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
@@ -22,6 +22,7 @@ pub async fn winstreaks(
 
 	let png = super::image::winstreaks(
 		ctx,
+		family,
 		&data,
 		&session,
 		skin.image(),

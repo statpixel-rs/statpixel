@@ -2,7 +2,7 @@ use api::{guild::Guild, player::Player};
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
-use minecraft::username::Username;
+use minecraft::{style::Family, username::Username};
 use poise::{serenity_prelude as serenity, CreateReply};
 use skia_safe::Color;
 use std::sync::Arc;
@@ -60,25 +60,31 @@ pub fn escape_username(username: &str) -> String {
 	username.replace('_', "\\_")
 }
 
-pub async fn get_format_colour_from_input(ctx: &Context<'_>) -> (format::Display, Option<Color>) {
+pub async fn get_image_options_from_input(
+	ctx: &Context<'_>,
+) -> (format::Display, Family, Option<Color>) {
 	let Ok(mut connection) = ctx.data().pool.get().await else {
-		return (format::Display::default(), None);
+		return (format::Display::default(), Family::default(), None);
 	};
 
 	let Some(author) = ctx.author() else {
-		return (format::Display::default(), None);
+		return (format::Display::default(), Family::default(), None);
 	};
 
 	let result = schema::user::table
 		.filter(schema::user::id.eq(author.id.0.get() as i64))
-		.select((schema::user::display, schema::user::colour))
-		.get_result::<(format::Display, Option<i32>)>(&mut connection)
+		.select((
+			schema::user::display,
+			schema::user::font,
+			schema::user::colour,
+		))
+		.get_result::<(format::Display, Family, Option<i32>)>(&mut connection)
 		.await;
 
 	match result {
 		#[allow(clippy::cast_sign_loss)]
-		Ok((display, colour)) => (display, colour.map(|c| (c as u32).into())),
-		Err(_) => (format::Display::default(), None),
+		Ok((display, family, colour)) => (display, family, colour.map(|c| (c as u32).into())),
+		Err(_) => (format::Display::default(), Family::default(), None),
 	}
 }
 

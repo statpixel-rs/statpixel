@@ -2,6 +2,7 @@ use std::fmt::Debug;
 
 use chrono::{DateTime, Utc};
 use diesel::Expression;
+use minecraft::style::Family;
 use poise::serenity_prelude as serenity;
 use translate::{context, Error};
 use uuid::Uuid;
@@ -14,6 +15,7 @@ pub trait Game {
 
 	fn canvas_diff(
 		ctx: &context::Context,
+		family: Family,
 		data_lhs: &data::Data,
 		data_rhs: &data::Data,
 		session: &status::Session,
@@ -25,6 +27,7 @@ pub trait Game {
 
 	fn canvas(
 		ctx: &context::Context,
+		family: Family,
 		data: &data::Data,
 		session: &status::Session,
 		skin: &skia_safe::Image,
@@ -38,6 +41,7 @@ pub trait Game {
 	/// See specific implementations for possible errors.
 	fn chart(
 		ctx: &context::Context,
+		family: Family,
 		snapshots: Vec<(DateTime<Utc>, data::Data)>,
 		session: &status::Session,
 		background: Option<skia_safe::Color>,
@@ -49,6 +53,7 @@ pub trait Game {
 	/// See specific implementations for possible errors.
 	fn project(
 		ctx: &context::Context,
+		family: Family,
 		snapshots: Vec<(DateTime<Utc>, data::Data)>,
 		session: &status::Session,
 		mode: Option<Self::Mode>,

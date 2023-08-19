@@ -6,27 +6,29 @@ use api::{
 	image::Image,
 	shape, Data, Session,
 };
-use minecraft::{calc, text::Text};
+use minecraft::{calc, style::Family, text::Text};
 use skia_safe::Color;
 use translate::{context, tr};
 
 #[allow(clippy::too_many_lines)]
 pub fn build(
 	ctx: &context::Context<'_>,
+	family: Family,
 	shapes: &Vec<Shape>,
 	data: &Data,
 	session: &Session,
 	skin: &Image,
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, crate::Error> {
-	let mut canvas = Canvas::new(750.);
+	let mut canvas = Canvas::new(750., family);
 	let skin = shape::Status(session, skin.image());
 
 	for shape in shapes {
 		match shape.data {
 			ShapeData::Title => {
 				let kind = shape::Title;
-				let body = shape::Title::from_text(&text::from_data(data, &data.username, None));
+				let body =
+					shape::Title::from_text(family, &text::from_data(data, &data.username, None));
 
 				match shape.location {
 					Location::Down => {
@@ -44,7 +46,7 @@ pub fn build(
 				}
 			}
 			ShapeData::Skin => {
-				let body = Body::from_status(ctx, session);
+				let body = Body::from_status(ctx, family, session);
 
 				match shape.location {
 					Location::Down => {
@@ -184,8 +186,9 @@ pub fn build(
 				};
 
 				let kind = shape::WideBubbleProgress(progress, colours, false);
-				let body =
-					shape::WideBubbleProgress::from_level_progress(ctx, &level, &current, &needed);
+				let body = shape::WideBubbleProgress::from_level_progress(
+					ctx, family, &level, &current, &needed,
+				);
 
 				match shape.location {
 					Location::Down => {
@@ -204,11 +207,14 @@ pub fn build(
 			}
 			ShapeData::Subtitle { ref text } => {
 				let kind = shape::Subtitle;
-				let body = shape::Subtitle::from_text(&[Text {
-					text,
-					paint: shape.colour,
-					..Default::default()
-				}]);
+				let body = shape::Subtitle::from_text(
+					family,
+					&[Text {
+						text,
+						paint: shape.colour,
+						..Default::default()
+					}],
+				);
 
 				match shape.location {
 					Location::Down => {
@@ -300,7 +306,8 @@ pub fn build(
 				};
 
 				let kind = shape::Bubble;
-				let body = Body::from_bubble_cow(value, tr(ctx, label).as_ref(), shape.colour);
+				let body =
+					Body::from_bubble_cow(family, value, tr(ctx, label).as_ref(), shape.colour);
 
 				match shape.location {
 					Location::Down => {

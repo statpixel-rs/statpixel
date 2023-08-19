@@ -515,6 +515,8 @@ display-changed-image-description = Responses will now be sent as images where a
 display-changed-compact-description = Responses will now be sent as compact images.
 
 Image = Image
+ImageFaithful = Image (Faithful 32x Font)
+ImageRoboto = Image (Roboto Font)
 Compact = Compact
 Text = Text
 

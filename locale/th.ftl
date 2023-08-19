@@ -510,6 +510,8 @@ display-changed-image-description = คำตอบจะถูกส่งเ�
 display-changed-compact-description = คำตอบจะถูกส่งเป็นภาพสะดวก
 
 Image = ภาพ
+ImageFaithful = ภาพ (แบบอักษร Faithful 32x)
+ImageRoboto = ภาพ (แบบอักษร Roboto)
 Compact = ภาพย่อ
 Text = ข้อความ
 

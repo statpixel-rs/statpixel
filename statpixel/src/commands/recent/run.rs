@@ -13,7 +13,7 @@ pub async fn recent(
 	username: Option<String>,
 	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 
 	let (player, data, games, session, skin, suffix) =
 		crate::commands::get_player_data_games_session_skin_suffix(ctx, uuid, username).await?;
@@ -22,6 +22,7 @@ pub async fn recent(
 
 	let png = super::image::recent(
 		ctx,
+		family,
 		&data,
 		&games,
 		&session,

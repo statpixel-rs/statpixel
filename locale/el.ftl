@@ -510,6 +510,8 @@ display-changed-image-description = Οι απαντήσεις θα στέλνο�
 display-changed-compact-description = Οι απαντήσεις θα στέλνονται τώρα ως συμπυκνωμένες εικόνες.
 
 Image = Εικόνα
+ImageFaithful = Εικόνα (Faithful 32x Γραμματοσειρά)
+ImageRoboto = Εικόνα (Roboto Γραμματοσειρά)
 Compact = Συμπυκνωμένη
 Text = Κείμενο
 

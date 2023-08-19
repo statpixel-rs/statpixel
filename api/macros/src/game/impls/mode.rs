@@ -62,6 +62,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 			poise,
 			chrono,
 			skia,
+			minecraft,
 			..
 		},
 		..
@@ -200,6 +201,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 					let mut buffer = #api::canvas::project::f64::create(
 						ctx,
+						family,
 						::std::vec![(
 							#translate::tr(ctx, #tr),
 							snapshots
@@ -217,7 +219,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 					let mut surface = #api::canvas::project::canvas(&mut buffer)?;
 
-					#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
+					#api::canvas::chart::apply_title(ctx, family, &mut surface, &last.1, &LABEL, background);
 
 					let r = #api::percent::PercentU32((#api::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -225,6 +227,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 						#api::canvas::project::apply_bubbles(
 							&mut surface,
 							ctx,
+							family,
 							#translate::tr(ctx, #tr).as_ref(),
 							&predict_y,
 							&r,
@@ -235,6 +238,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 						#api::canvas::project::apply_bubbles(
 							&mut surface,
 							ctx,
+							family,
 							#translate::tr(ctx, #tr).as_ref(),
 							&predict_y,
 							&r,
@@ -347,6 +351,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 			pub fn project(
 				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
 				snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 				kind: #kind_enum,
 				value: Option<f64>,
@@ -363,6 +368,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 			pub fn chart(
 				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
 				snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 				background: Option<#skia::Color>,
 			) -> Result<::std::vec::Vec<u8>, #translate::Error> {
@@ -387,6 +393,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				let mut buffer = #api::canvas::chart::u32::create::<true>(
 					ctx,
+					family,
 					v,
 					x_range,
 					((f64::from(lower) * (11. / 16.)) as u32)..((f64::from(upper) * (16. / 15.)) as u32),
@@ -396,7 +403,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 
 				let mut surface = #api::canvas::chart::canvas(&mut buffer)?;
 
-				#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
+				#api::canvas::chart::apply_title(ctx, family, &mut surface, &last.1, &LABEL, background);
 				#api::canvas::chart::round_corners(&mut surface);
 
 				Ok(#api::canvas::to_png(&mut surface))
@@ -420,9 +427,11 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				max
 			}
 
+			#[allow(clippy::too_many_arguments)]
 			pub fn canvas<'c>(
 				&self,
 				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
 				mut canvas: #api::canvas::Canvas<'c>,
 				data: &'c #api::player::data::Data,
 				session: &'c #api::player::status::Session,
@@ -437,12 +446,13 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				canvas
 					.push_down(
 						&#api::canvas::shape::Subtitle,
-						#api::canvas::shape::Subtitle::from_label(ctx, &LABEL, #tr),
+						#api::canvas::shape::Subtitle::from_label(ctx, family, &LABEL, #tr),
 					)
 					.push_down_post_draw(
 						progress,
 						#api::canvas::shape::WideBubbleProgress::from_level_progress(
 							ctx,
+							family,
 							&#calc::get_level_format(level),
 							&#calc::get_curr_level_xp(xp),
 							&#calc::get_level_xp(xp),
@@ -451,7 +461,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 					#labels
 					.push_right_post_draw(
 						status,
-						#api::canvas::body::Body::from_status(ctx, session)
+						#api::canvas::body::Body::from_status(ctx, family, session)
 					)
 					#blocks
 					#self_blocks
@@ -460,6 +470,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 			#[allow(clippy::too_many_arguments)]
 			pub fn canvas_diff<'c>(
 				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
 				mut canvas: #api::canvas::Canvas<'c>,
 				data_lhs: &'c #api::player::data::Data,
 				data_rhs: &'c #api::player::data::Data,
@@ -488,12 +499,13 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 				canvas
 					.push_down(
 						&#api::canvas::shape::Subtitle,
-						#api::canvas::shape::Subtitle::from_label(ctx, &LABEL, #tr),
+						#api::canvas::shape::Subtitle::from_label(ctx, family, &LABEL, #tr),
 					)
 					.push_down_post_draw(
 						progress,
 						#api::canvas::shape::WideBubbleProgress::from_level_diff(
 							ctx,
+							family,
 							&#calc::get_level_format(level),
 							&#calc::get_total_xp(xp),
 							positive,
@@ -503,7 +515,7 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 					#labels_diff
 					.push_right_post_draw(
 						status,
-						#api::canvas::body::Body::from_status(ctx, session)
+						#api::canvas::body::Body::from_status(ctx, family, session)
 					)
 					#blocks_diff
 					#self_blocks_diff

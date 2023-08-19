@@ -10,7 +10,7 @@ pub async fn network(
 	username: Option<String>,
 	uuid: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (format, family, background) = crate::util::get_image_options_from_input(ctx).await;
 
 	match format {
 		Display::Image | Display::Compact => {
@@ -22,6 +22,7 @@ pub async fn network(
 
 			let png = super::image::network(
 				ctx,
+				family,
 				&player,
 				guild.as_deref(),
 				&data,

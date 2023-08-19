@@ -107,7 +107,7 @@ pub async fn network(
 	let uuid = util::parse_uuid(uuid.as_deref())?;
 	let ctx = &context::Context::from_poise(&ctx);
 
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let player = crate::util::get_player_from_input(ctx, uuid, username).await?;
 
 	let snapshots = diesel_async::RunQueryDsl::get_results::<(DateTime<Utc>, Vec<u8>)>(
@@ -166,6 +166,7 @@ pub async fn network(
 	let png = {
 		let mut buffer = chart::u64::create::<true>(
 			ctx,
+			family,
 			vec![(
 				Cow::Borrowed("Network XP"),
 				snapshots
@@ -182,6 +183,7 @@ pub async fn network(
 
 		chart::apply_title(
 			ctx,
+			family,
 			&mut surface,
 			&last.1,
 			&[Text {

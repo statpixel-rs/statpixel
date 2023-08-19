@@ -510,6 +510,8 @@ display-changed-image-description = Les réponses seront désormais envoyées en
 display-changed-compact-description = Les réponses seront désormais envoyées en images compactes.
 
 Image = Image
+ImageFaithful = Image (Police Faithful 32x)
+ImageRoboto = Image (Police Roboto)
 Compact = Compact
 Text = Texte
 

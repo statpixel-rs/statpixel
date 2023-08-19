@@ -9,6 +9,8 @@ mod mode_trait;
 
 pub(crate) mod util;
 
+use std::{fs::File, io::Write};
+
 use diff::DiffInputReceiver;
 use game::GameInputReceiver;
 use get_tr::GetTrInputReceiver;
@@ -24,7 +26,19 @@ pub fn derive_game(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 	let receiver = GameInputReceiver::from_derive_input(&input);
 
 	match receiver {
-		Ok(receiver) => receiver.into_token_stream().into(),
+		Ok(receiver) => {
+			let mut w = File::create(format!("./generated/{}.rs", receiver.ident)).unwrap();
+			let id = receiver.ident.to_string();
+			let tokens = receiver.into_token_stream();
+
+			w.write_all(tokens.to_string().as_bytes()).unwrap();
+
+			if id == "__" {
+				proc_macro2::TokenStream::new().into()
+			} else {
+				tokens.into()
+			}
+		}
 		Err(error) => error.write_errors().into(),
 	}
 }

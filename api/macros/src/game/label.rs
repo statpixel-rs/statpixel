@@ -32,7 +32,7 @@ impl Collection<'_> {
 		quote! {
 			.push_right_start(
 				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None)
+				#api ::canvas::body::Body::new(17., None, family)
 					#(#labels)*
 					.build()
 			)
@@ -46,7 +46,7 @@ impl Collection<'_> {
 		quote! {
 			.push_right_start(
 				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None)
+				#api ::canvas::body::Body::new(17., None, family)
 					#(#labels)*
 					.build()
 			)
@@ -60,7 +60,7 @@ impl Collection<'_> {
 		quote! {
 			.push_right_start(
 				&#api::canvas::shape::Sidebar,
-				#api::canvas::body::Body::new(17., None)
+				#api::canvas::body::Body::new(17., None, family)
 					#(#labels)*
 					.build()
 			)
@@ -77,7 +77,7 @@ impl Collection<'_> {
 		quote! {
 			.push_right_start(
 				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None)
+				#api ::canvas::body::Body::new(17., None, family)
 					#(#labels)*
 					.build()
 			)

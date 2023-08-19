@@ -510,6 +510,8 @@ display-changed-image-description = Reacties worden nu als afbeeldingen verzonde
 display-changed-compact-description = Reacties worden nu als compacte afbeeldingen verzonden.
 
 Image = Afbeelding
+ImageFaithful = Afbeelding (Faithful 32x Lettertype)
+ImageRoboto = Afbeelding (Roboto Lettertype)
 Compact = Compact
 Text = Tekst
 

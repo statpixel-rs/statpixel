@@ -18,7 +18,7 @@ pub async fn command<G: api::prelude::Game>(
 	uuid_lhs: Option<Uuid>,
 	uuid_rhs: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (format, background) = util::get_format_colour_from_input(ctx).await;
+	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
 		format::Display::Image | format::Display::Compact => {
@@ -49,6 +49,7 @@ pub async fn command<G: api::prelude::Game>(
 			let (png, mode): (Cow<_>, _) = {
 				let (mut surface, mode) = G::canvas_diff(
 					ctx,
+					family,
 					&data_lhs,
 					&data_rhs,
 					&session,

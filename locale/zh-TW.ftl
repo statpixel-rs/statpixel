@@ -510,6 +510,8 @@ display-changed-image-description = 回應將以適用的圖片形式傳送。
 display-changed-compact-description = 回應將以簡化圖片形式傳送。
 
 Image = 圖片
+ImageFaithful = 圖片（Faithful 32x 字體）
+ImageRoboto = 圖片（Roboto 字體）
 Compact = 簡化
 Text = 文字
 

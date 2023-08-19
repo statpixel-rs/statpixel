@@ -5,13 +5,16 @@ use chrono::{DateTime, Utc};
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
+use minecraft::style::Family;
 use skia_safe::Color;
 use translate::{context, tr_fmt, Error};
 
 use crate::{snapshot, util};
 
+#[allow(clippy::too_many_arguments)]
 pub async fn command<G: api::prelude::Game>(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	session: &Session,
 	background: Option<Color>,
@@ -53,7 +56,7 @@ pub async fn command<G: api::prelude::Game>(
 		snapshots_
 	};
 
-	let (buffer, mode) = G::project(ctx, snapshots, session, mode, kind, value, background)?;
+	let (buffer, mode) = G::project(ctx, family, snapshots, session, mode, kind, value, background)?;
 
 	Ok(Some((buffer.into(), mode)))
 }

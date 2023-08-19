@@ -12,7 +12,7 @@ use minecraft::{
 	calc,
 	colour::Colour,
 	paint::Paint,
-	style::MinecraftFont,
+	style::{Family, MinecraftFont},
 	text::{parse::minecraft_string, Text, ESCAPE},
 };
 use skia_safe::{textlayout::TextAlign, Color};
@@ -27,6 +27,7 @@ use super::{get_member_monthly_xp, get_monthly_xp, get_snapshots_multiple_of_wee
 #[allow(clippy::too_many_lines)]
 pub async fn top(
 	ctx: &context::Context<'_>,
+	family: Family,
 	guild: &Guild,
 	limit: usize,
 	after: DateTime<Utc>,
@@ -68,46 +69,53 @@ pub async fn top(
 	.collect::<Vec<_>>()
 	.await;
 
-	let mut canvas = Canvas::new(1_176.666_6)
-		.gap(7.)
-		.push_down(&shape::GuildXpTitle, shape::Title::from_guild(guild));
+	let mut canvas = Canvas::new(1_176.666_6, family).gap(7.).push_down(
+		&shape::GuildXpTitle,
+		shape::Title::from_guild(family, guild),
+	);
 
 	for (idx, (_, name, xp)) in members.iter().enumerate().take(limit / 2) {
 		canvas = canvas
 			.push_down_start(
 				&shape::LeaderboardPlace,
-				shape::LeaderboardPlace::from_usize(idx + 1),
+				shape::LeaderboardPlace::from_usize(family, idx + 1),
 			)
-			.push_right(&shape::GuildXpName, shape::LeaderboardName::from_text(name))
+			.push_right(
+				&shape::GuildXpName,
+				shape::LeaderboardName::from_text(family, name),
+			)
 			.push_right(
 				&shape::GuildXpValue,
-				shape::LeaderboardValue::from_value(ctx, xp),
+				shape::LeaderboardValue::from_value(ctx, family, xp),
 			);
 
 		if let Some((_, name, xp)) = members.get(idx + limit / 2) {
 			canvas = canvas
 				.push_right(
 					&shape::LeaderboardPlace,
-					shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
+					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
-				.push_right(&shape::GuildXpName, shape::LeaderboardName::from_text(name))
+				.push_right(
+					&shape::GuildXpName,
+					shape::LeaderboardName::from_text(family, name),
+				)
 				.push_right(
 					&shape::GuildXpValue,
-					shape::LeaderboardValue::from_value(ctx, xp),
+					shape::LeaderboardValue::from_value(ctx, family, xp),
 				);
 		} else {
 			canvas = canvas
 				.push_right(
 					&shape::LeaderboardPlace,
-					shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
+					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
 				.push_right(
 					&shape::GuildXpName,
-					shape::LeaderboardName::from_text("§7§oNone"),
+					shape::LeaderboardName::from_text(family, "§7§oNone"),
 				)
 				.push_right(
 					&shape::GuildXpValue,
-					shape::LeaderboardValue::from_value(ctx, &0),
+					shape::LeaderboardValue::from_value(ctx, family, &0),
 				);
 		};
 	}
@@ -117,27 +125,27 @@ pub async fn top(
 			canvas = canvas
 				.push_down_start(
 					&shape::LeaderboardPlace,
-					shape::LeaderboardPlace::from_usize(idx + 1),
+					shape::LeaderboardPlace::from_usize(family, idx + 1),
 				)
 				.push_right(
 					&shape::GuildXpName,
-					shape::LeaderboardName::from_text("§7§oNone"),
+					shape::LeaderboardName::from_text(family, "§7§oNone"),
 				)
 				.push_right(
 					&shape::GuildXpValue,
-					shape::LeaderboardValue::from_value(ctx, &0),
+					shape::LeaderboardValue::from_value(ctx, family, &0),
 				)
 				.push_right(
 					&shape::LeaderboardPlace,
-					shape::LeaderboardPlace::from_usize(idx + limit / 2 + 1),
+					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
 				.push_right(
 					&shape::GuildXpName,
-					shape::LeaderboardName::from_text("§7§oNone"),
+					shape::LeaderboardName::from_text(family, "§7§oNone"),
 				)
 				.push_right(
 					&shape::GuildXpValue,
-					shape::LeaderboardValue::from_value(ctx, &0),
+					shape::LeaderboardValue::from_value(ctx, family, &0),
 				);
 		}
 	}
@@ -150,6 +158,7 @@ pub async fn top(
 #[allow(clippy::too_many_lines)]
 pub async fn members(
 	ctx: &context::Context<'_>,
+	family: Family,
 	guild: &Guild,
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
@@ -158,8 +167,10 @@ pub async fn members(
 			|p| async {
 				match p.get_display_string_owned(ctx).await {
 					Ok(s) => {
-						let paragraph =
-							shape::Custom::from_text(&minecraft_string(&s).collect::<Vec<_>>());
+						let paragraph = shape::Custom::from_text(
+							family,
+							&minecraft_string(&s).collect::<Vec<_>>(),
+						);
 
 						Ok((shape::Custom::get_from_paragraph(&paragraph), paragraph))
 					}
@@ -199,9 +210,9 @@ pub async fn members(
 
 	member_rank_indices.sort_by_key(|(_, rank)| std::cmp::Reverse(*rank));
 
-	let mut canvas = Canvas::new(1_176.666_6).gap(7.).push_down(
+	let mut canvas = Canvas::new(1_176.666_6, family).gap(7.).push_down(
 		&shape::FullWidthBigTitle,
-		shape::FullWidthBigTitle::from_guild(ctx, guild),
+		shape::FullWidthBigTitle::from_guild(ctx, family, guild),
 	);
 
 	let mut iter = member_rank_indices.into_iter();
@@ -211,10 +222,13 @@ pub async fn members(
 		let mut last_rank = r;
 
 		if let Some((shape, paragraph)) = members.get_mut(i).and_then(std::option::Option::take) {
-			let text = shape::Title::from_text(&[Text {
-				text: "Guild Master",
-				..Default::default()
-			}]);
+			let text = shape::Title::from_text(
+				family,
+				&[Text {
+					text: "Guild Master",
+					..Default::default()
+				}],
+			);
 
 			canvas = canvas
 				.push_down_start(&shape::FullWidthTitle, text)
@@ -232,10 +246,13 @@ pub async fn members(
 			} else {
 				last_rank = r;
 
-				let text = shape::Title::from_text(&[Text {
-					text: &ranks_iter.next().unwrap().name,
-					..Default::default()
-				}]);
+				let text = shape::Title::from_text(
+					family,
+					&[Text {
+						text: &ranks_iter.next().unwrap().name,
+						..Default::default()
+					}],
+				);
 
 				canvas = canvas
 					.push_down_start(&shape::FullWidthTitle, text)
@@ -252,6 +269,7 @@ pub async fn members(
 #[allow(clippy::too_many_lines)]
 pub async fn general(
 	ctx: &context::Context<'_>,
+	family: Family,
 	guild: &Guild,
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
@@ -299,17 +317,17 @@ pub async fn general(
 		.map(|m| m.xp_history.iter().map(|h| h.1).sum::<u32>())
 		.sum::<u32>();
 
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
-		.push_down(&shape::Title, shape::Title::from_guild(guild))
+		.push_down(&shape::Title, shape::Title::from_guild(family, guild))
 		.push_down(
 			&shape::Subtitle,
 			if let Some(leader) = leader {
-				Body::new(20., TextAlign::Center)
+				Body::new(20., TextAlign::Center, family)
 					.extend_owned(minecraft_string(&leader))
 					.build()
 			} else {
-				Body::new(20., TextAlign::Center)
+				Body::new(20., TextAlign::Center, family)
 					.append(Text {
 						text: tr(ctx, "none").as_ref(),
 						paint: Paint::Gray,
@@ -323,23 +341,33 @@ pub async fn general(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&format!("{ESCAPE}6{}", level.0),
 				&calc::guild::get_curr_level_xp(guild.xp),
 				&calc::guild::get_level_xp(guild.xp),
 			),
 		)
-		.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, guild))
+		.push_right_start(
+			&shape::Sidebar,
+			shape::Sidebar::from_guild(ctx, family, guild),
+		)
 		.push_right_post_draw(
 			&shape::PreferredGames(&guild.preferred_games),
 			Body::empty(),
 		)
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
+			Body::from_bubble(
+				ctx,
+				family,
+				&guild.coins,
+				tr(ctx, "coins").as_ref(),
+				Paint::Gold,
+			),
 		)
 		.push_right(
 			&shape::Bubble,
-			Body::new(30., TextAlign::Center)
+			Body::new(30., TextAlign::Center, family)
 				.extend(&[
 					Text {
 						text: tr(ctx, "created-at").as_ref(),
@@ -365,6 +393,7 @@ pub async fn general(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&format!("{}/125", guild.members.len()),
 				tr(ctx, "members_label").as_ref(),
 				Paint::LightPurple,
@@ -374,6 +403,7 @@ pub async fn general(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&daily_xp,
 				tr(ctx, "daily-xp").as_ref(),
 				Paint::DarkGreen,
@@ -383,6 +413,7 @@ pub async fn general(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&weekly_xp,
 				tr(ctx, "weekly-xp").as_ref(),
 				Paint::DarkGreen,
@@ -392,6 +423,7 @@ pub async fn general(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&monthly_xp,
 				tr(ctx, "monthly-xp").as_ref(),
 				Paint::DarkGreen,
@@ -399,11 +431,11 @@ pub async fn general(
 		)
 		.push_down_start(
 			&shape::WideTallBubble,
-			shape::WideTallBubble::from_guild(ctx, guild, members.as_slice(), 0),
+			shape::WideTallBubble::from_guild(ctx, family, guild, members.as_slice(), 0),
 		)
 		.push_right(
 			&shape::WideTallBubble,
-			shape::WideTallBubble::from_guild(ctx, guild, members.as_slice(), 1),
+			shape::WideTallBubble::from_guild(ctx, family, guild, members.as_slice(), 1),
 		)
 		.build(None, background)
 		.unwrap();
@@ -414,6 +446,7 @@ pub async fn general(
 #[allow(clippy::too_many_lines)]
 pub async fn member(
 	ctx: &context::Context<'_>,
+	family: Family,
 	guild: &Guild,
 	player: &Player,
 	background: Option<Color>,
@@ -442,33 +475,43 @@ pub async fn member(
 	let daily_xp = member_data.xp_history[0].1;
 	let weekly_xp = member_data.xp_history.iter().map(|h| h.1).sum::<u32>();
 
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			Body::new(25., TextAlign::Center)
+			Body::new(25., TextAlign::Center, family)
 				.extend_owned(minecraft_string(&member))
 				.build(),
 		)
-		.push_down(&shape::Subtitle, shape::Subtitle::from_guild(guild))
+		.push_down(&shape::Subtitle, shape::Subtitle::from_guild(family, guild))
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&format!("{ESCAPE}6{}", level.0),
 				&calc::guild::get_curr_level_xp(guild.xp),
 				&calc::guild::get_level_xp(guild.xp),
 			),
 		)
-		.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, guild))
+		.push_right_start(
+			&shape::Sidebar,
+			shape::Sidebar::from_guild(ctx, family, guild),
+		)
 		.push_right_post_draw(&preferred, Body::empty())
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
+			Body::from_bubble(
+				ctx,
+				family,
+				&guild.coins,
+				tr(ctx, "coins").as_ref(),
+				Paint::Gold,
+			),
 		)
 		.push_right(
 			&shape::Bubble,
-			Body::new(30., TextAlign::Center)
+			Body::new(30., TextAlign::Center, family)
 				.extend(&[
 					Text {
 						text: tr(ctx, "created-at").as_ref(),
@@ -494,6 +537,7 @@ pub async fn member(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&format!("{}/125", guild.members.len()),
 				tr(ctx, "members_label").as_ref(),
 				Paint::LightPurple,
@@ -503,6 +547,7 @@ pub async fn member(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&daily_xp,
 				tr(ctx, "daily-xp").as_ref(),
 				Paint::DarkGreen,
@@ -512,6 +557,7 @@ pub async fn member(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&weekly_xp,
 				tr(ctx, "weekly-xp").as_ref(),
 				Paint::DarkGreen,
@@ -521,6 +567,7 @@ pub async fn member(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&member_xp.get(&player.uuid).copied().unwrap_or(0),
 				tr(ctx, "monthly-xp").as_ref(),
 				Paint::DarkGreen,
@@ -530,24 +577,33 @@ pub async fn member(
 	canvas = canvas
 		.push_down_start(
 			&shape::BubbleSubtitle,
-			shape::Subtitle::from_text(&[Text {
-				text: tr(ctx, "date").as_ref(),
-				..Default::default()
-			}]),
+			shape::Subtitle::from_text(
+				family,
+				&[Text {
+					text: tr(ctx, "date").as_ref(),
+					..Default::default()
+				}],
+			),
 		)
 		.push_right(
 			&shape::BubbleSubtitle,
-			shape::Subtitle::from_text(&[Text {
-				text: tr(ctx, "weekly-gexp").as_ref(),
-				..Default::default()
-			}]),
+			shape::Subtitle::from_text(
+				family,
+				&[Text {
+					text: tr(ctx, "weekly-gexp").as_ref(),
+					..Default::default()
+				}],
+			),
 		)
 		.push_right(
 			&shape::BubbleSubtitle,
-			shape::Subtitle::from_text(&[Text {
-				text: tr(ctx, "position").as_ref(),
-				..Default::default()
-			}]),
+			shape::Subtitle::from_text(
+				family,
+				&[Text {
+					text: tr(ctx, "position").as_ref(),
+					..Default::default()
+				}],
+			),
 		);
 
 	for (idx, (date, xp)) in member_data.xp_history.iter().enumerate() {
@@ -562,50 +618,54 @@ pub async fn member(
 				&shape::BubbleSubtitle,
 				shape::Subtitle::from_formatted(
 					ctx,
+					family,
 					&date.and_time(NaiveTime::MIN).and_utc(),
 					Paint::White,
 				),
 			)
 			.push_right(
 				&shape::BubbleSubtitle,
-				shape::Subtitle::from_formatted(ctx, xp, Paint::DarkGreen),
+				shape::Subtitle::from_formatted(ctx, family, xp, Paint::DarkGreen),
 			)
 			.push_right(
 				&shape::BubbleSubtitle,
-				shape::Subtitle::from_text(&[
-					Text {
-						text: "#",
-						paint: match position {
-							1 => Paint::Gold,
-							2 => Paint::Gray,
-							3 => Paint::Bronze,
-							_ => Paint::White,
+				shape::Subtitle::from_text(
+					family,
+					&[
+						Text {
+							text: "#",
+							paint: match position {
+								1 => Paint::Gold,
+								2 => Paint::Gray,
+								3 => Paint::Bronze,
+								_ => Paint::White,
+							},
+							font: MinecraftFont::Bold,
+							..Default::default()
 						},
-						font: MinecraftFont::Bold,
-						..Default::default()
-					},
-					Text {
-						text: position.to_formatted(ctx).as_ref(),
-						paint: match position {
-							1 => Paint::Gold,
-							2 => Paint::Gray,
-							3 => Paint::Bronze,
-							_ => Paint::White,
+						Text {
+							text: position.to_formatted(ctx).as_ref(),
+							paint: match position {
+								1 => Paint::Gold,
+								2 => Paint::Gray,
+								3 => Paint::Bronze,
+								_ => Paint::White,
+							},
+							font: MinecraftFont::Bold,
+							..Default::default()
 						},
-						font: MinecraftFont::Bold,
-						..Default::default()
-					},
-					Text {
-						text: "/",
-						paint: Paint::Gray,
-						..Default::default()
-					},
-					Text {
-						text: guild.members.len().to_formatted(ctx).as_ref(),
-						paint: Paint::Gray,
-						..Default::default()
-					},
-				]),
+						Text {
+							text: "/",
+							paint: Paint::Gray,
+							..Default::default()
+						},
+						Text {
+							text: guild.members.len().to_formatted(ctx).as_ref(),
+							paint: Paint::Gray,
+							..Default::default()
+						},
+					],
+				),
 			);
 	}
 

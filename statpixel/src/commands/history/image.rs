@@ -5,6 +5,7 @@ use chrono::{DateTime, Utc};
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
+use minecraft::style::Family;
 use skia_safe::Color;
 use translate::{context, tr_fmt, Error};
 
@@ -13,6 +14,7 @@ use crate::{snapshot, util};
 #[inline]
 pub async fn command<G: api::prelude::Game>(
 	ctx: &context::Context<'_>,
+	family: Family,
 	mode: Option<G::Mode>,
 	player: &Player,
 	session: &Session,
@@ -52,7 +54,7 @@ pub async fn command<G: api::prelude::Game>(
 		snapshots_
 	};
 
-	let (buffer, mode) = G::chart(ctx, snapshots, session, background, mode)?;
+	let (buffer, mode) = G::chart(ctx, family, snapshots, session, background, mode)?;
 
 	Ok(Some((buffer.into(), mode)))
 }

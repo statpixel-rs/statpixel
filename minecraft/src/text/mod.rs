@@ -4,7 +4,10 @@ pub mod rank;
 
 use skia_safe::textlayout::TextStyle;
 
-use crate::{paint::Paint, style::MinecraftFont};
+use crate::{
+	paint::Paint,
+	style::{Family, MinecraftFont},
+};
 pub use draw::draw;
 
 pub const ESCAPE: char = '§';
@@ -39,17 +42,11 @@ impl<'t> Text<'t> {
 	};
 
 	#[must_use]
-	pub fn get_style(&self, paint: Paint, default_size: f32) -> TextStyle {
+	pub fn get_style(&self, family: Family, paint: Paint, default_size: f32) -> TextStyle {
 		let size = self.size.unwrap_or(default_size);
-		let mut style = self.font.get_style(paint, size);
+		let mut style = self.font.get_style(family, paint, size);
 
-		if self.font == MinecraftFont::Icon {
-			style.set_font_size(size * 0.75);
-			style.set_baseline_shift(0.);
-		} else {
-			style.set_font_size(size);
-		}
-
+		style.set_font_size(size);
 		style.set_foreground_paint(paint.into());
 		style
 	}

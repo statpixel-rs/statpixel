@@ -512,6 +512,8 @@ display-changed-image-description = Svar vil nu blive sendt som billeder, når d
 display-changed-compact-description = Svar vil nu blive sendt som komprimerede billeder.
 
 Image = Billede
+ImageFaithful = Billede (Faithful 32x Font)
+ImageRoboto = Billede (Roboto Font)
 Compact = Komprimeret
 Text = Tekst
 

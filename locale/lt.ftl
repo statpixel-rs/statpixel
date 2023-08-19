@@ -510,6 +510,8 @@ display-changed-image-description = Atsakymai dabar bus siunčiami paveikslėlia
 display-changed-compact-description = Atsakymai dabar bus siunčiami sutrauktais paveikslėliais.
 
 Image = Paveikslėlis
+ImageFaithful = Paveikslėlis (Faithful 32x Šriftas)
+ImageRoboto = Paveikslėlis (Roboto Šriftas)
 Compact = Sutrauktas
 Text = Tekstas
 

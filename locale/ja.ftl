@@ -510,6 +510,8 @@ display-changed-image-description = 応答が適用される場合に画像と�
 display-changed-compact-description = 応答がコンパクトな画像として送信されるようになりました。
 
 Image = 画像
+ImageFaithful = 画像 (Faithful 32x フォント)
+ImageRoboto = 画像 (Roboto フォント)
 Compact = コンパクト
 Text = テキスト
 

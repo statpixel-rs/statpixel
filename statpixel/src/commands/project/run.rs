@@ -13,13 +13,13 @@ pub async fn command<G: api::prelude::Game>(
 	kind: Option<<G::Mode as Mode>::Kind>,
 	value: Option<f64>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, session) = commands::get_player_session(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
 	let Some((png, mode)) =
-		super::image::command::<G>(ctx, &player, &session, background, mode, kind, value).await?
+		super::image::command::<G>(ctx, family, &player, &session, background, mode, kind, value).await?
 	else {
 		return Ok(());
 	};

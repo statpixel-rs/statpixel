@@ -12,13 +12,13 @@ pub async fn command<G: api::prelude::Game>(
 	uuid: Option<Uuid>,
 	mode: Option<G::Mode>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, session) = commands::get_player_username_session(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
 	let Some((png, mode)) =
-		super::image::command::<G>(ctx, mode, &player, &session, background).await?
+		super::image::command::<G>(ctx, family, mode, &player, &session, background).await?
 	else {
 		return Ok(());
 	};

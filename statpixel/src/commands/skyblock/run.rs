@@ -9,7 +9,7 @@ pub async fn auctions(
 	uuid: Option<Uuid>,
 	profile_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -17,6 +17,7 @@ pub async fn auctions(
 
 	let png = super::image::auctions(
 		ctx,
+		family,
 		&player,
 		&data,
 		&session,
@@ -52,7 +53,7 @@ pub async fn profile(
 	uuid: Option<Uuid>,
 	profile_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -60,6 +61,7 @@ pub async fn profile(
 
 	let (png, profile) = super::image::profile(
 		ctx,
+		family,
 		&player,
 		&data,
 		&session,
@@ -100,12 +102,13 @@ pub async fn bank(
 	uuid: Option<Uuid>,
 	profile_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, data) = crate::commands::get_player_data(ctx, uuid, username).await?;
 
 	player.increase_searches(ctx).await?;
 
-	let (png, profile) = super::image::bank(ctx, &data, background, profile_id, profile).await?;
+	let (png, profile) =
+		super::image::bank(ctx, family, &data, background, profile_id, profile).await?;
 
 	let (row, id) =
 		SkyBlockMode::as_root(ctx, player.uuid, Some(profile.id), Some(SkyBlockMode::Bank));
@@ -133,7 +136,7 @@ pub async fn networth(
 	uuid: Option<Uuid>,
 	profile_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -141,6 +144,7 @@ pub async fn networth(
 
 	let (png, profile) = super::image::networth(
 		ctx,
+		family,
 		&player,
 		&data,
 		&session,
@@ -182,7 +186,7 @@ pub async fn pets(
 	uuid: Option<Uuid>,
 	profile_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (player, data, session, skin, suffix) =
 		crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -190,6 +194,7 @@ pub async fn pets(
 
 	let (png, profile) = super::image::pets(
 		ctx,
+		family,
 		&player,
 		&data,
 		&session,
@@ -221,9 +226,9 @@ pub async fn pets(
 
 #[allow(clippy::too_many_lines)]
 pub async fn bazaar(ctx: &context::Context<'_>, product: String) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 
-	let png = super::image::bazaar(ctx, product.as_str(), background).await?;
+	let png = super::image::bazaar(ctx, family, product.as_str(), background).await?;
 
 	ctx.send(
 		poise::CreateReply::new()
@@ -245,7 +250,7 @@ macro_rules! inventory_command {
 			uuid: Option<Uuid>,
 			profile_id: Option<Uuid>,
 		) -> Result<(), Error> {
-			let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+			let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 			let (player, data, session, skin, suffix) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -253,6 +258,7 @@ macro_rules! inventory_command {
 
 			let (png, profile) = super::image::$fn(
 				ctx,
+				family,
 				&player,
 				&data,
 				&session,

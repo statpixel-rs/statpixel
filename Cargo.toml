@@ -66,7 +66,7 @@ features = ["alloc", "std", "clock", "serde", "unstable-locales"]
 [workspace.dependencies.diesel]
 version = "2"
 # Figure out how to make `without-deprecated` compile
-features = ["uuid", "chrono", "serde_json"]
+features = ["uuid", "chrono", "serde_json", "postgres_backend"]
 
 [workspace.dependencies.diesel-async]
 version = "0.3"

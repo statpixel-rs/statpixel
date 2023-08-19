@@ -506,6 +506,8 @@ display-changed-image-description = 응답이 이제 해당하는 경우 이미�
 display-changed-compact-description = 응답이 이제 압축된 이미지로 전송됩니다.
 
 Image = 이미지
+ImageFaithful = 이미지 (Faithful 32x 글꼴)
+ImageRoboto = 이미지 (Roboto 글꼴)
 Compact = 압축
 Text = 텍스트
 

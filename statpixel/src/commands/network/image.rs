@@ -7,6 +7,7 @@ use api::{
 use minecraft::{
 	calc::network,
 	paint::Paint,
+	style::Family,
 	text::{parse::minecraft_text, Text},
 };
 use skia_safe::Color;
@@ -18,6 +19,7 @@ const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
 #[allow(clippy::too_many_arguments)]
 pub fn network(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	guild: Option<&Guild>,
 	data: &Data,
@@ -37,24 +39,25 @@ pub fn network(
 	let member = guild.and_then(|g| g.members.iter().find(|m| m.uuid == player.uuid));
 
 	let ctx = &ctx;
-	let mut surface = Canvas::new(720.)
+	let mut surface = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
 		.push_down(
 			&shape::Subtitle,
 			if let Some(guild) = guild {
-				shape::Subtitle::from_guild(guild)
+				shape::Subtitle::from_guild(family, guild)
 			} else {
-				shape::Subtitle::from_label(ctx, &LABEL, "member-profile")
+				shape::Subtitle::from_label(ctx, family, &LABEL, "member-profile")
 			},
 		)
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&network::get_level_format(level),
 				&network::get_curr_level_xp(data.xp),
 				&network::get_level_xp(data.xp),
@@ -62,7 +65,7 @@ pub fn network(
 		)
 		.push_right_start(
 			&canvas::shape::Sidebar,
-			canvas::body::Body::new(17., None)
+			canvas::body::Body::new(17., None, family)
 				.append_item(
 					&::translate::tr(ctx, "experience"),
 					&data.xp.to_formatted(ctx),
@@ -100,15 +103,22 @@ pub fn network(
 				)
 				.build(),
 		)
-		.push_right_post_draw(&status, Body::from_status(ctx, session))
+		.push_right_post_draw(&status, Body::from_status(ctx, family, session))
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &data.quests, tr(ctx, "quests").as_ref(), Paint::Gold),
+			Body::from_bubble(
+				ctx,
+				family,
+				&data.quests,
+				tr(ctx, "quests").as_ref(),
+				Paint::Gold,
+			),
 		)
 		.push_right(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&data.challenges,
 				tr(ctx, "challenges").as_ref(),
 				Paint::Gold,
@@ -118,6 +128,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&data.achivement_points,
 				tr(ctx, "achievement-points").as_ref(),
 				Paint::Gold,
@@ -127,6 +138,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble_small(
 				ctx,
+				family,
 				&data.language,
 				tr(ctx, "language").as_ref(),
 				Paint::Aqua,
@@ -136,6 +148,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&data.gifting.gifts_given,
 				tr(ctx, "gifts-given").as_ref(),
 				Paint::LightPurple,
@@ -145,6 +158,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&data.gifting.ranks_given,
 				tr(ctx, "ranks-given").as_ref(),
 				Paint::LightPurple,
@@ -154,6 +168,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&member.map_or(0, |m| m.xp_history[0].1),
 				tr(ctx, "daily-xp").as_ref(),
 				Paint::DarkGreen,
@@ -163,6 +178,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&member.map_or(0, |m| m.xp_history.iter().map(|(_, x)| x).sum::<u32>()),
 				tr(ctx, "weekly-xp").as_ref(),
 				Paint::DarkGreen,
@@ -172,6 +188,7 @@ pub fn network(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&member.map_or(0, |m| m.quests),
 				tr(ctx, "guild-quests").as_ref(),
 				Paint::DarkGreen,

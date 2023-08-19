@@ -149,5 +149,6 @@ diesel::table! {
 		premium_until -> Nullable<Timestamptz>,
 		boosts -> Int2,
 		max_boosts -> Int2,
+		font -> Int2,
 	}
 }

@@ -8,15 +8,17 @@ use api::{
 use minecraft::{
 	calc::network,
 	paint::Paint,
-	text::{parse::minecraft_text, Text},
+	text::{parse::minecraft_text, Text}, style::Family,
 };
 use translate::context;
 
 const LABEL: [Text; 1] = minecraft_text("§e§lRecent Games");
 
 #[allow(clippy::too_many_lines)]
+#[allow(clippy::too_many_arguments)]
 pub fn recent(
 	ctx: &context::Context<'_>,
+	family: Family,
 	data: &Data,
 	games: &[Game],
 	session: &Session,
@@ -33,17 +35,18 @@ pub fn recent(
 	);
 
 	let ctx = &ctx;
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
-		.push_down(&shape::Subtitle, shape::Subtitle::from_text(&LABEL))
+		.push_down(&shape::Subtitle, shape::Subtitle::from_text(family, &LABEL))
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&network::get_level_format(level),
 				&network::get_curr_level_xp(data.xp),
 				&network::get_level_xp(data.xp),
@@ -51,7 +54,7 @@ pub fn recent(
 		)
 		.push_right_start(
 			&canvas::shape::Sidebar,
-			canvas::body::Body::new(17., None)
+			canvas::body::Body::new(17., None, family)
 				.append_item(
 					&::translate::tr(ctx, "experience"),
 					&data.xp.to_formatted(ctx),
@@ -89,7 +92,7 @@ pub fn recent(
 				)
 				.build(),
 		)
-		.push_right_post_draw(&status, Body::from_status(ctx, session));
+		.push_right_post_draw(&status, Body::from_status(ctx, family, session));
 
 	let games = games
 		.iter()
@@ -97,7 +100,7 @@ pub fn recent(
 		.collect::<Vec<_>>();
 
 	for (shape, game) in &games {
-		canvas = canvas.push_checked(shape, shape::RecentGame::from_game(ctx, game));
+		canvas = canvas.push_checked(shape, shape::RecentGame::from_game(ctx, family, game));
 	}
 
 	let mut surface = canvas.build(None, background).unwrap();

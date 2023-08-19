@@ -509,6 +509,8 @@ display-changed-image-description = Yanıtlar artık uygun olduğunda resim olar
 display-changed-compact-description = Yanıtlar artık yoğunlaştırılmış resim olarak gönderilecek.
 
 Image = Resim
+ImageFaithful = Resim (Faithful 32x Yazı Tipi)
+ImageRoboto = Resim (Roboto Yazı Tipi)
 Compact = Yoğunlaştırılmış
 Text = Metin
 

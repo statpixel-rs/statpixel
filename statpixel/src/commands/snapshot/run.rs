@@ -29,7 +29,7 @@ pub async fn command<G: api::prelude::Game>(
 	past: chrono::Duration,
 ) -> Result<(), Error> {
 	let after = Utc::now() - past;
-	let (format, background) = util::get_format_colour_from_input(ctx).await;
+	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
 		format::Display::Image | format::Display::Compact => {
@@ -60,6 +60,7 @@ pub async fn command<G: api::prelude::Game>(
 			let (png, mode): (Cow<_>, _) = {
 				let (mut surface, mode) = G::canvas_diff(
 					ctx,
+					family,
 					data_lhs,
 					&data_rhs,
 					&session,
@@ -134,7 +135,7 @@ pub async fn guild_command(
 	after: DateTime<Utc>,
 	guild_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = util::get_image_options_from_input(ctx).await;
 	let guild = match commands::get_guild(ctx, name, uuid, username, guild_id).await {
 		Result::Ok(guild) => guild,
 		Result::Err(Error::NotLinked) => {
@@ -215,17 +216,17 @@ pub async fn guild_command(
 			false,
 		);
 
-		let mut canvas = Canvas::new(720.)
+		let mut canvas = Canvas::new(720., family)
 			.gap(7.)
-			.push_down(&shape::Title, shape::Title::from_guild(&guild))
+			.push_down(&shape::Title, shape::Title::from_guild(family, &guild))
 			.push_down(
 				&shape::Subtitle,
 				if let Some(leader) = leader {
-					Body::new(20., TextAlign::Center)
+					Body::new(20., TextAlign::Center, family)
 						.extend_owned(parse::minecraft_string(&leader))
 						.build()
 				} else {
-					Body::new(20., TextAlign::Center)
+					Body::new(20., TextAlign::Center, family)
 						.append(Text {
 							text: tr(ctx, "none").as_ref(),
 							paint: Paint::Gray,
@@ -239,23 +240,33 @@ pub async fn guild_command(
 				&progress,
 				shape::WideBubbleProgress::from_level_progress(
 					ctx,
+					family,
 					&format!("{}6{}", minecraft::ESCAPE, level.0),
 					&calc::guild::get_curr_level_xp(guild.xp),
 					&calc::guild::get_level_xp(guild.xp),
 				),
 			)
-			.push_right_start(&shape::Sidebar, shape::Sidebar::from_guild(ctx, &guild))
+			.push_right_start(
+				&shape::Sidebar,
+				shape::Sidebar::from_guild(ctx, family, &guild),
+			)
 			.push_right_post_draw(
 				&shape::PreferredGames(&guild.preferred_games),
 				Body::empty(),
 			)
 			.push_down_start(
 				&shape::Bubble,
-				Body::from_bubble(ctx, &guild.coins, tr(ctx, "coins").as_ref(), Paint::Gold),
+				Body::from_bubble(
+					ctx,
+					family,
+					&guild.coins,
+					tr(ctx, "coins").as_ref(),
+					Paint::Gold,
+				),
 			)
 			.push_right(
 				&shape::Bubble,
-				Body::new(30., TextAlign::Center)
+				Body::new(30., TextAlign::Center, family)
 					.extend(&[
 						Text {
 							text: tr(ctx, "created-at").as_ref(),
@@ -281,6 +292,7 @@ pub async fn guild_command(
 				&shape::Bubble,
 				Body::from_bubble(
 					ctx,
+					family,
 					&format!("{}/125", guild.members.len()),
 					tr(ctx, "members").as_ref(),
 					Paint::LightPurple,
@@ -290,6 +302,7 @@ pub async fn guild_command(
 				&shape::Bubble,
 				Body::from_bubble(
 					ctx,
+					family,
 					&daily_xp,
 					tr(ctx, "daily-xp").as_ref(),
 					Paint::DarkGreen,
@@ -299,6 +312,7 @@ pub async fn guild_command(
 				&shape::Bubble,
 				Body::from_bubble(
 					ctx,
+					family,
 					&weekly_xp,
 					tr(ctx, "weekly-xp").as_ref(),
 					Paint::DarkGreen,
@@ -308,6 +322,7 @@ pub async fn guild_command(
 				&shape::Bubble,
 				Body::from_bubble(
 					ctx,
+					family,
 					&xp_since,
 					tr(ctx, "xp-since").as_ref(),
 					Paint::DarkGreen,
@@ -315,11 +330,11 @@ pub async fn guild_command(
 			)
 			.push_down_start(
 				&shape::WideTallBubble,
-				shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 0),
+				shape::WideTallBubble::from_guild(ctx, family, &guild, members.as_slice(), 0),
 			)
 			.push_right(
 				&shape::WideTallBubble,
-				shape::WideTallBubble::from_guild(ctx, &guild, members.as_slice(), 1),
+				shape::WideTallBubble::from_guild(ctx, family, &guild, members.as_slice(), 1),
 			)
 			.build(None, background)
 			.unwrap();

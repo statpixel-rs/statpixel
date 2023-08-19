@@ -3,6 +3,7 @@ use std::fmt;
 use skia_safe::{
 	textlayout::Paragraph, Color, ISize, Paint, Path, Point, RRect, Rect, Size, Surface,
 };
+use minecraft::style::Family;
 
 use super::shape::Shape;
 
@@ -18,6 +19,7 @@ pub struct Canvas<'c> {
 	path: Path,
 	text: Vec<Item<'c>>,
 	inset: f32,
+	family: Family,
 }
 
 pub type Item<'c> = (Rect, Paragraph, bool, Point, Option<&'c dyn Shape>);
@@ -54,7 +56,7 @@ impl<'c> Canvas<'c> {
 	pub const ITEM_BACKGROUND: Color = Color::from_argb(128, 15, 24, 32);
 
 	#[must_use]
-	pub fn new(max_width: impl Into<Option<f32>>) -> Self {
+	pub fn new(max_width: impl Into<Option<f32>>, family: Family) -> Self {
 		Self {
 			tl: Point::default(),
 			size: Point::default(),
@@ -63,6 +65,7 @@ impl<'c> Canvas<'c> {
 			path: Path::new(),
 			text: vec![],
 			inset: INSET,
+			family,
 		}
 	}
 
@@ -311,7 +314,7 @@ impl<'c> Canvas<'c> {
 			);
 
 			if let Some(shape) = shape {
-				shape.post_draw(canvas, &bounds, &insets);
+				shape.post_draw(canvas, &bounds, &insets, self.family);
 			}
 		}
 

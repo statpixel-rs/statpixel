@@ -27,7 +27,7 @@ use diesel::{ExpressionMethods, QueryDsl};
 use minecraft::{
 	calc::{network, sky_block},
 	paint::Paint,
-	style::MinecraftFont,
+	style::{Family, MinecraftFont},
 	text::{
 		parse::{minecraft_string, minecraft_text},
 		Text,
@@ -70,6 +70,7 @@ fn round_corners(surface: &mut Surface) {
 #[allow(clippy::type_complexity)]
 fn create<const BUBBLE: bool>(
 	ctx: &context::Context<'_>,
+	family: Family,
 	series: Vec<(Cow<str>, Vec<(DateTime<Utc>, f64)>)>,
 	range_x: Range<DateTime<Utc>>,
 	range_y: Range<f64>,
@@ -117,7 +118,7 @@ fn create<const BUBBLE: bool>(
 		.bold_line_style(foreground.mix(0.1))
 		.axis_style(foreground.mix(0.5))
 		.label_style(
-			("Minecraft", 20)
+			(family.as_str(), 20)
 				.into_text_style(&backend)
 				.with_color(foreground),
 		)
@@ -164,7 +165,7 @@ fn create<const BUBBLE: bool>(
 		.border_style(style::colors::TRANSPARENT)
 		.background_style(BACKGROUND.mix(0.6))
 		.label_font(
-			("Minecraft", 17)
+			(family.as_str(), 17)
 				.into_text_style(&backend)
 				.with_color(style::colors::WHITE),
 		)
@@ -190,6 +191,7 @@ fn create<const BUBBLE: bool>(
 /// (buy, sell)
 pub fn apply_bazaar_data(
 	ctx: &context::Context<'_>,
+	family: Family,
 	surface: &mut Surface,
 	text: &[Text],
 	products: &[(f64, i32, f64, i32, DateTime<Utc>)],
@@ -213,12 +215,13 @@ pub fn apply_bazaar_data(
 	let buy_avg_week = products.iter().take(60 * 24 * 7).map(|p| p.0).sum::<f64>() / length;
 	let sell_avg_week = products.iter().take(60 * 24 * 7).map(|p| p.2).sum::<f64>() / length;
 
-	Canvas::new(720.)
-		.push_right(&shape::LongTitle, shape::Title::from_text(text))
+	Canvas::new(720., family)
+		.push_right(&shape::LongTitle, shape::Title::from_text(family, text))
 		.push_down_start(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sell_avg_hour,
 				tr(ctx, "last-hour").as_ref(),
 				Paint::Red,
@@ -226,12 +229,19 @@ pub fn apply_bazaar_data(
 		)
 		.push_right(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &sell_avg_day, tr(ctx, "last-day").as_ref(), Paint::Red),
+			Body::from_bubble(
+				ctx,
+				family,
+				&sell_avg_day,
+				tr(ctx, "last-day").as_ref(),
+				Paint::Red,
+			),
 		)
 		.push_right(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sell_avg_week,
 				tr(ctx, "last-week").as_ref(),
 				Paint::Red,
@@ -241,6 +251,7 @@ pub fn apply_bazaar_data(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&buy_avg_hour,
 				tr(ctx, "last-hour").as_ref(),
 				Paint::Green,
@@ -250,6 +261,7 @@ pub fn apply_bazaar_data(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&buy_avg_day,
 				tr(ctx, "last-day").as_ref(),
 				Paint::Green,
@@ -259,6 +271,7 @@ pub fn apply_bazaar_data(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&buy_avg_week,
 				tr(ctx, "last-week").as_ref(),
 				Paint::Green,
@@ -267,8 +280,10 @@ pub fn apply_bazaar_data(
 		.build_with(surface, None, background);
 }
 
+#[allow(clippy::too_many_arguments)]
 pub async fn auctions(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	data: &Data,
 	session: &Session,
@@ -285,26 +300,27 @@ pub async fn auctions(
 		false,
 	);
 
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
 		.push_down(
 			&shape::Subtitle,
-			shape::Subtitle::from_label(ctx, &LABEL, "player-auctions"),
+			shape::Subtitle::from_label(ctx, family, &LABEL, "player-auctions"),
 		)
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&network::get_level_format(level),
 				&network::get_curr_level_xp(data.xp),
 				&network::get_level_xp(data.xp),
 			),
 		)
-		.push_right_start_post_draw(&status, Body::from_status(ctx, session));
+		.push_right_start_post_draw(&status, Body::from_status(ctx, family, session));
 
 	for auction in auctions.iter() {
 		let mut text = minecraft_string(&auction.item.name).collect::<Vec<_>>();
@@ -327,7 +343,7 @@ pub async fn auctions(
 
 		canvas = canvas.push_checked(
 			&shape::TallBubble,
-			Body::build_slice(text.as_slice(), 23., TextAlign::Center),
+			Body::build_slice(family, text.as_slice(), 23., TextAlign::Center),
 		);
 	}
 
@@ -338,6 +354,7 @@ pub async fn auctions(
 #[allow(clippy::too_many_arguments)]
 pub async fn profile(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	data: &Data,
 	session: &Session,
@@ -376,20 +393,21 @@ pub async fn profile(
 	);
 
 	let ctx = &ctx;
-	let mut surface = Canvas::new(720.)
+	let mut surface = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
 		.push_down(
 			&shape::Subtitle,
-			shape::Subtitle::from_label_str(&LABEL, name),
+			shape::Subtitle::from_label_str(family, &LABEL, name),
 		)
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&sky_block::get_level_format(level),
 				&sky_block::get_curr_level_xp(member.leveling.xp),
 				&sky_block::get_level_xp(member.leveling.xp),
@@ -397,7 +415,7 @@ pub async fn profile(
 		)
 		.push_right_start(
 			&canvas::shape::Sidebar,
-			canvas::body::Body::new(17., None)
+			canvas::body::Body::new(17., None, family)
 				.append_item(
 					&::translate::tr(ctx, "coins"),
 					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
@@ -438,11 +456,12 @@ pub async fn profile(
 				)
 				.build(),
 		)
-		.push_right_post_draw(&status, Body::from_status(ctx, session))
+		.push_right_post_draw(&status, Body::from_status(ctx, family, session))
 		.push_checked(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.farming),
 				tr(ctx, "farming").as_ref(),
 				Paint::Gold,
@@ -452,6 +471,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.mining),
 				tr(ctx, "mining").as_ref(),
 				Paint::Gray,
@@ -461,6 +481,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.combat),
 				tr(ctx, "combat").as_ref(),
 				Paint::Gray,
@@ -470,6 +491,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.foraging),
 				tr(ctx, "foraging").as_ref(),
 				Paint::Green,
@@ -479,6 +501,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.fishing),
 				tr(ctx, "fishing-skill").as_ref(),
 				Paint::White,
@@ -488,6 +511,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.enchanting),
 				tr(ctx, "enchanting").as_ref(),
 				Paint::DarkPurple,
@@ -497,6 +521,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.alchemy),
 				tr(ctx, "alchemy").as_ref(),
 				Paint::Yellow,
@@ -506,6 +531,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.taming),
 				tr(ctx, "taming").as_ref(),
 				Paint::Gray,
@@ -515,6 +541,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_dungeoneering(
 					member.dungeons.types.catacombs.experience,
 				),
@@ -526,6 +553,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.carpentry),
 				tr(ctx, "carpentry").as_ref(),
 				Paint::Red,
@@ -535,6 +563,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.runecrafting),
 				tr(ctx, "runecrafting").as_ref(),
 				Paint::LightPurple,
@@ -544,6 +573,7 @@ pub async fn profile(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&sky_block::skills::get_level_general(member.skills.social),
 				tr(ctx, "social").as_ref(),
 				Paint::Green,
@@ -557,6 +587,7 @@ pub async fn profile(
 
 pub async fn bank(
 	ctx: &context::Context<'_>,
+	family: Family,
 	data: &Data,
 	background: Option<skia_safe::Color>,
 	profile_id: Option<Uuid>,
@@ -619,6 +650,7 @@ pub async fn bank(
 
 	let mut buffer = chart::u64::create::<true>(
 		ctx,
+		family,
 		vec![(
 			tr(ctx, "bank-balance"),
 			bank.transactions
@@ -636,6 +668,7 @@ pub async fn bank(
 
 	chart::apply_title(
 		ctx,
+		family,
 		&mut surface,
 		data,
 		&[Text {
@@ -654,6 +687,7 @@ pub async fn bank(
 #[allow(clippy::too_many_arguments)]
 pub async fn networth(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	data: &Data,
 	session: &Session,
@@ -699,20 +733,21 @@ pub async fn networth(
 		false,
 	);
 
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
 		.push_down(
 			&shape::Subtitle,
-			shape::Subtitle::from_label_str(&LABEL, name),
+			shape::Subtitle::from_label_str(family, &LABEL, name),
 		)
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&sky_block::get_level_format(level),
 				&sky_block::get_curr_level_xp(member.leveling.xp),
 				&sky_block::get_level_xp(member.leveling.xp),
@@ -722,6 +757,7 @@ pub async fn networth(
 			&shape::Bubble,
 			Body::from_bubble(
 				ctx,
+				family,
 				&(networth.value + bank + purse),
 				"Networth",
 				Paint::Gold,
@@ -729,9 +765,9 @@ pub async fn networth(
 		)
 		.push_down(
 			&shape::Bubble,
-			Body::from_bubble(ctx, &bank, "Bank", Paint::Gold),
+			Body::from_bubble(ctx, family, &bank, "Bank", Paint::Gold),
 		)
-		.push_right_start_post_draw(&status, Body::from_status(ctx, session));
+		.push_right_start_post_draw(&status, Body::from_status(ctx, family, session));
 
 	let categories = networth
 		.categories
@@ -782,8 +818,14 @@ pub async fn networth(
 		let rows = left_items.len().max(right_items.len());
 
 		canvas = canvas
-			.push_down_start(&shape::Title, shape::Title::from_category(ctx, left))
-			.push_right(&shape::Title, shape::Title::from_category(ctx, right));
+			.push_down_start(
+				&shape::Title,
+				shape::Title::from_category(ctx, family, left),
+			)
+			.push_right(
+				&shape::Title,
+				shape::Title::from_category(ctx, family, right),
+			);
 
 		for i in 0..rows {
 			let left = left_items.get(i);
@@ -795,6 +837,7 @@ pub async fn networth(
 					.push_right(
 						&shape::NetworthName,
 						Body::build_slice(
+							family,
 							&minecraft_string(&item.name).collect::<Vec<_>>(),
 							17.,
 							None,
@@ -809,7 +852,12 @@ pub async fn networth(
 			if let Some((item, slot)) = right {
 				canvas = canvas.push_right_post_draw(slot, Body::empty()).push_right(
 					&shape::NetworthName,
-					Body::build_slice(&minecraft_string(&item.name).collect::<Vec<_>>(), 17., None),
+					Body::build_slice(
+						family,
+						&minecraft_string(&item.name).collect::<Vec<_>>(),
+						17.,
+						None,
+					),
 				);
 			} else {
 				canvas = canvas
@@ -828,6 +876,7 @@ pub async fn networth(
 #[allow(clippy::too_many_arguments)]
 pub async fn pets(
 	ctx: &context::Context<'_>,
+	family: Family,
 	player: &Player,
 	data: &Data,
 	session: &Session,
@@ -868,20 +917,21 @@ pub async fn pets(
 		false,
 	);
 
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
 		.push_down(
 			&shape::Subtitle,
-			shape::Subtitle::from_label_str(&LABEL, name),
+			shape::Subtitle::from_label_str(family, &LABEL, name),
 		)
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&sky_block::get_level_format(level),
 				&sky_block::get_curr_level_xp(member.leveling.xp),
 				&sky_block::get_level_xp(member.leveling.xp),
@@ -889,7 +939,7 @@ pub async fn pets(
 		)
 		.push_right_start(
 			&canvas::shape::Sidebar,
-			canvas::body::Body::new(17., None)
+			canvas::body::Body::new(17., None, family)
 				.append_item(
 					&::translate::tr(ctx, "coins"),
 					&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
@@ -930,7 +980,7 @@ pub async fn pets(
 				)
 				.build(),
 		)
-		.push_right_post_draw(&status, Body::from_status(ctx, session));
+		.push_right_post_draw(&status, Body::from_status(ctx, family, session));
 
 	let slots = items
 		.iter()
@@ -960,6 +1010,7 @@ pub async fn pets(
 #[allow(clippy::too_many_lines)]
 pub async fn bazaar(
 	ctx: &context::Context<'_>,
+	family: Family,
 	product: &str,
 	background: Option<skia_safe::Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
@@ -999,6 +1050,7 @@ pub async fn bazaar(
 
 	let mut buffer = create::<false>(
 		ctx,
+		family,
 		vec![
 			(
 				::translate::tr(ctx, "sell-price"),
@@ -1028,6 +1080,7 @@ pub async fn bazaar(
 
 	apply_bazaar_data(
 		ctx,
+		family,
 		&mut surface,
 		&[
 			Text {
@@ -1060,6 +1113,7 @@ macro_rules! inventory_command {
 		#[allow(clippy::too_many_arguments)]
 		pub async fn $fn(
 			ctx: &context::Context<'_>,
+			family: Family,
 			player: &Player,
 			data: &Data,
 			session: &Session,
@@ -1103,24 +1157,24 @@ macro_rules! inventory_command {
 			);
 
 			let ctx = &ctx;
-			let mut canvas = Canvas::new(720.)
+			let mut canvas = Canvas::new(720., family)
 				.gap(7.)
 				.push_down(
 					&shape::Title,
-					shape::Title::from_text(&text::from_data(
-						&data,
-						&data.username,
-						suffix.as_deref(),
-					)),
+					shape::Title::from_text(
+						family,
+						&text::from_data(&data, &data.username, suffix.as_deref()),
+					),
 				)
 				.push_down(
 					&shape::Subtitle,
-					shape::Subtitle::from_label_str(&LABEL, name),
+					shape::Subtitle::from_label_str(family, &LABEL, name),
 				)
 				.push_down_post_draw(
 					&progress,
 					shape::WideBubbleProgress::from_level_progress(
 						ctx,
+						family,
 						&sky_block::get_level_format(level),
 						&sky_block::get_curr_level_xp(member.leveling.xp),
 						&sky_block::get_level_xp(member.leveling.xp),
@@ -1128,7 +1182,7 @@ macro_rules! inventory_command {
 				)
 				.push_right_start(
 					&canvas::shape::Sidebar,
-					canvas::body::Body::new(17., None)
+					canvas::body::Body::new(17., None, family)
 						.append_item(
 							&::translate::tr(ctx, "coins"),
 							&canvas::label::ToFormatted::to_formatted(&member.coin_purse, ctx),
@@ -1178,7 +1232,7 @@ macro_rules! inventory_command {
 						)
 						.build(),
 				)
-				.push_right_post_draw(&status, Body::from_status(ctx, &session));
+				.push_right_post_draw(&status, Body::from_status(ctx, family, &session));
 
 			let slots = items
 				.iter()

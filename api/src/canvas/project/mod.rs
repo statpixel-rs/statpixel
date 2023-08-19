@@ -8,7 +8,11 @@ use crate::canvas::{
 	shape::{BUBBLE_HEIGHT, GAP},
 };
 use chrono::{DateTime, Utc};
-use minecraft::{paint::Paint, style::MinecraftFont, text::Text};
+use minecraft::{
+	paint::Paint,
+	style::{Family, MinecraftFont},
+	text::Text,
+};
 use plotters::{
 	prelude::{
 		BitMapBackend, ChartBuilder, IntoDrawingArea, LabelAreaPosition, Rectangle,
@@ -78,30 +82,32 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 	skia_safe::surfaces::wrap_pixels(&info, buffer, 750 * 4, None).ok_or(Error::Canvas)
 }
 
+#[allow(clippy::too_many_arguments)]
 #[allow(clippy::cast_precision_loss)]
 pub fn apply_bubbles(
 	surface: &mut Surface,
 	ctx: &Context<'_>,
+	family: Family,
 	kind: &str,
 	value: &impl ToFormatted,
 	acc: &impl ToFormatted,
 	date: &impl ToFormatted,
 	background: Option<skia_safe::Color>,
 ) {
-	crate::canvas::Canvas::new(720.)
+	crate::canvas::Canvas::new(720., family)
 		.gap(7.)
 		.tl((0., INSET + 50.))
 		.push(
 			&shape::Bubble,
-			body::Body::from_bubble(ctx, value, kind, Paint::Aqua),
+			body::Body::from_bubble(ctx, family, value, kind, Paint::Aqua),
 		)
 		.push_right(
 			&shape::Bubble,
-			body::Body::from_bubble(ctx, acc, tr(ctx, "accuracy").as_ref(), Paint::Gold),
+			body::Body::from_bubble(ctx, family, acc, tr(ctx, "accuracy").as_ref(), Paint::Gold),
 		)
 		.push_right(
 			&shape::Bubble,
-			body::Body::new(30., TextAlign::Center)
+			body::Body::new(30., TextAlign::Center, family)
 				.extend(&[
 					Text {
 						text: tr(ctx, "estimate").as_ref(),
@@ -154,6 +160,7 @@ macro_rules! impl_project_create {
 			#[allow(clippy::missing_errors_doc)]
 			pub fn create(
 				ctx: &Context<'_>,
+				family: Family,
 				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>, DateTime<Utc>, $ty)>,
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,
@@ -201,7 +208,7 @@ macro_rules! impl_project_create {
 					.bold_line_style(foreground.mix(0.1))
 					.axis_style(foreground.mix(0.5))
 					.label_style(
-						("Minecraft", 20)
+						(family.as_str(), 20)
 							.into_text_style(&backend)
 							.with_color(foreground),
 					)
@@ -272,7 +279,7 @@ macro_rules! impl_project_create {
 					.border_style(style::colors::TRANSPARENT)
 					.background_style(&BACKGROUND.mix(0.6))
 					.label_font(
-						("Minecraft", 17)
+						(family.as_str(), 17)
 							.into_text_style(&backend)
 							.with_color(style::colors::WHITE),
 					)

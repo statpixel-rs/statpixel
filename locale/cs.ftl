@@ -510,6 +510,8 @@ display-changed-image-description = Odpovědi budou nyní odeslány jako obrázk
 display-changed-compact-description = Odpovědi budou nyní odeslány jako kompaktní obrázky.
 
 Image = Obrázek
+ImageFaithful = Obrázek (Faithful 32x Font)
+ImageRoboto = Obrázek (Roboto Font)
 Compact = Kompaktní
 Text = Text
 

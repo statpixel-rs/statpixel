@@ -510,6 +510,8 @@ display-changed-image-description = Răspunsurile vor fi trimise acum ca imagini
 display-changed-compact-description = Răspunsurile vor fi trimise acum ca imagini compacte.
 
 Image = Imagine
+ImageFaithful = Imagine (Faithful 32x Font)
+ImageRoboto = Imagine (Roboto Font)
 Compact = Compact
 Text = Text
 

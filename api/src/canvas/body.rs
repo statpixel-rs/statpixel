@@ -1,6 +1,10 @@
 use std::borrow::Cow;
 
-use minecraft::{paint::Paint, style::MinecraftFont, text::Text};
+use minecraft::{
+	paint::Paint,
+	style::{Family, MinecraftFont},
+	text::Text,
+};
 use skia_safe::{
 	textlayout::{FontCollection, Paragraph, ParagraphBuilder, ParagraphStyle, TextAlign},
 	FontMgr,
@@ -18,6 +22,7 @@ pub struct Body {
 	paragraph: ParagraphBuilder,
 	first: bool,
 	size: f32,
+	family: Family,
 }
 
 impl Body {
@@ -29,7 +34,7 @@ impl Body {
 
 	#[inline]
 	#[must_use]
-	pub fn new(size: f32, align: impl Into<Option<TextAlign>>) -> Self {
+	pub fn new(size: f32, align: impl Into<Option<TextAlign>>, family: Family) -> Self {
 		let style = {
 			let mut style = ParagraphStyle::new();
 
@@ -48,6 +53,7 @@ impl Body {
 			paragraph: ParagraphBuilder::new(&style, font),
 			first: true,
 			size,
+			family,
 		}
 	}
 
@@ -57,7 +63,7 @@ impl Body {
 		self.first = false;
 
 		for blob in text {
-			let style = blob.get_style(blob.paint, self.size);
+			let style = blob.get_style(self.family, blob.paint, self.size);
 
 			self.paragraph.push_style(&style);
 			self.paragraph.add_text(blob.text);
@@ -72,7 +78,7 @@ impl Body {
 		self.first = false;
 
 		for blob in text {
-			let style = blob.get_style(blob.paint, self.size);
+			let style = blob.get_style(self.family, blob.paint, self.size);
 
 			self.paragraph.push_style(&style);
 			self.paragraph.add_text(blob.text);
@@ -84,7 +90,7 @@ impl Body {
 	#[inline]
 	#[must_use]
 	pub fn append(mut self, blob: Text) -> Self {
-		let style = blob.get_style(blob.paint, self.size);
+		let style = blob.get_style(self.family, blob.paint, self.size);
 
 		self.first = false;
 		self.paragraph.push_style(&style);
@@ -126,11 +132,12 @@ impl Body {
 	#[must_use]
 	pub fn from_bubble_small(
 		ctx: &context::Context<'_>,
+		family: Family,
 		value: &impl ToFormatted,
 		label: &str,
 		paint: Paint,
 	) -> Paragraph {
-		Self::new(25., TextAlign::Center)
+		Self::new(25., TextAlign::Center, family)
 			.extend(&[
 				Text {
 					text: label,
@@ -156,11 +163,12 @@ impl Body {
 	#[must_use]
 	pub fn from_bubble(
 		ctx: &context::Context<'_>,
+		family: Family,
 		value: &impl ToFormatted,
 		label: &str,
 		paint: Paint,
 	) -> Paragraph {
-		Self::new(40., TextAlign::Center)
+		Self::new(40., TextAlign::Center, family)
 			.extend(&[
 				Text {
 					text: label,
@@ -185,8 +193,13 @@ impl Body {
 
 	#[must_use]
 	#[allow(clippy::needless_pass_by_value)]
-	pub fn from_bubble_cow(value: Cow<str>, label: &str, paint: Paint) -> Paragraph {
-		Self::new(40., TextAlign::Center)
+	pub fn from_bubble_cow(
+		family: Family,
+		value: Cow<str>,
+		label: &str,
+		paint: Paint,
+	) -> Paragraph {
+		Self::new(40., TextAlign::Center, family)
 			.extend(&[
 				Text {
 					text: label,
@@ -210,11 +223,11 @@ impl Body {
 	}
 
 	#[must_use]
-	pub fn from_status(ctx: &context::Context<'_>, session: &Session) -> Paragraph {
+	pub fn from_status(ctx: &context::Context<'_>, family: Family, session: &Session) -> Paragraph {
 		if session.online {
 			let mode = session.game_mode.as_deref().map(Mode::from);
 
-			Self::new(18., TextAlign::Center)
+			Self::new(18., TextAlign::Center, family)
 				.extend(&[
 					Text {
 						text: &tr(ctx, "online"),
@@ -242,16 +255,17 @@ impl Body {
 				])
 				.build()
 		} else {
-			Self::new(25., TextAlign::Center).build()
+			Self::new(25., TextAlign::Center, family).build()
 		}
 	}
 
 	pub fn build_slice(
+		family: Family,
 		slice: &[Text],
 		size: f32,
 		align: impl Into<Option<TextAlign>>,
 	) -> Paragraph {
-		Self::new(size, align).extend(slice).build()
+		Self::new(size, align, family).extend(slice).build()
 	}
 
 	#[inline]

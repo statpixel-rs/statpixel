@@ -804,6 +804,7 @@ impl ToTokens for GameInputReceiver {
 
 						let mut buffer = #api::canvas::project::f64::create(
 							ctx,
+							family,
 							::std::vec![(
 								#translate::tr(ctx, #tr),
 								snapshots
@@ -821,7 +822,7 @@ impl ToTokens for GameInputReceiver {
 
 						let mut surface = #api::canvas::project::canvas(&mut buffer)?;
 
-						#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
+						#api::canvas::chart::apply_title(ctx, family, &mut surface, &last.1, &LABEL, background);
 
 						let r = #api::percent::PercentU32((#api::canvas::project::line::compute_r(&series, &line) * 100.) as u32);
 
@@ -829,6 +830,7 @@ impl ToTokens for GameInputReceiver {
 							#api::canvas::project::apply_bubbles(
 								&mut surface,
 								ctx,
+								family,
 								#translate::tr(ctx, #tr).as_ref(),
 								&predict_y,
 								&r,
@@ -839,6 +841,7 @@ impl ToTokens for GameInputReceiver {
 							#api::canvas::project::apply_bubbles(
 								&mut surface,
 								ctx,
+								family,
 								#translate::tr(ctx, #tr).as_ref(),
 								&predict_y,
 								&r,
@@ -926,6 +929,7 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn project(
 					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
 					snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 					kind: #kind_enum,
 					value: Option<f64>,
@@ -942,6 +946,7 @@ impl ToTokens for GameInputReceiver {
 
 				pub fn chart(
 					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
 					snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 					background: Option<#skia::Color>,
 				) -> Result<::std::vec::Vec<u8>, #translate::Error> {
@@ -966,6 +971,7 @@ impl ToTokens for GameInputReceiver {
 
 					let mut buffer = #api::canvas::chart::u32::create::<true>(
 						ctx,
+						family,
 						v,
 						x_range,
 						((f64::from(lower) * (11. / 16.)) as u32)..((f64::from(upper) * (16. / 15.)) as u32),
@@ -975,7 +981,7 @@ impl ToTokens for GameInputReceiver {
 
 					let mut surface = #api::canvas::chart::canvas(&mut buffer)?;
 
-					#api::canvas::chart::apply_title(ctx, &mut surface, &last.1, &LABEL, background);
+					#api::canvas::chart::apply_title(ctx, family, &mut surface, &last.1, &LABEL, background);
 					#api::canvas::chart::round_corners(&mut surface);
 
 					Ok(#api::canvas::to_png(&mut surface))
@@ -997,9 +1003,11 @@ impl ToTokens for GameInputReceiver {
 					max
 				}
 
+				#[allow(clippy::too_many_arguments)]
 				pub fn canvas<'c>(
 					&self,
 					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
 					mut canvas: #api::canvas::Canvas<'c>,
 					data: &'c #api::player::data::Data,
 					session: &'c #api::player::status::Session,
@@ -1013,12 +1021,13 @@ impl ToTokens for GameInputReceiver {
 					canvas
 						.push_down(
 							&#api::canvas::shape::Subtitle,
-							#api::canvas::shape::Subtitle::from_label(ctx, &LABEL, #overall_ident::tr()),
+							#api::canvas::shape::Subtitle::from_label(ctx, family, &LABEL, #overall_ident::tr()),
 						)
 						.push_down_post_draw(
 							progress,
 							#api::canvas::shape::WideBubbleProgress::from_level_progress(
 								ctx,
+								family,
 								&#calc::get_level_format(level),
 								&#calc::get_curr_level_xp(xp),
 								&#calc::get_level_xp(xp),
@@ -1027,13 +1036,15 @@ impl ToTokens for GameInputReceiver {
 						#labels_sum
 						.push_right_post_draw(
 							status,
-							#api::canvas::body::Body::from_status(ctx, session)
+							#api::canvas::body::Body::from_status(ctx, family, session)
 						)
 						#blocks_sum
 				}
 
+				#[allow(clippy::too_many_arguments)]
 				pub fn canvas_diff<'c>(
 					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
 					mut canvas: #api::canvas::Canvas<'c>,
 					data_lhs: &'c #api::player::data::Data,
 					data_rhs: &'c #api::player::data::Data,
@@ -1060,12 +1071,13 @@ impl ToTokens for GameInputReceiver {
 					canvas
 						.push_down(
 							&#api::canvas::shape::Subtitle,
-							#api::canvas::shape::Subtitle::from_label(ctx, &LABEL, #overall_ident::tr()),
+							#api::canvas::shape::Subtitle::from_label(ctx, family, &LABEL, #overall_ident::tr()),
 						)
 						.push_down_post_draw(
 							progress,
 							#api::canvas::shape::WideBubbleProgress::from_level_diff(
 								ctx,
+								family,
 								&#calc::get_level_format(level),
 								&#calc::get_total_xp(xp),
 								positive,
@@ -1075,7 +1087,7 @@ impl ToTokens for GameInputReceiver {
 						#labels_diff_sum
 						.push_right_post_draw(
 							status,
-							#api::canvas::body::Body::from_status(ctx, session)
+							#api::canvas::body::Body::from_status(ctx, family, session)
 						)
 						#blocks_diff_sum
 				}
@@ -1089,6 +1101,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#mode_enum::#ty => #ty::project(
 						ctx,
+						family,
 						snapshots,
 						kind,
 						value,
@@ -1103,6 +1116,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#mode_enum::#ty => #ty::chart(
 						ctx,
+						family,
 						snapshots,
 						background,
 					),
@@ -1116,6 +1130,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#mode_enum::#ty => game.#id.canvas(
 						ctx,
+						family,
 						canvas,
 						data,
 						session,
@@ -1131,6 +1146,7 @@ impl ToTokens for GameInputReceiver {
 				quote! {
 					#mode_enum::#ty => #ty::canvas_diff(
 						ctx,
+						family,
 						canvas,
 						data_lhs,
 						data_rhs,
@@ -1302,6 +1318,7 @@ impl ToTokens for GameInputReceiver {
 					#[allow(clippy::too_many_arguments)]
 					fn canvas_diff(
 						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
 						data_lhs: &#api::player::data::Data,
 						data_rhs: &#api::player::data::Data,
 						session: &#api::player::status::Session,
@@ -1315,17 +1332,17 @@ impl ToTokens for GameInputReceiver {
 						let is_different = data_lhs.uuid != data_rhs.uuid;
 
 						let mode = #mode_enum::get_mode(mode, session);
-						let mut canvas = #api::canvas::Canvas::new(720.)
+						let mut canvas = #api::canvas::Canvas::new(720., family)
 							.gap(7.)
 							.push_down(
 								&#api::canvas::shape::Title,
-								#api::canvas::shape::Title::from_text(&#api::canvas::text::from_data(&data_rhs, &data_rhs.username, suffix)),
+								#api::canvas::shape::Title::from_text(family, &#api::canvas::text::from_data(&data_rhs, &data_rhs.username, suffix)),
 							);
 
 						if is_different {
 							canvas = canvas.push_down(
 								&#api::canvas::shape::Subtitle,
-								#api::canvas::shape::Subtitle::from_text(&#api::canvas::text::from_data(&data_lhs, &data_lhs.username, None)),
+								#api::canvas::shape::Subtitle::from_text(family, &#api::canvas::text::from_data(&data_lhs, &data_lhs.username, None)),
 							);
 						}
 
@@ -1354,6 +1371,7 @@ impl ToTokens for GameInputReceiver {
 							#mode_enum::#overall_ident => {
 								#overall_ident::canvas_diff(
 									ctx,
+									family,
 									canvas,
 									data_lhs,
 									data_rhs,
@@ -1368,8 +1386,10 @@ impl ToTokens for GameInputReceiver {
 						(canvas.build(None, background).unwrap(), mode)
 					}
 
+					#[allow(clippy::too_many_arguments)]
 					fn canvas(
 						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
 						data: &#api::player::data::Data,
 						session: &#api::player::status::Session,
 						skin: &#skia::Image,
@@ -1380,11 +1400,11 @@ impl ToTokens for GameInputReceiver {
 						let game = &data.stats.#path_to_game;
 
 						let mode = #mode_enum::get_mode(mode, session);
-						let mut canvas = #api::canvas::Canvas::new(720.)
+						let mut canvas = #api::canvas::Canvas::new(720., family)
 							.gap(7.)
 							.push_down(
 								&#api::canvas::shape::Title,
-								#api::canvas::shape::Title::from_text(&#api::canvas::text::from_data(&data, &data.username, suffix)),
+								#api::canvas::shape::Title::from_text(family, &#api::canvas::text::from_data(&data, &data.username, suffix)),
 							);
 
 						let (xp, level, progress) = {
@@ -1406,6 +1426,7 @@ impl ToTokens for GameInputReceiver {
 							#mode_enum::#overall_ident => {
 								#overall_ident.canvas(
 									ctx,
+									family,
 									canvas,
 									data,
 									session,
@@ -1421,6 +1442,7 @@ impl ToTokens for GameInputReceiver {
 
 					fn chart(
 						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
 						snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 						session: &#api::player::status::Session,
 						background: Option<#skia::Color>,
@@ -1432,6 +1454,7 @@ impl ToTokens for GameInputReceiver {
 							#mode_enum::#overall_ident => {
 								#overall_ident::chart(
 									ctx,
+									family,
 									snapshots,
 									background,
 								)
@@ -1440,8 +1463,10 @@ impl ToTokens for GameInputReceiver {
 						}?, mode))
 					}
 
+					#[allow(clippy::too_many_arguments)]
 					fn project(
 						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
 						snapshots: ::std::vec::Vec<(#chrono::DateTime<#chrono::Utc>, #api::player::data::Data)>,
 						session: &#api::player::status::Session,
 						mode: Option<Self::Mode>,
@@ -1456,6 +1481,7 @@ impl ToTokens for GameInputReceiver {
 							#mode_enum::#overall_ident => {
 								#overall_ident::project(
 									ctx,
+									family,
 									snapshots,
 									kind,
 									value,

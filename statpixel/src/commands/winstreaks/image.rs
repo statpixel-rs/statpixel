@@ -8,7 +8,7 @@ use api::{
 use minecraft::{
 	calc::network,
 	paint::Paint,
-	style::MinecraftFont,
+	style::{Family, MinecraftFont},
 	text::{parse::minecraft_text, Text},
 };
 use skia_safe::textlayout::TextAlign;
@@ -25,6 +25,7 @@ struct WinStreak {
 #[allow(clippy::too_many_lines)]
 pub fn winstreaks(
 	ctx: &context::Context<'_>,
+	family: Family,
 	data: &Data,
 	session: &Session,
 	skin: &skia_safe::Image,
@@ -206,17 +207,18 @@ pub fn winstreaks(
 	win_streaks.drain(9..);
 
 	let ctx = &ctx;
-	let mut canvas = Canvas::new(720.)
+	let mut canvas = Canvas::new(720., family)
 		.gap(7.)
 		.push_down(
 			&shape::Title,
-			shape::Title::from_text(&text::from_data(data, &data.username, suffix)),
+			shape::Title::from_text(family, &text::from_data(data, &data.username, suffix)),
 		)
-		.push_down(&shape::Subtitle, shape::Subtitle::from_text(&LABEL))
+		.push_down(&shape::Subtitle, shape::Subtitle::from_text(family, &LABEL))
 		.push_down_post_draw(
 			&progress,
 			shape::WideBubbleProgress::from_level_progress(
 				ctx,
+				family,
 				&network::get_level_format(level),
 				&network::get_curr_level_xp(data.xp),
 				&network::get_level_xp(data.xp),
@@ -224,7 +226,7 @@ pub fn winstreaks(
 		)
 		.push_right_start(
 			&canvas::shape::Sidebar,
-			canvas::body::Body::new(17., None)
+			canvas::body::Body::new(17., None, family)
 				.append_item(
 					&::translate::tr(ctx, "experience"),
 					&data.xp.to_formatted(ctx),
@@ -262,12 +264,12 @@ pub fn winstreaks(
 				)
 				.build(),
 		)
-		.push_right_post_draw(&status, Body::from_status(ctx, session));
+		.push_right_post_draw(&status, Body::from_status(ctx, family, session));
 
 	for winstreak in &win_streaks {
 		canvas = canvas.push_checked(
 			&shape::TallBubble,
-			Body::new(40., TextAlign::Center)
+			Body::new(40., TextAlign::Center, family)
 				.extend_owned(winstreak.game.as_text().iter().map(|t| Text {
 					text: t.text,
 					paint: t.paint,

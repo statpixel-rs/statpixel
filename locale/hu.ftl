@@ -511,6 +511,8 @@ display-changed-image-description = A válaszok mostantól képekként lesznek e
 display-changed-compact-description = A válaszok mostantól tömörített képekként lesznek elküldve.
 
 Image = Kép
+ImageFaithful = Kép (Faithful 32x Betűtípus)
+ImageRoboto = Kép (Roboto Betűtípus)
 Compact = Tömörített
 Text = Szöveg
 

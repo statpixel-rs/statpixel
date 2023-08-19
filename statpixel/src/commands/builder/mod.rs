@@ -9,7 +9,7 @@ use api::{
 	player::DEFAULT_SKIN,
 	Data, Player, Session,
 };
-use minecraft::paint::Paint;
+use minecraft::{paint::Paint, style::Family};
 use translate::{context, tr, tr_fmt, Context};
 
 use poise::serenity_prelude::{
@@ -287,7 +287,15 @@ pub async fn handler(
 			game_type: None,
 			game_mode: None,
 		};
-		let bytes = build::build(ctx, &id.state.shapes, &data, &session, &DEFAULT_SKIN, None)?;
+		let bytes = build::build(
+			ctx,
+			Family::default(),
+			&id.state.shapes,
+			&data,
+			&session,
+			&DEFAULT_SKIN,
+			None,
+		)?;
 
 		ctx.send(
 			poise::CreateReply::new()
@@ -306,7 +314,17 @@ pub async fn handler(
 pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Result<(), Error> {
 	let (_, data, session, skin, _) =
 		super::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
-	let bytes = build::build(ctx, &state.shapes, &data, &session, &skin, None)?;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
+
+	let bytes = build::build(
+		ctx,
+		family,
+		&state.shapes,
+		&data,
+		&session,
+		&skin,
+		background,
+	)?;
 
 	let id = api::id::command(api::command::Id::Builder {
 		shapes: state.shapes,
@@ -793,6 +811,7 @@ pub async fn modal_handler(
 
 	let bytes = {
 		let data = Data::placeholder();
+		let (_, family, background) = crate::util::get_image_options_from_input(local_ctx).await;
 		let session = Session {
 			online: false,
 			game_type: None,
@@ -801,11 +820,12 @@ pub async fn modal_handler(
 
 		build::build(
 			local_ctx,
+			family,
 			&id.state.shapes,
 			&data,
 			&session,
 			&DEFAULT_SKIN,
-			None,
+			background,
 		)
 	}?;
 

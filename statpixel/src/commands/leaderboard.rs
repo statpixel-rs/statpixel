@@ -52,7 +52,7 @@ pub async fn leaderboard(
 
 	let ctx = &context::Context::from_poise(&ctx);
 
-	let (format, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (format, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let leaderboard = {
 		let leaderboards = api::leaderboard::get().await?;
 		let Some(leaderboard) = leaderboards.into_iter().find(|l| l.display_name == board) else {
@@ -92,9 +92,9 @@ pub async fn leaderboard(
 	match format {
 		Display::Image | Display::Compact => {
 			let png: Cow<_> = {
-				let mut canvas = Canvas::new(720.).gap(7.).push_down(
+				let mut canvas = Canvas::new(720., family).gap(7.).push_down(
 					&shape::LeaderboardTitle,
-					Body::new(24., TextAlign::Center)
+					Body::new(24., TextAlign::Center, family)
 						.extend(leaderboard.game.as_text())
 						.extend(&[
 							Text {
@@ -125,11 +125,12 @@ pub async fn leaderboard(
 					canvas = canvas
 						.push_down_start(
 							&shape::LeaderboardPlace,
-							shape::LeaderboardPlace::from_usize(idx + 1),
+							shape::LeaderboardPlace::from_usize(family, idx + 1),
 						)
 						.push_right(
 							&shape::LeaderboardName,
 							Body::build_slice(
+								family,
 								&text::from_data(player, &player.username, None),
 								20.,
 								None,
@@ -137,7 +138,7 @@ pub async fn leaderboard(
 						)
 						.push_right(
 							&shape::LeaderboardValue,
-							shape::LeaderboardValue::from_value(ctx, &value),
+							shape::LeaderboardValue::from_value(ctx, family, &value),
 						);
 				}
 

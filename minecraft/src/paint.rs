@@ -5,7 +5,7 @@ use plotters::style::RGBColor;
 use quote::quote;
 use skia_safe::Color;
 
-macro_rules! paint_colour {
+macro_rules! colour {
 	($name: ident, $colour: expr) => {
 		pub static $name: Lazy<skia_safe::Paint> = Lazy::new(|| {
 			let mut paint = skia_safe::Paint::default();
@@ -22,27 +22,27 @@ macro_rules! paint_colour {
 }
 
 // Minecraft `Paint` colours
-paint_colour!(BLACK, (255, 0, 0, 0));
-paint_colour!(DARK_BLUE, (255, 0, 0, 170));
-paint_colour!(DARK_GREEN, (255, 0, 170, 0));
-paint_colour!(DARK_AQUA, (255, 0, 170, 170));
-paint_colour!(DARK_RED, (255, 170, 0, 0));
-paint_colour!(DARK_PURPLE, (255, 170, 0, 170));
-paint_colour!(GOLD, (255, 255, 170, 0));
-paint_colour!(GRAY, (255, 170, 170, 170));
-paint_colour!(DARK_GRAY, (255, 85, 85, 85));
-paint_colour!(BLUE, (255, 85, 85, 255));
-paint_colour!(GREEN, (255, 85, 255, 85));
-paint_colour!(AQUA, (255, 85, 255, 255));
-paint_colour!(RED, (255, 255, 85, 85));
-paint_colour!(LIGHT_PURPLE, (255, 255, 85, 255));
-paint_colour!(YELLOW, (255, 255, 255, 85));
-paint_colour!(WHITE, (255, 255, 255, 255));
-paint_colour!(BRONZE, (255, 205, 127, 50));
+colour!(BLACK, (255, 0, 0, 0));
+colour!(DARK_BLUE, (255, 0, 0, 170));
+colour!(DARK_GREEN, (255, 0, 170, 0));
+colour!(DARK_AQUA, (255, 0, 170, 170));
+colour!(DARK_RED, (255, 170, 0, 0));
+colour!(DARK_PURPLE, (255, 170, 0, 170));
+colour!(GOLD, (255, 255, 170, 0));
+colour!(GRAY, (255, 170, 170, 170));
+colour!(DARK_GRAY, (255, 85, 85, 85));
+colour!(BLUE, (255, 85, 85, 255));
+colour!(GREEN, (255, 85, 255, 85));
+colour!(AQUA, (255, 85, 255, 255));
+colour!(RED, (255, 255, 85, 85));
+colour!(LIGHT_PURPLE, (255, 255, 85, 255));
+colour!(YELLOW, (255, 255, 255, 85));
+colour!(WHITE, (255, 255, 255, 255));
+colour!(BRONZE, (255, 205, 127, 50));
 
 // Utility colours
-paint_colour!(BACKGROUND, (128, 15, 24, 32));
-paint_colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
+colour!(BACKGROUND, (128, 15, 24, 32));
+colour!(CANVAS_BACKGROUND, (255, 31, 48, 64));
 
 #[derive(
 	serde::Serialize,

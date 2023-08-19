@@ -7,6 +7,7 @@ use crate::{canvas::label::ToFormatted, player::data::Data};
 use chrono::{DateTime, Utc};
 use minecraft::{
 	paint::Paint,
+	style::Family,
 	text::{parse::minecraft_string, rank::Rank, Text},
 };
 use plotters::{
@@ -38,6 +39,7 @@ macro_rules! impl_chart_create {
 			/// Returns an error if the image could not be created.
 			pub fn create<const BUBBLE: bool>(
 				ctx: &Context<'_>,
+				family: Family,
 				series: Vec<(Cow<str>, Vec<(DateTime<Utc>, $ty)>)>,
 				range_x: Range<DateTime<Utc>>,
 				range_y: Range<$ty>,
@@ -84,7 +86,7 @@ macro_rules! impl_chart_create {
 					.bold_line_style(foreground.mix(0.1))
 					.axis_style(foreground.mix(0.5))
 					.label_style(
-						("Minecraft", 20)
+						(family.as_str(), 20)
 							.into_text_style(&backend)
 							.with_color(foreground),
 					)
@@ -133,7 +135,7 @@ macro_rules! impl_chart_create {
 					.border_style(&style::colors::TRANSPARENT)
 					.background_style(&BACKGROUND.mix(0.6))
 					.label_font(
-						("Minecraft", 17)
+						(family.as_str(), 17)
 							.into_text_style(&backend)
 							.with_color(style::colors::WHITE),
 					)
@@ -196,6 +198,7 @@ pub fn canvas(buffer: &mut [u8]) -> Result<Borrows<Surface>, Error> {
 
 pub fn apply_title(
 	ctx: &Context<'_>,
+	family: Family,
 	surface: &mut Surface,
 	data: &Data,
 	label: &[Text],
@@ -233,8 +236,8 @@ pub fn apply_title(
 		..Default::default()
 	});
 
-	super::Canvas::new(720.)
-		.push_right(&shape::LongTitle, shape::Title::from_text(&text))
+	super::Canvas::new(720., family)
+		.push_right(&shape::LongTitle, shape::Title::from_text(family, &text))
 		.build_with(surface, None, background);
 }
 

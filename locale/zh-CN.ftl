@@ -510,6 +510,8 @@ display-changed-image-description = 响应现在会在适用的情况下以图�
 display-changed-compact-description = 响应现在会以紧凑的图片形式发送。
 
 Image = 图片
+ImageFaithful = 图片（Faithful 32x 字体）
+ImageRoboto = 图片（Roboto 字体）
 Compact = 紧凑
 Text = 文本
 

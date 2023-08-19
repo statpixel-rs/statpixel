@@ -13,7 +13,7 @@ use super::{body::Body, CORNER_RADIUS};
 
 use minecraft::{
 	paint::Paint,
-	style::MinecraftFont,
+	style::{Family, MinecraftFont},
 	text::{parse::minecraft_string, Text, ESCAPE},
 };
 use skia_safe::{
@@ -30,7 +30,7 @@ pub const GAP: f32 = 7.;
 pub trait Shape {
 	fn draw(&self, path: &mut Path, bounds: &Rect);
 	#[allow(unused_variables)]
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {}
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, family: Family) {}
 	fn size(&self) -> Size;
 	fn v_align(&self) -> bool;
 	fn insets(&self) -> Point {
@@ -83,16 +83,20 @@ pub struct WideBubbleProgress(pub f32, pub [Color; 2], pub bool);
 
 impl Custom {
 	#[must_use]
-	pub fn from_text_large(text: &[Text]) -> Paragraph {
-		let mut paragraph = Body::new(25., TextAlign::Center).extend(text).build();
+	pub fn from_text_large(family: Family, text: &[Text]) -> Paragraph {
+		let mut paragraph = Body::new(25., TextAlign::Center, family)
+			.extend(text)
+			.build();
 
 		paragraph.layout(f32::MAX);
 		paragraph
 	}
 
 	#[must_use]
-	pub fn from_text(text: &[Text]) -> Paragraph {
-		let mut paragraph = Body::new(20., TextAlign::Center).extend(text).build();
+	pub fn from_text(family: Family, text: &[Text]) -> Paragraph {
+		let mut paragraph = Body::new(20., TextAlign::Center, family)
+			.extend(text)
+			.build();
 
 		paragraph.layout(f32::MAX);
 		paragraph
@@ -110,8 +114,8 @@ impl Custom {
 
 impl Sidebar {
 	#[must_use]
-	pub fn from_guild(ctx: &Context<'_>, guild: &Guild) -> Paragraph {
-		let mut body = Body::new(17., None);
+	pub fn from_guild(ctx: &Context<'_>, family: Family, guild: &Guild) -> Paragraph {
+		let mut body = Body::new(17., None, family);
 		let mut iter = guild.xp_by_game.iter().rev();
 
 		if let Some((game, xp)) = iter.next() {
@@ -152,14 +156,14 @@ impl Sidebar {
 
 impl RecentGame<'_> {
 	#[must_use]
-	pub fn from_game(ctx: &Context<'_>, game: &player::games::Game) -> Paragraph {
+	pub fn from_game(ctx: &Context<'_>, family: Family, game: &player::games::Game) -> Paragraph {
 		let fmt = "%d/%m %r";
 		let locale = ctx.get_chrono_locale();
 		let duration = game
 			.ended
 			.map(|e| Milliseconds((e - game.started).num_milliseconds()));
 
-		Body::new(20., None)
+		Body::new(20., None, family)
 			.extend_owned(game.kind.as_text().iter().map(|t| Text {
 				text: t.text,
 				paint: t.paint,
@@ -259,12 +263,13 @@ impl WideTallBubble {
 	#[must_use]
 	pub fn from_guild(
 		ctx: &Context<'_>,
+		family: Family,
 		guild: &Guild,
 		players: &[String],
 		idx: usize,
 	) -> Paragraph {
 		let count = guild.members.len();
-		let mut body = Body::new(17., None);
+		let mut body = Body::new(17., None, family);
 
 		for (idx, player) in players.iter().enumerate().skip(idx * 7).take(7) {
 			let text = guild.members[count - idx - 1]
@@ -301,17 +306,19 @@ impl WideTallBubble {
 
 impl Title {
 	#[must_use]
-	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::new(25., TextAlign::Center).extend(text).build()
+	pub fn from_text(family: Family, text: &[Text]) -> Paragraph {
+		Body::new(25., TextAlign::Center, family)
+			.extend(text)
+			.build()
 	}
 
 	#[must_use]
-	pub fn from_category(ctx: &Context<'_>, category: &Category) -> Paragraph {
+	pub fn from_category(ctx: &Context<'_>, family: Family, category: &Category) -> Paragraph {
 		let Some(ref kind) = category.kind else {
 			return Body::empty();
 		};
 
-		Body::new(25., TextAlign::Center)
+		Body::new(25., TextAlign::Center, family)
 			.extend(kind.as_text())
 			.extend(&[
 				Text {
@@ -334,7 +341,7 @@ impl Title {
 	}
 
 	#[must_use]
-	pub fn from_guild(guild: &Guild) -> Paragraph {
+	pub fn from_guild(family: Family, guild: &Guild) -> Paragraph {
 		let colour: char = guild.tag_colour.into();
 		let name = guild.name.as_str();
 		let tag = guild.tag.as_ref();
@@ -345,7 +352,7 @@ impl Title {
 			format!("{ESCAPE}{colour}{name}")
 		};
 
-		Body::new(25., TextAlign::Center)
+		Body::new(25., TextAlign::Center, family)
 			.extend_owned(minecraft_string(&text))
 			.build()
 	}
@@ -353,12 +360,14 @@ impl Title {
 
 impl FullWidthBigTitle {
 	#[must_use]
-	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::new(40., TextAlign::Center).extend(text).build()
+	pub fn from_text(family: Family, text: &[Text]) -> Paragraph {
+		Body::new(40., TextAlign::Center, family)
+			.extend(text)
+			.build()
 	}
 
 	#[must_use]
-	pub fn from_guild(ctx: &Context<'_>, guild: &Guild) -> Paragraph {
+	pub fn from_guild(ctx: &Context<'_>, family: Family, guild: &Guild) -> Paragraph {
 		let colour: char = guild.tag_colour.into();
 		let name = guild.name.as_str();
 		let tag = guild.tag.as_ref();
@@ -388,19 +397,28 @@ impl FullWidthBigTitle {
 			},
 		]);
 
-		Body::new(40., TextAlign::Center).extend(&text).build()
+		Body::new(40., TextAlign::Center, family)
+			.extend(&text)
+			.build()
 	}
 }
 
 impl Subtitle {
 	#[must_use]
-	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::new(20., TextAlign::Center).extend(text).build()
+	pub fn from_text(family: Family, text: &[Text]) -> Paragraph {
+		Body::new(20., TextAlign::Center, family)
+			.extend(text)
+			.build()
 	}
 
 	#[must_use]
-	pub fn from_formatted(ctx: &Context<'_>, text: &impl ToFormatted, paint: Paint) -> Paragraph {
-		Body::new(20., TextAlign::Center)
+	pub fn from_formatted(
+		ctx: &Context<'_>,
+		family: Family,
+		text: &impl ToFormatted,
+		paint: Paint,
+	) -> Paragraph {
+		Body::new(20., TextAlign::Center, family)
 			.append(Text {
 				text: text.to_formatted(ctx).as_ref(),
 				paint,
@@ -410,7 +428,7 @@ impl Subtitle {
 	}
 
 	#[must_use]
-	pub fn from_guild(guild: &Guild) -> Paragraph {
+	pub fn from_guild(family: Family, guild: &Guild) -> Paragraph {
 		let colour: char = guild.tag_colour.into();
 		let name = guild.name.as_str();
 		let tag = guild.tag.as_ref();
@@ -421,13 +439,13 @@ impl Subtitle {
 			format!("{ESCAPE}{colour}{name}")
 		};
 
-		Body::new(20., TextAlign::Center)
+		Body::new(20., TextAlign::Center, family)
 			.extend_owned(minecraft_string(&text))
 			.build()
 	}
 
 	#[must_use]
-	pub fn from_label(ctx: &Context<'_>, label: &[Text], id: &str) -> Paragraph {
+	pub fn from_label(ctx: &Context<'_>, family: Family, label: &[Text], id: &str) -> Paragraph {
 		let text = tr(ctx, id);
 		let text = [
 			label,
@@ -451,11 +469,11 @@ impl Subtitle {
 		]
 		.concat();
 
-		Self::from_text(text.as_slice())
+		Self::from_text(family, text.as_slice())
 	}
 
 	#[must_use]
-	pub fn from_label_str(label: &[Text], sub: &str) -> Paragraph {
+	pub fn from_label_str(family: Family, label: &[Text], sub: &str) -> Paragraph {
 		let text = [
 			label,
 			&[
@@ -478,19 +496,22 @@ impl Subtitle {
 		]
 		.concat();
 
-		Self::from_text(text.as_slice())
+		Self::from_text(family, text.as_slice())
 	}
 }
 
 impl WideBubbleProgress {
 	#[must_use]
-	pub fn from_text(text: &[Text]) -> Paragraph {
-		Body::new(20., TextAlign::Center).extend(text).build()
+	pub fn from_text(family: Family, text: &[Text]) -> Paragraph {
+		Body::new(20., TextAlign::Center, family)
+			.extend(text)
+			.build()
 	}
 
 	#[must_use]
 	pub fn from_level_diff(
 		ctx: &Context<'_>,
+		family: Family,
 		level: &str,
 		total: &impl ToFormatted,
 		positive: bool,
@@ -518,7 +539,7 @@ impl WideBubbleProgress {
 		text.extend(minecraft_string(level));
 
 		if short {
-			Self::from_text(text.as_slice())
+			Self::from_text(family, text.as_slice())
 		} else {
 			text.reserve_exact(7);
 
@@ -549,13 +570,14 @@ impl WideBubbleProgress {
 				..Default::default()
 			});
 
-			Self::from_text(text.as_slice())
+			Self::from_text(family, text.as_slice())
 		}
 	}
 
 	#[must_use]
 	pub fn from_level_progress(
 		ctx: &Context<'_>,
+		family: Family,
 		level: &str,
 		current: &impl ToFormatted,
 		needed: &impl ToFormatted,
@@ -617,16 +639,16 @@ impl WideBubbleProgress {
 			..Default::default()
 		});
 
-		Self::from_text(text.as_slice())
+		Self::from_text(family, text.as_slice())
 	}
 }
 
 impl LeaderboardPlace {
 	#[must_use]
-	pub fn from_usize(value: usize) -> Paragraph {
+	pub fn from_usize(family: Family, value: usize) -> Paragraph {
 		let text = value.to_string();
 
-		Body::new(20., TextAlign::Center)
+		Body::new(20., TextAlign::Center, family)
 			.extend(&[Text {
 				text: &text,
 				font: MinecraftFont::Bold,
@@ -644,8 +666,8 @@ impl LeaderboardPlace {
 
 impl LeaderboardName {
 	#[must_use]
-	pub fn from_text(text: &str) -> Paragraph {
-		Body::new(20., TextAlign::Left)
+	pub fn from_text(family: Family, text: &str) -> Paragraph {
+		Body::new(20., TextAlign::Left, family)
 			.extend(&minecraft_string(text).collect::<Vec<_>>())
 			.build()
 	}
@@ -653,8 +675,8 @@ impl LeaderboardName {
 
 impl LeaderboardValue {
 	#[must_use]
-	pub fn from_value(ctx: &Context<'_>, value: &impl ToFormatted) -> Paragraph {
-		Body::new(20., TextAlign::Center)
+	pub fn from_value(ctx: &Context<'_>, family: Family, value: &impl ToFormatted) -> Paragraph {
+		Body::new(20., TextAlign::Center, family)
 			.extend(&[Text {
 				text: &value.to_formatted(ctx),
 				paint: Paint::White,
@@ -743,7 +765,7 @@ impl Shape for RecentGame<'_> {
 		);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point, _family: Family) {
 		if let Some(image) = self.0.as_image_bytes() {
 			canvas.draw_image(
 				image.image(),
@@ -845,12 +867,13 @@ impl Shape for NetworthSlot<'_> {
 
 	fn draw(&self, _path: &mut Path, _bounds: &Rect) {}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, family: Family) {
 		if let Some(image) = self.0 {
 			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
 
 			if self.1 > 1 {
 				let mut paragraph = Body::build_slice(
+					family,
 					&[Text {
 						text: &self.1.to_string(),
 						..Default::default()
@@ -894,12 +917,13 @@ impl Shape for Slot<'_> {
 		);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, family: Family) {
 		if let Some(image) = self.0 {
 			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
 
 			if self.1 > 1 {
 				let mut paragraph = Body::build_slice(
+					family,
 					&[Text {
 						text: &self.1.to_string(),
 						..Default::default()
@@ -1063,7 +1087,7 @@ impl<'g> Shape for PreferredGames<'g> {
 		path.add_rrect(rrect, None);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, _family: Family) {
 		let mut iter = self
 			.0
 			.iter()
@@ -1117,7 +1141,7 @@ impl<'s> Shape for Status<'s> {
 		path.add_rrect(rrect, None);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point, _family: Family) {
 		if !self.0.online {
 			canvas.draw_image(self.1, (bounds.x() + 10., bounds.y() + 10.), None);
 		}
@@ -1182,7 +1206,7 @@ impl Shape for WideBubbleProgress {
 		path.add_rrect(rrect, None);
 	}
 
-	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point) {
+	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point, _family: Family) {
 		canvas.draw_path(
 			util::progress::rrect(
 				RRect::new_rect_radii(

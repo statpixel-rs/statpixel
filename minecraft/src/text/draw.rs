@@ -3,10 +3,13 @@ use skia_safe::{
 	FontMgr, Rect, Surface,
 };
 
+use crate::style::Family;
+
 use super::Text;
 
 pub fn draw(
 	surface: &mut Surface,
+	family: Family,
 	text: &[Text<'_>],
 	size: f32,
 	rect: impl Into<Rect>,
@@ -31,7 +34,7 @@ pub fn draw(
 		let mut builder = ParagraphBuilder::new(&style, font);
 
 		for blob in text {
-			let style = blob.get_style(blob.paint, size);
+			let style = blob.get_style(family, blob.paint, size);
 
 			builder.push_style(&style);
 			builder.add_text(blob.text);

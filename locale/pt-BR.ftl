@@ -510,6 +510,8 @@ display-changed-image-description = As respostas agora serão enviadas como imag
 display-changed-compact-description = As respostas agora serão enviadas como imagens compactas.
 
 Image = Imagem
+ImageFaithful = Imagem (Fonte Faithful 32x)
+ImageRoboto = Imagem (Fonte Roboto)
 Compact = Compacto
 Text = Texto
 

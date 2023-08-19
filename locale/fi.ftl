@@ -508,6 +508,8 @@ display-changed-image-description = Vastaukset lähetetään nyt kuvina tarvitta
 display-changed-compact-description = Vastaukset lähetetään nyt tiivistettyinä kuvin.
 
 Image = Kuva
+ImageFaithful = Kuva (Faithful 32x Fontti)
+ImageRoboto = Kuva (Roboto Fontti)
 Compact = Tiivistetty
 Text = Teksti
 

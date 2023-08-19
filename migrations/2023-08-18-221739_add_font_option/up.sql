@@ -1,0 +1,3 @@
+-- Your SQL goes here
+
+ALTER TABLE "user" ADD COLUMN "font" SMALLINT NOT NULL DEFAULT 0;

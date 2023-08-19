@@ -45,6 +45,7 @@ impl Block<'_> {
 				&#api ::canvas::shape::Bubble,
 				#api ::canvas::body::Body::from_bubble(
 					ctx,
+					family,
 					&#value,
 					&#tr,
 					#paint,

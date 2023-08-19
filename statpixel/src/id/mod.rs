@@ -71,8 +71,11 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 		Id::Builder { shapes, uuid, .. } => {
 			let (_, data, session, skin, _) =
 				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
-			let bytes =
-				super::commands::builder::build::build(ctx, &shapes, &data, &session, &skin, None)?;
+			let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
+
+			let bytes = super::commands::builder::build::build(
+				ctx, family, &shapes, &data, &session, &skin, background,
+			)?;
 
 			ctx.send(
 				poise::CreateReply::new()

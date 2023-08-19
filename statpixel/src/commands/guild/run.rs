@@ -16,7 +16,7 @@ pub async fn top(
 	limit: usize,
 	guild_id: Option<Uuid>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (guild, player) =
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
@@ -35,7 +35,7 @@ pub async fn top(
 	let after = Utc::now() - past;
 	let status = crate::snapshot::guild::get_or_insert(ctx, &guild, after).await?;
 
-	let png = super::image::top(ctx, &guild, limit, after, background).await?;
+	let png = super::image::top(ctx, family, &guild, limit, after, background).await?;
 	let content = match status {
 		crate::snapshot::guild::Status::Found((_, created_at)) => ::translate::tr_fmt!(
 			ctx, "showing-guild-xp-statistics",
@@ -82,7 +82,7 @@ pub async fn members(
 	limit: Option<usize>,
 	past_nanos: Option<i64>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (guild, player) =
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
@@ -98,7 +98,7 @@ pub async fn members(
 
 	guild.increase_searches(ctx).await?;
 
-	let png = super::image::members(ctx, &guild, background).await?;
+	let png = super::image::members(ctx, family, &guild, background).await?;
 
 	let (row, id) = GuildMode::as_root(
 		ctx,
@@ -134,7 +134,7 @@ pub async fn general(
 	limit: Option<usize>,
 	past_nanos: Option<i64>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (guild, player) =
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
@@ -150,7 +150,7 @@ pub async fn general(
 
 	guild.increase_searches(ctx).await?;
 
-	let png = super::image::general(ctx, &guild, background).await?;
+	let png = super::image::general(ctx, family, &guild, background).await?;
 
 	let (row, id) = GuildMode::as_root(
 		ctx,
@@ -184,7 +184,7 @@ pub async fn member(
 	limit: Option<usize>,
 	past_nanos: Option<i64>,
 ) -> Result<(), Error> {
-	let (_, background) = crate::util::get_format_colour_from_input(ctx).await;
+	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (guild, player) = match crate::commands::get_guild_with_member(ctx, uuid, username).await {
 		Ok(guild) => guild,
 		Err(Error::NotLinked) => {
@@ -198,7 +198,7 @@ pub async fn member(
 
 	guild.increase_searches(ctx).await?;
 
-	let png = super::image::member(ctx, &guild, &player, background).await?;
+	let png = super::image::member(ctx, family, &guild, &player, background).await?;
 
 	let (row, id) = GuildMode::as_root(
 		ctx,

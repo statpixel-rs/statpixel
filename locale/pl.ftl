@@ -510,6 +510,8 @@ display-changed-image-description = Odpowiedzi będą teraz wysyłane jako obraz
 display-changed-compact-description = Odpowiedzi będą teraz wysyłane jako skondensowane obrazy.
 
 Image = Obraz
+ImageFaithful = Obraz (Czcionka Faithful 32x)
+ImageRoboto = Obraz (Czcionka Roboto)
 Compact = Kompaktowy
 Text = Tekst
 

@@ -510,6 +510,8 @@ display-changed-image-description = Svar skickas nu som bilder när det är till
 display-changed-compact-description = Svar skickas nu som kompakta bilder.
 
 Image = Bild
+ImageFaithful = Bild (Faithful 32x Font)
+ImageRoboto = Bild (Roboto Font)
 Compact = Kompakt
 Text = Text
 

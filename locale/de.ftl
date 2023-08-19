@@ -510,6 +510,8 @@ display-changed-image-description = Antworten werden nun als Bilder gesendet, we
 display-changed-compact-description = Antworten werden nun als kompakte Bilder gesendet.
 
 Image = Bild
+ImageFaithful = Bild (Faithful 32x Schriftart)
+ImageRoboto = Bild (Roboto Schriftart)
 Compact = Kompakt
 Text = Text
 

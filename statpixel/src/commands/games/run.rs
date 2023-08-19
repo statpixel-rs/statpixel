@@ -11,7 +11,7 @@ pub async fn command<G: api::prelude::Game>(
 	uuid: Option<Uuid>,
 	mode: Option<G::Mode>,
 ) -> Result<(), Error> {
-	let (format, background) = util::get_format_colour_from_input(ctx).await;
+	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
 		format::Display::Image | format::Display::Compact => {
@@ -22,6 +22,7 @@ pub async fn command<G: api::prelude::Game>(
 
 			let (png, mode) = super::image::command::<G>(
 				ctx,
+				family,
 				mode,
 				background,
 				&data,

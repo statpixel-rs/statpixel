@@ -510,6 +510,8 @@ display-changed-image-description = Odgovori će sada biti poslani u obliku slik
 display-changed-compact-description = Odgovori će sada biti poslani u kompaktnom obliku.
 
 Image = Slika
+ImageFaithful = Slika (Faithful 32x Font)
+ImageRoboto = Slika (Roboto Font)
 Compact = Kompaktan
 Text = Tekst
 

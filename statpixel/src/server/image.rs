@@ -6,6 +6,7 @@ use axum::{
 	response::IntoResponse,
 };
 use axum_extra::extract::WithRejection;
+use minecraft::style::Family;
 use serde::Deserialize;
 use translate::context;
 
@@ -14,12 +15,13 @@ use translate::context;
 pub struct ImageQuery {
 	bg: Option<u32>,
 	tl: Option<translate::context::Locale>,
+	ft: Option<Family>,
 }
 
 pub async fn get(
 	State(state): State<Arc<super::Data>>,
 	Path(id): Path<String>,
-	WithRejection(Query(ImageQuery { bg, tl }), _): super::extract::Query<ImageQuery>,
+	WithRejection(Query(ImageQuery { bg, tl, ft }), _): super::extract::Query<ImageQuery>,
 ) -> Result<impl IntoResponse, StatusCode> {
 	let api::id::Id::Command(id) = api::id::decode(&id).ok_or(StatusCode::NOT_FOUND)? else {
 		return Err(StatusCode::NOT_FOUND);
@@ -29,6 +31,7 @@ pub async fn get(
 		&context::Context::external_with_locale(&state, tl),
 		id,
 		bg.map(std::convert::Into::into),
+		ft.unwrap_or_default(),
 	)
 	.await
 	else {

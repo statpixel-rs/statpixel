@@ -1,73 +1,65 @@
+use diesel::{
+	backend::Backend,
+	deserialize::FromSql,
+	pg::Pg,
+	serialize::{self, Output, ToSql},
+	sql_types::SmallInt,
+	AsExpression, FromSqlRow,
+};
 use konst::{parser_method, parsing::ParseValueResult, Parser};
 use once_cell::sync::Lazy;
+use serde::Deserialize;
 use skia_safe::{
-	font_arguments::{variation_position::Coordinate, VariationPosition},
 	textlayout::{TextShadow, TextStyle},
-	FontArguments, FourByteTag,
+	FontStyle,
 };
 
 use crate::paint::Paint;
 
-#[allow(dead_code)]
-pub static STYLE_NORMAL: Lazy<TextStyle> = Lazy::new(|| {
+fn style_with_name(name: &str, font: FontStyle) -> TextStyle {
 	let mut style = TextStyle::new();
 
-	style.set_font_families(&["Minecraft"]);
-	style.set_font_style(skia_safe::FontStyle::normal());
+	style.set_font_families(&[name]);
+	style.set_font_style(font);
 
 	style
-});
+}
 
-#[allow(dead_code)]
-pub static STYLE_BOLD: Lazy<TextStyle> = Lazy::new(|| {
-	let mut style = TextStyle::new();
+pub static MINECRAFT_NORMAL: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Minecraft", FontStyle::normal()));
 
-	style.set_font_families(&["Minecraft"]);
-	style.set_font_style(skia_safe::FontStyle::bold());
+pub static MINECRAFT_BOLD: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Minecraft", FontStyle::bold()));
 
-	style
-});
+pub static MINECRAFT_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Minecraft", FontStyle::italic()));
 
-#[allow(dead_code)]
-pub static STYLE_ITALIC: Lazy<TextStyle> = Lazy::new(|| {
-	let mut style = TextStyle::new();
+pub static MINECRAFT_BOLD_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Minecraft", FontStyle::bold_italic()));
 
-	style.set_font_families(&["Minecraft"]);
-	style.set_font_style(skia_safe::FontStyle::italic());
+pub static FAITHFUL_NORMAL: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Faithful 32x", FontStyle::normal()));
 
-	style
-});
+pub static FAITHFUL_BOLD: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Faithful 32x", FontStyle::bold()));
 
-#[allow(dead_code)]
-pub static STYLE_BOLD_ITALIC: Lazy<TextStyle> = Lazy::new(|| {
-	let mut style = TextStyle::new();
+pub static FAITHFUL_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Faithful 32x", FontStyle::italic()));
 
-	style.set_font_families(&["Minecraft"]);
-	style.set_font_style(skia_safe::FontStyle::bold_italic());
+pub static FAITHFUL_BOLD_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Faithful 32x", FontStyle::bold_italic()));
 
-	style
-});
+pub static ROBOTO_NORMAL: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Roboto", FontStyle::normal()));
 
-#[allow(dead_code)]
-pub static STYLE_ICON: Lazy<TextStyle> = Lazy::new(|| {
-	let coordinates = [Coordinate {
-		axis: FourByteTag::from_chars('F', 'I', 'L', 'L'),
-		value: 1.,
-	}];
+pub static ROBOTO_BOLD: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Roboto", FontStyle::bold()));
 
-	let args = FontArguments::new().set_variation_design_position(VariationPosition {
-		coordinates: &coordinates,
-	});
+pub static ROBOTO_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Roboto", FontStyle::italic()));
 
-	let mut style = TextStyle::new();
-
-	style.set_font_arguments(Some(&args));
-	style.set_font_families(&["Material Symbols Outlined"]);
-	style.set_font_style(skia_safe::FontStyle::normal());
-	style.set_baseline_shift(5.);
-
-	style
-});
+pub static ROBOTO_BOLD_ITALIC: Lazy<TextStyle> =
+	Lazy::new(|| style_with_name("Roboto", FontStyle::bold_italic()));
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum MinecraftFont {
@@ -75,28 +67,81 @@ pub enum MinecraftFont {
 	Bold,
 	Italic,
 	BoldItalic,
-	Icon,
+}
+
+#[derive(Clone, Copy, Debug, Default, Deserialize, AsExpression, FromSqlRow)]
+#[diesel(sql_type = SmallInt)]
+pub enum Family {
+	#[default]
+	#[serde(rename = "minecraft")]
+	Minecraft,
+	#[serde(rename = "faithful")]
+	Faithful,
+	#[serde(rename = "roboto")]
+	Roboto,
+}
+
+impl FromSql<SmallInt, Pg> for Family {
+	fn from_sql(bytes: <Pg as Backend>::RawValue<'_>) -> diesel::deserialize::Result<Self> {
+		Ok(match i16::from_sql(bytes)? {
+			0 => Family::Minecraft,
+			1 => Family::Faithful,
+			2 => Family::Roboto,
+			_ => unreachable!(),
+		})
+	}
+}
+
+impl<Db> ToSql<SmallInt, Db> for Family
+where
+	Db: Backend,
+	i16: ToSql<SmallInt, Db>,
+{
+	fn to_sql<'b>(&'b self, out: &mut Output<'b, '_, Db>) -> serialize::Result {
+		match self {
+			Family::Minecraft => 0.to_sql(out),
+			Family::Faithful => 1.to_sql(out),
+			Family::Roboto => 2.to_sql(out),
+		}
+	}
+}
+
+impl Family {
+	#[must_use]
+	pub fn as_str(&self) -> &'static str {
+		match self {
+			Self::Minecraft => "Minecraft",
+			Self::Faithful => "Faithful 32x",
+			Self::Roboto => "Roboto",
+		}
+	}
 }
 
 impl MinecraftFont {
-	pub fn get_style(&self, paint: Paint, size: f32) -> TextStyle {
-		let mut style = match self {
-			Self::Normal => STYLE_NORMAL.clone(),
-			Self::Bold => STYLE_BOLD.clone(),
-			Self::Italic => STYLE_ITALIC.clone(),
-			Self::BoldItalic => STYLE_BOLD_ITALIC.clone(),
-			Self::Icon => STYLE_ICON.clone(),
+	pub fn get_style(&self, family: Family, paint: Paint, size: f32) -> TextStyle {
+		let mut style = match family {
+			Family::Minecraft => match self {
+				Self::Normal => MINECRAFT_NORMAL.clone(),
+				Self::Bold => MINECRAFT_BOLD.clone(),
+				Self::Italic => MINECRAFT_ITALIC.clone(),
+				Self::BoldItalic => MINECRAFT_BOLD_ITALIC.clone(),
+			},
+			Family::Faithful => match self {
+				Self::Normal => FAITHFUL_NORMAL.clone(),
+				Self::Bold => FAITHFUL_BOLD.clone(),
+				Self::Italic => FAITHFUL_ITALIC.clone(),
+				Self::BoldItalic => FAITHFUL_BOLD_ITALIC.clone(),
+			},
+			Family::Roboto => match self {
+				Self::Normal => ROBOTO_NORMAL.clone(),
+				Self::Bold => ROBOTO_BOLD.clone(),
+				Self::Italic => ROBOTO_ITALIC.clone(),
+				Self::BoldItalic => ROBOTO_BOLD_ITALIC.clone(),
+			},
 		};
 
-		if self == &Self::Icon {
-			style.set_font_size(size * 0.75);
-			style.set_baseline_shift(0.);
-		} else {
-			style.set_font_size(size);
-		}
-
 		#[allow(clippy::cast_possible_truncation)]
-		let offset = (style.font_size() / 9.) as i32;
+		let offset = (size / 9.) as i32;
 
 		style.add_shadow(TextShadow::new(paint.shadow(), (offset, offset), 0.));
 		style.set_foreground_paint(paint.into());

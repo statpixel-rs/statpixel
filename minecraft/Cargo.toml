@@ -1,6 +1,6 @@
 [package]
 name = "minecraft"
-version = "0.26.0"
+version = "0.27.0"
 edition = "2021"
 license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
@@ -9,6 +9,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 bincode.workspace = true
 bitcode.workspace = true
 darling.workspace = true
+diesel.workspace = true
 konst.workspace = true
 once_cell.workspace = true
 plotters.workspace = true
