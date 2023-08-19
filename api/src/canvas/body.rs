@@ -45,7 +45,7 @@ impl Body {
 		let font = {
 			let mut manager = FontCollection::new();
 
-			manager.set_default_font_manager(FontMgr::new(), "Minecraft");
+			manager.set_default_font_manager(FontMgr::new(), family.as_str());
 			manager
 		};
 
