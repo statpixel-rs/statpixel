@@ -1,0 +1,26 @@
+[book]
+title = "StatPixel Documentation"
+description = "Official documentation for the StatPixel backend."
+authors = ["Matthew Polak <contact@matteopolak.com>"]
+language = "en"
+
+[rust]
+edition = "2021"
+channel = "nightly"
+
+[output.html]
+git-repository-url = "https://github.com/matteopolak/statpixel/blob/main/docs"
+edit-url-template = "https://github.com/matteopolak/statpixel/blob/main/docs/{path}"
+
+[output.html.playground]
+editable = false
+line-numbers = true
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2

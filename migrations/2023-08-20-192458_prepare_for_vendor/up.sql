@@ -1,0 +1,4 @@
+-- Your SQL goes here
+
+ALTER TABLE "snapshot" ADD COLUMN trusted BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE "guild_snapshot" ADD COLUMN trusted BOOLEAN NOT NULL DEFAULT TRUE;
