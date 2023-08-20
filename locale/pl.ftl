@@ -518,8 +518,8 @@ ImageFaithful = Obraz (Czcionka Faithful 32x)
 ImageRoboto = Obraz (Czcionka Roboto)
 Compact = Kompaktowy
 Text = Tekst
-KompaktFaithful = Kompaktowy (Czcionka Faithful 32x)
-KompaktRoboto = Kompaktowy (Czcionka Roboto)
+CompactFaithful = Kompaktowy (Czcionka Faithful 32x)
+CompactRoboto = Kompaktowy (Czcionka Roboto)
 
 # /unlink
 unlink = odłącz
