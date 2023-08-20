@@ -97,7 +97,10 @@ impl ToTokens for GameInputReceiver {
 		let labels_diff_sum = self.label_shapes_diff_sum(&modes);
 
 		let block_lines = blocks.len() as u8 + condensed_modes.iter().fold(0u8, |a, m| {
-			let blocks = m.blocks().len();
+			let blocks = m.blocks()
+				.iter()
+				.filter(|b| !blocks.iter().any(|i| i.var_id().to_string() == b.var_id().to_string()))
+				.count();
 
 			a.max(blocks as u8)
 		});

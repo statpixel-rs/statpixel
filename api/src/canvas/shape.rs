@@ -780,7 +780,7 @@ impl Shape for CondensedBubble {
 	fn size(&self) -> Size {
 		Size {
 			width: BUBBLE_WIDTH,
-			height: 22. * f32::from(self.lines) + 20.,
+			height: 20. * f32::from(self.lines) + 20.,
 		}
 	}
 
