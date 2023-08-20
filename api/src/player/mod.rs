@@ -305,7 +305,10 @@ impl Player {
 
 		self.set_display_str(&player).await?;
 		self.update_leaderboard(ctx, &player).await?;
-		self.update_activity(ctx).await?;
+
+		if !ctx.automated() {
+			self.update_activity(ctx).await?;
+		}
 
 		Ok(Arc::new(player))
 	}

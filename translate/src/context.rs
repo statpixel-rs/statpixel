@@ -145,6 +145,7 @@ pub enum ContextInteraction<'c> {
 pub struct Context<'c> {
 	locale: Option<Locale>,
 	interaction: ContextInteraction<'c>,
+	automated: bool,
 }
 
 impl<'c> Context<'c> {
@@ -161,6 +162,7 @@ impl<'c> Context<'c> {
 				ctx,
 				deferred: AtomicBool::new(false),
 			},
+			automated: false,
 		}
 	}
 
@@ -176,6 +178,7 @@ impl<'c> Context<'c> {
 				data,
 				ctx,
 			},
+			automated: false,
 		}
 	}
 
@@ -183,6 +186,7 @@ impl<'c> Context<'c> {
 		Self {
 			locale: ctx.locale().and_then(|l| Locale::from_str(l).ok()),
 			interaction: ContextInteraction::Command(ctx),
+			automated: false,
 		}
 	}
 
@@ -190,6 +194,7 @@ impl<'c> Context<'c> {
 		Self {
 			locale: None,
 			interaction: ContextInteraction::External(data),
+			automated: false,
 		}
 	}
 
@@ -197,7 +202,20 @@ impl<'c> Context<'c> {
 		Self {
 			locale,
 			interaction: ContextInteraction::External(data),
+			automated: false,
 		}
+	}
+
+	pub fn automated(data: &'c super::Data) -> Self {
+		Self {
+			locale: None,
+			interaction: ContextInteraction::External(data),
+			automated: true,
+		}
+	}
+
+	pub fn automated(&self) -> bool {
+		self.automated
 	}
 
 	pub fn locale(&self) -> Option<&Locale> {

@@ -171,7 +171,7 @@ async fn main() {
 		let data = data.clone();
 
 		async move {
-			let ctx = context::Context::external(&data);
+			let ctx = context::Context::automated(&data);
 			let pool = get_pool(2);
 
 			while let Err(e) = snapshot::user::begin(&pool, &ctx, &http).await {
