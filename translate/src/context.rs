@@ -214,7 +214,7 @@ impl<'c> Context<'c> {
 		}
 	}
 
-	pub fn automated(&self) -> bool {
+	pub fn is_automated(&self) -> bool {
 		self.automated
 	}
 

@@ -306,7 +306,7 @@ impl Player {
 		self.set_display_str(&player).await?;
 		self.update_leaderboard(ctx, &player).await?;
 
-		if !ctx.automated() {
+		if !ctx.is_automated() {
 			self.update_activity(ctx).await?;
 		}
 
