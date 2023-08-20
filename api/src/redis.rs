@@ -103,13 +103,14 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the database has an error.
 	pub async fn update_activity(&self, ctx: &context::Context<'_>) -> Result<(), Error> {
-		diesel::insert_into(schedule::table)
-			.values((schedule::uuid.eq(&self.uuid),))
-			.on_conflict(schedule::uuid)
-			.do_update()
+		let result = diesel::update(schedule::table.filter(schedule::uuid.eq(&self.uuid)))
 			.set(schedule::active_at.eq(Utc::now()))
 			.execute(&mut ctx.data().pool.get().await?)
-			.await?;
+			.await;
+
+		if let Err(e) = result && e != diesel::result::Error::NotFound {
+			return Err(e.into());
+		}
 
 		Ok(())
 	}
