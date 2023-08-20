@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> ギルドを</boost:1132443666
 tip-track = <:knowledge_book:1117179094556233828> プレイヤーを</track:1132443666997321810>でトラッキングできます。
 tip-builder = <:knowledge_book:1117179094556233828> カスタム画像を</builder:1125992506501365891>で作成できます。
 tip-dashboard = <:knowledge_book:1117179094556233828> ダッシュボードでアカウントを管理できます：<https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> </display:1113624864272683066>を使用して表示形式をコンパクトに変更できます。
+tip-display-font = <:knowledge_book:1117179094556233828> </display:1113624864272683066>を使用して表示フォントを変更できます。
+tip-display-embed = <:knowledge_book:1117179094556233828> </display:1113624864272683066>を使用して表示形式を埋め込みに変更できます。
+tip-compare = <:knowledge_book:1117179094556233828> </bedwars compare:1113624864272683060>を使用して2人のプレイヤーを比較できます。
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = 画像 (Faithful 32x フォント)
 ImageRoboto = 画像 (Roboto フォント)
 Compact = コンパクト
 Text = テキスト
+CompactFaithful = コンパクト (Faithful 32x フォント)
+CompactRoboto = コンパクト (Roboto フォント)
 
 # /unlink
 unlink = アンリンク

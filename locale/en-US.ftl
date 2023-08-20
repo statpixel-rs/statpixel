@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Boost a guild with </boost:113
 tip-track = <:knowledge_book:1117179094556233828> Track a player with </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Create your own custom images with </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Manage your account on the dashboard at <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Change your display format to compact with </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Change your display font with </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Change your display format to embed with </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Compare two players with </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -518,9 +522,9 @@ Image = Image
 ImageFaithful = Image (Faithful 32x Font)
 ImageRoboto = Image (Roboto Font)
 Compact = Compact
+Text = Text
 CompactFaithful = Compact (Faithful 32x Font)
 CompactRoboto = Compact (Roboto Font)
-Text = Text
 
 # /unlink
 unlink = unlink

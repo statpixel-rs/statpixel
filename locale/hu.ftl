@@ -68,6 +68,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Boostold a guildet így: </boo
 tip-track = <:knowledge_book:1117179094556233828> Kövesd nyomon a játékost így: </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Hozz létre saját egyedi képeket így: </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Kezeld fiókodat a vezérlőpulton: <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Változtasd meg a megjelenítési formátumot kompakt módba így: </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Változtasd meg a megjelenítési formátumot betűtípusra így: </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Változtasd meg a megjelenítési formátumot beágyazott módba így: </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Összehasonlíthatod két játékos statisztikáit így: </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -515,6 +519,8 @@ ImageFaithful = Kép (Faithful 32x Betűtípus)
 ImageRoboto = Kép (Roboto Betűtípus)
 Compact = Tömörített
 Text = Szöveg
+CompactFaithful = Tömörített (Faithful 32x Betűtípus)
+CompactRoboto = Tömörített (Roboto Betűtípus)
 
 # /unlink
 unlink = szétcsatolás

@@ -10,6 +10,7 @@ use crate::{
 	util::{self, parse_uuid},
 };
 
+#[allow(clippy::too_many_lines)]
 pub async fn command<G: api::prelude::Game>(
 	ctx: &context::Context<'_>,
 	lhs: Option<String>,
@@ -21,7 +22,7 @@ pub async fn command<G: api::prelude::Game>(
 	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
-		format::Display::Image | format::Display::Compact => {
+		format::Display::Image => {
 			let (player_rhs, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(
 					ctx,
@@ -74,6 +75,55 @@ pub async fn command<G: api::prelude::Game>(
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;
+		}
+		format::Display::Compact => {
+			let (player_rhs, data_rhs, suffix) = commands::get_player_data_suffix(
+				ctx,
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				rhs,
+			)
+			.await?;
+
+			let (player_lhs, data_lhs) = commands::get_player_data(
+				ctx,
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				lhs,
+			)
+			.await?;
+
+			player_lhs.increase_searches(ctx).await?;
+			player_rhs.increase_searches(ctx).await?;
+
+			let content = tr_fmt!(
+				ctx, "showing-comparison",
+				from: data_rhs.username.as_str(),
+				to: data_lhs.username.as_str(),
+			);
+
+			let attachments = G::condensed_diff(
+				ctx,
+				family,
+				&data_lhs,
+				&data_rhs,
+				suffix.as_deref(),
+				background,
+			)
+			.into_iter()
+			.map(|mut surface| {
+				CreateAttachment::bytes(Cow::Owned(canvas::to_png(&mut surface)), crate::IMAGE_NAME)
+			})
+			.collect::<Vec<_>>();
+
+			let (_, id) = G::Mode::as_compare(ctx, player_lhs.uuid, player_rhs.uuid, None);
+
+			let mut reply = poise::CreateReply::new().content(format!(
+				"{}\n{content}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+			));
+
+			reply.attachments = attachments;
+
+			ctx.send(reply).await?;
 		}
 		format::Display::Text => {
 			let (player_rhs, data_rhs) = commands::get_player_data(

@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Bir sunucuyu yükseltmek için
 tip-track = <:knowledge_book:1117179094556233828> Bir oyuncuyu takip etmek için: </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Kendi özel resimlerinizi oluşturmak için: </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Hesabınızı yönetmek için: <https://statpixel.xyz/dashboard> adresine gidin.
+tip-display-compact = <:knowledge_book:1117179094556233828> Görüntü formatınızı yoğunlaştırılmış olarak değiştirmek için </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Görüntü yazı tipinizi değiştirmek için </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Görüntü formatınızı gömülü olarak değiştirmek için </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> İki oyuncuyu karşılaştırmak için </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -513,6 +517,8 @@ ImageFaithful = Resim (Faithful 32x Yazı Tipi)
 ImageRoboto = Resim (Roboto Yazı Tipi)
 Compact = Yoğunlaştırılmış
 Text = Metin
+CompactFaithful = Yoğunlaştırılmış (Faithful 32x Yazı Tipi)
+CompactRoboto = Yoğunlaştırılmış (Roboto Yazı Tipi)
 
 # /unlink
 unlink = bağlantıyı-kaldır

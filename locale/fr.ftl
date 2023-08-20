@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Améliorez une guilde avec </b
 tip-track = <:knowledge_book:1117179094556233828> Suivez un joueur avec </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Créez vos propres images personnalisées avec </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Gérez votre compte sur le tableau de bord à l'adresse <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Changez votre format d'affichage en compact avec </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Changez votre police d'affichage avec </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Changez votre format d'affichage en intégré avec </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Comparez deux joueurs avec </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Image (Police Faithful 32x)
 ImageRoboto = Image (Police Roboto)
 Compact = Compact
 Text = Texte
+CompactFaithful = Compacte (Police Faithful 32x)
+CompactRoboto = Compacte (Police Roboto)
 
 # /unlink
 unlink = dissocier

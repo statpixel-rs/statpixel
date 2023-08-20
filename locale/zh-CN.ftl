@@ -65,6 +65,10 @@ tip-boost = <:knowledge_book:1117179094556233828> 使用</boost:1132443666997321
 tip-track = <:knowledge_book:1117179094556233828> 使用</track:1132443666997321810> 追踪一个玩家。
 tip-builder = <:knowledge_book:1117179094556233828> 使用</builder:1125992506501365891> 创建你自己的自定义图像。
 tip-dashboard = <:knowledge_book:1117179094556233828> 在<https://statpixel.xyz/dashboard> 管理你的账户。
+tip-display-compact = <:knowledge_book:1117179094556233828> 使用</display:1113624864272683066> 将显示格式更改为紧凑。
+tip-display-font = <:knowledge_book:1117179094556233828> 使用</display:1113624864272683066> 更改显示字体。
+tip-display-embed = <:knowledge_book:1117179094556233828> 使用</display:1113624864272683066> 将显示格式更改为嵌入。
+tip-compare = <:knowledge_book:1117179094556233828> 使用</bedwars compare:1113624864272683060> 比较两个玩家。
 
 # /boost
 boost-success-title = 提升{$name}
@@ -514,6 +518,8 @@ ImageFaithful = 图片（Faithful 32x 字体）
 ImageRoboto = 图片（Roboto 字体）
 Compact = 紧凑
 Text = 文本
+CompactFaithful = 紧凑（Faithful 32x 字体）
+CompactRoboto = 紧凑（Roboto 字体）
 
 # /unlink
 unlink = 取消关联

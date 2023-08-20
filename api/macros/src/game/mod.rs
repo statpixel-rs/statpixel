@@ -89,13 +89,14 @@ impl ToTokens for GameInputReceiver {
 		let labels = self.labels();
 		let modes = self.modes();
 		let overall_modes = self.overall_modes();
+		let condensed_modes = modes.iter().take(5).collect::<Vec<_>>();
 
 		let blocks_sum = self.block_shapes_sum(&modes);
 		let blocks_diff_sum = self.block_shapes_diff_sum(&modes);
 		let labels_sum = self.label_shapes_sum(&modes);
 		let labels_diff_sum = self.label_shapes_diff_sum(&modes);
 
-		let block_lines = blocks.len() as u8 + overall_modes.iter().fold(0u8, |a, m| {
+		let block_lines = blocks.len() as u8 + condensed_modes.iter().fold(0u8, |a, m| {
 			let blocks = m.blocks().len();
 
 			a.max(blocks as u8)
@@ -108,15 +109,8 @@ impl ToTokens for GameInputReceiver {
 				(a + 1, b)
 			}
 		});
+		let label_lines = label_lines_first.0;
 		let label_lines_first = label_lines_first.0.max(label_lines_first.1);
-
-		let label_lines = labels.iter().fold(0u8, |a, l| {
-			if l.is_static {
-				a
-			} else {
-				a + 1
-			}
-		});
 
 		let condensed_labels_sum = self.condensed_label_shapes_sum(&modes, label_lines_first);
 		let condensed_labels_diff_sum = self.condensed_label_shapes_diff_sum(&modes, label_lines_first);
@@ -883,6 +877,12 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
+		let label_separator = if label_lines_first != 0 {
+			quote!(.append(#minecraft::text::Text::NEW_LINE))
+		} else {
+			quote!()
+		};
+
 		tokens.extend(quote! {
 			pub struct #overall_ident;
 
@@ -1081,16 +1081,17 @@ impl ToTokens for GameInputReceiver {
 					canvas
 						.push_checked(
 							&#api::canvas::shape::CondensedBubble {
-								lines: #label_lines_first + #block_lines
+								lines: #label_lines_first + #block_lines + if #label_lines_first == 0 { 2 } else { 3 }
 							},
 							#api::canvas::body::Body::new(17., None, family)
+								.append(#minecraft::text::Text::NEW_LINE)
 								.append(#minecraft::text::Text {
 									text: #translate::tr(ctx, Self::tr()).as_ref(),
 									font: #minecraft::style::MinecraftFont::Bold,
 									paint: #minecraft::paint::Paint::White,
 									..Default::default()
 								})
-								.append(#minecraft::text::Text::NEW_LINE)
+								#label_separator
 								#condensed_labels_sum
 								.append(#minecraft::text::Text::NEW_LINE)
 								.extend(&[
@@ -1115,16 +1116,17 @@ impl ToTokens for GameInputReceiver {
 					canvas
 						.push_checked(
 							&#api::canvas::shape::CondensedBubble {
-								lines: #label_lines_first + #block_lines
+								lines: #label_lines_first + #block_lines + if #label_lines_first == 0 { 2 } else { 3 }
 							},
 							#api::canvas::body::Body::new(17., None, family)
+								.append(#minecraft::text::Text::NEW_LINE)
 								.append(#minecraft::text::Text {
 									text: #translate::tr(ctx, Self::tr()).as_ref(),
 									font: #minecraft::style::MinecraftFont::Bold,
 									paint: #minecraft::paint::Paint::White,
 									..Default::default()
 								})
-								.append(#minecraft::text::Text::NEW_LINE)
+								#label_separator
 								#condensed_labels_diff_sum
 								.append(#minecraft::text::Text::NEW_LINE)
 								.extend(&[
@@ -1233,7 +1235,7 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
-			let condensed_canvas = (0..(overall_modes.len() / 3 + 1))
+			let condensed_canvas = (0..(condensed_modes.len() / 3 + 1))
 				.map(|i| {
 					let canvas = ident(&format!("canvas_{}", i));
 
@@ -1241,7 +1243,7 @@ impl ToTokens for GameInputReceiver {
 				})
 				.collect::<Vec<_>>();
 
-			let condensed_canvas_build = (0..(overall_modes.len() / 3 + 1))
+			let condensed_canvas_build = (0..(condensed_modes.len() / 3 + 1))
 				.map(|i| {
 					let canvas = ident(&format!("canvas_{}", i));
 
@@ -1249,7 +1251,7 @@ impl ToTokens for GameInputReceiver {
 				})
 				.collect::<Vec<_>>();
 
-			let condensed_mode = overall_modes.iter().enumerate().map(|(i, mode)| {
+			let condensed_mode = condensed_modes.iter().enumerate().map(|(i, mode)| {
 				let id = mode.id();
 				let i = (i + 1) / 3;
 				let canvas = ident(&format!("canvas_{}", i));
@@ -1264,7 +1266,7 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
-			let condensed_mode_diff = overall_modes.iter().enumerate().map(|(i, mode)| {
+			let condensed_mode_diff = condensed_modes.iter().enumerate().map(|(i, mode)| {
 				let ty = mode.ty();
 				let i = (i + 1) / 3;
 				let canvas = ident(&format!("canvas_{}", i));
@@ -1465,8 +1467,71 @@ impl ToTokens for GameInputReceiver {
 					) -> Vec<#skia::Surface> {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
+						let is_different = data_lhs.uuid != data_rhs.uuid;
 
 						#(#condensed_canvas)*
+
+						let level_lhs = {
+							let xp = #calc::convert(&#xp_lhs);
+							let level = #calc::get_level(xp);
+
+							level
+						};
+
+						let level_rhs = if is_different {
+							let xp = #calc::convert(&#xp_rhs);
+							let level = #calc::get_level(xp);
+
+							level
+						} else {
+							let xp_lhs = #calc::convert(&#xp_lhs);
+							let xp_rhs = #calc::convert(&#xp_rhs);
+							let xp = if xp_lhs > xp_rhs {
+								xp_lhs - xp_rhs
+							} else {
+								xp_rhs - xp_lhs
+							};
+
+							let level = #calc::get_level(xp);
+
+							level
+						};
+
+						let mut canvas_0 = canvas_0
+							.push_down(
+								&#api::canvas::shape::LongTitle,
+								#api::canvas::shape::Title::from_text(
+									family,
+									&#api::canvas::text::from_data_with_level(
+										&data_rhs,
+										&data_rhs.username,
+										suffix,
+										&#calc::get_level_format(level_rhs)
+									)
+								),
+							);
+
+						if is_different {
+							canvas_0 = canvas_0
+								.push_down(
+									&#api::canvas::shape::LongSubtitle,
+									#api::canvas::shape::Subtitle::from_text(
+										family,
+										&#api::canvas::text::from_data_with_level(
+											&data_lhs,
+											&data_lhs.username,
+											None,
+											&#calc::get_level_format(level_lhs)
+										)
+									),
+								);
+						}
+
+						let canvas_0 = canvas_0
+							.push_down(
+								&#api::canvas::shape::LongSubtitle,
+								#api::canvas::body::Body::build_slice(family, &LABEL, 17., #skia::textlayout::TextAlign::Center),
+							);
 
 						let canvas_0 = #overall_ident::condensed_diff(
 							ctx,
@@ -1493,6 +1558,28 @@ impl ToTokens for GameInputReceiver {
 						let game = &data.stats.#path_to_game;
 
 						#(#condensed_canvas)*
+
+						let level = {
+							let xp = #calc::convert(&#xp);
+							let level = #calc::get_level(xp);
+
+							level
+						};
+
+						let mut canvas_0 = canvas_0
+							.push_down(
+								&#api::canvas::shape::LongTitle,
+								#api::canvas::shape::Title::from_text(family, &#api::canvas::text::from_data_with_level(
+									&data,
+									&data.username,
+									suffix,
+									&#calc::get_level_format(level)
+								)),
+							)
+							.push_down(
+								&#api::canvas::shape::LongSubtitle,
+								#api::canvas::body::Body::build_slice(family, &LABEL, 17., #skia::textlayout::TextAlign::Center),
+							);
 
 						let canvas_0 = #overall_ident.condensed(
 							ctx,

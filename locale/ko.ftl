@@ -65,6 +65,10 @@ tip-boost = <:knowledge_book:1117179094556233828> 길드를 강화하려면 </bo
 tip-track = <:knowledge_book:1117179094556233828> 플레이어를 추적하려면 </track:1132443666997321810>을 사용하세요.
 tip-builder = <:knowledge_book:1117179094556233828> 자신의 사용자 정의 이미지를 만들려면 </builder:1125992506501365891>을 사용하세요.
 tip-dashboard = <:knowledge_book:1117179094556233828> 대시보드에서 계정을 관리하려면 <https://statpixel.xyz/dashboard>을 사용하세요.
+tip-display-compact = <:knowledge_book:1117179094556233828> </display:1113624864272683066>를 사용하여 표시 형식을 압축으로 변경하세요.
+tip-display-font = <:knowledge_book:1117179094556233828> </display:1113624864272683066>를 사용하여 표시 글꼴을 변경하세요.
+tip-display-embed = <:knowledge_book:1117179094556233828> </display:1113624864272683066>를 사용하여 표시 형식을 임베드로 변경하세요.
+tip-compare = <:knowledge_book:1117179094556233828> </bedwars compare:1113624864272683060>을 사용하여 두 플레이어를 비교하세요.
 
 # /boost
 boost-success-title = {$name}을(를) 강화했습니다.
@@ -510,6 +514,8 @@ ImageFaithful = 이미지 (Faithful 32x 글꼴)
 ImageRoboto = 이미지 (Roboto 글꼴)
 Compact = 압축
 Text = 텍스트
+CompactFaithful = 압축 (Faithful 32x 글꼴)
+CompactRoboto = 압축 (Roboto 글꼴)
 
 # /unlink
 unlink = 연결-해제

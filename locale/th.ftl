@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> เพิ่มพลังใ
 tip-track = <:knowledge_book:1117179094556233828> ติดตามผู้เล่นด้วยคำสั่ง </track:1132443666997321810>
 tip-builder = <:knowledge_book:1117179094556233828> สร้างรูปภาพที่กำหนดเองด้วยคำสั่ง </builder:1125992506501365891>
 tip-dashboard = <:knowledge_book:1117179094556233828> จัดการบัญชีของคุณในแดชบอร์ดที่ <https://statpixel.xyz/dashboard>
+tip-display-compact = <:knowledge_book:1117179094556233828> เปลี่ยนรูปแบบการแสดงผลของคุณเป็นแบบสั้นด้วยคำสั่ง </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> เปลี่ยนรูปแบบการแสดงผลของคุณด้วยคำสั่ง </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> เปลี่ยนรูปแบบการแสดงผลของคุณเป็นแบบฝังด้วยคำสั่ง </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> เปรียบเทียบผู้เล่นสองคนด้วยคำสั่ง </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = ภาพ (แบบอักษร Faithful 32x)
 ImageRoboto = ภาพ (แบบอักษร Roboto)
 Compact = ภาพย่อ
 Text = ข้อความ
+CompactFaithful = ภาพย่อ (แบบอักษร Faithful 32x)
+CompactRoboto = ภาพย่อ (แบบอักษร Roboto)
 
 # /unlink
 unlink = ยกเลิกการเชื่อมโยง

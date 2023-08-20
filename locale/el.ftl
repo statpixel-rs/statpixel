@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Ενισχύστε μια ομ
 tip-track = <:knowledge_book:1117179094556233828> Καταγράψτε έναν παίκτη με </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Δημιουργήστε τις δικές σας προσαρμοσμένες εικόνες με </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Διαχειριστείτε τον λογαριασμό σας στον πίνακα ελέγχου στη διεύθυνση <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Αλλάξτε τη μορφή εμφάνισής σας σε συμπαγή με </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Αλλάξτε τη μορφή εμφάνισής σας με </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Αλλάξτε τη μορφή εμφάνισής σας σε ενσωμάτωση με </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Συγκρίνετε δύο παίκτες με </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Εικόνα (Faithful 32x Γραμματοσειρά)
 ImageRoboto = Εικόνα (Roboto Γραμματοσειρά)
 Compact = Συμπυκνωμένη
 Text = Κείμενο
+CompactFaithful = Συμπυκνωμένη (Faithful 32x Γραμματοσειρά)
+CompactRoboto = Συμπυκνωμένη (Roboto Γραμματοσειρά)
 
 # /unlink
 unlink = αποσύνδεση

@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Stiprinkite gildiją naudodami
 tip-track = <:knowledge_book:1117179094556233828> Sekite žaidėją naudodami </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Sukurkite savo pasirinktinius vaizdus naudodami </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Valdykite savo paskyrą naudodami skydelį: <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Pakeiskite savo rodymo formatą į kompaktišką naudodami </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Pakeiskite savo rodymo šriftą naudodami </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Pakeiskite savo rodymo formatą į įterptinį naudodami </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Palyginkite du žaidėjus naudodami </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Paveikslėlis (Faithful 32x Šriftas)
 ImageRoboto = Paveikslėlis (Roboto Šriftas)
 Compact = Sutrauktas
 Text = Tekstas
+CompactFaithful = Sutrauktas (Faithful 32x Šriftas)
+CompactRoboto = Sutrauktas (Roboto Šriftas)
 
 # /unlink
 unlink = atsieti

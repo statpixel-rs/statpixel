@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Pojačajte gildu s </boost:113
 tip-track = <:knowledge_book:1117179094556233828> Pratite igrača s </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Kreirajte vlastite prilagođene slike s </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Upravljajte svojim računom na nadzornoj ploči na <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Promijenite format prikaza u kompaktni s </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Promijenite font prikaza s </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Promijenite format prikaza u ugradnju s </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Usporedite dva igrača s </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Slika (Faithful 32x Font)
 ImageRoboto = Slika (Roboto Font)
 Compact = Kompaktan
 Text = Tekst
+CompactFaithful = Kompaktan (Faithful 32x Font)
+CompactRoboto = Kompaktan (Roboto Font)
 
 # /unlink
 unlink = prekini-povezivanje

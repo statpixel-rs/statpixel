@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Povzbuďte cech pomocí </boos
 tip-track = <:knowledge_book:1117179094556233828> Sledujte hráče pomocí </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Vytvořte vlastní vlastní obrázky pomocí </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Spravujte svůj účet na ovládacím panelu na adrese <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Změňte formát zobrazení na kompaktní pomocí </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Změňte formát zobrazení na font pomocí </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Změňte formát zobrazení na embed pomocí </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Porovnejte dva hráče pomocí </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Obrázek (Faithful 32x Font)
 ImageRoboto = Obrázek (Roboto Font)
 Compact = Kompaktní
 Text = Text
+CompactFaithful = Kompaktní (Faithful 32x Font)
+CompactRoboto = Kompaktní (Roboto Font)
 
 # /unlink
 unlink = zrušení

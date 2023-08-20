@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Potenzia una gilda con </boost
 tip-track = <:knowledge_book:1117179094556233828> Traccia un giocatore con </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Crea le tue immagini personalizzate con </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Gestisci il tuo account sulla dashboard su <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Cambia el formato de visualización a compacto con </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Cambia la fuente de visualización con </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Cambia el formato de visualización a incrustado con </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Compara dos jugadores con </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Immagine (Faithful 32x Font)
 ImageRoboto = Immagine (Roboto Font)
 Compact = Compatta
 Text = Testo
+CompactFaithful = Compatta (Faithful 32x Font)
+CompactRoboto = Compatta (Roboto Font)
 
 # /unlink
 unlink = scollegamento

@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Potenciar un gremio con </boos
 tip-track = <:knowledge_book:1117179094556233828> Seguir a un jugador con </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Crea tus propias imágenes personalizadas con </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Administra tu cuenta en el panel de control en <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Cambia el formato de visualización a compacto con </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Cambia la fuente de visualización con </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Cambia el formato de visualización a embed con </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Compara dos jugadores con </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -518,6 +522,8 @@ ImageFaithful = Imagen (Fuente Faithful 32x)
 ImageRoboto = Imagen (Fuente Roboto)
 Compact = Compacto
 Text = Texto
+CompactFaithful = Compacto (Fuente Faithful 32x)
+CompactRoboto = Compacto (Fuente Roboto)
 
 # /desvincular
 unlink = desvincular

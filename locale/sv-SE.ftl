@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Förstärk en guild med </boos
 tip-track = <:knowledge_book:1117179094556233828> Spåra en spelare med </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Skapa dina egna anpassade bilder med </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Hantera ditt konto på instrumentpanelen på <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Ändra ditt visningsformat till kompakt med </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Ändra din visningsfont med </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Ändra ditt visningsformat till inbäddat med </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Jämför två spelare med </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Bild (Faithful 32x Font)
 ImageRoboto = Bild (Roboto Font)
 Compact = Kompakt
 Text = Text
+CompactFaithful = Kompakt (Faithful 32x Font)
+CompactRoboto = Kompakt (Roboto Font)
 
 # /unlink
 unlink = avlänka

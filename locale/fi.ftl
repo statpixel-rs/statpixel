@@ -65,6 +65,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Paranna kiltaa komennolla </bo
 tip-track = <:knowledge_book:1117179094556233828> Seuraa pelaajaa komennolla </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Luo omia kustomoituja kuvia komennolla </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Hallinnoi tiliäsi hallintapaneelissa osoitteessa <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Vaihda näyttömuotoasi komennolla </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Vaihda näyttöfonttiasi komennolla </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Vaihda näyttömuotoasi komennolla </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Vertaa kahta pelaajaa komennolla </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -512,6 +516,8 @@ ImageFaithful = Kuva (Faithful 32x Fontti)
 ImageRoboto = Kuva (Roboto Fontti)
 Compact = Tiivistetty
 Text = Teksti
+CompactFaithful = Tiivistetty (Faithful 32x Fontti)
+CompactRoboto = Tiivistetty (Roboto Fontti)
 
 # /unlink
 unlink = poistalinkki

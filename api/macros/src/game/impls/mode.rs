@@ -295,6 +295,12 @@ pub(crate) fn impl_mode(
 			))
 		});
 
+	let label_separator = if label_lines != 0 {
+		quote!(.append(#minecraft::text::Text::NEW_LINE))
+	} else {
+		quote!()
+	};
+
 	tokens.extend(quote! {
 		impl #api::canvas::diff::DiffLog for #ty {
 			fn diff_log(
@@ -551,16 +557,17 @@ pub(crate) fn impl_mode(
 				canvas
 					.push_checked(
 						&#api::canvas::shape::CondensedBubble {
-							lines: #label_lines + #block_lines
+							lines: #label_lines + #block_lines + if #label_lines == 0 { 2 } else { 3 }
 						},
 						#api::canvas::body::Body::new(17., None, family)
+							.append(#minecraft::text::Text::NEW_LINE)
 							.append(#minecraft::text::Text {
 								text: #translate::tr(ctx, Self::tr()).as_ref(),
 								font: #minecraft::style::MinecraftFont::Bold,
 								paint: #minecraft::paint::Paint::White,
 								..Default::default()
 							})
-							.append(#minecraft::text::Text::NEW_LINE)
+							#label_separator
 							#condensed_labels
 							.append(#minecraft::text::Text::NEW_LINE)
 							.extend(&[
@@ -588,16 +595,17 @@ pub(crate) fn impl_mode(
 				canvas
 					.push_checked(
 						&#api::canvas::shape::CondensedBubble {
-							lines: #label_lines + #block_lines
+							lines: #label_lines + #block_lines + if #label_lines == 0 { 2 } else { 3 }
 						},
 						#api::canvas::body::Body::new(17., None, family)
+							.append(#minecraft::text::Text::NEW_LINE)
 							.append(#minecraft::text::Text {
 								text: #translate::tr(ctx, Self::tr()).as_ref(),
 								font: #minecraft::style::MinecraftFont::Bold,
 								paint: #minecraft::paint::Paint::White,
 								..Default::default()
 							})
-							.append(#minecraft::text::Text::NEW_LINE)
+							#label_separator
 							#condensed_labels_diff
 							.append(#minecraft::text::Text::NEW_LINE)
 							.extend(&[

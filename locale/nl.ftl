@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Boost een guild met </boost:11
 tip-track = <:knowledge_book:1117179094556233828> Volg een speler met </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Maak je eigen aangepaste afbeeldingen met </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Beheer je account op het dashboard op <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Verander je weergaveformaat naar compact met </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Verander je weergavelettertype met </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Verander je weergaveformaat naar embed met </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Vergelijk twee spelers met </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Afbeelding (Faithful 32x Lettertype)
 ImageRoboto = Afbeelding (Roboto Lettertype)
 Compact = Compact
 Text = Tekst
+CompactFaithful = Compact (Faithful 32x Lettertype)
+CompactRoboto = Compact (Roboto Lettertype)
 
 # /unlink
 unlink = ontkoppelen

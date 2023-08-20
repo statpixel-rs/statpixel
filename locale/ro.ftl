@@ -67,6 +67,10 @@ tip-boost = <:knowledge_book:1117179094556233828> Crește un guild cu </boost:11
 tip-track = <:knowledge_book:1117179094556233828> Urmărește un jucător cu </track:1132443666997321810>.
 tip-builder = <:knowledge_book:1117179094556233828> Creează-ți propriile imagini personalizate cu </builder:1125992506501365891>.
 tip-dashboard = <:knowledge_book:1117179094556233828> Gestionează-ți contul pe tabloul de bord la <https://statpixel.xyz/dashboard>.
+tip-display-compact = <:knowledge_book:1117179094556233828> Schimbă formatul afișajului în compact cu </display:1113624864272683066>.
+tip-display-font = <:knowledge_book:1117179094556233828> Schimbă fontul afișajului cu </display:1113624864272683066>.
+tip-display-embed = <:knowledge_book:1117179094556233828> Schimbă formatul afișajului în embed cu </display:1113624864272683066>.
+tip-compare = <:knowledge_book:1117179094556233828> Compară doi jucători cu </bedwars compare:1113624864272683060>.
 
 # /boost
 
@@ -514,6 +518,8 @@ ImageFaithful = Imagine (Faithful 32x Font)
 ImageRoboto = Imagine (Roboto Font)
 Compact = Compact
 Text = Text
+CompactFaithful = Compact (Faithful 32x Font)
+CompactRoboto = Compact (Roboto Font)
 
 # /unlink
 unlink = deconectare

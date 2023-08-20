@@ -21,6 +21,7 @@ use uuid::Uuid;
 
 use crate::{commands, format, snapshot, util};
 
+#[allow(clippy::too_many_lines)]
 pub async fn command<G: api::prelude::Game>(
 	ctx: &context::Context<'_>,
 	username: Option<String>,

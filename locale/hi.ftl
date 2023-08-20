@@ -65,6 +65,10 @@ tip-boost = <:knowledge_book:1117179094556233828> एक गिल्ड को 
 tip-track = <:knowledge_book:1117179094556233828> एक खिलाड़ी का ट्रैकिंग करें: </track:1132443666997321810>।
 tip-builder = <:knowledge_book:1117179094556233828> </builder:1125992506501365891> के साथ अपनी खुद की कस्टम छवियां बनाएं।
 tip-dashboard = <:knowledge_book:1117179094556233828> डैशबोर्ड पर अपने खाते का प्रबंधन करें: <https://statpixel.xyz/dashboard>।
+tip-display-compact = <:knowledge_book:1117179094556233828> अपना प्रदर्शन स्वरूप कॉम्पैक्ट में बदलें: </display:1113624864272683066>।
+tip-display-font = <:knowledge_book:1117179094556233828> अपना प्रदर्शन फ़ॉन्ट बदलें: </display:1113624864272683066>।
+tip-display-embed = <:knowledge_book:1117179094556233828> अपना प्रदर्शन स्वरूप एम्बेड में बदलें: </display:1113624864272683066>।
+tip-compare = <:knowledge_book:1117179094556233828> दो खिलाड़ियों की तुलना करें: </bedwars compare:1113624864272683060>।
 
 # /boost
 boost-success-title = {$name} को बूस्ट किया गया
@@ -510,6 +514,8 @@ ImageFaithful = छवि (विश्वासी 32x फ़ॉन्ट)
 ImageRoboto = छवि (रोबोटो फ़ॉन्ट)
 Compact = संक्षेपित
 Text = पाठ
+CompactFaithful = संक्षेपित (विश्वासी 32x फ़ॉन्ट)
+CompactRoboto = संक्षेपित (रोबोटो फ़ॉन्ट)
 
 # /unlink
 unlink = अनलिंक

@@ -61,6 +61,7 @@ pub struct LongTitle;
 pub struct FullWidthTitle;
 pub struct FullWidthBigTitle;
 pub struct Subtitle;
+pub struct LongSubtitle;
 pub struct BubbleSubtitle;
 pub struct ShortSubtitle;
 
@@ -748,6 +749,7 @@ impl_rect_shape!(LongTitle, BUBBLE_WIDTH * 3. + GAP * 2., 45., true);
 impl_rect_shape!(FullWidthTitle, BUBBLE_WIDTH * 5. + GAP * 4., 45., true);
 impl_rect_shape!(FullWidthBigTitle, BUBBLE_WIDTH * 5. + GAP * 4., 75., true);
 impl_rect_shape!(Subtitle, BUBBLE_WIDTH * 1.5 + GAP / 2., 33., true);
+impl_rect_shape!(LongSubtitle, BUBBLE_WIDTH * 3. + GAP * 2., 33., true);
 impl_rect_shape!(BubbleSubtitle, BUBBLE_WIDTH, 33., true);
 impl_rect_shape!(ShortSubtitle, BUBBLE_WIDTH / 2. - GAP / 2., 33., true);
 
