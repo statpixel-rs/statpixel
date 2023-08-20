@@ -27,7 +27,7 @@ const TIPS: &[&str] = &[
 	"tip-display-compact",
 	"tip-display-font",
 	"tip-display-embed",
-	"tip-compare"
+	"tip-compare",
 ];
 
 pub fn random(ctx: &impl GetLocale) -> Cow<str> {

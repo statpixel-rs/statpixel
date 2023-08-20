@@ -96,14 +96,20 @@ impl ToTokens for GameInputReceiver {
 		let labels_sum = self.label_shapes_sum(&modes);
 		let labels_diff_sum = self.label_shapes_diff_sum(&modes);
 
-		let block_lines = blocks.len() as u8 + condensed_modes.iter().fold(0u8, |a, m| {
-			let blocks = m.blocks()
-				.iter()
-				.filter(|b| !blocks.iter().any(|i| i.var_id().to_string() == b.var_id().to_string()))
-				.count();
+		let block_lines = blocks.len() as u8
+			+ condensed_modes.iter().fold(0u8, |a, m| {
+				let blocks = m
+					.blocks()
+					.iter()
+					.filter(|b| {
+						!blocks
+							.iter()
+							.any(|i| i.var_id().to_string() == b.var_id().to_string())
+					})
+					.count();
 
-			a.max(blocks as u8)
-		});
+				a.max(blocks as u8)
+			});
 
 		let label_lines_first = labels.iter().fold((0u8, 0u8), |(a, b), l| {
 			if l.is_static {
@@ -116,7 +122,8 @@ impl ToTokens for GameInputReceiver {
 		let label_lines_first = label_lines_first.0.max(label_lines_first.1);
 
 		let condensed_labels_sum = self.condensed_label_shapes_sum(&modes, label_lines_first);
-		let condensed_labels_diff_sum = self.condensed_label_shapes_diff_sum(&modes, label_lines_first);
+		let condensed_labels_diff_sum =
+			self.condensed_label_shapes_diff_sum(&modes, label_lines_first);
 		let condensed_blocks_sum = self.condensed_block_shapes_sum(&modes);
 		let condensed_blocks_diff_sum = self.condensed_block_shapes_diff_sum(&modes);
 
@@ -417,7 +424,17 @@ impl ToTokens for GameInputReceiver {
 		});
 
 		for (i, mode) in modes.iter().enumerate() {
-			impls::impl_mode(tokens, &state, mode, if i < 2 { label_lines_first } else { label_lines }, block_lines);
+			impls::impl_mode(
+				tokens,
+				&state,
+				mode,
+				if i < 2 {
+					label_lines_first
+				} else {
+					label_lines
+				},
+				block_lines,
+			);
 		}
 
 		let as_root = modes.iter().take(24).map(|mode| {
@@ -1550,7 +1567,7 @@ impl ToTokens for GameInputReceiver {
 							#(#condensed_canvas_build,)*
 						]
 					}
-				
+
 					fn condensed(
 						ctx: &#translate::context::Context<'_>,
 						family: #minecraft::style::Family,

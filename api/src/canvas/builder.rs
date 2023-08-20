@@ -1,9 +1,9 @@
 use std::fmt;
 
+use minecraft::style::Family;
 use skia_safe::{
 	textlayout::Paragraph, Color, ISize, Paint, Path, Point, RRect, Rect, Size, Surface,
 };
-use minecraft::style::Family;
 
 use super::shape::Shape;
 

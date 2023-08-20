@@ -18,8 +18,10 @@ pub async fn command<G: api::prelude::Game>(
 
 	player.increase_searches(ctx).await?;
 
-	let Some((png, mode)) =
-		super::image::command::<G>(ctx, family, &player, &session, background, mode, kind, value).await?
+	let Some((png, mode)) = super::image::command::<G>(
+		ctx, family, &player, &session, background, mode, kind, value,
+	)
+	.await?
 	else {
 		return Ok(());
 	};

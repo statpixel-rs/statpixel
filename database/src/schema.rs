@@ -98,6 +98,7 @@ diesel::table! {
 		hash -> Int8,
 		prev_hash -> Nullable<Int8>,
 		weekly_schedule -> Int4,
+		active_at -> Timestamptz,
 	}
 }
 

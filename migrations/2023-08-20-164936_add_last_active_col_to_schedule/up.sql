@@ -1,0 +1,3 @@
+-- Your SQL goes here
+
+ALTER TABLE schedule ADD COLUMN active_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW();

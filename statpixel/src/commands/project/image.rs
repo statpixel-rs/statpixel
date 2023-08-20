@@ -56,7 +56,9 @@ pub async fn command<G: api::prelude::Game>(
 		snapshots_
 	};
 
-	let (buffer, mode) = G::project(ctx, family, snapshots, session, mode, kind, value, background)?;
+	let (buffer, mode) = G::project(
+		ctx, family, snapshots, session, mode, kind, value, background,
+	)?;
 
 	Ok(Some((buffer.into(), mode)))
 }

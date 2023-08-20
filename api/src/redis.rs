@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
-use database::schema::leaderboard;
+use chrono::Utc;
+use database::schema::{leaderboard, schedule};
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
@@ -93,6 +94,20 @@ impl Player {
 			.on_conflict(leaderboard::uuid)
 			.do_update()
 			.set(leaderboard::data.eq(&value))
+			.execute(&mut ctx.data().pool.get().await?)
+			.await?;
+
+		Ok(())
+	}
+
+	/// # Errors
+	/// Returns an error if the database has an error.
+	pub async fn update_activity(&self, ctx: &context::Context<'_>) -> Result<(), Error> {
+		diesel::insert_into(schedule::table)
+			.values((schedule::uuid.eq(&self.uuid),))
+			.on_conflict(schedule::uuid)
+			.do_update()
+			.set(schedule::active_at.eq(Utc::now()))
 			.execute(&mut ctx.data().pool.get().await?)
 			.await?;
 

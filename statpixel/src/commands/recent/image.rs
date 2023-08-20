@@ -8,7 +8,8 @@ use api::{
 use minecraft::{
 	calc::network,
 	paint::Paint,
-	text::{parse::minecraft_text, Text}, style::Family,
+	style::Family,
+	text::{parse::minecraft_text, Text},
 };
 use translate::context;
 

@@ -256,6 +256,7 @@ pub async fn begin(
 ) -> Result<(), Error> {
 	loop {
 		let mut connection = pool.get().await?;
+		let now = Utc::now();
 
 		// We can afford fetching a lot of records since all of them update with the same
 		// frequency, so it's impossible to insert one that would fit inside of these.
@@ -263,7 +264,8 @@ pub async fn begin(
 		// However, we can only fetch ones that update within 3 hours, since other profiles
 		// could be added while this is active that might need to update in 3 hours.
 		let players = schedule::table
-			.filter(schedule::update_at.le(Utc::now() + chrono::Duration::hours(3)))
+			.filter(schedule::update_at.le(now + chrono::Duration::hours(3)))
+			.filter(schedule::active_at.gt(now - chrono::Duration::weeks(1)))
 			.select((
 				schedule::uuid,
 				schedule::update_at,
