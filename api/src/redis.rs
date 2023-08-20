@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use chrono::Utc;
 use database::schema::{leaderboard, schedule};
-use diesel::ExpressionMethods;
+use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use redis::{aio::Connection, AsyncCommands, Client, RedisError};
