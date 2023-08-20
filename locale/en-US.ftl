@@ -518,6 +518,8 @@ Image = Image
 ImageFaithful = Image (Faithful 32x Font)
 ImageRoboto = Image (Roboto Font)
 Compact = Compact
+CompactFaithful = Compact (Faithful 32x Font)
+CompactRoboto = Compact (Roboto Font)
 Text = Text
 
 # /unlink

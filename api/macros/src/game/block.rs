@@ -80,6 +80,50 @@ impl Block<'_> {
 					.iter()
 					.any(|b| b.id().to_string().eq(&self.id().to_string())))
 	}
+
+	fn _condensed(&self, value: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
+		let minecraft = crate_ident("minecraft");
+
+		let tr = self.as_tr();
+		let paint = self.paint;
+
+		quote! {
+			#minecraft::text::Text {
+				text: #tr.as_ref(),
+				paint: #minecraft::paint::Paint::White,
+				..Default::default()
+			},
+			#minecraft::text::Text {
+				text: ": ",
+				paint: #minecraft::paint::Paint::White,
+				..Default::default()
+			},
+			#minecraft::text::Text {
+				text: #value.as_ref(),
+				paint: #paint,
+				..Default::default()
+			},
+			#minecraft::text::Text::NEW_LINE,
+		}
+	}
+
+	pub fn condensed_shape(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
+		self.value_fmt(Access::Mode(mode))
+			.map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_shape_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
+		self.value_fmt_sum(Side::None, modes, Access::None)
+			.map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_shape_diff(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
+		self.diff_fmt(mode).map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_shape_diff_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
+		self.diff_fmt_sum(modes).map(|value| self._condensed(value))
+	}
 }
 
 impl Field for Block<'_> {

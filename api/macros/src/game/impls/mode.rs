@@ -12,7 +12,13 @@ use quote::quote;
 
 use super::{Crates, Idents, State};
 
-pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mode: &Mode<'_>) {
+pub(crate) fn impl_mode(
+	tokens: &mut proc_macro2::TokenStream,
+	state: &State,
+	mode: &Mode<'_>,
+	label_lines: u8,
+	block_lines: u8,
+) {
 	let id = mode.id();
 	let ty = &mode.ty();
 	let tr = mode.tr();
@@ -74,6 +80,15 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 	let blocks_diff = state.receiver.block_shapes_diff(mode);
 	let labels = state.receiver.label_shapes(mode);
 	let labels_diff = state.receiver.label_shapes_diff(mode);
+
+	let condensed_self_blocks = mode.condensed_block_shapes(mode);
+	let condensed_self_blocks_diff = mode.condensed_block_shapes_diff(mode);
+	let condensed_blocks = state.receiver.condensed_block_shapes(mode);
+	let condensed_blocks_diff = state.receiver.condensed_block_shapes_diff(mode);
+	let condensed_labels = state.receiver.condensed_label_shapes(mode, label_lines);
+	let condensed_labels_diff = state
+		.receiver
+		.condensed_label_shapes_diff(mode, label_lines);
 
 	let mode_blocks = mode.blocks();
 	let game_blocks = state.receiver.blocks();
@@ -519,6 +534,78 @@ pub(crate) fn impl_mode(tokens: &mut proc_macro2::TokenStream, state: &State, mo
 					)
 					#blocks_diff
 					#self_blocks_diff
+			}
+
+			pub fn condensed<'c>(
+				&self,
+				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
+				mut canvas: #api::canvas::Canvas<'c>,
+				data: &'c #api::player::data::Data,
+			) -> #api::canvas::Canvas<'c> {
+				use #api::canvas::label::ToFormatted;
+
+				let stats = &data.stats.#path_to_game.#id;
+				let game = &data.stats.#path_to_game;
+
+				canvas
+					.push_checked(
+						&#api::canvas::shape::CondensedBubble {
+							lines: #label_lines + #block_lines
+						},
+						#api::canvas::body::Body::new(17., None, family)
+							.append(#minecraft::text::Text {
+								text: #translate::tr(ctx, Self::tr()).as_ref(),
+								font: #minecraft::style::MinecraftFont::Bold,
+								paint: #minecraft::paint::Paint::White,
+								..Default::default()
+							})
+							.append(#minecraft::text::Text::NEW_LINE)
+							#condensed_labels
+							.append(#minecraft::text::Text::NEW_LINE)
+							.extend(&[
+								#condensed_blocks
+								#condensed_self_blocks
+							])
+							.build()
+					)
+			}
+
+			pub fn condensed_diff<'c>(
+				ctx: &#translate::context::Context<'_>,
+				family: #minecraft::style::Family,
+				mut canvas: #api::canvas::Canvas<'c>,
+				data_lhs: &'c #api::player::data::Data,
+				data_rhs: &'c #api::player::data::Data,
+			) -> #api::canvas::Canvas<'c> {
+				use #api::canvas::label::ToFormatted;
+
+				let stats_lhs = &data_lhs.stats.#path_to_game.#id;
+				let stats_rhs = &data_rhs.stats.#path_to_game.#id;
+				let game_lhs = &data_lhs.stats.#path_to_game;
+				let game_rhs = &data_rhs.stats.#path_to_game;
+
+				canvas
+					.push_checked(
+						&#api::canvas::shape::CondensedBubble {
+							lines: #label_lines + #block_lines
+						},
+						#api::canvas::body::Body::new(17., None, family)
+							.append(#minecraft::text::Text {
+								text: #translate::tr(ctx, Self::tr()).as_ref(),
+								font: #minecraft::style::MinecraftFont::Bold,
+								paint: #minecraft::paint::Paint::White,
+								..Default::default()
+							})
+							.append(#minecraft::text::Text::NEW_LINE)
+							#condensed_labels_diff
+							.append(#minecraft::text::Text::NEW_LINE)
+							.extend(&[
+								#condensed_blocks_diff
+								#condensed_self_blocks_diff
+							])
+							.build()
+					)
 			}
 		}
 	});

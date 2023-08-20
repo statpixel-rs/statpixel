@@ -24,38 +24,79 @@ pub struct Collection<'a> {
 }
 
 impl Collection<'_> {
-	/// Returns a `push_right_start` chained call for a `Canvas`
-	pub fn shape(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
-		let api = crate_ident("api");
-		let labels = self.labels.iter().filter_map(|label| label.item(mode));
+	fn _condensed(
+		&self,
+		labels: impl Iterator<Item = proc_macro2::TokenStream>,
+		lines: u8,
+	) -> proc_macro2::TokenStream {
+		let minecraft = crate_ident("minecraft");
+		let labels = labels.collect::<Vec<_>>();
+
+		let trailing =
+			(0..(lines - labels.len() as u8)).map(|_| quote!(#minecraft::text::Text::NEW_LINE));
 
 		quote! {
-			.push_right_start(
-				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None, family)
-					#(#labels)*
-					.build()
-			)
+			.extend(&[
+				#minecraft::text::Text::NEW_LINE,
+				#(#labels,)*
+				#(#trailing,)*
+			])
 		}
 	}
 
-	pub fn shape_sum(&self, modes: &[Mode<'_>]) -> proc_macro2::TokenStream {
-		let api = crate_ident("api");
-		let labels = self.labels.iter().filter_map(|label| label.item_sum(modes));
+	pub fn condensed(&self, mode: &Mode<'_>, lines: u8) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| {
+			if label.is_static {
+				return None;
+			}
 
-		quote! {
-			.push_right_start(
-				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None, family)
-					#(#labels)*
-					.build()
-			)
-		}
+			label.condensed(mode)
+		});
+
+		self._condensed(labels, lines)
 	}
 
-	pub fn shape_diff(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
+	pub fn condensed_sum(&self, modes: &[Mode<'_>], lines: u8) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| {
+			if !label.is_static {
+				return None;
+			}
+
+			label.condensed_sum(modes)
+		});
+
+		self._condensed(labels, lines)
+	}
+
+	pub fn condensed_diff(&self, mode: &Mode<'_>, lines: u8) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| {
+			if label.is_static {
+				return None;
+			}
+
+			label.condensed_diff(mode)
+		});
+
+		self._condensed(labels, lines)
+	}
+
+	pub fn condensed_diff_sum(&self, modes: &[Mode<'_>], lines: u8) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| {
+			if !label.is_static {
+				return None;
+			}
+
+			label.condensed_diff_sum(modes)
+		});
+
+		self._condensed(labels, lines)
+	}
+
+	fn _shape(
+		&self,
+		labels: impl Iterator<Item = proc_macro2::TokenStream>,
+	) -> proc_macro2::TokenStream {
 		let api = crate_ident("api");
-		let labels = self.labels.iter().filter_map(|label| label.item_diff(mode));
 
 		quote! {
 			.push_right_start(
@@ -67,21 +108,32 @@ impl Collection<'_> {
 		}
 	}
 
+	/// Returns a `push_right_start` chained call for a `Canvas`
+	pub fn shape(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| label.item(mode));
+
+		self._shape(labels)
+	}
+
+	pub fn shape_sum(&self, modes: &[Mode<'_>]) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| label.item_sum(modes));
+
+		self._shape(labels)
+	}
+
+	pub fn shape_diff(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
+		let labels = self.labels.iter().filter_map(|label| label.item_diff(mode));
+
+		self._shape(labels)
+	}
+
 	pub fn shape_diff_sum(&self, modes: &[Mode<'_>]) -> proc_macro2::TokenStream {
-		let api = crate_ident("api");
 		let labels = self
 			.labels
 			.iter()
 			.filter_map(|label| label.item_diff_sum(modes));
 
-		quote! {
-			.push_right_start(
-				&#api ::canvas::shape::Sidebar,
-				#api ::canvas::body::Body::new(17., None, family)
-					#(#labels)*
-					.build()
-			)
-		}
+		self._shape(labels)
 	}
 }
 
@@ -106,61 +158,80 @@ impl ToTokens for Label<'_> {
 }
 
 impl Label<'_> {
-	/// Returns an `append_item` call for a `Body`
-	pub fn item(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
-		let value = self.value_fmt(Access::Mode(mode))?;
+	fn _condensed(&self, value: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
+		let minecraft = crate_ident("minecraft");
+
 		let tr = self.as_tr();
 		let paint = self.paint;
 
-		Some(quote! {
+		quote! {
+			#minecraft::text::Text {
+				text: #tr.as_ref(),
+				paint: #minecraft::paint::Paint::White,
+				..Default::default()
+			},
+			#minecraft::text::Text {
+				text: ": ",
+				paint: #minecraft::paint::Paint::White,
+				..Default::default()
+			},
+			#minecraft::text::Text {
+				text: #value.as_ref(),
+				paint: #paint,
+				..Default::default()
+			},
+			#minecraft::text::Text::NEW_LINE
+		}
+	}
+
+	pub fn condensed(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
+		self.value_fmt(Access::Mode(mode))
+			.map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
+		self.value_fmt_sum(Side::None, modes, Access::None)
+			.map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_diff(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
+		self.diff_fmt(mode).map(|value| self._condensed(value))
+	}
+
+	pub fn condensed_diff_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
+		self.diff_fmt_sum(modes).map(|value| self._condensed(value))
+	}
+
+	fn _item(&self, value: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
+		let tr = self.as_tr();
+		let paint = self.paint;
+
+		quote! {
 			.append_item(
 				&#tr,
 				&#value,
 				&#paint
 			)
-		})
+		}
+	}
+
+	/// Returns an `append_item` call for a `Body`
+	pub fn item(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
+		self.value_fmt(Access::Mode(mode))
+			.map(|value| self._item(value))
 	}
 
 	pub fn item_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
-		let value = self.value_fmt_sum(Side::None, modes, Access::None)?;
-		let tr = self.as_tr();
-		let paint = self.paint;
-
-		Some(quote! {
-			.append_item(
-				&#tr,
-				&#value,
-				&#paint
-			)
-		})
+		self.value_fmt_sum(Side::None, modes, Access::None)
+			.map(|value| self._item(value))
 	}
 
 	pub fn item_diff(&self, mode: &Mode<'_>) -> Option<proc_macro2::TokenStream> {
-		let value = self.diff_fmt(mode)?;
-		let tr = self.as_tr();
-		let paint = self.paint;
-
-		Some(quote! {
-			.append_item(
-				&#tr,
-				&#value,
-				&#paint
-			)
-		})
+		self.diff_fmt(mode).map(|value| self._item(value))
 	}
 
 	pub fn item_diff_sum(&self, modes: &[Mode<'_>]) -> Option<proc_macro2::TokenStream> {
-		let value = self.diff_fmt_sum(modes)?;
-		let tr = self.as_tr();
-		let paint = self.paint;
-
-		Some(quote! {
-			.append_item(
-				&#tr,
-				&#value,
-				&#paint
-			)
-		})
+		self.diff_fmt_sum(modes).map(|value| self._item(value))
 	}
 }
 

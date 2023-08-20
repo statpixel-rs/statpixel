@@ -28,7 +28,21 @@ pub const BUBBLE_HEIGHT: f32 = 85.;
 pub const GAP: f32 = 7.;
 
 pub trait Shape {
-	fn draw(&self, path: &mut Path, bounds: &Rect);
+	fn draw(&self, path: &mut Path, bounds: &Rect) {
+		path.add_rrect(
+			RRect::new_rect_radii(
+				bounds,
+				&[
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+					(CORNER_RADIUS, CORNER_RADIUS).into(),
+				],
+			),
+			None,
+		);
+	}
+
 	#[allow(unused_variables)]
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, family: Family) {}
 	fn size(&self) -> Size;
@@ -64,6 +78,17 @@ pub struct WideBubble;
 pub struct TallBubble;
 pub struct WideTallBubble;
 pub struct RecentGame<'g>(pub &'g game::r#type::Type);
+
+/// Displays the stats of an entire game mode.
+///
+/// Ensure the `lines` are equal to all horizontally-adjacent [`CondensedBubble`]s
+/// to avoid weird spacing. Put the game mode in white bold at the top, then
+/// all of the labels (only static labels in Overall, only mode-specific in each mode),
+/// also aligned to take up the same number of lines. Then, all of the statistics
+/// go at the bottom.
+pub struct CondensedBubble {
+	pub lines: u8,
+}
 
 pub struct Sidebar;
 pub struct Gutter;
@@ -749,22 +774,24 @@ impl_rect_shape!(LeaderboardValue, 200., 35., true);
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
 
-impl Shape for RecentGame<'_> {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
+impl Shape for CondensedBubble {
+	fn size(&self) -> Size {
+		Size {
+			width: BUBBLE_WIDTH,
+			height: 22. * f32::from(self.lines) + 20.,
+		}
 	}
 
+	fn v_align(&self) -> bool {
+		true
+	}
+
+	fn insets(&self) -> Point {
+		(13., 0.).into()
+	}
+}
+
+impl Shape for RecentGame<'_> {
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, _insets: &Point, _family: Family) {
 		if let Some(image) = self.0.as_image_bytes() {
 			canvas.draw_image(
@@ -826,21 +853,6 @@ impl Shape for EmptyNetworthName {
 }
 
 impl Shape for NetworthName {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn size(&self) -> Size {
 		Size {
 			width: (BUBBLE_WIDTH * 1.5 + GAP / 2.) - 48. - GAP,
@@ -902,21 +914,6 @@ impl Shape for Slot<'_> {
 		}
 	}
 
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn post_draw(&self, canvas: &mut Canvas, bounds: &Rect, insets: &Point, family: Family) {
 		if let Some(image) = self.0 {
 			canvas.draw_image(image, (bounds.x() + insets.x, bounds.y() + insets.y), None);
@@ -956,42 +953,12 @@ impl Shape for Custom {
 		}
 	}
 
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn v_align(&self) -> bool {
 		true
 	}
 }
 
 impl Shape for GuildXpName {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn size(&self) -> Size {
 		Size {
 			width: 300.,
@@ -1009,21 +976,6 @@ impl Shape for GuildXpName {
 }
 
 impl Shape for WideTallBubble {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn size(&self) -> Size {
 		Size {
 			width: BUBBLE_WIDTH * 1.5 + GAP / 2.,
@@ -1041,21 +993,6 @@ impl Shape for WideTallBubble {
 }
 
 impl Shape for LeaderboardName {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn size(&self) -> Size {
 		Size {
 			width: 456.,
@@ -1160,21 +1097,6 @@ impl<'s> Shape for Status<'s> {
 }
 
 impl Shape for Sidebar {
-	fn draw(&self, path: &mut Path, bounds: &Rect) {
-		path.add_rrect(
-			RRect::new_rect_radii(
-				bounds,
-				&[
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-					(CORNER_RADIUS, CORNER_RADIUS).into(),
-				],
-			),
-			None,
-		);
-	}
-
 	fn size(&self) -> Size {
 		Size {
 			width: BUBBLE_WIDTH,

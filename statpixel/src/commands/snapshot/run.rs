@@ -32,7 +32,7 @@ pub async fn command<G: api::prelude::Game>(
 	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
-		format::Display::Image | format::Display::Compact => {
+		format::Display::Image => {
 			let (player, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -90,6 +90,61 @@ pub async fn command<G: api::prelude::Game>(
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;
+		}
+		format::Display::Compact => {
+			let (player, data_rhs, suffix) =
+				commands::get_player_data_suffix(ctx, uuid, username).await?;
+
+			player.increase_searches(ctx).await?;
+
+			let status = snapshot::user::get_or_insert(ctx, &player, &data_rhs, after).await?;
+
+			let snapshot::user::Status::Found((ref data_lhs, created_at)) = status else {
+				let content = tr_fmt!(
+					ctx, "no-previous-statistics",
+					name: util::escape_username(&data_rhs.username),
+				);
+
+				ctx.send(poise::CreateReply::new().content(content)).await?;
+
+				return Ok(());
+			};
+
+			let content = tr_fmt!(
+				ctx, "showing-statistics",
+				from: format!("<t:{}:f>", created_at.timestamp()),
+				to: format!("<t:{}:f>", Utc::now().timestamp()),
+			);
+
+			let attachments = G::condensed_diff(
+				ctx,
+				family,
+				data_lhs,
+				&data_rhs,
+				suffix.as_deref(),
+				background,
+			)
+			.into_iter()
+			.map(|mut surface| {
+				CreateAttachment::bytes(Cow::Owned(canvas::to_png(&mut surface)), crate::IMAGE_NAME)
+			})
+			.collect::<Vec<_>>();
+
+			let (_, id) = G::Mode::as_snapshot(
+				ctx,
+				player.uuid,
+				past.num_nanoseconds().unwrap_or_default(),
+				None,
+			);
+
+			let mut reply = poise::CreateReply::new().content(format!(
+				"{}\n{content}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+			));
+
+			reply.attachments = attachments;
+
+			ctx.send(reply).await?;
 		}
 		format::Display::Text => {
 			let (player, data_rhs) = commands::get_player_data(ctx, uuid, username).await?;

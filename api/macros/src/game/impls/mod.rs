@@ -4,13 +4,12 @@ pub(crate) use mode::impl_mode;
 
 use crate::util::{crate_ident, ident};
 
-use super::{prelude::FieldGroup, GameInputReceiver};
+use super::GameInputReceiver;
 
 pub(crate) struct State<'t> {
 	pub receiver: &'t GameInputReceiver,
 	pub crates: Crates,
 	pub idents: Idents,
-	pub streams: Streams,
 }
 
 impl<'t> State<'t> {
@@ -25,27 +24,6 @@ impl<'t> State<'t> {
 			receiver,
 			crates: Crates::new(),
 			idents: Idents::new(&receiver.ident.to_string(), calc, path_to_game),
-			streams: Streams::new(receiver),
-		}
-	}
-}
-
-pub(crate) struct Streams {
-	pub blocks_sum: proc_macro2::TokenStream,
-	pub blocks_diff_sum: proc_macro2::TokenStream,
-	pub labels_sum: proc_macro2::TokenStream,
-	pub labels_diff_sum: proc_macro2::TokenStream,
-}
-
-impl Streams {
-	pub fn new(receiver: &GameInputReceiver) -> Self {
-		let modes = receiver.overall_modes();
-
-		Self {
-			blocks_sum: receiver.block_shapes_sum(&modes),
-			blocks_diff_sum: receiver.block_shapes_diff_sum(&modes),
-			labels_sum: receiver.label_shapes_sum(&modes),
-			labels_diff_sum: receiver.label_shapes_diff_sum(&modes),
 		}
 	}
 }

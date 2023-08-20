@@ -51,6 +51,34 @@ pub trait FieldGroup {
 			.collect()
 	}
 
+	fn condensed_block_shapes(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
+		self.blocks()
+			.iter()
+			.filter_map(|block| block.condensed_shape(mode))
+			.collect()
+	}
+
+	fn condensed_block_shapes_sum(&self, modes: &[Mode<'_>]) -> proc_macro2::TokenStream {
+		self.blocks()
+			.iter()
+			.filter_map(|block| block.condensed_shape_sum(modes))
+			.collect()
+	}
+
+	fn condensed_block_shapes_diff(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
+		self.blocks()
+			.iter()
+			.filter_map(|block| block.condensed_shape_diff(mode))
+			.collect()
+	}
+
+	fn condensed_block_shapes_diff_sum(&self, modes: &[Mode<'_>]) -> proc_macro2::TokenStream {
+		self.blocks()
+			.iter()
+			.filter_map(|block| block.condensed_shape_diff_sum(modes))
+			.collect()
+	}
+
 	fn labels(&self) -> Cow<Vec<Label>>;
 
 	fn label_shapes(&self, mode: &Mode<'_>) -> proc_macro2::TokenStream {
@@ -79,6 +107,42 @@ pub trait FieldGroup {
 			labels: self.labels(),
 		}
 		.shape_diff_sum(modes)
+	}
+
+	fn condensed_label_shapes(&self, mode: &Mode<'_>, lines: u8) -> proc_macro2::TokenStream {
+		Collection {
+			labels: self.labels(),
+		}
+		.condensed(mode, lines)
+	}
+
+	fn condensed_label_shapes_sum(
+		&self,
+		modes: &[Mode<'_>],
+		lines: u8,
+	) -> proc_macro2::TokenStream {
+		Collection {
+			labels: self.labels(),
+		}
+		.condensed_sum(modes, lines)
+	}
+
+	fn condensed_label_shapes_diff(&self, mode: &Mode<'_>, lines: u8) -> proc_macro2::TokenStream {
+		Collection {
+			labels: self.labels(),
+		}
+		.condensed_diff(mode, lines)
+	}
+
+	fn condensed_label_shapes_diff_sum(
+		&self,
+		modes: &[Mode<'_>],
+		lines: u8,
+	) -> proc_macro2::TokenStream {
+		Collection {
+			labels: self.labels(),
+		}
+		.condensed_diff_sum(modes, lines)
 	}
 
 	fn min(&self, variable: &syn::Ident, mode: &Mode<'_>) -> proc_macro2::TokenStream {

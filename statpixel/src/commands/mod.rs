@@ -160,6 +160,16 @@ pub async fn get_guild_with_member_opt(
 	guild
 }
 
+pub async fn get_player_data_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<(Player, Arc<Data>, Option<String>), Error> {
+	let (result, _) = tokio::join!(player_data_suffix(ctx, uuid, username), ctx.defer());
+
+	result
+}
+
 pub async fn get_player_data_session_skin_suffix(
 	ctx: &context::Context<'_>,
 	uuid: Option<Uuid>,
@@ -226,6 +236,17 @@ pub async fn get_player_data_games_session_skin_suffix(
 	);
 
 	result
+}
+
+pub async fn from_player_data_suffix(
+	ctx: &context::Context<'_>,
+	player: &Player,
+) -> Result<(Arc<Data>, Option<String>), Error> {
+	let (data, suffix) = tokio::join!(player.get_data(ctx), player.get_suffix(ctx));
+
+	let data = data?;
+
+	Ok((data, suffix))
 }
 
 pub async fn from_player_data_session_skin_suffix(
@@ -328,6 +349,17 @@ async fn player_data_games_session_skin_suffix(
 		from_player_data_games_session_skin_suffix(ctx, &player).await?;
 
 	Ok((player, data, games, session, skin, suffix))
+}
+
+async fn player_data_suffix(
+	ctx: &context::Context<'_>,
+	uuid: Option<Uuid>,
+	username: Option<String>,
+) -> Result<(Player, Arc<Data>, Option<String>), Error> {
+	let player = util::get_player_from_input(ctx, uuid, username).await?;
+	let (data, suffix) = from_player_data_suffix(ctx, &player).await?;
+
+	Ok((player, data, suffix))
 }
 
 async fn player_data_session_skin_suffix(

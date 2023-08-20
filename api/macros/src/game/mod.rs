@@ -17,7 +17,7 @@ use structs::*;
 use crate::{game::key::Access, util::ident};
 
 use self::{
-	impls::{Crates, Idents, State, Streams},
+	impls::{Crates, Idents, State},
 	key::Side,
 };
 
@@ -83,19 +83,45 @@ impl ToTokens for GameInputReceiver {
 			calc,
 			path_to_game,
 		} = &state.idents;
-		let Streams {
-			blocks_sum,
-			blocks_diff_sum,
-			labels_sum,
-			labels_diff_sum,
-			..
-		} = &state.streams;
 
 		let game_ident = &self.ident;
 		let blocks = self.blocks();
 		let labels = self.labels();
 		let modes = self.modes();
 		let overall_modes = self.overall_modes();
+
+		let blocks_sum = self.block_shapes_sum(&modes);
+		let blocks_diff_sum = self.block_shapes_diff_sum(&modes);
+		let labels_sum = self.label_shapes_sum(&modes);
+		let labels_diff_sum = self.label_shapes_diff_sum(&modes);
+
+		let block_lines = blocks.len() as u8 + overall_modes.iter().fold(0u8, |a, m| {
+			let blocks = m.blocks().len();
+
+			a.max(blocks as u8)
+		});
+
+		let label_lines_first = labels.iter().fold((0u8, 0u8), |(a, b), l| {
+			if l.is_static {
+				(a, b + 1)
+			} else {
+				(a + 1, b)
+			}
+		});
+		let label_lines_first = label_lines_first.0.max(label_lines_first.1);
+
+		let label_lines = labels.iter().fold(0u8, |a, l| {
+			if l.is_static {
+				a
+			} else {
+				a + 1
+			}
+		});
+
+		let condensed_labels_sum = self.condensed_label_shapes_sum(&modes, label_lines_first);
+		let condensed_labels_diff_sum = self.condensed_label_shapes_diff_sum(&modes, label_lines_first);
+		let condensed_blocks_sum = self.condensed_block_shapes_sum(&modes);
+		let condensed_blocks_diff_sum = self.condensed_block_shapes_diff_sum(&modes);
 
 		let overall_block_idents = blocks
 			.iter()
@@ -393,8 +419,8 @@ impl ToTokens for GameInputReceiver {
 			}
 		});
 
-		for mode in &modes {
-			impls::impl_mode(tokens, &state, mode);
+		for (i, mode) in modes.iter().enumerate() {
+			impls::impl_mode(tokens, &state, mode, if i < 2 { label_lines_first } else { label_lines }, block_lines);
 		}
 
 		let as_root = modes.iter().take(24).map(|mode| {
@@ -1041,6 +1067,73 @@ impl ToTokens for GameInputReceiver {
 						#blocks_sum
 				}
 
+				pub fn condensed<'c>(
+					&self,
+					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
+					mut canvas: #api::canvas::Canvas<'c>,
+					data: &'c #api::player::data::Data,
+				) -> #api::canvas::Canvas<'c> {
+					use #api::canvas::label::ToFormatted;
+
+					let game = &data.stats.#path_to_game;
+
+					canvas
+						.push_checked(
+							&#api::canvas::shape::CondensedBubble {
+								lines: #label_lines_first + #block_lines
+							},
+							#api::canvas::body::Body::new(17., None, family)
+								.append(#minecraft::text::Text {
+									text: #translate::tr(ctx, Self::tr()).as_ref(),
+									font: #minecraft::style::MinecraftFont::Bold,
+									paint: #minecraft::paint::Paint::White,
+									..Default::default()
+								})
+								.append(#minecraft::text::Text::NEW_LINE)
+								#condensed_labels_sum
+								.append(#minecraft::text::Text::NEW_LINE)
+								.extend(&[
+									#condensed_blocks_sum
+								])
+								.build()
+						)
+				}
+
+				pub fn condensed_diff<'c>(
+					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
+					mut canvas: #api::canvas::Canvas<'c>,
+					data_lhs: &'c #api::player::data::Data,
+					data_rhs: &'c #api::player::data::Data,
+				) -> #api::canvas::Canvas<'c> {
+					use #api::canvas::label::ToFormatted;
+
+					let game_lhs = &data_lhs.stats.#path_to_game;
+					let game_rhs = &data_rhs.stats.#path_to_game;
+
+					canvas
+						.push_checked(
+							&#api::canvas::shape::CondensedBubble {
+								lines: #label_lines_first + #block_lines
+							},
+							#api::canvas::body::Body::new(17., None, family)
+								.append(#minecraft::text::Text {
+									text: #translate::tr(ctx, Self::tr()).as_ref(),
+									font: #minecraft::style::MinecraftFont::Bold,
+									paint: #minecraft::paint::Paint::White,
+									..Default::default()
+								})
+								.append(#minecraft::text::Text::NEW_LINE)
+								#condensed_labels_diff_sum
+								.append(#minecraft::text::Text::NEW_LINE)
+								.extend(&[
+									#condensed_blocks_diff_sum
+								])
+								.build()
+						)
+				}
+
 				#[allow(clippy::too_many_arguments)]
 				pub fn canvas_diff<'c>(
 					ctx: &#translate::context::Context<'_>,
@@ -1137,6 +1230,53 @@ impl ToTokens for GameInputReceiver {
 						&status,
 						&progress,
 					),
+				}
+			});
+
+			let condensed_canvas = (0..(overall_modes.len() / 3 + 1))
+				.map(|i| {
+					let canvas = ident(&format!("canvas_{}", i));
+
+					quote!(let #canvas = #api::canvas::Canvas::new(720., family).gap(7.);)
+				})
+				.collect::<Vec<_>>();
+
+			let condensed_canvas_build = (0..(overall_modes.len() / 3 + 1))
+				.map(|i| {
+					let canvas = ident(&format!("canvas_{}", i));
+
+					quote!(#canvas.build(None, background).unwrap())
+				})
+				.collect::<Vec<_>>();
+
+			let condensed_mode = overall_modes.iter().enumerate().map(|(i, mode)| {
+				let id = mode.id();
+				let i = (i + 1) / 3;
+				let canvas = ident(&format!("canvas_{}", i));
+
+				quote! {
+					let #canvas = game.#id.condensed(
+						ctx,
+						family,
+						#canvas,
+						data,
+					);
+				}
+			});
+
+			let condensed_mode_diff = overall_modes.iter().enumerate().map(|(i, mode)| {
+				let ty = mode.ty();
+				let i = (i + 1) / 3;
+				let canvas = ident(&format!("canvas_{}", i));
+
+				quote! {
+					let #canvas = #ty::condensed_diff(
+						ctx,
+						family,
+						#canvas,
+						data_lhs,
+						data_rhs,
+					);
 				}
 			});
 
@@ -1314,6 +1454,59 @@ impl ToTokens for GameInputReceiver {
 
 				impl #api::prelude::Game for #game_ident {
 					type Mode = #mode_enum;
+
+					fn condensed_diff(
+						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
+						data_lhs: &#api::player::data::Data,
+						data_rhs: &#api::player::data::Data,
+						suffix: Option<&str>,
+						background: Option<#skia::Color>,
+					) -> Vec<#skia::Surface> {
+						let game_lhs = &data_lhs.stats.#path_to_game;
+						let game_rhs = &data_rhs.stats.#path_to_game;
+
+						#(#condensed_canvas)*
+
+						let canvas_0 = #overall_ident::condensed_diff(
+							ctx,
+							family,
+							canvas_0,
+							data_lhs,
+							data_rhs,
+						);
+
+						#(#condensed_mode_diff)*
+
+						vec![
+							#(#condensed_canvas_build,)*
+						]
+					}
+				
+					fn condensed(
+						ctx: &#translate::context::Context<'_>,
+						family: #minecraft::style::Family,
+						data: &#api::player::data::Data,
+						suffix: Option<&str>,
+						background: Option<#skia::Color>,
+					) -> Vec<#skia::Surface> {
+						let game = &data.stats.#path_to_game;
+
+						#(#condensed_canvas)*
+
+						let canvas_0 = #overall_ident.condensed(
+							ctx,
+							family,
+							canvas_0,
+							data,
+						);
+
+						#(#condensed_mode)*
+
+						vec![
+							#(#condensed_canvas_build,)*
+						]
+					}
 
 					#[allow(clippy::too_many_arguments)]
 					fn canvas_diff(

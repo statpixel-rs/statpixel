@@ -36,6 +36,23 @@ pub trait Game {
 		background: Option<skia_safe::Color>,
 	) -> (skia_safe::Surface, Self::Mode);
 
+	fn condensed_diff(
+		ctx: &context::Context,
+		family: Family,
+		data_lhs: &data::Data,
+		data_rhs: &data::Data,
+		suffix: Option<&str>,
+		background: Option<skia_safe::Color>,
+	) -> Vec<skia_safe::Surface>;
+
+	fn condensed(
+		ctx: &context::Context,
+		family: Family,
+		data: &data::Data,
+		suffix: Option<&str>,
+		background: Option<skia_safe::Color>,
+	) -> Vec<skia_safe::Surface>;
+
 	/// # Errors
 	///
 	/// See specific implementations for possible errors.

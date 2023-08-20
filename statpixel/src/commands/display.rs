@@ -12,6 +12,8 @@ pub enum Format {
 	ImageFaithful,
 	ImageRoboto,
 	Compact,
+	CompactFaithful,
+	CompactRoboto,
 	Text,
 }
 
@@ -28,6 +30,8 @@ pub async fn display(ctx: Context<'_>, format: Format) -> Result<(), Error> {
 		Format::ImageFaithful => (Display::Image, Family::Faithful),
 		Format::ImageRoboto => (Display::Image, Family::Roboto),
 		Format::Compact => (Display::Compact, Family::Minecraft),
+		Format::CompactFaithful => (Display::Compact, Family::Faithful),
+		Format::CompactRoboto => (Display::Compact, Family::Roboto),
 		Format::Text => (Display::Text, Family::Minecraft),
 	};
 
