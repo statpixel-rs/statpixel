@@ -967,6 +967,9 @@ pub enum Mode {
 
 	RecentGames,
 	Winstreaks,
+	// BedWarsPractice
+	// BedWarsShop
+	// BedWarsHotbar
 
 	// profile id
 	SkyBlock(SkyBlockMode, #[bitcode(with_serde)] Option<Uuid>),
