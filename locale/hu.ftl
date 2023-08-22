@@ -2735,3 +2735,57 @@ woolwars-compare = összehasonlítás
   .to-description = Minecraft játékos az összehasonlításhoz
   .mode = mód
   .mode-description = A Wool Wars mód megtekintése
+
+hotbar = Főeszköztár
+shop = Bolt
+practice = Gyakorlás
+
+bedwars-hotbar = hotbar
+  .description = Nézze meg a Bed Wars főeszköztár beállításait
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Nézze meg a Bed Wars bolt beállításait
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Próbálkozások
+bridging-wins = Hidaképítés Győzelmek
+bridging-losses = Hidaképítés Vereségek
+fireball-wins = Tűzgolyó Győzelmek
+fireball-losses = Tűzgolyó Vereségek
+mlg-wins = MLG Győzelmek
+mlg-losses = MLG Vereségek
+pearl-wins = Gyöngy Győzelmek
+pearl-losses = Gyöngy Vereségek
+
+straight-none-30 = Egyenes Nincs 30
+straight-none-50 = Egyenes Nincs 50
+straight-none-100 = Egyenes Nincs 100
+straight-slight-30 = Egyenes Enyhe 30
+straight-slight-50 = Egyenes Enyhe 50
+straight-slight-100 = Egyenes Enyhe 100
+straight-staircase-30 = Egyenes Lépcsős 30
+straight-staircase-50 = Egyenes Lépcsős 50
+straight-staircase-100 = Egyenes Lépcsős 100
+diagonal-none-30 = Átlós Nincs 30
+diagonal-none-50 = Átlós Nincs 50
+diagonal-none-100 = Átlós Nincs 100
+diagonal-slight-30 = Átlós Enyhe 30
+diagonal-slight-50 = Átlós Enyhe 50
+diagonal-slight-100 = Átlós Enyhe 100
+diagonal-staircase-30 = Átlós Lépcsős 30
+diagonal-staircase-50 = Átlós Lépcsős 50
+diagonal-staircase-100 = Átlós Lépcsős 100
+
+bedwars-practice = practice
+  .description = Nézze meg a Bed Wars gyakorlási statisztikákat
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

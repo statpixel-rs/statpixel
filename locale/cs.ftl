@@ -2740,3 +2740,57 @@ woolwars-compare = porovnat
   .to-description = Hráč v Minecraftu pro porovnání
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
+
+hotbar = Horká lišta
+shop = Obchod
+practice = Cvičení
+
+bedwars-hotbar = horká-lišta
+  .description = Zobrazit preference horké lišty v Bed Wars
+  .username = uživatelské-jméno
+  .username-description = Uživatelské jméno v Minecraftu
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = obchod
+  .description = Zobrazit preference obchodu v Bed Wars
+  .username = uživatelské-jméno
+  .username-description = Uživatelské jméno v Minecraftu
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Pokusy
+bridging-wins = Výhry v bridgingu
+bridging-losses = Prohry v bridgingu
+fireball-wins = Výhry s ohnivou koulí
+fireball-losses = Prohry s ohnivou koulí
+mlg-wins = Výhry v MLG
+mlg-losses = Prohry v MLG
+pearl-wins = Výhry s ender perlemi
+pearl-losses = Prohry s ender perlemi
+
+straight-none-30 = Přímý Bez 30
+straight-none-50 = Přímý Bez 50
+straight-none-100 = Přímý Bez 100
+straight-slight-30 = Přímý Mírný 30
+straight-slight-50 = Přímý Mírný 50
+straight-slight-100 = Přímý Mírný 100
+straight-staircase-30 = Přímý Schodiště 30
+straight-staircase-50 = Přímý Schodiště 50
+straight-staircase-100 = Přímý Schodiště 100
+diagonal-none-30 = Diagonální Bez 30
+diagonal-none-50 = Diagonální Bez 50
+diagonal-none-100 = Diagonální Bez 100
+diagonal-slight-30 = Diagonální Mírný 30
+diagonal-slight-50 = Diagonální Mírný 50
+diagonal-slight-100 = Diagonální Mírný 100
+diagonal-staircase-30 = Diagonální Schodiště 30
+diagonal-staircase-50 = Diagonální Schodiště 50
+diagonal-staircase-100 = Diagonální Schodiště 100
+
+bedwars-practice = cvičení
+  .description = Zobrazit statistiky cvičení v Bed Wars
+  .username = uživatelské-jméno
+  .username-description = Uživatelské jméno v Minecraftu
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

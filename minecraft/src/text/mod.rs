@@ -50,4 +50,13 @@ impl<'t> Text<'t> {
 		style.set_foreground_paint(paint.into());
 		style
 	}
+
+	#[must_use]
+	pub fn new_with_paint(text: &'t str, paint: Paint) -> Self {
+		Self {
+			text,
+			paint,
+			..Self::default()
+		}
+	}
 }

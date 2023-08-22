@@ -2739,3 +2739,57 @@ woolwars-compare = เปรียบเทียบ
   .to-description = ผู้เล่น Minecraft ที่จะเปรียบเทียบ
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่จะดู
+
+hotbar = แถบคีย์ลัด
+shop = ร้านค้า
+practice = การฝึกฝน
+
+bedwars-hotbar = hotbar
+  .description = ดูการตั้งค่าแถบคีย์ลัด Bed Wars
+  .username = ชื่อผู้เล่น
+  .username-description = ชื่อผู้เล่น Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = ดูการตั้งค่าร้านค้า Bed Wars
+  .username = ชื่อผู้เล่น
+  .username-description = ชื่อผู้เล่น Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = ความพยายาม
+bridging-wins = ชนะการสร้างสะพาน
+bridging-losses = แพ้การสร้างสะพาน
+fireball-wins = ชนะการใช้ลูกไฟ
+fireball-losses = แพ้การใช้ลูกไฟ
+mlg-wins = ชนะการกระโดดลงน้ำแบบมืออาชีพ
+mlg-losses = แพ้การกระโดดลงน้ำแบบมืออาชีพ
+pearl-wins = ชนะการใช้พลอย
+pearl-losses = แพ้การใช้พลอย
+
+straight-none-30 = ตรง ไม่มี 30
+straight-none-50 = ตรง ไม่มี 50
+straight-none-100 = ตรง ไม่มี 100
+straight-slight-30 = ตรง เล็กน้อย 30
+straight-slight-50 = ตรง เล็กน้อย 50
+straight-slight-100 = ตรง เล็กน้อย 100
+straight-staircase-30 = ตรง บันได 30
+straight-staircase-50 = ตรง บันได 50
+straight-staircase-100 = ตรง บันได 100
+diagonal-none-30 = เส้นทแยง ไม่มี 30
+diagonal-none-50 = เส้นทแยง ไม่มี 50
+diagonal-none-100 = เส้นทแยง ไม่มี 100
+diagonal-slight-30 = เส้นทแยง เล็กน้อย 30
+diagonal-slight-50 = เส้นทแยง เล็กน้อย 50
+diagonal-slight-100 = เส้นทแยง เล็กน้อย 100
+diagonal-staircase-30 = เส้นทแยง บันได 30
+diagonal-staircase-50 = เส้นทแยง บันได 50
+diagonal-staircase-100 = เส้นทแยง บันได 100
+
+bedwars-practice = practice
+  .description = ดูสถิติการฝึกฝน Bed Wars
+  .username = ชื่อผู้เล่น
+  .username-description = ชื่อผู้เล่น Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

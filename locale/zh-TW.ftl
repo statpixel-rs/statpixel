@@ -2739,3 +2739,57 @@ woolwars-compare = 比較
   .to-description = 要比較的 Minecraft 玩家
   .mode = 模式
   .mode-description = 要查看的 Wool Wars 模式
+
+hotbar = 熱鍵列
+shop = 商店
+practice = 練習
+
+bedwars-hotbar = hotbar
+  .description = 查看床戰熱鍵列偏好
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = 查看床戰商店偏好
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = 嘗試次數
+bridging-wins = 搭橋勝利次數
+bridging-losses = 搭橋失敗次數
+fireball-wins = 火球勝利次數
+fireball-losses = 火球失敗次數
+mlg-wins = MLG 勝利次數
+mlg-losses = MLG 失敗次數
+pearl-wins = 末影珍珠勝利次數
+pearl-losses = 末影珍珠失敗次數
+
+straight-none-30 = 直走 無 30
+straight-none-50 = 直走 無 50
+straight-none-100 = 直走 無 100
+straight-slight-30 = 直走 輕微 30
+straight-slight-50 = 直走 輕微 50
+straight-slight-100 = 直走 輕微 100
+straight-staircase-30 = 直走 階梯 30
+straight-staircase-50 = 直走 階梯 50
+straight-staircase-100 = 直走 階梯 100
+diagonal-none-30 = 斜走 無 30
+diagonal-none-50 = 斜走 無 50
+diagonal-none-100 = 斜走 無 100
+diagonal-slight-30 = 斜走 輕微 30
+diagonal-slight-50 = 斜走 輕微 50
+diagonal-slight-100 = 斜走 輕微 100
+diagonal-staircase-30 = 斜走 階梯 30
+diagonal-staircase-50 = 斜走 階梯 50
+diagonal-staircase-100 = 斜走 階梯 100
+
+bedwars-practice = practice
+  .description = 查看床戰練習統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

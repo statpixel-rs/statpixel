@@ -2739,3 +2739,57 @@ woolwars-compare = σύγκριση
   .to-description = Παίκτης Minecraft για σύγκριση
   .mode = λειτουργία
   .mode-description = Η λειτουργία Wool Wars για προβολή
+
+hotbar = Ράβδος Εργαλείων
+shop = Κατάστημα
+practice = Πρακτική
+
+bedwars-hotbar = hotbar
+  .description = Προβολή προτιμήσεων ράβδου εργαλείων στο Bed Wars
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = Προβολή προτιμήσεων καταστήματος στο Bed Wars
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = Προσπάθειες
+bridging-wins = Νίκες γέφυρας
+bridging-losses = Ήττες γέφυρας
+fireball-wins = Νίκες με fireball
+fireball-losses = Ήττες με fireball
+mlg-wins = Νίκες MLG
+mlg-losses = Ήττες MLG
+pearl-wins = Νίκες με ender pearl
+pearl-losses = Ήττες με ender pearl
+
+straight-none-30 = Ευθύς - Καθόλου 30
+straight-none-50 = Ευθύς - Καθόλου 50
+straight-none-100 = Ευθύς - Καθόλου 100
+straight-slight-30 = Ευθύς - Ελαφρύ 30
+straight-slight-50 = Ευθύς - Ελαφρύ 50
+straight-slight-100 = Ευθύς - Ελαφρύ 100
+straight-staircase-30 = Ευθύς - Σκάλα 30
+straight-staircase-50 = Ευθύς - Σκάλα 50
+straight-staircase-100 = Ευθύς - Σκάλα 100
+diagonal-none-30 = Διαγώνια - Καθόλου 30
+diagonal-none-50 = Διαγώνια - Καθόλου 50
+diagonal-none-100 = Διαγώνια - Καθόλου 100
+diagonal-slight-30 = Διαγώνια - Ελαφρύ 30
+diagonal-slight-50 = Διαγώνια - Ελαφρύ 50
+diagonal-slight-100 = Διαγώνια - Ελαφρύ 100
+diagonal-staircase-30 = Διαγώνια - Σκάλα 30
+diagonal-staircase-50 = Διαγώνια - Σκάλα 50
+diagonal-staircase-100 = Διαγώνια - Σκάλα 100
+
+bedwars-practice = practice
+  .description = Προβολή στατιστικών πρακτικής στο Bed Wars
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

@@ -2739,3 +2739,57 @@ woolwars-compare = 比較
   .to-description = 比較対象の Minecraft プレイヤー
   .mode = モード
   .mode-description = 表示する Wool Wars モード
+
+hotbar = ホットバー
+shop = ショップ
+practice = 練習
+
+bedwars-hotbar = hotbar
+  .description = ベッドウォーズのホットバー設定を表示する
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = ベッドウォーズのショップ設定を表示する
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = 試行回数
+bridging-wins = ブリッジング 勝利数
+bridging-losses = ブリッジング 敗北数
+fireball-wins = ファイアボール 勝利数
+fireball-losses = ファイアボール 敗北数
+mlg-wins = MLG 勝利数
+mlg-losses = MLG 敗北数
+pearl-wins = エンダーパール 勝利数
+pearl-losses = エンダーパール 敗北数
+
+straight-none-30 = 直線 なし 30
+straight-none-50 = 直線 なし 50
+straight-none-100 = 直線 なし 100
+straight-slight-30 = 直線 少し 30
+straight-slight-50 = 直線 少し 50
+straight-slight-100 = 直線 少し 100
+straight-staircase-30 = 直線 階段 30
+straight-staircase-50 = 直線 階段 50
+straight-staircase-100 = 直線 階段 100
+diagonal-none-30 = 対角線 なし 30
+diagonal-none-50 = 対角線 なし 50
+diagonal-none-100 = 対角線 なし 100
+diagonal-slight-30 = 対角線 少し 30
+diagonal-slight-50 = 対角線 少し 50
+diagonal-slight-100 = 対角線 少し 100
+diagonal-staircase-30 = 対角線 階段 30
+diagonal-staircase-50 = 対角線 階段 50
+diagonal-staircase-100 = 対角線 階段 100
+
+bedwars-practice = practice
+  .description = ベッドウォーズの練習統計を表示する
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

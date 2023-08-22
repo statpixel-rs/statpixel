@@ -2760,3 +2760,57 @@ woolwars-compare = 比较
   .to-description = 要进行比较的 Minecraft 玩家
   .mode = 模式
   .mode-description = 要查看的羊毛大战模式
+
+hotbar = 快捷栏
+shop = 商店
+practice = 练习
+
+bedwars-hotbar = hotbar
+  .description = 查看床战快捷栏偏好
+  .username = 用户名
+  .username-description = Minecraft 用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = 查看床战商店偏好
+  .username = 用户名
+  .username-description = Minecraft 用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = 尝试次数
+bridging-wins = 桥接胜利
+bridging-losses = 桥接失败
+fireball-wins = 火球胜利
+fireball-losses = 火球失败
+mlg-wins = MLG 胜利
+mlg-losses = MLG 失败
+pearl-wins = 末影珍珠胜利
+pearl-losses = 末影珍珠失败
+
+straight-none-30 = 直行 无 30
+straight-none-50 = 直行 无 50
+straight-none-100 = 直行 无 100
+straight-slight-30 = 直行 轻微 30
+straight-slight-50 = 直行 轻微 50
+straight-slight-100 = 直行 轻微 100
+straight-staircase-30 = 直行 阶梯 30
+straight-staircase-50 = 直行 阶梯 50
+straight-staircase-100 = 直行 阶梯 100
+diagonal-none-30 = 对角 无 30
+diagonal-none-50 = 对角 无 50
+diagonal-none-100 = 对角 无 100
+diagonal-slight-30 = 对角 轻微 30
+diagonal-slight-50 = 对角 轻微 50
+diagonal-slight-100 = 对角 轻微 100
+diagonal-staircase-30 = 对角 阶梯 30
+diagonal-staircase-50 = 对角 阶梯 50
+diagonal-staircase-100 = 对角 阶梯 100
+
+bedwars-practice = practice
+  .description = 查看床战练习统计数据
+  .username = 用户名
+  .username-description = Minecraft 用户名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

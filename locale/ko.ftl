@@ -2736,3 +2736,57 @@ woolwars-compare = 비교
   .to-description = 비교할 Minecraft 플레이어
   .mode = 모드
   .mode-description = 보기 위한 Wool Wars 모드
+
+hotbar = 핫바
+shop = 상점
+practice = 연습
+
+bedwars-hotbar = hotbar
+  .description = 베드 워즈 핫바 설정 보기
+  .username = 사용자명
+  .username-description = 마인크래프트 사용자명
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+
+bedwars-shop = shop
+  .description = 베드 워즈 상점 설정 보기
+  .username = 사용자명
+  .username-description = 마인크래프트 사용자명
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+
+attempts = 시도 횟수
+bridging-wins = 브리징 승리 횟수
+bridging-losses = 브리징 패배 횟수
+fireball-wins = 파이어볼 승리 횟수
+fireball-losses = 파이어볼 패배 횟수
+mlg-wins = MLG 승리 횟수
+mlg-losses = MLG 패배 횟수
+pearl-wins = 펄 승리 횟수
+pearl-losses = 펄 패배 횟수
+
+straight-none-30 = 직선-없음 30
+straight-none-50 = 직선-없음 50
+straight-none-100 = 직선-없음 100
+straight-slight-30 = 직선-약간 30
+straight-slight-50 = 직선-약간 50
+straight-slight-100 = 직선-약간 100
+straight-staircase-30 = 직선-계단식 30
+straight-staircase-50 = 직선-계단식 50
+straight-staircase-100 = 직선-계단식 100
+diagonal-none-30 = 대각선-없음 30
+diagonal-none-50 = 대각선-없음 50
+diagonal-none-100 = 대각선-없음 100
+diagonal-slight-30 = 대각선-약간 30
+diagonal-slight-50 = 대각선-약간 50
+diagonal-slight-100 = 대각선-약간 100
+diagonal-staircase-30 = 대각선-계단식 30
+diagonal-staircase-50 = 대각선-계단식 50
+diagonal-staircase-100 = 대각선-계단식 100
+
+bedwars-practice = practice
+  .description = 베드 워즈 연습 통계 보기
+  .username = 사용자명
+  .username-description = 마인크래프트 사용자명
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID

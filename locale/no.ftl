@@ -2739,3 +2739,57 @@ woolwars-compare = sammenlign
   .to-description = Minecraft-spiller å sammenligne med
   .mode = modus
   .mode-description = Wool Wars-modusen å vise
+
+hotbar = Hovedverktøylinje
+shop = Butikk
+practice = Øving
+
+bedwars-hotbar = hotbar
+  .description = Vis innstillinger for Bed Wars hovedverktøylinje
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Vis innstillinger for Bed Wars butikk
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Forsøk
+bridging-wins = Seier i brobygging
+bridging-losses = Tap i brobygging
+fireball-wins = Seier med ildkuler
+fireball-losses = Tap med ildkuler
+mlg-wins = Seier i MLG-utfordringer
+mlg-losses = Tap i MLG-utfordringer
+pearl-wins = Seier med enderperler
+pearl-losses = Tap med enderperler
+
+straight-none-30 = Rett Ingen 30
+straight-none-50 = Rett Ingen 50
+straight-none-100 = Rett Ingen 100
+straight-slight-30 = Rett Svakt 30
+straight-slight-50 = Rett Svakt 50
+straight-slight-100 = Rett Svakt 100
+straight-staircase-30 = Rett Trapp 30
+straight-staircase-50 = Rett Trapp 50
+straight-staircase-100 = Rett Trapp 100
+diagonal-none-30 = Diagonal Ingen 30
+diagonal-none-50 = Diagonal Ingen 50
+diagonal-none-100 = Diagonal Ingen 100
+diagonal-slight-30 = Diagonal Svakt 30
+diagonal-slight-50 = Diagonal Svakt 50
+diagonal-slight-100 = Diagonal Svakt 100
+diagonal-staircase-30 = Diagonal Trapp 30
+diagonal-staircase-50 = Diagonal Trapp 50
+diagonal-staircase-100 = Diagonal Trapp 100
+
+bedwars-practice = practice
+  .description = Vis statistikk for Bed Wars øving
+  .username = brukernavn
+  .username-description = Minecraft-brukernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

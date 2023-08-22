@@ -2740,3 +2740,57 @@ woolwars-compare = palyginti
   .to-description = "Minecraft" žaidėjas, su kuo palyginti
   .mode = režimas
   .mode-description = "Wool Wars" režimas, kurį norite peržiūrėti
+
+hotbar = Karštoji juosta
+shop = Parduotuvė
+practice = Treniruotė
+
+bedwars-hotbar = hotbar
+  .description = Peržiūrėti Bed Wars karštosios juostos nuostatas
+  .username = vartotojo-vardas
+  .username-description = Minecraft vartotojo vardas
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Peržiūrėti Bed Wars parduotuvės nuostatas
+  .username = vartotojo-vardas
+  .username-description = Minecraft vartotojo vardas
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Bandymai
+bridging-wins = Tiltų statymo pergales
+bridging-losses = Tiltų statymo pralaimėjimus
+fireball-wins = Kulkų pergales
+fireball-losses = Kulkų pralaimėjimus
+mlg-wins = MLG pergales
+mlg-losses = MLG pralaimėjimus
+pearl-wins = Perlių pergales
+pearl-losses = Perlių pralaimėjimus
+
+straight-none-30 = Tiesioginės - nėra 30
+straight-none-50 = Tiesioginės - nėra 50
+straight-none-100 = Tiesioginės - nėra 100
+straight-slight-30 = Tiesioginės - nedidelės 30
+straight-slight-50 = Tiesioginės - nedidelės 50
+straight-slight-100 = Tiesioginės - nedidelės 100
+straight-staircase-30 = Tiesioginės - laiptinės 30
+straight-staircase-50 = Tiesioginės - laiptinės 50
+straight-staircase-100 = Tiesioginės - laiptinės 100
+diagonal-none-30 = Diagonalės - nėra 30
+diagonal-none-50 = Diagonalės - nėra 50
+diagonal-none-100 = Diagonalės - nėra 100
+diagonal-slight-30 = Diagonalės - nedidelės 30
+diagonal-slight-50 = Diagonalės - nedidelės 50
+diagonal-slight-100 = Diagonalės - nedidelės 100
+diagonal-staircase-30 = Diagonalės - laiptinės 30
+diagonal-staircase-50 = Diagonalės - laiptinės 50
+diagonal-staircase-100 = Diagonalės - laiptinės 100
+
+bedwars-practice = practice
+  .description = Peržiūrėti Bed Wars treniruotės statistiką
+  .username = vartotojo-vardas
+  .username-description = Minecraft vartotojo vardas
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

@@ -765,6 +765,60 @@ bedwars-general = general
   .mode = mode
   .mode-description = The Bed Wars mode to view
 
+hotbar = Hotbar
+shop = Shop
+practice = Practice
+
+bedwars-hotbar = hotbar
+  .description = View Bed Wars hotbar preferences
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = View Bed Wars shop preferences
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Attempts
+bridging-wins = Bridging Wins
+bridging-losses = Bridging Losses
+fireball-wins = Fireball Wins
+fireball-losses = Fireball Losses
+mlg-wins = MLG Wins
+mlg-losses = MLG Losses
+pearl-wins = Pearl Wins
+pearl-losses = Pearl Losses
+
+straight-none-30 = Str. None 30
+straight-none-50 = Str. None 50
+straight-none-100 = Str. None 100
+straight-slight-30 = Str. Slight 30
+straight-slight-50 = Str. Slight 50
+straight-slight-100 = Str. Slight 100
+straight-staircase-30 = Str. Staircase 30
+straight-staircase-50 = Str. Staircase 50
+straight-staircase-100 = Str. Staircase 100
+diagonal-none-30 = Diag. None 30
+diagonal-none-50 = Diag. None 50
+diagonal-none-100 = Diag. None 100
+diagonal-slight-30 = Diag. Slight 30
+diagonal-slight-50 = Diag. Slight 50
+diagonal-slight-100 = Diag. Slight 100
+diagonal-staircase-30 = Diag. Staircase 30
+diagonal-staircase-50 = Diag. Staircase 50
+diagonal-staircase-100 = Diag. Staircase 100
+
+bedwars-practice = practice
+  .description = View Bed Wars practice statistics
+  .username = username
+  .username-description = Minecraft username
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
 bedwars-from = from
   .description = View the development of Bed Wars statistics since a specific time
   .username = username

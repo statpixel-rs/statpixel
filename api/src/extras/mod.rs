@@ -68,17 +68,17 @@ macro_rules! impl_time_unit {
 				_ctx: &::translate::context::Context<'c>,
 			) -> ::std::borrow::Cow<'t, str> {
 				let mut result = ::std::string::String::with_capacity(3);
-				let (s, neg) = {
-					let s = self.0 $op $val;
+				let (ms, neg) = {
+					let ms = self.0 $op $val;
 
-					if s < 0 {
-						(-s, true)
+					if ms < 0 {
+						(-ms, true)
 					} else {
-						(s, false)
+						(ms, false)
 					}
 				};
 
-				let days = s / 86_400;
+				let days = ms / 86_400_000;
 				if days > 0 {
 					if neg {
 						result.push('-');
@@ -87,7 +87,7 @@ macro_rules! impl_time_unit {
 					result.push_str(&format!("{}d ", days));
 				}
 
-				let hours = (s % 86_400) / 3_600;
+				let hours = (ms % 86_400_000) / 3_600_000;
 				if hours > 0 {
 					if neg && days == 0 {
 						result.push('-');
@@ -96,7 +96,7 @@ macro_rules! impl_time_unit {
 					result.push_str(&format!("{}h ", hours));
 				}
 
-				let minutes = (s % 3_600) / 60;
+				let minutes = (ms % 3_600_000) / 60_000;
 				if minutes > 0 && days == 0 {
 					if neg && days == 0 && hours == 0 {
 						result.push('-');
@@ -105,13 +105,25 @@ macro_rules! impl_time_unit {
 					result.push_str(&format!("{}m ", minutes));
 				}
 
-				let seconds = s % 60;
-				if (seconds > 0 && days == 0 && hours == 0) || result.is_empty() {
+				let seconds = ms % 60_000 / 1_000;
+				if seconds > 0 && days == 0 && hours == 0 {
 					if seconds > 0 && neg && days == 0 && hours == 0 && minutes == 0 {
 						result.push('-');
 					}
 
-					result.push_str(&format!("{}s", seconds));
+					result.push_str(&format!("{}s ", seconds));
+				}
+
+				let milliseconds = ms % 1_000;
+				if (milliseconds > 0 && days == 0 && hours == 0 && minutes == 0) || result.is_empty() {
+					if milliseconds > 0
+						&& neg && days == 0 && hours == 0
+						&& minutes == 0 && seconds == 0
+					{
+						result.push('-');
+					}
+
+					result.push_str(&format!("{}ms", milliseconds));
 				}
 
 				::std::borrow::Cow::Owned(result)
@@ -130,6 +142,7 @@ macro_rules! impl_time_unit_opt {
 			Default,
 			PartialEq,
 			Eq,
+			Debug,
 		)]
 		pub struct $name(pub Option<i64>);
 
@@ -195,9 +208,12 @@ macro_rules! impl_time_unit_opt {
 
 		impl Ord for $name {
 			fn cmp(&self, other: &Self) -> ::std::cmp::Ordering {
-				self.0.unwrap_or(i64::MAX)
-					.cmp(&other.0.unwrap_or(i64::MAX))
-					.then_with(|| self.0.unwrap_or(i64::MAX).cmp(&other.0.unwrap_or(i64::MAX)))
+				match (self.0, other.0) {
+					(None, None) => ::std::cmp::Ordering::Equal,
+					(None, Some(_)) => ::std::cmp::Ordering::Less,
+					(Some(_), None) => ::std::cmp::Ordering::Greater,
+					(Some(a), Some(b)) => a.cmp(&b),
+				}
 			}
 		}
 
@@ -211,17 +227,17 @@ macro_rules! impl_time_unit_opt {
 					return ::translate::tr(ctx, "none");
 				};
 
-				let (s, neg) = {
-					let s = value $op $val;
+				let (ms, neg) = {
+					let ms = value $op $val;
 
-					if s < 0 {
-						(-s, true)
+					if ms < 0 {
+						(-ms, true)
 					} else {
-						(s, false)
+						(ms, false)
 					}
 				};
 
-				let days = s / 86_400;
+				let days = ms / 86_400_000;
 				if days > 0 {
 					if neg {
 						result.push('-');
@@ -230,7 +246,7 @@ macro_rules! impl_time_unit_opt {
 					result.push_str(&format!("{}d ", days));
 				}
 
-				let hours = (s % 86_400) / 3_600;
+				let hours = (ms % 86_400_000) / 3_600_000;
 				if hours > 0 {
 					if neg && days == 0 {
 						result.push('-');
@@ -239,7 +255,7 @@ macro_rules! impl_time_unit_opt {
 					result.push_str(&format!("{}h ", hours));
 				}
 
-				let minutes = (s % 3_600) / 60;
+				let minutes = (ms % 3_600_000) / 60_000;
 				if minutes > 0 && days == 0 {
 					if neg && days == 0 && hours == 0 {
 						result.push('-');
@@ -248,13 +264,25 @@ macro_rules! impl_time_unit_opt {
 					result.push_str(&format!("{}m ", minutes));
 				}
 
-				let seconds = s % 60;
-				if (seconds > 0 && days == 0 && hours == 0) || result.is_empty() {
+				let seconds = ms % 60_000 / 1_000;
+				if seconds > 0 && days == 0 && hours == 0 {
 					if seconds > 0 && neg && days == 0 && hours == 0 && minutes == 0 {
 						result.push('-');
 					}
 
-					result.push_str(&format!("{}s", seconds));
+					result.push_str(&format!("{}s ", seconds));
+				}
+
+				let milliseconds = ms % 1_000;
+				if (milliseconds > 0 && days == 0 && hours == 0 && minutes == 0) || result.is_empty() {
+					if milliseconds > 0
+						&& neg && days == 0 && hours == 0
+						&& minutes == 0 && seconds == 0
+					{
+						result.push('-');
+					}
+
+					result.push_str(&format!("{}ms", milliseconds));
 				}
 
 				::std::borrow::Cow::Owned(result)
@@ -264,16 +292,16 @@ macro_rules! impl_time_unit_opt {
 }
 
 pub mod milliseconds {
-	impl_time_unit!(Milliseconds, /, 1_000);
-	impl_time_unit_opt!(MillisecondsOption, /, 1_000);
+	impl_time_unit!(Milliseconds, *, 1);
+	impl_time_unit_opt!(MillisecondsOption, *, 1);
 }
 
 pub mod minutes {
-	impl_time_unit!(Minutes, *, 60);
-	impl_time_unit_opt!(MinutesOption, *, 60);
+	impl_time_unit!(Minutes, *, 60 * 1_000);
+	impl_time_unit_opt!(MinutesOption, *, 60 * 1_000);
 }
 
 pub mod seconds {
-	impl_time_unit!(Seconds, *, 1);
-	impl_time_unit_opt!(SecondsOption, *, 1);
+	impl_time_unit!(Seconds, *, 1_000);
+	impl_time_unit_opt!(SecondsOption, *, 1_000);
 }

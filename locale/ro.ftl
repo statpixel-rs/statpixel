@@ -2739,3 +2739,57 @@ woolwars-compare = compară
   .to-description = Jucător Minecraft pentru a compara cu
   .mode = mod
   .mode-description = Modul Wool Wars de vizualizat
+
+hotbar = Bară de Acțiuni
+shop = Magazin
+practice = Antrenament
+
+bedwars-hotbar = hotbar
+  .description = Vezi preferințele barei de acțiuni Bed Wars
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = Vezi preferințele magazinului Bed Wars
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = Încercări
+bridging-wins = Victori la Construcție
+bridging-losses = Înfrângeri la Construcție
+fireball-wins = Victori cu Bile de Foc
+fireball-losses = Înfrângeri cu Bile de Foc
+mlg-wins = Victori MLG
+mlg-losses = Înfrângeri MLG
+pearl-wins = Victori cu Perle de Ender
+pearl-losses = Înfrângeri cu Perle de Ender
+
+straight-none-30 = Drept. Niciuna 30
+straight-none-50 = Drept. Niciuna 50
+straight-none-100 = Drept. Niciuna 100
+straight-slight-30 = Drept. Ușoară 30
+straight-slight-50 = Drept. Ușoară 50
+straight-slight-100 = Drept. Ușoară 100
+straight-staircase-30 = Drept. Scări 30
+straight-staircase-50 = Drept. Scări 50
+straight-staircase-100 = Drept. Scări 100
+diagonal-none-30 = Diag. Niciuna 30
+diagonal-none-50 = Diag. Niciuna 50
+diagonal-none-100 = Diag. Niciuna 100
+diagonal-slight-30 = Diag. Ușoară 30
+diagonal-slight-50 = Diag. Ușoară 50
+diagonal-slight-100 = Diag. Ușoară 100
+diagonal-staircase-30 = Diag. Scări 30
+diagonal-staircase-50 = Diag. Scări 50
+diagonal-staircase-100 = Diag. Scări 100
+
+bedwars-practice = practice
+  .description = Vezi statistici de antrenament Bed Wars
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

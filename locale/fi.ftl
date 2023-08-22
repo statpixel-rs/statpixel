@@ -2739,3 +2739,57 @@ woolwars-compare = vertaa
   .to-description = Minecraft-pelaaja, jonka kanssa vertailla
   .mode = tila
   .mode-description = Wool Wars -tila näkymä
+
+hotbar = Pikatyökalurivi
+shop = Kauppa
+practice = Harjoitus
+
+bedwars-hotbar = hotbar
+  .description = Näytä Pikataisteluun liittyvät pikatyökalurivin asetukset
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = tunniste
+  .uuid-description = Minecraft-tunniste
+
+bedwars-shop = shop
+  .description = Näytä Pikataisteluun liittyvät kauppa-asetukset
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = tunniste
+  .uuid-description = Minecraft-tunniste
+
+attempts = Yritykset
+bridging-wins = Siltaamisen Voitot
+bridging-losses = Siltaamisen Tappiot
+fireball-wins = Tulipallojen Voitot
+fireball-losses = Tulipallojen Tappiot
+mlg-wins = MLG-voitot
+mlg-losses = MLG-tappiot
+pearl-wins = Helmienvoitot
+pearl-losses = Helmientappiot
+
+straight-none-30 = Suora Ei mitään 30
+straight-none-50 = Suora Ei mitään 50
+straight-none-100 = Suora Ei mitään 100
+straight-slight-30 = Suora Hienoinen 30
+straight-slight-50 = Suora Hienoinen 50
+straight-slight-100 = Suora Hienoinen 100
+straight-staircase-30 = Suora Portaat 30
+straight-staircase-50 = Suora Portaat 50
+straight-staircase-100 = Suora Portaat 100
+diagonal-none-30 = Vinosti Ei mitään 30
+diagonal-none-50 = Vinosti Ei mitään 50
+diagonal-none-100 = Vinosti Ei mitään 100
+diagonal-slight-30 = Vinosti Hienoinen 30
+diagonal-slight-50 = Vinosti Hienoinen 50
+diagonal-slight-100 = Vinosti Hienoinen 100
+diagonal-staircase-30 = Vinosti Portaat 30
+diagonal-staircase-50 = Vinosti Portaat 50
+diagonal-staircase-100 = Vinosti Portaat 100
+
+bedwars-practice = practice
+  .description = Näytä Pikataisteluun liittyvät harjoitusstatistiikat
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = tunniste
+  .uuid-description = Minecraft-tunniste

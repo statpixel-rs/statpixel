@@ -2739,3 +2739,57 @@ woolwars-compare = vergelijk
   .to-description = Minecraft-speler om te vergelijken
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
+
+hotbar = Snelkeuzemenu
+shop = Winkel
+practice = Oefening
+
+bedwars-hotbar = hotbar
+  .description = Bekijk de voorkeuren voor het Bed Wars snelkeuzemenu
+  .username = gebruikersnaam
+  .username-description = Minecraft gebruikersnaam
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Bekijk de voorkeuren voor de Bed Wars winkel
+  .username = gebruikersnaam
+  .username-description = Minecraft gebruikersnaam
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Pogingen
+bridging-wins = Overbruggingsoverwinningen
+bridging-losses = Overbruggingverliezen
+fireball-wins = Vuurbaloverwinningen
+fireball-losses = Vuurbalverliezen
+mlg-wins = MLG-overwinningen
+mlg-losses = MLG-verliezen
+pearl-wins = Parel-overwinningen
+pearl-losses = Parel-verliezen
+
+straight-none-30 = Recht Geen 30
+straight-none-50 = Recht Geen 50
+straight-none-100 = Recht Geen 100
+straight-slight-30 = Recht Licht 30
+straight-slight-50 = Recht Licht 50
+straight-slight-100 = Recht Licht 100
+straight-staircase-30 = Recht Trap 30
+straight-staircase-50 = Recht Trap 50
+straight-staircase-100 = Recht Trap 100
+diagonal-none-30 = Diagonaal Geen 30
+diagonal-none-50 = Diagonaal Geen 50
+diagonal-none-100 = Diagonaal Geen 100
+diagonal-slight-30 = Diagonaal Licht 30
+diagonal-slight-50 = Diagonaal Licht 50
+diagonal-slight-100 = Diagonaal Licht 100
+diagonal-staircase-30 = Diagonaal Trap 30
+diagonal-staircase-50 = Diagonaal Trap 50
+diagonal-staircase-100 = Diagonaal Trap 100
+
+bedwars-practice = practice
+  .description = Bekijk de statistieken voor Bed Wars oefeningen
+  .username = gebruikersnaam
+  .username-description = Minecraft gebruikersnaam
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

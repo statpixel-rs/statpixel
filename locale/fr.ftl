@@ -2740,3 +2740,57 @@ woolwars-compare = comparer
   .to-description = Joueur Minecraft à comparer
   .mode = mode
   .mode-description = Le mode Wool Wars à afficher
+
+hotbar = Barre d'actions
+shop = Boutique
+practice = Entraînement
+
+bedwars-hotbar = hotbar
+  .description = Afficher les préférences de la barre d'actions de Bed Wars
+  .username = nom-d-utilisateur
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = Afficher les préférences de la boutique Bed Wars
+  .username = nom-d-utilisateur
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = Tentatives
+bridging-wins = Victoires en construction de ponts
+bridging-losses = Défaites en construction de ponts
+fireball-wins = Victoires avec boule de feu
+fireball-losses = Défaites avec boule de feu
+mlg-wins = Victoires en MLG
+mlg-losses = Défaites en MLG
+pearl-wins = Victoires avec perle d'ender
+pearl-losses = Défaites avec perle d'ender
+
+straight-none-30 = Droit - Aucun 30
+straight-none-50 = Droit - Aucun 50
+straight-none-100 = Droit - Aucun 100
+straight-slight-30 = Droit - Léger 30
+straight-slight-50 = Droit - Léger 50
+straight-slight-100 = Droit - Léger 100
+straight-staircase-30 = Droit - Escalier 30
+straight-staircase-50 = Droit - Escalier 50
+straight-staircase-100 = Droit - Escalier 100
+diagonal-none-30 = Diagonal - Aucun 30
+diagonal-none-50 = Diagonal - Aucun 50
+diagonal-none-100 = Diagonal - Aucun 100
+diagonal-slight-30 = Diagonal - Léger 30
+diagonal-slight-50 = Diagonal - Léger 50
+diagonal-slight-100 = Diagonal - Léger 100
+diagonal-staircase-30 = Diagonal - Escalier 30
+diagonal-staircase-50 = Diagonal - Escalier 50
+diagonal-staircase-100 = Diagonal - Escalier 100
+
+bedwars-practice = practice
+  .description = Afficher les statistiques d'entraînement Bed Wars
+  .username = nom-d-utilisateur
+  .username-description = Nom d'utilisateur Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

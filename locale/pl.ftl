@@ -2739,3 +2739,57 @@ woolwars-compare = porównaj
   .to-description = Gracz Minecraft do porównania
   .mode = tryb
   .mode-description = Tryb Wool Wars do wyświetlenia
+
+hotbar = Pasek szybkiego dostępu
+shop = Sklep
+practice = Trening
+
+bedwars-hotbar = pasek-szybkiego-dostępu
+  .description = Wyświetl preferencje paska szybkiego dostępu w Bed Wars
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecrafta
+
+bedwars-shop = sklep
+  .description = Wyświetl preferencje sklepu w Bed Wars
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecrafta
+
+attempts = Próby
+bridging-wins = Zwycięstwa w budowaniu mostów
+bridging-losses = Porażki w budowaniu mostów
+fireball-wins = Zwycięstwa z użyciem fireballi
+fireball-losses = Porażki z użyciem fireballi
+mlg-wins = Zwycięstwa w akrobacjach z wodą
+mlg-losses = Porażki w akrobacjach z wodą
+pearl-wins = Zwycięstwa z użyciem enderpearli
+pearl-losses = Porażki z użyciem enderpearli
+
+straight-none-30 = Prosto - brak 30
+straight-none-50 = Prosto - brak 50
+straight-none-100 = Prosto - brak 100
+straight-slight-30 = Prosto - lekki 30
+straight-slight-50 = Prosto - lekki 50
+straight-slight-100 = Prosto - lekki 100
+straight-staircase-30 = Prosto - schodkowy 30
+straight-staircase-50 = Prosto - schodkowy 50
+straight-staircase-100 = Prosto - schodkowy 100
+diagonal-none-30 = Skośny - brak 30
+diagonal-none-50 = Skośny - brak 50
+diagonal-none-100 = Skośny - brak 100
+diagonal-slight-30 = Skośny - lekki 30
+diagonal-slight-50 = Skośny - lekki 50
+diagonal-slight-100 = Skośny - lekki 100
+diagonal-staircase-30 = Skośny - schodkowy 30
+diagonal-staircase-50 = Skośny - schodkowy 50
+diagonal-staircase-100 = Skośny - schodkowy 100
+
+bedwars-practice = trening
+  .description = Wyświetl statystyki treningowe w Bed Wars
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecrafta

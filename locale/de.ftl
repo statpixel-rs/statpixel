@@ -2739,3 +2739,57 @@ woolwars-compare = vergleichen
   .to-description = Minecraft-Spieler, mit dem verglichen werden soll
   .mode = modus
   .mode-description = Der Wool Wars-Modus, der angezeigt werden soll
+
+hotbar = Hotbar
+shop = Shop
+practice = Üben
+
+bedwars-hotbar = hotbar
+  .description = Zeige Bed Wars Hotbar-Einstellungen
+  .username = benutzername
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+
+bedwars-shop = shop
+  .description = Zeige Bed Wars Shop-Einstellungen
+  .username = benutzername
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+
+attempts = Versuche
+bridging-wins = Brückenbau Siege
+bridging-losses = Brückenbau Niederlagen
+fireball-wins = Feuerball Siege
+fireball-losses = Feuerball Niederlagen
+mlg-wins = MLG Siege
+mlg-losses = MLG Niederlagen
+pearl-wins = Enderperlen Siege
+pearl-losses = Enderperlen Niederlagen
+
+straight-none-30 = Gerade Keine 30
+straight-none-50 = Gerade Keine 50
+straight-none-100 = Gerade Keine 100
+straight-slight-30 = Gerade Leicht 30
+straight-slight-50 = Gerade Leicht 50
+straight-slight-100 = Gerade Leicht 100
+straight-staircase-30 = Gerade Treppe 30
+straight-staircase-50 = Gerade Treppe 50
+straight-staircase-100 = Gerade Treppe 100
+diagonal-none-30 = Diagonal Keine 30
+diagonal-none-50 = Diagonal Keine 50
+diagonal-none-100 = Diagonal Keine 100
+diagonal-slight-30 = Diagonal Leicht 30
+diagonal-slight-50 = Diagonal Leicht 50
+diagonal-slight-100 = Diagonal Leicht 100
+diagonal-staircase-30 = Diagonal Treppe 30
+diagonal-staircase-50 = Diagonal Treppe 50
+diagonal-staircase-100 = Diagonal Treppe 100
+
+bedwars-practice = practice
+  .description = Zeige Bed Wars Übungsstatistiken
+  .username = benutzername
+  .username-description = Minecraft-Benutzername
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID

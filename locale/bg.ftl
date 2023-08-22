@@ -2739,3 +2739,57 @@ woolwars-compare = сравни
   .to-description = Играч в Minecraft за сравнение
   .mode = режим
   .mode-description = Режимът в Режим Wool Wars за преглед
+
+hotbar = Панел с инструменти
+shop = Магазин
+practice = Практика
+
+bedwars-hotbar = hotbar
+  .description = Преглед на предпочитанията за панела с инструменти в Bed Wars
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+
+bedwars-shop = shop
+  .description = Преглед на предпочитанията за магазина в Bed Wars
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+
+attempts = Опити
+bridging-wins = Победи при мостоходене
+bridging-losses = Загуби при мостоходене
+fireball-wins = Победи с огнени топки
+fireball-losses = Загуби с огнени топки
+mlg-wins = Победи в MLG
+mlg-losses = Загуби в MLG
+pearl-wins = Победи с жезъл-мълния
+pearl-losses = Загуби с жезъл-мълния
+
+straight-none-30 = Право. Без наклон 30
+straight-none-50 = Право. Без наклон 50
+straight-none-100 = Право. Без наклон 100
+straight-slight-30 = Право. Лек наклон 30
+straight-slight-50 = Право. Лек наклон 50
+straight-slight-100 = Право. Лек наклон 100
+straight-staircase-30 = Право. Стълбовиден наклон 30
+straight-staircase-50 = Право. Стълбовиден наклон 50
+straight-staircase-100 = Право. Стълбовиден наклон 100
+diagonal-none-30 = Диаг. Без наклон 30
+diagonal-none-50 = Диаг. Без наклон 50
+diagonal-none-100 = Диаг. Без наклон 100
+diagonal-slight-30 = Диаг. Лек наклон 30
+diagonal-slight-50 = Диаг. Лек наклон 50
+diagonal-slight-100 = Диаг. Лек наклон 100
+diagonal-staircase-30 = Диаг. Стълбовиден наклон 30
+diagonal-staircase-50 = Диаг. Стълбовиден наклон 50
+diagonal-staircase-100 = Диаг. Стълбовиден наклон 100
+
+bedwars-practice = practice
+  .description = Преглед на статистиките за практика в Bed Wars
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft

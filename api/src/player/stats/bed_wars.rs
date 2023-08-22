@@ -1,4 +1,152 @@
+use crate::{
+	image::Image, milliseconds::MillisecondsOption, shape, skyblock::materials::MATERIALS,
+};
 use macros::Game;
+use serde::{de::DeserializeOwned, Deserialize, Deserializer};
+
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(rename_all = "PascalCase")]
+pub enum HotbarItem {
+	Melee,
+	Tools,
+	Blocks,
+	Utility,
+	Ranged,
+	Potions,
+	Tracker,
+	#[serde(rename = "null")]
+	#[default]
+	None,
+}
+
+impl HotbarItem {
+	pub fn into_slot(&self) -> shape::Slot {
+		let id = match self {
+			Self::Melee => "GOLD_SWORD",
+			Self::Tools => "IRON_PICKAXE",
+			Self::Blocks => "HARD_CLAY",
+			Self::Utility => "TNT",
+			Self::Ranged => "BOW",
+			Self::Potions => "BREWING_STAND",
+			Self::Tracker => "COMPASS",
+			Self::None => return shape::Slot(None, 1),
+		};
+
+		shape::Slot(MATERIALS.get(id).map(Image::image), 1)
+	}
+}
+
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum ShopItem {
+	Wool,
+	HardenedClay,
+	#[serde(rename = "blast-proof_glass")]
+	BlastProofGlass,
+	EndStone,
+	Ladder,
+	OakWoodPlanks,
+	Obsidian,
+	StoneSword,
+	IronSword,
+	DiamondSword,
+	#[serde(rename = "stick_(knockback_i)")]
+	StickKnockbackI,
+	ChainmailBoots,
+	IronBoots,
+	DiamondBoots,
+	WoodenPickaxe,
+	WoodenAxe,
+	Shears,
+	Arrow,
+	Bow,
+	#[serde(rename = "bow_(power_i)")]
+	BowPowerI,
+	#[serde(rename = "bow_(power_i__punch_i)")]
+	BowPowerIPunchI,
+	#[serde(rename = "speed_ii_potion_(45_seconds)")]
+	SpeedIIPotion45Seconds,
+	#[serde(rename = "jump_v_potion_(45_seconds)")]
+	JumpVPotion45Seconds,
+	#[serde(rename = "invisibility_potion_(30_seconds)")]
+	InvisibilityPotion30Seconds,
+	GoldenApple,
+	Bedbug,
+	DreamDefender,
+	Fireball,
+	Tnt,
+	EnderPearl,
+	WaterBucket,
+	BridgeEgg,
+	MagicMilk,
+	Sponge,
+	#[serde(rename = "compact_pop-up_tower")]
+	CompactPopUpTower,
+	#[serde(rename = "null")]
+	#[default]
+	None,
+}
+
+impl ShopItem {
+	pub fn into_slot(&self) -> shape::Slot {
+		let (id, count) = match self {
+			Self::Wool => ("WOOL", 16),
+			Self::HardenedClay => ("HARD_CLAY", 16),
+			Self::BlastProofGlass => ("GLASS", 4),
+			Self::EndStone => ("ENDER_STONE", 12),
+			Self::Ladder => ("LADDER", 8),
+			Self::OakWoodPlanks => ("WOOD", 16),
+			Self::Obsidian => ("OBSIDIAN", 4),
+			Self::StoneSword => ("STONE_SWORD", 1),
+			Self::IronSword => ("IRON_SWORD", 1),
+			Self::DiamondSword => ("DIAMOND_SWORD", 1),
+			Self::StickKnockbackI => ("STICK", 1),
+			Self::ChainmailBoots => ("CHAINMAIL_BOOTS", 1),
+			Self::IronBoots => ("IRON_BOOTS", 1),
+			Self::DiamondBoots => ("DIAMOND_BOOTS", 1),
+			Self::WoodenPickaxe => ("WOOD_PICKAXE", 1),
+			Self::WoodenAxe => ("WOOD_AXE", 1),
+			Self::Shears => ("SHEARS", 1),
+			Self::Arrow => ("ARROW", 6),
+			Self::Bow => ("BOW", 1),
+			Self::BowPowerI => ("HURRICANE_BOW", 1),
+			Self::BowPowerIPunchI => ("DEATH_BOW_STANDBY", 1),
+			Self::SpeedIIPotion45Seconds => ("SPEED_POTION", 1),
+			Self::JumpVPotion45Seconds => ("JUMP_POTION", 1),
+			Self::InvisibilityPotion30Seconds => ("INVISIBILITY_POTION", 1),
+			Self::GoldenApple => ("GOLDEN_APPLE", 1),
+			Self::Bedbug => ("SNOW_BALL", 1),
+			Self::DreamDefender => ("SPAWN_EGG", 1),
+			Self::Fireball => ("FIRE_CHARGE", 1),
+			Self::Tnt => ("TNT", 1),
+			Self::EnderPearl => ("ENDER_PEARL", 1),
+			Self::WaterBucket => ("WATER_BUCKET", 1),
+			Self::BridgeEgg => ("EGG", 1),
+			Self::MagicMilk => ("MILK_BUCKET", 1),
+			Self::Sponge => ("SPONGE", 4),
+			Self::CompactPopUpTower => ("TRAPPED_CHEST", 1),
+			Self::None => return shape::Slot(None, 1),
+		};
+
+		shape::Slot(MATERIALS.get(id).map(Image::image), count)
+	}
+}
+
+fn from_comma_separated<'de, D, T>(deserializer: D) -> Result<Vec<T>, D::Error>
+where
+	D: Deserializer<'de>,
+	T: for<'d> Deserialize<'d> + Default + DeserializeOwned,
+{
+	let s: String = Deserialize::deserialize(deserializer)?;
+
+	// TODO: Avoid the allocation by either writing this manually or figuring out how to do it
+	// by reference with serde
+	Ok(s.split(',')
+		.map(|s| {
+			serde_json::from_value(serde_json::Value::String(s.to_string())).unwrap_or_default()
+		})
+		.collect())
+}
 
 #[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Game)]
 #[serde(default)]
@@ -48,6 +196,12 @@ pub struct BedWars {
 	pub xp: u64,
 	#[serde(rename = "winstreak")]
 	pub win_streak: u32,
+
+	pub practice: Practice,
+	#[serde(rename = "favorite_slots", deserialize_with = "from_comma_separated")]
+	pub hotbar: Vec<HotbarItem>,
+	#[serde(rename = "favourites_2", deserialize_with = "from_comma_separated")]
+	pub shop: Vec<ShopItem>,
 
 	#[serde(flatten)]
 	#[game(mode(hypixel = "BEDWARS_EIGHT_ONE"))]
@@ -112,6 +266,69 @@ pub struct BedWars {
 	#[serde(flatten)]
 	#[game(mode(hypixel = "BEDWARS_FOUR_FOUR_SWAP", skip_overall))]
 	pub four_swap: FourSwap,
+}
+
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(default)]
+pub struct Practice {
+	pub mlg: PracticeMode,
+	pub bridging: PracticeMode,
+	#[serde(rename = "fireball_jumping")]
+	pub fireball: PracticeMode,
+	#[serde(rename = "pearl_clutching")]
+	pub pearl: PracticeMode,
+	pub records: PracticeRecords,
+}
+
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Debug)]
+#[serde(default)]
+pub struct PracticeRecords {
+	#[serde(rename = "bridging_distance_30:elevation_NONE:angle_STRAIGHT:")]
+	pub straight_none_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_NONE:angle_STRAIGHT:")]
+	pub straight_none_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_NONE:angle_STRAIGHT:")]
+	pub straight_none_100: MillisecondsOption,
+	#[serde(rename = "bridging_distance_30:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub straight_slight_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub straight_slight_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub straight_slight_100: MillisecondsOption,
+	#[serde(rename = "bridging_distance_30:elevation_STAIRCASE:angle_STRAIGHT:")]
+	pub straight_staircase_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_STAIRCASE:angle_STRAIGHT:")]
+	pub straight_staircase_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_STAIRCASE:angle_STRAIGHT:")]
+	pub straight_staircase_100: MillisecondsOption,
+	#[serde(rename = "bridging_distance_30:elevation_NONE:angle_DIAGONAL:")]
+	pub diagonal_none_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_NONE:angle_DIAGONAL:")]
+	pub diagonal_none_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_NONE:angle_DIAGONAL:")]
+	pub diagonal_none_100: MillisecondsOption,
+	#[serde(rename = "bridging_distance_30:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub diagonal_slight_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub diagonal_slight_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_SLIGHT:angle_DIAGONAL:")]
+	pub diagonal_slight_100: MillisecondsOption,
+	#[serde(rename = "bridging_distance_30:elevation_STAIRCASE:angle_DIAGONAL:")]
+	pub diagonal_staircase_30: MillisecondsOption,
+	#[serde(rename = "bridging_distance_50:elevation_STAIRCASE:angle_DIAGONAL:")]
+	pub diagonal_staircase_50: MillisecondsOption,
+	#[serde(rename = "bridging_distance_100:elevation_STAIRCASE:angle_DIAGONAL:")]
+	pub diagonal_staircase_100: MillisecondsOption,
+}
+
+#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(default)]
+pub struct PracticeMode {
+	#[serde(rename = "successful_attempts")]
+	pub successes: u32,
+	#[serde(rename = "failed_attempts")]
+	pub failures: u32,
+	pub blocks_placed: u32,
 }
 
 #[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]

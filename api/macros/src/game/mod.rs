@@ -91,10 +91,10 @@ impl ToTokens for GameInputReceiver {
 		let overall_modes = self.overall_modes();
 		let condensed_modes = modes.iter().take(5).collect::<Vec<_>>();
 
-		let blocks_sum = self.block_shapes_sum(&modes);
-		let blocks_diff_sum = self.block_shapes_diff_sum(&modes);
-		let labels_sum = self.label_shapes_sum(&modes);
-		let labels_diff_sum = self.label_shapes_diff_sum(&modes);
+		let blocks_sum = self.block_shapes_sum(&overall_modes);
+		let blocks_diff_sum = self.block_shapes_diff_sum(&overall_modes);
+		let labels_sum = self.label_shapes_sum(&overall_modes);
+		let labels_diff_sum = self.label_shapes_diff_sum(&overall_modes);
 
 		let block_lines = blocks.len() as u8
 			+ condensed_modes.iter().fold(0u8, |a, m| {
@@ -121,11 +121,12 @@ impl ToTokens for GameInputReceiver {
 		let label_lines = label_lines_first.0;
 		let label_lines_first = label_lines_first.0.max(label_lines_first.1);
 
-		let condensed_labels_sum = self.condensed_label_shapes_sum(&modes, label_lines_first);
+		let condensed_labels_sum =
+			self.condensed_label_shapes_sum(&overall_modes, label_lines_first);
 		let condensed_labels_diff_sum =
-			self.condensed_label_shapes_diff_sum(&modes, label_lines_first);
-		let condensed_blocks_sum = self.condensed_block_shapes_sum(&modes);
-		let condensed_blocks_diff_sum = self.condensed_block_shapes_diff_sum(&modes);
+			self.condensed_label_shapes_diff_sum(&overall_modes, label_lines_first);
+		let condensed_blocks_sum = self.condensed_block_shapes_sum(&overall_modes);
+		let condensed_blocks_diff_sum = self.condensed_block_shapes_diff_sum(&overall_modes);
 
 		let overall_block_idents = blocks
 			.iter()
@@ -154,9 +155,9 @@ impl ToTokens for GameInputReceiver {
 			let size = minecraft_string(pretty).count();
 
 			quote! {
-				const LABEL: [#minecraft::text::Text; #size] = #minecraft::text::parse::minecraft_text(#pretty);
-				const PRETTY: &str = #pretty;
-				const PLAIN: &str = #plain;
+				pub const LABEL: [#minecraft::text::Text; #size] = #minecraft::text::parse::minecraft_text(#pretty);
+				pub const PRETTY: &str = #pretty;
+				pub const PLAIN: &str = #plain;
 			}
 		});
 
@@ -1049,6 +1050,19 @@ impl ToTokens for GameInputReceiver {
 					max
 				}
 
+				pub fn add_header<'c>(
+					&self,
+					ctx: &#translate::context::Context<'_>,
+					family: #minecraft::style::Family,
+					mut canvas: #api::canvas::Canvas<'c>,
+					data: &'c #api::player::data::Data,
+				) -> #api::canvas::Canvas<'c> {
+					let game = &data.stats.#path_to_game;
+
+					canvas
+						#labels_sum
+				}
+
 				#[allow(clippy::too_many_arguments)]
 				pub fn canvas<'c>(
 					&self,
@@ -1064,7 +1078,7 @@ impl ToTokens for GameInputReceiver {
 					let xp = #calc::convert(&#xp);
 					let level = #calc::get_level(xp);
 
-					canvas
+					let canvas = canvas
 						.push_down(
 							&#api::canvas::shape::Subtitle,
 							#api::canvas::shape::Subtitle::from_label(ctx, family, &LABEL, #overall_ident::tr()),
@@ -1078,8 +1092,9 @@ impl ToTokens for GameInputReceiver {
 								&#calc::get_curr_level_xp(xp),
 								&#calc::get_level_xp(xp),
 							)
-						)
-						#labels_sum
+						);
+
+					self.add_header(ctx, family, canvas, data)
 						.push_right_post_draw(
 							status,
 							#api::canvas::body::Body::from_status(ctx, family, session)

@@ -2743,3 +2743,57 @@ woolwars-compare = sammenlign
   .to-description = Minecraft-spiller at sammenligne med
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
+
+hotbar = Hotbar
+shop = Butik
+practice = Øvelse
+
+bedwars-hotbar = hotbar
+  .description = Se præferencer for Bed Wars-hotbar
+  .username = brugernavn
+  .username-description = Minecraft-brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Se præferencer for Bed Wars-butik
+  .username = brugernavn
+  .username-description = Minecraft-brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Forsøg
+bridging-wins = Sejr i brobygning
+bridging-losses = Nederlag i brobygning
+fireball-wins = Sejr med ildkugler
+fireball-losses = Nederlag med ildkugler
+mlg-wins = Sejr i MLG (Major League Gaming)
+mlg-losses = Nederlag i MLG (Major League Gaming)
+pearl-wins = Sejr med enderperler
+pearl-losses = Nederlag med enderperler
+
+straight-none-30 = Lige Ingen 30
+straight-none-50 = Lige Ingen 50
+straight-none-100 = Lige Ingen 100
+straight-slight-30 = Lige Svag 30
+straight-slight-50 = Lige Svag 50
+straight-slight-100 = Lige Svag 100
+straight-staircase-30 = Lige Trappe 30
+straight-staircase-50 = Lige Trappe 50
+straight-staircase-100 = Lige Trappe 100
+diagonal-none-30 = Diagonal Ingen 30
+diagonal-none-50 = Diagonal Ingen 50
+diagonal-none-100 = Diagonal Ingen 100
+diagonal-slight-30 = Diagonal Svag 30
+diagonal-slight-50 = Diagonal Svag 50
+diagonal-slight-100 = Diagonal Svag 100
+diagonal-staircase-30 = Diagonal Trappe 30
+diagonal-staircase-50 = Diagonal Trappe 50
+diagonal-staircase-100 = Diagonal Trappe 100
+
+bedwars-practice = practice
+  .description = Se præstationsstatistikker for Bed Wars-øvelse
+  .username = brugernavn
+  .username-description = Minecraft-brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

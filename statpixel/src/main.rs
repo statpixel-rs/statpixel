@@ -4,6 +4,7 @@
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
+#![feature(iter_array_chunks)]
 
 use std::collections::HashSet;
 use std::sync::Arc;

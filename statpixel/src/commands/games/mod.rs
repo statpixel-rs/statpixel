@@ -1,6 +1,8 @@
 pub mod image;
 pub mod run;
 
+use std::convert::Into;
+
 #[allow(clippy::wildcard_imports)]
 use api::player::stats;
 
@@ -38,14 +40,14 @@ macro_rules! large_command {
 				ctx: $crate::Context<'_>,
 				#[max_length = 16]
 				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
+				username: Option<String>,
 				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				uuid: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
-			) -> ::std::result::Result<(), ::translate::Error> {
+			) -> Result<(), Error> {
 				let mode: ::std::option::Option<<$game as api::prelude::Game>::Mode> =
-					mode.map(|m| m.into());
+					mode.map(Into::into);
 				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
 
@@ -89,12 +91,12 @@ macro_rules! command {
 				ctx: $crate::Context<'_>,
 				#[max_length = 16]
 				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
+				username: Option<String>,
 				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				uuid: Option<String>,
 				mode: Option<<$game as api::prelude::Game>::Mode>,
-			) -> ::std::result::Result<(), ::translate::Error> {
+			) -> Result<(), Error> {
 				let uuid = util::parse_uuid(uuid.as_deref())?;
 				let ctx = &context::Context::from_poise(&ctx);
 
@@ -118,7 +120,6 @@ macro_rules! command {
 
 large_command!(stats::arcade::Arcade, arcade, "arcade");
 command!(stats::arena::Arena, arena, "arena");
-large_command!(stats::bed_wars::BedWars, bedwars, "bedwars");
 large_command!(stats::blitz_sg::BlitzSg, blitz, "blitz");
 command!(stats::build_battle::BuildBattle, buildbattle, "buildbattle");
 command!(
@@ -150,3 +151,62 @@ command!(stats::vampire_z::VampireZ, vampirez, "vampirez");
 command!(stats::walls::Walls, walls, "walls");
 command!(stats::warlords::Warlords, warlords, "warlords");
 command!(stats::wool_wars::WoolWars, woolwars, "woolwars");
+
+pub mod bedwars {
+	use super::*;
+	use crate::commands::bedwars::{hotbar, practice, shop};
+	use crate::commands::compare::bedwars::command as compare;
+	use crate::commands::from::bedwars::command as from;
+	use crate::commands::history::bedwars::command as history;
+	use crate::commands::project::bedwars::command as project;
+	use crate::commands::snapshot::daily::bedwars::command as daily;
+	use crate::commands::snapshot::monthly::bedwars::command as monthly;
+	use crate::commands::snapshot::weekly::bedwars::command as weekly;
+
+	async fn autocomplete_mode<'a>(
+		ctx: Context<'a>,
+		partial: &'a str,
+	) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+		let partial = partial.to_ascii_lowercase();
+
+		stats::bed_wars::BedWars::autocomplete(ctx, partial).await
+	}
+
+	#[poise::command(
+		on_error = "crate::util::error_handler",
+		slash_command,
+		required_bot_permissions = "ATTACH_FILES"
+	)]
+	async fn general(
+		ctx: Context<'_>,
+		#[max_length = 16]
+		#[autocomplete = "crate::commands::autocomplete_username"]
+		username: Option<::std::string::String>,
+		#[min_length = 32]
+		#[max_length = 36]
+		uuid: Option<::std::string::String>,
+		#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+	) -> ::std::result::Result<(), ::translate::Error> {
+		let mode: Option<<stats::bed_wars::BedWars as api::prelude::Game>::Mode> =
+			mode.map(Into::into);
+		let uuid = util::parse_uuid(uuid.as_deref())?;
+		let ctx = &context::Context::from_poise(&ctx);
+
+		run::command::<stats::bed_wars::BedWars>(ctx, username, uuid, mode).await
+	}
+
+	#[allow(clippy::unused_async)]
+	#[poise::command(
+		on_error = "crate::util::error_handler",
+		slash_command,
+		required_bot_permissions = "ATTACH_FILES",
+		subcommands(
+			"general", "from", "daily", "weekly", "monthly", "history", "project", "compare",
+			"hotbar", "shop", "practice"
+		),
+		rename = "bedwars"
+	)]
+	pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
+		Ok(())
+	}
+}

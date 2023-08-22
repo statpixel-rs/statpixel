@@ -2741,3 +2741,57 @@ woolwars-compare = сравнить
   .to-description = Игрок Minecraft для сравнения
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
+
+hotbar = Панель инструментов
+shop = Магазин
+practice = Практика
+
+bedwars-hotbar = hotbar
+  .description = Просмотр настроек панели инструментов Bed Wars
+  .username = имя-пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = Просмотр настроек магазина Bed Wars
+  .username = имя-пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = Попытки
+bridging-wins = Победы при строительстве мостов
+bridging-losses = Поражения при строительстве мостов
+fireball-wins = Победы с огненными шарами
+fireball-losses = Поражения с огненными шарами
+mlg-wins = Победы с MLG-падениями
+mlg-losses = Поражения с MLG-падениями
+pearl-wins = Победы с использованием жемчуга
+pearl-losses = Поражения с использованием жемчуга
+
+straight-none-30 = Прямо. Без изменений 30
+straight-none-50 = Прямо. Без изменений 50
+straight-none-100 = Прямо. Без изменений 100
+straight-slight-30 = Прямо. Небольшие изменения 30
+straight-slight-50 = Прямо. Небольшие изменения 50
+straight-slight-100 = Прямо. Небольшие изменения 100
+straight-staircase-30 = Прямо. Лестница 30
+straight-staircase-50 = Прямо. Лестница 50
+straight-staircase-100 = Прямо. Лестница 100
+diagonal-none-30 = Диаг. Без изменений 30
+diagonal-none-50 = Диаг. Без изменений 50
+diagonal-none-100 = Диаг. Без изменений 100
+diagonal-slight-30 = Диаг. Небольшие изменения 30
+diagonal-slight-50 = Диаг. Небольшие изменения 50
+diagonal-slight-100 = Диаг. Небольшие изменения 100
+diagonal-staircase-30 = Диаг. Лестница 30
+diagonal-staircase-50 = Диаг. Лестница 50
+diagonal-staircase-100 = Диаг. Лестница 100
+
+bedwars-practice = practice
+  .description = Просмотр статистики практики в Bed Wars
+  .username = имя-пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

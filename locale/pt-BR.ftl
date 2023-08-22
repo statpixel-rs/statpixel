@@ -2738,3 +2738,57 @@ woolwars-compare = comparar
   .to-description = Jogador de Minecraft para comparar
   .mode = modo
   .mode-description = O modo de Wool Wars a ser visualizado
+
+hotbar = Barra de Atalhos
+shop = Loja
+practice = Prática
+
+bedwars-hotbar = hotbar
+  .description = Ver as preferências da barra de atalhos do Bed Wars
+  .username = nome-de-usuário
+  .username-description = Nome de usuário do Minecraft
+  .uuid = uuid
+  .uuid-description = UUID do Minecraft
+
+bedwars-shop = loja
+  .description = Ver as preferências da loja do Bed Wars
+  .username = nome-de-usuário
+  .username-description = Nome de usuário do Minecraft
+  .uuid = uuid
+  .uuid-description = UUID do Minecraft
+
+attempts = Tentativas
+bridging-wins = Vitórias de Ponte
+bridging-losses = Derrotas de Ponte
+fireball-wins = Vitórias com Bolas de Fogo
+fireball-losses = Derrotas com Bolas de Fogo
+mlg-wins = Vitórias de MLG
+mlg-losses = Derrotas de MLG
+pearl-wins = Vitórias com Pérolas
+pearl-losses = Derrotas com Pérolas
+
+straight-none-30 = Reta Nenhum 30
+straight-none-50 = Reta Nenhum 50
+straight-none-100 = Reta Nenhum 100
+straight-slight-30 = Reta Leve 30
+straight-slight-50 = Reta Leve 50
+straight-slight-100 = Reta Leve 100
+straight-staircase-30 = Reta Escada 30
+straight-staircase-50 = Reta Escada 50
+straight-staircase-100 = Reta Escada 100
+diagonal-none-30 = Diagonal Nenhum 30
+diagonal-none-50 = Diagonal Nenhum 50
+diagonal-none-100 = Diagonal Nenhum 100
+diagonal-slight-30 = Diagonal Leve 30
+diagonal-slight-50 = Diagonal Leve 50
+diagonal-slight-100 = Diagonal Leve 100
+diagonal-staircase-30 = Diagonal Escada 30
+diagonal-staircase-50 = Diagonal Escada 50
+diagonal-staircase-100 = Diagonal Escada 100
+
+bedwars-practice = practice
+  .description = Ver as estatísticas de prática do Bed Wars
+  .username = nome-de-usuário
+  .username-description = Nome de usuário do Minecraft
+  .uuid = uuid
+  .uuid-description = UUID do Minecraft

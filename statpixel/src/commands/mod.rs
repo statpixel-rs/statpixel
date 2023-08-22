@@ -15,6 +15,7 @@ use crate::util;
 
 pub mod about;
 pub mod background;
+pub mod bedwars;
 pub mod boost;
 pub mod builder;
 pub mod compare;

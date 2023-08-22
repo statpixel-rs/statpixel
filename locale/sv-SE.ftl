@@ -2739,3 +2739,57 @@ woolwars-compare = jämför
   .to-description = Minecraft-spelare att jämföra med
   .mode = läge
   .mode-description = Wool Wars-läget att visa
+
+hotbar = Snabbmeny
+shop = Butik
+practice = Övning
+
+bedwars-hotbar = hotbar
+  .description = Visa inställningar för snabbmenyn i Bed Wars
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Visa inställningar för butiken i Bed Wars
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Försök
+bridging-wins = Vinster genom brobyggande
+bridging-losses = Förluster genom brobyggande
+fireball-wins = Vinster med eldboll
+fireball-losses = Förluster med eldboll
+mlg-wins = Vinster i MLG-moment
+mlg-losses = Förluster i MLG-moment
+pearl-wins = Vinster med enderpearls
+pearl-losses = Förluster med enderpearls
+
+straight-none-30 = Rak. Ingen 30
+straight-none-50 = Rak. Ingen 50
+straight-none-100 = Rak. Ingen 100
+straight-slight-30 = Rak. Lätt 30
+straight-slight-50 = Rak. Lätt 50
+straight-slight-100 = Rak. Lätt 100
+straight-staircase-30 = Rak. Trappa 30
+straight-staircase-50 = Rak. Trappa 50
+straight-staircase-100 = Rak. Trappa 100
+diagonal-none-30 = Diagonal. Ingen 30
+diagonal-none-50 = Diagonal. Ingen 50
+diagonal-none-100 = Diagonal. Ingen 100
+diagonal-slight-30 = Diagonal. Lätt 30
+diagonal-slight-50 = Diagonal. Lätt 50
+diagonal-slight-100 = Diagonal. Lätt 100
+diagonal-staircase-30 = Diagonal. Trappa 30
+diagonal-staircase-50 = Diagonal. Trappa 50
+diagonal-staircase-100 = Diagonal. Trappa 100
+
+bedwars-practice = practice
+  .description = Visa övningsstatistik för Bed Wars
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

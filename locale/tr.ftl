@@ -2739,3 +2739,57 @@ woolwars-compare = karşılaştır
   .to-description = Karşılaştırılacak Minecraft oyuncusu
   .mode = mod
   .mode-description = Görüntülemek için Wool Wars modu
+
+hotbar = Sıcak Çubuk
+shop = Mağaza
+practice = Pratik
+
+bedwars-hotbar = sıcak-çubuk
+  .description = Yatak Savaşları sıcak çubuk tercihlerini görüntüle
+  .username = kullanıcıadı
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = mağaza
+  .description = Yatak Savaşları mağaza tercihlerini görüntüle
+  .username = kullanıcıadı
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Denemeler
+bridging-wins = Köprü Kurma Kazançları
+bridging-losses = Köprü Kurma Kayıpları
+fireball-wins = Ateştopu Kazançları
+fireball-losses = Ateştopu Kayıpları
+mlg-wins = MLG Kazançları
+mlg-losses = MLG Kayıpları
+pearl-wins = İnci Kazançları
+pearl-losses = İnci Kayıpları
+
+straight-none-30 = Düz Hiçbiri 30
+straight-none-50 = Düz Hiçbiri 50
+straight-none-100 = Düz Hiçbiri 100
+straight-slight-30 = Düz Hafif 30
+straight-slight-50 = Düz Hafif 50
+straight-slight-100 = Düz Hafif 100
+straight-staircase-30 = Düz Merdiven 30
+straight-staircase-50 = Düz Merdiven 50
+straight-staircase-100 = Düz Merdiven 100
+diagonal-none-30 = Çapraz Hiçbiri 30
+diagonal-none-50 = Çapraz Hiçbiri 50
+diagonal-none-100 = Çapraz Hiçbiri 100
+diagonal-slight-30 = Çapraz Hafif 30
+diagonal-slight-50 = Çapraz Hafif 50
+diagonal-slight-100 = Çapraz Hafif 100
+diagonal-staircase-30 = Çapraz Merdiven 30
+diagonal-staircase-50 = Çapraz Merdiven 50
+diagonal-staircase-100 = Çapraz Merdiven 100
+
+bedwars-practice = pratik
+  .description = Yatak Savaşları pratik istatistiklerini görüntüle
+  .username = kullanıcıadı
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID

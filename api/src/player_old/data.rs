@@ -5,11 +5,13 @@ use uuid::Uuid;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 12;
+pub const VERSION: i16 = 15;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
 	pub username: String,
+	#[bincode(with_serde)]
+	pub uuid: Uuid,
 	#[serde(skip)]
 	pub stats: super::stats::Stats,
 	pub(crate) status_rank: Option<String>,
@@ -41,7 +43,7 @@ impl From<Data> for crate::player::data::Data {
 	fn from(value: Data) -> Self {
 		Self {
 			username: value.username,
-			uuid: Uuid::nil(),
+			uuid: value.uuid,
 			stats: value.stats.into(),
 			status_rank: value.status_rank,
 			rank: value.rank,

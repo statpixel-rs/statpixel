@@ -2739,3 +2739,57 @@ woolwars-compare = порівняти
   .to-description = Гравець у Minecraft для порівняння
   .mode = режим
   .mode-description = Режим Wool Wars для перегляду
+
+hotbar = Панель Інструментів
+shop = Магазин
+practice = Тренування
+
+bedwars-hotbar = hotbar
+  .description = Переглянути налаштування панелі інструментів для Bed Wars
+  .username = username
+  .username-description = Ім'я користувача Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+bedwars-shop = shop
+  .description = Переглянути налаштування магазину Bed Wars
+  .username = username
+  .username-description = Ім'я користувача Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+
+attempts = Спроби
+bridging-wins = Перемоги у Перекладанні
+bridging-losses = Поразки у Перекладанні
+fireball-wins = Перемоги з Вогненним М'ячем
+fireball-losses = Поразки з Вогненним М'ячем
+mlg-wins = Перемоги в MLG
+mlg-losses = Поразки в MLG
+pearl-wins = Перемоги з Перлиною
+pearl-losses = Поразки з Перлиною
+
+straight-none-30 = Пряма Нема 30
+straight-none-50 = Пряма Нема 50
+straight-none-100 = Пряма Нема 100
+straight-slight-30 = Пряма Легка 30
+straight-slight-50 = Пряма Легка 50
+straight-slight-100 = Пряма Легка 100
+straight-staircase-30 = Пряма на Сходах 30
+straight-staircase-50 = Пряма на Сходах 50
+straight-staircase-100 = Пряма на Сходах 100
+diagonal-none-30 = Діагональ Нема 30
+diagonal-none-50 = Діагональ Нема 50
+diagonal-none-100 = Діагональ Нема 100
+diagonal-slight-30 = Діагональ Легка 30
+diagonal-slight-50 = Діагональ Легка 50
+diagonal-slight-100 = Діагональ Легка 100
+diagonal-staircase-30 = Діагональ на Сходах 30
+diagonal-staircase-50 = Діагональ на Сходах 50
+diagonal-staircase-100 = Діагональ на Сходах 100
+
+bedwars-practice = practice
+  .description = Переглянути статистику тренувань у Bed Wars
+  .username = username
+  .username-description = Ім'я користувача Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft

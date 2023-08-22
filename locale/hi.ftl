@@ -2730,3 +2730,57 @@ woolwars-compare = तुलना_करें
   .to-description = तुलना के लिए माइनक्राफ्ट खिलाड़ी
   .mode = मोड
   .mode-description = दृश्य करने के लिए वूल वॉर्स मोड
+
+hotbar = हॉटबार
+shop = दुकान
+practice = प्रैक्टिस
+
+bedwars-hotbar = बेड-वॉर्स-हॉटबार
+  .description = बेड वॉर्स हॉटबार प्राथमिकताएँ देखें
+  .username = उपयोगकर्ता-नाम
+  .username-description = माइनक्राफ्ट उपयोगकर्ता नाम
+  .uuid = यूआईडी
+  .uuid-description = माइनक्राफ्ट यूआईडी
+
+bedwars-shop = बेड-वॉर्स-दुकान
+  .description = बेड वॉर्स दुकान प्राथमिकताएँ देखें
+  .username = उपयोगकर्ता-नाम
+  .username-description = माइनक्राफ्ट उपयोगकर्ता नाम
+  .uuid = यूआईडी
+  .uuid-description = माइनक्राफ्ट यूआईडी
+
+attempts = प्रयास
+bridging-wins = ब्रिजिंग जीत
+bridging-losses = ब्रिजिंग हार
+fireball-wins = फ़ायरबॉल जीत
+fireball-losses = फ़ायरबॉल हार
+mlg-wins = एमएलजी जीत
+mlg-losses = एमएलजी हार
+pearl-wins = पर्ल जीत
+pearl-losses = पर्ल हार
+
+straight-none-30 = सीधा-कोई-30
+straight-none-50 = सीधा-कोई-50
+straight-none-100 = सीधा-कोई-100
+straight-slight-30 = सीधा-हल्का-30
+straight-slight-50 = सीधा-हल्का-50
+straight-slight-100 = सीधा-हल्का-100
+straight-staircase-30 = सीधा-सीढ़ियाँ-30
+straight-staircase-50 = सीधा-सीढ़ियाँ-50
+straight-staircase-100 = सीधा-सीढ़ियाँ-100
+diagonal-none-30 = डायगोनल-कोई-30
+diagonal-none-50 = डायगोनल-कोई-50
+diagonal-none-100 = डायगोनल-कोई-100
+diagonal-slight-30 = डायगोनल-हल्का-30
+diagonal-slight-50 = डायगोनल-हल्का-50
+diagonal-slight-100 = डायगोनल-हल्का-100
+diagonal-staircase-30 = डायगोनल-सीढ़ियाँ-30
+diagonal-staircase-50 = डायगोनल-सीढ़ियाँ-50
+diagonal-staircase-100 = डायगोनल-सीढ़ियाँ-100
+
+bedwars-practice = प्रैक्टिस
+  .description = बेड वॉर्स प्रैक्टिस आँकड़े देखें
+  .username = उपयोगकर्ता-नाम
+  .username-description = माइनक्राफ्ट उपयोगकर्ता नाम
+  .uuid = यूआईडी
+  .uuid-description = माइनक्राफ्ट यूआईडी

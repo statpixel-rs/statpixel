@@ -2739,3 +2739,57 @@ woolwars-compare = usporedi
   .to-description = Minecraft igrač za usporedbu
   .mode = način
   .mode-description = Način prikaza Wool Wars
+
+hotbar = Traka sa spremljenim
+shop = Trgovina
+practice = Vježbanje
+
+bedwars-hotbar = hotbar
+  .description = Pregled postavki trake sa spremljenim u Bed Wars
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+bedwars-shop = shop
+  .description = Pregled postavki trgovine u Bed Wars
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+
+attempts = Pokušaji
+bridging-wins = Pobjede u gradnji mostova
+bridging-losses = Porazi u gradnji mostova
+fireball-wins = Pobjede s vatrenom kuglom
+fireball-losses = Porazi s vatrenom kuglom
+mlg-wins = Pobjede u MLG skokovima
+mlg-losses = Porazi u MLG skokovima
+pearl-wins = Pobjede s biserom
+pearl-losses = Porazi s biserom
+
+straight-none-30 = Ravno Bez 30
+straight-none-50 = Ravno Bez 50
+straight-none-100 = Ravno Bez 100
+straight-slight-30 = Ravno Blago 30
+straight-slight-50 = Ravno Blago 50
+straight-slight-100 = Ravno Blago 100
+straight-staircase-30 = Ravno Stepenasto 30
+straight-staircase-50 = Ravno Stepenasto 50
+straight-staircase-100 = Ravno Stepenasto 100
+diagonal-none-30 = Dijagonalno Bez 30
+diagonal-none-50 = Dijagonalno Bez 50
+diagonal-none-100 = Dijagonalno Bez 100
+diagonal-slight-30 = Dijagonalno Blago 30
+diagonal-slight-50 = Dijagonalno Blago 50
+diagonal-slight-100 = Dijagonalno Blago 100
+diagonal-staircase-30 = Dijagonalno Stepenasto 30
+diagonal-staircase-50 = Dijagonalno Stepenasto 50
+diagonal-staircase-100 = Dijagonalno Stepenasto 100
+
+bedwars-practice = practice
+  .description = Pregled statistika vježbanja u Bed Wars
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
