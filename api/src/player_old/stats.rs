@@ -64,10 +64,6 @@ pub struct BedWars {
 	pub xp: u64,
 	pub win_streak: u32,
 
-	pub practice: Practice,
-	pub hotbar: Vec<bed_wars::HotbarItem>,
-	pub shop: Vec<bed_wars::ShopItem>,
-
 	pub solo: bed_wars::Solo,
 	pub double: bed_wars::Double,
 	pub three: bed_wars::Three,
