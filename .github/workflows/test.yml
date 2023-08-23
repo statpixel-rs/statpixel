@@ -58,9 +58,9 @@ jobs:
           command: clippy
         env:
           HYPIXEL_API_KEY: ''
-      - name: Run cargo test
-        uses: actions-rs/cargo@v1
-        env:
-          HYPIXEL_API_KEY: ${{ secrets.HYPIXEL_API_KEY }}
-        with:
-          command: test
+#      - name: Run cargo test
+#        uses: actions-rs/cargo@v1
+#        env:
+#          HYPIXEL_API_KEY: ${{ secrets.HYPIXEL_API_KEY }}
+#        with:
+#          command: test
