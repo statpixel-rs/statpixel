@@ -280,7 +280,9 @@ pub struct Practice {
 	pub records: PracticeRecords,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Debug)]
+#[derive(
+	serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default, Debug,
+)]
 #[serde(default)]
 pub struct PracticeRecords {
 	#[serde(rename = "bridging_distance_30:elevation_NONE:angle_STRAIGHT:")]
