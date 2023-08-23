@@ -446,7 +446,6 @@ impl ToTokens for GameInputReceiver {
 				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Root {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
-					background: None,
 				}))
 			}
 		});
@@ -460,7 +459,19 @@ impl ToTokens for GameInputReceiver {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
 					past,
-					background: None,
+				}))
+			}
+		});
+
+		let as_at = modes.iter().take(24).map(|mode| {
+			let ty = mode.ty();
+			let tr = mode.tr();
+
+			quote! {
+				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::At {
+					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
+					uuid,
+					past,
 				}))
 			}
 		});
@@ -473,7 +484,6 @@ impl ToTokens for GameInputReceiver {
 				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::History {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid,
-					background: None,
 				}))
 			}
 		});
@@ -486,7 +496,6 @@ impl ToTokens for GameInputReceiver {
 				#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #tr), #api::id::command(#api::command::Id::Project {
 					kind: #api::command::ProjectMode::#game_ident(#mode_enum::#ty, kind),
 					uuid,
-					background: None,
 				}))
 			}
 		});
@@ -500,7 +509,6 @@ impl ToTokens for GameInputReceiver {
 					kind: #api::command::Mode::#game_ident(#mode_enum::#ty),
 					uuid_lhs,
 					uuid_rhs,
-					background: None,
 				}))
 			}
 		});
@@ -524,7 +532,6 @@ impl ToTokens for GameInputReceiver {
 								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Root {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
-									background: None,
 								})),
 								#(#as_root),*
 							]
@@ -542,7 +549,6 @@ impl ToTokens for GameInputReceiver {
 						#api::id::Id::Command(#api::command::Id::Root {
 							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
 							uuid,
-							background: None,
 						})
 					)
 				}
@@ -561,7 +567,6 @@ impl ToTokens for GameInputReceiver {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
 									past,
-									background: None,
 								})),
 								#(#as_snapshot),*
 							]
@@ -580,7 +585,42 @@ impl ToTokens for GameInputReceiver {
 							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
 							uuid,
 							past,
-							background: None,
+						})
+					)
+				}
+
+				fn as_at(
+					ctx: &#translate::context::Context<'_>,
+					uuid: #uuid::Uuid,
+					past: i64,
+					selected: Option<#mode_enum>
+				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
+						"select",
+						#poise::serenity_prelude::CreateSelectMenuKind::String {
+							options: ::std::vec![
+								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::At {
+									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
+									uuid,
+									past,
+								})),
+								#(#as_at),*
+							]
+						}
+					);
+
+					if let Some(selected) = selected {
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+					}
+
+					menu = menu.max_values(1).min_values(1);
+
+					(
+						#poise::serenity_prelude::CreateActionRow::SelectMenu(menu),
+						#api::id::Id::Command(#api::command::Id::At {
+							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
+							uuid,
+							past,
 						})
 					)
 				}
@@ -597,7 +637,6 @@ impl ToTokens for GameInputReceiver {
 								#poise::serenity_prelude::CreateSelectMenuOption::new(::translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::History {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid,
-									background: None,
 								})),
 								#(#as_history),*
 							]
@@ -615,7 +654,6 @@ impl ToTokens for GameInputReceiver {
 						#api::id::Id::Command(#api::command::Id::History {
 							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
 							uuid,
-							background: None,
 						})
 					)
 				}
@@ -633,7 +671,6 @@ impl ToTokens for GameInputReceiver {
 								#poise::serenity_prelude::CreateSelectMenuOption::new(#translate::tr(ctx, #overall_ident::tr()), #api::id::command(#api::command::Id::Project {
 									kind: #api::command::ProjectMode::#game_ident(#mode_enum::#overall_ident, kind),
 									uuid,
-									background: None,
 								})),
 								#(#as_project),*
 							]
@@ -651,7 +688,6 @@ impl ToTokens for GameInputReceiver {
 						#api::id::Id::Command(#api::command::Id::Project {
 							kind: #api::command::ProjectMode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident), kind),
 							uuid,
-							background: None,
 						})
 					)
 				}
@@ -670,7 +706,6 @@ impl ToTokens for GameInputReceiver {
 									kind: #api::command::Mode::#game_ident(#mode_enum::#overall_ident),
 									uuid_lhs,
 									uuid_rhs,
-									background: None,
 								})),
 								#(#as_compare),*
 							]
@@ -689,7 +724,6 @@ impl ToTokens for GameInputReceiver {
 							kind: #api::command::Mode::#game_ident(selected.unwrap_or(#mode_enum::#overall_ident)),
 							uuid_lhs,
 							uuid_rhs,
-							background: None,
 						})
 					)
 				}

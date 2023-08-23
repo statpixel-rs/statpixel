@@ -3,44 +3,44 @@ not-linked = 링크되지 않음
 not-linked-description = 링크되지 않았으므로 프로필을 제공해야 합니다.
 showing-statistics = <a:clock:1115091329958019253> {$from}에서 {$to}까지의 통계를 표시합니다.
 no-previous-statistics = **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-guild-statistics = <a:clock:1115091329958019253> 길드 **`{$name}`**의 통계를 `{$from}`에서 `{$to}`까지 표시합니다.
+showing-guild-statistics = <a:clock:1115091329958019253> 길드 **{$name}**의 통계를 {$from}에서 **`{$to}`**까지 표시합니다.
 no-previous-guild-statistics = 길드 **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-comparison = <a:clock:1115091329958019253> `{$from}`의 통계를 `{$to}`와 비교하여 표시합니다.
+showing-comparison = <a:clock:1115091329958019253> **`{$from}`**의 통계를 **`{$to}`**와 비교하여 표시합니다.
 
 # Errors
-error-player-not-found = `{$name}` 님의 프로필을 찾을 수 없습니다.
-error-session-not-found = `{$name}` 님의 세션을 찾을 수 없습니다.
-error-player-uuid-not-found = UUID가 `{$uuid}`인 플레이어를 찾을 수 없습니다.
-error-player-username-not-found = 사용자명이 `{$name}`인 플레이어를 찾을 수 없습니다.
-error-guild-by-member-uuid-not-found = UUID가 `{$uuid}`인 길드 멤버를 찾을 수 없습니다.
-error-guild-by-member-username-not-found = 사용자명이 `{$name}`인 길드 멤버를 찾을 수 없습니다.
-error-guild-not-found = `{$name}` 이름의 길드를 찾을 수 없습니다.
+error-player-not-found = **`{$name}`** 님의 프로필을 찾을 수 없습니다.
+error-session-not-found = **`{$name}`** 님의 세션을 찾을 수 없습니다.
+error-player-uuid-not-found = UUID가 **`{$uuid}`**인 플레이어를 찾을 수 없습니다.
+error-player-username-not-found = 사용자명이 **`{$name}`**인 플레이어를 찾을 수 없습니다.
+error-guild-by-member-uuid-not-found = UUID가 **`{$uuid}`**인 길드 멤버를 찾을 수 없습니다.
+error-guild-by-member-username-not-found = 사용자명이 **`{$name}`**인 길드 멤버를 찾을 수 없습니다.
+error-guild-not-found = **`{$name}`** 이름의 길드를 찾을 수 없습니다.
 error-internal = 내부 오류가 발생했습니다. 기록되었으며 곧 해결될 것입니다.
 error-not-linked = 마인크래프트 계정에 연결되어 있지 않습니다. 계정을 연결하려면 </link:1113624864524357710> 명령어를 사용하세요.
-error-invalid-uuid = 잘못된 UUID입니다: `{$uuid}`.
-error-invalid-username = 잘못된 사용자명입니다: `{$name}`.
-error-member-player-not-found = `{$name}` 님은 프로필에 존재하지 않습니다.
-error-skyblock-profile-not-found = `{$name}` 님의 SkyBlock 프로필을 찾을 수 없습니다.
-error-player-snapshot-not-found = `{$name}` 님에 대한 스냅샷이 없습니다. </bedwars daily:1113624864272683060>를 사용하여 스냅샷을 생성하세요.
-error-leaderboard-not-found = 이름이 `{$name}`인 리더보드를 찾을 수 없습니다.
-error-profile-not-found = `{$name}` 님의 `{$profile}` SkyBlock 프로필은 API가 비활성화되어 있거나 새로운 프로필 시스템 이후로 로그인하지 않은 상태입니다.
+error-invalid-uuid = 잘못된 UUID입니다: **`{$uuid}`**.
+error-invalid-username = 잘못된 사용자명입니다: **`{$name}`**.
+error-member-player-not-found = **`{$name}`** 님은 프로필에 존재하지 않습니다.
+error-skyblock-profile-not-found = **`{$name}`** 님의 SkyBlock 프로필을 찾을 수 없습니다.
+error-player-snapshot-not-found = **`{$name}`** 님에 대한 스냅샷이 없습니다. </bedwars daily:1113624864272683060>를 사용하여 스냅샷을 생성하세요.
+error-leaderboard-not-found = 이름이 **`{$name}`**인 리더보드를 찾을 수 없습니다.
+error-profile-not-found = **`{$name}`** 님의 **`{$profile}`** SkyBlock 프로필은 API가 비활성화되어 있거나 새로운 프로필 시스템 이후로 로그인하지 않은 상태입니다.
 error-identifier-too-long =
   이 상호작용의 생성된 식별자 중 하나가 너무 깁니다.
   구성 요소의 수나 사용자 정의 텍스트 양을 줄여 보세요.
-error-user-track-limit-reached = 최대 `{$limit}`개의 추적 기록을 도달했습니다. 제한을 해제하려면 StatPixel+를 구매하세요: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = 최대 **`{$limit}`**개의 추적 기록을 도달했습니다. 제한을 해제하려면 StatPixel+를 구매하세요: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  이 길드는 최대 `{$limit}`개의 추적 기록을 도달했습니다.
+  이 길드는 최대 **`{$limit}`**개의 추적 기록을 도달했습니다.
   StatPixel+를 가지고 있다면 </boost:1132443666997321809>를 사용하여 길드를 강화하여 제한을 해제하거나 <https://statpixel.xyz/plus>로 이동하세요.
 error-boost-limit-reached =
-  최대 `{$limit}`개의 강화를 도달했습니다. 대시보드에서 강화를 제거하세요: <https://statpixel.xyz/dashboard/boost>.
+  최대 **`{$limit}`**개의 강화를 도달했습니다. 대시보드에서 강화를 제거하세요: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   이미 이 채널에서 이 플레이어를 추적하고 있습니다.
 error-not-premium = 이 작업을 수행하려면 StatPixel+ 구독자여야 합니다. 자세한 정보는 <https://statpixel.xyz/plus>를 확인하세요.
 error-not-in-a-guild = 이 작업을 수행하려면 길드에 속해야 합니다.
 error-boost-already-exists = 이미 이 길드를 강화하고 있습니다.
-error-time-invalid-character = 시간 인수에서 잘못된 문자가 발견되었습니다. 위치: `{$position}`.
-error-time-expected-number = 시간 인수에서 숫자를 입력해야 합니다. 위치: `{$position}`.
-error-time-unknown-unit = 알 수 없는 시간 단위: `{$unit}`. 위치: `{$position}`, 값: `{$value}`.
+error-time-invalid-character = 시간 인수에서 잘못된 문자가 발견되었습니다. 위치: **`{$position}`**.
+error-time-expected-number = 시간 인수에서 숫자를 입력해야 합니다. 위치: **`{$position}`**.
+error-time-unknown-unit = 알 수 없는 시간 단위: **`{$unit}`**. 위치: **`{$position}`**, 값: **`{$value}`**.
 error-time-empty = 시간 인수는 비워둘 수 없습니다.
 error-time-overflow = 시간 인수의 기간이 너무 깁니다. 3,000년 이하로 설정하세요.
 
@@ -105,7 +105,7 @@ invalid-identifier-command-description = 제공된 식별자는 명령이 아닙
 
 deprecated-interaction = 상호 작용이 더 이상 지원되지 않습니다
 deprecated-interaction-description = 이 상호 작용은 더 이상 지원되지 않으며 작동하지 않습니다. 원래 명령을 다시 실행하세요.
-identifier = <:id:1125971775755407390> 식별자: `{$identifier}`
+identifier = <:id:1125971775755407390> 식별자: **`{$identifier}`**
 
 # /builder
 
@@ -166,20 +166,19 @@ create-modal-title = 이미지 만들기 완료
 username = 사용자 이름
 username-placeholder = 사용할 사용자 이름 입력
 
-invalid-statistic =
-  `{$game}`의 잘못된 통계 `{$statistic}`. 문서를 확인한 후 다시 시도하세요.
+invalid-statistic = **`{$game}`**의 잘못된 통계 **`{$statistic}`**. 문서를 확인한 후 다시 시도하세요.
 
 invalid-level-type =
-  잘못된 레벨 유형 `{$kind}`. 문서를 확인한 후 다시 시도하세요.
+  잘못된 레벨 유형 **`{$kind}`**. 문서를 확인한 후 다시 시도하세요.
 
 invalid-game-type =
-  잘못된 게임 유형 `{$game}`. 문서를 확인한 후 다시 시도하세요.
+  잘못된 게임 유형 **`{$game}`**. 문서를 확인한 후 다시 시도하세요.
 
 image-created =
   이미지가 생성되었습니다! </execute:1125992506501365892>로 시도해보세요.
 
-  식별자: `{$id}`
-  링크: `{$link}`
+  식별자: **`{$id}`**
+  링크: **`{$link}`**
 
 # /about
 
@@ -235,7 +234,7 @@ background = 배경
 error-invalid-colour = 잘못된 색상이 제공되었습니다
 error-invalid-colour-description = 제공된 색상이 잘못되었습니다. [다음 색상](https://simple.wikipedia.org/wiki/List_of_colors) 또는 `#`으로 시작하는 16진수 색상 중 하나를 입력하세요.
 colour-changed = 배경 색상 변경됨
-colour-changed-description = 배경 색상이 `{$colour}`(으)로 변경되었습니다.
+colour-changed-description = 배경 색상이 **`{$colour}`**(으)로 변경되었습니다.
 
 # /skyblock bazaar
 
@@ -535,7 +534,7 @@ link = 연결
   .uuid-description = 연결할 Minecraft UUID
 
 linking-failed = 연결 실패
-linking-failed-uuid-description = UUID `{$uuid}`는 Minecraft 계정에 속하지 않습니다.
+linking-failed-uuid-description = UUID **`{$uuid}`**는 Minecraft 계정에 속하지 않습니다.
 linking-failed-username-description = 사용자 이름 **`{$username}`**은 Minecraft 계정에 속하지 않습니다.
 linking-failed-description = 유효한 UUID 또는 사용자 이름을 제공해야 합니다.
 linking-succeeded = 연결 성공
@@ -2476,7 +2475,7 @@ guild-monthly = 월간
   .uuid = uuid
   .uuid-description = 길드 멤버의 Minecraft UUID
 
-showing-guild-xp-statistics = `{$from}`부터 `{$to}`까지의 길드 경험치 획득 표시.
+showing-guild-xp-statistics = {$from}부터 {$to}까지의 길드 경험치 획득 표시.
   
 # 공유 캔버스 라벨
 
@@ -2790,3 +2789,261 @@ bedwars-practice = practice
   .username-description = 마인크래프트 사용자명
   .uuid = uuid
   .uuid-description = 마인크래프트 UUID
+
+# 명령어
+
+arcade-at = -에서
+  .description = 특정 시점에서 플레이어의 아케이드 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 아케이드 모드
+
+arena-at = -에서
+  .description = 특정 시점에서 플레이어의 아레나 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 아레나 모드
+
+bedwars-at = -에서
+  .description = 특정 시점에서 플레이어의 베드 워즈 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 베드 워즈 모드
+
+blitz-at = -에서
+  .description = 특정 시점에서 플레이어의 블리츠 서바이벌 게임 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 블리츠 서바이벌 게임 모드
+
+buildbattle-at = -에서
+  .description = 특정 시점에서 플레이어의 빌드 배틀 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 빌드 배틀 모드
+
+copsandcrims-at = -에서
+  .description = 특정 시점에서 플레이어의 캅스 앤 크림 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 캅스 앤 크림 모드
+
+duels-at = -에서
+  .description = 특정 시점에서 플레이어의 결투 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 결투 모드
+
+megawalls-at = -에서
+  .description = 특정 시점에서 플레이어의 메가 월 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 메가 월 모드
+
+murdermystery-at = -에서
+  .description = 특정 시점에서 플레이어의 마더 미스터리 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 마더 미스터리 모드
+
+paintball-at = -에서
+  .description = 특정 시점에서 플레이어의 페인트볼 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 페인트볼 모드
+
+pit-at = -에서
+  .description = 특정 시점에서 플레이어의 더 피트 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 더 피트 모드
+
+quake-at = -에서
+  .description = 특정 시점에서 플레이어의 퀘이크크래프트 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 퀘이크크래프트 모드
+
+skywars-at = -에서
+  .description = 특정 시점에서 플레이어의 스카이워즈 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 스카이워즈 모드
+
+smash-at = -에서
+  .description = 특정 시점에서 플레이어의 스매시 히어로즈 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 스매시 히어로즈 모드
+
+speeduhc-at = -에서
+  .description = 특정 시점에서 플레이어의 스피드 UHC 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 스피드 UHC 모드
+
+tntgames-at = -에서
+  .description = 특정 시점에서 플레이어의 TNT 게임 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 TNT 게임 모드
+
+turbokartracers-at = -에서
+  .description = 특정 시점에서 플레이어의 터보 카트 레이서 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 터보 카트 레이서 모드
+
+uhc-at = -에서
+  .description = 특정 시점에서 플레이어의 UHC 챔피언 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 UHC 챔피언 모드
+
+vampirez-at = -에서
+  .description = 특정 시점에서 플레이어의 뱀파이어Z 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 뱀파이어Z 모드
+
+walls-at = -에서
+  .description = 특정 시점에서 플레이어의 더 월 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 더 월 모드
+
+warlords-at = -에서
+  .description = 특정 시점에서 플레이어의 워로드 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 워로드 모드
+
+woolwars-at = -에서
+  .description = 특정 시점에서 플레이어의 울 워즈 통계를 보여줍니다
+  .username = 사용자-이름
+  .username-description = 마인크래프트 사용자 이름
+  .uuid = uuid
+  .uuid-description = 마인크래프트 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보여줄 울 워즈 모드
+
+guild-at = -에서
+  .description = 특정 시점에서 길드의 통계를 보여줍니다
+  .name = 이름
+  .name-description = 보여줄 길드의 이름
+  .username = 사용자-이름
+  .username-description = 길드 멤버의 길드 이름을 보여줄 사용자 이름
+  .uuid = uuid
+  .uuid-description = 길드 멤버의 길드 UUID를 보여줄 UUID
+  .time = 시간
+  .time-description = 돌아가려는 시간 (1시간 12분 5초)
+
+showing-statistics-at = <a:clock:1115091329958019253> {$at}의 통계를 보여줍니다.
+showing-guild-statistics-at = {$at}의 길드 통계를 보여줍니다.

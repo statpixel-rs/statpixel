@@ -1,5 +1,5 @@
 use poise::serenity_prelude::CreateAttachment;
-use translate::context;
+use translate::{context, tr_fmt};
 use uuid::Uuid;
 
 use crate::{util, Error};
@@ -26,9 +26,18 @@ pub async fn hotbar(
 		suffix.as_deref(),
 	);
 
+	let id = api::id::command(api::command::Id::Root {
+		kind: api::command::Mode::BedWarsHotbar,
+		uuid: player.uuid,
+	});
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: id),
+				crate::tip::random(ctx)
+			))
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -58,9 +67,18 @@ pub async fn shop(
 		suffix.as_deref(),
 	);
 
+	let id = api::id::command(api::command::Id::Root {
+		kind: api::command::Mode::BedWarsShop,
+		uuid: player.uuid,
+	});
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: id),
+				crate::tip::random(ctx)
+			))
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;
@@ -90,9 +108,18 @@ pub async fn practice(
 		suffix.as_deref(),
 	);
 
+	let id = api::id::command(api::command::Id::Root {
+		kind: api::command::Mode::BedWarsPractice,
+		uuid: player.uuid,
+	});
+
 	ctx.send(
 		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
+			.content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: id),
+				crate::tip::random(ctx)
+			))
 			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 	)
 	.await?;

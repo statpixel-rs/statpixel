@@ -3,45 +3,45 @@ not-linked = 必要な引数が不足しています
 not-linked-description = Minecraftアカウントとのリンクがされていないため、プロフィールを提供して表示する必要があります。
 showing-statistics = <a:clock:1115091329958019253> {$from}から{$to}までの統計情報を表示中。
 no-previous-statistics = **`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
-showing-guild-statistics = <a:clock:1115091329958019253> `{$from}`から`{$to}`までのギルド統計情報を表示中。
+showing-guild-statistics = <a:clock:1115091329958019253> {$from}から{$to}までのギルド統計情報を表示中。
 no-previous-guild-statistics = ギルド**`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
-showing-comparison = <a:clock:1115091329958019253> `{$from}`の統計情報を`{$to}`と比較して表示中。
+showing-comparison = <a:clock:1115091329958019253> **`{$from}`**の統計情報を**`{$to}`**と比較して表示中。
 
 # Errors
 
-error-player-not-found = `{$name}`のプロフィールが見つかりませんでした。
-error-session-not-found = `{$name}`のセッションが見つかりませんでした。
-error-player-uuid-not-found = UUID `{$uuid}`を持つプレイヤーが見つかりませんでした。
-error-player-username-not-found = ユーザー名`{$name}`を持つプレイヤーが見つかりませんでした。
-error-guild-by-member-uuid-not-found = UUID `{$uuid}`を持つギルドメンバーが見つかりませんでした。
-error-guild-by-member-username-not-found = ユーザー名`{$name}`を持つギルドメンバーが見つかりませんでした。
-error-guild-not-found = 名前が`{$name}`のギルドが見つかりませんでした。
+error-player-not-found = **`{$name}`**のプロフィールが見つかりませんでした。
+error-session-not-found = **`{$name}`**のセッションが見つかりませんでした。
+error-player-uuid-not-found = UUID **`{$uuid}`**を持つプレイヤーが見つかりませんでした。
+error-player-username-not-found = ユーザー名**`{$name}`**を持つプレイヤーが見つかりませんでした。
+error-guild-by-member-uuid-not-found = UUID **`{$uuid}`**を持つギルドメンバーが見つかりませんでした。
+error-guild-by-member-username-not-found = ユーザー名**`{$name}`**を持つギルドメンバーが見つかりませんでした。
+error-guild-not-found = 名前が**`{$name}`**のギルドが見つかりませんでした。
 error-internal = 内部エラーが発生しました。記録され、すぐに解決されます。
 error-not-linked = Minecraftアカウントとのリンクがされていません。アカウントをリンクするには</link:1113624864524357710>を使用してください。
-error-invalid-uuid = UUID `{$uuid}`は無効です。
-error-invalid-username = ユーザー名`{$name}`は無効です。
-error-member-player-not-found = プロフィール内でメンバー`{$name}`が見つかりませんでした。
-error-skyblock-profile-not-found = `{$name}`のSkyBlockプロフィールが見つかりませんでした。
-error-player-snapshot-not-found = `{$name}`のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683060>
-error-leaderboard-not-found = 名前が`{$name}`のリーダーボードが見つかりませんでした。
-error-profile-not-found = `{$name}`の`{$profile}` SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
+error-invalid-uuid = UUID **`{$uuid}`**は無効です。
+error-invalid-username = ユーザー名**`{$name}`**は無効です。
+error-member-player-not-found = プロフィール内でメンバー**`{$name}`**が見つかりませんでした。
+error-skyblock-profile-not-found = **`{$name}`**のSkyBlockプロフィールが見つかりませんでした。
+error-player-snapshot-not-found = **`{$name}`**のスナップショットが見つかりませんでした。以下のコマンドを使用して作成してください。</bedwars daily:1113624864272683060>
+error-leaderboard-not-found = 名前が**`{$name}`**のリーダーボードが見つかりませんでした。
+error-profile-not-found = **`{$name}`**の**`{$profile}`** SkyBlockプロフィールはAPIが無効になっているか、新しいプロフィールシステム以降にログインしていません。
 error-identifier-too-long =
   このインタラクションの生成された識別子の1つが長すぎます。
   要素の数やカスタムテキストの量を減らしてください。
-error-user-track-limit-reached = トラック数が上限の`{$limit}`に達しました。この制限を解除するにはStatPixel+を購入してください。詳細は<https://statpixel.xyz/plus>をご覧ください。
+error-user-track-limit-reached = トラック数が上限の**`{$limit}`**に達しました。この制限を解除するにはStatPixel+を購入してください。詳細は<https://statpixel.xyz/plus>をご覧ください。
 error-guild-track-limit-reached =
-  このギルドはトラック数の上限の`{$limit}`に達しました。
+  このギルドはトラック数の上限の**`{$limit}`**に達しました。
   もしStatPixel+を持っている場合は、ギルドを</boost:1132443666997321809>でブーストして制限を解除するか、<https://statpixel.xyz/plus>にアクセスしてください。
 error-boost-limit-reached =
-  ブースト数が上限の`{$limit}`に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
+  ブースト数が上限の**`{$limit}`**に達しました。ダッシュボードでブーストを削除できます：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
   このプレイヤーはすでにこのチャンネルでトラッキングされています。
 error-not-premium = このアクションを実行するにはStatPixel+のサブスクリバーである必要があります。詳細は<https://statpixel.xyz/plus>をご覧ください。
 error-not-in-a-guild = このアクションを実行するにはギルドに所属している必要があります。
 error-boost-already-exists = このギルドはすでにブーストされています。
-error-time-invalid-character = 時間引数に無効な文字が見つかりました。位置`{$position}`にて。
-error-time-expected-number = 時間引数の位置`{$position}`には数値が必要です。
-error-time-unknown-unit = 時間引数の位置`{$position}`にて不明な時間単位`{$unit}`が使用されました。値は`{$value}`です。
+error-time-invalid-character = 時間引数に無効な文字が見つかりました。位置**`{$position}`**にて。
+error-time-expected-number = 時間引数の位置**`{$position}`**には数値が必要です。
+error-time-unknown-unit = 時間引数の位置**`{$position}`**にて不明な時間単位**`{$unit}`**が使用されました。値は**`{$value}`**です。
 error-time-empty = 時間引数は空にできません。
 error-time-overflow = 時間引数の期間が長すぎます。3000年以下にしてください。
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = 提供された識別子はコマンド
 
 deprecated-interaction = 古いバージョンのインタラクション
 deprecated-interaction-description = このインタラクションは古いバージョンであり動作しません。元のコマンドを再度実行してください。
-identifier = <:id:1125971775755407390> 識別子： `{$identifier}`
+identifier = <:id:1125971775755407390> 識別子： **`{$identifier}`**
 
 # /builder
 
@@ -170,20 +170,19 @@ create-modal-title = イメージの作成を完了
 username = ユーザー名
 username-placeholder = 使用するユーザー名を入力してください
 
-invalid-statistic =
-  `{$game}`の統計情報 `{$statistic}` は無効です。ドキュメントを確認してもう一度試してください。
+invalid-statistic = **`{$game}`**の統計情報 **`{$statistic}`** は無効です。ドキュメントを確認してもう一度試してください。
 
 invalid-level-type =
-  レベルタイプ `{$kind}` は無効です。ドキュメントを確認してもう一度試してください。
+  レベルタイプ **`{$kind}`** は無効です。ドキュメントを確認してもう一度試してください。
 
 invalid-game-type =
-  ゲームタイプ `{$game}` は無効です。ドキュメントを確認してもう一度試してください。
+  ゲームタイプ **`{$game}`** は無効です。ドキュメントを確認してもう一度試してください。
 
 image-created =
   イメージが作成されました！ </execute:1125992506501365892> を使用して試してみてください。
 
-  識別子：`{$id}`
-  リンク：`{$link}`
+  識別子：**`{$id}`**
+  リンク：**`{$link}`**
 
 # /about
 
@@ -239,7 +238,7 @@ background = 背景
 error-invalid-colour = 無効な色が指定されました
 error-invalid-colour-description = 提供された色は無効です。[これらの色](https://simple.wikipedia.org/wiki/List_of_colors)のいずれかか、`#`で始まる16進数のカラーコードを指定してください。
 colour-changed = 背景色が変更されました
-colour-changed-description = 背景色が`{$colour}`に変更されました。
+colour-changed-description = 背景色が**`{$colour}`**に変更されました。
 
 # /skyblock bazaar
 
@@ -539,7 +538,7 @@ link = リンク
   .uuid-description = リンクするMinecraftのUUID
 
 linking-failed = リンクに失敗しました
-linking-failed-uuid-description = UUID `{$uuid}`はMinecraftアカウントに属していません。
+linking-failed-uuid-description = UUID **`{$uuid}`**はMinecraftアカウントに属していません。
 linking-failed-username-description = ユーザー名 **`{$username}`** はMinecraftアカウントに属していません。
 linking-failed-description = 有効なUUIDまたはユーザー名を提供する必要があります。
 linking-succeeded = リンクに成功しました
@@ -2479,7 +2478,7 @@ guild-monthly = マンスリー
   .uuid = uuid
   .uuid-description = 表示するギルドメンバーのMinecraft UUID
 
-showing-guild-xp-statistics = `{$from}`から`{$to}`までのギルドXPの獲得を表示しています。
+showing-guild-xp-statistics = {$from}から{$to}までのギルドXPの獲得を表示しています。
 
 # 共有キャンバスラベル
 
@@ -2793,3 +2792,261 @@ bedwars-practice = practice
   .username-description = Minecraft ユーザー名
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# コマンドに関する情報
+
+arcade-at = at
+  .description = 特定の時間におけるプレイヤーのアーケード統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するアーケードモード
+
+arena-at = at
+  .description = 特定の時間におけるプレイヤーのアリーナ統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するアリーナモード
+
+bedwars-at = at
+  .description = 特定の時間におけるプレイヤーのBed Wars統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するBed Warsモード
+
+blitz-at = at
+  .description = 特定の時間におけるプレイヤーのBlitz Survival Games統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するBlitz Survival Gamesモード
+
+buildbattle-at = at
+  .description = 特定の時間におけるプレイヤーのBuild Battle統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するBuild Battleモード
+
+copsandcrims-at = at
+  .description = 特定の時間におけるプレイヤーのCops and Crims統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するCops and Crimsモード
+
+duels-at = at
+  .description = 特定の時間におけるプレイヤーのDuels統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するDuelsモード
+
+megawalls-at = at
+  .description = 特定の時間におけるプレイヤーのMega Walls統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するMega Wallsモード
+
+murdermystery-at = at
+  .description = 特定の時間におけるプレイヤーのMurder Mystery統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するMurder Mysteryモード
+
+paintball-at = at
+  .description = 特定の時間におけるプレイヤーのPaintball統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するPaintballモード
+
+pit-at = at
+  .description = 特定の時間におけるプレイヤーのThe Pit統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するThe Pitモード
+
+quake-at = at
+  .description = 特定の時間におけるプレイヤーのQuakecraft統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するQuakecraftモード
+
+skywars-at = at
+  .description = 特定の時間におけるプレイヤーのSkyWars統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するSkyWarsモード
+
+smash-at = at
+  .description = 特定の時間におけるプレイヤーのSmash Heroes統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するSmash Heroesモード
+
+speeduhc-at = at
+  .description = 特定の時間におけるプレイヤーのSpeedUHC統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するSpeedUHCモード
+
+tntgames-at = at
+  .description = 特定の時間におけるプレイヤーのTNT Games統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するTNT Gamesモード
+
+turbokartracers-at = at
+  .description = 特定の時間におけるプレイヤーのTurbo Kart Racers統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するTurbo Kart Racersモード
+
+uhc-at = at
+  .description = 特定の時間におけるプレイヤーのUHC Champions統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するUHC Championsモード
+
+vampirez-at = at
+  .description = 特定の時間におけるプレイヤーのVampireZ統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するVampireZモード
+
+walls-at = at
+  .description = 特定の時間におけるプレイヤーのThe Walls統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するThe Wallsモード
+
+warlords-at = at
+  .description = 特定の時間におけるプレイヤーのWarlords統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するWarlordsモード
+
+woolwars-at = at
+  .description = 特定の時間におけるプレイヤーのWool Wars統計を表示します
+  .username = ユーザー名
+  .username-description = Minecraft ユーザー名
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+  .mode = モード
+  .mode-description = 表示するWool Warsモード
+
+guild-at = at
+  .description = 特定の時間におけるギルドの統計を表示します
+  .name = 名前
+  .name-description = 表示するギルドの名前
+  .username = ユーザー名
+  .username-description = 表示するギルドメンバーのユーザー名
+  .uuid = uuid
+  .uuid-description = 表示するギルドメンバーのUUID
+  .time = 時間
+  .time-description = 遡る時間の量（1時間12分5秒）
+
+showing-statistics-at = <a:clock:1115091329958019253> {$at}からの統計を表示しています。
+showing-guild-statistics-at = <a:clock:1115091329958019253> {$at}からのギルドの統計を表示しています。

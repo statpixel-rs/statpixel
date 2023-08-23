@@ -3,44 +3,44 @@ not-linked = Puuttuvat argumentit
 not-linked-description = Koska et ole linkitetty, sinun on annettava profiili nähdäksesi tiedot.
 showing-statistics = <a:clock:1115091329958019253> Näytetään tilastotietoja ajalta {$from} - {$to}.
 no-previous-statistics = Ei aiempia tietoja pelaajalle **`{$name}`**, joten ne on lisätty.
-showing-guild-statistics = Näytetään killan tilastotietoja ajalta `{$from}` - `{$to}`.
+showing-guild-statistics = Näytetään killan tilastotietoja ajalta {$from} - {$to}.
 no-previous-guild-statistics = Ei aiempia tietoja killalle **`{$name}`**, joten ne on lisätty.
-showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja pelaajalta `{$from}` pelaajalle `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja pelaajalta **`{$from}`** pelaajalle **`{$to}`**.
 
 # Virheet
-error-player-not-found = Profiilia nimellä `{$name}` ei löytynyt.
-error-session-not-found = Istuntoa nimellä `{$name}` ei löytynyt.
-error-player-uuid-not-found = Pelaajaa uuid:lla `{$uuid}` ei löytynyt.
-error-player-username-not-found = Pelaajaa nimellä `{$name}` ei löytynyt.
-error-guild-by-member-uuid-not-found = Killan jäsentä uuid:lla `{$uuid}` ei löytynyt.
-error-guild-by-member-username-not-found = Killan jäsentä nimellä `{$name}` ei löytynyt.
-error-guild-not-found = Killaa nimellä `{$name}` ei löytynyt.
+error-player-not-found = Profiilia nimellä **`{$name}`** ei löytynyt.
+error-session-not-found = Istuntoa nimellä **`{$name}`** ei löytynyt.
+error-player-uuid-not-found = Pelaajaa uuid:lla **`{$uuid}`** ei löytynyt.
+error-player-username-not-found = Pelaajaa nimellä **`{$name}`** ei löytynyt.
+error-guild-by-member-uuid-not-found = Killan jäsentä uuid:lla **`{$uuid}`** ei löytynyt.
+error-guild-by-member-username-not-found = Killan jäsentä nimellä **`{$name}`** ei löytynyt.
+error-guild-not-found = Killaa nimellä **`{$name}`** ei löytynyt.
 error-internal = Sisäinen virhe tapahtui. Se on kirjattu ja korjataan pian.
 error-not-linked = Et ole linkitetty Minecraft-tiliin. Käytä </link:1113624864524357710> linkittääksesi tilisi.
-error-invalid-uuid = Annettu uuid `{$uuid}` ei ole kelvollinen.
-error-invalid-username = Annettu pelaajanimi `{$name}` ei ole kelvollinen.
-error-member-player-not-found = Pelaajaa nimellä `{$name}` ei löytynyt profiilista.
-error-skyblock-profile-not-found = SkyBlock-profiilia nimellä `{$name}` ei löytynyt.
-error-player-snapshot-not-found = Pelaajalle `{$name}` ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Top-listaa nimellä `{$name}` ei löytynyt.
-error-profile-not-found = SkyBlock-profiilia nimeltä `{$profile}` pelaajalle `{$name}` ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
+error-invalid-uuid = Annettu uuid **`{$uuid}`** ei ole kelvollinen.
+error-invalid-username = Annettu pelaajanimi **`{$name}`** ei ole kelvollinen.
+error-member-player-not-found = Pelaajaa nimellä **`{$name}`** ei löytynyt profiilista.
+error-skyblock-profile-not-found = SkyBlock-profiilia nimellä **`{$name}`** ei löytynyt.
+error-player-snapshot-not-found = Pelaajalle **`{$name}`** ei löytynyt tilastolukemia. Luo tilastolukema komennolla </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Top-listaa nimellä **`{$name}`** ei löytynyt.
+error-profile-not-found = SkyBlock-profiilia nimeltä **`{$profile}`** pelaajalle **`{$name}`** ei löydy, koska heidän API-palvelunsa on pois päältä tai he eivät ole kirjautuneet sisään uuteen profiilijärjestelmään.
 error-identifier-too-long =
   Yksi tämän vuorovaikutuksen luoduista tunnisteista on liian pitkä.
   Yritä vähentää komponenttien määrää tai räätälöidyn tekstin määrää.
-error-user-track-limit-reached = Olet saavuttanut maksimimäärän pelaajaseurantoja (`{$limit}`). Poista rajoitus hankkimalla StatPixel+ osoitteessa <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Olet saavuttanut maksimimäärän pelaajaseurantoja (**`{$limit}`**). Poista rajoitus hankkimalla StatPixel+ osoitteessa <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Tämä kilta on saavuttanut maksimimäärän seurantoja (`{$limit}`).
+  Tämä kilta on saavuttanut maksimimäärän seurantoja (**`{$limit}`**).
   Jos sinulla on StatPixel+, voit poistaa tämän rajoituksen parantamalla kiltaa komennolla </boost:1132443666997321809> tai siirtymällä osoitteeseen <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Olet saavuttanut maksimimäärän kiltaan liittyviä parannuksia (`{$limit}`). Voit poistaa parannuksen hallintapaneelista: <https://statpixel.xyz/dashboard/boost>.
+  Olet saavuttanut maksimimäärän kiltaan liittyviä parannuksia (**`{$limit}`**). Voit poistaa parannuksen hallintapaneelista: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Olet jo seuraamassa tätä pelaajaa tässä kanavassa.
 error-not-premium = Sinun on oltava StatPixel+ tilaaja suorittaaksesi tämän toiminnon. Siirry osoitteeseen <https://statpixel.xyz/plus> lisätietoja varten.
 error-not-in-a-guild = Sinun on oltava killan jäsen suorittaaksesi tämän toiminnon.
 error-boost-already-exists = Olet jo parantamassa tätä kiltaa.
-error-time-invalid-character = Aikamääreessä havaittiin virheellinen merkki sijainnissa `{$position}`.
-error-time-expected-number = Aikamääreessä oletettiin numero sijainnissa `{$position}`.
-error-time-unknown-unit = Tuntematon aikayksikkö `{$unit}` sijainnissa `{$position}` arvolla `{$value}`.
+error-time-invalid-character = Aikamääreessä havaittiin virheellinen merkki sijainnissa **`{$position}`**.
+error-time-expected-number = Aikamääreessä oletettiin numero sijainnissa **`{$position}`**.
+error-time-unknown-unit = Tuntematon aikayksikkö **`{$unit}`** sijainnissa **`{$position}`** arvolla **`{$value}`**.
 error-time-empty = Aikamääre ei voi olla tyhjä.
 error-time-overflow = Aikamääreen kesto on liian pitkä. Yritä pitää se alle 3 000 vuotta.
 
@@ -107,7 +107,7 @@ invalid-identifier-command-description = Annettu tunniste ei ole komento.
 
 deprecated-interaction = Toiminto poistunut käytöstä
 deprecated-interaction-description = Tämä toiminto on poistunut käytöstä eikä se toimi. Suorita alkuperäinen komento uudelleen.
-identifier = <:id:1125971775755407390> Tunniste: `{$identifier}`
+identifier = <:id:1125971775755407390> Tunniste: **`{$identifier}`**
 
 # /builder
 
@@ -169,19 +169,19 @@ username = Käyttäjänimi
 username-placeholder = Syötä käyttäjänimi käytettäväksi
 
 invalid-statistic =
-  Virheellinen tilasto `{$statistic}` pelissä `{$game}`. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen tilasto **`{$statistic}`** pelissä **`{$game}`**. Tarkista dokumentaatio ja yritä uudelleen.
 
 invalid-level-type =
-  Virheellinen tason tyyppi `{$kind}`. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen tason tyyppi **`{$kind}`**. Tarkista dokumentaatio ja yritä uudelleen.
 
 invalid-game-type =
-  Virheellinen pelin tyyppi `{$game}`. Tarkista dokumentaatio ja yritä uudelleen.
+  Virheellinen pelin tyyppi **`{$game}`**. Tarkista dokumentaatio ja yritä uudelleen.
 
 image-created =
   Kuvasi on luotu! Kokeile sitä komennolla </execute:1125992506501365892>.
 
-  Tunniste: `{$id}`
-  Linkki: `{$link}`
+  Tunniste: **`{$id}`**
+  Linkki: **`{$link}`**
 
 # /about
 
@@ -237,7 +237,7 @@ background = tausta
 error-invalid-colour = Virheellinen väri annettu
 error-invalid-colour-description = Annettu väri on virheellinen. Kokeile antaa jokin näistä [väreistä](https://simple.wikipedia.org/wiki/List_of_colors) tai heksadesimaalimuotoinen väri #-etuliitteellä.
 colour-changed = Taustan väri vaihdettu
-colour-changed-description = Taustan väri on vaihdettu muotoon `{$colour}`.
+colour-changed-description = Taustan väri on vaihdettu muotoon **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -537,7 +537,7 @@ link = linkki
   .uuid-description = Minecraft UUID, jota haluat linkittää
 
 linking-failed = Linkitys epäonnistui
-linking-failed-uuid-description = UUID `{$uuid}` ei kuulu Minecraft-tiliin.
+linking-failed-uuid-description = UUID **`{$uuid}`** ei kuulu Minecraft-tiliin.
 linking-failed-username-description = Käyttäjänimi **`{$username}`** ei kuulu Minecraft-tiliin.
 linking-failed-description = Sinun on annettava voimassa oleva UUID tai käyttäjänimi.
 linking-succeeded = Linkitys onnistui
@@ -2479,7 +2479,7 @@ guild-monthly = kuukausittain
   .uuid = uuid
   .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
 
-showing-guild-xp-statistics = Näytetään killan XP:n kehitys ajalta `{$from}` - `{$to}`.
+showing-guild-xp-statistics = Näytetään killan XP:n kehitys ajalta {$from} - {$to}.
 
 # Yhteiset kankaanmerkintäliput
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Minecraft-käyttäjänimi
   .uuid = tunniste
   .uuid-description = Minecraft-tunniste
+
+# Komennot
+
+arcade-at = ajassa
+  .description = Näytä pelaajan Arcade-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Pelitila, joka näytetään
+
+arena-at = ajassa
+  .description = Näytä pelaajan Arena-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Areenan tila, joka näytetään
+
+bedwars-at = ajassa
+  .description = Näytä pelaajan Bed Wars -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Bed Wars -tila, joka näytetään
+
+blitz-at = ajassa
+  .description = Näytä pelaajan Blitz Survival Games -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Blitz Survival Games -tila, joka näytetään
+
+buildbattle-at = ajassa
+  .description = Näytä pelaajan Build Battle -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Build Battle -tila, joka näytetään
+
+copsandcrims-at = ajassa
+  .description = Näytä pelaajan Cops and Crims -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Cops and Crims -tila, joka näytetään
+
+duels-at = ajassa
+  .description = Näytä pelaajan Duels-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Duels-tila, joka näytetään
+
+megawalls-at = ajassa
+  .description = Näytä pelaajan Mega Walls -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Mega Walls -tila, joka näytetään
+
+murdermystery-at = ajassa
+  .description = Näytä pelaajan Murder Mystery -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Murder Mystery -tila, joka näytetään
+
+paintball-at = ajassa
+  .description = Näytä pelaajan Paintball -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Paintball -tila, joka näytetään
+
+pit-at = ajassa
+  .description = Näytä pelaajan The Pit -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = The Pit -tila, joka näytetään
+
+quake-at = ajassa
+  .description = Näytä pelaajan Quakecraft -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Quakecraft -tila, joka näytetään
+
+skywars-at = ajassa
+  .description = Näytä pelaajan SkyWars-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = SkyWars-tila, joka näytetään
+
+smash-at = ajassa
+  .description = Näytä pelaajan Smash Heroes -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Smash Heroes -tila, joka näytetään
+
+speeduhc-at = ajassa
+  .description = Näytä pelaajan SpeedUHC-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = SpeedUHC-tila, joka näytetään
+
+tntgames-at = ajassa
+  .description = Näytä pelaajan TNT Games -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = TNT Games -tila, joka näytetään
+
+turbokartracers-at = ajassa
+  .description = Näytä pelaajan Turbo Kart Racers -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Turbo Kart Racers -tila, joka näytetään
+
+uhc-at = ajassa
+  .description = Näytä pelaajan UHC Champions -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = UHC Champions -tila, joka näytetään
+
+vampirez-at = ajassa
+  .description = Näytä pelaajan VampireZ-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = VampireZ -tila, joka näytetään
+
+walls-at = ajassa
+  .description = Näytä pelaajan The Walls -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = The Walls -tila, joka näytetään
+
+warlords-at = ajassa
+  .description = Näytä pelaajan Warlords-tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Warlords -tila, joka näytetään
+
+woolwars-at = ajassa
+  .description = Näytä pelaajan Wool Wars -tilastot tietyllä ajanhetkellä
+  .username = käyttäjänimi
+  .username-description = Minecraft-käyttäjänimi
+  .uuid = uuid
+  .uuid-description = Minecraft-UUID
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+  .mode = tila
+  .mode-description = Wool Wars -tila, joka näytetään
+
+guild-at = ajassa
+  .description = Näytä killan tilastot tietyllä ajanhetkellä
+  .name = nimi
+  .name-description = Killan nimi, joka näytetään
+  .username = käyttäjänimi
+  .username-description = Käyttäjänimi, jonka killan tilastot näytetään
+  .uuid = uuid
+  .uuid-description = UUID, jonka killan tilastot näytetään
+  .time = aika
+  .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
+
+showing-statistics-at = <a:kello:1115091329958019253> Näytetään tilastoja kohteesta {$at}.
+showing-guild-statistics-at = Näytetään killan tilastoja kohteesta {$at}.

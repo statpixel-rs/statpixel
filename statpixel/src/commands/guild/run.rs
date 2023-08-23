@@ -1,10 +1,10 @@
 use api::command::GuildMode;
 use chrono::Utc;
 use poise::serenity_prelude::CreateAttachment;
-use translate::{context, tr, tr_fmt};
+use translate::{context, tr_fmt};
 use uuid::Uuid;
 
-use crate::{util::error_embed, Error};
+use crate::Error;
 
 #[allow(clippy::too_many_lines)]
 pub async fn top(
@@ -21,12 +21,6 @@ pub async fn top(
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
 			Ok(data) => data,
-			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
-					.await?;
-
-				return Ok(());
-			}
 			Err(e) => return Err(e),
 		};
 
@@ -87,12 +81,6 @@ pub async fn members(
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
 			Ok(data) => data,
-			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
-					.await?;
-
-				return Ok(());
-			}
 			Err(e) => return Err(e),
 		};
 
@@ -139,12 +127,6 @@ pub async fn general(
 		match crate::commands::get_guild_with_member_opt(ctx, name, uuid, username, guild_id).await
 		{
 			Ok(data) => data,
-			Err(Error::NotLinked) => {
-				ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
-					.await?;
-
-				return Ok(());
-			}
 			Err(e) => return Err(e),
 		};
 
@@ -187,12 +169,6 @@ pub async fn member(
 	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let (guild, player) = match crate::commands::get_guild_with_member(ctx, uuid, username).await {
 		Ok(guild) => guild,
-		Err(Error::NotLinked) => {
-			ctx.send(error_embed(tr(ctx, "not-linked"), tr(ctx, "not-linked")))
-				.await?;
-
-			return Ok(());
-		}
 		Err(e) => return Err(e),
 	};
 

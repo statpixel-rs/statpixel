@@ -99,6 +99,31 @@ macro_rules! impl_snapshot {
 	}};
 }
 
+macro_rules! impl_at {
+	($ctx: expr, $family: expr, $uuid: expr, $from: expr, $mode: expr, $game: ty, $bg: expr) => {{
+		let after = Utc::now() - $from;
+		let (player, data_lhs, session, skin, suffix) =
+			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None).await?;
+		let (data_rhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_lhs, after)
+			.await?
+			.ok()
+			.ok_or($crate::Error::NotImplemented)?;
+
+		let (mut surface, _) = <$game>::canvas(
+			$ctx,
+			$family,
+			&data_rhs,
+			&session,
+			skin.image(),
+			Some($mode),
+			suffix.as_deref(),
+			$bg,
+		);
+
+		Ok(api::canvas::to_png(&mut surface).into())
+	}};
+}
+
 macro_rules! impl_project {
 	($ctx: expr, $family: expr, $uuid: expr, $mode: expr, $kind: expr, $game: ty, $bg: expr) => {{
 		let (player, session) =
@@ -129,7 +154,7 @@ pub async fn map(
 	family: Family,
 ) -> Result<Cow<'static, [u8]>, crate::Error> {
 	match id {
-		Id::Builder { shapes, uuid, .. } => {
+		Id::Builder { shapes, uuid } => {
 			let (_, data, session, skin, _) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
 			let bytes = crate::commands::builder::build::build(
@@ -138,7 +163,55 @@ pub async fn map(
 
 			Ok(bytes)
 		}
-		Id::Root { kind, uuid, .. } => match kind {
+		Id::Root { kind, uuid } => match kind {
+			Mode::BedWarsPractice => {
+				let (_, data, session, skin, suffix) =
+					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
+						.await?;
+				let bytes = crate::commands::bedwars::image::practice(
+					ctx,
+					family,
+					background,
+					&data,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+				);
+
+				Ok(bytes)
+			}
+			Mode::BedWarsShop => {
+				let (_, data, session, skin, suffix) =
+					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
+						.await?;
+				let bytes = crate::commands::bedwars::image::shop(
+					ctx,
+					family,
+					background,
+					&data,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+				);
+
+				Ok(bytes)
+			}
+			Mode::BedWarsHotbar => {
+				let (_, data, session, skin, suffix) =
+					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
+						.await?;
+				let bytes = crate::commands::bedwars::image::hotbar(
+					ctx,
+					family,
+					background,
+					&data,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+				);
+
+				Ok(bytes)
+			}
 			Mode::Arcade(mode) => impl_root!(ctx, family, uuid, mode, arcade::Arcade, background),
 			Mode::Arena(mode) => impl_root!(ctx, family, uuid, mode, arena::Arena, background),
 			Mode::BedWars(mode) => {
@@ -606,9 +679,7 @@ pub async fn map(
 				))
 			}
 		},
-		Id::Snapshot {
-			kind, uuid, past, ..
-		} => {
+		Id::Snapshot { kind, uuid, past } => {
 			let past = Duration::nanoseconds(past);
 
 			match kind {
@@ -777,7 +848,176 @@ pub async fn map(
 				_ => Err(crate::Error::NotImplemented),
 			}
 		}
-		Id::History { kind, uuid, .. } => match kind {
+		Id::At { kind, uuid, past } => {
+			let past = Duration::nanoseconds(past);
+
+			match kind {
+				Mode::Arcade(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, arcade::Arcade, background)
+				}
+				Mode::Arena(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, arena::Arena, background)
+				}
+				Mode::BedWars(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, bed_wars::BedWars, background)
+				}
+				Mode::BlitzSg(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, blitz_sg::BlitzSg, background)
+				}
+				Mode::BuildBattle(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						build_battle::BuildBattle,
+						background
+					)
+				}
+				Mode::CopsAndCrims(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						cops_and_crims::CopsAndCrims,
+						background
+					)
+				}
+				Mode::Duels(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, duels::Duels, background)
+				}
+				Mode::MegaWalls(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						mega_walls::MegaWalls,
+						background
+					)
+				}
+				Mode::MurderMystery(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						murder_mystery::MurderMystery,
+						background
+					)
+				}
+				Mode::Paintball(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						paintball::Paintball,
+						background
+					)
+				}
+				Mode::Pit(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, pit::Pit, background)
+				}
+				Mode::Quake(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, quake::Quake, background)
+				}
+				Mode::SkyWars(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, sky_wars::SkyWars, background)
+				}
+				Mode::SmashHeroes(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						smash_heroes::SmashHeroes,
+						background
+					)
+				}
+				Mode::SpeedUhc(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						speed_uhc::SpeedUhc,
+						background
+					)
+				}
+				Mode::TntGames(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						tnt_games::TntGames,
+						background
+					)
+				}
+				Mode::TurboKartRacers(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						turbo_kart_racers::TurboKartRacers,
+						background
+					)
+				}
+				Mode::Uhc(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, uhc::Uhc, background)
+				}
+				Mode::VampireZ(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						vampire_z::VampireZ,
+						background
+					)
+				}
+				Mode::Walls(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, walls::Walls, background)
+				}
+				Mode::Warlords(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						warlords::Warlords,
+						background
+					)
+				}
+				Mode::WoolWars(mode) => {
+					impl_at!(
+						ctx,
+						family,
+						uuid,
+						past,
+						mode,
+						wool_wars::WoolWars,
+						background
+					)
+				}
+				_ => Err(crate::Error::NotImplemented),
+			}
+		}
+		Id::History { kind, uuid } => match kind {
 			Mode::Arcade(mode) => {
 				impl_history!(ctx, family, uuid, mode, arcade::Arcade, background)
 			}
@@ -869,7 +1109,7 @@ pub async fn map(
 			}
 			_ => Err(crate::Error::NotImplemented),
 		},
-		Id::Project { kind, uuid, .. } => match kind {
+		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
 				impl_project!(ctx, family, uuid, mode, kind, arcade::Arcade, background)
 			}

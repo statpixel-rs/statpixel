@@ -3,45 +3,45 @@ not-linked = Недостающие аргументы
 not-linked-description = Поскольку вы не связаны, вам необходимо предоставить профиль для просмотра.
 showing-statistics = <a:clock:1115091329958019253> Показ статистики изменения с {$from} по {$to}.
 no-previous-statistics = Для **`{$name}`** не найдены предыдущие данные, поэтому они были вставлены.
-showing-guild-statistics = Показ статистики изменения гильдии с `{$from}` по `{$to}`.
+showing-guild-statistics = Показ статистики изменения гильдии с {$from} по {$to}.
 no-previous-guild-statistics = Для гильдии **`{$name}`** не найдены предыдущие данные, поэтому они были вставлены.
-showing-comparison = <a:clock:1115091329958019253> Показ статистики `{$from}` по сравнению с `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Показ статистики **`{$from}`** по сравнению с **`{$to}`**.
 
 # Ошибки
 
-error-player-not-found = Профиль, принадлежащий `{$name}`, не найден.
-error-session-not-found = Сессия, принадлежащая `{$name}`, не найдена.
-error-player-uuid-not-found = Игрок с UUID `{$uuid}` не найден.
-error-player-username-not-found = Игрок с именем пользователя `{$name}` не найден.
-error-guild-by-member-uuid-not-found = Участник гильдии с UUID `{$uuid}` не найден.
-error-guild-by-member-username-not-found = Участник гильдии с именем пользователя `{$name}` не найден.
-error-guild-not-found = Гильдия с именем `{$name}` не найдена.
+error-player-not-found = Профиль, принадлежащий **`{$name}`**, не найден.
+error-session-not-found = Сессия, принадлежащая **`{$name}`**, не найдена.
+error-player-uuid-not-found = Игрок с UUID **`{$uuid}`** не найден.
+error-player-username-not-found = Игрок с именем пользователя **`{$name}`** не найден.
+error-guild-by-member-uuid-not-found = Участник гильдии с UUID **`{$uuid}`** не найден.
+error-guild-by-member-username-not-found = Участник гильдии с именем пользователя **`{$name}`** не найден.
+error-guild-not-found = Гильдия с именем **`{$name}`** не найдена.
 error-internal = Возникла внутренняя ошибка. Она была зарегистрирована и будет скоро исправлена.
 error-not-linked = Вы не связаны с аккаунтом Minecraft. Используйте </link:1113624864524357710>, чтобы связать свой аккаунт.
-error-invalid-uuid = Недопустимый UUID `{$uuid}`.
-error-invalid-username = Недопустимое имя пользователя `{$name}`.
-error-member-player-not-found = Участник `{$name}` не найден в профиле.
-error-skyblock-profile-not-found = Профиль SkyBlock, принадлежащий `{$name}`, не найден.
-error-player-snapshot-not-found = Не найдены снимки для `{$name}`. Создайте один с помощью </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Таблица лидеров с именем `{$name}` не найдена.
-error-profile-not-found = Профиль SkyBlock `{$profile}`, принадлежащий `{$name}`, отключен для API или пользователь не входил в систему с момента введения новой системы профилей.
+error-invalid-uuid = Недопустимый UUID **`{$uuid}`**.
+error-invalid-username = Недопустимое имя пользователя **`{$name}`**.
+error-member-player-not-found = Участник **`{$name}`** не найден в профиле.
+error-skyblock-profile-not-found = Профиль SkyBlock, принадлежащий **`{$name}`**, не найден.
+error-player-snapshot-not-found = Не найдены снимки для **`{$name}`**. Создайте один с помощью </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Таблица лидеров с именем **`{$name}`** не найдена.
+error-profile-not-found = Профиль SkyBlock **`{$profile}`**, принадлежащий **`{$name}`**, отключен для API или пользователь не входил в систему с момента введения новой системы профилей.
 error-identifier-too-long =
   Один из сгенерированных идентификаторов для этого взаимодействия слишком длинный.
   Попробуйте уменьшить количество компонентов или объем пользовательского текста.
-error-user-track-limit-reached = Вы достигли максимального количества отслеживаемых игроков: `{$limit}`. Приобретите StatPixel+, чтобы удалить это ограничение по адресу <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Вы достигли максимального количества отслеживаемых игроков: **`{$limit}`**. Приобретите StatPixel+, чтобы удалить это ограничение по адресу <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Эта гильдия достигла максимального количества отслеживаемых игроков: `{$limit}`.
+  Эта гильдия достигла максимального количества отслеживаемых игроков: **`{$limit}`**.
   Если у вас есть StatPixel+, увеличьте гильдию с помощью </boost:1132443666997321809>, чтобы убрать это ограничение, или перейдите по адресу <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Вы достигли максимального количества усилений: `{$limit}`. Вы можете удалить усиление на панели управления: <https://statpixel.xyz/dashboard/boost>.
+  Вы достигли максимального количества усилений: **`{$limit}`**. Вы можете удалить усиление на панели управления: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Вы уже отслеживаете этого игрока на этом канале.
 error-not-premium = Для выполнения этого действия вы должны быть подписчиком StatPixel+. Перейдите по адресу <https://statpixel.xyz/plus>, чтобы получить дополнительную информацию.
 error-not-in-a-guild = Для выполнения этого действия вы должны быть в гильдии.
 error-boost-already-exists = Вы уже усиливаете эту гильдию.
-error-time-invalid-character = В аргументе времени в позиции `{$position}` найден недопустимый символ.
-error-time-expected-number = Ожидается число в аргументе времени в позиции `{$position}`.
-error-time-unknown-unit = Неизвестная единица времени `{$unit}` в позиции `{$position}` со значением `{$value}`.
+error-time-invalid-character = В аргументе времени в позиции **`{$position}`** найден недопустимый символ.
+error-time-expected-number = Ожидается число в аргументе времени в позиции **`{$position}`**.
+error-time-unknown-unit = Неизвестная единица времени **`{$unit}`** в позиции **`{$position}`** со значением **`{$value}`**.
 error-time-empty = Аргумент времени не может быть пустым.
 error-time-overflow = Продолжительность аргумента времени слишком велика. Попробуйте сократить ее до 3 000 лет.
 
@@ -111,7 +111,7 @@ invalid-identifier-command-description = Предоставленный иден
 
 deprecated-interaction = Устаревшее взаимодействие
 deprecated-interaction-description = Это взаимодействие устарело и не будет работать. Пожалуйста, выполните оригинальную команду снова.
-identifier = <:id:1125971775755407390> Идентификатор: `{$identifier}`
+identifier = <:id:1125971775755407390> Идентификатор: **`{$identifier}`**
 
 # /builder
 
@@ -173,19 +173,19 @@ username = Имя пользователя
 username-placeholder = Введите имя пользователя для использования
 
 invalid-statistic =
-  Недопустимая статистика `{$statistic}` для `{$game}`. Ознакомьтесь с документацией и попробуйте снова.
+  Недопустимая статистика **`{$statistic}`** для **`{$game}`**. Ознакомьтесь с документацией и попробуйте снова.
 
 invalid-level-type =
-  Недопустимый тип уровня `{$kind}`. Ознакомьтесь с документацией и попробуйте снова.
+  Недопустимый тип уровня **`{$kind}`**. Ознакомьтесь с документацией и попробуйте снова.
 
 invalid-game-type =
-  Недопустимый тип игры `{$game}`. Ознакомьтесь с документацией и попробуйте снова.
+  Недопустимый тип игры **`{$game}`**. Ознакомьтесь с документацией и попробуйте снова.
 
 image-created =
   Ваше изображение создано! Попробуйте его с помощью </execute:1125992506501365892>.
 
-  Идентификатор: `{$id}`
-  Ссылка: `{$link}`
+  Идентификатор: **`{$id}`**
+  Ссылка: **`{$link}`**
 
 # /about
 
@@ -241,7 +241,7 @@ background = фон
 error-invalid-colour = Предоставлен недопустимый цвет
 error-invalid-colour-description = Предоставленный цвет недопустим. Попробуйте использовать один из [этих цветов](https://simple.wikipedia.org/wiki/List_of_colors) или цвет в формате hex с префиксом `#`.
 colour-changed = Изменен цвет фона
-colour-changed-description = Цвет фона изменен на `{$colour}`.
+colour-changed-description = Цвет фона изменен на **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -541,7 +541,7 @@ link = связь
   .uuid-description = UUID Minecraft для связи
 
 linking-failed = Связывание не удалось
-linking-failed-uuid-description = UUID `{$uuid}` не принадлежит учетной записи Minecraft.
+linking-failed-uuid-description = UUID **`{$uuid}`** не принадлежит учетной записи Minecraft.
 linking-failed-username-description = Имя пользователя **`{$username}`** не принадлежит учетной записи Minecraft.
 linking-failed-description = Вы должны указать действительный UUID или имя пользователя.
 linking-succeeded = Успешное связывание
@@ -2481,7 +2481,7 @@ guild-monthly = ежемесячно
   .uuid = уникальный-идентификатор
   .uuid-description = Уникальный идентификатор гильдии для просмотра
 
-showing-guild-xp-statistics = Показан прирост опыта гильдии с `{$from}` по `{$to}`.
+showing-guild-xp-statistics = Показан прирост опыта гильдии с {$from} по {$to}.
 
 # Общие метки холста
 
@@ -2795,3 +2795,261 @@ bedwars-practice = practice
   .username-description = Имя пользователя Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
+
+# Команды
+
+arcade-at = на
+  .description = Показать статистику в режиме Arcade игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Arcade для просмотра
+
+arena-at = на
+  .description = Показать статистику в режиме Arena игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Arena для просмотра
+
+bedwars-at = на
+  .description = Показать статистику в режиме Bed Wars игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Bed Wars для просмотра
+
+blitz-at = на
+  .description = Показать статистику в режиме Blitz Survival Games игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Blitz Survival Games для просмотра
+
+buildbattle-at = на
+  .description = Показать статистику в режиме Build Battle игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Build Battle для просмотра
+
+copsandcrims-at = на
+  .description = Показать статистику в режиме Cops and Crims игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Cops and Crims для просмотра
+
+duels-at = на
+  .description = Показать статистику в режиме Duels игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Duels для просмотра
+
+megawalls-at = на
+  .description = Показать статистику в режиме Mega Walls игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Mega Walls для просмотра
+
+murdermystery-at = на
+  .description = Показать статистику в режиме Murder Mystery игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Murder Mystery для просмотра
+
+paintball-at = на
+  .description = Показать статистику в режиме Paintball игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Paintball для просмотра
+
+pit-at = на
+  .description = Показать статистику в режиме The Pit игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим The Pit для просмотра
+
+quake-at = на
+  .description = Показать статистику в режиме Quakecraft игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Quakecraft для просмотра
+
+skywars-at = на
+  .description = Показать статистику в режиме SkyWars игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим SkyWars для просмотра
+
+smash-at = на
+  .description = Показать статистику в режиме Smash Heroes игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Smash Heroes для просмотра
+
+speeduhc-at = на
+  .description = Показать статистику в режиме SpeedUHC игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим SpeedUHC для просмотра
+
+tntgames-at = на
+  .description = Показать статистику в режиме TNT Games игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим TNT Games для просмотра
+
+turbokartracers-at = на
+  .description = Показать статистику в режиме Turbo Kart Racers игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Turbo Kart Racers для просмотра
+
+uhc-at = на
+  .description = Показать статистику в режиме UHC Champions игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим UHC Champions для просмотра
+
+vampirez-at = на
+  .description = Показать статистику в режиме VampireZ игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим VampireZ для просмотра
+
+walls-at = на
+  .description = Показать статистику в режиме The Walls игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим The Walls для просмотра
+
+warlords-at = на
+  .description = Показать статистику в режиме Warlords игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Warlords для просмотра
+
+woolwars-at = на
+  .description = Показать статистику в режиме Wool Wars игрока в определенный момент времени
+  .username = имя_пользователя
+  .username-description = Имя пользователя Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режим Wool Wars для просмотра
+
+guild-at = на
+  .description = Показать статистику гильдии в определенный момент времени
+  .name = имя
+  .name-description = Название гильдии для просмотра
+  .username = имя_пользователя
+  .username-description = Имя пользователя гильдии для просмотра
+  .uuid = uuid
+  .uuid-description = UUID гильдии пользователя для просмотра
+  .time = время
+  .time-description = Количество времени для отката (1ч 12м 5с)
+
+showing-statistics-at = <a:clock:1115091329958019253> Показана статистика с {$at}.
+showing-guild-statistics-at = Показана статистика гильдии с {$at}.

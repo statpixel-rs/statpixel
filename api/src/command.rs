@@ -49,7 +49,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Auctions, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -57,7 +56,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Bank, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -65,7 +63,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Candy, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -73,7 +70,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::EnderChest, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -81,7 +77,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Equipment, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -89,7 +84,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Fishing, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -97,7 +91,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Inventory, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -105,7 +98,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Networth, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -113,7 +105,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Pets, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -121,7 +112,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Potions, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -129,7 +119,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Profile, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -137,7 +126,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Quiver, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -145,7 +133,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Talisman, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -153,7 +140,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Vault, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -161,7 +147,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Root {
 							kind: Mode::SkyBlock(Self::Wardrobe, profile),
 							uuid,
-							background: None,
 						}),
 					),
 				],
@@ -179,7 +164,6 @@ impl SkyBlockMode {
 			crate::id::Id::Command(crate::command::Id::Root {
 				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -202,7 +186,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Auctions, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -211,7 +194,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Bank, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -220,7 +202,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Candy, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -229,7 +210,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::EnderChest, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -238,7 +218,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Equipment, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -247,7 +226,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Fishing, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -256,7 +234,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Inventory, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -265,7 +242,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Networth, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -274,7 +250,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Pets, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -283,7 +258,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Potions, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -292,7 +266,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Profile, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -301,7 +274,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Quiver, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -310,7 +282,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Talisman, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -319,7 +290,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Vault, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -328,7 +298,6 @@ impl SkyBlockMode {
 							kind: Mode::SkyBlock(Self::Wardrobe, profile),
 							uuid,
 							past,
-							background: None,
 						}),
 					),
 				],
@@ -347,7 +316,158 @@ impl SkyBlockMode {
 				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
 				uuid,
 				past,
-				background: None,
+			}),
+		)
+	}
+
+	#[allow(clippy::too_many_lines)]
+	pub fn as_at(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		profile: Option<Uuid>,
+		past: i64,
+		selected: Option<Self>,
+	) -> (serenity::CreateActionRow, crate::id::Id) {
+		let mut menu = serenity::CreateSelectMenu::new(
+			"select",
+			serenity::CreateSelectMenuKind::String {
+				options: vec![
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Auctions"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Auctions, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Bank"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Bank, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Candy"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Candy, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "EnderChest"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::EnderChest, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Equipment"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Equipment, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Fishing"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Fishing, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Inventory"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Inventory, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Networth"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Networth, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Pets"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Pets, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Potions"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Potions, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Profile"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Profile, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Quiver"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Quiver, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Talisman"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Talisman, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Vault"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Vault, profile),
+							uuid,
+							past,
+						}),
+					),
+					serenity::CreateSelectMenuOption::new(
+						tr(ctx, "Wardrobe"),
+						super::id::command(Id::At {
+							kind: Mode::SkyBlock(Self::Wardrobe, profile),
+							uuid,
+							past,
+						}),
+					),
+				],
+			},
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(ref selected) = selected {
+			menu = menu.placeholder(tr(ctx, selected.tr()));
+		}
+
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::At {
+				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
+				uuid,
+				past,
 			}),
 		)
 	}
@@ -368,7 +488,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Auctions, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -376,7 +495,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Bank, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -384,7 +502,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Candy, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -392,7 +509,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::EnderChest, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -400,7 +516,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Equipment, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -408,7 +523,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Fishing, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -416,7 +530,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Inventory, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -424,7 +537,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Networth, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -432,7 +544,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Pets, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -440,7 +551,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Potions, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -448,7 +558,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Profile, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -456,7 +565,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Quiver, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -464,7 +572,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Talisman, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -472,7 +579,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Vault, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -480,7 +586,6 @@ impl SkyBlockMode {
 						super::id::command(Id::History {
 							kind: Mode::SkyBlock(Self::Wardrobe, profile),
 							uuid,
-							background: None,
 						}),
 					),
 				],
@@ -498,7 +603,6 @@ impl SkyBlockMode {
 			crate::id::Id::Command(crate::command::Id::History {
 				kind: Mode::SkyBlock(selected.unwrap_or(Self::Profile), profile),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -520,7 +624,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Auctions, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -528,7 +631,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Bank, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -536,7 +638,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Candy, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -544,7 +645,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::EnderChest, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -552,7 +652,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Equipment, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -560,7 +659,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Fishing, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -568,7 +666,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Inventory, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -576,7 +673,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Networth, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -584,7 +680,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Pets, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -592,7 +687,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Potions, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -600,7 +694,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Profile, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -608,7 +701,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Quiver, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -616,7 +708,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Talisman, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -624,7 +715,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Vault, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -632,7 +722,6 @@ impl SkyBlockMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::SkyBlock(Self::Wardrobe, kind, profile),
 							uuid,
-							background: None,
 						}),
 					),
 				],
@@ -650,7 +739,6 @@ impl SkyBlockMode {
 			crate::id::Id::Command(crate::command::Id::Project {
 				kind: ProjectMode::SkyBlock(selected.unwrap_or(Self::Profile), kind, profile),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -672,7 +760,6 @@ impl GuildMode {
 			super::id::command(Id::Root {
 				kind: Mode::Guild(Self::General, limit, past_nanos, member),
 				uuid,
-				background: None,
 			}),
 		));
 
@@ -682,7 +769,6 @@ impl GuildMode {
 				super::id::command(Id::Root {
 					kind: Mode::Guild(Self::Member, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			));
 		}
@@ -693,7 +779,6 @@ impl GuildMode {
 				super::id::command(Id::Root {
 					kind: Mode::Guild(Self::Members, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			),
 			serenity::CreateSelectMenuOption::new(
@@ -701,7 +786,6 @@ impl GuildMode {
 				super::id::command(Id::Root {
 					kind: Mode::Guild(Self::Top, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			),
 		]);
@@ -722,7 +806,6 @@ impl GuildMode {
 			crate::id::Id::Command(crate::command::Id::Root {
 				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -744,7 +827,6 @@ impl GuildMode {
 				kind: Mode::Guild(Self::General, limit, past_nanos, member),
 				uuid,
 				past,
-				background: None,
 			}),
 		));
 
@@ -755,7 +837,6 @@ impl GuildMode {
 					kind: Mode::Guild(Self::Member, limit, past_nanos, member),
 					uuid,
 					past,
-					background: None,
 				}),
 			));
 		}
@@ -767,7 +848,6 @@ impl GuildMode {
 					kind: Mode::Guild(Self::Members, limit, past_nanos, member),
 					uuid,
 					past,
-					background: None,
 				}),
 			),
 			serenity::CreateSelectMenuOption::new(
@@ -776,7 +856,6 @@ impl GuildMode {
 					kind: Mode::Guild(Self::Top, limit, past_nanos, member),
 					uuid,
 					past,
-					background: None,
 				}),
 			),
 		]);
@@ -798,7 +877,77 @@ impl GuildMode {
 				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
 				uuid,
 				past,
-				background: None,
+			}),
+		)
+	}
+
+	pub fn as_at(
+		ctx: &context::Context<'_>,
+		uuid: Uuid,
+		past: i64,
+		limit: Option<usize>,
+		past_nanos: Option<i64>,
+		member: Option<Uuid>,
+		selected: Option<Self>,
+	) -> (serenity::CreateActionRow, crate::id::Id) {
+		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
+
+		options.push(serenity::CreateSelectMenuOption::new(
+			tr(ctx, "General"),
+			super::id::command(Id::At {
+				kind: Mode::Guild(Self::General, limit, past_nanos, member),
+				uuid,
+				past,
+			}),
+		));
+
+		if member.is_some() {
+			options.push(serenity::CreateSelectMenuOption::new(
+				tr(ctx, "Member"),
+				super::id::command(Id::At {
+					kind: Mode::Guild(Self::Member, limit, past_nanos, member),
+					uuid,
+					past,
+				}),
+			));
+		}
+
+		options.extend([
+			serenity::CreateSelectMenuOption::new(
+				tr(ctx, "Members"),
+				super::id::command(Id::At {
+					kind: Mode::Guild(Self::Members, limit, past_nanos, member),
+					uuid,
+					past,
+				}),
+			),
+			serenity::CreateSelectMenuOption::new(
+				tr(ctx, "Top"),
+				super::id::command(Id::At {
+					kind: Mode::Guild(Self::Top, limit, past_nanos, member),
+					uuid,
+					past,
+				}),
+			),
+		]);
+
+		let mut menu = serenity::CreateSelectMenu::new(
+			"select",
+			serenity::CreateSelectMenuKind::String { options },
+		)
+		.min_values(1)
+		.max_values(1);
+
+		if let Some(ref selected) = selected {
+			menu = menu.placeholder(tr(ctx, selected.tr()));
+		}
+
+		(
+			serenity::CreateActionRow::SelectMenu(menu),
+			crate::id::Id::Command(crate::command::Id::At {
+				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
+				uuid,
+				past,
 			}),
 		)
 	}
@@ -818,7 +967,6 @@ impl GuildMode {
 			super::id::command(Id::History {
 				kind: Mode::Guild(Self::General, limit, past_nanos, member),
 				uuid,
-				background: None,
 			}),
 		));
 
@@ -828,7 +976,6 @@ impl GuildMode {
 				super::id::command(Id::History {
 					kind: Mode::Guild(Self::Member, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			));
 		}
@@ -839,7 +986,6 @@ impl GuildMode {
 				super::id::command(Id::History {
 					kind: Mode::Guild(Self::Members, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			),
 			serenity::CreateSelectMenuOption::new(
@@ -847,7 +993,6 @@ impl GuildMode {
 				super::id::command(Id::History {
 					kind: Mode::Guild(Self::Top, limit, past_nanos, member),
 					uuid,
-					background: None,
 				}),
 			),
 		]);
@@ -868,7 +1013,6 @@ impl GuildMode {
 			crate::id::Id::Command(crate::command::Id::History {
 				kind: Mode::Guild(selected.unwrap_or(Self::General), limit, past_nanos, member),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -888,7 +1032,6 @@ impl GuildMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::Guild(Self::General, kind),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -896,7 +1039,6 @@ impl GuildMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::Guild(Self::Members, kind),
 							uuid,
-							background: None,
 						}),
 					),
 					serenity::CreateSelectMenuOption::new(
@@ -904,7 +1046,6 @@ impl GuildMode {
 						super::id::command(Id::Project {
 							kind: ProjectMode::Guild(Self::Top, kind),
 							uuid,
-							background: None,
 						}),
 					),
 				],
@@ -922,7 +1063,6 @@ impl GuildMode {
 			crate::id::Id::Command(crate::command::Id::Project {
 				kind: ProjectMode::Guild(selected.unwrap_or(Self::General), kind),
 				uuid,
-				background: None,
 			}),
 		)
 	}
@@ -967,9 +1107,6 @@ pub enum Mode {
 
 	RecentGames,
 	Winstreaks,
-	// BedWarsPractice
-	// BedWarsShop
-	// BedWarsHotbar
 
 	// profile id
 	SkyBlock(SkyBlockMode, #[bitcode(with_serde)] Option<Uuid>),
@@ -981,6 +1118,10 @@ pub enum Mode {
 		#[bitcode(with_serde)] Option<Uuid>,
 	),
 	Network,
+
+	BedWarsPractice,
+	BedWarsShop,
+	BedWarsHotbar,
 }
 
 #[derive(bitcode::Encode, bitcode::Decode, Debug)]
@@ -1033,7 +1174,6 @@ pub enum Id {
 		kind: Mode,
 		#[bitcode(with_serde)]
 		uuid: Uuid,
-		background: Option<u32>,
 	},
 	Compare {
 		kind: Mode,
@@ -1041,7 +1181,6 @@ pub enum Id {
 		uuid_lhs: Uuid,
 		#[bitcode(with_serde)]
 		uuid_rhs: Uuid,
-		background: Option<u32>,
 	},
 	// TODO: Add support for "Between"
 	// This is here to not break the API once it's added
@@ -1053,7 +1192,6 @@ pub enum Id {
 		start: i64,
 		// duration in nanos to end
 		end: i64,
-		background: Option<u32>,
 	},
 	/// A `/from`, `/daily`, `/weekly`, and `/monthly` command
 	Snapshot {
@@ -1062,26 +1200,30 @@ pub enum Id {
 		uuid: Uuid,
 		// duration in nanos
 		past: i64,
-		background: Option<u32>,
+	},
+	// An `/at` command, displays a snapshot at a specific time
+	At {
+		kind: Mode,
+		#[bitcode(with_serde)]
+		uuid: Uuid,
+		// duration in nanos
+		past: i64,
 	},
 	/// A `/history` command
 	History {
 		kind: Mode,
 		#[bitcode(with_serde)]
 		uuid: Uuid,
-		background: Option<u32>,
 	},
 	/// A `/project` command
 	Project {
 		kind: ProjectMode,
 		#[bitcode(with_serde)]
 		uuid: Uuid,
-		background: Option<u32>,
 	},
 	Builder {
 		shapes: Vec<super::builder::Shape>,
 		#[bitcode(with_serde)]
 		uuid: Uuid,
-		background: Option<u32>,
 	},
 }

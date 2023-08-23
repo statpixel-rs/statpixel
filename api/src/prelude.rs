@@ -128,6 +128,13 @@ pub trait Mode: Sized + Copy {
 		uuid_rhs: Uuid,
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id);
+
+	fn as_at(
+		ctx: &context::Context,
+		uuid: Uuid,
+		past: i64,
+		selected: Option<Self>,
+	) -> (serenity::CreateActionRow, crate::id::Id);
 }
 
 pub trait Leaderboard<S: Expression, O: Expression> {

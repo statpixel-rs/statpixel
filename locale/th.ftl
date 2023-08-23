@@ -3,45 +3,45 @@ not-linked = ขาดอาร์กิวเมนต์
 not-linked-description = เนื่องจากคุณไม่ได้เชื่อมโยงอาร์กิวเมนต์ คุณต้องให้ข้อมูลโปรไฟล์เพื่อดู
 showing-statistics = <a:clock:1115091329958019253> แสดงการเปลี่ยนแปลงสถิติจาก {$from} ถึง {$to}
 no-previous-statistics = ไม่พบข้อมูลที่แล้วสำหรับ **`{$name}`** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
-showing-guild-statistics = แสดงการเปลี่ยนแปลงสถิติกิลด์จาก `{$from}` ถึง `{$to}`
+showing-guild-statistics = แสดงการเปลี่ยนแปลงสถิติกิลด์จาก {$from} ถึง {$to}
 no-previous-guild-statistics = ไม่พบข้อมูลที่แล้วสำหรับกิลด์ **`{$name}`** ดังนั้นได้ถูกเพิ่มเข้าไปแล้ว
-showing-comparison = <a:clock:1115091329958019253> แสดงสถิติของ `{$from}` กับ `{$to}`
+showing-comparison = <a:clock:1115091329958019253> แสดงสถิติของ **`{$from}`** กับ **`{$to}`**
 
 # ข้อผิดพลาด
 
-error-player-not-found = ไม่พบโปรไฟล์ที่เป็นของ `{$name}`
-error-session-not-found = ไม่พบเซสชั่นที่เป็นของ `{$name}`
-error-player-uuid-not-found = ไม่พบผู้เล่นด้วย UUID `{$uuid}`
-error-player-username-not-found = ไม่พบผู้เล่นด้วยชื่อผู้ใช้ `{$name}`
-error-guild-by-member-uuid-not-found = ไม่พบสมาชิกกิลด์ด้วย UUID `{$uuid}`
-error-guild-by-member-username-not-found = ไม่พบสมาชิกกิลด์ด้วยชื่อผู้ใช้ `{$name}`
-error-guild-not-found = ไม่พบกิลด์ที่ชื่อ `{$name}`
+error-player-not-found = ไม่พบโปรไฟล์ที่เป็นของ **`{$name}`**
+error-session-not-found = ไม่พบเซสชั่นที่เป็นของ **`{$name}`**
+error-player-uuid-not-found = ไม่พบผู้เล่นด้วย UUID **`{$uuid}`**
+error-player-username-not-found = ไม่พบผู้เล่นด้วยชื่อผู้ใช้ **`{$name}`**
+error-guild-by-member-uuid-not-found = ไม่พบสมาชิกกิลด์ด้วย UUID **`{$uuid}`**
+error-guild-by-member-username-not-found = ไม่พบสมาชิกกิลด์ด้วยชื่อผู้ใช้ **`{$name}`**
+error-guild-not-found = ไม่พบกิลด์ที่ชื่อ **`{$name}`**
 error-internal = เกิดข้อผิดพลาดภายใน ได้ทำการบันทึกข้อผิดพลาดและจะถูกแก้ไขในไม่ช้า
 error-not-linked = คุณยังไม่ได้เชื่อมโยงไปยังบัญชี Minecraft ใช้คำสั่ง </link:1113624864524357710> เพื่อเชื่อมโยงบัญชีของคุณ
-error-invalid-uuid = UUID `{$uuid}` ไม่ถูกต้อง
-error-invalid-username = ชื่อผู้ใช้ `{$name}` ไม่ถูกต้อง
-error-member-player-not-found = ไม่พบสมาชิก `{$name}` ในโปรไฟล์
-error-skyblock-profile-not-found = ไม่พบโปรไฟล์ SkyBlock ที่เป็นของ `{$name}`
-error-player-snapshot-not-found = ไม่พบสแนปช็อตสำหรับ `{$name}` สร้างด้วยคำสั่ง </bedwars daily:1113624864272683060>
-error-leaderboard-not-found = ไม่พบตารางคะแนนสูงสุดที่ชื่อ `{$name}`
-error-profile-not-found = โปรไฟล์ SkyBlock `{$profile}` ที่เป็นของ `{$name}` มี API ถูกปิดใช้งานหรือเขาไม่ได้เข้าสู่ระบบตั้งแต่ระบบโปรไฟล์ใหม่
+error-invalid-uuid = UUID **`{$uuid}`** ไม่ถูกต้อง
+error-invalid-username = ชื่อผู้ใช้ **`{$name}`** ไม่ถูกต้อง
+error-member-player-not-found = ไม่พบสมาชิก **`{$name}`** ในโปรไฟล์
+error-skyblock-profile-not-found = ไม่พบโปรไฟล์ SkyBlock ที่เป็นของ **`{$name}`**
+error-player-snapshot-not-found = ไม่พบสแนปช็อตสำหรับ **`{$name}`** สร้างด้วยคำสั่ง </bedwars daily:1113624864272683060>
+error-leaderboard-not-found = ไม่พบตารางคะแนนสูงสุดที่ชื่อ **`{$name}`**
+error-profile-not-found = โปรไฟล์ SkyBlock **`{$profile}`** ที่เป็นของ **`{$name}`** มี API ถูกปิดใช้งานหรือเขาไม่ได้เข้าสู่ระบบตั้งแต่ระบบโปรไฟล์ใหม่
 error-identifier-too-long =
   หนึ่งในตัวระบุที่สร้างขึ้นสำหรับการกระทำนี้ยาวเกินไป
   ลองลดจำนวนส่วนประกอบหรือปริมาณข้อความที่กำหนดเอง
-error-user-track-limit-reached = คุณได้ถึงจำนวนการติดตามสูงสุดของ `{$limit}` ซื้อ StatPixel+ เพื่อลบข้อจำกัดนี้ที่ <https://statpixel.xyz/plus>
+error-user-track-limit-reached = คุณได้ถึงจำนวนการติดตามสูงสุดของ **`{$limit}`** ซื้อ StatPixel+ เพื่อลบข้อจำกัดนี้ที่ <https://statpixel.xyz/plus>
 error-guild-track-limit-reached =
-  กิลด์นี้ได้ถึงจำนวนการติดตามสูงสุดของ `{$limit}`
+  กิลด์นี้ได้ถึงจำนวนการติดตามสูงสุดของ **`{$limit}`**
   หากคุณมี StatPixel+ เพิ่มพลังให้กิลด์ด้วยคำสั่ง </boost:1132443666997321809> เพื่อลบข้อจำกัดนี้ หรือไปที่ <https://statpixel.xyz/plus>
 error-boost-limit-reached =
-  คุณได้ถึงจำนวนการเพิ่มพลังสูงสุดของ `{$limit}` คุณสามารถลบพลังที่แสดงบนแดชบอร์ด: <https://statpixel.xyz/dashboard/boost>
+  คุณได้ถึงจำนวนการเพิ่มพลังสูงสุดของ **`{$limit}`** คุณสามารถลบพลังที่แสดงบนแดชบอร์ด: <https://statpixel.xyz/dashboard/boost>
 error-track-already-exists =
   คุณกำลังติดตามผู้เล่นคนนี้ในช่องนี้อยู่แล้ว
 error-not-premium = คุณต้องเป็นสมาชิก StatPixel+ เพื่อทำการดำเนินการนี้ ไปที่ <https://statpixel.xyz/plus> เพื่อดูข้อมูลเพิ่มเติม
 error-not-in-a-guild = คุณต้องเป็นสมาชิกในกิลด์เพื่อทำการดำเนินการนี้
 error-boost-already-exists = คุณกำลังเพิ่มพลังให้กับกิลด์นี้อยู่แล้ว
-error-time-invalid-character = พบอักขระไม่ถูกต้องในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ `{$position}`
-error-time-expected-number = คาดหวังว่าจะเป็นตัวเลขในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ `{$position}`
-error-time-unknown-unit = หน่วยเวลาที่ไม่รู้จัก `{$unit}` ในตำแหน่งที่ `{$position}` ค่า `{$value}`
+error-time-invalid-character = พบอักขระไม่ถูกต้องในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ **`{$position}`**
+error-time-expected-number = คาดหวังว่าจะเป็นตัวเลขในอาร์กิวเมนต์ของเวลาในตำแหน่งที่ **`{$position}`**
+error-time-unknown-unit = หน่วยเวลาที่ไม่รู้จัก **`{$unit}`** ในตำแหน่งที่ **`{$position}`** ค่า **`{$value}`**
 error-time-empty = อาร์กิวเมนต์ของเวลาต้องไม่เป็นค่าว่างเปล่า
 error-time-overflow = ระยะเวลาในอาร์กิวเมนต์สั่งการนี้ยาวเกินไป โปรดลองให้ระยะเวลาน้อยกว่า 3,000 ปี
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = ตัวแทนที่ระบุ
 
 deprecated-interaction = ปฏิเสธการใช้งานแล้ว
 deprecated-interaction-description = การปฏิเสธการใช้งานนี้ถูกยกเลิกและจะไม่ทำงาน กรุณาเรียกใช้คำสั่งต้นฉบับอีกครั้ง
-identifier = <:id:1125971775755407390> ตัวแทน: `{$identifier}`
+identifier = <:id:1125971775755407390> ตัวแทน: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = ชื่อผู้ใช้
 username-placeholder = กรอกชื่อผู้ใช้เพื่อใช้งาน
 
 invalid-statistic =
-  สถิติ `{$statistic}` ที่ไม่ถูกต้องสำหรับ `{$game}` ตรวจสอบเอกสารและลองอีกครั้ง
+  สถิติ **`{$statistic}`** ที่ไม่ถูกต้องสำหรับ **`{$game}`** ตรวจสอบเอกสารและลองอีกครั้ง
 
 invalid-level-type =
-  ประเภทระดับ `{$kind}` ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
+  ประเภทระดับ **`{$kind}`** ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
 
 invalid-game-type =
-  ประเภทเกม `{$game}` ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
+  ประเภทเกม **`{$game}`** ไม่ถูกต้อง ตรวจสอบเอกสารและลองอีกครั้ง
 
 image-created =
   รูปภาพของคุณได้รับการสร้างแล้ว! ลองใช้งานกับ </execute:1125992506501365892>.
 
-  ตัวแทน: `{$id}`
-  ลิงก์: `{$link}`
+  ตัวแทน: **`{$id}`**
+  ลิงก์: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = background
 error-invalid-colour = สีที่ให้มาไม่ถูกต้อง
 error-invalid-colour-description = สีที่ให้มาไม่ถูกต้อง ลองให้กำหนดหนึ่งใน [สีเหล่านี้] (https://simple.wikipedia.org/wiki/List_of_colors) หรือสีฮักเซียเพิ่มต้นทางด้วย `#`
 colour-changed = เปลี่ยนสีพื้นหลังแล้ว
-colour-changed-description = สีพื้นหลังของคุณถูกเปลี่ยนเป็น `{$colour}`.
+colour-changed-description = สีพื้นหลังของคุณถูกเปลี่ยนเป็น **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = เชื่อมโยง
   .uuid-description = UUID ของ Minecraft ที่ต้องการเชื่อมโยง
 
 linking-failed = การเชื่อมโยงล้มเหลว
-linking-failed-uuid-description = UUID `{$uuid}` ไม่ใช่บัญชี Minecraft
+linking-failed-uuid-description = UUID **`{$uuid}`** ไม่ใช่บัญชี Minecraft
 linking-failed-username-description = ชื่อผู้เล่น **`{$username}`** ไม่ใช่บัญชี Minecraft
 linking-failed-description = คุณต้องให้ UUID หรือชื่อผู้เล่นที่ถูกต้อง
 linking-succeeded = เชื่อมโยงสำเร็จ
@@ -2479,7 +2479,7 @@ guild-monthly = รายเดือน
   .uuid = รหัส-uuid
   .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
 
-showing-guild-xp-statistics = แสดงคะแนนประสบความสำเร็จของกิลด์ตั้งแต่ `{$from}` ถึง `{$to}`.
+showing-guild-xp-statistics = แสดงคะแนนประสบความสำเร็จของกิลด์ตั้งแต่ {$from} ถึง {$to}.
 
 # ป้ายชื่อส่วนที่ใช้ร่วมกัน
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = ชื่อผู้เล่น Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
+
+# ที่คำสั่ง
+
+arcade-at = เวลา
+  .description = แสดงสถิติ Arcade ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Arcade ที่จะดู
+
+arena-at = เวลา
+  .description = แสดงสถิติ Arena ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Arena ที่จะดู
+
+bedwars-at = เวลา
+  .description = แสดงสถิติ Bed Wars ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Bed Wars ที่จะดู
+
+blitz-at = เวลา
+  .description = แสดงสถิติ Blitz Survival Games ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Blitz Survival Games ที่จะดู
+
+buildbattle-at = เวลา
+  .description = แสดงสถิติ Build Battle ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Build Battle ที่จะดู
+
+copsandcrims-at = เวลา
+  .description = แสดงสถิติ Cops and Crims ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Cops and Crims ที่จะดู
+
+duels-at = เวลา
+  .description = แสดงสถิติ Duels ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Duels ที่จะดู
+
+megawalls-at = เวลา
+  .description = แสดงสถิติ Mega Walls ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Mega Walls ที่จะดู
+
+murdermystery-at = เวลา
+  .description = แสดงสถิติ Murder Mystery ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Murder Mystery ที่จะดู
+
+paintball-at = เวลา
+  .description = แสดงสถิติ Paintball ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Paintball ที่จะดู
+
+pit-at = เวลา
+  .description = แสดงสถิติ The Pit ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด The Pit ที่จะดู
+
+quake-at = เวลา
+  .description = แสดงสถิติ Quakecraft ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Quakecraft ที่จะดู
+
+skywars-at = เวลา
+  .description = แสดงสถิติ SkyWars ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด SkyWars ที่จะดู
+
+smash-at = เวลา
+  .description = แสดงสถิติ Smash Heroes ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Smash Heroes ที่จะดู
+
+speeduhc-at = เวลา
+  .description = แสดงสถิติ SpeedUHC ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด SpeedUHC ที่จะดู
+
+tntgames-at = เวลา
+  .description = แสดงสถิติ TNT Games ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด TNT Games ที่จะดู
+
+turbokartracers-at = เวลา
+  .description = แสดงสถิติ Turbo Kart Racers ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Turbo Kart Racers ที่จะดู
+
+uhc-at = เวลา
+  .description = แสดงสถิติ UHC Champions ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด UHC Champions ที่จะดู
+
+vampirez-at = เวลา
+  .description = แสดงสถิติ VampireZ ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด VampireZ ที่จะดู
+
+walls-at = เวลา
+  .description = แสดงสถิติ The Walls ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด The Walls ที่จะดู
+
+warlords-at = เวลา
+  .description = แสดงสถิติ Warlords ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Warlords ที่จะดู
+
+woolwars-at = เวลา
+  .description = แสดงสถิติ Wool Wars ของผู้เล่นในจุดเวลาที่กำหนด
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ Minecraft
+  .uuid = uuid
+  .uuid-description = UUID ของ Minecraft
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมด Wool Wars ที่จะดู
+
+guild-at = เวลา
+  .description = แสดงสถิติของกิลด์ในจุดเวลาที่กำหนด
+  .name = ชื่อ
+  .name-description = ชื่อกิลด์ที่จะดู
+  .username = ชื่อผู้ใช้
+  .username-description = ชื่อผู้ใช้ของสมาชิกกิลด์ที่จะดู
+  .uuid = uuid
+  .uuid-description = UUID ของสมาชิกกิลด์ที่จะดู
+  .time = เวลา
+  .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+
+showing-statistics-at = <a:clock:1115091329958019253> แสดงสถิติจาก {$at}
+showing-guild-statistics-at = แสดงสถิติกิลด์จาก {$at}

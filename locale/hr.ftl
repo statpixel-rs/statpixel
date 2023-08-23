@@ -3,45 +3,45 @@ not-linked = Nedostajući argumenti
 not-linked-description = Budući da niste povezani, morate pružiti profil da biste ga vidjeli.
 showing-statistics = <a:clock:1115091329958019253> Prikaz statistike promjene od {$from} do {$to}.
 no-previous-statistics = Nema prethodnih podataka za **`{$name}`**, pa su uneseni novi.
-showing-guild-statistics = Prikaz statistike promjene za gildu od `{$from}` do `{$to}`.
+showing-guild-statistics = Prikaz statistike promjene za gildu od {$from} do {$to}.
 no-previous-guild-statistics = Nisu pronađeni prethodni podaci za gildu **`{$name}`**, pa je unesena nova.
-showing-comparison = <a:clock:1115091329958019253> Prikaz statistike za `{$from}` u usporedbi s `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Prikaz statistike za **`{$from}`** u usporedbi s **`{$to}`**.
 
 # Errors
 
-error-player-not-found = Profil pripadajući korisniku `{$name}` nije pronađen.
-error-session-not-found = Sjednica pripadajuća korisniku `{$name}` nije pronađena.
-error-player-uuid-not-found = Igrač s UUID-om `{$uuid}` nije pronađen.
-error-player-username-not-found = Igrač s korisničkim imenom `{$name}` nije pronađen.
-error-guild-by-member-uuid-not-found = Član gilde s UUID-om `{$uuid}` nije pronađen.
-error-guild-by-member-username-not-found = Član gilde s korisničkim imenom `{$name}` nije pronađen.
-error-guild-not-found = Gilde s imenom `{$name}` nije pronađena.
+error-player-not-found = Profil pripadajući korisniku **`{$name}`** nije pronađen.
+error-session-not-found = Sjednica pripadajuća korisniku **`{$name}`** nije pronađena.
+error-player-uuid-not-found = Igrač s UUID-om **`{$uuid}`** nije pronađen.
+error-player-username-not-found = Igrač s korisničkim imenom **`{$name}`** nije pronađen.
+error-guild-by-member-uuid-not-found = Član gilde s UUID-om **`{$uuid}`** nije pronađen.
+error-guild-by-member-username-not-found = Član gilde s korisničkim imenom **`{$name}`** nije pronađen.
+error-guild-not-found = Gilde s imenom **`{$name}`** nije pronađena.
 error-internal = Došlo je do interne pogreške. Ona je zabilježena i bit će riješena uskoro.
 error-not-linked = Niste povezani s Minecraft računom. Koristite </link:1113624864524357710> za povezivanje računa.
-error-invalid-uuid = UUID `{$uuid}` nije valjan.
-error-invalid-username = Korisničko ime `{$name}` nije valjano.
-error-member-player-not-found = Član `{$name}` nije pronađen u profilu.
-error-skyblock-profile-not-found = SkyBlock profil pripadajući korisniku `{$name}` nije pronađen.
-error-player-snapshot-not-found = Nema snimki za korisnika `{$name}`. Napravite jednu s </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Leaderboard s imenom `{$name}` nije pronađen.
-error-profile-not-found = SkyBlock profil `{$profile}` pripadajući korisniku `{$name}` ima isključenu API podršku ili se korisnik nije prijavio od uvođenja novog profilnog sustava.
+error-invalid-uuid = UUID **`{$uuid}`** nije valjan.
+error-invalid-username = Korisničko ime **`{$name}`** nije valjano.
+error-member-player-not-found = Član **`{$name}`** nije pronađen u profilu.
+error-skyblock-profile-not-found = SkyBlock profil pripadajući korisniku **`{$name}`** nije pronađen.
+error-player-snapshot-not-found = Nema snimki za korisnika **`{$name}`**. Napravite jednu s </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Leaderboard s imenom **`{$name}`** nije pronađen.
+error-profile-not-found = SkyBlock profil **`{$profile}`** pripadajući korisniku **`{$name}`** ima isključenu API podršku ili se korisnik nije prijavio od uvođenja novog profilnog sustava.
 error-identifier-too-long =
   Jedan od generiranih identifikatora za ovu interakciju je predugačak.
   Pokušajte smanjiti broj komponenata ili količinu prilagođenog teksta.
-error-user-track-limit-reached = Dosegli ste maksimalan broj praćenih igrača od `{$limit}`. Kupite StatPixel+ da biste uklonili ovaj limit na <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Dosegli ste maksimalan broj praćenih igrača od **`{$limit}`**. Kupite StatPixel+ da biste uklonili ovaj limit na <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ova gilda je dostigla maksimalan broj praćenih igrača od `{$limit}`.
+  Ova gilda je dostigla maksimalan broj praćenih igrača od **`{$limit}`**.
   Ako imate StatPixel+, ojačajte gildu s </boost:1132443666997321809> kako biste uklonili ovo ograničenje ili posjetite <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Dosegli ste maksimalan broj pojačanja od `{$limit}`. Možete ukloniti jedno pojačanje na nadzornoj ploči: <https://statpixel.xyz/dashboard/boost>.
+  Dosegli ste maksimalan broj pojačanja od **`{$limit}`**. Možete ukloniti jedno pojačanje na nadzornoj ploči: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Već pratite ovog igrača na ovom kanalu.
 error-not-premium = Morate biti pretplatnik na StatPixel+ da biste izvršili ovu radnju. Posjetite <https://statpixel.xyz/plus> za više informacija.
 error-not-in-a-guild = Morate biti u gildi da biste izvršili ovu radnju.
 error-boost-already-exists = Već pojačavate ovu gildu.
-error-time-invalid-character = U vremenskom argumentu na poziciji `{$position}` pronađen je nevažeći znak.
-error-time-expected-number = Očekivani broj u vremenskom argumentu na poziciji `{$position}`.
-error-time-unknown-unit = Nepoznata vremenska jedinica `{$unit}` na poziciji `{$position}` s vrijednošću `{$value}`.
+error-time-invalid-character = U vremenskom argumentu na poziciji **`{$position}`** pronađen je nevažeći znak.
+error-time-expected-number = Očekivani broj u vremenskom argumentu na poziciji **`{$position}`**.
+error-time-unknown-unit = Nepoznata vremenska jedinica **`{$unit}`** na poziciji **`{$position}`** s vrijednošću **`{$value}`**.
 error-time-empty = Vremenski argument ne može biti prazan.
 error-time-overflow = Trajanje vremenskog argumenta je predugo. Pokušajte da ostane ispod 3000 godina.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Navedeni identifikator nije naredba.
 
 deprecated-interaction = Interakcija zastarjela
 deprecated-interaction-description = Ova interakcija je zastarjela i neće raditi. Ponovno pokrenite originalnu naredbu.
-identifier = <:id:1125971775755407390> Identifikator: `{$identifier}`
+identifier = <:id:1125971775755407390> Identifikator: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Korisničko ime
 username-placeholder = Unesite korisničko ime za korištenje
 
 invalid-statistic =
-  Neispravna statistika `{$statistic}` za `{$game}`. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna statistika **`{$statistic}`** za **`{$game}`**. Provjerite dokumentaciju i pokušajte ponovno.
 
 invalid-level-type =
-  Neispravna vrsta razine `{$kind}`. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna vrsta razine **`{$kind}`**. Provjerite dokumentaciju i pokušajte ponovno.
 
 invalid-game-type =
-  Neispravna vrsta igre `{$game}`. Provjerite dokumentaciju i pokušajte ponovno.
+  Neispravna vrsta igre **`{$game}`**. Provjerite dokumentaciju i pokušajte ponovno.
 
 image-created =
   Vaša slika je stvorena! Isprobajte je s </execute:1125992506501365892>.
 
-  Identifikator: `{$id}`
-  Poveznica: `{$link}`
+  Identifikator: **`{$id}`**
+  Poveznica: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = pozadina
 error-invalid-colour = Neispravna boja navedena
 error-invalid-colour-description = Navedena boja nije valjana. Pokušajte pružiti jednu od [ovih boja](https://simple.wikipedia.org/wiki/List_of_colors) ili heksadecimalnu boju s prefiksom `#`.
 colour-changed = Boja pozadine promijenjena
-colour-changed-description = Boja vaše pozadine promijenjena je u `{$colour}`.
+colour-changed-description = Boja vaše pozadine promijenjena je u **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = povezi
   .uuid-description = Minecraft UUID za povezivanje
 
 linking-failed = Povezivanje nije uspjelo
-linking-failed-uuid-description = UUID `{$uuid}` ne pripada Minecraft računu.
+linking-failed-uuid-description = UUID **`{$uuid}`** ne pripada Minecraft računu.
 linking-failed-username-description = Korisničko ime **`{$username}`** ne pripada Minecraft računu.
 linking-failed-description = Morate pružiti valjani UUID ili korisničko ime.
 linking-succeeded = Uspješno povezivanje
@@ -2479,7 +2479,7 @@ guild-monthly = mjesečno
   .uuid = uuid
   .uuid-description = UUID člana gilda za pregled
 
-showing-guild-xp-statistics = Prikazivanje stjecanja iskustva gilda od `{$from}` do `{$to}`.
+showing-guild-xp-statistics = Prikazivanje stjecanja iskustva gilda od {$from} do {$to}.
 
 # Oznake zajedničkog platna
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Minecraft korisničko ime
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Naredbe
+
+arcade-at = u
+  .description = Prikazuje Arcade statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Arcade način za prikaz
+
+arena-at = u
+  .description = Prikazuje Arena statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Arena način za prikaz
+
+bedwars-at = u
+  .description = Prikazuje Bed Wars statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Bed Wars način za prikaz
+
+blitz-at = u
+  .description = Prikazuje Blitz Survival Games statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Blitz Survival Games način za prikaz
+
+buildbattle-at = u
+  .description = Prikazuje Build Battle statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Build Battle način za prikaz
+
+copsandcrims-at = u
+  .description = Prikazuje Cops and Crims statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Cops and Crims način za prikaz
+
+duels-at = u
+  .description = Prikazuje Duels statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Duels način za prikaz
+
+megawalls-at = u
+  .description = Prikazuje Mega Walls statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Mega Walls način za prikaz
+
+murdermystery-at = u
+  .description = Prikazuje Murder Mystery statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Murder Mystery način za prikaz
+
+paintball-at = u
+  .description = Prikazuje Paintball statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Paintball način za prikaz
+
+pit-at = u
+  .description = Prikazuje statistiku igrača u The Pit načinu u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = The Pit način za prikaz
+
+quake-at = u
+  .description = Prikazuje Quakecraft statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Quakecraft način za prikaz
+
+skywars-at = u
+  .description = Prikazuje SkyWars statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = SkyWars način za prikaz
+
+smash-at = u
+  .description = Prikazuje Smash Heroes statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Smash Heroes način za prikaz
+
+speeduhc-at = u
+  .description = Prikazuje SpeedUHC statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = SpeedUHC način za prikaz
+
+tntgames-at = u
+  .description = Prikazuje TNT Games statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = TNT Games način za prikaz
+
+turbokartracers-at = u
+  .description = Prikazuje Turbo Kart Racers statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Turbo Kart Racers način za prikaz
+
+uhc-at = u
+  .description = Prikazuje UHC Champions statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = UHC Champions način za prikaz
+
+vampirez-at = u
+  .description = Prikazuje VampireZ statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = VampireZ način za prikaz
+
+walls-at = u
+  .description = Prikazuje statistiku igrača u The Walls načinu u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = The Walls način za prikaz
+
+warlords-at = u
+  .description = Prikazuje Warlords statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Warlords način za prikaz
+
+woolwars-at = u
+  .description = Prikazuje Wool Wars statistiku igrača u određenom trenutku
+  .username = korisničko-ime
+  .username-description = Minecraft korisničko ime
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+  .mode = način
+  .mode-description = Wool Wars način za prikaz
+
+guild-at = u
+  .description = Prikazuje statistiku gilda u određenom trenutku
+  .name = ime
+  .name-description = Ime gilda za prikaz
+  .username = korisničko-ime
+  .username-description = Korisničko ime člana gilda za prikaz statistike
+  .uuid = uuid
+  .uuid-description = UUID člana gilda za prikaz statistike
+  .time = vrijeme
+  .time-description = Količina vremena za vraćanje (1h 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Prikazujem statistiku od {$at}.
+showing-guild-statistics-at = Prikazujem statistiku gilda od {$at}.

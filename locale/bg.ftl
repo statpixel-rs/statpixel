@@ -3,45 +3,45 @@ not-linked = Липсващи аргументи
 not-linked-description = Понеже не сте свързани, трябва да предоставите профил, за да го видите.
 showing-statistics = <a:clock:1115091329958019253> Показване на статистиката от {$from} до {$to}.
 no-previous-statistics = Не са намерени предишни данни за **`{$name}`**, затова са били вмъкнати.
-showing-guild-statistics = Показване на статистиката на гилдията от `{$from}` до `{$to}`.
+showing-guild-statistics = Показване на статистиката на гилдията от {$from} до {$to}.
 no-previous-guild-statistics = Не са намерени предишни данни за гилдия **`{$name}`**, затова са били вмъкнати.
-showing-comparison = <a:clock:1115091329958019253> Показване на статистиката на `{$from}` спрямо `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Показване на статистиката на **`{$from}`** спрямо **`{$to}`**.
 
 # Грешки
 
-error-player-not-found = Не е намерен профил, принадлежащ на `{$name}`.
-error-session-not-found = Не е намерена сесия, принадлежаща на `{$name}`.
-error-player-uuid-not-found = Не е намерен играч с идентификатор `{$uuid}`.
-error-player-username-not-found = Не е намерен играч с потребителско име `{$name}`.
-error-guild-by-member-uuid-not-found = Не е намерен член на гилдията с идентификатор `{$uuid}`.
-error-guild-by-member-username-not-found = Не е намерен член на гилдията с потребителско име `{$name}`.
-error-guild-not-found = Не е намерена гилдия с име `{$name}`.
+error-player-not-found = Не е намерен профил, принадлежащ на **`{$name}`**.
+error-session-not-found = Не е намерена сесия, принадлежаща на **`{$name}`**.
+error-player-uuid-not-found = Не е намерен играч с идентификатор **`{$uuid}`**.
+error-player-username-not-found = Не е намерен играч с потребителско име **`{$name}`**.
+error-guild-by-member-uuid-not-found = Не е намерен член на гилдията с идентификатор **`{$uuid}`**.
+error-guild-by-member-username-not-found = Не е намерен член на гилдията с потребителско име **`{$name}`**.
+error-guild-not-found = Не е намерена гилдия с име **`{$name}`**.
 error-internal = Възникна вътрешна грешка. Тя е записана и ще бъде отстранена скоро.
 error-not-linked = Вие не сте свързани с профил на Minecraft. Използвайте </link:1113624864524357710>, за да свържете вашия профил.
-error-invalid-uuid = Невалиден идентификатор `{$uuid}`.
-error-invalid-username = Невалидно потребителско име `{$name}`.
-error-member-player-not-found = Членът `{$name}` не е намерен в профила.
-error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на `{$name}`.
-error-player-snapshot-not-found = Няма намерени снимки за `{$name}`. Създайте една с </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Не е намерен класиране с име `{$name}`.
-error-profile-not-found = Профилът на SkyBlock `{$profile}`, принадлежащ на `{$name}`, има изключена API или не се е вписвал след новата система за профили.
+error-invalid-uuid = Невалиден идентификатор **`{$uuid}`**.
+error-invalid-username = Невалидно потребителско име **`{$name}`**.
+error-member-player-not-found = Членът **`{$name}`** не е намерен в профила.
+error-skyblock-profile-not-found = Не е намерен профил на SkyBlock, принадлежащ на **`{$name}`**.
+error-player-snapshot-not-found = Няма намерени снимки за **`{$name}`**. Създайте една с </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Не е намерен класиране с име **`{$name}`**.
+error-profile-not-found = Профилът на SkyBlock **`{$profile}`**, принадлежащ на **`{$name}`**, има изключена API или не се е вписвал след новата система за профили.
 error-identifier-too-long =
   Един от генерираните идентификатори за тази интеракция е твърде дълъг.
   Опитайте да намалите броя на компонентите или количество на персонализирания текст.
-error-user-track-limit-reached = Достигнали сте максималния брой проследявания от `{$limit}`. Закупете StatPixel+ , за да премахнете този лимит на <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Достигнали сте максималния брой проследявания от **`{$limit}`**. Закупете StatPixel+ , за да премахнете този лимит на <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Тази гилдия е достигнала максималния брой проследявания от `{$limit}`.
+  Тази гилдия е достигнала максималния брой проследявания от **`{$limit}`**.
   Ако имате StatPixel+, увеличете гилдията си с </boost:1132443666997321809>, за да премахнете това ограничение или посетете <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Достигнали сте максималния брой усилвания от `{$limit}`. Можете да премахнете усилване на контролния панел: <https://statpixel.xyz/dashboard/boost>.
+  Достигнали сте максималния брой усилвания от **`{$limit}`**. Можете да премахнете усилване на контролния панел: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Вече проследявате този играч в този канал.
 error-not-premium = Трябва да сте абонат на StatPixel+, за да изпълните това действие. Посетете <https://statpixel.xyz/plus> за повече информация.
 error-not-in-a-guild = Трябва да сте в гилдия, за да изпълните това действие.
 error-boost-already-exists = Вече усилвате тази гилдия.
-error-time-invalid-character = Намерен е невалиден символ в аргумента за времето на позиция `{$position}`.
-error-time-expected-number = Очаквано е число в аргумента за времето на позиция `{$position}`.
-error-time-unknown-unit = Непозната единица за време `{$unit}` на позиция `{$position}` със стойност `{$value}`.
+error-time-invalid-character = Намерен е невалиден символ в аргумента за времето на позиция **`{$position}`**.
+error-time-expected-number = Очаквано е число в аргумента за времето на позиция **`{$position}`**.
+error-time-unknown-unit = Непозната единица за време **`{$unit}`** на позиция **`{$position}`** със стойност **`{$value}`**.
 error-time-empty = Аргументът за времето не може да бъде празен.
 error-time-overflow = Продължителността на аргумента за времето е твърде дълга. Опитайте да я запазите под 3000 години.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Предоставеният идент
 
 deprecated-interaction = Взаимодействието е остаряло
 deprecated-interaction-description = Това взаимодействие е остаряло и няма да работи. Моля, изпълнете отново оригиналната команда.
-identifier = <:id:1125971775755407390> Идентификатор: `{$identifier}`
+identifier = <:id:1125971775755407390> Идентификатор: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Потребителско име
 username-placeholder = Въведете потребителско име за използване
 
 invalid-statistic =
-  Невалидна статистика `{$statistic}` за `{$game}`. Проверете документацията и опитайте отново.
+  Невалидна статистика **`{$statistic}`** за **`{$game}`**. Проверете документацията и опитайте отново.
 
 invalid-level-type =
-  Невалиден тип на ниво `{$kind}`. Проверете документацията и опитайте отново.
+  Невалиден тип на ниво **`{$kind}`**. Проверете документацията и опитайте отново.
 
 invalid-game-type =
-  Невалиден тип на игра `{$game}`. Проверете документацията и опитайте отново.
+  Невалиден тип на игра **`{$game}`**. Проверете документацията и опитайте отново.
 
 image-created =
   Вашето изображение е създадено! Опитайте го с </execute:1125992506501365892>.
 
-  Идентификатор: `{$id}`
-  Връзка: `{$link}`
+  Идентификатор: **`{$id}`**
+  Връзка: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = background
 error-invalid-colour = Предоставеният цвят е невалиден
 error-invalid-colour-description = Предоставеният цвят е невалиден. Опитайте се да предоставите един от [тези цветове](https://simple.wikipedia.org/wiki/List_of_colors) или шестнадесетичен цвят с префикс "#".
 colour-changed = Променен цвят на фона
-colour-changed-description = Вашият цвят на фона е променен на `{$colour}`.
+colour-changed-description = Вашият цвят на фона е променен на **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = свързване
   .uuid-description = Minecraft UUID за свързване
 
 linking-failed = Свързването неуспешно
-linking-failed-uuid-description = UUID `{$uuid}` не принадлежи на Minecraft акаунт.
+linking-failed-uuid-description = UUID **`{$uuid}`** не принадлежи на Minecraft акаунт.
 linking-failed-username-description = Потребителското име **`{$username}`** не принадлежи на Minecraft акаунт.
 linking-failed-description = Трябва да предоставите валиден UUID или потребителско име.
 linking-succeeded = Свързване успешно
@@ -2479,7 +2479,7 @@ guild-monthly = месечно
   .uuid = uuid
   .uuid-description = UUID на член на гилдията за преглед
 
-showing-guild-xp-statistics = Показване на придобития от гилдията XP от `{$from}` до `{$to}`.
+showing-guild-xp-statistics = Показване на придобития от гилдията XP от {$from} до {$to}.
 
 # Общи етикети за платното
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Потребителско име в Minecraft
   .uuid = uuid
   .uuid-description = UUID в Minecraft
+
+# Команди за информация
+
+arcade-at = в
+  .description = Покажи статистиката на Arcade на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Arcade за преглед
+
+arena-at = в
+  .description = Покажи статистиката на Arena на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Arena за преглед
+
+bedwars-at = в
+  .description = Покажи статистиката на Bed Wars на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Bed Wars за преглед
+
+blitz-at = в
+  .description = Покажи статистиката на Blitz Survival Games на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Blitz Survival Games за преглед
+
+buildbattle-at = в
+  .description = Покажи статистиката на Build Battle на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Build Battle за преглед
+
+copsandcrims-at = в
+  .description = Покажи статистиката на Cops and Crims на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Cops and Crims за преглед
+
+duels-at = в
+  .description = Покажи статистиката на Duels на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Duels за преглед
+
+megawalls-at = в
+  .description = Покажи статистиката на Mega Walls на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Mega Walls за преглед
+
+murdermystery-at = в
+  .description = Покажи статистиката на Murder Mystery на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Murder Mystery за преглед
+
+paintball-at = в
+  .description = Покажи статистиката на Paintball на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Paintball за преглед
+
+pit-at = в
+  .description = Покажи статистиката на The Pit на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на The Pit за преглед
+
+quake-at = в
+  .description = Покажи статистиката на Quakecraft на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Quakecraft за преглед
+
+skywars-at = в
+  .description = Покажи статистиката на SkyWars на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на SkyWars за преглед
+
+smash-at = в
+  .description = Покажи статистиката на Smash Heroes на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Smash Heroes за преглед
+
+speeduhc-at = в
+  .description = Покажи статистиката на SpeedUHC на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на SpeedUHC за преглед
+
+tntgames-at = в
+  .description = Покажи статистиката на TNT Games на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на TNT Games за преглед
+
+turbokartracers-at = в
+  .description = Покажи статистиката на Turbo Kart Racers на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Turbo Kart Racers за преглед
+
+uhc-at = в
+  .description = Покажи статистиката на UHC Champions на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на UHC Champions за преглед
+
+vampirez-at = в
+  .description = Покажи статистиката на VampireZ на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на VampireZ за преглед
+
+walls-at = в
+  .description = Покажи статистиката на The Walls на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на The Walls за преглед
+
+warlords-at = в
+  .description = Покажи статистиката на Warlords на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Warlords за преглед
+
+woolwars-at = в
+  .description = Покажи статистиката на Wool Wars на играч в определен момент
+  .username = потребителско-име
+  .username-description = Потребителско име в Minecraft
+  .uuid = uuid
+  .uuid-description = UUID в Minecraft
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+  .mode = режим
+  .mode-description = Режимът на Wool Wars за преглед
+
+guild-at = в
+  .description = Покажи статистиката на гилдия на играч в определен момент
+  .name = име
+  .name-description = Името на гилдията за преглед
+  .username = потребителско-име
+  .username-description = Потребителско име на член на гилдията за преглед
+  .uuid = uuid
+  .uuid-description = UUID на член на гилдията за преглед
+  .time = време
+  .time-description = Времето, за което да се върнете назад (1ч 12м 5с)
+
+showing-statistics-at = <a:clock:1115091329958019253> Показване на статистиката от {$at}.
+showing-guild-statistics-at = Показване на статистиката на гилдията от {$at}.

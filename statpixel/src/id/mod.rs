@@ -34,6 +34,13 @@ macro_rules! impl_snapshot {
 	};
 }
 
+macro_rules! impl_at {
+	($ctx: expr, $uuid: expr, $from: expr, $mode: expr, $game: ty) => {
+		super::commands::at::run::command::<$game>($ctx, None, Some($uuid), Some($mode), $from)
+			.await
+	};
+}
+
 macro_rules! impl_project {
 	($ctx: expr, $uuid: expr, $mode: expr, $kind: expr, $game: ty) => {
 		super::commands::project::run::command::<$game>(
@@ -68,7 +75,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 	info!(id = ?id, "dispatching command");
 
 	match id {
-		Id::Builder { shapes, uuid, .. } => {
+		Id::Builder { shapes, uuid } => {
 			let (_, data, session, skin, _) =
 				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
 			let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
@@ -86,7 +93,14 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 
 			Ok(())
 		}
-		Id::Root { kind, uuid, .. } => match kind {
+		Id::Root { kind, uuid } => match kind {
+			Mode::BedWarsPractice => {
+				super::commands::bedwars::run::practice(ctx, None, Some(uuid)).await
+			}
+			Mode::BedWarsShop => super::commands::bedwars::run::shop(ctx, None, Some(uuid)).await,
+			Mode::BedWarsHotbar => {
+				super::commands::bedwars::run::hotbar(ctx, None, Some(uuid)).await
+			}
 			Mode::Arcade(mode) => impl_root!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_root!(ctx, uuid, mode, arena::Arena),
 			Mode::BedWars(mode) => impl_root!(ctx, uuid, mode, bed_wars::BedWars),
@@ -217,9 +231,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				super::commands::winstreaks::run::winstreaks(ctx, None, Some(uuid)).await
 			}
 		},
-		Id::Snapshot {
-			kind, uuid, past, ..
-		} => {
+		Id::Snapshot { kind, uuid, past } => {
 			let past = Duration::nanoseconds(past);
 			match kind {
 				Mode::Arcade(mode) => {
@@ -263,7 +275,51 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				_ => Ok(()),
 			}
 		}
-		Id::History { kind, uuid, .. } => match kind {
+		Id::At { kind, uuid, past } => {
+			let past = Duration::nanoseconds(past);
+			match kind {
+				Mode::Arcade(mode) => {
+					impl_at!(ctx, uuid, past, mode, arcade::Arcade)
+				}
+				Mode::Arena(mode) => impl_at!(ctx, uuid, past, mode, arena::Arena),
+				Mode::BedWars(mode) => impl_at!(ctx, uuid, past, mode, bed_wars::BedWars),
+				Mode::BlitzSg(mode) => impl_at!(ctx, uuid, past, mode, blitz_sg::BlitzSg),
+				Mode::BuildBattle(mode) => {
+					impl_at!(ctx, uuid, past, mode, build_battle::BuildBattle)
+				}
+				Mode::CopsAndCrims(mode) => {
+					impl_at!(ctx, uuid, past, mode, cops_and_crims::CopsAndCrims)
+				}
+				Mode::Duels(mode) => impl_at!(ctx, uuid, past, mode, duels::Duels),
+				Mode::MegaWalls(mode) => {
+					impl_at!(ctx, uuid, past, mode, mega_walls::MegaWalls)
+				}
+				Mode::MurderMystery(mode) => {
+					impl_at!(ctx, uuid, past, mode, murder_mystery::MurderMystery)
+				}
+				Mode::Paintball(mode) => {
+					impl_at!(ctx, uuid, past, mode, paintball::Paintball)
+				}
+				Mode::Pit(mode) => impl_at!(ctx, uuid, past, mode, pit::Pit),
+				Mode::Quake(mode) => impl_at!(ctx, uuid, past, mode, quake::Quake),
+				Mode::SkyWars(mode) => impl_at!(ctx, uuid, past, mode, sky_wars::SkyWars),
+				Mode::SmashHeroes(mode) => {
+					impl_at!(ctx, uuid, past, mode, smash_heroes::SmashHeroes)
+				}
+				Mode::SpeedUhc(mode) => impl_at!(ctx, uuid, past, mode, speed_uhc::SpeedUhc),
+				Mode::TntGames(mode) => impl_at!(ctx, uuid, past, mode, tnt_games::TntGames),
+				Mode::TurboKartRacers(mode) => {
+					impl_at!(ctx, uuid, past, mode, turbo_kart_racers::TurboKartRacers)
+				}
+				Mode::Uhc(mode) => impl_at!(ctx, uuid, past, mode, uhc::Uhc),
+				Mode::VampireZ(mode) => impl_at!(ctx, uuid, past, mode, vampire_z::VampireZ),
+				Mode::Walls(mode) => impl_at!(ctx, uuid, past, mode, walls::Walls),
+				Mode::Warlords(mode) => impl_at!(ctx, uuid, past, mode, warlords::Warlords),
+				Mode::WoolWars(mode) => impl_at!(ctx, uuid, past, mode, wool_wars::WoolWars),
+				_ => Ok(()),
+			}
+		}
+		Id::History { kind, uuid } => match kind {
 			Mode::Arcade(mode) => impl_history!(ctx, uuid, mode, arcade::Arcade),
 			Mode::Arena(mode) => impl_history!(ctx, uuid, mode, arena::Arena),
 			Mode::BedWars(mode) => impl_history!(ctx, uuid, mode, bed_wars::BedWars),
@@ -294,7 +350,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::WoolWars(mode) => impl_history!(ctx, uuid, mode, wool_wars::WoolWars),
 			_ => Ok(()),
 		},
-		Id::Project { kind, uuid, .. } => match kind {
+		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
 				impl_project!(ctx, uuid, mode, kind, arcade::Arcade)
 			}

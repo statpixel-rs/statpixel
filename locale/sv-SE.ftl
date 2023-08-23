@@ -3,45 +3,45 @@ not-linked = Saknade argument
 not-linked-description = Eftersom du inte är länkad måste du ange en profil för att visa information.
 showing-statistics = <a:clock:1115091329958019253> Visar statistikändringar från {$from} till {$to}.
 no-previous-statistics = Inga tidigare data hittades för **`{$name}`**, så det har lagts till.
-showing-guild-statistics = Visar gilldestatistikändringar från `{$from}` till `{$to}`.
+showing-guild-statistics = Visar gilldestatistikändringar från {$from} till {$to}.
 no-previous-guild-statistics = Inga tidigare data hittades för gildet **`{$name}`**, så det har lagts till.
-showing-comparison = <a:clock:1115091329958019253> Visar statistik för `{$from}` jämfört med `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Visar statistik för **`{$from}`** jämfört med **`{$to}`**.
 
 # Felmeddelanden
 
-error-player-not-found = Profilen för `{$name}` kunde inte hittas.
-error-session-not-found = En session för `{$name}` kunde inte hittas.
-error-player-uuid-not-found = En spelare med uuid `{$uuid}` kunde inte hittas.
-error-player-username-not-found = En spelare med användarnamnet `{$name}` kunde inte hittas.
-error-guild-by-member-uuid-not-found = En guildmedlem med uuid `{$uuid}` kunde inte hittas.
-error-guild-by-member-username-not-found = En guildmedlem med användarnamnet `{$name}` kunde inte hittas.
-error-guild-not-found = En guild med namnet `{$name}` kunde inte hittas.
+error-player-not-found = Profilen för **`{$name}`** kunde inte hittas.
+error-session-not-found = En session för **`{$name}`** kunde inte hittas.
+error-player-uuid-not-found = En spelare med uuid **`{$uuid}`** kunde inte hittas.
+error-player-username-not-found = En spelare med användarnamnet **`{$name}`** kunde inte hittas.
+error-guild-by-member-uuid-not-found = En guildmedlem med uuid **`{$uuid}`** kunde inte hittas.
+error-guild-by-member-username-not-found = En guildmedlem med användarnamnet **`{$name}`** kunde inte hittas.
+error-guild-not-found = En guild med namnet **`{$name}`** kunde inte hittas.
 error-internal = Ett internt fel uppstod. Det har loggats och kommer att åtgärdas snart.
 error-not-linked = Du är inte länkad till ett Minecraft-konto. Använd </link:1113624864524357710> för att länka ditt konto.
-error-invalid-uuid = uuid `{$uuid}` är ogiltig.
-error-invalid-username = Användarnamnet `{$name}` är ogiltigt.
-error-member-player-not-found = Medlemmen `{$name}` kunde inte hittas i profilen.
-error-skyblock-profile-not-found = En SkyBlock-profil för `{$name}` kunde inte hittas.
-error-player-snapshot-not-found = Inga snapshots hittades för `{$name}`. Skapa en med </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = En leaderboard med namnet `{$name}` kunde inte hittas.
-error-profile-not-found = SkyBlock-profilen `{$profile}` för `{$name}` har inaktiverad API eller så har personen inte loggat in sedan det nya profilsystemet.
+error-invalid-uuid = uuid **`{$uuid}`** är ogiltig.
+error-invalid-username = Användarnamnet **`{$name}`** är ogiltigt.
+error-member-player-not-found = Medlemmen **`{$name}`** kunde inte hittas i profilen.
+error-skyblock-profile-not-found = En SkyBlock-profil för **`{$name}`** kunde inte hittas.
+error-player-snapshot-not-found = Inga snapshots hittades för **`{$name}`**. Skapa en med </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = En leaderboard med namnet **`{$name}`** kunde inte hittas.
+error-profile-not-found = SkyBlock-profilen **`{$profile}`** för **`{$name}`** har inaktiverad API eller så har personen inte loggat in sedan det nya profilsystemet.
 error-identifier-too-long =
   En av de genererade identifierarna för denna interaktion är för lång.
   Försök minska antalet komponenter eller den anpassade textens mängd.
-error-user-track-limit-reached = Du har nått det maximala antalet spårningar, `{$limit}`. Köp StatPixel+ för att ta bort detta begränsning på <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Du har nått det maximala antalet spårningar, **`{$limit}`**. Köp StatPixel+ för att ta bort detta begränsning på <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Den här guilden har nått det maximala antalet spårningar, `{$limit}`.
+  Den här guilden har nått det maximala antalet spårningar, **`{$limit}`**.
   Om du har StatPixel+ kan du öka guildens begränsning med </boost:1132443666997321809> eller gå till <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Du har nått det maximala antalet förstärkningar, `{$limit}`. Du kan ta bort en förstärkning på instrumentpanelen: <https://statpixel.xyz/dashboard/boost>.
+  Du har nått det maximala antalet förstärkningar, **`{$limit}`**. Du kan ta bort en förstärkning på instrumentpanelen: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Du spårar redan den här spelaren i den här kanalen.
 error-not-premium = Du måste vara en StatPixel+ prenumerant för att utföra denna åtgärd. Gå till <https://statpixel.xyz/plus> för mer information.
 error-not-in-a-guild = Du måste vara med i en guild för att utföra denna åtgärd.
 error-boost-already-exists = Du förstärker redan den här guilden.
-error-time-invalid-character = Ett ogiltigt tecken hittades i tidsargumentet på position `{$position}`.
-error-time-expected-number = Ett nummer förväntades i tidsargumentet på position `{$position}`.
-error-time-unknown-unit = Okänd tidsenhet `{$unit}` på position `{$position}` med värdet `{$value}`.
+error-time-invalid-character = Ett ogiltigt tecken hittades i tidsargumentet på position **`{$position}`**.
+error-time-expected-number = Ett nummer förväntades i tidsargumentet på position **`{$position}`**.
+error-time-unknown-unit = Okänd tidsenhet **`{$unit}`** på position **`{$position}`** med värdet **`{$value}`**.
 error-time-empty = Tidsargumentet får inte vara tomt.
 error-time-overflow = Tidsargumentets längd är för lång. Försök hålla den under 3 000 år.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Den angivna identifieraren är inte ett
 
 deprecated-interaction = Åtgärden är föråldrad
 deprecated-interaction-description = Denna interaktion är föråldrad och fungerar inte längre. Kör det ursprungliga kommandot igen.
-identifier = <:id:1125971775755407390> Identifierare: `{$identifier}`
+identifier = <:id:1125971775755407390> Identifierare: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Användarnamn
 username-placeholder = Ange användarnamn att använda
 
 invalid-statistic =
-  Ogiltig statistik `{$statistic}` för `{$game}`. Kolla dokumentationen och försök igen.
+  Ogiltig statistik **`{$statistic}`** för **`{$game}`**. Kolla dokumentationen och försök igen.
 
 invalid-level-type =
-  Ogiltig nivåtyp `{$kind}`. Kolla dokumentationen och försök igen.
+  Ogiltig nivåtyp **`{$kind}`**. Kolla dokumentationen och försök igen.
 
 invalid-game-type =
-  Ogiltig speltyp `{$game}`. Kolla dokumentationen och försök igen.
+  Ogiltig speltyp **`{$game}`**. Kolla dokumentationen och försök igen.
 
 image-created =
   Din bild har skapats! Testa den med </execute:1125992506501365892>.
 
-  Identifierare: `{$id}`
-  Länk: `{$link}`
+  Identifierare: **`{$id}`**
+  Länk: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = bakgrund
 error-invalid-colour = Ogiltig färg angiven
 error-invalid-colour-description = Den angivna färgen är ogiltig. Försök med en av [dessa färger](https://simple.wikipedia.org/wiki/List_of_colors) eller en hexfärg föregången av `#`.
 colour-changed = Bakgrundsfärg ändrad
-colour-changed-description = Din bakgrundsfärg har ändrats till `{$colour}`.
+colour-changed-description = Din bakgrundsfärg har ändrats till **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = länka
   .uuid-description = Minecraft-UUID att länka
 
 linking-failed = Länkning misslyckades
-linking-failed-uuid-description = UUID:n `{$uuid}` tillhör inte ett Minecraft-konto.
+linking-failed-uuid-description = UUID:n **`{$uuid}`** tillhör inte ett Minecraft-konto.
 linking-failed-username-description = Användarnamnet **`{$username}`** tillhör inte ett Minecraft-konto.
 linking-failed-description = Du måste ange en giltig UUID eller användarnamn.
 linking-succeeded = Länkning lyckades
@@ -2479,7 +2479,7 @@ guild-monthly = månadsvis
   .uuid = uuid
   .uuid-description = UUID för guildmedlem att visa
 
-showing-guild-xp-statistics = Visar guild XP-förvärv från `{$from}` till `{$to}`.
+showing-guild-xp-statistics = Visar guild XP-förvärv från {$from} till {$to}.
 
 # Delade canvas-etiketter
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Minecraft-användarnamn
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Vid kommandon
+
+arcade-at = vid
+  .description = Visa Arcade-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Arcade-läge
+
+arena-at = vid
+  .description = Visa Arena-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Arena-läge
+
+bedwars-at = vid
+  .description = Visa Bed Wars-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Bed Wars-läge
+
+blitz-at = vid
+  .description = Visa Blitz Survival Games-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Blitz Survival Games-läge
+
+buildbattle-at = vid
+  .description = Visa Build Battle-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Build Battle-läge
+
+copsandcrims-at = vid
+  .description = Visa Cops and Crims-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Cops and Crims-läge
+
+duels-at = vid
+  .description = Visa Duels-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Duels-läge
+
+megawalls-at = vid
+  .description = Visa Mega Walls-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Mega Walls-läge
+
+murdermystery-at = vid
+  .description = Visa Murder Mystery-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Murder Mystery-läge
+
+paintball-at = vid
+  .description = Visa Paintball-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Paintball-läge
+
+pit-at = vid
+  .description = Visa The Pit-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för The Pit-läge
+
+quake-at = vid
+  .description = Visa Quakecraft-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Quakecraft-läge
+
+skywars-at = vid
+  .description = Visa SkyWars-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för SkyWars-läge
+
+smash-at = vid
+  .description = Visa Smash Heroes-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Smash Heroes-läge
+
+speeduhc-at = vid
+  .description = Visa SpeedUHC-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för SpeedUHC-läge
+
+tntgames-at = vid
+  .description = Visa TNT Games-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för TNT Games-läge
+
+turbokartracers-at = vid
+  .description = Visa Turbo Kart Racers-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Turbo Kart Racers-läge
+
+uhc-at = vid
+  .description = Visa UHC Champions-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för UHC Champions-läge
+
+vampirez-at = vid
+  .description = Visa VampireZ-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för VampireZ-läge
+
+walls-at = vid
+  .description = Visa The Walls-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för The Walls-läge
+
+warlords-at = vid
+  .description = Visa Warlords-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Warlords-läge
+
+woolwars-at = vid
+  .description = Visa Wool Wars-statistik för en spelare vid en viss tidpunkt
+  .username = användarnamn
+  .username-description = Minecraft-användarnamn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+  .mode = läge
+  .mode-description = Vyn för Wool Wars-läge
+
+guild-at = vid
+  .description = Visa statistik för en guild vid en viss tidpunkt
+  .name = namn
+  .name-description = Guildens namn att visa
+  .username = användarnamn
+  .username-description = Guildmedlemmens användarnamn att visa
+  .uuid = uuid
+  .uuid-description = Guildmedlemmens UUID att visa
+  .time = tid
+  .time-description = Tiden att gå tillbaka (1t 12m 5s)
+
+showing-statistics-at = <a:klocka:1115091329958019253> Visar statistik från {$at}.
+showing-guild-statistics-at = Visar guildstatistik från {$at}.

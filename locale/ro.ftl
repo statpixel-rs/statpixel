@@ -3,45 +3,45 @@ not-linked = Argumente lipsă
 not-linked-description = Deoarece nu ești conectat, trebuie să furnizezi un profil pentru a vizualiza.
 showing-statistics = <a:clock:1115091329958019253> Se afișează statisticile de la {$from} la {$to}.
 no-previous-statistics = Nu s-au găsit date anterioare pentru **`{$name}`**, așa că au fost adăugate.
-showing-guild-statistics = Se afișează statisticile guild-ului de la `{$from}` la `{$to}`.
+showing-guild-statistics = Se afișează statisticile guild-ului de la {$from} la {$to}.
 no-previous-guild-statistics = Nu s-au găsit date anterioare pentru guild-ul **`{$name}`**, așa că a fost adăugat.
-showing-comparison = <a:clock:1115091329958019253> Se afișează statisticile lui `{$from}` în comparație cu cele ale lui `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Se afișează statisticile lui **`{$from}`** în comparație cu cele ale lui **`{$to}`**.
 
 # Erori
 
-error-player-not-found = Profilul aparținând lui `{$name}` nu a fost găsit.
-error-session-not-found = O sesiune aparținând lui `{$name}` nu a fost găsită.
-error-player-uuid-not-found = Un jucător cu UUID-ul `{$uuid}` nu a fost găsit.
-error-player-username-not-found = Un jucător cu numele de utilizator `{$name}` nu a fost găsit.
-error-guild-by-member-uuid-not-found = Un membru al guild-ului cu UUID-ul `{$uuid}` nu a fost găsit.
-error-guild-by-member-username-not-found = Un membru al guild-ului cu numele de utilizator `{$name}` nu a fost găsit.
-error-guild-not-found = Un guild cu numele `{$name}` nu a fost găsit.
+error-player-not-found = Profilul aparținând lui **`{$name}`** nu a fost găsit.
+error-session-not-found = O sesiune aparținând lui **`{$name}`** nu a fost găsită.
+error-player-uuid-not-found = Un jucător cu UUID-ul **`{$uuid}`** nu a fost găsit.
+error-player-username-not-found = Un jucător cu numele de utilizator **`{$name}`** nu a fost găsit.
+error-guild-by-member-uuid-not-found = Un membru al guild-ului cu UUID-ul **`{$uuid}`** nu a fost găsit.
+error-guild-by-member-username-not-found = Un membru al guild-ului cu numele de utilizator **`{$name}`** nu a fost găsit.
+error-guild-not-found = Un guild cu numele **`{$name}`** nu a fost găsit.
 error-internal = A apărut o eroare internă. Aceasta a fost înregistrată și va fi rezolvată în curând.
 error-not-linked = Nu ești conectat la un cont Minecraft. Folosește </link:1113624864524357710> pentru a-ți lega contul.
-error-invalid-uuid = UUID-ul `{$uuid}` nu este valid.
-error-invalid-username = Numele de utilizator `{$name}` nu este valid.
-error-member-player-not-found = Membrul `{$name}` nu a fost găsit în profil.
-error-skyblock-profile-not-found = Un profil SkyBlock aparținând lui `{$name}` nu a fost găsit.
-error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru `{$name}`. Creează una cu </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Un clasament cu numele `{$name}` nu a fost găsit.
-error-profile-not-found = Profilul `{$profile}` SkyBlock aparținând lui `{$name}` are API-ul dezactivat sau nu s-a conectat de la introducerea noului sistem de profiluri.
+error-invalid-uuid = UUID-ul **`{$uuid}`** nu este valid.
+error-invalid-username = Numele de utilizator **`{$name}`** nu este valid.
+error-member-player-not-found = Membrul **`{$name}`** nu a fost găsit în profil.
+error-skyblock-profile-not-found = Un profil SkyBlock aparținând lui **`{$name}`** nu a fost găsit.
+error-player-snapshot-not-found = Nu s-au găsit momentan instantanee pentru **`{$name}`**. Creează una cu </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Un clasament cu numele **`{$name}`** nu a fost găsit.
+error-profile-not-found = Profilul **`{$profile}`** SkyBlock aparținând lui **`{$name}`** are API-ul dezactivat sau nu s-a conectat de la introducerea noului sistem de profiluri.
 error-identifier-too-long =
   Unul dintre identificatorii generați pentru această interacțiune este prea lung.
   Încearcă să reduci numărul de componente sau cantitatea de text personalizat.
-error-user-track-limit-reached = Ai atins numărul maxim de track-uri, `{$limit}`. Achiziționează StatPixel+ pentru a elimina această limită la <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Ai atins numărul maxim de track-uri, **`{$limit}`**. Achiziționează StatPixel+ pentru a elimina această limită la <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Acest guild a atins numărul maxim de track-uri, `{$limit}`.
+  Acest guild a atins numărul maxim de track-uri, **`{$limit}`**.
   Dacă ai StatPixel+, mărește guild-ul cu </boost:1132443666997321809> pentru a elimina această restricție sau mergi la <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Ai atins numărul maxim de boost-uri, `{$limit}`. Poți elimina un boost pe tabloul de bord: <https://statpixel.xyz/dashboard/boost>.
+  Ai atins numărul maxim de boost-uri, **`{$limit}`**. Poți elimina un boost pe tabloul de bord: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Deja urmărești acest jucător în acest canal.
 error-not-premium = Trebuie să fii abonat la StatPixel+ pentru a efectua această acțiune. Accesează <https://statpixel.xyz/plus> pentru mai multe informații.
 error-not-in-a-guild = Trebuie să fii într-un guild pentru a efectua această acțiune.
 error-boost-already-exists = Deja ești în curs de a mări acest guild.
-error-time-invalid-character = S-a găsit un caracter nevalid în argumentul de timp la poziția `{$position}`.
-error-time-expected-number = S-aștepta un număr în argumentul de timp la poziția `{$position}`.
-error-time-unknown-unit = Unitate de timp necunoscută `{$unit}` la poziția `{$position}` cu valoarea `{$value}`.
+error-time-invalid-character = S-a găsit un caracter nevalid în argumentul de timp la poziția **`{$position}`**.
+error-time-expected-number = S-aștepta un număr în argumentul de timp la poziția **`{$position}`**.
+error-time-unknown-unit = Unitate de timp necunoscută **`{$unit}`** la poziția **`{$position}`** cu valoarea **`{$value}`**.
 error-time-empty = Argumentul de timp nu poate fi gol.
 error-time-overflow = Durata argumentului de timp este prea mare. Încearcă să o ții sub 3,000 de ani.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Identificatorul furnizat nu este o coma
 
 deprecated-interaction = Interacțiune învechită
 deprecated-interaction-description = Această interacțiune este învechită și nu va funcționa. Vă rugăm să rulați din nou comanda originală.
-identifier = <:id:1125971775755407390> Identificator: `{$identifier}`
+identifier = <:id:1125971775755407390> Identificator: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Nume-utilizator
 username-placeholder = Introduceți numele de utilizator pentru a utiliza
 
 invalid-statistic =
-  Statistică nevalidă `{$statistic}` pentru `{$game}`. Verificați documentația și încercați din nou.
+  Statistică nevalidă **`{$statistic}`** pentru **`{$game}`**. Verificați documentația și încercați din nou.
 
 invalid-level-type =
-  Tip de nivel nevalid `{$kind}`. Verificați documentația și încercați din nou.
+  Tip de nivel nevalid **`{$kind}`**. Verificați documentația și încercați din nou.
 
 invalid-game-type =
-  Tip de joc nevalid `{$game}`. Verificați documentația și încercați din nou.
+  Tip de joc nevalid **`{$game}`**. Verificați documentația și încercați din nou.
 
 image-created =
   Imaginea dvs. a fost creată! Încercați-o cu </execute:1125992506501365892>.
 
-  Identificator: `{$id}`
-  Link: `{$link}`
+  Identificator: **`{$id}`**
+  Link: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = fundal
 error-invalid-colour = Culoare nevalidă furnizată
 error-invalid-colour-description = Culoarea furnizată nu este validă. Încercați să furnizați una dintre [aceste culori](https://simple.wikipedia.org/wiki/List_of_colors) sau o culoare hexagonală cu prefixul `#`.
 colour-changed = Culoare fundal schimbată
-colour-changed-description = Culoarea fundalului dvs. a fost schimbată în `{$colour}`.
+colour-changed-description = Culoarea fundalului dvs. a fost schimbată în **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = conectare
   .uuid-description = UUID Minecraft de conectat
 
 linking-failed = Conectare eșuată
-linking-failed-uuid-description = UUID-ul `{$uuid}` nu aparține unui cont Minecraft.
+linking-failed-uuid-description = UUID-ul **`{$uuid}`** nu aparține unui cont Minecraft.
 linking-failed-username-description = Numele utilizator **`{$username}`** nu aparține unui cont Minecraft.
 linking-failed-description = Trebuie să furnizați un UUID sau un nume de utilizator valid.
 linking-succeeded = Conectare cu succes
@@ -2479,7 +2479,7 @@ guild-monthly = lunar
   .uuid = uuid
   .uuid-description = UUID-ul membrului guildă de vizualizat
 
-showing-guild-xp-statistics = Se afișează câștigul de XP al guildelor de la `{$from}` până la `{$to}`.
+showing-guild-xp-statistics = Se afișează câștigul de XP al guildelor de la {$from} până la {$to}.
 
 # Etichete comune pentru canvas
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Numele de utilizator Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
+
+# La comenzi
+
+arcade-at = la
+  .description = Afișează statisticile Arcade ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Arcade de vizualizat
+
+arena-at = la
+  .description = Afișează statisticile Arenă ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Arenă de vizualizat
+
+bedwars-at = la
+  .description = Afișează statisticile Bed Wars ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Bed Wars de vizualizat
+
+blitz-at = la
+  .description = Afișează statisticile Blitz Survival Games ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Blitz Survival Games de vizualizat
+
+buildbattle-at = la
+  .description = Afișează statisticile Build Battle ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Build Battle de vizualizat
+
+copsandcrims-at = la
+  .description = Afișează statisticile Cops and Crims ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Cops and Crims de vizualizat
+
+duels-at = la
+  .description = Afișează statisticile Duels ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Duels de vizualizat
+
+megawalls-at = la
+  .description = Afișează statisticile Mega Walls ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Mega Walls de vizualizat
+
+murdermystery-at = la
+  .description = Afișează statisticile Murder Mystery ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Murder Mystery de vizualizat
+
+paintball-at = la
+  .description = Afișează statisticile Paintball ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Paintball de vizualizat
+
+pit-at = la
+  .description = Afișează statisticile The Pit ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul The Pit de vizualizat
+
+quake-at = la
+  .description = Afișează statisticile Quakecraft ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Quakecraft de vizualizat
+
+skywars-at = la
+  .description = Afișează statisticile SkyWars ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul SkyWars de vizualizat
+
+smash-at = la
+  .description = Afișează statisticile Smash Heroes ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Smash Heroes de vizualizat
+
+speeduhc-at = la
+  .description = Afișează statisticile SpeedUHC ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul SpeedUHC de vizualizat
+
+tntgames-at = la
+  .description = Afișează statisticile TNT Games ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul TNT Games de vizualizat
+
+turbokartracers-at = la
+  .description = Afișează statisticile Turbo Kart Racers ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Turbo Kart Racers de vizualizat
+
+uhc-at = la
+  .description = Afișează statisticile UHC Champions ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul UHC Champions de vizualizat
+
+vampirez-at = la
+  .description = Afișează statisticile VampireZ ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul VampireZ de vizualizat
+
+walls-at = la
+  .description = Afișează statisticile The Walls ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul The Walls de vizualizat
+
+warlords-at = la
+  .description = Afișează statisticile Warlords ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Warlords de vizualizat
+
+woolwars-at = la
+  .description = Afișează statisticile Wool Wars ale unui jucător la un anumit moment în timp
+  .username = nume-utilizator
+  .username-description = Numele de utilizator Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul Wool Wars de vizualizat
+
+guild-at = la
+  .description = Afișează statisticile unei gilde la un anumit moment în timp
+  .name = nume
+  .name-description = Numele guildei de vizualizat
+  .username = nume-utilizator
+  .username-description = Numele utilizatorului membru al guildei de vizualizat
+  .uuid = uuid
+  .uuid-description = UUID-ul membrului guildei de vizualizat
+  .time = timp
+  .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Afișarea statisticilor de la {$at}.
+showing-guild-statistics-at = Afișarea statisticilor de la guildă din {$at}.

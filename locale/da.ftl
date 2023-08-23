@@ -3,45 +3,45 @@ not-linked = Manglende argumenter
 not-linked-description = Da du ikke er linket, skal du angive en profil for at se.
 showing-statistics = <a:clock:1115091329958019253> Viser statistikændring fra {$from} til {$to}.
 no-previous-statistics = Ingen tidligere data fundet for **`{$name}`**, så det er blevet indsat.
-showing-guild-statistics = Viser guild statistikændring fra `{$from}` til `{$to}`.
+showing-guild-statistics = Viser guild statistikændring fra {$from} til {$to}.
 no-previous-guild-statistics = Ingen tidligere data fundet for guild **`{$name}`**, så den er blevet indsat.
-showing-comparison = <a:clock:1115091329958019253> Viser statistik fra `{$from}` i forhold til `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Viser statistik fra **`{$from}`** i forhold til **`{$to}`**.
 
 # Fejl
 
-error-player-not-found = Profil med navnet `{$name}` blev ikke fundet.
-error-session-not-found = Session med navnet `{$name}` blev ikke fundet.
-error-player-uuid-not-found = Spiller med UUID `{$uuid}` blev ikke fundet.
-error-player-username-not-found = Spiller med brugernavn `{$name}` blev ikke fundet.
-error-guild-by-member-uuid-not-found = Guild-medlem med UUID `{$uuid}` blev ikke fundet.
-error-guild-by-member-username-not-found = Guild-medlem med brugernavn `{$name}` blev ikke fundet.
-error-guild-not-found = Guild med navnet `{$name}` blev ikke fundet.
+error-player-not-found = Profil med navnet **`{$name}`** blev ikke fundet.
+error-session-not-found = Session med navnet **`{$name}`** blev ikke fundet.
+error-player-uuid-not-found = Spiller med UUID **`{$uuid}`** blev ikke fundet.
+error-player-username-not-found = Spiller med brugernavn **`{$name}`** blev ikke fundet.
+error-guild-by-member-uuid-not-found = Guild-medlem med UUID **`{$uuid}`** blev ikke fundet.
+error-guild-by-member-username-not-found = Guild-medlem med brugernavn **`{$name}`** blev ikke fundet.
+error-guild-not-found = Guild med navnet **`{$name}`** blev ikke fundet.
 error-internal = Der opstod en intern fejl. Den er blevet logget, og vil blive løst snart.
 error-not-linked = Du er ikke linket til en Minecraft-konto. Brug </link:1113624864524357710> for at linke din konto.
-error-invalid-uuid = UUID'en `{$uuid}` er ugyldig.
-error-invalid-username = Brugernavnet `{$name}` er ugyldigt.
-error-member-player-not-found = Medlemmet `{$name}` blev ikke fundet i profilen.
-error-skyblock-profile-not-found = SkyBlock-profil med navnet `{$name}` blev ikke fundet.
-error-player-snapshot-not-found = Der blev ikke fundet nogen snapshots for `{$name}`. Opret en med </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Leaderboard med navnet `{$name}` blev ikke fundet.
-error-profile-not-found = `{$profile}` SkyBlock-profilen tilhørende `{$name}` har deaktiveret sin API eller har ikke logget ind siden det nye profilsystem.
+error-invalid-uuid = UUID'en **`{$uuid}`** er ugyldig.
+error-invalid-username = Brugernavnet **`{$name}`** er ugyldigt.
+error-member-player-not-found = Medlemmet **`{$name}`** blev ikke fundet i profilen.
+error-skyblock-profile-not-found = SkyBlock-profil med navnet **`{$name}`** blev ikke fundet.
+error-player-snapshot-not-found = Der blev ikke fundet nogen snapshots for **`{$name}`**. Opret en med </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Leaderboard med navnet **`{$name}`** blev ikke fundet.
+error-profile-not-found = **`{$profile}`** SkyBlock-profilen tilhørende **`{$name}`** har deaktiveret sin API eller har ikke logget ind siden det nye profilsystem.
 error-identifier-too-long =
   En af de genererede identifikatorer for denne interaktion er for lang.
   Prøv at reducere antallet af komponenter eller mængden af brugerdefineret tekst.
-error-user-track-limit-reached = Du har nået det maksimale antal spor på `{$limit}`. Køb StatPixel+ for at fjerne denne begrænsning på <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Du har nået det maksimale antal spor på **`{$limit}`**. Køb StatPixel+ for at fjerne denne begrænsning på <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Denne guild har nået det maksimale antal spor på `{$limit}`.
+  Denne guild har nået det maksimale antal spor på **`{$limit}`**.
   Hvis du har StatPixel+, kan du booste guilden med </boost:1132443666997321809> for at fjerne denne begrænsning eller gå til <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Du har nået det maksimale antal boost på `{$limit}`. Du kan fjerne en boost på kontrolpanelet: <https://statpixel.xyz/dashboard/boost>.
+  Du har nået det maksimale antal boost på **`{$limit}`**. Du kan fjerne en boost på kontrolpanelet: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Du sporer allerede denne spiller på denne kanal.
 error-not-premium = Du skal være en StatPixel+ abonnent for at udføre denne handling. Gå til <https://statpixel.xyz/plus> for mere information.
 error-not-in-a-guild = Du skal være i en guild for at udføre denne handling.
 error-boost-already-exists = Du booster allerede denne guild.
-error-time-invalid-character = Der blev fundet et ugyldigt tegn i tidsargumentet på position `{$position}`.
-error-time-expected-number = Forventede et tal i tidsargumentet på position `{$position}`.
-error-time-unknown-unit = Ukendt tidsenhed `{$unit}` på position `{$position}` med værdi `{$value}`.
+error-time-invalid-character = Der blev fundet et ugyldigt tegn i tidsargumentet på position **`{$position}`**.
+error-time-expected-number = Forventede et tal i tidsargumentet på position **`{$position}`**.
+error-time-unknown-unit = Ukendt tidsenhed **`{$unit}`** på position **`{$position}`** med værdi **`{$value}`**.
 error-time-empty = Tidsargumentet kan ikke være tomt.
 error-time-overflow = Varigheden af tidsargumentet er for lang. Prøv at holde det under 3.000 år.
 
@@ -111,7 +111,7 @@ invalid-identifier-command-description = Den angivne identifikator er ikke en ko
 
 deprecated-interaction = Forældet interaktion
 deprecated-interaction-description = Denne interaktion er forældet og vil ikke virke. Kør den oprindelige kommando igen.
-identifier = <:id:1125971775755407390> Identifikator: `{$identifier}`
+identifier = <:id:1125971775755407390> Identifikator: **`{$identifier}`**
 
 # /builder
 
@@ -173,19 +173,19 @@ username = Brugernavn
 username-placeholder = Indtast brugernavn
 
 invalid-statistic =
-  Ugyldig statistik `{$statistic}` for `{$game}`. Tjek dokumentationen og prøv igen.
+  Ugyldig statistik **`{$statistic}`** for **`{$game}`**. Tjek dokumentationen og prøv igen.
 
 invalid-level-type =
-  Ugyldig niveautype `{$kind}`. Tjek dokumentationen og prøv igen.
+  Ugyldig niveautype **`{$kind}`**. Tjek dokumentationen og prøv igen.
 
 invalid-game-type =
-  Ugyldig spiltype `{$game}`. Tjek dokumentationen og prøv igen.
+  Ugyldig spiltype **`{$game}`**. Tjek dokumentationen og prøv igen.
 
 image-created =
   Dit billede er blevet oprettet! Prøv det af med </execute:1125992506501365892>.
 
-  Identifikator: `{$id}`
-  Link: `{$link}`
+  Identifikator: **`{$id}`**
+  Link: **`{$link}`**
 
 # /about
 
@@ -241,7 +241,7 @@ background = baggrund
 error-invalid-colour = Ugyldig farve angivet
 error-invalid-colour-description = Den angivne farve er ugyldig. Prøv at angive en af [disse farver](https://simple.wikipedia.org/wiki/List_of_colors) eller en hex-farve med præfikset `#`.
 colour-changed = Baggrundsfarven er ændret
-colour-changed-description = Din baggrundsfarve er blevet ændret til `{$colour}`.
+colour-changed-description = Din baggrundsfarve er blevet ændret til **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -541,7 +541,7 @@ link = linkning
   .uuid-description = Minecraft UUID der skal linkes
 
 linking-failed = Linkning mislykkedes
-linking-failed-uuid-description = UUID'en `{$uuid}` tilhører ikke en Minecraft-konto.
+linking-failed-uuid-description = UUID'en **`{$uuid}`** tilhører ikke en Minecraft-konto.
 linking-failed-username-description = Brugernavnet **`{$username}`** tilhører ikke en Minecraft-konto.
 linking-failed-description = Du skal angive en gyldig UUID eller brugernavn.
 linking-succeeded = Linkning lykkedes
@@ -2483,7 +2483,7 @@ guild-monthly = månedlig
   .uuid = uuid
   .uuid-description = UUID'en for guild-medlemmet for at se guild'en
 
-showing-guild-xp-statistics = Viser guild XP-fremgang fra `{$from}` til `{$to}`.
+showing-guild-xp-statistics = Viser guild XP-fremgang fra {$from} til {$to}.
 
 # Delte canvas-etiketter
 
@@ -2797,3 +2797,261 @@ bedwars-practice = practice
   .username-description = Minecraft-brugernavn
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Kommandoer
+
+arcade-at = ved
+  .description = Vis Arcade-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Arcademodus at se
+
+arena-at = ved
+  .description = Vis Arena-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Arenamodus at se
+
+bedwars-at = ved
+  .description = Vis Bed Wars-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Bed Wars-modus at se
+
+blitz-at = ved
+  .description = Vis Blitz Survival Games-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Blitz Survival Games-modus at se
+
+buildbattle-at = ved
+  .description = Vis Build Battle-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Build Battle-modus at se
+
+copsandcrims-at = ved
+  .description = Vis Cops and Crims-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Cops and Crims-modus at se
+
+duels-at = ved
+  .description = Vis Duels-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Duels-modus at se
+
+megawalls-at = ved
+  .description = Vis Mega Walls-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Mega Walls-modus at se
+
+murdermystery-at = ved
+  .description = Vis Murder Mystery-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Murder Mystery-modus at se
+
+paintball-at = ved
+  .description = Vis Paintball-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Paintball-modus at se
+
+pit-at = ved
+  .description = Vis The Pit-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = The Pit-modus at se
+
+quake-at = ved
+  .description = Vis Quakecraft-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Quakecraft-modus at se
+
+skywars-at = ved
+  .description = Vis SkyWars-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = SkyWars-modus at se
+
+smash-at = ved
+  .description = Vis Smash Heroes-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Smash Heroes-modus at se
+
+speeduhc-at = ved
+  .description = Vis SpeedUHC-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = SpeedUHC-modus at se
+
+tntgames-at = ved
+  .description = Vis TNT Games-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = TNT Games-modus at se
+
+turbokartracers-at = ved
+  .description = Vis Turbo Kart Racers-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Turbo Kart Racers-modus at se
+
+uhc-at = ved
+  .description = Vis UHC Champions-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = UHC Champions-modus at se
+
+vampirez-at = ved
+  .description = Vis VampireZ-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = VampireZ-modus at se
+
+walls-at = ved
+  .description = Vis The Walls-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = The Walls-modus at se
+
+warlords-at = ved
+  .description = Vis Warlords-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Warlords-modus at se
+
+woolwars-at = ved
+  .description = Vis Wool Wars-statistik for en spiller på et bestemt tidspunkt
+  .username = brugernavn
+  .username-description = Minecraft brugernavn
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+  .mode = tilstand
+  .mode-description = Wool Wars-modus at se
+
+guild-at = ved
+  .description = Vis statistik for en guild på et bestemt tidspunkt
+  .name = navn
+  .name-description = Navnet på den guild, der skal ses
+  .username = brugernavn
+  .username-description = Brugernavnet på guildmedlemmet, hvis guild skal ses
+  .uuid = uuid
+  .uuid-description = UUID'en for guildmedlemmet, hvis guild skal ses
+  .time = tid
+  .time-description = Tiden tilbage (1t 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Viser statistik fra {$at}.
+showing-guild-statistics-at = Viser guild statistik fra {$at}.

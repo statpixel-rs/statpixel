@@ -3,45 +3,45 @@ not-linked = Λείπουν ορίσματα
 not-linked-description = Επειδή δεν είστε συνδεδεμένοι, πρέπει να παρέχετε ένα προφίλ για να δείτε.
 showing-statistics = <a:clock:1115091329958019253> Εμφάνιση αλλαγής στατιστικών από {$from} σε {$to}.
 no-previous-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για τον χρήστη **`{$name}`**, οπότε προστέθηκε.
-showing-guild-statistics = Εμφάνιση αλλαγής στατιστικών ομάδας από `{$from}` σε `{$to}`.
+showing-guild-statistics = Εμφάνιση αλλαγής στατιστικών ομάδας από {$from} σε {$to}.
 no-previous-guild-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για την ομάδα **`{$name}`**, οπότε προστέθηκε.
-showing-comparison = <a:clock:1115091329958019253> Εμφάνιση στατιστικών του `{$from}` συγκρινόμενα με το `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Εμφάνιση στατιστικών του **`{$from}`** συγκρινόμενα με το **`{$to}`**.
 
 # Σφάλματα
 
-error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη `{$name}`.
-error-session-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη `{$name}`.
-error-player-uuid-not-found = Δεν βρέθηκε παίκτης με το UUID `{$uuid}`.
-error-player-username-not-found = Δεν βρέθηκε παίκτης με το όνομα χρήστη `{$name}`.
-error-guild-by-member-uuid-not-found = Δεν βρέθηκε μέλος της ομάδας με το UUID `{$uuid}`.
-error-guild-by-member-username-not-found = Δεν βρέθηκε μέλος της ομάδας με το όνομα χρήστη `{$name}`.
-error-guild-not-found = Δεν βρέθηκε ομάδα με το όνομα `{$name}`.
+error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη **`{$name}`**.
+error-session-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη **`{$name}`**.
+error-player-uuid-not-found = Δεν βρέθηκε παίκτης με το UUID **`{$uuid}`**.
+error-player-username-not-found = Δεν βρέθηκε παίκτης με το όνομα χρήστη **`{$name}`**.
+error-guild-by-member-uuid-not-found = Δεν βρέθηκε μέλος της ομάδας με το UUID **`{$uuid}`**.
+error-guild-by-member-username-not-found = Δεν βρέθηκε μέλος της ομάδας με το όνομα χρήστη **`{$name}`**.
+error-guild-not-found = Δεν βρέθηκε ομάδα με το όνομα **`{$name}`**.
 error-internal = Παρουσιάστηκε εσωτερικό σφάλμα. Έχει καταγραφεί και θα επιλυθεί σύντομα.
 error-not-linked = Δεν είστε συνδεδεμένοι σε έναν λογαριασμό Minecraft. Χρησιμοποιήστε </link:1113624864524357710> για να συνδέσετε το λογαριασμό σας.
-error-invalid-uuid = Το UUID `{$uuid}` δεν είναι έγκυρο.
-error-invalid-username = Το όνομα χρήστη `{$name}` δεν είναι έγκυρο.
-error-member-player-not-found = Δεν βρέθηκε το μέλος `{$name}` στο προφίλ.
-error-skyblock-profile-not-found = Δεν βρέθηκε προφίλ SkyBlock για τον χρήστη `{$name}`.
-error-player-snapshot-not-found = Δεν βρέθηκαν στιγμιότυπα για τον χρήστη `{$name}`. Δημιουργήστε ένα με </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Δεν βρέθηκε κατάταξη με το όνομα `{$name}`.
-error-profile-not-found = Το προφίλ SkyBlock `{$profile}` που ανήκει στον χρήστη `{$name}` έχει απενεργοποιημένο το API ή δεν έχει συνδεθεί από τότε που ισχύει το νέο σύστημα προφίλ.
+error-invalid-uuid = Το UUID **`{$uuid}`** δεν είναι έγκυρο.
+error-invalid-username = Το όνομα χρήστη **`{$name}`** δεν είναι έγκυρο.
+error-member-player-not-found = Δεν βρέθηκε το μέλος **`{$name}`** στο προφίλ.
+error-skyblock-profile-not-found = Δεν βρέθηκε προφίλ SkyBlock για τον χρήστη **`{$name}`**.
+error-player-snapshot-not-found = Δεν βρέθηκαν στιγμιότυπα για τον χρήστη **`{$name}`**. Δημιουργήστε ένα με </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Δεν βρέθηκε κατάταξη με το όνομα **`{$name}`**.
+error-profile-not-found = Το προφίλ SkyBlock **`{$profile}`** που ανήκει στον χρήστη **`{$name}`** έχει απενεργοποιημένο το API ή δεν έχει συνδεθεί από τότε που ισχύει το νέο σύστημα προφίλ.
 error-identifier-too-long =
   Ένα από τα δημιουργημένα αναγνωριστικά για αυτήν την αλληλεπίδραση είναι πολύ μεγάλο.
   Δοκιμάστε να μειώσετε τον αριθμό των στοιχείων ή το ποσό του προσαρμοσμένου κειμένου.
-error-user-track-limit-reached = Έχετε φτάσει τον μέγιστο αριθμό παρακολούθησης των `{$limit}`. Αγοράστε το StatPixel+ για να αφαιρέσετε αυτόν τον περιορισμό στη διεύθυνση <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Έχετε φτάσει τον μέγιστο αριθμό παρακολούθησης των **`{$limit}`**. Αγοράστε το StatPixel+ για να αφαιρέσετε αυτόν τον περιορισμό στη διεύθυνση <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Αυτή η ομάδα έχει φτάσει τον μέγιστο αριθμό παρακολούθησης των `{$limit}`.
+  Αυτή η ομάδα έχει φτάσει τον μέγιστο αριθμό παρακολούθησης των **`{$limit}`**.
   Εάν έχετε το StatPixel+, ενισχύστε την ομάδα με </boost:1132443666997321809> για να αφαιρέσετε αυτόν τον περιορισμό ή μεταβείτε στο <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Έχετε φτάσει τον μέγιστο αριθμό ενίσχυσης των `{$limit}`. Μπορείτε να αφαιρέσετε μια ενίσχυση στον πίνακα ελέγχου: <https://statpixel.xyz/dashboard/boost>.
+  Έχετε φτάσει τον μέγιστο αριθμό ενίσχυσης των **`{$limit}`**. Μπορείτε να αφαιρέσετε μια ενίσχυση στον πίνακα ελέγχου: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Ήδη παρακολουθείτε αυτόν τον παίκτη σε αυτό το κανάλι.
 error-not-premium = Πρέπει να είστε συνδρομητής StatPixel+ για να πραγματοποιήσετε αυτήν την ενέργεια. Μεταβείτε στο <https://statpixel.xyz/plus> για περισσότερες πληροφορίες.
 error-not-in-a-guild = Πρέπει να είστε σε μια ομάδα για να πραγματοποιήσετε αυτήν την ενέργεια.
 error-boost-already-exists = Ήδη ενισχύετε αυτήν την ομάδα.
-error-time-invalid-character = Βρέθηκε μη έγκυρος χαρακτήρας στο όρισμα χρόνου στη θέση `{$position}`.
-error-time-expected-number = Αναμενόταν ένας αριθμός στο όρισμα χρόνου στη θέση `{$position}`.
-error-time-unknown-unit = Άγνωστη μονάδα χρόνου `{$unit}` στη θέση `{$position}` με τιμή `{$value}`.
+error-time-invalid-character = Βρέθηκε μη έγκυρος χαρακτήρας στο όρισμα χρόνου στη θέση **`{$position}`**.
+error-time-expected-number = Αναμενόταν ένας αριθμός στο όρισμα χρόνου στη θέση **`{$position}`**.
+error-time-unknown-unit = Άγνωστη μονάδα χρόνου **`{$unit}`** στη θέση **`{$position}`** με τιμή **`{$value}`**.
 error-time-empty = Το όρισμα χρόνου δεν μπορεί να είναι κενό.
 error-time-overflow = Η διάρκεια του ορίσματος χρόνου είναι πολύ μεγάλη. Δοκιμάστε να το κρατήσετε κάτω από 3.000 χρόνια.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Το παρεχόμενο αναγνω�
 
 deprecated-interaction = Παρωχημένη αλληλεπίδραση
 deprecated-interaction-description = Αυτή η αλληλεπίδραση έχει παραταθεί και δεν θα λειτουργεί. Εκτελέστε ξανά την αρχική εντολή.
-identifier = <:id:1125971775755407390> Αναγνωριστικό: `{$identifier}`
+identifier = <:id:1125971775755407390> Αναγνωριστικό: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Όνομα χρήστη
 username-placeholder = Εισαγάγετε το όνομα χρήστη
 
 invalid-statistic =
-  Μη έγκυρη στατιστική πληροφορία `{$statistic}` για το παιχνίδι `{$game}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρη στατιστική πληροφορία **`{$statistic}`** για το παιχνίδι **`{$game}`**. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 invalid-level-type =
-  Μη έγκυρος τύπος επιπέδου `{$kind}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρος τύπος επιπέδου **`{$kind}`**. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 invalid-game-type =
-  Μη έγκυρος τύπος παιχνιδιού `{$game}`. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
+  Μη έγκυρος τύπος παιχνιδιού **`{$game}`**. Ελέγξτε την τεκμηρίωση και προσπαθήστε ξανά.
 
 image-created =
   Η εικόνα σας δημιουργήθηκε! Δοκιμάστε την με </execute:1125992506501365892>.
 
-  Αναγνωριστικό: `{$id}`
-  Σύνδεσμος: `{$link}`
+  Αναγνωριστικό: **`{$id}`**
+  Σύνδεσμος: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = background
 error-invalid-colour = Μη έγκυρο χρώμα
 error-invalid-colour-description = Το παρεχόμενο χρώμα δεν είναι έγκυρο. Δοκιμάστε να δώσετε ένα από [αυτά τα χρώματα](https://simple.wikipedia.org/wiki/List_of_colors) ή ένα χρώμα hex προεπιλεγμένο με το `#`.
 colour-changed = Άλλαξε το χρώμα του φόντου
-colour-changed-description = Το χρώμα του φόντου σας άλλαξε σε `{$colour}`.
+colour-changed-description = Το χρώμα του φόντου σας άλλαξε σε **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = σύνδεση
   .uuid-description = Το UUID Minecraft που θέλετε να συνδέσετε
 
 linking-failed = Η σύνδεση απέτυχε
-linking-failed-uuid-description = Το UUID `{$uuid}` δεν ανήκει σε λογαριασμό Minecraft.
+linking-failed-uuid-description = Το UUID **`{$uuid}`** δεν ανήκει σε λογαριασμό Minecraft.
 linking-failed-username-description = Το όνομα χρήστη **`{$username}`** δεν ανήκει σε λογαριασμό Minecraft.
 linking-failed-description = Πρέπει να παρέχετε ένα έγκυρο UUID ή όνομα χρήστη.
 linking-succeeded = Η σύνδεση ήταν επιτυχής
@@ -2479,7 +2479,7 @@ guild-monthly = μηνιαία
   .uuid = uuid
   .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
 
-showing-guild-xp-statistics = Εμφάνιση της κέρδισης XP της συντεχνίας από `{$from}` έως `{$to}`.
+showing-guild-xp-statistics = Εμφάνιση της κέρδισης XP της συντεχνίας από {$from} έως {$to}.
 
 # Κοινές ετικέτες καμβά
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Όνομα χρήστη Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecraft
+
+# Σε εντολές
+
+arcade-at = στις
+  .description = Εμφάνιση των στατιστικών Arcade ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Arcade προς προβολή
+
+arena-at = στις
+  .description = Εμφάνιση των στατιστικών Arena ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Arena προς προβολή
+
+bedwars-at = στις
+  .description = Εμφάνιση των στατιστικών Bed Wars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Bed Wars προς προβολή
+
+blitz-at = στις
+  .description = Εμφάνιση των στατιστικών Blitz Survival Games ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Blitz Survival Games προς προβολή
+
+buildbattle-at = στις
+  .description = Εμφάνιση των στατιστικών Build Battle ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Build Battle προς προβολή
+
+copsandcrims-at = στις
+  .description = Εμφάνιση των στατιστικών Cops and Crims ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Cops and Crims προς προβολή
+
+duels-at = στις
+  .description = Εμφάνιση των στατιστικών Duels ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Duels προς προβολή
+
+megawalls-at = στις
+  .description = Εμφάνιση των στατιστικών Mega Walls ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Mega Walls προς προβολή
+
+murdermystery-at = στις
+  .description = Εμφάνιση των στατιστικών Murder Mystery ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Murder Mystery προς προβολή
+
+paintball-at = στις
+  .description = Εμφάνιση των στατιστικών Paintball ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Paintball προς προβολή
+
+pit-at = στις
+  .description = Εμφάνιση των στατιστικών The Pit ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία The Pit προς προβολή
+
+quake-at = στις
+  .description = Εμφάνιση των στατιστικών Quakecraft ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Quakecraft προς προβολή
+
+skywars-at = στις
+  .description = Εμφάνιση των στατιστικών SkyWars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία SkyWars προς προβολή
+
+smash-at = στις
+  .description = Εμφάνιση των στατιστικών Smash Heroes ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Smash Heroes προς προβολή
+
+speeduhc-at = στις
+  .description = Εμφάνιση των στατιστικών SpeedUHC ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία SpeedUHC προς προβολή
+
+tntgames-at = στις
+  .description = Εμφάνιση των στατιστικών TNT Games ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία TNT Games προς προβολή
+
+turbokartracers-at = στις
+  .description = Εμφάνιση των στατιστικών Turbo Kart Racers ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
+
+uhc-at = στις
+  .description = Εμφάνιση των στατιστικών UHC Champions ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία UHC Champions προς προβολή
+
+vampirez-at = στις
+  .description = Εμφάνιση των στατιστικών VampireZ ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία VampireZ προς προβολή
+
+walls-at = στις
+  .description = Εμφάνιση των στατιστικών The Walls ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία The Walls προς προβολή
+
+warlords-at = στις
+  .description = Εμφάνιση των στατιστικών Warlords ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Warlords προς προβολή
+
+woolwars-at = στις
+  .description = Εμφάνιση των στατιστικών Wool Wars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
+  .username = όνομα-χρήστη
+  .username-description = Όνομα χρήστη Minecraft
+  .uuid = uuid
+  .uuid-description = UUID Minecraft
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία Wool Wars προς προβολή
+
+guild-at = στις
+  .description = Εμφάνιση των στατιστικών ενός συνδεσμου σε συγκεκριμένη χρονική στιγμή
+  .name = όνομα
+  .name-description = Το όνομα του συνδέσμου προς προβολή
+  .username = όνομα-χρήστη
+  .username-description = Το όνομα χρήστη του μέλους του συνδέσμου για προβολή
+  .uuid = uuid
+  .uuid-description = Το UUID του μέλους του συνδέσμου για προβολή
+  .time = χρόνος
+  .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
+
+showing-statistics-at = <a:clock:1115091329958019253> Εμφάνιση στατιστικών από τις {$at}.
+showing-guild-statistics-at = Εμφάνιση στατιστικών συνδέσμου από τις {$at}.

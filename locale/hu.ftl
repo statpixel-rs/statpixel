@@ -3,46 +3,46 @@ not-linked = Hiányzó argumentumok
 not-linked-description = Mivel nincs összekapcsolva, meg kell adnod egy profilját a megtekintéshez.
 showing-statistics = <a:clock:1115091329958019253> Statisztikák megjelenítése innen: {$from} erre: {$to}.
 no-previous-statistics = Nincsenek előző adatok találhatók **`{$name}`** nevű játékoshoz, ezért beillesztve lett.
-showing-guild-statistics = Egy guild statisztika megjelenítése innen: `{$from}` erre: `{$to}`.
+showing-guild-statistics = Egy guild statisztika megjelenítése innen: {$from} erre: {$to}.
 no-previous-guild-statistics = Nincsenek előző adatok találhatók **`{$name}`** guildhez, ezért beillesztve lett.
-showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése: `{$from}` összehasonlítva: `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése: **`{$from}`** összehasonlítva: **`{$to}`**.
 
 # Hibák
 
-error-player-not-found = A(z) `{$name}` nevű játékos profilja nem található.
-error-session-not-found = A(z) `{$name}` nevű játékos munkamenetét nem található.
-error-player-uuid-not-found = A(z) `{$uuid}` azonosítójú játékos nem található.
-error-player-username-not-found = A(z) `{$name}` nevű játékos nem található.
-error-guild-by-member-uuid-not-found = A(z) `{$uuid}` azonosítójú guild tag nem található.
-error-guild-by-member-username-not-found = A(z) `{$name}` nevű guild tag nem található.
-error-guild-not-found = A(z) `{$name}` nevű guild nem található.
+error-player-not-found = A(z) **`{$name}`** nevű játékos profilja nem található.
+error-session-not-found = A(z) **`{$name}`** nevű játékos munkamenetét nem található.
+error-player-uuid-not-found = A(z) **`{$uuid}`** azonosítójú játékos nem található.
+error-player-username-not-found = A(z) **`{$name}`** nevű játékos nem található.
+error-guild-by-member-uuid-not-found = A(z) **`{$uuid}`** azonosítójú guild tag nem található.
+error-guild-by-member-username-not-found = A(z) **`{$name}`** nevű guild tag nem található.
+error-guild-not-found = A(z) **`{$name}`** nevű guild nem található.
 error-internal = Belső hiba történt. Rögzítettük, és hamarosan megoldjuk.
 error-not-linked = Nincs összekapcsolva egy Minecraft fiókkal sem. Használd a következőt: </link:1113624864524357710> a fiókod összekapcsolásához.
-error-invalid-uuid = A(z) `{$uuid}` azonosító érvénytelen.
-error-invalid-username = A(z) `{$name}` felhasználónév érvénytelen.
-error-member-player-not-found = A(z) `{$name}` nevű tag nem található a profilban.
-error-skyblock-profile-not-found = A(z) `{$name}` nevű SkyBlock profil nem található.
-error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) `{$name}` nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = A(z) `{$name}` nevű ranglista nem található.
-error-profile-not-found = A(z) `{$name}` `{$profile}` SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
+error-invalid-uuid = A(z) **`{$uuid}`** azonosító érvénytelen.
+error-invalid-username = A(z) **`{$name}`** felhasználónév érvénytelen.
+error-member-player-not-found = A(z) **`{$name}`** nevű tag nem található a profilban.
+error-skyblock-profile-not-found = A(z) **`{$name}`** nevű SkyBlock profil nem található.
+error-player-snapshot-not-found = Nincsenek pillanatképek találhatók a(z) **`{$name}`** nevű játékoshoz. Hozz létre egyet itt: </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = A(z) **`{$name}`** nevű ranglista nem található.
+error-profile-not-found = A(z) **`{$name}`** **`{$profile}`** SkyBlock profiljának az API-ja letiltva van, vagy azóta nem lépett be az új profilrendszerrel.
 error-identifier-too-long =
   Az egyik generált azonosító túl hosszú ebben az interakcióban.
   Próbáld csökkenteni a komponensek számát vagy a saját szöveg mennyiségét.
-error-user-track-limit-reached = Elérted a maximális `{$limit}` nyomon követési számot. A korlát eltávolításához vásárolj StatPixel+-t a következő helyen: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Elérted a maximális **`{$limit}`** nyomon követési számot. A korlát eltávolításához vásárolj StatPixel+-t a következő helyen: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ez a guild elért egy `{$limit}` nyomon követési számot.
+  Ez a guild elért egy **`{$limit}`** nyomon követési számot.
   Ha van StatPixel+-od, fokozd a guildet így: </boost:1132443666997321809> és távolítsd el ezt a korlátozást, vagy látogasd meg ezt a linket: <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Elérted a maximális `{$limit}` fokozat számot. Törölhetsz egy fokozatot a vezérlőpulton: <https://statpixel.xyz/dashboard/boost>.
+  Elérted a maximális **`{$limit}`** fokozat számot. Törölhetsz egy fokozatot a vezérlőpulton: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Már nyomon követed ezt a játékost ezen a csatornán.
 
 error-not-premium = Ezt a műveletet csak a StatPixel+ előfizetői végezhetik el. További információért látogasd meg a <https://statpixel.xyz/plus> oldalt.
 error-not-in-a-guild = Egy guildben kell lenned ennek a műveletnek a végrehajtásához.
 error-boost-already-exists = Már fokozod ezt a guildet.
-error-time-invalid-character = Érvénytelen karakter található a megadott időben a(z) `{$position}`. pozícióban.
-error-time-expected-number = Egy számot vártunk a megadott időben a(z) `{$position}`. pozícióban.
-error-time-unknown-unit = Ismeretlen időegység: `{$unit}`, a(z) `{$position}`. pozícióban, érték: `{$value}`.
+error-time-invalid-character = Érvénytelen karakter található a megadott időben a(z) **`{$position}`**. pozícióban.
+error-time-expected-number = Egy számot vártunk a megadott időben a(z) **`{$position}`**. pozícióban.
+error-time-unknown-unit = Ismeretlen időegység: **`{$unit}`**, a(z) **`{$position}`**. pozícióban, érték: **`{$value}`**.
 error-time-empty = Az idő argumentum nem lehet üres.
 error-time-overflow = Az idő argumentum időtartama túl hosszú. Próbáld meg 3000 év alatt tartani.
 
@@ -110,7 +110,7 @@ invalid-identifier-command-description = A megadott azonosító nem parancs.
 
 deprecated-interaction = A kapcsolat elavult
 deprecated-interaction-description = Ez a kapcsolat elavult és nem fog működni. Futtassa újra az eredeti parancsot.
-identifier = <:id:1125971775755407390> Azonosító: `{$identifier}`
+identifier = <:id:1125971775755407390> Azonosító: **`{$identifier}`**
 
 # /builder
 
@@ -172,19 +172,19 @@ username = Felhasználónév
 username-placeholder = Adja meg a felhasználónevet
 
 invalid-statistic =
-  Érvénytelen statisztika `{$statistic}` a(z) `{$game}` játékhoz. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen statisztika **`{$statistic}`** a(z) **`{$game}`** játékhoz. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 invalid-level-type =
-  Érvénytelen szint típus `{$kind}`. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen szint típus **`{$kind}`**. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 invalid-game-type =
-  Érvénytelen játék típus `{$game}`. Ellenőrizze a dokumentációt, és próbálkozzon újra.
+  Érvénytelen játék típus **`{$game}`**. Ellenőrizze a dokumentációt, és próbálkozzon újra.
 
 image-created =
   Elkészült a képe! Próbálja ki a </execute:1125992506501365892> parancs segítségével.
 
-  Azonosító: `{$id}`
-  Link: `{$link}`
+  Azonosító: **`{$id}`**
+  Link: **`{$link}`**
 
 # /about
 
@@ -240,7 +240,7 @@ background = háttér
 error-invalid-colour = Érvénytelen szín megadva
 error-invalid-colour-description = A megadott szín érvénytelen. Próbáljon meg egyet a [következő színekből](https://simple.wikipedia.org/wiki/List_of_colors), vagy egy hexadecimális színt, amelynek előtagja `#`.
 colour-changed = Háttérszín megváltozott
-colour-changed-description = A háttérszíne megváltozott `{$colour}`.
+colour-changed-description = A háttérszíne megváltozott **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -540,7 +540,7 @@ link = kapcsolat
   .uuid-description = A Minecraft UUID, amit kapcsolni szeretne
 
 linking-failed = Kapcsolat létrehozása sikertelen
-linking-failed-uuid-description = A megadott uuid `{$uuid}` nem tartozik egy Minecraft fiókhoz.
+linking-failed-uuid-description = A megadott uuid **`{$uuid}`** nem tartozik egy Minecraft fiókhoz.
 linking-failed-username-description = A megadott felhasználónév **`{$username}`** nem tartozik egy Minecraft fiókhoz.
 linking-failed-description = Érvényes UUID-t vagy felhasználónevet kell megadnia.
 linking-succeeded = Kapcsolat létrehozása sikeres
@@ -2475,7 +2475,7 @@ guild-monthly = havi
   .uuid = azonosító
   .uuid-description = A megjelenítendő guild tag azonosítója
 
-showing-guild-xp-statistics = A guild XP növekedésének megjelenítése a következő időszakban: `{$from}` - `{$to}`.
+showing-guild-xp-statistics = A guild XP növekedésének megjelenítése a következő időszakban: {$from} - {$to}.
 
 # Shared canvas labels
 
@@ -2789,3 +2789,261 @@ bedwars-practice = practice
   .username-description = Minecraft felhasználónév
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Parancsokhoz
+
+arcade-at = ekkor
+  .description = Mutassa meg egy játékos Arcade statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = Az Arcade mód, amit meg szeretnénk nézni
+
+arena-at = ekkor
+  .description = Mutassa meg egy játékos Aréna statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = Az Aréna mód, amit meg szeretnénk nézni
+
+bedwars-at = ekkor
+  .description = Mutassa meg egy játékos Ágyháború statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = Az Ágyháború mód, amit meg szeretnénk nézni
+
+blitz-at = ekkor
+  .description = Mutassa meg egy játékos Blitz Survival Games statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Blitz Survival Games mód, amit meg szeretnénk nézni
+
+buildbattle-at = ekkor
+  .description = Mutassa meg egy játékos Build Battle statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Build Battle mód, amit meg szeretnénk nézni
+
+copsandcrims-at = ekkor
+  .description = Mutassa meg egy játékos Cops and Crims statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Cops and Crims mód, amit meg szeretnénk nézni
+
+duels-at = ekkor
+  .description = Mutassa meg egy játékos Duels statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Duels mód, amit meg szeretnénk nézni
+
+megawalls-at = ekkor
+  .description = Mutassa meg egy játékos Mega Walls statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Mega Walls mód, amit meg szeretnénk nézni
+
+murdermystery-at = ekkor
+  .description = Mutassa meg egy játékos Murder Mystery statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Murder Mystery mód, amit meg szeretnénk nézni
+
+paintball-at = ekkor
+  .description = Mutassa meg egy játékos Paintball statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Paintball mód, amit meg szeretnénk nézni
+
+pit-at = ekkor
+  .description = Mutassa meg egy játékos The Pit statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A The Pit mód, amit meg szeretnénk nézni
+
+quake-at = ekkor
+  .description = Mutassa meg egy játékos Quakecraft statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Quakecraft mód, amit meg szeretnénk nézni
+
+skywars-at = ekkor
+  .description = Mutassa meg egy játékos SkyWars statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A SkyWars mód, amit meg szeretnénk nézni
+
+smash-at = ekkor
+  .description = Mutassa meg egy játékos Smash Heroes statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Smash Heroes mód, amit meg szeretnénk nézni
+
+speeduhc-at = ekkor
+  .description = Mutassa meg egy játékos SpeedUHC statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A SpeedUHC mód, amit meg szeretnénk nézni
+
+tntgames-at = ekkor
+  .description = Mutassa meg egy játékos TNT Games statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A TNT Games mód, amit meg szeretnénk nézni
+
+turbokartracers-at = ekkor
+  .description = Mutassa meg egy játékos Turbo Kart Racers statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Turbo Kart Racers mód, amit meg szeretnénk nézni
+
+uhc-at = ekkor
+  .description = Mutassa meg egy játékos UHC Champions statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = Az UHC Champions mód, amit meg szeretnénk nézni
+
+vampirez-at = ekkor
+  .description = Mutassa meg egy játékos VampireZ statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A VampireZ mód, amit meg szeretnénk nézni
+
+walls-at = ekkor
+  .description = Mutassa meg egy játékos The Walls statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A The Walls mód, amit meg szeretnénk nézni
+
+warlords-at = ekkor
+  .description = Mutassa meg egy játékos Warlords statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Warlords mód, amit meg szeretnénk nézni
+
+woolwars-at = ekkor
+  .description = Mutassa meg egy játékos Wool Wars statisztikáit egy adott időpontban
+  .username = felhasználónév
+  .username-description = Minecraft felhasználónév
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A Wool Wars mód, amit meg szeretnénk nézni
+
+guild-at = ekkor
+  .description = Mutassa meg egy céh statisztikáit egy adott időpontban
+  .name = név
+  .name-description = A név a céh megtekintéséhez
+  .username = felhasználónév
+  .username-description = A felhasználónév, akinek a céhének tagjait szeretnénk megtekinteni
+  .uuid = uuid
+  .uuid-description = A UUID azoknak a céh tagjainak, akiknek a céhét meg szeretnénk nézni
+  .time = idő
+  .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
+
+showing-statistics-at = <a:clock:1115091329958019253> Statisztikák mutatása ettől: {$at}.
+showing-guild-statistics-at = Céh statisztikák mutatása ettől: {$at}.

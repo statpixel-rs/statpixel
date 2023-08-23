@@ -233,7 +233,8 @@ async fn top(
 		"super::from::guild",
 		"super::snapshot::daily::guild",
 		"super::snapshot::weekly::guild",
-		"super::snapshot::monthly::guild"
+		"super::snapshot::monthly::guild",
+		"super::at::guild"
 	)
 )]
 pub async fn guild(_ctx: Context<'_>) -> Result<(), Error> {

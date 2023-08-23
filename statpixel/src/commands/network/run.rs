@@ -35,7 +35,6 @@ pub async fn network(
 			let id = api::id::command(api::command::Id::Root {
 				kind: api::command::Mode::Network,
 				uuid: player.uuid,
-				background: None,
 			});
 
 			ctx.send(

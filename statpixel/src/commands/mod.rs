@@ -14,6 +14,7 @@ use uuid::Uuid;
 use crate::util;
 
 pub mod about;
+pub mod at;
 pub mod background;
 pub mod bedwars;
 pub mod boost;

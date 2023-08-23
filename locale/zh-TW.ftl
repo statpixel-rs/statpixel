@@ -3,45 +3,45 @@ not-linked = 缺少参数
 not-linked-description = 由于您未链接账户，您需要提供一个个人资料以查看。
 showing-statistics = <a:clock:1115091329958019253> 正在显示 {$from} 到 {$to} 的统计数据变化。
 no-previous-statistics = 未找到有关 **`{$name}`** 的历史数据，因此已插入新数据。
-showing-guild-statistics = 正在显示公会 `{$from}` 到 `{$to}` 的统计数据变化。
+showing-guild-statistics = 正在显示公会 {$from} 到 {$to} 的统计数据变化。
 no-previous-guild-statistics = 未找到有关公会 **`{$name}`** 的历史数据，因此已插入新数据。
-showing-comparison = <a:clock:1115091329958019253> 正在显示 `{$from}` 和 `{$to}` 的统计数据对比。
+showing-comparison = <a:clock:1115091329958019253> 正在显示 **`{$from}`** 和 **`{$to}`** 的统计数据对比。
 
 # Errors
 
-error-player-not-found = 未找到属于 `{$name}` 的个人资料。
-error-session-not-found = 未找到属于 `{$name}` 的会话。
-error-player-uuid-not-found = 未找到 UUID 为 `{$uuid}` 的玩家。
-error-player-username-not-found = 未找到用户名为 `{$name}` 的玩家。
-error-guild-by-member-uuid-not-found = 未找到 UUID 为 `{$uuid}` 的公会成员。
-error-guild-by-member-username-not-found = 未找到用户名为 `{$name}` 的公会成员。
-error-guild-not-found = 未找到名为 `{$name}` 的公会。
+error-player-not-found = 未找到属于 **`{$name}`** 的个人资料。
+error-session-not-found = 未找到属于 **`{$name}`** 的会话。
+error-player-uuid-not-found = 未找到 UUID 为 **`{$uuid}`** 的玩家。
+error-player-username-not-found = 未找到用户名为 **`{$name}`** 的玩家。
+error-guild-by-member-uuid-not-found = 未找到 UUID 为 **`{$uuid}`** 的公会成员。
+error-guild-by-member-username-not-found = 未找到用户名为 **`{$name}`** 的公会成员。
+error-guild-not-found = 未找到名为 **`{$name}`** 的公会。
 error-internal = 发生了内部错误。它已被记录并将很快解决。
 error-not-linked = 您尚未链接 Minecraft 账户。请使用 </link:1113624864524357710> 来链接您的账户。
-error-invalid-uuid = UUID `{$uuid}` 无效。
-error-invalid-username = 用户名 `{$name}` 无效。
-error-member-player-not-found = 未在个人资料中找到成员 `{$name}`。
-error-skyblock-profile-not-found = 未找到属于 `{$name}` 的 SkyBlock 个人资料。
-error-player-snapshot-not-found = 未找到 `{$name}` 的快照。使用 </bedwars daily:1113624864272683060> 创建一个。
-error-leaderboard-not-found = 未找到名为 `{$name}` 的排行榜。
-error-profile-not-found = `{$name}` 的 `{$profile}` SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
+error-invalid-uuid = UUID **`{$uuid}`** 无效。
+error-invalid-username = 用户名 **`{$name}`** 无效。
+error-member-player-not-found = 未在个人资料中找到成员 **`{$name}`**。
+error-skyblock-profile-not-found = 未找到属于 **`{$name}`** 的 SkyBlock 个人资料。
+error-player-snapshot-not-found = 未找到 **`{$name}`** 的快照。使用 </bedwars daily:1113624864272683060> 创建一个。
+error-leaderboard-not-found = 未找到名为 **`{$name}`** 的排行榜。
+error-profile-not-found = **`{$name}`** 的 **`{$profile}`** SkyBlock 个人资料已禁用 API 或者他们自新个人资料系统以来尚未登录。
 error-identifier-too-long =
   此交互的某个生成的标识符过长。
   尝试减少组件数量或自定义文本的长度。
-error-user-track-limit-reached = 您已达到最大跟踪数 `{$limit}`。购买 StatPixel+ 以解除此限制，请访问 <https://statpixel.xyz/plus>。
+error-user-track-limit-reached = 您已达到最大跟踪数 **`{$limit}`**。购买 StatPixel+ 以解除此限制，请访问 <https://statpixel.xyz/plus>。
 error-guild-track-limit-reached =
-  此公会已达到最大跟踪数 `{$limit}`。
+  此公会已达到最大跟踪数 **`{$limit}`**。
   如果您有 StatPixel+，请使用 </boost:1132443666997321809> 提升公会以解除此限制，或者前往 <https://statpixel.xyz/plus>。
 error-boost-limit-reached =
-  您已达到最大增益数 `{$limit}`。您可以在仪表板上移除一个增益：<https://statpixel.xyz/dashboard/boost>。
+  您已达到最大增益数 **`{$limit}`**。您可以在仪表板上移除一个增益：<https://statpixel.xyz/dashboard/boost>。
 error-track-already-exists =
   您已在此频道中跟踪此玩家。
 error-not-premium = 您必须成为 StatPixel+ 订户才能执行此操作。请前往 <https://statpixel.xyz/plus> 获取更多信息。
 error-not-in-a-guild = 您必须加入一个公会才能执行此操作。
 error-boost-already-exists = 您已经在增益此公会。
-error-time-invalid-character = 时间参数中发现了无效字符，位置为 `{$position}`。
-error-time-expected-number = 时间参数中的位置 `{$position}` 需要一个数字。
-error-time-unknown-unit = 时间参数中的位置 `{$position}` 存在未知的时间单位 `{$unit}`，值为 `{$value}`。
+error-time-invalid-character = 时间参数中发现了无效字符，位置为 **`{$position}`**。
+error-time-expected-number = 时间参数中的位置 **`{$position}`** 需要一个数字。
+error-time-unknown-unit = 时间参数中的位置 **`{$position}`** 存在未知的时间单位 **`{$unit}`**，值为 **`{$value}`**。
 error-time-empty = 时间参数不能为空。
 error-time-overflow = 时间参数的持续时间过长。请尝试保持在 3,000 年以下。
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = 提供的識別碼不是指令。
 
 deprecated-interaction = 互動已被棄用
 deprecated-interaction-description = 這個互動已被棄用，將不再運作。請再次執行原始指令。
-identifier = <:id:1125971775755407390> 識別碼：`{$identifier}`
+identifier = <:id:1125971775755407390> 識別碼：**`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = 使用者名稱
 username-placeholder = 輸入要使用的使用者名稱
 
 invalid-statistic =
-  無效的 `{$game}` 遊戲統計 `{$statistic}`。請檢查文檔後重試。
+  無效的 **`{$game}`** 遊戲統計 **`{$statistic}`**。請檢查文檔後重試。
 
 invalid-level-type =
-  無效的等級類型 `{$kind}`。請檢查文檔後重試。
+  無效的等級類型 **`{$kind}`**。請檢查文檔後重試。
 
 invalid-game-type =
-  無效的遊戲類型 `{$game}`。請檢查文檔後重試。
+  無效的遊戲類型 **`{$game}`**。請檢查文檔後重試。
 
 image-created =
   圖像已建立！嘗試使用 </execute:1125992506501365892> 查看。
 
-  識別碼：`{$id}`
-  鏈結：`{$link}`
+  識別碼：**`{$id}`**
+  鏈結：**`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = 背景
 error-invalid-colour = 無效的顏色
 error-invalid-colour-description = 提供的顏色無效。請嘗試提供[這些顏色](https://simple.wikipedia.org/wiki/List_of_colors)中的一種或以“＃”為前綴的十六進制顏色。
 colour-changed = 背景顏色已更改
-colour-changed-description = 您的背景顏色已更改為 `{$colour}`。
+colour-changed-description = 您的背景顏色已更改為 **`{$colour}`**。
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = 鏈接
   .uuid-description = 要鏈接的 Minecraft UUID
 
 linking-failed = 鏈接失敗
-linking-failed-uuid-description = UUID `{$uuid}` 不屬於 Minecraft 帳戶。
+linking-failed-uuid-description = UUID **`{$uuid}`** 不屬於 Minecraft 帳戶。
 linking-failed-username-description = 使用者名稱 **`{$username}`** 不屬於 Minecraft 帳戶。
 linking-failed-description = 您必須提供有效的 UUID 或使用者名稱。
 linking-succeeded = 鏈接成功
@@ -2479,7 +2479,7 @@ guild-monthly = 每月
   .uuid = uuid
   .uuid-description = 要查看的公會成員的 UUID
 
-showing-guild-xp-statistics = 顯示公會自`{$from}`到`{$to}`的經驗值增長。
+showing-guild-xp-statistics = 顯示公會自{$from}到{$to}的經驗值增長。
 
 # 共用畫布標籤
 
@@ -2793,3 +2793,261 @@ bedwars-practice = practice
   .username-description = Minecraft 使用者名稱
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# 指令
+
+arcade-at = 於
+  .description = 顯示玩家在特定時間點的 Arcade 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Arcade 模式
+
+arena-at = 於
+  .description = 顯示玩家在特定時間點的 Arena 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Arena 模式
+
+bedwars-at = 於
+  .description = 顯示玩家在特定時間點的 Bed Wars 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Bed Wars 模式
+
+blitz-at = 於
+  .description = 顯示玩家在特定時間點的 Blitz 生存遊戲統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Blitz 生存遊戲模式
+
+buildbattle-at = 於
+  .description = 顯示玩家在特定時間點的 Build Battle 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Build Battle 模式
+
+copsandcrims-at = 於
+  .description = 顯示玩家在特定時間點的 Cops and Crims 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Cops and Crims 模式
+
+duels-at = 於
+  .description = 顯示玩家在特定時間點的 Duels 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Duels 模式
+
+megawalls-at = 於
+  .description = 顯示玩家在特定時間點的 Mega Walls 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Mega Walls 模式
+
+murdermystery-at = 於
+  .description = 顯示玩家在特定時間點的 Murder Mystery 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Murder Mystery 模式
+
+paintball-at = 於
+  .description = 顯示玩家在特定時間點的 Paintball 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Paintball 模式
+
+pit-at = 於
+  .description = 顯示玩家在特定時間點的 The Pit 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 The Pit 模式
+
+quake-at = 於
+  .description = 顯示玩家在特定時間點的 Quakecraft 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Quakecraft 模式
+
+skywars-at = 於
+  .description = 顯示玩家在特定時間點的 SkyWars 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 SkyWars 模式
+
+smash-at = 於
+  .description = 顯示玩家在特定時間點的 Smash Heroes 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Smash Heroes 模式
+
+speeduhc-at = 於
+  .description = 顯示玩家在特定時間點的 SpeedUHC 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 SpeedUHC 模式
+
+tntgames-at = 於
+  .description = 顯示玩家在特定時間點的 TNT Games 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 TNT Games 模式
+
+turbokartracers-at = 於
+  .description = 顯示玩家在特定時間點的 Turbo Kart Racers 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Turbo Kart Racers 模式
+
+uhc-at = 於
+  .description = 顯示玩家在特定時間點的 UHC Champions 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 UHC Champions 模式
+
+vampirez-at = 於
+  .description = 顯示玩家在特定時間點的 VampireZ 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 VampireZ 模式
+
+walls-at = 於
+  .description = 顯示玩家在特定時間點的 The Walls 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 The Walls 模式
+
+warlords-at = 於
+  .description = 顯示玩家在特定時間點的 Warlords 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Warlords 模式
+
+woolwars-at = 於
+  .description = 顯示玩家在特定時間點的 Wool Wars 統計數據
+  .username = 使用者名稱
+  .username-description = Minecraft 使用者名稱
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+  .mode = 模式
+  .mode-description = 要查看的 Wool Wars 模式
+
+guild-at = 於
+  .description = 顯示特定時間點的公會統計數據
+  .name = 名稱
+  .name-description = 要查看的公會名稱
+  .username = 使用者名稱
+  .username-description = 要查看的公會成員的使用者名稱
+  .uuid = uuid
+  .uuid-description = 要查看的公會成員的 UUID
+  .time = 時間
+  .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
+
+showing-statistics-at = <a:clock:1115091329958019253> 顯示 {$at} 的統計數據。
+showing-guild-statistics-at = 顯示來自 {$at} 的公會統計數據。

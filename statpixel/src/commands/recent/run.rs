@@ -34,7 +34,6 @@ pub async fn recent(
 	let id = id::command(Id::Root {
 		uuid: player.uuid,
 		kind: Mode::RecentGames,
-		background: None,
 	});
 
 	ctx.send(

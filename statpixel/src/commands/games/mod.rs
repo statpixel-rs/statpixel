@@ -15,6 +15,7 @@ macro_rules! large_command {
 		pub mod $fn {
 			use super::*;
 			use crate::commands::from::$fn::command as from;
+			use crate::commands::at::$fn::command as at;
 			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
 			use crate::commands::snapshot::daily::$fn::command as daily;
@@ -59,7 +60,7 @@ macro_rules! large_command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
@@ -75,6 +76,7 @@ macro_rules! command {
 		pub mod $fn {
 			use super::*;
 			use crate::commands::from::$fn::command as from;
+			use crate::commands::at::$fn::command as at;
 			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
 			use crate::commands::snapshot::daily::$fn::command as daily;
@@ -108,7 +110,7 @@ macro_rules! command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
@@ -154,6 +156,7 @@ command!(stats::wool_wars::WoolWars, woolwars, "woolwars");
 
 pub mod bedwars {
 	use super::*;
+	use crate::commands::at::bedwars::command as at;
 	use crate::commands::bedwars::{hotbar, practice, shop};
 	use crate::commands::compare::bedwars::command as compare;
 	use crate::commands::from::bedwars::command as from;
@@ -202,7 +205,7 @@ pub mod bedwars {
 		required_bot_permissions = "ATTACH_FILES",
 		subcommands(
 			"general", "from", "daily", "weekly", "monthly", "history", "project", "compare",
-			"hotbar", "shop", "practice"
+			"hotbar", "shop", "practice", "at"
 		),
 		rename = "bedwars"
 	)]

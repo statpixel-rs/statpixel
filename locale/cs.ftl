@@ -3,45 +3,45 @@ not-linked = Chybějící argumenty
 not-linked-description = Protože nejste propojeni, musíte poskytnout profil pro zobrazení.
 showing-statistics = <a:clock:1115091329958019253> Zobrazuji statistiky změny od {$from} do {$to}.
 no-previous-statistics = Pro **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
-showing-guild-statistics = Zobrazuji statistiky změny cechu od `{$from}` do `{$to}`.
+showing-guild-statistics = Zobrazuji statistiky změny cechu od {$from} do {$to}.
 no-previous-guild-statistics = Pro cech **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
-showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče `{$from}` ve srovnání s hráčem `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče **`{$from}`** ve srovnání s hráčem **`{$to}`**.
 
 # Chyby
 
-error-player-not-found = Profil hráče `{$name}` nebyl nalezen.
-error-session-not-found = Relace hráče `{$name}` nebyla nalezena.
-error-player-uuid-not-found = Hráč s UUID `{$uuid}` nebyl nalezen.
-error-player-username-not-found = Hráč s uživatelským jménem `{$name}` nebyl nalezen.
-error-guild-by-member-uuid-not-found = Člen cechu s UUID `{$uuid}` nebyl nalezen.
-error-guild-by-member-username-not-found = Člen cechu s uživatelským jménem `{$name}` nebyl nalezen.
-error-guild-not-found = Cech s názvem `{$name}` nebyl nalezen.
+error-player-not-found = Profil hráče **`{$name}`** nebyl nalezen.
+error-session-not-found = Relace hráče **`{$name}`** nebyla nalezena.
+error-player-uuid-not-found = Hráč s UUID **`{$uuid}`** nebyl nalezen.
+error-player-username-not-found = Hráč s uživatelským jménem **`{$name}`** nebyl nalezen.
+error-guild-by-member-uuid-not-found = Člen cechu s UUID **`{$uuid}`** nebyl nalezen.
+error-guild-by-member-username-not-found = Člen cechu s uživatelským jménem **`{$name}`** nebyl nalezen.
+error-guild-not-found = Cech s názvem **`{$name}`** nebyl nalezen.
 error-internal = Došlo k interní chybě. Byla zaznamenána a brzy bude vyřešena.
 error-not-linked = Nejste propojeni s účtem Minecraft. Použijte </link:1113624864524357710> k propojení vašeho účtu.
-error-invalid-uuid = UUID `{$uuid}` je neplatné.
-error-invalid-username = Uživatelské jméno `{$name}` je neplatné.
-error-member-player-not-found = Člen `{$name}` nebyl nalezen v profilu.
-error-skyblock-profile-not-found = Profil SkyBlock hráče `{$name}` nebyl nalezen.
-error-player-snapshot-not-found = Pro hráče `{$name}` nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Žebříček s názvem `{$name}` nebyl nalezen.
-error-profile-not-found = Profil SkyBlock `{$profile}`, patřící hráči `{$name}`, má vypnuté API nebo se od nového profilového systému nepřihlásil.
+error-invalid-uuid = UUID **`{$uuid}`** je neplatné.
+error-invalid-username = Uživatelské jméno **`{$name}`** je neplatné.
+error-member-player-not-found = Člen **`{$name}`** nebyl nalezen v profilu.
+error-skyblock-profile-not-found = Profil SkyBlock hráče **`{$name}`** nebyl nalezen.
+error-player-snapshot-not-found = Pro hráče **`{$name}`** nebyly nalezeny žádné snímky. Vytvořte jeden pomocí </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Žebříček s názvem **`{$name}`** nebyl nalezen.
+error-profile-not-found = Profil SkyBlock **`{$profile}`**, patřící hráči **`{$name}`**, má vypnuté API nebo se od nového profilového systému nepřihlásil.
 error-identifier-too-long =
   Jeden z vygenerovaných identifikátorů pro tuto interakci je příliš dlouhý.
   Zkuste snížit počet komponent nebo množství vlastního textu.
-error-user-track-limit-reached = Dosáhli jste maximálního počtu sledování v hodnotě `{$limit}`. K odstranění tohoto omezení si zakupte StatPixel+ na adrese <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Dosáhli jste maximálního počtu sledování v hodnotě **`{$limit}`**. K odstranění tohoto omezení si zakupte StatPixel+ na adrese <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Tento cech dosáhl maximálního počtu sledování v hodnotě `{$limit}`.
+  Tento cech dosáhl maximálního počtu sledování v hodnotě **`{$limit}`**.
   Pokud máte StatPixel+, povzbuďte cech pomocí </boost:1132443666997321809> a omezení odstraníte, nebo jděte na <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Dosáhli jste maximálního počtu povzbuzení v hodnotě `{$limit}`. Můžete jedno povzbuzení odebrat na ovládacím panelu: <https://statpixel.xyz/dashboard/boost>.
+  Dosáhli jste maximálního počtu povzbuzení v hodnotě **`{$limit}`**. Můžete jedno povzbuzení odebrat na ovládacím panelu: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Tento hráč je již sledován v tomto kanále.
 error-not-premium = Pro provedení této akce musíte být odběratelem StatPixel+. Jděte na <https://statpixel.xyz/plus> pro více informací.
 error-not-in-a-guild = Pro provedení této akce musíte být v cechu.
 error-boost-already-exists = Tento cech již povzbuzujete.
-error-time-invalid-character = V čase v pozici `{$position}` byl nalezen neplatný znak.
-error-time-expected-number = Očekáváno číslo v časovém argumentu v pozici `{$position}`.
-error-time-unknown-unit = Neznámá časová jednotka `{$unit}` v pozici `{$position}` s hodnotou `{$value}`.
+error-time-invalid-character = V čase v pozici **`{$position}`** byl nalezen neplatný znak.
+error-time-expected-number = Očekáváno číslo v časovém argumentu v pozici **`{$position}`**.
+error-time-unknown-unit = Neznámá časová jednotka **`{$unit}`** v pozici **`{$position}`** s hodnotou **`{$value}`**.
 error-time-empty = Časový argument nemůže být prázdný.
 error-time-overflow = Doba trvání časového argumentu je příliš dlouhá. Zkuste ji udržet pod 3000 let.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Poskytnutý identifikátor není platn�
 
 deprecated-interaction = Interakce již není podporována
 deprecated-interaction-description = Tato interakce je zastaralá a nebude fungovat. Prosím, opakujte původní příkaz znovu.
-identifier = <:id:1125971775755407390> Identifikátor: `{$identifier}`
+identifier = <:id:1125971775755407390> Identifikátor: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Uživatelské jméno
 username-placeholder = Zadejte uživatelské jméno pro použití
 
 invalid-statistic =
-  Poskytnuta neplatná statistika `{$statistic}` pro hru `{$game}`. Zkuste to prosím znovu podle dokumentace.
+  Poskytnuta neplatná statistika **`{$statistic}`** pro hru **`{$game}`**. Zkuste to prosím znovu podle dokumentace.
 
 invalid-level-type =
-  Poskytnut neplatný typ úrovně `{$kind}`. Zkuste to prosím znovu podle dokumentace.
+  Poskytnut neplatný typ úrovně **`{$kind}`**. Zkuste to prosím znovu podle dokumentace.
 
 invalid-game-type =
-  Poskytnut neplatný typ hry `{$game}`. Zkuste to prosím znovu podle dokumentace.
+  Poskytnut neplatný typ hry **`{$game}`**. Zkuste to prosím znovu podle dokumentace.
 
 image-created =
   Váš obrázek byl vytvořen! Vyzkoušejte ho s </execute:1125992506501365892>.
 
-  Identifikátor: `{$id}`
-  Odkaz: `{$link}`
+  Identifikátor: **`{$id}`**
+  Odkaz: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = background
 error-invalid-colour = Poskytnuta neplatná barva
 error-invalid-colour-description = Poskytnutá barva je neplatná. Zkuste zadat jednu z [těchto barev](https://simple.wikipedia.org/wiki/List_of_colors) nebo hexadecimální barvu s prefixem `#`.
 colour-changed = Barva pozadí změněna
-colour-changed-description = Vaše barva pozadí byla změněna na `{$colour}`.
+colour-changed-description = Vaše barva pozadí byla změněna na **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = propojení
   .uuid-description = Minecraft UUID k propojení
 
 linking-failed = Propojení selhalo
-linking-failed-uuid-description = UUID `{$uuid}` nepatří k účtu Minecraftu.
+linking-failed-uuid-description = UUID **`{$uuid}`** nepatří k účtu Minecraftu.
 linking-failed-username-description = Uživatelské jméno **`{$username}`** nepatří k účtu Minecraftu.
 linking-failed-description = Musíte poskytnout platné UUID nebo uživatelské jméno.
 linking-succeeded = Propojení bylo úspěšné
@@ -2480,7 +2480,7 @@ guild-monthly = měsíčně
   .uuid = uuid
   .uuid-description = UUID člena guildy k zobrazení
 
-showing-guild-xp-statistics = Zobrazuji zisky XP guildy od `{$from}` do `{$to}`.
+showing-guild-xp-statistics = Zobrazuji zisky XP guildy od {$from} do {$to}.
 
 # Společné popisky pro canvas
 
@@ -2794,3 +2794,261 @@ bedwars-practice = cvičení
   .username-description = Uživatelské jméno v Minecraftu
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Příkazy pro zobrazení
+
+arcade-at = u
+  .description = Zobrazit statistiky z hry Arcade hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Arcade k zobrazení
+
+arena-at = u
+  .description = Zobrazit statistiky z hry Aréna hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Aréna k zobrazení
+
+bedwars-at = u
+  .description = Zobrazit statistiky z hry Bed Wars hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Bed Wars k zobrazení
+
+blitz-at = u
+  .description = Zobrazit statistiky z hry Blitz Survival Games hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Blitz Survival Games k zobrazení
+
+buildbattle-at = u
+  .description = Zobrazit statistiky z hry Build Battle hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Build Battle k zobrazení
+
+copsandcrims-at = u
+  .description = Zobrazit statistiky z hry Cops and Crims hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Cops and Crims k zobrazení
+
+duels-at = u
+  .description = Zobrazit statistiky z hry Duely hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Duely k zobrazení
+
+megawalls-at = u
+  .description = Zobrazit statistiky z hry Mega Walls hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Mega Walls k zobrazení
+
+murdermystery-at = u
+  .description = Zobrazit statistiky z hry Murder Mystery hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Murder Mystery k zobrazení
+
+paintball-at = u
+  .description = Zobrazit statistiky z hry Paintball hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Paintball k zobrazení
+
+pit-at = u
+  .description = Zobrazit statistiky z hry The Pit hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry The Pit k zobrazení
+
+quake-at = u
+  .description = Zobrazit statistiky z hry Quakecraft hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Quakecraft k zobrazení
+
+skywars-at = u
+  .description = Zobrazit statistiky z hry SkyWars hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry SkyWars k zobrazení
+
+smash-at = u
+  .description = Zobrazit statistiky z hry Smash Heroes hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Smash Heroes k zobrazení
+
+speeduhc-at = u
+  .description = Zobrazit statistiky z hry SpeedUHC hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry SpeedUHC k zobrazení
+
+tntgames-at = u
+  .description = Zobrazit statistiky z hry TNT Games hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry TNT Games k zobrazení
+
+turbokartracers-at = u
+  .description = Zobrazit statistiky z hry Turbo Kart Racers hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Turbo Kart Racers k zobrazení
+
+uhc-at = u
+  .description = Zobrazit statistiky z hry UHC Champions hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry UHC Champions k zobrazení
+
+vampirez-at = u
+  .description = Zobrazit statistiky z hry VampireZ hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry VampireZ k zobrazení
+
+walls-at = u
+  .description = Zobrazit statistiky z hry The Walls hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry The Walls k zobrazení
+
+warlords-at = u
+  .description = Zobrazit statistiky z hry Warlords hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Warlords k zobrazení
+
+woolwars-at = u
+  .description = Zobrazit statistiky z hry Wool Wars hráče v určitém časovém okamžiku
+  .username = uživatelské-jméno
+  .username-description = Minecraft uživatelské jméno
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim hry Wool Wars k zobrazení
+
+guild-at = u
+  .description = Zobrazit statistiky cechu v určitém časovém okamžiku
+  .name = jméno
+  .name-description = Název cechu k zobrazení
+  .username = uživatelské-jméno
+  .username-description = Uživatelské jméno členu cechu k zobrazení
+  .uuid = uuid
+  .uuid-description = UUID členu cechu k zobrazení
+  .time = čas
+  .time-description = Doba zpět v čase (1h 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Zobrazení statistik od {$at}.
+showing-guild-statistics-at = Zobrazení statistik cechu od {$at}.

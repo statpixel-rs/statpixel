@@ -3,45 +3,44 @@ not-linked = Eksik argümanlar
 not-linked-description = Bağlantınız olmadığı için profil sağlamanız gerekmektedir.
 showing-statistics = <a:clock:1115091329958019253> İstatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
 no-previous-statistics = **`{$name}`** için önceki veriler bulunamadığından dolayı eklendi.
-showing-guild-statistics = <a:clock:1115091329958019253> Sunucu istatistikleri `{$from}` tarihinden `{$to}` tarihine göre görüntüleniyor.
+showing-guild-statistics = <a:clock:1115091329958019253> Sunucu istatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
 no-previous-guild-statistics = **`{$name}`** sunucusu için önceki veriler bulunamadığından dolayı eklendi.
-showing-comparison = <a:clock:1115091329958019253> `{$from}` ile `{$to}` arasındaki istatistik karşılaştırması gösteriliyor.
+showing-comparison = <a:clock:1115091329958019253> **`{$from}`** ile **`{$to}`** arasındaki istatistik karşılaştırması gösteriliyor.
 
 # Hatalar
 
-error-player-not-found = `{$name}` adlı bir profille ilgili bilgi bulunamadı.
-error-session-not-found = `{$name}` adlı bir oturum bulunamadı.
-error-player-uuid-not-found = UUID'si `{$uuid}` olan bir oyuncu bulunamadı.
-error-player-username-not-found = `{$name}` kullanıcı adına sahip bir oyuncu bulunamadı.
-error-guild-by-member-uuid-not-found = UUID'si `{$uuid}` olan bir sunucu üyesi bulunamadı.
-error-guild-by-member-username-not-found = `{$name}` kullanıcı adına sahip bir sunucu üyesi bulunamadı.
-error-guild-not-found = `{$name}` adlı bir sunucu bulunamadı.
+error-player-not-found = **`{$name}`** adlı bir profille ilgili bilgi bulunamadı.
+error-session-not-found = **`{$name}`** adlı bir oturum bulunamadı.
+error-player-uuid-not-found = UUID'si **`{$uuid}`** olan bir oyuncu bulunamadı.
+error-player-username-not-found = **`{$name}`** kullanıcı adına sahip bir oyuncu bulunamadı.
+error-guild-by-member-uuid-not-found = UUID'si **`{$uuid}`** olan bir sunucu üyesi bulunamadı.
+error-guild-by-member-username-not-found = **`{$name}`** kullanıcı adına sahip bir sunucu üyesi bulunamadı.
+error-guild-not-found = **`{$name}`** adlı bir sunucu bulunamadı.
 error-internal = Bir iç hata oluştu. Bu hata kaydedildi ve yakında çözülecek.
 error-not-linked = Minecraft hesabınıza bağlı değilsiniz. Hesabınızı bağlamak için </link:1113624864524357710> komutunu kullanın.
-error-invalid-uuid = Geçersiz UUID: `{$uuid}`.
-error-invalid-username = Geçersiz kullanıcı adı: `{$name}`.
-error-member-player-not-found = Profilde `{$name}` adlı üye bulunamadı.
-error-skyblock-profile-not-found = `{$name}` adlı bir SkyBlock profil bulunamadı.
-error-player-snapshot-not-found = `{$name}` için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683060> komutunu kullanın.
-error-leaderboard-not-found = `{$name}` adlı bir lider tablosu bulunamadı.
-error-profile-not-found = `{$name}` adlı `{$profile}` SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
+error-invalid-uuid = Geçersiz UUID: **`{$uuid}`**.
+error-invalid-username = Geçersiz kullanıcı adı: **`{$name}`**.
+error-member-player-not-found = Profilde **`{$name}`** adlı üye bulunamadı.
+error-skyblock-profile-not-found = **`{$name}`** adlı bir SkyBlock profil bulunamadı.
+error-player-snapshot-not-found = **`{$name}`** için herhangi bir anlık görüntü bulunamadı. Bir tane oluşturmak için </bedwars daily:1113624864272683060> komutunu kullanın.
+error-leaderboard-not-found = **`{$name}`** adlı bir lider tablosu bulunamadı.
+error-profile-not-found = **`{$name}`** adlı **`{$profile}`** SkyBlock profili, API devre dışı bırakılmış veya yeni profil sistemiyle oturum açmamış.
 error-identifier-too-long =
   Bu etkileşim için oluşturulan kimliklerden biri çok uzun.
   Bileşen sayısını veya özel metin miktarını azaltmayı deneyin.
-error-user-track-limit-reached = `{$limit}` adet izleme limitine ulaştınız. Bu limiti kaldırmak için StatPixel+ satın alın: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = **`{$limit}`** adet izleme limitine ulaştınız. Bu limiti kaldırmak için StatPixel+ satın alın: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Bu sunucu, `{$limit}` adet izleme limitine ulaştı.
+  Bu sunucu, **`{$limit}`** adet izleme limitine ulaştı.
   Eğer StatPixel+ sahibiyseniz, sınırlamayı kaldırmak için sunucuyu yükseltin: </boost:1132443666997321809> veya <https://statpixel.xyz/plus> adresine gidin.
-error-boost-limit-reached =
-  `{$limit}` adet yükseltme limitine ulaştınız. Yükseltmeyi kaldırmak için şu adrese gidin: <https://statpixel.xyz/dashboard/boost>.
+error-boost-limit-reached = **`{$limit}`** adet yükseltme limitine ulaştınız. Yükseltmeyi kaldırmak için şu adrese gidin: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Bu kanalda zaten bu oyuncuyu izliyorsunuz.
 error-not-premium = Bu işlemi gerçekleştirmek için StatPixel+ abonesi olmalısınız. Daha fazla bilgi için <https://statpixel.xyz/plus> adresine gidin.
 error-not-in-a-guild = Bu işlemi gerçekleştirmek için bir sunucuda olmalısınız.
 error-boost-already-exists = Bu sunucuyu zaten yükseltiyorsunuz.
-error-time-invalid-character = Zaman argümanında geçersiz bir karakter `{$position}`. pozisyonda bulundu.
-error-time-expected-number = Zaman argümanında `{$position}`. pozisyonda bir sayı bekleniyor.
-error-time-unknown-unit = `{$position}`. pozisyonda `{$value}` değerinde bilinmeyen bir zaman birimi `{$unit}`.
+error-time-invalid-character = Zaman argümanında geçersiz bir karakter **`{$position}`**. pozisyonda bulundu.
+error-time-expected-number = Zaman argümanında **`{$position}`**. pozisyonda bir sayı bekleniyor.
+error-time-unknown-unit = **`{$position}`**. pozisyonda **`{$value}`** değerinde bilinmeyen bir zaman birimi **`{$unit}`**.
 error-time-empty = Zaman argümanı boş olamaz.
 error-time-overflow = Zaman argümanının süresi çok uzun. 3,000 yılın altında tutmaya çalışın.
 
@@ -109,7 +108,7 @@ invalid-identifier-command-description = Sağlanan kimlik bir komut değil.
 
 deprecated-interaction = Etkileşim kullanılmıyor
 deprecated-interaction-description = Bu etkileşim kullanılmıyor ve çalışmayacak. Lütfen orijinal komutu tekrar çalıştırın.
-identifier = <:id:1125971775755407390> Kimlik: `{$identifier}`
+identifier = <:id:1125971775755407390> Kimlik: **`{$identifier}`**
 
 # /builder
 
@@ -169,20 +168,19 @@ create-modal-title = Görüntünüzü oluşturmayı tamamlayın
 username = Kullanıcı Adı
 username-placeholder = Kullanıcı adınızı girin
 
-invalid-statistic =
-  `{$game}` oyunu için geçersiz istatistik `{$statistic}`. Belgelemeyi kontrol edin ve tekrar deneyin.
+invalid-statistic = **`{$game}`** oyunu için geçersiz istatistik **`{$statistic}`**. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 invalid-level-type =
-  Geçersiz seviye türü `{$kind}`. Belgelemeyi kontrol edin ve tekrar deneyin.
+  Geçersiz seviye türü **`{$kind}`**. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 invalid-game-type =
-  Geçersiz oyun türü `{$game}`. Belgelemeyi kontrol edin ve tekrar deneyin.
+  Geçersiz oyun türü **`{$game}`**. Belgelemeyi kontrol edin ve tekrar deneyin.
 
 image-created =
   Görüntünüz oluşturuldu! </execute:1125992506501365892> ile deneyin.
 
-  Kimlik: `{$id}`
-  Bağlantı: `{$link}`
+  Kimlik: **`{$id}`**
+  Bağlantı: **`{$link}`**
 
 # /about
 
@@ -238,7 +236,7 @@ background = background
 error-invalid-colour = Geçersiz renk sağlandı
 error-invalid-colour-description = Sağlanan renk geçersiz. [Bu renklerden birini](https://simple.wikipedia.org/wiki/List_of_colors) veya `#` ile başlayan bir hex renk sağlamayı deneyin.
 colour-changed = Arka plan rengi değiştirildi
-colour-changed-description = Arka plan renginiz `{$colour}` olarak değiştirildi.
+colour-changed-description = Arka plan renginiz **`{$colour}`** olarak değiştirildi.
 
 # /skyblock bazaar
 
@@ -538,7 +536,7 @@ link = bağlantı
   .uuid-description = Bağlanmak için Minecraft UUID
 
 linking-failed = Bağlantı Başarısız
-linking-failed-uuid-description = Verilen UUID `{$uuid}` bir Minecraft hesabına ait değil.
+linking-failed-uuid-description = Verilen UUID **`{$uuid}`** bir Minecraft hesabına ait değil.
 linking-failed-username-description = Verilen kullanıcı adı **`{$username}`** bir Minecraft hesabına ait değil.
 linking-failed-description = Geçerli bir UUID veya kullanıcı adı sağlamalısınız.
 linking-succeeded = Bağlantı Başarılı
@@ -2479,7 +2477,7 @@ guild-monthly = aylık
   .uuid = uuid
   .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
 
-showing-guild-xp-statistics = `{$from}` ile `{$to}` arasındaki lonca XP kazancını gösteriliyor.
+showing-guild-xp-statistics = {$from} ile {$to} arasındaki lonca XP kazancını gösteriliyor.
 
 # Paylaşılan tuval etiketleri
 
@@ -2793,3 +2791,261 @@ bedwars-practice = pratik
   .username-description = Minecraft kullanıcı adı
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Komutlarla ilgili
+
+arcade-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Arcade istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Arcade modu
+
+arena-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Arena istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Arena modu
+
+bedwars-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Bed Wars istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Bed Wars modu
+
+blitz-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Blitz Survival Games istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Blitz Survival Games modu
+
+buildbattle-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Build Battle istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Build Battle modu
+
+copsandcrims-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Cops and Crims istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Cops and Crims modu
+
+duels-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Duels istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Duels modu
+
+megawalls-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Mega Walls istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Mega Walls modu
+
+murdermystery-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Murder Mystery istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Murder Mystery modu
+
+paintball-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Paintball istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Paintball modu
+
+pit-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun The Pit istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek The Pit modu
+
+quake-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Quakecraft istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Quakecraft modu
+
+skywars-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun SkyWars istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek SkyWars modu
+
+smash-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Smash Heroes istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Smash Heroes modu
+
+speeduhc-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun SpeedUHC istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek SpeedUHC modu
+
+tntgames-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun TNT Games istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek TNT Games modu
+
+turbokartracers-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Turbo Kart Racers istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Turbo Kart Racers modu
+
+uhc-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun UHC Champions istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek UHC Champions modu
+
+vampirez-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun VampireZ istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek VampireZ modu
+
+walls-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun The Walls istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek The Walls modu
+
+warlords-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Warlords istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Warlords modu
+
+woolwars-at = at
+  .description = Belirli bir zaman noktasında bir oyuncunun Wool Wars istatistiklerini gösterir
+  .username = kullaniciadi
+  .username-description = Minecraft kullanıcı adı
+  .uuid = uuid
+  .uuid-description = Minecraft UUID
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Wool Wars modu
+
+guild-at = at
+  .description = Belirli bir zaman noktasında bir lonenin istatistiklerini gösterir
+  .name = isim
+  .name-description = Görüntülenecek lonenin adı
+  .username = kullaniciadi
+  .username-description = Görüntülenecek lonenin üye kullanıcısı
+  .uuid = uuid
+  .uuid-description = Görüntülenecek lonenin üye UUID'si
+  .time = zaman
+  .time-description = Geriye gitmek için süre (1s 12d 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> {$at} tarihinden itibaren istatistikleri gösteriyor.
+showing-guild-statistics-at = {$at} tarihinden itibaren lonenin istatistiklerini gösteriyor.

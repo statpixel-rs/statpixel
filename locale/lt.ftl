@@ -3,45 +3,45 @@ not-linked = Trūksta argumentų
 not-linked-description = Kad galėtum pamatyti, turite būti susietas su paskyra.
 showing-statistics = <a:clock:1115091329958019253> Rodo statistikos pokyčius nuo {$from} iki {$to}.
 no-previous-statistics = Statistikos duomenų nerasta **`{$name}`** vardu, todėl jie buvo įterpti.
-showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo `{$from}` iki `{$to}`.
+showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo {$from} iki {$to}.
 no-previous-guild-statistics = Gildijos **`{$name}`** statistikos duomenų nerasta, todėl jie buvo įterpti.
-showing-comparison = <a:clock:1115091329958019253> Rodo `{$from}` statistiką, palygintą su `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Rodo **`{$from}`** statistiką, palygintą su **`{$to}`**.
 
 # Klaidos
 
-error-player-not-found = Profilis priklausantis `{$name}` nebuvo rastas.
-error-session-not-found = Sesionas priklausantis `{$name}` nebuvo rastas.
-error-player-uuid-not-found = Žaidėjas su UUID `{$uuid}` nebuvo rastas.
-error-player-username-not-found = Žaidėjas su vardu `{$name}` nebuvo rastas.
-error-guild-by-member-uuid-not-found = Gildijos narys su UUID `{$uuid}` nebuvo rastas.
-error-guild-by-member-username-not-found = Gildijos narys su vardu `{$name}` nebuvo rastas.
-error-guild-not-found = Gildija su pavadinimu `{$name}` nebuvo rasta.
+error-player-not-found = Profilis priklausantis **`{$name}`** nebuvo rastas.
+error-session-not-found = Sesionas priklausantis **`{$name}`** nebuvo rastas.
+error-player-uuid-not-found = Žaidėjas su UUID **`{$uuid}`** nebuvo rastas.
+error-player-username-not-found = Žaidėjas su vardu **`{$name}`** nebuvo rastas.
+error-guild-by-member-uuid-not-found = Gildijos narys su UUID **`{$uuid}`** nebuvo rastas.
+error-guild-by-member-username-not-found = Gildijos narys su vardu **`{$name}`** nebuvo rastas.
+error-guild-not-found = Gildija su pavadinimu **`{$name}`** nebuvo rasta.
 error-internal = Įvyko vidinė klaida. Ji yra užregistruota ir bus išspręsta netrukus.
 error-not-linked = Jūs nesate susietas su „Minecraft“ paskyra. Norėdami susieti savo paskyrą, naudokite </link:1113624864524357710>.
-error-invalid-uuid = UUID `{$uuid}` yra neteisingas.
-error-invalid-username = Vardas `{$name}` yra neteisingas.
-error-member-player-not-found = Narys `{$name}` nerastas profilyje.
-error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio `{$name}` vardu, nerasta.
-error-player-snapshot-not-found = Nėra momentinių vaizdų su `{$name}`. Sukurkite vieną naudodami </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Lentele su pavadinimu `{$name}` nebuvo rasta.
-error-profile-not-found = Šiaurės blokų profilio `{$profile}`, priklausančio `{$name}` vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
+error-invalid-uuid = UUID **`{$uuid}`** yra neteisingas.
+error-invalid-username = Vardas **`{$name}`** yra neteisingas.
+error-member-player-not-found = Narys **`{$name}`** nerastas profilyje.
+error-skyblock-profile-not-found = Šiaurės blokų profilio, priklausančio **`{$name}`** vardu, nerasta.
+error-player-snapshot-not-found = Nėra momentinių vaizdų su **`{$name}`**. Sukurkite vieną naudodami </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Lentele su pavadinimu **`{$name}`** nebuvo rasta.
+error-profile-not-found = Šiaurės blokų profilio **`{$profile}`**, priklausančio **`{$name}`** vardu, API yra išjungtas arba jis neprisijungė nuo naujo profilio sistemos.
 error-identifier-too-long =
   Viena iš generuojamų šios sąveikos identifikatorių yra per ilga.
   Bandykite sumažinti komponentų skaičių arba pritaikytos teksto apimtis.
-error-user-track-limit-reached = Jūs pasiekėte maksimalų `{$limit}` trasų skaičių. Norėdami pašalinti šią apribojimą, įsigykite StatPixel+ čia: <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Jūs pasiekėte maksimalų **`{$limit}`** trasų skaičių. Norėdami pašalinti šią apribojimą, įsigykite StatPixel+ čia: <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ši gildija pasiekė maksimalų `{$limit}` trasų skaičių.
+  Ši gildija pasiekė maksimalų **`{$limit}`** trasų skaičių.
   Jei turite StatPixel+, pakelkite gildiją su </boost:1132443666997321809>, kad pašalintumėte šį apribojimą, arba apsilankykite <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Jūs pasiekėte maksimalų `{$limit}` skaičių stiprinimų. Stiprinimą galite pašalinti žemiau pateiktame skydelyje: <https://statpixel.xyz/dashboard/boost>.
+  Jūs pasiekėte maksimalų **`{$limit}`** skaičių stiprinimų. Stiprinimą galite pašalinti žemiau pateiktame skydelyje: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Jūs jau stebite šį žaidėją šiame kanale.
 error-not-premium = Norint atlikti šį veiksmą, turite būti StatPixel+ prenumeratorius. Užsukite į šią nuorodą: <https://statpixel.xyz/plus>, norėdami gauti daugiau informacijos.
 error-not-in-a-guild = Norėdami atlikti šį veiksmą, turite būti gildijos narys.
 error-boost-already-exists = Jūs jau stiprinatę šią gildiją.
-error-time-invalid-character = Laiko argumente pozicijoje `{$position}` rastas neteisingas simbolis.
-error-time-expected-number = Laiko argumente pozicijoje `{$position}` turi būti skaičius.
-error-time-unknown-unit = Nežinoma laiko vienetai `{$unit}` pozicijoje `{$position}` su reikšme `{$value}`.
+error-time-invalid-character = Laiko argumente pozicijoje **`{$position}`** rastas neteisingas simbolis.
+error-time-expected-number = Laiko argumente pozicijoje **`{$position}`** turi būti skaičius.
+error-time-unknown-unit = Nežinoma laiko vienetai **`{$unit}`** pozicijoje **`{$position}`** su reikšme **`{$value}`**.
 error-time-empty = Laiko argumentas negali būti tuščias.
 error-time-overflow = Laiko argumento trukmė pernelyg ilga. Bandykite, kad ji neviršytų 3,000 metų.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Pateiktas identifikatorius nėra komand
 
 deprecated-interaction = Interakcija pasenusi
 deprecated-interaction-description = Ši interakcija yra pasenusi ir neveiks. Prašome paleisti originalią komandą dar kartą.
-identifier = <:id:1125971775755407390> Identifikatorius: `{$identifier}`
+identifier = <:id:1125971775755407390> Identifikatorius: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Vartotojo vardas
 username-placeholder = Įveskite naudojamo vartotojo vardą
 
 invalid-statistic =
-  Neteisinga statistika `{$statistic}` žaidimui `{$game}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisinga statistika **`{$statistic}`** žaidimui **`{$game}`**. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 invalid-level-type =
-  Neteisingas lygio tipas `{$kind}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisingas lygio tipas **`{$kind}`**. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 invalid-game-type =
-  Neteisingas žaidimo tipas `{$game}`. Patikrinkite dokumentaciją ir bandykite dar kartą.
+  Neteisingas žaidimo tipas **`{$game}`**. Patikrinkite dokumentaciją ir bandykite dar kartą.
 
 image-created =
   Jūsų paveikslėlis sukurtas! Pabandykite jį atvaizduoti naudodami komandą </execute:1125992506501365892>.
 
-  Identifikatorius: `{$id}`
-  Nuoroda: `{$link}`
+  Identifikatorius: **`{$id}`**
+  Nuoroda: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = background
 error-invalid-colour = Pateikta neteisinga spalva
 error-invalid-colour-description = Pateikta spalva yra neteisinga. Pabandykite pateikti vieną iš [šių spalvų](https://simple.wikipedia.org/wiki/List_of_colors) arba šešioliktainį spalvos kodą su simboliu `#`.
 colour-changed = Fono spalva pakeista
-colour-changed-description = Jūsų fono spalva pakeista į `{$colour}`.
+colour-changed-description = Jūsų fono spalva pakeista į **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = susieti
   .uuid-description = Minecraft UUID, kurį susieti
 
 linking-failed = Sujungimas nepavyko
-linking-failed-uuid-description = UUID `{$uuid}` nepriklauso Minecraft paskyrai.
+linking-failed-uuid-description = UUID **`{$uuid}`** nepriklauso Minecraft paskyrai.
 linking-failed-username-description = Naudotojas **`{$username}`** nepriklauso Minecraft paskyrai.
 linking-failed-description = Turite pateikti galiojantį UUID arba naudotojo vardą.
 linking-succeeded = Sujungimas sėkmingas
@@ -2480,7 +2480,7 @@ guild-monthly = mėnuo
   .uuid = uuid
   .uuid-description = Gildijos nario UUID, kurio statistiką norite peržiūrėti
 
-showing-guild-xp-statistics = Rodyti gildijos XP pokytį nuo `{$from}` iki `{$to}`.
+showing-guild-xp-statistics = Rodyti gildijos XP pokytį nuo {$from} iki {$to}.
 
 # Bendros etikečių žymės
 
@@ -2794,3 +2794,261 @@ bedwars-practice = practice
   .username-description = Minecraft vartotojo vardas
   .uuid = uuid
   .uuid-description = Minecraft UUID
+
+# Komandos
+
+arcade-at = at
+  .description = Rodyti "Arcade" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Arcade" režimas, kurį norite peržiūrėti
+
+arena-at = at
+  .description = Rodyti "Arena" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Arena" režimas, kurį norite peržiūrėti
+
+bedwars-at = at
+  .description = Rodyti "Bed Wars" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Bed Wars" režimas, kurį norite peržiūrėti
+
+blitz-at = at
+  .description = Rodyti "Blitz Survival Games" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Blitz Survival Games" režimas, kurį norite peržiūrėti
+
+buildbattle-at = at
+  .description = Rodyti "Build Battle" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Build Battle" režimas, kurį norite peržiūrėti
+
+copsandcrims-at = at
+  .description = Rodyti "Cops and Crims" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Cops and Crims" režimas, kurį norite peržiūrėti
+
+duels-at = at
+  .description = Rodyti "Duels" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Duels" režimas, kurį norite peržiūrėti
+
+megawalls-at = at
+  .description = Rodyti "Mega Walls" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Mega Walls" režimas, kurį norite peržiūrėti
+
+murdermystery-at = at
+  .description = Rodyti "Murder Mystery" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Murder Mystery" režimas, kurį norite peržiūrėti
+
+paintball-at = at
+  .description = Rodyti "Paintball" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Paintball" režimas, kurį norite peržiūrėti
+
+pit-at = at
+  .description = Rodyti "The Pit" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "The Pit" režimas, kurį norite peržiūrėti
+
+quake-at = at
+  .description = Rodyti "Quakecraft" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Quakecraft" režimas, kurį norite peržiūrėti
+
+skywars-at = at
+  .description = Rodyti "SkyWars" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "SkyWars" režimas, kurį norite peržiūrėti
+
+smash-at = at
+  .description = Rodyti "Smash Heroes" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Smash Heroes" režimas, kurį norite peržiūrėti
+
+speeduhc-at = at
+  .description = Rodyti "SpeedUHC" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "SpeedUHC" režimas, kurį norite peržiūrėti
+
+tntgames-at = at
+  .description = Rodyti "TNT Games" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "TNT Games" režimas, kurį norite peržiūrėti
+
+turbokartracers-at = at
+  .description = Rodyti "Turbo Kart Racers" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Turbo Kart Racers" režimas, kurį norite peržiūrėti
+
+uhc-at = at
+  .description = Rodyti "UHC Champions" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "UHC Champions" režimas, kurį norite peržiūrėti
+
+vampirez-at = at
+  .description = Rodyti "VampireZ" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "VampireZ" režimas, kurį norite peržiūrėti
+
+walls-at = at
+  .description = Rodyti "The Walls" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "The Walls" režimas, kurį norite peržiūrėti
+
+warlords-at = at
+  .description = Rodyti "Warlords" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Warlords" režimas, kurį norite peržiūrėti
+
+woolwars-at = at
+  .description = Rodyti "Wool Wars" žaidėjo statistiką tam tikru laiko momentu
+  .username = vartotojo_vardas
+  .username-description = "Minecraft" vartotojo vardas
+  .uuid = uuid
+  .uuid-description = "Minecraft" UUID
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+  .mode = režimas
+  .mode-description = "Wool Wars" režimas, kurį norite peržiūrėti
+
+guild-at = at
+  .description = Rodyti gildijos statistiką tam tikru laiko momentu
+  .name = pavadinimas
+  .name-description = Gildijos pavadinimas, kurį norite peržiūrėti
+  .username = vartotojo_vardas
+  .username-description = Gildijos nario vartotojo vardas, kurį norite peržiūrėti
+  .uuid = uuid
+  .uuid-description = Gildijos nario UUID, kurį norite peržiūrėti
+  .time = laikas
+  .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Rodo statistiką nuo {$at}.
+showing-guild-statistics-at = Rodo gildijos statistiką nuo {$at}.

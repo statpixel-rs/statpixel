@@ -3,45 +3,45 @@ not-linked = Brakujące argumenty
 not-linked-description = Ponieważ nie jesteś połączony, musisz dostarczyć profil, aby go zobaczyć.
 showing-statistics = <a:clock:1115091329958019253> Wyświetlanie statystyk zmiany od {$from} do {$to}.
 no-previous-statistics = Brak danych wcześniejszych dla **`{$name}`**, więc zostały one dodane.
-showing-guild-statistics = Wyświetlanie statystyk gildii zmiany od `{$from}` do `{$to}`.
+showing-guild-statistics = Wyświetlanie statystyk gildii zmiany od {$from} do {$to}.
 no-previous-guild-statistics = Brak danych wcześniejszych dla gildii **`{$name}`**, więc została ona dodana.
-showing-comparison = <a:clock:1115091329958019253> Wyświetlanie statystyk `{$from}` w porównaniu do `{$to}`.
+showing-comparison = <a:clock:1115091329958019253> Wyświetlanie statystyk **`{$from}`** w porównaniu do **`{$to}`**.
 
 # Errors
 
-error-player-not-found = Nie znaleziono profilu należącego do `{$name}`.
-error-session-not-found = Nie znaleziono sesji należącej do `{$name}`.
-error-player-uuid-not-found = Nie znaleziono gracza o uuid `{$uuid}`.
-error-player-username-not-found = Nie znaleziono gracza o nazwie użytkownika `{$name}`.
-error-guild-by-member-uuid-not-found = Nie znaleziono członka gildii o uuid `{$uuid}`.
-error-guild-by-member-username-not-found = Nie znaleziono członka gildii o nazwie użytkownika `{$name}`.
-error-guild-not-found = Nie znaleziono gildii o nazwie `{$name}`.
+error-player-not-found = Nie znaleziono profilu należącego do **`{$name}`**.
+error-session-not-found = Nie znaleziono sesji należącej do **`{$name}`**.
+error-player-uuid-not-found = Nie znaleziono gracza o uuid **`{$uuid}`**.
+error-player-username-not-found = Nie znaleziono gracza o nazwie użytkownika **`{$name}`**.
+error-guild-by-member-uuid-not-found = Nie znaleziono członka gildii o uuid **`{$uuid}`**.
+error-guild-by-member-username-not-found = Nie znaleziono członka gildii o nazwie użytkownika **`{$name}`**.
+error-guild-not-found = Nie znaleziono gildii o nazwie **`{$name}`**.
 error-internal = Wystąpił błąd wewnętrzny. Został on zarejestrowany i zostanie rozwiązany wkrótce.
 error-not-linked = Nie jesteś połączony z kontem Minecraft. Użyj </link:1113624864524357710>, aby połączyć swoje konto.
-error-invalid-uuid = Nieprawidłowy identyfikator UUID: `{$uuid}`.
-error-invalid-username = Nieprawidłowa nazwa użytkownika: `{$name}`.
-error-member-player-not-found = Członek `{$name}` nie został znaleziony w profilu.
-error-skyblock-profile-not-found = Nie znaleziono profilu SkyBlock należącego do `{$name}`.
-error-player-snapshot-not-found = Nie znaleziono migawek dla `{$name}`. Utwórz jedną za pomocą </bedwars daily:1113624864272683060>.
-error-leaderboard-not-found = Nie znaleziono tabeli wyników o nazwie `{$name}`.
-error-profile-not-found = Profil SkyBlock `{$profile}` należący do `{$name}` ma wyłączone API lub nie logował się od wprowadzenia nowego systemu profilu.
+error-invalid-uuid = Nieprawidłowy identyfikator UUID: **`{$uuid}`**.
+error-invalid-username = Nieprawidłowa nazwa użytkownika: **`{$name}`**.
+error-member-player-not-found = Członek **`{$name}`** nie został znaleziony w profilu.
+error-skyblock-profile-not-found = Nie znaleziono profilu SkyBlock należącego do **`{$name}`**.
+error-player-snapshot-not-found = Nie znaleziono migawek dla **`{$name}`**. Utwórz jedną za pomocą </bedwars daily:1113624864272683060>.
+error-leaderboard-not-found = Nie znaleziono tabeli wyników o nazwie **`{$name}`**.
+error-profile-not-found = Profil SkyBlock **`{$profile}`** należący do **`{$name}`** ma wyłączone API lub nie logował się od wprowadzenia nowego systemu profilu.
 error-identifier-too-long =
   Jeden z wygenerowanych identyfikatorów dla tej interakcji jest zbyt długi.
   Spróbuj zmniejszyć liczbę komponentów lub ilość niestandardowego tekstu.
-error-user-track-limit-reached = Osiągnąłeś maksymalną liczbę śledzonych graczy: `{$limit}`. Zakup StatPixel+, aby usunąć ten limit na stronie <https://statpixel.xyz/plus>.
+error-user-track-limit-reached = Osiągnąłeś maksymalną liczbę śledzonych graczy: **`{$limit}`**. Zakup StatPixel+, aby usunąć ten limit na stronie <https://statpixel.xyz/plus>.
 error-guild-track-limit-reached =
-  Ta gildia osiągnęła maksymalną liczbę śledzonych graczy: `{$limit}`.
+  Ta gildia osiągnęła maksymalną liczbę śledzonych graczy: **`{$limit}`**.
   Jeśli masz StatPixel+, wzmocnij gildię za pomocą </boost:1132443666997321809>, aby usunąć to ograniczenie lub przejdź na stronę <https://statpixel.xyz/plus>.
 error-boost-limit-reached =
-  Osiągnąłeś maksymalną liczbę wzmocnień: `{$limit}`. Możesz usunąć jedno wzmocnienie na stronie: <https://statpixel.xyz/dashboard/boost>.
+  Osiągnąłeś maksymalną liczbę wzmocnień: **`{$limit}`**. Możesz usunąć jedno wzmocnienie na stronie: <https://statpixel.xyz/dashboard/boost>.
 error-track-already-exists =
   Śledzisz już tego gracza na tym kanale.
 error-not-premium = Musisz być subskrybentem StatPixel+, aby wykonać tę akcję. Przejdź do <https://statpixel.xyz/plus>, aby uzyskać więcej informacji.
 error-not-in-a-guild = Musisz należeć do gildii, aby wykonać tę akcję.
 error-boost-already-exists = Już wzmocniłeś tę gildię.
-error-time-invalid-character = W czasie argumentu w pozycji `{$position}` znaleziono nieprawidłowy znak.
-error-time-expected-number = W czasie argumentu w pozycji `{$position}` oczekiwana jest liczba.
-error-time-unknown-unit = Nieznana jednostka czasu `{$unit}` w pozycji `{$position}` o wartości `{$value}`.
+error-time-invalid-character = W czasie argumentu w pozycji **`{$position}`** znaleziono nieprawidłowy znak.
+error-time-expected-number = W czasie argumentu w pozycji **`{$position}`** oczekiwana jest liczba.
+error-time-unknown-unit = Nieznana jednostka czasu **`{$unit}`** w pozycji **`{$position}`** o wartości **`{$value}`**.
 error-time-empty = Argument czasu nie może być pusty.
 error-time-overflow = Czas trwania argumentu czasu jest zbyt długi. Spróbuj ograniczyć go do maksymalnie 3000 lat.
 
@@ -109,7 +109,7 @@ invalid-identifier-command-description = Podany identyfikator nie jest komendą.
 
 deprecated-interaction = Interakcja przestarzała
 deprecated-interaction-description = Ta interakcja jest przestarzała i nie będzie działać. Proszę uruchomić oryginalną komendę ponownie.
-identifier = <:id:1125971775755407390> Identyfikator: `{$identifier}`
+identifier = <:id:1125971775755407390> Identyfikator: **`{$identifier}`**
 
 # /builder
 
@@ -171,19 +171,19 @@ username = Nazwa użytkownika
 username-placeholder = Wprowadź nazwę użytkownika
 
 invalid-statistic =
-  Nieprawidłowa statystyka `{$statistic}` dla `{$game}`. Sprawdź dokumentację i spróbuj ponownie.
+  Nieprawidłowa statystyka **`{$statistic}`** dla **`{$game}`**. Sprawdź dokumentację i spróbuj ponownie.
 
 invalid-level-type =
-  Nieprawidłowy typ poziomu `{$kind}`. Sprawdź dokumentację i spróbuj ponownie.
+  Nieprawidłowy typ poziomu **`{$kind}`**. Sprawdź dokumentację i spróbuj ponownie.
 
 invalid-game-type =
-  Nieprawidłowy typ gry `{$game}`. Sprawdź dokumentację i spróbuj ponownie.
+  Nieprawidłowy typ gry **`{$game}`**. Sprawdź dokumentację i spróbuj ponownie.
 
 image-created =
   Twój obraz został stworzony! Wypróbuj go z </execute:1125992506501365892>.
 
-  Identyfikator: `{$id}`
-  Link: `{$link}`
+  Identyfikator: **`{$id}`**
+  Link: **`{$link}`**
 
 # /about
 
@@ -239,7 +239,7 @@ background = tło
 error-invalid-colour = Nieprawidłowy kolor podany
 error-invalid-colour-description = Podany kolor jest nieprawidłowy. Spróbuj podać jeden z [tych kolorów](https://simple.wikipedia.org/wiki/List_of_colors) lub kolor heksadecymalny z prefiksem `#`.
 colour-changed = Zmiana koloru tła
-colour-changed-description = Twój kolor tła został zmieniony na `{$colour}`.
+colour-changed-description = Twój kolor tła został zmieniony na **`{$colour}`**.
 
 # /skyblock bazaar
 
@@ -539,7 +539,7 @@ link = połącz
   .uuid-description = UUID Minecraft do połączenia
 
 linking-failed = Połączenie nie powiodło się
-linking-failed-uuid-description = UUID `{$uuid}` nie należy do konta Minecraft.
+linking-failed-uuid-description = UUID **`{$uuid}`** nie należy do konta Minecraft.
 linking-failed-username-description = Nazwa użytkownika **`{$username}`** nie należy do konta Minecraft.
 linking-failed-description = Musisz podać prawidłowe UUID lub nazwę użytkownika.
 linking-succeeded = Połączenie powiodło się
@@ -2479,7 +2479,7 @@ guild-monthly = miesięcznie
   .uuid = uuid
   .uuid-description = UUID członka gildii do wyświetlenia
 
-showing-guild-xp-statistics = Pokazywanie zdobywanego XP gildii od `{$from}` do `{$to}`.
+showing-guild-xp-statistics = Pokazywanie zdobywanego XP gildii od {$from} do {$to}.
 
 # Wspólne etykiety canvasu
 
@@ -2793,3 +2793,261 @@ bedwars-practice = trening
   .username-description = Nazwa użytkownika Minecraft
   .uuid = uuid
   .uuid-description = UUID Minecrafta
+
+# Komendy
+
+arcade-at = o
+  .description = Pokaż statystyki Arcade gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Arcade do wyświetlenia
+
+arena-at = o
+  .description = Pokaż statystyki Areny gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Areny do wyświetlenia
+
+bedwars-at = o
+  .description = Pokaż statystyki Bed Wars gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Bed Wars do wyświetlenia
+
+blitz-at = o
+  .description = Pokaż statystyki Blitz Survival Games gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Blitz Survival Games do wyświetlenia
+
+buildbattle-at = o
+  .description = Pokaż statystyki Build Battle gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Build Battle do wyświetlenia
+
+copsandcrims-at = o
+  .description = Pokaż statystyki Cops and Crims gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Cops and Crims do wyświetlenia
+
+duels-at = o
+  .description = Pokaż statystyki Duels gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Duels do wyświetlenia
+
+megawalls-at = o
+  .description = Pokaż statystyki Mega Walls gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Mega Walls do wyświetlenia
+
+murdermystery-at = o
+  .description = Pokaż statystyki Murder Mystery gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Murder Mystery do wyświetlenia
+
+paintball-at = o
+  .description = Pokaż statystyki Paintball gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Paintball do wyświetlenia
+
+pit-at = o
+  .description = Pokaż statystyki The Pit gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb The Pit do wyświetlenia
+
+quake-at = o
+  .description = Pokaż statystyki Quakecraft gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Quakecraft do wyświetlenia
+
+skywars-at = o
+  .description = Pokaż statystyki SkyWars gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb SkyWars do wyświetlenia
+
+smash-at = o
+  .description = Pokaż statystyki Smash Heroes gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Smash Heroes do wyświetlenia
+
+speeduhc-at = o
+  .description = Pokaż statystyki SpeedUHC gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb SpeedUHC do wyświetlenia
+
+tntgames-at = o
+  .description = Pokaż statystyki TNT Games gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb TNT Games do wyświetlenia
+
+turbokartracers-at = o
+  .description = Pokaż statystyki Turbo Kart Racers gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Turbo Kart Racers do wyświetlenia
+
+uhc-at = o
+  .description = Pokaż statystyki UHC Champions gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb UHC Champions do wyświetlenia
+
+vampirez-at = o
+  .description = Pokaż statystyki VampireZ gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb VampireZ do wyświetlenia
+
+walls-at = o
+  .description = Pokaż statystyki The Walls gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb The Walls do wyświetlenia
+
+warlords-at = o
+  .description = Pokaż statystyki Warlords gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Warlords do wyświetlenia
+
+woolwars-at = o
+  .description = Pokaż statystyki Wool Wars gracza w określonym punkcie czasowym
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika w Minecraft
+  .uuid = uuid
+  .uuid-description = UUID w Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb Wool Wars do wyświetlenia
+
+guild-at = o
+  .description = Pokaż statystyki gildii w określonym punkcie czasowym
+  .name = nazwa
+  .name-description = Nazwa gildii do wyświetlenia
+  .username = nazwa-użytkownika
+  .username-description = Nazwa użytkownika członka gildii do wyświetlenia
+  .uuid = uuid
+  .uuid-description = UUID członka gildii do wyświetlenia
+  .time = czas
+  .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
+
+showing-statistics-at = <a:clock:1115091329958019253> Pokazywanie statystyk z {$at}.
+showing-guild-statistics-at = Pokazywanie statystyk gildii z {$at}.

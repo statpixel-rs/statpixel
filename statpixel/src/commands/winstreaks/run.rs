@@ -33,7 +33,6 @@ pub async fn winstreaks(
 	let id = id::command(Id::Root {
 		uuid: player.uuid,
 		kind: Mode::Winstreaks,
-		background: None,
 	});
 
 	ctx.send(

@@ -1,9 +1,9 @@
 use std::borrow::Cow;
 
 use api::{
-	canvas::{self, body::Body, diff::Diff, label::ToFormatted, Canvas},
+	canvas::{self, body::Body, label::ToFormatted, Canvas},
 	prelude::Mode,
-	shape, Guild, Member,
+	shape, Member,
 };
 use chrono::{DateTime, Utc};
 use futures::StreamExt;
@@ -19,7 +19,13 @@ use skia_safe::textlayout::TextAlign;
 use translate::{context, tr, tr_fmt, Error};
 use uuid::Uuid;
 
-use crate::{commands, format, snapshot, util};
+use crate::{
+	commands::{
+		self,
+		guild::{get_monthly_xp, get_snapshots_multiple_of_weekday},
+	},
+	format, snapshot, util,
+};
 
 #[allow(clippy::too_many_lines)]
 pub async fn command<G: api::prelude::Game>(
@@ -53,17 +59,15 @@ pub async fn command<G: api::prelude::Game>(
 			};
 
 			let content = tr_fmt!(
-				ctx, "showing-statistics",
-				from: format!("<t:{}:f>", created_at.timestamp()),
-				to: format!("<t:{}:f>", Utc::now().timestamp()),
+				ctx, "showing-statistics-at",
+				at: format!("<t:{}:f>", created_at.timestamp()),
 			);
 
 			let (png, mode): (Cow<_>, _) = {
-				let (mut surface, mode) = G::canvas_diff(
+				let (mut surface, mode) = G::canvas(
 					ctx,
 					family,
 					data_lhs,
-					&data_rhs,
 					&session,
 					skin.image(),
 					mode,
@@ -74,7 +78,7 @@ pub async fn command<G: api::prelude::Game>(
 				(canvas::to_png(&mut surface).into(), mode)
 			};
 
-			let (row, id) = G::Mode::as_snapshot(
+			let (row, id) = G::Mode::as_at(
 				ctx,
 				player.uuid,
 				past.num_nanoseconds().unwrap_or_default(),
@@ -112,26 +116,21 @@ pub async fn command<G: api::prelude::Game>(
 			};
 
 			let content = tr_fmt!(
-				ctx, "showing-statistics",
-				from: format!("<t:{}:f>", created_at.timestamp()),
-				to: format!("<t:{}:f>", Utc::now().timestamp()),
+				ctx, "showing-statistics-at",
+				at: format!("<t:{}:f>", created_at.timestamp()),
 			);
 
-			let attachments = G::condensed_diff(
-				ctx,
-				family,
-				data_lhs,
-				&data_rhs,
-				suffix.as_deref(),
-				background,
-			)
-			.into_iter()
-			.map(|mut surface| {
-				CreateAttachment::bytes(Cow::Owned(canvas::to_png(&mut surface)), crate::IMAGE_NAME)
-			})
-			.collect::<Vec<_>>();
+			let attachments = G::condensed(ctx, family, data_lhs, suffix.as_deref(), background)
+				.into_iter()
+				.map(|mut surface| {
+					CreateAttachment::bytes(
+						Cow::Owned(canvas::to_png(&mut surface)),
+						crate::IMAGE_NAME,
+					)
+				})
+				.collect::<Vec<_>>();
 
-			let (_, id) = G::Mode::as_snapshot(
+			let (_, id) = G::Mode::as_at(
 				ctx,
 				player.uuid,
 				past.num_nanoseconds().unwrap_or_default(),
@@ -166,13 +165,11 @@ pub async fn command<G: api::prelude::Game>(
 			};
 
 			let content = tr_fmt!(
-				ctx, "showing-statistics",
-				from: format!("<t:{}:f>", created_at.timestamp()),
-				to: format!("<t:{}:f>", Utc::now().timestamp()),
+				ctx, "showing-statistics-at",
+				at: format!("<t:{}:f>", created_at.timestamp()),
 			);
 
-			let embed =
-				G::embed_diff(ctx, &player, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
+			let embed = G::embed(ctx, &player, &data_lhs).colour(crate::EMBED_COLOUR);
 
 			ctx.send(poise::CreateReply::new().content(content).embed(embed))
 				.await?;
@@ -198,63 +195,46 @@ pub async fn guild_command(
 	};
 
 	let status = snapshot::guild::get_or_insert(ctx, &guild, after).await?;
-	let guilds = commands::guild::get_snapshots_multiple_of_weekday(ctx, &guild, after).await?;
-	let xp_since = commands::guild::get_monthly_xp(&guild, &guilds);
 
 	guild.increase_searches(ctx).await?;
 
-	let daily_xp = guild.members.iter().map(|g| g.xp_history[1].1).sum::<u32>();
+	let png: Option<Cow<_>> = if let snapshot::guild::Status::Found((ref guild, _)) = status {
+		let guilds =
+			get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
+				.await?;
+		let monthly_xp = get_monthly_xp(guild, &guilds);
 
-	let weekly_xp = guild
-		.members
-		.iter()
-		.map(|g| g.xp_history.iter().map(|h| h.1).sum::<u32>())
-		.sum::<u32>();
-
-	commands::guild::apply_member_xp(&mut Guild::clone(&guild), &guilds);
-
-	let members = futures::stream::iter(
-		guild
+		let daily_xp = guild.members.iter().map(|g| g.xp_history[1].1).sum::<u32>();
+		let weekly_xp = guild
 			.members
 			.iter()
-			.rev()
-			.take(14)
-			.map(Member::get_player_unchecked)
-			.map(|p| p.get_display_string_owned(ctx)),
-	)
-	.buffered(14)
-	.filter_map(|r| async { r.ok() })
-	.collect::<Vec<_>>();
+			.map(|g| g.xp_history.iter().map(|h| h.1).sum::<u32>())
+			.sum::<u32>();
 
-	let leader = guild
-		.get_leader()
-		.map(|m| m.get_player_unchecked().get_display_string_owned(ctx));
+		let members = futures::stream::iter(
+			guild
+				.members
+				.iter()
+				.rev()
+				.take(14)
+				.map(Member::get_player_unchecked)
+				.map(|p| p.get_display_string_owned(ctx)),
+		)
+		.buffered(14)
+		.filter_map(|r| async { r.ok() })
+		.collect::<Vec<_>>();
 
-	let (members, leader) = if let Some(leader) = leader {
-		let (members, leader) = tokio::join!(members, leader);
+		let leader = guild
+			.get_leader()
+			.map(|m| m.get_player_unchecked().get_display_string_owned(ctx));
 
-		(members, Some(leader?))
-	} else {
-		(members.await, None)
-	};
+		let (members, leader) = if let Some(leader) = leader {
+			let (members, leader) = tokio::join!(members, leader);
 
-	let png: Option<Cow<_>> = if let snapshot::guild::Status::Found((ref snapshot, _)) = status {
-		let diff = guild.diff(snapshot);
-		let mut guild = Guild::clone(&guild);
-
-		guild.coins = diff.coins;
-		guild.xp = diff.xp;
-		guild.xp_by_game.iter_mut().for_each(|a| {
-			let b = snapshot.xp_by_game.iter().find(|x| x.0 == a.0).unwrap();
-
-			if a.1 > b.1 {
-				a.1 -= b.1;
-			} else {
-				a.1 = api::xp::Xp(0);
-			}
-		});
-
-		guild.xp_by_game.sort_unstable_by_key(|g| g.1);
+			(members, Some(leader?))
+		} else {
+			(members.await, None)
+		};
 
 		let level = calc::guild::get_level(guild.xp);
 		let progress = shape::WideBubbleProgress(
@@ -265,7 +245,7 @@ pub async fn guild_command(
 
 		let mut canvas = Canvas::new(720., family)
 			.gap(7.)
-			.push_down(&shape::Title, shape::Title::from_guild(family, &guild))
+			.push_down(&shape::Title, shape::Title::from_guild(family, guild))
 			.push_down(
 				&shape::Subtitle,
 				if let Some(leader) = leader {
@@ -295,7 +275,7 @@ pub async fn guild_command(
 			)
 			.push_right_start(
 				&shape::Sidebar,
-				shape::Sidebar::from_guild(ctx, family, &guild),
+				shape::Sidebar::from_guild(ctx, family, guild),
 			)
 			.push_right_post_draw(
 				&shape::PreferredGames(&guild.preferred_games),
@@ -370,18 +350,18 @@ pub async fn guild_command(
 				Body::from_bubble(
 					ctx,
 					family,
-					&xp_since,
-					tr(ctx, "xp-since").as_ref(),
+					&monthly_xp,
+					tr(ctx, "monthly-xp").as_ref(),
 					Paint::DarkGreen,
 				),
 			)
 			.push_down_start(
 				&shape::WideTallBubble,
-				shape::WideTallBubble::from_guild(ctx, family, &guild, members.as_slice(), 0),
+				shape::WideTallBubble::from_guild(ctx, family, guild, members.as_slice(), 0),
 			)
 			.push_right(
 				&shape::WideTallBubble,
-				shape::WideTallBubble::from_guild(ctx, family, &guild, members.as_slice(), 1),
+				shape::WideTallBubble::from_guild(ctx, family, guild, members.as_slice(), 1),
 			)
 			.build(None, background)
 			.unwrap();
@@ -393,9 +373,8 @@ pub async fn guild_command(
 
 	let content = match status {
 		snapshot::guild::Status::Found((_, created_at)) => tr_fmt!(
-			ctx, "showing-guild-statistics",
-			from: format!("<t:{}:f>", created_at.timestamp()),
-			to: format!("<t:{}:f>", Utc::now().timestamp()),
+			ctx, "showing-guild-statistics-at",
+			at: format!("<t:{}:f>", created_at.timestamp()),
 		),
 		snapshot::guild::Status::Inserted => tr_fmt!(
 			ctx, "no-previous-guild-statistics",

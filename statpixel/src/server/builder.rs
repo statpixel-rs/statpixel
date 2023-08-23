@@ -61,7 +61,6 @@ pub async fn preview(
 	let id = api::id::command(api::command::Id::Builder {
 		shapes,
 		uuid: uuid.unwrap_or(DEFAULT_UUID),
-		background: None,
 	});
 
 	(StatusCode::OK, Json(PreviewResponse { success: true, id })).into_response()
