@@ -65,17 +65,14 @@ async fn autocomplete_product(
 )]
 pub async fn auctions(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::auctions(ctx, username, uuid, None).await
+	run::auctions(ctx, player, uuid, None).await
 }
 
 #[poise::command(
@@ -85,18 +82,15 @@ pub async fn auctions(
 )]
 pub async fn profile(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::profile(ctx, username, profile, uuid, None).await
+	run::profile(ctx, player, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -106,18 +100,15 @@ pub async fn profile(
 )]
 pub async fn bank(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::bank(ctx, username, profile, uuid, None).await
+	run::bank(ctx, player, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -127,18 +118,15 @@ pub async fn bank(
 )]
 pub async fn networth(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::networth(ctx, username, profile, uuid, None).await
+	run::networth(ctx, player, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -148,18 +136,15 @@ pub async fn networth(
 )]
 pub async fn pets(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
+	#[autocomplete = "autocomplete_profile"] profile: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::pets(ctx, username, profile, uuid, None).await
+	run::pets(ctx, player, profile, uuid, None).await
 }
 
 #[poise::command(
@@ -189,18 +174,15 @@ macro_rules! inventory_command {
 		)]
 		pub async fn $fn(
 			ctx: Context<'_>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
-			username: Option<String>,
-			#[autocomplete = "autocomplete_profile"] profile: Option<String>,
-			#[min_length = 32]
 			#[max_length = 36]
-			uuid: Option<String>,
+			#[autocomplete = "crate::commands::autocomplete_username"]
+			player: Option<String>,
+			#[autocomplete = "autocomplete_profile"] profile: Option<String>,
 		) -> Result<(), Error> {
-			let uuid = util::parse_uuid(uuid.as_deref())?;
+			let uuid = util::parse_uuid(player.as_deref());
 			let ctx = &context::Context::from_poise(&ctx);
 
-			run::$fn(ctx, username, profile, uuid, None).await
+			run::$fn(ctx, player, profile, uuid, None).await
 		}
 	};
 }

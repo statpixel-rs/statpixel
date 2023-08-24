@@ -9,7 +9,7 @@ showing-comparison = <a:clock:1115091329958019253> **`{$from}`**의 통계를 **
 
 # Errors
 error-player-not-found = **`{$name}`** 님의 프로필을 찾을 수 없습니다.
-error-session-not-found = **`{$name}`** 님의 세션을 찾을 수 없습니다.
+error-snapshot-not-found = **`{$name}`** 님의 세션을 찾을 수 없습니다.
 error-player-uuid-not-found = UUID가 **`{$uuid}`**인 플레이어를 찾을 수 없습니다.
 error-player-username-not-found = 사용자명이 **`{$name}`**인 플레이어를 찾을 수 없습니다.
 error-guild-by-member-uuid-not-found = UUID가 **`{$uuid}`**인 길드 멤버를 찾을 수 없습니다.
@@ -87,11 +87,8 @@ track-success-description =
 
 track = track
   .description = 플레이어의 통계를 추적하고 변경 사항을 현재 채널로 전송합니다.
-  .username = 사용자-이름
-  .username-description = 추적할 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 추적할 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 # /custom
 
 execute = 실행
@@ -198,11 +195,8 @@ about = 정보
 
 winstreaks = 연승
   .description = 연승 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 # /recent
 
 mode = 모드
@@ -213,11 +207,8 @@ playing = 플레이 중
 
 recent = 최근-게임
   .description = 최근 게임 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 # Projection labels
 
 accuracy = 정확도
@@ -269,11 +260,8 @@ Wardrobe = 옷장
 
 skyblock-auctions = 경매
   .description = SkyBlock 경매 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 player-auctions = 경매
 highest-bid = 최고 입찰가
 
@@ -281,109 +269,85 @@ highest-bid = 최고 입찰가
 
 skyblock-inventory = 인벤토리
   .description = SkyBlock 인벤토리 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-enderchest = 엔더-상자
   .description = SkyBlock 엔더 상자 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-quiver = 화살통
   .description = SkyBlock 화살통 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-talisman = 부적
   .description = SkyBlock 부적 가방 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-fishing = 낚시
   .description = SkyBlock 낚시 가방 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-potions = 물약
   .description = SkyBlock 물약 가방 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-equipment = 장비
   .description = SkyBlock 장비 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보기 위한 프로필
 
 skyblock-wardrobe = 옷장
   .description = SkyBlock 옷장 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
 skyblock-candy = 사탕
   .description = SkyBlock 사탕 인벤토리 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
 skyblock-vault = 개인-금고
   .description = SkyBlock 개인 금고 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
 skyblock-pets = 펫
   .description = SkyBlock 펫 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
 skyblock-networth = 순자산
   .description = SkyBlock 프로필 순자산 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
@@ -391,10 +355,8 @@ skyblock-networth = 순자산
 
 skyblock-profile = 프로필
   .description = SkyBlock 프로필 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
@@ -423,10 +385,8 @@ social = 소셜
 
 skyblock-bank = 은행
   .description = SkyBlock 은행 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .profile = 프로필
   .profile-description = 보려는 프로필
 
@@ -444,18 +404,12 @@ leaderboard = 리더보드
 
 network-general = 일반
   .description = 일반 네트워크 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 network-history = 히스토리
   .description = 과거 네트워크 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 karma = 카르마
 rewards = 보상
 friend-requests = 친구 요청
@@ -528,11 +482,8 @@ unlinking-succeeded-description = 이제 Minecraft 계정과 연결이 해제되
 # /link
 link = 연결
   .description = Discord 계정을 Minecraft 계정에 연결하기
-  .username = 사용자-이름
-  .username-description = 연결할 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 연결할 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 linking-failed = 연결 실패
 linking-failed-uuid-description = UUID **`{$uuid}`**는 Minecraft 계정에 속하지 않습니다.
 linking-failed-username-description = 사용자 이름 **`{$username}`**은 Minecraft 계정에 속하지 않습니다.
@@ -567,19 +518,15 @@ mystery-gifts = 미스터리 기프트
 
 arcade-general = 일반
   .description = 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
 
 arcade-from = 시작일
   .description = 특정 시간 이후의 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
   .time = 시간
@@ -587,19 +534,15 @@ arcade-from = 시작일
 
 arcade-history = 히스토리
   .description = 시간에 따른 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
 
 arcade-project = 예측
   .description = 미래의 아케이드 통계 예측
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
   .statistic = 통계
@@ -609,28 +552,22 @@ arcade-project = 예측
 
 arcade-daily = 일일
   .description = 최근 1일 동안의 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
 
 arcade-weekly = 주간
   .description = 최근 1주일 동안의 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
 
 arcade-monthly = 월간
   .description = 최근 1개월 동안의 아케이드 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아케이드 모드
 
@@ -642,19 +579,15 @@ rating = 등급
 
 arena-general = 일반
   .description = 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
 
 arena-from = 시작일
   .description = 특정 시간 이후의 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
   .time = 시간
@@ -662,19 +595,15 @@ arena-from = 시작일
 
 arena-history = 히스토리
   .description = 시간에 따른 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
 
 arena-project = 예측
   .description = 미래의 아레나 통계 예측
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
   .statistic = 통계
@@ -684,28 +613,22 @@ arena-project = 예측
 
 arena-daily = 일일
   .description = 최근 1일 동안의 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
 
 arena-weekly = 주간
   .description = 최근 1주일 동안의 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
 
 arena-monthly = 월간
   .description = 최근 1개월 동안의 아레나 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 아레나 모드
 
@@ -748,19 +671,15 @@ items-purchased = 구매한 아이템
 
 bedwars-general = 일반
   .description = 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
 
 bedwars-from = 시작일
   .description = 특정 시간 이후의 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
   .time = 시간
@@ -768,19 +687,15 @@ bedwars-from = 시작일
 
 bedwars-history = 히스토리
   .description = 시간에 따른 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
 
 bedwars-project = 예측
   .description = 미래의 베드 워즈 통계 예측
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
   .statistic = 통계
@@ -790,28 +705,22 @@ bedwars-project = 예측
 
 bedwars-daily = 일일
   .description = 최근 1일 동안의 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
 
 bedwars-weekly = 주간
   .description = 최근 1주일 동안의 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
 
 bedwars-monthly = 월간
   .description = 최근 1개월 동안의 베드 워즈 통계 보기
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 베드 워즈 모드
 
@@ -848,19 +757,15 @@ time-played = 플레이 시간
 
 blitz-general = 일반
   .description = 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
 
 blitz-from = 시작-날짜
   .description = 특정 시점부터 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
   .time = 시간
@@ -868,19 +773,15 @@ blitz-from = 시작-날짜
 
 blitz-history = 히스토리
   .description = 시간에 따른 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
 
 blitz-project = 예측
   .description = 블리츠 서바이벌 게임 통계를 미래로 예측하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
   .statistic = 통계-종류
@@ -890,28 +791,22 @@ blitz-project = 예측
 
 blitz-daily = 일일
   .description = 최근 1일간 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
 
 blitz-weekly = 주간
   .description = 최근 1주일간 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
 
 blitz-monthly = 월간
   .description = 최근 1개월간 블리츠 서바이벌 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 블리츠 서바이벌 게임에서 보여줄 모드
 
@@ -926,19 +821,15 @@ most-points-team = 가장 많은 점수 (팀)
 
 buildbattle-general = 일반
   .description = 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
 
 buildbattle-from = 시작-날짜
   .description = 특정 시점부터 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
   .time = 시간
@@ -946,19 +837,15 @@ buildbattle-from = 시작-날짜
 
 buildbattle-history = 히스토리
   .description = 시간에 따른 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
 
 buildbattle-project = 예측
   .description = 빌드 배틀 통계를 미래로 예측하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
   .statistic = 통계-종류
@@ -968,28 +855,22 @@ buildbattle-project = 예측
 
 buildbattle-daily = 일일
   .description = 최근 1일간 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
 
 buildbattle-weekly = 주간
   .description = 최근 1주일간 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
 
 buildbattle-monthly = 월간
   .description = 최근 1개월간 빌드 배틀 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 빌드 배틀에서 보여줄 모드
 
@@ -1008,19 +889,15 @@ bombs-planted = 설치한 폭탄 수
 
 copsandcrims-general = 일반
   .description = 콥스 앤 크림 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
 
 copsandcrims-from = 시작-날짜
   .description = 특정 시점부터 콥스 앤 크림 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
   .time = 시간
@@ -1028,19 +905,15 @@ copsandcrims-from = 시작-날짜
 
 copsandcrims-history = 히스토리
   .description = 시간에 따른 콥스 앤 크림 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
 
 copsandcrims-project = 예측
   .description = 콥스 앤 크림 통계를 미래로 예측하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
   .statistic = 통계-종류
@@ -1050,28 +923,22 @@ copsandcrims-project = 예측
 
 copsandcrims-daily = 일일
   .description = 최근 1일간 콥스 앤 크림 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 콥스 앤 크림에서 보여줄 모드
 
 copsandcrims-weekly = 주간
   .description = 지난 주 동안의 Cops and Crims 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 Cops and Crims 모드
 
 copsandcrims-monthly = 월간
   .description = 지난 달 동안의 Cops and Crims 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 Cops and Crims 모드
 
@@ -1111,19 +978,15 @@ health-regenerated = 체력 회복
 
 duels-general = 일반
   .description = 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
 
 duels-from = 기간
   .description = 특정 시간 이후의 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
   .time = 시간
@@ -1131,19 +994,15 @@ duels-from = 기간
 
 duels-history = 역사
   .description = 시간에 따른 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
 
 duels-project = 예상
   .description = 미래의 듀얼 통계 예상하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
   .statistic = 통계
@@ -1153,28 +1012,22 @@ duels-project = 예상
 
 duels-daily = 일일
   .description = 지난 하루 동안의 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
 
 duels-weekly = 주간
   .description = 지난 주 동안의 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
 
 duels-monthly = 월간
   .description = 지난 달 동안의 듀얼 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 듀얼 모드
 
@@ -1189,19 +1042,15 @@ treasures-found = 찾은 보물 수
 
 megawalls-general = 일반
   .description = 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
 
 megawalls-from = 기간
   .description = 특정 시간 이후의 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
   .time = 시간
@@ -1209,19 +1058,15 @@ megawalls-from = 기간
 
 megawalls-history = 역사
   .description = 시간에 따른 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
 
 megawalls-project = 예상
   .description = 미래의 메가 월즈 통계 예상하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
   .statistic = 통계
@@ -1231,28 +1076,22 @@ megawalls-project = 예상
 
 megawalls-daily = 일일
   .description = 지난 하루 동안의 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
 
 megawalls-weekly = 주간
   .description = 지난 주 동안의 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
 
 megawalls-monthly = 월간
   .description = 지난 달 동안의 메가 월즈 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 메가 월즈 모드
 
@@ -1269,19 +1108,15 @@ detective-wins = 탐정 승리 수
 
 murdermystery-general = 일반
   .description = 머더 미스터리 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 머더 미스터리 모드
 
 murdermystery-from = 기간
   .description = 특정 시간 이후의 머더 미스터리 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 머더 미스터리 모드
   .time = 시간
@@ -1289,19 +1124,15 @@ murdermystery-from = 기간
 
 murdermystery-history = 역사
   .description = 시간에 따른 머더 미스터리 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고자 하는 머더 미스터리 모드
 
 murdermystery-project = 프로젝트
   .description = 미래로 진행되는 살인 미스터리 통계 프로젝트
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 살인 미스터리 모드
   .statistic = 통계
@@ -1311,28 +1142,22 @@ murdermystery-project = 프로젝트
 
 murdermystery-daily = 일일
   .description = 지난 하루 동안의 살인 미스터리 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 살인 미스터리 모드
 
 murdermystery-weekly = 주간
   .description = 지난 주 동안의 살인 미스터리 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 살인 미스터리 모드
 
 murdermystery-monthly = 월간
   .description = 지난 한 달 동안의 살인 미스터리 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 살인 미스터리 모드
 
@@ -1357,19 +1182,15 @@ highest-killstreak = 최고 킬 스트릭
 
 paintball-general = 일반
   .description = 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
 
 paintball-from = 기간으로
   .description = 특정 시간 이후의 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
   .time = 시간
@@ -1377,19 +1198,15 @@ paintball-from = 기간으로
 
 paintball-history = 히스토리
   .description = 시간에 따른 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
 
 paintball-project = 프로젝트
   .description = 미래로 진행되는 페인트볼 통계 프로젝트
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
   .statistic = 통계
@@ -1399,28 +1216,22 @@ paintball-project = 프로젝트
 
 paintball-daily = 일일
   .description = 지난 하루 동안의 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
 
 paintball-weekly = 주간
   .description = 지난 주 동안의 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
 
 paintball-monthly = 월간
   .description = 지난 한 달 동안의 페인트볼 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 페인트볼 모드
 
@@ -1436,19 +1247,15 @@ cr = 완료율
 
 pit-general = 일반
   .description = 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
 
 pit-from = 기간으로
   .description = 특정 시간 이후의 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
   .time = 시간
@@ -1456,19 +1263,15 @@ pit-from = 기간으로
 
 pit-history = 히스토리
   .description = 시간에 따른 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
 
 pit-project = 프로젝트
   .description = 미래로 진행되는 더 피트 통계 프로젝트
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
   .statistic = 통계
@@ -1478,28 +1281,22 @@ pit-project = 프로젝트
 
 pit-daily = 일일
   .description = 지난 하루 동안의 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
 
 pit-weekly = 주간
   .description = 지난 주 동안의 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
 
 pit-monthly = 월간
   .description = 지난 한 달 동안의 더 피트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 더 피트 모드
 
@@ -1513,19 +1310,15 @@ sight = 시야
 
 quake-general = 일반
   .description = 퀘이크크래프트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 퀘이크크래프트 모드
 
 quake-from = 기간으로
   .description = 특정 시간 이후의 퀘이크크래프트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 퀘이크크래프트 모드
   .time = 시간
@@ -1533,19 +1326,15 @@ quake-from = 기간으로
 
 quake-history = 히스토리
   .description = 시간에 따른 퀘이크크래프트 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 퀘이크크래프트 모드
 
 quake-project = 프로젝트
   .description = 미래의 Quakecraft 통계 정보
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Quakecraft 모드
   .statistic = 통계
@@ -1555,28 +1344,22 @@ quake-project = 프로젝트
 
 quake-daily = 일일
   .description = 지난 하루 동안의 Quakecraft 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Quakecraft 모드
 
 quake-weekly = 주간
   .description = 지난 주간 동안의 Quakecraft 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Quakecraft 모드
 
 quake-monthly = 월간
   .description = 지난 한 달 동안의 Quakecraft 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Quakecraft 모드
 
@@ -1603,19 +1386,15 @@ fastest-win = 가장 빠른 승리
 
 skywars-general = 일반
   .description = SkyWars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
 
 skywars-from = 부터
   .description = 특정 시간부터의 SkyWars 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
   .time = 시간
@@ -1623,19 +1402,15 @@ skywars-from = 부터
 
 skywars-history = 히스토리
   .description = 시간에 따른 SkyWars 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
 
 skywars-project = 프로젝트
   .description = 미래의 SkyWars 통계 정보
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
   .statistic = 통계
@@ -1645,28 +1420,22 @@ skywars-project = 프로젝트
 
 skywars-daily = 일일
   .description = 지난 하루 동안의 SkyWars 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
 
 skywars-weekly = 주간
   .description = 지난 주간 동안의 SkyWars 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
 
 skywars-monthly = 월간
   .description = 지난 한 달 동안의 SkyWars 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SkyWars 모드
 
@@ -1678,19 +1447,15 @@ ssr = SSR
 
 smash-general = 일반
   .description = Smash Heroes 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
 
 smash-from = 부터
   .description = 특정 시간부터의 Smash Heroes 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
   .time = 시간
@@ -1698,19 +1463,15 @@ smash-from = 부터
 
 smash-history = 히스토리
   .description = 시간에 따른 Smash Heroes 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
 
 smash-project = 프로젝트
   .description = 미래의 Smash Heroes 통계 정보
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
   .statistic = 통계
@@ -1720,28 +1481,22 @@ smash-project = 프로젝트
 
 smash-daily = 일일
   .description = 지난 하루 동안의 Smash Heroes 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
 
 smash-weekly = 주간
   .description = 지난 주간 동안의 Smash Heroes 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
 
 smash-monthly = 월간
   .description = 지난 한 달 동안의 Smash Heroes 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 Smash Heroes 모드
 
@@ -1752,19 +1507,15 @@ survived-players = 생존한 플레이어
 
 speeduhc-general = 일반
   .description = SpeedUHC 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SpeedUHC 모드
 
 speeduhc-from = 부터
   .description = 특정 시간부터의 SpeedUHC 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SpeedUHC 모드
   .time = 시간
@@ -1772,19 +1523,15 @@ speeduhc-from = 부터
 
 speeduhc-history = 히스토리
   .description = 시간에 따른 SpeedUHC 통계 개발 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 확인할 SpeedUHC 모드
 
 speeduhc-project = 프로젝트
   .description = 미래로의 SpeedUHC 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 SpeedUHC 모드
   .statistic = 통계
@@ -1794,28 +1541,22 @@ speeduhc-project = 프로젝트
 
 speeduhc-daily = 일일
   .description = 지난 1일 동안의 SpeedUHC 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 SpeedUHC 모드
 
 speeduhc-weekly = 주간
   .description = 지난 1주일 동안의 SpeedUHC 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 SpeedUHC 모드
 
 speeduhc-monthly = 월간
   .description = 지난 1개월 동안의 SpeedUHC 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 SpeedUHC 모드
 
@@ -1835,19 +1576,15 @@ points = 점수
 
 tntgames-general = 일반
   .description = TNT 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
 
 tntgames-from = 시작-시점
   .description = 특정 시점부터의 TNT 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
   .time = 시간
@@ -1855,19 +1592,15 @@ tntgames-from = 시작-시점
 
 tntgames-history = 히스토리
   .description = 시간에 따른 TNT 게임 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
 
 tntgames-project = 프로젝트
   .description = 미래로의 TNT 게임 통계를 예측하세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
   .statistic = 통계
@@ -1877,28 +1610,22 @@ tntgames-project = 프로젝트
 
 tntgames-daily = 일일
   .description = 지난 1일 동안의 TNT 게임 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
 
 tntgames-weekly = 주간
   .description = 지난 1주일 동안의 TNT 게임 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
 
 tntgames-monthly = 월간
   .description = 지난 1개월 동안의 TNT 게임 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 TNT 게임 모드
 
@@ -1914,19 +1641,15 @@ gold-trophies = 금 트로피
 
 turbokartracers-general = 일반
   .description = Turbo Kart Racers 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
 
 turbokartracers-from = 시작-시점
   .description = 특정 시점부터의 Turbo Kart Racers 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
   .time = 시간
@@ -1934,19 +1657,15 @@ turbokartracers-from = 시작-시점
 
 turbokartracers-history = 히스토리
   .description = 시간에 따른 Turbo Kart Racers 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
 
 turbokartracers-project = 프로젝트
   .description = 미래로의 Turbo Kart Racers 통계를 예측하세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
   .statistic = 통계
@@ -1956,28 +1675,22 @@ turbokartracers-project = 프로젝트
 
 turbokartracers-daily = 일일
   .description = 지난 1일 동안의 Turbo Kart Racers 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
 
 turbokartracers-weekly = 주간
   .description = 지난 1주일 동안의 Turbo Kart Racers 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
 
 turbokartracers-monthly = 월간
   .description = 지난 1개월 동안의 Turbo Kart Racers 통계를 보세요
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Turbo Kart Racers 모드
 
@@ -1995,19 +1708,15 @@ ultimates-crafted = 궁극기 제작
 
 uhc-general = 일반
   .description = UHC Champions 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
 
 uhc-from = 시작-시점
   .description = 특정 시점부터의 UHC Champions 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
   .time = 시간
@@ -2017,19 +1726,15 @@ uhc-from = 시작-시점
 
 uhc-history = 기록
   .description = 시간에 따른 UHC Champions 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
 
 uhc-project = 프로젝트
   .description = 미래로 UHC Champions 통계 예측하기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
   .statistic = 통계
@@ -2039,28 +1744,22 @@ uhc-project = 프로젝트
 
 uhc-daily = 일일
   .description = 지난 하루 동안의 UHC Champions 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
 
 uhc-weekly = 주간
   .description = 지난 주간 동안의 UHC Champions 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
 
 uhc-monthly = 월간
   .description = 지난 한 달 동안의 UHC Champions 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 UHC Champions 모드
 
@@ -2084,19 +1783,15 @@ vkdr = VKDR
 
 vampirez-general = 일반
   .description = VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
 
 vampirez-from = 시작부터
   .description = 특정 시점부터 VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
   .time = 시간
@@ -2104,19 +1799,15 @@ vampirez-from = 시작부터
 
 vampirez-history = 기록
   .description = 시간에 따른 VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
 
 vampirez-project = 프로젝트
   .description = 미래로 VampireZ 통계 예측하기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
   .statistic = 통계
@@ -2126,28 +1817,22 @@ vampirez-project = 프로젝트
 
 vampirez-daily = 일일
   .description = 지난 하루 동안의 VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
 
 vampirez-weekly = 주간
   .description = 지난 주간 동안의 VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
 
 vampirez-monthly = 월간
   .description = 지난 한 달 동안의 VampireZ 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 VampireZ 모드
 
@@ -2160,19 +1845,15 @@ iron-broken = 철괴 파괴
 
 walls-general = 일반
   .description = The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
 
 walls-from = 시작부터
   .description = 특정 시점부터 The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
   .time = 시간
@@ -2180,19 +1861,15 @@ walls-from = 시작부터
 
 walls-history = 기록
   .description = 시간에 따른 The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
 
 walls-project = 프로젝트
   .description = 미래로 The Walls 통계 예측하기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
   .statistic = 통계
@@ -2202,28 +1879,22 @@ walls-project = 프로젝트
 
 walls-daily = 일일
   .description = 지난 하루 동안의 The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
 
 walls-weekly = 주간
   .description = 지난 주간 동안의 The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
 
 walls-monthly = 월간
   .description = 지난 한 달 동안의 The Walls 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 The Walls 모드
 
@@ -2240,19 +1911,15 @@ mvps = MVPs
 
 warlords-general = 일반
   .description = Warlords 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Warlords 모드
 
 warlords-from = 시작부터
   .description = 특정 시점부터 Warlords 통계 보기
-  .username = 사용자명
-  .username-description = Minecraft 사용자명
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 볼 Warlords 모드
   .time = 시간
@@ -2260,19 +1927,15 @@ warlords-from = 시작부터
 
 warlords-history = 역사
   .description = 시간에 따른 Warlords 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
 
 warlords-project = 프로젝트
   .description = 미래로 Warlords 통계 예측하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
   .statistic = 통계
@@ -2282,28 +1945,22 @@ warlords-project = 프로젝트
 
 warlords-daily = 일일
   .description = 지난 하루 동안의 Warlords 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
 
 warlords-weekly = 주간
   .description = 지난 주 동안의 Warlords 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
 
 warlords-monthly = 월간
   .description = 지난 달 동안의 Warlords 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Warlords 모드
 
@@ -2315,19 +1972,15 @@ wool-placed = 양털 설치
 
 woolwars-general = 일반
   .description = Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
 
 woolwars-from = 기간별
   .description = 특정 시간 이후의 Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
   .time = 시간
@@ -2335,19 +1988,15 @@ woolwars-from = 기간별
 
 woolwars-history = 역사
   .description = 시간에 따른 Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
 
 woolwars-project = 프로젝트
   .description = 미래로 Wool Wars 통계 예측하기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
   .statistic = 통계
@@ -2357,28 +2006,22 @@ woolwars-project = 프로젝트
 
 woolwars-daily = 일일
   .description = 지난 하루 동안의 Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
 
 woolwars-weekly = 주간
   .description = 지난 주 동안의 Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
 
 woolwars-monthly = 월간
   .description = 지난 달 동안의 Wool Wars 통계 보기
-  .username = 사용자-이름
-  .username-description = Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .mode = 모드
   .mode-description = 보고 싶은 Wool Wars 모드
 
@@ -2403,19 +2046,14 @@ guild-general = 일반
   .description = 길드의 통계 정보 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 guild-from = 기간별
   .description = 특정 시간 이후의 길드 통계 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가고 싶은 시간 (1h 12m 5s)
 
@@ -2423,26 +2061,18 @@ guild-members = 멤버들
   .description = 길드의 멤버 목록 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 guild-member = 멤버
   .description = 길드 멤버의 통계 정보 보기
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 guild-top = 최상위
   .description = 길드 내 경험치 기준으로 상위 멤버 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .days = 일수
   .days-description = 일수
   .limit = 제한
@@ -2452,29 +2082,20 @@ guild-daily = 일일
   .description = 지난 하루 동안의 길드 통계 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 guild-weekly = 주간
   .description = 지난 주 동안의 길드 통계 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 guild-monthly = 월간
   .description = 지난 달 동안의 길드 통계 보기
   .name = 길드명
   .name-description = 보고 싶은 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 Minecraft 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 Minecraft UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 showing-guild-xp-statistics = {$from}부터 {$to}까지의 길드 경험치 획득 표시.
   
 # 공유 캔버스 라벨
@@ -2742,18 +2363,12 @@ practice = 연습
 
 bedwars-hotbar = hotbar
   .description = 베드 워즈 핫바 설정 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 bedwars-shop = shop
   .description = 베드 워즈 상점 설정 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 attempts = 시도 횟수
 bridging-wins = 브리징 승리 횟수
 bridging-losses = 브리징 패배 횟수
@@ -2785,19 +2400,14 @@ diagonal-staircase-100 = 대각선-계단식 100
 
 bedwars-practice = practice
   .description = 베드 워즈 연습 통계 보기
-  .username = 사용자명
-  .username-description = 마인크래프트 사용자명
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
-
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
 # 명령어
 
 arcade-at = -에서
   .description = 특정 시점에서 플레이어의 아케이드 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2805,10 +2415,8 @@ arcade-at = -에서
 
 arena-at = -에서
   .description = 특정 시점에서 플레이어의 아레나 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2816,10 +2424,8 @@ arena-at = -에서
 
 bedwars-at = -에서
   .description = 특정 시점에서 플레이어의 베드 워즈 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2827,10 +2433,8 @@ bedwars-at = -에서
 
 blitz-at = -에서
   .description = 특정 시점에서 플레이어의 블리츠 서바이벌 게임 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2838,10 +2442,8 @@ blitz-at = -에서
 
 buildbattle-at = -에서
   .description = 특정 시점에서 플레이어의 빌드 배틀 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2849,10 +2451,8 @@ buildbattle-at = -에서
 
 copsandcrims-at = -에서
   .description = 특정 시점에서 플레이어의 캅스 앤 크림 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2860,10 +2460,8 @@ copsandcrims-at = -에서
 
 duels-at = -에서
   .description = 특정 시점에서 플레이어의 결투 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2871,10 +2469,8 @@ duels-at = -에서
 
 megawalls-at = -에서
   .description = 특정 시점에서 플레이어의 메가 월 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2882,10 +2478,8 @@ megawalls-at = -에서
 
 murdermystery-at = -에서
   .description = 특정 시점에서 플레이어의 마더 미스터리 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2893,10 +2487,8 @@ murdermystery-at = -에서
 
 paintball-at = -에서
   .description = 특정 시점에서 플레이어의 페인트볼 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2904,10 +2496,8 @@ paintball-at = -에서
 
 pit-at = -에서
   .description = 특정 시점에서 플레이어의 더 피트 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2915,10 +2505,8 @@ pit-at = -에서
 
 quake-at = -에서
   .description = 특정 시점에서 플레이어의 퀘이크크래프트 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2926,10 +2514,8 @@ quake-at = -에서
 
 skywars-at = -에서
   .description = 특정 시점에서 플레이어의 스카이워즈 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2937,10 +2523,8 @@ skywars-at = -에서
 
 smash-at = -에서
   .description = 특정 시점에서 플레이어의 스매시 히어로즈 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2948,10 +2532,8 @@ smash-at = -에서
 
 speeduhc-at = -에서
   .description = 특정 시점에서 플레이어의 스피드 UHC 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2959,10 +2541,8 @@ speeduhc-at = -에서
 
 tntgames-at = -에서
   .description = 특정 시점에서 플레이어의 TNT 게임 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2970,10 +2550,8 @@ tntgames-at = -에서
 
 turbokartracers-at = -에서
   .description = 특정 시점에서 플레이어의 터보 카트 레이서 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2981,10 +2559,8 @@ turbokartracers-at = -에서
 
 uhc-at = -에서
   .description = 특정 시점에서 플레이어의 UHC 챔피언 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -2992,10 +2568,8 @@ uhc-at = -에서
 
 vampirez-at = -에서
   .description = 특정 시점에서 플레이어의 뱀파이어Z 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -3003,10 +2577,8 @@ vampirez-at = -에서
 
 walls-at = -에서
   .description = 특정 시점에서 플레이어의 더 월 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -3014,10 +2586,8 @@ walls-at = -에서
 
 warlords-at = -에서
   .description = 특정 시점에서 플레이어의 워로드 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -3025,10 +2595,8 @@ warlords-at = -에서
 
 woolwars-at = -에서
   .description = 특정 시점에서 플레이어의 울 워즈 통계를 보여줍니다
-  .username = 사용자-이름
-  .username-description = 마인크래프트 사용자 이름
-  .uuid = uuid
-  .uuid-description = 마인크래프트 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
   .mode = 모드
@@ -3038,10 +2606,8 @@ guild-at = -에서
   .description = 특정 시점에서 길드의 통계를 보여줍니다
   .name = 이름
   .name-description = 보여줄 길드의 이름
-  .username = 사용자-이름
-  .username-description = 길드 멤버의 길드 이름을 보여줄 사용자 이름
-  .uuid = uuid
-  .uuid-description = 길드 멤버의 길드 UUID를 보여줄 UUID
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
 

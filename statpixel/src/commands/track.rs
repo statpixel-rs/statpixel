@@ -19,21 +19,18 @@ const MAX_TRACKS_PER_GUILD: i64 = 100;
 )]
 pub async fn track(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
 	let guild_id = ctx.guild_id();
 	let channel_id = ctx.channel_id();
 
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let lctx = &context::Context::from_poise(&ctx);
-	let player = util::get_player_with_username_from_input(lctx, uuid, username).await?;
+	let player = util::get_player_with_username_from_input(lctx, uuid, player).await?;
 
 	let mut connection = ctx.data().pool.get().await?;
 

@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> แสดงสถิติ�
 # ข้อผิดพลาด
 
 error-player-not-found = ไม่พบโปรไฟล์ที่เป็นของ **`{$name}`**
-error-session-not-found = ไม่พบเซสชั่นที่เป็นของ **`{$name}`**
+error-snapshot-not-found = ไม่พบเซสชั่นที่เป็นของ **`{$name}`**
 error-player-uuid-not-found = ไม่พบผู้เล่นด้วย UUID **`{$uuid}`**
 error-player-username-not-found = ไม่พบผู้เล่นด้วยชื่อผู้ใช้ **`{$name}`**
 error-guild-by-member-uuid-not-found = ไม่พบสมาชิกกิลด์ด้วย UUID **`{$uuid}`**
@@ -91,11 +91,8 @@ track-success-description =
 
 track = track
   .description = ติดตามสถิติของผู้เล่นและส่งการเปลี่ยนแปลงไปยังช่องปัจจุบัน
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft ที่ต้องการติดตาม
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft ที่ต้องการติดตาม
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 # /custom
 
 execute = execute
@@ -203,11 +200,8 @@ about = about
 
 winstreaks = winstreaks
   .description = ดูสถิติชนะต่อเนื่อง
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 # /recent
 
 mode = โหมด
@@ -218,11 +212,8 @@ playing = กำลังเล่น
 
 recent = recent
   .description = ดูเกมล่าสุด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 # ป้ายกำกับโครงการ
 
 accuracy = ความแม่นยำ
@@ -274,11 +265,8 @@ Wardrobe = ตู้เสื้อผ้า
 
 skyblock-auctions = auctions
   .description = ดูการประมูลใน SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 player-auctions = ประมูล
 highest-bid = การเสนอราคาสูงสุด
 
@@ -286,109 +274,85 @@ highest-bid = การเสนอราคาสูงสุด
 
 skyblock-inventory = inventory
   .description = ดูสินค้าในกระเป๋าเดินทาง SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-enderchest = enderchest
   .description = ดูกล่องเอนเดอร์ SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-quiver = quiver
   .description = ดูธนู SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-talisman = talisman
   .description = ดูกระเป๋าทัลิสแมน SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-fishing = fishing
   .description = ดูกระเป๋าตกปลา SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-potions = potions
   .description = ดูกระเป๋าปotion SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-equipment = equipment
   .description = ดูอุปกรณ์ SkyBlock
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-wardrobe = ตู้เสื้อผ้า
   .description = ดูตู้เสื้อผ้าใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-candy = รายการลูกอม
   .description = ดูรายการลูกอมใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-vault = ห้องเก็บของ
   .description = ดูห้องเก็บของส่วนตัวใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-pets = สัตว์เลี้ยง
   .description = ดูสัตว์เลี้ยงใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
 skyblock-networth = มูลค่าสุทธิของโปรไฟล์ใน
   .description = ดูมูลค่าสุทธิของโปรไฟล์ใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
@@ -396,10 +360,8 @@ skyblock-networth = มูลค่าสุทธิของโปรไฟล
 
 skyblock-profile = โปรไฟล์
   .description = ดูโปรไฟล์ใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
@@ -428,10 +390,8 @@ social = การสื่อสาร
 
 skyblock-bank = ธนาคาร
   .description = ดูธนาคารใน SkyBlock
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .profile = โปรไฟล์
   .profile-description = โปรไฟล์ที่ต้องการดู
 
@@ -449,18 +409,12 @@ leaderboard = ตารางการแข่งขัน
 
 network-general = ข้อมูลทั่วไป
   .description = ดูสถิติทั่วไปของเครือข่าย
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 network-history = ประวัติ
   .description = ดูสถิติประวัติของเครือข่าย
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่นของ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 karma = คาร์ม่า
 rewards = รางวัล
 friend-requests = คำขอเป็นเพื่อน
@@ -533,11 +487,8 @@ unlinking-succeeded-description = คุณไม่ได้เชื่อม�
 # /link
 link = เชื่อมโยง
   .description = เชื่อมโยงบัญชี Discord กับบัญชี Minecraft
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft ที่ต้องการเชื่อมโยง
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft ที่ต้องการเชื่อมโยง
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 linking-failed = การเชื่อมโยงล้มเหลว
 linking-failed-uuid-description = UUID **`{$uuid}`** ไม่ใช่บัญชี Minecraft
 linking-failed-username-description = ชื่อผู้เล่น **`{$username}`** ไม่ใช่บัญชี Minecraft
@@ -572,19 +523,15 @@ mystery-gifts = ของขวัญลับ
 
 arcade-general = ทั่วไป
   .description = ดูสถิติ Arcade
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
 
 arcade-from = จาก
   .description = ดูการเปลี่ยนแปลงของสถิติ Arcade ตั้งแต่เวลาที่ระบุ
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
   .time = เวลา
@@ -592,19 +539,15 @@ arcade-from = จาก
 
 arcade-history = ประวัติ
   .description = ดูการเปลี่ยนแปลงของสถิติ Arcade ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
 
 arcade-project = โปรเจกต์
   .description = ทำนายสถิติ Arcade ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
   .statistic = สถิติ
@@ -614,28 +557,22 @@ arcade-project = โปรเจกต์
 
 arcade-daily = รายวัน
   .description = ดูการเปลี่ยนแปลงของสถิติ Arcade ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
 
 arcade-weekly = รายสัปดาห์
   .description = ดูการเปลี่ยนแปลงของสถิติ Arcade ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
 
 arcade-monthly = รายเดือน
   .description = ดูการเปลี่ยนแปลงของสถิติ Arcade ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arcade ที่ต้องการดู
 
@@ -647,19 +584,15 @@ rating = คะแนน
 
 arena-general = ทั่วไป
   .description = ดูสถิติ Arena
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
 
 arena-from = จาก
   .description = ดูการเปลี่ยนแปลงของสถิติ Arena ตั้งแต่เวลาที่ระบุ
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
   .time = เวลา
@@ -667,19 +600,15 @@ arena-from = จาก
 
 arena-history = ประวัติ
   .description = ดูการเปลี่ยนแปลงของสถิติ Arena ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
 
 arena-project = โปรเจกต์
   .description = ทำนายสถิติ Arena ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
   .statistic = สถิติ
@@ -689,28 +618,22 @@ arena-project = โปรเจกต์
 
 arena-daily = รายวัน
   .description = ดูการเปลี่ยนแปลงของสถิติ Arena ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
 
 arena-weekly = รายสัปดาห์
   .description = ดูการเปลี่ยนแปลงของสถิติ Arena ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
 
 arena-monthly = รายเดือน
   .description = ดูการเปลี่ยนแปลงของสถิติ Arena ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Arena ที่ต้องการดู
 
@@ -753,19 +676,15 @@ items-purchased = สิ่งของที่ซื้อ
 
 bedwars-general = ทั่วไป
   .description = ดูสถิติ Bed Wars
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
 
 bedwars-from = จาก
   .description = ดูการเปลี่ยนแปลงของสถิติ Bed Wars ตั้งแต่เวลาที่ระบุ
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
   .time = เวลา
@@ -773,19 +692,15 @@ bedwars-from = จาก
 
 bedwars-history = ประวัติ
   .description = ดูการเปลี่ยนแปลงของสถิติ Bed Wars ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
 
 bedwars-project = โปรเจกต์
   .description = ทำนายสถิติ Bed Wars ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
   .statistic = สถิติ
@@ -795,28 +710,22 @@ bedwars-project = โปรเจกต์
 
 bedwars-daily = รายวัน
   .description = ดูการเปลี่ยนแปลงของสถิติ Bed Wars ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
 
 bedwars-weekly = รายสัปดาห์
   .description = ดูการเปลี่ยนแปลงของสถิติ Bed Wars ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
 
 bedwars-monthly = รายเดือน
   .description = ดูการเปลี่ยนแปลงของสถิติ Bed Wars ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Bed Wars ที่ต้องการดู
 
@@ -853,19 +762,15 @@ time-played = เวลาเล่น
 
 blitz-general = ทั่วไป
   .description = ดูสถิติ Blitz Survival Games
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
 
 blitz-from = ตั้งแต่
   .description = ดูสถิติ Blitz Survival Games ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
   .time = เวลา
@@ -873,19 +778,15 @@ blitz-from = ตั้งแต่
 
 blitz-history = ประวัติ
   .description = ดูสถิติ Blitz Survival Games ในช่วงเวลาที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
 
 blitz-project = โครงการ
   .description = โครงการสถิติ Blitz Survival Games ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
   .statistic = สถิติ
@@ -895,28 +796,22 @@ blitz-project = โครงการ
 
 blitz-daily = รายวัน
   .description = ดูสถิติ Blitz Survival Games ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
 
 blitz-weekly = รายสัปดาห์
   .description = ดูสถิติ Blitz Survival Games ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
 
 blitz-monthly = รายเดือน
   .description = ดูสถิติ Blitz Survival Games ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Blitz Survival Games ที่ต้องการดู
 
@@ -931,19 +826,15 @@ most-points-team = คะแนนสูงสุด (โหมดทีม)
 
 buildbattle-general = ทั่วไป
   .description = ดูสถิติ Build Battle
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
 
 buildbattle-from = ตั้งแต่
   .description = ดูสถิติ Build Battle ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
   .time = เวลา
@@ -951,19 +842,15 @@ buildbattle-from = ตั้งแต่
 
 buildbattle-history = ประวัติ
   .description = ดูสถิติ Build Battle ในช่วงเวลาที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
 
 buildbattle-project = โครงการ
   .description = โครงการสถิติ Build Battle ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
   .statistic = สถิติ
@@ -973,28 +860,22 @@ buildbattle-project = โครงการ
 
 buildbattle-daily = รายวัน
   .description = ดูสถิติ Build Battle ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
 
 buildbattle-weekly = รายสัปดาห์
   .description = ดูสถิติ Build Battle ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
 
 buildbattle-monthly = รายเดือน
   .description = ดูสถิติ Build Battle ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Build Battle ที่ต้องการดู
 
@@ -1013,19 +894,15 @@ bombs-planted = ระเบิดที่ถูกวาง
 
 copsandcrims-general = ทั่วไป
   .description = ดูสถิติ Cops and Crims
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
 
 copsandcrims-from = ตั้งแต่
   .description = ดูสถิติ Cops and Crims ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
   .time = เวลา
@@ -1033,19 +910,15 @@ copsandcrims-from = ตั้งแต่
 
 copsandcrims-history = ประวัติ
   .description = ดูสถิติ Cops and Crims ในช่วงเวลาที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
 
 copsandcrims-project = โครงการ
   .description = โครงการสถิติ Cops and Crims ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
   .statistic = สถิติ
@@ -1055,28 +928,22 @@ copsandcrims-project = โครงการ
 
 copsandcrims-daily = รายวัน
   .description = ดูสถิติ Cops and Crims ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
 
 copsandcrims-weekly = สัปดาห์ล่าสุด
   .description = ดูการพัฒนาสถิติ Cops and Crims ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดของ Cops and Crims ที่ต้องการดู
 
 copsandcrims-monthly = เดือนล่าสุด
   .description = ดูการพัฒนาสถิติ Cops and Crims ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Cops and Crims ที่ต้องการดู
 
@@ -1116,19 +983,15 @@ health-regenerated = สุขภาพที่ฟื้นฟู
 
 duels-general = ทั่วไป
   .description = ดูสถิติ Duels
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
 
 duels-from = ตั้งแต่
   .description = ดูการพัฒนาสถิติ Duels ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
   .time = เวลา
@@ -1136,19 +999,15 @@ duels-from = ตั้งแต่
 
 duels-history = ประวัติ
   .description = ดูการพัฒนาสถิติ Duels ตามเวลา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
 
 duels-project = โครงการ
   .description = คาดการณ์สถิติ Duels ไปยังอนาคต
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
   .statistic = สถิติ
@@ -1158,28 +1017,22 @@ duels-project = โครงการ
 
 duels-daily = รายวัน
   .description = ดูการพัฒนาสถิติ Duels ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
 
 duels-weekly = สัปดาห์ล่าสุด
   .description = ดูการพัฒนาสถิติ Duels ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
 
 duels-monthly = เดือนล่าสุด
   .description = ดูการพัฒนาสถิติ Duels ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Duels ที่ต้องการดู
 
@@ -1195,19 +1048,15 @@ treasures-found = จำนวนของขวัญที่ค้นพบ
 
 megawalls-general = ทั่วไป
   .description = ดูสถิติ Mega Walls
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
 
 megawalls-from = ตั้งแต่
   .description = ดูการพัฒนาสถิติ Mega Walls ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
   .time = เวลา
@@ -1215,19 +1064,15 @@ megawalls-from = ตั้งแต่
 
 megawalls-history = ประวัติ
   .description = ดูการพัฒนาสถิติ Mega Walls ตามเวลา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
 
 megawalls-project = โครงการ
   .description = คาดการณ์สถิติ Mega Walls ไปยังอนาคต
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
   .statistic = สถิติ
@@ -1237,28 +1082,22 @@ megawalls-project = โครงการ
 
 megawalls-daily = รายวัน
   .description = ดูการพัฒนาสถิติ Mega Walls ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
 
 megawalls-weekly = สัปดาห์ล่าสุด
   .description = ดูการพัฒนาสถิติ Mega Walls ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
 
 megawalls-monthly = เดือนล่าสุด
   .description = ดูการพัฒนาสถิติ Mega Walls ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Mega Walls ที่ต้องการดู
 
@@ -1275,19 +1114,15 @@ detective-wins = ชนะในฐานะนักสืบ
 
 murdermystery-general = ทั่วไป
   .description = ดูสถิติ Murder Mystery
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
 
 murdermystery-from = ตั้งแต่
   .description = ดูการพัฒนาสถิติ Murder Mystery ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
   .time = เวลา
@@ -1295,19 +1130,15 @@ murdermystery-from = ตั้งแต่
 
 murdermystery-history = ประวัติ
   .description = ดูการพัฒนาสถิติ Murder Mystery ตามเวลา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
 
 murdermystery-project = โปรเจค
   .description = ดูสถิติ Murder Mystery สู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
   .statistic = สถิติ
@@ -1317,28 +1148,22 @@ murdermystery-project = โปรเจค
 
 murdermystery-daily = รายวัน
   .description = ดูสถิติ Murder Mystery ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
 
 murdermystery-weekly = รายสัปดาห์
   .description = ดูสถิติ Murder Mystery ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
 
 murdermystery-monthly = รายเดือน
   .description = ดูสถิติ Murder Mystery ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Murder Mystery ที่ต้องการดู
 
@@ -1363,19 +1188,15 @@ highest-killstreak = ความต่อเนื่องในการฆ�
 
 paintball-general = ทั่วไป
   .description = ดูสถิติ Paintball
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
 
 paintball-from = ตั้งแต่
   .description = ดูสถิติ Paintball ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
   .time = เวลา
@@ -1383,19 +1204,15 @@ paintball-from = ตั้งแต่
 
 paintball-history = ประวัติ
   .description = ดูสถิติ Paintball ตามช่วงเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
 
 paintball-project = โปรเจค
   .description = โปรเจคสถิติ Paintball สู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
   .statistic = สถิติ
@@ -1405,28 +1222,22 @@ paintball-project = โปรเจค
 
 paintball-daily = รายวัน
   .description = ดูสถิติ Paintball ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
 
 paintball-weekly = รายสัปดาห์
   .description = ดูสถิติ Paintball ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
 
 paintball-monthly = รายเดือน
   .description = ดูสถิติ Paintball ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Paintball ที่ต้องการดู
 
@@ -1442,19 +1253,15 @@ cr = อัตราส่วนการเสร็จสิ้นสัญญ
 
 pit-general = ทั่วไป
   .description = ดูสถิติ The Pit
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
 
 pit-from = ตั้งแต่
   .description = ดูสถิติ The Pit ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
   .time = เวลา
@@ -1462,19 +1269,15 @@ pit-from = ตั้งแต่
 
 pit-history = ประวัติ
   .description = ดูสถิติ The Pit ตามช่วงเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
 
 pit-project = โปรเจค
   .description = โปรเจคสถิติ The Pit สู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
   .statistic = สถิติ
@@ -1484,28 +1287,22 @@ pit-project = โปรเจค
 
 pit-daily = รายวัน
   .description = ดูสถิติ The Pit ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
 
 pit-weekly = รายสัปดาห์
   .description = ดูสถิติ The Pit ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
 
 pit-monthly = รายเดือน
   .description = ดูสถิติ The Pit ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Pit ที่ต้องการดู
 
@@ -1519,19 +1316,15 @@ sight = สายยาว
 
 quake-general = ทั่วไป
   .description = ดูสถิติ Quakecraft
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
 
 quake-from = ตั้งแต่
   .description = ดูสถิติ Quakecraft ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
   .time = เวลา
@@ -1539,19 +1332,15 @@ quake-from = ตั้งแต่
 
 quake-history = ประวัติ
   .description = ดูสถิติ Quakecraft ตามช่วงเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
 
 quake-project = โปรเจกต์
   .description = สถิติ Quakecraft ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
   .statistic = สถิติ
@@ -1561,28 +1350,22 @@ quake-project = โปรเจกต์
 
 quake-daily = รายวัน
   .description = ดูความเจริญของสถิติ Quakecraft ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
 
 quake-weekly = รายสัปดาห์
   .description = ดูความเจริญของสถิติ Quakecraft ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
 
 quake-monthly = รายเดือน
   .description = ดูความเจริญของสถิติ Quakecraft ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Quakecraft ที่ต้องการดู
 
@@ -1609,19 +1392,15 @@ fastest-win = ชนะเร็วที่สุด
 
 skywars-general = ทั่วไป
   .description = ดูสถิติ SkyWars
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
 
 skywars-from = ตั้งแต่
   .description = ดูความเจริญของสถิติ SkyWars ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
   .time = เวลา
@@ -1629,19 +1408,15 @@ skywars-from = ตั้งแต่
 
 skywars-history = ประวัติ
   .description = ดูความเจริญของสถิติ SkyWars ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
 
 skywars-project = โปรเจกต์
   .description = สถิติ SkyWars ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
   .statistic = สถิติ
@@ -1651,28 +1426,22 @@ skywars-project = โปรเจกต์
 
 skywars-daily = รายวัน
   .description = ดูความเจริญของสถิติ SkyWars ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
 
 skywars-weekly = รายสัปดาห์
   .description = ดูความเจริญของสถิติ SkyWars ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
 
 skywars-monthly = รายเดือน
   .description = ดูความเจริญของสถิติ SkyWars ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SkyWars ที่ต้องการดู
 
@@ -1684,19 +1453,15 @@ ssr = SSR
 
 smash-general = ทั่วไป
   .description = ดูสถิติ Smash Heroes
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
 
 smash-from = ตั้งแต่
   .description = ดูความเจริญของสถิติ Smash Heroes ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
   .time = เวลา
@@ -1704,19 +1469,15 @@ smash-from = ตั้งแต่
 
 smash-history = ประวัติ
   .description = ดูความเจริญของสถิติ Smash Heroes ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
 
 smash-project = โปรเจกต์
   .description = สถิติ Smash Heroes ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
   .statistic = สถิติ
@@ -1726,28 +1487,22 @@ smash-project = โปรเจกต์
 
 smash-daily = รายวัน
   .description = ดูความเจริญของสถิติ Smash Heroes ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
 
 smash-weekly = รายสัปดาห์
   .description = ดูความเจริญของสถิติ Smash Heroes ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
 
 smash-monthly = รายเดือน
   .description = ดูความเจริญของสถิติ Smash Heroes ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Smash Heroes ที่ต้องการดู
 
@@ -1758,19 +1513,15 @@ survived-players = ผู้เล่นรอดชีวิต
 
 speeduhc-general = ทั่วไป
   .description = ดูสถิติ SpeedUHC
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
 
 speeduhc-from = ตั้งแต่
   .description = ดูความเจริญของสถิติ SpeedUHC ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
   .time = เวลา
@@ -1778,19 +1529,15 @@ speeduhc-from = ตั้งแต่
 
 speeduhc-history = ประวัติ
   .description = ดูความเจริญของสถิติ SpeedUHC ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = รหัส-uuid ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
 
 speeduhc-project = project
   .description = โปรเจคสถิติ SpeedUHC ในอนาคต
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
   .statistic = สถิติ
@@ -1800,28 +1547,22 @@ speeduhc-project = project
 
 speeduhc-daily = daily
   .description = ดูการพัฒนาสถิติ SpeedUHC ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
 
 speeduhc-weekly = weekly
   .description = ดูการพัฒนาสถิติ SpeedUHC ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
 
 speeduhc-monthly = monthly
   .description = ดูการพัฒนาสถิติ SpeedUHC ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด SpeedUHC ที่ต้องการดู
 
@@ -1841,19 +1582,15 @@ points = คะแนน
 
 tntgames-general = general
   .description = ดูสถิติเกม TNT
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
 
 tntgames-from = from
   .description = ดูการพัฒนาสถิติเกม TNT ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
   .time = เวลา
@@ -1861,19 +1598,15 @@ tntgames-from = from
 
 tntgames-history = history
   .description = ดูการพัฒนาสถิติเกม TNT ตลอดเวลา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
 
 tntgames-project = project
   .description = โปรเจกต์สถิติเกม TNT ในอนาคต
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
   .statistic = สถิติ
@@ -1883,28 +1616,22 @@ tntgames-project = project
 
 tntgames-daily = daily
   .description = ดูการพัฒนาสถิติเกม TNT ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
 
 tntgames-weekly = weekly
   .description = ดูการพัฒนาสถิติเกม TNT ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
 
 tntgames-monthly = monthly
   .description = ดูการพัฒนาสถิติเกม TNT ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมดเกม TNT ที่ต้องการดู
 
@@ -1920,19 +1647,15 @@ gold-trophies = ถ้วยทอง
 
 turbokartracers-general = general
   .description = ดูสถิติ Turbo Kart Racers
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
 
 turbokartracers-from = from
   .description = ดูการพัฒนาสถิติ Turbo Kart Racers ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
   .time = เวลา
@@ -1940,19 +1663,15 @@ turbokartracers-from = from
 
 turbokartracers-history = history
   .description = ดูการพัฒนาสถิติ Turbo Kart Racers ตลอดเวลา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
 
 turbokartracers-project = project
   .description = โปรเจกต์สถิติ Turbo Kart Racers ในอนาคต
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
   .statistic = สถิติ
@@ -1962,28 +1681,22 @@ turbokartracers-project = project
 
 turbokartracers-daily = daily
   .description = ดูการพัฒนาสถิติ Turbo Kart Racers ในช่วง 24 ชั่วโมงที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
 
 turbokartracers-weekly = weekly
   .description = ดูการพัฒนาสถิติ Turbo Kart Racers ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
 
 turbokartracers-monthly = monthly
   .description = ดูการพัฒนาสถิติ Turbo Kart Racers ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Turbo Kart Racers ที่ต้องการดู
 
@@ -2001,19 +1714,15 @@ ultimates-crafted = คราฟต์ไอเทมเสริม
 
 uhc-general = general
   .description = ดูสถิติ UHC Champions
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่ต้องการดู
 
 uhc-from = from
   .description = ดูการพัฒนาสถิติ UHC Champions ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่ต้องการดู
   .time = เวลา
@@ -2021,19 +1730,15 @@ uhc-from = from
 
 uhc-history = ประวัติ
   .description = ดูความเปลี่ยนแปลงของสถิติ UHC Champions ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
 
 uhc-project = โครงการ
   .description = นำสถิติ UHC Champions ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
   .statistic = สถิติ
@@ -2043,28 +1748,22 @@ uhc-project = โครงการ
 
 uhc-daily = รายวัน
   .description = ดูความเปลี่ยนแปลงของสถิติ UHC Champions ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
 
 uhc-weekly = รายสัปดาห์
   .description = ดูความเปลี่ยนแปลงของสถิติ UHC Champions ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
 
 uhc-monthly = รายเดือน
   .description = ดูความเปลี่ยนแปลงของสถิติ UHC Champions ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด UHC Champions ที่จะดู
 
@@ -2088,19 +1787,15 @@ vkdr = สัดส่วนการฆ่าแวมไพร์ต่อก�
 
 vampirez-general = ทั่วไป
   .description = ดูสถิติ VampireZ
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
 
 vampirez-from = ตั้งแต่
   .description = ดูความเปลี่ยนแปลงของสถิติ VampireZ ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
   .time = เวลา
@@ -2108,19 +1803,15 @@ vampirez-from = ตั้งแต่
 
 vampirez-history = ประวัติ
   .description = ดูความเปลี่ยนแปลงของสถิติ VampireZ ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
 
 vampirez-project = โครงการ
   .description = นำสถิติ VampireZ ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
   .statistic = สถิติ
@@ -2130,28 +1821,22 @@ vampirez-project = โครงการ
 
 vampirez-daily = รายวัน
   .description = ดูความเปลี่ยนแปลงของสถิติ VampireZ ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
 
 vampirez-weekly = รายสัปดาห์
   .description = ดูความเปลี่ยนแปลงของสถิติ VampireZ ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
 
 vampirez-monthly = รายเดือน
   .description = ดูความเปลี่ยนแปลงของสถิติ VampireZ ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด VampireZ ที่จะดู
 
@@ -2164,19 +1849,15 @@ iron-broken = ขีปนาวุธของเหล็กที่เสี
 
 walls-general = ทั่วไป
   .description = ดูสถิติ The Walls
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
 
 walls-from = ตั้งแต่
   .description = ดูความเปลี่ยนแปลงของสถิติ The Walls ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
   .time = เวลา
@@ -2184,19 +1865,15 @@ walls-from = ตั้งแต่
 
 walls-history = ประวัติ
   .description = ดูความเปลี่ยนแปลงของสถิติ The Walls ตามเวลา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
 
 walls-project = โครงการ
   .description = นำสถิติ The Walls ไปสู่อนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
   .statistic = สถิติ
@@ -2206,28 +1883,22 @@ walls-project = โครงการ
 
 walls-daily = รายวัน
   .description = ดูความเปลี่ยนแปลงของสถิติ The Walls ในช่วง 1 วันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
 
 walls-weekly = รายสัปดาห์
   .description = ดูความเปลี่ยนแปลงของสถิติ The Walls ในช่วง 1 สัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
 
 walls-monthly = รายเดือน
   .description = ดูความเปลี่ยนแปลงของสถิติ The Walls ในช่วง 1 เดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด The Walls ที่จะดู
 
@@ -2244,19 +1915,15 @@ mvps = ผู้เล่นที่โดดเด่น (MVPs)
 
 warlords-general = ทั่วไป
   .description = ดูสถิติ Warlords
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่จะดู
 
 warlords-from = ตั้งแต่
   .description = ดูความเปลี่ยนแปลงของสถิติ Warlords ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่จะดู
   .time = เวลา
@@ -2264,19 +1931,15 @@ warlords-from = ตั้งแต่
 
 warlords-history = ประวัติศาสตร์
   .description = ดูการพัฒนาของสถิติ Warlords เมื่อเวลาผ่านไป
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
 
 warlords-project = โครงการ
   .description = โปรเจกต์สถิติ Warlords ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
   .statistic = สถิติ
@@ -2286,28 +1949,22 @@ warlords-project = โครงการ
 
 warlords-daily = รายวัน
   .description = ดูการพัฒนาของสถิติ Warlords ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
 
 warlords-weekly = รายสัปดาห์
   .description = ดูการพัฒนาของสถิติ Warlords ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
 
 warlords-monthly = รายเดือน
   .description = ดูการพัฒนาของสถิติ Warlords ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Warlords ที่ต้องการดู
 
@@ -2319,19 +1976,15 @@ wool-placed = วาง Wool
 
 woolwars-general = ทั่วไป
   .description = ดูสถิติ Wool Wars
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
 
 woolwars-from = ตั้งแต่
   .description = ดูการพัฒนาของสถิติ Wool Wars ตั้งแต่เวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
   .time = เวลา
@@ -2339,19 +1992,15 @@ woolwars-from = ตั้งแต่
 
 woolwars-history = ประวัติศาสตร์
   .description = ดูการพัฒนาของสถิติ Wool Wars เมื่อเวลาผ่านไป
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
 
 woolwars-project = โครงการ
   .description = โปรเจกต์สถิติ Wool Wars ไปในอนาคต
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
   .statistic = สถิติ
@@ -2361,28 +2010,22 @@ woolwars-project = โครงการ
 
 woolwars-daily = รายวัน
   .description = ดูการพัฒนาของสถิติ Wool Wars ในช่วงวันที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
 
 woolwars-weekly = รายสัปดาห์
   .description = ดูการพัฒนาของสถิติ Wool Wars ในช่วงสัปดาห์ที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
 
 woolwars-monthly = รายเดือน
   .description = ดูการพัฒนาของสถิติ Wool Wars ในช่วงเดือนที่ผ่านมา
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่ต้องการดู
 
@@ -2407,19 +2050,14 @@ guild-general = ทั่วไป
   .description = แสดงสถิติของกิลด์
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 guild-from = ตั้งแต่
   .description = ดูการพัฒนาของสถิติกิลด์ตั้งแต่เวลาที่กำหนด
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = ระยะเวลาที่ต้องการกลับไป (1h 12m 5s)
 
@@ -2427,26 +2065,18 @@ guild-members = สมาชิกโดยสาร
   .description = แสดงสมาชิกในกิลด์
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 guild-member = สมาชิก
   .description = แสดงสถิติของสมาชิกในกิลด์
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 guild-top = อันดับแรก
   .description = แสดงสมาชิกที่มีคะแนนประสบความสำเร็จสูงสุดในกิลด์
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .days = วัน
   .days-description = วัน
   .limit = จำนวนสมาชิกที่ต้องการแสดง
@@ -2456,29 +2086,20 @@ guild-daily = รายวัน
   .description = ดูการพัฒนาของสถิติกิลด์ในช่วงวันที่ผ่านมา
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 guild-weekly = รายสัปดาห์
   .description = ดูการพัฒนาของสถิติกิลด์ในช่วงสัปดาห์ที่ผ่านมา
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 guild-monthly = รายเดือน
   .description = ดูการพัฒนาของสถิติกิลด์ในช่วงเดือนที่ผ่านมา
   .name = ชื่อ
   .name-description = ชื่อของกิลด์ที่ต้องการดูข้อมูล
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-  .uuid = รหัส-uuid
-  .uuid-description = UUID ของผู้เล่นในกิลด์ที่ต้องการดูข้อมูล
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 showing-guild-xp-statistics = แสดงคะแนนประสบความสำเร็จของกิลด์ตั้งแต่ {$from} ถึง {$to}.
 
 # ป้ายชื่อส่วนที่ใช้ร่วมกัน
@@ -2746,18 +2367,12 @@ practice = การฝึกฝน
 
 bedwars-hotbar = hotbar
   .description = ดูการตั้งค่าแถบคีย์ลัด Bed Wars
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 bedwars-shop = shop
   .description = ดูการตั้งค่าร้านค้า Bed Wars
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 attempts = ความพยายาม
 bridging-wins = ชนะการสร้างสะพาน
 bridging-losses = แพ้การสร้างสะพาน
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = เส้นทแยง บันได 100
 
 bedwars-practice = practice
   .description = ดูสถิติการฝึกฝน Bed Wars
-  .username = ชื่อผู้เล่น
-  .username-description = ชื่อผู้เล่น Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
 # ที่คำสั่ง
 
 arcade-at = เวลา
   .description = แสดงสถิติ Arcade ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2809,10 +2419,8 @@ arcade-at = เวลา
 
 arena-at = เวลา
   .description = แสดงสถิติ Arena ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2820,10 +2428,8 @@ arena-at = เวลา
 
 bedwars-at = เวลา
   .description = แสดงสถิติ Bed Wars ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2831,10 +2437,8 @@ bedwars-at = เวลา
 
 blitz-at = เวลา
   .description = แสดงสถิติ Blitz Survival Games ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2842,10 +2446,8 @@ blitz-at = เวลา
 
 buildbattle-at = เวลา
   .description = แสดงสถิติ Build Battle ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2853,10 +2455,8 @@ buildbattle-at = เวลา
 
 copsandcrims-at = เวลา
   .description = แสดงสถิติ Cops and Crims ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2864,10 +2464,8 @@ copsandcrims-at = เวลา
 
 duels-at = เวลา
   .description = แสดงสถิติ Duels ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2875,10 +2473,8 @@ duels-at = เวลา
 
 megawalls-at = เวลา
   .description = แสดงสถิติ Mega Walls ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2886,10 +2482,8 @@ megawalls-at = เวลา
 
 murdermystery-at = เวลา
   .description = แสดงสถิติ Murder Mystery ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2897,10 +2491,8 @@ murdermystery-at = เวลา
 
 paintball-at = เวลา
   .description = แสดงสถิติ Paintball ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2908,10 +2500,8 @@ paintball-at = เวลา
 
 pit-at = เวลา
   .description = แสดงสถิติ The Pit ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2919,10 +2509,8 @@ pit-at = เวลา
 
 quake-at = เวลา
   .description = แสดงสถิติ Quakecraft ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2930,10 +2518,8 @@ quake-at = เวลา
 
 skywars-at = เวลา
   .description = แสดงสถิติ SkyWars ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2941,10 +2527,8 @@ skywars-at = เวลา
 
 smash-at = เวลา
   .description = แสดงสถิติ Smash Heroes ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2952,10 +2536,8 @@ smash-at = เวลา
 
 speeduhc-at = เวลา
   .description = แสดงสถิติ SpeedUHC ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2963,10 +2545,8 @@ speeduhc-at = เวลา
 
 tntgames-at = เวลา
   .description = แสดงสถิติ TNT Games ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2974,10 +2554,8 @@ tntgames-at = เวลา
 
 turbokartracers-at = เวลา
   .description = แสดงสถิติ Turbo Kart Racers ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2985,10 +2563,8 @@ turbokartracers-at = เวลา
 
 uhc-at = เวลา
   .description = แสดงสถิติ UHC Champions ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -2996,10 +2572,8 @@ uhc-at = เวลา
 
 vampirez-at = เวลา
   .description = แสดงสถิติ VampireZ ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -3007,10 +2581,8 @@ vampirez-at = เวลา
 
 walls-at = เวลา
   .description = แสดงสถิติ The Walls ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -3018,10 +2590,8 @@ walls-at = เวลา
 
 warlords-at = เวลา
   .description = แสดงสถิติ Warlords ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -3029,10 +2599,8 @@ warlords-at = เวลา
 
 woolwars-at = เวลา
   .description = แสดงสถิติ Wool Wars ของผู้เล่นในจุดเวลาที่กำหนด
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ Minecraft
-  .uuid = uuid
-  .uuid-description = UUID ของ Minecraft
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
   .mode = โหมด
@@ -3042,10 +2610,8 @@ guild-at = เวลา
   .description = แสดงสถิติของกิลด์ในจุดเวลาที่กำหนด
   .name = ชื่อ
   .name-description = ชื่อกิลด์ที่จะดู
-  .username = ชื่อผู้ใช้
-  .username-description = ชื่อผู้ใช้ของสมาชิกกิลด์ที่จะดู
-  .uuid = uuid
-  .uuid-description = UUID ของสมาชิกกิลด์ที่จะดู
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชั่น
   .time = เวลา
   .time-description = จำนวนเวลาที่จะย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
 

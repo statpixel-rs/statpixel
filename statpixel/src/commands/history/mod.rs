@@ -37,19 +37,16 @@ macro_rules! large_command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode).await
+				run::command::<$game>(ctx, player, uuid, mode).await
 			}
 		}
 	};
@@ -68,18 +65,15 @@ macro_rules! command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				mode: Option<$mode>,
 			) -> Result<(), Error> {
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode).await
+				run::command::<$game>(ctx, player, uuid, mode).await
 			}
 		}
 	};
@@ -95,20 +89,17 @@ macro_rules! command {
 )]
 pub async fn network(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<::std::string::String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<::std::string::String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> ::std::result::Result<(), ::translate::Error> {
 	ctx.defer().await?;
 
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
 	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
-	let player = crate::util::get_player_from_input(ctx, uuid, username).await?;
+	let player = crate::util::get_player_from_input(ctx, uuid, player).await?;
 
 	let snapshots = diesel_async::RunQueryDsl::get_results::<(DateTime<Utc>, Vec<u8>)>(
 		snapshot::table
@@ -138,7 +129,7 @@ pub async fn network(
 		let mut snapshots_ = Vec::with_capacity(snapshots.len());
 
 		for (time, data) in snapshots {
-			let data = crate::snapshot::user::decode(&data)?;
+			let data = api::snapshot::user::decode(&data)?;
 
 			snapshots_.push((time, data));
 		}

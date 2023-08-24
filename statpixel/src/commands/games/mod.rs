@@ -18,6 +18,7 @@ macro_rules! large_command {
 			use crate::commands::at::$fn::command as at;
 			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
+			use crate::commands::session::$fn::command as session;
 			use crate::commands::snapshot::daily::$fn::command as daily;
 			use crate::commands::snapshot::monthly::$fn::command as monthly;
 			use crate::commands::snapshot::weekly::$fn::command as weekly;
@@ -39,20 +40,17 @@ macro_rules! large_command {
 			)]
 			async fn general(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 			) -> Result<(), Error> {
 				let mode: ::std::option::Option<<$game as api::prelude::Game>::Mode> =
 					mode.map(Into::into);
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode).await
+				run::command::<$game>(ctx, player, uuid, mode).await
 			}
 
 			#[allow(clippy::unused_async)]
@@ -60,7 +58,7 @@ macro_rules! large_command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at", "session"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
@@ -79,6 +77,7 @@ macro_rules! command {
 			use crate::commands::at::$fn::command as at;
 			use crate::commands::history::$fn::command as history;
 			use crate::commands::project::$fn::command as project;
+			use crate::commands::session::$fn::command as session;
 			use crate::commands::snapshot::daily::$fn::command as daily;
 			use crate::commands::snapshot::monthly::$fn::command as monthly;
 			use crate::commands::snapshot::weekly::$fn::command as weekly;
@@ -91,18 +90,15 @@ macro_rules! command {
 			)]
 			async fn general(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				mode: Option<<$game as api::prelude::Game>::Mode>,
 			) -> Result<(), Error> {
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode).await
+				run::command::<$game>(ctx, player, uuid, mode).await
 			}
 
 			#[allow(clippy::unused_async)]
@@ -110,7 +106,7 @@ macro_rules! command {
 				on_error = "crate::util::error_handler",
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES",
-				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at"),
+				subcommands("general", "from", "daily", "weekly", "monthly", "history", "project", "compare", "at", "session"),
 				rename = $name
 			)]
 			pub async fn parent(_ctx: Context<'_>) -> Result<(), Error> {
@@ -162,6 +158,7 @@ pub mod bedwars {
 	use crate::commands::from::bedwars::command as from;
 	use crate::commands::history::bedwars::command as history;
 	use crate::commands::project::bedwars::command as project;
+	use crate::commands::session::bedwars::command as session;
 	use crate::commands::snapshot::daily::bedwars::command as daily;
 	use crate::commands::snapshot::monthly::bedwars::command as monthly;
 	use crate::commands::snapshot::weekly::bedwars::command as weekly;
@@ -182,20 +179,17 @@ pub mod bedwars {
 	)]
 	async fn general(
 		ctx: Context<'_>,
-		#[max_length = 16]
-		#[autocomplete = "crate::commands::autocomplete_username"]
-		username: Option<::std::string::String>,
-		#[min_length = 32]
 		#[max_length = 36]
-		uuid: Option<::std::string::String>,
+		#[autocomplete = "crate::commands::autocomplete_username"]
+		player: Option<String>,
 		#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 	) -> ::std::result::Result<(), ::translate::Error> {
 		let mode: Option<<stats::bed_wars::BedWars as api::prelude::Game>::Mode> =
 			mode.map(Into::into);
-		let uuid = util::parse_uuid(uuid.as_deref())?;
+		let uuid = util::parse_uuid(player.as_deref());
 		let ctx = &context::Context::from_poise(&ctx);
 
-		run::command::<stats::bed_wars::BedWars>(ctx, username, uuid, mode).await
+		run::command::<stats::bed_wars::BedWars>(ctx, player, uuid, mode).await
 	}
 
 	#[allow(clippy::unused_async)]
@@ -205,7 +199,7 @@ pub mod bedwars {
 		required_bot_permissions = "ATTACH_FILES",
 		subcommands(
 			"general", "from", "daily", "weekly", "monthly", "history", "project", "compare",
-			"hotbar", "shop", "practice", "at"
+			"hotbar", "shop", "practice", "at", "session"
 		),
 		rename = "bedwars"
 	)]

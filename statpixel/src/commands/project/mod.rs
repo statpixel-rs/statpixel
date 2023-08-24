@@ -37,12 +37,9 @@ macro_rules! large_command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 				#[autocomplete = "autocomplete_kind"] statistic: Option<u32>,
 				#[min = 0.0f64]
@@ -52,10 +49,10 @@ macro_rules! large_command {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 				let kind: ::std::option::Option<$kind> = statistic.map(|m| m.into());
 
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode, kind, value).await
+				run::command::<$game>(ctx, player, uuid, mode, kind, value).await
 			}
 		}
 	};
@@ -83,12 +80,9 @@ macro_rules! command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				mode: Option<$mode>,
 				#[autocomplete = "autocomplete_kind"] statistic: Option<u32>,
 				#[min = 0.0f64]
@@ -96,10 +90,10 @@ macro_rules! command {
 				value: Option<f64>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let kind: ::std::option::Option<$kind> = statistic.map(|m| m.into());
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode, kind, value).await
+				run::command::<$game>(ctx, player, uuid, mode, kind, value).await
 			}
 		}
 	};

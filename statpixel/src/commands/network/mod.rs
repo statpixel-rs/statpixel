@@ -12,17 +12,14 @@ use translate::{context, Context};
 )]
 async fn general(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::network(ctx, username, uuid).await
+	run::network(ctx, player, uuid).await
 }
 
 #[allow(clippy::unused_async)]

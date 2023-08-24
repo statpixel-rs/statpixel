@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Показ статистик
 # Ошибки
 
 error-player-not-found = Профиль, принадлежащий **`{$name}`**, не найден.
-error-session-not-found = Сессия, принадлежащая **`{$name}`**, не найдена.
+error-snapshot-not-found = Сессия, принадлежащая **`{$name}`**, не найдена.
 error-player-uuid-not-found = Игрок с UUID **`{$uuid}`** не найден.
 error-player-username-not-found = Игрок с именем пользователя **`{$name}`** не найден.
 error-guild-by-member-uuid-not-found = Участник гильдии с UUID **`{$uuid}`** не найден.
@@ -93,11 +93,8 @@ track-success-description =
 
 track = track
   .description = Отслеживает статистику игрока и отправляет изменения в текущий канал.
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft для отслеживания
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft для отслеживания
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 # /custom
 
 execute = выполнить
@@ -205,11 +202,8 @@ about = о-боте
 
 winstreaks = серия-побед
   .description = Просмотр серий побед
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 # /recent
 
 mode = Режим
@@ -220,11 +214,8 @@ playing = В игре
 
 recent = последние
   .description = Просмотр последних игр
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 # Метки проекций
 
 accuracy = Точность
@@ -276,11 +267,8 @@ Wardrobe = Гардероб
 
 skyblock-auctions = аукционы
   .description = Просмотр аукционов SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 player-auctions = Аукционы
 highest-bid = Максимальная ставка
 
@@ -288,109 +276,85 @@ highest-bid = Максимальная ставка
 
 skyblock-inventory = инвентарь
   .description = Просмотр инвентаря SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-enderchest = сундук-эндера
   .description = Просмотр сундука Эндера SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-quiver = колчан
   .description = Просмотр колчана SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-talisman = талисман
   .description = Просмотр мешка с талисманами SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-fishing = рыбалка
   .description = Просмотр сумки рыбака SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-potions = зелья
   .description = Просмотр сумки с зельями SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-equipment = оборудование
   .description = Просмотр оборудования SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID пользователя в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-wardrobe = гардероб
   .description = Просмотр гардероба SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-candy = сладости
   .description = Просмотр инвентаря сладостей SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-vault = сокровищница
   .description = Просмотр персональной сокровищницы SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-pets = питомцы
   .description = Просмотр питомцев SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
 skyblock-networth = стоимость
   .description = Просмотр стоимости профиля SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
@@ -398,10 +362,8 @@ skyblock-networth = стоимость
 
 skyblock-profile = профиль
   .description = Просмотр профиля SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
@@ -430,10 +392,8 @@ social = Социальные навыки
 
 skyblock-bank = банк
   .description = Просмотр банка SkyBlock
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .profile = профиль
   .profile-description = Профиль для просмотра
 
@@ -451,18 +411,12 @@ leaderboard = таблица-лидеров
 
 network-general = общие-параметры
   .description = Просмотр общих статистических данных сети
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 network-history = история
   .description = Просмотр исторических статистических данных сети
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 karma = Карма
 rewards = Награды
 friend-requests = Запросы друзей
@@ -535,11 +489,8 @@ unlinking-succeeded-description = Вы больше не связаны с уч�
 # /link
 link = связь
   .description = Связывание вашей учетной записи Discord с учетной записью Minecraft.
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft для связи
-  .uuid = uuid
-  .uuid-description = UUID Minecraft для связи
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 linking-failed = Связывание не удалось
 linking-failed-uuid-description = UUID **`{$uuid}`** не принадлежит учетной записи Minecraft.
 linking-failed-username-description = Имя пользователя **`{$username}`** не принадлежит учетной записи Minecraft.
@@ -574,19 +525,15 @@ mystery-gifts = Таинственные подарки
 
 arcade-general = общее
   .description = Просмотр статистики Аркады
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
 
 arcade-from = с
   .description = Просмотр развития статистики Аркады с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
   .time = время
@@ -594,19 +541,15 @@ arcade-from = с
 
 arcade-history = история
   .description = Просмотр развития статистики Аркады со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
 
 arcade-project = проект
   .description = Проекция статистики Аркады в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
   .statistic = статистика
@@ -616,28 +559,22 @@ arcade-project = проект
 
 arcade-daily = ежедневно
   .description = Просмотр развития статистики Аркады за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
 
 arcade-weekly = еженедельно
   .description = Просмотр развития статистики Аркады за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
 
 arcade-monthly = ежемесячно
   .description = Просмотр развития статистики Аркады за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Аркады для просмотра
 
@@ -649,19 +586,15 @@ rating = Рейтинг
 
 arena-general = общее
   .description = Просмотр статистики Арены
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
 
 arena-from = с
   .description = Просмотр развития статистики Арены с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
   .time = время
@@ -669,19 +602,15 @@ arena-from = с
 
 arena-history = история
   .description = Просмотр развития статистики Арены со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
 
 arena-project = проект
   .description = Проекция статистики Арены в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
   .statistic = статистика
@@ -691,28 +620,22 @@ arena-project = проект
 
 arena-daily = ежедневно
   .description = Просмотр развития статистики Арены за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
 
 arena-weekly = еженедельно
   .description = Просмотр развития статистики Арены за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
 
 arena-monthly = ежемесячно
   .description = Просмотр развития статистики Арены за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Арены для просмотра
 
@@ -755,19 +678,15 @@ items-purchased = Покупки
 
 bedwars-general = общее
   .description = Просмотр статистики Bed Wars
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
 
 bedwars-from = с
   .description = Просмотр развития статистики Bed Wars с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
   .time = время
@@ -775,19 +694,15 @@ bedwars-from = с
 
 bedwars-history = история
   .description = Просмотр развития статистики Bed Wars со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
 
 bedwars-project = проект
   .description = Проекция статистики Bed Wars в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
   .statistic = статистика
@@ -797,28 +712,22 @@ bedwars-project = проект
 
 bedwars-daily = ежедневно
   .description = Просмотр развития статистики Bed Wars за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
 
 bedwars-weekly = еженедельно
   .description = Просмотр развития статистики Bed Wars за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
 
 bedwars-monthly = ежемесячно
   .description = Просмотр развития статистики Bed Wars за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Bed Wars для просмотра
 
@@ -855,19 +764,15 @@ time-played = Время игры
 
 blitz-general = общее
   .description = Просмотр статистики Blitz Survival Games
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
 
 blitz-from = от
   .description = Просмотр развития статистики Blitz Survival Games с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
   .time = время
@@ -875,19 +780,15 @@ blitz-from = от
 
 blitz-history = история
   .description = Просмотр развития статистики Blitz Survival Games за определенный период времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
 
 blitz-project = проекция
   .description = Проекция статистики Blitz Survival Games в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
   .statistic = статистика
@@ -897,28 +798,22 @@ blitz-project = проекция
 
 blitz-daily = ежедневно
   .description = Просмотр развития статистики Blitz Survival Games за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
 
 blitz-weekly = еженедельно
   .description = Просмотр развития статистики Blitz Survival Games за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
 
 blitz-monthly = ежемесячно
   .description = Просмотр развития статистики Blitz Survival Games за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Blitz Survival Games для просмотра
 
@@ -933,19 +828,15 @@ most-points-team = Больше всего очков (Команды)
 
 buildbattle-general = общее
   .description = Просмотр статистики Build Battle
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
 
 buildbattle-from = от
   .description = Просмотр развития статистики Build Battle с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
   .time = время
@@ -953,19 +844,15 @@ buildbattle-from = от
 
 buildbattle-history = история
   .description = Просмотр развития статистики Build Battle за определенный период времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
 
 buildbattle-project = проекция
   .description = Проекция статистики Build Battle в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
   .statistic = статистика
@@ -975,28 +862,22 @@ buildbattle-project = проекция
 
 buildbattle-daily = ежедневно
   .description = Просмотр развития статистики Build Battle за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
 
 buildbattle-weekly = еженедельно
   .description = Просмотр развития статистики Build Battle за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
 
 buildbattle-monthly = ежемесячно
   .description = Просмотр развития статистики Build Battle за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Build Battle для просмотра
 
@@ -1015,19 +896,15 @@ bombs-planted = Заложенные бомбы
 
 copsandcrims-general = общее
   .description = Просмотр статистики Cops and Crims
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
 
 copsandcrims-from = от
   .description = Просмотр развития статистики Cops and Crims с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
   .time = время
@@ -1035,19 +912,15 @@ copsandcrims-from = от
 
 copsandcrims-history = история
   .description = Просмотр развития статистики Cops and Crims за определенный период времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
 
 copsandcrims-project = проекция
   .description = Проекция статистики Cops and Crims в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
   .statistic = статистика
@@ -1057,28 +930,22 @@ copsandcrims-project = проекция
 
 copsandcrims-daily = ежедневно
   .description = Просмотр развития статистики Cops and Crims за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
 
 copsandcrims-weekly = еженедельно
   .description = Просмотр развития статистики Cops and Crims за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
 
 copsandcrims-monthly = ежемесячно
   .description = Просмотр развития статистики Cops and Crims за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Cops and Crims для просмотра
 
@@ -1118,19 +985,15 @@ health-regenerated = Восстановленное здоровье
 
 duels-general = общее
   .description = Просмотр статистики дуэлей
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
 
 duels-from = с-момента
   .description = Просмотр развития статистики дуэлей с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
   .time = время
@@ -1138,19 +1001,15 @@ duels-from = с-момента
 
 duels-history = история
   .description = Просмотр развития статистики дуэлей со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
 
 duels-project = проекция
   .description = Проекция статистики дуэлей в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
   .statistic = статистика
@@ -1160,28 +1019,22 @@ duels-project = проекция
 
 duels-daily = ежедневно
   .description = Просмотр развития статистики дуэлей за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
 
 duels-weekly = еженедельно
   .description = Просмотр развития статистики дуэлей за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
 
 duels-monthly = ежемесячно
   .description = Просмотр развития статистики дуэлей за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим дуэлей для просмотра
 
@@ -1197,19 +1050,15 @@ treasures-found = Найдено сокровищ
 
 megawalls-general = общее
   .description = Просмотр статистики Mega Walls
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
 
 megawalls-from = с-момента
   .description = Просмотр развития статистики Mega Walls с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
   .time = время
@@ -1217,19 +1066,15 @@ megawalls-from = с-момента
 
 megawalls-history = история
   .description = Просмотр развития статистики Mega Walls со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
 
 megawalls-project = проекция
   .description = Проекция статистики Mega Walls в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
   .statistic = статистика
@@ -1239,28 +1084,22 @@ megawalls-project = проекция
 
 megawalls-daily = ежедневно
   .description = Просмотр развития статистики Mega Walls за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
 
 megawalls-weekly = еженедельно
   .description = Просмотр развития статистики Mega Walls за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
 
 megawalls-monthly = ежемесячно
   .description = Просмотр развития статистики Mega Walls за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Mega Walls для просмотра
 
@@ -1277,19 +1116,15 @@ detective-wins = Побед детектива
 
 murdermystery-general = общее
   .description = Просмотр статистики Murder Mystery
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Murder Mystery для просмотра
 
 murdermystery-from = с-момента
   .description = Просмотр развития статистики Murder Mystery с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Murder Mystery для просмотра
   .time = время
@@ -1297,19 +1132,15 @@ murdermystery-from = с-момента
 
 murdermystery-history = история
   .description = Просмотр развития статистики Murder Mystery со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Murder Mystery для просмотра
 
 murdermystery-project = проект
   .description = Проект "Убийственная Мистерия" в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим "Убийственная Мистерия" для просмотра
   .statistic = статистика
@@ -1319,28 +1150,22 @@ murdermystery-project = проект
 
 murdermystery-daily = ежедневно
   .description = Просмотр статистики "Убийственная Мистерия" за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим "Убийственная Мистерия" для просмотра
 
 murdermystery-weekly = еженедельно
   .description = Просмотр статистики "Убийственная Мистерия" за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим "Убийственная Мистерия" для просмотра
 
 murdermystery-monthly = ежемесячно
   .description = Просмотр статистики "Убийственная Мистерия" за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим "Убийственная Мистерия" для просмотра
 
@@ -1365,19 +1190,15 @@ highest-killstreak = Лучшая серия
 
 paintball-general = общее
   .description = Просмотр статистики Paintball
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
 
 paintball-from = от
   .description = Просмотр статистики Paintball с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
   .time = время
@@ -1385,19 +1206,15 @@ paintball-from = от
 
 paintball-history = история
   .description = Просмотр развития статистики Paintball за время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
 
 paintball-project = проект
   .description = Проект статистики Paintball в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
   .statistic = статистика
@@ -1407,28 +1224,22 @@ paintball-project = проект
 
 paintball-daily = ежедневно
   .description = Просмотр статистики Paintball за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
 
 paintball-weekly = еженедельно
   .description = Просмотр статистики Paintball за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
 
 paintball-monthly = ежемесячно
   .description = Просмотр статистики Paintball за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Paintball для просмотра
 
@@ -1444,19 +1255,15 @@ cr = Соотношение завершенных контрактов
 
 pit-general = общее
   .description = Просмотр статистики The Pit
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
 
 pit-from = от
   .description = Просмотр статистики The Pit с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
   .time = время
@@ -1464,19 +1271,15 @@ pit-from = от
 
 pit-history = история
   .description = Просмотр развития статистики The Pit за время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
 
 pit-project = проект
   .description = Проект статистики The Pit в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
   .statistic = статистика
@@ -1486,28 +1289,22 @@ pit-project = проект
 
 pit-daily = ежедневно
   .description = Просмотр статистики The Pit за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
 
 pit-weekly = еженедельно
   .description = Просмотр статистики The Pit за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
 
 pit-monthly = ежемесячно
   .description = Просмотр статистики The Pit за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Pit для просмотра
 
@@ -1521,19 +1318,15 @@ sight = Вид
 
 quake-general = общее
   .description = Просмотр статистики Quakecraft
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
 
 quake-from = от
   .description = Просмотр статистики Quakecraft с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
   .time = время
@@ -1541,19 +1334,15 @@ quake-from = от
 
 quake-history = история
   .description = Просмотр развития статистики Quakecraft за время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
 
 quake-project = проект
   .description = Статистика проекта Quakecraft в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
   .statistic = статистика
@@ -1563,28 +1352,22 @@ quake-project = проект
 
 quake-daily = ежедневно
   .description = Просмотр статистики Quakecraft за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
 
 quake-weekly = еженедельно
   .description = Просмотр статистики Quakecraft за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
 
 quake-monthly = ежемесячно
   .description = Просмотр статистики Quakecraft за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Quakecraft для просмотра
 
@@ -1611,19 +1394,15 @@ fastest-win = Самая быстрая победа
 
 skywars-general = общее
   .description = Просмотр статистики SkyWars
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
 
 skywars-from = с
   .description = Просмотр статистики SkyWars с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
   .time = время
@@ -1631,19 +1410,15 @@ skywars-from = с
 
 skywars-history = история
   .description = Просмотр статистики SkyWars за все время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
 
 skywars-project = проект
   .description = Статистика SkyWars в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
   .statistic = статистика
@@ -1653,28 +1428,22 @@ skywars-project = проект
 
 skywars-daily = ежедневно
   .description = Просмотр статистики SkyWars за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
 
 skywars-weekly = еженедельно
   .description = Просмотр статистики SkyWars за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
 
 skywars-monthly = ежемесячно
   .description = Просмотр статистики SkyWars за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SkyWars для просмотра
 
@@ -1686,19 +1455,15 @@ ssr = SSR
 
 smash-general = общее
   .description = Просмотр статистики Smash Heroes
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
 
 smash-from = с
   .description = Просмотр статистики Smash Heroes с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
   .time = время
@@ -1706,19 +1471,15 @@ smash-from = с
 
 smash-history = история
   .description = Просмотр статистики Smash Heroes за все время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
 
 smash-project = проект
   .description = Статистика Smash Heroes в будущем
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
   .statistic = статистика
@@ -1728,28 +1489,22 @@ smash-project = проект
 
 smash-daily = ежедневно
   .description = Просмотр статистики Smash Heroes за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
 
 smash-weekly = еженедельно
   .description = Просмотр статистики Smash Heroes за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
 
 smash-monthly = ежемесячно
   .description = Просмотр статистики Smash Heroes за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Smash Heroes для просмотра
 
@@ -1760,19 +1515,15 @@ survived-players = Выжившие
 
 speeduhc-general = общее
   .description = Просмотр статистики SpeedUHC
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
 
 speeduhc-from = с
   .description = Просмотр статистики SpeedUHC с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
   .time = время
@@ -1780,19 +1531,15 @@ speeduhc-from = с
 
 speeduhc-history = история
   .description = Просмотр статистики SpeedUHC за все время
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
 
 speeduhc-project = проект
   .description = Статистика проекта SpeedUHC в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
   .statistic = статистика
@@ -1802,28 +1549,22 @@ speeduhc-project = проект
 
 speeduhc-daily = ежедневно
   .description = Просмотр развития статистики SpeedUHC за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
 
 speeduhc-weekly = еженедельно
   .description = Просмотр развития статистики SpeedUHC за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
 
 speeduhc-monthly = ежемесячно
   .description = Просмотр развития статистики SpeedUHC за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим SpeedUHC для просмотра
 
@@ -1843,19 +1584,15 @@ points = Очки
 
 tntgames-general = общее
   .description = Просмотр статистики TNT Games
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
 
 tntgames-from = с
   .description = Просмотр развития статистики TNT Games с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
   .time = время
@@ -1863,19 +1600,15 @@ tntgames-from = с
 
 tntgames-history = история
   .description = Просмотр развития статистики TNT Games за все время
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
 
 tntgames-project = проект
   .description = Статистика проекта TNT Games в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
   .statistic = статистика
@@ -1885,28 +1618,22 @@ tntgames-project = проект
 
 tntgames-daily = ежедневно
   .description = Просмотр развития статистики TNT Games за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
 
 tntgames-weekly = еженедельно
   .description = Просмотр развития статистики TNT Games за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
 
 tntgames-monthly = ежемесячно
   .description = Просмотр развития статистики TNT Games за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим TNT Games для просмотра
 
@@ -1922,19 +1649,15 @@ gold-trophies = Золотые трофеи
 
 turbokartracers-general = общее
   .description = Просмотр статистики Turbo Kart Racers
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
 
 turbokartracers-from = с
   .description = Просмотр развития статистики Turbo Kart Racers с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
   .time = время
@@ -1942,19 +1665,15 @@ turbokartracers-from = с
 
 turbokartracers-history = история
   .description = Просмотр развития статистики Turbo Kart Racers за все время
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
 
 turbokartracers-project = проект
   .description = Статистика проекта Turbo Kart Racers в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
   .statistic = статистика
@@ -1964,28 +1683,22 @@ turbokartracers-project = проект
 
 turbokartracers-daily = ежедневно
   .description = Просмотр развития статистики Turbo Kart Racers за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
 
 turbokartracers-weekly = еженедельно
   .description = Просмотр развития статистики Turbo Kart Racers за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
 
 turbokartracers-monthly = ежемесячно
   .description = Просмотр развития статистики Turbo Kart Racers за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Turbo Kart Racers для просмотра
 
@@ -2003,19 +1716,15 @@ ultimates-crafted = Создано Ультиматов
 
 uhc-general = общее
   .description = Просмотр статистики UHC Champions
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
 
 uhc-from = с
   .description = Просмотр развития статистики UHC Champions с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
   .time = время
@@ -2023,19 +1732,15 @@ uhc-from = с
 
 uhc-history = история
   .description = Просмотр развития статистики UHC Champions со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
 
 uhc-project = проект
   .description = Проекция статистики UHC Champions в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
   .statistic = статистика
@@ -2045,28 +1750,22 @@ uhc-project = проект
 
 uhc-daily = ежедневно
   .description = Просмотр развития статистики UHC Champions за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
 
 uhc-weekly = еженедельно
   .description = Просмотр развития статистики UHC Champions за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
 
 uhc-monthly = ежемесячно
   .description = Просмотр развития статистики UHC Champions за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим UHC Champions для просмотра
 
@@ -2090,19 +1789,15 @@ vkdr = VKDR
 
 vampirez-general = общее
   .description = Просмотр статистики VampireZ
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
 
 vampirez-from = с
   .description = Просмотр развития статистики VampireZ с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
   .time = время
@@ -2110,19 +1805,15 @@ vampirez-from = с
 
 vampirez-history = история
   .description = Просмотр развития статистики VampireZ со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
 
 vampirez-project = проект
   .description = Проекция статистики VampireZ в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
   .statistic = статистика
@@ -2132,28 +1823,22 @@ vampirez-project = проект
 
 vampirez-daily = ежедневно
   .description = Просмотр развития статистики VampireZ за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
 
 vampirez-weekly = еженедельно
   .description = Просмотр развития статистики VampireZ за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
 
 vampirez-monthly = ежемесячно
   .description = Просмотр развития статистики VampireZ за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим VampireZ для просмотра
 
@@ -2166,19 +1851,15 @@ iron-broken = Разрушено железа
 
 walls-general = общее
   .description = Просмотр статистики The Walls
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
 
 walls-from = с
   .description = Просмотр развития статистики The Walls с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
   .time = время
@@ -2186,19 +1867,15 @@ walls-from = с
 
 walls-history = история
   .description = Просмотр развития статистики The Walls со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
 
 walls-project = проект
   .description = Проекция статистики The Walls в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
   .statistic = статистика
@@ -2208,28 +1885,22 @@ walls-project = проект
 
 walls-daily = ежедневно
   .description = Просмотр развития статистики The Walls за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
 
 walls-weekly = еженедельно
   .description = Просмотр развития статистики The Walls за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
 
 walls-monthly = ежемесячно
   .description = Просмотр развития статистики The Walls за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим The Walls для просмотра
 
@@ -2246,19 +1917,15 @@ mvps = MVPs
 
 warlords-general = общее
   .description = Просмотр статистики Warlords
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Warlords для просмотра
 
 warlords-from = с
   .description = Просмотр развития статистики Warlords с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = uuid
-  .uuid-description = UUID в Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Warlords для просмотра
   .time = время
@@ -2266,19 +1933,15 @@ warlords-from = с
 
 warlords-history = история
   .description = Просмотр статистики Варлордов со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Варлордов для просмотра
 
 warlords-project = проект
   .description = Проекция статистики Варлордов в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Варлордов для просмотра
   .statistic = статистика
@@ -2288,28 +1951,22 @@ warlords-project = проект
 
 warlords-daily = ежедневно
   .description = Просмотр статистики Варлордов за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Варлордов для просмотра
 
 warlords-weekly = еженедельно
   .description = Просмотр статистики Варлордов за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Варлордов для просмотра
 
 warlords-monthly = ежемесячно
   .description = Просмотр статистики Варлордов за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Варлордов для просмотра
 
@@ -2321,19 +1978,15 @@ wool-placed = Установленная шерсть
 
 woolwars-general = общее
   .description = Просмотр статистики Wool Wars
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
 
 woolwars-from = с
   .description = Просмотр статистики Wool Wars с определенного времени
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
   .time = время
@@ -2341,19 +1994,15 @@ woolwars-from = с
 
 woolwars-history = история
   .description = Просмотр статистики Wool Wars со временем
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
 
 woolwars-project = проект
   .description = Проекция статистики Wool Wars в будущее
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
   .statistic = статистика
@@ -2363,28 +2012,22 @@ woolwars-project = проект
 
 woolwars-daily = ежедневно
   .description = Просмотр статистики Wool Wars за последний день
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
 
 woolwars-weekly = еженедельно
   .description = Просмотр статистики Wool Wars за последнюю неделю
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
 
 woolwars-monthly = ежемесячно
   .description = Просмотр статистики Wool Wars за последний месяц
-  .username = имя-пользователя
-  .username-description = Имя пользователя в Minecraft
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор Minecraft (UUID)
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
 
@@ -2409,19 +2052,14 @@ guild-general = общее
   .description = Показывает статистику гильдии
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 guild-from = с
   .description = Просмотр статистики гильдии с определенного времени
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Время для возврата (1h 12m 5s)
 
@@ -2429,26 +2067,18 @@ guild-members = участники
   .description = Показывает список участников гильдии
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 guild-member = участник
   .description = Показывает статистику участника гильдии
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 guild-top = топ
   .description = Показывает топ участников гильдии по опыту
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .days = дни
   .days-description = дни
   .limit = лимит
@@ -2458,29 +2088,20 @@ guild-daily = ежедневно
   .description = Просмотр статистики гильдии за последний день
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 guild-weekly = еженедельно
   .description = Просмотр статистики гильдии за последнюю неделю
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 guild-monthly = ежемесячно
   .description = Просмотр статистики гильдии за последний месяц
   .name = имя
   .name-description = Имя гильдии для просмотра
-  .username = имя-пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = уникальный-идентификатор
-  .uuid-description = Уникальный идентификатор гильдии для просмотра
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 showing-guild-xp-statistics = Показан прирост опыта гильдии с {$from} по {$to}.
 
 # Общие метки холста
@@ -2748,18 +2369,12 @@ practice = Практика
 
 bedwars-hotbar = hotbar
   .description = Просмотр настроек панели инструментов Bed Wars
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 bedwars-shop = shop
   .description = Просмотр настроек магазина Bed Wars
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 attempts = Попытки
 bridging-wins = Победы при строительстве мостов
 bridging-losses = Поражения при строительстве мостов
@@ -2791,19 +2406,14 @@ diagonal-staircase-100 = Диаг. Лестница 100
 
 bedwars-practice = practice
   .description = Просмотр статистики практики в Bed Wars
-  .username = имя-пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
 # Команды
 
 arcade-at = на
   .description = Показать статистику в режиме Arcade игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2811,10 +2421,8 @@ arcade-at = на
 
 arena-at = на
   .description = Показать статистику в режиме Arena игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2822,10 +2430,8 @@ arena-at = на
 
 bedwars-at = на
   .description = Показать статистику в режиме Bed Wars игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2833,10 +2439,8 @@ bedwars-at = на
 
 blitz-at = на
   .description = Показать статистику в режиме Blitz Survival Games игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2844,10 +2448,8 @@ blitz-at = на
 
 buildbattle-at = на
   .description = Показать статистику в режиме Build Battle игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2855,10 +2457,8 @@ buildbattle-at = на
 
 copsandcrims-at = на
   .description = Показать статистику в режиме Cops and Crims игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2866,10 +2466,8 @@ copsandcrims-at = на
 
 duels-at = на
   .description = Показать статистику в режиме Duels игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2877,10 +2475,8 @@ duels-at = на
 
 megawalls-at = на
   .description = Показать статистику в режиме Mega Walls игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2888,10 +2484,8 @@ megawalls-at = на
 
 murdermystery-at = на
   .description = Показать статистику в режиме Murder Mystery игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2899,10 +2493,8 @@ murdermystery-at = на
 
 paintball-at = на
   .description = Показать статистику в режиме Paintball игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2910,10 +2502,8 @@ paintball-at = на
 
 pit-at = на
   .description = Показать статистику в режиме The Pit игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2921,10 +2511,8 @@ pit-at = на
 
 quake-at = на
   .description = Показать статистику в режиме Quakecraft игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2932,10 +2520,8 @@ quake-at = на
 
 skywars-at = на
   .description = Показать статистику в режиме SkyWars игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2943,10 +2529,8 @@ skywars-at = на
 
 smash-at = на
   .description = Показать статистику в режиме Smash Heroes игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2954,10 +2538,8 @@ smash-at = на
 
 speeduhc-at = на
   .description = Показать статистику в режиме SpeedUHC игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2965,10 +2547,8 @@ speeduhc-at = на
 
 tntgames-at = на
   .description = Показать статистику в режиме TNT Games игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2976,10 +2556,8 @@ tntgames-at = на
 
 turbokartracers-at = на
   .description = Показать статистику в режиме Turbo Kart Racers игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2987,10 +2565,8 @@ turbokartracers-at = на
 
 uhc-at = на
   .description = Показать статистику в режиме UHC Champions игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -2998,10 +2574,8 @@ uhc-at = на
 
 vampirez-at = на
   .description = Показать статистику в режиме VampireZ игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -3009,10 +2583,8 @@ vampirez-at = на
 
 walls-at = на
   .description = Показать статистику в режиме The Walls игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -3020,10 +2592,8 @@ walls-at = на
 
 warlords-at = на
   .description = Показать статистику в режиме Warlords игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -3031,10 +2601,8 @@ warlords-at = на
 
 woolwars-at = на
   .description = Показать статистику в режиме Wool Wars игрока в определенный момент времени
-  .username = имя_пользователя
-  .username-description = Имя пользователя Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
   .mode = режим
@@ -3044,10 +2612,8 @@ guild-at = на
   .description = Показать статистику гильдии в определенный момент времени
   .name = имя
   .name-description = Название гильдии для просмотра
-  .username = имя_пользователя
-  .username-description = Имя пользователя гильдии для просмотра
-  .uuid = uuid
-  .uuid-description = UUID гильдии пользователя для просмотра
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
   .time = время
   .time-description = Количество времени для отката (1ч 12м 5с)
 

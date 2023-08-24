@@ -1,6 +1,6 @@
 use api::{guild::Guild, player::Player};
-use database::schema;
-use diesel::{ExpressionMethods, QueryDsl};
+use database::schema::{self, session};
+use diesel::{ExpressionMethods, OptionalExtension, QueryDsl};
 use diesel_async::RunQueryDsl;
 use minecraft::{style::Family, username::Username};
 use poise::{serenity_prelude as serenity, CreateReply};
@@ -88,12 +88,8 @@ pub async fn get_image_options_from_input(
 	}
 }
 
-pub fn parse_uuid(uuid: Option<&str>) -> Result<Option<Uuid>, Error> {
-	let Some(uuid) = uuid else {
-		return Ok(None);
-	};
-
-	Some(Uuid::parse_str(uuid).map_err(|_| Error::InvalidUuid(uuid.to_string()))).transpose()
+pub fn parse_uuid(uuid: Option<&str>) -> Option<Uuid> {
+	uuid.and_then(|u| Uuid::parse_str(u).ok())
 }
 
 pub async fn get_player_from_input(
@@ -108,7 +104,24 @@ pub async fn get_player_from_input(
 			.and_then(|username| Username::try_from_str(username).ok()),
 		username,
 	) {
-		(Some(uuid), _, _) => Ok(Player::from_uuid(&uuid).await?),
+		(Some(uuid), _, _) => {
+			let session = session::table
+				.filter(session::id.eq(uuid))
+				.select((session::uuid, session::snapshot_id))
+				.get_result::<(Uuid, i32)>(&mut ctx.data().pool.get().await?)
+				.await
+				.optional()?;
+
+			Ok(if let Some((player_uuid, snapshot_id)) = session {
+				Player {
+					uuid: player_uuid,
+					username: None,
+					session: Some((uuid, snapshot_id)),
+				}
+			} else {
+				Player::from_uuid(&uuid).await?
+			})
+		}
 		(_, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
@@ -300,12 +313,12 @@ pub async fn get_guild_with_member_from_input(
 #[allow(clippy::too_many_lines)]
 pub async fn error(ctx: &context::Context<'_>, error: Error) {
 	let content = match error {
-		Error::Api(err) => match *err {
+		Error::ApiRaw(err) => match err {
 			ApiError::PlayerNotFound(ref name) => {
 				tr_fmt!(ctx, "error-player-not-found", name: name.as_str())
 			}
-			ApiError::SessionNotFound(ref name) => {
-				tr_fmt!(ctx, "error-session-not-found", name: name.as_str())
+			ApiError::SnapshotNotFound(ref name) => {
+				tr_fmt!(ctx, "error-snapshot-not-found", name: name.as_str())
 			}
 			ApiError::ProfileNotFound(ref profile, ref name) => {
 				tr_fmt!(ctx, "error-profile-not-found", profile: profile.as_str(), name: name.as_str())
@@ -330,6 +343,37 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 				tr(ctx, "error-internal")
 			}
 		},
+		Error::Api(err) => match *err {
+			ApiError::PlayerNotFound(ref name) => {
+				tr_fmt!(ctx, "error-player-not-found", name: name.as_str())
+			}
+			ApiError::SnapshotNotFound(ref name) => {
+				tr_fmt!(ctx, "error-snapshot-not-found", name: name.as_str())
+			}
+			ApiError::ProfileNotFound(ref profile, ref name) => {
+				tr_fmt!(ctx, "error-profile-not-found", profile: profile.as_str(), name: name.as_str())
+			}
+			ApiError::UuidNotFound(ref uuid) => {
+				tr_fmt!(ctx, "error-player-uuid-not-found", uuid: uuid.to_string())
+			}
+			ApiError::UsernameNotFound(ref name) => {
+				tr_fmt!(ctx, "error-player-username-not-found", name: name.as_str())
+			}
+			ApiError::GuildByMemberUuidNotFound(ref uuid) => {
+				tr_fmt!(ctx, "error-guild-by-member-uuid-not-found", uuid: uuid.to_string())
+			}
+			ApiError::GuildByMemberUsernameNotFound(ref name) => {
+				tr_fmt!(ctx, "error-guild-by-member-username-not-found", name: name.as_str())
+			}
+			ApiError::GuildNotFound(ref name) => {
+				tr_fmt!(ctx, "error-guild-not-found", name: name.as_str())
+			}
+			ref error => {
+				error!(error = ?error, "internal error");
+				tr(ctx, "error-internal")
+			}
+		},
+		Error::SessionNotFound => tr(ctx, "error-session-not-found"),
 		Error::NotLinked => tr(ctx, "error-not-linked"),
 		Error::InvalidUuid(ref uuid) => {
 			tr_fmt!(ctx, "error-invalid-uuid", uuid: uuid.to_string())

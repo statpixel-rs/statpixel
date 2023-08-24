@@ -89,6 +89,7 @@ async fn main() {
 		commands::games::pit::parent(),
 		commands::games::quake::parent(),
 		commands::recent::recent(),
+		commands::session::session(),
 		commands::skyblock::skyblock(),
 		commands::games::skywars::parent(),
 		commands::games::smash::parent(),

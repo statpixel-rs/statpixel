@@ -38,7 +38,7 @@ pub enum ApiError {
 	#[error("A profile belonging to `{0}` was not found.")]
 	PlayerNotFound(String),
 	#[error("A session belonging to `{0}` was not found.")]
-	SessionNotFound(String),
+	SnapshotNotFound(String),
 	#[error("The `{0}` SkyBlock profile belonging to `{1}` has its API disabled.")]
 	ProfileNotFound(String, String),
 	#[error("The uuid `{0}` was not found.")]
@@ -59,12 +59,20 @@ pub enum ApiError {
 	Database(#[from] diesel_async::pooled_connection::deadpool::PoolError),
 	#[error("An error occurred with serde_json. {0:?}")]
 	SerdeJson(#[from] serde_json::Error),
+	#[error("An internal error occurred while decoding bincode.")]
+	BincodeDeserialize(#[from] bincode::error::DecodeError),
+	#[error("An internal error occurred while encoding bincode.")]
+	BincodeSerialize(#[from] bincode::error::EncodeError),
+	#[error("An error occurred while handling io.")]
+	Io(#[from] std::io::Error),
 }
 
 #[derive(Error, Debug)]
 pub enum Error {
 	#[error(transparent)]
 	Api(#[from] Arc<ApiError>),
+	#[error(transparent)]
+	ApiRaw(#[from] ApiError),
 	#[error("An error occurred while interacting with Diesel: {0:?}")]
 	Diesel(#[from] diesel::result::Error),
 	#[error("An error occurred while interacting with the database.")]
@@ -119,6 +127,8 @@ pub enum Error {
 	TimeParse(#[from] humantime::DurationError),
 	#[error("This branch is not implemented yet.")]
 	NotImplemented,
+	#[error("The provided session was not found.")]
+	SessionNotFound,
 }
 
 #[derive(Debug, thiserror::Error)]

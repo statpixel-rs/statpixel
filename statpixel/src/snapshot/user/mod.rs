@@ -5,11 +5,12 @@ use std::{ops::Mul, sync::Arc};
 use api::{
 	canvas::diff::DiffLog,
 	player::{data::Data, Player, VERSION},
+	snapshot::user::{decode, encode},
 };
 use chrono::{DateTime, Datelike, Timelike, Utc};
 use database::{
 	models::TrackState,
-	schema::{schedule, snapshot, track},
+	schema::{schedule, session, snapshot, track},
 	PostgresPool,
 };
 use diesel::{
@@ -19,7 +20,6 @@ use diesel::{
 use diesel_async::{
 	scoped_futures::ScopedFutureExt, AsyncConnection, AsyncPgConnection, RunQueryDsl,
 };
-use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
 use poise::serenity_prelude::{
 	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage, Embed,
@@ -410,23 +410,6 @@ impl Status {
 	}
 }
 
-pub fn encode(data: &Data) -> Result<Vec<u8>, Error> {
-	let mut encoder = ZlibEncoder::new(Vec::new(), Compression::default());
-
-	bincode::encode_into_std_write(data, &mut encoder, bincode::config::standard())?;
-
-	Ok(encoder.finish()?)
-}
-
-pub fn decode(data: &[u8]) -> Result<Data, Error> {
-	let mut decoder = ZlibDecoder::new(data);
-
-	Ok(bincode::decode_from_std_read(
-		&mut decoder,
-		bincode::config::standard(),
-	)?)
-}
-
 /// Gets the earliest snapshot of a given player within a timeframe.
 pub async fn get(
 	ctx: &Context<'_>,
@@ -468,6 +451,36 @@ pub async fn get(
 	};
 
 	match result {
+		Ok((data, created_at)) => Ok(Some((decode(data.as_slice())?, created_at))),
+		Err(diesel::NotFound) => Ok(None),
+		Err(e) => Err(e.into()),
+	}
+}
+
+/// Gets a session by its id
+pub async fn get_snapshot_by_session_id(
+	ctx: &Context<'_>,
+	id: Uuid,
+) -> Result<Option<(Data, DateTime<Utc>)>, Error> {
+	// Get the oldest snapshot after the timeframe
+	let snapshot_id = match session::table
+		.filter(session::id.eq(id))
+		.select(session::snapshot_id)
+		.first::<i32>(&mut ctx.data().pool.get().await?)
+		.await
+	{
+		Ok(id) => id,
+		Err(diesel::NotFound) => return Ok(None),
+		Err(e) => return Err(e.into()),
+	};
+
+	let snapshot = snapshot::table
+		.filter(snapshot::id.eq(snapshot_id))
+		.select((snapshot::data, snapshot::created_at))
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.await;
+
+	match snapshot {
 		Ok((data, created_at)) => Ok(Some((decode(data.as_slice())?, created_at))),
 		Err(diesel::NotFound) => Ok(None),
 		Err(e) => Err(e.into()),
@@ -544,4 +557,72 @@ pub async fn insert(ctx: &Context<'_>, player: &Player, data: &Data) -> Result<(
 		.await?;
 
 	Ok(())
+}
+
+pub async fn insert_with_session(
+	ctx: &Context<'_>,
+	player: &Player,
+	data: &Data,
+) -> Result<Uuid, Error> {
+	let encoded = encode(data)?;
+	let hash = fxhash::hash64(&encoded) as i64;
+	let mut connection = ctx.data().pool.get().await?;
+
+	connection
+		.transaction::<_, Error, _>(|conn| {
+			async move {
+				// Otherwise, insert the current data into the database.
+				let prev_hash = diesel::insert_into(schedule::table)
+					.values((
+						schedule::uuid.eq(player.uuid),
+						// Schedule the first update for one hour from now.
+						// The first few updates should be more frequent to calculate the
+						// timezone of the player.
+						schedule::update_at.eq(Utc::now() + chrono::Duration::hours(3)),
+						// Set the number of snapshots to 1, since we just inserted one.
+						schedule::snapshots.eq(1),
+						schedule::hash.eq(hash),
+						schedule::weekly_schedule.eq(DEFAULT_SCHEDULE),
+					))
+					.on_conflict(schedule::uuid)
+					.do_update()
+					.set((
+						schedule::prev_hash.eq(schedule::hash.nullable()),
+						schedule::hash.eq(hash),
+					))
+					.returning(schedule::prev_hash.nullable())
+					.get_result::<Option<i64>>(conn)
+					.await?;
+
+				let id = diesel::insert_into(snapshot::table)
+					.values((
+						snapshot::uuid.eq(player.uuid),
+						snapshot::data.eq(encoded),
+						snapshot::hash.eq(hash),
+						snapshot::did_update.eq(match prev_hash {
+							Some(previous) => previous != hash,
+							None => true,
+						}),
+						snapshot::version.eq(VERSION),
+					))
+					.returning(snapshot::id)
+					.get_result::<i32>(conn)
+					.await?;
+
+				let id = diesel::insert_into(session::table)
+					.values((
+						session::snapshot_id.eq(id),
+						session::user_id.eq(ctx.author().unwrap().id.0.get() as i64),
+						session::kind.eq(0),
+						session::uuid.eq(player.uuid),
+					))
+					.returning(session::id)
+					.get_result::<Uuid>(conn)
+					.await?;
+
+				Ok(id)
+			}
+			.scope_boxed()
+		})
+		.await
 }

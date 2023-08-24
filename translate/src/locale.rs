@@ -297,8 +297,8 @@ impl Locale {
 			for parameter in &mut command.parameters {
 				let Some(name) = format(bundle, &command_name, Some(&parameter.name), None) else {
 					panic!(
-						"missing parameter localization for `{}` in en-US",
-						parameter.name
+						"missing parameter localization for `{}` for (command `{}`) in en-US",
+						parameter.name, command_name
 					);
 				};
 

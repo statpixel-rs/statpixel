@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Statistieken tonen van **`{$f
 # Fouten
 
 error-player-not-found = Een profiel van **`{$name}`** is niet gevonden.
-error-session-not-found = Een sessie van **`{$name}`** is niet gevonden.
+error-snapshot-not-found = Een sessie van **`{$name}`** is niet gevonden.
 error-player-uuid-not-found = Een speler met de UUID **`{$uuid}`** is niet gevonden.
 error-player-username-not-found = Een speler met de gebruikersnaam **`{$name}`** is niet gevonden.
 error-guild-by-member-uuid-not-found = Een guild-lid met UUID **`{$uuid}`** is niet gevonden.
@@ -91,11 +91,8 @@ track-success-description =
 
 track = track
   .description = Houdt de statistieken van een speler bij en stuurt de wijzigingen naar het huidige kanaal.
-  .username = gebruikersnaam
-  .username-description = De Minecraft-gebruikersnaam om te volgen
-  .uuid = uuid
-  .uuid-description = De Minecraft-UUID om te volgen
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 # /custom
 
 execute = uitvoeren
@@ -203,11 +200,8 @@ about = over
 
 winstreaks = winstreaks
   .description = Bekijk winstreaks
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 # /recent
 
 mode = Modus
@@ -218,11 +212,8 @@ playing = Aan het spelen
 
 recent = recent
   .description = Bekijk recente spellen
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 # Labels voor projectie
 
 accuracy = Nauwkeurigheid
@@ -274,11 +265,8 @@ Wardrobe = Garderobe
 
 skyblock-auctions = veilingen
   .description = Bekijk SkyBlock veilingen
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 player-auctions = Veilingen
 highest-bid = Hoogste bod
 
@@ -286,109 +274,85 @@ highest-bid = Hoogste bod
 
 skyblock-inventory = inventaris
   .description = Bekijk een SkyBlock-inventaris
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-enderchest = enderchest
   .description = Bekijk een SkyBlock-enderkist
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-quiver = koker
   .description = Bekijk een SkyBlock-koker
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-talisman = talisman
   .description = Bekijk een SkyBlock-talismanzak
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-fishing = vissen
   .description = Bekijk een SkyBlock-viszak
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-potions = drankjes
   .description = Bekijk een SkyBlock-drankenzak
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-equipment = uitrusting
   .description = Bekijk SkyBlock-uitrusting
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het profiel om te bekijken
 
 skyblock-wardrobe = kledingkast
   .description = Bekijk een SkyBlock-kledingkast
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
 skyblock-candy = snoep
   .description = Bekijk een SkyBlock-snoep-inventaris
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
 skyblock-vault = kluis
   .description = Bekijk een SkyBlock-persoonlijke kluis
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
 skyblock-pets = huisdieren
   .description = Bekijk SkyBlock-huisdieren
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
 skyblock-networth = waarde
   .description = Bekijk de waarde van een SkyBlock-profiel
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
@@ -396,10 +360,8 @@ skyblock-networth = waarde
 
 skyblock-profile = profiel
   .description = Bekijk een SkyBlock-profiel
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
@@ -428,10 +390,8 @@ social = Sociaal
 
 skyblock-bank = bank
   .description = Bekijk een SkyBlock-bank
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .profile = profiel
   .profile-description = Het te bekijken profiel
 
@@ -449,18 +409,12 @@ leaderboard = ranglijst
 
 network-general = algemeen
   .description = Bekijk algemene netwerkstatistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 network-history = geschiedenis
   .description = Bekijk historische netwerkstatistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 karma = Karma
 rewards = Beloningen
 friend-requests = Vriendverzoeken
@@ -533,11 +487,8 @@ unlinking-succeeded-description = U bent niet langer gekoppeld aan een Minecraft
 # /link
 link = koppelen
   .description = Koppel uw Discord-account aan een Minecraft-account.
-  .username = gebruikersnaam
-  .username-description = De Minecraft-gebruikersnaam om te koppelen
-  .uuid = uuid
-  .uuid-description = De Minecraft-UUID om te koppelen
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 linking-failed = Koppelen mislukt
 linking-failed-uuid-description = De UUID **`{$uuid}`** behoort niet toe aan een Minecraft-account.
 linking-failed-username-description = De gebruikersnaam **`{$username}`** behoort niet toe aan een Minecraft-account.
@@ -572,19 +523,15 @@ mystery-gifts = Mysterie Geschenken
 
 arcade-general = algemeen
   .description = Bekijk Arcade-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
 
 arcade-from = vanaf
   .description = Bekijk de ontwikkeling van Arcade-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
   .time = tijd
@@ -592,19 +539,15 @@ arcade-from = vanaf
 
 arcade-history = geschiedenis
   .description = Bekijk de ontwikkeling van Arcade-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
 
 arcade-project = projecteren
   .description = Projecteer Arcade-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
   .statistic = statistiek
@@ -614,28 +557,22 @@ arcade-project = projecteren
 
 arcade-daily = dagelijks
   .description = Bekijk de ontwikkeling van Arcade-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
 
 arcade-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Arcade-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
 
 arcade-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Arcade-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arcade-modus om te bekijken
 
@@ -647,19 +584,15 @@ rating = Beoordeling
 
 arena-general = algemeen
   .description = Bekijk Arena-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
 
 arena-from = vanaf
   .description = Bekijk de ontwikkeling van Arena-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
   .time = tijd
@@ -667,19 +600,15 @@ arena-from = vanaf
 
 arena-history = geschiedenis
   .description = Bekijk de ontwikkeling van Arena-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
 
 arena-project = projecteren
   .description = Projecteer Arena-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
   .statistic = statistiek
@@ -689,28 +618,22 @@ arena-project = projecteren
 
 arena-daily = dagelijks
   .description = Bekijk de ontwikkeling van Arena-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
 
 arena-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Arena-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
 
 arena-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Arena-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Arena-modus om te bekijken
 
@@ -753,19 +676,15 @@ items-purchased = Aankopen
 
 bedwars-general = algemeen
   .description = Bekijk Bed Wars-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
 
 bedwars-from = vanaf
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
   .time = tijd
@@ -773,19 +692,15 @@ bedwars-from = vanaf
 
 bedwars-history = geschiedenis
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
 
 bedwars-project = projecteren
   .description = Projecteer Bed Wars-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
   .statistic = statistiek
@@ -795,28 +710,22 @@ bedwars-project = projecteren
 
 bedwars-daily = dagelijks
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
 
 bedwars-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
 
 bedwars-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Bed Wars-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Bed Wars-modus om te bekijken
 
@@ -853,19 +762,15 @@ time-played = Speeltijd
 
 blitz-general = algemeen
   .description = Bekijk statistieken van Blitz Survival Games
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-from = vanaf
   .description = Bekijk de ontwikkeling van statistieken van Blitz Survival Games sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
   .time = tijd
@@ -873,19 +778,15 @@ blitz-from = vanaf
 
 blitz-history = geschiedenis
   .description = Bekijk de Blitz Survival Games-statistieken in de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-project = project
   .description = Projecteer statistieken van Blitz Survival Games in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
   .statistic = statistiek
@@ -895,28 +796,22 @@ blitz-project = project
 
 blitz-daily = dagelijks
   .description = Bekijk Blitz Survival Games' dagstatistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-weekly = wekelijks
   .description = Bekijk Blitz Survival Games' weekstatistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
 
 blitz-monthly = maandelijks
   .description = Bekijk Blitz Survival Games' laatste maand statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Blitz Survival Games modus om te bekijken
 
@@ -931,19 +826,15 @@ most-points-team = Meeste Punten (Team)
 
 buildbattle-general = algemeen
   .description = Bekijk statistieken van Build Battle
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
 
 buildbattle-from = vanaf
   .description = Bekijk de ontwikkeling van statistieken van Build Battle sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
   .time = tijd
@@ -951,19 +842,15 @@ buildbattle-from = vanaf
 
 buildbattle-history = geschiedenis
   .description = Bekijk de ontwikkeling van statistieken van Build Battle in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
 
 buildbattle-project = project
   .description = Projecteer statistieken van Build Battle in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
   .statistic = statistiek
@@ -973,28 +860,22 @@ buildbattle-project = project
 
 buildbattle-daily = dagelijks
   .description = Bekijk de ontwikkeling van statistieken van Build Battle gedurende de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
 
 buildbattle-weekly = wekelijks
   .description = Bekijk de ontwikkeling van statistieken van Build Battle gedurende de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
 
 buildbattle-monthly = maandelijks
   .description = Bekijk de ontwikkeling van statistieken van Build Battle gedurende de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Build Battle modus om te bekijken
 
@@ -1013,19 +894,15 @@ bombs-planted = Bommen Geplaatst
 
 copsandcrims-general = algemeen
   .description = Bekijk statistieken van Cops and Crims
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
 
 copsandcrims-from = vanaf
   .description = Bekijk de ontwikkeling van statistieken van Cops and Crims sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
   .time = tijd
@@ -1033,19 +910,15 @@ copsandcrims-from = vanaf
 
 copsandcrims-history = geschiedenis
   .description = Bekijk de ontwikkeling van statistieken van Cops and Crims in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
 
 copsandcrims-project = project
   .description = Projecteer statistieken van Cops and Crims in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
   .statistic = statistiek
@@ -1055,28 +928,22 @@ copsandcrims-project = project
 
 copsandcrims-daily = dagelijks
   .description = Bekijk de ontwikkeling van statistieken van Cops and Crims gedurende de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
 
 copsandcrims-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Cops and Crims statistieken over de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
 
 copsandcrims-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Cops and Crims statistieken over de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Cops and Crims modus om te bekijken
 
@@ -1116,19 +983,15 @@ health-regenerated = Regenereerde Gezondheid
 
 duels-general = algemeen
   .description = Bekijk Duels statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
 
 duels-from = vanaf
   .description = Bekijk de ontwikkeling van Duels statistieken vanaf een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
   .time = tijd
@@ -1136,19 +999,15 @@ duels-from = vanaf
 
 duels-history = geschiedenis
   .description = Bekijk de ontwikkeling van Duels statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
 
 duels-project = projecteren
   .description = Projecteer Duels statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
   .statistic = statistiek
@@ -1158,28 +1017,22 @@ duels-project = projecteren
 
 duels-daily = dagelijks
   .description = Bekijk de ontwikkeling van Duels statistieken over de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
 
 duels-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Duels statistieken over de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
 
 duels-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Duels statistieken over de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Duels modus om te bekijken
 
@@ -1195,19 +1048,15 @@ treasures-found = Schatten Gevonden
 
 megawalls-general = algemeen
   .description = Bekijk Mega Walls statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
 
 megawalls-from = vanaf
   .description = Bekijk de ontwikkeling van Mega Walls statistieken vanaf een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
   .time = tijd
@@ -1215,19 +1064,15 @@ megawalls-from = vanaf
 
 megawalls-history = geschiedenis
   .description = Bekijk de ontwikkeling van Mega Walls statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
 
 megawalls-project = projecteren
   .description = Projecteer Mega Walls statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
   .statistic = statistiek
@@ -1237,28 +1082,22 @@ megawalls-project = projecteren
 
 megawalls-daily = dagelijks
   .description = Bekijk de ontwikkeling van Mega Walls statistieken over de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
 
 megawalls-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Mega Walls statistieken over de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
 
 megawalls-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Mega Walls statistieken over de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Mega Walls modus om te bekijken
 
@@ -1275,19 +1114,15 @@ detective-wins = Detective Wint
 
 murdermystery-general = algemeen
   .description = Bekijk Murder Mystery statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
 
 murdermystery-from = vanaf
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken vanaf een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
   .time = tijd
@@ -1295,19 +1130,15 @@ murdermystery-from = vanaf
 
 murdermystery-history = geschiedenis
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
 
 murdermystery-project = project
   .description = Projecteer Murder Mystery statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
   .statistic = statistiek
@@ -1317,28 +1148,22 @@ murdermystery-project = project
 
 murdermystery-daily = dagelijks
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
 
 murdermystery-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
 
 murdermystery-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Murder Mystery statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Murder Mystery modus om te bekijken
 
@@ -1363,19 +1188,15 @@ highest-killstreak = Beste Streak
 
 paintball-general = algemeen
   .description = Bekijk Paintball statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
 
 paintball-from = vanaf
   .description = Bekijk de ontwikkeling van Paintball statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
   .time = tijd
@@ -1383,19 +1204,15 @@ paintball-from = vanaf
 
 paintball-history = geschiedenis
   .description = Bekijk de ontwikkeling van Paintball statistieken in de loop der tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
 
 paintball-project = project
   .description = Projecteer Paintball statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
   .statistic = statistiek
@@ -1405,28 +1222,22 @@ paintball-project = project
 
 paintball-daily = dagelijks
   .description = Bekijk de ontwikkeling van Paintball statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
 
 paintball-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Paintball statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
 
 paintball-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Paintball statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Paintball modus om te bekijken
 
@@ -1442,19 +1253,15 @@ cr = Voltooiingspercentage
 
 pit-general = algemeen
   .description = Bekijk The Pit statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
 
 pit-from = vanaf
   .description = Bekijk de ontwikkeling van The Pit statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
   .time = tijd
@@ -1462,19 +1269,15 @@ pit-from = vanaf
 
 pit-history = geschiedenis
   .description = Bekijk de ontwikkeling van The Pit statistieken in de loop der tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
 
 pit-project = project
   .description = Projecteer The Pit statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
   .statistic = statistiek
@@ -1484,28 +1287,22 @@ pit-project = project
 
 pit-daily = dagelijks
   .description = Bekijk de ontwikkeling van The Pit statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
 
 pit-weekly = wekelijks
   .description = Bekijk de ontwikkeling van The Pit statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
 
 pit-monthly = maandelijks
   .description = Bekijk de ontwikkeling van The Pit statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Pit modus om te bekijken
 
@@ -1519,19 +1316,15 @@ sight = Zicht
 
 quake-general = algemeen
   .description = Bekijk Quakecraft statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft modus om te bekijken
 
 quake-from = vanaf
   .description = Bekijk de ontwikkeling van Quakecraft statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft modus om te bekijken
   .time = tijd
@@ -1539,19 +1332,15 @@ quake-from = vanaf
 
 quake-history = geschiedenis
   .description = Bekijk de ontwikkeling van Quakecraft statistieken in de loop der tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft modus om te bekijken
 
 quake-project = project
   .description = Projecteer Quakecraft-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft-modus om te bekijken
   .statistic = statistiek
@@ -1561,28 +1350,22 @@ quake-project = project
 
 quake-daily = dagelijks
   .description = Bekijk de ontwikkeling van Quakecraft-statistieken van de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft-modus om te bekijken
 
 quake-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Quakecraft-statistieken van de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft-modus om te bekijken
 
 quake-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Quakecraft-statistieken van de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Quakecraft-modus om te bekijken
 
@@ -1609,19 +1392,15 @@ fastest-win = Snelste Overwinning
 
 skywars-general = algemeen
   .description = Bekijk SkyWars-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
 
 skywars-from = vanaf
   .description = Bekijk de ontwikkeling van SkyWars-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
   .time = tijd
@@ -1629,19 +1408,15 @@ skywars-from = vanaf
 
 skywars-history = geschiedenis
   .description = Bekijk de ontwikkeling van SkyWars-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
 
 skywars-project = project
   .description = Projecteer SkyWars-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
   .statistic = statistiek
@@ -1651,28 +1426,22 @@ skywars-project = project
 
 skywars-daily = dagelijks
   .description = Bekijk de ontwikkeling van SkyWars-statistieken van de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
 
 skywars-weekly = wekelijks
   .description = Bekijk de ontwikkeling van SkyWars-statistieken van de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
 
 skywars-monthly = maandelijks
   .description = Bekijk de ontwikkeling van SkyWars-statistieken van de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SkyWars-modus om te bekijken
 
@@ -1684,19 +1453,15 @@ ssr = SSR
 
 smash-general = algemeen
   .description = Bekijk Smash Heroes-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
 
 smash-from = vanaf
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
   .time = tijd
@@ -1704,19 +1469,15 @@ smash-from = vanaf
 
 smash-history = geschiedenis
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
 
 smash-project = project
   .description = Projecteer Smash Heroes-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
   .statistic = statistiek
@@ -1726,28 +1487,22 @@ smash-project = project
 
 smash-daily = dagelijks
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken van de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
 
 smash-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken van de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
 
 smash-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Smash Heroes-statistieken van de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Smash Heroes-modus om te bekijken
 
@@ -1758,19 +1513,15 @@ survived-players = Overleefde spelers
 
 speeduhc-general = algemeen
   .description = Bekijk SpeedUHC-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om te bekijken
 
 speeduhc-from = vanaf
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om te bekijken
   .time = tijd
@@ -1778,19 +1529,15 @@ speeduhc-from = vanaf
 
 speeduhc-history = geschiedenis
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om te bekijken
 
 speeduhc-project = project
   .description = Projecteer SpeedUHC-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om weer te geven
   .statistic = statistiek
@@ -1800,28 +1547,22 @@ speeduhc-project = project
 
 speeduhc-daily = dagelijks
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om weer te geven
 
 speeduhc-weekly = wekelijks
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om weer te geven
 
 speeduhc-monthly = maandelijks
   .description = Bekijk de ontwikkeling van SpeedUHC-statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De SpeedUHC-modus om weer te geven
 
@@ -1841,19 +1582,15 @@ points = Punten
 
 tntgames-general = algemeen
   .description = Bekijk TNT Games-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
 
 tntgames-from = vanaf
   .description = Bekijk de ontwikkeling van TNT Games-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
   .time = tijd
@@ -1861,19 +1598,15 @@ tntgames-from = vanaf
 
 tntgames-history = geschiedenis
   .description = Bekijk de ontwikkeling van TNT Games-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
 
 tntgames-project = project
   .description = Projecteer TNT Games-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
   .statistic = statistiek
@@ -1883,28 +1616,22 @@ tntgames-project = project
 
 tntgames-daily = dagelijks
   .description = Bekijk de ontwikkeling van TNT Games-statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
 
 tntgames-weekly = wekelijks
   .description = Bekijk de ontwikkeling van TNT Games-statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
 
 tntgames-monthly = maandelijks
   .description = Bekijk de ontwikkeling van TNT Games-statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De TNT Games-modus om weer te geven
 
@@ -1920,19 +1647,15 @@ gold-trophies = Gouden Trofeeën
 
 turbokartracers-general = algemeen
   .description = Bekijk Turbo Kart Racers-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
 
 turbokartracers-from = vanaf
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
   .time = tijd
@@ -1940,19 +1663,15 @@ turbokartracers-from = vanaf
 
 turbokartracers-history = geschiedenis
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
 
 turbokartracers-project = project
   .description = Projecteer Turbo Kart Racers-statistieken naar de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
   .statistic = statistiek
@@ -1962,28 +1681,22 @@ turbokartracers-project = project
 
 turbokartracers-daily = dagelijks
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken in de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
 
 turbokartracers-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken in de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
 
 turbokartracers-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Turbo Kart Racers-statistieken in de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Turbo Kart Racers-modus om weer te geven
 
@@ -2001,19 +1714,15 @@ ultimates-crafted = Ultimates Gemaakt
 
 uhc-general = algemeen
   .description = Bekijk UHC Champions-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om weer te geven
 
 uhc-from = vanaf
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om weer te geven
   .time = tijd
@@ -2021,19 +1730,15 @@ uhc-from = vanaf
 
 uhc-history = geschiedenis
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
 
 uhc-project = project
   .description = Projecteer UHC Champions-statistieken in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
   .statistic = statistiek
@@ -2043,28 +1748,22 @@ uhc-project = project
 
 uhc-daily = dagelijks
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
 
 uhc-weekly = wekelijks
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
 
 uhc-monthly = maandelijks
   .description = Bekijk de ontwikkeling van UHC Champions-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De UHC Champions-modus om te bekijken
 
@@ -2088,19 +1787,15 @@ vkdr = VKDR
 
 vampirez-general = algemeen
   .description = Bekijk VampireZ-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
 
 vampirez-from = vanaf
   .description = Bekijk de ontwikkeling van VampireZ-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
   .time = tijd
@@ -2108,19 +1803,15 @@ vampirez-from = vanaf
 
 vampirez-history = geschiedenis
   .description = Bekijk de ontwikkeling van VampireZ-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
 
 vampirez-project = project
   .description = Projecteer VampireZ-statistieken in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
   .statistic = statistiek
@@ -2130,28 +1821,22 @@ vampirez-project = project
 
 vampirez-daily = dagelijks
   .description = Bekijk de ontwikkeling van VampireZ-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
 
 vampirez-weekly = wekelijks
   .description = Bekijk de ontwikkeling van VampireZ-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
 
 vampirez-monthly = maandelijks
   .description = Bekijk de ontwikkeling van VampireZ-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De VampireZ-modus om te bekijken
 
@@ -2164,19 +1849,15 @@ iron-broken = IJzer Gebroken
 
 walls-general = algemeen
   .description = Bekijk The Walls-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
 
 walls-from = vanaf
   .description = Bekijk de ontwikkeling van The Walls-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
   .time = tijd
@@ -2184,19 +1865,15 @@ walls-from = vanaf
 
 walls-history = geschiedenis
   .description = Bekijk de ontwikkeling van The Walls-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
 
 walls-project = project
   .description = Projecteer The Walls-statistieken in de toekomst
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
   .statistic = statistiek
@@ -2206,28 +1883,22 @@ walls-project = project
 
 walls-daily = dagelijks
   .description = Bekijk de ontwikkeling van The Walls-statistieken van de afgelopen dag
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
 
 walls-weekly = wekelijks
   .description = Bekijk de ontwikkeling van The Walls-statistieken van de afgelopen week
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
 
 walls-monthly = maandelijks
   .description = Bekijk de ontwikkeling van The Walls-statistieken van de afgelopen maand
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Walls-modus om te bekijken
 
@@ -2244,19 +1915,15 @@ mvps = MVP's
 
 warlords-general = algemeen
   .description = Bekijk Warlords-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
 
 warlords-from = vanaf
   .description = Bekijk de ontwikkeling van Warlords-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft-gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
   .time = tijd
@@ -2264,19 +1931,15 @@ warlords-from = vanaf
 
 warlords-history = geschiedenis
   .description = Bekijk de ontwikkeling van Warlords-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
 
 warlords-project = project
   .description = Projecteer toekomstige Warlords-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
   .statistic = statistiek
@@ -2286,28 +1949,22 @@ warlords-project = project
 
 warlords-daily = dagelijks
   .description = Bekijk de ontwikkeling van Warlords-statistieken gedurende de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
 
 warlords-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Warlords-statistieken gedurende de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
 
 warlords-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Warlords-statistieken gedurende de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Warlords-modus om te bekijken
 
@@ -2319,19 +1976,15 @@ wool-placed = Geplaatste wol
 
 woolwars-general = algemeen
   .description = Bekijk Wool Wars-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
 
 woolwars-from = vanaf
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken sinds een specifieke tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
   .time = tijd
@@ -2339,19 +1992,15 @@ woolwars-from = vanaf
 
 woolwars-history = geschiedenis
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken in de loop van de tijd
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
 
 woolwars-project = project
   .description = Projecteer toekomstige Wool Wars-statistieken
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
   .statistic = statistiek
@@ -2361,28 +2010,22 @@ woolwars-project = project
 
 woolwars-daily = dagelijks
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken gedurende de laatste dag
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
 
 woolwars-weekly = wekelijks
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken gedurende de laatste week
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
 
 woolwars-monthly = maandelijks
   .description = Bekijk de ontwikkeling van Wool Wars-statistieken gedurende de laatste maand
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
 
@@ -2407,19 +2050,14 @@ guild-general = algemeen
   .description = Toont de statistieken van een gilde.
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 guild-from = vanaf
   .description = Bekijk de ontwikkeling van gilde-statistieken sinds een specifieke tijd
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1h 12m 5s)
 
@@ -2427,26 +2065,18 @@ guild-members = leden
   .description = Toont de leden van een gilde.
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 guild-member = lid
   .description = Toont de statistieken van een gildelid.
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 guild-top = top
   .description = Toont de topleden van een gilde op basis van XP.
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .days = dagen
   .days-description = dagen
   .limit = limiet
@@ -2456,29 +2086,20 @@ guild-daily = dagelijks
   .description = Bekijk de ontwikkeling van gilde-statistieken gedurende de laatste dag
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 guild-weekly = wekelijks
   .description = Bekijk de ontwikkeling van gilde-statistieken gedurende de laatste week
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 guild-monthly = maandelijks
   .description = Bekijk de ontwikkeling van gilde-statistieken gedurende de laatste maand
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De UUID van het gildelid om te bekijken
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 showing-guild-xp-statistics = Toont de gilde-XP van {$from} tot {$to}.
 
 # Gedeelde canvas labels
@@ -2746,18 +2367,12 @@ practice = Oefening
 
 bedwars-hotbar = hotbar
   .description = Bekijk de voorkeuren voor het Bed Wars snelkeuzemenu
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 bedwars-shop = shop
   .description = Bekijk de voorkeuren voor de Bed Wars winkel
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 attempts = Pogingen
 bridging-wins = Overbruggingsoverwinningen
 bridging-losses = Overbruggingverliezen
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = Diagonaal Trap 100
 
 bedwars-practice = practice
   .description = Bekijk de statistieken voor Bed Wars oefeningen
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = speler
+  .player-description = Minecraft speler of sessie
 # Bij commando's
 
 arcade-at = op
   .description = Toon de Arcade statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2809,10 +2419,8 @@ arcade-at = op
 
 arena-at = op
   .description = Toon de Arena statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2820,10 +2428,8 @@ arena-at = op
 
 bedwars-at = op
   .description = Toon de Bed Wars statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2831,10 +2437,8 @@ bedwars-at = op
 
 blitz-at = op
   .description = Toon de Blitz Survival Games statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2842,10 +2446,8 @@ blitz-at = op
 
 buildbattle-at = op
   .description = Toon de Build Battle statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2853,10 +2455,8 @@ buildbattle-at = op
 
 copsandcrims-at = op
   .description = Toon de Cops and Crims statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2864,10 +2464,8 @@ copsandcrims-at = op
 
 duels-at = op
   .description = Toon de Duels statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2875,10 +2473,8 @@ duels-at = op
 
 megawalls-at = op
   .description = Toon de Mega Walls statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2886,10 +2482,8 @@ megawalls-at = op
 
 murdermystery-at = op
   .description = Toon de Murder Mystery statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2897,10 +2491,8 @@ murdermystery-at = op
 
 paintball-at = op
   .description = Toon de Paintball statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2908,10 +2500,8 @@ paintball-at = op
 
 pit-at = op
   .description = Toon de Pit statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2919,10 +2509,8 @@ pit-at = op
 
 quake-at = op
   .description = Toon de Quakecraft statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2930,10 +2518,8 @@ quake-at = op
 
 skywars-at = op
   .description = Toon de SkyWars statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2941,10 +2527,8 @@ skywars-at = op
 
 smash-at = op
   .description = Toon de Smash Heroes statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2952,10 +2536,8 @@ smash-at = op
 
 speeduhc-at = op
   .description = Toon de SpeedUHC statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2963,10 +2545,8 @@ speeduhc-at = op
 
 tntgames-at = op
   .description = Toon de TNT Games statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2974,10 +2554,8 @@ tntgames-at = op
 
 turbokartracers-at = op
   .description = Toon de Turbo Kart Racers statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2985,10 +2563,8 @@ turbokartracers-at = op
 
 uhc-at = op
   .description = Toon de UHC Champions statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -2996,10 +2572,8 @@ uhc-at = op
 
 vampirez-at = op
   .description = Toon de VampireZ statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -3007,10 +2581,8 @@ vampirez-at = op
 
 walls-at = op
   .description = Toon de Walls statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -3018,10 +2590,8 @@ walls-at = op
 
 warlords-at = op
   .description = Toon de Warlords statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -3029,10 +2599,8 @@ warlords-at = op
 
 woolwars-at = op
   .description = Toon de Wool Wars statistieken van een speler op een bepaald tijdstip
-  .username = gebruikersnaam
-  .username-description = Minecraft gebruikersnaam
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
   .mode = modus
@@ -3042,10 +2610,8 @@ guild-at = op
   .description = Toon de statistieken van een gilde op een bepaald tijdstip
   .name = naam
   .name-description = De naam van het gilde om te bekijken
-  .username = gebruikersnaam
-  .username-description = De gebruikersnaam van het gildelid om te bekijken
-  .uuid = uuid
-  .uuid-description = De uuid van het gildelid om te bekijken
+  .player = speler
+  .player-description = Minecraft speler of sessie
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
 

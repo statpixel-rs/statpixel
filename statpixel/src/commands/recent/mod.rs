@@ -12,15 +12,12 @@ use translate::{context, Context};
 )]
 pub async fn recent(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::recent(ctx, username, uuid).await
+	run::recent(ctx, player, uuid).await
 }

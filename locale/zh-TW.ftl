@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> 正在显示 **`{$from}`** �
 # Errors
 
 error-player-not-found = 未找到属于 **`{$name}`** 的个人资料。
-error-session-not-found = 未找到属于 **`{$name}`** 的会话。
+error-snapshot-not-found = 未找到属于 **`{$name}`** 的会话。
 error-player-uuid-not-found = 未找到 UUID 为 **`{$uuid}`** 的玩家。
 error-player-username-not-found = 未找到用户名为 **`{$name}`** 的玩家。
 error-guild-by-member-uuid-not-found = 未找到 UUID 为 **`{$uuid}`** 的公会成员。
@@ -91,11 +91,8 @@ track-success-description =
 
 track = 追蹤
   .description = 追蹤玩家的統計資料並將更動內容發送至當前頻道。
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱，用於追蹤
-  .uuid = uuid
-  .uuid-description = Minecraft UUID，用於追蹤
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 # /custom
 
 execute = 執行
@@ -203,11 +200,8 @@ about = 關於
 
 winstreaks = 连胜
   .description = 查看连胜數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 # /recent
 
 mode = 模式
@@ -218,11 +212,8 @@ playing = 遊玩中
 
 recent = 近期
   .description = 查看近期遊戲
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 # Projection labels
 
 accuracy = 準確度
@@ -274,11 +265,8 @@ Wardrobe = 衣櫃
 
 skyblock-auctions = 拍賣
   .description = 查看 SkyBlock 拍賣
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 player-auctions = 拍賣
 highest-bid = 最高出價
 
@@ -286,109 +274,85 @@ highest-bid = 最高出價
 
 skyblock-inventory = 背包
   .description = 查看 SkyBlock 背包
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-enderchest = 終界箱
   .description = 查看 SkyBlock 終界箱
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-quiver = 彈藥筒
   .description = 查看 SkyBlock 彈藥筒
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-talisman = 護符
   .description = 查看 SkyBlock 護符袋
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-fishing = 魚採
   .description = 查看 SkyBlock 魚採袋
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-potions = 藥水
   .description = 查看 SkyBlock 藥水袋
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-equipment = 裝備
   .description = 查看 SkyBlock 裝備
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 使用者資料
   .profile-description = 要查看的使用者資料
 
 skyblock-wardrobe = 衣櫥
   .description = 查看 SkyBlock 衣櫥
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
 skyblock-candy = 糖果
   .description = 查看 SkyBlock 糖果庫存
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
 skyblock-vault = 個人金庫
   .description = 查看 SkyBlock 個人金庫
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
 skyblock-pets = 寵物
   .description = 查看 SkyBlock 寵物
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
 skyblock-networth = 資產淨值
   .description = 查看 SkyBlock 配置檔資產淨值
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
@@ -396,10 +360,8 @@ skyblock-networth = 資產淨值
 
 skyblock-profile = 配置檔
   .description = 查看 SkyBlock 配置檔
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
@@ -428,10 +390,8 @@ social = 社交
 
 skyblock-bank = 銀行
   .description = 查看 SkyBlock 銀行
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .profile = 配置檔
   .profile-description = 要查看的配置檔
 
@@ -449,18 +409,12 @@ leaderboard = 排行榜
 
 network-general = 網路統計
   .description = 查看一般網路統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 network-history = 歷史統計
   .description = 查看歷史網路統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 karma = 功德
 rewards = 獎勵
 friend-requests = 好友請求
@@ -533,11 +487,8 @@ unlinking-succeeded-description = 您已成功解除與 Minecraft 帳戶的鏈�
 # /link
 link = 鏈接
   .description = 將您的 Discord 帳戶與 Minecraft 帳戶鏈接起來。
-  .username = 使用者名稱
-  .username-description = 要鏈接的 Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = 要鏈接的 Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 linking-failed = 鏈接失敗
 linking-failed-uuid-description = UUID **`{$uuid}`** 不屬於 Minecraft 帳戶。
 linking-failed-username-description = 使用者名稱 **`{$username}`** 不屬於 Minecraft 帳戶。
@@ -572,19 +523,15 @@ mystery-gifts = 神秘禮物
 
 arcade-general = 一般
   .description = 查看 Arcade 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
 
 arcade-from = 起始日期
   .description = 查看特定時間以來 Arcade 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
   .time = 時間
@@ -592,19 +539,15 @@ arcade-from = 起始日期
 
 arcade-history = 歷史
   .description = 查看 Arcade 統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
 
 arcade-project = 專案
   .description = 將 Arcade 統計數據投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
   .statistic = 統計指標
@@ -614,28 +557,22 @@ arcade-project = 專案
 
 arcade-daily = 每日
   .description = 查看過去一天 Arcade 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
 
 arcade-weekly = 每週
   .description = 查看過去一週 Arcade 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
 
 arcade-monthly = 每月
   .description = 查看過去一個月 Arcade 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arcade 模式
 
@@ -647,19 +584,15 @@ rating = 評分
 
 arena-general = 一般
   .description = 查看 Arena 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
 
 arena-from = 起始日期
   .description = 查看特定時間以來 Arena 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
   .time = 時間
@@ -667,19 +600,15 @@ arena-from = 起始日期
 
 arena-history = 歷史
   .description = 查看 Arena 統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
 
 arena-project = 專案
   .description = 將 Arena 統計數據投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
   .statistic = 統計指標
@@ -689,28 +618,22 @@ arena-project = 專案
 
 arena-daily = 每日
   .description = 查看過去一天 Arena 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
 
 arena-weekly = 每週
   .description = 查看過去一週 Arena 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
 
 arena-monthly = 每月
   .description = 查看過去一個月 Arena 統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Arena 模式
 
@@ -753,19 +676,15 @@ items-purchased = 購買物品
 
 bedwars-general = 一般
   .description = 查看床戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
 
 bedwars-from = 起始日期
   .description = 查看特定時間以來床戰統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
   .time = 時間
@@ -773,19 +692,15 @@ bedwars-from = 起始日期
 
 bedwars-history = 歷史
   .description = 查看床戰統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
 
 bedwars-project = 專案
   .description = 將床戰統計數據投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
   .statistic = 統計指標
@@ -795,28 +710,22 @@ bedwars-project = 專案
 
 bedwars-daily = 每日
   .description = 查看過去一天床戰統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
 
 bedwars-weekly = 每週
   .description = 查看過去一週床戰統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
 
 bedwars-monthly = 每月
   .description = 查看過去一個月床戰統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的床戰模式
 
@@ -853,19 +762,15 @@ time-played = 遊玩時間
 
 blitz-general = 一般
   .description = 查看 Blitz 生存遊戲統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
 
 blitz-from = 自
   .description = 查看 Blitz 生存遊戲統計數據從特定時間開始
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
   .time = 時間
@@ -873,19 +778,15 @@ blitz-from = 自
 
 blitz-history = 歷史
   .description = 查看 Blitz 生存遊戲統計數據的發展歷史
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
 
 blitz-project = 預測
   .description = 將 Blitz 生存遊戲統計數據預測到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
   .statistic = 統計數據
@@ -895,28 +796,22 @@ blitz-project = 預測
 
 blitz-daily = 每日
   .description = 查看過去一天內的 Blitz 生存遊戲統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
 
 blitz-weekly = 每週
   .description = 查看過去一週內的 Blitz 生存遊戲統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
 
 blitz-monthly = 每月
   .description = 查看過去一個月內的 Blitz 生存遊戲統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Blitz 生存遊戲模式
 
@@ -931,19 +826,15 @@ most-points-team = 最高得分（隊伍）
 
 buildbattle-general = 一般
   .description = 查看建築對戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
 
 buildbattle-from = 自
   .description = 查看建築對戰統計數據從特定時間開始
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
   .time = 時間
@@ -951,19 +842,15 @@ buildbattle-from = 自
 
 buildbattle-history = 歷史
   .description = 查看建築對戰統計數據的發展歷史
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
 
 buildbattle-project = 預測
   .description = 將建築對戰統計數據預測到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
   .statistic = 統計數據
@@ -973,28 +860,22 @@ buildbattle-project = 預測
 
 buildbattle-daily = 每日
   .description = 查看過去一天內的建築對戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
 
 buildbattle-weekly = 每週
   .description = 查看過去一週內的建築對戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
 
 buildbattle-monthly = 每月
   .description = 查看過去一個月內的建築對戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的建築對戰模式
 
@@ -1013,19 +894,15 @@ bombs-planted = 放置炸彈數
 
 copsandcrims-general = 常規
   .description = 查看警察與犯罪者統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
 
 copsandcrims-from = 自
   .description = 查看警察與犯罪者統計數據從特定時間開始
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
   .time = 時間
@@ -1033,19 +910,15 @@ copsandcrims-from = 自
 
 copsandcrims-history = 歷史
   .description = 查看警察與犯罪者統計數據的發展歷史
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
 
 copsandcrims-project = 預測
   .description = 將警察與犯罪者統計數據預測到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
   .statistic = 統計數據
@@ -1055,28 +928,22 @@ copsandcrims-project = 預測
 
 copsandcrims-daily = 每日
   .description = 查看過去一天內的警察與犯罪者統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的警察與犯罪者模式
 
 copsandcrims-weekly = 週報
   .description = 查看過去一週 Cops and Crims 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Cops and Crims 模式
 
 copsandcrims-monthly = 月報
   .description = 查看過去一個月 Cops and Crims 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Cops and Crims 模式
 
@@ -1116,19 +983,15 @@ health-regenerated = 生命回復
 
 duels-general = 常規
   .description = 查看 Duels 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
 
 duels-from = 自
   .description = 查看從特定時間開始的 Duels 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
   .time = 時間
@@ -1136,19 +999,15 @@ duels-from = 自
 
 duels-history = 歷史
   .description = 查看 Duels 統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
 
 duels-project = 預測
   .description = 預測 Duels 統計數據的未來發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
   .statistic = 統計數據
@@ -1158,28 +1017,22 @@ duels-project = 預測
 
 duels-daily = 日報
   .description = 查看過去一天 Duels 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
 
 duels-weekly = 週報
   .description = 查看過去一週 Duels 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
 
 duels-monthly = 月報
   .description = 查看過去一個月 Duels 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Duels 模式
 
@@ -1195,19 +1048,15 @@ treasures-found = 發現的寶藏數
 
 megawalls-general = 常規
   .description = 查看 Mega Walls 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
 
 megawalls-from = 自
   .description = 查看從特定時間開始的 Mega Walls 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
   .time = 時間
@@ -1215,19 +1064,15 @@ megawalls-from = 自
 
 megawalls-history = 歷史
   .description = 查看 Mega Walls 統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
 
 megawalls-project = 預測
   .description = 預測 Mega Walls 統計數據的未來發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
   .statistic = 統計數據
@@ -1237,28 +1082,22 @@ megawalls-project = 預測
 
 megawalls-daily = 日報
   .description = 查看過去一天 Mega Walls 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
 
 megawalls-weekly = 週報
   .description = 查看過去一週 Mega Walls 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
 
 megawalls-monthly = 月報
   .description = 查看過去一個月 Mega Walls 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Mega Walls 模式
 
@@ -1275,19 +1114,15 @@ detective-wins = 偵探勝利次數
 
 murdermystery-general = 常規
   .description = 查看 Murder Mystery 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Murder Mystery 模式
 
 murdermystery-from = 自
   .description = 查看從特定時間開始的 Murder Mystery 統計數據發展情況
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Murder Mystery 模式
   .time = 時間
@@ -1295,19 +1130,15 @@ murdermystery-from = 自
 
 murdermystery-history = 歷史
   .description = 查看 Murder Mystery 統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Murder Mystery 模式
 
 murdermystery-project = 專案
   .description = 將「謀殺之謎」統計投影到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「謀殺之謎」模式
   .statistic = 統計數據
@@ -1317,28 +1148,22 @@ murdermystery-project = 專案
 
 murdermystery-daily = 每日
   .description = 查看過去一天內的「謀殺之謎」統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「謀殺之謎」模式
 
 murdermystery-weekly = 每週
   .description = 查看過去一週內的「謀殺之謎」統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「謀殺之謎」模式
 
 murdermystery-monthly = 每月
   .description = 查看過去一個月內的「謀殺之謎」統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「謀殺之謎」模式
 
@@ -1363,19 +1188,15 @@ highest-killstreak = 最高連殺
 
 paintball-general = 常規
   .description = 查看彩弹模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
 
 paintball-from = 自
   .description = 查看特定時間之後的彩弹模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
   .time = 時間
@@ -1383,19 +1204,15 @@ paintball-from = 自
 
 paintball-history = 歷史
   .description = 查看彩弹模式統計數據的發展歷史
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
 
 paintball-project = 專案
   .description = 將彩弹模式統計數據投影到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
   .statistic = 統計數據
@@ -1405,28 +1222,22 @@ paintball-project = 專案
 
 paintball-daily = 每日
   .description = 查看過去一天內的彩弹模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
 
 paintball-weekly = 每週
   .description = 查看過去一週內的彩弹模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
 
 paintball-monthly = 每月
   .description = 查看過去一個月內的彩弹模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的彩弹模式
 
@@ -1442,19 +1253,15 @@ cr = 完成率
 
 pit-general = 常規
   .description = 查看「坑洞」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
 
 pit-from = 自
   .description = 查看特定時間之後的「坑洞」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
   .time = 時間
@@ -1462,19 +1269,15 @@ pit-from = 自
 
 pit-history = 歷史
   .description = 查看「坑洞」模式統計數據的發展歷史
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
 
 pit-project = 專案
   .description = 將「坑洞」模式統計數據投影到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
   .statistic = 統計數據
@@ -1484,28 +1287,22 @@ pit-project = 專案
 
 pit-daily = 每日
   .description = 查看過去一天內的「坑洞」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
 
 pit-weekly = 每週
   .description = 查看過去一週內的「坑洞」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
 
 pit-monthly = 每月
   .description = 查看過去一個月內的「坑洞」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「坑洞」模式
 
@@ -1519,19 +1316,15 @@ sight = 視線
 
 quake-general = 常規
   .description = 查看「地震」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「地震」模式
 
 quake-from = 自
   .description = 查看特定時間之後的「地震」模式統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「地震」模式
   .time = 時間
@@ -1539,19 +1332,15 @@ quake-from = 自
 
 quake-history = 歷史
   .description = 查看「地震」模式統計數據的發展歷史
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的「地震」模式
 
 quake-project = 專案
   .description = 未來的地震戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的地震戰爭模式
   .statistic = 統計數據
@@ -1561,28 +1350,22 @@ quake-project = 專案
 
 quake-daily = 每日
   .description = 查看過去一天的地震戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的地震戰爭模式
 
 quake-weekly = 每週
   .description = 查看過去一週的地震戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的地震戰爭模式
 
 quake-monthly = 每月
   .description = 查看過去一個月的地震戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的地震戰爭模式
 
@@ -1609,19 +1392,15 @@ fastest-win = 最快勝利
 
 skywars-general = 一般
   .description = 查看天空戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
 
 skywars-from = 自特定時間起
   .description = 查看從特定時間開始的天空戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
   .time = 時間
@@ -1629,19 +1408,15 @@ skywars-from = 自特定時間起
 
 skywars-history = 歷史
   .description = 查看天空戰爭統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
 
 skywars-project = 專案
   .description = 未來的天空戰爭統計數據預測
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
   .statistic = 統計數據
@@ -1651,28 +1426,22 @@ skywars-project = 專案
 
 skywars-daily = 每日
   .description = 查看過去一天的天空戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
 
 skywars-weekly = 每週
   .description = 查看過去一週的天空戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
 
 skywars-monthly = 每月
   .description = 查看過去一個月的天空戰爭統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的天空戰爭模式
 
@@ -1684,19 +1453,15 @@ ssr = SSR
 
 smash-general = 一般
   .description = 查看Smash Heroes統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
 
 smash-from = 自特定時間起
   .description = 查看從特定時間開始的Smash Heroes統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
   .time = 時間
@@ -1704,19 +1469,15 @@ smash-from = 自特定時間起
 
 smash-history = 歷史
   .description = 查看Smash Heroes統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
 
 smash-project = 專案
   .description = 未來的Smash Heroes統計數據預測
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
   .statistic = 統計數據
@@ -1726,28 +1487,22 @@ smash-project = 專案
 
 smash-daily = 每日
   .description = 查看過去一天的Smash Heroes統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
 
 smash-weekly = 每週
   .description = 查看過去一週的Smash Heroes統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
 
 smash-monthly = 每月
   .description = 查看過去一個月的Smash Heroes統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Smash Heroes模式
 
@@ -1758,19 +1513,15 @@ survived-players = 存活玩家
 
 speeduhc-general = 一般
   .description = 查看SpeedUHC統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
 
 speeduhc-from = 自特定時間起
   .description = 查看從特定時間開始的SpeedUHC統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
   .time = 時間
@@ -1778,19 +1529,15 @@ speeduhc-from = 自特定時間起
 
 speeduhc-history = 歷史
   .description = 查看SpeedUHC統計數據的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
 
 speeduhc-project = 專案
   .description = 將SpeedUHC統計項目投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
   .statistic = 統計
@@ -1800,28 +1547,22 @@ speeduhc-project = 專案
 
 speeduhc-daily = 每日
   .description = 查看過去一天的SpeedUHC統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
 
 speeduhc-weekly = 每週
   .description = 查看過去一週的SpeedUHC統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
 
 speeduhc-monthly = 每月
   .description = 查看過去一個月的SpeedUHC統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的SpeedUHC模式
 
@@ -1841,19 +1582,15 @@ points = 積分
 
 tntgames-general = 一般
   .description = 查看TNT遊戲統計
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
 
 tntgames-from = 起始自
   .description = 查看特定時間以來的TNT遊戲統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
   .time = 時間
@@ -1861,19 +1598,15 @@ tntgames-from = 起始自
 
 tntgames-history = 歷史
   .description = 查看TNT遊戲統計的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
 
 tntgames-project = 專案
   .description = 將TNT遊戲統計項目投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
   .statistic = 統計
@@ -1883,28 +1616,22 @@ tntgames-project = 專案
 
 tntgames-daily = 每日
   .description = 查看過去一天的TNT遊戲統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
 
 tntgames-weekly = 每週
   .description = 查看過去一週的TNT遊戲統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
 
 tntgames-monthly = 每月
   .description = 查看過去一個月的TNT遊戲統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的TNT遊戲模式
 
@@ -1920,19 +1647,15 @@ gold-trophies = 金獎盃
 
 turbokartracers-general = 一般
   .description = 查看Turbo Kart Racers統計
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
 
 turbokartracers-from = 起始自
   .description = 查看特定時間以來的Turbo Kart Racers統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
   .time = 時間
@@ -1940,19 +1663,15 @@ turbokartracers-from = 起始自
 
 turbokartracers-history = 歷史
   .description = 查看Turbo Kart Racers統計的發展歷程
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
 
 turbokartracers-project = 專案
   .description = 將Turbo Kart Racers統計項目投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
   .statistic = 統計
@@ -1962,28 +1681,22 @@ turbokartracers-project = 專案
 
 turbokartracers-daily = 每日
   .description = 查看過去一天的Turbo Kart Racers統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
 
 turbokartracers-weekly = 每週
   .description = 查看過去一週的Turbo Kart Racers統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
 
 turbokartracers-monthly = 每月
   .description = 查看過去一個月的Turbo Kart Racers統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的Turbo Kart Racers模式
 
@@ -2001,19 +1714,15 @@ ultimates-crafted = 製作終極道具
 
 uhc-general = 一般
   .description = 查看UHC Champions統計
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的UHC Champions模式
 
 uhc-from = 起始自
   .description = 查看特定時間以來的UHC Champions統計發展
-  .username = 使用者名稱
-  .username-description = Minecraft使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的UHC Champions模式
   .time = 時間
@@ -2021,19 +1730,15 @@ uhc-from = 起始自
 
 uhc-history = 歷史
   .description = 查看 UHC Champions 統計數據隨時間變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
 
 uhc-project = 項目
   .description = 將 UHC Champions 統計數據預測到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
   .statistic = 統計數據
@@ -2043,28 +1748,22 @@ uhc-project = 項目
 
 uhc-daily = 每日
   .description = 查看 UHC Champions 統計數據過去一天的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
 
 uhc-weekly = 每週
   .description = 查看 UHC Champions 統計數據過去一週的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
 
 uhc-monthly = 每月
   .description = 查看 UHC Champions 統計數據過去一個月的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 UHC Champions 模式
 
@@ -2088,19 +1787,15 @@ vkdr = 吸血鬼擊殺/死亡比
 
 vampirez-general = 一般
   .description = 查看 VampireZ 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
 
 vampirez-from = 自
   .description = 查看自特定時間以來的 VampireZ 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
   .time = 時間
@@ -2108,19 +1803,15 @@ vampirez-from = 自
 
 vampirez-history = 歷史
   .description = 查看 VampireZ 統計數據隨時間變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
 
 vampirez-project = 項目
   .description = 將 VampireZ 統計數據預測到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
   .statistic = 統計數據
@@ -2130,28 +1821,22 @@ vampirez-project = 項目
 
 vampirez-daily = 每日
   .description = 查看 VampireZ 統計數據過去一天的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
 
 vampirez-weekly = 每週
   .description = 查看 VampireZ 統計數據過去一週的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
 
 vampirez-monthly = 每月
   .description = 查看 VampireZ 統計數據過去一個月的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 VampireZ 模式
 
@@ -2164,19 +1849,15 @@ iron-broken = 鐵破壞次數
 
 walls-general = 一般
   .description = 查看 The Walls 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
 
 walls-from = 自
   .description = 查看自特定時間以來的 The Walls 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
   .time = 時間
@@ -2184,19 +1865,15 @@ walls-from = 自
 
 walls-history = 歷史
   .description = 查看 The Walls 統計數據隨時間變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
 
 walls-project = 項目
   .description = 將 The Walls 統計數據預測到未來
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
   .statistic = 統計數據
@@ -2206,28 +1883,22 @@ walls-project = 項目
 
 walls-daily = 每日
   .description = 查看 The Walls 統計數據過去一天的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
 
 walls-weekly = 每週
   .description = 查看 The Walls 統計數據過去一週的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
 
 walls-monthly = 每月
   .description = 查看 The Walls 統計數據過去一個月的變化
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 The Walls 模式
 
@@ -2244,19 +1915,15 @@ mvps = MVP次數
 
 warlords-general = 一般
   .description = 查看 Warlords 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Warlords 模式
 
 warlords-from = 自
   .description = 查看自特定時間以來的 Warlords 統計數據
-  .username = 用戶名
-  .username-description = Minecraft 用戶名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的 Warlords 模式
   .time = 時間
@@ -2264,19 +1931,15 @@ warlords-from = 自
 
 warlords-history = 歷史紀錄
   .description = 查看戰爭領主統計數據的發展趨勢
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
 
 warlords-project = 專案
   .description = 將戰爭領主統計數據投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
   .statistic = 統計數據
@@ -2286,28 +1949,22 @@ warlords-project = 專案
 
 warlords-daily = 每日
   .description = 查看過去一天內的戰爭領主統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
 
 warlords-weekly = 每週
   .description = 查看過去一週內的戰爭領主統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
 
 warlords-monthly = 每月
   .description = 查看過去一個月內的戰爭領主統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的戰爭領主模式
 
@@ -2319,19 +1976,15 @@ wool-placed = 放置的羊毛
 
 woolwars-general = 一般
   .description = 查看羊毛大戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
 
 woolwars-from = 從
   .description = 查看特定時間以來羊毛大戰統計數據的發展
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
   .time = 時間
@@ -2339,19 +1992,15 @@ woolwars-from = 從
 
 woolwars-history = 歷史紀錄
   .description = 查看羊毛大戰統計數據的發展趨勢
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
 
 woolwars-project = 專案
   .description = 將羊毛大戰統計數據投影到未來
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
   .statistic = 統計數據
@@ -2361,28 +2010,22 @@ woolwars-project = 專案
 
 woolwars-daily = 每日
   .description = 查看過去一天內的羊毛大戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
 
 woolwars-weekly = 每週
   .description = 查看過去一週內的羊毛大戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
 
 woolwars-monthly = 每月
   .description = 查看過去一個月內的羊毛大戰統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .mode = 模式
   .mode-description = 要查看的羊毛大戰模式
 
@@ -2407,19 +2050,14 @@ guild-general = 一般
   .description = 顯示公會的統計數據
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 guild-from = 從
   .description = 查看特定時間以來公會統計數據的發展
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 要回溯的時間（例如：1小時12分5秒）
 
@@ -2427,26 +2065,18 @@ guild-members = 會員
   .description = 顯示公會的成員
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 guild-member = 成員
   .description = 顯示公會成員的統計數據
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 guild-top = 前幾名
   .description = 顯示公會經驗值最高的成員
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .days = 天數
   .days-description = 天數
   .limit = 顯示人數上限
@@ -2456,29 +2086,20 @@ guild-daily = 每日
   .description = 查看過去一天內的公會統計數據
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 guild-weekly = 每週
   .description = 查看過去一週內的公會統計數據
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 guild-monthly = 每月
   .description = 查看過去一個月內的公會統計數據
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 showing-guild-xp-statistics = 顯示公會自{$from}到{$to}的經驗值增長。
 
 # 共用畫布標籤
@@ -2746,18 +2367,12 @@ practice = 練習
 
 bedwars-hotbar = hotbar
   .description = 查看床戰熱鍵列偏好
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 bedwars-shop = shop
   .description = 查看床戰商店偏好
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 attempts = 嘗試次數
 bridging-wins = 搭橋勝利次數
 bridging-losses = 搭橋失敗次數
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = 斜走 階梯 100
 
 bedwars-practice = practice
   .description = 查看床戰練習統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
 # 指令
 
 arcade-at = 於
   .description = 顯示玩家在特定時間點的 Arcade 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2809,10 +2419,8 @@ arcade-at = 於
 
 arena-at = 於
   .description = 顯示玩家在特定時間點的 Arena 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2820,10 +2428,8 @@ arena-at = 於
 
 bedwars-at = 於
   .description = 顯示玩家在特定時間點的 Bed Wars 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2831,10 +2437,8 @@ bedwars-at = 於
 
 blitz-at = 於
   .description = 顯示玩家在特定時間點的 Blitz 生存遊戲統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2842,10 +2446,8 @@ blitz-at = 於
 
 buildbattle-at = 於
   .description = 顯示玩家在特定時間點的 Build Battle 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2853,10 +2455,8 @@ buildbattle-at = 於
 
 copsandcrims-at = 於
   .description = 顯示玩家在特定時間點的 Cops and Crims 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2864,10 +2464,8 @@ copsandcrims-at = 於
 
 duels-at = 於
   .description = 顯示玩家在特定時間點的 Duels 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2875,10 +2473,8 @@ duels-at = 於
 
 megawalls-at = 於
   .description = 顯示玩家在特定時間點的 Mega Walls 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2886,10 +2482,8 @@ megawalls-at = 於
 
 murdermystery-at = 於
   .description = 顯示玩家在特定時間點的 Murder Mystery 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2897,10 +2491,8 @@ murdermystery-at = 於
 
 paintball-at = 於
   .description = 顯示玩家在特定時間點的 Paintball 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2908,10 +2500,8 @@ paintball-at = 於
 
 pit-at = 於
   .description = 顯示玩家在特定時間點的 The Pit 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2919,10 +2509,8 @@ pit-at = 於
 
 quake-at = 於
   .description = 顯示玩家在特定時間點的 Quakecraft 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2930,10 +2518,8 @@ quake-at = 於
 
 skywars-at = 於
   .description = 顯示玩家在特定時間點的 SkyWars 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2941,10 +2527,8 @@ skywars-at = 於
 
 smash-at = 於
   .description = 顯示玩家在特定時間點的 Smash Heroes 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2952,10 +2536,8 @@ smash-at = 於
 
 speeduhc-at = 於
   .description = 顯示玩家在特定時間點的 SpeedUHC 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2963,10 +2545,8 @@ speeduhc-at = 於
 
 tntgames-at = 於
   .description = 顯示玩家在特定時間點的 TNT Games 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2974,10 +2554,8 @@ tntgames-at = 於
 
 turbokartracers-at = 於
   .description = 顯示玩家在特定時間點的 Turbo Kart Racers 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2985,10 +2563,8 @@ turbokartracers-at = 於
 
 uhc-at = 於
   .description = 顯示玩家在特定時間點的 UHC Champions 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -2996,10 +2572,8 @@ uhc-at = 於
 
 vampirez-at = 於
   .description = 顯示玩家在特定時間點的 VampireZ 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -3007,10 +2581,8 @@ vampirez-at = 於
 
 walls-at = 於
   .description = 顯示玩家在特定時間點的 The Walls 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -3018,10 +2590,8 @@ walls-at = 於
 
 warlords-at = 於
   .description = 顯示玩家在特定時間點的 Warlords 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -3029,10 +2599,8 @@ warlords-at = 於
 
 woolwars-at = 於
   .description = 顯示玩家在特定時間點的 Wool Wars 統計數據
-  .username = 使用者名稱
-  .username-description = Minecraft 使用者名稱
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
   .mode = 模式
@@ -3042,10 +2610,8 @@ guild-at = 於
   .description = 顯示特定時間點的公會統計數據
   .name = 名稱
   .name-description = 要查看的公會名稱
-  .username = 使用者名稱
-  .username-description = 要查看的公會成員的使用者名稱
-  .uuid = uuid
-  .uuid-description = 要查看的公會成員的 UUID
+  .player = 玩家
+  .player-description = Minecraft 玩家或連線
   .time = 時間
   .time-description = 回溯的時間量 (1 小時 12 分鐘 5 秒)
 

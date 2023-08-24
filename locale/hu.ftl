@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése
 # Hibák
 
 error-player-not-found = A(z) **`{$name}`** nevű játékos profilja nem található.
-error-session-not-found = A(z) **`{$name}`** nevű játékos munkamenetét nem található.
+error-snapshot-not-found = A(z) **`{$name}`** nevű játékos munkamenetét nem található.
 error-player-uuid-not-found = A(z) **`{$uuid}`** azonosítójú játékos nem található.
 error-player-username-not-found = A(z) **`{$name}`** nevű játékos nem található.
 error-guild-by-member-uuid-not-found = A(z) **`{$uuid}`** azonosítójú guild tag nem található.
@@ -92,11 +92,8 @@ track-success-description =
 
 track = nyomkövetés
   .description = Követi egy játékos statisztikáit, és a változásokat elküldi a jelenlegi csatornába.
-  .username = felhasználónév
-  .username-description = A Minecraft felhasználóneve, amelyet követni kell
-  .uuid = uuid
-  .uuid-description = A Minecraft UUID-je, amelyet követni kell
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 # /custom
 
 execute = végrehajtás
@@ -204,11 +201,8 @@ about = névjegy
 
 winstreaks = nyereményjegy
   .description = Nézze meg a nyereményjegyeket
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 # /recent
 
 mode = Mód
@@ -219,11 +213,8 @@ playing = Játszva
 
 recent = legutóbbi
   .description = Nézze meg a legutóbbi játékokat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 # Projection labels
 
 accuracy = Pontosság
@@ -275,11 +266,8 @@ Wardrobe = Gardrób
 
 skyblock-auctions = aukciók
   .description = Nézze meg a SkyBlock aukciókat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 player-auctions = Aukciók
 highest-bid = Legmagasabb Ajánlat
 
@@ -287,109 +275,85 @@ highest-bid = Legmagasabb Ajánlat
 
 skyblock-inventory = állapot
   .description = Nézze meg a SkyBlock állapotát
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-enderchest = enderláda
   .description = Nézze meg a SkyBlock enderládáját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-quiver = tőröz
   .description = Nézze meg a SkyBlock tőrözét
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-talisman = talizmán
   .description = Nézze meg a SkyBlock talizmánjait
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-fishing = horgászat
   .description = Nézze meg a SkyBlock horgásztáskáját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-potions = körmag
   .description = Nézze meg a SkyBlock körmagjait
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-equipment = felszerelés
   .description = Nézze meg a SkyBlock felszereléseket
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megjelenítendő profil
 
 skyblock-wardrobe = gardrób
   .description = Tekintse meg a SkyBlock gardróbját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
 skyblock-candy = édesség
   .description = Tekintse meg a SkyBlock édesség készletet
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
 skyblock-vault = bankfiók
   .description = Tekintse meg a SkyBlock személyes bankfiókját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
 skyblock-pets = kedvencek
   .description = Tekintse meg a SkyBlock kedvenceket
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
 skyblock-networth = vagyon
   .description = Tekintse meg a SkyBlock profil vagyonát
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
@@ -397,10 +361,8 @@ skyblock-networth = vagyon
 
 skyblock-profile = profil
   .description = Tekintse meg a SkyBlock profilját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
@@ -429,10 +391,8 @@ social = Társasági
 
 skyblock-bank = bank
   .description = Tekintse meg a SkyBlock bankját
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .profile = profil
   .profile-description = A megtekintendő profil
 
@@ -450,18 +410,12 @@ leaderboard = ranglista
 
 network-general = általános
   .description = Tekintse meg az általános hálózati statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 network-history = történet
   .description = Tekintse meg a történeti hálózati statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 karma = Karma
 rewards = Jutalmak
 friend-requests = Barát Felkérések
@@ -534,11 +488,8 @@ unlinking-succeeded-description = Mostantól nem vagy kapcsolódva egy Minecraft
 # /link
 link = kapcsolat
   .description = Kapcsolja össze a Discord fiókját egy Minecraft fiókkal.
-  .username = felhasználónév
-  .username-description = A Minecraft felhasználónév, amit kapcsolni szeretne
-  .uuid = uuid
-  .uuid-description = A Minecraft UUID, amit kapcsolni szeretne
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 linking-failed = Kapcsolat létrehozása sikertelen
 linking-failed-uuid-description = A megadott uuid **`{$uuid}`** nem tartozik egy Minecraft fiókhoz.
 linking-failed-username-description = A megadott felhasználónév **`{$username}`** nem tartozik egy Minecraft fiókhoz.
@@ -573,19 +524,15 @@ mystery-gifts = Rejtélyes Ajándékok
 
 arcade-general = általános
   .description = Arcade statisztikák megtekintése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
 
 arcade-from = -tól
   .description = Arcade statisztikák megtekintése egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
   .time = idő
@@ -593,19 +540,15 @@ arcade-from = -tól
 
 arcade-history = történelem
   .description = Arcade statisztikák megtekintése az idő függvényében
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
 
 arcade-project = projekt
   .description = Arcade statisztikák előrejelzése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -615,28 +558,22 @@ arcade-project = projekt
 
 arcade-daily = napi
   .description = Arcade statisztikák megtekintése az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
 
 arcade-weekly = heti
   .description = Arcade statisztikák megtekintése az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
 
 arcade-monthly = havi
   .description = Arcade statisztikák megtekintése az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Arcade mód, amit meg szeretnél nézni
 
@@ -648,19 +585,15 @@ rating = Értékelés
 
 arena-general = általános
   .description = Aréna statisztikák megtekintése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
 arena-from = -tól
   .description = Aréna statisztikák megtekintése egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
   .time = idő
@@ -668,19 +601,15 @@ arena-from = -tól
 
 arena-history = történelem
   .description = Aréna statisztikák megtekintése az idő függvényében
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
 arena-project = projekt
   .description = Aréna statisztikák előrejelzése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -690,28 +619,22 @@ arena-project = projekt
 
 arena-daily = napi
   .description = Aréna statisztikák megtekintése az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
 arena-weekly = heti
   .description = Aréna statisztikák megtekintése az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
 arena-monthly = havi
   .description = Aréna statisztikák megtekintése az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
@@ -754,19 +677,15 @@ items-purchased = Vásárlások
 
 bedwars-general = általános
   .description = Bed Wars statisztikák megtekintése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
 
 bedwars-from = -tól
   .description = Bed Wars statisztikák megtekintése egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
   .time = idő
@@ -774,19 +693,15 @@ bedwars-from = -tól
 
 bedwars-history = történelem
   .description = Bed Wars statisztikák megtekintése az idő függvényében
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
 
 bedwars-project = projekt
   .description = Bed Wars statisztikák előrejelzése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -796,28 +711,22 @@ bedwars-project = projekt
 
 bedwars-daily = napi
   .description = Bed Wars statisztikák megtekintése az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
 
 bedwars-weekly = heti
   .description = Bed Wars statisztikák megtekintése az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
 
 bedwars-monthly = havi
   .description = Bed Wars statisztikák megtekintése az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az Bed Wars mód, amit meg szeretnél nézni
 
@@ -854,19 +763,15 @@ time-played = Játékidő
 
 blitz-general = általános
   .description = Tekintsd meg a Blitz Survival Games statisztikáit
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
 
 blitz-from = innen
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
   .time = idő
@@ -874,19 +779,15 @@ blitz-from = innen
 
 blitz-history = történet
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
 
 blitz-project = projekció
   .description = Projections Blitz Survival Games statisztikák a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -896,28 +797,22 @@ blitz-project = projekció
 
 blitz-daily = napi
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését az elmúlt napban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
 
 blitz-weekly = heti
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
 
 blitz-monthly = havi
   .description = Tekintsd meg a Blitz Survival Games statisztikáinak fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
 
@@ -932,19 +827,15 @@ most-points-team = Legtöbb Pont (Csoport)
 
 buildbattle-general = általános
   .description = Tekintsd meg a Build Battle statisztikáit
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
 
 buildbattle-from = innen
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
   .time = idő
@@ -952,19 +843,15 @@ buildbattle-from = innen
 
 buildbattle-history = történet
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
 
 buildbattle-project = projekció
   .description = Projections Build Battle statisztikák a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -974,28 +861,22 @@ buildbattle-project = projekció
 
 buildbattle-daily = napi
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését az elmúlt napban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
 
 buildbattle-weekly = heti
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
 
 buildbattle-monthly = havi
   .description = Tekintsd meg a Build Battle statisztikáinak fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Build Battle mód, amit meg szeretnél nézni
 
@@ -1014,19 +895,15 @@ bombs-planted = Lerakott Bombák
 
 copsandcrims-general = általános
   .description = Tekintsd meg a Cops and Crims statisztikáit
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
 
 copsandcrims-from = innen
   .description = Tekintsd meg a Cops and Crims statisztikáinak fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
   .time = idő
@@ -1034,19 +911,15 @@ copsandcrims-from = innen
 
 copsandcrims-history = történet
   .description = Tekintsd meg a Cops and Crims statisztikáinak fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
 
 copsandcrims-project = projekció
   .description = Projections Cops and Crims statisztikák a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
   .statistic = statisztika
@@ -1056,28 +929,22 @@ copsandcrims-project = projekció
 
 copsandcrims-daily = napi
   .description = Tekintsd meg a Cops and Crims statisztikáinak fejlődését az elmúlt napban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
 
 copsandcrims-weekly = heti
   .description = Tekintse meg a Cops and Crims statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretne tekinteni
 
 copsandcrims-monthly = havi
   .description = Tekintse meg a Cops and Crims statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Cops and Crims mód, amit meg szeretne tekinteni
 
@@ -1117,19 +984,15 @@ health-regenerated = Regenerált Életerő
 
 duels-general = általános
   .description = Nézze meg a Döntők statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
 
 duels-from = kezdődik
   .description = Nézze meg a Döntők statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
   .time = idő
@@ -1137,19 +1000,15 @@ duels-from = kezdődik
 
 duels-history = történet
   .description = Nézze meg a Döntők statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
 
 duels-project = projekció
   .description = Projektálja a Döntők statisztikákat a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
   .statistic = statisztika
@@ -1159,28 +1018,22 @@ duels-project = projekció
 
 duels-daily = napi
   .description = Tekintse meg a Döntők statisztikák fejlődését az elmúlt napban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
 
 duels-weekly = heti
   .description = Tekintse meg a Döntők statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
 
 duels-monthly = havi
   .description = Tekintse meg a Döntők statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Döntők mód, amit meg szeretne tekinteni
 
@@ -1196,19 +1049,15 @@ treasures-found = Felfedezett Kincsek
 
 megawalls-general = általános
   .description = Nézze meg a Mega Falak statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
 
 megawalls-from = kezdődik
   .description = Nézze meg a Mega Falak statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
   .time = idő
@@ -1216,19 +1065,15 @@ megawalls-from = kezdődik
 
 megawalls-history = történet
   .description = Nézze meg a Mega Falak statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
 
 megawalls-project = projekció
   .description = Projektálja a Mega Falak statisztikákat a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
   .statistic = statisztika
@@ -1238,28 +1083,22 @@ megawalls-project = projekció
 
 megawalls-daily = napi
   .description = Tekintse meg a Mega Falak statisztikák fejlődését az elmúlt napban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
 
 megawalls-weekly = heti
   .description = Tekintse meg a Mega Falak statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
 
 megawalls-monthly = havi
   .description = Tekintse meg a Mega Falak statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Mega Falak mód, amit meg szeretne tekinteni
 
@@ -1276,19 +1115,15 @@ detective-wins = Nyomozó Győzelmek
 
 murdermystery-general = általános
   .description = Nézze meg a Gyilkosság Rejtély statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Gyilkosság Rejtély mód, amit meg szeretne tekinteni
 
 murdermystery-from = kezdődik
   .description = Nézze meg a Gyilkosság Rejtély statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Gyilkosság Rejtély mód, amit meg szeretne tekinteni
   .time = idő
@@ -1296,19 +1131,15 @@ murdermystery-from = kezdődik
 
 murdermystery-history = történet
   .description = Nézze meg a Gyilkosság Rejtély statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Gyilkosság Rejtély mód, amit meg szeretne tekinteni
 
 murdermystery-project = projekt
   .description = Jövőbe vetített Murder Mystery statisztikák
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Murder Mystery mód
   .statistic = statisztika
@@ -1318,28 +1149,22 @@ murdermystery-project = projekt
 
 murdermystery-daily = napi
   .description = Tekintse meg a Murder Mystery statisztikák fejlődését az elmúlt napokban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Murder Mystery mód
 
 murdermystery-weekly = heti
   .description = Tekintse meg a Murder Mystery statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Murder Mystery mód
 
 murdermystery-monthly = havi
   .description = Tekintse meg a Murder Mystery statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Murder Mystery mód
 
@@ -1364,19 +1189,15 @@ highest-killstreak = Legjobb sorozat
 
 paintball-general = általános
   .description = Tekintse meg a Paintball statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
 
 paintball-from = kezdettől
   .description = Tekintse meg a Paintball statisztikák fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
   .time = idő
@@ -1384,19 +1205,15 @@ paintball-from = kezdettől
 
 paintball-history = történelem
   .description = Tekintse meg a Paintball statisztikák fejlődését az idők során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
 
 paintball-project = projekt
   .description = Jövőbe vetített Paintball statisztikák
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
   .statistic = statisztika
@@ -1406,28 +1223,22 @@ paintball-project = projekt
 
 paintball-daily = napi
   .description = Tekintse meg a Paintball statisztikák fejlődését az elmúlt napokban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
 
 paintball-weekly = heti
   .description = Tekintse meg a Paintball statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
 
 paintball-monthly = havi
   .description = Tekintse meg a Paintball statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Paintball mód
 
@@ -1443,19 +1254,15 @@ cr = Teljesítési arány
 
 pit-general = általános
   .description = Tekintse meg a Pit statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
 
 pit-from = kezdettől
   .description = Tekintse meg a Pit statisztikák fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
   .time = idő
@@ -1463,19 +1270,15 @@ pit-from = kezdettől
 
 pit-history = történelem
   .description = Tekintse meg a Pit statisztikák fejlődését az idők során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
 
 pit-project = projekt
   .description = Jövőbe vetített Pit statisztikák
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
   .statistic = statisztika
@@ -1485,28 +1288,22 @@ pit-project = projekt
 
 pit-daily = napi
   .description = Tekintse meg a Pit statisztikák fejlődését az elmúlt napokban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
 
 pit-weekly = heti
   .description = Tekintse meg a Pit statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
 
 pit-monthly = havi
   .description = Tekintse meg a Pit statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Pit mód
 
@@ -1520,19 +1317,15 @@ sight = Látás
 
 quake-general = általános
   .description = Tekintse meg a Quakecraft statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Quakecraft mód
 
 quake-from = kezdettől
   .description = Tekintse meg a Quakecraft statisztikák fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Quakecraft mód
   .time = idő
@@ -1540,19 +1333,15 @@ quake-from = kezdettől
 
 quake-history = történelem
   .description = Tekintse meg a Quakecraft statisztikák fejlődését az idők során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekintendő Quakecraft mód
 
 quake-project = projekt
   .description = A Quakecraft statisztikák előrejelzése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Quakecraft mód, amit meg szeretnél tekinteni
   .statistic = statisztika
@@ -1562,28 +1351,22 @@ quake-project = projekt
 
 quake-daily = napi
   .description = Nézd meg a Quakecraft statisztikák fejlődését az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Quakecraft mód, amit meg szeretnél tekinteni
 
 quake-weekly = heti
   .description = Nézd meg a Quakecraft statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Quakecraft mód, amit meg szeretnél tekinteni
 
 quake-monthly = havi
   .description = Nézd meg a Quakecraft statisztikák fejlődését az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Quakecraft mód, amit meg szeretnél tekinteni
 
@@ -1609,19 +1392,15 @@ fastest-win = Leggyorsabb Győzelem
 
 skywars-general = általános
   .description = Nézd meg a SkyWars statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
 
 skywars-from = ettől
   .description = Nézd meg a SkyWars statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
   .time = idő
@@ -1629,19 +1408,15 @@ skywars-from = ettől
 
 skywars-history = történelem
   .description = Nézd meg a SkyWars statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
 
 skywars-project = előrejelzés
   .description = A SkyWars statisztikák előrejelzése a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
   .statistic = statisztika
@@ -1651,28 +1426,22 @@ skywars-project = előrejelzés
 
 skywars-daily = napi
   .description = Nézd meg a SkyWars statisztikák fejlődését az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
 
 skywars-weekly = heti
   .description = Nézd meg a SkyWars statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
 
 skywars-monthly = havi
   .description = Nézd meg a SkyWars statisztikák fejlődését az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SkyWars mód, amit meg szeretnél tekinteni
 
@@ -1682,19 +1451,15 @@ ssr = SSR
 
 smash-general = általános
   .description = Nézd meg a Smash Heroes statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
 
 smash-from = ettől
   .description = Nézd meg a Smash Heroes statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
   .time = idő
@@ -1702,19 +1467,15 @@ smash-from = ettől
 
 smash-history = történelem
   .description = Nézd meg a Smash Heroes statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
 
 smash-project = előrejelzés
   .description = A Smash Heroes statisztikák előrejelzése a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
   .statistic = statisztika
@@ -1724,28 +1485,22 @@ smash-project = előrejelzés
 
 smash-daily = napi
   .description = Nézd meg a Smash Heroes statisztikák fejlődését az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
 
 smash-weekly = heti
   .description = Nézd meg a Smash Heroes statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
 
 smash-monthly = havi
   .description = Nézd meg a Smash Heroes statisztikák fejlődését az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Smash Heroes mód, amit meg szeretnél tekinteni
 
@@ -1754,19 +1509,15 @@ survived-players = Túlélő Játékosok
 
 speeduhc-general = általános
   .description = Nézd meg a SpeedUHC statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SpeedUHC mód, amit meg szeretnél tekinteni
 
 speeduhc-from = ettől
   .description = Nézd meg a SpeedUHC statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SpeedUHC mód, amit meg szeretnél tekinteni
   .time = idő
@@ -1774,19 +1525,15 @@ speeduhc-from = ettől
 
 speeduhc-history = történelem
   .description = Nézd meg a SpeedUHC statisztikák fejlődését az idő során
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A SpeedUHC mód, amit meg szeretnél tekinteni
 
 speeduhc-project = projekt
   .description = A SpeedUHC statisztikákat a jövőbe vetítve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő SpeedUHC mód
   .statistic = statisztika
@@ -1796,28 +1543,22 @@ speeduhc-project = projekt
 
 speeduhc-daily = napi
   .description = Nézd meg a SpeedUHC statisztikák fejlődését az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő SpeedUHC mód
 
 speeduhc-weekly = heti
   .description = Nézd meg a SpeedUHC statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő SpeedUHC mód
 
 speeduhc-monthly = havi
   .description = Nézd meg a SpeedUHC statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő SpeedUHC mód
 
@@ -1837,19 +1578,15 @@ points = Pontok
 
 tntgames-general = általános
   .description = Nézd meg a TNT Games statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
 
 tntgames-from = kezdettől
   .description = Nézd meg a TNT Games statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
   .time = idő
@@ -1857,19 +1594,15 @@ tntgames-from = kezdettől
 
 tntgames-history = történet
   .description = Nézd meg a TNT Games statisztikák fejlődését az időben
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
 
 tntgames-project = projekt
   .description = A TNT Games statisztikák jövőbe vetítése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
   .statistic = statisztika
@@ -1879,28 +1612,22 @@ tntgames-project = projekt
 
 tntgames-daily = napi
   .description = Nézd meg a TNT Games statisztikák fejlődését az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
 
 tntgames-weekly = heti
   .description = Nézd meg a TNT Games statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
 
 tntgames-monthly = havi
   .description = Nézd meg a TNT Games statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő TNT Games mód
 
@@ -1916,19 +1643,15 @@ gold-trophies = Arany Trófeák
 
 turbokartracers-general = általános
   .description = Nézd meg a Turbo Kart Racers statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
 
 turbokartracers-from = kezdettől
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
   .time = idő
@@ -1936,19 +1659,15 @@ turbokartracers-from = kezdettől
 
 turbokartracers-history = történet
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését az időben
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
 
 turbokartracers-project = projekt
   .description = A Turbo Kart Racers statisztikák jövőbe vetítése
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
   .statistic = statisztika
@@ -1958,28 +1677,22 @@ turbokartracers-project = projekt
 
 turbokartracers-daily = napi
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését az elmúlt napon
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
 
 turbokartracers-weekly = heti
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
 
 turbokartracers-monthly = havi
   .description = Nézd meg a Turbo Kart Racers statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő Turbo Kart Racers mód
 
@@ -1997,19 +1710,15 @@ ultimates-crafted = Készült Ultimates
 
 uhc-general = általános
   .description = Nézd meg az UHC Champions statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő UHC Champions mód
 
 uhc-from = kezdettől
   .description = Nézd meg az UHC Champions statisztikák fejlődését egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megjelenítendő UHC Champions mód
   .time = idő
@@ -2017,19 +1726,15 @@ uhc-from = kezdettől
 
 uhc-history = történelem
   .description = Tekintse meg az UHC Champions statisztikák alakulását az idővel
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
 
 uhc-project = projekt
   .description = Projektálja az UHC Champions statisztikákat a jövőre nézve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
   .statistic = statisztika
@@ -2039,28 +1744,22 @@ uhc-project = projekt
 
 uhc-daily = napi
   .description = Tekintse meg az UHC Champions statisztikák alakulását az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
 
 uhc-weekly = heti
   .description = Tekintse meg az UHC Champions statisztikák alakulását az elmúlt hét alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
 
 uhc-monthly = havi
   .description = Tekintse meg az UHC Champions statisztikák alakulását az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = Az UHC Champions módot, amit szeretne megtekinteni
 
@@ -2084,19 +1783,15 @@ vkdr = VKDR
 
 vampirez-general = általános
   .description = Tekintse meg a VampireZ statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
 
 vampirez-from = ettől
   .description = Tekintse meg a VampireZ statisztikák alakulását egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
   .time = idő
@@ -2104,19 +1799,15 @@ vampirez-from = ettől
 
 vampirez-history = történelem
   .description = Tekintse meg a VampireZ statisztikák alakulását az idővel
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
 
 vampirez-project = projekt
   .description = Projektálja a VampireZ statisztikákat a jövőre nézve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
   .statistic = statisztika
@@ -2126,28 +1817,22 @@ vampirez-project = projekt
 
 vampirez-daily = napi
   .description = Tekintse meg a VampireZ statisztikák alakulását az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
 
 vampirez-weekly = heti
   .description = Tekintse meg a VampireZ statisztikák alakulását az elmúlt hét alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
 
 vampirez-monthly = havi
   .description = Tekintse meg a VampireZ statisztikák alakulását az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A VampireZ módot, amit szeretne megtekinteni
 
@@ -2160,19 +1845,15 @@ iron-broken = Vas Törések
 
 walls-general = általános
   .description = Tekintse meg a The Walls statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
 
 walls-from = ettől
   .description = Tekintse meg a The Walls statisztikák alakulását egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
   .time = idő
@@ -2180,19 +1861,15 @@ walls-from = ettől
 
 walls-history = történelem
   .description = Tekintse meg a The Walls statisztikákat az idővel
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
 
 walls-project = projekt
   .description = Projektálja a The Walls statisztikákat a jövőre nézve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
   .statistic = statisztika
@@ -2202,28 +1879,22 @@ walls-project = projekt
 
 walls-daily = napi
   .description = Tekintse meg a The Walls statisztikák alakulását az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
 
 walls-weekly = heti
   .description = Tekintse meg a The Walls statisztikák alakulását az elmúlt hét alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
 
 walls-monthly = havi
   .description = Tekintse meg a The Walls statisztikák alakulását az elmúlt hónap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A The Walls módot, amit szeretne megtekinteni
 
@@ -2240,19 +1911,15 @@ mvps = MVP-k
 
 warlords-general = általános
   .description = Tekintse meg a Warlords statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Warlords módot, amit szeretne megtekinteni
 
 warlords-from = ettől
   .description = Tekintse meg a Warlords statisztikák alakulását egy adott időponttól kezdve
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A Warlords módot, amit szeretne megtekinteni
   .time = idő
@@ -2260,19 +1927,15 @@ warlords-from = ettől
 
 warlords-history = történelem
   .description = Nézd meg a Warlords statisztikák fejlődését az idő múlásával
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
 
 warlords-project = projekt
   .description = Projektálj Warlords statisztikákat a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
   .statistic = statisztika
@@ -2282,28 +1945,22 @@ warlords-project = projekt
 
 warlords-daily = napi
   .description = Nézd meg a Warlords statisztikák fejlődését az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
 
 warlords-weekly = heti
   .description = Nézd meg a Warlords statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
 
 warlords-monthly = havi
   .description = Nézd meg a Warlords statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Warlords mód
 
@@ -2315,19 +1972,15 @@ wool-placed = Lerakott Gyapjúk
 
 woolwars-general = általános
   .description = Nézd meg a Wool Wars statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
 
 woolwars-from = ettől
   .description = Nézd meg a Wool Wars statisztikák fejlődését egy adott időponttól
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
   .time = idő
@@ -2335,19 +1988,15 @@ woolwars-from = ettől
 
 woolwars-history = történelem
   .description = Nézd meg a Wool Wars statisztikák fejlődését az idő múlásával
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
 
 woolwars-project = projekt
   .description = Projektálj Wool Wars statisztikákat a jövőbe
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
   .statistic = statisztika
@@ -2357,28 +2006,22 @@ woolwars-project = projekt
 
 woolwars-daily = napi
   .description = Nézd meg a Wool Wars statisztikák fejlődését az elmúlt nap alatt
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
 
 woolwars-weekly = heti
   .description = Nézd meg a Wool Wars statisztikák fejlődését az elmúlt héten
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
 
 woolwars-monthly = havi
   .description = Nézd meg a Wool Wars statisztikák fejlődését az elmúlt hónapban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = azonosító
-  .uuid-description = Minecraft azonosító
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .mode = mód
   .mode-description = A megtekinteni kívánt Wool Wars mód
 
@@ -2403,19 +2046,14 @@ guild-general = általános
   .description = Egy guild statisztikáinak megjelenítése
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 guild-from = ettől
   .description = Nézd meg a guild statisztikák fejlődését egy adott időponttól
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az idő, amennyivel visszamenőleg nézni kívánsz (1h 12m 5s)
 
@@ -2423,26 +2061,18 @@ guild-members = tagok
   .description = Egy guild tagjainak megjelenítése
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 guild-member = tag
   .description = Egy guild tag statisztikáinak megjelenítése
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 guild-top = top
   .description = Egy guild legjobb tagjainak megjelenítése XP alapján
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .days = napok
   .days-description = napok
   .limit = limit
@@ -2452,29 +2082,20 @@ guild-daily = napi
   .description = Nézd meg a guild statisztikák fejlődését az elmúlt nap alatt
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 guild-weekly = heti
   .description = Nézd meg a guild statisztikák fejlődését az elmúlt héten
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 guild-monthly = havi
   .description = Nézd meg a guild statisztikák fejlődését az elmúlt hónapban
   .name = név
   .name-description = A megjelenítendő guild neve
-  .username = felhasználónév
-  .username-description = A megjelenítendő guild tag felhasználóneve
-  .uuid = azonosító
-  .uuid-description = A megjelenítendő guild tag azonosítója
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 showing-guild-xp-statistics = A guild XP növekedésének megjelenítése a következő időszakban: {$from} - {$to}.
 
 # Shared canvas labels
@@ -2742,18 +2363,12 @@ practice = Gyakorlás
 
 bedwars-hotbar = hotbar
   .description = Nézze meg a Bed Wars főeszköztár beállításait
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 bedwars-shop = shop
   .description = Nézze meg a Bed Wars bolt beállításait
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 attempts = Próbálkozások
 bridging-wins = Hidaképítés Győzelmek
 bridging-losses = Hidaképítés Vereségek
@@ -2785,19 +2400,14 @@ diagonal-staircase-100 = Átlós Lépcsős 100
 
 bedwars-practice = practice
   .description = Nézze meg a Bed Wars gyakorlási statisztikákat
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
 # Parancsokhoz
 
 arcade-at = ekkor
   .description = Mutassa meg egy játékos Arcade statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2805,10 +2415,8 @@ arcade-at = ekkor
 
 arena-at = ekkor
   .description = Mutassa meg egy játékos Aréna statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2816,10 +2424,8 @@ arena-at = ekkor
 
 bedwars-at = ekkor
   .description = Mutassa meg egy játékos Ágyháború statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2827,10 +2433,8 @@ bedwars-at = ekkor
 
 blitz-at = ekkor
   .description = Mutassa meg egy játékos Blitz Survival Games statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2838,10 +2442,8 @@ blitz-at = ekkor
 
 buildbattle-at = ekkor
   .description = Mutassa meg egy játékos Build Battle statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2849,10 +2451,8 @@ buildbattle-at = ekkor
 
 copsandcrims-at = ekkor
   .description = Mutassa meg egy játékos Cops and Crims statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2860,10 +2460,8 @@ copsandcrims-at = ekkor
 
 duels-at = ekkor
   .description = Mutassa meg egy játékos Duels statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2871,10 +2469,8 @@ duels-at = ekkor
 
 megawalls-at = ekkor
   .description = Mutassa meg egy játékos Mega Walls statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2882,10 +2478,8 @@ megawalls-at = ekkor
 
 murdermystery-at = ekkor
   .description = Mutassa meg egy játékos Murder Mystery statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2893,10 +2487,8 @@ murdermystery-at = ekkor
 
 paintball-at = ekkor
   .description = Mutassa meg egy játékos Paintball statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2904,10 +2496,8 @@ paintball-at = ekkor
 
 pit-at = ekkor
   .description = Mutassa meg egy játékos The Pit statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2915,10 +2505,8 @@ pit-at = ekkor
 
 quake-at = ekkor
   .description = Mutassa meg egy játékos Quakecraft statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2926,10 +2514,8 @@ quake-at = ekkor
 
 skywars-at = ekkor
   .description = Mutassa meg egy játékos SkyWars statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2937,10 +2523,8 @@ skywars-at = ekkor
 
 smash-at = ekkor
   .description = Mutassa meg egy játékos Smash Heroes statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2948,10 +2532,8 @@ smash-at = ekkor
 
 speeduhc-at = ekkor
   .description = Mutassa meg egy játékos SpeedUHC statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2959,10 +2541,8 @@ speeduhc-at = ekkor
 
 tntgames-at = ekkor
   .description = Mutassa meg egy játékos TNT Games statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2970,10 +2550,8 @@ tntgames-at = ekkor
 
 turbokartracers-at = ekkor
   .description = Mutassa meg egy játékos Turbo Kart Racers statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2981,10 +2559,8 @@ turbokartracers-at = ekkor
 
 uhc-at = ekkor
   .description = Mutassa meg egy játékos UHC Champions statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -2992,10 +2568,8 @@ uhc-at = ekkor
 
 vampirez-at = ekkor
   .description = Mutassa meg egy játékos VampireZ statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -3003,10 +2577,8 @@ vampirez-at = ekkor
 
 walls-at = ekkor
   .description = Mutassa meg egy játékos The Walls statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -3014,10 +2586,8 @@ walls-at = ekkor
 
 warlords-at = ekkor
   .description = Mutassa meg egy játékos Warlords statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -3025,10 +2595,8 @@ warlords-at = ekkor
 
 woolwars-at = ekkor
   .description = Mutassa meg egy játékos Wool Wars statisztikáit egy adott időpontban
-  .username = felhasználónév
-  .username-description = Minecraft felhasználónév
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
   .mode = mód
@@ -3038,10 +2606,8 @@ guild-at = ekkor
   .description = Mutassa meg egy céh statisztikáit egy adott időpontban
   .name = név
   .name-description = A név a céh megtekintéséhez
-  .username = felhasználónév
-  .username-description = A felhasználónév, akinek a céhének tagjait szeretnénk megtekinteni
-  .uuid = uuid
-  .uuid-description = A UUID azoknak a céh tagjainak, akiknek a céhét meg szeretnénk nézni
+  .player = játékos
+  .player-description = Minecraft játékos vagy session
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
 

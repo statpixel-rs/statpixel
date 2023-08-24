@@ -26,14 +26,14 @@ pub async fn command<G: api::prelude::Game>(
 			let (player_rhs, data_rhs, session, skin, suffix) =
 				commands::get_player_data_session_skin_suffix(
 					ctx,
-					uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+					uuid_rhs.or_else(|| parse_uuid(rhs.as_deref())),
 					rhs,
 				)
 				.await?;
 
 			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref())),
 				lhs,
 			)
 			.await?;
@@ -79,14 +79,14 @@ pub async fn command<G: api::prelude::Game>(
 		format::Display::Compact => {
 			let (player_rhs, data_rhs, suffix) = commands::get_player_data_suffix(
 				ctx,
-				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref())),
 				rhs,
 			)
 			.await?;
 
 			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref())),
 				lhs,
 			)
 			.await?;
@@ -128,14 +128,14 @@ pub async fn command<G: api::prelude::Game>(
 		format::Display::Text => {
 			let (player_rhs, data_rhs) = commands::get_player_data(
 				ctx,
-				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref()).ok().flatten()),
+				uuid_rhs.or_else(|| parse_uuid(rhs.as_deref())),
 				rhs,
 			)
 			.await?;
 
 			let (player_lhs, data_lhs) = commands::get_player_data(
 				ctx,
-				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref()).ok().flatten()),
+				uuid_lhs.or_else(|| parse_uuid(lhs.as_deref())),
 				lhs,
 			)
 			.await?;

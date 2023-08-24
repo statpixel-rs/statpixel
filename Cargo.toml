@@ -40,7 +40,7 @@ syn = "2"
 thiserror = "1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
-tower = "0.4.13"
+tower = "0.4"
 
 [workspace.dependencies.axum]
 version = "0.6"
@@ -73,7 +73,7 @@ version = "0.3"
 features = ["postgres", "deadpool"]
 
 [workspace.dependencies.humantime]
-version = "2.1.0"
+version = "2"
 
 [workspace.dependencies.moka]
 version = "0.11"

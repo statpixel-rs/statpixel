@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Viser statistik fra **`{$from
 # Fejl
 
 error-player-not-found = Profil med navnet **`{$name}`** blev ikke fundet.
-error-session-not-found = Session med navnet **`{$name}`** blev ikke fundet.
+error-snapshot-not-found = Session med navnet **`{$name}`** blev ikke fundet.
 error-player-uuid-not-found = Spiller med UUID **`{$uuid}`** blev ikke fundet.
 error-player-username-not-found = Spiller med brugernavn **`{$name}`** blev ikke fundet.
 error-guild-by-member-uuid-not-found = Guild-medlem med UUID **`{$uuid}`** blev ikke fundet.
@@ -93,11 +93,8 @@ track-success-description =
 
 track = spor
   .description = Tracker en spillers statistik og sender ændringer til den aktuelle kanal.
-  .username = brugernavn
-  .username-description = Minecraft-brugernavnet, der skal spores
-  .uuid = uuid
-  .uuid-description = Minecraft UUID'en, der skal spores
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 # /custom
 
 execute = udfør
@@ -205,11 +202,8 @@ about = om
 
 winstreaks = vindstreaks
   .description = Vis vindstreaks
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 # /recent
 
 mode = Tilstand
@@ -220,11 +214,8 @@ playing = Spiller
 
 recent = nylig
   .description = Vis nylige spil
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 # Projections etiketter
 
 accuracy = Nøjagtighed
@@ -276,11 +267,8 @@ Wardrobe = Garderobe
 
 skyblock-auctions = auktioner
   .description = Vis SkyBlock auktioner
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 player-auctions = Auktioner
 highest-bid = Højeste Bud
 
@@ -288,109 +276,85 @@ highest-bid = Højeste Bud
 
 skyblock-inventory = inventar
   .description = Vis en SkyBlock-inventar
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-enderchest = enderchest
   .description = Vis en SkyBlock-enderkiste
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-quiver = quiver
   .description = Vis en SkyBlock-koger
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-talisman = talisman
   .description = Vis en SkyBlock-talisman-taske
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-fishing = fiskeri
   .description = Vis en SkyBlock-fisketaske
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-potions = elixirs
   .description = Vis en SkyBlock-elixir-taske
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-equipment = udstyr
   .description = Vis SkyBlock-udstyr
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal vises
 
 skyblock-wardrobe = garderobe
   .description = Se en SkyBlock garderobe
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
 skyblock-candy = slik
   .description = Se en SkyBlock slik beholdning
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
 skyblock-vault = hvelv
   .description = Se en SkyBlock personlig hvelv
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
 skyblock-pets = kæledyr
   .description = Se SkyBlock kæledyr
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
 skyblock-networth = formue
   .description = Se SkyBlock profil formue
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
@@ -398,10 +362,8 @@ skyblock-networth = formue
 
 skyblock-profile = profil
   .description = Se en SkyBlock profil
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
@@ -430,10 +392,8 @@ social = Socialt
 
 skyblock-bank = bank
   .description = Se en SkyBlock bank
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .profile = profil
   .profile-description = Profilen der skal ses
 
@@ -451,18 +411,12 @@ leaderboard = rangliste
 
 network-general = generelt
   .description = Se generelle netværksstatistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 network-history = historik
   .description = Se historiske netværksstatistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 karma = Karma
 rewards = Belønninger
 friend-requests = Venneanmodninger
@@ -535,11 +489,8 @@ unlinking-succeeded-description = Du er ikke længere linket til en Minecraft-ko
 # /linkning
 link = linkning
   .description = Linker din Discord-konto til en Minecraft-konto.
-  .username = brugernavn
-  .username-description = Minecraft brugernavn der skal linkes
-  .uuid = uuid
-  .uuid-description = Minecraft UUID der skal linkes
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 linking-failed = Linkning mislykkedes
 linking-failed-uuid-description = UUID'en **`{$uuid}`** tilhører ikke en Minecraft-konto.
 linking-failed-username-description = Brugernavnet **`{$username}`** tilhører ikke en Minecraft-konto.
@@ -574,19 +525,15 @@ mystery-gifts = Mystiske Gaver
 
 arcade-general = generel
   .description = Se Arcade statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
 
 arcade-from = fra
   .description = Se udviklingen af Arcade statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
   .time = tid
@@ -594,19 +541,15 @@ arcade-from = fra
 
 arcade-history = historie
   .description = Se udviklingen af Arcade statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
 
 arcade-project = projekt
   .description = Projekt Arcade statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
   .statistic = statistik
@@ -616,28 +559,22 @@ arcade-project = projekt
 
 arcade-daily = daglig
   .description = Se udviklingen af Arcade statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
 
 arcade-weekly = ugentlig
   .description = Se udviklingen af Arcade statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
 
 arcade-monthly = månedlig
   .description = Se udviklingen af Arcade statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arcade tilstand at se
 
@@ -649,19 +586,15 @@ rating = Vurdering
 
 arena-general = generel
   .description = Se Arena statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
 
 arena-from = fra
   .description = Se udviklingen af Arena statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
   .time = tid
@@ -669,19 +602,15 @@ arena-from = fra
 
 arena-history = historie
   .description = Se udviklingen af Arena statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
 
 arena-project = projekt
   .description = Projekt Arena statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
   .statistic = statistik
@@ -691,28 +620,22 @@ arena-project = projekt
 
 arena-daily = daglig
   .description = Se udviklingen af Arena statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
 
 arena-weekly = ugentlig
   .description = Se udviklingen af Arena statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
 
 arena-monthly = månedlig
   .description = Se udviklingen af Arena statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Arena tilstand at se
 
@@ -755,19 +678,15 @@ items-purchased = Køb
 
 bedwars-general = generel
   .description = Se Bed Wars statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
 
 bedwars-from = fra
   .description = Se udviklingen af Bed Wars statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
   .time = tid
@@ -775,19 +694,15 @@ bedwars-from = fra
 
 bedwars-history = historie
   .description = Se udviklingen af Bed Wars statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
 
 bedwars-project = projekt
   .description = Projekt Bed Wars statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
   .statistic = statistik
@@ -797,28 +712,22 @@ bedwars-project = projekt
 
 bedwars-daily = daglig
   .description = Se udviklingen af Bed Wars statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
 
 bedwars-weekly = ugentlig
   .description = Se udviklingen af Bed Wars statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
 
 bedwars-monthly = månedlig
   .description = Se udviklingen af Bed Wars statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Bed Wars tilstand at se
 
@@ -855,19 +764,15 @@ time-played = Spilletid
 
 blitz-general = generel
   .description = Se statistikker for Blitz Survival Games
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
 
 blitz-from = fra
   .description = Se udviklingen af statistikker for Blitz Survival Games siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
   .time = tid
@@ -875,19 +780,15 @@ blitz-from = fra
 
 blitz-history = historie
   .description = Se udviklingen af statistikker for Blitz Survival Games over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
 
 blitz-project = projekt
   .description = Projektér statistikker for Blitz Survival Games ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
   .statistic = statistik
@@ -897,28 +798,22 @@ blitz-project = projekt
 
 blitz-daily = daglig
   .description = Se udviklingen af statistikker for Blitz Survival Games i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
 
 blitz-weekly = ugentlig
   .description = Se udviklingen af statistikker for Blitz Survival Games i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
 
 blitz-monthly = månedlig
   .description = Se udviklingen af statistikker for Blitz Survival Games i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Blitz Survival Games tilstand, der skal ses
 
@@ -933,19 +828,15 @@ most-points-team = Flest Point (Hold)
 
 buildbattle-general = generel
   .description = Se statistikker for Build Battle
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
 
 buildbattle-from = fra
   .description = Se udviklingen af statistikker for Build Battle siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
   .time = tid
@@ -953,19 +844,15 @@ buildbattle-from = fra
 
 buildbattle-history = historie
   .description = Se udviklingen af statistikker for Build Battle over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
 
 buildbattle-project = projekt
   .description = Projektér statistikker for Build Battle ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
   .statistic = statistik
@@ -975,28 +862,22 @@ buildbattle-project = projekt
 
 buildbattle-daily = daglig
   .description = Se udviklingen af statistikker for Build Battle i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
 
 buildbattle-weekly = ugentlig
   .description = Se udviklingen af statistikker for Build Battle i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
 
 buildbattle-monthly = månedlig
   .description = Se udviklingen af statistikker for Build Battle i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Build Battle tilstand, der skal ses
 
@@ -1015,19 +896,15 @@ bombs-planted = Bomber Placeret
 
 copsandcrims-general = generel
   .description = Se statistikker for Cops and Crims
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Cops and Crims tilstand, der skal ses
 
 copsandcrims-from = fra
   .description = Se udviklingen af statistikker for Cops and Crims siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Cops and Crims tilstand, der skal ses
   .time = tid
@@ -1035,19 +912,15 @@ copsandcrims-from = fra
 
 copsandcrims-history = historie
   .description = Se udviklingen af statistikker for Cops and Crims over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Cops and Crims tilstand, der skal ses
 
 copsandcrims-project = projekt
   .description = Projektér statistikker for Cops and Crims ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Cops and Crims tilstand, der skal ses
   .statistic = statistik
@@ -1057,28 +930,22 @@ copsandcrims-project = projekt
 
 copsandcrims-daily = daglig
   .description = Se udviklingen af statistikker for Cops and Crims i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Cops and Crims tilstand, der skal ses
 
 copsandcrims-weekly = ugentlig
   .description = Se udviklingen af Cops and Crims-statistikkerne i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Cops and Crims-tilstand at se
 
 copsandcrims-monthly = månedlig
   .description = Se udviklingen af Cops and Crims-statistikkerne i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Cops and Crims-tilstand at se
 
@@ -1118,19 +985,15 @@ health-regenerated = Genoprettet
 
 duels-general = generelt
   .description = Se Duel-statistikkerne
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
 
 duels-from = fra
   .description = Se udviklingen af Duel-statistikkerne siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
   .time = tid
@@ -1138,19 +1001,15 @@ duels-from = fra
 
 duels-history = historik
   .description = Se udviklingen af Duel-statistikkerne over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
 
 duels-project = projekt
   .description = Projekt Duel-statistikkerne ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
   .statistic = statistik
@@ -1160,28 +1019,22 @@ duels-project = projekt
 
 duels-daily = daglig
   .description = Se udviklingen af Duel-statistikkerne i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
 
 duels-weekly = ugentlig
   .description = Se udviklingen af Duel-statistikkerne i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
 
 duels-monthly = månedlig
   .description = Se udviklingen af Duel-statistikkerne i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Duel-tilstand at se
 
@@ -1197,19 +1050,15 @@ treasures-found = Fundne skatte
 
 megawalls-general = generelt
   .description = Se Mega Walls-statistikker
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
 
 megawalls-from = fra
   .description = Se udviklingen af Mega Walls-statistikkerne siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
   .time = tid
@@ -1217,19 +1066,15 @@ megawalls-from = fra
 
 megawalls-history = historik
   .description = Se udviklingen af Mega Walls-statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
 
 megawalls-project = projekt
   .description = Projekt Mega Walls-statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
   .statistic = statistik
@@ -1239,28 +1084,22 @@ megawalls-project = projekt
 
 megawalls-daily = daglig
   .description = Se udviklingen af Mega Walls-statistikkerne i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
 
 megawalls-weekly = ugentlig
   .description = Se udviklingen af Mega Walls-statistikkerne i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
 
 megawalls-monthly = månedlig
   .description = Se udviklingen af Mega Walls-statistikkerne i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Mega Walls-tilstand at se
 
@@ -1277,19 +1116,15 @@ detective-wins = Detective-sejre
 
 murdermystery-general = generelt
   .description = Se Murder Mystery-statistikker
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery-tilstand at se
 
 murdermystery-from = fra
   .description = Se udviklingen af Murder Mystery-statistikkerne siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery-tilstand at se
   .time = tid
@@ -1297,19 +1132,15 @@ murdermystery-from = fra
 
 murdermystery-history = historik
   .description = Se udviklingen af Murder Mystery-statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery-tilstand at se
 
 murdermystery-project = projekt
   .description = Projekt Murder Mystery statistik ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery tilstand at se
   .statistic = statistik
@@ -1319,28 +1150,22 @@ murdermystery-project = projekt
 
 murdermystery-daily = daglig
   .description = Se udviklingen af Murder Mystery statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery tilstand at se
 
 murdermystery-weekly = ugentlig
   .description = Se udviklingen af Murder Mystery statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery tilstand at se
 
 murdermystery-monthly = månedlig
   .description = Se udviklingen af Murder Mystery statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Murder Mystery tilstand at se
 
@@ -1365,19 +1190,15 @@ highest-killstreak = Bedste Streak
 
 paintball-general = generel
   .description = Se Paintball statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
 
 paintball-from = fra
   .description = Se udviklingen af Paintball statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
   .time = tid
@@ -1385,19 +1206,15 @@ paintball-from = fra
 
 paintball-history = historie
   .description = Se udviklingen af Paintball statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
 
 paintball-project = projekt
   .description = Projekt Paintball statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
   .statistic = statistik
@@ -1407,28 +1224,22 @@ paintball-project = projekt
 
 paintball-daily = daglig
   .description = Se udviklingen af Paintball statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
 
 paintball-weekly = ugentlig
   .description = Se udviklingen af Paintball statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
 
 paintball-monthly = månedlig
   .description = Se udviklingen af Paintball statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Paintball tilstand at se
 
@@ -1444,19 +1255,15 @@ cr = Fuldførelsesrate
 
 pit-general = generel
   .description = Se The Pit statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
 
 pit-from = fra
   .description = Se udviklingen af The Pit statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
   .time = tid
@@ -1464,19 +1271,15 @@ pit-from = fra
 
 pit-history = historie
   .description = Se udviklingen af The Pit statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
 
 pit-project = projekt
   .description = Projekt The Pit statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
   .statistic = statistik
@@ -1486,28 +1289,22 @@ pit-project = projekt
 
 pit-daily = daglig
   .description = Se udviklingen af The Pit statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
 
 pit-weekly = ugentlig
   .description = Se udviklingen af The Pit statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
 
 pit-monthly = månedlig
   .description = Se udviklingen af The Pit statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Pit tilstand at se
 
@@ -1521,19 +1318,15 @@ sight = Sigte
 
 quake-general = generel
   .description = Se Quakecraft statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Quakecraft tilstand at se
 
 quake-from = fra
   .description = Se udviklingen af Quakecraft statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Quakecraft tilstand at se
   .time = tid
@@ -1541,19 +1334,15 @@ quake-from = fra
 
 quake-history = historie
   .description = Se udviklingen af Quakecraft statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Quakecraft tilstand at se
 
 quake-project = projekt
   .description = Projekt Quakecraft statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Quakecraft tilstand der skal vises
   .statistic = statistik
@@ -1563,28 +1352,22 @@ quake-project = projekt
 
 quake-daily = daglig
   .description = Se udviklingen af Quakecraft statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Quakecraft tilstand der skal vises
 
 quake-weekly = ugentlig
   .description = Se udviklingen af Quakecraft statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Quakecraft tilstand der skal vises
 
 quake-monthly = månedlig
   .description = Se udviklingen af Quakecraft statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Quakecraft tilstand der skal vises
 
@@ -1611,19 +1394,15 @@ fastest-win = Hurtigste Sejr
 
 skywars-general = generel
   .description = Se SkyWars statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
 
 skywars-from = fra
   .description = Se udviklingen af SkyWars statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
   .time = tid
@@ -1631,19 +1410,15 @@ skywars-from = fra
 
 skywars-history = historik
   .description = Se udviklingen af SkyWars statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
 
 skywars-project = projekt
   .description = Projekt SkyWars statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
   .statistic = statistik
@@ -1653,28 +1428,22 @@ skywars-project = projekt
 
 skywars-daily = daglig
   .description = Se udviklingen af SkyWars statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
 
 skywars-weekly = ugentlig
   .description = Se udviklingen af SkyWars statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
 
 skywars-monthly = månedlig
   .description = Se udviklingen af SkyWars statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SkyWars tilstand der skal vises
 
@@ -1686,19 +1455,15 @@ ssr = SSR
 
 smash-general = generel
   .description = Se Smash Heroes statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
 
 smash-from = fra
   .description = Se udviklingen af Smash Heroes statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
   .time = tid
@@ -1706,19 +1471,15 @@ smash-from = fra
 
 smash-history = historik
   .description = Se udviklingen af Smash Heroes statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
 
 smash-project = projekt
   .description = Projekt Smash Heroes statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
   .statistic = statistik
@@ -1728,28 +1489,22 @@ smash-project = projekt
 
 smash-daily = daglig
   .description = Se udviklingen af Smash Heroes statistikker over den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
 
 smash-weekly = ugentlig
   .description = Se udviklingen af Smash Heroes statistikker over den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
 
 smash-monthly = månedlig
   .description = Se udviklingen af Smash Heroes statistikker over den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den Smash Heroes tilstand der skal vises
 
@@ -1760,19 +1515,15 @@ survived-players = Overlevende
 
 speeduhc-general = generel
   .description = Se SpeedUHC statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SpeedUHC tilstand der skal vises
 
 speeduhc-from = fra
   .description = Se udviklingen af SpeedUHC statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SpeedUHC tilstand der skal vises
   .time = tid
@@ -1780,19 +1531,15 @@ speeduhc-from = fra
 
 speeduhc-history = historik
   .description = Se udviklingen af SpeedUHC statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Den SpeedUHC tilstand der skal vises
 
 speeduhc-project = projekt
   .description = Projekt SpeedUHC statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = SpeedUHC-tilstand at se
   .statistic = statistik
@@ -1802,28 +1549,22 @@ speeduhc-project = projekt
 
 speeduhc-daily = daglig
   .description = Se udviklingen af SpeedUHC statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = SpeedUHC-tilstand at se
 
 speeduhc-weekly = ugentlig
   .description = Se udviklingen af SpeedUHC statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = SpeedUHC-tilstand at se
 
 speeduhc-monthly = månedlig
   .description = Se udviklingen af SpeedUHC statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = SpeedUHC-tilstand at se
 
@@ -1843,19 +1584,15 @@ points = Point
 
 tntgames-general = generel
   .description = Se TNT Games statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
 
 tntgames-from = fra
   .description = Se udviklingen af TNT Games statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
   .time = tid
@@ -1863,19 +1600,15 @@ tntgames-from = fra
 
 tntgames-history = historie
   .description = Se udviklingen af TNT Games statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
 
 tntgames-project = projekt
   .description = Projekt TNT Games statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
   .statistic = statistik
@@ -1885,28 +1618,22 @@ tntgames-project = projekt
 
 tntgames-daily = daglig
   .description = Se udviklingen af TNT Games statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
 
 tntgames-weekly = ugentlig
   .description = Se udviklingen af TNT Games statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
 
 tntgames-monthly = månedlig
   .description = Se udviklingen af TNT Games statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = TNT Games-tilstand at se
 
@@ -1922,19 +1649,15 @@ gold-trophies = Guld Trofæer
 
 turbokartracers-general = generel
   .description = Se Turbo Kart Racers statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
 
 turbokartracers-from = fra
   .description = Se udviklingen af Turbo Kart Racers statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
   .time = tid
@@ -1942,19 +1665,15 @@ turbokartracers-from = fra
 
 turbokartracers-history = historie
   .description = Se udviklingen af Turbo Kart Racers statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
 
 turbokartracers-project = projekt
   .description = Projekt Turbo Kart Racers statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
   .statistic = statistik
@@ -1964,28 +1683,22 @@ turbokartracers-project = projekt
 
 turbokartracers-daily = daglig
   .description = Se udviklingen af Turbo Kart Racers statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
 
 turbokartracers-weekly = ugentlig
   .description = Se udviklingen af Turbo Kart Racers statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
 
 turbokartracers-monthly = månedlig
   .description = Se udviklingen af Turbo Kart Racers statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Turbo Kart Racers-tilstand at se
 
@@ -2003,19 +1716,15 @@ ultimates-crafted = Skabte Ultimates
 
 uhc-general = generel
   .description = Se UHC Champions statistikker
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
 
 uhc-from = fra
   .description = Se udviklingen af UHC Champions statistikker siden et specifikt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
   .time = tid
@@ -2023,19 +1732,15 @@ uhc-from = fra
 
 uhc-history = historik
   .description = Se udviklingen af UHC Champions-statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
 
 uhc-project = projekt
   .description = Projekt UHC Champions-statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
   .statistic = statistik
@@ -2045,28 +1750,22 @@ uhc-project = projekt
 
 uhc-daily = daglig
   .description = Se udviklingen af UHC Champions-statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
 
 uhc-weekly = ugentlig
   .description = Se udviklingen af UHC Champions-statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
 
 uhc-monthly = månedlig
   .description = Se udviklingen af UHC Champions-statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = UHC Champions-tilstand at se
 
@@ -2090,19 +1789,15 @@ vkdr = VKDR
 
 vampirez-general = generel
   .description = Se VampireZ-statistikker
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
 
 vampirez-from = fra
   .description = Se udviklingen af VampireZ-statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
   .time = tid
@@ -2110,19 +1805,15 @@ vampirez-from = fra
 
 vampirez-history = historik
   .description = Se udviklingen af VampireZ-statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
 
 vampirez-project = projekt
   .description = Projekt VampireZ-statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
   .statistic = statistik
@@ -2132,28 +1823,22 @@ vampirez-project = projekt
 
 vampirez-daily = daglig
   .description = Se udviklingen af VampireZ-statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
 
 vampirez-weekly = ugentlig
   .description = Se udviklingen af VampireZ-statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
 
 vampirez-monthly = månedlig
   .description = Se udviklingen af VampireZ-statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = VampireZ-tilstand at se
 
@@ -2166,19 +1851,15 @@ iron-broken = Jern brækket
 
 walls-general = generel
   .description = Se The Walls-statistikker
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
 
 walls-from = fra
   .description = Se udviklingen af The Walls-statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
   .time = tid
@@ -2186,19 +1867,15 @@ walls-from = fra
 
 walls-history = historik
   .description = Se udviklingen af The Walls-statistikker over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
 
 walls-project = projekt
   .description = Projekt The Walls-statistikker ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
   .statistic = statistik
@@ -2208,28 +1885,22 @@ walls-project = projekt
 
 walls-daily = daglig
   .description = Se udviklingen af The Walls-statistikker i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
 
 walls-weekly = ugentlig
   .description = Se udviklingen af The Walls-statistikker i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
 
 walls-monthly = månedlig
   .description = Se udviklingen af The Walls-statistikker i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = The Walls-tilstand at se
 
@@ -2246,19 +1917,15 @@ mvps = MVP'er
 
 warlords-general = generel
   .description = Se Warlords-statistikker
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
 
 warlords-from = fra
   .description = Se udviklingen af Warlords-statistikker siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
   .time = tid
@@ -2268,19 +1935,15 @@ warlords-from = fra
 
 warlords-history = historie
   .description = Se udviklingen af Warlords-statistik over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
 
 warlords-project = projekt
   .description = Projekt Warlords-statistik ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
   .statistic = statistik
@@ -2290,28 +1953,22 @@ warlords-project = projekt
 
 warlords-daily = daglig
   .description = Se udviklingen af Warlords-statistik i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
 
 warlords-weekly = ugentlig
   .description = Se udviklingen af Warlords-statistik i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
 
 warlords-monthly = månedlig
   .description = Se udviklingen af Warlords-statistik i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Warlords-tilstand at se
 
@@ -2323,19 +1980,15 @@ wool-placed = Placeret Uld
 
 woolwars-general = generelt
   .description = Se Wool Wars-statistik
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
 
 woolwars-from = fra
   .description = Se udviklingen af Wool Wars-statistik siden et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
   .time = tid
@@ -2343,19 +1996,15 @@ woolwars-from = fra
 
 woolwars-history = historie
   .description = Se udviklingen af Wool Wars-statistik over tid
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
 
 woolwars-project = projekt
   .description = Projekt Wool Wars-statistik ind i fremtiden
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
   .statistic = statistik
@@ -2365,28 +2014,22 @@ woolwars-project = projekt
 
 woolwars-daily = daglig
   .description = Se udviklingen af Wool Wars-statistik i løbet af den sidste dag
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
 
 woolwars-weekly = ugentlig
   .description = Se udviklingen af Wool Wars-statistik i løbet af den sidste uge
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
 
 woolwars-monthly = månedlig
   .description = Se udviklingen af Wool Wars-statistik i løbet af den sidste måned
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .mode = tilstand
   .mode-description = Wool Wars-tilstand at se
 
@@ -2411,19 +2054,14 @@ guild-general = generelt
   .description = Vis statistik for en guild
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 guild-from = fra
   .description = Se udviklingen af guild-statistik siden et bestemt tidspunkt
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden at gå tilbage (1h 12m 5s)
 
@@ -2431,26 +2069,18 @@ guild-members = medlemmer
   .description = Vis medlemmer af en guild
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 guild-member = medlem
   .description = Vis statistik for et guild-medlem
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se statistikken
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se statistikken
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 guild-top = top
   .description = Vis topmedlemmer af en guild efter XP
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .days = dage
   .days-description = dage
   .limit = grænse
@@ -2460,29 +2090,20 @@ guild-daily = daglig
   .description = Se udviklingen af guild-statistik i løbet af den sidste dag
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 guild-weekly = ugentlig
   .description = Se udviklingen af guild-statistik i løbet af den sidste uge
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 guild-monthly = månedlig
   .description = Se udviklingen af guild-statistik i løbet af den sidste måned
   .name = navn
   .name-description = Navnet på guild'en at se
-  .username = brugernavn
-  .username-description = Brugernavnet på guild-medlemmet for at se guild'en
-  .uuid = uuid
-  .uuid-description = UUID'en for guild-medlemmet for at se guild'en
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 showing-guild-xp-statistics = Viser guild XP-fremgang fra {$from} til {$to}.
 
 # Delte canvas-etiketter
@@ -2750,18 +2371,12 @@ practice = Øvelse
 
 bedwars-hotbar = hotbar
   .description = Se præferencer for Bed Wars-hotbar
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 bedwars-shop = shop
   .description = Se præferencer for Bed Wars-butik
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 attempts = Forsøg
 bridging-wins = Sejr i brobygning
 bridging-losses = Nederlag i brobygning
@@ -2793,19 +2408,14 @@ diagonal-staircase-100 = Diagonal Trappe 100
 
 bedwars-practice = practice
   .description = Se præstationsstatistikker for Bed Wars-øvelse
-  .username = brugernavn
-  .username-description = Minecraft-brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spiller
+  .player-description = Minecraft spiller eller session
 # Kommandoer
 
 arcade-at = ved
   .description = Vis Arcade-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2813,10 +2423,8 @@ arcade-at = ved
 
 arena-at = ved
   .description = Vis Arena-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2824,10 +2432,8 @@ arena-at = ved
 
 bedwars-at = ved
   .description = Vis Bed Wars-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2835,10 +2441,8 @@ bedwars-at = ved
 
 blitz-at = ved
   .description = Vis Blitz Survival Games-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2846,10 +2450,8 @@ blitz-at = ved
 
 buildbattle-at = ved
   .description = Vis Build Battle-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2857,10 +2459,8 @@ buildbattle-at = ved
 
 copsandcrims-at = ved
   .description = Vis Cops and Crims-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2868,10 +2468,8 @@ copsandcrims-at = ved
 
 duels-at = ved
   .description = Vis Duels-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2879,10 +2477,8 @@ duels-at = ved
 
 megawalls-at = ved
   .description = Vis Mega Walls-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2890,10 +2486,8 @@ megawalls-at = ved
 
 murdermystery-at = ved
   .description = Vis Murder Mystery-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2901,10 +2495,8 @@ murdermystery-at = ved
 
 paintball-at = ved
   .description = Vis Paintball-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2912,10 +2504,8 @@ paintball-at = ved
 
 pit-at = ved
   .description = Vis The Pit-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2923,10 +2513,8 @@ pit-at = ved
 
 quake-at = ved
   .description = Vis Quakecraft-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2934,10 +2522,8 @@ quake-at = ved
 
 skywars-at = ved
   .description = Vis SkyWars-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2945,10 +2531,8 @@ skywars-at = ved
 
 smash-at = ved
   .description = Vis Smash Heroes-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2956,10 +2540,8 @@ smash-at = ved
 
 speeduhc-at = ved
   .description = Vis SpeedUHC-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2967,10 +2549,8 @@ speeduhc-at = ved
 
 tntgames-at = ved
   .description = Vis TNT Games-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2978,10 +2558,8 @@ tntgames-at = ved
 
 turbokartracers-at = ved
   .description = Vis Turbo Kart Racers-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -2989,10 +2567,8 @@ turbokartracers-at = ved
 
 uhc-at = ved
   .description = Vis UHC Champions-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -3000,10 +2576,8 @@ uhc-at = ved
 
 vampirez-at = ved
   .description = Vis VampireZ-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -3011,10 +2585,8 @@ vampirez-at = ved
 
 walls-at = ved
   .description = Vis The Walls-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -3022,10 +2594,8 @@ walls-at = ved
 
 warlords-at = ved
   .description = Vis Warlords-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -3033,10 +2603,8 @@ warlords-at = ved
 
 woolwars-at = ved
   .description = Vis Wool Wars-statistik for en spiller på et bestemt tidspunkt
-  .username = brugernavn
-  .username-description = Minecraft brugernavn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
   .mode = tilstand
@@ -3046,10 +2614,8 @@ guild-at = ved
   .description = Vis statistik for en guild på et bestemt tidspunkt
   .name = navn
   .name-description = Navnet på den guild, der skal ses
-  .username = brugernavn
-  .username-description = Brugernavnet på guildmedlemmet, hvis guild skal ses
-  .uuid = uuid
-  .uuid-description = UUID'en for guildmedlemmet, hvis guild skal ses
+  .player = spiller
+  .player-description = Minecraft spiller eller session
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
 

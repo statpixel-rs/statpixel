@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Visar statistik för **`{$fro
 # Felmeddelanden
 
 error-player-not-found = Profilen för **`{$name}`** kunde inte hittas.
-error-session-not-found = En session för **`{$name}`** kunde inte hittas.
+error-snapshot-not-found = En session för **`{$name}`** kunde inte hittas.
 error-player-uuid-not-found = En spelare med uuid **`{$uuid}`** kunde inte hittas.
 error-player-username-not-found = En spelare med användarnamnet **`{$name}`** kunde inte hittas.
 error-guild-by-member-uuid-not-found = En guildmedlem med uuid **`{$uuid}`** kunde inte hittas.
@@ -91,11 +91,8 @@ track-success-description =
 
 track = track
   .description = Spårar en spelares statistik och skickar ändringarna till den aktuella kanalen.
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn att spåra
-  .uuid = uuid
-  .uuid-description = Minecraft UUID att spåra
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 # /custom
 
 execute = utför
@@ -203,11 +200,8 @@ about = om
 
 winstreaks = vinstreaks
   .description = Visa vinstreaks
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 # /recent
 
 mode = Läge
@@ -218,11 +212,8 @@ playing = Spelar
 
 recent = senaste
   .description = Visa senaste spel
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 # Projection labels
 
 accuracy = Noggrannhet
@@ -274,11 +265,8 @@ Wardrobe = Garderob
 
 skyblock-auctions = auktioner
   .description = Visa SkyBlock auktioner
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 player-auctions = Auktioner
 highest-bid = Högsta bud
 
@@ -286,109 +274,85 @@ highest-bid = Högsta bud
 
 skyblock-inventory = inventering
   .description = Visa en SkyBlock-inventering
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-enderchest = enderkista
   .description = Visa en SkyBlock-enderkista
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-quiver = koger
   .description = Visa en SkyBlock-koger
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-talisman = talisman
   .description = Visa en SkyBlock-talismanväska
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-fishing = fiske
   .description = Visa en SkyBlock-fiskeväska
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-potions = drycker
   .description = Visa en SkyBlock-dryckesväska
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-equipment = utrustning
   .description = Visa SkyBlock-utrustning
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-wardrobe = garderob
   .description = Visa en SkyBlock-garderob
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-candy = godis
   .description = Visa en SkyBlock-godisinventering
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-vault = valv
   .description = Visa en SkyBlock personligt valv
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-pets = husdjur
   .description = Visa SkyBlock-husdjur
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
 skyblock-networth = förmögenhet
   .description = Visa SkyBlock-profilens förmögenhet
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
@@ -396,10 +360,8 @@ skyblock-networth = förmögenhet
 
 skyblock-profile = profil
   .description = Visa en SkyBlock-profil
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
@@ -428,10 +390,8 @@ social = Socialt
 
 skyblock-bank = bank
   .description = Visa en SkyBlock-bank
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .profile = profil
   .profile-description = Profilen att visa
 
@@ -449,18 +409,12 @@ leaderboard = topplista
 
 network-general = allmän
   .description = Visa allmänna nätverksstatistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 network-history = historia
   .description = Visa historisk nätverksstatistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 karma = Karma
 rewards = Belöningar
 friend-requests = Vänförfrågningar
@@ -533,11 +487,8 @@ unlinking-succeeded-description = Du är inte längre länkad till ett Minecraft
 # /link
 link = länka
   .description = Länkar ditt Discord-konto till ett Minecraft-konto.
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn att länka
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID att länka
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 linking-failed = Länkning misslyckades
 linking-failed-uuid-description = UUID:n **`{$uuid}`** tillhör inte ett Minecraft-konto.
 linking-failed-username-description = Användarnamnet **`{$username}`** tillhör inte ett Minecraft-konto.
@@ -572,19 +523,15 @@ mystery-gifts = Gåvor av Mysterium
 
 arcade-general = allmän
   .description = Visa Arcade-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
 
 arcade-from = från
   .description = Visa utvecklingen av Arcade-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
   .time = tid
@@ -592,19 +539,15 @@ arcade-from = från
 
 arcade-history = historia
   .description = Visa utvecklingen av Arcade-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
 
 arcade-project = projekt
   .description = Projekt Arcade-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
   .statistic = statistik
@@ -614,28 +557,22 @@ arcade-project = projekt
 
 arcade-daily = dagligen
   .description = Visa utvecklingen av Arcade-statistik de senaste 24 timmarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
 
 arcade-weekly = veckovis
   .description = Visa utvecklingen av Arcade-statistik de senaste 7 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
 
 arcade-monthly = månatlig
   .description = Visa utvecklingen av Arcade-statistik de senaste 30 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arcade-läge att visa
 
@@ -647,19 +584,15 @@ rating = Betyg
 
 arena-general = allmän
   .description = Visa Arena-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
 
 arena-from = från
   .description = Visa utvecklingen av Arena-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
   .time = tid
@@ -667,19 +600,15 @@ arena-from = från
 
 arena-history = historia
   .description = Visa utvecklingen av Arena-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
 
 arena-project = projekt
   .description = Projekt Arena-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
   .statistic = statistik
@@ -689,28 +618,22 @@ arena-project = projekt
 
 arena-daily = dagligen
   .description = Visa utvecklingen av Arena-statistik de senaste 24 timmarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
 
 arena-weekly = veckovis
   .description = Visa utvecklingen av Arena-statistik de senaste 7 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
 
 arena-monthly = månatlig
   .description = Visa utvecklingen av Arena-statistik de senaste 30 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Arena-läge att visa
 
@@ -753,19 +676,15 @@ items-purchased = Köp
 
 bedwars-general = allmän
   .description = Visa Bed Wars-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
 
 bedwars-from = från
   .description = Visa utvecklingen av Bed Wars-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
   .time = tid
@@ -773,19 +692,15 @@ bedwars-from = från
 
 bedwars-history = historia
   .description = Visa utvecklingen av Bed Wars-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
 
 bedwars-project = projekt
   .description = Projekt Bed Wars-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
   .statistic = statistik
@@ -795,28 +710,22 @@ bedwars-project = projekt
 
 bedwars-daily = dagligen
   .description = Visa utvecklingen av Bed Wars-statistik de senaste 24 timmarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
 
 bedwars-weekly = veckovis
   .description = Visa utvecklingen av Bed Wars-statistik de senaste 7 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
 
 bedwars-monthly = månatlig
   .description = Visa utvecklingen av Bed Wars-statistik de senaste 30 dagarna
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Bed Wars-läge att visa
 
@@ -853,19 +762,15 @@ time-played = Speltid
 
 blitz-general = allmänt
   .description = Visa statistik för Blitz Survival Games
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
 
 blitz-from = från
   .description = Visa utvecklingen av statistik för Blitz Survival Games sedan en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
   .time = tid
@@ -873,19 +778,15 @@ blitz-from = från
 
 blitz-history = historia
   .description = Visa utvecklingen av statistik för Blitz Survival Games över tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
 
 blitz-project = projekt
   .description = Projicera statistik för Blitz Survival Games in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
   .statistic = statistik
@@ -895,28 +796,22 @@ blitz-project = projekt
 
 blitz-daily = dagligen
   .description = Visa utvecklingen av statistik för Blitz Survival Games under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
 
 blitz-weekly = veckovis
   .description = Visa utvecklingen av statistik för Blitz Survival Games under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
 
 blitz-monthly = månadsvis
   .description = Visa utvecklingen av statistik för Blitz Survival Games under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Blitz Survival Games att visa
 
@@ -931,19 +826,15 @@ most-points-team = Flest Poäng (Lag)
 
 buildbattle-general = allmänt
   .description = Visa statistik för Build Battle
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
 
 buildbattle-from = från
   .description = Visa utvecklingen av statistik för Build Battle sedan en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
   .time = tid
@@ -951,19 +842,15 @@ buildbattle-from = från
 
 buildbattle-history = historia
   .description = Visa utvecklingen av statistik för Build Battle över tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
 
 buildbattle-project = projekt
   .description = Projicera statistik för Build Battle in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
   .statistic = statistik
@@ -973,28 +860,22 @@ buildbattle-project = projekt
 
 buildbattle-daily = dagligen
   .description = Visa utvecklingen av statistik för Build Battle under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
 
 buildbattle-weekly = veckovis
   .description = Visa utvecklingen av statistik för Build Battle under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
 
 buildbattle-monthly = månadsvis
   .description = Visa utvecklingen av statistik för Build Battle under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Build Battle att visa
 
@@ -1013,19 +894,15 @@ bombs-planted = Bomber placerade
 
 copsandcrims-general = allmänt
   .description = Visa statistik för Cops and Crims
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
 
 copsandcrims-from = från
   .description = Visa utvecklingen av statistik för Cops and Crims sedan en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
   .time = tid
@@ -1033,19 +910,15 @@ copsandcrims-from = från
 
 copsandcrims-history = historia
   .description = Visa utvecklingen av statistik för Cops and Crims över tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
 
 copsandcrims-project = projekt
   .description = Projicera statistik för Cops and Crims in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
   .statistic = statistik
@@ -1055,28 +928,22 @@ copsandcrims-project = projekt
 
 copsandcrims-daily = dagligen
   .description = Visa utvecklingen av statistik för Cops and Crims under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Läget för Cops and Crims att visa
 
 copsandcrims-weekly = veckovis
   .description = Se utvecklingen av Cops and Crims-statistik över den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Cops and Crims-läge att visa
 
 copsandcrims-monthly = månadsvis
   .description = Se utvecklingen av Cops and Crims-statistik över den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Cops and Crims-läge att visa
 
@@ -1116,19 +983,15 @@ health-regenerated = Återhämtad hälsa
 
 duels-general = allmänt
   .description = Visa Duels-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
 
 duels-from = från
   .description = Visa utvecklingen av Duels-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
   .time = tid
@@ -1136,19 +999,15 @@ duels-from = från
 
 duels-history = historia
   .description = Visa utvecklingen av Duels-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
 
 duels-project = projekt
   .description = Projicera Duels-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
   .statistic = statistik
@@ -1158,28 +1017,22 @@ duels-project = projekt
 
 duels-daily = dagligen
   .description = Se utvecklingen av Duels-statistik över den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
 
 duels-weekly = veckovis
   .description = Se utvecklingen av Duels-statistik över den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
 
 duels-monthly = månadsvis
   .description = Se utvecklingen av Duels-statistik över den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Duels-läge att visa
 
@@ -1195,19 +1048,15 @@ treasures-found = Skatter hittade
 
 megawalls-general = allmänt
   .description = Visa Mega Walls-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
 
 megawalls-from = från
   .description = Visa utvecklingen av Mega Walls-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
   .time = tid
@@ -1215,19 +1064,15 @@ megawalls-from = från
 
 megawalls-history = historia
   .description = Visa utvecklingen av Mega Walls-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
 
 megawalls-project = projekt
   .description = Projicera Mega Walls-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
   .statistic = statistik
@@ -1237,28 +1082,22 @@ megawalls-project = projekt
 
 megawalls-daily = dagligen
   .description = Se utvecklingen av Mega Walls-statistik över den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
 
 megawalls-weekly = veckovis
   .description = Se utvecklingen av Mega Walls-statistik över den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
 
 megawalls-monthly = månadsvis
   .description = Se utvecklingen av Mega Walls-statistik över den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mega Walls-läge att visa
 
@@ -1275,19 +1114,15 @@ detective-wins = Detektivvinster
 
 murdermystery-general = allmänt
   .description = Visa Murder Mystery-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Murder Mystery-läge att visa
 
 murdermystery-from = från
   .description = Visa utvecklingen av Murder Mystery-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Murder Mystery-läge att visa
   .time = tid
@@ -1295,19 +1130,15 @@ murdermystery-from = från
 
 murdermystery-history = historia
   .description = Visa utvecklingen av Murder Mystery-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Murder Mystery-läge att visa
 
 murdermystery-project = projekt
   .description = Projekt för statistik om mordmysterier i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mordmysteriets läge att visa
   .statistic = statistik
@@ -1317,28 +1148,22 @@ murdermystery-project = projekt
 
 murdermystery-daily = daglig
   .description = Se utvecklingen av statistik för mordmysterier under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mordmysteriets läge att visa
 
 murdermystery-weekly = veckovis
   .description = Se utvecklingen av statistik för mordmysterier under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mordmysteriets läge att visa
 
 murdermystery-monthly = månadsvis
   .description = Se utvecklingen av statistik för mordmysterier under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Mordmysteriets läge att visa
 
@@ -1363,19 +1188,15 @@ highest-killstreak = Bästa Streak
 
 paintball-general = allmänt
   .description = Visa Paintball-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
 
 paintball-from = från
   .description = Visa utvecklingen av Paintball-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
   .time = tid
@@ -1383,19 +1204,15 @@ paintball-from = från
 
 paintball-history = historik
   .description = Visa utvecklingen av Paintball-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
 
 paintball-project = projekt
   .description = Projekt för Paintball-statistik i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
   .statistic = statistik
@@ -1405,28 +1222,22 @@ paintball-project = projekt
 
 paintball-daily = daglig
   .description = Se utvecklingen av Paintball-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
 
 paintball-weekly = veckovis
   .description = Se utvecklingen av Paintball-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
 
 paintball-monthly = månadsvis
   .description = Se utvecklingen av Paintball-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Paintball-läge att visa
 
@@ -1442,19 +1253,15 @@ cr = Slutförandegrad
 
 pit-general = allmänt
   .description = Visa statistik för The Pit
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
 
 pit-from = från
   .description = Visa utvecklingen av The Pit-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
   .time = tid
@@ -1462,19 +1269,15 @@ pit-from = från
 
 pit-history = historik
   .description = Visa utvecklingen av The Pit-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
 
 pit-project = projekt
   .description = Projekt för The Pit-statistik i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
   .statistic = statistik
@@ -1484,28 +1287,22 @@ pit-project = projekt
 
 pit-daily = daglig
   .description = Se utvecklingen av The Pit-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
 
 pit-weekly = veckovis
   .description = Se utvecklingen av The Pit-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
 
 pit-monthly = månadsvis
   .description = Se utvecklingen av The Pit-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Pit-läge att visa
 
@@ -1519,19 +1316,15 @@ sight = Syn
 
 quake-general = allmänt
   .description = Visa Quakecraft-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läge att visa
 
 quake-from = från
   .description = Visa utvecklingen av Quakecraft-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läge att visa
   .time = tid
@@ -1539,19 +1332,15 @@ quake-from = från
 
 quake-history = historik
   .description = Visa utvecklingen av Quakecraft-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läge att visa
 
 quake-project = projekt
   .description = Projekt Quakecraft-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läget att visa
   .statistic = statistik
@@ -1561,28 +1350,22 @@ quake-project = projekt
 
 quake-daily = dagligen
   .description = Visa utvecklingen av Quakecraft-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läget att visa
 
 quake-weekly = veckovis
   .description = Visa utvecklingen av Quakecraft-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läget att visa
 
 quake-monthly = månatlig
   .description = Visa utvecklingen av Quakecraft-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Quakecraft-läget att visa
 
@@ -1609,19 +1392,15 @@ fastest-win = Snabbaste Vinster
 
 skywars-general = allmänt
   .description = Visa SkyWars-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
 
 skywars-from = från
   .description = Visa utvecklingen av SkyWars-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
   .time = tid
@@ -1629,19 +1408,15 @@ skywars-from = från
 
 skywars-history = historia
   .description = Visa utvecklingen av SkyWars-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
 
 skywars-project = projekt
   .description = Projekt SkyWars-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
   .statistic = statistik
@@ -1651,28 +1426,22 @@ skywars-project = projekt
 
 skywars-daily = dagligen
   .description = Visa utvecklingen av SkyWars-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
 
 skywars-weekly = veckovis
   .description = Visa utvecklingen av SkyWars-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
 
 skywars-monthly = månatlig
   .description = Visa utvecklingen av SkyWars-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SkyWars-läget att visa
 
@@ -1684,19 +1453,15 @@ ssr = SSR
 
 smash-general = allmänt
   .description = Visa Smash Heroes-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
 
 smash-from = från
   .description = Visa utvecklingen av Smash Heroes-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
   .time = tid
@@ -1704,19 +1469,15 @@ smash-from = från
 
 smash-history = historia
   .description = Visa utvecklingen av Smash Heroes-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
 
 smash-project = projekt
   .description = Projekt Smash Heroes-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
   .statistic = statistik
@@ -1726,28 +1487,22 @@ smash-project = projekt
 
 smash-daily = dagligen
   .description = Visa utvecklingen av Smash Heroes-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
 
 smash-weekly = veckovis
   .description = Visa utvecklingen av Smash Heroes-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
 
 smash-monthly = månatlig
   .description = Visa utvecklingen av Smash Heroes-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Smash Heroes-läget att visa
 
@@ -1758,19 +1513,15 @@ survived-players = Överlevande
 
 speeduhc-general = allmänt
   .description = Visa SpeedUHC-statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
 
 speeduhc-from = från
   .description = Visa utvecklingen av SpeedUHC-statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
   .time = tid
@@ -1778,19 +1529,15 @@ speeduhc-from = från
 
 speeduhc-history = historia
   .description = Visa utvecklingen av SpeedUHC-statistik över tid
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
 
 speeduhc-project = projekt
   .description = Projekt SpeedUHC-statistik i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
   .statistic = statistik
@@ -1800,28 +1547,22 @@ speeduhc-project = projekt
 
 speeduhc-daily = dagligen
   .description = Visa utvecklingen av SpeedUHC-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
 
 speeduhc-weekly = veckovis
   .description = Visa utvecklingen av SpeedUHC-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
 
 speeduhc-monthly = månadsvis
   .description = Visa utvecklingen av SpeedUHC-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = SpeedUHC-läget att visa
 
@@ -1841,19 +1582,15 @@ points = Poäng
 
 tntgames-general = allmänt
   .description = Visa TNT Games statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
 
 tntgames-from = från
   .description = Visa utvecklingen av TNT Games statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
   .time = tid
@@ -1861,19 +1598,15 @@ tntgames-from = från
 
 tntgames-history = historia
   .description = Visa utvecklingen av TNT Games statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
 
 tntgames-project = projekt
   .description = Projekt TNT Games statistik i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
   .statistic = statistik
@@ -1883,28 +1616,22 @@ tntgames-project = projekt
 
 tntgames-daily = dagligen
   .description = Visa utvecklingen av TNT Games statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
 
 tntgames-weekly = veckovis
   .description = Visa utvecklingen av TNT Games statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
 
 tntgames-monthly = månadsvis
   .description = Visa utvecklingen av TNT Games statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = TNT Games-läget att visa
 
@@ -1920,19 +1647,15 @@ gold-trophies = Guld Troféer
 
 turbokartracers-general = allmänt
   .description = Visa Turbo Kart Racers statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
 
 turbokartracers-from = från
   .description = Visa utvecklingen av Turbo Kart Racers statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
   .time = tid
@@ -1940,19 +1663,15 @@ turbokartracers-from = från
 
 turbokartracers-history = historia
   .description = Visa utvecklingen av Turbo Kart Racers statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
 
 turbokartracers-project = projekt
   .description = Projekt Turbo Kart Racers statistik i framtiden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
   .statistic = statistik
@@ -1962,28 +1681,22 @@ turbokartracers-project = projekt
 
 turbokartracers-daily = dagligen
   .description = Visa utvecklingen av Turbo Kart Racers statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
 
 turbokartracers-weekly = veckovis
   .description = Visa utvecklingen av Turbo Kart Racers statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
 
 turbokartracers-monthly = månadsvis
   .description = Visa utvecklingen av Turbo Kart Racers statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Turbo Kart Racers-läget att visa
 
@@ -2001,19 +1714,15 @@ ultimates-crafted = Tillverkade Ultimates
 
 uhc-general = allmänt
   .description = Visa UHC Champions statistik
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läget att visa
 
 uhc-from = från
   .description = Visa utvecklingen av UHC Champions statistik sedan en specifik tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läget att visa
   .time = tid
@@ -2021,19 +1730,15 @@ uhc-from = från
 
 uhc-history = historia
   .description = Se utvecklingen av UHC Champions-statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läge att visa
 
 uhc-project = projekt
   .description = Projekt UHC Champions-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läge att visa
   .statistic = statistik
@@ -2043,28 +1748,22 @@ uhc-project = projekt
 
 uhc-daily = daglig
   .description = Se utvecklingen av UHC Champions-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läge att visa
 
 uhc-weekly = veckovis
   .description = Se utvecklingen av UHC Champions-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läge att visa
 
 uhc-monthly = månatlig
   .description = Se utvecklingen av UHC Champions-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = UHC Champions-läge att visa
 
@@ -2088,19 +1787,15 @@ vkdr = VKDR
 
 vampirez-general = allmänt
   .description = Visa VampireZ-statistik
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
 
 vampirez-from = från
   .description = Visa utvecklingen av VampireZ-statistik sedan en specifik tid
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
   .time = tid
@@ -2108,19 +1803,15 @@ vampirez-from = från
 
 vampirez-history = historia
   .description = Visa utvecklingen av VampireZ-statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
 
 vampirez-project = projekt
   .description = Projekt VampireZ-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
   .statistic = statistik
@@ -2130,28 +1821,22 @@ vampirez-project = projekt
 
 vampirez-daily = daglig
   .description = Se utvecklingen av VampireZ-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
 
 vampirez-weekly = veckovis
   .description = Se utvecklingen av VampireZ-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
 
 vampirez-monthly = månatlig
   .description = Se utvecklingen av VampireZ-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = VampireZ-läge att visa
 
@@ -2164,19 +1849,15 @@ iron-broken = Järn Bröts
 
 walls-general = allmänt
   .description = Visa The Walls statistik
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
 
 walls-from = från
   .description = Visa utvecklingen av The Walls statistik sedan en specifik tid
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
   .time = tid
@@ -2184,19 +1865,15 @@ walls-from = från
 
 walls-history = historia
   .description = Visa utvecklingen av The Walls statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
 
 walls-project = projekt
   .description = Projekt The Walls-statistik framåt i tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
   .statistic = statistik
@@ -2206,28 +1883,22 @@ walls-project = projekt
 
 walls-daily = daglig
   .description = Se utvecklingen av The Walls statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
 
 walls-weekly = veckovis
   .description = Se utvecklingen av The Walls statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
 
 walls-monthly = månatlig
   .description = Se utvecklingen av The Walls statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = The Walls-läge att visa
 
@@ -2244,19 +1915,15 @@ mvps = MVPs
 
 warlords-general = allmänt
   .description = Visa Warlords statistik
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läge att visa
 
 warlords-from = från
   .description = Visa utvecklingen av Warlords statistik sedan en specifik tid
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läge att visa
   .time = tid
@@ -2264,19 +1931,15 @@ warlords-from = från
 
 warlords-history = historik
   .description = Visa utvecklingen av Warlords-statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läget att visa
 
 warlords-project = projekt
   .description = Projekt Warlords-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läget att visa
   .statistic = statistik
@@ -2286,28 +1949,22 @@ warlords-project = projekt
 
 warlords-daily = dagligen
   .description = Visa utvecklingen av Warlords-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läget att visa
 
 warlords-weekly = veckovis
   .description = Visa utvecklingen av Warlords-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läget att visa
 
 warlords-monthly = månadsvis
   .description = Visa utvecklingen av Warlords-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Warlords-läget att visa
 
@@ -2319,19 +1976,15 @@ wool-placed = Placerad ull
 
 woolwars-general = allmän
   .description = Visa Wool Wars-statistik
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
 
 woolwars-from = från
   .description = Visa utvecklingen av Wool Wars-statistik sedan en specifik tid
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
   .time = tid
@@ -2339,19 +1992,15 @@ woolwars-from = från
 
 woolwars-history = historik
   .description = Visa utvecklingen av Wool Wars-statistik över tiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
 
 woolwars-project = projekt
   .description = Projekt Wool Wars-statistik in i framtiden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
   .statistic = statistik
@@ -2361,28 +2010,22 @@ woolwars-project = projekt
 
 woolwars-daily = dagligen
   .description = Visa utvecklingen av Wool Wars-statistik under den senaste dagen
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
 
 woolwars-weekly = veckovis
   .description = Visa utvecklingen av Wool Wars-statistik under den senaste veckan
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
 
 woolwars-monthly = månadsvis
   .description = Visa utvecklingen av Wool Wars-statistik under den senaste månaden
-  .username = användarnamn
-  .username-description = Minecraft användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .mode = läge
   .mode-description = Wool Wars-läget att visa
 
@@ -2407,19 +2050,14 @@ guild-general = allmän
   .description = Visa statistik för en guild.
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 guild-from = från
   .description = Visa utvecklingen av guild-statistik sedan en specifik tid
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1h 12m 5s)
 
@@ -2427,26 +2065,18 @@ guild-members = medlemmar
   .description = Visa medlemmar i en guild.
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 guild-member = medlem
   .description = Visa statistik för en guildmedlem.
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 guild-top = topp
   .description = Visa toppmedlemmar i en guild enligt XP.
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .days = dagar
   .days-description = dagar
   .limit = gräns
@@ -2456,29 +2086,20 @@ guild-daily = dagligen
   .description = Visa utvecklingen av guild-statistik under den senaste dagen
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 guild-weekly = veckovis
   .description = Visa utvecklingen av guild-statistik under den senaste veckan
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 guild-monthly = månadsvis
   .description = Visa utvecklingen av guild-statistik under den senaste månaden
   .name = namn
   .name-description = Namnet på guild att visa
-  .username = användarnamn
-  .username-description = Användarnamn för guildmedlem att visa
-  .uuid = uuid
-  .uuid-description = UUID för guildmedlem att visa
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 showing-guild-xp-statistics = Visar guild XP-förvärv från {$from} till {$to}.
 
 # Delade canvas-etiketter
@@ -2746,18 +2367,12 @@ practice = Övning
 
 bedwars-hotbar = hotbar
   .description = Visa inställningar för snabbmenyn i Bed Wars
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 bedwars-shop = shop
   .description = Visa inställningar för butiken i Bed Wars
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 attempts = Försök
 bridging-wins = Vinster genom brobyggande
 bridging-losses = Förluster genom brobyggande
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = Diagonal. Trappa 100
 
 bedwars-practice = practice
   .description = Visa övningsstatistik för Bed Wars
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
 # Vid kommandon
 
 arcade-at = vid
   .description = Visa Arcade-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2809,10 +2419,8 @@ arcade-at = vid
 
 arena-at = vid
   .description = Visa Arena-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2820,10 +2428,8 @@ arena-at = vid
 
 bedwars-at = vid
   .description = Visa Bed Wars-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2831,10 +2437,8 @@ bedwars-at = vid
 
 blitz-at = vid
   .description = Visa Blitz Survival Games-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2842,10 +2446,8 @@ blitz-at = vid
 
 buildbattle-at = vid
   .description = Visa Build Battle-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2853,10 +2455,8 @@ buildbattle-at = vid
 
 copsandcrims-at = vid
   .description = Visa Cops and Crims-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2864,10 +2464,8 @@ copsandcrims-at = vid
 
 duels-at = vid
   .description = Visa Duels-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2875,10 +2473,8 @@ duels-at = vid
 
 megawalls-at = vid
   .description = Visa Mega Walls-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2886,10 +2482,8 @@ megawalls-at = vid
 
 murdermystery-at = vid
   .description = Visa Murder Mystery-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2897,10 +2491,8 @@ murdermystery-at = vid
 
 paintball-at = vid
   .description = Visa Paintball-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2908,10 +2500,8 @@ paintball-at = vid
 
 pit-at = vid
   .description = Visa The Pit-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2919,10 +2509,8 @@ pit-at = vid
 
 quake-at = vid
   .description = Visa Quakecraft-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2930,10 +2518,8 @@ quake-at = vid
 
 skywars-at = vid
   .description = Visa SkyWars-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2941,10 +2527,8 @@ skywars-at = vid
 
 smash-at = vid
   .description = Visa Smash Heroes-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2952,10 +2536,8 @@ smash-at = vid
 
 speeduhc-at = vid
   .description = Visa SpeedUHC-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2963,10 +2545,8 @@ speeduhc-at = vid
 
 tntgames-at = vid
   .description = Visa TNT Games-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2974,10 +2554,8 @@ tntgames-at = vid
 
 turbokartracers-at = vid
   .description = Visa Turbo Kart Racers-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2985,10 +2563,8 @@ turbokartracers-at = vid
 
 uhc-at = vid
   .description = Visa UHC Champions-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -2996,10 +2572,8 @@ uhc-at = vid
 
 vampirez-at = vid
   .description = Visa VampireZ-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -3007,10 +2581,8 @@ vampirez-at = vid
 
 walls-at = vid
   .description = Visa The Walls-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -3018,10 +2590,8 @@ walls-at = vid
 
 warlords-at = vid
   .description = Visa Warlords-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -3029,10 +2599,8 @@ warlords-at = vid
 
 woolwars-at = vid
   .description = Visa Wool Wars-statistik för en spelare vid en viss tidpunkt
-  .username = användarnamn
-  .username-description = Minecraft-användarnamn
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
   .mode = läge
@@ -3042,10 +2610,8 @@ guild-at = vid
   .description = Visa statistik för en guild vid en viss tidpunkt
   .name = namn
   .name-description = Guildens namn att visa
-  .username = användarnamn
-  .username-description = Guildmedlemmens användarnamn att visa
-  .uuid = uuid
-  .uuid-description = Guildmedlemmens UUID att visa
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
 

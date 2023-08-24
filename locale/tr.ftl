@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> **`{$from}`** ile **`{$to}`**
 # Hatalar
 
 error-player-not-found = **`{$name}`** adlı bir profille ilgili bilgi bulunamadı.
-error-session-not-found = **`{$name}`** adlı bir oturum bulunamadı.
+error-snapshot-not-found = **`{$name}`** adlı bir oturum bulunamadı.
 error-player-uuid-not-found = UUID'si **`{$uuid}`** olan bir oyuncu bulunamadı.
 error-player-username-not-found = **`{$name}`** kullanıcı adına sahip bir oyuncu bulunamadı.
 error-guild-by-member-uuid-not-found = UUID'si **`{$uuid}`** olan bir sunucu üyesi bulunamadı.
@@ -90,11 +90,8 @@ track-success-description =
 
 track = track
   .description = Bir oyuncunun istatistiklerini takip eder ve değişiklikleri mevcut kanala gönderir.
-  .username = kullanıcı-adı
-  .username-description = Takip edilecek Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Takip edilecek Minecraft UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 # /custom
 
 execute = execute
@@ -200,11 +197,8 @@ about = about
 
 winstreaks = winstreaks
   .description = Winstreak'leri görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 # /recent
 
 mode = Mod
@@ -215,11 +209,8 @@ playing = Oynama
 
 recent = recent
   .description = Son oyunları görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 # Projection etiketleri
 
 accuracy = Doğruluk
@@ -271,11 +262,8 @@ Wardrobe = Gardırop
 
 skyblock-auctions = auctions
   .description = SkyBlock müzayedelerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 player-auctions = Müzayedeler
 highest-bid = En Yüksek Teklif
 
@@ -283,109 +271,85 @@ highest-bid = En Yüksek Teklif
 
 skyblock-inventory = inventory
   .description = Bir SkyBlock envanterini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-enderchest = enderchest
   .description = Bir SkyBlock ender sandığını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-quiver = quiver
   .description = Bir SkyBlock ok kınını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-talisman = talisman
   .description = Bir SkyBlock tılsım çantasını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-fishing = fishing
   .description = Bir SkyBlock balık tutma çantasını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-potions = potions
   .description = Bir SkyBlock iksir çantasını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-equipment = equipment
   .description = SkyBlock ekipmanlarını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-wardrobe = dolap
   .description = Bir SkyBlock dolabını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-candy = şeker
   .description = Bir SkyBlock şeker envanterini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-vault = kasalı-çanta
   .description = Bir SkyBlock kişisel kasalı çantasını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-pets = evcil-hayvanlar
   .description = SkyBlock evcil hayvanları görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
 skyblock-networth = varlık-değeri
   .description = SkyBlock profil varlık değerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
@@ -393,10 +357,8 @@ skyblock-networth = varlık-değeri
 
 skyblock-profile = profil
   .description = Bir SkyBlock profilini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
@@ -425,10 +387,8 @@ social = Sosyal
 
 skyblock-bank = banka
   .description = Bir SkyBlock bankasını görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .profile = profil
   .profile-description = Görüntülenecek profil
 
@@ -446,18 +406,12 @@ leaderboard = liderlik-tablosu
 
 network-general = genel
   .description = Genel ağ istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 network-history = geçmiş
   .description = Tarihsel ağ istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 karma = Karma
 rewards = Ödüller
 friend-requests = Arkadaşlık İstekleri
@@ -530,11 +484,8 @@ unlinking-succeeded-description = Artık bir Minecraft hesabına bağlı değils
 # /link
 link = bağlantı
   .description = Discord hesabınızı bir Minecraft hesabına bağlar.
-  .username = kullanıcı-adı
-  .username-description = Bağlanmak için Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Bağlanmak için Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 linking-failed = Bağlantı Başarısız
 linking-failed-uuid-description = Verilen UUID **`{$uuid}`** bir Minecraft hesabına ait değil.
 linking-failed-username-description = Verilen kullanıcı adı **`{$username}`** bir Minecraft hesabına ait değil.
@@ -569,19 +520,15 @@ mystery-gifts = Gizemli Hediyeler
 
 arcade-general = genel
   .description = Arcade istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
 
 arcade-from = şuradan
   .description = Belirli bir zamandan beri Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
   .time = zaman
@@ -589,19 +536,15 @@ arcade-from = şuradan
 
 arcade-history = geçmiş
   .description = Zaman içinde Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
 
 arcade-project = projeksiyon
   .description = Arcade istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
   .statistic = istatistik
@@ -611,28 +554,22 @@ arcade-project = projeksiyon
 
 arcade-daily = günlük
   .description = Son gün içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
 
 arcade-weekly = haftalık
   .description = Son hafta içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
 
 arcade-monthly = aylık
   .description = Son ay içindeki Arcade istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arcade modu
 
@@ -644,19 +581,15 @@ rating = Derecelendirme
 
 arena-general = genel
   .description = Arena istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
 
 arena-from = şuradan
   .description = Belirli bir zamandan beri Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
   .time = zaman
@@ -664,19 +597,15 @@ arena-from = şuradan
 
 arena-history = geçmiş
   .description = Zaman içinde Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
 
 arena-project = projeksiyon
   .description = Arena istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
   .statistic = istatistik
@@ -686,28 +615,22 @@ arena-project = projeksiyon
 
 arena-daily = günlük
   .description = Son gün içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
 
 arena-weekly = haftalık
   .description = Son hafta içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
 
 arena-monthly = aylık
   .description = Son ay içindeki Arena istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Arena modu
 
@@ -750,19 +673,15 @@ items-purchased = Satın Alınanlar
 
 bedwars-general = genel
   .description = Bed Wars istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
 
 bedwars-from = şuradan
   .description = Belirli bir zamandan beri Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
   .time = zaman
@@ -770,19 +689,15 @@ bedwars-from = şuradan
 
 bedwars-history = geçmiş
   .description = Zaman içinde Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
 
 bedwars-project = projeksiyon
   .description = Bed Wars istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
   .statistic = istatistik
@@ -792,28 +707,22 @@ bedwars-project = projeksiyon
 
 bedwars-daily = günlük
   .description = Son gün içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
 
 bedwars-weekly = haftalık
   .description = Son hafta içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
 
 bedwars-monthly = aylık
   .description = Son ay içindeki Bed Wars istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Bed Wars modu
 
@@ -850,19 +759,15 @@ time-played = Oynama Süresi
 
 blitz-general = genel
   .description = Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
 
 blitz-from = itibaren
   .description = Belirli bir zamandan itibaren Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
   .time = zaman
@@ -870,19 +775,15 @@ blitz-from = itibaren
 
 blitz-history = tarihçe
   .description = Zaman içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
 
 blitz-project = projeksiyon
   .description = Geleceğe yönelik Blitz Survival Games istatistik projeksiyonu yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
   .statistic = istatistik
@@ -892,28 +793,22 @@ blitz-project = projeksiyon
 
 blitz-daily = günlük
   .description = Son gün içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
 
 blitz-weekly = haftalık
   .description = Son hafta içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
 
 blitz-monthly = aylık
   .description = Son ay içindeki Blitz Survival Games istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Blitz Survival Games modu
 
@@ -928,19 +823,15 @@ most-points-team = En Yüksek Puan (Takım)
 
 buildbattle-general = genel
   .description = Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
 
 buildbattle-from = itibaren
   .description = Belirli bir zamandan itibaren Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
   .time = zaman
@@ -948,19 +839,15 @@ buildbattle-from = itibaren
 
 buildbattle-history = tarihçe
   .description = Zaman içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
 
 buildbattle-project = projeksiyon
   .description = Geleceğe yönelik Build Battle istatistik projeksiyonu yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
   .statistic = istatistik
@@ -970,28 +857,22 @@ buildbattle-project = projeksiyon
 
 buildbattle-daily = günlük
   .description = Son gün içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
 
 buildbattle-weekly = haftalık
   .description = Son hafta içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
 
 buildbattle-monthly = aylık
   .description = Son ay içindeki Build Battle istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Build Battle modu
 
@@ -1010,19 +891,15 @@ bombs-planted = Döşenen Bombalar
 
 copsandcrims-general = genel
   .description = Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
 
 copsandcrims-from = itibaren
   .description = Belirli bir zamandan itibaren Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
   .time = zaman
@@ -1030,19 +907,15 @@ copsandcrims-from = itibaren
 
 copsandcrims-history = tarihçe
   .description = Zaman içindeki Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
 
 copsandcrims-project = projeksiyon
   .description = Geleceğe yönelik Cops and Crims istatistik projeksiyonu yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
   .statistic = istatistik
@@ -1052,28 +925,22 @@ copsandcrims-project = projeksiyon
 
 copsandcrims-daily = günlük
   .description = Son gün içindeki Cops and Crims istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
 
 copsandcrims-weekly = haftalık
   .description = Geçen hafta Cops and Crims istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
 
 copsandcrims-monthly = aylık
   .description = Geçen ay Cops and Crims istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Cops and Crims modu
 
@@ -1113,19 +980,15 @@ health-regenerated = Yenilen Sağlık
 
 duels-general = genel
   .description = Düellos istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
 duels-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
   .time = zaman
@@ -1133,19 +996,15 @@ duels-from = tarihten-beri
 
 duels-history = geçmiş
   .description = Zaman içinde Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
 duels-project = projeksiyon
   .description = Düellos istatistiklerini geleceğe projeksiyonla
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
   .statistic = istatistik
@@ -1155,28 +1014,22 @@ duels-project = projeksiyon
 
 duels-daily = günlük
   .description = Geçen gün Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
 duels-weekly = haftalık
   .description = Geçen hafta Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
 duels-monthly = aylık
   .description = Geçen ay Düellos istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Düellos modu
 
@@ -1192,19 +1045,15 @@ treasures-found = Keşfedilen Hazine
 
 megawalls-general = genel
   .description = Mega Duvarlar istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
 megawalls-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
   .time = zaman
@@ -1212,19 +1061,15 @@ megawalls-from = tarihten-beri
 
 megawalls-history = geçmiş
   .description = Zaman içinde Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
 megawalls-project = projeksiyon
   .description = Mega Duvarlar istatistiklerini geleceğe projeksiyonla
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
   .statistic = istatistik
@@ -1234,28 +1079,22 @@ megawalls-project = projeksiyon
 
 megawalls-daily = günlük
   .description = Geçen gün Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
 megawalls-weekly = haftalık
   .description = Geçen hafta Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
 megawalls-monthly = aylık
   .description = Geçen ay Mega Duvarlar istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Mega Duvarlar modu
 
@@ -1272,19 +1111,15 @@ detective-wins = Dedektif Kazançları
 
 murdermystery-general = genel
   .description = Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
 murdermystery-from = tarihten-beri
   .description = Belirli bir zamandan itibaren Murder Mystery istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
   .time = zaman
@@ -1292,19 +1127,15 @@ murdermystery-from = tarihten-beri
 
 murdermystery-history = geçmiş
   .description = Zaman içinde Murder Mystery istatistiklerinin gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
 murdermystery-project = proje
   .description = Murder Mystery istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
   .statistic = istatistik
@@ -1314,28 +1145,22 @@ murdermystery-project = proje
 
 murdermystery-daily = günlük
   .description = Son 24 saat içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
 murdermystery-weekly = haftalık
   .description = Son bir hafta içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
 murdermystery-monthly = aylık
   .description = Son bir ay içinde Murder Mystery istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Murder Mystery modu
 
@@ -1360,19 +1185,15 @@ highest-killstreak = En Yüksek Seri
 
 paintball-general = genel
   .description = Paintball istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
 paintball-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren Paintball istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
   .time = zaman
@@ -1380,19 +1201,15 @@ paintball-from = zaman-aralığı
 
 paintball-history = tarihçe
   .description = Paintball istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
 paintball-project = proje
   .description = Paintball istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
   .statistic = istatistik
@@ -1402,28 +1219,22 @@ paintball-project = proje
 
 paintball-daily = günlük
   .description = Son 24 saat içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
 paintball-weekly = haftalık
   .description = Son bir hafta içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
 paintball-monthly = aylık
   .description = Son bir ay içinde Paintball istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Paintball modu
 
@@ -1439,19 +1250,15 @@ cr = Tamamlama Oranı
 
 pit-general = genel
   .description = The Pit istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
 pit-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren The Pit istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
   .time = zaman
@@ -1459,19 +1266,15 @@ pit-from = zaman-aralığı
 
 pit-history = tarihçe
   .description = The Pit istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
 pit-project = proje
   .description = The Pit istatistiklerini geleceğe doğru projelendir
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
   .statistic = istatistik
@@ -1481,28 +1284,22 @@ pit-project = proje
 
 pit-daily = günlük
   .description = Son 24 saat içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
 pit-weekly = haftalık
   .description = Son bir hafta içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
 pit-monthly = aylık
   .description = Son bir ay içinde The Pit istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Pit modu
 
@@ -1516,19 +1313,15 @@ sight = Hedef
 
 quake-general = genel
   .description = Quakecraft istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
 quake-from = zaman-aralığı
   .description = Belirli bir zamandan itibaren Quakecraft istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
   .time = zaman
@@ -1536,19 +1329,15 @@ quake-from = zaman-aralığı
 
 quake-history = tarihçe
   .description = Quakecraft istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
 quake-project = proje
   .description = Geleceğe yönelik Quakecraft istatistikleri
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
   .statistic = istatistik
@@ -1558,28 +1347,22 @@ quake-project = proje
 
 quake-daily = günlük
   .description = Son bir günde Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
 quake-weekly = haftalık
   .description = Son bir haftada Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
 quake-monthly = aylık
   .description = Son bir ayda Quakecraft istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Quakecraft modu
 
@@ -1606,19 +1389,15 @@ fastest-win = En Hızlı Galibiyet
 
 skywars-general = genel
   .description = SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
 
 skywars-from = tarihten
   .description = Belirli bir zamandan itibaren SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
   .time = zaman
@@ -1626,19 +1405,15 @@ skywars-from = tarihten
 
 skywars-history = geçmiş
   .description = Zaman içindeki SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
 
 skywars-project = projeksiyon
   .description = Geleceğe yönelik SkyWars istatistiklerinin yansıtılması
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
   .statistic = istatistik
@@ -1648,28 +1423,22 @@ skywars-project = projeksiyon
 
 skywars-daily = günlük
   .description = Son bir günde SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
 
 skywars-weekly = haftalık
   .description = Son bir haftada SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
 
 skywars-monthly = aylık
   .description = Son bir ayda SkyWars istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SkyWars modu
 
@@ -1681,19 +1450,15 @@ ssr = SSR
 
 smash-general = genel
   .description = Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
 
 smash-from = tarihten
   .description = Belirli bir zamandan itibaren Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
   .time = zaman
@@ -1701,19 +1466,15 @@ smash-from = tarihten
 
 smash-history = geçmiş
   .description = Zaman içindeki Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
 
 smash-project = projeksiyon
   .description = Geleceğe yönelik Smash Heroes istatistiklerinin yansıtılması
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
   .statistic = istatistik
@@ -1723,28 +1484,22 @@ smash-project = projeksiyon
 
 smash-daily = günlük
   .description = Son bir günde Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
 
 smash-weekly = haftalık
   .description = Son bir haftada Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
 
 smash-monthly = aylık
   .description = Son bir ayda Smash Heroes istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Smash Heroes modu
 
@@ -1755,19 +1510,15 @@ survived-players = Hayatta Kalan Oyuncular
 
 speeduhc-general = genel
   .description = SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SpeedUHC modu
 
 speeduhc-from = tarihten
   .description = Belirli bir zamandan itibaren SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SpeedUHC modu
   .time = zaman
@@ -1775,19 +1526,15 @@ speeduhc-from = tarihten
 
 speeduhc-history = geçmiş
   .description = Zaman içindeki SpeedUHC istatistiklerinin görüntülenmesi
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek SpeedUHC modu
 
 speeduhc-project = proje
   .description = Geleceğe yönelik SpeedUHC istatistikleri
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için SpeedUHC modu
   .statistic = istatistik
@@ -1797,28 +1544,22 @@ speeduhc-project = proje
 
 speeduhc-daily = günlük
   .description = Son gün içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için SpeedUHC modu
 
 speeduhc-weekly = haftalık
   .description = Son hafta içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için SpeedUHC modu
 
 speeduhc-monthly = aylık
   .description = Son ay içindeki SpeedUHC istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için SpeedUHC modu
 
@@ -1838,19 +1579,15 @@ points = Puanlar
 
 tntgames-general = genel
   .description = TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
 
 tntgames-from = başlangıç
   .description = Belirli bir zamandan itibaren TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
   .time = zaman
@@ -1858,19 +1595,15 @@ tntgames-from = başlangıç
 
 tntgames-history = geçmiş
   .description = Zaman içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
 
 tntgames-project = projeksiyon
   .description = Geleceğe yönelik TNT Oyunları istatistikleri
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
   .statistic = istatistik
@@ -1880,28 +1613,22 @@ tntgames-project = projeksiyon
 
 tntgames-daily = günlük
   .description = Son gün içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
 
 tntgames-weekly = haftalık
   .description = Son hafta içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
 
 tntgames-monthly = aylık
   .description = Son ay içindeki TNT Oyunları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için TNT Oyunları modu
 
@@ -1917,19 +1644,15 @@ gold-trophies = Altın Kupalar
 
 turbokartracers-general = genel
   .description = Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
 
 turbokartracers-from = başlangıç
   .description = Belirli bir zamandan itibaren Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
   .time = zaman
@@ -1937,19 +1660,15 @@ turbokartracers-from = başlangıç
 
 turbokartracers-history = geçmiş
   .description = Zaman içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
 
 turbokartracers-project = projeksiyon
   .description = Geleceğe yönelik Turbo Kart Yarışçıları istatistikleri
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
   .statistic = istatistik
@@ -1959,28 +1678,22 @@ turbokartracers-project = projeksiyon
 
 turbokartracers-daily = günlük
   .description = Son gün içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
 
 turbokartracers-weekly = haftalık
   .description = Son hafta içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
 
 turbokartracers-monthly = aylık
   .description = Son ay içindeki Turbo Kart Yarışçıları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için Turbo Kart Yarışçıları modu
 
@@ -1998,19 +1711,15 @@ ultimates-crafted = Ultimatelar Oluşturuldu
 
 uhc-general = genel
   .description = UHC Şampiyonları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için UHC Şampiyonları modu
 
 uhc-from = başlangıç
   .description = Belirli bir zamandan itibaren UHC Şampiyonları istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülemek için UHC Şampiyonları modu
   .time = zaman
@@ -2018,19 +1727,15 @@ uhc-from = başlangıç
 
 uhc-history = geçmiş
   .description = UHC Champions istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
 
 uhc-project = proje
   .description = UHC Champions istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
   .statistic = istatistik
@@ -2040,28 +1745,22 @@ uhc-project = proje
 
 uhc-daily = günlük
   .description = UHC Champions istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
 
 uhc-weekly = haftalık
   .description = UHC Champions istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
 
 uhc-monthly = aylık
   .description = UHC Champions istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek UHC Champions modu
 
@@ -2085,19 +1784,15 @@ vkdr = VKDR
 
 vampirez-general = genel
   .description = VampireZ istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
 
 vampirez-from = tarihinden
   .description = VampireZ istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
   .time = zaman
@@ -2105,19 +1800,15 @@ vampirez-from = tarihinden
 
 vampirez-history = geçmiş
   .description = VampireZ istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
 
 vampirez-project = projeksiyon
   .description = VampireZ istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
   .statistic = istatistik
@@ -2127,28 +1818,22 @@ vampirez-project = projeksiyon
 
 vampirez-daily = günlük
   .description = VampireZ istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
 
 vampirez-weekly = haftalık
   .description = VampireZ istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
 
 vampirez-monthly = aylık
   .description = VampireZ istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek VampireZ modu
 
@@ -2161,19 +1846,15 @@ iron-broken = Kırılan Demirler
 
 walls-general = genel
   .description = The Walls istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
 
 walls-from = tarihinden
   .description = The Walls istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
   .time = zaman
@@ -2181,19 +1862,15 @@ walls-from = tarihinden
 
 walls-history = geçmiş
   .description = The Walls istatistiklerinin zaman içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
 
 walls-project = projeksiyon
   .description = The Walls istatistiklerini geleceğe projeksiyon yap
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
   .statistic = istatistik
@@ -2203,28 +1880,22 @@ walls-project = projeksiyon
 
 walls-daily = günlük
   .description = The Walls istatistiklerinin son gün içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
 
 walls-weekly = haftalık
   .description = The Walls istatistiklerinin son hafta içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
 
 walls-monthly = aylık
   .description = The Walls istatistiklerinin son ay içindeki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek The Walls modu
 
@@ -2242,19 +1913,15 @@ mvps = En Değerli Oyuncular
 
 warlords-general = genel
   .description = Warlords istatistiklerini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Warlords modu
 
 warlords-from = tarihinden
   .description = Warlords istatistiklerinin belirli bir tarihten itibarenki gelişimini görüntüle
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Warlords modu
   .time = zaman
@@ -2262,19 +1929,15 @@ warlords-from = tarihinden
 
 warlords-history = tarih
   .description = Zaman içinde Savaşçıların istatistik gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
 
 warlords-project = proje
   .description = Savaşçıların istatistiklerini geleceğe projeksiyon yapın
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
   .statistic = istatistik
@@ -2284,28 +1947,22 @@ warlords-project = proje
 
 warlords-daily = günlük
   .description = Savaşçıların son gün içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
 
 warlords-weekly = haftalık
   .description = Savaşçıların son hafta içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
 
 warlords-monthly = aylık
   .description = Savaşçıların son ay içindeki istatistik gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Savaşçı modu
 
@@ -2317,19 +1974,15 @@ wool-placed = Yerleştirilen Yünler
 
 woolwars-general = genel
   .description = Wool Wars istatistiklerini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
 
 woolwars-from = itibaren
   .description = Belirli bir zamandan beri Wool Wars istatistiklerinin gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
   .time = zaman
@@ -2337,19 +1990,15 @@ woolwars-from = itibaren
 
 woolwars-history = tarih
   .description = Zaman içinde Wool Wars istatistiklerinin gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
 
 woolwars-project = proje
   .description = Wool Wars istatistiklerini geleceğe projeksiyon yapın
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
   .statistic = istatistik
@@ -2359,28 +2008,22 @@ woolwars-project = proje
 
 woolwars-daily = günlük
   .description = Wool Wars istatistiklerinin son gün içindeki gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
 
 woolwars-weekly = haftalık
   .description = Wool Wars istatistiklerinin son hafta içindeki gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
 
 woolwars-monthly = aylık
   .description = Wool Wars istatistiklerinin son ay içindeki gelişimini görüntüleyin
-  .username = kullanıcı-adı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
 
@@ -2405,19 +2048,14 @@ guild-general = genel
   .description = Bir loncanın istatistiklerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 guild-from = itibaren
   .description = Belirli bir zamandan beri lonca istatistiklerinin gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için zaman miktarı (1h 12m 5s)
 
@@ -2425,26 +2063,18 @@ guild-members = üyeler
   .description = Bir loncanın üyelerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 guild-member = üye
   .description = Bir lonca üyesinin istatistiklerini gösterir.
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 guild-top = eniyi
   .description = Bir loncanın XP bakımından en iyi üyelerini gösterir.
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .days = günler
   .days-description = günler
   .limit = sınır
@@ -2454,29 +2084,20 @@ guild-daily = günlük
   .description = Bir loncanın son gün içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 guild-weekly = haftalık
   .description = Bir loncanın son hafta içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 guild-monthly = aylık
   .description = Bir loncanın son ay içindeki istatistik gelişimini görüntüleyin
   .name = isim
   .name-description = Görüntülenecek loncanın adı
-  .username = kullanıcı-adı
-  .username-description = Görüntülenecek lonca üyesinin loncasının kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonca üyesinin loncasının UUID'si
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 showing-guild-xp-statistics = {$from} ile {$to} arasındaki lonca XP kazancını gösteriliyor.
 
 # Paylaşılan tuval etiketleri
@@ -2744,18 +2365,12 @@ practice = Pratik
 
 bedwars-hotbar = sıcak-çubuk
   .description = Yatak Savaşları sıcak çubuk tercihlerini görüntüle
-  .username = kullanıcıadı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 bedwars-shop = mağaza
   .description = Yatak Savaşları mağaza tercihlerini görüntüle
-  .username = kullanıcıadı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 attempts = Denemeler
 bridging-wins = Köprü Kurma Kazançları
 bridging-losses = Köprü Kurma Kayıpları
@@ -2787,19 +2402,14 @@ diagonal-staircase-100 = Çapraz Merdiven 100
 
 bedwars-practice = pratik
   .description = Yatak Savaşları pratik istatistiklerini görüntüle
-  .username = kullanıcıadı
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
 # Komutlarla ilgili
 
 arcade-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Arcade istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2807,10 +2417,8 @@ arcade-at = at
 
 arena-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Arena istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2818,10 +2426,8 @@ arena-at = at
 
 bedwars-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Bed Wars istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2829,10 +2435,8 @@ bedwars-at = at
 
 blitz-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Blitz Survival Games istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2840,10 +2444,8 @@ blitz-at = at
 
 buildbattle-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Build Battle istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2851,10 +2453,8 @@ buildbattle-at = at
 
 copsandcrims-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Cops and Crims istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2862,10 +2462,8 @@ copsandcrims-at = at
 
 duels-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Duels istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2873,10 +2471,8 @@ duels-at = at
 
 megawalls-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Mega Walls istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2884,10 +2480,8 @@ megawalls-at = at
 
 murdermystery-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Murder Mystery istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2895,10 +2489,8 @@ murdermystery-at = at
 
 paintball-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Paintball istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2906,10 +2498,8 @@ paintball-at = at
 
 pit-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun The Pit istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2917,10 +2507,8 @@ pit-at = at
 
 quake-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Quakecraft istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2928,10 +2516,8 @@ quake-at = at
 
 skywars-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun SkyWars istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2939,10 +2525,8 @@ skywars-at = at
 
 smash-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Smash Heroes istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2950,10 +2534,8 @@ smash-at = at
 
 speeduhc-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun SpeedUHC istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2961,10 +2543,8 @@ speeduhc-at = at
 
 tntgames-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun TNT Games istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2972,10 +2552,8 @@ tntgames-at = at
 
 turbokartracers-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Turbo Kart Racers istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2983,10 +2561,8 @@ turbokartracers-at = at
 
 uhc-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun UHC Champions istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -2994,10 +2570,8 @@ uhc-at = at
 
 vampirez-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun VampireZ istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -3005,10 +2579,8 @@ vampirez-at = at
 
 walls-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun The Walls istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -3016,10 +2588,8 @@ walls-at = at
 
 warlords-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Warlords istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -3027,10 +2597,8 @@ warlords-at = at
 
 woolwars-at = at
   .description = Belirli bir zaman noktasında bir oyuncunun Wool Wars istatistiklerini gösterir
-  .username = kullaniciadi
-  .username-description = Minecraft kullanıcı adı
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
   .mode = mod
@@ -3040,10 +2608,8 @@ guild-at = at
   .description = Belirli bir zaman noktasında bir lonenin istatistiklerini gösterir
   .name = isim
   .name-description = Görüntülenecek lonenin adı
-  .username = kullaniciadi
-  .username-description = Görüntülenecek lonenin üye kullanıcısı
-  .uuid = uuid
-  .uuid-description = Görüntülenecek lonenin üye UUID'si
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
 

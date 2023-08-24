@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Εμφάνιση στατισ
 # Σφάλματα
 
 error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη **`{$name}`**.
-error-session-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη **`{$name}`**.
+error-snapshot-not-found = Δεν βρέθηκε συνεδρία για τον χρήστη **`{$name}`**.
 error-player-uuid-not-found = Δεν βρέθηκε παίκτης με το UUID **`{$uuid}`**.
 error-player-username-not-found = Δεν βρέθηκε παίκτης με το όνομα χρήστη **`{$name}`**.
 error-guild-by-member-uuid-not-found = Δεν βρέθηκε μέλος της ομάδας με το UUID **`{$uuid}`**.
@@ -91,11 +91,8 @@ track-success-description =
 
 track = track
   .description = Καταγράφει τα στατιστικά ενός παίκτη και στέλνει τις αλλαγές τους στον τρέχοντα κανάλι.
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη Minecraft που θέλετε να καταγράψετε
-  .uuid = uuid
-  .uuid-description = Το UUID Minecraft που θέλετε να καταγράψετε
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 # /custom
 
 execute = εκτέλεση
@@ -203,11 +200,8 @@ about = about
 
 winstreaks = winstreaks
   .description = Δείτε τις winstreaks
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 # /recent
 
 mode = Λειτουργία
@@ -218,11 +212,8 @@ playing = Παίζοντας
 
 recent = recent
   .description = Δείτε πρόσφατα παιχνίδια
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 # Projection labels
 
 accuracy = Ακρίβεια
@@ -274,11 +265,8 @@ Wardrobe = Ντουλάπα
 
 skyblock-auctions = auctions
   .description = Δείτε τις δημοπρασίες του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 player-auctions = Δημοπρασίες
 highest-bid = Υψηλότερη προσφορά
 
@@ -286,109 +274,85 @@ highest-bid = Υψηλότερη προσφορά
 
 skyblock-inventory = inventory
   .description = Δείτε ένα SkyBlock inventory
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-enderchest = enderchest
   .description = Δείτε ένα SkyBlock enderchest
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-quiver = quiver
   .description = Δείτε ένα SkyBlock quiver
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-talisman = talisman
   .description = Δείτε ένα SkyBlock τσαντάκι με τους χειρόφυλακες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-fishing = fishing
   .description = Δείτε μια τσάντα ψαρέματος του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-potions = potions
   .description = Δείτε μια τσάντα φίλτρων του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-equipment = equipment
   .description = Δείτε τον εξοπλισμό του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ προς προβολή
 
 skyblock-wardrobe = ντουλάπα
   .description = Δείτε τη ντουλάπα του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
 skyblock-candy = καραμέλες
   .description = Δείτε το απόθεμα καραμέλων του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
 skyblock-vault = θησαυροφυλάκιο
   .description = Δείτε το προσωπικό θησαυροφυλάκιο του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
 skyblock-pets = κατοικίδια
   .description = Δείτε τα κατοικίδια του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
 skyblock-networth = συνολική-αξία
   .description = Δείτε τη συνολική αξία του προφίλ του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
@@ -396,10 +360,8 @@ skyblock-networth = συνολική-αξία
 
 skyblock-profile = προφίλ
   .description = Δείτε ένα προφίλ του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
@@ -428,10 +390,8 @@ social = Κοινωνικό
 
 skyblock-bank = τράπεζα
   .description = Δείτε μια τράπεζα του SkyBlock
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .profile = προφίλ
   .profile-description = Το προφίλ που θέλετε να δείτε
 
@@ -449,18 +409,12 @@ leaderboard = κατάταξη
 
 network-general = γενικά
   .description = Δείτε γενικά στατιστικά του δικτύου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 network-history = ιστορικό
   .description = Δείτε ιστορικά στατιστικά του δικτύου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 karma = Κάρμα
 rewards = Ανταμοιβές
 friend-requests = Αιτήσεις φίλων
@@ -533,11 +487,8 @@ unlinking-succeeded-description = Δεν είστε πλέον συνδεδεμ�
 # /link
 link = σύνδεση
   .description = Συνδέει το λογαριασμό Discord σας με ένα λογαριασμό Minecraft.
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη Minecraft που θέλετε να συνδέσετε
-  .uuid = uuid
-  .uuid-description = Το UUID Minecraft που θέλετε να συνδέσετε
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 linking-failed = Η σύνδεση απέτυχε
 linking-failed-uuid-description = Το UUID **`{$uuid}`** δεν ανήκει σε λογαριασμό Minecraft.
 linking-failed-username-description = Το όνομα χρήστη **`{$username}`** δεν ανήκει σε λογαριασμό Minecraft.
@@ -572,19 +523,15 @@ mystery-gifts = Μυστήρια Δώρα
 
 arcade-general = γενικά
   .description = Δείτε τα στατιστικά Arcade
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
 
 arcade-from = από
   .description = Δείτε την εξέλιξη των στατιστικών Arcade από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
   .time = χρόνος
@@ -592,19 +539,15 @@ arcade-from = από
 
 arcade-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών Arcade με τον χρόνο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
 
 arcade-project = έργο
   .description = Προβολή των στατιστικών Arcade στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
   .statistic = στατιστικό
@@ -614,28 +557,22 @@ arcade-project = έργο
 
 arcade-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών Arcade την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
 
 arcade-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών Arcade την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
 
 arcade-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών Arcade τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arcade προς προβολή
 
@@ -647,19 +584,15 @@ rating = Βαθμολογία
 
 arena-general = γενικά
   .description = Δείτε τα στατιστικά Arena
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
 
 arena-from = από
   .description = Δείτε την εξέλιξη των στατιστικών Arena από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
   .time = χρόνος
@@ -667,19 +600,15 @@ arena-from = από
 
 arena-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών Arena με τον χρόνο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
 
 arena-project = έργο
   .description = Προβολή των στατιστικών Arena στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
   .statistic = στατιστικό
@@ -689,28 +618,22 @@ arena-project = έργο
 
 arena-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών Arena την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
 
 arena-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών Arena την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
 
 arena-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών Arena τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Arena προς προβολή
 
@@ -753,19 +676,15 @@ items-purchased = Αγορασμένα Αντικείμενα
 
 bedwars-general = γενικά
   .description = Δείτε τα στατιστικά Bed Wars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
 
 bedwars-from = από
   .description = Δείτε την εξέλιξη των στατιστικών Bed Wars από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
   .time = χρόνος
@@ -773,19 +692,15 @@ bedwars-from = από
 
 bedwars-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών Bed Wars με τον χρόνο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
 
 bedwars-project = έργο
   .description = Προβολή των στατιστικών Bed Wars στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
   .statistic = στατιστικό
@@ -795,28 +710,22 @@ bedwars-project = έργο
 
 bedwars-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών Bed Wars την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
 
 bedwars-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών Bed Wars την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
 
 bedwars-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών Bed Wars τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Bed Wars προς προβολή
 
@@ -853,19 +762,15 @@ time-played = Χρόνος Παιχνιδιού
 
 blitz-general = γενικά
   .description = Δείτε στατιστικά Blitz Survival Games
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
 
 blitz-from = από
   .description = Δείτε τις στατιστικές του Blitz Survival Games
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
   .time = χρόνος
@@ -873,19 +778,15 @@ blitz-from = από
 
 blitz-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών του Blitz Survival Games με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
 
 blitz-project = έργο
   .description = Προβολή στατιστικών Blitz Survival Games στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
   .statistic = στατιστικό
@@ -895,28 +796,22 @@ blitz-project = έργο
 
 blitz-daily = ημερήσια
   .description = Δείτε την εξέλιξη των στατιστικών του Blitz Survival Games την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
 
 blitz-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Blitz Survival Games την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
 
 blitz-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Blitz Survival Games τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
 
@@ -931,19 +826,15 @@ most-points-team = Περισσότεροι Πόντοι (Ομάδα)
 
 buildbattle-general = γενικά
   .description = Δείτε στατιστικά Build Battle
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
 
 buildbattle-from = από
   .description = Δείτε την εξέλιξη των στατιστικών του Build Battle από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
   .time = χρόνος
@@ -951,19 +842,15 @@ buildbattle-from = από
 
 buildbattle-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών του Build Battle με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
 
 buildbattle-project = έργο
   .description = Προβολή στατιστικών Build Battle στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
   .statistic = στατιστικό
@@ -973,28 +860,22 @@ buildbattle-project = έργο
 
 buildbattle-daily = ημερήσια
   .description = Δείτε την εξέλιξη των στατιστικών του Build Battle την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
 
 buildbattle-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Build Battle την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
 
 buildbattle-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Build Battle τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Build Battle προς προβολή
 
@@ -1013,19 +894,15 @@ bombs-planted = Φυτεύτηκαν βόμβες
 
 copsandcrims-general = γενικά
   .description = Δείτε στατιστικά Cops and Crims
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
 
 copsandcrims-from = από
   .description = Δείτε την εξέλιξη των στατιστικών του Cops and Crims από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
   .time = χρόνος
@@ -1033,19 +910,15 @@ copsandcrims-from = από
 
 copsandcrims-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών του Cops and Crims με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
 
 copsandcrims-project = έργο
   .description = Προβολή στατιστικών Cops and Crims στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
   .statistic = στατιστικό
@@ -1055,28 +928,22 @@ copsandcrims-project = έργο
 
 copsandcrims-daily = ημερήσια
   .description = Δείτε την εξέλιξη των στατιστικών του Cops and Crims την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση Cops and Crims προς προβολή
 
 copsandcrims-weekly = εβδομαδιαίο
   .description = Προβολή της εξέλιξης των στατιστικών Cops and Crims της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Cops and Crims που θα προβληθεί
 
 copsandcrims-monthly = μηνιαίο
   .description = Προβολή της εξέλιξης των στατιστικών Cops and Crims του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Cops and Crims που θα προβληθεί
 
@@ -1116,19 +983,15 @@ health-regenerated = Αναγεννημένη υγεία
 
 duels-general = γενικά
   .description = Προβολή στατιστικών Duel
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
 
 duels-from = από
   .description = Προβολή της εξέλιξης των στατιστικών Duel από μια συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
   .time = χρόνος
@@ -1136,19 +999,15 @@ duels-from = από
 
 duels-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών Duel με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
 
 duels-project = προβολή
   .description = Προβολή των μελλοντικών στατιστικών Duel
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
   .statistic = στατιστική
@@ -1158,28 +1017,22 @@ duels-project = προβολή
 
 duels-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών Duel της τελευταίας ημέρας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
 
 duels-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών Duel της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
 
 duels-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών Duel του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Duel που θα προβληθεί
 
@@ -1195,19 +1048,15 @@ treasures-found = Θησαυροί που βρέθηκαν
 
 megawalls-general = γενικά
   .description = Προβολή στατιστικών Mega Walls
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
 
 megawalls-from = από
   .description = Προβολή της εξέλιξης των στατιστικών Mega Walls από μια συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
   .time = χρόνος
@@ -1215,19 +1064,15 @@ megawalls-from = από
 
 megawalls-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών Mega Walls με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
 
 megawalls-project = προβολή
   .description = Προβολή των μελλοντικών στατιστικών Mega Walls
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
   .statistic = στατιστική
@@ -1237,28 +1082,22 @@ megawalls-project = προβολή
 
 megawalls-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών Mega Walls της τελευταίας ημέρας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
 
 megawalls-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών Mega Walls της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
 
 megawalls-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών Mega Walls του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Mega Walls που θα προβληθεί
 
@@ -1275,19 +1114,15 @@ detective-wins = Νίκες Ντετέκτιβ
 
 murdermystery-general = γενικά
   .description = Προβολή στατιστικών Murder Mystery
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Murder Mystery που θα προβληθεί
 
 murdermystery-from = από
   .description = Προβολή της εξέλιξης των στατιστικών Murder Mystery από μια συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Murder Mystery που θα προβληθεί
   .time = χρόνος
@@ -1295,19 +1130,15 @@ murdermystery-from = από
 
 murdermystery-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών Murder Mystery με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Murder Mystery που θα προβληθεί
 
 murdermystery-project = έργο
   .description = Στατιστικά για το Murder Mystery στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Murder Mystery προς προβολή
   .statistic = στατιστικά
@@ -1317,28 +1148,22 @@ murdermystery-project = έργο
 
 murdermystery-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών του Murder Mystery την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Murder Mystery προς προβολή
 
 murdermystery-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών του Murder Mystery την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Murder Mystery προς προβολή
 
 murdermystery-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών του Murder Mystery τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Murder Mystery προς προβολή
 
@@ -1363,19 +1188,15 @@ highest-killstreak = Υψηλότερο Σερί Θανάτων
 
 paintball-general = γενικά
   .description = Προβολή στατιστικών για το Paintball
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
 
 paintball-from = από
   .description = Προβολή της εξέλιξης των στατιστικών του Paintball από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
   .time = ώρα
@@ -1383,19 +1204,15 @@ paintball-from = από
 
 paintball-history = ιστορικό
   .description = Προβολή της εξέλιξης των στατιστικών του Paintball με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
 
 paintball-project = έργο
   .description = Προβολή στατιστικών του Paintball στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
   .statistic = στατιστικά
@@ -1405,28 +1222,22 @@ paintball-project = έργο
 
 paintball-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών του Paintball την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
 
 paintball-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών του Paintball την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
 
 paintball-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών του Paintball τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Paintball προς προβολή
 
@@ -1442,19 +1253,15 @@ cr = Ποσοστό Ολοκλήρωσης
 
 pit-general = γενικά
   .description = Προβολή στατιστικών για το The Pit
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
 
 pit-from = από
   .description = Προβολή της εξέλιξης των στατιστικών του The Pit από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
   .time = ώρα
@@ -1462,19 +1269,15 @@ pit-from = από
 
 pit-history = ιστορικό
   .description = Προβολή της εξέλιξης των στατιστικών του The Pit με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
 
 pit-project = έργο
   .description = Προβολή στατιστικών του The Pit στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
   .statistic = στατιστικά
@@ -1484,28 +1287,22 @@ pit-project = έργο
 
 pit-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών του The Pit την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
 
 pit-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών του The Pit την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
 
 pit-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών του The Pit τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του The Pit προς προβολή
 
@@ -1519,19 +1316,15 @@ sight = Όραση
 
 quake-general = γενικά
   .description = Προβολή στατιστικών για το Quakecraft
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Quakecraft προς προβολή
 
 quake-from = από
   .description = Προβολή της εξέλιξης των στατιστικών του Quakecraft από συγκεκριμένη ώρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Quakecraft προς προβολή
   .time = ώρα
@@ -1539,19 +1332,15 @@ quake-from = από
 
 quake-history = ιστορικό
   .description = Προβολή της εξέλιξης των στατιστικών του Quakecraft με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη στο Minecraft
-  .uuid = uuid
-  .uuid-description = UUID στο Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία του Quakecraft προς προβολή
 
 quake-project = project
   .description = Στατιστικά έργου Quakecraft στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Quakecraft προς προβολή
   .statistic = στατιστικό
@@ -1561,28 +1350,22 @@ quake-project = project
 
 quake-daily = ημερήσια
   .description = Προβολή της εξέλιξης των στατιστικών Quakecraft του τελευταίου 24ωρου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Quakecraft προς προβολή
 
 quake-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών Quakecraft της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Quakecraft προς προβολή
 
 quake-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών Quakecraft του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Quakecraft προς προβολή
 
@@ -1609,19 +1392,15 @@ fastest-win = Γρηγορότερη Νίκη
 
 skywars-general = γενικά
   .description = Προβολή στατιστικών SkyWars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
 
 skywars-from = από
   .description = Προβολή της εξέλιξης των στατιστικών SkyWars από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
   .time = χρόνος
@@ -1629,19 +1408,15 @@ skywars-from = από
 
 skywars-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών SkyWars με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
 
 skywars-project = έργο
   .description = Προβολή στατιστικών SkyWars στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
   .statistic = στατιστικό
@@ -1651,28 +1426,22 @@ skywars-project = έργο
 
 skywars-daily = ημερήσια
   .description = Προβολή της εξέλιξης των στατιστικών SkyWars του τελευταίου 24ωρου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
 
 skywars-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών SkyWars της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
 
 skywars-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών SkyWars του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SkyWars προς προβολή
 
@@ -1684,19 +1453,15 @@ ssr = SSR
 
 smash-general = γενικά
   .description = Προβολή στατιστικών Smash Heroes
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
 
 smash-from = από
   .description = Προβολή της εξέλιξης των στατιστικών Smash Heroes από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
   .time = χρόνος
@@ -1704,19 +1469,15 @@ smash-from = από
 
 smash-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών Smash Heroes με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
 
 smash-project = έργο
   .description = Προβολή στατιστικών Smash Heroes στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
   .statistic = στατιστικό
@@ -1726,28 +1487,22 @@ smash-project = έργο
 
 smash-daily = ημερήσια
   .description = Προβολή της εξέλιξης των στατιστικών Smash Heroes του τελευταίου 24ωρου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
 
 smash-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών Smash Heroes της τελευταίας εβδομάδας
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
 
 smash-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών Smash Heroes του τελευταίου μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Smash Heroes προς προβολή
 
@@ -1758,19 +1513,15 @@ survived-players = Επιζήσαντες
 
 speeduhc-general = γενικά
   .description = Προβολή στατιστικών SpeedUHC
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
 
 speeduhc-from = από
   .description = Προβολή της εξέλιξης των στατιστικών SpeedUHC από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
   .time = χρόνος
@@ -1778,19 +1529,15 @@ speeduhc-from = από
 
 speeduhc-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών SpeedUHC με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
 
 speeduhc-project = project
   .description = Στατιστικά έργου SpeedUHC στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
   .statistic = στατιστικό
@@ -1800,28 +1547,22 @@ speeduhc-project = project
 
 speeduhc-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών SpeedUHC τις τελευταίες 24 ώρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
 
 speeduhc-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών SpeedUHC τις τελευταίες 7 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
 
 speeduhc-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών SpeedUHC τις τελευταίες 30 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία SpeedUHC προς προβολή
 
@@ -1841,19 +1582,15 @@ points = Πόντοι
 
 tntgames-general = γενικά
   .description = Προβολή των στατιστικών TNT Games
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
 
 tntgames-from = από
   .description = Προβολή της εξέλιξης των στατιστικών TNT Games από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
   .time = χρόνος
@@ -1861,19 +1598,15 @@ tntgames-from = από
 
 tntgames-history = ιστορικό
   .description = Προβολή της εξέλιξης των στατιστικών TNT Games με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
 
 tntgames-project = έργο
   .description = Προβολή των στατιστικών TNT Games στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
   .statistic = στατιστικό
@@ -1883,28 +1616,22 @@ tntgames-project = έργο
 
 tntgames-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών TNT Games τις τελευταίες 24 ώρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
 
 tntgames-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών TNT Games τις τελευταίες 7 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
 
 tntgames-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών TNT Games τις τελευταίες 30 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία TNT Games προς προβολή
 
@@ -1920,19 +1647,15 @@ gold-trophies = Χρυσά τρόπαια
 
 turbokartracers-general = γενικά
   .description = Προβολή των στατιστικών Turbo Kart Racers
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
 
 turbokartracers-from = από
   .description = Προβολή της εξέλιξης των στατιστικών Turbo Kart Racers από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
   .time = χρόνος
@@ -1940,19 +1663,15 @@ turbokartracers-from = από
 
 turbokartracers-history = ιστορικό
   .description = Προβολή της εξέλιξης των στατιστικών Turbo Kart Racers με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
 
 turbokartracers-project = έργο
   .description = Προβολή των στατιστικών Turbo Kart Racers στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
   .statistic = στατιστικό
@@ -1962,28 +1681,22 @@ turbokartracers-project = έργο
 
 turbokartracers-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών Turbo Kart Racers τις τελευταίες 24 ώρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
 
 turbokartracers-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών Turbo Kart Racers τις τελευταίες 7 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
 
 turbokartracers-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών Turbo Kart Racers τις τελευταίες 30 ημέρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία Turbo Kart Racers προς προβολή
 
@@ -2001,19 +1714,15 @@ ultimates-crafted = Κατασκευασμένα Ultimates
 
 uhc-general = γενικά
   .description = Προβολή των στατιστικών UHC Champions
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία UHC Champions προς προβολή
 
 uhc-from = από
   .description = Προβολή της εξέλιξης των στατιστικών UHC Champions από συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία UHC Champions προς προβολή
   .time = χρόνος
@@ -2021,19 +1730,15 @@ uhc-from = από
 
 uhc-history = ιστορία
   .description = Δείτε την εξέλιξη των στατιστικών του UHC Champions με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
 
 uhc-project = εκτίμηση
   .description = Εκτιμήστε τα στατιστικά του UHC Champions στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
   .statistic = στατιστικό
@@ -2043,28 +1748,22 @@ uhc-project = εκτίμηση
 
 uhc-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών του UHC Champions την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
 
 uhc-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών του UHC Champions την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
 
 uhc-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών του UHC Champions τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του UHC Champions προς προβολή
 
@@ -2088,19 +1787,15 @@ vkdr = VKDR
 
 vampirez-general = γενικά
   .description = Δείτε τα στατιστικά του VampireZ
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
 
 vampirez-from = από
   .description = Δείτε την εξέλιξη των στατιστικών του VampireZ από ένα συγκεκριμένο χρονικό σημείο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
   .time = χρόνος
@@ -2108,19 +1803,15 @@ vampirez-from = από
 
 vampirez-history = ιστορικό
   .description = Δείτε την εξέλιξη των στατιστικών του VampireZ με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
 
 vampirez-project = προβλέψη
   .description = Προβλέψτε τα στατιστικά του VampireZ στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
   .statistic = στατιστικό
@@ -2130,28 +1821,22 @@ vampirez-project = προβλέψη
 
 vampirez-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών του VampireZ την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
 
 vampirez-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών του VampireZ την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
 
 vampirez-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών του VampireZ τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του VampireZ προς προβολή
 
@@ -2164,19 +1849,15 @@ iron-broken = Σπασμένο Σίδερο
 
 walls-general = γενικά
   .description = Δείτε τα στατιστικά του Walls
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
 
 walls-from = από
   .description = Δείτε την εξέλιξη των στατιστικών του Walls από ένα συγκεκριμένο χρονικό σημείο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
   .time = χρόνος
@@ -2184,19 +1865,15 @@ walls-from = από
 
 walls-history = ιστορικό
   .description = Δείτε την εξέλιξη των στατιστικών του Walls με την πάροδο του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
 
 walls-project = προβλέψη
   .description = Προβλέψτε τα στατιστικά του Walls στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
   .statistic = στατιστικό
@@ -2206,28 +1883,22 @@ walls-project = προβλέψη
 
 walls-daily = καθημερινά
   .description = Δείτε την εξέλιξη των στατιστικών του Walls την τελευταία ημέρα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
 
 walls-weekly = εβδομαδιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Walls την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
 
 walls-monthly = μηνιαία
   .description = Δείτε την εξέλιξη των στατιστικών του Walls τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Walls προς προβολή
 
@@ -2244,19 +1915,15 @@ mvps = MVPs
 
 warlords-general = γενικά
   .description = Δείτε τα στατιστικά του Warlords
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Warlords προς προβολή
 
 warlords-from = από
   .description = Δείτε την εξέλιξη των στατιστικών του Warlords από ένα συγκεκριμένο χρονικό σημείο
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = κατάσταση
   .mode-description = Η κατάσταση του Warlords προς προβολή
   .time = χρόνος
@@ -2264,19 +1931,15 @@ warlords-from = από
 
 warlords-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών των Warlords με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
 
 warlords-project = έργο
   .description = Προβολή των στατιστικών των Warlords στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
   .statistic = στατιστικό
@@ -2286,28 +1949,22 @@ warlords-project = έργο
 
 warlords-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών των Warlords τις τελευταίες 24 ώρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
 
 warlords-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών των Warlords την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
 
 warlords-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών των Warlords τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Warlords προς προβολή
 
@@ -2319,19 +1976,15 @@ wool-placed = Τοποθετημένο Μαλλί
 
 woolwars-general = γενικά
   .description = Προβολή των στατιστικών των Wool Wars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
 
 woolwars-from = από
   .description = Προβολή της εξέλιξης των στατιστικών των Wool Wars από μια συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
   .time = χρόνος
@@ -2339,19 +1992,15 @@ woolwars-from = από
 
 woolwars-history = ιστορία
   .description = Προβολή της εξέλιξης των στατιστικών των Wool Wars με το πέρασμα του χρόνου
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
 
 woolwars-project = έργο
   .description = Προβολή των στατιστικών των Wool Wars στο μέλλον
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
   .statistic = στατιστικό
@@ -2361,28 +2010,22 @@ woolwars-project = έργο
 
 woolwars-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών των Wool Wars τις τελευταίες 24 ώρες
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
 
 woolwars-weekly = εβδομαδιαία
   .description = Προβολή της εξέλιξης των στατιστικών των Wool Wars την τελευταία εβδομάδα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
 
 woolwars-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών των Wool Wars τον τελευταίο μήνα
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .mode = λειτουργία
   .mode-description = Η λειτουργία των Wool Wars προς προβολή
 
@@ -2407,19 +2050,14 @@ guild-general = γενικά
   .description = Εμφάνιση των στατιστικών μιας συντεχνίας.
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 guild-from = από
   .description = Προβολή της εξέλιξης των στατιστικών μιας συντεχνίας από μια συγκεκριμένη χρονική στιγμή
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Η περίοδος για την οποία θέλετε να πάτε πίσω (1h 12m 5s)
 
@@ -2427,26 +2065,18 @@ guild-members = μέλη
   .description = Εμφάνιση των μελών μιας συντεχνίας.
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 guild-member = μέλος
   .description = Εμφάνιση των στατιστικών ενός μέλους συντεχνίας.
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 guild-top = κορυφή
   .description = Εμφάνιση των κορυφαίων μελών μιας συντεχνίας με βάση το XP.
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .days = ημέρες
   .days-description = ημέρες
   .limit = όριο
@@ -2456,29 +2086,20 @@ guild-daily = καθημερινά
   .description = Προβολή της εξέλιξης των στατιστικών μιας συντεχνίας τις τελευταίες 24 ώρες
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 guild-weekly = εβδομαδιαίος
   .description = Προβολή της εξέλιξης των στατιστικών μιας συντεχνίας την τελευταία εβδομάδα
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 guild-monthly = μηνιαία
   .description = Προβολή της εξέλιξης των στατιστικών μιας συντεχνίας τον τελευταίο μήνα
   .name = όνομα
   .name-description = Το όνομα της συντεχνίας προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους της συντεχνίας προς προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους της συντεχνίας προς προβολή
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 showing-guild-xp-statistics = Εμφάνιση της κέρδισης XP της συντεχνίας από {$from} έως {$to}.
 
 # Κοινές ετικέτες καμβά
@@ -2746,18 +2367,12 @@ practice = Πρακτική
 
 bedwars-hotbar = hotbar
   .description = Προβολή προτιμήσεων ράβδου εργαλείων στο Bed Wars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 bedwars-shop = shop
   .description = Προβολή προτιμήσεων καταστήματος στο Bed Wars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 attempts = Προσπάθειες
 bridging-wins = Νίκες γέφυρας
 bridging-losses = Ήττες γέφυρας
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = Διαγώνια - Σκάλα 100
 
 bedwars-practice = practice
   .description = Προβολή στατιστικών πρακτικής στο Bed Wars
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
-
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
 # Σε εντολές
 
 arcade-at = στις
   .description = Εμφάνιση των στατιστικών Arcade ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2809,10 +2419,8 @@ arcade-at = στις
 
 arena-at = στις
   .description = Εμφάνιση των στατιστικών Arena ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2820,10 +2428,8 @@ arena-at = στις
 
 bedwars-at = στις
   .description = Εμφάνιση των στατιστικών Bed Wars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2831,10 +2437,8 @@ bedwars-at = στις
 
 blitz-at = στις
   .description = Εμφάνιση των στατιστικών Blitz Survival Games ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2842,10 +2446,8 @@ blitz-at = στις
 
 buildbattle-at = στις
   .description = Εμφάνιση των στατιστικών Build Battle ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2853,10 +2455,8 @@ buildbattle-at = στις
 
 copsandcrims-at = στις
   .description = Εμφάνιση των στατιστικών Cops and Crims ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2864,10 +2464,8 @@ copsandcrims-at = στις
 
 duels-at = στις
   .description = Εμφάνιση των στατιστικών Duels ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2875,10 +2473,8 @@ duels-at = στις
 
 megawalls-at = στις
   .description = Εμφάνιση των στατιστικών Mega Walls ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2886,10 +2482,8 @@ megawalls-at = στις
 
 murdermystery-at = στις
   .description = Εμφάνιση των στατιστικών Murder Mystery ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2897,10 +2491,8 @@ murdermystery-at = στις
 
 paintball-at = στις
   .description = Εμφάνιση των στατιστικών Paintball ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2908,10 +2500,8 @@ paintball-at = στις
 
 pit-at = στις
   .description = Εμφάνιση των στατιστικών The Pit ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2919,10 +2509,8 @@ pit-at = στις
 
 quake-at = στις
   .description = Εμφάνιση των στατιστικών Quakecraft ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2930,10 +2518,8 @@ quake-at = στις
 
 skywars-at = στις
   .description = Εμφάνιση των στατιστικών SkyWars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2941,10 +2527,8 @@ skywars-at = στις
 
 smash-at = στις
   .description = Εμφάνιση των στατιστικών Smash Heroes ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2952,10 +2536,8 @@ smash-at = στις
 
 speeduhc-at = στις
   .description = Εμφάνιση των στατιστικών SpeedUHC ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2963,10 +2545,8 @@ speeduhc-at = στις
 
 tntgames-at = στις
   .description = Εμφάνιση των στατιστικών TNT Games ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2974,10 +2554,8 @@ tntgames-at = στις
 
 turbokartracers-at = στις
   .description = Εμφάνιση των στατιστικών Turbo Kart Racers ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2985,10 +2563,8 @@ turbokartracers-at = στις
 
 uhc-at = στις
   .description = Εμφάνιση των στατιστικών UHC Champions ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -2996,10 +2572,8 @@ uhc-at = στις
 
 vampirez-at = στις
   .description = Εμφάνιση των στατιστικών VampireZ ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -3007,10 +2581,8 @@ vampirez-at = στις
 
 walls-at = στις
   .description = Εμφάνιση των στατιστικών The Walls ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -3018,10 +2590,8 @@ walls-at = στις
 
 warlords-at = στις
   .description = Εμφάνιση των στατιστικών Warlords ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -3029,10 +2599,8 @@ warlords-at = στις
 
 woolwars-at = στις
   .description = Εμφάνιση των στατιστικών Wool Wars ενός παίκτη σε συγκεκριμένη χρονική στιγμή
-  .username = όνομα-χρήστη
-  .username-description = Όνομα χρήστη Minecraft
-  .uuid = uuid
-  .uuid-description = UUID Minecraft
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
   .mode = λειτουργία
@@ -3042,10 +2610,8 @@ guild-at = στις
   .description = Εμφάνιση των στατιστικών ενός συνδεσμου σε συγκεκριμένη χρονική στιγμή
   .name = όνομα
   .name-description = Το όνομα του συνδέσμου προς προβολή
-  .username = όνομα-χρήστη
-  .username-description = Το όνομα χρήστη του μέλους του συνδέσμου για προβολή
-  .uuid = uuid
-  .uuid-description = Το UUID του μέλους του συνδέσμου για προβολή
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία
   .time = χρόνος
   .time-description = Ο χρόνος προς πίσω (1ώ 12λ 5δ)
 

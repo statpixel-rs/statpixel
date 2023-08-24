@@ -1,4 +1,5 @@
 pub mod run;
+pub mod session;
 
 use api::player::stats;
 use chrono::Utc;
@@ -21,18 +22,15 @@ macro_rules! command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				mode: Option<$mode>,
 			) -> Result<(), ::translate::Error> {
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, username, uuid, mode, $duration).await
+				run::command::<$game>(ctx, player, uuid, mode, $duration).await
 			}
 		}
 	};
@@ -62,19 +60,16 @@ macro_rules! large_command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[max_length = 16]
-				#[autocomplete = "crate::commands::autocomplete_username"]
-				username: Option<::std::string::String>,
-				#[min_length = 32]
 				#[max_length = 36]
-				uuid: Option<::std::string::String>,
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
-				let uuid = util::parse_uuid(uuid.as_deref())?;
+				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 	
-				run::command::<$game>(ctx, username, uuid, mode, $duration).await
+				run::command::<$game>(ctx, player, uuid, mode, $duration).await
 			}
 		}
 	};
@@ -96,17 +91,14 @@ macro_rules! guild_command {
 			#[max_length = 32]
 			#[autocomplete = "crate::commands::autocomplete_guild_name"]
 			name: Option<::std::string::String>,
-			#[max_length = 16]
-			#[autocomplete = "crate::commands::autocomplete_username"]
-			username: Option<::std::string::String>,
-			#[min_length = 32]
 			#[max_length = 36]
-			uuid: Option<::std::string::String>,
+			#[autocomplete = "crate::commands::autocomplete_username"]
+			player: Option<String>,
 		) -> Result<(), ::translate::Error> {
-			let uuid = util::parse_uuid(uuid.as_deref())?;
+			let uuid = util::parse_uuid(player.as_deref());
 			let ctx = &context::Context::from_poise(&ctx);
 
-			run::guild_command(ctx, name, username, uuid, Utc::now() - $duration, None).await
+			run::guild_command(ctx, name, player, uuid, Utc::now() - $duration, None).await
 		}
 	};
 }

@@ -17,7 +17,6 @@ pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 
 		let users = schema::usage::table
 			.distinct_on(schema::usage::user_id)
-			.distinct()
 			.count()
 			.get_result::<i64>(connection)
 			.await?;

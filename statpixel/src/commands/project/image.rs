@@ -48,7 +48,7 @@ pub async fn command<G: api::prelude::Game>(
 		let mut snapshots_ = Vec::with_capacity(snapshots.len());
 
 		for (time, data) in snapshots {
-			let data = snapshot::user::decode(&data)?;
+			let data = api::snapshot::user::decode(&data)?;
 
 			snapshots_.push((time, data));
 		}

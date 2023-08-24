@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> **`{$from}`**の統計情報�
 # Errors
 
 error-player-not-found = **`{$name}`**のプロフィールが見つかりませんでした。
-error-session-not-found = **`{$name}`**のセッションが見つかりませんでした。
+error-snapshot-not-found = **`{$name}`**のセッションが見つかりませんでした。
 error-player-uuid-not-found = UUID **`{$uuid}`**を持つプレイヤーが見つかりませんでした。
 error-player-username-not-found = ユーザー名**`{$name}`**を持つプレイヤーが見つかりませんでした。
 error-guild-by-member-uuid-not-found = UUID **`{$uuid}`**を持つギルドメンバーが見つかりませんでした。
@@ -91,11 +91,8 @@ track-success-description =
 
 track = トラッキング
   .description = プレイヤーの統計情報を追跡し、変更を現在のチャンネルに送信します。
-  .username = ユーザー名
-  .username-description = 追跡するMinecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = 追跡するMinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 # /custom
 
 execute = 実行
@@ -202,11 +199,8 @@ about = アバウト
 
 winstreaks = 勝ち続ける
   .description = 勝ち続ける記録を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 # /recent
 
 mode = モード
@@ -217,11 +211,8 @@ playing = プレイ中
 
 recent = 最近のゲーム
   .description = 最近のゲームを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 # プロジェクションラベル
 
 accuracy = 正確さ
@@ -273,11 +264,8 @@ Wardrobe = クローゼット
 
 skyblock-auctions = オークション
   .description = SkyBlockのオークションを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 player-auctions = オークション
 highest-bid = 最高入札額
 
@@ -285,109 +273,85 @@ highest-bid = 最高入札額
 
 skyblock-inventory = インベントリ
   .description = SkyBlockのインベントリを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-enderchest = エンダーチェスト
   .description = SkyBlockのエンダーチェストを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-quiver = 矢筒
   .description = SkyBlockの矢筒を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-talisman = タリスマン
   .description = SkyBlockのタリスマンバッグを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-fishing = 釣り
   .description = SkyBlockの釣りバッグを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-potions = ポーション
   .description = SkyBlockのポーションバッグを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-equipment = 装備
   .description = SkyBlockの装備を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロフィール
   .profile-description = 表示するプロフィール
 
 skyblock-wardrobe = 衣装室
   .description = SkyBlockの衣装室を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
 skyblock-candy = キャンディ
   .description = SkyBlockのキャンディインベントリを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
 skyblock-vault = 貯蔵庫
   .description = SkyBlockの個人用貯蔵庫を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
 skyblock-pets = ペット
   .description = SkyBlockのペットを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
 skyblock-networth = 総資産
   .description = SkyBlockのプロファイル総資産を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
@@ -395,10 +359,8 @@ skyblock-networth = 総資産
 
 skyblock-profile = プロファイル
   .description = SkyBlockのプロファイルを表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
@@ -427,10 +389,8 @@ social = ソーシャル
 
 skyblock-bank = 銀行
   .description = SkyBlockの銀行を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .profile = プロファイル
   .profile-description = 表示するプロファイル
 
@@ -448,18 +408,12 @@ leaderboard = リーダーボード
 
 network-general = 一般
   .description = 一般的なネットワーク統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 network-history = 履歴
   .description = 過去のネットワーク統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 karma = カルマ
 rewards = 報酬
 friend-requests = 友達リクエスト
@@ -532,11 +486,8 @@ unlinking-succeeded-description = Minecraftアカウントとのリンクが解�
 # /link
 link = リンク
   .description = DiscordアカウントをMinecraftアカウントにリンクします。
-  .username = ユーザー名
-  .username-description = リンクするMinecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = リンクするMinecraftのUUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 linking-failed = リンクに失敗しました
 linking-failed-uuid-description = UUID **`{$uuid}`**はMinecraftアカウントに属していません。
 linking-failed-username-description = ユーザー名 **`{$username}`** はMinecraftアカウントに属していません。
@@ -571,19 +522,15 @@ mystery-gifts = ミステリーギフト
 
 arcade-general = 一般
   .description = アーケードの統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
 
 arcade-from = 開始日
   .description = 特定の日時以降のアーケード統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
   .time = 時間
@@ -591,19 +538,15 @@ arcade-from = 開始日
 
 arcade-history = 履歴
   .description = 時間経過によるアーケード統計の変化を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
 
 arcade-project = 予測
   .description = アーケード統計を将来に予測する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
   .statistic = 統計
@@ -613,28 +556,22 @@ arcade-project = 予測
 
 arcade-daily = デイリー
   .description = 過去1日間のアーケード統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
 
 arcade-weekly = ウィークリー
   .description = 過去1週間のアーケード統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
 
 arcade-monthly = マンスリー
   .description = 過去1か月間のアーケード統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアーケードモード
 
@@ -646,19 +583,15 @@ rating = レーティング
 
 arena-general = 一般
   .description = アリーナの統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
 
 arena-from = 開始日
   .description = 特定の日時以降のアリーナ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
   .time = 時間
@@ -666,19 +599,15 @@ arena-from = 開始日
 
 arena-history = 履歴
   .description = 時間経過によるアリーナ統計の変化を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
 
 arena-project = 予測
   .description = アリーナ統計を将来に予測する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
   .statistic = 統計
@@ -688,28 +617,22 @@ arena-project = 予測
 
 arena-daily = デイリー
   .description = 過去1日間のアリーナ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
 
 arena-weekly = ウィークリー
   .description = 過去1週間のアリーナ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
 
 arena-monthly = マンスリー
   .description = 過去1か月間のアリーナ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するアリーナモード
 
@@ -752,19 +675,15 @@ items-purchased = アイテム購入数
 
 bedwars-general = 一般
   .description = ベッドウォーズの統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
 
 bedwars-from = 開始日
   .description = 特定の日時以降のベッドウォーズ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
   .time = 時間
@@ -772,19 +691,15 @@ bedwars-from = 開始日
 
 bedwars-history = 履歴
   .description = 時間経過によるベッドウォーズ統計の変化を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
 
 bedwars-project = 予測
   .description = ベッドウォーズ統計を将来に予測する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
   .statistic = 統計
@@ -794,28 +709,22 @@ bedwars-project = 予測
 
 bedwars-daily = デイリー
   .description = 過去1日間のベッドウォーズ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
 
 bedwars-weekly = ウィークリー
   .description = 過去1週間のベッドウォーズ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
 
 bedwars-monthly = マンスリー
   .description = 過去1か月間のベッドウォーズ統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するベッドウォーズモード
 
@@ -852,19 +761,15 @@ time-played = プレイ時間
 
 blitz-general = 一般
   .description = ブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
 
 blitz-from = 時間帯
   .description = 特定の時間帯からのブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
   .time = 時間
@@ -872,19 +777,15 @@ blitz-from = 時間帯
 
 blitz-history = 履歴
   .description = 時間の経過によるブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
 
 blitz-project = 予測
   .description = 将来のブリッツサバイバルゲームの統計を予測します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
   .statistic = 統計
@@ -894,28 +795,22 @@ blitz-project = 予測
 
 blitz-daily = 日次
   .description = 過去24時間のブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
 
 blitz-weekly = 週次
   .description = 過去1週間のブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
 
 blitz-monthly = 月次
   .description = 過去1ヶ月のブリッツサバイバルゲームの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するブリッツサバイバルゲームのモード
 
@@ -930,19 +825,15 @@ most-points-team = 最多ポイント（チーム）
 
 buildbattle-general = 一般
   .description = ビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
 
 buildbattle-from = 時間帯
   .description = 特定の時間帯からのビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
   .time = 時間
@@ -950,19 +841,15 @@ buildbattle-from = 時間帯
 
 buildbattle-history = 履歴
   .description = 時間の経過によるビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
 
 buildbattle-project = 予測
   .description = 将来のビルドバトルの統計を予測します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
   .statistic = 統計
@@ -972,28 +859,22 @@ buildbattle-project = 予測
 
 buildbattle-daily = 日次
   .description = 過去24時間のビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
 
 buildbattle-weekly = 週次
   .description = 過去1週間のビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
 
 buildbattle-monthly = 月次
   .description = 過去1ヶ月のビルドバトルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するビルドバトルのモード
 
@@ -1012,19 +893,15 @@ bombs-planted = 設置した爆弾数
 
 copsandcrims-general = 一般
   .description = Cops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
 
 copsandcrims-from = 時間帯
   .description = 特定の時間帯からのCops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
   .time = 時間
@@ -1032,19 +909,15 @@ copsandcrims-from = 時間帯
 
 copsandcrims-history = 履歴
   .description = 時間の経過によるCops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
 
 copsandcrims-project = 予測
   .description = 将来のCops and Crimsの統計を予測します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
   .statistic = 統計
@@ -1054,28 +927,22 @@ copsandcrims-project = 予測
 
 copsandcrims-daily = 日次
   .description = 過去24時間のCops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
 
 copsandcrims-weekly = 週間
   .description = 過去1週間のCops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
 
 copsandcrims-monthly = 月間
   .description = 過去1ヶ月間のCops and Crimsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するCops and Crimsのモード
 
@@ -1115,19 +982,15 @@ health-regenerated = 回復した体力
 
 duels-general = 一般
   .description = デュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
 
 duels-from = から
   .description = 特定の時間からのデュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
   .time = 時間
@@ -1135,19 +998,15 @@ duels-from = から
 
 duels-history = 履歴
   .description = 時間経過によるデュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
 
 duels-project = 予測
   .description = デュエルの統計を将来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
   .statistic = 統計項目
@@ -1157,28 +1016,22 @@ duels-project = 予測
 
 duels-daily = 日次
   .description = 過去1日間のデュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
 
 duels-weekly = 週間
   .description = 過去1週間のデュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
 
 duels-monthly = 月間
   .description = 過去1ヶ月間のデュエルの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するデュエルのモード
 
@@ -1194,19 +1047,15 @@ treasures-found = 発見した宝の数
 
 megawalls-general = 一般
   .description = メガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
 
 megawalls-from = から
   .description = 特定の時間からのメガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
   .time = 時間
@@ -1214,19 +1063,15 @@ megawalls-from = から
 
 megawalls-history = 履歴
   .description = 時間経過によるメガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
 
 megawalls-project = 予測
   .description = メガウォールズの統計を将来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
   .statistic = 統計項目
@@ -1236,28 +1081,22 @@ megawalls-project = 予測
 
 megawalls-daily = 日次
   .description = 過去1日間のメガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
 
 megawalls-weekly = 週間
   .description = 過去1週間のメガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
 
 megawalls-monthly = 月間
   .description = 過去1ヶ月間のメガウォールズの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するメガウォールズのモード
 
@@ -1274,19 +1113,15 @@ detective-wins = 刑事の勝利数
 
 murdermystery-general = 一般
   .description = マーダーミステリーの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するマーダーミステリーのモード
 
 murdermystery-from = から
   .description = 特定の時間からのマーダーミステリーの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するマーダーミステリーのモード
   .time = 時間
@@ -1294,19 +1129,15 @@ murdermystery-from = から
 
 murdermystery-history = 履歴
   .description = 時間経過によるマーダーミステリーの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するマーダーミステリーのモード
 
 murdermystery-project = プロジェクト
   .description = 未来の殺人ミステリー統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示する殺人ミステリーモード
   .statistic = 統計
@@ -1316,28 +1147,22 @@ murdermystery-project = プロジェクト
 
 murdermystery-daily = デイリー
   .description = 過去1日間の殺人ミステリー統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示する殺人ミステリーモード
 
 murdermystery-weekly = ウィークリー
   .description = 過去1週間の殺人ミステリー統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示する殺人ミステリーモード
 
 murdermystery-monthly = マンスリー
   .description = 過去1か月間の殺人ミステリー統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示する殺人ミステリーモード
 
@@ -1362,19 +1187,15 @@ highest-killstreak = 最高の連続キル
 
 paintball-general = 一般
   .description = ペイントボールの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
 
 paintball-from = 開始日時
   .description = 特定の時間以降のペイントボールの統計情報の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
   .time = 時間
@@ -1382,19 +1203,15 @@ paintball-from = 開始日時
 
 paintball-history = 履歴
   .description = 時間の経過に伴うペイントボールの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
 
 paintball-project = プロジェクト
   .description = 未来のペイントボール統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
   .statistic = 統計
@@ -1404,28 +1221,22 @@ paintball-project = プロジェクト
 
 paintball-daily = デイリー
   .description = 過去1日間のペイントボール統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
 
 paintball-weekly = ウィークリー
   .description = 過去1週間のペイントボール統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
 
 paintball-monthly = マンスリー
   .description = 過去1か月間のペイントボール統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するペイントボールモード
 
@@ -1441,19 +1252,15 @@ cr = 完了率
 
 pit-general = 一般
   .description = ザ・ピットの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
 
 pit-from = 開始日時
   .description = 特定の時間以降のザ・ピットの統計情報の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
   .time = 時間
@@ -1461,19 +1268,15 @@ pit-from = 開始日時
 
 pit-history = 履歴
   .description = 時間の経過に伴うザ・ピットの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
 
 pit-project = プロジェクト
   .description = 未来のザ・ピット統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
   .statistic = 統計
@@ -1483,28 +1286,22 @@ pit-project = プロジェクト
 
 pit-daily = デイリー
   .description = 過去1日間のザ・ピット統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
 
 pit-weekly = ウィークリー
   .description = 過去1週間のザ・ピット統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
 
 pit-monthly = マンスリー
   .description = 過去1か月間のザ・ピット統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するザ・ピットモード
 
@@ -1518,19 +1315,15 @@ sight = サイト
 
 quake-general = 一般
   .description = クエイククラフトの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するクエイククラフトモード
 
 quake-from = 開始日時
   .description = 特定の時間以降のクエイククラフトの統計情報の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するクエイククラフトモード
   .time = 時間
@@ -1538,19 +1331,15 @@ quake-from = 開始日時
 
 quake-history = 履歴
   .description = 時間の経過に伴うクエイククラフトの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するクエイククラフトモード
 
 quake-project = プロジェクト
   .description = プロジェクトQuakecraftの統計データを将来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するQuakecraftのモード
   .statistic = 統計データ
@@ -1560,28 +1349,22 @@ quake-project = プロジェクト
 
 quake-daily = デイリー
   .description = 過去1日間のQuakecraft統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するQuakecraftのモード
 
 quake-weekly = ウィークリー
   .description = 過去1週間のQuakecraft統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するQuakecraftのモード
 
 quake-monthly = マンスリー
   .description = 過去1ヶ月間のQuakecraft統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するQuakecraftのモード
 
@@ -1608,19 +1391,15 @@ fastest-win = 最速勝利
 
 skywars-general = 一般
   .description = SkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
 
 skywars-from = 開始時点から
   .description = 特定の時点からのSkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
   .time = 時間
@@ -1628,19 +1407,15 @@ skywars-from = 開始時点から
 
 skywars-history = 履歴
   .description = 過去のSkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
 
 skywars-project = プロジェクト
   .description = プロジェクトSkyWarsの統計データを将来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
   .statistic = 統計データ
@@ -1650,28 +1425,22 @@ skywars-project = プロジェクト
 
 skywars-daily = デイリー
   .description = 過去1日間のSkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
 
 skywars-weekly = ウィークリー
   .description = 過去1週間のSkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
 
 skywars-monthly = マンスリー
   .description = 過去1ヶ月間のSkyWars統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSkyWarsのモード
 
@@ -1683,19 +1452,15 @@ ssr = SSR
 
 smash-general = 一般
   .description = Smash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
 
 smash-from = 開始時点から
   .description = 特定の時点からのSmash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
   .time = 時間
@@ -1703,19 +1468,15 @@ smash-from = 開始時点から
 
 smash-history = 履歴
   .description = 過去のSmash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
 
 smash-project = プロジェクト
   .description = プロジェクトSmash Heroesの統計データを将来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
   .statistic = 統計データ
@@ -1725,28 +1486,22 @@ smash-project = プロジェクト
 
 smash-daily = デイリー
   .description = 過去1日間のSmash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
 
 smash-weekly = ウィークリー
   .description = 過去1週間のSmash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
 
 smash-monthly = マンスリー
   .description = 過去1ヶ月間のSmash Heroes統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSmash Heroesのモード
 
@@ -1757,19 +1512,15 @@ survived-players = 生き残ったプレイヤー
 
 speeduhc-general = 一般
   .description = SpeedUHC統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCのモード
 
 speeduhc-from = 開始時点から
   .description = 特定の時点からのSpeedUHC統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCのモード
   .time = 時間
@@ -1777,19 +1528,15 @@ speeduhc-from = 開始時点から
 
 speeduhc-history = 履歴
   .description = 過去のSpeedUHC統計データの表示
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCのモード
 
 speeduhc-project = プロジェクト
   .description = 将来のSpeedUHC統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCモード
   .statistic = 統計
@@ -1799,28 +1546,22 @@ speeduhc-project = プロジェクト
 
 speeduhc-daily = デイリー
   .description = 過去24時間のSpeedUHC統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCモード
 
 speeduhc-weekly = ウィークリー
   .description = 過去1週間のSpeedUHC統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCモード
 
 speeduhc-monthly = マンスリー
   .description = 過去1ヶ月のSpeedUHC統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するSpeedUHCモード
 
@@ -1840,19 +1581,15 @@ points = ポイント
 
 tntgames-general = 一般
   .description = TNT Gamesの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
 
 tntgames-from = から
   .description = 特定の時間以降のTNT Games統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
   .time = 時間
@@ -1860,19 +1597,15 @@ tntgames-from = から
 
 tntgames-history = 履歴
   .description = 時間の経過に伴うTNT Games統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
 
 tntgames-project = プロジェクト
   .description = 将来のTNT Games統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
   .statistic = 統計
@@ -1882,28 +1615,22 @@ tntgames-project = プロジェクト
 
 tntgames-daily = デイリー
   .description = 過去24時間のTNT Games統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
 
 tntgames-weekly = ウィークリー
   .description = 過去1週間のTNT Games統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
 
 tntgames-monthly = マンスリー
   .description = 過去1ヶ月のTNT Games統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTNT Gamesモード
 
@@ -1919,19 +1646,15 @@ gold-trophies = ゴールドトロフィー
 
 turbokartracers-general = 一般
   .description = Turbo Kart Racersの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
 
 turbokartracers-from = から
   .description = 特定の時間以降のTurbo Kart Racers統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
   .time = 時間
@@ -1939,19 +1662,15 @@ turbokartracers-from = から
 
 turbokartracers-history = 履歴
   .description = 時間の経過に伴うTurbo Kart Racers統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
 
 turbokartracers-project = プロジェクト
   .description = 将来のTurbo Kart Racers統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
   .statistic = 統計
@@ -1961,28 +1680,22 @@ turbokartracers-project = プロジェクト
 
 turbokartracers-daily = デイリー
   .description = 過去24時間のTurbo Kart Racers統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
 
 turbokartracers-weekly = ウィークリー
   .description = 過去1週間のTurbo Kart Racers統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
 
 turbokartracers-monthly = マンスリー
   .description = 過去1ヶ月のTurbo Kart Racers統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するTurbo Kart Racersモード
 
@@ -2000,19 +1713,15 @@ ultimates-crafted = クラフトしたアルティメット
 
 uhc-general = 一般
   .description = UHC Championsの統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsモード
 
 uhc-from = から
   .description = 特定の時間以降のUHC Champions統計の変化を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsモード
   .time = 時間
@@ -2020,19 +1729,15 @@ uhc-from = から
 
 uhc-history = 履歴
   .description = UHC Champions統計の時間経過を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
 
 uhc-project = プロジェクト
   .description = UHC Champions統計を未来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
   .statistic = 統計
@@ -2042,28 +1747,22 @@ uhc-project = プロジェクト
 
 uhc-daily = デイリー
   .description = UHC Champions統計の過去24時間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
 
 uhc-weekly = ウィークリー
   .description = UHC Champions統計の過去1週間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
 
 uhc-monthly = マンスリー
   .description = UHC Champions統計の過去1ヶ月の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するUHC Championsのモード
 
@@ -2087,19 +1786,15 @@ vkdr = VKDR（吸血鬼キル死亡比率）
 
 vampirez-general = 一般
   .description = VampireZ統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
 
 vampirez-from = 開始時点から
   .description = 特定の時点からVampireZ統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
   .time = 時間
@@ -2107,19 +1802,15 @@ vampirez-from = 開始時点から
 
 vampirez-history = 履歴
   .description = VampireZ統計の時間経過を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
 
 vampirez-project = プロジェクト
   .description = VampireZ統計を未来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
   .statistic = 統計
@@ -2129,28 +1820,22 @@ vampirez-project = プロジェクト
 
 vampirez-daily = デイリー
   .description = VampireZ統計の過去24時間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
 
 vampirez-weekly = ウィークリー
   .description = VampireZ統計の過去1週間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
 
 vampirez-monthly = マンスリー
   .description = VampireZ統計の過去1ヶ月の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するVampireZのモード
 
@@ -2163,19 +1848,15 @@ iron-broken = 鉄の壊れた数
 
 walls-general = 一般
   .description = The Walls統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
 
 walls-from = 開始時点から
   .description = 特定の時点からThe Walls統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
   .time = 時間
@@ -2183,19 +1864,15 @@ walls-from = 開始時点から
 
 walls-history = 履歴
   .description = The Walls統計の時間経過を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
 
 walls-project = プロジェクト
   .description = The Walls統計を未来に向けて予測します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
   .statistic = 統計
@@ -2205,28 +1882,22 @@ walls-project = プロジェクト
 
 walls-daily = デイリー
   .description = The Walls統計の過去24時間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
 
 walls-weekly = ウィークリー
   .description = The Walls統計の過去1週間の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
 
 walls-monthly = マンスリー
   .description = The Walls統計の過去1ヶ月の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するThe Wallsのモード
 
@@ -2243,19 +1914,15 @@ mvps = MVP数
 
 warlords-general = 一般
   .description = Warlords統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
 
 warlords-from = 開始時点から
   .description = 特定の時点からWarlords統計の変遷を表示します
-  .username = ユーザー名
-  .username-description = Minecraftユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
   .time = 時間
@@ -2263,19 +1930,15 @@ warlords-from = 開始時点から
 
 warlords-history = 履歴
   .description = 時間の経過によるWarlordsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
 
 warlords-project = プロジェクト
   .description = Warlordsの統計情報を未来に予測します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
   .statistic = 統計情報
@@ -2285,28 +1948,22 @@ warlords-project = プロジェクト
 
 warlords-daily = デイリー
   .description = 過去24時間のWarlordsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
 
 warlords-weekly = ウィークリー
   .description = 過去1週間のWarlordsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
 
 warlords-monthly = マンスリー
   .description = 過去1ヶ月のWarlordsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWarlordsのモード
 
@@ -2318,19 +1975,15 @@ wool-placed = 置かれた羊毛数
 
 woolwars-general = 一般
   .description = Wool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
 
 woolwars-from = 開始
   .description = 特定の時間からWool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
   .time = 時間
@@ -2338,19 +1991,15 @@ woolwars-from = 開始
 
 woolwars-history = 履歴
   .description = 時間の経過によるWool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
 
 woolwars-project = プロジェクト
   .description = Wool Warsの統計情報を未来に予測します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
   .statistic = 統計情報
@@ -2360,28 +2009,22 @@ woolwars-project = プロジェクト
 
 woolwars-daily = デイリー
   .description = 過去24時間のWool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
 
 woolwars-weekly = ウィークリー
   .description = 過去1週間のWool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
 
 woolwars-monthly = マンスリー
   .description = 過去1ヶ月のWool Warsの統計情報を表示します
-  .username = ユーザー名
-  .username-description = Minecraftのユーザー名
-  .uuid = uuid
-  .uuid-description = MinecraftのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .mode = モード
   .mode-description = 表示するWool Warsのモード
 
@@ -2406,19 +2049,14 @@ guild-general = 一般
   .description = ギルドの統計情報を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 guild-from = 開始
   .description = 特定の時間からギルドの統計情報を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 戻る期間を指定します (1h 12m 5s)
 
@@ -2426,26 +2064,18 @@ guild-members = メンバー達
   .description = ギルドのメンバーを表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 guild-member = メンバー
   .description = ギルドメンバーの統計情報を表示します
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 guild-top = トップ
   .description = ギルドのXPに基づいたトップメンバーを表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .days = 日数
   .days-description = 日数
   .limit = 制限
@@ -2455,29 +2085,20 @@ guild-daily = デイリー
   .description = 過去24時間のギルドの統計情報を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 guild-weekly = ウィークリー
   .description = 過去1週間のギルドの統計情報を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 guild-monthly = マンスリー
   .description = 過去1ヶ月のギルドの統計情報を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのMinecraftユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのMinecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 showing-guild-xp-statistics = {$from}から{$to}までのギルドXPの獲得を表示しています。
 
 # 共有キャンバスラベル
@@ -2745,18 +2366,12 @@ practice = 練習
 
 bedwars-hotbar = hotbar
   .description = ベッドウォーズのホットバー設定を表示する
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 bedwars-shop = shop
   .description = ベッドウォーズのショップ設定を表示する
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 attempts = 試行回数
 bridging-wins = ブリッジング 勝利数
 bridging-losses = ブリッジング 敗北数
@@ -2788,19 +2403,14 @@ diagonal-staircase-100 = 対角線 階段 100
 
 bedwars-practice = practice
   .description = ベッドウォーズの練習統計を表示する
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
 # コマンドに関する情報
 
 arcade-at = at
   .description = 特定の時間におけるプレイヤーのアーケード統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2808,10 +2418,8 @@ arcade-at = at
 
 arena-at = at
   .description = 特定の時間におけるプレイヤーのアリーナ統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2819,10 +2427,8 @@ arena-at = at
 
 bedwars-at = at
   .description = 特定の時間におけるプレイヤーのBed Wars統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2830,10 +2436,8 @@ bedwars-at = at
 
 blitz-at = at
   .description = 特定の時間におけるプレイヤーのBlitz Survival Games統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2841,10 +2445,8 @@ blitz-at = at
 
 buildbattle-at = at
   .description = 特定の時間におけるプレイヤーのBuild Battle統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2852,10 +2454,8 @@ buildbattle-at = at
 
 copsandcrims-at = at
   .description = 特定の時間におけるプレイヤーのCops and Crims統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2863,10 +2463,8 @@ copsandcrims-at = at
 
 duels-at = at
   .description = 特定の時間におけるプレイヤーのDuels統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2874,10 +2472,8 @@ duels-at = at
 
 megawalls-at = at
   .description = 特定の時間におけるプレイヤーのMega Walls統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2885,10 +2481,8 @@ megawalls-at = at
 
 murdermystery-at = at
   .description = 特定の時間におけるプレイヤーのMurder Mystery統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2896,10 +2490,8 @@ murdermystery-at = at
 
 paintball-at = at
   .description = 特定の時間におけるプレイヤーのPaintball統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2907,10 +2499,8 @@ paintball-at = at
 
 pit-at = at
   .description = 特定の時間におけるプレイヤーのThe Pit統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2918,10 +2508,8 @@ pit-at = at
 
 quake-at = at
   .description = 特定の時間におけるプレイヤーのQuakecraft統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2929,10 +2517,8 @@ quake-at = at
 
 skywars-at = at
   .description = 特定の時間におけるプレイヤーのSkyWars統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2940,10 +2526,8 @@ skywars-at = at
 
 smash-at = at
   .description = 特定の時間におけるプレイヤーのSmash Heroes統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2951,10 +2535,8 @@ smash-at = at
 
 speeduhc-at = at
   .description = 特定の時間におけるプレイヤーのSpeedUHC統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2962,10 +2544,8 @@ speeduhc-at = at
 
 tntgames-at = at
   .description = 特定の時間におけるプレイヤーのTNT Games統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2973,10 +2553,8 @@ tntgames-at = at
 
 turbokartracers-at = at
   .description = 特定の時間におけるプレイヤーのTurbo Kart Racers統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2984,10 +2562,8 @@ turbokartracers-at = at
 
 uhc-at = at
   .description = 特定の時間におけるプレイヤーのUHC Champions統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -2995,10 +2571,8 @@ uhc-at = at
 
 vampirez-at = at
   .description = 特定の時間におけるプレイヤーのVampireZ統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -3006,10 +2580,8 @@ vampirez-at = at
 
 walls-at = at
   .description = 特定の時間におけるプレイヤーのThe Walls統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -3017,10 +2589,8 @@ walls-at = at
 
 warlords-at = at
   .description = 特定の時間におけるプレイヤーのWarlords統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -3028,10 +2598,8 @@ warlords-at = at
 
 woolwars-at = at
   .description = 特定の時間におけるプレイヤーのWool Wars統計を表示します
-  .username = ユーザー名
-  .username-description = Minecraft ユーザー名
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
   .mode = モード
@@ -3041,10 +2609,8 @@ guild-at = at
   .description = 特定の時間におけるギルドの統計を表示します
   .name = 名前
   .name-description = 表示するギルドの名前
-  .username = ユーザー名
-  .username-description = 表示するギルドメンバーのユーザー名
-  .uuid = uuid
-  .uuid-description = 表示するギルドメンバーのUUID
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
 

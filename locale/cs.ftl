@@ -10,7 +10,7 @@ showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče 
 # Chyby
 
 error-player-not-found = Profil hráče **`{$name}`** nebyl nalezen.
-error-session-not-found = Relace hráče **`{$name}`** nebyla nalezena.
+error-snapshot-not-found = Relace hráče **`{$name}`** nebyla nalezena.
 error-player-uuid-not-found = Hráč s UUID **`{$uuid}`** nebyl nalezen.
 error-player-username-not-found = Hráč s uživatelským jménem **`{$name}`** nebyl nalezen.
 error-guild-by-member-uuid-not-found = Člen cechu s UUID **`{$uuid}`** nebyl nalezen.
@@ -91,10 +91,8 @@ track-success-description =
 
 track = track
   .description = Sleduje statistiky hráče a odesílá jejich změny do aktuálního kanálu.
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno k sledování
-  .uuid = uuid
-  .uuid-description = Minecraft UUID k sledování
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 # /custom
 
@@ -203,10 +201,8 @@ about = about
 
 winstreaks = winstreaks
   .description = Zobrazit winstreaky
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 # /recent
 
@@ -218,10 +214,8 @@ playing = Hraje se
 
 recent = recent
   .description = Zobrazit nedávné hry
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 # Projection labels
 
@@ -274,10 +268,8 @@ Wardrobe = Skříň
 
 skyblock-auctions = auctions
   .description = Zobrazit SkyBlock aukce
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 player-auctions = Aukce
 highest-bid = Nejvyšší nabídka
@@ -286,109 +278,85 @@ highest-bid = Nejvyšší nabídka
 
 skyblock-inventory = inventory
   .description = Zobrazit SkyBlock inventář
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-enderchest = enderchest
   .description = Zobrazit SkyBlock ender truhlu
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-quiver = quiver
   .description = Zobrazit SkyBlock toulcův pytel
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-talisman = talisman
   .description = Zobrazit SkyBlock talisman bag
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-fishing = fishing
   .description = Zobrazit SkyBlock rybářskou tašku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-potions = potions
   .description = Zobrazit SkyBlock lektvarovou tašku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-equipment = equipment
   .description = Zobrazit SkyBlock vybavení
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-wardrobe = šatník
   .description = Zobrazit šatník na SkyBlocku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-candy = cukrovinky
   .description = Zobrazit inventář cukrovinek na SkyBlocku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-vault = trezor
   .description = Zobrazit osobní trezor na SkyBlocku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-pets = mazlíčci
   .description = Zobrazit mazlíčky na SkyBlocku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
 skyblock-networth = hodnota
   .description = Zobrazit hodnotu profilu na SkyBlocku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
@@ -396,10 +364,8 @@ skyblock-networth = hodnota
 
 skyblock-profile = profil
   .description = Zobrazit SkyBlock profil
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
@@ -428,10 +394,8 @@ social = Sociální
 
 skyblock-bank = banka
   .description = Zobrazit SkyBlock banku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .profile = profil
   .profile-description = Profil k zobrazení
 
@@ -449,17 +413,13 @@ leaderboard = žebříček
 
 network-general = obecné
   .description = Zobrazit obecné statistiky sítě
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 network-history = historie
   .description = Zobrazit historické statistiky sítě
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 karma = Karma
 rewards = Odměny
@@ -533,10 +493,8 @@ unlinking-succeeded-description = Už nejste propojeni s účtem Minecraftu.
 # /link
 link = propojení
   .description = Propojí váš Discord účet s účtem Minecraftu.
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno k propojení
-  .uuid = uuid
-  .uuid-description = Minecraft UUID k propojení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 linking-failed = Propojení selhalo
 linking-failed-uuid-description = UUID **`{$uuid}`** nepatří k účtu Minecraftu.
@@ -572,19 +530,15 @@ mystery-gifts = Tajemné dárky
 
 arcade-general = obecné
   .description = Zobrazit statistiky Arkád
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
 
 arcade-from = od
   .description = Zobrazit vývoj statistik Arkád od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
   .time = čas
@@ -592,19 +546,15 @@ arcade-from = od
 
 arcade-history = historie
   .description = Zobrazit vývoj statistik Arkád v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
 
 arcade-project = projekt
   .description = Projekce statistik Arkád do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
   .statistic = statistika
@@ -614,28 +564,22 @@ arcade-project = projekt
 
 arcade-daily = denně
   .description = Zobrazit vývoj denních statistik Arkád
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
 
 arcade-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Arkád
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
 
 arcade-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Arkád
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arkád k zobrazení
 
@@ -647,19 +591,15 @@ rating = Hodnocení
 
 arena-general = obecné
   .description = Zobrazit statistiky Arény
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
 
 arena-from = od
   .description = Zobrazit vývoj statistik Arény od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
   .time = čas
@@ -667,19 +607,15 @@ arena-from = od
 
 arena-history = historie
   .description = Zobrazit vývoj statistik Arény v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
 
 arena-project = projekt
   .description = Projekce statistik Arény do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
   .statistic = statistika
@@ -689,28 +625,22 @@ arena-project = projekt
 
 arena-daily = denně
   .description = Zobrazit vývoj denních statistik Arény
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
 
 arena-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Arény
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
 
 arena-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Arény
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Arény k zobrazení
 
@@ -753,19 +683,15 @@ items-purchased = Nákupy
 
 bedwars-general = obecné
   .description = Zobrazit statistiky Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
 
 bedwars-from = od
   .description = Zobrazit vývoj statistik Bed Wars od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
   .time = čas
@@ -773,19 +699,15 @@ bedwars-from = od
 
 bedwars-history = historie
   .description = Zobrazit vývoj statistik Bed Wars v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
 
 bedwars-project = projekt
   .description = Projekce statistik Bed Wars do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
   .statistic = statistika
@@ -795,28 +717,22 @@ bedwars-project = projekt
 
 bedwars-daily = denně
   .description = Zobrazit vývoj denních statistik Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
 
 bedwars-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
 
 bedwars-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Bed Wars k zobrazení
 
@@ -853,19 +769,15 @@ time-played = Herní doba
 
 blitz-general = obecné
   .description = Zobrazit statistiky Blitz Survival Games
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
 
 blitz-from = od
   .description = Zobrazit vývoj statistik Blitz Survival Games od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
   .time = čas
@@ -873,19 +785,15 @@ blitz-from = od
 
 blitz-history = historie
   .description = Zobrazit vývoj statistik Blitz Survival Games v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
 
 blitz-project = projekt
   .description = Projektovat statistiky Blitz Survival Games do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
   .statistic = statistika
@@ -895,28 +803,22 @@ blitz-project = projekt
 
 blitz-daily = denně
   .description = Zobrazit vývoj denních statistik Blitz Survival Games
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
 
 blitz-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Blitz Survival Games
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
 
 blitz-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Blitz Survival Games
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Blitz Survival Games k zobrazení
 
@@ -931,19 +833,15 @@ most-points-team = Nejvíce bodů (tým)
 
 buildbattle-general = obecné
   .description = Zobrazit statistiky Build Battle
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
 
 buildbattle-from = od
   .description = Zobrazit vývoj statistik Build Battle od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
   .time = čas
@@ -951,19 +849,15 @@ buildbattle-from = od
 
 buildbattle-history = historie
   .description = Zobrazit vývoj statistik Build Battle v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
 
 buildbattle-project = projekt
   .description = Projektovat statistiky Build Battle do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
   .statistic = statistika
@@ -973,28 +867,22 @@ buildbattle-project = projekt
 
 buildbattle-daily = denně
   .description = Zobrazit vývoj denních statistik Build Battle
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
 
 buildbattle-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Build Battle
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
 
 buildbattle-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Build Battle
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Build Battle k zobrazení
 
@@ -1013,19 +901,15 @@ bombs-planted = Položené bomby
 
 copsandcrims-general = obecné
   .description = Zobrazit statistiky Cops and Crims
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
 
 copsandcrims-from = od
   .description = Zobrazit vývoj statistik Cops and Crims od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
   .time = čas
@@ -1033,19 +917,15 @@ copsandcrims-from = od
 
 copsandcrims-history = historie
   .description = Zobrazit vývoj statistik Cops and Crims v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
 
 copsandcrims-project = projekt
   .description = Projektovat statistiky Cops and Crims do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
   .statistic = statistika
@@ -1055,28 +935,22 @@ copsandcrims-project = projekt
 
 copsandcrims-daily = denně
   .description = Zobrazit vývoj denních statistik Cops and Crims
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Cops and Crims k zobrazení
 
 copsandcrims-weekly = týdenní
   .description = Zobrazit vývoj statistik Cops and Crims za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Cops and Crims k prohlížení
 
 copsandcrims-monthly = měsíční
   .description = Zobrazit vývoj statistik Cops and Crims za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Cops and Crims k prohlížení
 
@@ -1116,19 +990,15 @@ health-regenerated = Obnovené zdraví
 
 duels-general = obecné
   .description = Zobrazit statistiky soubojů (Duels)
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
 
 duels-from = od
   .description = Zobrazit vývoj statistik soubojů (Duels) od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
   .time = čas
@@ -1136,19 +1006,15 @@ duels-from = od
 
 duels-history = historie
   .description = Zobrazit vývoj statistik soubojů (Duels) v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
 
 duels-project = projekt
   .description = Prohlásit statistiky soubojů (Duels) do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
   .statistic = statistika
@@ -1158,28 +1024,22 @@ duels-project = projekt
 
 duels-daily = denní
   .description = Zobrazit vývoj statistik soubojů (Duels) za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
 
 duels-weekly = týdenní
   .description = Zobrazit vývoj statistik soubojů (Duels) za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
 
 duels-monthly = měsíční
   .description = Zobrazit vývoj statistik soubojů (Duels) za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Duels k prohlížení
 
@@ -1195,19 +1055,15 @@ treasures-found = Nalezené poklady
 
 megawalls-general = obecné
   .description = Zobrazit statistiky Mega Walls
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
 
 megawalls-from = od
   .description = Zobrazit vývoj statistik Mega Walls od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
   .time = čas
@@ -1215,19 +1071,15 @@ megawalls-from = od
 
 megawalls-history = historie
   .description = Zobrazit vývoj statistik Mega Walls v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
 
 megawalls-project = projekt
   .description = Prohlásit statistiky Mega Walls do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
   .statistic = statistika
@@ -1237,28 +1089,22 @@ megawalls-project = projekt
 
 megawalls-daily = denní
   .description = Zobrazit vývoj statistik Mega Walls za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
 
 megawalls-weekly = týdenní
   .description = Zobrazit vývoj statistik Mega Walls za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
 
 megawalls-monthly = měsíční
   .description = Zobrazit vývoj statistik Mega Walls za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Mega Walls k prohlížení
 
@@ -1275,19 +1121,15 @@ detective-wins = Vítězství detektiva
 
 murdermystery-general = obecné
   .description = Zobrazit statistiky Murder Mystery
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Murder Mystery k prohlížení
 
 murdermystery-from = od
   .description = Zobrazit vývoj statistik Murder Mystery od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Murder Mystery k prohlížení
   .time = čas
@@ -1295,19 +1137,15 @@ murdermystery-from = od
 
 murdermystery-history = historie
   .description = Zobrazit vývoj statistik Murder Mystery v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Murder Mystery k prohlížení
 
 murdermystery-project = projekt
   .description = Projekt statistik Murder Mystery do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Murder Mystery k zobrazení
   .statistic = statistika
@@ -1317,28 +1155,22 @@ murdermystery-project = projekt
 
 murdermystery-daily = denně
   .description = Zobrazit vývoj statistik Murder Mystery za poslední den
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Murder Mystery k zobrazení
 
 murdermystery-weekly = týdně
   .description = Zobrazit vývoj statistik Murder Mystery za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Murder Mystery k zobrazení
 
 murdermystery-monthly = měsíčně
   .description = Zobrazit vývoj statistik Murder Mystery za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Murder Mystery k zobrazení
 
@@ -1363,19 +1195,15 @@ highest-killstreak = Nejdelší série zabití
 
 paintball-general = obecně
   .description = Zobrazit statistiky Paintballu
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
 
 paintball-from = od
   .description = Zobrazit vývoj statistik Paintballu od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
   .time = čas
@@ -1383,19 +1211,15 @@ paintball-from = od
 
 paintball-history = historie
   .description = Zobrazit vývoj statistik Paintballu v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
 
 paintball-project = projekt
   .description = Projekt statistik Paintballu do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
   .statistic = statistika
@@ -1405,28 +1229,22 @@ paintball-project = projekt
 
 paintball-daily = denně
   .description = Zobrazit vývoj statistik Paintballu za poslední den
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
 
 paintball-weekly = týdně
   .description = Zobrazit vývoj statistik Paintballu za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
 
 paintball-monthly = měsíčně
   .description = Zobrazit vývoj statistik Paintballu za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Paintballu k zobrazení
 
@@ -1442,19 +1260,15 @@ cr = Úspěšnost dokončení
 
 pit-general = obecně
   .description = Zobrazit statistiky The Pit
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
 
 pit-from = od
   .description = Zobrazit vývoj statistik The Pit od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
   .time = čas
@@ -1462,19 +1276,15 @@ pit-from = od
 
 pit-history = historie
   .description = Zobrazit vývoj statistik The Pit v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
 
 pit-project = projekt
   .description = Projekt statistik The Pit do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
   .statistic = statistika
@@ -1484,28 +1294,22 @@ pit-project = projekt
 
 pit-daily = denně
   .description = Zobrazit vývoj statistik The Pit za poslední den
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
 
 pit-weekly = týdně
   .description = Zobrazit vývoj statistik The Pit za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
 
 pit-monthly = měsíčně
   .description = Zobrazit vývoj statistik The Pit za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód The Pit k zobrazení
 
@@ -1519,19 +1323,15 @@ sight = Výhled
 
 quake-general = obecně
   .description = Zobrazit statistiky Quakecraftu
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k zobrazení
 
 quake-from = od
   .description = Zobrazit vývoj statistik Quakecraftu od určitého času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k zobrazení
   .time = čas
@@ -1539,19 +1339,15 @@ quake-from = od
 
 quake-history = historie
   .description = Zobrazit vývoj statistik Quakecraftu v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k zobrazení
 
 quake-project = projekt
   .description = Statistiky projektu Quakecraft do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k prohlížení
   .statistic = statistika
@@ -1561,28 +1357,22 @@ quake-project = projekt
 
 quake-daily = denně
   .description = Zobrazit vývoj statistik Quakecraftu za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k prohlížení
 
 quake-weekly = týdně
   .description = Zobrazit vývoj statistik Quakecraftu za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k prohlížení
 
 quake-monthly = měsíčně
   .description = Zobrazit vývoj statistik Quakecraftu za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Quakecraftu k prohlížení
 
@@ -1609,19 +1399,15 @@ fastest-win = Nejrychlejší výhra
 
 skywars-general = obecně
   .description = Zobrazit statistiky SkyWars
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
 
 skywars-from = od
   .description = Zobrazit vývoj statistik SkyWars od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
   .time = čas
@@ -1629,19 +1415,15 @@ skywars-from = od
 
 skywars-history = historie
   .description = Zobrazit vývoj statistik SkyWars v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
 
 skywars-project = projekt
   .description = Projektovat statistiky SkyWars do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
   .statistic = statistika
@@ -1651,28 +1433,22 @@ skywars-project = projekt
 
 skywars-daily = denně
   .description = Zobrazit vývoj statistik SkyWars za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
 
 skywars-weekly = týdně
   .description = Zobrazit vývoj statistik SkyWars za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
 
 skywars-monthly = měsíčně
   .description = Zobrazit vývoj statistik SkyWars za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SkyWars k prohlížení
 
@@ -1684,19 +1460,15 @@ ssr = SSR
 
 smash-general = obecně
   .description = Zobrazit statistiky Smash Heroes
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
 
 smash-from = od
   .description = Zobrazit vývoj statistik Smash Heroes od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
   .time = čas
@@ -1704,19 +1476,15 @@ smash-from = od
 
 smash-history = historie
   .description = Zobrazit vývoj statistik Smash Heroes v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
 
 smash-project = projekt
   .description = Projektovat statistiky Smash Heroes do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
   .statistic = statistika
@@ -1726,28 +1494,22 @@ smash-project = projekt
 
 smash-daily = denně
   .description = Zobrazit vývoj statistik Smash Heroes za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
 
 smash-weekly = týdně
   .description = Zobrazit vývoj statistik Smash Heroes za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
 
 smash-monthly = měsíčně
   .description = Zobrazit vývoj statistik Smash Heroes za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Smash Heroes k prohlížení
 
@@ -1758,19 +1520,15 @@ survived-players = Přeživší hráči
 
 speeduhc-general = obecně
   .description = Zobrazit statistiky SpeedUHC
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC k prohlížení
 
 speeduhc-from = od
   .description = Zobrazit vývoj statistik SpeedUHC od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC k prohlížení
   .time = čas
@@ -1778,19 +1536,15 @@ speeduhc-from = od
 
 speeduhc-history = historie
   .description = Zobrazit vývoj statistik SpeedUHC v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC k prohlížení
 
 speeduhc-project = projekt
   .description = Projekt statistiky SpeedUHC do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC pro zobrazení
   .statistic = statistika
@@ -1800,28 +1554,22 @@ speeduhc-project = projekt
 
 speeduhc-daily = denní
   .description = Zobrazit vývoj statistiky SpeedUHC za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC pro zobrazení
 
 speeduhc-weekly = týdenní
   .description = Zobrazit vývoj statistiky SpeedUHC za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC pro zobrazení
 
 speeduhc-monthly = měsíční
   .description = Zobrazit vývoj statistiky SpeedUHC za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód SpeedUHC pro zobrazení
 
@@ -1841,19 +1589,15 @@ points = Body
 
 tntgames-general = obecné
   .description = Zobrazit statistiky TNT Games
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
 
 tntgames-from = od
   .description = Zobrazit vývoj statistiky TNT Games od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
   .time = čas
@@ -1861,19 +1605,15 @@ tntgames-from = od
 
 tntgames-history = historie
   .description = Zobrazit vývoj statistiky TNT Games over time
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
 
 tntgames-project = projekt
   .description = Projekt statistiky TNT Games do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
   .statistic = statistika
@@ -1883,28 +1623,22 @@ tntgames-project = projekt
 
 tntgames-daily = denní
   .description = Zobrazit vývoj statistiky TNT Games za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
 
 tntgames-weekly = týdenní
   .description = Zobrazit vývoj statistiky TNT Games za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
 
 tntgames-monthly = měsíční
   .description = Zobrazit vývoj statistiky TNT Games za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód TNT Games pro zobrazení
 
@@ -1920,19 +1654,15 @@ gold-trophies = Zlaté Trofeje
 
 turbokartracers-general = obecné
   .description = Zobrazit statistiky Turbo Kart Racers
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
 
 turbokartracers-from = od
   .description = Zobrazit vývoj statistiky Turbo Kart Racers od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
   .time = čas
@@ -1940,19 +1670,15 @@ turbokartracers-from = od
 
 turbokartracers-history = historie
   .description = Zobrazit vývoj statistiky Turbo Kart Racers over time
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
 
 turbokartracers-project = projekt
   .description = Projekt statistiky Turbo Kart Racers do budoucna
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
   .statistic = statistika
@@ -1962,28 +1688,22 @@ turbokartracers-project = projekt
 
 turbokartracers-daily = denní
   .description = Zobrazit vývoj statistiky Turbo Kart Racers za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
 
 turbokartracers-weekly = týdenní
   .description = Zobrazit vývoj statistiky Turbo Kart Racers za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
 
 turbokartracers-monthly = měsíční
   .description = Zobrazit vývoj statistiky Turbo Kart Racers za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód Turbo Kart Racers pro zobrazení
 
@@ -2001,19 +1721,15 @@ ultimates-crafted = Vytvořené Ultimates
 
 uhc-general = obecné
   .description = Zobrazit statistiky UHC Champions
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód UHC Champions pro zobrazení
 
 uhc-from = od
   .description = Zobrazit vývoj statistiky UHC Champions od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Mód UHC Champions pro zobrazení
   .time = čas
@@ -2021,19 +1737,15 @@ uhc-from = od
 
 uhc-history = historie
   .description = Zobrazit vývoj statistik UHC Champions v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
 
 uhc-project = projekt
   .description = Projevit statistiky UHC Champions do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
   .statistic = statistika
@@ -2043,28 +1755,22 @@ uhc-project = projekt
 
 uhc-daily = denní
   .description = Zobrazit vývoj statistik UHC Champions za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
 
 uhc-weekly = týdenní
   .description = Zobrazit vývoj statistik UHC Champions za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
 
 uhc-monthly = měsíční
   .description = Zobrazit vývoj statistik UHC Champions za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = UHC Champions mód k zobrazení
 
@@ -2088,19 +1794,15 @@ vkdr = VKDR
 
 vampirez-general = obecné
   .description = Zobrazit statistiky VampireZ
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
 
 vampirez-from = od
   .description = Zobrazit vývoj statistik VampireZ od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
   .time = čas
@@ -2108,19 +1810,15 @@ vampirez-from = od
 
 vampirez-history = historie
   .description = Zobrazit vývoj statistik VampireZ v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
 
 vampirez-project = projekt
   .description = Projevit statistiky VampireZ do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
   .statistic = statistika
@@ -2130,28 +1828,22 @@ vampirez-project = projekt
 
 vampirez-daily = denní
   .description = Zobrazit vývoj statistik VampireZ za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
 
 vampirez-weekly = týdenní
   .description = Zobrazit vývoj statistik VampireZ za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
 
 vampirez-monthly = měsíční
   .description = Zobrazit vývoj statistik VampireZ za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = VampireZ mód k zobrazení
 
@@ -2164,19 +1856,15 @@ iron-broken = Rozbité železo
 
 walls-general = obecné
   .description = Zobrazit statistiky The Walls
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
 
 walls-from = od
   .description = Zobrazit vývoj statistik The Walls od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
   .time = čas
@@ -2184,19 +1872,15 @@ walls-from = od
 
 walls-history = historie
   .description = Zobrazit vývoj statistik The Walls v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
 
 walls-project = projekt
   .description = Projevit statistiky The Walls do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
   .statistic = statistika
@@ -2206,28 +1890,22 @@ walls-project = projekt
 
 walls-daily = denní
   .description = Zobrazit vývoj statistik The Walls za poslední den
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
 
 walls-weekly = týdenní
   .description = Zobrazit vývoj statistik The Walls za poslední týden
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
 
 walls-monthly = měsíční
   .description = Zobrazit vývoj statistik The Walls za poslední měsíc
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = The Walls mód k zobrazení
 
@@ -2245,19 +1923,15 @@ mvps = MVPs
 
 warlords-general = obecné
   .description = Zobrazit statistiky Warlords
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Warlords mód k zobrazení
 
 warlords-from = od
   .description = Zobrazit vývoj statistik Warlords od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = mód
   .mode-description = Warlords mód k zobrazení
   .time = čas
@@ -2265,19 +1939,15 @@ warlords-from = od
 
 warlords-history = historie
   .description = Zobrazit vývoj statistik Warlords v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
 
 warlords-project = projekt
   .description = Projektovat statistiky Warlords do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
   .statistic = statistika
@@ -2287,28 +1957,22 @@ warlords-project = projekt
 
 warlords-daily = denní
   .description = Zobrazit vývoj denních statistik Warlords
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
 
 warlords-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Warlords
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
 
 warlords-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Warlords
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Warlords k zobrazení
 
@@ -2320,19 +1984,15 @@ wool-placed = Umístěné vlny
 
 woolwars-general = obecné
   .description = Zobrazit statistiky Wool Wars
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
 
 woolwars-from = od
   .description = Zobrazit vývoj statistik Wool Wars od určitého času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
   .time = čas
@@ -2340,19 +2000,15 @@ woolwars-from = od
 
 woolwars-history = historie
   .description = Zobrazit vývoj statistik Wool Wars v průběhu času
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
 
 woolwars-project = projekt
   .description = Projektovat statistiky Wool Wars do budoucnosti
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
   .statistic = statistika
@@ -2362,28 +2018,22 @@ woolwars-project = projekt
 
 woolwars-daily = denní
   .description = Zobrazit vývoj denních statistik Wool Wars
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
 
 woolwars-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik Wool Wars
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
 
 woolwars-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik Wool Wars
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
 
@@ -2408,19 +2058,15 @@ guild-general = obecné
   .description = Zobrazit statistiky guildy
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 guild-from = od
   .description = Zobrazit vývoj statistik guildy od určitého času
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Časový úsek (1h 12m 5s)
 
@@ -2428,26 +2074,20 @@ guild-members = členové
   .description = Zobrazit členy guildy
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 guild-member = člen
   .description = Zobrazit statistiky člena guildy
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 guild-top = top
   .description = Zobrazit nejlepší členy guildy podle XP
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .days = dny
   .days-description = dny
   .limit = limit
@@ -2457,28 +2097,22 @@ guild-daily = denní
   .description = Zobrazit vývoj denních statistik guildy
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 guild-weekly = týdně
   .description = Zobrazit vývoj týdenních statistik guildy
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 guild-monthly = měsíčně
   .description = Zobrazit vývoj měsíčních statistik guildy
   .name = jméno
   .name-description = Název guildy k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno člena guildy k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID člena guildy k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 showing-guild-xp-statistics = Zobrazuji zisky XP guildy od {$from} do {$to}.
 
@@ -2747,17 +2381,13 @@ practice = Cvičení
 
 bedwars-hotbar = horká-lišta
   .description = Zobrazit preference horké lišty v Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 bedwars-shop = obchod
   .description = Zobrazit preference obchodu v Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 attempts = Pokusy
 bridging-wins = Výhry v bridgingu
@@ -2790,19 +2420,15 @@ diagonal-staircase-100 = Diagonální Schodiště 100
 
 bedwars-practice = cvičení
   .description = Zobrazit statistiky cvičení v Bed Wars
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno v Minecraftu
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
 
 # Příkazy pro zobrazení
 
 arcade-at = u
   .description = Zobrazit statistiky z hry Arcade hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2810,10 +2436,8 @@ arcade-at = u
 
 arena-at = u
   .description = Zobrazit statistiky z hry Aréna hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2821,10 +2445,8 @@ arena-at = u
 
 bedwars-at = u
   .description = Zobrazit statistiky z hry Bed Wars hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2832,10 +2454,8 @@ bedwars-at = u
 
 blitz-at = u
   .description = Zobrazit statistiky z hry Blitz Survival Games hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2843,10 +2463,8 @@ blitz-at = u
 
 buildbattle-at = u
   .description = Zobrazit statistiky z hry Build Battle hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2854,10 +2472,8 @@ buildbattle-at = u
 
 copsandcrims-at = u
   .description = Zobrazit statistiky z hry Cops and Crims hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2865,10 +2481,8 @@ copsandcrims-at = u
 
 duels-at = u
   .description = Zobrazit statistiky z hry Duely hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2876,10 +2490,8 @@ duels-at = u
 
 megawalls-at = u
   .description = Zobrazit statistiky z hry Mega Walls hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2887,10 +2499,8 @@ megawalls-at = u
 
 murdermystery-at = u
   .description = Zobrazit statistiky z hry Murder Mystery hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2898,10 +2508,8 @@ murdermystery-at = u
 
 paintball-at = u
   .description = Zobrazit statistiky z hry Paintball hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2909,10 +2517,8 @@ paintball-at = u
 
 pit-at = u
   .description = Zobrazit statistiky z hry The Pit hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2920,10 +2526,8 @@ pit-at = u
 
 quake-at = u
   .description = Zobrazit statistiky z hry Quakecraft hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2931,10 +2535,8 @@ quake-at = u
 
 skywars-at = u
   .description = Zobrazit statistiky z hry SkyWars hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2942,10 +2544,8 @@ skywars-at = u
 
 smash-at = u
   .description = Zobrazit statistiky z hry Smash Heroes hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2953,10 +2553,8 @@ smash-at = u
 
 speeduhc-at = u
   .description = Zobrazit statistiky z hry SpeedUHC hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2964,10 +2562,8 @@ speeduhc-at = u
 
 tntgames-at = u
   .description = Zobrazit statistiky z hry TNT Games hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2975,10 +2571,8 @@ tntgames-at = u
 
 turbokartracers-at = u
   .description = Zobrazit statistiky z hry Turbo Kart Racers hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2986,10 +2580,8 @@ turbokartracers-at = u
 
 uhc-at = u
   .description = Zobrazit statistiky z hry UHC Champions hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -2997,10 +2589,8 @@ uhc-at = u
 
 vampirez-at = u
   .description = Zobrazit statistiky z hry VampireZ hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -3008,10 +2598,8 @@ vampirez-at = u
 
 walls-at = u
   .description = Zobrazit statistiky z hry The Walls hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -3019,10 +2607,8 @@ walls-at = u
 
 warlords-at = u
   .description = Zobrazit statistiky z hry Warlords hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -3030,10 +2616,8 @@ warlords-at = u
 
 woolwars-at = u
   .description = Zobrazit statistiky z hry Wool Wars hráče v určitém časovém okamžiku
-  .username = uživatelské-jméno
-  .username-description = Minecraft uživatelské jméno
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
   .mode = režim
@@ -3043,10 +2627,8 @@ guild-at = u
   .description = Zobrazit statistiky cechu v určitém časovém okamžiku
   .name = jméno
   .name-description = Název cechu k zobrazení
-  .username = uživatelské-jméno
-  .username-description = Uživatelské jméno členu cechu k zobrazení
-  .uuid = uuid
-  .uuid-description = UUID členu cechu k zobrazení
+  .player = hráč
+  .player-description = Minecraft hráč nebo session
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
 

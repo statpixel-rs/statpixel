@@ -32,6 +32,7 @@ pub mod link;
 pub mod network;
 pub mod project;
 pub mod recent;
+pub mod session;
 pub mod skyblock;
 pub mod snapshot;
 pub mod track;

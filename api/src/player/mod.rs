@@ -5,7 +5,7 @@ pub mod socials;
 pub mod stats;
 pub mod status;
 
-use database::schema::{autocomplete, user};
+use database::schema::{autocomplete, snapshot, user};
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
@@ -69,12 +69,17 @@ pub struct MineToolsResponse {
 pub struct Player {
 	pub uuid: Uuid,
 	pub username: Option<String>,
+	pub session: Option<(Uuid, i32)>,
 }
 
 impl Player {
 	#[must_use]
 	pub fn new(uuid: Uuid, username: Option<String>) -> Self {
-		Self { uuid, username }
+		Self {
+			uuid,
+			username,
+			session: None,
+		}
 	}
 
 	/// Creates a new player from a uuid without any validation.
@@ -84,6 +89,7 @@ impl Player {
 		Self {
 			uuid,
 			username: None,
+			session: None,
 		}
 	}
 
@@ -255,7 +261,11 @@ impl Player {
 		&self,
 		ctx: &context::Context<'_>,
 	) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(&self.uuid, self.get_data_raw(ctx))).await
+		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(
+			self.session.as_ref().map_or(&self.uuid, |s| &s.0),
+			self.get_data_raw(ctx),
+		))
+		.await
 	}
 
 	/// # Errors
@@ -264,43 +274,62 @@ impl Player {
 		self,
 		ctx: &context::Context<'_>,
 	) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with(self.uuid, self.get_data_raw(ctx))).await
+		Box::pin(PLAYER_DATA_CACHE.try_get_with(
+			self.session.map_or(self.uuid, |s| s.0),
+			self.get_data_raw(ctx),
+		))
+		.await
 	}
 
 	async fn get_data_raw(&self, ctx: &context::Context<'_>) -> Result<Arc<data::Data>, Error> {
-		let url = {
-			let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
+		let player = if let Some((_, snapshot_id)) = self.session {
+			let data = snapshot::table
+				.filter(snapshot::id.eq(snapshot_id))
+				.select(snapshot::data)
+				.first::<Vec<u8>>(&mut ctx.data().pool.get().await?)
+				.await?;
 
-			url.set_query(Some(&format!("uuid={}", self.uuid)));
-			url
-		};
+			crate::snapshot::user::decode(data.as_slice())?
+		} else {
+			let url = {
+				let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
 
-		let req = Request::new(reqwest::Method::GET, url);
-		let response = HTTP.perform_hypixel(req.into()).await?;
+				url.set_query(Some(&format!("uuid={}", self.uuid)));
+				url
+			};
 
-		if response.status() != StatusCode::OK {
-			return Err(Error::PlayerNotFound(
-				self.username
-					.as_ref()
-					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
-			));
-		}
+			let req = Request::new(reqwest::Method::GET, url);
+			let response = HTTP
+				.perform_hypixel(req.into())
+				.await
+				.map_err(Error::from)?;
 
-		let response = match response.json::<Response>().await {
-			Ok(response) => response,
-			Err(err) => {
-				error!("Failed to deserialize {} data: {}", self.uuid, err);
-
-				return Err(err.into());
+			if response.status() != StatusCode::OK {
+				return Err(Error::PlayerNotFound(
+					self.username
+						.as_ref()
+						.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
+				));
 			}
-		};
 
-		let Some(player) = response.player else {
-			return Err(Error::PlayerNotFound(
-				self.username
-					.as_ref()
-					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
-			));
+			let response = match response.json::<Response>().await {
+				Ok(response) => response,
+				Err(err) => {
+					error!("Failed to deserialize {} data: {}", self.uuid, err);
+
+					return Err(err.into());
+				}
+			};
+
+			let Some(player) = response.player else {
+				return Err(Error::PlayerNotFound(
+					self.username
+						.as_ref()
+						.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),
+				));
+			};
+
+			player
 		};
 
 		self.set_display_str(&player).await?;
@@ -355,7 +384,7 @@ impl Player {
 		let response = HTTP.perform_hypixel(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
-			return Err(Error::SessionNotFound(
+			return Err(Error::SnapshotNotFound(
 				self.username
 					.as_ref()
 					.map_or_else(|| self.uuid.to_string(), std::clone::Clone::clone),

@@ -118,17 +118,14 @@ async fn general(
 	#[max_length = 32]
 	#[autocomplete = "crate::commands::autocomplete_guild_name"]
 	name: Option<String>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::general(ctx, name, username, uuid, None, None, None).await
+	run::general(ctx, name, player, uuid, None, None, None).await
 }
 
 /// Shows the members of a guild.
@@ -144,17 +141,14 @@ async fn members(
 	#[max_length = 32]
 	#[autocomplete = "crate::commands::autocomplete_guild_name"]
 	name: Option<String>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::members(ctx, name, username, uuid, None, None, None).await
+	run::members(ctx, name, player, uuid, None, None, None).await
 }
 
 /// Shows the member of a guild.
@@ -166,17 +160,14 @@ async fn members(
 #[allow(clippy::too_many_lines)]
 async fn member(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
-	run::member(ctx, username, uuid, None, None).await
+	run::member(ctx, player, uuid, None, None).await
 }
 
 /// Shows the members of a guild.
@@ -192,12 +183,9 @@ async fn top(
 	#[max_length = 32]
 	#[autocomplete = "crate::commands::autocomplete_guild_name"]
 	name: Option<String>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 	#[min = 1i64] days: Option<i64>,
 	#[min = 1usize]
 	#[max = 128usize]
@@ -205,13 +193,13 @@ async fn top(
 ) -> Result<(), Error> {
 	let limit = limit.map_or(30, |l| if l % 2 == 0 { l } else { l + 1 });
 
-	let uuid = util::parse_uuid(uuid.as_deref())?;
+	let uuid = util::parse_uuid(player.as_deref());
 	let ctx = &context::Context::from_poise(&ctx);
 
 	run::top(
 		ctx,
 		name,
-		username,
+		player,
 		uuid,
 		days.map_or(chrono::Duration::days(30), chrono::Duration::days),
 		limit,

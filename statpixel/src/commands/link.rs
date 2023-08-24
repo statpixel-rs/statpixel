@@ -3,10 +3,9 @@ use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use poise::serenity_prelude as serenity;
 use translate::{context, tr, tr_fmt};
-use uuid::Uuid;
 
 use crate::{
-	util::{error_embed, escape_username, success_embed},
+	util::{self, error_embed, escape_username, success_embed},
 	Context, Error,
 };
 
@@ -14,18 +13,15 @@ use crate::{
 #[poise::command(on_error = "crate::util::error_handler", slash_command)]
 pub async fn link(
 	ctx: Context<'_>,
-	#[max_length = 16]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	username: Option<String>,
-	#[min_length = 32]
 	#[max_length = 36]
-	uuid: Option<String>,
+	#[autocomplete = "crate::commands::autocomplete_username"]
+	player: Option<String>,
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
 	let ctx = &context::Context::from_poise(&ctx);
 
-	let (player, uuid, username) = match (uuid.and_then(|u| Uuid::parse_str(&u).ok()), username) {
+	let (player, uuid, username) = match (util::parse_uuid(player.as_deref()), player) {
 		(r @ Some(uuid), _) => (api::player::Player::from_uuid(&uuid).await, r, None),
 		(_, Some(username)) => (
 			api::player::Player::from_username(&username).await,

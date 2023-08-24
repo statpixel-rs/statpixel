@@ -1,0 +1,5 @@
+-- Your SQL goes here
+
+ALTER TABLE sessions ADD COLUMN created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW();
+
+ALTER TABLE sessions RENAME TO session;

@@ -68,6 +68,7 @@ diesel::table! {
 		updated_at -> Timestamptz,
 		days_since_epoch -> Int4,
 		version -> Int2,
+		trusted -> Bool,
 	}
 }
 
@@ -103,6 +104,17 @@ diesel::table! {
 }
 
 diesel::table! {
+	session (id) {
+		id -> Uuid,
+		snapshot_id -> Int4,
+		user_id -> Int8,
+		uuid -> Uuid,
+		kind -> Int2,
+		created_at -> Timestamptz,
+	}
+}
+
+diesel::table! {
 	snapshot (id) {
 		uuid -> Uuid,
 		created_at -> Timestamptz,
@@ -112,6 +124,7 @@ diesel::table! {
 		did_update -> Bool,
 		hash -> Int8,
 		version -> Int2,
+		trusted -> Bool,
 	}
 }
 

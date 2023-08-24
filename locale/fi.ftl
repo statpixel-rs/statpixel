@@ -9,7 +9,7 @@ showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja p
 
 # Virheet
 error-player-not-found = Profiilia nimellä **`{$name}`** ei löytynyt.
-error-session-not-found = Istuntoa nimellä **`{$name}`** ei löytynyt.
+error-snapshot-not-found = Istuntoa nimellä **`{$name}`** ei löytynyt.
 error-player-uuid-not-found = Pelaajaa uuid:lla **`{$uuid}`** ei löytynyt.
 error-player-username-not-found = Pelaajaa nimellä **`{$name}`** ei löytynyt.
 error-guild-by-member-uuid-not-found = Killan jäsentä uuid:lla **`{$uuid}`** ei löytynyt.
@@ -89,11 +89,8 @@ track-success-description =
 
 track = track
   .description = Seuraa pelaajan tilastoja ja lähettää muutokset nykyiseen kanavaan.
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi, jota seurataan
-  .uuid = uuid
-  .uuid-description = Minecraft UUID, jota seurataan
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 # /custom
 
 execute = suorita
@@ -201,11 +198,8 @@ about = tietoja
 
 winstreaks = voittoputket
   .description = Näytä voittoputket
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 # /recent
 
 mode = Moodi
@@ -216,11 +210,8 @@ playing = Pelaa
 
 recent = viimeisimmät
   .description = Näytä viimeisimmät pelit
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 # Projection labels
 
 accuracy = Tarkkuus
@@ -272,11 +263,8 @@ Wardrobe = Vaatekaappi
 
 skyblock-auctions = huutokaupat
   .description = Näytä SkyBlock-huutokaupat
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 player-auctions = Huutokaupat
 highest-bid = Korkein tarjous
 
@@ -284,109 +272,85 @@ highest-bid = Korkein tarjous
 
 skyblock-inventory = varasto
   .description = Näytä SkyBlock-varasto
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-enderchest = enderarkku
   .description = Näytä SkyBlock-enderarkku
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-quiver = nuolet
   .description = Näytä SkyBlock-nuolet
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-talisman = talismaanilaukku
   .description = Näytä SkyBlock-talismaanilaukku
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-fishing = kalastuslaukku
   .description = Näytä SkyBlock-kalastuslaukku
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-potions = juomalaukku
   .description = Näytä SkyBlock-juomalaukku
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-equipment = varusteet
   .description = Näytä SkyBlock-varusteet
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jota haluat tarkastella
 
 skyblock-wardrobe = vaatekaappi
   .description = Näytä SkyBlock vaatekaappi
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
 skyblock-candy = karkki
   .description = Näytä SkyBlock karkki-inventaario
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
 skyblock-vault = holvi
   .description = Näytä SkyBlock henkilökohtainen holvi
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
 skyblock-pets = lemmikit
   .description = Näytä SkyBlock lemmikit
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
 skyblock-networth = varallisuus
   .description = Näytä SkyBlock profiilin varallisuus
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
@@ -394,10 +358,8 @@ skyblock-networth = varallisuus
 
 skyblock-profile = profiili
   .description = Näytä SkyBlock profiili
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
@@ -426,10 +388,8 @@ social = Sosiaalisuus
 
 skyblock-bank = pankki
   .description = Näytä SkyBlock pankki
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .profile = profiili
   .profile-description = Profiili, jonka haluat nähdä
 
@@ -447,18 +407,12 @@ leaderboard = tuloslista
 
 network-general = yleinen
   .description = Näytä yleiset verkon tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 network-history = historia
   .description = Näytä historialliset verkon tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 karma = Karma
 rewards = Palkinnot
 friend-requests = Kaveripyyntöjä
@@ -531,11 +485,8 @@ unlinking-succeeded-description = Et ole enää linkittänyt Minecraft-tiliäsi.
 # /link
 link = linkki
   .description = Linkittää Discord-tilisi Minecraft-tiliin.
-  .username = käyttäjänimi
-  .username-description = Minecraft käyttäjänimi, jota haluat linkittää
-  .uuid = uuid
-  .uuid-description = Minecraft UUID, jota haluat linkittää
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 linking-failed = Linkitys epäonnistui
 linking-failed-uuid-description = UUID **`{$uuid}`** ei kuulu Minecraft-tiliin.
 linking-failed-username-description = Käyttäjänimi **`{$username}`** ei kuulu Minecraft-tiliin.
@@ -570,19 +521,15 @@ mystery-gifts = Arvoitukselliset lahjat
 
 arcade-general = yleinen
   .description = Katso Arcade-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
 
 arcade-from = ajasta
   .description = Katso Arcade-tilastojen kehitystä tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
   .time = aika
@@ -590,19 +537,15 @@ arcade-from = ajasta
 
 arcade-history = historia
   .description = Katso Arcade-tilastojen kehitystä ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
 
 arcade-project = projekti
   .description = Projisoi Arcade-tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
   .statistic = tilasto
@@ -612,28 +555,22 @@ arcade-project = projekti
 
 arcade-daily = päivittäinen
   .description = Katso Arcade-tilastojen kehitystä viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
 
 arcade-weekly = viikoittainen
   .description = Katso Arcade-tilastojen kehitystä viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
 
 arcade-monthly = kuukausittainen
   .description = Katso Arcade-tilastojen kehitystä viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arcade-tila
 
@@ -645,19 +582,15 @@ rating = Arvostelu
 
 arena-general = yleinen
   .description = Katso Arena-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
 
 arena-from = ajasta
   .description = Katso Arena-tilastojen kehitystä tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
   .time = aika
@@ -665,19 +598,15 @@ arena-from = ajasta
 
 arena-history = historia
   .description = Katso Arena-tilastojen kehitystä ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
 
 arena-project = projekti
   .description = Projisoi Arena-tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
   .statistic = tilasto
@@ -687,28 +616,22 @@ arena-project = projekti
 
 arena-daily = päivittäinen
   .description = Katso Arena-tilastojen kehitystä viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
 
 arena-weekly = viikoittainen
   .description = Katso Arena-tilastojen kehitystä viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
 
 arena-monthly = kuukausittainen
   .description = Katso Arena-tilastojen kehitystä viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Arena-tila
 
@@ -751,19 +674,15 @@ items-purchased = Ostokset
 
 bedwars-general = yleinen
   .description = Katso Bed Wars -tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
 
 bedwars-from = ajasta
   .description = Katso Bed Wars -tilastojen kehitystä tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
   .time = aika
@@ -771,19 +690,15 @@ bedwars-from = ajasta
 
 bedwars-history = historia
   .description = Katso Bed Wars -tilastojen kehitystä ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
 
 bedwars-project = projekti
   .description = Projisoi Bed Wars -tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
   .statistic = tilasto
@@ -793,28 +708,22 @@ bedwars-project = projekti
 
 bedwars-daily = päivittäinen
   .description = Katso Bed Wars -tilastojen kehitystä viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
 
 bedwars-weekly = viikoittainen
   .description = Katso Bed Wars -tilastojen kehitystä viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
 
 bedwars-monthly = kuukausittainen
   .description = Katso Bed Wars -tilastojen kehitystä viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Bed Wars -tila
 
@@ -851,19 +760,15 @@ time-played = Peliaika
 
 blitz-general = yleinen
   .description = Näytä Blitz Survival Games -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-from = lähtien
   .description = Näytä Blitz Survival Games -tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
   .time = aika
@@ -871,19 +776,15 @@ blitz-from = lähtien
 
 blitz-history = historia
   .description = Näytä Blitz Survival Games -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-project = projekti
   .description = Projektio Blitz Survival Games -tilastoista tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
   .statistic = tilasto
@@ -893,28 +794,22 @@ blitz-project = projekti
 
 blitz-daily = päivittäin
   .description = Näytä Blitz Survival Games -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-weekly = viikoittain
   .description = Näytä Blitz Survival Games -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
 blitz-monthly = kuukausittain
   .description = Näytä Blitz Survival Games -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Blitz SG -tilastoja, joita haluat tarkastella
 
@@ -929,19 +824,15 @@ most-points-team = Eniten pisteitä (Tiimi)
 
 buildbattle-general = yleinen
   .description = Näytä Build Battle -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
 
 buildbattle-from = lähtien
   .description = Näytä Build Battle -tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
   .time = aika
@@ -949,19 +840,15 @@ buildbattle-from = lähtien
 
 buildbattle-history = historia
   .description = Näytä Build Battle -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
 
 buildbattle-project = projekti
   .description = Projektio Build Battle -tilastoista tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
   .statistic = tilasto
@@ -971,28 +858,22 @@ buildbattle-project = projekti
 
 buildbattle-daily = päivittäin
   .description = Näytä Build Battle -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
 
 buildbattle-weekly = viikoittain
   .description = Näytä Build Battle -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
 
 buildbattle-monthly = kuukausittain
   .description = Näytä Build Battle -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Build Battle -tila, jonka tilastoja haluat tarkastella
 
@@ -1011,19 +892,15 @@ bombs-planted = Pommit asetettu
 
 copsandcrims-general = yleinen
   .description = Näytä Cops and Crims -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
 
 copsandcrims-from = lähtien
   .description = Näytä Cops and Crims -tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
   .time = aika
@@ -1031,19 +908,15 @@ copsandcrims-from = lähtien
 
 copsandcrims-history = historia
   .description = Näytä Cops and Crims -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
 
 copsandcrims-project = projekti
   .description = Projektio Cops and Crims -tilastoista tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
   .statistic = tilasto
@@ -1053,28 +926,22 @@ copsandcrims-project = projekti
 
 copsandcrims-daily = päivittäin
   .description = Näytä Cops and Crims -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jonka tilastoja haluat tarkastella
 
 copsandcrims-weekly = viikoittain
   .description = Näytä Cops and Crims -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jota tarkastellaan
 
 copsandcrims-monthly = kuukausittain
   .description = Näytä Cops and Crims -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Cops and Crims -tila, jota tarkastellaan
 
@@ -1114,19 +981,15 @@ health-regenerated = Palautettu terveys
 
 duels-general = yleinen
   .description = Näytä Duels-tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
 
 duels-from = lähtien
   .description = Näytä Duels-tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
   .time = aika
@@ -1134,19 +997,15 @@ duels-from = lähtien
 
 duels-history = historia
   .description = Näytä Duels-tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
 
 duels-project = projekti
   .description = Projektoida Duels-tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
   .statistic = tilasto
@@ -1156,28 +1015,22 @@ duels-project = projekti
 
 duels-daily = päivittäin
   .description = Näytä Duels-tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
 
 duels-weekly = viikoittain
   .description = Näytä Duels-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
 
 duels-monthly = kuukausittain
   .description = Näytä Duels-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Duels-tila, jota tarkastellaan
 
@@ -1193,19 +1046,15 @@ treasures-found = Löydetyt aarteet
 
 megawalls-general = yleinen
   .description = Näytä Mega Walls -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
 
 megawalls-from = lähtien
   .description = Näytä Mega Walls -tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
   .time = aika
@@ -1213,19 +1062,15 @@ megawalls-from = lähtien
 
 megawalls-history = historia
   .description = Näytä Mega Walls -tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
 
 megawalls-project = projekti
   .description = Projektoida Mega Walls -tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
   .statistic = tilasto
@@ -1235,28 +1080,22 @@ megawalls-project = projekti
 
 megawalls-daily = päivittäin
   .description = Näytä Mega Walls -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
 
 megawalls-weekly = viikoittain
   .description = Näytä Mega Walls -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
 
 megawalls-monthly = kuukausittain
   .description = Näytä Mega Walls -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Mega Walls -tila, jota tarkastellaan
 
@@ -1273,19 +1112,15 @@ detective-wins = Etsivän voitot
 
 murdermystery-general = yleinen
   .description = Näytä Murder Mystery -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Murder Mystery -tila, jota tarkastellaan
 
 murdermystery-from = lähtien
   .description = Näytä Murder Mystery -tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Murder Mystery -tila, jota tarkastellaan
   .time = aika
@@ -1293,19 +1128,15 @@ murdermystery-from = lähtien
 
 murdermystery-history = historia
   .description = Näytä Murder Mystery -tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraftin UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Murder Mystery -tila, jota tarkastellaan
 
 murdermystery-project = projekti
   .description = Projisoi Murder Mystery tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
   .statistic = tilasto
@@ -1315,28 +1146,22 @@ murdermystery-project = projekti
 
 murdermystery-daily = päivittäin
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
 
 murdermystery-weekly = viikoittain
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
 
 murdermystery-monthly = kuukausittain
   .description = Näytä Murder Mystery tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Murder Mystery tila
 
@@ -1361,19 +1186,15 @@ highest-killstreak = Paras tapposarja
 
 paintball-general = yleinen
   .description = Näytä Paintball-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
 
 paintball-from = ajasta
   .description = Näytä Paintball-tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
   .time = aika
@@ -1381,19 +1202,15 @@ paintball-from = ajasta
 
 paintball-history = historia
   .description = Näytä Paintball-tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
 
 paintball-project = projekti
   .description = Projisoi Paintball-tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
   .statistic = tilasto
@@ -1403,28 +1220,22 @@ paintball-project = projekti
 
 paintball-daily = päivittäin
   .description = Näytä Paintball-tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
 
 paintball-weekly = viikoittain
   .description = Näytä Paintball-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
 
 paintball-monthly = kuukausittain
   .description = Näytä Paintball-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Paintball-tila
 
@@ -1440,19 +1251,15 @@ cr = Valmistumisaste
 
 pit-general = yleinen
   .description = Näytä The Pit -tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
 
 pit-from = ajasta
   .description = Näytä The Pit -tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
   .time = aika
@@ -1460,19 +1267,15 @@ pit-from = ajasta
 
 pit-history = historia
   .description = Näytä The Pit -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
 
 pit-project = projekti
   .description = Projisoi The Pit -tilastoja tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
   .statistic = tilasto
@@ -1482,28 +1285,22 @@ pit-project = projekti
 
 pit-daily = päivittäin
   .description = Näytä The Pit -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
 
 pit-weekly = viikoittain
   .description = Näytä The Pit -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
 
 pit-monthly = kuukausittain
   .description = Näytä The Pit -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Pit -tila
 
@@ -1517,19 +1314,15 @@ sight = Näkö
 
 quake-general = yleinen
   .description = Näytä Quakecraft-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
 
 quake-from = ajasta
   .description = Näytä Quakecraft-tilastojen kehitys tietyltä ajalta
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
   .time = aika
@@ -1537,19 +1330,15 @@ quake-from = ajasta
 
 quake-history = historia
   .description = Näytä Quakecraft-tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Quakecraft-tila
 
 quake-project = projekti
   .description = Projektio Quakecraftin tilastoihin tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Quakecraft-tila näkymälle
   .statistic = tilasto
@@ -1559,28 +1348,22 @@ quake-project = projekti
 
 quake-daily = päivittäin
   .description = Näytä Quakecraftin tilastojen kehitys viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Quakecraft-tila näkymälle
 
 quake-weekly = viikottain
   .description = Näytä Quakecraftin tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Quakecraft-tila näkymälle
 
 quake-monthly = kuukausittain
   .description = Näytä Quakecraftin tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Quakecraft-tila näkymälle
 
@@ -1607,19 +1390,15 @@ fastest-win = Nopein voitto
 
 skywars-general = yleinen
   .description = Näytä SkyWars-tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
 
 skywars-from = alkaen
   .description = Näytä SkyWars-tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
   .time = aika
@@ -1627,19 +1406,15 @@ skywars-from = alkaen
 
 skywars-history = historia
   .description = Näytä SkyWars-tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
 
 skywars-project = projekti
   .description = Projektio SkyWarsin tilastoihin tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
   .statistic = tilasto
@@ -1649,28 +1424,22 @@ skywars-project = projekti
 
 skywars-daily = päivittäin
   .description = Näytä SkyWars-tilastojen kehitys viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
 
 skywars-weekly = viikottain
   .description = Näytä SkyWars-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
 
 skywars-monthly = kuukausittain
   .description = Näytä SkyWars-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SkyWars-tila näkymälle
 
@@ -1682,19 +1451,15 @@ ssr = SSR
 
 smash-general = yleinen
   .description = Näytä Smash Heroes -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
 
 smash-from = alkaen
   .description = Näytä Smash Heroes -tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
   .time = aika
@@ -1702,19 +1467,15 @@ smash-from = alkaen
 
 smash-history = historia
   .description = Näytä Smash Heroes -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
 
 smash-project = projekti
   .description = Projektio Smash Heroes -tilastoihin tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
   .statistic = tilasto
@@ -1724,28 +1485,22 @@ smash-project = projekti
 
 smash-daily = päivittäin
   .description = Näytä Smash Heroes -tilastojen kehitys viimeisen vuorokauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
 
 smash-weekly = viikottain
   .description = Näytä Smash Heroes -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
 
 smash-monthly = kuukausittain
   .description = Näytä Smash Heroes -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Smash Heroes -tila näkymälle
 
@@ -1756,19 +1511,15 @@ survived-players = Selvinneet pelaajat
 
 speeduhc-general = yleinen
   .description = Näytä SpeedUHC-tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näkymälle
 
 speeduhc-from = alkaen
   .description = Näytä SpeedUHC-tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näkymälle
   .time = aika
@@ -1776,19 +1527,15 @@ speeduhc-from = alkaen
 
 speeduhc-history = historia
   .description = Näytä SpeedUHC-tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näkymälle
 
 speeduhc-project = projekti
   .description = Projektin SpeedUHC tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näytettäväksi
   .statistic = tilasto
@@ -1798,28 +1545,22 @@ speeduhc-project = projekti
 
 speeduhc-daily = päivittäin
   .description = Näytä SpeedUHC-tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näytettäväksi
 
 speeduhc-weekly = viikottain
   .description = Näytä SpeedUHC-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näytettäväksi
 
 speeduhc-monthly = kuukausittain
   .description = Näytä SpeedUHC-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = SpeedUHC-tila näytettäväksi
 
@@ -1839,19 +1580,15 @@ points = Pisteet
 
 tntgames-general = yleinen
   .description = Näytä TNT-pelien tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
 
 tntgames-from = lähtien
   .description = Näytä TNT-pelien tilastojen kehitys tietystä ajankohdasta alkaen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
   .time = aika
@@ -1859,19 +1596,15 @@ tntgames-from = lähtien
 
 tntgames-history = historia
   .description = Näytä TNT-pelien tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
 
 tntgames-project = projekti
   .description = Projektoida TNT-pelien tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
   .statistic = tilasto
@@ -1881,28 +1614,22 @@ tntgames-project = projekti
 
 tntgames-daily = päivittäin
   .description = Näytä TNT-pelien tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
 
 tntgames-weekly = viikottain
   .description = Näytä TNT-pelien tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
 
 tntgames-monthly = kuukausittain
   .description = Näytä TNT-pelien tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = TNT-pelin tila näytettäväksi
 
@@ -1918,19 +1645,15 @@ gold-trophies = Kultamitalit
 
 turbokartracers-general = yleinen
   .description = Näytä Turbo Kart Racers -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
 
 turbokartracers-from = lähtien
   .description = Näytä Turbo Kart Racers -tilastojen kehitys tietystä ajankohdasta alkaen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
   .time = aika
@@ -1938,19 +1661,15 @@ turbokartracers-from = lähtien
 
 turbokartracers-history = historia
   .description = Näytä Turbo Kart Racers -tilastojen kehitys ajan kuluessa
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
 
 turbokartracers-project = projekti
   .description = Projektoida Turbo Kart Racers -tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
   .statistic = tilasto
@@ -1960,28 +1679,22 @@ turbokartracers-project = projekti
 
 turbokartracers-daily = päivittäin
   .description = Näytä Turbo Kart Racers -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
 
 turbokartracers-weekly = viikottain
   .description = Näytä Turbo Kart Racers -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
 
 turbokartracers-monthly = kuukausittain
   .description = Näytä Turbo Kart Racers -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Turbo Kart Racers -tila näytettäväksi
 
@@ -1999,19 +1712,15 @@ ultimates-crafted = Luodut Ultimatet
 
 uhc-general = yleinen
   .description = Näytä UHC Champions -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = UHC Champions -tila näytettäväksi
 
 uhc-from = lähtien
   .description = Näytä UHC Champions -tilastojen kehitys tietystä ajankohdasta alkaen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = UHC Champions -tila näytettäväksi
   .time = aika
@@ -2019,19 +1728,15 @@ uhc-from = lähtien
 
 uhc-history = historia
   .description = Katso kehitys UHC Champions -tilastoissa ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
 
 uhc-project = projekti
   .description = Projisoi UHC Champions -tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
   .statistic = tilasto
@@ -2041,28 +1746,22 @@ uhc-project = projekti
 
 uhc-daily = päivittäin
   .description = Katso UHC Champions -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
 
 uhc-weekly = viikoittain
   .description = Katso UHC Champions -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
 
 uhc-monthly = kuukausittain
   .description = Katso UHC Champions -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä UHC Champions -tila
 
@@ -2086,19 +1785,15 @@ vkdr = VKDR
 
 vampirez-general = yleinen
   .description = Katso VampireZ-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
 
 vampirez-from = lähtien
   .description = Katso VampireZ-tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
   .time = aika
@@ -2106,19 +1801,15 @@ vampirez-from = lähtien
 
 vampirez-history = historia
   .description = Katso VampireZ-tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
 
 vampirez-project = projekti
   .description = Projisoi VampireZ-tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
   .statistic = tilasto
@@ -2128,28 +1819,22 @@ vampirez-project = projekti
 
 vampirez-daily = päivittäin
   .description = Katso VampireZ-tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
 
 vampirez-weekly = viikoittain
   .description = Katso VampireZ-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
 
 vampirez-monthly = kuukausittain
   .description = Katso VampireZ-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä VampireZ-tila
 
@@ -2162,19 +1847,15 @@ iron-broken = Rikotut rautalohkot
 
 walls-general = yleinen
   .description = Katso The Walls -tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
 
 walls-from = lähtien
   .description = Katso The Walls -tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
   .time = aika
@@ -2182,19 +1863,15 @@ walls-from = lähtien
 
 walls-history = historia
   .description = Katso The Walls -tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
 
 walls-project = projekti
   .description = Projisoi The Walls -tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
   .statistic = tilasto
@@ -2204,28 +1881,22 @@ walls-project = projekti
 
 walls-daily = päivittäin
   .description = Katso The Walls -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
 
 walls-weekly = viikoittain
   .description = Katso The Walls -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
 
 walls-monthly = kuukausittain
   .description = Katso The Walls -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä The Walls -tila
 
@@ -2242,19 +1913,15 @@ mvps = MVP:t
 
 warlords-general = yleinen
   .description = Katso Warlords-tilastoja
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Warlords-tila
 
 warlords-from = lähtien
   .description = Katso Warlords-tilastojen kehitys tietystä ajankohdasta lähtien
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Näytettävä Warlords-tila
   .time = aika
@@ -2264,19 +1931,15 @@ warlords-from = lähtien
 
 warlords-history = historia
   .description = Näytä Warlords-tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
 
 warlords-project = projekti
   .description = Projektoida Warlords-tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
   .statistic = tilasto
@@ -2286,28 +1949,22 @@ warlords-project = projekti
 
 warlords-daily = päivittäin
   .description = Näytä Warlords-tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
 
 warlords-weekly = viikoittain
   .description = Näytä Warlords-tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
 
 warlords-monthly = kuukausittain
   .description = Näytä Warlords-tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Warlords-tila näkymää varten
 
@@ -2319,19 +1976,15 @@ wool-placed = Asetetut Villa
 
 woolwars-general = yleinen
   .description = Näytä Wool Wars -tilastot
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
 
 woolwars-from = ajasta
   .description = Näytä Wool Wars -tilastojen kehitys tietyn ajanjakson aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
   .time = aika
@@ -2339,19 +1992,15 @@ woolwars-from = ajasta
 
 woolwars-history = historia
   .description = Näytä Wool Wars -tilastojen kehitys ajan myötä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
 
 woolwars-project = projekti
   .description = Projektoida Wool Wars -tilastot tulevaisuuteen
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
   .statistic = tilasto
@@ -2361,28 +2010,22 @@ woolwars-project = projekti
 
 woolwars-daily = päivittäin
   .description = Näytä Wool Wars -tilastojen kehitys viimeisen päivän aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
 
 woolwars-weekly = viikoittain
   .description = Näytä Wool Wars -tilastojen kehitys viimeisen viikon aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
 
 woolwars-monthly = kuukausittain
   .description = Näytä Wool Wars -tilastojen kehitys viimeisen kuukauden aikana
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .mode = tila
   .mode-description = Wool Wars -tila näkymää varten
 
@@ -2407,19 +2050,14 @@ guild-general = yleinen
   .description = Näytä killan tilastot
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 guild-from = ajasta
   .description = Näytä killan tilastojen kehitys tietyn ajanjakson aikana
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Ajanjakso taaksepäin (1h 12m 5s)
 
@@ -2427,26 +2065,18 @@ guild-members = jäsenet
   .description = Näytä killan jäsenet
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 guild-member = jäsen
   .description = Näytä killan jäsenen tilastot
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 guild-top = top
   .description = Näytä killan kärkijäsenet XP:n mukaan
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .days = päivät
   .days-description = päivät
   .limit = raja
@@ -2456,29 +2086,20 @@ guild-daily = päivittäin
   .description = Näytä killan tilastojen kehitys viimeisen päivän aikana
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 guild-weekly = viikoittain
   .description = Näytä killan tilastojen kehitys viimeisen viikon aikana
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 guild-monthly = kuukausittain
   .description = Näytä killan tilastojen kehitys viimeisen kuukauden aikana
   .name = nimi
   .name-description = Killan nimi näkymää varten
-  .username = käyttäjänimi
-  .username-description = Killan jäsenen Minecraft-käyttäjänimi näkymää varten
-  .uuid = uuid
-  .uuid-description = Killan jäsenen Minecraft-UUID näkymää varten
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 showing-guild-xp-statistics = Näytetään killan XP:n kehitys ajalta {$from} - {$to}.
 
 # Yhteiset kankaanmerkintäliput
@@ -2746,18 +2367,12 @@ practice = Harjoitus
 
 bedwars-hotbar = hotbar
   .description = Näytä Pikataisteluun liittyvät pikatyökalurivin asetukset
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft-tunniste
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 bedwars-shop = shop
   .description = Näytä Pikataisteluun liittyvät kauppa-asetukset
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft-tunniste
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 attempts = Yritykset
 bridging-wins = Siltaamisen Voitot
 bridging-losses = Siltaamisen Tappiot
@@ -2789,19 +2404,14 @@ diagonal-staircase-100 = Vinosti Portaat 100
 
 bedwars-practice = practice
   .description = Näytä Pikataisteluun liittyvät harjoitusstatistiikat
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = tunniste
-  .uuid-description = Minecraft-tunniste
-
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
 # Komennot
 
 arcade-at = ajassa
   .description = Näytä pelaajan Arcade-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2809,10 +2419,8 @@ arcade-at = ajassa
 
 arena-at = ajassa
   .description = Näytä pelaajan Arena-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2820,10 +2428,8 @@ arena-at = ajassa
 
 bedwars-at = ajassa
   .description = Näytä pelaajan Bed Wars -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2831,10 +2437,8 @@ bedwars-at = ajassa
 
 blitz-at = ajassa
   .description = Näytä pelaajan Blitz Survival Games -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2842,10 +2446,8 @@ blitz-at = ajassa
 
 buildbattle-at = ajassa
   .description = Näytä pelaajan Build Battle -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2853,10 +2455,8 @@ buildbattle-at = ajassa
 
 copsandcrims-at = ajassa
   .description = Näytä pelaajan Cops and Crims -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2864,10 +2464,8 @@ copsandcrims-at = ajassa
 
 duels-at = ajassa
   .description = Näytä pelaajan Duels-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2875,10 +2473,8 @@ duels-at = ajassa
 
 megawalls-at = ajassa
   .description = Näytä pelaajan Mega Walls -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2886,10 +2482,8 @@ megawalls-at = ajassa
 
 murdermystery-at = ajassa
   .description = Näytä pelaajan Murder Mystery -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2897,10 +2491,8 @@ murdermystery-at = ajassa
 
 paintball-at = ajassa
   .description = Näytä pelaajan Paintball -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2908,10 +2500,8 @@ paintball-at = ajassa
 
 pit-at = ajassa
   .description = Näytä pelaajan The Pit -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2919,10 +2509,8 @@ pit-at = ajassa
 
 quake-at = ajassa
   .description = Näytä pelaajan Quakecraft -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2930,10 +2518,8 @@ quake-at = ajassa
 
 skywars-at = ajassa
   .description = Näytä pelaajan SkyWars-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2941,10 +2527,8 @@ skywars-at = ajassa
 
 smash-at = ajassa
   .description = Näytä pelaajan Smash Heroes -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2952,10 +2536,8 @@ smash-at = ajassa
 
 speeduhc-at = ajassa
   .description = Näytä pelaajan SpeedUHC-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2963,10 +2545,8 @@ speeduhc-at = ajassa
 
 tntgames-at = ajassa
   .description = Näytä pelaajan TNT Games -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2974,10 +2554,8 @@ tntgames-at = ajassa
 
 turbokartracers-at = ajassa
   .description = Näytä pelaajan Turbo Kart Racers -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2985,10 +2563,8 @@ turbokartracers-at = ajassa
 
 uhc-at = ajassa
   .description = Näytä pelaajan UHC Champions -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -2996,10 +2572,8 @@ uhc-at = ajassa
 
 vampirez-at = ajassa
   .description = Näytä pelaajan VampireZ-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -3007,10 +2581,8 @@ vampirez-at = ajassa
 
 walls-at = ajassa
   .description = Näytä pelaajan The Walls -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -3018,10 +2590,8 @@ walls-at = ajassa
 
 warlords-at = ajassa
   .description = Näytä pelaajan Warlords-tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -3029,10 +2599,8 @@ warlords-at = ajassa
 
 woolwars-at = ajassa
   .description = Näytä pelaajan Wool Wars -tilastot tietyllä ajanhetkellä
-  .username = käyttäjänimi
-  .username-description = Minecraft-käyttäjänimi
-  .uuid = uuid
-  .uuid-description = Minecraft-UUID
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
   .mode = tila
@@ -3042,10 +2610,8 @@ guild-at = ajassa
   .description = Näytä killan tilastot tietyllä ajanhetkellä
   .name = nimi
   .name-description = Killan nimi, joka näytetään
-  .username = käyttäjänimi
-  .username-description = Käyttäjänimi, jonka killan tilastot näytetään
-  .uuid = uuid
-  .uuid-description = UUID, jonka killan tilastot näytetään
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai sessio
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
 

@@ -1,6 +1,5 @@
-use crate::player::data::Data;
+use crate::{player::data::Data, Error};
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
-use translate::Error;
 
 /// # Errors
 /// Returns an error if the data could not be encoded.
