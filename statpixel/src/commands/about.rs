@@ -1,7 +1,7 @@
 use crate::Error;
 use api::canvas::label::ToFormatted;
 use database::schema;
-use diesel::QueryDsl;
+use diesel::{dsl::count_distinct, QueryDsl};
 use diesel_async::RunQueryDsl;
 use translate::{context, tr, Context};
 
@@ -16,8 +16,7 @@ pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 		let connection = &mut ctx.data().pool.get().await?;
 
 		let users = schema::usage::table
-			.group_by(schema::usage::user_id)
-			.count()
+			.select(count_distinct(schema::usage::user_id))
 			.get_result::<i64>(connection)
 			.await?;
 
