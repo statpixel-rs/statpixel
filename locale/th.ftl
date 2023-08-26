@@ -2617,3 +2617,190 @@ guild-at = เวลา
 
 showing-statistics-at = <a:clock:1115091329958019253> แสดงสถิติจาก {$at}
 showing-guild-statistics-at = แสดงสถิติกิลด์จาก {$at}
+
+error-session-not-found = ไม่พบเซสชันด้วย ID ที่ระบุ
+
+session-deleted = เซสชันที่มี ID **`{$id}`** ถูกลบแล้ว
+session-created-title = เซสชันถูกสร้าง
+session-created = เซสชันที่มี ID **`{$id}`** ได้ถูกสร้างสำหรับ **`{$username}`**
+  แทนที่ตำแหน่งของผู้เล่นใด ๆ ด้วย ID เซสชันเพื่อใช้ข้อมูลในคำสั่งใด ๆ
+
+  ลองใช้ดู: </bedwars general:1115091329958019253>
+
+  หรือใช้คำสั่งเซสชันเพื่อดูว่าผู้เล่นได้ก้าวหน้าไปถึงไหนตั้งแต่เริ่มต้น: </bedwars session:1115091329958019253>
+  โปรดทราบว่าคำสั่งนี้เป็นทางลัดสำหรับ </bedwars compare:1115091329958019253>!
+
+session-id = รหัสเซสชัน
+session-list-title = เซสชัน (หน้า {$page})
+session-list-empty = ไม่พบเซสชัน
+
+session-create = สร้าง
+  .description = สร้างเซสชันสำหรับผู้เล่น
+  .player = ผู้เล่น
+  .player-description = ชื่อผู้ใช้ Minecraft หรือ UUID
+
+session-delete = ลบ
+  .description = ลบเซสชัน
+  .id = รหัส
+  .id-description = รหัสของเซสชันที่จะลบ
+
+session-list = รายการ
+  .description = แสดงรายการเซสชันทั้งหมดที่คุณสร้างหรือสำหรับผู้เล่นที่ระบุ
+  .player = ผู้เล่น
+  .player-description = ชื่อผู้ใช้ Minecraft หรือ UUID
+  .page = หน้า
+  .page-description = หน้าที่ต้องการดู
+
+arcade-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Arcade ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Arcade ที่จะดู
+
+arena-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Arena ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Arena ที่จะดู
+
+bedwars-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Bed Wars ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Bed Wars ที่จะดู
+
+blitz-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Blitz Survival Games ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Blitz Survival Games ที่จะดู
+
+buildbattle-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Build Battle ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Build Battle ที่จะดู
+
+copsandcrims-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Cops and Crims ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Cops and Crims ที่จะดู
+
+duels-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Duels ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Duels ที่จะดู
+
+megawalls-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Mega Walls ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Mega Walls ที่จะดู
+
+murdermystery-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Murder Mystery ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Murder Mystery ที่จะดู
+
+paintball-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Paintball ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Paintball ที่จะดู
+
+pit-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ The Pit ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด The Pit ที่จะดู
+
+quake-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Quakecraft ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Quakecraft ที่จะดู
+
+skywars-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ SkyWars ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด SkyWars ที่จะดู
+
+smash-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Smash Heroes ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Smash Heroes ที่จะดู
+
+speeduhc-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ SpeedUHC ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด SpeedUHC ที่จะดู
+
+tntgames-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ TNT Games ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด TNT Games ที่จะดู
+
+turbokartracers-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Turbo Kart Racers ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Turbo Kart Racers ที่จะดู
+
+uhc-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ UHC Champions ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด UHC Champions ที่จะดู
+
+vampirez-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ VampireZ ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด VampireZ ที่จะดู
+
+walls-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ The Walls ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด The Walls ที่จะดู
+
+warlords-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Warlords ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Warlords ที่จะดู
+
+woolwars-session = เซสชัน
+  .description = แสดงความก้าวหน้าของ Wool Wars ของผู้เล่นตั้งแต่เริ่มต้นของเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมด Wool Wars ที่จะดู

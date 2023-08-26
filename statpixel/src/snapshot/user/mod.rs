@@ -466,7 +466,7 @@ pub async fn get_snapshot_by_session_id(
 	let snapshot_id = match session::table
 		.filter(session::id.eq(id))
 		.select(session::snapshot_id)
-		.first::<i32>(&mut ctx.data().pool.get().await?)
+		.first::<i64>(&mut ctx.data().pool.get().await?)
 		.await
 	{
 		Ok(id) => id,
@@ -606,7 +606,7 @@ pub async fn insert_with_session(
 						snapshot::version.eq(VERSION),
 					))
 					.returning(snapshot::id)
-					.get_result::<i32>(conn)
+					.get_result::<i64>(conn)
 					.await?;
 
 				let id = diesel::insert_into(session::table)

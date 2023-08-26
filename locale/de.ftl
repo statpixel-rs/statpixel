@@ -2617,3 +2617,190 @@ guild-at = bei
 
 showing-statistics-at = <a:clock:1115091329958019253> Zeigt Statistiken ab {$at}.
 showing-guild-statistics-at = Zeigt Gildenstatistiken ab {$at}.
+
+error-session-not-found = Eine Sitzung mit der angegebenen ID konnte nicht gefunden werden.
+
+session-deleted = Die Sitzung mit der ID **`{$id}`** wurde gelöscht.
+session-created-title = Sitzung erstellt
+session-created = Die Sitzung mit der ID **`{$id}`** wurde für **`{$username}`** erstellt.
+  Ersetzen Sie den Platz eines beliebigen Spielers durch die Sitzungs-ID, um seine Daten in einem Befehl zu verwenden.
+
+  Probieren Sie es aus: </bedwars general:1115091329958019253>
+
+  Oder verwenden Sie den Sitzungs-Befehl, um zu sehen, wie weit der Spieler seit Beginn vorangeschritten ist: </bedwars session:1115091329958019253>
+  Beachten Sie, dass dieser Befehl eine Abkürzung für </bedwars compare:1115091329958019253> ist!
+
+session-id = Sitzungs-ID
+session-list-title = Sitzungen (Seite {$page})
+session-list-empty = Keine Sitzungen gefunden.
+
+session-create = erstellen
+  .description = Eine Sitzung für einen Spieler erstellen
+  .player = spieler
+  .player-description = Minecraft-Benutzername oder UUID
+
+session-delete = löschen
+  .description = Eine Sitzung löschen
+  .id = id
+  .id-description = Die ID der zu löschenden Sitzung
+
+session-list = auflisten
+  .description = Alle von Ihnen erstellten Sitzungen auflisten oder Sitzungen für den angegebenen Spieler auflisten
+  .player = spieler
+  .player-description = Minecraft-Benutzername oder UUID
+  .page = seite
+  .page-description = Die anzuzeigende Seite
+
+arcade-session = sitzung
+  .description = Die Arcade-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Arcade-Modus
+
+arena-session = sitzung
+  .description = Die Arena-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Arena-Modus
+
+bedwars-session = sitzung
+  .description = Die Bed Wars-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Bed Wars-Modus
+
+blitz-session = sitzung
+  .description = Die Blitz Survival Games-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Blitz Survival Games-Modus
+
+buildbattle-session = sitzung
+  .description = Die Build Battle-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Build Battle-Modus
+
+copsandcrims-session = sitzung
+  .description = Die Cops and Crims-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Cops and Crims-Modus
+
+duels-session = sitzung
+  .description = Die Duels-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Duels-Modus
+
+megawalls-session = sitzung
+  .description = Die Mega Walls-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Mega Walls-Modus
+
+murdermystery-session = sitzung
+  .description = Die Murder Mystery-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Murder Mystery-Modus
+
+paintball-session = sitzung
+  .description = Die Paintball-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Paintball-Modus
+
+pit-session = sitzung
+  .description = Die The Pit-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende The Pit-Modus
+
+quake-session = sitzung
+  .description = Die Quakecraft-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Quakecraft-Modus
+
+skywars-session = sitzung
+  .description = Die SkyWars-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende SkyWars-Modus
+
+smash-session = sitzung
+  .description = Die Smash Heroes-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Smash Heroes-Modus
+
+speeduhc-session = sitzung
+  .description = Die SpeedUHC-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende SpeedUHC-Modus
+
+tntgames-session = sitzung
+  .description = Die TNT Games-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende TNT Games-Modus
+
+turbokartracers-session = sitzung
+  .description = Die Turbo Kart Racers-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Turbo Kart Racers-Modus
+
+uhc-session = sitzung
+  .description = Die UHC Champions-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende UHC Champions-Modus
+
+vampirez-session = sitzung
+  .description = Die VampireZ-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende VampireZ-Modus
+
+walls-session = sitzung
+  .description = Die The Walls-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende The Walls-Modus
+
+warlords-session = sitzung
+  .description = Die Warlords-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Warlords-Modus
+
+woolwars-session = sitzung
+  .description = Die Wool Wars-Fortschritte eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der anzuzeigende Wool Wars-Modus

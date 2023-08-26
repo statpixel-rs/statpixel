@@ -303,13 +303,22 @@ async fn event_handler(
 			let values = match &interaction.data.kind {
 				serenity::ComponentInteractionDataKind::StringSelect { ref values } => values,
 				serenity::ComponentInteractionDataKind::Button => {
-					let Some(api::id::Id::Builder(id)) =
-						api::id::decode(&interaction.data.custom_id)
-					else {
+					let Some(id) = api::id::decode(&interaction.data.custom_id) else {
 						return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 					};
 
-					return commands::builder::handler(&ctx, interaction, id).await;
+					return match id {
+						api::id::Id::Builder(id) => {
+							commands::builder::handler(&ctx, interaction, id).await
+						}
+						api::id::Id::Command(id) => {
+							if let Err(e) = crate::id::map(&ctx, id).await {
+								util::error(&ctx, e).await;
+							}
+
+							Ok(())
+						}
+					};
 				}
 				_ => return Ok(()),
 			};

@@ -18,11 +18,11 @@ pub fn decode_old(data: &[u8]) -> Result<player_old::data::Data, crate::Error> {
 /// Upgrades all old VERSION snapshots to new VERSION
 pub async fn all(pool: PostgresPool) -> Result<PostgresPool, crate::Error> {
 	loop {
-		let snapshots = snapshot::table
+		let snapshots: Vec<(Vec<u8>, i64)> = snapshot::table
 			.filter(snapshot::version.eq(player_old::data::VERSION))
 			.select((snapshot::data, snapshot::id))
 			.limit(1_000)
-			.load::<(Vec<u8>, i32)>(&mut pool.get().await?)
+			.load(&mut pool.get().await?)
 			.await?;
 
 		let len = snapshots.len();

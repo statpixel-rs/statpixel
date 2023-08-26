@@ -2619,3 +2619,190 @@ guild-at = на
 
 showing-statistics-at = <a:clock:1115091329958019253> Показана статистика с {$at}.
 showing-guild-statistics-at = Показана статистика гильдии с {$at}.
+
+error-session-not-found = Сессия с указанным идентификатором не найдена.
+
+session-deleted = Сессия с идентификатором **`{$id}`** была удалена.
+session-created-title = Создана сессия
+session-created = Сессия с идентификатором **`{$id}`** была создана для **`{$username}`**.
+  Замените место любого игрока с идентификатором сессии, чтобы использовать его данные в любой команде.
+
+  Попробуйте сами: </bedwars general:1115091329958019253>
+
+  Или используйте команду сессии, чтобы увидеть, насколько игрок продвинулся с момента её начала: </bedwars session:1115091329958019253>
+  Обратите внимание, что эта команда является сокращением для </bedwars compare:1115091329958019253>!
+
+session-id = Идентификатор сессии
+session-list-title = Сессии (Страница {$page})
+session-list-empty = Сессии не найдены.
+
+session-create = создать
+  .description = Создать сессию для игрока
+  .player = игрок
+  .player-description = Имя пользователя или UUID в Minecraft
+
+session-delete = удалить
+  .description = Удалить сессию
+  .id = идентификатор
+  .id-description = Идентификатор сессии для удаления
+
+session-list = список
+  .description = Показать все сессии, созданные вами или для указанного игрока
+  .player = игрок
+  .player-description = Имя пользователя или UUID в Minecraft
+  .page = страница
+  .page-description = Страница для просмотра
+
+arcade-session = сессия
+  .description = Показать прогресс Arcade игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Arcade для просмотра
+
+arena-session = сессия
+  .description = Показать прогресс Arena игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Arena для просмотра
+
+bedwars-session = сессия
+  .description = Показать прогресс Bed Wars игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Bed Wars для просмотра
+
+blitz-session = сессия
+  .description = Показать прогресс Blitz Survival Games игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Blitz Survival Games для просмотра
+
+buildbattle-session = сессия
+  .description = Показать прогресс Build Battle игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Build Battle для просмотра
+
+copsandcrims-session = сессия
+  .description = Показать прогресс Cops and Crims игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Cops and Crims для просмотра
+
+duels-session = сессия
+  .description = Показать прогресс Duels игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Duels для просмотра
+
+megawalls-session = сессия
+  .description = Показать прогресс Mega Walls игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Mega Walls для просмотра
+
+murdermystery-session = сессия
+  .description = Показать прогресс Murder Mystery игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Murder Mystery для просмотра
+
+paintball-session = сессия
+  .description = Показать прогресс Paintball игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Paintball для просмотра
+
+pit-session = сессия
+  .description = Показать прогресс The Pit игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим The Pit для просмотра
+
+quake-session = сессия
+  .description = Показать прогресс Quakecraft игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Quakecraft для просмотра
+
+skywars-session = сессия
+  .description = Показать прогресс SkyWars игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим SkyWars для просмотра
+
+smash-session = сессия
+  .description = Показать прогресс Smash Heroes игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Smash Heroes для просмотра
+
+speeduhc-session = сессия
+  .description = Показать прогресс SpeedUHC игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим SpeedUHC для просмотра
+
+tntgames-session = сессия
+  .description = Показать прогресс TNT Games игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим TNT Games для просмотра
+
+turbokartracers-session = сессия
+  .description = Показать прогресс Turbo Kart Racers игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Turbo Kart Racers для просмотра
+
+uhc-session = сессия
+  .description = Показать прогресс UHC Champions игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим UHC Champions для просмотра
+
+vampirez-session = сессия
+  .description = Показать прогресс VampireZ игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим VampireZ для просмотра
+
+walls-session = сессия
+  .description = Показать прогресс The Walls игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим The Walls для просмотра
+
+warlords-session = сессия
+  .description = Показать прогресс Warlords игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Warlords для просмотра
+
+woolwars-session = сессия
+  .description = Показать прогресс Wool Wars игрока с момента начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим Wool Wars для просмотра

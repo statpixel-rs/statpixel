@@ -2616,3 +2616,190 @@ guild-at = at
 
 showing-statistics-at = <a:clock:1115091329958019253> {$at}からの統計を表示しています。
 showing-guild-statistics-at = <a:clock:1115091329958019253> {$at}からのギルドの統計を表示しています。
+
+error-session-not-found = 指定されたIDのセッションが見つかりませんでした。
+
+session-deleted = ID **`{$id}`** のセッションは削除されました。
+session-created-title = セッションが作成されました
+session-created = ID **`{$id}`** のセッションが **`{$username}`** によって作成されました。
+  任意のプレーヤーの場所をセッションIDで置き換えて、コマンド内でデータを使用できます。
+
+  試してみる： </bedwars general:1115091329958019253>
+
+  または、セッションが開始されてからプレーヤーがどれだけ進んだかを確認するにはセッションコマンドを使用します： </bedwars session:1115091329958019253>
+  このコマンドは </bedwars compare:1115091329958019253> のショートカットであることに注意してください！
+
+session-id = セッションID
+session-list-title = セッション（ページ {$page}）
+session-list-empty = セッションが見つかりませんでした。
+
+session-create = 作成する
+  .description = プレーヤーのためにセッションを作成します
+  .player = プレーヤー
+  .player-description = Minecraftのユーザー名またはUUID
+
+session-delete = 削除する
+  .description = セッションを削除します
+  .id = id
+  .id-description = 削除するセッションのID
+
+session-list = 一覧表示する
+  .description = あなたが作成したセッションまたは指定したプレーヤーのすべてのセッションを一覧表示します
+  .player = プレーヤー
+  .player-description = Minecraftのユーザー名またはUUID
+  .page = ページ
+  .page-description = 表示するページ
+
+arcade-session = セッション
+  .description = セッションが開始されてからプレーヤーのアーケードの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するアーケードモード
+
+arena-session = セッション
+  .description = セッションが開始されてからプレーヤーのアリーナの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するアリーナモード
+
+bedwars-session = セッション
+  .description = セッションが開始されてからプレーヤーのベッドウォーズの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するベッドウォーズモード
+
+blitz-session = セッション
+  .description = セッションが開始されてからプレーヤーのBlitz Survival Gamesの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するBlitz Survival Gamesモード
+
+buildbattle-session = セッション
+  .description = セッションが開始されてからプレーヤーのBuild Battleの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するBuild Battleモード
+
+copsandcrims-session = セッション
+  .description = セッションが開始されてからプレーヤーのCops and Crimsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するCops and Crimsモード
+
+duels-session = セッション
+  .description = セッションが開始されてからプレーヤーのDuelsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するDuelsモード
+
+megawalls-session = セッション
+  .description = セッションが開始されてからプレーヤーのMega Wallsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するMega Wallsモード
+
+murdermystery-session = セッション
+  .description = セッションが開始されてからプレーヤーのMurder Mysteryの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するMurder Mysteryモード
+
+paintball-session = セッション
+  .description = セッションが開始されてからプレーヤーのPaintballの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するPaintballモード
+
+pit-session = セッション
+  .description = セッションが開始されてからプレーヤーのThe Pitの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するThe Pitモード
+
+quake-session = セッション
+  .description = セッションが開始されてからプレーヤーのQuakecraftの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するQuakecraftモード
+
+skywars-session = セッション
+  .description = セッションが開始されてからプレーヤーのSkyWarsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するSkyWarsモード
+
+smash-session = セッション
+  .description = セッションが開始されてからプレーヤーのSmash Heroesの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するSmash Heroesモード
+
+speeduhc-session = セッション
+  .description = セッションが開始されてからプレーヤーのSpeedUHCの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するSpeedUHCモード
+
+tntgames-session = セッション
+  .description = セッションが開始されてからプレーヤーのTNT Gamesの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するTNT Gamesモード
+
+turbokartracers-session = セッション
+  .description = セッションが開始されてからプレーヤーのTurbo Kart Racersの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するTurbo Kart Racersモード
+
+uhc-session = セッション
+  .description = セッションが開始されてからプレーヤーのUHC Championsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するUHC Championsモード
+
+vampirez-session = セッション
+  .description = セッションが開始されてからプレーヤーのVampireZの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するVampireZモード
+
+walls-session = セッション
+  .description = セッションが開始されてからプレーヤーのThe Wallsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するThe Wallsモード
+
+warlords-session = セッション
+  .description = セッションが開始されてからプレーヤーのWarlordsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するWarlordsモード
+
+woolwars-session = セッション
+  .description = セッションが開始されてからプレーヤーのWool Warsの進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示するWool Warsモード

@@ -2613,3 +2613,190 @@ guild-at = ekkor
 
 showing-statistics-at = <a:clock:1115091329958019253> Statisztikák mutatása ettől: {$at}.
 showing-guild-statistics-at = Céh statisztikák mutatása ettől: {$at}.
+
+error-session-not-found = Nem található munkamenet a megadott azonosítóval.
+
+session-deleted = A(z) **`{$id}`** azonosítójú munkamenet törölve lett.
+session-created-title = Munkamenet létrehozva
+session-created = A(z) **`{$id}`** azonosítójú munkamenet létrehozva **`{$username}`** számára.
+  Helyettesítse a játékos helyét a munkamenet azonosítójával, hogy adatait bármelyik parancsban használhassa.
+
+  Próbáld ki itt: </bedwars general:1115091329958019253>
+
+  Vagy használd a munkamenet parancsot, hogy láthasd, hogy a játékos mennyire haladt el azóta, hogy elkezdte: </bedwars session:1115091329958019253>
+  Megjegyzés: Ez a parancs egy gyorsbillentyű a </bedwars compare:1115091329958019253> parancshoz!
+
+session-id = Munkamenet azonosító
+session-list-title = Munkamenetek (Oldal {$page})
+session-list-empty = Nincsenek talált munkamenetek.
+
+session-create = létrehozás
+  .description = Munkamenet létrehozása egy játékos számára
+  .player = játékos
+  .player-description = Minecraft felhasználónév vagy UUID
+
+session-delete = törlés
+  .description = Munkamenet törlése
+  .id = azonosító
+  .id-description = A törlendő munkamenet azonosítója
+
+session-list = lista
+  .description = Az általad létrehozott vagy a megadott játékos számára létrehozott összes munkamenet kilistázása
+  .player = játékos
+  .player-description = Minecraft felhasználónév vagy UUID
+  .page = oldal
+  .page-description = Az megtekintendő oldal
+
+arcade-session = munkamenet
+  .description = Mutassa meg egy játékos Arcade fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = Az Arcade mód, amit meg szeretnél nézni
+
+arena-session = munkamenet
+  .description = Mutassa meg egy játékos Aréna fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = Az Aréna mód, amit meg szeretnél nézni
+
+bedwars-session = munkamenet
+  .description = Mutassa meg egy játékos Bed Wars fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Bed Wars mód, amit meg szeretnél nézni
+
+blitz-session = munkamenet
+  .description = Mutassa meg egy játékos Blitz Survival Games fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Blitz Survival Games mód, amit meg szeretnél nézni
+
+buildbattle-session = munkamenet
+  .description = Mutassa meg egy játékos Build Battle fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Build Battle mód, amit meg szeretnél nézni
+
+copsandcrims-session = munkamenet
+  .description = Mutassa meg egy játékos Cops and Crims fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Cops and Crims mód, amit meg szeretnél nézni
+
+duels-session = munkamenet
+  .description = Mutassa meg egy játékos Duels fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Duels mód, amit meg szeretnél nézni
+
+megawalls-session = munkamenet
+  .description = Mutassa meg egy játékos Mega Walls fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Mega Walls mód, amit meg szeretnél nézni
+
+murdermystery-session = munkamenet
+  .description = Mutassa meg egy játékos Murder Mystery fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Murder Mystery mód, amit meg szeretnél nézni
+
+paintball-session = munkamenet
+  .description = Mutassa meg egy játékos Paintball fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Paintball mód, amit meg szeretnél nézni
+
+pit-session = munkamenet
+  .description = Mutassa meg egy játékos The Pit fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A The Pit mód, amit meg szeretnél nézni
+
+quake-session = munkamenet
+  .description = Mutassa meg egy játékos Quakecraft fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Quakecraft mód, amit meg szeretnél nézni
+
+skywars-session = munkamenet
+  .description = Mutassa meg egy játékos SkyWars fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A SkyWars mód, amit meg szeretnél nézni
+
+smash-session = munkamenet
+  .description = Mutassa meg egy játékos Smash Heroes fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Smash Heroes mód, amit meg szeretnél nézni
+
+speeduhc-session = munkamenet
+  .description = Mutassa meg egy játékos SpeedUHC fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A SpeedUHC mód, amit meg szeretnél nézni
+
+tntgames-session = munkamenet
+  .description = Mutassa meg egy játékos TNT Games fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A TNT Games mód, amit meg szeretnél nézni
+
+turbokartracers-session = munkamenet
+  .description = Mutassa meg egy játékos Turbo Kart Racers fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Turbo Kart Racers mód, amit meg szeretnél nézni
+
+uhc-session = munkamenet
+  .description = Mutassa meg egy játékos UHC Champions fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = Az UHC Champions mód, amit meg szeretnél nézni
+
+vampirez-session = munkamenet
+  .description = Mutassa meg egy játékos VampireZ fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A VampireZ mód, amit meg szeretnél nézni
+
+walls-session = munkamenet
+  .description = Mutassa meg egy játékos The Walls fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A The Walls mód, amit meg szeretnél nézni
+
+warlords-session = munkamenet
+  .description = Mutassa meg egy játékos Warlords fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Warlords mód, amit meg szeretnél nézni
+
+woolwars-session = munkamenet
+  .description = Mutassa meg egy játékos Wool Wars fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosítója
+  .mode = mód
+  .mode-description = A Wool Wars mód, amit meg szeretnél nézni

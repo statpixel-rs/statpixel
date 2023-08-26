@@ -2618,3 +2618,190 @@ guild-at = at
 
 showing-statistics-at = <a:clock:1115091329958019253> Rodo statistiką nuo {$at}.
 showing-guild-statistics-at = Rodo gildijos statistiką nuo {$at}.
+
+error-session-not-found = Sesiijos pagal pateiktą ID nepavyko rasti.
+
+session-deleted = Sesiija su ID **`{$id}`** buvo ištrinta.
+session-created-title = Sukurta sesija
+session-created = Sesiija su ID **`{$id}`** buvo sukurta naudotojui **`{$username}`**.
+  Naudokite sesijos ID vietą norėdami panaudoti jos duomenis bet kurioje komandoje, pakeisdami vietą žaidėjo duomenis sesijos ID.
+
+  Išbandykite tai: </bedwars general:1115091329958019253>
+
+  Arba naudokite sesijos komandą, norėdami pamatyti, kaip žaidėjas pažengęs nuo sesijos pradžios: </bedwars session:1115091329958019253>
+  Ši komanda yra trumpinys nuorodai </bedwars compare:1115091329958019253>!
+
+session-id = Sesijos ID
+session-list-title = Sesijos (Puslapis {$page})
+session-list-empty = Nėra rastų sesijų.
+
+session-create = sukurti
+  .description = Sukurti sesiją žaidėjui
+  .player = žaidėjas
+  .player-description = Minecraft vartotojo vardas arba UUID
+
+session-delete = ištrinti
+  .description = Ištrinti sesiją
+  .id = id
+  .id-description = Sesijos ID, kurią norite ištrinti
+
+session-list = sąrašas
+  .description = Rodyti visas jūsų arba nurodyto žaidėjo sukurtas sesijas
+  .player = žaidėjas
+  .player-description = Minecraft vartotojo vardas arba UUID
+  .page = puslapis
+  .page-description = Rodomas puslapis
+
+arcade-session = sesija
+  .description = Rodyti žaidėjo Arkados pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Arkados režimas
+
+arena-session = sesija
+  .description = Rodyti žaidėjo Arenos pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Arenos režimas
+
+bedwars-session = sesija
+  .description = Rodyti žaidėjo Bed Wars pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Bed Wars režimas
+
+blitz-session = sesija
+  .description = Rodyti žaidėjo Blitz Survival Games pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Blitz Survival Games režimas
+
+buildbattle-session = sesija
+  .description = Rodyti žaidėjo Build Battle pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Build Battle režimas
+
+copsandcrims-session = sesija
+  .description = Rodyti žaidėjo Cops and Crims pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Cops and Crims režimas
+
+duels-session = sesija
+  .description = Rodyti žaidėjo Duels pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Duels režimas
+
+megawalls-session = sesija
+  .description = Rodyti žaidėjo Mega Walls pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Mega Walls režimas
+
+murdermystery-session = sesija
+  .description = Rodyti žaidėjo Murder Mystery pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Murder Mystery režimas
+
+paintball-session = sesija
+  .description = Rodyti žaidėjo Paintball pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Paintball režimas
+
+pit-session = sesija
+  .description = Rodyti žaidėjo The Pit pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas The Pit režimas
+
+quake-session = sesija
+  .description = Rodyti žaidėjo Quakecraft pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Quakecraft režimas
+
+skywars-session = sesija
+  .description = Rodyti žaidėjo SkyWars pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas SkyWars režimas
+
+smash-session = sesija
+  .description = Rodyti žaidėjo Smash Heroes pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Smash Heroes režimas
+
+speeduhc-session = sesija
+  .description = Rodyti žaidėjo SpeedUHC pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas SpeedUHC režimas
+
+tntgames-session = sesija
+  .description = Rodyti žaidėjo TNT Games pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas TNT Games režimas
+
+turbokartracers-session = sesija
+  .description = Rodyti žaidėjo Turbo Kart Racers pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Turbo Kart Racers režimas
+
+uhc-session = sesija
+  .description = Rodyti žaidėjo UHC Champions pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas UHC Champions režimas
+
+vampirez-session = sesija
+  .description = Rodyti žaidėjo VampireZ pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas VampireZ režimas
+
+walls-session = sesija
+  .description = Rodyti žaidėjo The Walls pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas The Walls režimas
+
+warlords-session = sesija
+  .description = Rodyti žaidėjo Warlords pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Warlords režimas
+
+woolwars-session = sesija
+  .description = Rodyti žaidėjo Wool Wars pažangą nuo sesijos pradžios
+  .session = sesija
+  .session-description = Sesijos ID
+  .mode = režimas
+  .mode-description = Rodomas Wool Wars režimas

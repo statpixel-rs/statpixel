@@ -2616,3 +2616,190 @@ guild-at = em
 
 showing-statistics-at = <a:clock:1115091329958019253> Mostrando estatísticas a partir de {$at}.
 showing-guild-statistics-at = Mostrando estatísticas da guilda a partir de {$at}.
+
+error-session-not-found = Não foi possível encontrar uma sessão com o ID fornecido.
+
+session-deleted = A sessão com o ID **`{$id}`** foi excluída.
+session-created-title = Sessão criada
+session-created = A sessão com o ID **`{$id}`** foi criada para **`{$username}`**.
+  Substitua o local de qualquer jogador pelo ID da sessão para usar os dados dela em qualquer comando.
+
+  Experimente: </bedwars geral:1115091329958019253>
+
+  Ou, use o comando de sessão para ver o progresso do jogador desde o início: </bedwars sessão:1115091329958019253>
+  Note que este comando é um atalho para </bedwars comparar:1115091329958019253>!
+
+session-id = ID da sessão
+session-list-title = Sessões (Página {$page})
+session-list-empty = Nenhuma sessão encontrada.
+
+session-create = criar
+  .description = Criar uma sessão para um jogador
+  .player = jogador
+  .player-description = Nome de usuário ou UUID do Minecraft
+
+session-delete = excluir
+  .description = Excluir uma sessão
+  .id = id
+  .id-description = O ID da sessão a ser excluída
+
+session-list = listar
+  .description = Listar todas as sessões criadas por você ou para o jogador especificado
+  .player = jogador
+  .player-description = Nome de usuário ou UUID do Minecraft
+  .page = página
+  .page-description = A página a ser visualizada
+
+arcade-session = sessão
+  .description = Mostrar a progressão de Arcade de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Arcade a ser visualizado
+
+arena-session = sessão
+  .description = Mostrar a progressão de Arena de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Arena a ser visualizado
+
+bedwars-session = sessão
+  .description = Mostrar a progressão de Bed Wars de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Bed Wars a ser visualizado
+
+blitz-session = sessão
+  .description = Mostrar a progressão de Blitz Survival Games de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Blitz Survival Games a ser visualizado
+
+buildbattle-session = sessão
+  .description = Mostrar a progressão de Build Battle de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Build Battle a ser visualizado
+
+copsandcrims-session = sessão
+  .description = Mostrar a progressão de Cops and Crims de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Cops and Crims a ser visualizado
+
+duels-session = sessão
+  .description = Mostrar a progressão de Duels de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Duels a ser visualizado
+
+megawalls-session = sessão
+  .description = Mostrar a progressão de Mega Walls de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Mega Walls a ser visualizado
+
+murdermystery-session = sessão
+  .description = Mostrar a progressão de Murder Mystery de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Murder Mystery a ser visualizado
+
+paintball-session = sessão
+  .description = Mostrar a progressão de Paintball de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Paintball a ser visualizado
+
+pit-session = sessão
+  .description = Mostrar a progressão de The Pit de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo The Pit a ser visualizado
+
+quake-session = sessão
+  .description = Mostrar a progressão de Quakecraft de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Quakecraft a ser visualizado
+
+skywars-session = sessão
+  .description = Mostrar a progressão de SkyWars de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo SkyWars a ser visualizado
+
+smash-session = sessão
+  .description = Mostrar a progressão de Smash Heroes de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Smash Heroes a ser visualizado
+
+speeduhc-session = sessão
+  .description = Mostrar a progressão de SpeedUHC de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo SpeedUHC a ser visualizado
+
+tntgames-session = sessão
+  .description = Mostrar a progressão de TNT Games de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo TNT Games a ser visualizado
+
+turbokartracers-session = sessão
+  .description = Mostrar a progressão de Turbo Kart Racers de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Turbo Kart Racers a ser visualizado
+
+uhc-session = sessão
+  .description = Mostrar a progressão de UHC Champions de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo UHC Champions a ser visualizado
+
+vampirez-session = sessão
+  .description = Mostrar a progressão de VampireZ de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo VampireZ a ser visualizado
+
+walls-session = sessão
+  .description = Mostrar a progressão de The Walls de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo The Walls a ser visualizado
+
+warlords-session = sessão
+  .description = Mostrar a progressão de Warlords de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Warlords a ser visualizado
+
+woolwars-session = sessão
+  .description = Mostrar a progressão de Wool Wars de um jogador desde o início da sessão
+  .session = sessão
+  .session-description = Um ID de sessão
+  .mode = modo
+  .mode-description = O modo Wool Wars a ser visualizado

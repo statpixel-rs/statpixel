@@ -1,3 +1,5 @@
+pub mod run;
+
 use api::player::stats;
 use database::schema::session;
 use diesel::{ExpressionMethods, OptionalExtension, QueryDsl};
@@ -78,37 +80,18 @@ pub async fn list(
 	#[max_length = 36]
 	#[autocomplete = "crate::commands::autocomplete_username"]
 	player: Option<String>,
+	page: Option<u32>,
 ) -> Result<(), Error> {
-	let page = 0i64;
-
 	let ctx = &context::Context::from_poise(&ctx);
-	let sessions = if let Some(player) = player {
-		let player =
-			util::get_player_from_input(ctx, util::parse_uuid(Some(player.as_str())), Some(player))
-				.await?;
+	let page = page.map(|p| p.saturating_sub(1)).unwrap_or_default();
 
-		session::table
-			.select((session::id, session::uuid))
-			.filter(session::uuid.eq(player.uuid))
-			.order(session::created_at.desc())
-			.limit(10)
-			.offset(page * 10)
-			.get_results::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
-			.await?
+	let player = if let Some(player) = player {
+		Some(util::get_player_from_input(ctx, util::parse_uuid(Some(&player)), Some(player)).await?)
 	} else {
-		session::table
-			.select((session::id, session::uuid))
-			.filter(session::user_id.eq(ctx.author().unwrap().id.0.get() as i64))
-			.order(session::created_at.desc())
-			.limit(10)
-			.offset(page * 10)
-			.get_results::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
-			.await?
+		None
 	};
 
-	println!("{:?}", sessions);
-
-	Ok(())
+	run::list(ctx, player, page).await
 }
 
 #[allow(clippy::unused_async)]

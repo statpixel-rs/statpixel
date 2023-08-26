@@ -2617,3 +2617,190 @@ guild-at = at
 
 showing-statistics-at = <a:clock:1115091329958019253> Показ статистики з {$at}.
 showing-guild-statistics-at = Показ статистики гільдії з {$at}.
+
+error-session-not-found = Сесію за вказаним ідентифікатором не вдалося знайти.
+
+session-deleted = Сесію з ідентифікатором **`{$id}`** було видалено.
+session-created-title = Створено сесію
+session-created = Сесію з ідентифікатором **`{$id}`** було створено для **`{$username}`**.
+  Підставте ідентифікатор сесії в будь-яку команду, щоб використовувати її дані.
+
+  Спробуйте це: </bedwars general:1115091329958019253>
+
+  Або використайте команду session для перевірки прогресу гравця з моменту початку сесії: </bedwars session:1115091329958019253>
+  Зверніть увагу, що ця команда - це скорочення для </bedwars compare:1115091329958019253>!
+
+session-id = Ідентифікатор сесії
+session-list-title = Сесії (Сторінка {$page})
+session-list-empty = Сесій не знайдено.
+
+session-create = створити
+  .description = Створити сесію для гравця
+  .player = гравець
+  .player-description = Ім'я користувача або UUID у Minecraft
+
+session-delete = видалити
+  .description = Видалити сесію
+  .id = ідентифікатор
+  .id-description = Ідентифікатор сесії для видалення
+
+session-list = список
+  .description = Показати всі сесії, створені вами або для зазначеного гравця
+  .player = гравець
+  .player-description = Ім'я користувача або UUID у Minecraft
+  .page = сторінка
+  .page-description = Сторінка для перегляду
+
+arcade-session = сесія
+  .description = Показати прогрес Arcade гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Arcade для перегляду
+
+arena-session = сесія
+  .description = Показати прогрес Arena гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Arena для перегляду
+
+bedwars-session = сесія
+  .description = Показати прогрес Bed Wars гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Bed Wars для перегляду
+
+blitz-session = сесія
+  .description = Показати прогрес Blitz Survival Games гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Blitz Survival Games для перегляду
+
+buildbattle-session = сесія
+  .description = Показати прогрес Build Battle гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Build Battle для перегляду
+
+copsandcrims-session = сесія
+  .description = Показати прогрес Cops and Crims гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Cops and Crims для перегляду
+
+duels-session = сесія
+  .description = Показати прогрес Duels гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Duels для перегляду
+
+megawalls-session = сесія
+  .description = Показати прогрес Mega Walls гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Mega Walls для перегляду
+
+murdermystery-session = сесія
+  .description = Показати прогрес Murder Mystery гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Murder Mystery для перегляду
+
+paintball-session = сесія
+  .description = Показати прогрес Paintball гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Paintball для перегляду
+
+pit-session = сесія
+  .description = Показати прогрес The Pit гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим The Pit для перегляду
+
+quake-session = сесія
+  .description = Показати прогрес Quakecraft гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Quakecraft для перегляду
+
+skywars-session = сесія
+  .description = Показати прогрес SkyWars гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим SkyWars для перегляду
+
+smash-session = сесія
+  .description = Показати прогрес Smash Heroes гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Smash Heroes для перегляду
+
+speeduhc-session = сесія
+  .description = Показати прогрес SpeedUHC гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим SpeedUHC для перегляду
+
+tntgames-session = сесія
+  .description = Показати прогрес TNT Games гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим TNT Games для перегляду
+
+turbokartracers-session = сесія
+  .description = Показати прогрес Turbo Kart Racers гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Turbo Kart Racers для перегляду
+
+uhc-session = сесія
+  .description = Показати прогрес UHC Champions гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим UHC Champions для перегляду
+
+vampirez-session = сесія
+  .description = Показати прогрес VampireZ гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим VampireZ для перегляду
+
+walls-session = сесія
+  .description = Показати прогрес The Walls гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим The Walls для перегляду
+
+warlords-session = сесія
+  .description = Показати прогрес Warlords гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Warlords для перегляду
+
+woolwars-session = сесія
+  .description = Показати прогрес Wool Wars гравця з моменту початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим Wool Wars для перегляду

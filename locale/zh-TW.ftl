@@ -2617,3 +2617,190 @@ guild-at = 於
 
 showing-statistics-at = <a:clock:1115091329958019253> 顯示 {$at} 的統計數據。
 showing-guild-statistics-at = 顯示來自 {$at} 的公會統計數據。
+
+error-session-not-found = 無法找到提供的識別碼對應的會話。
+
+session-deleted = ID 為 **`{$id}`** 的會話已被刪除。
+session-created-title = 會話已建立
+session-created = ID 為 **`{$id}`** 的會話已為 **`{$username}`** 建立。
+  使用會話 ID 來代替任何玩家的位置，以在任何指令中使用其資料。
+
+  試試看： </bedwars general:1115091329958019253>
+
+  或者，使用 session 指令查看玩家自開始以來的進度： </bedwars session:1115091329958019253>
+  請注意，此指令是 </bedwars compare:1115091329958019253> 的捷徑！
+
+session-id = 會話識別碼
+session-list-title = 會話 (第 {$page} 頁)
+session-list-empty = 找不到任何會話。
+
+session-create = 建立
+  .description = 為玩家建立一個會話
+  .player = 玩家
+  .player-description = Minecraft 用戶名或 UUID
+
+session-delete = 刪除
+  .description = 刪除一個會話
+  .id = 識別碼
+  .id-description = 要刪除的會話的識別碼
+
+session-list = 列表
+  .description = 列出你所建立的或指定玩家的所有會話
+  .player = 玩家
+  .player-description = Minecraft 用戶名或 UUID
+  .page = 頁面
+  .page-description = 要查看的頁面
+
+arcade-session = 會話
+  .description = 顯示玩家從會話開始時的 Arcade 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Arcade 模式
+
+arena-session = 會話
+  .description = 顯示玩家從會話開始時的 Arena 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Arena 模式
+
+bedwars-session = 會話
+  .description = 顯示玩家從會話開始時的 Bed Wars 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Bed Wars 模式
+
+blitz-session = 會話
+  .description = 顯示玩家從會話開始時的 Blitz Survival Games 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Blitz Survival Games 模式
+
+buildbattle-session = 會話
+  .description = 顯示玩家從會話開始時的 Build Battle 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Build Battle 模式
+
+copsandcrims-session = 會話
+  .description = 顯示玩家從會話開始時的 Cops and Crims 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Cops and Crims 模式
+
+duels-session = 會話
+  .description = 顯示玩家從會話開始時的 Duels 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Duels 模式
+
+megawalls-session = 會話
+  .description = 顯示玩家從會話開始時的 Mega Walls 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Mega Walls 模式
+
+murdermystery-session = 會話
+  .description = 顯示玩家從會話開始時的 Murder Mystery 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Murder Mystery 模式
+
+paintball-session = 會話
+  .description = 顯示玩家從會話開始時的 Paintball 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Paintball 模式
+
+pit-session = 會話
+  .description = 顯示玩家從會話開始時的 The Pit 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 The Pit 模式
+
+quake-session = 會話
+  .description = 顯示玩家從會話開始時的 Quakecraft 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Quakecraft 模式
+
+skywars-session = 會話
+  .description = 顯示玩家從會話開始時的 SkyWars 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 SkyWars 模式
+
+smash-session = 會話
+  .description = 顯示玩家從會話開始時的 Smash Heroes 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Smash Heroes 模式
+
+speeduhc-session = 會話
+  .description = 顯示玩家從會話開始時的 SpeedUHC 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 SpeedUHC 模式
+
+tntgames-session = 會話
+  .description = 顯示玩家從會話開始時的 TNT Games 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 TNT Games 模式
+
+turbokartracers-session = 會話
+  .description = 顯示玩家從會話開始時的 Turbo Kart Racers 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Turbo Kart Racers 模式
+
+uhc-session = 會話
+  .description = 顯示玩家從會話開始時的 UHC Champions 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 UHC Champions 模式
+
+vampirez-session = 會話
+  .description = 顯示玩家從會話開始時的 VampireZ 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 VampireZ 模式
+
+walls-session = 會話
+  .description = 顯示玩家從會話開始時的 The Walls 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 The Walls 模式
+
+warlords-session = 會話
+  .description = 顯示玩家從會話開始時的 Warlords 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Warlords 模式
+
+woolwars-session = 會話
+  .description = 顯示玩家從會話開始時的 Wool Wars 進度
+  .session = 會話
+  .session-description = 會話識別碼
+  .mode = 模式
+  .mode-description = 要查看的 Wool Wars 模式

@@ -2615,3 +2615,190 @@ guild-at = at
 
 showing-statistics-at = <a:clock:1115091329958019253> {$at} tarihinden itibaren istatistikleri gösteriyor.
 showing-guild-statistics-at = {$at} tarihinden itibaren lonenin istatistiklerini gösteriyor.
+
+error-session-not-found = Sağlanan kimlikle bir oturum bulunamadı.
+
+session-deleted = Kimlik **`{$id}`** olan oturum silindi.
+session-created-title = Oturum oluşturuldu
+session-created = Kimlik **`{$id}`** olan oturum **`{$username}`** için oluşturuldu.
+  Herhangi bir oyuncunun kimliğini oturum kimliğiyle değiştirerek verilerini herhangi bir komutta kullanabilirsiniz.
+
+  Deneyin: </bedwars general:1115091329958019253>
+
+  Veya, oyuncunun ne kadar ilerlediğini görmek için oturum komutunu kullanın: </bedwars session:1115091329958019253>
+  Bu komut, aslında </bedwars compare:1115091329958019253> için bir kısayoldur!
+
+session-id = Oturum Kimliği
+session-list-title = Oturumlar (Sayfa {$page})
+session-list-empty = Oturum bulunamadı.
+
+session-create = oluştur
+  .description = Bir oyuncu için oturum oluştur
+  .player = oyuncu
+  .player-description = Minecraft kullanıcı adı veya UUID
+
+session-delete = sil
+  .description = Bir oturumu sil
+  .id = kimlik
+  .id-description = Silinecek oturumun kimliği
+
+session-list = liste
+  .description = Kendiniz veya belirtilen oyuncu için oluşturulan tüm oturumları listele
+  .player = oyuncu
+  .player-description = Minecraft kullanıcı adı veya UUID
+  .page = sayfa
+  .page-description = Görüntülenecek sayfa
+
+arcade-session = oturum
+  .description = Oyuncunun oturum başladığından beri Arcade ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Arcade modu
+
+arena-session = oturum
+  .description = Oyuncunun oturum başladığından beri Arena ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Arena modu
+
+bedwars-session = oturum
+  .description = Oyuncunun oturum başladığından beri Yatak Savaşları ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Yatak Savaşları modu
+
+blitz-session = oturum
+  .description = Oyuncunun oturum başladığından beri Blitz Survival Games ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Blitz Survival Games modu
+
+buildbattle-session = oturum
+  .description = Oyuncunun oturum başladığından beri Build Battle ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Build Battle modu
+
+copsandcrims-session = oturum
+  .description = Oyuncunun oturum başladığından beri Cops and Crims ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Cops and Crims modu
+
+duels-session = oturum
+  .description = Oyuncunun oturum başladığından beri Duels ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Duels modu
+
+megawalls-session = oturum
+  .description = Oyuncunun oturum başladığından beri Mega Walls ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Mega Walls modu
+
+murdermystery-session = oturum
+  .description = Oyuncunun oturum başladığından beri Murder Mystery ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Murder Mystery modu
+
+paintball-session = oturum
+  .description = Oyuncunun oturum başladığından beri Paintball ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Paintball modu
+
+pit-session = oturum
+  .description = Oyuncunun oturum başladığından beri The Pit ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek The Pit modu
+
+quake-session = oturum
+  .description = Oyuncunun oturum başladığından beri Quakecraft ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Quakecraft modu
+
+skywars-session = oturum
+  .description = Oyuncunun oturum başladığından beri SkyWars ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek SkyWars modu
+
+smash-session = oturum
+  .description = Oyuncunun oturum başladığından beri Smash Heroes ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Smash Heroes modu
+
+speeduhc-session = oturum
+  .description = Oyuncunun oturum başladığından beri SpeedUHC ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek SpeedUHC modu
+
+tntgames-session = oturum
+  .description = Oyuncunun oturum başladığından beri TNT Games ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek TNT Games modu
+
+turbokartracers-session = oturum
+  .description = Oyuncunun oturum başladığından beri Turbo Kart Racers ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Turbo Kart Racers modu
+
+uhc-session = oturum
+  .description = Oyuncunun oturum başladığından beri UHC Champions ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek UHC Champions modu
+
+vampirez-session = oturum
+  .description = Oyuncunun oturum başladığından beri VampireZ ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek VampireZ modu
+
+walls-session = oturum
+  .description = Oyuncunun oturum başladığından beri The Walls ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek The Walls modu
+
+warlords-session = oturum
+  .description = Oyuncunun oturum başladığından beri Warlords ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Warlords modu
+
+woolwars-session = oturum
+  .description = Oyuncunun oturum başladığından beri Wool Wars ilerlemesini göster
+  .session = oturum
+  .session-description = Oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Wool Wars modu

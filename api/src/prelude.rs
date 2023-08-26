@@ -1,7 +1,6 @@
 use std::fmt::Debug;
 
 use chrono::{DateTime, Utc};
-use diesel::Expression;
 use minecraft::style::Family;
 use poise::serenity_prelude as serenity;
 use translate::{context, Error};
@@ -135,20 +134,4 @@ pub trait Mode: Sized + Copy {
 		past: i64,
 		selected: Option<Self>,
 	) -> (serenity::CreateActionRow, crate::id::Id);
-}
-
-pub trait Leaderboard<S: Expression, O: Expression> {
-	type Column: Column;
-
-	fn columns() -> &'static [Self::Column];
-	/// Selects the columns to be returned by the query.
-	fn select() -> S;
-	/// Orders the rows returned by the query.
-	fn order() -> O;
-}
-
-pub trait Column {
-	type Game: Game;
-
-	fn kind(&self) -> <<<Self as Column>::Game as Game>::Mode as Mode>::Kind;
 }

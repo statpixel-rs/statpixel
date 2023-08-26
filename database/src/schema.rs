@@ -59,7 +59,7 @@ diesel::table! {
 
 diesel::table! {
 	guild_snapshot (id) {
-		id -> Int4,
+		id -> Int8,
 		uuid -> Uuid,
 		hash -> Int8,
 		did_update -> Bool,
@@ -106,7 +106,7 @@ diesel::table! {
 diesel::table! {
 	session (id) {
 		id -> Uuid,
-		snapshot_id -> Int4,
+		snapshot_id -> Int8,
 		user_id -> Int8,
 		uuid -> Uuid,
 		kind -> Int2,
@@ -119,7 +119,7 @@ diesel::table! {
 		uuid -> Uuid,
 		created_at -> Timestamptz,
 		updated_at -> Timestamptz,
-		id -> Int4,
+		id -> Int8,
 		data -> Bytea,
 		did_update -> Bool,
 		hash -> Int8,

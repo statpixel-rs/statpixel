@@ -69,7 +69,7 @@ pub struct MineToolsResponse {
 pub struct Player {
 	pub uuid: Uuid,
 	pub username: Option<String>,
-	pub session: Option<(Uuid, i32)>,
+	pub session: Option<(Uuid, i64)>,
 }
 
 impl Player {

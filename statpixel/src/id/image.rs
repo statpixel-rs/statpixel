@@ -154,6 +154,9 @@ pub async fn map(
 	family: Family,
 ) -> Result<Cow<'static, [u8]>, crate::Error> {
 	match id {
+		Id::Between { .. } | Id::Session { .. } | Id::SessionPage { .. } => {
+			Err(crate::Error::NotImplemented)
+		}
 		Id::Builder { shapes, uuid } => {
 			let (_, data, session, skin, _) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;
@@ -1508,6 +1511,5 @@ pub async fn map(
 			}
 			_ => Err(crate::Error::NotImplemented),
 		},
-		Id::Between { .. } => Err(crate::Error::NotImplemented),
 	}
 }

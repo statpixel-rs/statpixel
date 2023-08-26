@@ -2617,3 +2617,190 @@ guild-at = o
 
 showing-statistics-at = <a:clock:1115091329958019253> Pokazywanie statystyk z {$at}.
 showing-guild-statistics-at = Pokazywanie statystyk gildii z {$at}.
+
+error-session-not-found = Nie można znaleźć sesji o podanym identyfikatorze.
+
+session-deleted = Sesja o identyfikatorze **`{$id}`** została usunięta.
+session-created-title = Utworzono sesję
+session-created = Sesja o identyfikatorze **`{$id}`** została utworzona dla gracza **`{$username}`**.
+  Zastąp miejsce dowolnego gracza identyfikatorem sesji, aby użyć jego danych w dowolnym poleceniu.
+
+  Wypróbuj to: </bedwars general:1115091329958019253>
+
+  Lub użyj polecenia sesji, aby sprawdzić, jak daleko doszedł gracz od momentu jej rozpoczęcia: </bedwars session:1115091329958019253>
+  Zwróć uwagę, że to polecenie to skrót od </bedwars compare:1115091329958019253>!
+
+session-id = Identyfikator sesji
+session-list-title = Sesje (Strona {$page})
+session-list-empty = Nie znaleziono sesji.
+
+session-create = utworz
+  .description = Utwórz sesję dla gracza
+  .player = gracz
+  .player-description = Nazwa użytkownika Minecraft lub UUID
+
+session-delete = usuń
+  .description = Usuń sesję
+  .id = id
+  .id-description = Identyfikator sesji do usunięcia
+
+session-list = lista
+  .description = Wyświetl wszystkie sesje utworzone przez ciebie lub dla określonego gracza
+  .player = gracz
+  .player-description = Nazwa użytkownika Minecraft lub UUID
+  .page = strona
+  .page-description = Strona do wyświetlenia
+
+arcade-session = sesja
+  .description = Pokaż postępy w trybie Arcade gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Arcade do wyświetlenia
+
+arena-session = sesja
+  .description = Pokaż postępy w trybie Arena gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Arena do wyświetlenia
+
+bedwars-session = sesja
+  .description = Pokaż postępy w trybie Bed Wars gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Bed Wars do wyświetlenia
+
+blitz-session = sesja
+  .description = Pokaż postępy w trybie Blitz Survival Games gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Blitz Survival Games do wyświetlenia
+
+buildbattle-session = sesja
+  .description = Pokaż postępy w trybie Build Battle gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Build Battle do wyświetlenia
+
+copsandcrims-session = sesja
+  .description = Pokaż postępy w trybie Cops and Crims gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Cops and Crims do wyświetlenia
+
+duels-session = sesja
+  .description = Pokaż postępy w trybie Duels gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Duels do wyświetlenia
+
+megawalls-session = sesja
+  .description = Pokaż postępy w trybie Mega Walls gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Mega Walls do wyświetlenia
+
+murdermystery-session = sesja
+  .description = Pokaż postępy w trybie Murder Mystery gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Murder Mystery do wyświetlenia
+
+paintball-session = sesja
+  .description = Pokaż postępy w trybie Paintball gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Paintball do wyświetlenia
+
+pit-session = sesja
+  .description = Pokaż postępy w trybie The Pit gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb The Pit do wyświetlenia
+
+quake-session = sesja
+  .description = Pokaż postępy w trybie Quakecraft gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Quakecraft do wyświetlenia
+
+skywars-session = sesja
+  .description = Pokaż postępy w trybie SkyWars gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb SkyWars do wyświetlenia
+
+smash-session = sesja
+  .description = Pokaż postępy w trybie Smash Heroes gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Smash Heroes do wyświetlenia
+
+speeduhc-session = sesja
+  .description = Pokaż postępy w trybie SpeedUHC gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb SpeedUHC do wyświetlenia
+
+tntgames-session = sesja
+  .description = Pokaż postępy w trybie TNT Games gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb TNT Games do wyświetlenia
+
+turbokartracers-session = sesja
+  .description = Pokaż postępy w trybie Turbo Kart Racers gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Turbo Kart Racers do wyświetlenia
+
+uhc-session = sesja
+  .description = Pokaż postępy w trybie UHC Champions gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb UHC Champions do wyświetlenia
+
+vampirez-session = sesja
+  .description = Pokaż postępy w trybie VampireZ gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb VampireZ do wyświetlenia
+
+walls-session = sesja
+  .description = Pokaż postępy w trybie The Walls gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb The Walls do wyświetlenia
+
+warlords-session = sesja
+  .description = Pokaż postępy w trybie Warlords gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Warlords do wyświetlenia
+
+woolwars-session = sesja
+  .description = Pokaż postępy w trybie Wool Wars gracza od rozpoczęcia sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb Wool Wars do wyświetlenia

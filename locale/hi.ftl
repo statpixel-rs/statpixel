@@ -2608,3 +2608,190 @@ guild-at = पर
 
 showing-statistics-at = <a:clock:1115091329958019253> {$at} से आँकड़े दिखा रहा है।
 showing-guild-statistics-at = {$at} से समूह के आँकड़े दिखा र
+
+error-session-not-found = दिए गए आईडी से एक सत्र नहीं मिल सका।
+
+session-deleted = आईडी **`{$id}`** वाला सत्र हटा दिया गया है।
+session-created-title = सत्र बनाया गया
+session-created = आईडी **`{$id}`** वाला सत्र **`{$username}`** के लिए बनाया गया है।
+  किसी भी खिलाड़ी के सत्र आईडी की जगह कोई भी कमांड में उपयोग करने के लिए।
+
+  इसे आजमाएं: </bedwars general:1115091329958019253>
+
+  या, सत्र की शुरुआत से खिलाड़ी ने कितना प्रगति किया है उसे देखने के लिए सत्र कमांड का उपयोग करें: </bedwars session:1115091329958019253>
+  ध्यान दें कि यह कमांड </bedwars compare:1115091329958019253> के लिए एक शॉर्टकट है!
+
+session-id = सत्र आईडी
+session-list-title = सत्र (पृष्ठ {$page})
+session-list-empty = कोई सत्र नहीं मिला।
+
+session-create = बनाएं
+  .description = एक खिलाड़ी के लिए एक सत्र बनाएं
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट उपयोगकर्ता का नाम या यूयूआईडी
+
+session-delete = हटाएं
+  .description = एक सत्र को हटाएं
+  .id = आईडी
+  .id-description = हटाने के लिए सत्र की आईडी
+
+session-list = सूची
+  .description = आपके द्वारा बनाए गए या निर्दिष्ट खिलाड़ी के लिए सभी सत्रों की सूची देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट उपयोगकर्ता का नाम या यूयूआईडी
+  .page = पृष्ठ
+  .page-description = देखने के लिए पृष्ठ
+
+arcade-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की आर्केड प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए आर्केड मोड
+
+arena-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की अरेना प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए अरेना मोड
+
+bedwars-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की बेड वॉर्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए बेड वॉर्स मोड
+
+blitz-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की ब्लिट्ज सर्वाइवल गेम्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए ब्लिट्ज सर्वाइवल गेम्स मोड
+
+buildbattle-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की बिल्ड बैटल प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए बिल्ड बैटल मोड
+
+copsandcrims-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की कॉप्स और क्रिम्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए कॉप्स और क्रिम्स मोड
+
+duels-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की ड्यूल्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए ड्यूल्स मोड
+
+megawalls-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की मेगा वॉल्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए मेगा वॉल्स मोड
+
+murdermystery-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की मर्डर मिस्ट्री प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए मर्डर मिस्ट्री मोड
+
+paintball-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की पेंटबॉल प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए पेंटबॉल मोड
+
+pit-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की द पिट प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए द पिट मोड
+
+quake-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की क्वेकक्राफ्ट प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए क्वेकक्राफ्ट मोड
+
+skywars-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की स्काईवॉर्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए स्काईवॉर्स मोड
+
+smash-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की स्मैश हीरोज प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए स्मैश हीरोज मोड
+
+speeduhc-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की स्पीडयूएचसी प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए स्पीडयूएचसी मोड
+
+tntgames-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की टीएनटी गेम्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए टीएनटी गेम्स मोड
+
+turbokartracers-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की टर्बो कार्ट रेसर्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए टर्बो कार्ट रेसर्स मोड
+
+uhc-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की यूएचसी चैंपियंस प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए यूएचसी चैंपियंस मोड
+
+vampirez-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की वैम्पायरज़ प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए वैम्पायरज़ मोड
+
+walls-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की द वॉल्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए द वॉल्स मोड
+
+warlords-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की वॉरलॉर्ड्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए वॉरलॉर्ड्स मोड
+
+woolwars-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की वूल वॉर्स प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए वूल वॉर्स मोड

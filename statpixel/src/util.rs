@@ -108,7 +108,7 @@ pub async fn get_player_from_input(
 			let session = session::table
 				.filter(session::id.eq(uuid))
 				.select((session::uuid, session::snapshot_id))
-				.get_result::<(Uuid, i32)>(&mut ctx.data().pool.get().await?)
+				.get_result::<(Uuid, i64)>(&mut ctx.data().pool.get().await?)
 				.await
 				.optional()?;
 

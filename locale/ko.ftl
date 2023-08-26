@@ -2613,3 +2613,190 @@ guild-at = -에서
 
 showing-statistics-at = <a:clock:1115091329958019253> {$at}의 통계를 보여줍니다.
 showing-guild-statistics-at = {$at}의 길드 통계를 보여줍니다.
+
+error-session-not-found = 제공된 ID로 세션이 찾을 수 없습니다.
+
+session-deleted = ID가 **`{$id}`** 인 세션이 삭제되었습니다.
+session-created-title = 세션이 생성되었습니다
+session-created = ID가 **`{$id}`** 인 세션이 **`{$username}`** 님을 위해 생성되었습니다.
+  아무 명령에서 세션 ID로 플레이어의 데이터를 사용하려면 플레이어의 자리를 세션 ID로 대체하세요.
+
+  이렇게 해보세요: </bedwars general:1115091329958019253>
+
+  또는, 세션 시작 이후 플레이어의 진행 상황을 보려면 세션 명령을 사용하세요: </bedwars session:1115091329958019253>
+  이 명령은 </bedwars compare:1115091329958019253>을 위한 단축키임을 유의하세요!
+
+session-id = 세션 ID
+session-list-title = 세션 (페이지 {$page})
+session-list-empty = 세션을 찾을 수 없습니다.
+
+session-create = 생성
+  .description = 플레이어를 위한 세션 생성
+  .player = 플레이어
+  .player-description = Minecraft 사용자명 또는 UUID
+
+session-delete = 삭제
+  .description = 세션 삭제
+  .id = id
+  .id-description = 삭제할 세션의 ID
+
+session-list = 목록
+  .description = 당신 또는 지정된 플레이어에 의해 생성된 모든 세션 나열
+  .player = 플레이어
+  .player-description = Minecraft 사용자명 또는 UUID
+  .page = 페이지
+  .page-description = 보기 위한 페이지
+
+arcade-session = 세션
+  .description = 세션 시작 이후 플레이어의 아케이드 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 아케이드 모드
+
+arena-session = 세션
+  .description = 세션 시작 이후 플레이어의 아레나 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 아레나 모드
+
+bedwars-session = 세션
+  .description = 세션 시작 이후 플레이어의 Bed Wars 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Bed Wars 모드
+
+blitz-session = 세션
+  .description = 세션 시작 이후 플레이어의 Blitz Survival Games 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Blitz Survival Games 모드
+
+buildbattle-session = 세션
+  .description = 세션 시작 이후 플레이어의 Build Battle 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Build Battle 모드
+
+copsandcrims-session = 세션
+  .description = 세션 시작 이후 플레이어의 Cops and Crims 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Cops and Crims 모드
+
+duels-session = 세션
+  .description = 세션 시작 이후 플레이어의 Duels 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Duels 모드
+
+megawalls-session = 세션
+  .description = 세션 시작 이후 플레이어의 Mega Walls 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Mega Walls 모드
+
+murdermystery-session = 세션
+  .description = 세션 시작 이후 플레이어의 Murder Mystery 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Murder Mystery 모드
+
+paintball-session = 세션
+  .description = 세션 시작 이후 플레이어의 Paintball 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Paintball 모드
+
+pit-session = 세션
+  .description = 세션 시작 이후 플레이어의 The Pit 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 The Pit 모드
+
+quake-session = 세션
+  .description = 세션 시작 이후 플레이어의 Quakecraft 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Quakecraft 모드
+
+skywars-session = 세션
+  .description = 세션 시작 이후 플레이어의 SkyWars 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 SkyWars 모드
+
+smash-session = 세션
+  .description = 세션 시작 이후 플레이어의 Smash Heroes 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Smash Heroes 모드
+
+speeduhc-session = 세션
+  .description = 세션 시작 이후 플레이어의 SpeedUHC 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 SpeedUHC 모드
+
+tntgames-session = 세션
+  .description = 세션 시작 이후 플레이어의 TNT Games 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 TNT Games 모드
+
+turbokartracers-session = 세션
+  .description = 세션 시작 이후 플레이어의 Turbo Kart Racers 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Turbo Kart Racers 모드
+
+uhc-session = 세션
+  .description = 세션 시작 이후 플레이어의 UHC Champions 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 UHC Champions 모드
+
+vampirez-session = 세션
+  .description = 세션 시작 이후 플레이어의 VampireZ 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 VampireZ 모드
+
+walls-session = 세션
+  .description = 세션 시작 이후 플레이어의 The Walls 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 The Walls 모드
+
+warlords-session = 세션
+  .description = 세션 시작 이후 플레이어의 Warlords 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Warlords 모드
+
+woolwars-session = 세션
+  .description = 세션 시작 이후 플레이어의 Wool Wars 진행 상황 표시
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 볼 Wool Wars 모드

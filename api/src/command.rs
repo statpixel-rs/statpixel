@@ -1226,4 +1226,13 @@ pub enum Id {
 		#[bitcode(with_serde)]
 		uuid: Uuid,
 	},
+	Session {
+		kind: Mode,
+		snapshot: i64,
+	},
+	SessionPage {
+		#[bitcode(with_serde)]
+		uuid: Option<Uuid>,
+		page: u32,
+	},
 }

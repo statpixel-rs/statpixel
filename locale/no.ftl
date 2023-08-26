@@ -2617,3 +2617,190 @@ guild-at = ved
 
 showing-statistics-at = <a:klokke:1115091329958019253> Viser statistikk fra {$at}.
 showing-guild-statistics-at = Viser guildstatistikk fra {$at}.
+
+error-session-not-found = En økt med den angitte IDen kunne ikke bli funnet.
+
+session-deleted = Økten med IDen **`{$id}`** har blitt slettet.
+session-created-title = Økt opprettet
+session-created = Økten med IDen **`{$id}`** har blitt opprettet for **`{$username}`**.
+  Bytt ut plassen til en hvilken som helst spiller med økt-IDen for å bruke dataen i hvilken som helst kommando.
+
+  Prøv det ut: </bedwars general:1115091329958019253>
+
+  Eller bruk øktkommandoen for å se hvor langt spilleren har kommet siden økten startet: </bedwars session:1115091329958019253>
+  Merk at denne kommandoen er en snarvei for </bedwars compare:1115091329958019253>!
+
+session-id = Økt-ID
+session-list-title = Økter (Side {$page})
+session-list-empty = Ingen økter funnet.
+
+session-create = opprett
+  .description = Opprett en økt for en spiller
+  .player = spiller
+  .player-description = Minecraft-brukernavn eller UUID
+
+session-delete = slett
+  .description = Slett en økt
+  .id = id
+  .id-description = Øktens ID som skal slettes
+
+session-list = liste
+  .description = Vis alle økter opprettet av deg eller for den angitte spilleren
+  .player = spiller
+  .player-description = Minecraft-brukernavn eller UUID
+  .page = side
+  .page-description = Siden som skal vises
+
+arcade-session = økt
+  .description = Vis en spillers Arcade-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Arcademodusen som skal vises
+
+arena-session = økt
+  .description = Vis en spillers Arena-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Arenamodusen som skal vises
+
+bedwars-session = økt
+  .description = Vis en spillers Bed Wars-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Bed Wars-modusen som skal vises
+
+blitz-session = økt
+  .description = Vis en spillers Blitz Survival Games-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Blitz Survival Games-modusen som skal vises
+
+buildbattle-session = økt
+  .description = Vis en spillers Build Battle-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Build Battle-modusen som skal vises
+
+copsandcrims-session = økt
+  .description = Vis en spillers Cops and Crims-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Cops and Crims-modusen som skal vises
+
+duels-session = økt
+  .description = Vis en spillers Duels-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Duels-modusen som skal vises
+
+megawalls-session = økt
+  .description = Vis en spillers Mega Walls-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Mega Walls-modusen som skal vises
+
+murdermystery-session = økt
+  .description = Vis en spillers Murder Mystery-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Murder Mystery-modusen som skal vises
+
+paintball-session = økt
+  .description = Vis en spillers Paintball-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Paintball-modusen som skal vises
+
+pit-session = økt
+  .description = Vis en spillers Pit-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Pit-modusen som skal vises
+
+quake-session = økt
+  .description = Vis en spillers Quakecraft-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Quakecraft-modusen som skal vises
+
+skywars-session = økt
+  .description = Vis en spillers SkyWars-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = SkyWars-modusen som skal vises
+
+smash-session = økt
+  .description = Vis en spillers Smash Heroes-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Smash Heroes-modusen som skal vises
+
+speeduhc-session = økt
+  .description = Vis en spillers SpeedUHC-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = SpeedUHC-modusen som skal vises
+
+tntgames-session = økt
+  .description = Vis en spillers TNT Games-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = TNT Games-modusen som skal vises
+
+turbokartracers-session = økt
+  .description = Vis en spillers Turbo Kart Racers-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Turbo Kart Racers-modusen som skal vises
+
+uhc-session = økt
+  .description = Vis en spillers UHC Champions-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = UHC Champions-modusen som skal vises
+
+vampirez-session = økt
+  .description = Vis en spillers VampireZ-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = VampireZ-modusen som skal vises
+
+walls-session = økt
+  .description = Vis en spillers Walls-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Walls-modusen som skal vises
+
+warlords-session = økt
+  .description = Vis en spillers Warlords-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Warlords-modusen som skal vises
+
+woolwars-session = økt
+  .description = Vis en spillers Wool Wars-fremgang siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Wool Wars-modusen som skal vises

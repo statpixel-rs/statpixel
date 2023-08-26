@@ -9,6 +9,8 @@ use poise::serenity_prelude as serenity;
 use tracing::info;
 use translate::{context::Context, Error};
 
+use crate::util;
+
 macro_rules! impl_root {
 	($ctx: expr, $uuid: expr, $mode: expr, $game: ty) => {
 		super::commands::games::run::command::<$game>($ctx, None, Some($uuid), Some($mode)).await
@@ -75,6 +77,16 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 	info!(id = ?id, "dispatching command");
 
 	match id {
+		Id::Session { .. } => Err(crate::Error::NotImplemented),
+		Id::SessionPage { uuid, page } => {
+			let player = if let Some(uuid) = uuid {
+				Some(util::get_player_from_input(ctx, Some(uuid), None).await?)
+			} else {
+				None
+			};
+
+			super::commands::session::run::list(ctx, player, page).await
+		}
 		Id::Builder { shapes, uuid } => {
 			let (_, data, session, skin, _) =
 				super::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None).await?;

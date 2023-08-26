@@ -2617,3 +2617,190 @@ guild-at = στις
 
 showing-statistics-at = <a:clock:1115091329958019253> Εμφάνιση στατιστικών από τις {$at}.
 showing-guild-statistics-at = Εμφάνιση στατιστικών συνδέσμου από τις {$at}.
+
+error-session-not-found = Δεν βρέθηκε συνεδρία με το παρεχόμενο αναγνωριστικό.
+
+session-deleted = Η συνεδρία με το αναγνωριστικό **`{$id}`** έχει διαγραφεί.
+session-created-title = Δημιουργήθηκε συνεδρία
+session-created = Η συνεδρία με το αναγνωριστικό **`{$id}`** δημιουργήθηκε για τον **`{$username}`**.
+  Αντικαταστήστε τη θέση οποιουδήποτε παίκτη με το αναγνωριστικό της συνεδρίας για να χρησιμοποιήσετε τα δεδομένα της σε οποιαδήποτε εντολή.
+
+  Δοκιμάστε το: </bedwars general:1115091329958019253>
+
+  Ή χρησιμοποιήστε την εντολή συνεδρίας για να δείτε πόσο μακριά έχει προχωρήσει ο παίκτης από τότε που ξεκίνησε: </bedwars session:1115091329958019253>
+  Σημειώστε ότι αυτή η εντολή είναι μια συντόμευση για την εντολή </bedwars compare:1115091329958019253>!
+
+session-id = Αναγνωριστικό Συνεδρίας
+session-list-title = Συνεδρίες (Σελίδα {$page})
+session-list-empty = Δεν βρέθηκαν συνεδρίες.
+
+session-create = δημιουργία
+  .description = Δημιουργήστε μια συνεδρία για έναν παίκτη
+  .player = παίκτης
+  .player-description = Όνομα χρήστη ή UUID του Minecraft
+
+session-delete = διαγραφή
+  .description = Διαγράψτε μια συνεδρία
+  .id = αναγνωριστικό
+  .id-description = Το αναγνωριστικό της συνεδρίας προς διαγραφή
+
+session-list = λίστα
+  .description = Εμφανίστε όλες τις συνεδρίες που έχουν δημιουργηθεί από εσάς ή για τον συγκεκριμένο παίκτη
+  .player = παίκτης
+  .player-description = Όνομα χρήστη ή UUID του Minecraft
+  .page = σελίδα
+  .page-description = Η σελίδα προς προβολή
+
+arcade-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Arcade ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Arcade προς προβολή
+
+arena-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου της Arena ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Arena προς προβολή
+
+bedwars-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Bed Wars ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Bed Wars προς προβολή
+
+blitz-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Blitz Survival Games ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Blitz Survival Games προς προβολή
+
+buildbattle-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Build Battle ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Build Battle προς προβολή
+
+copsandcrims-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Cops and Crims ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Cops and Crims προς προβολή
+
+duels-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Duels ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Duels προς προβολή
+
+megawalls-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Mega Walls ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Mega Walls προς προβολή
+
+murdermystery-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Murder Mystery ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Murder Mystery προς προβολή
+
+paintball-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Paintball ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Paintball προς προβολή
+
+pit-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του The Pit ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση The Pit προς προβολή
+
+quake-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Quakecraft ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Quakecraft προς προβολή
+
+skywars-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του SkyWars ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση SkyWars προς προβολή
+
+smash-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Smash Heroes ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Smash Heroes προς προβολή
+
+speeduhc-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του SpeedUHC ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση SpeedUHC προς προβολή
+
+tntgames-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του TNT Games ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση TNT Games προς προβολή
+
+turbokartracers-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Turbo Kart Racers ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Turbo Kart Racers προς προβολή
+
+uhc-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του UHC Champions ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση UHC Champions προς προβολή
+
+vampirez-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του VampireZ ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση VampireZ προς προβολή
+
+walls-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του The Walls ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση The Walls προς προβολή
+
+warlords-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Warlords ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Warlords προς προβολή
+
+woolwars-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου του Wool Wars ενός παίκτη από τότε που ξεκίνησε η συνεδρία
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = κατάσταση
+  .mode-description = Η κατάσταση Wool Wars προς προβολή

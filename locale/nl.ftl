@@ -2617,3 +2617,190 @@ guild-at = op
 
 showing-statistics-at = <a:klok:1115091329958019253> Statistieken weergeven vanaf {$at}.
 showing-guild-statistics-at = Gildesstatistieken weergeven vanaf {$at}.
+
+error-session-not-found = Een sessie met de opgegeven id kon niet worden gevonden.
+
+session-deleted = De sessie met id **`{$id}`** is verwijderd.
+session-created-title = Sessie aangemaakt
+session-created = De sessie met id **`{$id}`** is aangemaakt voor **`{$username}`**.
+  Plaats de gegevens van een speler in een opdracht door de sessie-id te gebruiken.
+
+  Probeer het uit: </bedwars general:1115091329958019253>
+
+  Of gebruik het sessiecommando om te zien hoe ver de speler is gevorderd sinds het begon: </bedwars session:1115091329958019253>
+  Let op: dit commando is een snelkoppeling voor </bedwars compare:1115091329958019253>!
+
+session-id = Sessie-id
+session-list-title = Sessies (Pagina {$page})
+session-list-empty = Geen sessies gevonden.
+
+session-create = aanmaken
+  .description = Maak een sessie aan voor een speler
+  .player = speler
+  .player-description = Minecraft-gebruikersnaam of UUID
+
+session-delete = verwijderen
+  .description = Verwijder een sessie
+  .id = id
+  .id-description = De id van de sessie om te verwijderen
+
+session-list = lijst
+  .description = Lijst alle sessies die door jou zijn aangemaakt of voor de opgegeven speler
+  .player = speler
+  .player-description = Minecraft-gebruikersnaam of UUID
+  .page = pagina
+  .page-description = De pagina om te bekijken
+
+arcade-session = sessie
+  .description = Toon de voortgang van een speler in de Arcade-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Arcade-modus om te bekijken
+
+arena-session = sessie
+  .description = Toon de voortgang van een speler in de Arena-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Arena-modus om te bekijken
+
+bedwars-session = sessie
+  .description = Toon de voortgang van een speler in de Bed Wars-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Bed Wars-modus om te bekijken
+
+blitz-session = sessie
+  .description = Toon de voortgang van een speler in de Blitz Survival Games-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Blitz Survival Games-modus om te bekijken
+
+buildbattle-session = sessie
+  .description = Toon de voortgang van een speler in de Build Battle-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Build Battle-modus om te bekijken
+
+copsandcrims-session = sessie
+  .description = Toon de voortgang van een speler in de Cops and Crims-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Cops and Crims-modus om te bekijken
+
+duels-session = sessie
+  .description = Toon de voortgang van een speler in de Duels-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Duels-modus om te bekijken
+
+megawalls-session = sessie
+  .description = Toon de voortgang van een speler in de Mega Walls-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Mega Walls-modus om te bekijken
+
+murdermystery-session = sessie
+  .description = Toon de voortgang van een speler in de Murder Mystery-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Murder Mystery-modus om te bekijken
+
+paintball-session = sessie
+  .description = Toon de voortgang van een speler in de Paintball-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Paintball-modus om te bekijken
+
+pit-session = sessie
+  .description = Toon de voortgang van een speler in The Pit-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = The Pit-modus om te bekijken
+
+quake-session = sessie
+  .description = Toon de voortgang van een speler in de Quakecraft-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Quakecraft-modus om te bekijken
+
+skywars-session = sessie
+  .description = Toon de voortgang van een speler in de SkyWars-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De SkyWars-modus om te bekijken
+
+smash-session = sessie
+  .description = Toon de voortgang van een speler in de Smash Heroes-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Smash Heroes-modus om te bekijken
+
+speeduhc-session = sessie
+  .description = Toon de voortgang van een speler in de SpeedUHC-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De SpeedUHC-modus om te bekijken
+
+tntgames-session = sessie
+  .description = Toon de voortgang van een speler in de TNT Games-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De TNT Games-modus om te bekijken
+
+turbokartracers-session = sessie
+  .description = Toon de voortgang van een speler in de Turbo Kart Racers-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Turbo Kart Racers-modus om te bekijken
+
+uhc-session = sessie
+  .description = Toon de voortgang van een speler in de UHC Champions-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De UHC Champions-modus om te bekijken
+
+vampirez-session = sessie
+  .description = Toon de voortgang van een speler in de VampireZ-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De VampireZ-modus om te bekijken
+
+walls-session = sessie
+  .description = Toon de voortgang van een speler in The Walls-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = The Walls-modus om te bekijken
+
+warlords-session = sessie
+  .description = Toon de voortgang van een speler in de Warlords-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Warlords-modus om te bekijken
+
+woolwars-session = sessie
+  .description = Toon de voortgang van een speler in de Wool Wars-modus sinds het begin van de sessie
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De Wool Wars-modus om te bekijken

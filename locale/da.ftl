@@ -2621,3 +2621,190 @@ guild-at = ved
 
 showing-statistics-at = <a:clock:1115091329958019253> Viser statistik fra {$at}.
 showing-guild-statistics-at = Viser guild statistik fra {$at}.
+
+error-session-not-found = En session med det angivne id kunne ikke findes.
+
+session-deleted = Sessionen med id **`{$id}`** er blevet slettet.
+session-created-title = Session oprettet
+session-created = Sessionen med id **`{$id}`** er blevet oprettet til **`{$username}`**.
+  Udskift pladsen for enhver spiller med sessions-id'et for at bruge dets data i en hvilken som helst kommando.
+
+  Prøv det: </bedwars general:1115091329958019253>
+
+  Eller brug sessionskommandoen for at se, hvor langt spilleren er kommet, siden den startede: </bedwars session:1115091329958019253>
+  Bemærk, at denne kommando er en genvej til </bedwars compare:1115091329958019253>!
+
+session-id = Sessions-id
+session-list-title = Sessioner (Side {$page})
+session-list-empty = Ingen sessioner fundet.
+
+session-create = opret
+  .description = Opret en session for en spiller
+  .player = spiller
+  .player-description = Minecraft-brugernavn eller UUID
+
+session-delete = slet
+  .description = Slet en session
+  .id = id
+  .id-description = Id'et for den session, der skal slettes
+
+session-list = liste
+  .description = Vis alle sessioner oprettet af dig eller til den angivne spiller
+  .player = spiller
+  .player-description = Minecraft-brugernavn eller UUID
+  .page = side
+  .page-description = Siden at se
+
+arcade-session = session
+  .description = Vis en spillers Arcade-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Arcade-tilstanden at se
+
+arena-session = session
+  .description = Vis en spillers Arena-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Arena-tilstanden at se
+
+bedwars-session = session
+  .description = Vis en spillers Bed Wars-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Bed Wars-tilstanden at se
+
+blitz-session = session
+  .description = Vis en spillers Blitz Survival Games-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Blitz Survival Games-tilstanden at se
+
+buildbattle-session = session
+  .description = Vis en spillers Build Battle-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Build Battle-tilstanden at se
+
+copsandcrims-session = session
+  .description = Vis en spillers Cops and Crims-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Cops and Crims-tilstanden at se
+
+duels-session = session
+  .description = Vis en spillers Duels-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Duels-tilstanden at se
+
+megawalls-session = session
+  .description = Vis en spillers Mega Walls-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Mega Walls-tilstanden at se
+
+murdermystery-session = session
+  .description = Vis en spillers Murder Mystery-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Murder Mystery-tilstanden at se
+
+paintball-session = session
+  .description = Vis en spillers Paintball-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Paintball-tilstanden at se
+
+pit-session = session
+  .description = Vis en spillers Pit-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Pit-tilstanden at se
+
+quake-session = session
+  .description = Vis en spillers Quakecraft-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Quakecraft-tilstanden at se
+
+skywars-session = session
+  .description = Vis en spillers SkyWars-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = SkyWars-tilstanden at se
+
+smash-session = session
+  .description = Vis en spillers Smash Heroes-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Smash Heroes-tilstanden at se
+
+speeduhc-session = session
+  .description = Vis en spillers SpeedUHC-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = SpeedUHC-tilstanden at se
+
+tntgames-session = session
+  .description = Vis en spillers TNT Games-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = TNT Games-tilstanden at se
+
+turbokartracers-session = session
+  .description = Vis en spillers Turbo Kart Racers-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Turbo Kart Racers-tilstanden at se
+
+uhc-session = session
+  .description = Vis en spillers UHC Champions-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = UHC Champions-tilstanden at se
+
+vampirez-session = session
+  .description = Vis en spillers VampireZ-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = VampireZ-tilstanden at se
+
+walls-session = session
+  .description = Vis en spillers Walls-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Walls-tilstanden at se
+
+warlords-session = session
+  .description = Vis en spillers Warlords-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Warlords-tilstanden at se
+
+woolwars-session = session
+  .description = Vis en spillers Wool Wars-fremgang siden sessionen startede
+  .session = session
+  .session-description = Et sessions-id
+  .mode = tilstand
+  .mode-description = Wool Wars-tilstanden at se

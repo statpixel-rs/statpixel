@@ -2617,3 +2617,190 @@ guild-at = vid
 
 showing-statistics-at = <a:klocka:1115091329958019253> Visar statistik från {$at}.
 showing-guild-statistics-at = Visar guildstatistik från {$at}.
+
+error-session-not-found = En session med den angivna ID:t kunde inte hittas.
+
+session-deleted = Sessionen med ID **`{$id}`** har blivit raderad.
+session-created-title = Skapad session
+session-created = Sessionen med ID **`{$id}`** har skapats för **`{$username}`**.
+  Byt ut platsen för en spelare med sessionens ID för att använda dess data i något kommando.
+
+  Testa det här: </bedwars general:1115091329958019253>
+
+  Eller använd sessionskommandot för att se hur långt spelaren har kommit sedan den startade: </bedwars session:1115091329958019253>
+  Observera att detta kommando är en genväg för </bedwars compare:1115091329958019253>!
+
+session-id = Sessionens ID
+session-list-title = Sessioner (Sida {$page})
+session-list-empty = Inga sessioner hittades.
+
+session-create = skapa
+  .description = Skapa en session för en spelare
+  .player = spelare
+  .player-description = Minecraft-användarnamn eller UUID
+
+session-delete = radera
+  .description = Radera en session
+  .id = id
+  .id-description = Sessionens ID att radera
+
+session-list = lista
+  .description = Lista alla sessioner skapade av dig eller för den angivna spelaren
+  .player = spelare
+  .player-description = Minecraft-användarnamn eller UUID
+  .page = sida
+  .page-description = Sidan att visa
+
+arcade-session = session
+  .description = Visa Arcade-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Arcade-läge att visa
+
+arena-session = session
+  .description = Visa Arena-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Arena-läge att visa
+
+bedwars-session = session
+  .description = Visa Bed Wars-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Bed Wars-läge att visa
+
+blitz-session = session
+  .description = Visa Blitz Survival Games-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Blitz Survival Games-läge att visa
+
+buildbattle-session = session
+  .description = Visa Build Battle-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Build Battle-läge att visa
+
+copsandcrims-session = session
+  .description = Visa Cops and Crims-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Cops and Crims-läge att visa
+
+duels-session = session
+  .description = Visa Duels-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Duels-läge att visa
+
+megawalls-session = session
+  .description = Visa Mega Walls-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Mega Walls-läge att visa
+
+murdermystery-session = session
+  .description = Visa Murder Mystery-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Murder Mystery-läge att visa
+
+paintball-session = session
+  .description = Visa Paintball-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Paintball-läge att visa
+
+pit-session = session
+  .description = Visa The Pit-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det The Pit-läge att visa
+
+quake-session = session
+  .description = Visa Quakecraft-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Quakecraft-läge att visa
+
+skywars-session = session
+  .description = Visa SkyWars-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det SkyWars-läge att visa
+
+smash-session = session
+  .description = Visa Smash Heroes-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Smash Heroes-läge att visa
+
+speeduhc-session = session
+  .description = Visa SpeedUHC-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det SpeedUHC-läge att visa
+
+tntgames-session = session
+  .description = Visa TNT Games-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det TNT Games-läge att visa
+
+turbokartracers-session = session
+  .description = Visa Turbo Kart Racers-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Turbo Kart Racers-läge att visa
+
+uhc-session = session
+  .description = Visa UHC Champions-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det UHC Champions-läge att visa
+
+vampirez-session = session
+  .description = Visa VampireZ-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det VampireZ-läge att visa
+
+walls-session = session
+  .description = Visa The Walls-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det The Walls-läge att visa
+
+warlords-session = session
+  .description = Visa Warlords-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Warlords-läge att visa
+
+woolwars-session = session
+  .description = Visa Wool Wars-framsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Det Wool Wars-läge att visa

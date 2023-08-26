@@ -2617,3 +2617,190 @@ guild-at = u
 
 showing-statistics-at = <a:clock:1115091329958019253> Prikazujem statistiku od {$at}.
 showing-guild-statistics-at = Prikazujem statistiku gilda od {$at}.
+
+error-session-not-found = Sjednica s navedenim identifikatorom nije pronađena.
+
+session-deleted = Sjednica s identifikatorom **`{$id}`** je izbrisana.
+session-created-title = Sjednica stvorena
+session-created = Sjednica s identifikatorom **`{$id}`** je stvorena za **`{$username}`**.
+  Zamijenite mjesto bilo kojeg igrača s identifikatorom sjednice kako biste koristili njegove podatke u bilo kojoj naredbi.
+
+  Isprobajte to: </bedwars general:1115091329958019253>
+
+  Ili, koristite naredbu sjednice da biste vidjeli koliko je igrač napredovao od početka sjednice: </bedwars session:1115091329958019253>
+  Napomena: Ova naredba je prečac za </bedwars compare:1115091329958019253>!
+
+session-id = Identifikator sjednice
+session-list-title = Sjednice (Stranica {$page})
+session-list-empty = Nema pronađenih sjednica.
+
+session-create = stvori
+  .description = Stvori sjednicu za igrača
+  .player = igrač
+  .player-description = Minecraft korisničko ime ili UUID
+
+session-delete = izbriši
+  .description = Izbriši sjednicu
+  .id = id
+  .id-description = Identifikator sjednice za brisanje
+
+session-list = lista
+  .description = Popis svih sjednica koje ste stvorili ili za određenog igrača
+  .player = igrač
+  .player-description = Minecraft korisničko ime ili UUID
+  .page = stranica
+  .page-description = Stranica za prikaz
+
+arcade-session = sjednica
+  .description = Prikaži napredak igrača u Arkadama od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Arkadni način za prikaz
+
+arena-session = sjednica
+  .description = Prikaži napredak igrača u Areni od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Arena način za prikaz
+
+bedwars-session = sjednica
+  .description = Prikaži napredak igrača u Bed Warsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Bed Wars način za prikaz
+
+blitz-session = sjednica
+  .description = Prikaži napredak igrača u Blitz Survival igrama od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Blitz Survival način za prikaz
+
+buildbattle-session = sjednica
+  .description = Prikaži napredak igrača u Build Battleu od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Build Battle način za prikaz
+
+copsandcrims-session = sjednica
+  .description = Prikaži napredak igrača u Cops and Crimsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Cops and Crims način za prikaz
+
+duels-session = sjednica
+  .description = Prikaži napredak igrača u Duelima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Duels način za prikaz
+
+megawalls-session = sjednica
+  .description = Prikaži napredak igrača u Mega Wallsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Mega Walls način za prikaz
+
+murdermystery-session = sjednica
+  .description = Prikaži napredak igrača u Murder Mysteryju od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Murder Mystery način za prikaz
+
+paintball-session = sjednica
+  .description = Prikaži napredak igrača u Paintballu od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Paintball način za prikaz
+
+pit-session = sjednica
+  .description = Prikaži napredak igrača u The Pitu od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = The Pit način za prikaz
+
+quake-session = sjednica
+  .description = Prikaži napredak igrača u Quakecraftu od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Quakecraft način za prikaz
+
+skywars-session = sjednica
+  .description = Prikaži napredak igrača u SkyWarsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = SkyWars način za prikaz
+
+smash-session = sjednica
+  .description = Prikaži napredak igrača u Smash Heroesima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Smash Heroes način za prikaz
+
+speeduhc-session = sjednica
+  .description = Prikaži napredak igrača u SpeedUHC-u od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = SpeedUHC način za prikaz
+
+tntgames-session = sjednica
+  .description = Prikaži napredak igrača u TNT igrama od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = TNT Games način za prikaz
+
+turbokartracers-session = sjednica
+  .description = Prikaži napredak igrača u Turbo Kart Racersima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Turbo Kart Racers način za prikaz
+
+uhc-session = sjednica
+  .description = Prikaži napredak igrača u UHC Championsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = UHC Champions način za prikaz
+
+vampirez-session = sjednica
+  .description = Prikaži napredak igrača u VampireZ-u od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = VampireZ način za prikaz
+
+walls-session = sjednica
+  .description = Prikaži napredak igrača u The Wallsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = The Walls način za prikaz
+
+warlords-session = sjednica
+  .description = Prikaži napredak igrača u Warlordsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Warlords način za prikaz
+
+woolwars-session = sjednica
+  .description = Prikaži napredak igrača u Wool Warsima od početka sjednice
+  .session = sjednica
+  .session-description = Identifikator sjednice
+  .mode = način
+  .mode-description = Wool Wars način za prikaz

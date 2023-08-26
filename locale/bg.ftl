@@ -2633,3 +2633,190 @@ guild-at = в
 
 showing-statistics-at = <a:clock:1115091329958019253> Показване на статистиката от {$at}.
 showing-guild-statistics-at = Показване на статистиката на гилдията от {$at}.
+
+error-session-not-found = Сесия с предоставеното идентификационно номер не може да бъде намерена.
+
+session-deleted = Сесията с идентификационен номер **`{$id}`** беше изтрита.
+session-created-title = Създадена сесия
+session-created = Сесията с идентификационен номер **`{$id}`** беше създадена за **`{$username}`**.
+  Заменете мястото на всеки играч с идентификационния номер на сесията, за да използвате данните му във всяка команда.
+
+  Опитайте: </bedwars general:1115091329958019253>
+
+  Или използвайте командата за сесия, за да видите доколко е продвинат играчът след като тя започне: </bedwars session:1115091329958019253>
+  Обърнете внимание, че тази команда е бърз път за </bedwars compare:1115091329958019253>!
+
+session-id = Идентификационен номер на сесия
+session-list-title = Сесии (Страница {$page})
+session-list-empty = Няма намерени сесии.
+
+session-create = създай
+  .description = Създай сесия за играч
+  .player = играч
+  .player-description = Потребителско име или UUID в Minecraft
+
+session-delete = изтрий
+  .description = Изтрий сесия
+  .id = идентификационен-номер
+  .id-description = Идентификационният номер на сесията, която да бъде изтрита
+
+session-list = списък
+  .description = Списък на всички сесии създадени от вас или за посочения играч
+  .player = играч
+  .player-description = Потребителско име или UUID в Minecraft
+  .page = страница
+  .page-description = Страницата за преглед
+
+arcade-session = сесия
+  .description = Покажи напредъка в Arcade на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Arcade за преглед
+
+arena-session = сесия
+  .description = Покажи напредъка в Arena на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Arena за преглед
+
+bedwars-session = сесия
+  .description = Покажи напредъка в Bed Wars на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Bed Wars за преглед
+
+blitz-session = сесия
+  .description = Покажи напредъка в Blitz Survival Games на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Blitz Survival Games за преглед
+
+buildbattle-session = сесия
+  .description = Покажи напредъка в Build Battle на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Build Battle за преглед
+
+copsandcrims-session = сесия
+  .description = Покажи напредъка в Cops and Crims на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Cops and Crims за преглед
+
+duels-session = сесия
+  .description = Покажи напредъка в Duels на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Duels за преглед
+
+megawalls-session = сесия
+  .description = Покажи напредъка в Mega Walls на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Mega Walls за преглед
+
+murdermystery-session = сесия
+  .description = Покажи напредъка в Murder Mystery на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Murder Mystery за преглед
+
+paintball-session = сесия
+  .description = Покажи напредъка в Paintball на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Paintball за преглед
+
+pit-session = сесия
+  .description = Покажи напредъка в The Pit на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в The Pit за преглед
+
+quake-session = сесия
+  .description = Покажи напредъка в Quakecraft на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Quakecraft за преглед
+
+skywars-session = сесия
+  .description = Покажи напредъка в SkyWars на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в SkyWars за преглед
+
+smash-session = сесия
+  .description = Покажи напредъка в Smash Heroes на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Smash Heroes за преглед
+
+speeduhc-session = сесия
+  .description = Покажи напредъка в SpeedUHC на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в SpeedUHC за преглед
+
+tntgames-session = сесия
+  .description = Покажи напредъка в TNT Games на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в TNT Games за преглед
+
+turbokartracers-session = сесия
+  .description = Покажи напредъка в Turbo Kart Racers на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Turbo Kart Racers за преглед
+
+uhc-session = сесия
+  .description = Покажи напредъка в UHC Champions на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в UHC Champions за преглед
+
+vampirez-session = сесия
+  .description = Покажи напредъка в VampireZ на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в VampireZ за преглед
+
+walls-session = сесия
+  .description = Покажи напредъка в The Walls на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в The Walls за преглед
+
+warlords-session = сесия
+  .description = Покажи напредъка в Warlords на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Warlords за преглед
+
+woolwars-session = сесия
+  .description = Покажи напредъка в Wool Wars на играч от момента на старта на сесията
+  .session = сесия
+  .session-description = Идентификационен номер на сесия
+  .mode = режим
+  .mode-description = Режимът в Wool Wars за преглед

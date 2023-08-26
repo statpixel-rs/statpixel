@@ -2617,3 +2617,190 @@ guild-at = la
 
 showing-statistics-at = <a:clock:1115091329958019253> Afișarea statisticilor de la {$at}.
 showing-guild-statistics-at = Afișarea statisticilor de la guildă din {$at}.
+
+error-session-not-found = O sesiune cu ID-ul furnizat nu a putut fi găsită.
+
+session-deleted = Sesiunea cu ID-ul **`{$id}`** a fost ștearsă.
+session-created-title = Sesiune creată
+session-created = Sesiunea cu ID-ul **`{$id}`** a fost creată pentru **`{$username}`**.
+  Înlocuiți locul oricărui jucător cu ID-ul sesiunii pentru a utiliza datele în orice comandă.
+
+  Testați acum: </bedwars general:1115091329958019253>
+
+  Sau, utilizați comanda sesiune pentru a vedea cât de mult a progresat jucătorul de când a început: </bedwars session:1115091329958019253>
+  Notați că această comandă este o scurtătură pentru </bedwars compare:1115091329958019253>!
+
+session-id = ID sesiune
+session-list-title = Sesiuni (Pagina {$page})
+session-list-empty = Nicio sesiune găsită.
+
+session-create = creare
+  .description = Creați o sesiune pentru un jucător
+  .player = jucător
+  .player-description = Numele de utilizator sau UUID-ul Minecraft
+
+session-delete = ștergere
+  .description = Ștergeți o sesiune
+  .id = id
+  .id-description = ID-ul sesiunii de șters
+
+session-list = listare
+  .description = Enumerați toate sesiunile create de dvs. sau pentru jucătorul specificat
+  .player = jucător
+  .player-description = Numele de utilizator sau UUID-ul Minecraft
+  .page = pagină
+  .page-description = Pagina de vizualizat
+
+arcade-session = sesiune
+  .description = Afișați progresia Arcade a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Arcade de vizualizat
+
+arena-session = sesiune
+  .description = Afișați progresia Arena a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Arena de vizualizat
+
+bedwars-session = sesiune
+  .description = Afișați progresia Bed Wars a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Bed Wars de vizualizat
+
+blitz-session = sesiune
+  .description = Afișați progresia Blitz Survival Games a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Blitz Survival Games de vizualizat
+
+buildbattle-session = sesiune
+  .description = Afișați progresia Build Battle a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Build Battle de vizualizat
+
+copsandcrims-session = sesiune
+  .description = Afișați progresia Cops and Crims a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Cops and Crims de vizualizat
+
+duels-session = sesiune
+  .description = Afișați progresia Duels a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Duels de vizualizat
+
+megawalls-session = sesiune
+  .description = Afișați progresia Mega Walls a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Mega Walls de vizualizat
+
+murdermystery-session = sesiune
+  .description = Afișați progresia Murder Mystery a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Murder Mystery de vizualizat
+
+paintball-session = sesiune
+  .description = Afișați progresia Paintball a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Paintball de vizualizat
+
+pit-session = sesiune
+  .description = Afișați progresia The Pit a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul The Pit de vizualizat
+
+quake-session = sesiune
+  .description = Afișați progresia Quakecraft a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Quakecraft de vizualizat
+
+skywars-session = sesiune
+  .description = Afișați progresia SkyWars a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul SkyWars de vizualizat
+
+smash-session = sesiune
+  .description = Afișați progresia Smash Heroes a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Smash Heroes de vizualizat
+
+speeduhc-session = sesiune
+  .description = Afișați progresia SpeedUHC a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul SpeedUHC de vizualizat
+
+tntgames-session = sesiune
+  .description = Afișați progresia TNT Games a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul TNT Games de vizualizat
+
+turbokartracers-session = sesiune
+  .description = Afișați progresia Turbo Kart Racers a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Turbo Kart Racers de vizualizat
+
+uhc-session = sesiune
+  .description = Afișați progresia UHC Champions a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul UHC Champions de vizualizat
+
+vampirez-session = sesiune
+  .description = Afișați progresia VampireZ a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul VampireZ de vizualizat
+
+walls-session = sesiune
+  .description = Afișați progresia The Walls a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul The Walls de vizualizat
+
+warlords-session = sesiune
+  .description = Afișați progresia Warlords a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Warlords de vizualizat
+
+woolwars-session = sesiune
+  .description = Afișați progresia Wool Wars a unui jucător de la începutul sesiunii
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul Wool Wars de vizualizat

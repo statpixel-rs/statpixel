@@ -2634,3 +2634,190 @@ guild-at = u
 
 showing-statistics-at = <a:clock:1115091329958019253> Zobrazení statistik od {$at}.
 showing-guild-statistics-at = Zobrazení statistik cechu od {$at}.
+
+error-session-not-found = Relace s poskytnutým id nebyla nalezena.
+
+session-deleted = Relace s id **`{$id}`** byla smazána.
+session-created-title = Relace vytvořena
+session-created = Relace s id **`{$id}`** byla vytvořena pro **`{$username}`**.
+  Nahraďte místo jakéhokoli hráče id relace, abyste mohli použít jeho údaje v jakémkoli příkazu.
+
+  Vyzkoušejte to: </bedwars general:1115091329958019253>
+
+  Nebo použijte příkaz relace, abyste viděli, jak daleko hráč od zahájení pokročil: </bedwars session:1115091329958019253>
+  Všimněte si, že tento příkaz je zkratkou pro </bedwars compare:1115091329958019253>!
+
+session-id = ID relace
+session-list-title = Relace (Stránka {$page})
+session-list-empty = Žádné relace nebyly nalezeny.
+
+session-create = vytvořit
+  .description = Vytvořit relaci pro hráče
+  .player = hráč
+  .player-description = Minecraft uživatelské jméno nebo UUID
+
+session-delete = smazat
+  .description = Smazat relaci
+  .id = id
+  .id-description = ID relace k smazání
+
+session-list = seznam
+  .description = Zobrazit všechny relace vytvořené vámi nebo pro určeného hráče
+  .player = hráč
+  .player-description = Minecraft uživatelské jméno nebo UUID
+  .page = stránka
+  .page-description = Stránka k zobrazení
+
+arcade-session = relace
+  .description = Zobrazit postup v režimu Arcade hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Arcade k zobrazení
+
+arena-session = relace
+  .description = Zobrazit postup v režimu Arény hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Arény k zobrazení
+
+bedwars-session = relace
+  .description = Zobrazit postup v režimu Bed Wars hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Bed Wars k zobrazení
+
+blitz-session = relace
+  .description = Zobrazit postup v režimu Blitz Survival Games hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Blitz Survival Games k zobrazení
+
+buildbattle-session = relace
+  .description = Zobrazit postup v režimu Build Battle hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Build Battle k zobrazení
+
+copsandcrims-session = relace
+  .description = Zobrazit postup v režimu Cops and Crims hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Cops and Crims k zobrazení
+
+duels-session = relace
+  .description = Zobrazit postup v režimu Duels hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Duels k zobrazení
+
+megawalls-session = relace
+  .description = Zobrazit postup v režimu Mega Walls hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Mega Walls k zobrazení
+
+murdermystery-session = relace
+  .description = Zobrazit postup v režimu Murder Mystery hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Murder Mystery k zobrazení
+
+paintball-session = relace
+  .description = Zobrazit postup v režimu Paintball hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Paintball k zobrazení
+
+pit-session = relace
+  .description = Zobrazit postup v režimu The Pit hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim The Pit k zobrazení
+
+quake-session = relace
+  .description = Zobrazit postup v režimu Quakecraft hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Quakecraft k zobrazení
+
+skywars-session = relace
+  .description = Zobrazit postup v režimu SkyWars hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim SkyWars k zobrazení
+
+smash-session = relace
+  .description = Zobrazit postup v režimu Smash Heroes hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Smash Heroes k zobrazení
+
+speeduhc-session = relace
+  .description = Zobrazit postup v režimu SpeedUHC hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim SpeedUHC k zobrazení
+
+tntgames-session = relace
+  .description = Zobrazit postup v režimu TNT Games hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim TNT Games k zobrazení
+
+turbokartracers-session = relace
+  .description = Zobrazit postup v režimu Turbo Kart Racers hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Turbo Kart Racers k zobrazení
+
+uhc-session = relace
+  .description = Zobrazit postup v režimu UHC Champions hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim UHC Champions k zobrazení
+
+vampirez-session = relace
+  .description = Zobrazit postup v režimu VampireZ hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim VampireZ k zobrazení
+
+walls-session = relace
+  .description = Zobrazit postup v režimu The Walls hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim The Walls k zobrazení
+
+warlords-session = relace
+  .description = Zobrazit postup v režimu Warlords hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Warlords k zobrazení
+
+woolwars-session = relace
+  .description = Zobrazit postup v režimu Wool Wars hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim Wool Wars k zobrazení

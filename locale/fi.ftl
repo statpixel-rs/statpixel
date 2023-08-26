@@ -2617,3 +2617,190 @@ guild-at = ajassa
 
 showing-statistics-at = <a:kello:1115091329958019253> Näytetään tilastoja kohteesta {$at}.
 showing-guild-statistics-at = Näytetään killan tilastoja kohteesta {$at}.
+
+error-session-not-found = Istuntoa annetulla tunnisteella ei löytynyt.
+
+session-deleted = Istunto tunnisteella **`{$id}`** on poistettu.
+session-created-title = Istunto luotu
+session-created = Istunto tunnisteella **`{$id}`** on luotu käyttäjälle **`{$username}`**.
+  Korvaa minkä tahansa pelaajan paikka istunnon tunnisteella käyttääksesi sen tietoja missä tahansa komennossa.
+
+  Kokeile sitä: </bedwars yleinen:1115091329958019253>
+
+  Tai käytä istuntokomentoa nähdäksesi kuinka pitkälle pelaaja on edistynyt siitä lähtien kun se alkoi: </bedwars istunto:1115091329958019253>
+  Huomaa, että tämä komento on pikakomento kohteelle </bedwars vertaa:1115091329958019253>!
+
+session-id = Istunnon tunniste
+session-list-title = Istunnot (Sivu {$page})
+session-list-empty = Ei löytynyt istuntoja.
+
+session-create = luo
+  .description = Luo istunto pelaajalle
+  .player = pelaaja
+  .player-description = Minecraftin käyttäjänimi tai UUID
+
+session-delete = poista
+  .description = Poista istunto
+  .id = tunniste
+  .id-description = Istunnon tunniste, jonka haluat poistaa
+
+session-list = lista
+  .description = Listaa kaikki sinun tai määritetyn pelaajan luomat istunnot
+  .player = pelaaja
+  .player-description = Minecraftin käyttäjänimi tai UUID
+  .page = sivu
+  .page-description = Sivu, jota haluat tarkastella
+
+arcade-session = istunto
+  .description = Näytä pelaajan Arcade-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Arcade-tila, jota haluat tarkastella
+
+arena-session = istunto
+  .description = Näytä pelaajan Arena-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Arena-tila, jota haluat tarkastella
+
+bedwars-session = istunto
+  .description = Näytä pelaajan Bed Wars -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Bed Wars -tila, jota haluat tarkastella
+
+blitz-session = istunto
+  .description = Näytä pelaajan Blitz Survival Games -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Blitz Survival Games -tila, jota haluat tarkastella
+
+buildbattle-session = istunto
+  .description = Näytä pelaajan Build Battle -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Build Battle -tila, jota haluat tarkastella
+
+copsandcrims-session = istunto
+  .description = Näytä pelaajan Cops and Crims -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Cops and Crims -tila, jota haluat tarkastella
+
+duels-session = istunto
+  .description = Näytä pelaajan Duels-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Duels-tila, jota haluat tarkastella
+
+megawalls-session = istunto
+  .description = Näytä pelaajan Mega Walls -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Mega Walls -tila, jota haluat tarkastella
+
+murdermystery-session = istunto
+  .description = Näytä pelaajan Murder Mystery -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Murder Mystery -tila, jota haluat tarkastella
+
+paintball-session = istunto
+  .description = Näytä pelaajan Paintball-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Paintball -tila, jota haluat tarkastella
+
+pit-session = istunto
+  .description = Näytä pelaajan The Pit -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = The Pit -tila, jota haluat tarkastella
+
+quake-session = istunto
+  .description = Näytä pelaajan Quakecraft-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Quakecraft -tila, jota haluat tarkastella
+
+skywars-session = istunto
+  .description = Näytä pelaajan SkyWars-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = SkyWars -tila, jota haluat tarkastella
+
+smash-session = istunto
+  .description = Näytä pelaajan Smash Heroes -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Smash Heroes -tila, jota haluat tarkastella
+
+speeduhc-session = istunto
+  .description = Näytä pelaajan SpeedUHC-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = SpeedUHC -tila, jota haluat tarkastella
+
+tntgames-session = istunto
+  .description = Näytä pelaajan TNT Games -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = TNT Games -tila, jota haluat tarkastella
+
+turbokartracers-session = istunto
+  .description = Näytä pelaajan Turbo Kart Racers -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Turbo Kart Racers -tila, jota haluat tarkastella
+
+uhc-session = istunto
+  .description = Näytä pelaajan UHC Champions -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = UHC Champions -tila, jota haluat tarkastella
+
+vampirez-session = istunto
+  .description = Näytä pelaajan VampireZ-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = VampireZ -tila, jota haluat tarkastella
+
+walls-session = istunto
+  .description = Näytä pelaajan The Walls -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = The Walls -tila, jota haluat tarkastella
+
+warlords-session = istunto
+  .description = Näytä pelaajan Warlords-edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Warlords -tila, jota haluat tarkastella
+
+woolwars-session = istunto
+  .description = Näytä pelaajan Wool Wars -edistyminen siitä lähtien kun istunto alkoi
+  .session = istunto
+  .session-description = Istunnon tunniste
+  .mode = tila
+  .mode-description = Wool Wars -tila, jota haluat tarkastella

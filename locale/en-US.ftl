@@ -2643,7 +2643,7 @@ showing-guild-statistics-at = Showing guild statistics from {$at}.
 error-session-not-found = A session by the provided id could not be found.
 
 session-deleted = The session with id **`{$id}`** has been deleted.
-sesson-created-title = Session created
+session-created-title = Session created
 session-created = The session with id **`{$id}`** has been created for **`{$username}`**.
   Substitute the place of any player with the session id to use it's data in any command.
 
@@ -2653,6 +2653,8 @@ session-created = The session with id **`{$id}`** has been created for **`{$user
   Note that this command is a shortcut for </bedwars compare:1115091329958019253>!
 
 session-id = Session ID
+session-list-title = Sessions (Page {$page})
+session-list-empty = No sessions found.
 
 session-create = create
   .description = Create a session for a player
@@ -2668,6 +2670,8 @@ session-list = list
   .description = List all sessions created by you or for the specified player
   .player = player
   .player-description = Minecraft username or UUID
+  .page = page
+  .page-description = The page to view
 
 arcade-session = session
   .description = Show the Arcade progression of a player since the session started
