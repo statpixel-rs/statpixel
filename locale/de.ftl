@@ -1,11 +1,11 @@
 # Allgemeine Beschriftungen
 not-linked = Fehlende Argumente
 not-linked-description = Da du nicht verknüpft bist, musst du ein Profil angeben, um es anzuzeigen.
-showing-statistics = <a:clock:1115091329958019253> Zeige Statistikänderungen von {$from} bis {$to}.
+showing-statistics = <a:clock:1113624864272683060> Zeige Statistikänderungen von {$from} bis {$to}.
 no-previous-statistics = Keine früheren Daten gefunden für **`{$name}`**, daher wurden sie eingefügt.
 showing-guild-statistics = Zeige Gildenstatistikänderungen von {$from} bis {$to}.
 no-previous-guild-statistics = Keine früheren Daten gefunden für die Gilde **`{$name}`**, daher wurde sie eingefügt.
-showing-comparison = <a:clock:1115091329958019253> Zeige Statistiken von **`{$from}`** im Vergleich zu **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Zeige Statistiken von **`{$from}`** im Vergleich zu **`{$to}`**.
 
 # Fehlermeldungen
 error-player-not-found = Ein Profil mit dem Namen **`{$name}`** wurde nicht gefunden.
@@ -450,7 +450,7 @@ help-snapshot-description = Momentaufnahmen sind eine Möglichkeit, die Verände
   
   Wenn du einen bestimmten Zeitraum betrachten möchtest, probiere </bedwars from:1113624864272683060> aus.
 
-help-history = Verlauf <a:clock:1115091329958019253>
+help-history = Verlauf <a:clock:1113624864272683060>
 help-history-description = Um eine Grafik zu sehen, wie sich bestimmte Statistiken im Laufe der Zeit verändert haben, probiere </network history:1113624864524357714> aus.
 
 help-image-builder = Bildgenerator <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = bei
   .time = zeit
   .time-description = Die Zeitspanne, um zurückzugehen (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Zeigt Statistiken ab {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Zeigt Statistiken ab {$at}.
 showing-guild-statistics-at = Zeigt Gildenstatistiken ab {$at}.
 
 error-session-not-found = Eine Sitzung mit der angegebenen ID konnte nicht gefunden werden.
@@ -2625,10 +2625,10 @@ session-created-title = Sitzung erstellt
 session-created = Die Sitzung mit der ID **`{$id}`** wurde für **`{$username}`** erstellt.
   Ersetzen Sie den Platz eines beliebigen Spielers durch die Sitzungs-ID, um seine Daten in einem Befehl zu verwenden.
 
-  Probieren Sie es aus: </bedwars general:1115091329958019253>
+  Probieren Sie es aus: </bedwars general:1113624864272683060>
 
-  Oder verwenden Sie den Sitzungs-Befehl, um zu sehen, wie weit der Spieler seit Beginn vorangeschritten ist: </bedwars session:1115091329958019253>
-  Beachten Sie, dass dieser Befehl eine Abkürzung für </bedwars compare:1115091329958019253> ist!
+  Oder verwenden Sie den Sitzungs-Befehl, um zu sehen, wie weit der Spieler seit Beginn vorangeschritten ist: </bedwars session:1113624864272683060>
+  Beachten Sie, dass dieser Befehl eine Abkürzung für </bedwars compare:1113624864272683060> ist!
 
 session-id = Sitzungs-ID
 session-list-title = Sitzungen (Seite {$page})

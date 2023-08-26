@@ -1,11 +1,11 @@
 # Etichete generale
 not-linked = Argumente lipsă
 not-linked-description = Deoarece nu ești conectat, trebuie să furnizezi un profil pentru a vizualiza.
-showing-statistics = <a:clock:1115091329958019253> Se afișează statisticile de la {$from} la {$to}.
+showing-statistics = <a:clock:1113624864272683060> Se afișează statisticile de la {$from} la {$to}.
 no-previous-statistics = Nu s-au găsit date anterioare pentru **`{$name}`**, așa că au fost adăugate.
 showing-guild-statistics = Se afișează statisticile guild-ului de la {$from} la {$to}.
 no-previous-guild-statistics = Nu s-au găsit date anterioare pentru guild-ul **`{$name}`**, așa că a fost adăugat.
-showing-comparison = <a:clock:1115091329958019253> Se afișează statisticile lui **`{$from}`** în comparație cu cele ale lui **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Se afișează statisticile lui **`{$from}`** în comparație cu cele ale lui **`{$to}`**.
 
 # Erori
 
@@ -450,7 +450,7 @@ help-snapshot-description = Momentan reprezintă o modalitate de a vizualiza mod
 
   Dacă doriți să vizualizați un interval de timp mai specific, încercați </bedwars from:1113624864272683060>.
 
-help-history = Istoric <a:clock:1115091329958019253>
+help-history = Istoric <a:clock:1113624864272683060>
 help-history-description = Pentru a vizualiza un grafic al modului în care s-au schimbat statisticile specifice de-a lungul timpului, încercați </network history:1113624864524357714>.
 
 help-image-builder = Constructor de Imagini <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = la
   .time = timp
   .time-description = Cantitatea de timp pentru a merge înapoi (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Afișarea statisticilor de la {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Afișarea statisticilor de la {$at}.
 showing-guild-statistics-at = Afișarea statisticilor de la guildă din {$at}.
 
 error-session-not-found = O sesiune cu ID-ul furnizat nu a putut fi găsită.
@@ -2625,10 +2625,10 @@ session-created-title = Sesiune creată
 session-created = Sesiunea cu ID-ul **`{$id}`** a fost creată pentru **`{$username}`**.
   Înlocuiți locul oricărui jucător cu ID-ul sesiunii pentru a utiliza datele în orice comandă.
 
-  Testați acum: </bedwars general:1115091329958019253>
+  Testați acum: </bedwars general:1113624864272683060>
 
-  Sau, utilizați comanda sesiune pentru a vedea cât de mult a progresat jucătorul de când a început: </bedwars session:1115091329958019253>
-  Notați că această comandă este o scurtătură pentru </bedwars compare:1115091329958019253>!
+  Sau, utilizați comanda sesiune pentru a vedea cât de mult a progresat jucătorul de când a început: </bedwars session:1113624864272683060>
+  Notați că această comandă este o scurtătură pentru </bedwars compare:1113624864272683060>!
 
 session-id = ID sesiune
 session-list-title = Sesiuni (Pagina {$page})

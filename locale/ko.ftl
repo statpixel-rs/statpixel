@@ -1,11 +1,11 @@
 # General labels
 not-linked = 링크되지 않음
 not-linked-description = 링크되지 않았으므로 프로필을 제공해야 합니다.
-showing-statistics = <a:clock:1115091329958019253> {$from}에서 {$to}까지의 통계를 표시합니다.
+showing-statistics = <a:clock:1113624864272683060> {$from}에서 {$to}까지의 통계를 표시합니다.
 no-previous-statistics = **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-guild-statistics = <a:clock:1115091329958019253> 길드 **{$name}**의 통계를 {$from}에서 **`{$to}`**까지 표시합니다.
+showing-guild-statistics = <a:clock:1113624864272683060> 길드 **{$name}**의 통계를 {$from}에서 **`{$to}`**까지 표시합니다.
 no-previous-guild-statistics = 길드 **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
-showing-comparison = <a:clock:1115091329958019253> **`{$from}`**의 통계를 **`{$to}`**와 비교하여 표시합니다.
+showing-comparison = <a:clock:1113624864272683060> **`{$from}`**의 통계를 **`{$to}`**와 비교하여 표시합니다.
 
 # Errors
 error-player-not-found = **`{$name}`** 님의 프로필을 찾을 수 없습니다.
@@ -445,7 +445,7 @@ help-snapshot-description = 스냅샷은 통계의 변화를 시간별로 확인
   
   보다 구체적인 범위를 보려면 </bedwars from:1113624864272683060>를 사용해 보세요.
 
-help-history = 히스토리 <a:clock:1115091329958019253>
+help-history = 히스토리 <a:clock:1113624864272683060>
 help-history-description = 특정 통계가 시간에 따라 어떻게 변화하는지 그래프로 보려면 </network history:1113624864524357714>를 사용해 보세요.
 
 help-image-builder = 이미지 빌더 <:gold_pickaxe:1125980780435345488>
@@ -2611,7 +2611,7 @@ guild-at = -에서
   .time = 시간
   .time-description = 돌아가려는 시간 (1시간 12분 5초)
 
-showing-statistics-at = <a:clock:1115091329958019253> {$at}의 통계를 보여줍니다.
+showing-statistics-at = <a:clock:1113624864272683060> {$at}의 통계를 보여줍니다.
 showing-guild-statistics-at = {$at}의 길드 통계를 보여줍니다.
 
 error-session-not-found = 제공된 ID로 세션이 찾을 수 없습니다.
@@ -2621,10 +2621,10 @@ session-created-title = 세션이 생성되었습니다
 session-created = ID가 **`{$id}`** 인 세션이 **`{$username}`** 님을 위해 생성되었습니다.
   아무 명령에서 세션 ID로 플레이어의 데이터를 사용하려면 플레이어의 자리를 세션 ID로 대체하세요.
 
-  이렇게 해보세요: </bedwars general:1115091329958019253>
+  이렇게 해보세요: </bedwars general:1113624864272683060>
 
-  또는, 세션 시작 이후 플레이어의 진행 상황을 보려면 세션 명령을 사용하세요: </bedwars session:1115091329958019253>
-  이 명령은 </bedwars compare:1115091329958019253>을 위한 단축키임을 유의하세요!
+  또는, 세션 시작 이후 플레이어의 진행 상황을 보려면 세션 명령을 사용하세요: </bedwars session:1113624864272683060>
+  이 명령은 </bedwars compare:1113624864272683060>을 위한 단축키임을 유의하세요!
 
 session-id = 세션 ID
 session-list-title = 세션 (페이지 {$page})

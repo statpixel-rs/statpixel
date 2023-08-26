@@ -1,11 +1,11 @@
 # Allmänna etiketter
 not-linked = Saknade argument
 not-linked-description = Eftersom du inte är länkad måste du ange en profil för att visa information.
-showing-statistics = <a:clock:1115091329958019253> Visar statistikändringar från {$from} till {$to}.
+showing-statistics = <a:clock:1113624864272683060> Visar statistikändringar från {$from} till {$to}.
 no-previous-statistics = Inga tidigare data hittades för **`{$name}`**, så det har lagts till.
 showing-guild-statistics = Visar gilldestatistikändringar från {$from} till {$to}.
 no-previous-guild-statistics = Inga tidigare data hittades för gildet **`{$name}`**, så det har lagts till.
-showing-comparison = <a:clock:1115091329958019253> Visar statistik för **`{$from}`** jämfört med **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Visar statistik för **`{$from}`** jämfört med **`{$to}`**.
 
 # Felmeddelanden
 
@@ -450,7 +450,7 @@ help-snapshot-description = Ögonblicksbilder är ett sätt att se förändringa
 
   Om du vill se ett mer specifikt intervall, prova </bedwars from:1113624864272683060>.
 
-help-history = Historik <a:clock:1115091329958019253>
+help-history = Historik <a:clock:1113624864272683060>
 help-history-description = För att visa en graf över hur specifika statistik har förändrats över tid, prova </network history:1113624864524357714>.
 
 help-image-builder = Bildskapare <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = vid
   .time = tid
   .time-description = Tiden att gå tillbaka (1t 12m 5s)
 
-showing-statistics-at = <a:klocka:1115091329958019253> Visar statistik från {$at}.
+showing-statistics-at = <a:klocka:1113624864272683060> Visar statistik från {$at}.
 showing-guild-statistics-at = Visar guildstatistik från {$at}.
 
 error-session-not-found = En session med den angivna ID:t kunde inte hittas.
@@ -2625,10 +2625,10 @@ session-created-title = Skapad session
 session-created = Sessionen med ID **`{$id}`** har skapats för **`{$username}`**.
   Byt ut platsen för en spelare med sessionens ID för att använda dess data i något kommando.
 
-  Testa det här: </bedwars general:1115091329958019253>
+  Testa det här: </bedwars general:1113624864272683060>
 
-  Eller använd sessionskommandot för att se hur långt spelaren har kommit sedan den startade: </bedwars session:1115091329958019253>
-  Observera att detta kommando är en genväg för </bedwars compare:1115091329958019253>!
+  Eller använd sessionskommandot för att se hur långt spelaren har kommit sedan den startade: </bedwars session:1113624864272683060>
+  Observera att detta kommando är en genväg för </bedwars compare:1113624864272683060>!
 
 session-id = Sessionens ID
 session-list-title = Sessioner (Sida {$page})

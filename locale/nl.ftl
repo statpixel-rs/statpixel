@@ -1,11 +1,11 @@
 # Algemene labels
 not-linked = Ontbrekende argumenten
 not-linked-description = Omdat je niet gekoppeld bent, moet je een profiel verstrekken om te bekijken.
-showing-statistics = <a:clock:1115091329958019253> Statistieken tonen van {$from} naar {$to}.
+showing-statistics = <a:clock:1113624864272683060> Statistieken tonen van {$from} naar {$to}.
 no-previous-statistics = Geen vorige gegevens gevonden voor **`{$name}`**, dus deze zijn ingevoegd.
 showing-guild-statistics = Guild-statistieken tonen van {$from} naar {$to}.
 no-previous-guild-statistics = Geen vorige gegevens gevonden voor guild **`{$name}`**, dus deze zijn ingevoegd.
-showing-comparison = <a:clock:1115091329958019253> Statistieken tonen van **`{$from}`** vergeleken met **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Statistieken tonen van **`{$from}`** vergeleken met **`{$to}`**.
 
 # Fouten
 
@@ -450,7 +450,7 @@ help-snapshot-description = Momentopnames zijn een manier om de veranderingen in
   
   Als u een meer specifiek bereik wilt bekijken, probeer dan </bedwars from:1113624864272683060>.
 
-help-history = Geschiedenis <a:clock:1115091329958019253>
+help-history = Geschiedenis <a:clock:1113624864272683060>
 help-history-description = Om een grafiek te bekijken van hoe specifieke statistieken in de loop van de tijd zijn veranderd, probeer </network history:1113624864524357714>.
 
 help-image-builder = Beeldbouwer <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = op
   .time = tijd
   .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
 
-showing-statistics-at = <a:klok:1115091329958019253> Statistieken weergeven vanaf {$at}.
+showing-statistics-at = <a:klok:1113624864272683060> Statistieken weergeven vanaf {$at}.
 showing-guild-statistics-at = Gildesstatistieken weergeven vanaf {$at}.
 
 error-session-not-found = Een sessie met de opgegeven id kon niet worden gevonden.
@@ -2625,10 +2625,10 @@ session-created-title = Sessie aangemaakt
 session-created = De sessie met id **`{$id}`** is aangemaakt voor **`{$username}`**.
   Plaats de gegevens van een speler in een opdracht door de sessie-id te gebruiken.
 
-  Probeer het uit: </bedwars general:1115091329958019253>
+  Probeer het uit: </bedwars general:1113624864272683060>
 
-  Of gebruik het sessiecommando om te zien hoe ver de speler is gevorderd sinds het begon: </bedwars session:1115091329958019253>
-  Let op: dit commando is een snelkoppeling voor </bedwars compare:1115091329958019253>!
+  Of gebruik het sessiecommando om te zien hoe ver de speler is gevorderd sinds het begon: </bedwars session:1113624864272683060>
+  Let op: dit commando is een snelkoppeling voor </bedwars compare:1113624864272683060>!
 
 session-id = Sessie-id
 session-list-title = Sessies (Pagina {$page})

@@ -1,11 +1,11 @@
 # General labels
 not-linked = Missing arguments
 not-linked-description = Since you're not linked, you need to provide a profile to view.
-showing-statistics = <a:clock:1115091329958019253> Showing statistics change from {$from} to {$to}.
+showing-statistics = <a:clock:1113624864272683060> Showing statistics change from {$from} to {$to}.
 no-previous-statistics = No previous data found for **`{$name}`**, so it has been inserted.
 showing-guild-statistics = Showing guild statistics change from {$from} to {$to}.
 no-previous-guild-statistics = No previous data found for guild **`{$name}`**, so it has been inserted.
-showing-comparison = <a:clock:1115091329958019253> Showing statistics of **`{$from}`** compared to **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Showing statistics of **`{$from}`** compared to **`{$to}`**.
 
 # Errors
 
@@ -461,7 +461,7 @@ help-snapshot-description = Snapshots are a way to view the changes in your stat
   
   If you want to view a more specific range, try out </bedwars from:1113624864272683060>.
 
-help-history = History <a:clock:1115091329958019253>
+help-history = History <a:clock:1113624864272683060>
 help-history-description = To view a graph of how specific statistics changed over time, try out </network history:1113624864524357714>.
 
 help-image-builder = Image Builder <:gold_pickaxe:1125980780435345488>
@@ -2637,7 +2637,7 @@ guild-at = at
   .time = time
   .time-description = The amount of time to go back (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Showing statistics from {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Showing statistics from {$at}.
 showing-guild-statistics-at = Showing guild statistics from {$at}.
 
 error-session-not-found = A session by the provided id could not be found.
@@ -2647,10 +2647,10 @@ session-created-title = Session created
 session-created = The session with id **`{$id}`** has been created for **`{$username}`**.
   Substitute the place of any player with the session id to use it's data in any command.
 
-  Try it out: </bedwars general:1115091329958019253>
+  Try it out: </bedwars general:1113624864272683060>
 
-  Or, use the session command to see how far the player has progressed since it started: </bedwars session:1115091329958019253>
-  Note that this command is a shortcut for </bedwars compare:1115091329958019253>!
+  Or, use the session command to see how far the player has progressed since it started: </bedwars session:1113624864272683060>
+  Note that this command is a shortcut for </bedwars compare:1113624864272683060>!
 
 session-id = Session ID
 session-list-title = Sessions (Page {$page})

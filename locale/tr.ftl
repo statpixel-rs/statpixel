@@ -1,11 +1,11 @@
 # Genel etiketler
 not-linked = Eksik argümanlar
 not-linked-description = Bağlantınız olmadığı için profil sağlamanız gerekmektedir.
-showing-statistics = <a:clock:1115091329958019253> İstatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
+showing-statistics = <a:clock:1113624864272683060> İstatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
 no-previous-statistics = **`{$name}`** için önceki veriler bulunamadığından dolayı eklendi.
-showing-guild-statistics = <a:clock:1115091329958019253> Sunucu istatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
+showing-guild-statistics = <a:clock:1113624864272683060> Sunucu istatistikleri {$from} tarihinden {$to} tarihine göre görüntüleniyor.
 no-previous-guild-statistics = **`{$name}`** sunucusu için önceki veriler bulunamadığından dolayı eklendi.
-showing-comparison = <a:clock:1115091329958019253> **`{$from}`** ile **`{$to}`** arasındaki istatistik karşılaştırması gösteriliyor.
+showing-comparison = <a:clock:1113624864272683060> **`{$from}`** ile **`{$to}`** arasındaki istatistik karşılaştırması gösteriliyor.
 
 # Hatalar
 
@@ -447,7 +447,7 @@ help-snapshot-description = Anlık görüntüler, istatistiklerinizdeki değişi
 
   Eğer daha spesifik bir aralık görmek isterseniz, </bedwars from:1113624864272683060>'i deneyin.
 
-help-history = Geçmiş <a:clock:1115091329958019253>
+help-history = Geçmiş <a:clock:1113624864272683060>
 help-history-description = Belirli istatistiklerin zaman içinde nasıl değiştiğini bir grafikte görmek için, </network history:1113624864524357714> komutunu deneyin.
 
 help-image-builder = Resim Oluşturucu <:gold_pickaxe:1125980780435345488>
@@ -2613,7 +2613,7 @@ guild-at = at
   .time = zaman
   .time-description = Geriye gitmek için süre (1s 12d 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> {$at} tarihinden itibaren istatistikleri gösteriyor.
+showing-statistics-at = <a:clock:1113624864272683060> {$at} tarihinden itibaren istatistikleri gösteriyor.
 showing-guild-statistics-at = {$at} tarihinden itibaren lonenin istatistiklerini gösteriyor.
 
 error-session-not-found = Sağlanan kimlikle bir oturum bulunamadı.
@@ -2623,10 +2623,10 @@ session-created-title = Oturum oluşturuldu
 session-created = Kimlik **`{$id}`** olan oturum **`{$username}`** için oluşturuldu.
   Herhangi bir oyuncunun kimliğini oturum kimliğiyle değiştirerek verilerini herhangi bir komutta kullanabilirsiniz.
 
-  Deneyin: </bedwars general:1115091329958019253>
+  Deneyin: </bedwars general:1113624864272683060>
 
-  Veya, oyuncunun ne kadar ilerlediğini görmek için oturum komutunu kullanın: </bedwars session:1115091329958019253>
-  Bu komut, aslında </bedwars compare:1115091329958019253> için bir kısayoldur!
+  Veya, oyuncunun ne kadar ilerlediğini görmek için oturum komutunu kullanın: </bedwars session:1113624864272683060>
+  Bu komut, aslında </bedwars compare:1113624864272683060> için bir kısayoldur!
 
 session-id = Oturum Kimliği
 session-list-title = Oturumlar (Sayfa {$page})

@@ -1,11 +1,11 @@
 # Bendros žymos
 not-linked = Trūksta argumentų
 not-linked-description = Kad galėtum pamatyti, turite būti susietas su paskyra.
-showing-statistics = <a:clock:1115091329958019253> Rodo statistikos pokyčius nuo {$from} iki {$to}.
+showing-statistics = <a:clock:1113624864272683060> Rodo statistikos pokyčius nuo {$from} iki {$to}.
 no-previous-statistics = Statistikos duomenų nerasta **`{$name}`** vardu, todėl jie buvo įterpti.
 showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo {$from} iki {$to}.
 no-previous-guild-statistics = Gildijos **`{$name}`** statistikos duomenų nerasta, todėl jie buvo įterpti.
-showing-comparison = <a:clock:1115091329958019253> Rodo **`{$from}`** statistiką, palygintą su **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Rodo **`{$from}`** statistiką, palygintą su **`{$to}`**.
 
 # Klaidos
 
@@ -450,7 +450,7 @@ help-snapshot-description = Momentiniai pranešimai leidžia peržiūrėti stati
 
   Jei norite pamatyti konkrečią laiko intervalo statistiką, išbandykite </bedwars from:1113624864272683060>.
 
-help-history = Istorija <a:clock:1115091329958019253>
+help-history = Istorija <a:clock:1113624864272683060>
 help-history-description = Norėdami pamatyti grafiką, kaip keičiasi konkrečios statistikos laikui bėgant, išbandykite </network history:1113624864524357714>.
 
 help-image-builder = Paveikslėlių Kūrėjas <:gold_pickaxe:1125980780435345488>
@@ -2616,7 +2616,7 @@ guild-at = at
   .time = laikas
   .time-description = Laiko tarpas, kurį norite grįžti atgal (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Rodo statistiką nuo {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Rodo statistiką nuo {$at}.
 showing-guild-statistics-at = Rodo gildijos statistiką nuo {$at}.
 
 error-session-not-found = Sesiijos pagal pateiktą ID nepavyko rasti.
@@ -2626,10 +2626,10 @@ session-created-title = Sukurta sesija
 session-created = Sesiija su ID **`{$id}`** buvo sukurta naudotojui **`{$username}`**.
   Naudokite sesijos ID vietą norėdami panaudoti jos duomenis bet kurioje komandoje, pakeisdami vietą žaidėjo duomenis sesijos ID.
 
-  Išbandykite tai: </bedwars general:1115091329958019253>
+  Išbandykite tai: </bedwars general:1113624864272683060>
 
-  Arba naudokite sesijos komandą, norėdami pamatyti, kaip žaidėjas pažengęs nuo sesijos pradžios: </bedwars session:1115091329958019253>
-  Ši komanda yra trumpinys nuorodai </bedwars compare:1115091329958019253>!
+  Arba naudokite sesijos komandą, norėdami pamatyti, kaip žaidėjas pažengęs nuo sesijos pradžios: </bedwars session:1113624864272683060>
+  Ši komanda yra trumpinys nuorodai </bedwars compare:1113624864272683060>!
 
 session-id = Sesijos ID
 session-list-title = Sesijos (Puslapis {$page})

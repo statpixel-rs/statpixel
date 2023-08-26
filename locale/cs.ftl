@@ -1,11 +1,11 @@
 # Obecné popisky
 not-linked = Chybějící argumenty
 not-linked-description = Protože nejste propojeni, musíte poskytnout profil pro zobrazení.
-showing-statistics = <a:clock:1115091329958019253> Zobrazuji statistiky změny od {$from} do {$to}.
+showing-statistics = <a:clock:1113624864272683060> Zobrazuji statistiky změny od {$from} do {$to}.
 no-previous-statistics = Pro **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
 showing-guild-statistics = Zobrazuji statistiky změny cechu od {$from} do {$to}.
 no-previous-guild-statistics = Pro cech **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
-showing-comparison = <a:clock:1115091329958019253> Zobrazuji statistiky hráče **`{$from}`** ve srovnání s hráčem **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Zobrazuji statistiky hráče **`{$from}`** ve srovnání s hráčem **`{$to}`**.
 
 # Chyby
 
@@ -456,7 +456,7 @@ help-snapshot-description = Snímky jsou způsobem, jak zobrazit změny ve stati
   
   Pokud chcete zobrazit specifičtější rozsah, vyzkoušejte </bedwars from:1113624864272683060>.
 
-help-history = Historie <a:clock:1115091329958019253>
+help-history = Historie <a:clock:1113624864272683060>
 help-history-description = Pokud chcete zobrazit graf, jak se konkrétní statistiky měnily v čase, vyzkoušejte </network history:1113624864524357714>.
 
 help-image-builder = Stavitel obrázků <:gold_pickaxe:1125980780435345488>
@@ -2632,7 +2632,7 @@ guild-at = u
   .time = čas
   .time-description = Doba zpět v čase (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Zobrazení statistik od {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Zobrazení statistik od {$at}.
 showing-guild-statistics-at = Zobrazení statistik cechu od {$at}.
 
 error-session-not-found = Relace s poskytnutým id nebyla nalezena.
@@ -2642,10 +2642,10 @@ session-created-title = Relace vytvořena
 session-created = Relace s id **`{$id}`** byla vytvořena pro **`{$username}`**.
   Nahraďte místo jakéhokoli hráče id relace, abyste mohli použít jeho údaje v jakémkoli příkazu.
 
-  Vyzkoušejte to: </bedwars general:1115091329958019253>
+  Vyzkoušejte to: </bedwars general:1113624864272683060>
 
-  Nebo použijte příkaz relace, abyste viděli, jak daleko hráč od zahájení pokročil: </bedwars session:1115091329958019253>
-  Všimněte si, že tento příkaz je zkratkou pro </bedwars compare:1115091329958019253>!
+  Nebo použijte příkaz relace, abyste viděli, jak daleko hráč od zahájení pokročil: </bedwars session:1113624864272683060>
+  Všimněte si, že tento příkaz je zkratkou pro </bedwars compare:1113624864272683060>!
 
 session-id = ID relace
 session-list-title = Relace (Stránka {$page})

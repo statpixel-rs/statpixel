@@ -1,11 +1,11 @@
 # Generelle etiketter
 not-linked = Manglende argumenter
 not-linked-description = Siden du ikke er lenket, må du oppgi en profil for å vise informasjonen.
-showing-statistics = <a:clock:1115091329958019253> Viser statistikkendringer fra {$from} til {$to}.
+showing-statistics = <a:clock:1113624864272683060> Viser statistikkendringer fra {$from} til {$to}.
 no-previous-statistics = Ingen tidligere data funnet for **`{$name}`**, så det har blitt lagt til.
 showing-guild-statistics = Viser statistikkendringer for guild fra {$from} til {$to}.
 no-previous-guild-statistics = Ingen tidligere data funnet for guild **`{$name}`**, så det har blitt lagt til.
-showing-comparison = <a:clock:1115091329958019253> Viser statistikk for **`{$from}`** sammenlignet med **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Viser statistikk for **`{$from}`** sammenlignet med **`{$to}`**.
 
 # Feil
 
@@ -450,7 +450,7 @@ help-snapshot-description = Øyeblikksbilder viser endringene i statistikken din
   
   Hvis du vil se en mer spesifikk periode, prøv </bedwars from:1113624864272683060>.
 
-help-history = Historie <a:clock:1115091329958019253>
+help-history = Historie <a:clock:1113624864272683060>
 help-history-description = For å se en graf over hvordan spesifikke statistikker har endret seg over tid, prøv </network history:1113624864524357714>.
 
 help-image-builder = Bildebygger <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = ved
   .time = tid
   .time-description = Tiden å gå tilbake (1t 12m 5s)
 
-showing-statistics-at = <a:klokke:1115091329958019253> Viser statistikk fra {$at}.
+showing-statistics-at = <a:klokke:1113624864272683060> Viser statistikk fra {$at}.
 showing-guild-statistics-at = Viser guildstatistikk fra {$at}.
 
 error-session-not-found = En økt med den angitte IDen kunne ikke bli funnet.
@@ -2625,10 +2625,10 @@ session-created-title = Økt opprettet
 session-created = Økten med IDen **`{$id}`** har blitt opprettet for **`{$username}`**.
   Bytt ut plassen til en hvilken som helst spiller med økt-IDen for å bruke dataen i hvilken som helst kommando.
 
-  Prøv det ut: </bedwars general:1115091329958019253>
+  Prøv det ut: </bedwars general:1113624864272683060>
 
-  Eller bruk øktkommandoen for å se hvor langt spilleren har kommet siden økten startet: </bedwars session:1115091329958019253>
-  Merk at denne kommandoen er en snarvei for </bedwars compare:1115091329958019253>!
+  Eller bruk øktkommandoen for å se hvor langt spilleren har kommet siden økten startet: </bedwars session:1113624864272683060>
+  Merk at denne kommandoen er en snarvei for </bedwars compare:1113624864272683060>!
 
 session-id = Økt-ID
 session-list-title = Økter (Side {$page})

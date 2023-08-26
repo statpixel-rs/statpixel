@@ -1,11 +1,11 @@
 # General labels
 not-linked = Brakujące argumenty
 not-linked-description = Ponieważ nie jesteś połączony, musisz dostarczyć profil, aby go zobaczyć.
-showing-statistics = <a:clock:1115091329958019253> Wyświetlanie statystyk zmiany od {$from} do {$to}.
+showing-statistics = <a:clock:1113624864272683060> Wyświetlanie statystyk zmiany od {$from} do {$to}.
 no-previous-statistics = Brak danych wcześniejszych dla **`{$name}`**, więc zostały one dodane.
 showing-guild-statistics = Wyświetlanie statystyk gildii zmiany od {$from} do {$to}.
 no-previous-guild-statistics = Brak danych wcześniejszych dla gildii **`{$name}`**, więc została ona dodana.
-showing-comparison = <a:clock:1115091329958019253> Wyświetlanie statystyk **`{$from}`** w porównaniu do **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Wyświetlanie statystyk **`{$from}`** w porównaniu do **`{$to}`**.
 
 # Errors
 
@@ -450,7 +450,7 @@ help-snapshot-description = Zrzuty ekranu pozwalają zobaczyć zmiany w twoich s
   
   Jeśli chcesz zobaczyć bardziej szczegółowy zakres, spróbuj </bedwars from:1113624864272683060>.
 
-help-history = Historia <a:clock:1115091329958019253>
+help-history = Historia <a:clock:1113624864272683060>
 help-history-description = Aby zobaczyć wykres zmiany określonych statystyk w czasie, spróbuj </network history:1113624864524357714>.
 
 help-image-builder = Kreator obrazów <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = o
   .time = czas
   .time-description = Ilość czasu, na jaki się cofnąć (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Pokazywanie statystyk z {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Pokazywanie statystyk z {$at}.
 showing-guild-statistics-at = Pokazywanie statystyk gildii z {$at}.
 
 error-session-not-found = Nie można znaleźć sesji o podanym identyfikatorze.
@@ -2625,10 +2625,10 @@ session-created-title = Utworzono sesję
 session-created = Sesja o identyfikatorze **`{$id}`** została utworzona dla gracza **`{$username}`**.
   Zastąp miejsce dowolnego gracza identyfikatorem sesji, aby użyć jego danych w dowolnym poleceniu.
 
-  Wypróbuj to: </bedwars general:1115091329958019253>
+  Wypróbuj to: </bedwars general:1113624864272683060>
 
-  Lub użyj polecenia sesji, aby sprawdzić, jak daleko doszedł gracz od momentu jej rozpoczęcia: </bedwars session:1115091329958019253>
-  Zwróć uwagę, że to polecenie to skrót od </bedwars compare:1115091329958019253>!
+  Lub użyj polecenia sesji, aby sprawdzić, jak daleko doszedł gracz od momentu jej rozpoczęcia: </bedwars session:1113624864272683060>
+  Zwróć uwagę, że to polecenie to skrót od </bedwars compare:1113624864272683060>!
 
 session-id = Identyfikator sesji
 session-list-title = Sesje (Strona {$page})

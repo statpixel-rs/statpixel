@@ -1,11 +1,11 @@
 # General labels
 not-linked = Nedostajući argumenti
 not-linked-description = Budući da niste povezani, morate pružiti profil da biste ga vidjeli.
-showing-statistics = <a:clock:1115091329958019253> Prikaz statistike promjene od {$from} do {$to}.
+showing-statistics = <a:clock:1113624864272683060> Prikaz statistike promjene od {$from} do {$to}.
 no-previous-statistics = Nema prethodnih podataka za **`{$name}`**, pa su uneseni novi.
 showing-guild-statistics = Prikaz statistike promjene za gildu od {$from} do {$to}.
 no-previous-guild-statistics = Nisu pronađeni prethodni podaci za gildu **`{$name}`**, pa je unesena nova.
-showing-comparison = <a:clock:1115091329958019253> Prikaz statistike za **`{$from}`** u usporedbi s **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Prikaz statistike za **`{$from}`** u usporedbi s **`{$to}`**.
 
 # Errors
 
@@ -450,7 +450,7 @@ help-snapshot-description = Snimke su način za pregled promjena u vašim statis
   
   Ako želite vidjeti precizniji raspon, isprobajte </bedwars from:1113624864272683060>.
 
-help-history = Povijest <a:clock:1115091329958019253>
+help-history = Povijest <a:clock:1113624864272683060>
 help-history-description = Da biste vidjeli grafikon kako su se određene statistike mijenjale tijekom vremena, isprobajte </network history:1113624864524357714>.
 
 help-image-builder = Graditelj slika <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = u
   .time = vrijeme
   .time-description = Količina vremena za vraćanje (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Prikazujem statistiku od {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Prikazujem statistiku od {$at}.
 showing-guild-statistics-at = Prikazujem statistiku gilda od {$at}.
 
 error-session-not-found = Sjednica s navedenim identifikatorom nije pronađena.
@@ -2625,10 +2625,10 @@ session-created-title = Sjednica stvorena
 session-created = Sjednica s identifikatorom **`{$id}`** je stvorena za **`{$username}`**.
   Zamijenite mjesto bilo kojeg igrača s identifikatorom sjednice kako biste koristili njegove podatke u bilo kojoj naredbi.
 
-  Isprobajte to: </bedwars general:1115091329958019253>
+  Isprobajte to: </bedwars general:1113624864272683060>
 
-  Ili, koristite naredbu sjednice da biste vidjeli koliko je igrač napredovao od početka sjednice: </bedwars session:1115091329958019253>
-  Napomena: Ova naredba je prečac za </bedwars compare:1115091329958019253>!
+  Ili, koristite naredbu sjednice da biste vidjeli koliko je igrač napredovao od početka sjednice: </bedwars session:1113624864272683060>
+  Napomena: Ova naredba je prečac za </bedwars compare:1113624864272683060>!
 
 session-id = Identifikator sjednice
 session-list-title = Sjednice (Stranica {$page})

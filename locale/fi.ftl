@@ -1,11 +1,11 @@
 # Yleiset merkinnät
 not-linked = Puuttuvat argumentit
 not-linked-description = Koska et ole linkitetty, sinun on annettava profiili nähdäksesi tiedot.
-showing-statistics = <a:clock:1115091329958019253> Näytetään tilastotietoja ajalta {$from} - {$to}.
+showing-statistics = <a:clock:1113624864272683060> Näytetään tilastotietoja ajalta {$from} - {$to}.
 no-previous-statistics = Ei aiempia tietoja pelaajalle **`{$name}`**, joten ne on lisätty.
 showing-guild-statistics = Näytetään killan tilastotietoja ajalta {$from} - {$to}.
 no-previous-guild-statistics = Ei aiempia tietoja killalle **`{$name}`**, joten ne on lisätty.
-showing-comparison = <a:clock:1115091329958019253> Näytetään tilastotietoja pelaajalta **`{$from}`** pelaajalle **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Näytetään tilastotietoja pelaajalta **`{$from}`** pelaajalle **`{$to}`**.
 
 # Virheet
 error-player-not-found = Profiilia nimellä **`{$name}`** ei löytynyt.
@@ -448,7 +448,7 @@ help-snapshot-description = Hetket ovat tapa tarkastella tilastojen muutoksia aj
   
   Jos haluat nähdä tarkemman ajanjakson, kokeile komentoa </bedwars from:1113624864272683060>.
 
-help-history = Historia <a:clock:1115091329958019253>
+help-history = Historia <a:clock:1113624864272683060>
 help-history-description = Voit nähdä kuinka tietyn tilaston muutokset ovat vaihdelleet ajan myötä graafisessa muodossa käyttämällä komentoa </network history:1113624864524357714>.
 
 help-image-builder = Kuvan luonti <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = ajassa
   .time = aika
   .time-description = Aika, jonka verran palata taaksepäin (1t 12min 5s)
 
-showing-statistics-at = <a:kello:1115091329958019253> Näytetään tilastoja kohteesta {$at}.
+showing-statistics-at = <a:kello:1113624864272683060> Näytetään tilastoja kohteesta {$at}.
 showing-guild-statistics-at = Näytetään killan tilastoja kohteesta {$at}.
 
 error-session-not-found = Istuntoa annetulla tunnisteella ei löytynyt.
@@ -2625,10 +2625,10 @@ session-created-title = Istunto luotu
 session-created = Istunto tunnisteella **`{$id}`** on luotu käyttäjälle **`{$username}`**.
   Korvaa minkä tahansa pelaajan paikka istunnon tunnisteella käyttääksesi sen tietoja missä tahansa komennossa.
 
-  Kokeile sitä: </bedwars yleinen:1115091329958019253>
+  Kokeile sitä: </bedwars yleinen:1113624864272683060>
 
-  Tai käytä istuntokomentoa nähdäksesi kuinka pitkälle pelaaja on edistynyt siitä lähtien kun se alkoi: </bedwars istunto:1115091329958019253>
-  Huomaa, että tämä komento on pikakomento kohteelle </bedwars vertaa:1115091329958019253>!
+  Tai käytä istuntokomentoa nähdäksesi kuinka pitkälle pelaaja on edistynyt siitä lähtien kun se alkoi: </bedwars istunto:1113624864272683060>
+  Huomaa, että tämä komento on pikakomento kohteelle </bedwars vertaa:1113624864272683060>!
 
 session-id = Istunnon tunniste
 session-list-title = Istunnot (Sivu {$page})

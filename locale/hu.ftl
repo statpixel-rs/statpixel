@@ -1,11 +1,11 @@
 # Általános címkék
 not-linked = Hiányzó argumentumok
 not-linked-description = Mivel nincs összekapcsolva, meg kell adnod egy profilját a megtekintéshez.
-showing-statistics = <a:clock:1115091329958019253> Statisztikák megjelenítése innen: {$from} erre: {$to}.
+showing-statistics = <a:clock:1113624864272683060> Statisztikák megjelenítése innen: {$from} erre: {$to}.
 no-previous-statistics = Nincsenek előző adatok találhatók **`{$name}`** nevű játékoshoz, ezért beillesztve lett.
 showing-guild-statistics = Egy guild statisztika megjelenítése innen: {$from} erre: {$to}.
 no-previous-guild-statistics = Nincsenek előző adatok találhatók **`{$name}`** guildhez, ezért beillesztve lett.
-showing-comparison = <a:clock:1115091329958019253> Statisztikák megjelenítése: **`{$from}`** összehasonlítva: **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Statisztikák megjelenítése: **`{$from}`** összehasonlítva: **`{$to}`**.
 
 # Hibák
 
@@ -451,7 +451,7 @@ help-snapshot-description = A pillanatképek lehetővé teszik a statisztikák i
 
   Ha egy specifikusabb időszakot szeretne megtekinteni, próbálja ki a </bedwars from:1113624864272683060> parancsot.
 
-help-history = Történet <a:clock:1115091329958019253>
+help-history = Történet <a:clock:1113624864272683060>
 help-history-description = Ha grafikont szeretne megtekinteni a statisztikák idővel történő változásairól, próbálja ki a </network history:1113624864524357714> parancsot.
 
 help-image-builder = Kép Készítő <:gold_pickaxe:1125980780435345488>
@@ -2611,7 +2611,7 @@ guild-at = ekkor
   .time = idő
   .time-description = Az az időtartam, amennyit visszamenve nézünk (1 óra 12 perc 5 másodperc)
 
-showing-statistics-at = <a:clock:1115091329958019253> Statisztikák mutatása ettől: {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Statisztikák mutatása ettől: {$at}.
 showing-guild-statistics-at = Céh statisztikák mutatása ettől: {$at}.
 
 error-session-not-found = Nem található munkamenet a megadott azonosítóval.
@@ -2621,10 +2621,10 @@ session-created-title = Munkamenet létrehozva
 session-created = A(z) **`{$id}`** azonosítójú munkamenet létrehozva **`{$username}`** számára.
   Helyettesítse a játékos helyét a munkamenet azonosítójával, hogy adatait bármelyik parancsban használhassa.
 
-  Próbáld ki itt: </bedwars general:1115091329958019253>
+  Próbáld ki itt: </bedwars general:1113624864272683060>
 
-  Vagy használd a munkamenet parancsot, hogy láthasd, hogy a játékos mennyire haladt el azóta, hogy elkezdte: </bedwars session:1115091329958019253>
-  Megjegyzés: Ez a parancs egy gyorsbillentyű a </bedwars compare:1115091329958019253> parancshoz!
+  Vagy használd a munkamenet parancsot, hogy láthasd, hogy a játékos mennyire haladt el azóta, hogy elkezdte: </bedwars session:1113624864272683060>
+  Megjegyzés: Ez a parancs egy gyorsbillentyű a </bedwars compare:1113624864272683060> parancshoz!
 
 session-id = Munkamenet azonosító
 session-list-title = Munkamenetek (Oldal {$page})

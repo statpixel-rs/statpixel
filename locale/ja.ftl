@@ -1,11 +1,11 @@
 # General labels
 not-linked = 必要な引数が不足しています
 not-linked-description = Minecraftアカウントとのリンクがされていないため、プロフィールを提供して表示する必要があります。
-showing-statistics = <a:clock:1115091329958019253> {$from}から{$to}までの統計情報を表示中。
+showing-statistics = <a:clock:1113624864272683060> {$from}から{$to}までの統計情報を表示中。
 no-previous-statistics = **`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
-showing-guild-statistics = <a:clock:1115091329958019253> {$from}から{$to}までのギルド統計情報を表示中。
+showing-guild-statistics = <a:clock:1113624864272683060> {$from}から{$to}までのギルド統計情報を表示中。
 no-previous-guild-statistics = ギルド**`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
-showing-comparison = <a:clock:1115091329958019253> **`{$from}`**の統計情報を**`{$to}`**と比較して表示中。
+showing-comparison = <a:clock:1113624864272683060> **`{$from}`**の統計情報を**`{$to}`**と比較して表示中。
 
 # Errors
 
@@ -449,7 +449,7 @@ help-snapshot-description = スナップショットは統計情報の変化を�
 
   より具体的な範囲を表示したい場合は、</bedwars from:1113624864272683060>を試してみてください。
 
-help-history = 履歴 <a:clock:1115091329958019253>
+help-history = 履歴 <a:clock:1113624864272683060>
 help-history-description = 特定の統計情報が時間の経過に沿ってどのように変化したかをグラフで表示するには、</network history:1113624864524357714>を試してみてください。
 
 help-image-builder = 画像ビルダー <:gold_pickaxe:1125980780435345488>
@@ -2614,8 +2614,8 @@ guild-at = at
   .time = 時間
   .time-description = 遡る時間の量（1時間12分5秒）
 
-showing-statistics-at = <a:clock:1115091329958019253> {$at}からの統計を表示しています。
-showing-guild-statistics-at = <a:clock:1115091329958019253> {$at}からのギルドの統計を表示しています。
+showing-statistics-at = <a:clock:1113624864272683060> {$at}からの統計を表示しています。
+showing-guild-statistics-at = <a:clock:1113624864272683060> {$at}からのギルドの統計を表示しています。
 
 error-session-not-found = 指定されたIDのセッションが見つかりませんでした。
 
@@ -2624,10 +2624,10 @@ session-created-title = セッションが作成されました
 session-created = ID **`{$id}`** のセッションが **`{$username}`** によって作成されました。
   任意のプレーヤーの場所をセッションIDで置き換えて、コマンド内でデータを使用できます。
 
-  試してみる： </bedwars general:1115091329958019253>
+  試してみる： </bedwars general:1113624864272683060>
 
-  または、セッションが開始されてからプレーヤーがどれだけ進んだかを確認するにはセッションコマンドを使用します： </bedwars session:1115091329958019253>
-  このコマンドは </bedwars compare:1115091329958019253> のショートカットであることに注意してください！
+  または、セッションが開始されてからプレーヤーがどれだけ進んだかを確認するにはセッションコマンドを使用します： </bedwars session:1113624864272683060>
+  このコマンドは </bedwars compare:1113624864272683060> のショートカットであることに注意してください！
 
 session-id = セッションID
 session-list-title = セッション（ページ {$page}）

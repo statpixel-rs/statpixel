@@ -1,11 +1,11 @@
 # Etiquetas generales
 not-linked = Argumentos faltantes
 not-linked-description = Como no estás vinculado, necesitas proporcionar un perfil para verlo.
-showing-statistics = <a:clock:1115091329958019253> Mostrando cambios en estadísticas de {$from} a {$to}.
+showing-statistics = <a:clock:1113624864272683060> Mostrando cambios en estadísticas de {$from} a {$to}.
 no-previous-statistics = No se encontraron datos anteriores para **`{$name}`**, así que se han insertado.
 showing-guild-statistics = Mostrando cambios en estadísticas del gremio de {$from} a {$to}.
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **`{$name}`**, así que se han insertado.
-showing-comparison = <a:clock:1115091329958019253> Mostrando estadísticas de **`{$from}`** en comparación con **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Mostrando estadísticas de **`{$from}`** en comparación con **`{$to}`**.
 
 # Errores
 
@@ -454,7 +454,7 @@ help-snapshot-description = Las instantáneas son una forma de ver los cambios e
   
   Si deseas ver un rango de tiempo más específico, prueba </bedwars from:1113624864272683060>.
 
-help-history = Historial <a:clock:1115091329958019253>
+help-history = Historial <a:clock:1113624864272683060>
 help-history-description = Para ver un gráfico de cómo cambian específicamente las estadísticas con el tiempo, prueba </network history:1113624864524357714>.
 
 help-image-builder = Constructor de Imágenes <:gold_pickaxe:1125980780435345488>
@@ -2640,7 +2640,7 @@ guild-at = en
   .time = tiempo
   .time-description = La cantidad de tiempo para retroceder (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Mostrando estadísticas desde {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Mostrando estadísticas desde {$at}.
 showing-guild-statistics-at = Mostrando estadísticas del gremio desde {$at}.
 
 error-session-not-found = No se pudo encontrar una sesión con el ID proporcionado.
@@ -2650,10 +2650,10 @@ session-created-title = Sesión creada
 session-created = Se ha creado la sesión con el ID **`{$id}`** para **`{$username}`**.
   Sustituye el lugar de cualquier jugador con el ID de la sesión para usar sus datos en cualquier comando.
 
-  Pruébalo: </bedwars general:1115091329958019253>
+  Pruébalo: </bedwars general:1113624864272683060>
 
-  O usa el comando de sesión para ver cuánto ha progresado el jugador desde que comenzó: </bedwars session:1115091329958019253>
-  ¡Ten en cuenta que este comando es un atajo para </bedwars compare:1115091329958019253>!
+  O usa el comando de sesión para ver cuánto ha progresado el jugador desde que comenzó: </bedwars session:1113624864272683060>
+  ¡Ten en cuenta que este comando es un atajo para </bedwars compare:1113624864272683060>!
 
 session-id = ID de sesión
 session-list-title = Sesiones (Página {$page})

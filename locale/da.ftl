@@ -1,11 +1,11 @@
 # Generelle etiketter
 not-linked = Manglende argumenter
 not-linked-description = Da du ikke er linket, skal du angive en profil for at se.
-showing-statistics = <a:clock:1115091329958019253> Viser statistikændring fra {$from} til {$to}.
+showing-statistics = <a:clock:1113624864272683060> Viser statistikændring fra {$from} til {$to}.
 no-previous-statistics = Ingen tidligere data fundet for **`{$name}`**, så det er blevet indsat.
 showing-guild-statistics = Viser guild statistikændring fra {$from} til {$to}.
 no-previous-guild-statistics = Ingen tidligere data fundet for guild **`{$name}`**, så den er blevet indsat.
-showing-comparison = <a:clock:1115091329958019253> Viser statistik fra **`{$from}`** i forhold til **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Viser statistik fra **`{$from}`** i forhold til **`{$to}`**.
 
 # Fejl
 
@@ -452,7 +452,7 @@ help-snapshot-description = Øjebliksbilleder er en måde at se ændringerne i d
   
   Hvis du vil se en mere specifik periode, prøv </bedwars from:1113624864272683060>.
 
-help-history = Historik <a:clock:1115091329958019253>
+help-history = Historik <a:clock:1113624864272683060>
 help-history-description = For at se en graf over, hvordan specifikke statistikker har ændret sig over tid, prøv </network history:1113624864524357714>.
 
 help-image-builder = Billedopbygning <:gold_pickaxe:1125980780435345488>
@@ -2619,7 +2619,7 @@ guild-at = ved
   .time = tid
   .time-description = Tiden tilbage (1t 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Viser statistik fra {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Viser statistik fra {$at}.
 showing-guild-statistics-at = Viser guild statistik fra {$at}.
 
 error-session-not-found = En session med det angivne id kunne ikke findes.
@@ -2629,10 +2629,10 @@ session-created-title = Session oprettet
 session-created = Sessionen med id **`{$id}`** er blevet oprettet til **`{$username}`**.
   Udskift pladsen for enhver spiller med sessions-id'et for at bruge dets data i en hvilken som helst kommando.
 
-  Prøv det: </bedwars general:1115091329958019253>
+  Prøv det: </bedwars general:1113624864272683060>
 
-  Eller brug sessionskommandoen for at se, hvor langt spilleren er kommet, siden den startede: </bedwars session:1115091329958019253>
-  Bemærk, at denne kommando er en genvej til </bedwars compare:1115091329958019253>!
+  Eller brug sessionskommandoen for at se, hvor langt spilleren er kommet, siden den startede: </bedwars session:1113624864272683060>
+  Bemærk, at denne kommando er en genvej til </bedwars compare:1113624864272683060>!
 
 session-id = Sessions-id
 session-list-title = Sessioner (Side {$page})

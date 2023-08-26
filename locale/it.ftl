@@ -1,11 +1,11 @@
 # Etichette generali
 not-linked = Argomenti mancanti
 not-linked-description = Poiché non sei collegato, devi fornire un profilo da visualizzare.
-showing-statistics = <a:clock:1115091329958019253> Mostrando le statistiche dal {$from} al {$to}.
+showing-statistics = <a:clock:1113624864272683060> Mostrando le statistiche dal {$from} al {$to}.
 no-previous-statistics = Nessun dato precedente trovato per **`{$name}`**, quindi è stato inserito.
 showing-guild-statistics = Mostrando le statistiche di gilda dal {$from} al {$to}.
 no-previous-guild-statistics = Nessun dato precedente trovato per la gilda **`{$name}`**, quindi è stata inserita.
-showing-comparison = <a:clock:1115091329958019253> Mostrando le statistiche di **`{$from}`** rispetto a **`{$to}`**.
+showing-comparison = <a:clock:1113624864272683060> Mostrando le statistiche di **`{$from}`** rispetto a **`{$to}`**.
 
 # Errori
 
@@ -450,7 +450,7 @@ help-snapshot-description = I momenti salienti sono un modo per visualizzare le 
 
   Se vuoi visualizzare un intervallo più specifico, prova </bedwars from:1113624864272683060>.
 
-help-history = Storia <a:clock:1115091329958019253>
+help-history = Storia <a:clock:1113624864272683060>
 help-history-description = Per visualizzare un grafico delle variazioni delle statistiche specifiche nel tempo, prova </network history:1113624864524357714>.
 
 help-image-builder = Creatore di Immagini <:gold_pickaxe:1125980780435345488>
@@ -2615,7 +2615,7 @@ guild-at = a
   .time = tempo
   .time-description = La quantità di tempo da retrocedere (1h 12m 5s)
 
-showing-statistics-at = <a:clock:1115091329958019253> Mostrando le statistiche da {$at}.
+showing-statistics-at = <a:clock:1113624864272683060> Mostrando le statistiche da {$at}.
 showing-guild-statistics-at = Mostrando le statistiche della gilda da {$at}.
 
 error-session-not-found = Impossibile trovare una sessione con l'ID fornito.
@@ -2625,10 +2625,10 @@ session-created-title = Sessione creata
 session-created = La sessione con l'ID **`{$id}`** è stata creata per **`{$username}`**.
   Sostituisci il posto di qualsiasi giocatore con l'ID della sessione per utilizzare i suoi dati in qualsiasi comando.
 
-  Provalo: </bedwars general:1115091329958019253>
+  Provalo: </bedwars general:1113624864272683060>
 
-  Oppure, usa il comando session per vedere quanto è progredito il giocatore da quando è iniziata: </bedwars session:1115091329958019253>
-  Nota che questo comando è una scorciatoia per </bedwars compare:1115091329958019253>!
+  Oppure, usa il comando session per vedere quanto è progredito il giocatore da quando è iniziata: </bedwars session:1113624864272683060>
+  Nota che questo comando è una scorciatoia per </bedwars compare:1113624864272683060>!
 
 session-id = ID della sessione
 session-list-title = Sessioni (Pagina {$page})
