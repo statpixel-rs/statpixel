@@ -76,9 +76,9 @@ macro_rules! impl_compare {
 macro_rules! impl_snapshot {
 	($ctx: expr, $family: expr, $uuid: expr, $from: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let after = Utc::now() - $from;
-		let (player, data_lhs, session, skin, suffix) =
+		let (player, data_rhs, session, skin, suffix) =
 			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None).await?;
-		let (data_rhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_lhs, after)
+		let (data_lhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_rhs, after)
 			.await?
 			.ok()
 			.ok_or($crate::Error::NotImplemented)?;
@@ -102,9 +102,9 @@ macro_rules! impl_snapshot {
 macro_rules! impl_at {
 	($ctx: expr, $family: expr, $uuid: expr, $from: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let after = Utc::now() - $from;
-		let (player, data_lhs, session, skin, suffix) =
+		let (player, data_rhs, session, skin, suffix) =
 			$crate::commands::get_player_data_session_skin_suffix($ctx, Some($uuid), None).await?;
-		let (data_rhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_lhs, after)
+		let (data_rhs, _) = $crate::snapshot::user::get_or_insert($ctx, &player, &data_rhs, after)
 			.await?
 			.ok()
 			.ok_or($crate::Error::NotImplemented)?;
