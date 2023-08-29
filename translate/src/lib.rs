@@ -11,7 +11,9 @@ pub mod locale;
 #[cfg(feature = "locale")]
 pub use locale::*;
 
+#[cfg(feature = "locale")]
 pub use fluent;
+#[cfg(feature = "error")]
 pub use uuid;
 
 #[cfg(feature = "data")]
