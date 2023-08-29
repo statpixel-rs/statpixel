@@ -4,9 +4,9 @@
 use core::panic;
 use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
+use crate::prelude::GetLocale;
 #[cfg(feature = "data")]
 use crate::Data;
-use crate::GetLocale;
 
 // use once_cell::sync::Lazy;
 use tracing::warn;
