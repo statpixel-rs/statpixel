@@ -151,6 +151,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 
 impl Locale {
 	/// Given a set of language files, fills in command strings and their localizations accordingly
+	#[cfg(all(feature = "data", feature = "error"))]
 	pub fn apply_translations(
 		&self,
 		commands: &mut [poise::Command<Data, Error>],

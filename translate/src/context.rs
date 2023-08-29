@@ -127,6 +127,7 @@ impl FromStr for Locale {
 }
 
 pub enum ContextInteraction<'c> {
+	#[cfg(feature = "error")]
 	Command(&'c super::Context<'c>),
 	Component {
 		interaction: &'c serenity::ComponentInteraction,
