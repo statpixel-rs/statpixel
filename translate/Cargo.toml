@@ -5,9 +5,13 @@ edition = "2021"
 license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
-[dependencies]
-chrono.workspace = true
-num-format.workspace = true
+[dependencies.chrono]
+workspace = true
+optional = true
+
+[dependencies.num-format]
+workspace = true
+optional = true
 
 [dependencies.database]
 path = "../database"
