@@ -94,7 +94,7 @@ error = [
 	"dep:humantime",
 ]
 data = ["dep:poise", "dep:database", "dep:thiserror"]
-locale = ["dep:fluent", "dep:tracing", "dep:intl-memoizer"]
+locale = ["dep:fluent", "dep:tracing", "dep:intl-memoizer", "context"]
 context = [
 	"dep:serde",
 	"dep:chrono",

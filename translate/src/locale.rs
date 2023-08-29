@@ -4,7 +4,6 @@
 use core::panic;
 use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
-use crate::{prelude::GetLocale, Data, Error};
 // use once_cell::sync::Lazy;
 use tracing::warn;
 
@@ -151,7 +150,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 
 impl Locale {
 	/// Given a set of language files, fills in command strings and their localizations accordingly
-	#[cfg(all(feature = "data", feature = "error"))]
+	#[cfg(feature = "error")]
 	pub fn apply_translations(
 		&self,
 		commands: &mut [poise::Command<Data, Error>],
