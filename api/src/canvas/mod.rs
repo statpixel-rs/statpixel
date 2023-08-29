@@ -2,13 +2,13 @@ pub mod body;
 mod builder;
 pub mod chart;
 pub mod diff;
-pub mod label;
 pub mod project;
 pub mod shape;
 pub mod text;
 pub(crate) mod util;
 
 pub use builder::*;
+pub use label;
 
 use skia_safe::{EncodedImageFormat, Surface};
 

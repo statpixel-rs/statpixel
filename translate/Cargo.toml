@@ -6,22 +6,87 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
-database.path = "../database"
-base64.workspace = true
-bincode.workspace = true
 chrono.workspace = true
-diesel.workspace = true
-diesel-async.workspace = true
-fluent.workspace = true
-intl-memoizer.workspace = true
 num-format.workspace = true
-poise.workspace = true
-redis.workspace = true
-reqwest.workspace = true
-thiserror.workspace = true
-tracing.workspace = true
-uuid.workspace = true
-tokio.workspace = true
-humantime.workspace = true
-serde.workspace = true
-serde_json.workspace = true
+
+[dependencies.database]
+path = "../database"
+optional = true
+
+[dependencies.base64]
+workspace = true
+optional = true
+
+[dependencies.bincode]
+workspace = true
+optional = true
+
+[dependencies.diesel]
+workspace = true
+optional = true
+
+[dependencies.diesel-async]
+workspace = true
+optional = true
+
+[dependencies.fluent]
+workspace = true
+optional = true
+
+[dependencies.intl-memoizer]
+workspace = true
+optional = true
+
+[dependencies.poise]
+workspace = true
+optional = true
+
+[dependencies.redis]
+workspace = true
+optional = true
+
+[dependencies.reqwest]
+workspace = true
+optional = true
+
+[dependencies.thiserror]
+workspace = true
+optional = true
+
+[dependencies.tracing]
+workspace = true
+optional = true
+
+[dependencies.uuid]
+workspace = true
+optional = true
+
+[dependencies.humantime]
+workspace = true
+optional = true
+
+[dependencies.serde]
+workspace = true
+optional = true
+
+[dependencies.serde_json]
+workspace = true
+optional = true
+
+[features]
+default = ["error", "data", "locale"]
+error = [
+	"dep:thiserror",
+	"dep:reqwest",
+	"dep:uuid",
+	"dep:diesel",
+	"dep:diesel-async",
+	"dep:redis",
+	"dep:serde_json",
+	"dep:bincode",
+	"dep:poise",
+	"dep:base64",
+	"dep:humantime",
+]
+data = ["dep:poise", "dep:database", "dep:thiserror"]
+locale = ["dep:fluent", "dep:tracing", "dep:intl-memoizer"]

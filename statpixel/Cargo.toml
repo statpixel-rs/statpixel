@@ -15,7 +15,7 @@ harness = false
 [dependencies]
 api.path = "../api"
 database.path = "../database"
-minecraft.path = "../minecraft"
+minecraft.workspace = true
 translate.path = "../translate"
 axum.workspace = true
 axum-extra.workspace = true

@@ -8,7 +8,8 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 [dependencies]
 database.path = "../database"
 macros.path = "./macros"
-minecraft.path = "../minecraft"
+minecraft.workspace = true
+label.workspace = true
 translate.path = "../translate"
 base64.workspace = true
 bincode.workspace = true

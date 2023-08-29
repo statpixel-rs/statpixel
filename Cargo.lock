@@ -2000,11 +2000,11 @@ dependencies = [
 [[package]]
 name = "minecraft"
 version = "0.31.0"
+source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#1c1bda17e6abc42e6f332b0f7876e98855cd2c5f"
 dependencies = [
  "bincode",
  "bitcode",
  "darling 0.20.3",
- "diesel",
  "konst",
  "once_cell",
  "plotters 0.4.0",

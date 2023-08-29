@@ -9,7 +9,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 proc-macro = true
 
 [dependencies]
-minecraft.path = "../../minecraft"
+minecraft.workspace = true
 darling.workspace = true
 proc-macro2.workspace = true
 proc-macro-crate.workspace = true

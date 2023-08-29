@@ -1,12 +1,5 @@
 [workspace]
-members = [
-	"api",
-	"database",
-	"minecraft",
-	"api/macros",
-	"statpixel",
-	"translate",
-]
+members = ["api", "database", "api/macros", "statpixel", "translate"]
 resolver = "2"
 default-members = ["statpixel"]
 
@@ -41,6 +34,15 @@ thiserror = "1"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 tower = "0.4"
+
+[workspace.dependencies.minecraft]
+git = "ssh://git@github.com/statpixel-rs/statpixel-common.git"
+branch = "main"
+features = ["serde", "bincode", "bitcode", "skia", "darling"]
+
+[workspace.dependencies.label]
+git = "ssh://git@github.com/statpixel-rs/statpixel-common.git"
+branch = "main"
 
 [workspace.dependencies.axum]
 version = "0.6"
