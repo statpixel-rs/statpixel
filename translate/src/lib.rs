@@ -1,4 +1,6 @@
+#[cfg(feature = "context")]
 pub mod context;
+#[cfg(feature = "context")]
 pub mod prelude;
 
 #[cfg(feature = "error")]

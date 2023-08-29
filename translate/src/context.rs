@@ -1,4 +1,3 @@
-use serde::Deserialize;
 use std::{
 	str::FromStr,
 	sync::atomic::{AtomicBool, Ordering},
@@ -8,6 +7,7 @@ use poise::serenity_prelude as serenity;
 
 #[allow(non_camel_case_types)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default, Deserialize)]
+#[cfg_attr(feature = )]
 pub enum Locale {
 	bg,
 	cs,
