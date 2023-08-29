@@ -29,7 +29,7 @@ mod data {
 	#[derive(Clone)]
 	pub struct Data {
 		pub pool: PostgresPool,
-		pub locale: Arc<locale::Locale>,
+		pub locale: Arc<super::locale::Locale>,
 	}
 
 	impl fmt::Debug for Data {
