@@ -16,4 +16,5 @@ workspace = true
 optional = true
 
 [features]
+default = ["util"]
 util = ["dep:dotenvy_macro"]
