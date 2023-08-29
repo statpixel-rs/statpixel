@@ -18,7 +18,7 @@ pub use fluent;
 #[cfg(feature = "error")]
 pub use uuid;
 
-#[cfg(feature = "data")]
+#[cfg(all(feature = "data", feature = "locale"))]
 mod data {
 	use std::fmt;
 	use std::sync::Arc;
