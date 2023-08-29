@@ -95,4 +95,11 @@ error = [
 ]
 data = ["dep:poise", "dep:database", "dep:thiserror"]
 locale = ["dep:fluent", "dep:tracing", "dep:intl-memoizer"]
-context = ["dep:serde", "dep:chrono", "dep:num-format", "dep:poise", "data"]
+context = [
+	"dep:serde",
+	"dep:chrono",
+	"dep:num-format",
+	"dep:poise",
+	"data",
+	"locale",
+]

@@ -21,6 +21,7 @@ pub use uuid;
 #[cfg(feature = "data")]
 mod data {
 	use std::fmt;
+	use std::sync::Arc;
 
 	use database::PostgresPool;
 	use thiserror::Error;
