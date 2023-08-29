@@ -183,6 +183,7 @@ impl<'c> Context<'c> {
 		}
 	}
 
+	#[cfg(feature = "error")]
 	pub fn from_poise(ctx: &'c super::Context<'c>) -> Self {
 		Self {
 			locale: ctx.locale().and_then(|l| Locale::from_str(l).ok()),
@@ -225,6 +226,7 @@ impl<'c> Context<'c> {
 
 	pub fn author(&self) -> Option<&serenity::User> {
 		match self {
+			#[cfg(feature = "error")]
 			Self {
 				interaction: ContextInteraction::Command(ctx),
 				..
@@ -242,6 +244,7 @@ impl<'c> Context<'c> {
 
 	pub fn data(&self) -> &super::Data {
 		match self {
+			#[cfg(feature = "error")]
 			Self {
 				interaction: ContextInteraction::Command(ctx),
 				..
@@ -263,6 +266,7 @@ impl<'c> Context<'c> {
 
 	pub fn discord(&self) -> &serenity::Context {
 		match self.interaction {
+			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.discord(),
 			ContextInteraction::Component { ctx, .. } => ctx,
 			ContextInteraction::Modal { ctx, .. } => ctx,
@@ -274,6 +278,7 @@ impl<'c> Context<'c> {
 
 	pub async fn defer(&self) -> Result<(), serenity::Error> {
 		match &self.interaction {
+			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.defer().await,
 			ContextInteraction::Component {
 				interaction,
@@ -296,6 +301,7 @@ impl<'c> Context<'c> {
 
 	pub async fn send(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
 		match &self.interaction {
+			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
 			ContextInteraction::Component {
 				interaction,
@@ -314,6 +320,7 @@ impl<'c> Context<'c> {
 
 	pub async fn reply(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
 		match &self.interaction {
+			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
 			ContextInteraction::Component {
 				interaction,

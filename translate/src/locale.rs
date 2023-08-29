@@ -4,6 +4,9 @@
 use core::panic;
 use std::{borrow::Cow, fmt::Debug, str::FromStr};
 
+#[cfg(feature = "data")]
+use crate::Data;
+
 // use once_cell::sync::Lazy;
 use tracing::warn;
 

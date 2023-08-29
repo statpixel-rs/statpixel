@@ -102,6 +102,7 @@ impl GetLocale for Context<'_> {
 	}
 }
 
+#[cfg(feature = "error")]
 impl GetLocale for crate::Context<'_> {
 	fn locale(&self) -> Option<&Locale> {
 		Some(match (*self).locale() {
