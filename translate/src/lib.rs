@@ -38,6 +38,7 @@ mod data {
 		}
 	}
 
+	#[cfg(feature = "error")]
 	pub type Context<'a> = poise::Context<'a, Data, Error>;
 }
 
