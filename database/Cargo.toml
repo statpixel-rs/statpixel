@@ -9,5 +9,11 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 chrono.workspace = true
 diesel.workspace = true
 diesel-async.workspace = true
-dotenvy_macro.workspace = true
 uuid.workspace = true
+
+[dependencies.dotenvy_macro]
+workspace = true
+optional = true
+
+[features]
+util = ["dep:dotenvy_macro"]

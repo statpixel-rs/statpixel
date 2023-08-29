@@ -13,6 +13,7 @@ pub type PostgresPool = Pool<AsyncPgConnection>;
 
 /// # Panics
 /// Panics if a connection cannot be established.
+#[cfg(feature = "util")]
 #[must_use]
 pub fn get_pool(max_size: usize) -> PostgresPool {
 	let url = dotenvy_macro::dotenv!("DATABASE_URL");
