@@ -14,7 +14,7 @@ num-format.workspace = true
 [dependencies.translate]
 path = "../translate"
 default-features = false
-features = ["locale"]
+features = ["locale", "context"]
 
 [dependencies.uuid]
 workspace = true

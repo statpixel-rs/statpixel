@@ -42,6 +42,7 @@ optional = true
 
 [dependencies.translate]
 path = "../translate"
+default-features = false
 features = ["error"]
 optional = true
 
