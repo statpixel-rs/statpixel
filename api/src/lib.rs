@@ -13,23 +13,21 @@
 
 mod extras;
 
-pub use macros;
-
+pub mod bedwars;
 pub mod builder;
 pub mod cache;
-pub mod canvas;
+pub use canvas;
 pub mod command;
 pub(crate) mod de;
 pub mod game;
 pub mod guild;
 pub mod http;
 pub mod id;
-pub mod image;
+pub use image;
 pub mod leaderboard;
 pub mod nbt;
 pub mod player;
 pub mod player_old;
-pub mod prelude;
 pub mod ratelimiter;
 pub mod redis;
 pub mod skyblock;

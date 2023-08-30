@@ -1,9 +1,8 @@
-pub mod data;
 pub mod games;
-pub mod language;
-pub mod socials;
-pub mod stats;
 pub mod status;
+
+pub use hypixel::data;
+pub use hypixel::stats;
 
 use database::schema::{autocomplete, snapshot, user};
 use diesel::{ExpressionMethods, QueryDsl};
@@ -72,6 +71,18 @@ pub struct Player {
 	pub session: Option<(Uuid, i64)>,
 }
 
+impl hypixel::Skin for Player {
+	#[must_use]
+	fn get_head_url(&self) -> String {
+		format!("https://visage.surgeplay.com/head/64/{}?y=72.5", self.uuid)
+	}
+
+	#[must_use]
+	fn get_body_url(&self) -> String {
+		format!("https://visage.surgeplay.com/full/{}?y=20", self.uuid)
+	}
+}
+
 impl Player {
 	#[must_use]
 	pub fn new(uuid: Uuid, username: Option<String>) -> Self {
@@ -91,16 +102,6 @@ impl Player {
 			username: None,
 			session: None,
 		}
-	}
-
-	#[must_use]
-	pub fn get_head_url(&self) -> String {
-		format!("https://visage.surgeplay.com/head/64/{}?y=72.5", self.uuid)
-	}
-
-	#[must_use]
-	pub fn get_body_url(&self) -> String {
-		format!("https://visage.surgeplay.com/full/{}?y=20", self.uuid)
 	}
 
 	/// # Errors

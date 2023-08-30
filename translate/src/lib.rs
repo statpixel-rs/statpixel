@@ -24,7 +24,6 @@ mod data {
 	use std::sync::Arc;
 
 	use database::PostgresPool;
-	use thiserror::Error;
 
 	#[derive(Clone)]
 	pub struct Data {
@@ -39,7 +38,7 @@ mod data {
 	}
 
 	#[cfg(feature = "error")]
-	pub type Context<'a> = poise::Context<'a, Data, Error>;
+	pub type Context<'a> = poise::Context<'a, Data, super::error::Error>;
 }
 
 #[cfg(feature = "data")]

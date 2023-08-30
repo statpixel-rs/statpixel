@@ -1,6 +1,6 @@
 use crate::player::stats::*;
 
-use macros::GetTr;
+use derive::GetTr;
 use poise::serenity_prelude as serenity;
 use translate::{context, tr};
 use uuid::Uuid;

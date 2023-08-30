@@ -11,16 +11,12 @@ pub mod profile;
 
 use std::{str::FromStr, sync::Arc};
 
+use hypixel::stats::sky_block;
 use once_cell::sync::Lazy;
 use reqwest::{Method, Request, StatusCode, Url};
 use serde::Deserialize;
 
-use crate::{
-	cache::SKYBLOCK_PROFILE_CACHE,
-	http::HTTP,
-	player::{stats::sky_block, Player},
-	Error,
-};
+use crate::{cache::SKYBLOCK_PROFILE_CACHE, http::HTTP, player::Player, Error};
 
 use self::profile::Profile;
 

@@ -4,7 +4,7 @@ use chrono::{DateTime, Utc};
 use database::schema::guild_autocomplete;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
-use macros::Diff;
+use derive::Diff;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};

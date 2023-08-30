@@ -157,7 +157,7 @@ impl Locale {
 	#[cfg(feature = "error")]
 	pub fn apply_translations(
 		&self,
-		commands: &mut [poise::Command<Data, Error>],
+		commands: &mut [poise::Command<Data, crate::error::Error>],
 		parent: Option<&str>,
 	) {
 		for command in commands {

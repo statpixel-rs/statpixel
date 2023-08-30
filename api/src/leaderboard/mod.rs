@@ -1,12 +1,13 @@
 use std::{str::FromStr, sync::Arc, time::Duration};
 
+use hypixel::stats::Stats;
 use moka::future::{Cache, CacheBuilder};
 use once_cell::sync::Lazy;
 use reqwest::{Method, Request, Url};
 use serde::{Deserialize, Deserializer};
 use uuid::Uuid;
 
-use crate::{canvas::label::ToFormatted, game::r#type::Type, http::HTTP, player::stats::Stats};
+use crate::{canvas::label::ToFormatted, game::r#type::Type, http::HTTP};
 
 pub static LEADERBOARD_CACHE: Lazy<Cache<(), Vec<Leaderboard>>> = Lazy::new(|| {
 	CacheBuilder::new(1)
@@ -110,9 +111,14 @@ where
 	deserializer.deserialize_map(Visitor(vec![]))
 }
 
-impl Stats {
+pub trait StatsValue {
+	fn has_value(game: &Type, path: &str) -> bool;
+	fn get_value(&self, game: &Type, path: &str) -> Option<Box<dyn ToFormatted>>;
+}
+
+impl StatsValue for Stats {
 	#[must_use]
-	pub fn has_value(game: &Type, path: &str) -> bool {
+	fn has_value(game: &Type, path: &str) -> bool {
 		match game {
 			Type::BlitzSg => matches!(path, "wins" | "kills" | "wins_solo_normal" | "wins_teams"),
 			Type::SpeedUhc => matches!(path, "kills_normal" | "wins_normal"),
@@ -148,7 +154,7 @@ impl Stats {
 
 	#[must_use]
 	#[allow(clippy::too_many_lines)]
-	pub fn get_value(&self, game: &Type, path: &str) -> Option<Box<dyn ToFormatted>> {
+	fn get_value(&self, game: &Type, path: &str) -> Option<Box<dyn ToFormatted>> {
 		Some(Box::new(match game {
 			Type::BlitzSg => match path {
 				"wins" => self.blitz_sg.solo.wins + self.blitz_sg.team.wins,

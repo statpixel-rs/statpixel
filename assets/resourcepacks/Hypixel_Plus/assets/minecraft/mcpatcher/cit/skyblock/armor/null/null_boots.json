@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "./null_boots",
-        "layer1": "./null_boots"
-    }
-}
