@@ -1,9 +1,12 @@
 //! Portions of this implementation are taken from the Poise + Fluent example.
 //! https://github.com/serenity-rs/poise/blob/current/examples/fluent_localization/translation.rs
 
-use core::panic;
-use std::{borrow::Cow, fmt::Debug, str::FromStr};
+use std::{fmt::Debug, str::FromStr};
 
+#[cfg(feature = "data")]
+use std::borrow::Cow;
+
+#[cfg(feature = "data")]
 use crate::prelude::GetLocale;
 #[cfg(feature = "data")]
 use crate::Data;
@@ -16,13 +19,15 @@ type Bundle = fluent::bundle::FluentBundle<
 	intl_memoizer::concurrent::IntlLangMemoizer,
 >;
 
+#[cfg(feature = "data")]
 pub struct English<'c>(&'c Data);
 
 // static NAME_REGEX: Lazy<regex::Regex> =
 // 	Lazy::new(|| regex::Regex::new(r"^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$").unwrap());
 
+#[cfg(feature = "data")]
 impl GetLocale for English<'_> {
-	fn data(&self) -> &crate::Data {
+	fn data(&self) -> &Data {
 		self.0
 	}
 
@@ -75,6 +80,7 @@ pub fn format(
 	)
 }
 
+#[cfg(feature = "data")]
 pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
 	let locale = &ctx.data().locale;
 
@@ -87,6 +93,7 @@ pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, s
 		})
 }
 
+#[cfg(feature = "data")]
 fn get_locale_str<'t, 'i: 't>(bundle: &'t Bundle, id: &'i str) -> Option<Cow<'t, str>> {
 	let message = bundle.get_message(id)?;
 	let pattern = message.value()?;
@@ -95,6 +102,7 @@ fn get_locale_str<'t, 'i: 't>(bundle: &'t Bundle, id: &'i str) -> Option<Cow<'t,
 }
 
 /// Retrieves the appropriate language file depending on user locale and calls [`format`]
+#[cfg(feature = "data")]
 pub fn get<'i>(
 	ctx: &impl GetLocale,
 	id: &'i str,
@@ -154,7 +162,7 @@ pub fn read_ftl() -> Result<Locale, Box<dyn std::error::Error>> {
 
 impl Locale {
 	/// Given a set of language files, fills in command strings and their localizations accordingly
-	#[cfg(feature = "error")]
+	#[cfg(all(feature = "data", feature = "error"))]
 	pub fn apply_translations(
 		&self,
 		commands: &mut [poise::Command<Data, crate::error::Error>],

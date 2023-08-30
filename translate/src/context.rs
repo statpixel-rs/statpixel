@@ -1,13 +1,12 @@
-use serde::Deserialize;
-use std::{
-	str::FromStr,
-	sync::atomic::{AtomicBool, Ordering},
-};
+use std::str::FromStr;
+
+use std::sync::atomic::{AtomicBool, Ordering};
 
 use poise::serenity_prelude as serenity;
 
 #[allow(non_camel_case_types)]
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default, Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize))]
 pub enum Locale {
 	bg,
 	cs,
@@ -15,9 +14,9 @@ pub enum Locale {
 	de,
 	el,
 	#[default]
-	#[serde(rename = "en-US")]
+	#[cfg_attr(feature = "serde", serde(rename = "en-US"))]
 	en_US,
-	#[serde(rename = "es-ES")]
+	#[cfg_attr(feature = "serde", serde(rename = "es-ES"))]
 	es_ES,
 	fi,
 	fr,
@@ -31,18 +30,18 @@ pub enum Locale {
 	nl,
 	no,
 	pl,
-	#[serde(rename = "pt-BR")]
+	#[cfg_attr(feature = "serde", serde(rename = "pt-BR"))]
 	pt_BR,
 	ro,
 	ru,
-	#[serde(rename = "sv-SE")]
+	#[cfg_attr(feature = "serde", serde(rename = "sv-SE"))]
 	sv_SE,
 	th,
 	tr,
 	uk,
-	#[serde(rename = "zh-CN")]
+	#[cfg_attr(feature = "serde", serde(rename = "zh-CN"))]
 	zh_CN,
-	#[serde(rename = "zh-TW")]
+	#[cfg_attr(feature = "serde", serde(rename = "zh-TW"))]
 	zh_TW,
 }
 
@@ -141,8 +140,6 @@ pub enum ContextInteraction<'c> {
 		ctx: &'c serenity::Context,
 	},
 	External(&'c super::Data),
-	#[cfg(not(feature = "data"))]
-	Empty,
 }
 
 pub struct Context<'c> {
@@ -218,15 +215,6 @@ impl<'c> Context<'c> {
 		}
 	}
 
-	#[cfg(not(feature = "data"))]
-	pub fn empty() -> Self {
-		Self {
-			locale: None,
-			interaction: ContextInteraction::Empty,
-			automated: false,
-		}
-	}
-
 	pub fn is_automated(&self) -> bool {
 		self.automated
 	}
@@ -248,11 +236,6 @@ impl<'c> Context<'c> {
 			} => Some(&interaction.user),
 			Self {
 				interaction: ContextInteraction::External(..) | ContextInteraction::Modal { .. },
-				..
-			} => None,
-			#[cfg(not(feature = "data"))]
-			Self {
-				interaction: ContextInteraction::Empty,
 				..
 			} => None,
 		}
@@ -277,11 +260,6 @@ impl<'c> Context<'c> {
 				interaction: ContextInteraction::External(data),
 				..
 			} => data,
-			#[cfg(not(feature = "data"))]
-			Self {
-				interaction: ContextInteraction::Empty,
-				..
-			} => panic!("Context::data() called on empty context"),
 		}
 	}
 
@@ -294,8 +272,6 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::discord() called on external context")
 			}
-			#[cfg(not(feature = "data"))]
-			ContextInteraction::Empty => panic!("Context::discord() called on empty context"),
 		}
 	}
 
@@ -319,8 +295,6 @@ impl<'c> Context<'c> {
 				Ok(())
 			}
 			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => Ok(()),
-			#[cfg(not(feature = "data"))]
-			ContextInteraction::Empty => panic!("Context::defer() called on empty context"),
 		}
 	}
 
@@ -340,8 +314,6 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
-			#[cfg(not(feature = "data"))]
-			ContextInteraction::Empty => panic!("Context::send() called on empty context"),
 		}
 	}
 
@@ -361,8 +333,6 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
-			#[cfg(not(feature = "data"))]
-			ContextInteraction::Empty => panic!("Context::send() called on empty context"),
 		}
 	}
 

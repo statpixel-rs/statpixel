@@ -79,7 +79,7 @@ workspace = true
 optional = true
 
 [features]
-default = ["error", "data", "locale", "context"]
+default = ["error", "data", "locale", "context", "serde"]
 error = [
 	"dep:thiserror",
 	"dep:reqwest",
@@ -94,12 +94,13 @@ error = [
 	"dep:humantime",
 ]
 data = ["dep:poise", "dep:database", "dep:thiserror"]
-locale = ["dep:fluent", "dep:tracing", "dep:intl-memoizer", "context"]
-context = [
-	"dep:serde",
-	"dep:chrono",
+locale = [
+	"dep:fluent",
+	"dep:tracing",
+	"dep:intl-memoizer",
 	"dep:num-format",
-	"dep:poise",
-	"data",
-	"locale",
+	"dep:chrono",
+	"context",
 ]
+context = []
+serde = ["dep:serde"]

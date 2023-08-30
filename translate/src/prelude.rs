@@ -1,4 +1,6 @@
 use crate::context::{Context, Locale};
+#[cfg(feature = "data")]
+use crate::Data;
 
 pub trait GetNumFormatLocale {
 	fn get_num_format_locale(&self) -> num_format::Locale;
@@ -77,27 +79,30 @@ impl GetChronoLocale for Context<'_> {
 	}
 }
 
+#[cfg(feature = "data")]
 pub trait GetLocale {
 	fn locale(&self) -> Option<&Locale>;
-	fn data(&self) -> &crate::Data;
+	fn data(&self) -> &Data;
 }
 
+#[cfg(feature = "data")]
 impl GetLocale for &'_ Context<'_> {
 	fn locale(&self) -> Option<&Locale> {
 		(*self).locale()
 	}
 
-	fn data(&self) -> &crate::Data {
+	fn data(&self) -> &Data {
 		(*self).data()
 	}
 }
 
+#[cfg(feature = "data")]
 impl GetLocale for Context<'_> {
 	fn locale(&self) -> Option<&Locale> {
 		self.locale()
 	}
 
-	fn data(&self) -> &crate::Data {
+	fn data(&self) -> &Data {
 		self.data()
 	}
 }

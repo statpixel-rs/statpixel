@@ -1,6 +1,12 @@
-#[cfg(feature = "context")]
+#[cfg(all(feature = "context", feature = "data"))]
 pub mod context;
-#[cfg(feature = "context")]
+
+#[cfg(all(feature = "context", not(feature = "data")))]
+pub mod context {
+	pub struct Context;
+}
+
+#[cfg(feature = "locale")]
 pub mod prelude;
 
 #[cfg(feature = "error")]
