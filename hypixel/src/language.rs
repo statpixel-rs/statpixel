@@ -1,6 +1,5 @@
 use std::borrow::Cow;
 
-use label::ToFormatted;
 use translate::context::Context;
 
 #[derive(
@@ -45,7 +44,8 @@ pub enum Language {
 	Unknown,
 }
 
-impl ToFormatted for Language {
+#[cfg(feature = "locale")]
+impl label::ToFormatted for Language {
 	fn to_formatted<'t, 'c: 't>(&'t self, _ctx: &'c Context<'c>) -> Cow<'t, str> {
 		use Language::*;
 
