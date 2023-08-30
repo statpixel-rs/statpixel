@@ -10,7 +10,6 @@ minecraft.path = "../minecraft"
 label.path = "../label"
 translate.path = "../translate"
 image.path = "../image"
-derive.path = "../derive"
 hypixel.path = "../hypixel"
 base64.workspace = true
 extra.path = "../extra"
@@ -52,6 +51,10 @@ optional = true
 workspace = true
 optional = true
 
+[dependencies.derive]
+path = "../derive"
+optional = true
+
 [dev-dependencies]
 dotenvy.workspace = true
 tokio.workspace = true
@@ -62,5 +65,5 @@ default = ["redis", "cache", "game", "database"]
 runtime_env = ["dep:dotenvy"]
 redis = ["dep:redis"]
 cache = []
-game = []
+game = ["dep:derive"]
 database = ["dep:database"]
