@@ -218,6 +218,15 @@ impl<'c> Context<'c> {
 		}
 	}
 
+	#[cfg(not(feature = "database"))]
+	pub fn empty() -> Self {
+		Self {
+			locale: None,
+			interaction: ContextInteraction::Empty,
+			automated: false,
+		}
+	}
+
 	pub fn is_automated(&self) -> bool {
 		self.automated
 	}
