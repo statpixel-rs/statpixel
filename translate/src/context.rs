@@ -141,7 +141,7 @@ pub enum ContextInteraction<'c> {
 		ctx: &'c serenity::Context,
 	},
 	External(&'c super::Data),
-	#[cfg(not(feature = "database"))]
+	#[cfg(not(feature = "data"))]
 	Empty,
 }
 
@@ -218,7 +218,7 @@ impl<'c> Context<'c> {
 		}
 	}
 
-	#[cfg(not(feature = "database"))]
+	#[cfg(not(feature = "data"))]
 	pub fn empty() -> Self {
 		Self {
 			locale: None,
@@ -250,7 +250,7 @@ impl<'c> Context<'c> {
 				interaction: ContextInteraction::External(..) | ContextInteraction::Modal { .. },
 				..
 			} => None,
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			Self {
 				interaction: ContextInteraction::Empty,
 				..
@@ -277,7 +277,7 @@ impl<'c> Context<'c> {
 				interaction: ContextInteraction::External(data),
 				..
 			} => data,
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			Self {
 				interaction: ContextInteraction::Empty,
 				..
@@ -294,7 +294,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::discord() called on external context")
 			}
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			ContextInteraction::Empty => panic!("Context::discord() called on empty context"),
 		}
 	}
@@ -319,7 +319,7 @@ impl<'c> Context<'c> {
 				Ok(())
 			}
 			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => Ok(()),
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			ContextInteraction::Empty => panic!("Context::defer() called on empty context"),
 		}
 	}
@@ -340,7 +340,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			ContextInteraction::Empty => panic!("Context::send() called on empty context"),
 		}
 	}
@@ -361,7 +361,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
-			#[cfg(not(feature = "database"))]
+			#[cfg(not(feature = "data"))]
 			ContextInteraction::Empty => panic!("Context::send() called on empty context"),
 		}
 	}
