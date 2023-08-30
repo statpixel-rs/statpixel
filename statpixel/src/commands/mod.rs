@@ -4,10 +4,10 @@ use api::{
 	guild::Guild,
 	player::{self, data::Data, status::Session, Player},
 };
-use image::Image;
 use database::{extend::lower, schema};
 use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
 use diesel_async::RunQueryDsl;
+use image::Image;
 use translate::{context, Context, Error};
 use uuid::Uuid;
 

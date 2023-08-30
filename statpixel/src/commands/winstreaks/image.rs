@@ -4,13 +4,13 @@ use api::{
 	canvas::{self, body::Body, label::ToFormatted, shape, text, Canvas},
 	Data, Session,
 };
+use hypixel::game::{self, mode::Mode, r#type::Type};
 use minecraft::{
 	calc::network,
 	paint::Paint,
 	style::{Family, MinecraftFont},
 	text::{parse::minecraft_text, Text},
 };
-use hypixel::game::{self, mode::Mode, r#type::Type};
 use skia_safe::textlayout::TextAlign;
 use translate::context;
 

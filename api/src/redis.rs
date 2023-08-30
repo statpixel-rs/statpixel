@@ -15,7 +15,14 @@ use crate::{
 };
 
 static REDIS: Lazy<Client> = Lazy::new(|| {
+	#[cfg(not(feature = "runtime_env"))]
 	let url = dotenvy_macro::dotenv!("REDIS_URL");
+
+	#[cfg(feature = "runtime_env")]
+	let url = std::env::var("REDIS_URL").expect("REDIS_URL not set");
+
+	#[cfg(feature = "runtime_env")]
+	let url = url.as_str();
 
 	Client::open(url).expect("failed to connect to Redis")
 });

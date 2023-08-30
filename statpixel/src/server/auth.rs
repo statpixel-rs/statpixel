@@ -103,7 +103,17 @@ pub struct DiscordUser {
 static URL: Lazy<Url> =
 	Lazy::new(|| Url::parse("https://discord.com/api/v10/oauth2/token").unwrap());
 
-static KEYS: Lazy<Keys> = Lazy::new(|| Keys::new(dotenvy_macro::dotenv!("JWT_SECRET").as_bytes()));
+static KEYS: Lazy<Keys> = Lazy::new(|| {
+	#[cfg(not(feature = "runtime_env"))]
+	let secret = dotenvy_macro::dotenv!("JWT_SECRET").as_bytes();
+
+	#[cfg(feature = "runtime_env")]
+	let secret = std::env::var("JWT_SECRET")
+		.expect("JWT_SECRET not set")
+		.as_bytes();
+
+	Keys::new(secret)
+});
 
 struct Keys {
 	encoding: EncodingKey,

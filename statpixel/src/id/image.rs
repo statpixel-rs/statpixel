@@ -4,8 +4,8 @@ use std::borrow::Cow;
 use api::player::stats::*;
 
 use api::{
-	command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode},
 	canvas::prelude::Game,
+	command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode},
 };
 use chrono::{Duration, Utc};
 use minecraft::style::Family;

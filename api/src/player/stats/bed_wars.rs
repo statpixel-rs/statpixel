@@ -1,7 +1,7 @@
 use crate::{canvas::shape, skyblock::materials::MATERIALS};
 
-use image::Image;
 use extra::milliseconds::MillisecondsOption;
+use image::Image;
 use serde::{de::DeserializeOwned, Deserialize, Deserializer};
 
 #[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]

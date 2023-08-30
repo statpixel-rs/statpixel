@@ -13,10 +13,7 @@ use database::{
 	schema::{schedule, session, snapshot, track},
 	PostgresPool,
 };
-use diesel::{
-	BoolExpressionMethods, ExpressionMethods,
-	NullableExpressionMethods, QueryDsl,
-};
+use diesel::{BoolExpressionMethods, ExpressionMethods, NullableExpressionMethods, QueryDsl};
 use diesel_async::{
 	scoped_futures::ScopedFutureExt, AsyncConnection, AsyncPgConnection, RunQueryDsl,
 };

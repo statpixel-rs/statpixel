@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::{
-	canvas::{self, body::Body, diff::Diff, label::ToFormatted, Canvas, prelude::Mode},
+	canvas::{self, body::Body, diff::Diff, label::ToFormatted, prelude::Mode, Canvas},
 	shape, Guild, Member,
 };
 use chrono::{DateTime, Utc};

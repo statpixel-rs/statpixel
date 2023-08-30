@@ -61,6 +61,8 @@ async fn main() {
 		.finish();
 
 	tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
+
+	#[cfg(feature = "runtime_env")]
 	dotenvy::dotenv().ok();
 
 	let mut commands = vec![
@@ -160,13 +162,18 @@ async fn main() {
 		},
 	);
 
-	let mut client = serenity::Client::builder(
-		dotenvy_macro::dotenv!("DISCORD_TOKEN"),
-		GatewayIntents::GUILDS,
-	)
-	.framework(framework)
-	.await
-	.unwrap();
+	#[cfg(not(feature = "runtime_env"))]
+	let token = dotenvy_macro::dotenv!("DISCORD_TOKEN");
+
+	#[cfg(feature = "runtime_env")]
+	let token = std::env::var("DISCORD_TOKEN")
+		.expect("DISCORD_TOKEN not set")
+		.as_str();
+
+	let mut client = serenity::Client::builder(token, GatewayIntents::GUILDS)
+		.framework(framework)
+		.await
+		.unwrap();
 
 	tokio::task::spawn({
 		let http = Arc::clone(&client.http);
@@ -215,8 +222,15 @@ async fn main() {
 	tokio::task::spawn(async move {
 		info!("starting topgg stats loop");
 
-		let token =
-			HeaderValue::from_static(concat!("Bearer ", dotenvy_macro::dotenv!("TOPGG_TOKEN")));
+		#[cfg(not(feature = "runtime_env"))]
+		let token = dotenvy_macro::dotenv!("TOPGG_TOKEN");
+
+		#[cfg(feature = "runtime_env")]
+		let token = std::env::var("TOPGG_TOKEN")
+			.expect("TOPGG_TOKEN not set")
+			.as_str();
+
+		let token = HeaderValue::from_static(concat!("Bearer ", token));
 
 		loop {
 			if let Err(e) = stats::post(&token).await {

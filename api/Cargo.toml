@@ -40,6 +40,10 @@ uuid.workspace = true
 bitcode.workspace = true
 dotenvy_macro.workspace = true
 
+[dependencies.dotenvy]
+workspace = true
+optional = true
+
 [dependencies.database]
 path = "../database"
 optional = true
@@ -55,6 +59,7 @@ tokio.workspace = true
 [features]
 default = ["redis", "cache", "game", "database"]
 
+runtime_env = ["dep:dotenvy"]
 redis = ["dep:redis"]
 cache = []
 game = []

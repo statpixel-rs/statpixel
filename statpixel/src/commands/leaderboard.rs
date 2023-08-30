@@ -2,8 +2,8 @@ use std::borrow::Cow;
 
 use api::{
 	canvas::{self, body::Body, shape, text, Canvas},
-	player::Player,
 	leaderboard::StatsValue,
+	player::Player,
 };
 use futures::StreamExt;
 use minecraft::{paint::Paint, text::Text};

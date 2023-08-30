@@ -6,8 +6,8 @@ use crate::canvas::{
 	chart::{BACKGROUND, CANVAS_BACKGROUND},
 	shape::{BUBBLE_HEIGHT, GAP},
 };
-use label::ToFormatted;
 use chrono::{DateTime, Utc};
+use label::ToFormatted;
 use minecraft::{
 	paint::Paint,
 	style::{Family, MinecraftFont},
