@@ -1,3 +1,4 @@
+#[cfg(feature = "locale")]
 pub mod body;
 mod builder;
 pub mod chart;
@@ -5,11 +6,13 @@ pub mod diff;
 #[cfg(feature = "game")]
 pub mod prelude;
 pub mod project;
+#[cfg(feature = "locale")]
 pub mod shape;
 pub mod text;
 pub mod util;
 
 pub use builder::*;
+#[cfg(feature = "locale")]
 pub use label;
 
 use skia_safe::{EncodedImageFormat, Surface};

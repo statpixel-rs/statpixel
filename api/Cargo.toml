@@ -7,8 +7,6 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
 minecraft.path = "../minecraft"
-label.path = "../label"
-translate.path = "../translate"
 image.path = "../image"
 hypixel.path = "../hypixel"
 base64.workspace = true
@@ -31,7 +29,6 @@ pure-rust-locales.workspace = true
 reqwest.workspace = true
 serde.workspace = true
 serde_json.workspace = true
-skia-safe.workspace = true
 thiserror.workspace = true
 tokio.workspace = true
 tracing.workspace = true
@@ -39,12 +36,26 @@ uuid.workspace = true
 bitcode.workspace = true
 dotenvy_macro.workspace = true
 
+[dependencies.label]
+path = "../label"
+optional = true
+
+[dependencies.translate]
+path = "../translate"
+features = ["error"]
+optional = true
+
+[dependencies.skia-safe]
+workspace = true
+optional = true
+
 [dependencies.dotenvy]
 workspace = true
 optional = true
 
 [dependencies.database]
 path = "../database"
+default-features = false
 optional = true
 
 [dependencies.redis]
@@ -60,10 +71,12 @@ dotenvy.workspace = true
 tokio.workspace = true
 
 [features]
-default = ["redis", "cache", "game", "database"]
+default = ["redis", "cache", "game", "database", "locale", "canvas"]
 
 runtime_env = ["dep:dotenvy"]
 redis = ["dep:redis"]
 cache = []
-game = ["dep:derive"]
-database = ["dep:database"]
+game = ["dep:derive", "locale", "canvas"]
+database = ["dep:database", "translate/data"]
+locale = ["translate/locale", "dep:label"]
+canvas = ["dep:skia-safe"]

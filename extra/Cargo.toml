@@ -7,9 +7,12 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 repository = "https://github.com/matteopolak/statpixel"
 
 [dependencies]
-translate.path = "../translate"
 label.path = "../label"
 serde.workspace = true
+
+[dependencies.translate]
+path = "../translate"
+default-features = false
 
 [dependencies.bincode]
 workspace = true

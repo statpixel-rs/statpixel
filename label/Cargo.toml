@@ -9,8 +9,12 @@ repository = "https://github.com/matteopolak/statpixel"
 [dependencies]
 pure-rust-locales.workspace = true
 minecraft.path = "../minecraft"
-translate.path = "../translate"
 num-format.workspace = true
+
+[dependencies.translate]
+path = "../translate"
+default-features = false
+features = ["locale"]
 
 [dependencies.uuid]
 workspace = true

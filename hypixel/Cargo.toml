@@ -8,10 +8,14 @@ repository = "https://github.com/matteopolak/statpixel"
 
 [dependencies]
 label.path = "../label"
-translate.path = "../translate"
 serde_json.workspace = true
 image.path = "../image"
 once_cell.workspace = true
+
+[dependencies.translate]
+path = "../translate"
+default-features = false
+features = ["context"]
 
 [dependencies.minecraft]
 path = "../minecraft"

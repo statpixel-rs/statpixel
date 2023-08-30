@@ -17,6 +17,7 @@ mod extras;
 pub mod builder;
 #[cfg(feature = "cache")]
 pub mod cache;
+#[cfg(feature = "canvas")]
 pub mod canvas;
 #[cfg(feature = "game")]
 pub mod command;
@@ -25,6 +26,7 @@ pub mod guild;
 pub mod http;
 #[cfg(feature = "game")]
 pub mod id;
+#[cfg(feature = "locale")]
 pub mod leaderboard;
 pub mod nbt;
 pub mod player;
