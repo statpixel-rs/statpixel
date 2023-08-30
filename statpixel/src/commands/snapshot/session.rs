@@ -9,7 +9,7 @@ use uuid::Uuid;
 use crate::{commands, format, snapshot, util};
 
 #[allow(clippy::too_many_lines)]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	uuid_lhs: Uuid,
 	uuid_rhs: Uuid,

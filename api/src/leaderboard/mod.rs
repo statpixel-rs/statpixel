@@ -1,13 +1,13 @@
 use std::{str::FromStr, sync::Arc, time::Duration};
 
-use hypixel::stats::Stats;
+use hypixel::game::r#type::Type;
 use moka::future::{Cache, CacheBuilder};
 use once_cell::sync::Lazy;
 use reqwest::{Method, Request, Url};
 use serde::{Deserialize, Deserializer};
 use uuid::Uuid;
 
-use crate::{canvas::label::ToFormatted, game::r#type::Type, http::HTTP};
+use crate::{canvas::label::ToFormatted, http::HTTP, player::stats::Stats};
 
 pub static LEADERBOARD_CACHE: Lazy<Cache<(), Vec<Leaderboard>>> = Lazy::new(|| {
 	CacheBuilder::new(1)

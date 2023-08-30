@@ -1,0 +1,32 @@
+[package]
+name = "hypixel"
+version = "0.31.0"
+edition = "2021"
+license = "GPL-3.0"
+authors = ["Matthew Polak <contact@matteopolak.com>"]
+repository = "https://github.com/matteopolak/statpixel"
+
+[dependencies]
+label.path = "../label"
+translate.path = "../translate"
+serde_json.workspace = true
+image.path = "../image"
+once_cell.workspace = true
+
+[dependencies.minecraft]
+path = "../minecraft"
+features = ["calc", "serde", "bincode"]
+
+[dependencies.bincode]
+workspace = true
+
+[dependencies.serde]
+workspace = true
+
+[dependencies.uuid]
+workspace = true
+features = ["serde"]
+
+[dependencies.chrono]
+workspace = true
+features = ["serde"]

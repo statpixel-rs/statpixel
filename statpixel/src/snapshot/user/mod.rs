@@ -14,7 +14,7 @@ use database::{
 	PostgresPool,
 };
 use diesel::{
-	query_dsl::methods::DistinctOnDsl, BoolExpressionMethods, ExpressionMethods,
+	BoolExpressionMethods, ExpressionMethods,
 	NullableExpressionMethods, QueryDsl,
 };
 use diesel_async::{

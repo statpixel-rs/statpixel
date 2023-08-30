@@ -12,7 +12,7 @@ use translate::{context, tr_fmt, Error};
 use crate::{snapshot, util};
 
 #[inline]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	family: Family,
 	mode: Option<G::Mode>,

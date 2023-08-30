@@ -45,7 +45,7 @@ macro_rules! large_command {
 				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 			) -> Result<(), Error> {
-				let mode: ::std::option::Option<<$game as api::prelude::Game>::Mode> =
+				let mode: ::std::option::Option<<$game as api::canvas::prelude::Game>::Mode> =
 					mode.map(Into::into);
 				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
@@ -93,7 +93,7 @@ macro_rules! command {
 				#[max_length = 36]
 				#[autocomplete = "crate::commands::autocomplete_username"]
 				player: Option<String>,
-				mode: Option<<$game as api::prelude::Game>::Mode>,
+				mode: Option<<$game as api::canvas::prelude::Game>::Mode>,
 			) -> Result<(), Error> {
 				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
@@ -184,7 +184,7 @@ pub mod bedwars {
 		player: Option<String>,
 		#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 	) -> ::std::result::Result<(), ::translate::Error> {
-		let mode: Option<<stats::bed_wars::BedWars as api::prelude::Game>::Mode> =
+		let mode: Option<<stats::bed_wars::BedWars as api::canvas::prelude::Game>::Mode> =
 			mode.map(Into::into);
 		let uuid = util::parse_uuid(player.as_deref());
 		let ctx = &context::Context::from_poise(&ctx);

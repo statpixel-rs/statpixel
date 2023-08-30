@@ -2,9 +2,9 @@ pub mod member;
 
 use chrono::{DateTime, Utc};
 use database::schema::guild_autocomplete;
+use derive::Diff;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
-use derive::Diff;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};
@@ -12,14 +12,12 @@ use serde::Deserializer;
 use std::{str::FromStr, sync::Arc};
 use translate::context::Context;
 use uuid::Uuid;
+use hypixel::game::r#type::Type;
 
-use crate::{
-	cache::{GUILD_DATA_MEMBER_CACHE, GUILD_DATA_NAME_CACHE, GUILD_DATA_UUID_CACHE},
-	game::r#type::Type,
-	http::HTTP,
-	xp::Xp,
-	Error, Player,
-};
+use crate::{http::HTTP, xp::Xp, Error, Player};
+
+#[cfg(feature = "cache")]
+use crate::cache::*;
 
 use self::member::Member;
 
@@ -211,25 +209,37 @@ impl Guild {
 	/// # Errors
 	/// Returns [`Error::GuildByMemberUuidNotFound`] if the guild could not be found.
 	pub async fn from_member_uuid(uuid: Uuid) -> Result<Arc<Guild>, Arc<Error>> {
-		GUILD_DATA_MEMBER_CACHE
+		#[cfg(feature = "cache")]
+		return crate::cache::GUILD_DATA_MEMBER_CACHE
 			.try_get_with_by_ref(&uuid, Self::from_member_uuid_raw(uuid))
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		Self::from_member_uuid_raw(uuid).await.map_err(Arc::new)
 	}
 
 	/// # Errors
 	/// Returns [`Error::GuildNotFound`] if the guild could not be found.
 	pub async fn from_name(name: &str) -> Result<Arc<Guild>, Arc<Error>> {
-		GUILD_DATA_NAME_CACHE
+		#[cfg(feature = "cache")]
+		return crate::cache::GUILD_DATA_NAME_CACHE
 			.try_get_with(name.to_ascii_lowercase(), Self::from_name_raw(name))
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		Self::from_name_raw(name).await.map_err(Arc::new)
 	}
 
 	/// # Errors
 	/// Returns [`Error::GuildNotFound`] if the guild could not be found.
 	pub async fn from_uuid(uuid: Uuid) -> Result<Arc<Guild>, Arc<Error>> {
-		GUILD_DATA_UUID_CACHE
+		#[cfg(feature = "cache")]
+		return crate::cache::GUILD_DATA_UUID_CACHE
 			.try_get_with_by_ref(&uuid, Self::from_uuid_raw(uuid))
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		Self::from_uuid_raw(uuid).await.map_err(Arc::new)
 	}
 
 	async fn from_uuid_raw(uuid: Uuid) -> Result<Arc<Guild>, Error> {
@@ -256,12 +266,14 @@ impl Guild {
 		if let Some(guild) = response.guild {
 			let guild = Arc::new(guild);
 
+			#[cfg(feature = "cache")]
 			for member in &guild.members {
 				GUILD_DATA_MEMBER_CACHE
 					.insert(member.uuid, Arc::clone(&guild))
 					.await;
 			}
 
+			#[cfg(feature = "cache")]
 			GUILD_DATA_NAME_CACHE
 				.insert(guild.name.to_ascii_lowercase(), Arc::clone(&guild))
 				.await;
@@ -292,12 +304,14 @@ impl Guild {
 		if let Some(guild) = response.guild {
 			let guild = Arc::new(guild);
 
+			#[cfg(feature = "cache")]
 			for member in &guild.members {
 				GUILD_DATA_MEMBER_CACHE
 					.insert(member.uuid, Arc::clone(&guild))
 					.await;
 			}
 
+			#[cfg(feature = "cache")]
 			GUILD_DATA_UUID_CACHE
 				.insert(Uuid::from_u128(guild.id), Arc::clone(&guild))
 				.await;
@@ -328,6 +342,7 @@ impl Guild {
 		if let Some(guild) = response.guild {
 			let guild = Arc::new(guild);
 
+			#[cfg(feature = "cache")]
 			for member in &guild.members {
 				if member.uuid == uuid {
 					continue;
@@ -338,9 +353,12 @@ impl Guild {
 					.await;
 			}
 
+			#[cfg(feature = "cache")]
 			GUILD_DATA_UUID_CACHE
 				.insert(Uuid::from_u128(guild.id), Arc::clone(&guild))
 				.await;
+
+			#[cfg(feature = "cache")]
 			GUILD_DATA_NAME_CACHE
 				.insert(guild.name.to_ascii_lowercase(), Arc::clone(&guild))
 				.await;

@@ -1,5 +1,6 @@
 use std::borrow::Cow;
 
+use hypixel::game::{mode::Mode, r#type::Type};
 use minecraft::{
 	paint::Paint,
 	style::{Family, MinecraftFont},
@@ -11,11 +12,7 @@ use skia_safe::{
 };
 use translate::{context, tr};
 
-use crate::{
-	canvas::label::ToFormatted,
-	game::{mode::Mode, r#type::Type},
-	player::status::Session,
-};
+use crate::{canvas::label::ToFormatted, player::status::Session};
 
 #[derive(Debug)]
 pub struct Body {

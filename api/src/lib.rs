@@ -13,22 +13,21 @@
 
 mod extras;
 
-pub mod bedwars;
 pub mod builder;
+#[cfg(feature = "cache")]
 pub mod cache;
-pub use canvas;
+pub mod canvas;
 pub mod command;
 pub(crate) mod de;
-pub mod game;
 pub mod guild;
 pub mod http;
 pub mod id;
-pub use image;
 pub mod leaderboard;
 pub mod nbt;
 pub mod player;
 pub mod player_old;
 pub mod ratelimiter;
+#[cfg(feature = "redis")]
 pub mod redis;
 pub mod skyblock;
 pub mod snapshot;

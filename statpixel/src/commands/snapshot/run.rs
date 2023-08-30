@@ -1,8 +1,7 @@
 use std::borrow::Cow;
 
 use api::{
-	canvas::{self, body::Body, diff::Diff, label::ToFormatted, Canvas},
-	prelude::Mode,
+	canvas::{self, body::Body, diff::Diff, label::ToFormatted, Canvas, prelude::Mode},
 	shape, Guild, Member,
 };
 use chrono::{DateTime, Utc};
@@ -22,7 +21,7 @@ use uuid::Uuid;
 use crate::{commands, format, snapshot, util};
 
 #[allow(clippy::too_many_lines)]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	username: Option<String>,
 	uuid: Option<Uuid>,

@@ -5,10 +5,10 @@ use api::{
 	builder::{
 		self, Action, Id, LevelKind, Location, PartialShape, ShapeData, ShapeKind, State, Statistic,
 	},
-	game::r#type::Type,
 	player::DEFAULT_SKIN,
 	Data, Player, Session,
 };
+use hypixel::game::r#type::Type;
 use minecraft::{paint::Paint, style::Family};
 use translate::{context, tr, tr_fmt, Context};
 

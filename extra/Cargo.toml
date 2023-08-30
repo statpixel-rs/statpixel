@@ -1,0 +1,16 @@
+[package]
+name = "extra"
+version = "0.31.0"
+edition = "2021"
+license = "GPL-3.0"
+authors = ["Matthew Polak <contact@matteopolak.com>"]
+repository = "https://github.com/matteopolak/statpixel"
+
+[dependencies]
+translate.path = "../translate"
+label.path = "../label"
+serde.workspace = true
+
+[dependencies.bincode]
+workspace = true
+features = ["serde"]

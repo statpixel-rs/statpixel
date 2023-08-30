@@ -1,0 +1,11 @@
+[package]
+name = "image"
+version = "0.31.0"
+edition = "2021"
+license = "GPL-3.0"
+authors = ["Matthew Polak <contact@matteopolak.com>"]
+repository = "https://github.com/matteopolak/statpixel"
+
+[dependencies]
+skia-safe.workspace = true
+once_cell.workspace = true

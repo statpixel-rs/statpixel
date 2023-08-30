@@ -5,7 +5,7 @@ use api::player::stats::*;
 
 use api::{
 	command::{GuildMode, Id, Mode, ProjectMode, SkyBlockMode},
-	prelude::Game,
+	canvas::prelude::Game,
 };
 use chrono::{Duration, Utc};
 use minecraft::style::Family;

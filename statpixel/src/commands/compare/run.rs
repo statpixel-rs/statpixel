@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use api::{canvas, prelude::Mode};
+use api::canvas::{self, prelude::Mode};
 use poise::serenity_prelude::CreateAttachment;
 use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
@@ -11,7 +11,7 @@ use crate::{
 };
 
 #[allow(clippy::too_many_lines)]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	lhs: Option<String>,
 	rhs: Option<String>,

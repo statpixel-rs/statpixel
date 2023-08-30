@@ -3,9 +3,9 @@ use std::borrow::Cow;
 use api::{
 	builder::{LevelKind, Location, Shape, ShapeData, Statistic},
 	canvas::{self, body::Body, text, Canvas},
-	image::Image,
 	shape, Data, Session,
 };
+use image::Image;
 use minecraft::{calc, style::Family, text::Text};
 use skia_safe::Color;
 use translate::{context, tr};

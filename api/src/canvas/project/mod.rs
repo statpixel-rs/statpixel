@@ -2,7 +2,7 @@ pub mod line;
 
 use std::{borrow::Cow, ops::Range};
 
-use crate::{
+use crate::canvas::{
 	chart::{BACKGROUND, CANVAS_BACKGROUND},
 	shape::{BUBBLE_HEIGHT, GAP},
 };

@@ -3,7 +3,7 @@ use minecraft::{
 	text::{parse::minecraft_string, Text},
 };
 
-use hypixel::data::Data;
+use crate::player::data::Data;
 
 #[must_use]
 pub fn from_data<'u>(data: &'u Data, username: &'u str, suffix: Option<&'u str>) -> Vec<Text<'u>> {

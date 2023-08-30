@@ -1,8 +1,8 @@
+pub mod data;
 pub mod games;
-pub mod status;
+pub mod stats;
 
-pub use hypixel::data;
-pub use hypixel::stats;
+pub use hypixel::player::status;
 
 use database::schema::{autocomplete, snapshot, user};
 use diesel::{ExpressionMethods, QueryDsl};
@@ -18,14 +18,14 @@ use uuid::Uuid;
 use crate::{
 	cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE},
 	http::HTTP,
-	include_image, Error,
+	Error,
 };
 
 use self::status::Status;
 
 pub const VERSION: i16 = 16;
-pub static DEFAULT_SKIN: Lazy<crate::image::Image> =
-	include_image!("../../../assets/skins/steve.png");
+pub static DEFAULT_SKIN: Lazy<image::Image> =
+	image::include_image!("../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
@@ -69,18 +69,6 @@ pub struct Player {
 	pub uuid: Uuid,
 	pub username: Option<String>,
 	pub session: Option<(Uuid, i64)>,
-}
-
-impl hypixel::Skin for Player {
-	#[must_use]
-	fn get_head_url(&self) -> String {
-		format!("https://visage.surgeplay.com/head/64/{}?y=72.5", self.uuid)
-	}
-
-	#[must_use]
-	fn get_body_url(&self) -> String {
-		format!("https://visage.surgeplay.com/full/{}?y=20", self.uuid)
-	}
 }
 
 impl Player {
@@ -343,9 +331,19 @@ impl Player {
 		Ok(Arc::new(player))
 	}
 
+	#[must_use]
+	pub fn get_head_url(&self) -> String {
+		format!("https://visage.surgeplay.com/head/64/{}?y=72.5", self.uuid)
+	}
+
+	#[must_use]
+	pub fn get_body_url(&self) -> String {
+		format!("https://visage.surgeplay.com/full/{}?y=20", self.uuid)
+	}
+
 	/// # Panics
 	/// Will not panic.
-	pub async fn get_skin(&self) -> Cow<'static, crate::image::Image<'static>> {
+	pub async fn get_skin(&self) -> Cow<'static, image::Image<'static>> {
 		let url = PLAYER_SKIN_ENDPOINT
 			.join(&format!("{}.png", self.uuid))
 			.unwrap();
@@ -358,7 +356,7 @@ impl Player {
 
 		match response {
 			Ok(response) if response.status() == StatusCode::OK => match response.bytes().await {
-				Ok(bytes) => Cow::Owned(crate::image::from_bytes_copy(&bytes).unwrap()),
+				Ok(bytes) => Cow::Owned(image::from_bytes_copy(&bytes).unwrap()),
 				Err(_) => Cow::Borrowed(&DEFAULT_SKIN),
 			},
 			_ => Cow::Borrowed(&DEFAULT_SKIN),

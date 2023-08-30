@@ -7,14 +7,14 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
 database.path = "../database"
-minecraft.workspace = true
-label.workspace = true
+minecraft.path = "../minecraft"
+label.path = "../label"
 translate.path = "../translate"
-canvas.path = "../canvas"
-image.workspace = true
-derive.workspace = true
+image.path = "../image"
+derive.path = "../derive"
+hypixel.path = "../hypixel"
 base64.workspace = true
-extra.workspace = true
+extra.path = "../extra"
 bincode.workspace = true
 chrono.workspace = true
 diesel.workspace = true
@@ -30,7 +30,6 @@ plotters.workspace = true
 plotters-backend.workspace = true
 poise.workspace = true
 pure-rust-locales.workspace = true
-redis.workspace = true
 reqwest.workspace = true
 serde.workspace = true
 serde_json.workspace = true
@@ -42,10 +41,17 @@ uuid.workspace = true
 bitcode.workspace = true
 dotenvy_macro.workspace = true
 
-[dependencies.hypixel]
+[dependencies.redis]
 workspace = true
-features = ["game"]
+optional = true
 
 [dev-dependencies]
 dotenvy.workspace = true
 tokio.workspace = true
+
+[features]
+default = ["redis", "cache", "game"]
+
+redis = ["dep:redis"]
+cache = []
+game = []

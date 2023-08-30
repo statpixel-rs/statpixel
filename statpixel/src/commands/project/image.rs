@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use api::{prelude::Mode, Player, Session};
+use api::{canvas::prelude::Mode, Player, Session};
 use chrono::{DateTime, Utc};
 use database::schema;
 use diesel::{ExpressionMethods, QueryDsl};
@@ -12,7 +12,7 @@ use translate::{context, tr_fmt, Error};
 use crate::{snapshot, util};
 
 #[allow(clippy::too_many_arguments)]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	family: Family,
 	player: &Player,

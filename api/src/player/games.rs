@@ -1,6 +1,5 @@
 use std::{str::FromStr, sync::Arc, time::Duration};
 
-use chrono::{DateTime, Utc};
 use moka::future::{Cache, CacheBuilder};
 use once_cell::sync::Lazy;
 use reqwest::{Request, Url};
@@ -8,6 +7,8 @@ use serde::Deserialize;
 use uuid::Uuid;
 
 use crate::http::HTTP;
+
+pub use hypixel::player::Game;
 
 pub static GAMES_CACHE: Lazy<Cache<Uuid, Arc<Vec<Game>>>> = Lazy::new(|| {
 	CacheBuilder::new(10_000)
@@ -22,18 +23,6 @@ static HYPIXEL_RECENT_GAMES_API_ENDPOINT: Lazy<Url> =
 #[serde(default)]
 pub struct Response {
 	pub games: Vec<Game>,
-}
-
-#[derive(Deserialize, Debug)]
-pub struct Game {
-	#[serde(rename(deserialize = "date"), with = "chrono::serde::ts_milliseconds")]
-	pub started: DateTime<Utc>,
-	#[serde(rename = "gameType")]
-	pub kind: crate::game::r#type::Type,
-	pub mode: crate::game::mode::Mode,
-	pub map: Option<String>,
-	#[serde(with = "chrono::serde::ts_milliseconds_option", default)]
-	pub ended: Option<DateTime<Utc>>,
 }
 
 impl super::Player {

@@ -1,4 +1,4 @@
-use api::prelude::Mode;
+use api::canvas::prelude::Mode;
 use poise::serenity_prelude::CreateAttachment;
 use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
@@ -6,7 +6,7 @@ use uuid::Uuid;
 use crate::commands;
 
 #[inline]
-pub async fn command<G: api::prelude::Game>(
+pub async fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	username: Option<String>,
 	uuid: Option<Uuid>,

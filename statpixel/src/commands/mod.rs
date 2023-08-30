@@ -2,9 +2,9 @@ use std::{borrow::Cow, sync::Arc};
 
 use api::{
 	guild::Guild,
-	image::Image,
 	player::{self, data::Data, status::Session, Player},
 };
+use image::Image;
 use database::{extend::lower, schema};
 use diesel::{ExpressionMethods, QueryDsl, TextExpressionMethods};
 use diesel_async::RunQueryDsl;

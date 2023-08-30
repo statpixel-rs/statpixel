@@ -2,7 +2,6 @@ use std::borrow::Cow;
 
 use api::{
 	canvas::{self, body::Body, label::ToFormatted, shape, text, Canvas},
-	game::{self, mode::Mode, r#type::Type},
 	Data, Session,
 };
 use minecraft::{
@@ -11,6 +10,7 @@ use minecraft::{
 	style::{Family, MinecraftFont},
 	text::{parse::minecraft_text, Text},
 };
+use hypixel::game::{self, mode::Mode, r#type::Type};
 use skia_safe::textlayout::TextAlign;
 use translate::context;
 

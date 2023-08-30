@@ -1,8 +1,9 @@
 use std::borrow::Cow;
 
+use crate::canvas::util;
+use label::ToFormatted;
+
 use crate::{
-	canvas::{label::ToFormatted, util},
-	game::{self, r#type::Type},
 	guild::Guild,
 	milliseconds::Milliseconds,
 	player::{self, status::Session},
@@ -11,6 +12,7 @@ use crate::{
 
 use super::{body::Body, CORNER_RADIUS};
 
+use hypixel::game::{self, r#type::Type};
 use minecraft::{
 	paint::Paint,
 	style::{Family, MinecraftFont},
@@ -1030,7 +1032,7 @@ impl<'g> Shape for PreferredGames<'g> {
 		let mut iter = self
 			.0
 			.iter()
-			.filter_map(crate::game::r#type::Type::as_image_bytes)
+			.filter_map(hypixel::game::r#type::Type::as_image_bytes)
 			.enumerate()
 			.take(6);
 

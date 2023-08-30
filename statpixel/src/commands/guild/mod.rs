@@ -6,7 +6,7 @@ use std::collections::HashMap;
 use api::guild::Guild;
 use chrono::{DateTime, Utc};
 use database::{extend::modulo, schema::guild_snapshot};
-use diesel::{query_dsl::methods::DistinctOnDsl, ExpressionMethods, QueryDsl};
+use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use translate::{context, Context};
 use uuid::Uuid;

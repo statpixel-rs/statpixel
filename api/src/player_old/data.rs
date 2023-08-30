@@ -35,8 +35,8 @@ pub struct Data {
 	pub quests: u32,
 	pub gifting: crate::player::data::Gifting,
 	pub achivement_points: u32,
-	pub language: crate::player::language::Language,
-	pub socials: crate::player::socials::Socials,
+	pub language: hypixel::language::Language,
+	pub socials: hypixel::socials::Socials,
 }
 
 impl From<Data> for crate::player::data::Data {

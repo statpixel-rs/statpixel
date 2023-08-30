@@ -7,7 +7,7 @@ use translate::context;
 
 #[allow(clippy::needless_pass_by_value)]
 #[allow(clippy::too_many_arguments)]
-pub fn command<G: api::prelude::Game>(
+pub fn command<G: api::canvas::prelude::Game>(
 	ctx: &context::Context<'_>,
 	family: Family,
 	mode: Option<G::Mode>,

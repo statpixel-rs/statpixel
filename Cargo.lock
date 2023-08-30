@@ -75,9 +75,8 @@ dependencies = [
  "base64 0.21.3",
  "bincode",
  "bitcode",
- "canvas",
  "chrono",
- "database 0.31.0",
+ "database",
  "derive",
  "diesel",
  "diesel-async",
@@ -107,7 +106,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "tracing",
- "translate 0.31.0",
+ "translate",
  "uuid",
 ]
 
@@ -445,21 +444,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c59e92b5a388f549b863a7bea62612c09f24c8393560709a54558a9abdfb3b9c"
 dependencies = [
  "serde",
-]
-
-[[package]]
-name = "canvas"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "hypixel",
- "label",
- "minecraft",
- "plotters 0.4.0",
- "poise",
- "skia-safe",
- "translate 0.31.0",
- "uuid",
 ]
 
 [[package]]
@@ -911,17 +895,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "database"
-version = "0.31.0"
-source = "git+ssh://git@github.com/matteopolak/statpixel.git?branch=main#097f0fcf666eb50718e517c03a2aaafe2ba1eb45"
-dependencies = [
- "chrono",
- "diesel",
- "diesel-async",
- "uuid",
-]
-
-[[package]]
 name = "deadpool"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -963,7 +936,6 @@ dependencies = [
 [[package]]
 name = "derive"
 version = "0.31.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
 dependencies = [
  "darling 0.20.3",
  "minecraft",
@@ -1165,13 +1137,12 @@ checksum = "0206175f82b8d6bf6652ff7d71a1e27fd2e4efde587fd368662814d6ec1d9ce0"
 
 [[package]]
 name = "extra"
-version = "0.1.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
+version = "0.31.0"
 dependencies = [
  "bincode",
  "label",
  "serde",
- "translate 0.31.0 (git+ssh://git@github.com/matteopolak/statpixel.git?branch=main)",
+ "translate",
 ]
 
 [[package]]
@@ -1723,24 +1694,17 @@ dependencies = [
 
 [[package]]
 name = "hypixel"
-version = "0.1.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
+version = "0.31.0"
 dependencies = [
  "bincode",
- "bitcode",
  "chrono",
- "derive",
- "extra",
- "futures",
  "image",
  "label",
  "minecraft",
  "once_cell",
- "poise",
  "serde",
  "serde_json",
- "skia-safe",
- "translate 0.31.0 (git+ssh://git@github.com/matteopolak/statpixel.git?branch=main)",
+ "translate",
  "uuid",
 ]
 
@@ -1785,8 +1749,7 @@ dependencies = [
 
 [[package]]
 name = "image"
-version = "0.1.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
+version = "0.31.0"
 dependencies = [
  "once_cell",
  "skia-safe",
@@ -1950,14 +1913,13 @@ checksum = "4e28ab1dc35e09d60c2b8c90d12a9a8d9666c876c10a3739a3196db0103b6043"
 
 [[package]]
 name = "label"
-version = "0.1.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
+version = "0.31.0"
 dependencies = [
  "chrono",
  "minecraft",
  "num-format",
  "pure-rust-locales",
- "translate 0.31.0 (git+ssh://git@github.com/matteopolak/statpixel.git?branch=main)",
+ "translate",
  "uuid",
 ]
 
@@ -2094,11 +2056,11 @@ dependencies = [
 [[package]]
 name = "minecraft"
 version = "0.31.0"
-source = "git+ssh://git@github.com/statpixel-rs/statpixel-common.git?branch=main#bf1049746120d0e3dc82bfd1c849601b831408a0"
 dependencies = [
  "bincode",
  "bitcode",
  "darling 0.20.3",
+ "diesel",
  "konst",
  "once_cell",
  "plotters 0.4.0",
@@ -3435,7 +3397,7 @@ dependencies = [
  "bitcode",
  "chrono",
  "criterion",
- "database 0.31.0",
+ "database",
  "diesel",
  "diesel-async",
  "dotenvy",
@@ -3444,6 +3406,8 @@ dependencies = [
  "futures",
  "fxhash",
  "humantime",
+ "hypixel",
+ "image",
  "jsonwebtoken",
  "minecraft",
  "once_cell",
@@ -3461,7 +3425,7 @@ dependencies = [
  "tower_governor",
  "tracing",
  "tracing-subscriber",
- "translate 0.31.0",
+ "translate",
  "uuid",
 ]
 
@@ -3921,7 +3885,7 @@ dependencies = [
  "base64 0.21.3",
  "bincode",
  "chrono",
- "database 0.31.0",
+ "database",
  "diesel",
  "diesel-async",
  "fluent",
@@ -3936,22 +3900,6 @@ dependencies = [
  "thiserror",
  "tracing",
  "uuid",
-]
-
-[[package]]
-name = "translate"
-version = "0.31.0"
-source = "git+ssh://git@github.com/matteopolak/statpixel.git?branch=main#097f0fcf666eb50718e517c03a2aaafe2ba1eb45"
-dependencies = [
- "chrono",
- "database 0.31.0 (git+ssh://git@github.com/matteopolak/statpixel.git?branch=main)",
- "fluent",
- "intl-memoizer",
- "num-format",
- "poise",
- "serde",
- "thiserror",
- "tracing",
 ]
 
 [[package]]
