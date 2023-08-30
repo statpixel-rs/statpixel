@@ -8,9 +8,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 [dependencies]
 minecraft.path = "../minecraft"
 image.path = "../image"
-hypixel.path = "../hypixel"
 base64.workspace = true
-extra.path = "../extra"
 bincode.workspace = true
 chrono.workspace = true
 diesel.workspace = true
@@ -35,6 +33,14 @@ tracing.workspace = true
 uuid.workspace = true
 bitcode.workspace = true
 dotenvy_macro.workspace = true
+
+[dependencies.hypixel]
+path = "../hypixel"
+default-features = false
+
+[dependencies.extra]
+path = "../extra"
+default-features = false
 
 [dependencies.label]
 path = "../label"
@@ -79,5 +85,5 @@ redis = ["dep:redis"]
 cache = []
 game = ["dep:derive", "locale", "canvas"]
 database = ["dep:database", "translate/data"]
-locale = ["translate/locale", "dep:label"]
+locale = ["translate/locale", "hypixel/locale", "extra/locale", "dep:label"]
 canvas = ["dep:skia-safe"]

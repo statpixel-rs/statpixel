@@ -1,6 +1,5 @@
 use std::borrow::Cow;
 
-use label::ToFormatted;
 use translate::context::Context;
 
 macro_rules! impl_percent {
@@ -8,7 +7,8 @@ macro_rules! impl_percent {
 		#[derive(bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq)]
 		pub struct $name(pub $ty);
 
-		impl ToFormatted for $name {
+		#[cfg(feature = "locale")]
+		impl label::ToFormatted for $name {
 			fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 				let percent = self.0;
 

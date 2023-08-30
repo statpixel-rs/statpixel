@@ -1,6 +1,5 @@
 use std::borrow::Cow;
 
-use label::ToFormatted;
 use translate::context::Context;
 
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq)]
@@ -26,7 +25,8 @@ impl serde::Serialize for InverseBool {
 	}
 }
 
-impl ToFormatted for InverseBool {
+#[cfg(feature = "locale")]
+impl label::ToFormatted for InverseBool {
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		if self.0 {
 			false.to_formatted(ctx)

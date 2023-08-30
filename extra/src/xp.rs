@@ -1,6 +1,5 @@
 use std::{borrow::Cow, ops::SubAssign};
 
-use label::ToFormatted;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use translate::context::Context;
 
@@ -35,7 +34,8 @@ impl From<Xp> for u32 {
 	}
 }
 
-impl ToFormatted for Xp {
+#[cfg(feature = "locale")]
+impl label::ToFormatted for Xp {
 	#[allow(clippy::cast_precision_loss)]
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let xp = self.0;

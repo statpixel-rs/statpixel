@@ -57,6 +57,7 @@ macro_rules! impl_time_unit {
 			}
 		}
 
+		#[cfg(feature = "locale")]
 		impl label::ToFormatted for $name {
 			fn to_formatted<'t, 'c: 't>(
 				&'t self,
@@ -212,6 +213,7 @@ macro_rules! impl_time_unit_opt {
 			}
 		}
 
+		#[cfg(feature = "locale")]
 		impl label::ToFormatted for $name {
 			fn to_formatted<'t, 'c: 't>(
 				&'t self,

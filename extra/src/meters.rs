@@ -3,7 +3,6 @@ use std::{
 	ops::{Add, Sub},
 };
 
-use label::ToFormatted;
 use serde::Deserializer;
 use translate::context::Context;
 
@@ -68,7 +67,8 @@ impl From<Meters> for f64 {
 	}
 }
 
-impl ToFormatted for Meters {
+#[cfg(feature = "locale")]
+impl label::ToFormatted for Meters {
 	#[allow(clippy::cast_precision_loss)]
 	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
 		let m = self.0;

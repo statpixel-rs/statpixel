@@ -7,10 +7,13 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 repository = "https://github.com/matteopolak/statpixel"
 
 [dependencies]
-label.path = "../label"
 serde_json.workspace = true
 image.path = "../image"
 once_cell.workspace = true
+
+[dependencies.label]
+path = "../label"
+optional = true
 
 [dependencies.translate]
 path = "../translate"
@@ -34,3 +37,8 @@ features = ["serde"]
 [dependencies.chrono]
 workspace = true
 features = ["serde"]
+
+[features]
+default = ["locale"]
+
+locale = ["dep:label"]
