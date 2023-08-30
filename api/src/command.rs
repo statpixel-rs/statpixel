@@ -1,11 +1,11 @@
 use crate::player::stats::*;
 
-use derive::GetTr;
 use poise::serenity_prelude as serenity;
 use translate::{context, tr};
 use uuid::Uuid;
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, GetTr)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone)]
+#[cfg_attr(feature = "game", derive(derive::GetTr))]
 pub enum SkyBlockMode {
 	Auctions,
 	Bank,
@@ -24,7 +24,8 @@ pub enum SkyBlockMode {
 	Wardrobe,
 }
 
-#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy, GetTr)]
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+#[cfg_attr(feature = "game", derive(derive::GetTr))]
 pub enum GuildMode {
 	General,
 	Member,

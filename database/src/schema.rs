@@ -100,6 +100,9 @@ diesel::table! {
 		prev_hash -> Nullable<Int8>,
 		weekly_schedule -> Int4,
 		active_at -> Timestamptz,
+		vendor_update_at -> Nullable<Timestamptz>,
+		vendor_hash -> Nullable<Int8>,
+		vendor_prev_hash -> Nullable<Int8>,
 	}
 }
 

@@ -7,6 +7,7 @@ mod image;
 mod metrics;
 mod topgg;
 mod tracks;
+mod vendor;
 
 use axum::{
 	error_handling::HandleErrorLayer,
@@ -46,6 +47,18 @@ pub async fn run(data: Data) {
 		.route("/builder/test", post(builder::get))
 		.route("/tracks", get(tracks::get).delete(tracks::delete))
 		.route("/boosts", get(boosts::get).delete(boosts::delete))
+		.layer(
+			ServiceBuilder::new()
+				.layer(HandleErrorLayer::new(|e: BoxError| async move {
+					display_error(e)
+				}))
+				.layer(GovernorLayer {
+					config: Box::leak(governor),
+				}),
+		)
+		// the /vendor endpoint is not rate-limited, but is instead throttled by
+		// only allowing 1 update globally per user, every 15 minutes
+		.route("/vendor", post(vendor::post))
 		.layer(ServiceBuilder::new().layer(CompressionLayer::new()))
 		.layer(
 			CorsLayer::new()
@@ -59,15 +72,6 @@ pub async fn run(data: Data) {
 					#[cfg(debug_assertions)]*/
 					Any,
 				),
-		)
-		.layer(
-			ServiceBuilder::new()
-				.layer(HandleErrorLayer::new(|e: BoxError| async move {
-					display_error(e)
-				}))
-				.layer(GovernorLayer {
-					config: Box::leak(governor),
-				}),
 		)
 		.with_state(Arc::new(data));
 

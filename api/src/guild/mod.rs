@@ -3,7 +3,6 @@ pub mod member;
 use chrono::{DateTime, Utc};
 #[cfg(feature = "database")]
 use database::schema::guild_autocomplete;
-use derive::Diff;
 #[cfg(feature = "database")]
 use diesel::ExpressionMethods;
 #[cfg(feature = "database")]
@@ -36,7 +35,8 @@ pub struct Response {
 	pub success: bool,
 }
 
-#[derive(serde::Deserialize, bincode::Encode, bincode::Decode, Clone, Diff)]
+#[derive(serde::Deserialize, bincode::Encode, bincode::Decode, Clone)]
+#[cfg_attr(feature = "game", derive(derive::Diff))]
 pub struct Guild {
 	#[serde(rename = "_id", deserialize_with = "hex_from_str")]
 	pub id: u128,

@@ -24,8 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - name: Create empty .env
         run: touch .env
       - name: Install nightly
