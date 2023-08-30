@@ -1,4 +1,5 @@
 pub mod auction;
+#[cfg(feature = "database")]
 pub mod bazaar;
 pub mod essence;
 pub mod materials;
@@ -16,11 +17,13 @@ use reqwest::{Method, Request, StatusCode, Url};
 use serde::Deserialize;
 
 use crate::{
-	cache::SKYBLOCK_PROFILE_CACHE,
 	http::HTTP,
 	player::{stats::sky_block, Player},
 	Error,
 };
+
+#[cfg(feature = "cache")]
+use crate::cache::SKYBLOCK_PROFILE_CACHE;
 
 use self::profile::Profile;
 
@@ -89,12 +92,18 @@ impl Player {
 		profile: &sky_block::Profile,
 		username: &str,
 	) -> Result<Arc<Profile>, Arc<Error>> {
-		SKYBLOCK_PROFILE_CACHE
+		#[cfg(feature = "cache")]
+		return SKYBLOCK_PROFILE_CACHE
 			.try_get_with(
 				profile.id,
 				Self::get_skyblock_profile_raw(profile, username),
 			)
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		Self::get_skyblock_profile_raw(profile, username)
 			.await
+			.map_err(Arc::new)
 	}
 
 	async fn get_skyblock_profile_raw(

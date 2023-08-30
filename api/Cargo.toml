@@ -6,7 +6,6 @@ license = "GPL-3.0"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 
 [dependencies]
-database.path = "../database"
 minecraft.path = "../minecraft"
 label.path = "../label"
 translate.path = "../translate"
@@ -41,6 +40,10 @@ uuid.workspace = true
 bitcode.workspace = true
 dotenvy_macro.workspace = true
 
+[dependencies.database]
+path = "../database"
+optional = true
+
 [dependencies.redis]
 workspace = true
 optional = true
@@ -50,8 +53,9 @@ dotenvy.workspace = true
 tokio.workspace = true
 
 [features]
-default = ["redis", "cache", "game"]
+default = ["redis", "cache", "game", "database"]
 
 redis = ["dep:redis"]
 cache = []
 game = []
+database = ["dep:database"]

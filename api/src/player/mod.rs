@@ -4,8 +4,11 @@ pub mod stats;
 
 pub use hypixel::player::status;
 
+#[cfg(feature = "database")]
 use database::schema::{autocomplete, snapshot, user};
+#[cfg(feature = "database")]
 use diesel::{ExpressionMethods, QueryDsl};
+#[cfg(feature = "database")]
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};
@@ -15,11 +18,10 @@ use tracing::error;
 use translate::context;
 use uuid::Uuid;
 
-use crate::{
-	cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE},
-	http::HTTP,
-	Error,
-};
+use crate::{http::HTTP, Error};
+
+#[cfg(feature = "cache")]
+use crate::cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE};
 
 use self::status::Status;
 
@@ -94,6 +96,7 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if there is an issue with the database.
+	#[cfg(feature = "database")]
 	pub async fn increase_searches(
 		&self,
 		ctx: &context::Context<'_>,
@@ -124,6 +127,7 @@ impl Player {
 		Ok(())
 	}
 
+	#[cfg(feature = "database")]
 	pub async fn get_suffix(&self, ctx: &context::Context<'_>) -> Option<String> {
 		let Ok(mut connnection) = ctx.data().pool.get().await else {
 			return None;
@@ -143,12 +147,16 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the username does not exist or if their data is invalid.
 	pub async fn from_username(username: &str) -> Result<Player, Arc<Error>> {
+		#[cfg(feature = "cache")]
 		let player = PLAYER_CACHE
 			.try_get_with(
 				username.to_ascii_lowercase(),
 				Self::from_username_raw(username),
 			)
 			.await?;
+
+		#[cfg(not(feature = "cache"))]
+		let player = Self::from_username_raw(username).await?;
 
 		Ok(player)
 	}
@@ -168,6 +176,7 @@ impl Player {
 		if let Some((id, name)) = response.id.zip(response.name) {
 			let player = Self::new(id, Some(name));
 
+			#[cfg(feature = "cache")]
 			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
 
 			return Ok(player);
@@ -188,6 +197,7 @@ impl Player {
 		let player = Self::new(response.id, Some(response.name));
 
 		// Also add the player with their uuid to the cache
+		#[cfg(feature = "cache")]
 		PLAYER_CACHE
 			.insert(response.id.to_string(), player.clone())
 			.await;
@@ -198,9 +208,13 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the uuid does not exist or if their data is invalid.
 	pub async fn from_uuid(uuid: &Uuid) -> Result<Player, Arc<Error>> {
-		PLAYER_CACHE
+		#[cfg(feature = "cache")]
+		return PLAYER_CACHE
 			.try_get_with(uuid.to_string(), Self::from_uuid_raw(uuid))
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		Self::from_uuid_raw(uuid).await.map_err(Arc::new)
 	}
 
 	async fn from_uuid_raw(uuid: &Uuid) -> Result<Player, Error> {
@@ -218,6 +232,7 @@ impl Player {
 		if let Some((id, name)) = response.id.zip(response.name) {
 			let player = Self::new(id, Some(name));
 
+			#[cfg(feature = "cache")]
 			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
 
 			return Ok(player);
@@ -235,10 +250,12 @@ impl Player {
 		}
 
 		let response = response.json::<MojangResponse>().await?;
+		#[cfg(feature = "cache")]
 		let lower = response.name.to_ascii_lowercase();
 		let player = Self::new(response.id, Some(response.name));
 
 		// Also add the player to the cache with the lower-case username
+		#[cfg(feature = "cache")]
 		PLAYER_CACHE.insert(lower, player.clone()).await;
 
 		Ok(player)
@@ -250,11 +267,15 @@ impl Player {
 		&self,
 		ctx: &context::Context<'_>,
 	) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(
+		#[cfg(feature = "cache")]
+		return Box::pin(PLAYER_DATA_CACHE.try_get_with_by_ref(
 			self.session.as_ref().map_or(&self.uuid, |s| &s.0),
 			self.get_data_raw(ctx),
 		))
-		.await
+		.await;
+
+		#[cfg(not(feature = "cache"))]
+		self.get_data_raw(ctx).await.map_err(Arc::new)
 	}
 
 	/// # Errors
@@ -263,22 +284,35 @@ impl Player {
 		self,
 		ctx: &context::Context<'_>,
 	) -> Result<Arc<data::Data>, Arc<Error>> {
-		Box::pin(PLAYER_DATA_CACHE.try_get_with(
+		#[cfg(feature = "cache")]
+		return Box::pin(PLAYER_DATA_CACHE.try_get_with(
 			self.session.map_or(self.uuid, |s| s.0),
 			self.get_data_raw(ctx),
 		))
-		.await
+		.await;
+
+		#[cfg(not(feature = "cache"))]
+		self.get_data_raw(ctx).await.map_err(Arc::new)
 	}
 
+	#[allow(unused_variables)]
 	async fn get_data_raw(&self, ctx: &context::Context<'_>) -> Result<Arc<data::Data>, Error> {
 		let player = if let Some((_, snapshot_id)) = self.session {
-			let data = snapshot::table
-				.filter(snapshot::id.eq(snapshot_id))
-				.select(snapshot::data)
-				.first::<Vec<u8>>(&mut ctx.data().pool.get().await?)
-				.await?;
+			#[cfg(feature = "database")]
+			let result = {
+				let data = snapshot::table
+					.filter(snapshot::id.eq(snapshot_id))
+					.select(snapshot::data)
+					.first::<Vec<u8>>(&mut ctx.data().pool.get().await?)
+					.await?;
 
-			crate::snapshot::user::decode(data.as_slice())?
+				crate::snapshot::user::decode(data.as_slice())
+			};
+
+			#[cfg(not(feature = "database"))]
+			let result = Err(Error::UuidNotFound(self.uuid));
+
+			result?
 		} else {
 			let url = {
 				let mut url = HYPIXEL_PLAYER_API_ENDPOINT.clone();
@@ -321,9 +355,12 @@ impl Player {
 			player
 		};
 
+		#[cfg(feature = "redis")]
 		self.set_display_str(&player).await?;
+		#[cfg(feature = "database")]
 		self.update_leaderboard(ctx, &player).await?;
 
+		#[cfg(feature = "database")]
 		if !ctx.is_automated() {
 			self.update_activity(ctx).await?;
 		}
@@ -366,9 +403,13 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the player does not have a profile or if their data is invalid.
 	pub async fn get_session(&self) -> Result<Arc<status::Session>, Arc<Error>> {
-		PLAYER_SESSION_CACHE
+		#[cfg(feature = "cache")]
+		return PLAYER_SESSION_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_session_raw())
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		self.get_session_raw().await.map_err(Arc::new)
 	}
 
 	async fn get_session_raw(&self) -> Result<Arc<status::Session>, Error> {

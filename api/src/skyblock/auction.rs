@@ -6,7 +6,10 @@ use reqwest::{Method, Request, Url};
 use serde::Deserialize;
 use uuid::Uuid;
 
-use crate::{cache::SKYBLOCK_AUCTION_CACHE, http::HTTP, player::Player, Error};
+use crate::{http::HTTP, player::Player, Error};
+
+#[cfg(feature = "cache")]
+use crate::cache::SKYBLOCK_AUCTION_CACHE;
 
 #[derive(Deserialize, Clone)]
 pub struct Auction {
@@ -44,9 +47,13 @@ impl Player {
 	/// # Errors
 	/// Returns an error if the player cannot be found
 	pub async fn get_auctions(&self) -> Result<Arc<Vec<Auction>>, Arc<Error>> {
-		SKYBLOCK_AUCTION_CACHE
+		#[cfg(feature = "cache")]
+		return SKYBLOCK_AUCTION_CACHE
 			.try_get_with_by_ref(&self.uuid, self.get_auctions_raw())
-			.await
+			.await;
+
+		#[cfg(not(feature = "cache"))]
+		return self.get_auctions_raw().await.map_err(Arc::new);
 	}
 
 	async fn get_auctions_raw(&self) -> Result<Arc<Vec<Auction>>, Error> {

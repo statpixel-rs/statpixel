@@ -1,12 +1,15 @@
+#[cfg(feature = "game")]
 use crate::canvas::diff::DiffLog;
 
-use serde::{Deserialize, Deserializer};
-use poise::serenity_prelude::Embed;
 use chrono::{DateTime, Utc};
-use minecraft::{colour::Colour, text::rank::Rank};
-use uuid::Uuid;
-use translate::context;
 use extra::minutes::Minutes;
+use minecraft::{colour::Colour, text::rank::Rank};
+#[cfg(feature = "game")]
+use poise::serenity_prelude::Embed;
+use serde::{Deserialize, Deserializer};
+#[cfg(feature = "game")]
+use translate::context;
+use uuid::Uuid;
 
 #[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(default)]
@@ -68,6 +71,7 @@ pub struct Data {
 	pub socials: hypixel::socials::Socials,
 }
 
+#[cfg(feature = "game")]
 impl DiffLog for Data {
 	fn diff_log(
 		data_lhs: &Data,

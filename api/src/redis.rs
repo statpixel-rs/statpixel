@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use chrono::Utc;
+#[cfg(feature = "database")]
 use database::schema::{leaderboard, schedule};
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
@@ -79,6 +80,7 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if the player's data could not be saved to the leaderboard.
+	#[cfg(feature = "database")]
 	pub async fn update_leaderboard(
 		&self,
 		ctx: &context::Context<'_>,

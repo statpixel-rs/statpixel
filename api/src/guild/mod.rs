@@ -1,18 +1,22 @@
 pub mod member;
 
 use chrono::{DateTime, Utc};
+#[cfg(feature = "database")]
 use database::schema::guild_autocomplete;
 use derive::Diff;
+#[cfg(feature = "database")]
 use diesel::ExpressionMethods;
+#[cfg(feature = "database")]
 use diesel_async::RunQueryDsl;
+use hypixel::game::r#type::Type;
 use minecraft::colour::Colour;
 use once_cell::sync::Lazy;
 use reqwest::{Request, StatusCode, Url};
 use serde::Deserializer;
 use std::{str::FromStr, sync::Arc};
+#[cfg(feature = "database")]
 use translate::context::Context;
 use uuid::Uuid;
-use hypixel::game::r#type::Type;
 
 use crate::{http::HTTP, xp::Xp, Error, Player};
 
@@ -185,6 +189,7 @@ impl Guild {
 	#[allow(clippy::cast_possible_wrap)]
 	/// # Errors
 	/// Returns an error if the query could not be executed.
+	#[cfg(feature = "database")]
 	pub async fn increase_searches(&self, ctx: &Context<'_>) -> Result<(), translate::Error> {
 		diesel::insert_into(guild_autocomplete::table)
 			.values((

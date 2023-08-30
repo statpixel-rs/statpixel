@@ -6,14 +6,7 @@ use poise::serenity_prelude as serenity;
 use translate::{context, Error};
 use uuid::Uuid;
 
-use crate::{
-	player::{self, data, status},
-	shape,
-};
-
-pub trait IntoSlot {
-	fn into_slot(&self) -> shape::Slot;
-}
+use crate::player::{self, data, status};
 
 #[allow(clippy::too_many_arguments)]
 pub trait Game {

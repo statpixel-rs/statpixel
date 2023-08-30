@@ -4,10 +4,7 @@ pub mod extend;
 pub mod models;
 pub mod schema;
 
-use diesel_async::{
-	pooled_connection::{deadpool::Pool, AsyncDieselConnectionManager},
-	AsyncPgConnection,
-};
+use diesel_async::{pooled_connection::deadpool::Pool, AsyncPgConnection};
 
 pub type PostgresPool = Pool<AsyncPgConnection>;
 
@@ -16,6 +13,8 @@ pub type PostgresPool = Pool<AsyncPgConnection>;
 #[cfg(feature = "util")]
 #[must_use]
 pub fn get_pool(max_size: usize) -> PostgresPool {
+	use diesel_async::pooled_connection::AsyncDieselConnectionManager;
+
 	let url = dotenvy_macro::dotenv!("DATABASE_URL");
 	let manager = AsyncDieselConnectionManager::<AsyncPgConnection>::new(url);
 

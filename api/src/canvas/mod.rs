@@ -2,6 +2,7 @@ pub mod body;
 mod builder;
 pub mod chart;
 pub mod diff;
+#[cfg(feature = "game")]
 pub mod prelude;
 pub mod project;
 pub mod shape;

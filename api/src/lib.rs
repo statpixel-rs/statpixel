@@ -13,14 +13,17 @@
 
 mod extras;
 
+#[cfg(feature = "game")]
 pub mod builder;
 #[cfg(feature = "cache")]
 pub mod cache;
 pub mod canvas;
+#[cfg(feature = "game")]
 pub mod command;
 pub(crate) mod de;
 pub mod guild;
 pub mod http;
+#[cfg(feature = "game")]
 pub mod id;
 pub mod leaderboard;
 pub mod nbt;
