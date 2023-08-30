@@ -6,7 +6,7 @@ pub mod context {
 	pub struct Context;
 }
 
-#[cfg(feature = "locale")]
+#[cfg(all(feature = "locale", feature = "context", feature = "data"))]
 pub mod prelude;
 
 #[cfg(feature = "error")]
@@ -14,9 +14,9 @@ pub mod error;
 #[cfg(feature = "error")]
 pub use error::*;
 
-#[cfg(feature = "locale")]
+#[cfg(all(feature = "locale", feature = "context", feature = "data"))]
 pub mod locale;
-#[cfg(feature = "locale")]
+#[cfg(all(feature = "locale", feature = "context", feature = "data"))]
 pub use locale::*;
 
 #[cfg(feature = "locale")]
