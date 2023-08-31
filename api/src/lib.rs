@@ -40,6 +40,7 @@ pub mod snapshot;
 pub use extras::*;
 pub use translate::ApiError as Error;
 
+#[cfg(feature = "canvas")]
 pub use canvas::shape;
 pub use guild::member::Member;
 pub use guild::Guild;

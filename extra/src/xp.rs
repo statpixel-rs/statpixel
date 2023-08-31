@@ -1,7 +1,6 @@
-use std::{borrow::Cow, ops::SubAssign};
+use std::ops::SubAssign;
 
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-use translate::context::Context;
 
 #[derive(
 	bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord,
@@ -34,18 +33,25 @@ impl From<Xp> for u32 {
 	}
 }
 
-#[cfg(feature = "locale")]
-impl label::ToFormatted for Xp {
-	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
-		let xp = self.0;
-
-		Cow::Owned(format!("{} XP", xp.to_formatted(ctx)))
-	}
-}
-
 impl SubAssign for Xp {
 	fn sub_assign(&mut self, rhs: Self) {
 		self.0 -= rhs.0;
+	}
+}
+
+#[cfg(feature = "locale")]
+mod locale {
+	use super::*;
+
+	use std::borrow::Cow;
+	use translate::context::Context;
+
+	impl label::ToFormatted for Xp {
+		#[allow(clippy::cast_precision_loss)]
+		fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+			let xp = self.0;
+
+			Cow::Owned(format!("{} XP", xp.to_formatted(ctx)))
+		}
 	}
 }

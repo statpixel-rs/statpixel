@@ -1,7 +1,3 @@
-use std::borrow::Cow;
-
-use translate::context::Context;
-
 #[derive(bincode::Encode, bincode::Decode, Debug, Clone, Copy, Default, PartialEq)]
 pub struct InverseBool(pub bool);
 
@@ -26,12 +22,19 @@ impl serde::Serialize for InverseBool {
 }
 
 #[cfg(feature = "locale")]
-impl label::ToFormatted for InverseBool {
-	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
-		if self.0 {
-			false.to_formatted(ctx)
-		} else {
-			true.to_formatted(ctx)
+mod locale {
+	use super::*;
+
+	use std::borrow::Cow;
+	use translate::context::Context;
+
+	impl label::ToFormatted for InverseBool {
+		fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+			if self.0 {
+				false.to_formatted(ctx)
+			} else {
+				true.to_formatted(ctx)
+			}
 		}
 	}
 }

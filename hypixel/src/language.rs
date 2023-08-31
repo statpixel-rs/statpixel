@@ -1,7 +1,3 @@
-use std::borrow::Cow;
-
-use translate::context::Context;
-
 #[derive(
 	serde::Deserialize,
 	serde::Serialize,
@@ -45,37 +41,44 @@ pub enum Language {
 }
 
 #[cfg(feature = "locale")]
-impl label::ToFormatted for Language {
-	fn to_formatted<'t, 'c: 't>(&'t self, _ctx: &'c Context<'c>) -> Cow<'t, str> {
-		use Language::*;
+mod locale {
+	use super::*;
 
-		match self {
-			English => "English".into(),
-			ChineseSimplified => "Chinese Simplified".into(),
-			ChineseTraditional => "Chinese Traditional".into(),
-			Czech => "Czech".into(),
-			Danish => "Danish".into(),
-			Dutch => "Dutch".into(),
-			Finnish => "Finnish".into(),
-			French => "French".into(),
-			German => "German".into(),
-			Greek => "Greek".into(),
-			Hungarian => "Hungarian".into(),
-			Italian => "Italian".into(),
-			Japanese => "Japanese".into(),
-			Korean => "Korean".into(),
-			Norwegian => "Norwegian".into(),
-			Pirate => "Pirate".into(),
-			Polish => "Polish".into(),
-			PortugueseBr => "Portuguese (BR)".into(),
-			PortuguesePt => "Portuguese (PT)".into(),
-			Romanian => "Romanian".into(),
-			Russian => "Russian".into(),
-			Spanish => "Spanish".into(),
-			Swedish => "Swedish".into(),
-			Turkish => "Turkish".into(),
-			Ukrainian => "Ukrainian".into(),
-			Unknown => "Unknown".into(),
+	use std::borrow::Cow;
+	use translate::context::Context;
+
+	impl label::ToFormatted for Language {
+		fn to_formatted<'t, 'c: 't>(&'t self, _ctx: &'c Context<'c>) -> Cow<'t, str> {
+			use Language::*;
+
+			match self {
+				English => "English".into(),
+				ChineseSimplified => "Chinese Simplified".into(),
+				ChineseTraditional => "Chinese Traditional".into(),
+				Czech => "Czech".into(),
+				Danish => "Danish".into(),
+				Dutch => "Dutch".into(),
+				Finnish => "Finnish".into(),
+				French => "French".into(),
+				German => "German".into(),
+				Greek => "Greek".into(),
+				Hungarian => "Hungarian".into(),
+				Italian => "Italian".into(),
+				Japanese => "Japanese".into(),
+				Korean => "Korean".into(),
+				Norwegian => "Norwegian".into(),
+				Pirate => "Pirate".into(),
+				Polish => "Polish".into(),
+				PortugueseBr => "Portuguese (BR)".into(),
+				PortuguesePt => "Portuguese (PT)".into(),
+				Romanian => "Romanian".into(),
+				Russian => "Russian".into(),
+				Spanish => "Spanish".into(),
+				Swedish => "Swedish".into(),
+				Turkish => "Turkish".into(),
+				Ukrainian => "Ukrainian".into(),
+				Unknown => "Unknown".into(),
+			}
 		}
 	}
 }

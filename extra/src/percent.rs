@@ -1,7 +1,3 @@
-use std::borrow::Cow;
-
-use translate::context::Context;
-
 macro_rules! impl_percent {
 	($name: ident, $ty: ty) => {
 		#[derive(bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq)]
@@ -9,10 +5,13 @@ macro_rules! impl_percent {
 
 		#[cfg(feature = "locale")]
 		impl label::ToFormatted for $name {
-			fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+			fn to_formatted<'t, 'c: 't>(
+				&'t self,
+				ctx: &'c translate::context::Context<'c>,
+			) -> std::borrow::Cow<'t, str> {
 				let percent = self.0;
 
-				Cow::Owned(format!("{}%", percent.to_formatted(ctx)))
+				std::borrow::Cow::Owned(format!("{}%", percent.to_formatted(ctx)))
 			}
 		}
 

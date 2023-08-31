@@ -3,7 +3,15 @@ pub mod context;
 
 #[cfg(all(feature = "context", not(feature = "data")))]
 pub mod context {
-	pub struct Context;
+	use std::marker::PhantomData;
+
+	pub struct Context<'c>(PhantomData<&'c ()>);
+
+	impl Context<'_> {
+		pub fn new() -> Self {
+			Self(PhantomData)
+		}
+	}
 }
 
 #[cfg(all(feature = "locale", feature = "context", feature = "data"))]

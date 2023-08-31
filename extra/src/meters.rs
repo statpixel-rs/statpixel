@@ -1,10 +1,6 @@
-use std::{
-	borrow::Cow,
-	ops::{Add, Sub},
-};
+use std::ops::{Add, Sub};
 
 use serde::Deserializer;
-use translate::context::Context;
 
 #[derive(
 	bincode::Encode, bincode::Decode, Clone, Copy, Default, PartialEq, Eq, PartialOrd, Ord,
@@ -68,15 +64,22 @@ impl From<Meters> for f64 {
 }
 
 #[cfg(feature = "locale")]
-impl label::ToFormatted for Meters {
-	#[allow(clippy::cast_precision_loss)]
-	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
-		let m = self.0;
+mod locale {
+	use super::*;
 
-		if let 0..1_000 = m {
-			return Cow::Owned(format!("{}m", m.to_formatted(ctx)));
+	use std::borrow::Cow;
+	use translate::context::Context;
+
+	impl label::ToFormatted for Meters {
+		#[allow(clippy::cast_precision_loss)]
+		fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c Context<'c>) -> Cow<'t, str> {
+			let m = self.0;
+
+			if let 0..1_000 = m {
+				return Cow::Owned(format!("{}m", m.to_formatted(ctx)));
+			}
+
+			Cow::Owned(format!("{}km", (m as f64 / 1_000.).to_formatted(ctx)))
 		}
-
-		Cow::Owned(format!("{}km", (m as f64 / 1_000.).to_formatted(ctx)))
 	}
 }
