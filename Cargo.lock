@@ -70,7 +70,7 @@ checksum = "15c4c2c83f81532e5845a733998b6971faca23490340a418e9b72a3ec9de12ea"
 
 [[package]]
 name = "api"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "base64 0.21.3",
  "bincode",
@@ -885,7 +885,7 @@ checksum = "c2e66c9d817f1720209181c316d28635c050fa304f9c79e47a520882661b7308"
 
 [[package]]
 name = "database"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "chrono",
  "diesel",
@@ -935,7 +935,7 @@ dependencies = [
 
 [[package]]
 name = "derive"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "darling 0.20.3",
  "minecraft",
@@ -1137,7 +1137,7 @@ checksum = "0206175f82b8d6bf6652ff7d71a1e27fd2e4efde587fd368662814d6ec1d9ce0"
 
 [[package]]
 name = "extra"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "bincode",
  "label",
@@ -1694,7 +1694,7 @@ dependencies = [
 
 [[package]]
 name = "hypixel"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "bincode",
  "chrono",
@@ -1749,7 +1749,7 @@ dependencies = [
 
 [[package]]
 name = "image"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "once_cell",
  "skia-safe",
@@ -1913,7 +1913,7 @@ checksum = "4e28ab1dc35e09d60c2b8c90d12a9a8d9666c876c10a3739a3196db0103b6043"
 
 [[package]]
 name = "label"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "chrono",
  "minecraft",
@@ -2055,7 +2055,7 @@ dependencies = [
 
 [[package]]
 name = "minecraft"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "bincode",
  "bitcode",
@@ -3388,7 +3388,7 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
 name = "statpixel"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "api",
  "axum",
@@ -3880,7 +3880,7 @@ dependencies = [
 
 [[package]]
 name = "translate"
-version = "0.31.0"
+version = "0.32.0"
 dependencies = [
  "base64 0.21.3",
  "bincode",

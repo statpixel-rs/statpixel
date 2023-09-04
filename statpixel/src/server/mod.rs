@@ -4,7 +4,6 @@ mod builder;
 mod error;
 mod extract;
 mod image;
-mod metrics;
 mod topgg;
 mod tracks;
 mod vendor;
@@ -40,13 +39,14 @@ pub async fn run(data: Data) {
 	let app = Router::new()
 		.route("/internal/vote", post(topgg::add_vote))
 		.route("/image/:id", get(image::get))
-		.route("/metrics", get(metrics::get))
 		.route("/auth/login", get(auth::login))
 		.route("/auth/me", get(auth::me).patch(auth::update_me))
 		.route("/builder/preview", post(builder::preview))
 		.route("/builder/test", post(builder::get))
 		.route("/tracks", get(tracks::get).delete(tracks::delete))
+		.route("/tracks/:uuid", post(tracks::create))
 		.route("/boosts", get(boosts::get).delete(boosts::delete))
+		.route("/boosts/:guildId", post(boosts::create))
 		.layer(
 			ServiceBuilder::new()
 				.layer(HandleErrorLayer::new(|e: BoxError| async move {
@@ -62,16 +62,9 @@ pub async fn run(data: Data) {
 		.layer(ServiceBuilder::new().layer(CompressionLayer::new()))
 		.layer(
 			CorsLayer::new()
-				.allow_methods(Any)
 				.allow_headers([AUTHORIZATION, CONTENT_TYPE])
-				.allow_origin(
-					/*#[cfg(not(debug_assertions))]
-					"https://statpixel.xyz"
-						.parse::<axum::http::HeaderValue>()
-						.unwrap(),
-					#[cfg(debug_assertions)]*/
-					Any,
-				),
+				.allow_methods(Any)
+				.allow_origin(Any),
 		)
 		.with_state(Arc::new(data));
 

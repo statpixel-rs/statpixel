@@ -2,7 +2,12 @@
 
 use std::sync::Arc;
 
-use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
+use axum::{
+	extract::{Path, State},
+	http::StatusCode,
+	response::IntoResponse,
+	Json,
+};
 use axum_extra::extract::WithRejection;
 use chrono::{DateTime, Utc};
 use database::schema::{boost, user};
@@ -101,4 +106,27 @@ pub async fn delete(
 	}
 
 	Ok(StatusCode::OK.into_response())
+}
+
+pub async fn create(
+	State(state): State<Arc<super::Data>>,
+	claims: super::auth::Claims,
+	Path(guild_id): Path<u64>,
+) -> Result<impl IntoResponse, StatusCode> {
+	diesel::insert_into(boost::table)
+		.values((
+			boost::user_id.eq(claims.id as i64),
+			boost::guild_id.eq(guild_id as i64),
+		))
+		.execute(
+			&mut state
+				.pool
+				.get()
+				.await
+				.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?,
+		)
+		.await
+		.map_err(|_| StatusCode::CONFLICT)?;
+
+	Ok(())
 }

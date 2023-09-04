@@ -1,6 +1,11 @@
 use std::sync::Arc;
 
-use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
+use axum::{
+	extract::{Path, State},
+	http::StatusCode,
+	response::IntoResponse,
+	Json,
+};
 use axum_extra::extract::WithRejection;
 use chrono::{DateTime, Utc};
 use database::schema::{track, user};
@@ -18,11 +23,16 @@ pub struct Track {
 	pub state: i16,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize)]
 pub struct TrackInput {
 	pub guild_id: Option<u64>,
 	pub channel_id: u64,
 	pub uuid: Uuid,
+}
+
+#[derive(Deserialize)]
+pub struct CreateTrackInput {
+	pub channel_id: u64,
 }
 
 pub async fn get(
@@ -117,4 +127,30 @@ pub async fn delete(
 	}
 
 	Ok(StatusCode::OK.into_response())
+}
+
+pub async fn create(
+	State(state): State<Arc<super::Data>>,
+	claims: super::auth::Claims,
+	Path(uuid): Path<Uuid>,
+	WithRejection(Json(track), _): super::extract::Json<CreateTrackInput>,
+) -> Result<impl IntoResponse, StatusCode> {
+	diesel::insert_into(track::table)
+		.values((
+			track::user_id.eq(claims.id as i64),
+			track::guild_id.eq(None::<i64>),
+			track::channel_id.eq(track.channel_id as i64),
+			track::uuid.eq(uuid),
+		))
+		.execute(
+			&mut state
+				.pool
+				.get()
+				.await
+				.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?,
+		)
+		.await
+		.map_err(|_| StatusCode::CONFLICT)?;
+
+	Ok(())
 }
