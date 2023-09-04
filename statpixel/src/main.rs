@@ -230,7 +230,7 @@ async fn main() {
 			.expect("TOPGG_TOKEN not set")
 			.as_str();
 
-		let token = HeaderValue::from_str(format!("Bearer {}", token)).unwrap();
+		let token = HeaderValue::from_str(&format!("Bearer {}", token)).unwrap();
 
 		loop {
 			if let Err(e) = stats::post(&token).await {
