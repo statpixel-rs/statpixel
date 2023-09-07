@@ -2137,6 +2137,7 @@ games = Kamper
 score = Poengsum
 created-at = Opprettet den
 experience = Erfaring
+joined-at = Ble med på
 
 yes = Ja
 no = Nei
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:klokke:1113624864272683060> Viser statistikk fra {$at
 showing-guild-statistics-at = Viser guildstatistikk fra {$at}.
 
 error-session-not-found = En økt med den angitte IDen kunne ikke bli funnet.
+error-session-already-exists = En økt med det angitte navnet har allerede blitt opprettet av deg.
 
 session-deleted = Økten med IDen **`{$id}`** har blitt slettet.
 session-created-title = Økt opprettet
@@ -2638,6 +2640,8 @@ session-create = opprett
   .description = Opprett en økt for en spiller
   .player = spiller
   .player-description = Minecraft-brukernavn eller UUID
+  .name = navn
+  .name-description = Navnet på økten
 
 session-delete = slett
   .description = Slett en økt

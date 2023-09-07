@@ -19,6 +19,7 @@ pub async fn create(
 	#[max_length = 36]
 	#[autocomplete = "crate::commands::autocomplete_username"]
 	player: Option<String>,
+	#[max_length = 32] name: Option<String>,
 ) -> Result<(), Error> {
 	let ctx = &context::Context::from_poise(&ctx);
 	let uuid = util::parse_uuid(player.as_deref());
@@ -27,12 +28,25 @@ pub async fn create(
 
 	player.increase_searches(ctx).await?;
 
-	let id = snapshot::user::insert_with_session(ctx, &player, &data).await?;
+	let id = match snapshot::user::insert_with_session(ctx, &player, &data, name.as_deref()).await {
+		Ok(id) => id,
+		Err(Error::Diesel(diesel::result::Error::DatabaseError(
+			diesel::result::DatabaseErrorKind::UniqueViolation,
+			_,
+		))) => {
+			return Err(Error::SessionAlreadyExists);
+		}
+		Err(e) => return Err(e),
+	};
 
 	ctx.send(
 		success_embed(
 			tr(ctx, "session-created-title"),
-			tr_fmt!(ctx, "session-created", username: data.username.as_str(), id: id.to_string()),
+			tr_fmt!(
+				ctx, "session-created",
+				username: data.username.as_str(),
+				player: name.map_or_else(|| id.to_string(), |n| format!("#{}", n))
+			),
 		)
 		.content(crate::tip::random(ctx)),
 	)
@@ -118,26 +132,41 @@ macro_rules! command {
 			)]
 			pub async fn command(
 				ctx: $crate::Context<'_>,
-				#[min_length = 32]
-				#[max_length = 36]
-				session: ::std::string::String,
+				#[max_length = 36] session: String,
 				mode: Option<$mode>,
 			) -> Result<(), ::translate::Error> {
 				let ctx = &context::Context::from_poise(&ctx);
-				let uuid = util::parse_uuid(Some(session.as_str()))
-					.ok_or_else(|| ::translate::Error::InvalidUuid(session))?;
+				let id = if session.starts_with('#') {
+					None
+				} else {
+					let Some(id) = util::parse_uuid(Some(session.as_str())) else {
+						return Err(::translate::Error::InvalidUuid(session));
+					};
 
-				let Some(player_uuid) = session::table
-					.filter(session::id.eq(uuid))
-					.select(session::uuid)
-					.get_result::<uuid::Uuid>(&mut ctx.data().pool.get().await?)
-					.await
-					.optional()?
-				else {
+					Some(id)
+				};
+
+				let result = if let Some(id) = id {
+					session::table
+						.filter(session::id.eq(id))
+						.select((session::uuid, session::id))
+						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
+						.await
+						.optional()?
+				} else {
+					session::table
+						.filter(session::name.eq(&session.as_str()[1..]))
+						.select((session::uuid, session::id))
+						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
+						.await
+						.optional()?
+				};
+
+				let Some((uuid, session_id)) = result else {
 					return Err(Error::SessionNotFound);
 				};
 
-				crate::commands::snapshot::session::command::<$game>(ctx, uuid, player_uuid, mode)
+				crate::commands::snapshot::session::command::<$game>(ctx, session_id, uuid, mode)
 					.await
 			}
 		}

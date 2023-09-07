@@ -114,6 +114,7 @@ diesel::table! {
 		uuid -> Uuid,
 		kind -> Int2,
 		created_at -> Timestamptz,
+		name -> Nullable<Text>,
 	}
 }
 

@@ -2136,6 +2136,7 @@ games = ゲーム数
 score = スコア
 created-at = 作成日時
 experience = 経験値
+joined-at = 参加日時
 
 yes = はい
 no = いいえ
@@ -2618,6 +2619,7 @@ showing-statistics-at = <a:clock:1113624864272683060> {$at}からの統計を表
 showing-guild-statistics-at = <a:clock:1113624864272683060> {$at}からのギルドの統計を表示しています。
 
 error-session-not-found = 指定されたIDのセッションが見つかりませんでした。
+error-session-already-exists = 指定された名前のセッションはすでに作成されています。
 
 session-deleted = ID **`{$id}`** のセッションは削除されました。
 session-created-title = セッションが作成されました
@@ -2637,6 +2639,8 @@ session-create = 作成する
   .description = プレーヤーのためにセッションを作成します
   .player = プレーヤー
   .player-description = Minecraftのユーザー名またはUUID
+  .name = 名前
+  .name-description = セッションの名前
 
 session-delete = 削除する
   .description = セッションを削除します

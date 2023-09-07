@@ -2137,6 +2137,7 @@ games = Pelit
 score = Pisteet
 created-at = Luotu
 experience = Kokemus
+joined-at = Liittynyt
 
 yes = Kyllä
 no = Ei
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:kello:1113624864272683060> Näytetään tilastoja koh
 showing-guild-statistics-at = Näytetään killan tilastoja kohteesta {$at}.
 
 error-session-not-found = Istuntoa annetulla tunnisteella ei löytynyt.
+error-session-already-exists = Istunto annetulla nimellä on jo luotu sinun toimestasi.
 
 session-deleted = Istunto tunnisteella **`{$id}`** on poistettu.
 session-created-title = Istunto luotu
@@ -2638,6 +2640,8 @@ session-create = luo
   .description = Luo istunto pelaajalle
   .player = pelaaja
   .player-description = Minecraftin käyttäjänimi tai UUID
+  .name = nimi
+  .name-description = Istunnon nimi
 
 session-delete = poista
   .description = Poista istunto

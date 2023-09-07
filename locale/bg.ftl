@@ -2150,6 +2150,7 @@ games = Игри
 score = Резултат
 created-at = Създадено на
 experience = Опит
+joined-at = Присъединил се на
 
 yes = Да
 no = Не
@@ -2635,6 +2636,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Показване на с
 showing-guild-statistics-at = Показване на статистиката на гилдията от {$at}.
 
 error-session-not-found = Сесия с предоставеното идентификационно номер не може да бъде намерена.
+error-session-already-exists = Сесия с предоставеното име вече е създадена от вас.
 
 session-deleted = Сесията с идентификационен номер **`{$id}`** беше изтрита.
 session-created-title = Създадена сесия
@@ -2654,6 +2656,8 @@ session-create = създай
   .description = Създай сесия за играч
   .player = играч
   .player-description = Потребителско име или UUID в Minecraft
+  .name = име
+  .name-description = Името на сесията
 
 session-delete = изтрий
   .description = Изтрий сесия

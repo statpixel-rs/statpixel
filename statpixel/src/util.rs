@@ -104,9 +104,9 @@ pub async fn get_player_from_input(
 			.and_then(|username| Username::try_from_str(username).ok()),
 		username,
 	) {
-		(Some(uuid), _, _) => {
+		(Some(id), _, _) => {
 			let session = session::table
-				.filter(session::id.eq(uuid))
+				.filter(session::id.eq(id))
 				.select((session::uuid, session::snapshot_id))
 				.get_result::<(Uuid, i64)>(&mut ctx.data().pool.get().await?)
 				.await
@@ -116,11 +116,27 @@ pub async fn get_player_from_input(
 				Player {
 					uuid: player_uuid,
 					username: None,
-					session: Some((uuid, snapshot_id)),
+					session: Some((id, snapshot_id)),
 				}
 			} else {
-				Player::from_uuid(&uuid).await?
+				Player::from_uuid(&id).await?
 			})
+		}
+		(_, _, Some(name)) if name.starts_with('#') => {
+			let session = session::table
+				.filter(
+					session::user_id
+						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.0.get() as i64),
+				)
+				.filter(session::name.eq(&name[1..]))
+				.select((session::uuid, session::id, session::snapshot_id))
+				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.await?;
+
+			let mut player = Player::from_uuid(&session.0).await?;
+
+			player.session = Some((session.1, session.2));
+			Ok(player)
 		}
 		(_, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
@@ -154,7 +170,39 @@ pub async fn get_player_with_username_from_input(
 			.and_then(|username| Username::try_from_str(username).ok()),
 		username,
 	) {
-		(Some(uuid), _, _) => Ok(Player::from_uuid(&uuid).await?),
+		(Some(id), _, _) => {
+			let session = session::table
+				.filter(session::id.eq(id))
+				.select((session::uuid, session::snapshot_id))
+				.get_result::<(Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.await
+				.optional()?;
+
+			Ok(if let Some((player_uuid, snapshot_id)) = session {
+				let mut player = Player::from_uuid(&player_uuid).await?;
+
+				player.session = Some((id, snapshot_id));
+				player
+			} else {
+				Player::from_uuid(&id).await?
+			})
+		}
+		(_, _, Some(name)) if name.starts_with('#') => {
+			let session = session::table
+				.filter(
+					session::user_id
+						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.0.get() as i64),
+				)
+				.filter(session::name.eq(&name[1..]))
+				.select((session::uuid, session::id, session::snapshot_id))
+				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.await?;
+
+			let mut player = Player::from_uuid(&session.0).await?;
+
+			player.session = Some((session.1, session.2));
+			Ok(player)
+		}
 		(_, Some(username), _) => Ok(Player::from_username(username.as_str()).await?),
 		(_, None, Some(username)) => Err(Error::InvalidUsername(username)),
 		_ => {
@@ -374,6 +422,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 			}
 		},
 		Error::SessionNotFound => tr(ctx, "error-session-not-found"),
+		Error::SessionAlreadyExists => tr(ctx, "error-session-already-exists"),
 		Error::NotLinked => tr(ctx, "error-not-linked"),
 		Error::InvalidUuid(ref uuid) => {
 			tr_fmt!(ctx, "error-invalid-uuid", uuid: uuid.to_string())

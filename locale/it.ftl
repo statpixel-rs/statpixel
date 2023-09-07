@@ -2137,6 +2137,7 @@ games = Partite
 score = Punteggio
 created-at = Creato il
 experience = Esperienza
+last-game = Ultima partita
 
 yes = Sì
 no = No
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Mostrando le statistiche d
 showing-guild-statistics-at = Mostrando le statistiche della gilda da {$at}.
 
 error-session-not-found = Impossibile trovare una sessione con l'ID fornito.
+error-session-already-exists = Una sessione con il nome fornito è già stata creata da te.
 
 session-deleted = La sessione con l'ID **`{$id}`** è stata eliminata.
 session-created-title = Sessione creata
@@ -2638,6 +2640,8 @@ session-create = crea
   .description = Crea una sessione per un giocatore
   .player = giocatore
   .player-description = Nome utente o UUID di Minecraft
+  .name = nome
+  .name-description = Il nome della sessione
 
 session-delete = elimina
   .description = Elimina una sessione

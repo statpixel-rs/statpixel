@@ -16,7 +16,34 @@ pub async fn command<G: api::canvas::prelude::Game>(
 	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
 	match format {
-		format::Display::Image => {
+		format::Display::Compact if G::HAS_COMPACT => {
+			let (player, data, suffix) =
+				crate::commands::get_player_data_suffix(ctx, uuid, username).await?;
+
+			player.increase_searches(ctx).await?;
+
+			let attachments = G::condensed(ctx, family, &data, suffix.as_deref(), background)
+				.into_iter()
+				.map(|mut surface| {
+					CreateAttachment::bytes(
+						Cow::Owned(canvas::to_png(&mut surface)),
+						crate::IMAGE_NAME,
+					)
+				})
+				.collect::<Vec<_>>();
+
+			let (_, id) = G::Mode::as_root(ctx, player.uuid, None);
+			let mut reply = poise::CreateReply::new().content(format!(
+				"{}\n{}",
+				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				crate::tip::random(ctx),
+			));
+
+			reply.attachments = attachments;
+
+			ctx.send(reply).await?;
+		}
+		format::Display::Image | format::Display::Compact => {
 			let (player, data, session, skin, suffix) =
 				crate::commands::get_player_data_session_skin_suffix(ctx, uuid, username).await?;
 
@@ -46,33 +73,6 @@ pub async fn command<G: api::canvas::prelude::Game>(
 					.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
 			)
 			.await?;
-		}
-		format::Display::Compact => {
-			let (player, data, suffix) =
-				crate::commands::get_player_data_suffix(ctx, uuid, username).await?;
-
-			player.increase_searches(ctx).await?;
-
-			let attachments = G::condensed(ctx, family, &data, suffix.as_deref(), background)
-				.into_iter()
-				.map(|mut surface| {
-					CreateAttachment::bytes(
-						Cow::Owned(canvas::to_png(&mut surface)),
-						crate::IMAGE_NAME,
-					)
-				})
-				.collect::<Vec<_>>();
-
-			let (_, id) = G::Mode::as_root(ctx, player.uuid, None);
-			let mut reply = poise::CreateReply::new().content(format!(
-				"{}\n{}",
-				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
-				crate::tip::random(ctx),
-			));
-
-			reply.attachments = attachments;
-
-			ctx.send(reply).await?;
 		}
 		format::Display::Text => {
 			let (player, data) = commands::get_player_data(ctx, uuid, username).await?;

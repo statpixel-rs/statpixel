@@ -2137,6 +2137,7 @@ games = 對戰場次
 score = 分數
 created-at = 建立時間
 experience = 經驗值
+joined-at = 加入時間
 
 yes = 是
 no = 否
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:clock:1113624864272683060> 顯示 {$at} 的統計數�
 showing-guild-statistics-at = 顯示來自 {$at} 的公會統計數據。
 
 error-session-not-found = 無法找到提供的識別碼對應的會話。
+error-session-already-exists = 你已經建立了一個具有相同名稱的會話。
 
 session-deleted = ID 為 **`{$id}`** 的會話已被刪除。
 session-created-title = 會話已建立
@@ -2638,6 +2640,8 @@ session-create = 建立
   .description = 為玩家建立一個會話
   .player = 玩家
   .player-description = Minecraft 用戶名或 UUID
+  .name = 名稱
+  .name-description = 會話的名稱
 
 session-delete = 刪除
   .description = 刪除一個會話

@@ -2137,6 +2137,7 @@ games = Spel
 score = Poäng
 created-at = Skapad Datum
 experience = Erfarenhet
+joined-at = Ansluten Datum
 
 yes = Ja
 no = Nej
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:klocka:1113624864272683060> Visar statistik från {$a
 showing-guild-statistics-at = Visar guildstatistik från {$at}.
 
 error-session-not-found = En session med den angivna ID:t kunde inte hittas.
+error-session-already-exists = En session med det angivna namnet har redan skapats av dig.
 
 session-deleted = Sessionen med ID **`{$id}`** har blivit raderad.
 session-created-title = Skapad session
@@ -2638,6 +2640,8 @@ session-create = skapa
   .description = Skapa en session för en spelare
   .player = spelare
   .player-description = Minecraft-användarnamn eller UUID
+  .name = namn
+  .name-description = Sessionens namn
 
 session-delete = radera
   .description = Radera en session

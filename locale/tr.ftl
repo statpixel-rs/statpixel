@@ -2135,6 +2135,7 @@ games = Oyunlar
 score = Puan
 created-at = Oluşturulma Tarihi
 experience = Tecrübe
+joined-at = Katılma Tarihi
 
 yes = Evet
 no = Hayır
@@ -2617,6 +2618,7 @@ showing-statistics-at = <a:clock:1113624864272683060> {$at} tarihinden itibaren 
 showing-guild-statistics-at = {$at} tarihinden itibaren lonenin istatistiklerini gösteriyor.
 
 error-session-not-found = Sağlanan kimlikle bir oturum bulunamadı.
+error-session-already-exists = Sağlanan isimle zaten sizin tarafınızdan oluşturulmuş bir oturum var.
 
 session-deleted = Kimlik **`{$id}`** olan oturum silindi.
 session-created-title = Oturum oluşturuldu
@@ -2636,6 +2638,8 @@ session-create = oluştur
   .description = Bir oyuncu için oturum oluştur
   .player = oyuncu
   .player-description = Minecraft kullanıcı adı veya UUID
+  .name = isim
+  .name-description = Oluşturulacak oturumun adı
 
 session-delete = sil
   .description = Bir oturumu sil

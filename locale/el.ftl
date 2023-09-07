@@ -2137,6 +2137,7 @@ games = Παιχνίδια
 score = Σκορ
 created-at = Δημιουργήθηκε Στις
 experience = Εμπειρία
+joined-at = Εντάχθηκε Στις
 
 yes = Ναι
 no = Όχι
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Εμφάνιση στατ�
 showing-guild-statistics-at = Εμφάνιση στατιστικών συνδέσμου από τις {$at}.
 
 error-session-not-found = Δεν βρέθηκε συνεδρία με το παρεχόμενο αναγνωριστικό.
+error-session-already-exists = Μια συνεδρία με το παρεχόμενο όνομα έχει ήδη δημιουργηθεί από εσάς.
 
 session-deleted = Η συνεδρία με το αναγνωριστικό **`{$id}`** έχει διαγραφεί.
 session-created-title = Δημιουργήθηκε συνεδρία
@@ -2638,6 +2640,8 @@ session-create = δημιουργία
   .description = Δημιουργήστε μια συνεδρία για έναν παίκτη
   .player = παίκτης
   .player-description = Όνομα χρήστη ή UUID του Minecraft
+  .name = όνομα
+  .name-description = Το όνομα της συνεδρίας
 
 session-delete = διαγραφή
   .description = Διαγράψτε μια συνεδρία

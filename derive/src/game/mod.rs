@@ -1439,6 +1439,8 @@ impl ToTokens for GameInputReceiver {
 				})
 			};
 
+			let has_compact = modes.len() > 1;
+
 			quote! {
 				impl #game_ident {
 					pub fn from_kind<'t, 'c: 't>(
@@ -1527,6 +1529,7 @@ impl ToTokens for GameInputReceiver {
 
 				impl #api::canvas::prelude::Game for #game_ident {
 					type Mode = #mode_enum;
+					const HAS_COMPACT: bool = #has_compact;
 
 					fn condensed_diff(
 						ctx: &#translate::context::Context<'_>,

@@ -501,13 +501,27 @@ pub async fn member(
 		.push_right_post_draw(&preferred, Body::empty())
 		.push_down_start(
 			&shape::Bubble,
-			Body::from_bubble(
-				ctx,
-				family,
-				&guild.coins,
-				tr(ctx, "coins").as_ref(),
-				Paint::Gold,
-			),
+			Body::new(30., TextAlign::Center, family)
+				.extend(&[
+					Text {
+						text: tr(ctx, "joined-at").as_ref(),
+						paint: Paint::Gold,
+						font: MinecraftFont::Normal,
+						size: Some(20.),
+					},
+					Text {
+						text: "\n",
+						size: Some(20.),
+						..Default::default()
+					},
+					Text {
+						text: &member_data.joined_at.to_formatted(ctx),
+						paint: Paint::Gold,
+						font: MinecraftFont::Normal,
+						size: None,
+					},
+				])
+				.build(),
 		)
 		.push_right(
 			&shape::Bubble,

@@ -2137,6 +2137,7 @@ games = Igre
 score = Rezultat
 created-at = Kreirano
 experience = Iskustvo
+joined-at = Pridružen
 
 yes = Da
 no = Ne
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Prikazujem statistiku od {
 showing-guild-statistics-at = Prikazujem statistiku gilda od {$at}.
 
 error-session-not-found = Sjednica s navedenim identifikatorom nije pronađena.
+error-session-already-exists = Sjednica s navedenim imenom već je stvorena od strane vas.
 
 session-deleted = Sjednica s identifikatorom **`{$id}`** je izbrisana.
 session-created-title = Sjednica stvorena
@@ -2638,6 +2640,8 @@ session-create = stvori
   .description = Stvori sjednicu za igrača
   .player = igrač
   .player-description = Minecraft korisničko ime ili UUID
+  .name = ime
+  .name-description = Ime sjednice
 
 session-delete = izbriši
   .description = Izbriši sjednicu

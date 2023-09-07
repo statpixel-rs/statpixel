@@ -10,6 +10,7 @@ use crate::player::{self, data, status};
 
 #[allow(clippy::too_many_arguments)]
 pub trait Game {
+	const HAS_COMPACT: bool;
 	type Mode: Mode + Debug;
 
 	fn canvas_diff(

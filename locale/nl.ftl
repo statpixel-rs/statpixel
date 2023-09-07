@@ -2137,6 +2137,7 @@ games = Spellen
 score = Score
 created-at = Aangemaakt op
 experience = Ervaring
+joined-at = Toegetreden op
 
 yes = Ja
 no = Nee
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:klok:1113624864272683060> Statistieken weergeven vana
 showing-guild-statistics-at = Gildesstatistieken weergeven vanaf {$at}.
 
 error-session-not-found = Een sessie met de opgegeven id kon niet worden gevonden.
+error-session-already-exists = Er is al een sessie met de opgegeven naam door jou aangemaakt.
 
 session-deleted = De sessie met id **`{$id}`** is verwijderd.
 session-created-title = Sessie aangemaakt
@@ -2638,6 +2640,8 @@ session-create = aanmaken
   .description = Maak een sessie aan voor een speler
   .player = speler
   .player-description = Minecraft-gebruikersnaam of UUID
+  .name = naam
+  .name-description = De naam van de sessie
 
 session-delete = verwijderen
   .description = Verwijder een sessie

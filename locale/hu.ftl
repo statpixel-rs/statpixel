@@ -2133,6 +2133,7 @@ games = Meccsek
 score = Pontszám
 created-at = Létrehozva
 experience = Tapasztalat
+joined-at = Csatlakozott
 
 yes = Igen
 no = Nem
@@ -2615,6 +2616,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Statisztikák mutatása et
 showing-guild-statistics-at = Céh statisztikák mutatása ettől: {$at}.
 
 error-session-not-found = Nem található munkamenet a megadott azonosítóval.
+error-session-already-exists = Egy munkamenet már létezik ezzel a névvel.
 
 session-deleted = A(z) **`{$id}`** azonosítójú munkamenet törölve lett.
 session-created-title = Munkamenet létrehozva
@@ -2634,6 +2636,8 @@ session-create = létrehozás
   .description = Munkamenet létrehozása egy játékos számára
   .player = játékos
   .player-description = Minecraft felhasználónév vagy UUID
+  .name = név
+  .name-description = A munkamenet neve
 
 session-delete = törlés
   .description = Munkamenet törlése

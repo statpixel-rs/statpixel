@@ -105,6 +105,8 @@ pub enum Error {
 	NotImplemented,
 	#[error("The provided session was not found.")]
 	SessionNotFound,
+	#[error("The provided session name already exists.")]
+	SessionAlreadyExists,
 }
 
 #[derive(Debug, thiserror::Error)]

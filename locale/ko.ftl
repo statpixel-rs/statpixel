@@ -2133,6 +2133,7 @@ games = 게임 수
 score = 점수
 created-at = 생성일
 experience = 경험치
+joined-at = 가입일
 
 yes = 예
 no = 아니오
@@ -2615,6 +2616,7 @@ showing-statistics-at = <a:clock:1113624864272683060> {$at}의 통계를 보여�
 showing-guild-statistics-at = {$at}의 길드 통계를 보여줍니다.
 
 error-session-not-found = 제공된 ID로 세션이 찾을 수 없습니다.
+error-session-already-exists = 제공된 이름으로 세션이 이미 생성되었습니다.
 
 session-deleted = ID가 **`{$id}`** 인 세션이 삭제되었습니다.
 session-created-title = 세션이 생성되었습니다
@@ -2634,6 +2636,8 @@ session-create = 생성
   .description = 플레이어를 위한 세션 생성
   .player = 플레이어
   .player-description = Minecraft 사용자명 또는 UUID
+  .name = 이름
+  .name-description = 세션의 이름
 
 session-delete = 삭제
   .description = 세션 삭제

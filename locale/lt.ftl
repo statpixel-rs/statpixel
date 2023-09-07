@@ -2138,6 +2138,7 @@ games = Žaidimai
 score = Rezultatas
 created-at = Sukurtas
 experience = Patirtis
+joined-at = Prisijungė
 
 yes = Taip
 no = Ne
@@ -2620,6 +2621,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Rodo statistiką nuo {$at}
 showing-guild-statistics-at = Rodo gildijos statistiką nuo {$at}.
 
 error-session-not-found = Sesiijos pagal pateiktą ID nepavyko rasti.
+error-session-already-exists = Sesija su pateiktu pavadinimu jau buvo sukurta jūsų.
 
 session-deleted = Sesiija su ID **`{$id}`** buvo ištrinta.
 session-created-title = Sukurta sesija
@@ -2639,6 +2641,8 @@ session-create = sukurti
   .description = Sukurti sesiją žaidėjui
   .player = žaidėjas
   .player-description = Minecraft vartotojo vardas arba UUID
+  .name = pavadinimas
+  .name-description = Sesijos pavadinimas
 
 session-delete = ištrinti
   .description = Ištrinti sesiją

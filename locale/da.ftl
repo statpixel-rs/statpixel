@@ -2141,6 +2141,7 @@ games = Spil
 score = Score
 created-at = Oprettet Dato
 experience = Erfaring
+joined-at = Deltog Dato
 
 yes = Ja
 no = Nej
@@ -2623,6 +2624,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Viser statistik fra {$at}.
 showing-guild-statistics-at = Viser guild statistik fra {$at}.
 
 error-session-not-found = En session med det angivne id kunne ikke findes.
+error-session-already-exists = En session med det angivne navn er allerede blevet oprettet af dig.
 
 session-deleted = Sessionen med id **`{$id}`** er blevet slettet.
 session-created-title = Session oprettet
@@ -2642,6 +2644,8 @@ session-create = opret
   .description = Opret en session for en spiller
   .player = spiller
   .player-description = Minecraft-brugernavn eller UUID
+  .name = navn
+  .name-description = Navnet på sessionen
 
 session-delete = slet
   .description = Slet en session

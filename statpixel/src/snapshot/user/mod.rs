@@ -560,6 +560,7 @@ pub async fn insert_with_session(
 	ctx: &Context<'_>,
 	player: &Player,
 	data: &Data,
+	name: Option<&str>,
 ) -> Result<Uuid, Error> {
 	let encoded = encode(data)?;
 	let hash = fxhash::hash64(&encoded) as i64;
@@ -612,6 +613,7 @@ pub async fn insert_with_session(
 						session::user_id.eq(ctx.author().unwrap().id.0.get() as i64),
 						session::kind.eq(0),
 						session::uuid.eq(player.uuid),
+						session::name.eq(name),
 					))
 					.returning(session::id)
 					.get_result::<Uuid>(conn)

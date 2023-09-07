@@ -15,25 +15,36 @@ pub async fn list(
 	player: Option<Player>,
 	page: u32,
 ) -> Result<(), Error> {
-	let sessions: Vec<(uuid::Uuid, uuid::Uuid, DateTime<Utc>)> = if let Some(ref player) = player {
-		session::table
-			.select((session::id, session::uuid, session::created_at))
-			.filter(session::uuid.eq(player.uuid))
-			.order(session::created_at.desc())
-			.limit(10)
-			.offset(i64::from(page) * 10)
-			.get_results(&mut ctx.data().pool.get().await?)
-			.await?
-	} else {
-		session::table
-			.select((session::id, session::uuid, session::created_at))
-			.filter(session::user_id.eq(ctx.author().unwrap().id.0.get() as i64))
-			.order(session::created_at.desc())
-			.limit(10)
-			.offset(i64::from(page) * 10)
-			.get_results(&mut ctx.data().pool.get().await?)
-			.await?
-	};
+	let sessions: Vec<(uuid::Uuid, Option<String>, uuid::Uuid, DateTime<Utc>)> =
+		if let Some(ref player) = player {
+			session::table
+				.select((
+					session::id,
+					session::name,
+					session::uuid,
+					session::created_at,
+				))
+				.filter(session::uuid.eq(player.uuid))
+				.order(session::created_at.desc())
+				.limit(10)
+				.offset(i64::from(page) * 10)
+				.get_results(&mut ctx.data().pool.get().await?)
+				.await?
+		} else {
+			session::table
+				.select((
+					session::id,
+					session::name,
+					session::uuid,
+					session::created_at,
+				))
+				.filter(session::user_id.eq(ctx.author().unwrap().id.0.get() as i64))
+				.order(session::created_at.desc())
+				.limit(10)
+				.offset(i64::from(page) * 10)
+				.get_results(&mut ctx.data().pool.get().await?)
+				.await?
+		};
 
 	let embed = CreateEmbed::new()
 		.title(tr_fmt!(ctx, "session-list-title", page: page + 1))
@@ -44,10 +55,10 @@ pub async fn list(
 			Cow::Owned(
 				sessions
 					.into_iter()
-					.map(|(id, uuid, created_at)| {
+					.map(|(id, name, uuid, created_at)| {
 						format!(
 							"- [**`{}`**](https://namemc.com/profile/{}) - <t:{}:R>",
-							id,
+							name.unwrap_or_else(|| id.to_string()),
 							uuid,
 							created_at.timestamp()
 						)

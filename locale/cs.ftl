@@ -2151,6 +2151,7 @@ games = Hry
 score = Skóre
 created-at = Vytvořeno dne
 experience = Zkušenosti
+joined-at = Připojeno dne
 
 yes = Ano
 no = Ne
@@ -2636,6 +2637,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Zobrazení statistik od {$
 showing-guild-statistics-at = Zobrazení statistik cechu od {$at}.
 
 error-session-not-found = Relace s poskytnutým id nebyla nalezena.
+error-session-already-exists = Relace s poskytnutým jménem již byla vytvořena vámi.
 
 session-deleted = Relace s id **`{$id}`** byla smazána.
 session-created-title = Relace vytvořena
@@ -2655,6 +2657,8 @@ session-create = vytvořit
   .description = Vytvořit relaci pro hráče
   .player = hráč
   .player-description = Minecraft uživatelské jméno nebo UUID
+  .name = jméno
+  .name-description = Název relace
 
 session-delete = smazat
   .description = Smazat relaci

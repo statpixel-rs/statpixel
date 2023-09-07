@@ -2137,6 +2137,7 @@ games = Jocuri
 score = Scor
 created-at = Creat la
 experience = Experiență
+joined-at = Alăturat La
 
 yes = Da
 no = Nu
@@ -2619,6 +2620,7 @@ showing-statistics-at = <a:clock:1113624864272683060> Afișarea statisticilor de
 showing-guild-statistics-at = Afișarea statisticilor de la guildă din {$at}.
 
 error-session-not-found = O sesiune cu ID-ul furnizat nu a putut fi găsită.
+error-session-already-exists = O sesiune cu numele furnizat a fost deja creată de dvs.
 
 session-deleted = Sesiunea cu ID-ul **`{$id}`** a fost ștearsă.
 session-created-title = Sesiune creată
@@ -2638,6 +2640,8 @@ session-create = creare
   .description = Creați o sesiune pentru un jucător
   .player = jucător
   .player-description = Numele de utilizator sau UUID-ul Minecraft
+  .name = nume
+  .name-description = Numele sesiunii
 
 session-delete = ștergere
   .description = Ștergeți o sesiune

@@ -2157,6 +2157,7 @@ games = 游戏
 score = 得分
 created-at = 创建于
 experience = 经验值
+joined-at = 加入于
 
 yes = 是
 no = 否
@@ -2639,6 +2640,7 @@ showing-statistics-at = <a:clock:1113624864272683060> 正在显示来自 {$at} �
 showing-guild-statistics-at = 正在显示来自 {$at} 的公会统计数据。
 
 error-session-not-found = 无法找到提供的会话 ID。
+error-session-already-exists = 您已经创建了一个具有提供的名称的会话。
 
 session-deleted = ID 为 **`{$id}`** 的会话已被删除。
 session-created-title = 创建会话
@@ -2658,6 +2660,8 @@ session-create = 创建
   .description = 为玩家创建会话
   .player = 玩家
   .player-description = Minecraft 用户名或 UUID
+  .name = 名称
+  .name-description = 会话名称
 
 session-delete = 删除
   .description = 删除会话
