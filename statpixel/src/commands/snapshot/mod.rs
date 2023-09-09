@@ -251,6 +251,13 @@ macro_rules! commands {
 				$duration,
 				$name
 			);
+			command!(
+				stats::fishing::Fishing,
+				stats::fishing::FishingMode,
+				fishing,
+				$duration,
+				$name
+			);
 			guild_command!(guild, $duration, $name);
 		}
 	};

@@ -404,6 +404,12 @@ leaderboard = topplista
   .description = Visa topplistor för olika spel
   .board = tabell
   .board-description = Topplistan att visa
+  .guild = guild
+  .guild-description = Gildet att filtrera efter
+  .player = spelare
+  .player-description = Spelaren att hoppa till
+  .page = sida
+  .page-description = Sida att hoppa till
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Visa Prefix
 bronze-trophies = Brons Troféer
 silver-trophies = Silver Troféer
 gold-trophies = Guld Troféer
+laps-completed = Varv Slutförda
 
 turbokartracers-general = allmänt
   .description = Visa Turbo Kart Racers statistik
@@ -2808,3 +2815,91 @@ woolwars-session = session
   .session-description = Ett sessions-ID
   .mode = läge
   .mode-description = Det Wool Wars-läge att visa
+
+Water = Vatten
+Lava = Lava
+Ice = Is
+
+fish = Fisk
+junk = Skräp
+treasure = Skatt
+
+fishing-general = allmänt
+  .description = Visa fiskningsstatistik
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-from = från
+  .description = Visa utvecklingen av fiskningsstatistik sedan en specifik tidpunkt
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+  .time = tid
+  .time-description = Tiden att gå tillbaka till (1t 12m 5s)
+
+fishing-history = historia
+  .description = Visa utvecklingen av fiskningsstatistik över tid
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-project = projekt
+  .description = Projekt fiskningsstatistik framåt i tiden
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+  .statistic = statistik
+  .statistic-description = Fiskningsstatistik att projektionera
+  .value = värde
+  .value-description = Värdet av statistiken att projektionera till
+
+fishing-daily = dagligen
+  .description = Visa utvecklingen av fiskningsstatistik under den senaste dagen
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-weekly = veckovis
+  .description = Visa utvecklingen av fiskningsstatistik under den senaste veckan
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-monthly = månadsvis
+  .description = Visa utvecklingen av fiskningsstatistik under den senaste månaden
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-session = session
+  .description = Visa fiskningsframsteg för en spelare sedan sessionen startade
+  .session = session
+  .session-description = Ett sessions-ID
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-at = vid
+  .description = Visa fiskningsstatistik för en spelare vid en viss tidpunkt
+  .player = spelare
+  .player-description = Minecraft-spelare eller session
+  .time = tid
+  .time-description = Tiden att gå tillbaka till (1t 12m 5s)
+  .mode = läge
+  .mode-description = Fiskeläge att visa
+
+fishing-compare = jämför
+  .description = Jämför fiskningsstatistik för två spelare
+  .from = från
+  .from-description = Minecraft-spelare
+  .to = till
+  .to-description = Minecraft-spelare att jämföra med
+  .mode = läge
+  .mode-description = Fiskeläge att visa

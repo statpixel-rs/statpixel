@@ -404,6 +404,12 @@ leaderboard = κατάταξη
   .description = Δείτε την κατάταξη για διάφορα παιχνίδια
   .board = πίνακας
   .board-description = Ο πίνακας κατάταξης που θέλετε να δείτε
+  .guild = σύνδεσμος
+  .guild-description = Τα μέλη του συνδέσμου για φιλτράρισμα
+  .player = παίκτης
+  .player-description = Ο παίκτης που θέλετε να προσπεράσετε
+  .page = σελίδα
+  .page-description = Η σελίδα που θέλετε να προσπεράσετε
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Προβολή προθέματος
 bronze-trophies = Χάλκινα τρόπαια
 silver-trophies = Ασημένια τρόπαια
 gold-trophies = Χρυσά τρόπαια
+laps-completed = Πλήρωση γύρων
 
 turbokartracers-general = γενικά
   .description = Προβολή των στατιστικών Turbo Kart Racers
@@ -2808,3 +2815,91 @@ woolwars-session = συνεδρία
   .session-description = Ένα αναγνωριστικό συνεδρίας
   .mode = κατάσταση
   .mode-description = Η κατάσταση Wool Wars προς προβολή
+
+Water = Νερό
+Lava = Λάβα
+Ice = Πάγος
+
+fish = Ψάρι
+junk = Σκουπίδια
+treasure = Θησαυρός
+
+fishing-general = γενικό
+  .description = Προβολή στατιστικών ψαρέματος
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-from = από
+  .description = Προβολή ανάπτυξης στατιστικών ψαρέματος από συγκεκριμένη χρονική στιγμή
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+  .time = χρόνος
+  .time-description = Ο χρόνος προς επιστροφή (1ώ 12λ 5δ)
+
+fishing-history = ιστορία
+  .description = Προβολή ανάπτυξης στατιστικών ψαρέματος με την πάροδο του χρόνου
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-project = έργο
+  .description = Προβολή προβολής στατιστικών ψαρέματος στο μέλλον
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+  .statistic = στατιστική
+  .statistic-description = Η στατιστική ψαρέματος προς προβολή
+  .value = τιμή
+  .value-description = Η τιμή της στατιστικής προς προβολή
+
+fishing-daily = καθημερινά
+  .description = Προβολή ανάπτυξης στατιστικών ψαρέματος τις τελευταίες 24 ώρες
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-weekly = εβδομαδιαία
+  .description = Προβολή ανάπτυξης στατιστικών ψαρέματος την τελευταία εβδομάδα
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-monthly = μηνιαία
+  .description = Προβολή ανάπτυξης στατιστικών ψαρέματος τον τελευταίο μήνα
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-session = συνεδρία
+  .description = Εμφάνιση της πρόοδου ψαρέματος ενός παίκτη από την έναρξη της συνεδρίας
+  .session = συνεδρία
+  .session-description = Ένα αναγνωριστικό συνεδρίας
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-at = σε
+  .description = Εμφάνιση των στατιστικών ψαρέματος ενός παίκτη σε συγκεκριμένη στιγμή
+  .player = παίκτης
+  .player-description = Minecraft παίκτης ή συνεδρία
+  .time = χρόνος
+  .time-description = Ο χρόνος προς επιστροφή (1ώ 12λ 5δ)
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+fishing-compare = σύγκριση
+  .description = Σύγκριση των στατιστικών ψαρέματος δύο παικτών
+  .from = από
+  .from-description = Minecraft παίκτης
+  .to = σε
+  .to-description = Minecraft παίκτης για σύγκριση
+  .mode = λειτουργία
+  .mode-description = Η λειτουργία ψαρέματος προς προβολή

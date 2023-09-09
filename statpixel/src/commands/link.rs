@@ -5,7 +5,7 @@ use poise::serenity_prelude as serenity;
 use translate::{context, tr, tr_fmt};
 
 use crate::{
-	util::{self, error_embed, escape_username, success_embed},
+	util::{self, error_embed, success_embed},
 	Context, Error,
 };
 
@@ -62,7 +62,7 @@ pub async fn link(
 
 		ctx.send(success_embed(
 			tr(ctx, "linking-succeeded"),
-			tr_fmt!(ctx, "linking-succeeded-description", name: escape_username(player.username.as_deref().unwrap())),
+			tr_fmt!(ctx, "linking-succeeded-description", name: player.username.unwrap()),
 		))
 		.await?;
 	} else {
@@ -75,7 +75,7 @@ pub async fn link(
 				(_, Some(username)) => tr_fmt!(
 					ctx,
 					"linking-failed-username-description",
-					name: escape_username(&username)
+					name: username
 				),
 				(None, None) => tr(ctx, "linking-failed-description"),
 			},

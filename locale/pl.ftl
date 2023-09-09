@@ -404,6 +404,12 @@ leaderboard = tabela-wyników
   .description = Wyświetl tabelę wyników dla różnych gier
   .board = tabela
   .board-description = Tabela wyników do wyświetlenia
+  .guild = gildia
+  .guild-description = Członkowie gildii do filtrowania
+  .player = gracz
+  .player-description = Gracz do pominięcia
+  .page = strona
+  .page-description = Strona do pominięcia
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Pokaż przedrostek
 bronze-trophies = Brązowe trofea
 silver-trophies = Srebrne trofea
 gold-trophies = Złote trofea
+laps-completed = Ukończone okrążenia
 
 turbokartracers-general = ogólne
   .description = Wyświetl statystyki Turbo Kart Racers
@@ -2808,3 +2815,91 @@ woolwars-session = sesja
   .session-description = Identyfikator sesji
   .mode = tryb
   .mode-description = Tryb Wool Wars do wyświetlenia
+
+Water = Woda
+Lava = Lawa
+Ice = Lód
+
+fish = Ryba
+junk = Niepotrzebne
+treasure = Skarb
+
+fishing-general = ogólne
+  .description = Wyświetl statystyki wędkarstwa
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-from = od
+  .description = Wyświetl rozwój statystyk wędkarstwa od określonego czasu
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+  .time = czas
+  .time-description = Ilość czasu, na jaki chcesz wrócić (1h 12m 5s)
+
+fishing-history = historia
+  .description = Wyświetl rozwój statystyk wędkarstwa w czasie
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-project = prognoza
+  .description = Prognozuj statystyki wędkarstwa na przyszłość
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+  .statistic = statystyka
+  .statistic-description = Statystyka wędkarstwa do prognozowania
+  .value = wartość
+  .value-description = Wartość statystyki do prognozowania
+
+fishing-daily = dziennie
+  .description = Wyświetl rozwój statystyk wędkarstwa z ostatniego dnia
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-weekly = tygodniowo
+  .description = Wyświetl rozwój statystyk wędkarstwa z ostatniego tygodnia
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-monthly = miesięcznie
+  .description = Wyświetl rozwój statystyk wędkarstwa z ostatniego miesiąca
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-session = sesja
+  .description = Pokaż postęp wędkarstwa gracza od początku sesji
+  .session = sesja
+  .session-description = Identyfikator sesji
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-at = o
+  .description = Pokaż statystyki wędkarstwa gracza w określonym punkcie czasu
+  .player = gracz
+  .player-description = Gracz lub sesja Minecraft
+  .time = czas
+  .time-description = Ilość czasu, na jaki chcesz wrócić (1h 12m 5s)
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia
+
+fishing-compare = porównaj
+  .description = Porównaj statystyki wędkarstwa dwóch graczy
+  .from = od
+  .from-description = Gracz Minecraft
+  .to = do
+  .to-description = Gracz Minecraft do porównania
+  .mode = tryb
+  .mode-description = Tryb wędkarstwa do wyświetlenia

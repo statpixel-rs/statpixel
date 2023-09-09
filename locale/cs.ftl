@@ -408,6 +408,12 @@ leaderboard = žebříček
   .description = Zobrazit žebříček pro různé hry
   .board = žebříček
   .board-description = Žebříček k zobrazení
+  .guild = cech
+  .guild-description = Členové cechu k filtrování
+  .player = hráč
+  .player-description = Hráč, na kterého se má přeskočit
+  .page = stránka
+  .page-description = Stránka, na kterou se má přeskočit
 
 # /network
 
@@ -1651,6 +1657,7 @@ show-prefix = Zobrazit Předponu
 bronze-trophies = Bronzové Trofeje
 silver-trophies = Stříbrné Trofeje
 gold-trophies = Zlaté Trofeje
+laps-completed = Dokončené Kola
 
 turbokartracers-general = obecné
   .description = Zobrazit statistiky Turbo Kart Racers
@@ -2825,3 +2832,91 @@ woolwars-session = relace
   .session-description = ID relace
   .mode = režim
   .mode-description = Režim Wool Wars k zobrazení
+
+Water = Voda
+Lava = Láva
+Ice = Led
+
+fish = Ryba
+junk = Šrot
+treasure = Poklad
+
+fishing-general = obecné
+  .description = Zobrazit statistiky rybaření
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-from = od
+  .description = Zobrazit vývoj statistik rybaření od určitého času
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+  .time = čas
+  .time-description = Doba zpět (1h 12m 5s)
+
+fishing-history = historie
+  .description = Zobrazit vývoj statistik rybaření v čase
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-project = projekt
+  .description = Projevit statistiky rybaření do budoucna
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+  .statistic = statistika
+  .statistic-description = Statistika rybaření k projekci
+  .value = hodnota
+  .value-description = Hodnota statistiky k projekci
+
+fishing-daily = denně
+  .description = Zobrazit vývoj statistik rybaření za poslední den
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-weekly = týdně
+  .description = Zobrazit vývoj statistik rybaření za poslední týden
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-monthly = měsíčně
+  .description = Zobrazit vývoj statistik rybaření za poslední měsíc
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-session = relace
+  .description = Zobrazit postup rybaření hráče od zahájení relace
+  .session = relace
+  .session-description = ID relace
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-at = v
+  .description = Zobrazit statistiky rybaření hráče v určitý okamžik
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace
+  .time = čas
+  .time-description = Doba zpět (1h 12m 5s)
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení
+
+fishing-compare = porovnat
+  .description = Porovnat statistiky rybaření dvou hráčů
+  .from = od
+  .from-description = Minecraft hráč
+  .to = do
+  .to-description = Minecraft hráč ke srovnání
+  .mode = režim
+  .mode-description = Režim rybaření k zobrazení

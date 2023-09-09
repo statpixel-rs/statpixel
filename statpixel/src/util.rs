@@ -56,10 +56,6 @@ pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply {
 	)
 }
 
-pub fn escape_username(username: &str) -> String {
-	username.replace('_', "\\_")
-}
-
 pub async fn get_image_options_from_input(
 	ctx: &Context<'_>,
 ) -> (format::Display, Family, Option<Color>) {

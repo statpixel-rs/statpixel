@@ -408,6 +408,12 @@ leaderboard = clasificación
   .description = Ver la clasificación para varios juegos
   .board = tabla
   .board-description = La tabla de clasificación a ver
+  .guild = gremio
+  .guild-description = Los miembros del gremio para filtrar
+  .player = jugador
+  .player-description = El jugador para saltar
+  .page = página
+  .page-description = La página para saltar
 
 # /red
 
@@ -1648,6 +1654,7 @@ show-prefix = Mostrar Prefijo
 bronze-trophies = Trofeos de Bronce
 silver-trophies = Trofeos de Plata
 gold-trophies = Trofeos de Oro
+laps-completed = Vueltas Completadas
 
 turbokartracers-general = general
   .description = Ver estadísticas de Turbo Kart Racers
@@ -2833,3 +2840,91 @@ woolwars-session = sesión
   .session-description = Un ID de sesión
   .mode = modo
   .mode-description = El modo de Wool Wars que deseas ver
+
+Water = Agua
+Lava = Lava
+Ice = Hielo
+
+fish = Pez
+junk = Basura
+treasure = Tesoro
+
+fishing-general = general
+  .description = Ver estadísticas de pesca
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-from = desde
+  .description = Ver el desarrollo de estadísticas de pesca desde un momento específico
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+  .time = tiempo
+  .time-description = La cantidad de tiempo a retroceder (1h 12m 5s)
+
+fishing-history = historial
+  .description = Ver el desarrollo de estadísticas de pesca a lo largo del tiempo
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-project = proyecto
+  .description = Proyectar estadísticas de pesca hacia el futuro
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+  .statistic = estadística
+  .statistic-description = La estadística de pesca a proyectar
+  .value = valor
+  .value-description = El valor de la estadística a proyectar
+
+fishing-daily = diario
+  .description = Ver el desarrollo de estadísticas de pesca en el último día
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-weekly = semanal
+  .description = Ver el desarrollo de estadísticas de pesca en la última semana
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-monthly = mensual
+  .description = Ver el desarrollo de estadísticas de pesca en el último mes
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-session = sesión
+  .description = Mostrar la progresión de pesca de un jugador desde el inicio de la sesión
+  .session = sesión
+  .session-description = Un ID de sesión
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-at = en
+  .description = Mostrar las estadísticas de pesca de un jugador en un momento específico
+  .player = jugador
+  .player-description = Jugador de Minecraft o sesión
+  .time = tiempo
+  .time-description = La cantidad de tiempo a retroceder (1h 12m 5s)
+  .mode = modo
+  .mode-description = El modo de pesca a ver
+
+fishing-compare = comparar
+  .description = Comparar las estadísticas de pesca de dos jugadores
+  .from = desde
+  .from-description = Jugador de Minecraft
+  .to = a
+  .to-description = Jugador de Minecraft para comparar
+  .mode = modo
+  .mode-description = El modo de pesca a ver

@@ -404,6 +404,12 @@ leaderboard = rangering
   .description = Se rangeringen for ulike spill
   .board = liste
   .board-description = Rangeringslisten som skal vises
+  .guild = guild
+  .guild-description = Guild-medlemmene å filtrere etter
+  .player = spiller
+  .player-description = Spilleren å hoppe til
+  .page = side
+  .page-description = Siden å hoppe til
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Vis prefiks
 bronze-trophies = Bronse-trofeer
 silver-trophies = Sølv-trofeer
 gold-trophies = Gull-trofeer
+laps-completed = Runder fullført
 
 turbokartracers-general = generelt
   .description = Vis Turbo Kart Racers-statistikk
@@ -2808,3 +2815,91 @@ woolwars-session = økt
   .session-description = En økt-ID
   .mode = modus
   .mode-description = Wool Wars-modusen som skal vises
+
+Water = Vann
+Lava = Lava
+Ice = Is
+
+fish = Fisk
+junk = Søppel
+treasure = Skatt
+
+fishing-general = generell
+  .description = Vis fiskestatistikk
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-from = fra
+  .description = Vis utviklingen av fiskestatistikk fra et bestemt tidspunkt
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+  .time = tid
+  .time-description = Tiden å gå tilbake (1t 12m 5s)
+
+fishing-history = historie
+  .description = Vis utviklingen av fiskestatistikk over tid
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-project = prosjekt
+  .description = Prosjekter fiskestatistikk frem i tid
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+  .statistic = statistikk
+  .statistic-description = Fiskestatistikk å prosjektere
+  .value = verdi
+  .value-description = Verdien å prosjektere til
+
+fishing-daily = daglig
+  .description = Vis utviklingen av fiskestatistikk de siste 24 timene
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-weekly = ukentlig
+  .description = Vis utviklingen av fiskestatistikk de siste 7 dagene
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-monthly = månedlig
+  .description = Vis utviklingen av fiskestatistikk de siste 30 dagene
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-session = økt
+  .description = Vis fiskeprogresjonen til en spiller siden økten startet
+  .session = økt
+  .session-description = En økt-ID
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-at = ved
+  .description = Vis fiskestatistikk for en spiller på et bestemt tidspunkt
+  .player = spiller
+  .player-description = Minecraft-spiller eller økt
+  .time = tid
+  .time-description = Tiden å gå tilbake (1t 12m 5s)
+  .mode = modus
+  .mode-description = Fiskemodus å vise
+
+fishing-compare = sammenligne
+  .description = Sammenlign fiskestatistikk for to spillere
+  .from = fra
+  .from-description = Minecraft-spiller
+  .to = til
+  .to-description = Minecraft-spiller å sammenligne med
+  .mode = modus
+  .mode-description = Fiskemodus å vise

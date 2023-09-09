@@ -137,6 +137,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::Walls(mode) => impl_root!(ctx, uuid, mode, walls::Walls),
 			Mode::Warlords(mode) => impl_root!(ctx, uuid, mode, warlords::Warlords),
 			Mode::WoolWars(mode) => impl_root!(ctx, uuid, mode, wool_wars::WoolWars),
+			Mode::Fishing(mode) => impl_root!(ctx, uuid, mode, fishing::Fishing),
 			Mode::Guild(mode, limit, nanos, member_id) => match mode {
 				GuildMode::General => {
 					super::commands::guild::run::general(
@@ -284,6 +285,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				Mode::Walls(mode) => impl_snapshot!(ctx, uuid, past, mode, walls::Walls),
 				Mode::Warlords(mode) => impl_snapshot!(ctx, uuid, past, mode, warlords::Warlords),
 				Mode::WoolWars(mode) => impl_snapshot!(ctx, uuid, past, mode, wool_wars::WoolWars),
+				Mode::Fishing(mode) => impl_snapshot!(ctx, uuid, past, mode, fishing::Fishing),
 				_ => Ok(()),
 			}
 		}
@@ -328,6 +330,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 				Mode::Walls(mode) => impl_at!(ctx, uuid, past, mode, walls::Walls),
 				Mode::Warlords(mode) => impl_at!(ctx, uuid, past, mode, warlords::Warlords),
 				Mode::WoolWars(mode) => impl_at!(ctx, uuid, past, mode, wool_wars::WoolWars),
+				Mode::Fishing(mode) => impl_at!(ctx, uuid, past, mode, fishing::Fishing),
 				_ => Ok(()),
 			}
 		}
@@ -360,7 +363,15 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::Walls(mode) => impl_history!(ctx, uuid, mode, walls::Walls),
 			Mode::Warlords(mode) => impl_history!(ctx, uuid, mode, warlords::Warlords),
 			Mode::WoolWars(mode) => impl_history!(ctx, uuid, mode, wool_wars::WoolWars),
-			_ => Ok(()),
+			Mode::Fishing(mode) => impl_history!(ctx, uuid, mode, fishing::Fishing),
+			Mode::RecentGames
+			| Mode::Winstreaks
+			| Mode::SkyBlock(..)
+			| Mode::Guild(..)
+			| Mode::Network
+			| Mode::BedWarsShop
+			| Mode::BedWarsPractice
+			| Mode::BedWarsHotbar => Ok(()),
 		},
 		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
@@ -425,7 +436,10 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			ProjectMode::WoolWars(mode, kind) => {
 				impl_project!(ctx, uuid, mode, kind, wool_wars::WoolWars)
 			}
-			_ => Ok(()),
+			ProjectMode::Fishing(mode, kind) => {
+				impl_project!(ctx, uuid, mode, kind, fishing::Fishing)
+			}
+			ProjectMode::SkyBlock(..) | ProjectMode::Guild(..) => Ok(()),
 		},
 		#[allow(unused_variables)]
 		Id::Compare {
@@ -486,7 +500,17 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Mode::WoolWars(mode) => {
 				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, wool_wars::WoolWars)
 			}
-			_ => Ok(()),
+			Mode::Fishing(mode) => {
+				impl_compare!(ctx, uuid_lhs, uuid_rhs, mode, fishing::Fishing)
+			}
+			Mode::RecentGames
+			| Mode::Winstreaks
+			| Mode::SkyBlock(..)
+			| Mode::Guild(..)
+			| Mode::Network
+			| Mode::BedWarsShop
+			| Mode::BedWarsPractice
+			| Mode::BedWarsHotbar => Ok(()),
 		},
 		Id::Between { .. } => Ok(()),
 	}

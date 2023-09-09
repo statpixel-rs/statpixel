@@ -404,6 +404,12 @@ leaderboard = clasament
   .description = Vizualizați clasamentul pentru diferite jocuri
   .board = tablă
   .board-description = Clasamentul de vizualizat
+  .guild = guild
+  .guild-description = Membrii guild-ului pentru a filtra după
+  .player = jucător
+  .player-description = Jucătorul la care să sari
+  .page = pagină
+  .page-description = Pagina la care să sari
 
 # /network
 
@@ -1643,6 +1649,7 @@ show-prefix = Arată Prefix
 bronze-trophies = Trofee Bronz
 silver-trophies = Trofee Argint
 gold-trophies = Trofee Aur
+laps-completed = Tururi Parcurse
 
 turbokartracers-general = general
   .description = Vizualizează statisticile Turbo Kart Racers
@@ -2808,3 +2815,91 @@ woolwars-session = sesiune
   .session-description = Un ID de sesiune
   .mode = mod
   .mode-description = Modul Wool Wars de vizualizat
+
+Water = Apă
+Lava = Lavă
+Ice = Gheață
+
+fish = Pește
+junk = Gunoi
+treasure = Comoară
+
+fishing-general = general
+  .description = Vizualizați statisticile Pescuitului
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-from = de-la
+  .description = Vizualizați dezvoltarea statisticilor de Pescuit începând de la un moment specific
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+  .time = timp
+  .time-description = Durata pentru a merge înapoi (1h 12m 5s)
+
+fishing-history = istoric
+  .description = Vizualizați dezvoltarea statisticilor de Pescuit în timp
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-project = proiect
+  .description = Proiectați statisticile Pescuitului în viitor
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+  .statistic = statistică
+  .statistic-description = Statistica Pescuitului de proiectat
+  .value = valoare
+  .value-description = Valoarea statistică de proiectat
+
+fishing-daily = zilnic
+  .description = Vizualizați dezvoltarea statisticilor de Pescuit în ultima zi
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-weekly = săptămânal
+  .description = Vizualizați dezvoltarea statisticilor de Pescuit în ultima săptămână
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-monthly = lunar
+  .description = Vizualizați dezvoltarea statisticilor de Pescuit în ultima lună
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-session = sesiune
+  .description = Afișați progresul Pescuitului al unui jucător începând cu sesiunea
+  .session = sesiune
+  .session-description = Un ID de sesiune
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-at = la
+  .description = Afișați statisticile Pescuitului ale unui jucător la un anumit moment în timp
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune
+  .time = timp
+  .time-description = Durata pentru a merge înapoi (1h 12m 5s)
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat
+
+fishing-compare = comparați
+  .description = Comparați statisticile Pescuitului a doi jucători
+  .from = de-la
+  .from-description = Jucător Minecraft
+  .to = la
+  .to-description = Jucător Minecraft pentru comparație
+  .mode = mod
+  .mode-description = Modul de Pescuit de vizualizat

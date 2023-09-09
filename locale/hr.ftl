@@ -404,6 +404,12 @@ leaderboard = ljestvica
   .description = Pregledaj ljestvicu za različite igre
   .board = ploča
   .board-description = Ljestvica koju želite pregledati
+  .guild = gilda
+  .guild-description = Članovi gilde za filtriranje
+  .player = igrač
+  .player-description = Igrač za preskakanje
+  .page = stranica
+  .page-description = Stranica za preskakanje
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Prikaz Prefiksa
 bronze-trophies = Brončani Trofeji
 silver-trophies = Srebrni Trofeji
 gold-trophies = Zlatni Trofeji
+laps-completed = Završeni krugovi
 
 turbokartracers-general = općenito
   .description = Pregled statistike Turbo Kart Racersa
@@ -2808,3 +2815,91 @@ woolwars-session = sjednica
   .session-description = Identifikator sjednice
   .mode = način
   .mode-description = Wool Wars način za prikaz
+
+Water = Voda
+Lava = Lava
+Ice = Led
+
+fish = Ribica
+junk = Otpad
+treasure = Blago
+
+fishing-general = općenito
+  .description = Pregled statistike ribolova
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-from = od
+  .description = Pregled razvoja statistike ribolova od određenog vremena
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+  .time = vrijeme
+  .time-description = Vrijeme unatrag (1h 12m 5s)
+
+fishing-history = povijest
+  .description = Pregled razvoja statistike ribolova kroz vrijeme
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-project = projekt
+  .description = Projektiranje statistike ribolova u budućnost
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+  .statistic = statistika
+  .statistic-description = Statistika ribolova za projektiranje
+  .value = vrijednost
+  .value-description = Vrijednost statistike za projektiranje
+
+fishing-daily = dnevno
+  .description = Pregled razvoja statistike ribolova u zadnjem danu
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-weekly = tjedno
+  .description = Pregled razvoja statistike ribolova u zadnjem tjednu
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-monthly = mjesečno
+  .description = Pregled razvoja statistike ribolova u zadnjem mjesecu
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-session = sesija
+  .description = Prikaz napretka ribolova igrača od početka sesije
+  .session = sesija
+  .session-description = ID sesije
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-at = na
+  .description = Prikaz statistike ribolova igrača u određenom trenutku
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija
+  .time = vrijeme
+  .time-description = Vrijeme unatrag (1h 12m 5s)
+  .mode = način
+  .mode-description = Način ribolova za pregled
+
+fishing-compare = usporedi
+  .description = Usporedba statistike ribolova dvaju igrača
+  .from = od
+  .from-description = Minecraft igrač
+  .to = do
+  .to-description = Minecraft igrač za usporedbu
+  .mode = način
+  .mode-description = Način ribolova za pregled

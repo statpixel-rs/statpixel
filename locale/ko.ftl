@@ -399,6 +399,12 @@ leaderboard = 리더보드
   .description = 다양한 게임 리더보드 보기
   .board = 보드
   .board-description = 보려는 리더보드
+  .guild = 길드
+  .guild-description = 필터링할 길드 멤버
+  .player = 플레이어
+  .player-description = 건너뛸 플레이어
+  .page = 페이지
+  .page-description = 건너뛸 페이지
 
 # /network
 
@@ -1638,6 +1644,7 @@ show-prefix = 프리픽스 보기
 bronze-trophies = 청동 트로피
 silver-trophies = 은 트로피
 gold-trophies = 금 트로피
+laps-completed = 완료된 랩
 
 turbokartracers-general = 일반
   .description = Turbo Kart Racers 통계 보기
@@ -2804,3 +2811,91 @@ woolwars-session = 세션
   .session-description = 세션 ID
   .mode = 모드
   .mode-description = 볼 Wool Wars 모드
+
+Water = 물
+Lava = 용암
+Ice = 얼음
+
+fish = 물고기
+junk = 쓰레기
+treasure = 보물
+
+fishing-general = 일반
+  .description = 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-from = 시작-시점부터
+  .description = 특정 시점 이후의 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+  .time = 시간
+  .time-description = 되돌아갈 시간 (1시간 12분 5초)
+
+fishing-history = 히스토리
+  .description = 시간 경과에 따른 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-project = 예측
+  .description = 미래로의 낚시 통계 예측
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+  .statistic = 통계
+  .statistic-description = 예측할 낚시 통계
+  .value = 값
+  .value-description = 예측할 통계 값
+
+fishing-daily = 일일
+  .description = 지난 날의 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-weekly = 주간
+  .description = 지난 주의 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-monthly = 월간
+  .description = 지난 달의 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-session = 세션
+  .description = 세션 시작 이후의 플레이어 낚시 진행 상황 보기
+  .session = 세션
+  .session-description = 세션 ID
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-at = 시점별
+  .description = 특정 시간대의 플레이어 낚시 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션
+  .time = 시간
+  .time-description = 되돌아갈 시간 (1시간 12분 5초)
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드
+
+fishing-compare = 비교
+  .description = 두 플레이어의 낚시 통계 비교
+  .from = 시작
+  .from-description = 마인크래프트 플레이어
+  .to = 대상
+  .to-description = 비교할 마인크래프트 플레이어
+  .mode = 모드
+  .mode-description = 보려는 낚시 모드

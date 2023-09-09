@@ -231,3 +231,9 @@ command!(
 	stats::wool_wars::WoolWarsKind,
 	woolwars
 );
+command!(
+	stats::fishing::Fishing,
+	stats::fishing::FishingMode,
+	stats::fishing::FishingKind,
+	fishing
+);

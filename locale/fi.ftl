@@ -402,6 +402,12 @@ leaderboard = tuloslista
   .description = Näytä tuloslista eri peleille
   .board = taulu
   .board-description = Tuloslista, jonka haluat nähdä
+  .guild = kilta
+  .guild-description = Kilta, jonka jäsenet haluat nähdä
+  .player = pelaaja
+  .player-description = Pelaaja, jonka haluat nähdä
+  .page = sivu
+  .page-description = Sivu, jonka haluat nähdä
 
 # /network
 
@@ -1642,6 +1648,7 @@ show-prefix = Näytä Etuliite
 bronze-trophies = Pronssimitalit
 silver-trophies = Hopeamitalit
 gold-trophies = Kultamitalit
+laps-completed = Suoritetut kierrokset
 
 turbokartracers-general = yleinen
   .description = Näytä Turbo Kart Racers -tilastot
@@ -2808,3 +2815,91 @@ woolwars-session = istunto
   .session-description = Istunnon tunniste
   .mode = tila
   .mode-description = Wool Wars -tila, jota haluat tarkastella
+
+Water = Vesi
+Lava = Laava
+Ice = Jää
+
+fish = Kala
+junk = Roska
+treasure = Aarre
+
+fishing-general = yleinen
+  .description = Näytä kalastustilastot
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-from = lähtien
+  .description = Näytä kalastustilastojen kehitys tietystä ajankohdasta lähtien
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+  .time = aika
+  .time-description = Aika, johon palata (1h 12m 5s)
+
+fishing-history = historia
+  .description = Näytä kalastustilastojen kehitys ajan kuluessa
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-project = projekti
+  .description = Ennusta kalastustilastoja tulevaisuuteen
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+  .statistic = tilasto
+  .statistic-description = Kalastustilasto ennustettavaksi
+  .value = arvo
+  .value-description = Ennustettava tilaston arvo
+
+fishing-daily = päivittäin
+  .description = Näytä kalastustilastojen kehitys viimeisen päivän aikana
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-weekly = viikoittain
+  .description = Näytä kalastustilastojen kehitys viimeisen viikon aikana
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-monthly = kuukausittain
+  .description = Näytä kalastustilastojen kehitys viimeisen kuukauden aikana
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-session = istunto
+  .description = Näytä pelaajan kalastuksen kehitys istunnon alusta lähtien
+  .session = istunto
+  .session-description = Istunnon tunnus
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-at = kohdassa
+  .description = Näytä pelaajan kalastustilastot tiettynä ajankohtana
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto
+  .time = aika
+  .time-description = Aika, johon palata (1h 12m 5s)
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi
+
+fishing-compare = vertaa
+  .description = Vertaa kahden pelaajan kalastustilastoja
+  .from = mistä
+  .from-description = Minecraft-pelaaja
+  .to = mihin
+  .to-description = Minecraft-pelaaja, jota verrataan
+  .mode = tila
+  .mode-description = Kalastustila näytettäväksi

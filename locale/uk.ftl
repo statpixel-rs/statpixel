@@ -404,6 +404,12 @@ leaderboard = таблиця-лідерів
   .description = Переглянути таблицю лідерів різних ігор
   .board = дошка
   .board-description = Таблиця лідерів для перегляду
+  .guild = гільдія
+  .guild-description = Члени гільдії для фільтрації
+  .player = гравець
+  .player-description = Гравець для переходу
+  .page = сторінка
+  .page-description = Сторінка для переходу
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Префікс шоу
 bronze-trophies = Бронзові трофеї
 silver-trophies = Срібні трофеї
 gold-trophies = Золоті трофеї
+laps-completed = Завершені круги
 
 turbokartracers-general = загальне
   .description = Переглянути статистику Turbo Kart Racers
@@ -2808,3 +2815,91 @@ woolwars-session = сесія
   .session-description = Ідентифікатор сесії
   .mode = режим
   .mode-description = Режим Wool Wars для перегляду
+
+Water = Вода
+Lava = Лава
+Ice = Лід
+
+fish = Риба
+junk = Сміття
+treasure = Скарб
+
+fishing-general = загальні
+  .description = Переглянути статистику риболовлі
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-from = з
+  .description = Переглянути розвиток статистики риболовлі з певного моменту
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+  .time = час
+  .time-description = Кількість часу для відстеження (1 год 12 хв 5 с)
+
+fishing-history = історія
+  .description = Переглянути розвиток статистики риболовлі з плином часу
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-project = проект
+  .description = Прогнозувати статистику риболовлі в майбутньому
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+  .statistic = статистика
+  .statistic-description = Статистика риболовлі для прогнозування
+  .value = значення
+  .value-description = Значення статистики для прогнозування
+
+fishing-daily = щоденні
+  .description = Переглянути розвиток статистики риболовлі за останній день
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-weekly = щотижневі
+  .description = Переглянути розвиток статистики риболовлі за останній тиждень
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-monthly = щомісячні
+  .description = Переглянути розвиток статистики риболовлі за останній місяць
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-session = сесія
+  .description = Показати розвиток риболовлі гравця з початку сесії
+  .session = сесія
+  .session-description = Ідентифікатор сесії
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-at = в
+  .description = Показати статистику риболовлі гравця в певний момент часу
+  .player = гравець
+  .player-description = Гравець у Minecraft або сесія
+  .time = час
+  .time-description = Кількість часу для відстеження (1 год 12 хв 5 с)
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду
+
+fishing-compare = порівняти
+  .description = Порівняти статистику риболовлі двох гравців
+  .from = з
+  .from-description = Гравець у Minecraft
+  .to = до
+  .to-description = Гравець у Minecraft для порівняння
+  .mode = режим
+  .mode-description = Режим риболовлі для перегляду

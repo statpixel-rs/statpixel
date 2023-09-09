@@ -404,6 +404,12 @@ leaderboard = ตารางการแข่งขัน
   .description = ดูตารางการแข่งขันสำหรับเกมต่างๆ
   .board = ตาราง
   .board-description = ตารางการแข่งขันที่ต้องการดู
+  .guild = กิลด์
+  .guild-description = สมาชิกของกิลด์ที่ต้องการกรอง
+  .player = ผู้เล่น
+  .player-description = ผู้เล่นที่ต้องการข้ามไป
+  .page = หน้า
+  .page-description = หน้าที่ต้องการข้ามไป
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = แสดงคำนำหน้า
 bronze-trophies = ถ้วยทองแดง
 silver-trophies = ถ้วยทองเงิน
 gold-trophies = ถ้วยทอง
+laps-completed = รอบที่ผ่านมา
 
 turbokartracers-general = general
   .description = ดูสถิติ Turbo Kart Racers
@@ -2808,3 +2815,91 @@ woolwars-session = เซสชัน
   .session-description = รหัสเซสชัน
   .mode = โหมด
   .mode-description = โหมด Wool Wars ที่จะดู
+
+Water = น้ำ
+Lava = ลาวา
+Ice = น้ำแข็ง
+
+fish = ปลา
+junk = ขยะ
+treasure = ของคราฟท์
+
+fishing-general = ทั่วไป
+  .description = ดูสถิติการตกปลา
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-from = ตั้งแต่
+  .description = ดูการพัฒนาของสถิติการตกปลาตั้งแต่เวลาที่ระบุ
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+  .time = เวลา
+  .time-description = ระยะเวลาที่ต้องการย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+
+fishing-history = ประวัติ
+  .description = ดูการพัฒนาของสถิติการตกปลาตลอดเวลา
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-project = โปรเจค
+  .description = โปรเจคสถิติการตกปลาไปยังอนาคต
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+  .statistic = สถิติ
+  .statistic-description = สถิติการตกปลาที่ต้องการโปรเจค
+  .value = ค่า
+  .value-description = ค่าสถิติที่ต้องการโปรเจคไป
+
+fishing-daily = รายวัน
+  .description = ดูการพัฒนาของสถิติการตกปลาในรอบวันล่าสุด
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-weekly = รายสัปดาห์
+  .description = ดูการพัฒนาของสถิติการตกปลาในรอบสัปดาห์ล่าสุด
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-monthly = รายเดือน
+  .description = ดูการพัฒนาของสถิติการตกปลาในรอบเดือนล่าสุด
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-session = เซสชัน
+  .description = แสดงความคืบหน้าการตกปลาของผู้เล่นตั้งแต่เริ่มเซสชัน
+  .session = เซสชัน
+  .session-description = รหัสเซสชัน
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-at = เมื่อ
+  .description = แสดงสถิติการตกปลาของผู้เล่นในขณะที่ระบุ
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน
+  .time = เวลา
+  .time-description = ระยะเวลาที่ต้องการย้อนกลับ (1 ชม. 12 นาที 5 วินาที)
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู
+
+fishing-compare = เปรียบเทียบ
+  .description = เปรียบเทียบสถิติการตกปลาของสองผู้เล่น
+  .from = จาก
+  .from-description = ผู้เล่น Minecraft
+  .to = ไปยัง
+  .to-description = ผู้เล่น Minecraft ที่ต้องการเปรียบเทียบ
+  .mode = โหมด
+  .mode-description = โหมดการตกปลาที่ต้องการดู

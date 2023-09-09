@@ -214,6 +214,10 @@ impl<'a> TryFrom<&'a OverallFieldData> for Block<'a> {
 		let path = value.path.as_ref().map_or_else(
 			|| quote!(),
 			|p| {
+				if p.is_empty() {
+					return quote!();
+				}
+
 				let mut tokens =
 					syn::parse_str::<proc_macro2::TokenStream>(p).expect("a valid path");
 
@@ -254,6 +258,10 @@ impl<'a> From<&'a ModeFieldData> for Block<'a> {
 		let path = value.path.as_ref().map_or_else(
 			|| quote!(),
 			|p| {
+				if p.is_empty() {
+					return quote!();
+				}
+
 				let mut tokens =
 					syn::parse_str::<proc_macro2::TokenStream>(p).expect("a valid path");
 

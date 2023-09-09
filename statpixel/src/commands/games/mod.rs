@@ -149,6 +149,7 @@ command!(stats::vampire_z::VampireZ, vampirez, "vampirez");
 command!(stats::walls::Walls, walls, "walls");
 command!(stats::warlords::Warlords, warlords, "warlords");
 command!(stats::wool_wars::WoolWars, woolwars, "woolwars");
+command!(stats::fishing::Fishing, fishing, "fishing");
 
 pub mod bedwars {
 	use super::*;

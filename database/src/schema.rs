@@ -170,3 +170,7 @@ diesel::table! {
 		font -> Int2,
 	}
 }
+
+diesel::joinable!(autocomplete -> leaderboard (uuid));
+
+diesel::allow_tables_to_appear_in_same_query!(autocomplete, leaderboard);

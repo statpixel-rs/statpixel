@@ -3,7 +3,7 @@ use std::borrow::Cow;
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug, Clone, PartialEq)]
-#[serde(from = "&str")]
+#[serde(from = "String")]
 pub enum Mode {
 	Limbo,
 	MainLobby,
@@ -166,6 +166,12 @@ pub enum Mode {
 	LabTeam,
 	Tourney,
 	Other(String),
+}
+
+impl From<String> for Mode {
+	fn from(value: String) -> Self {
+		Self::from(value.as_str())
+	}
 }
 
 impl From<&str> for Mode {

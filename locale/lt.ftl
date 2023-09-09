@@ -404,6 +404,12 @@ leaderboard = lyderių-lentelė
   .description = Peržiūrėti lyderių lentelę skirtingiems žaidimams
   .board = lentelė
   .board-description = Lyderių lentelė, kurią peržiūrėti
+  .guild = gildija
+  .guild-description = Gildijos nariai, kuriuos filtruoti
+  .player = žaidėjas
+  .player-description = Žaidėjas, kurį praleisti
+  .page = puslapis
+  .page-description = Puslapis, kurį praleisti
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Rodyti Prefiksą
 bronze-trophies = Bronzos Trofėjai
 silver-trophies = Sidabro Trofėjai
 gold-trophies = Auksiniai Trofėjai
+laps-completed = Apsisukimai
 
 turbokartracers-general = bendras
   .description = Peržiūrėti „Turbo Kart Racers“ statistiką
@@ -2809,3 +2816,91 @@ woolwars-session = sesija
   .session-description = Sesijos ID
   .mode = režimas
   .mode-description = Rodomas Wool Wars režimas
+
+Water = Vanduo
+Lava = Lava
+Ice = Ledas
+
+fish = Žuvis
+junk = Šlamštas
+treasure = Lobis
+
+fishing-general = bendras
+  .description = Peržiūrėti žvejybos statistiką
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-from = nuo
+  .description = Peržiūrėti žvejybos statistikos pokyčius nuo tam tikro momento
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+  .time = laikas
+  .time-description = Laikas, į kurį norite sugrįžti (1h 12m 5s)
+
+fishing-history = istorija
+  .description = Peržiūrėti žvejybos statistikos raidą
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-project = projektas
+  .description = Prognozuoti žvejybos statistiką ateityje
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+  .statistic = statistika
+  .statistic-description = Žvejybos statistika, kurią norite prognozuoti
+  .value = vertė
+  .value-description = Statistikos vertė, kurią norite prognozuoti
+
+fishing-daily = kasdien
+  .description = Peržiūrėti žvejybos statistikos raidą per pastarąją dieną
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-weekly = savaitės
+  .description = Peržiūrėti žvejybos statistikos raidą per pastarąją savaitę
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-monthly = mėnesio
+  .description = Peržiūrėti žvejybos statistikos raidą per pastarąjį mėnesį
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-session = seansas
+  .description = Rodyti žaidėjo žvejybos pažangą nuo seanso pradžios
+  .session = seansas
+  .session-description = Seanso ID
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-at = ties
+  .description = Rodyti žaidėjo žvejybos statistiką tam tikru momentu
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas
+  .time = laikas
+  .time-description = Laikas, į kurį norite sugrįžti (1h 12m 5s)
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+fishing-compare = palyginti
+  .description = Palyginti dviejų žaidėjų žvejybos statistiką
+  .from = nuo
+  .from-description = Minecraft žaidėjas
+  .to = iki
+  .to-description = Minecraft žaidėjas, su kuo norite palyginti
+  .mode = režimas
+  .mode-description = Žvejybos režimas, kurį norite peržiūrėti

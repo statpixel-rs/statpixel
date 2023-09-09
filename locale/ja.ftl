@@ -403,6 +403,12 @@ leaderboard = リーダーボード
   .description = 様々なゲームのリーダーボードを表示します
   .board = ボード
   .board-description = 表示するリーダーボード
+  .guild = ギルド
+  .guild-description = フィルタリングするギルドのメンバー
+  .player = プレイヤー
+  .player-description = スキップするプレイヤー
+  .page = ページ
+  .page-description = スキップするページ
 
 # /network
 
@@ -1643,6 +1649,7 @@ show-prefix = 表示プレフィックス
 bronze-trophies = ブロンズトロフィー
 silver-trophies = シルバートロフィー
 gold-trophies = ゴールドトロフィー
+laps-completed = ラップ完了数
 
 turbokartracers-general = 一般
   .description = Turbo Kart Racersの統計を表示します
@@ -2807,3 +2814,91 @@ woolwars-session = セッション
   .session-description = セッションID
   .mode = モード
   .mode-description = 表示するWool Warsモード
+
+Water = 水
+Lava = 溶岩
+Ice = 氷
+
+fish = 魚
+junk = がらくた
+treasure = 宝物
+
+fishing-general = 一般
+  .description = 釣り統計を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-from = から
+  .description = 特定の時点からの釣り統計の進化を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+  .time = 時間
+  .time-description = 戻る時間 (1時間 12分 5秒)
+
+fishing-history = 履歴
+  .description = 時間にわたる釣り統計の進化を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-project = 予測
+  .description = 未来への釣り統計を予測します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+  .statistic = 統計
+  .statistic-description = 予測する釣り統計
+  .value = 値
+  .value-description = 予測する統計の値
+
+fishing-daily = 日次
+  .description = 過去の1日間の釣り統計の進化を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-weekly = 週次
+  .description = 過去の1週間の釣り統計の進化を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-monthly = 月次
+  .description = 過去の1か月間の釣り統計の進化を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-session = セッション
+  .description = セッションが開始されてからのプレイヤーの釣り進行状況を表示します
+  .session = セッション
+  .session-description = セッションID
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-at = 時点で
+  .description = 特定の時点でのプレイヤーの釣り統計を表示します
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション
+  .time = 時間
+  .time-description = 戻る時間 (1時間 12分 5秒)
+  .mode = モード
+  .mode-description = 表示する釣りモード
+
+fishing-compare = 比較
+  .description = 2人のプレイヤーの釣り統計を比較します
+  .from = から
+  .from-description = Minecraft プレイヤー
+  .to = へ
+  .to-description = 比較するMinecraftプレイヤー
+  .mode = モード
+  .mode-description = 表示する釣りモード

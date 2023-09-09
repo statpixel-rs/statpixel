@@ -400,6 +400,12 @@ leaderboard = लीडरबोर्ड
   .description = विभिन्न खेलों के लिए लीडरबोर्ड देखें
   .board = बोर्ड
   .board-description = देखने के लिए लीडरबोर्ड
+  .guild = समूह
+  .guild-description = फ़िल्टर करने के लिए समूह के सदस्य
+  .player = खिलाड़ी
+  .player-description = छोड़ने के लिए खिलाड़ी
+  .page = पृष्ठ
+  .page-description = छोड़ने के लिए पृष्ठ
 
 # /network
 
@@ -1633,6 +1639,7 @@ show-prefix = प्रिफिक्स दिखाएं
 bronze-trophies = ब्रॉन्ज ट्रोफ़ीज़
 silver-trophies = सिल्वर ट्रोफ़ीज़
 gold-trophies = गोल्ड ट्रोफ़ीज़
+laps-completed = पूरे चक्कर
 
 turbokartracers-general = सामान्य
   .description = टर्बो कार्ट रेसर्स आँकड़े देखें
@@ -2799,3 +2806,92 @@ woolwars-session = सत्र
   .session-description = एक सत्र आईडी
   .mode = मोड
   .mode-description = देखने के लिए वूल वॉर्स मोड
+
+
+Water = पानी
+Lava = लावा
+Ice = बर्फ
+
+fish = मछली
+junk = कचरा
+treasure = खजाना
+
+fishing-general = सामान्य
+  .description = मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-from = से
+  .description = किसी विशिष्ट समय के बाद मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+  .time = समय
+  .time-description = पीछे जाने के लिए समय (1घंटा 12मिनट 5सेकंड)
+
+fishing-history = इतिहास
+  .description = समय के साथ मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-project = प्रोजेक्ट
+  .description = भविष्य में मछली पकड़ने के तथ्य प्रक्षिप्त करें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+  .statistic = तथ्य
+  .statistic-description = प्रक्षिप्त करने के लिए मछली तथ्य
+  .value = मूल्य
+  .value-description = प्रक्षिप्त करने के लिए तथ्य का मूल्य
+
+fishing-daily = दैनिक
+  .description = पिछले दिन में मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-weekly = साप्ताहिक
+  .description = पिछले सप्ताह में मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-monthly = मासिक
+  .description = पिछले महीने में मछली पकड़ने के तथ्य देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-session = सत्र
+  .description = सत्र शुरू होने के बाद खिलाड़ी की मछली प्रगति दिखाएं
+  .session = सत्र
+  .session-description = एक सत्र आईडी
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-at = पर
+  .description = खिलाड़ी की मछली तथ्य को एक निश्चित समय पर दिखाएं
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र
+  .time = समय
+  .time-description = पीछे जाने के लिए समय (1घंटा 12मिनट 5सेकंड)
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड
+
+fishing-compare = तुलना
+  .description = दो खिलाड़ियों के मछली तथ्यों की तुलना करें
+  .from = से
+  .from-description = माइनक्राफ्ट खिलाड़ी
+  .to = को
+  .to-description = तुलना करने के लिए माइनक्राफ्ट खिलाड़ी
+  .mode = मोड
+  .mode-description = देखने के लिए मछली मोड

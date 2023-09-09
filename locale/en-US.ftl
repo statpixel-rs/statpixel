@@ -408,6 +408,12 @@ leaderboard = leaderboard
   .description = View the leaderboard for various games
   .board = board
   .board-description = The leaderboard to view
+  .guild = guild
+  .guild-description = The guild's members to filter by
+  .player = player
+  .player-description = The player to skip to
+  .page = page
+  .page-description = The page to skip to
 
 lleaderboard = lleaderboard
   .description = View the locally-created leaderboard for various games
@@ -1704,6 +1710,7 @@ show-prefix = Show Prefix
 bronze-trophies = Bronze Trophies
 silver-trophies = Silver Trophies
 gold-trophies = Gold Trophies
+laps-completed = Laps Completed
 
 turbokartracers-general = general
   .description = View Turbo Kart Racers statistics
@@ -2830,3 +2837,91 @@ woolwars-session = session
   .session-description = A session id
   .mode = mode
   .mode-description = The Wool Wars mode to view
+
+Water = Water
+Lava = Lava
+Ice = Ice
+
+fish = Fish
+junk = Junk
+treasure = Treasure
+
+fishing-general = general
+  .description = View Fishing statistics
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-from = from
+  .description = View the development of Fishing statistics since a specific time
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+  .time = time
+  .time-description = The amount of time to go back (1h 12m 5s)
+
+fishing-history = history
+  .description = View the development of Fishing statistics over time
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-project = project
+  .description = Project Fishing statistics into the future
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+  .statistic = statistic
+  .statistic-description = The Fishing statistic to project
+  .value = value
+  .value-description = The value of the statistic to project to
+
+fishing-daily = daily
+  .description = View the development of Fishing statistics over the last day
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-weekly = weekly
+  .description = View the development of Fishing statistics over the last week
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-monthly = monthly
+  .description = View the development of Fishing statistics over the last month
+  .player = player
+  .player-description = Minecraft player or session
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-session = session
+  .description = Show the Fishing progression of a player since the session started
+  .session = session
+  .session-description = A session id
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-at = at
+  .description = Show the Fishing statistics of a player at a certain point in time
+  .player = player
+  .player-description = Minecraft player or session
+  .time = time
+  .time-description = The amount of time to go back (1h 12m 5s)
+  .mode = mode
+  .mode-description = The Fishing mode to view
+
+fishing-compare = compare
+  .description = Compare the Fishing statistics of two players
+  .from = from
+  .from-description = Minecraft player
+  .to = to
+  .to-description = Minecraft player to compare to
+  .mode = mode
+  .mode-description = The Fishing mode to view

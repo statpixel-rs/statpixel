@@ -1105,6 +1105,7 @@ pub enum Mode {
 	Walls(walls::WallsMode),
 	Warlords(warlords::WarlordsMode),
 	WoolWars(wool_wars::WoolWarsMode),
+	Fishing(fishing::FishingMode),
 
 	RecentGames,
 	Winstreaks,
@@ -1158,6 +1159,7 @@ pub enum ProjectMode {
 	Walls(walls::WallsMode, walls::WallsKind),
 	Warlords(warlords::WarlordsMode, warlords::WarlordsKind),
 	WoolWars(wool_wars::WoolWarsMode, wool_wars::WoolWarsKind),
+	Fishing(fishing::FishingMode, fishing::FishingKind),
 
 	Guild(GuildMode, GuildKind),
 	SkyBlock(

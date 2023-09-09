@@ -52,7 +52,50 @@ pub enum Type {
 	Replay = 65,
 	Smp = 67,
 	WoolWars = 68,
+	Fishing = 126,
 	Unknown = 127,
+}
+
+pub fn de_from_name<'de, D>(deserializer: D) -> Result<Type, D::Error>
+where
+	D: serde::Deserializer<'de>,
+{
+	let name = String::deserialize(deserializer)?;
+
+	Ok(match name.as_str() {
+		"Quake" => Type::Quake,
+		"Walls" => Type::Walls,
+		"Paintball" => Type::Paintball,
+		"HungerGames" => Type::BlitzSg,
+		"TNTGames" => Type::TntGames,
+		"VampireZ" => Type::VampireZ,
+		"Walls3" => Type::MegaWalls,
+		"Arcade" => Type::Arcade,
+		"Arena" => Type::Arena,
+		"UHC" => Type::Uhc,
+		"MCGO" => Type::CopsAndCrims,
+		"Battleground" => Type::Warlords,
+		"SuperSmash" => Type::SmashHeroes,
+		"GingerBread" => Type::TurboKartRacers,
+		"Housing" => Type::Housing,
+		"SkyWars" => Type::SkyWars,
+		"TrueCombat" => Type::CrazyWalls,
+		"SpeedUHC" => Type::SpeedUhc,
+		"SkyClash" => Type::SkyClash,
+		"Legacy" => Type::Classic,
+		"Prototype" => Type::Prototype,
+		"Bedwars" => Type::BedWars,
+		"MurderMystery" => Type::MurderMystery,
+		"BuildBattle" => Type::BuildBattle,
+		"Duels" => Type::Duels,
+		"SkyBlock" => Type::SkyBlock,
+		"Pit" => Type::Pit,
+		"Replay" => Type::Replay,
+		"SMP" => Type::Smp,
+		"WoolGames" => Type::WoolWars,
+		"MainLobby" => Type::Fishing,
+		_ => Type::Unknown,
+	})
 }
 
 impl Type {
@@ -91,6 +134,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "WoolGames",
+			Self::Fishing => "MainLobby",
 			Self::Unknown => "Unknown",
 		}
 	}
@@ -140,6 +184,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Fishing => "Fishing",
 			Self::Unknown => "Unknown",
 		}
 	}
@@ -179,6 +224,7 @@ impl Type {
 			Self::Replay => "replay",
 			Self::Smp => "smp",
 			Self::WoolWars => "wool wars",
+			Self::Fishing => "fishing",
 			Self::Unknown => "unknown",
 		}
 	}
@@ -296,6 +342,7 @@ impl Type {
 			Self::Replay => "Replay",
 			Self::Smp => "SMP",
 			Self::WoolWars => "Wool Wars",
+			Self::Fishing => "Fishing",
 			Self::Unknown => "Unknown",
 		}
 	}
@@ -549,6 +596,10 @@ impl Type {
 			}
 			Self::WoolWars => {
 				const TEXT: [Text; 2] = minecraft_text("§f§lWool §7§lWars");
+				&TEXT
+			}
+			Self::Fishing => {
+				const TEXT: [Text; 1] = minecraft_text("§b§lFishing");
 				&TEXT
 			}
 			Self::Unknown => {

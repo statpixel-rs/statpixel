@@ -9,7 +9,7 @@ use minecraft::style::Family;
 use skia_safe::Color;
 use translate::{context, tr_fmt, Error};
 
-use crate::{snapshot, util};
+use crate::snapshot;
 
 #[allow(clippy::too_many_arguments)]
 pub async fn command<G: api::canvas::prelude::Game>(
@@ -36,7 +36,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 
 		let content = tr_fmt!(
 			ctx, "no-previous-statistics",
-			name: util::escape_username(&data.username),
+			name: data.username.as_str(),
 		);
 
 		ctx.send(poise::CreateReply::new().content(content)).await?;

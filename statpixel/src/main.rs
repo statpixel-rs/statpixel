@@ -14,9 +14,9 @@ use api::skyblock;
 use database::{
 	get_pool,
 	models::MetricKind,
-	schema::{metric, usage},
+	schema::{autocomplete, leaderboard, metric, usage},
 };
-use diesel::ExpressionMethods;
+use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use poise::serenity_prelude::{
@@ -53,6 +53,8 @@ pub const IMAGE_NAME: &str = "statpixel.png";
 #[cfg(not(target_os = "linux"))]
 pub const IMAGE_NAME: &str = "statpixel.png";
 
+pub static DATA: std::sync::OnceLock<Arc<translate::Data>> = std::sync::OnceLock::new();
+
 #[tokio::main]
 #[allow(clippy::too_many_lines)]
 async fn main() {
@@ -75,11 +77,11 @@ async fn main() {
 		commands::games::blitz::parent(),
 		commands::boost::boost(),
 		commands::games::buildbattle::parent(),
-		// commands::compare::compare(),
 		commands::games::copsandcrims::parent(),
 		commands::execute::execute(),
 		commands::display::display(),
 		commands::games::duels::parent(),
+		commands::games::fishing::parent(),
 		commands::guild::guild(),
 		commands::help::help(),
 		commands::leaderboard::leaderboard(),
@@ -117,6 +119,8 @@ async fn main() {
 		locale: Arc::new(locale),
 	};
 
+	DATA.set(Arc::new(data.clone())).unwrap();
+
 	let framework = poise::Framework::new(
 		poise::FrameworkOptions {
 			commands,
@@ -131,24 +135,6 @@ async fn main() {
 
 			move |ctx, _ready, framework| {
 				Box::pin(async move {
-					/*
-					GuildId(std::num::NonZeroU64::new(1114619532502388777).unwrap())
-						.set_commands
-					 */
-					/*
-										std::fs::File::create("commands.json")
-											.unwrap()
-											.write_all(
-												serde_json::to_string_pretty(
-													&poise::builtins::create_application_commands(
-														&framework.options().commands,
-													),
-												)
-												.unwrap()
-												.as_bytes(),
-											)
-											.unwrap();
-					*/
 					serenity::Command::set_global_commands(
 						&ctx.http,
 						poise::builtins::create_application_commands(&framework.options().commands),
@@ -187,6 +173,43 @@ async fn main() {
 				error!(error = ?e, "error in user snapshot update loop");
 
 				tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+			}
+		}
+	});
+
+	tokio::task::spawn({
+		let data = data.clone();
+		let pool = get_pool(1);
+
+		#[allow(clippy::cast_precision_loss)]
+		async move {
+			let ctx = context::Context::automated(&data);
+
+			let players = autocomplete::table
+				.left_outer_join(leaderboard::table)
+				.select(autocomplete::uuid)
+				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
+				.await
+				.unwrap();
+
+			let players_len = players.len();
+			#[allow(clippy::cast_precision_loss)]
+			let players_len_f = players_len as f64;
+
+			for (i, player) in players.into_iter().enumerate() {
+				api::player::Player::from_uuid_unchecked(player)
+					.get_data(&ctx)
+					.await
+					.ok();
+
+				info!(
+					"{} / {} ({:.4})",
+					i,
+					players_len,
+					(i as f64 + 100. / players_len_f)
+				);
+
+				tokio::time::sleep(std::time::Duration::from_millis(750)).await;
 			}
 		}
 	});

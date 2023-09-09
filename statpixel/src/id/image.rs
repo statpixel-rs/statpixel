@@ -302,6 +302,9 @@ pub async fn map(
 			Mode::WoolWars(mode) => {
 				impl_root!(ctx, family, uuid, mode, wool_wars::WoolWars, background)
 			}
+			Mode::Fishing(mode) => {
+				impl_root!(ctx, family, uuid, mode, fishing::Fishing, background)
+			}
 			Mode::Guild(mode, limit, nanos, member_id) => match mode {
 				GuildMode::General => {
 					let guild =
@@ -848,7 +851,17 @@ pub async fn map(
 						background
 					)
 				}
-				_ => Err(crate::Error::NotImplemented),
+				Mode::Fishing(mode) => {
+					impl_snapshot!(ctx, family, uuid, past, mode, fishing::Fishing, background)
+				}
+				Mode::RecentGames
+				| Mode::Winstreaks
+				| Mode::SkyBlock(..)
+				| Mode::Guild(..)
+				| Mode::Network
+				| Mode::BedWarsShop
+				| Mode::BedWarsPractice
+				| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
 			}
 		}
 		Id::At { kind, uuid, past } => {
@@ -1017,7 +1030,17 @@ pub async fn map(
 						background
 					)
 				}
-				_ => Err(crate::Error::NotImplemented),
+				Mode::Fishing(mode) => {
+					impl_at!(ctx, family, uuid, past, mode, fishing::Fishing, background)
+				}
+				Mode::RecentGames
+				| Mode::Winstreaks
+				| Mode::SkyBlock(..)
+				| Mode::Guild(..)
+				| Mode::Network
+				| Mode::BedWarsShop
+				| Mode::BedWarsPractice
+				| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
 			}
 		}
 		Id::History { kind, uuid } => match kind {
@@ -1110,7 +1133,17 @@ pub async fn map(
 			Mode::WoolWars(mode) => {
 				impl_history!(ctx, family, uuid, mode, wool_wars::WoolWars, background)
 			}
-			_ => Err(crate::Error::NotImplemented),
+			Mode::Fishing(mode) => {
+				impl_history!(ctx, family, uuid, mode, fishing::Fishing, background)
+			}
+			Mode::RecentGames
+			| Mode::Winstreaks
+			| Mode::SkyBlock(..)
+			| Mode::Guild(..)
+			| Mode::Network
+			| Mode::BedWarsShop
+			| Mode::BedWarsPractice
+			| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
 		},
 		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
@@ -1275,7 +1308,10 @@ pub async fn map(
 					background
 				)
 			}
-			_ => Err(crate::Error::NotImplemented),
+			ProjectMode::Fishing(mode, kind) => {
+				impl_project!(ctx, family, uuid, mode, kind, fishing::Fishing, background)
+			}
+			ProjectMode::SkyBlock(..) | ProjectMode::Guild(..) => Err(crate::Error::NotImplemented),
 		},
 		Id::Compare {
 			kind,
@@ -1509,7 +1545,25 @@ pub async fn map(
 					background
 				)
 			}
-			_ => Err(crate::Error::NotImplemented),
+			Mode::Fishing(mode) => {
+				impl_compare!(
+					ctx,
+					family,
+					uuid_lhs,
+					uuid_rhs,
+					mode,
+					fishing::Fishing,
+					background
+				)
+			}
+			Mode::RecentGames
+			| Mode::Winstreaks
+			| Mode::SkyBlock(..)
+			| Mode::Guild(..)
+			| Mode::Network
+			| Mode::BedWarsShop
+			| Mode::BedWarsPractice
+			| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
 		},
 	}
 }

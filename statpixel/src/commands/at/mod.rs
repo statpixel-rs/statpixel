@@ -190,3 +190,8 @@ command!(
 	stats::wool_wars::WoolWarsMode,
 	woolwars
 );
+command!(
+	stats::fishing::Fishing,
+	stats::fishing::FishingMode,
+	fishing
+);

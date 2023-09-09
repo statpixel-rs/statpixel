@@ -404,6 +404,12 @@ leaderboard = bestenliste
   .description = Zeigt die Bestenliste für verschiedene Spiele an
   .board = tafel
   .board-description = Die Bestenliste, die angezeigt werden soll
+  .guild = gilde
+  .guild-description = Die Mitglieder der Gilde, nach denen gefiltert werden soll
+  .player = spieler
+  .player-description = Der Spieler, zu dem gesprungen werden soll
+  .page = seite
+  .page-description = Die Seite, zu der gesprungen werden soll
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Präfix anzeigen
 bronze-trophies = Bronzetrophäen
 silver-trophies = Silbertrophäen
 gold-trophies = Goldtrophäen
+laps-completed = Runden abgeschlossen
 
 turbokartracers-general = allgemein
   .description = Anzeige der Turbo Kart Racers Statistiken
@@ -2808,3 +2815,91 @@ woolwars-session = sitzung
   .session-description = Eine Sitzungs-ID
   .mode = modus
   .mode-description = Der anzuzeigende Wool Wars-Modus
+
+Water = Wasser
+Lava = Lava
+Ice = Eis
+
+fish = Fisch
+junk = Müll
+treasure = Schatz
+
+fishing-general = allgemein
+  .description = Fischstatistiken anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-from = ab
+  .description = Entwicklung der Fischstatistiken seit einem bestimmten Zeitpunkt anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+  .time = zeit
+  .time-description = Die Zeitspanne, um zurückzugehen (1h 12m 5s)
+
+fishing-history = verlauf
+  .description = Entwicklung der Fischstatistiken im Laufe der Zeit anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-project = projekt
+  .description = Fischstatistiken in die Zukunft projizieren
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+  .statistic = statistik
+  .statistic-description = Die zu projizierende Fischstatistik
+  .value = wert
+  .value-description = Der Wert der zu projizierenden Statistik
+
+fishing-daily = täglich
+  .description = Entwicklung der Fischstatistiken der letzten 24 Stunden anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-weekly = wöchentlich
+  .description = Entwicklung der Fischstatistiken der letzten Woche anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-monthly = monatlich
+  .description = Entwicklung der Fischstatistiken des letzten Monats anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-session = sitzung
+  .description = Die Fischentwicklung eines Spielers seit Beginn der Sitzung anzeigen
+  .session = sitzung
+  .session-description = Eine Sitzungs-ID
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-at = bei
+  .description = Die Fischstatistiken eines Spielers zu einem bestimmten Zeitpunkt anzeigen
+  .player = spieler
+  .player-description = Minecraft-Spieler oder Sitzung
+  .time = zeit
+  .time-description = Die Zeitspanne, um zurückzugehen (1h 12m 5s)
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen
+
+fishing-compare = vergleichen
+  .description = Die Fischstatistiken zweier Spieler vergleichen
+  .from = von
+  .from-description = Minecraft-Spieler
+  .to = zu
+  .to-description = Minecraft-Spieler zum Vergleich
+  .mode = modus
+  .mode-description = Der Fischmodus zum Anzeigen

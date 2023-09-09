@@ -401,6 +401,12 @@ leaderboard = liderlik-tablosu
   .description = Farklı oyunlar için liderlik tablosunu görüntüle
   .board = tablo
   .board-description = Görüntülenecek liderlik tablosu
+  .guild = sunucu
+  .guild-description = Filtrelemek için sunucunun üyeleri
+  .player = oyuncu
+  .player-description = Atlanacak oyuncu
+  .page = sayfa
+  .page-description = Atlanacak sayfa
 
 # /network
 
@@ -1641,6 +1647,7 @@ show-prefix = Gösterişli Önek
 bronze-trophies = Bronz Kupalar
 silver-trophies = Gümüş Kupalar
 gold-trophies = Altın Kupalar
+laps-completed = Tamamlanan Tur Sayısı
 
 turbokartracers-general = genel
   .description = Turbo Kart Yarışçıları istatistiklerini görüntüle
@@ -2806,3 +2813,91 @@ woolwars-session = oturum
   .session-description = Oturum kimliği
   .mode = mod
   .mode-description = Görüntülenecek Wool Wars modu
+
+Water = Su
+Lava = Lav
+Ice = Buz
+
+fish = Balık
+junk = Çöp
+treasure = Hazine
+
+fishing-general = genel
+  .description = Balıkçılık istatistiklerini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-from = tarihten-itibaren
+  .description = Belirli bir tarihten itibaren Balıkçılık istatistiklerini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+  .time = zaman
+  .time-description = Geri gitmek için süre (1s 12d 5s)
+
+fishing-history = geçmiş
+  .description = Zaman içinde Balıkçılık istatistiklerinin gelişimini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-project = projeksiyon
+  .description = Balıkçılık istatistiklerini geleceğe projeksiyon yap
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+  .statistic = istatistik
+  .statistic-description = Projeksiyon yapılacak Balıkçılık istatistiği
+  .value = değer
+  .value-description = Projeksiyon yapılacak istatistiğin değeri
+
+fishing-daily = günlük
+  .description = Son bir günde Balıkçılık istatistiklerinin gelişimini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-weekly = haftalık
+  .description = Son bir haftada Balıkçılık istatistiklerinin gelişimini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-monthly = aylık
+  .description = Son bir ayda Balıkçılık istatistiklerinin gelişimini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-session = oturum
+  .description = Bir oyuncunun oturum başladığından bu yana Balıkçılık ilerlemesini göster
+  .session = oturum
+  .session-description = Bir oturum kimliği
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-at = tarihinde
+  .description = Bir oyuncunun belirli bir zaman noktasındaki Balıkçılık istatistiklerini göster
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
+  .time = zaman
+  .time-description = Geri gitmek için süre (1s 12d 5s)
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu
+
+fishing-compare = karşılaştır
+  .description = İki oyuncunun Balıkçılık istatistiklerini karşılaştır
+  .from = başlangıç
+  .from-description = Minecraft oyuncusu
+  .to = -e
+  .to-description = Karşılaştırılacak Minecraft oyuncusu
+  .mode = mod
+  .mode-description = Görüntülenecek Balıkçılık modu

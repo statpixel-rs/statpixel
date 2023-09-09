@@ -404,6 +404,12 @@ leaderboard = 排行榜
   .description = 查看各種遊戲的排行榜
   .board = 榜單
   .board-description = 要查看的排行榜
+  .guild = 公會
+  .guild-description = 要篩選的公會成員
+  .player = 玩家
+  .player-description = 要跳轉的玩家
+  .page = 頁數
+  .page-description = 要跳轉的頁數
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = 顯示前綴
 bronze-trophies = 銅獎盃
 silver-trophies = 銀獎盃
 gold-trophies = 金獎盃
+laps-completed = 完成的圈數
 
 turbokartracers-general = 一般
   .description = 查看Turbo Kart Racers統計
@@ -2808,3 +2815,91 @@ woolwars-session = 會話
   .session-description = 會話識別碼
   .mode = 模式
   .mode-description = 要查看的 Wool Wars 模式
+
+Water = 水
+Lava = 岩漿
+Ice = 冰
+
+fish = 魚
+junk = 垃圾
+treasure = 寶藏
+
+fishing-general = 一般
+  .description = 查看釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-from = 從
+  .description = 查看從特定時間以來的釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+  .time = 時間
+  .time-description = 要回溯的時間（1小時12分5秒）
+
+fishing-history = 歷史
+  .description = 查看釣魚統計資料的發展歷程
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-project = 預測
+  .description = 將釣魚統計資料預測到未來
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+  .statistic = 統計數據
+  .statistic-description = 要預測的釣魚統計數據
+  .value = 值
+  .value-description = 要預測的統計數據值
+
+fishing-daily = 每日
+  .description = 查看過去一天的釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-weekly = 每週
+  .description = 查看過去一週的釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-monthly = 每月
+  .description = 查看過去一個月的釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-session = 會話
+  .description = 顯示玩家自會話開始以來的釣魚進度
+  .session = 會話
+  .session-description = 會話 ID
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-at = 在
+  .description = 顯示玩家在特定時間點的釣魚統計資料
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話
+  .time = 時間
+  .time-description = 要回溯的時間（1小時12分5秒）
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式
+
+fishing-compare = 比較
+  .description = 比較兩名玩家的釣魚統計資料
+  .from = 從
+  .from-description = Minecraft 玩家
+  .to = 到
+  .to-description = 要比較的 Minecraft 玩家
+  .mode = 模式
+  .mode-description = 要查看的釣魚模式

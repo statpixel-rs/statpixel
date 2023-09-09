@@ -93,6 +93,16 @@ pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, s
 		})
 }
 
+pub fn has_tr(ctx: &impl GetLocale, id: &str) -> bool {
+	let locale = &ctx.data().locale;
+
+	ctx.locale()
+		.and_then(|l| locale.other.get(l))
+		.map(|bundle| bundle.has_message(id))
+		.or_else(|| Some(locale.main.has_message(id)))
+		.unwrap_or(false)
+}
+
 #[cfg(feature = "data")]
 fn get_locale_str<'t, 'i: 't>(bundle: &'t Bundle, id: &'i str) -> Option<Cow<'t, str>> {
 	let message = bundle.get_message(id)?;

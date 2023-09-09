@@ -406,6 +406,12 @@ leaderboard = таблица-лидеров
   .description = Просмотр таблицы лидеров различных игр
   .board = доска
   .board-description = Таблица лидеров для просмотра
+  .guild = гильдия
+  .guild-description = Участники гильдии для фильтрации
+  .player = игрок
+  .player-description = Игрок для пропуска
+  .page = страница
+  .page-description = Страница для пропуска
 
 # /network
 
@@ -1646,6 +1652,7 @@ show-prefix = Показать префикс
 bronze-trophies = Бронзовые трофеи
 silver-trophies = Серебряные трофеи
 gold-trophies = Золотые трофеи
+laps-completed = Пройдено кругов
 
 turbokartracers-general = общее
   .description = Просмотр статистики Turbo Kart Racers
@@ -2810,3 +2817,91 @@ woolwars-session = сессия
   .session-description = Идентификатор сессии
   .mode = режим
   .mode-description = Режим Wool Wars для просмотра
+
+Water = Вода
+Lava = Лава
+Ice = Лёд
+
+fish = Рыба
+junk = Мусор
+treasure = Сокровище
+
+fishing-general = общее
+  .description = Просмотр статистики рыбалки
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-from = с
+  .description = Просмотр развития статистики рыбалки с определенного момента
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+  .time = время
+  .time-description = Количество времени для возврата (1 ч 12 мин 5 с)
+
+fishing-history = история
+  .description = Просмотр развития статистики рыбалки со временем
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-project = проект
+  .description = Проекция статистики рыбалки в будущем
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+  .statistic = статистика
+  .statistic-description = Статистика рыбалки для проекции
+  .value = значение
+  .value-description = Значение статистики для проекции
+
+fishing-daily = ежедневно
+  .description = Просмотр развития статистики рыбалки за последний день
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-weekly = еженедельно
+  .description = Просмотр развития статистики рыбалки за последнюю неделю
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-monthly = ежемесячно
+  .description = Просмотр развития статистики рыбалки за последний месяц
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-session = сессия
+  .description = Показать развитие рыбалки игрока с начала сессии
+  .session = сессия
+  .session-description = Идентификатор сессии
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-at = в
+  .description = Показать статистику рыбалки игрока в определенный момент времени
+  .player = игрок
+  .player-description = Игрок Minecraft или сессия
+  .time = время
+  .time-description = Количество времени для возврата (1 ч 12 мин 5 с)
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра
+
+fishing-compare = сравнить
+  .description = Сравнить статистику рыбалки двух игроков
+  .from = от
+  .from-description = Игрок Minecraft
+  .to = к
+  .to-description = Игрок Minecraft для сравнения
+  .mode = режим
+  .mode-description = Режим рыбалки для просмотра

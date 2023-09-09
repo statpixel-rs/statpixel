@@ -43,7 +43,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 			let snapshot::user::Status::Found((ref data_lhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data_rhs.username),
+					name: data_rhs.username.as_str(),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -102,7 +102,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 			let snapshot::user::Status::Found((ref data_lhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data_rhs.username),
+					name: data_rhs.username.as_str(),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -156,7 +156,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 			let snapshot::user::Status::Found((data_lhs, created_at)) = status else {
 				let content = tr_fmt!(
 					ctx, "no-previous-statistics",
-					name: util::escape_username(&data_rhs.username),
+					name: data_rhs.username.as_str(),
 				);
 
 				ctx.send(poise::CreateReply::new().content(content)).await?;

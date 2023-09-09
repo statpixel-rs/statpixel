@@ -404,6 +404,12 @@ leaderboard = ranglijst
   .description = Bekijk de ranglijst voor verschillende spellen
   .board = bord
   .board-description = De te bekijken ranglijst
+  .guild = guild
+  .guild-description = De leden van de guild om op te filteren
+  .player = speler
+  .player-description = De speler om naar over te slaan
+  .page = pagina
+  .page-description = De pagina om naar over te slaan
 
 # /network
 
@@ -1644,6 +1650,7 @@ show-prefix = Toon Prefix
 bronze-trophies = Bronzen Trofeeën
 silver-trophies = Zilveren Trofeeën
 gold-trophies = Gouden Trofeeën
+laps-completed = Voltooide Ronden
 
 turbokartracers-general = algemeen
   .description = Bekijk Turbo Kart Racers-statistieken
@@ -2808,3 +2815,91 @@ woolwars-session = sessie
   .session-description = Een sessie-id
   .mode = modus
   .mode-description = De Wool Wars-modus om te bekijken
+
+Water = Water
+Lava = Lava
+Ice = IJs
+
+fish = Vis
+junk = Troep
+treasure = Schat
+
+fishing-general = algemeen
+  .description = Bekijk visstatistieken
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-from = vanaf
+  .description = Bekijk de ontwikkeling van visstatistieken sinds een specifieke tijd
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+  .time = tijd
+  .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
+
+fishing-history = geschiedenis
+  .description = Bekijk de ontwikkeling van visstatistieken in de loop der tijd
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-project = project
+  .description = Projecteer visstatistieken in de toekomst
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+  .statistic = statistiek
+  .statistic-description = De visstatistiek om te projecteren
+  .value = waarde
+  .value-description = De waarde van de statistiek om te projecteren naar
+
+fishing-daily = dagelijks
+  .description = Bekijk de ontwikkeling van visstatistieken in de afgelopen dag
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-weekly = wekelijks
+  .description = Bekijk de ontwikkeling van visstatistieken in de afgelopen week
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-monthly = maandelijks
+  .description = Bekijk de ontwikkeling van visstatistieken in de afgelopen maand
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-session = sessie
+  .description = Toon de visprogressie van een speler sinds de sessie begon
+  .session = sessie
+  .session-description = Een sessie-id
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-at = op
+  .description = Toon de visstatistieken van een speler op een bepaald tijdstip
+  .player = speler
+  .player-description = Minecraft-speler of sessie
+  .time = tijd
+  .time-description = De hoeveelheid tijd om terug te gaan (1u 12m 5s)
+  .mode = modus
+  .mode-description = De vismodus om te bekijken
+
+fishing-compare = vergelijk
+  .description = Vergelijk de visstatistieken van twee spelers
+  .from = van
+  .from-description = Minecraft-speler
+  .to = naar
+  .to-description = Minecraft-speler om te vergelijken met
+  .mode = modus
+  .mode-description = De vismodus om te bekijken

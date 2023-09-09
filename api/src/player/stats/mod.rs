@@ -5,6 +5,7 @@ pub mod blitz_sg;
 pub mod build_battle;
 pub mod cops_and_crims;
 pub mod duels;
+pub mod fishing;
 pub mod mega_walls;
 pub mod murder_mystery;
 pub mod paintball;
@@ -61,4 +62,6 @@ pub struct Stats {
 	pub pit: pit::Outer,
 	#[serde(rename = "WoolGames")]
 	pub wool_wars: wool_wars::Outer,
+	#[serde(rename = "MainLobby")]
+	pub fishing: fishing::Outer,
 }

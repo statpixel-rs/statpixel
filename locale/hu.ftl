@@ -405,6 +405,12 @@ leaderboard = ranglista
   .description = Tekintse meg a ranglistát különböző játékokhoz
   .board = tábla
   .board-description = A megtekintendő ranglista
+  .guild = guild
+  .guild-description = A guild tagjai, amelyekre szűrni kell
+  .player = játékos
+  .player-description = A játékos, amelyre ugorjon
+  .page = oldal
+  .page-description = Az oldal, amelyre ugorjon
 
 # /network
 
@@ -1640,6 +1646,7 @@ show-prefix = Mutass előtagot
 bronze-trophies = Bronz Trófeák
 silver-trophies = Ezüst Trófeák
 gold-trophies = Arany Trófeák
+laps-completed = Lapszám
 
 turbokartracers-general = általános
   .description = Nézd meg a Turbo Kart Racers statisztikákat
@@ -2804,3 +2811,91 @@ woolwars-session = munkamenet
   .session-description = Egy munkamenet azonosítója
   .mode = mód
   .mode-description = A Wool Wars mód, amit meg szeretnél nézni
+
+Water = Víz
+Lava = Láva
+Ice = Jég
+
+fish = Hal
+junk = Kacat
+treasure = Kincs
+
+fishing-general = általános
+  .description = Nézd meg a Horgászat statisztikáit
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-from = ettől
+  .description = Nézd meg a Horgászat statisztikáinak alakulását egy adott időponttól
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+  .time = idő
+  .time-description = Az visszamenendő idő mennyisége (1 óra 12 perc 5 másodperc)
+
+fishing-history = történelem
+  .description = Nézd meg a Horgászat statisztikáinak alakulását az idő folyamán
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-project = projekt
+  .description = Projektáld előre a Horgászat statisztikákat
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+  .statistic = statisztika
+  .statistic-description = A projektálandó Horgászat statisztika
+  .value = érték
+  .value-description = A projektálandó statisztika értéke
+
+fishing-daily = napi
+  .description = Nézd meg a Horgászat statisztikáinak alakulását az elmúlt napon
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-weekly = heti
+  .description = Nézd meg a Horgászat statisztikáinak alakulását az elmúlt héten
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-monthly = havi
+  .description = Nézd meg a Horgászat statisztikáinak alakulását az elmúlt hónapban
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-session = munkamenet
+  .description = Mutasd meg egy játékos Horgászat fejlődését a munkamenet kezdete óta
+  .session = munkamenet
+  .session-description = Egy munkamenet azonosító
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-at = ekkor
+  .description = Mutasd meg egy játékos Horgászat statisztikáit egy adott időpontban
+  .player = játékos
+  .player-description = Minecraft játékos vagy munkamenet
+  .time = idő
+  .time-description = Az visszamenendő idő mennyisége (1 óra 12 perc 5 másodperc)
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód
+
+fishing-compare = összehasonlítás
+  .description = Hasonlítsd össze két játékos Horgászat statisztikáit
+  .from = itt
+  .from-description = Minecraft játékos
+  .to = ide
+  .to-description = Minecraft játékos, amivel össze akarod hasonlítani
+  .mode = mód
+  .mode-description = A megtekintendő Horgászati mód

@@ -117,7 +117,7 @@ pub async fn network(
 
 		let content = ::translate::tr_fmt!(
 			ctx, "no-previous-statistics",
-			name: crate::util::escape_username(&data.username),
+			name: data.username.as_str(),
 		);
 
 		ctx.send(poise::CreateReply::new().content(content)).await?;
@@ -280,4 +280,9 @@ command!(
 	stats::wool_wars::WoolWars,
 	stats::wool_wars::WoolWarsMode,
 	woolwars
+);
+command!(
+	stats::fishing::Fishing,
+	stats::fishing::FishingMode,
+	fishing
 );

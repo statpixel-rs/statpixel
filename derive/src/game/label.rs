@@ -353,6 +353,10 @@ impl<'a> From<&'a InfoFieldData> for Label<'a> {
 		let path = value.path.as_ref().map_or_else(
 			|| quote!(),
 			|p| {
+				if p.is_empty() {
+					return quote!();
+				}
+
 				let mut tokens =
 					syn::parse_str::<proc_macro2::TokenStream>(p).expect("a valid path");
 
