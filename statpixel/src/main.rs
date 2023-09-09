@@ -188,6 +188,7 @@ async fn main() {
 			let players = autocomplete::table
 				.left_outer_join(leaderboard::table)
 				.select(autocomplete::uuid)
+				.filter(leaderboard::uuid.is_null())
 				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
 				.await
 				.unwrap();
