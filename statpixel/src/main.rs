@@ -206,10 +206,10 @@ async fn main() {
 					"{} / {} ({:.4})",
 					i,
 					players_len,
-					(i as f64 + 100. / players_len_f)
+					(i as f64 * 100. / players_len_f)
 				);
 
-				tokio::time::sleep(std::time::Duration::from_millis(750)).await;
+				tokio::time::sleep(std::time::Duration::from_millis(600)).await;
 			}
 		}
 	});

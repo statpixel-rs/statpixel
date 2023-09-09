@@ -33,6 +33,7 @@ struct LeaderboardRaw {
 	tr: String,
 }
 
+#[derive(Clone)]
 struct Leaderboard {
 	game: hypixel::game::r#type::Type,
 	display_name: String,
@@ -43,12 +44,12 @@ struct Leaderboard {
 	path_filter_sql: diesel::dsl::IsNotNull<SqlLiteral<Integer>>,
 }
 
-static LEADERBOARDS: Lazy<HashMap<String, Leaderboard>> = Lazy::new(|| {
+static LEADERBOARDS: Lazy<(HashMap<String, Leaderboard>, Vec<Leaderboard>)> = Lazy::new(|| {
 	let file = std::fs::File::open("include/leaderboards.json").unwrap();
 	let leaderboards: Vec<LeaderboardRaw> = serde_json::from_reader(file).unwrap();
 	let ctx = context::Context::external(crate::DATA.get().unwrap());
 
-	leaderboards
+	let mut leaderboards: Vec<_> = leaderboards
 		.into_iter()
 		.filter_map(|l| {
 			let mode = l.mode.and_then(|m| {
@@ -79,21 +80,29 @@ static LEADERBOARDS: Lazy<HashMap<String, Leaderboard>> = Lazy::new(|| {
 
 			let path_sql = sql::<diesel::sql_types::Integer>(&l.path);
 
-			Some((
-				display_name.clone(),
-				Leaderboard {
-					game: l.game,
-					path_select_sql: sql::<Integer>(&format!("CAST({} AS INT)", &l.path)),
-					path_filter_sql: path_sql.clone().is_not_null(),
-					// TODO: use ascending order for stuff like fastest wins, etc.
-					path_order_sql: sql::<Integer>(&format!("{} DESC", &l.path)),
-					display_name_lower: display_name.to_ascii_lowercase(),
-					display_name,
-					name,
-				},
-			))
+			Some(Leaderboard {
+				game: l.game,
+				path_select_sql: sql::<Integer>(&format!("CAST({} AS INT)", &l.path)),
+				path_filter_sql: path_sql.clone().is_not_null(),
+				// TODO: use ascending order for stuff like fastest wins, etc.
+				path_order_sql: sql::<Integer>(&format!("{} DESC", &l.path)),
+				display_name_lower: display_name.to_ascii_lowercase(),
+				display_name,
+				name,
+			})
 		})
-		.collect()
+		.collect();
+
+	leaderboards.sort_by(|a, b| a.display_name_lower.cmp(&b.display_name_lower));
+
+	(
+		leaderboards
+			.clone()
+			.into_iter()
+			.map(|l| (l.display_name.clone(), l))
+			.collect(),
+		leaderboards,
+	)
 });
 
 #[allow(clippy::unused_async)]
@@ -102,7 +111,8 @@ async fn autocomplete_board(_ctx: Context<'_>, partial: &str) -> impl Iterator<I
 
 	Box::new(
 		LEADERBOARDS
-			.values()
+			.1
+			.iter()
 			.filter_map(|board| {
 				if !board.display_name_lower.contains(&lower) {
 					return None;
@@ -135,7 +145,7 @@ pub async fn leaderboard(
 
 	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let leaderboard = {
-		let Some(leaderboard) = LEADERBOARDS.get(&board) else {
+		let Some(leaderboard) = LEADERBOARDS.0.get(&board) else {
 			return Err(Error::LeaderboardNotFound(board));
 		};
 
