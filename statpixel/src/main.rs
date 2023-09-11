@@ -198,10 +198,12 @@ async fn main() {
 			let players_len_f = players_len as f64;
 
 			for (i, player) in players.into_iter().enumerate() {
-				api::player::Player::from_uuid_unchecked(player)
+				if let Err(e) = api::player::Player::from_uuid_unchecked(player)
 					.get_data(&ctx)
 					.await
-					.ok();
+				{
+					warn!(error = ?e, "error in leaderboard update loop");
+				}
 
 				info!(
 					"{} / {} ({:.4})",

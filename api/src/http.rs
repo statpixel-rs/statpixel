@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use once_cell::sync::Lazy;
 use reqwest::header::HeaderValue;
 
@@ -7,7 +9,10 @@ pub static HTTP: Lazy<Ratelimiter> = Lazy::new(|| {
 	#[cfg(any(test, feature = "runtime_env"))]
 	dotenvy::dotenv().ok();
 
-	let client = reqwest::Client::builder().build().unwrap();
+	let client = reqwest::Client::builder()
+		.timeout(Duration::from_secs(10))
+		.build()
+		.unwrap();
 
 	#[cfg(not(feature = "runtime_env"))]
 	let header = HeaderValue::from_static(dotenvy_macro::dotenv!("HYPIXEL_API_KEY"));

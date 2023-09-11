@@ -63,7 +63,10 @@ pub struct SkyWars {
 	#[serde(deserialize_with = "crate::de::from::i32_to_u32")]
 	#[cfg_attr(feature = "game", game(label(colour = "aqua")))]
 	pub souls: u32,
-	#[serde(rename = "cosmetic_tokens")]
+	#[serde(
+		rename = "cosmetic_tokens",
+		deserialize_with = "crate::de::from::f32_to_u32"
+	)]
 	#[cfg_attr(feature = "game", game(label(colour = "dark_green")))]
 	pub tokens: u32,
 	#[serde(rename = "egg_thrown")]
