@@ -842,20 +842,17 @@ impl ToTokens for GameInputReceiver {
 						),
 						game: #hypixel::game::r#type::Type::#game_ident,
 						name: format!(
-							"{} {}",
-							#translate::tr(ctx, #overall_ident::tr()),
+							"{}",
 							#tr,
 						),
 						display_name: format!(
-							"{} {} {}",
+							"{} {}",
 							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-							#translate::tr(ctx, #overall_ident::tr()),
 							#tr,
 						),
 						display_name_lower: format!(
-							"{} {} {}",
+							"{} {}",
 							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-							#translate::tr(ctx, #overall_ident::tr()),
 							#tr,
 						)
 						.replace(' ', "")
@@ -871,20 +868,17 @@ impl ToTokens for GameInputReceiver {
 					),
 					game: #hypixel::game::r#type::Type::#game_ident,
 					name: format!(
-						"{} {}",
-						#translate::tr(ctx, #overall_ident::tr()),
+						"{}",
 						#translate::tr(ctx, "experience"),
 					),
 					display_name: format!(
-						"{} {} {}",
+						"{} {}",
 						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, #overall_ident::tr()),
 						#translate::tr(ctx, "experience"),
 					),
 					display_name_lower: format!(
-						"{} {} {}",
+						"{} {}",
 						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, #overall_ident::tr()),
 						#translate::tr(ctx, "experience"),
 					)
 					.replace(' ', "")
