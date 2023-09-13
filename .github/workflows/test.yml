@@ -4,6 +4,7 @@ on:
       - '**.rs'
       - '**.toml'
       - '**.yml'
+      - '.git*'
     branches:
       - main
 
