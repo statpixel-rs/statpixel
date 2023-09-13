@@ -78,7 +78,7 @@ pub enum Error {
 	#[error("A SkyBlock profile belonging to `{0}` was not found.")]
 	SkyBlockProfileNotFound(String),
 	#[error("A leaderboard with the name `{0}` was not found.")]
-	LeaderboardNotFound(String),
+	LeaderboardNotFound(usize),
 	#[error("An internal error occurred while interacting with the canvas.")]
 	Canvas,
 	#[error("An internal error occurred while decoding base64.")]

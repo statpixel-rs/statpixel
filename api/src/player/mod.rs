@@ -356,7 +356,7 @@ impl Player {
 		};
 
 		#[cfg(feature = "redis")]
-		self.set_display_str(&player).await?;
+		self.set_display_str(ctx, &player).await?;
 		#[cfg(feature = "database")]
 		self.update_leaderboard(ctx, &player).await?;
 

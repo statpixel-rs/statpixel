@@ -395,7 +395,9 @@ pub trait Field: Debug {
 		if let Some(bottom) = self.value_bottom(side, access) {
 			let top = self.value_top(side, access)?;
 			let value = quote!({
-				((#top) as f64) / ((#bottom) as f64)
+				let bottom = #bottom as f64;
+
+				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
@@ -414,7 +416,9 @@ pub trait Field: Debug {
 		if let Some(bottom) = self.value_bottom(side, access) {
 			let top = self.value_top(side, access)?;
 			let value = quote!({
-				((#top) as f64) / ((#bottom) as f64)
+				let bottom = #bottom as f64;
+
+				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
@@ -474,7 +478,9 @@ pub trait Field: Debug {
 		else if let Some(bottom) = self.value_bottom_sum(side, modes, access) {
 			let top = self.value_top_sum(side, modes, access)?;
 			let value = quote!({
-				((#top) as f64) / ((#bottom) as f64)
+				let bottom = #bottom as f64;
+
+				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
@@ -532,7 +538,9 @@ pub trait Field: Debug {
 		else if let Some(bottom) = self.value_bottom_sum(side, modes, access) {
 			let top = self.value_top_sum(side, modes, access)?;
 			let value = quote!({
-				((#top) as f64) / ((#bottom) as f64)
+				let bottom = #bottom as f64;
+
+				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {

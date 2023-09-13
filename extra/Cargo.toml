@@ -9,6 +9,10 @@ repository = "https://github.com/matteopolak/statpixel"
 [dependencies]
 serde.workspace = true
 
+[dependencies.redis]
+workspace = true
+optional = true
+
 [dependencies.label]
 path = "../label"
 optional = true
@@ -22,6 +26,7 @@ workspace = true
 features = ["serde"]
 
 [features]
-default = ["locale"]
+default = ["locale", "redis"]
 
 locale = ["dep:label"]
+redis = ["dep:redis"]

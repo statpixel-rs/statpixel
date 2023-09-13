@@ -80,7 +80,7 @@ tokio.workspace = true
 default = ["redis", "cache", "game", "database", "locale", "canvas"]
 
 runtime_env = ["dep:dotenvy"]
-redis = ["dep:redis"]
+redis = ["dep:redis", "extra/redis"]
 cache = []
 game = ["dep:derive", "locale", "canvas"]
 database = ["dep:database", "translate/data"]

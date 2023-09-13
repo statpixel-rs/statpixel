@@ -56,12 +56,15 @@ pub(crate) fn impl_mode(
 		.unwrap_or_else(|| panic!("an xp field was not found for mode {}", mode.ident));
 
 	let State {
-		idents: Idents {
-			kind_enum,
-			calc,
-			path_to_game,
-			..
-		},
+		idents:
+			Idents {
+				kind_enum,
+				calc,
+				path_to_game,
+				game_ident,
+				mode_enum,
+				..
+			},
 		crates:
 			Crates {
 				translate,
@@ -72,6 +75,7 @@ pub(crate) fn impl_mode(
 				api,
 				hypixel,
 				extra,
+				redis,
 				..
 			},
 		..
@@ -106,6 +110,118 @@ pub(crate) fn impl_mode(
 		.iter()
 		.chain(mode_blocks.iter())
 		.filter_map(|b| b.diff_log(mode, &ident("log")));
+
+	let add_to_pipeline = game_blocks
+		.iter()
+		.chain(mode_blocks.iter())
+		.filter_map(|b| {
+			if !b.is_measurable() {
+				return None;
+			}
+
+			let value = b.value(Side::None, Access::Mode(mode))?;
+
+			Some(quote!({
+				let key = #api::leaderboard::encode(&#api::leaderboard::Kind::#game_ident(
+					#mode_enum::#ty,
+					#kind_enum::#b,
+				));
+				let game = &data.stats.#path_to_game;
+				let stats = &data.stats.#path_to_game.#id;
+
+				pipeline.zadd(key, data.uuid.as_bytes(), #value);
+			}))
+		})
+		.chain(game_labels.iter().filter_map(|l| {
+			if !l.is_measurable() {
+				return None;
+			}
+
+			let value = l.value(Side::None, Access::Mode(mode))?;
+
+			Some(quote!({
+				let key = #api::leaderboard::encode(&#api::leaderboard::Kind::#game_ident(
+					#mode_enum::#ty,
+					#kind_enum::#l,
+				));
+				let game = &data.stats.#path_to_game;
+				let stats = &data.stats.#path_to_game.#id;
+
+				pipeline.zadd(key, data.uuid.as_bytes(), #value);
+			}))
+		}));
+
+	let leaderboards = game_blocks
+		.iter()
+		.chain(mode_blocks.iter())
+		.filter_map(|b| {
+			if !b.is_measurable() {
+				return None;
+			}
+
+			let tr = b.as_tr();
+
+			Some(quote!({
+				#api::leaderboard::Leaderboard {
+					kind: #api::leaderboard::Kind::#game_ident(
+						#mode_enum::#ty,
+						#kind_enum::#b,
+					),
+					game: #hypixel::game::r#type::Type::#game_ident,
+					name: format!("{} {}", #translate::tr(ctx, #ty::tr()), #tr),
+					display_name: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #ty::tr()),
+						#tr,
+					),
+					display_name_lower: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #ty::tr()),
+						#tr,
+					)
+					.replace(' ', "")
+					.to_lowercase(),
+				}
+			}))
+		})
+		.chain(game_labels.iter().filter_map(|l| {
+			if !l.is_measurable() {
+				return None;
+			}
+
+			let tr = l.as_tr();
+
+			Some(quote!({
+				#api::leaderboard::Leaderboard {
+					kind: #api::leaderboard::Kind::#game_ident(
+						#mode_enum::#ty,
+						#kind_enum::#l,
+					),
+					game: #hypixel::game::r#type::Type::#game_ident,
+					name: format!(
+						"{} {}",
+						#translate::tr(ctx, #ty::tr()),
+						#tr,
+					),
+					display_name: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #ty::tr()),
+						#tr,
+					),
+					display_name_lower: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #ty::tr()),
+						#tr,
+					)
+					.replace(' ', "")
+					.to_lowercase(),
+				}
+			}))
+		}));
 
 	let embed = game_blocks
 		.iter()
@@ -304,6 +420,38 @@ pub(crate) fn impl_mode(
 		quote!()
 	};
 
+	let leaderboard_kind_match = game_blocks
+		.iter()
+		.chain(mode_blocks.iter())
+		.filter_map(|b| {
+			if !b.is_measurable() {
+				return None;
+			}
+
+			let value = b.value(Side::None, Access::ModeDiff(mode))?;
+
+			Some(quote!(#kind_enum::#b => {
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
+				);
+			}))
+		})
+		.chain(game_labels.iter().filter_map(|l| {
+			if !l.is_measurable() {
+				return None;
+			}
+
+			let value = l.value(Side::None, Access::ModeDiff(mode))?;
+
+			Some(quote!(#kind_enum::#l => {
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
+				);
+			}))
+		}));
+
 	tokens.extend(quote! {
 		impl #api::canvas::diff::DiffLog for #ty {
 			fn diff_log(
@@ -336,6 +484,65 @@ pub(crate) fn impl_mode(
 		}
 
 		impl #ty {
+			pub fn add_to_pipeline(pipeline: &mut #redis::Pipeline, data: &#api::player::data::Data) {
+				#(#add_to_pipeline)*
+			}
+
+			pub fn leaderboards(ctx: &#translate::context::Context<'_>) -> Vec<#api::leaderboard::Leaderboard> {
+				vec![
+					#(#leaderboards),*
+				]
+			}
+
+			pub fn leaderboard<'c>(
+				ctx: &#translate::context::Context<'_>,
+				start: usize,
+				players: &[::std::sync::Arc<#api::player::data::Data>],
+				kind: &#kind_enum,
+				family: #minecraft::style::Family,
+				background: Option<#skia::Color>,
+				mut canvas: #api::canvas::Canvas<'c>,
+			) -> Result<#api::canvas::Canvas<'c>, #translate::Error> {
+				for (idx, data) in players.iter().enumerate() {
+					let game = &data.stats.#path_to_game;
+					let stats = &data.stats.#path_to_game.#id;
+
+					let level = {
+						let xp = #calc::convert(&#xp);
+						let level = #calc::get_level(xp);
+
+						level
+					};
+
+					canvas = canvas
+						.push_down_start(
+							&#api::canvas::shape::LeaderboardPlace,
+							#api::canvas::shape::LeaderboardPlace::from_usize(family, start + idx + 1),
+						)
+						.push_right(
+							&#api::canvas::shape::LeaderboardName,
+							#api::canvas::body::Body::build_slice(
+								family,
+								#api::canvas::text::from_data_with_level(
+									&data,
+									&data.username,
+									None,
+									&#calc::get_level_format(level)
+								).as_slice(),
+								20.,
+								#skia::textlayout::TextAlign::Left,
+							),
+						);
+
+					match kind {
+						#(#leaderboard_kind_match)*
+						_ => return Err(#translate::Error::NotImplemented),
+					}
+				}
+
+				Ok(canvas)
+			}
+
 			#[inline]
 			pub fn tr() -> &'static str {
 				#tr

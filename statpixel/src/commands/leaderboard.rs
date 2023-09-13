@@ -1,129 +1,67 @@
 use std::borrow::Cow;
-use std::collections::HashMap;
 
-use api::{
-	canvas::{self, body::Body, shape, Canvas},
-	player::Player,
-};
-use database::schema::leaderboard;
-use diesel::{
-	dsl::sql, expression::SqlLiteral, sql_types::Integer, BoolExpressionMethods, ExpressionMethods,
-	QueryDsl,
-};
-use diesel_async::RunQueryDsl;
+use api::{canvas, player::Player};
 use futures::StreamExt;
-use minecraft::{
-	paint::Paint,
-	text::{parse::minecraft_string, Text},
-};
 use once_cell::sync::Lazy;
 use poise::serenity_prelude::CreateAttachment;
-use skia_safe::textlayout::TextAlign;
-use translate::{context, has_tr, tr, Context, Error};
+use redis::AsyncCommands;
+use translate::{context, Context, Error};
 use uuid::Uuid;
 
 use crate::util;
 
-#[derive(serde::Deserialize, Debug)]
-struct LeaderboardRaw {
-	#[serde(deserialize_with = "hypixel::game::r#type::de_from_name")]
-	game: hypixel::game::r#type::Type,
-	mode: Option<String>,
-	path: String,
-	tr: String,
-}
-
-#[derive(Clone)]
-struct Leaderboard {
-	game: hypixel::game::r#type::Type,
-	display_name: String,
-	display_name_lower: String,
-	name: String,
-	path_select_sql: SqlLiteral<Integer>,
-	path_order_sql: SqlLiteral<Integer>,
-	path_filter_sql: diesel::dsl::IsNotNull<SqlLiteral<Integer>>,
-}
-
-static LEADERBOARDS: Lazy<(HashMap<String, Leaderboard>, Vec<Leaderboard>)> = Lazy::new(|| {
-	let file = std::fs::File::open("include/leaderboards.json").unwrap();
-	let leaderboards: Vec<LeaderboardRaw> = serde_json::from_reader(file).unwrap();
+static LEADERBOARDS: Lazy<Vec<api::leaderboard::Leaderboard>> = Lazy::new(|| {
 	let ctx = context::Context::external(crate::DATA.get().unwrap());
+	let mut leaderboards = api::Data::leaderboards(&ctx);
 
-	let mut leaderboards: Vec<_> = leaderboards
-		.into_iter()
-		.filter_map(|l| {
-			let mode = l.mode.and_then(|m| {
-				if !has_tr(&ctx, &m) {
-					return None;
-				}
+	leaderboards.sort_by(|a, b| a.display_name.cmp(&b.display_name));
+	leaderboards
+});
 
-				Some(tr(&ctx, &m).into_owned())
-			});
+struct RedisUuid(Uuid);
 
-			if !has_tr(&ctx, &l.tr) {
+impl redis::FromRedisValue for RedisUuid {
+	fn from_redis_value(v: &redis::Value) -> redis::RedisResult<Self> {
+		match v {
+			redis::Value::Data(data) => Ok(Self(Uuid::from_slice(data).map_err(|_| {
+				redis::RedisError::from((
+					redis::ErrorKind::TypeError,
+					"expected slice of length 16",
+				))
+			})?)),
+			_ => Err(redis::RedisError::from((
+				redis::ErrorKind::TypeError,
+				"unexpected type",
+			))),
+		}
+	}
+}
+
+#[allow(clippy::unused_async)]
+async fn autocomplete_board(
+	_ctx: Context<'_>,
+	partial: &str,
+) -> impl Iterator<Item = poise::AutocompleteChoice<usize>> {
+	let mut lower = partial.replace(' ', "");
+
+	lower.make_ascii_lowercase();
+
+	LEADERBOARDS
+		.iter()
+		.enumerate()
+		.filter_map(|(value, board)| {
+			if !board.display_name_lower.contains(&lower) {
 				return None;
 			}
 
-			let name_tr = tr(&ctx, &l.tr);
-
-			let name = format!(
-				"{}{} ({})",
-				if mode.is_some() { " " } else { "" },
-				if let Some(mode) = mode.as_deref() {
-					mode
-				} else {
-					""
-				},
-				name_tr
-			);
-			let display_name = format!("{}{}", l.game.as_clean_name(), name);
-
-			let path_sql = sql::<diesel::sql_types::Integer>(&l.path);
-
-			Some(Leaderboard {
-				game: l.game,
-				path_select_sql: sql::<Integer>(&format!("CAST({} AS INT)", &l.path)),
-				path_filter_sql: path_sql.clone().is_not_null(),
-				// TODO: use ascending order for stuff like fastest wins, etc.
-				path_order_sql: sql::<Integer>(&format!("{} DESC", &l.path)),
-				display_name_lower: display_name.to_ascii_lowercase(),
-				display_name,
-				name,
+			Some(poise::AutocompleteChoice {
+				name: board.display_name.clone(),
+				value,
 			})
 		})
-		.collect();
-
-	leaderboards.sort_by(|a, b| a.display_name_lower.cmp(&b.display_name_lower));
-
-	(
-		leaderboards
-			.clone()
-			.into_iter()
-			.map(|l| (l.display_name.clone(), l))
-			.collect(),
-		leaderboards,
-	)
-});
-
-#[allow(clippy::unused_async)]
-async fn autocomplete_board(_ctx: Context<'_>, partial: &str) -> impl Iterator<Item = String> {
-	let lower = partial.to_ascii_lowercase();
-
-	Box::new(
-		LEADERBOARDS
-			.1
-			.iter()
-			.filter_map(|board| {
-				if !board.display_name_lower.contains(&lower) {
-					return None;
-				}
-
-				Some(board.display_name.clone())
-			})
-			.take(10)
-			.collect::<Vec<_>>()
-			.into_iter(),
-	)
+		.take(10)
+		.collect::<Vec<_>>()
+		.into_iter()
 }
 
 #[allow(clippy::too_many_lines)]
@@ -135,9 +73,11 @@ async fn autocomplete_board(_ctx: Context<'_>, partial: &str) -> impl Iterator<I
 )]
 pub async fn leaderboard(
 	ctx: Context<'_>,
-	#[autocomplete = "autocomplete_board"] board: String,
-	guild: Option<String>,
+	#[autocomplete = "autocomplete_board"] board: usize,
+	#[max_length = 36]
+	#[autocomplete = "crate::commands::autocomplete_username"]
 	player: Option<String>,
+	#[min = 1] page: Option<isize>,
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
@@ -145,70 +85,40 @@ pub async fn leaderboard(
 
 	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
 	let leaderboard = {
-		let Some(leaderboard) = LEADERBOARDS.0.get(&board) else {
+		let Some(leaderboard) = LEADERBOARDS.get(board) else {
 			return Err(Error::LeaderboardNotFound(board));
 		};
 
 		leaderboard
 	};
 
-	let skip = if let Some(player) = player && guild.is_none() {
+	let key = api::leaderboard::encode(&leaderboard.kind);
+
+	let rank = if let Some(player) = player {
 		let uuid = util::parse_uuid(Some(player.as_str()));
 		let player = util::get_player_from_input(ctx, uuid, Some(player)).await?;
 
-		let value = leaderboard::table
-			.filter(&leaderboard.path_filter_sql)
-			.filter(leaderboard::uuid.eq(player.uuid))
-			.select(&leaderboard.path_select_sql)
-			.first::<i32>(&mut ctx.data().pool.get().await?)
-			.await?;
-
-		leaderboard::table
-			.filter(&leaderboard.path_filter_sql)
-			.filter(
-				&leaderboard.path_select_sql.clone()
-					.gt(value)
-					.or(
-						leaderboard.path_select_sql.clone().eq(value)
-							.and(leaderboard::uuid.lt(player.uuid))
-					)
-			)
-			.count()
-			.get_result::<i64>(&mut ctx.data().pool.get().await?)
-			.await?
+		ctx.data()
+			.redis()
+			.zrevrank(&key, player.uuid.as_bytes())
+			.await
+			.map_err(api::Error::from)?
 	} else {
-		0i64
+		page.unwrap_or(1) * 10 - 10
 	};
 
-	let leaders = if let Some(guild) = guild {
-		let guild_id = util::parse_uuid(Some(guild.as_str()));
-		let guild = crate::commands::get_guild(ctx, Some(guild), None, None, guild_id).await?;
+	let top: Vec<RedisUuid> = ctx
+		.data()
+		.redis()
+		.zrevrange(&key, rank, rank + 9)
+		.await
+		.map_err(api::Error::from)?;
+	let top = top.into_iter().map(|r| r.0).collect::<Vec<_>>();
 
-		leaderboard::table
-			.filter(&leaderboard.path_filter_sql)
-			.filter(leaderboard::uuid.eq_any(guild.members.iter().map(|m| m.uuid)))
-			.select((leaderboard::uuid, &leaderboard.path_select_sql))
-			.order((&leaderboard.path_order_sql, leaderboard::uuid.asc()))
-			.limit(10)
-			.get_results::<(Uuid, i32)>(&mut ctx.data().pool.get().await?)
-			.await?
-	} else {
-		leaderboard::table
-			.filter(&leaderboard.path_filter_sql)
-			.select((leaderboard::uuid, &leaderboard.path_select_sql))
-			.order((&leaderboard.path_order_sql, leaderboard::uuid.asc()))
-			.offset(skip)
-			.limit(10)
-			.get_results::<(Uuid, i32)>(&mut ctx.data().pool.get().await?)
-			.await?
-	};
-
-	let leader_uuids = leaders.iter().map(|(uuid, _)| *uuid).collect::<Vec<_>>();
-	let leader_names = futures::stream::iter(
-		leader_uuids
-			.into_iter()
+	let players = futures::stream::iter(
+		top.into_iter()
 			.map(Player::from_uuid_unchecked)
-			.map(|p| p.get_display_string_owned(ctx)),
+			.map(|p| p.get_data_owned(ctx)),
 	)
 	.buffered(10)
 	.filter_map(|r| async { r.ok() })
@@ -216,40 +126,243 @@ pub async fn leaderboard(
 	.await;
 
 	let png: Cow<_> = {
-		let mut canvas = Canvas::new(720., family).gap(7.).push_down(
-			&shape::LeaderboardTitle,
-			Body::new(24., TextAlign::Center, family)
-				.extend(leaderboard.game.as_text())
-				.extend(&[Text {
-					text: &leaderboard.name,
-					paint: Paint::White,
-					..Default::default()
-				}])
-				.build(),
-		);
+		use api::leaderboard::Kind::*;
+		use api::player::stats::*;
 
-		for (idx, (player, (_, value))) in leader_names.iter().zip(leaders).enumerate() {
-			canvas = canvas
-				.push_down_start(
-					&shape::LeaderboardPlace,
-					shape::LeaderboardPlace::from_usize(family, idx + 1),
-				)
-				.push_right(
-					&shape::LeaderboardName,
-					Body::build_slice(
-						family,
-						minecraft_string(player).collect::<Vec<_>>().as_slice(),
-						20.,
-						None,
-					),
-				)
-				.push_right(
-					&shape::LeaderboardValue,
-					shape::LeaderboardValue::from_value(ctx, family, &(value as u32)),
-				);
-		}
+		let rank = rank as usize;
 
-		let mut surface = canvas.build(None, background).unwrap();
+		let mut surface = match leaderboard.kind {
+			Arcade(mode, kind) => arcade::Arcade::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Arena(mode, kind) => arena::Arena::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			BedWars(mode, kind) => bed_wars::BedWars::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			BlitzSg(mode, kind) => blitz_sg::BlitzSg::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			BuildBattle(mode, kind) => build_battle::BuildBattle::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			CopsAndCrims(mode, kind) => cops_and_crims::CopsAndCrims::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Duels(mode, kind) => duels::Duels::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Fishing(mode, kind) => fishing::Fishing::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			MegaWalls(mode, kind) => mega_walls::MegaWalls::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			MurderMystery(mode, kind) => murder_mystery::MurderMystery::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Paintball(mode, kind) => paintball::Paintball::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Pit(mode, kind) => pit::Pit::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Quake(mode, kind) => quake::Quake::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			SkyWars(mode, kind) => sky_wars::SkyWars::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			SmashHeroes(mode, kind) => smash_heroes::SmashHeroes::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			SpeedUhc(mode, kind) => speed_uhc::SpeedUhc::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			TntGames(mode, kind) => tnt_games::TntGames::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			TurboKartRacers(mode, kind) => turbo_kart_racers::TurboKartRacers::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Uhc(mode, kind) => uhc::Uhc::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			VampireZ(mode, kind) => vampire_z::VampireZ::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Walls(mode, kind) => walls::Walls::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			Warlords(mode, kind) => warlords::Warlords::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+			WoolWars(mode, kind) => wool_wars::WoolWars::leaderboard(
+				ctx,
+				rank,
+				&players,
+				&mode,
+				&kind,
+				&leaderboard,
+				family,
+				background,
+			),
+		}?;
 
 		canvas::to_png(&mut surface).into()
 	};

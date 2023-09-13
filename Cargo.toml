@@ -108,7 +108,7 @@ branch = "serenity-next"
 [workspace.dependencies.redis]
 version = "0.23"
 default-features = false
-features = ["cluster-async", "tokio-comp"]
+features = ["aio", "tokio-comp", "connection-manager"]
 
 [workspace.dependencies.reqwest]
 version = "0.11"

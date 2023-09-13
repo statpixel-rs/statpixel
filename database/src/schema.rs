@@ -73,15 +73,6 @@ diesel::table! {
 }
 
 diesel::table! {
-	leaderboard (uuid) {
-		uuid -> Uuid,
-		data -> Jsonb,
-		updated_at -> Timestamptz,
-		created_at -> Timestamptz,
-	}
-}
-
-diesel::table! {
 	metric (id) {
 		id -> Int4,
 		discord_id -> Int8,
@@ -170,7 +161,3 @@ diesel::table! {
 		font -> Int2,
 	}
 }
-
-diesel::joinable!(autocomplete -> leaderboard (uuid));
-
-diesel::allow_tables_to_appear_in_same_query!(autocomplete, leaderboard);

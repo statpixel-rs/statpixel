@@ -12,6 +12,12 @@ impl<'de> serde::Deserialize<'de> for InverseBool {
 	}
 }
 
+impl From<InverseBool> for bool {
+	fn from(b: InverseBool) -> Self {
+		!b.0
+	}
+}
+
 impl serde::Serialize for InverseBool {
 	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
 	where

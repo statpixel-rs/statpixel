@@ -27,7 +27,7 @@ macro_rules! large_command {
 			async fn autocomplete_mode<'a>(
 				ctx: $crate::Context<'a>,
 				partial: &'a str,
-			) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+			) -> impl Iterator<Item = poise::AutocompleteChoice<u32>> + 'a {
 				let partial = partial.to_ascii_lowercase();
 
 				<$game>::autocomplete(ctx, partial).await
@@ -165,9 +165,9 @@ pub mod bedwars {
 	use crate::commands::snapshot::weekly::bedwars::command as weekly;
 
 	async fn autocomplete_mode<'a>(
-		ctx: Context<'a>,
+		ctx: crate::Context<'a>,
 		partial: &'a str,
-	) -> impl ::futures::Stream<Item = ::poise::AutocompleteChoice<u32>> + 'a {
+	) -> impl Iterator<Item = poise::AutocompleteChoice<u32>> + 'a {
 		let partial = partial.to_ascii_lowercase();
 
 		stats::bed_wars::BedWars::autocomplete(ctx, partial).await

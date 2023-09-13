@@ -93,7 +93,7 @@ error = [
 	"dep:base64",
 	"dep:humantime",
 ]
-data = ["dep:poise", "dep:database", "dep:thiserror"]
+data = ["dep:poise", "dep:database", "dep:thiserror", "dep:redis"]
 locale = [
 	"dep:fluent",
 	"dep:tracing",

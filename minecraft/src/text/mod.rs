@@ -40,6 +40,12 @@ impl<'t> Text<'t> {
 		paint: Paint::White,
 		size: None,
 	};
+	pub const SPACE: Text<'static> = Text {
+		text: " ",
+		font: MinecraftFont::Normal,
+		paint: Paint::White,
+		size: None,
+	};
 
 	#[cfg(feature = "skia")]
 	#[must_use]

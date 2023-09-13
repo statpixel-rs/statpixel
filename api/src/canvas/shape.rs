@@ -772,8 +772,8 @@ impl_rect_shape!(
 );
 
 impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
-impl_rect_shape!(LeaderboardPlace, 50., 35., true);
-impl_rect_shape!(LeaderboardValue, 200., 35., true);
+impl_rect_shape!(LeaderboardPlace, 150., 35., true);
+impl_rect_shape!(LeaderboardValue, 150., 35., true);
 
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
@@ -999,7 +999,7 @@ impl Shape for WideTallBubble {
 impl Shape for LeaderboardName {
 	fn size(&self) -> Size {
 		Size {
-			width: 456.,
+			width: 406.,
 			height: 35.,
 		}
 	}

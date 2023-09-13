@@ -14,7 +14,7 @@ use api::skyblock;
 use database::{
 	get_pool,
 	models::MetricKind,
-	schema::{autocomplete, leaderboard, metric, usage},
+	schema::{autocomplete, metric, usage},
 };
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
@@ -54,6 +54,23 @@ pub const IMAGE_NAME: &str = "statpixel.png";
 pub const IMAGE_NAME: &str = "statpixel.png";
 
 pub static DATA: std::sync::OnceLock<Arc<translate::Data>> = std::sync::OnceLock::new();
+
+async fn create_redis_manager() -> redis::aio::ConnectionManager {
+	#[cfg(not(feature = "runtime_env"))]
+	let url = dotenvy_macro::dotenv!("REDIS_URL");
+
+	#[cfg(feature = "runtime_env")]
+	let url = std::env::var("REDIS_URL").expect("REDIS_URL not set");
+
+	#[cfg(feature = "runtime_env")]
+	let url = url.as_str();
+
+	redis::aio::ConnectionManager::new(
+		redis::Client::open(url).expect("failed to connect to Redis"),
+	)
+	.await
+	.expect("failed to create Redis connection manager")
+}
 
 #[tokio::main]
 #[allow(clippy::too_many_lines)]
@@ -117,6 +134,7 @@ async fn main() {
 	let data = Data {
 		pool,
 		locale: Arc::new(locale),
+		redis: create_redis_manager().await,
 	};
 
 	DATA.set(Arc::new(data.clone())).unwrap();
@@ -186,9 +204,7 @@ async fn main() {
 			let ctx = context::Context::automated(&data);
 
 			let players = autocomplete::table
-				.left_outer_join(leaderboard::table)
 				.select(autocomplete::uuid)
-				.filter(leaderboard::uuid.is_null())
 				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
 				.await
 				.unwrap();

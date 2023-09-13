@@ -60,7 +60,7 @@ pub struct SkyWars {
 	pub opals: u32,
 	#[cfg_attr(feature = "game", game(label(colour = "dark_purple")))]
 	pub heads: u32,
-	#[serde(deserialize_with = "crate::de::from::i32_to_u32")]
+	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	#[cfg_attr(feature = "game", game(label(colour = "aqua")))]
 	pub souls: u32,
 	#[serde(

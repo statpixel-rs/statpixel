@@ -8,7 +8,7 @@ where
 {
 	let s: f32 = Deserialize::deserialize(deserializer)?;
 
-	Ok(s as u32)
+	Ok(if s < 0.0 { 0 } else { s as u32 })
 }
 
 #[allow(clippy::cast_possible_truncation)]
@@ -19,15 +19,5 @@ where
 {
 	let s: f64 = Deserialize::deserialize(deserializer)?;
 
-	Ok(s as u64)
-}
-
-#[allow(clippy::cast_sign_loss)]
-pub(crate) fn i32_to_u32<'de, D>(deserializer: D) -> Result<u32, D::Error>
-where
-	D: Deserializer<'de>,
-{
-	let s: i32 = Deserialize::deserialize(deserializer)?;
-
-	Ok(if s < 0 { 0 } else { s as u32 })
+	Ok(if s < 0.0 { 0 } else { s as u64 })
 }

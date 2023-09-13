@@ -23,7 +23,12 @@ impl<'t> State<'t> {
 		Self {
 			receiver,
 			crates: Crates::new(),
-			idents: Idents::new(&receiver.ident.to_string(), calc, path_to_game),
+			idents: Idents::new(
+				&receiver.ident.to_string(),
+				receiver.ident.clone(),
+				calc,
+				path_to_game,
+			),
 		}
 	}
 }
@@ -32,15 +37,22 @@ pub(crate) struct Idents {
 	pub mode_enum: syn::Ident,
 	pub kind_enum: syn::Ident,
 	pub calc: syn::Path,
+	pub game_ident: syn::Ident,
 	pub path_to_game: proc_macro2::TokenStream,
 }
 
 impl Idents {
-	pub fn new(id: &str, calc: syn::Path, path_to_game: proc_macro2::TokenStream) -> Self {
+	pub fn new(
+		id: &str,
+		game_ident: syn::Ident,
+		calc: syn::Path,
+		path_to_game: proc_macro2::TokenStream,
+	) -> Self {
 		Self {
 			mode_enum: ident(&format!("{}Mode", id)),
 			kind_enum: ident(&format!("{}Kind", id)),
 			calc,
+			game_ident,
 			path_to_game,
 		}
 	}
@@ -56,10 +68,10 @@ pub(crate) struct Crates {
 	pub bitcode: syn::Ident,
 	pub minecraft: syn::Ident,
 	pub serde: syn::Ident,
-	pub futures: syn::Ident,
 	pub hypixel: syn::Ident,
 	pub api: syn::Ident,
 	pub extra: syn::Ident,
+	pub redis: syn::Ident,
 }
 
 impl Crates {
@@ -74,10 +86,10 @@ impl Crates {
 			bitcode: crate_ident("bitcode"),
 			minecraft: crate_ident("minecraft"),
 			serde: crate_ident("serde"),
-			futures: crate_ident("futures"),
 			hypixel: crate_ident("hypixel"),
 			api: crate_ident("api"),
 			extra: crate_ident("extra"),
+			redis: crate_ident("redis"),
 		}
 	}
 }

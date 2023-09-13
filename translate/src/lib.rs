@@ -42,7 +42,14 @@ mod data {
 	#[derive(Clone)]
 	pub struct Data {
 		pub pool: PostgresPool,
+		pub redis: redis::aio::ConnectionManager,
 		pub locale: Arc<super::locale::Locale>,
+	}
+
+	impl Data {
+		pub fn redis(&self) -> redis::aio::ConnectionManager {
+			self.redis.clone()
+		}
 	}
 
 	impl fmt::Debug for Data {

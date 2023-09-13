@@ -75,8 +75,8 @@ impl ToTokens for GameInputReceiver {
 			chrono,
 			skia,
 			serde,
-			futures,
 			hypixel,
+			redis,
 			..
 		} = &state.crates;
 		let Idents {
@@ -84,6 +84,7 @@ impl ToTokens for GameInputReceiver {
 			kind_enum,
 			calc,
 			path_to_game,
+			..
 		} = &state.idents;
 
 		let game_ident = &self.ident;
@@ -748,6 +749,181 @@ impl ToTokens for GameInputReceiver {
 			.iter()
 			.filter_map(|b| b.diff_log_sum(&overall_modes, &ident("log")));
 
+		let add_to_pipeline = blocks
+			.iter()
+			.filter_map(|b| {
+				if !b.is_measurable() {
+					return None;
+				}
+
+				let value = b.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+
+				Some(quote!({
+					let key = #api::leaderboard::encode(&#api::leaderboard::Kind::#game_ident(
+						#mode_enum::#overall_ident,
+						#kind_enum::#b,
+					));
+					let game = &data.stats.#path_to_game;
+
+					pipeline.zadd(key, data.uuid.as_bytes(), #value);
+				}))
+			})
+			.chain(labels.iter().filter_map(|l| {
+				if !l.is_measurable() {
+					return None;
+				}
+
+				let value = l.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+
+				Some(quote!({
+					let key = #api::leaderboard::encode(&#api::leaderboard::Kind::#game_ident(
+						#mode_enum::#overall_ident,
+						#kind_enum::#l,
+					));
+					let game = &data.stats.#path_to_game;
+
+					pipeline.zadd(key, data.uuid.as_bytes(), #value);
+				}))
+			}));
+
+		let leaderboards = blocks
+			.iter()
+			.filter_map(|b| {
+				if !b.is_measurable() {
+					return None;
+				}
+
+				let tr = b.as_tr();
+
+				Some(quote!({
+					#api::leaderboard::Leaderboard {
+						kind: #api::leaderboard::Kind::#game_ident(
+							#mode_enum::#overall_ident,
+							#kind_enum::#b,
+						),
+						game: #hypixel::game::r#type::Type::#game_ident,
+						name: format!("{} {}", #translate::tr(ctx, #overall_ident::tr()), #tr),
+						display_name: format!(
+							"{} {} {}",
+							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#translate::tr(ctx, #overall_ident::tr()),
+							#tr,
+						),
+						display_name_lower: format!(
+							"{} {} {}",
+							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#translate::tr(ctx, #overall_ident::tr()),
+							#tr,
+						)
+						.replace(' ', "")
+						.to_lowercase(),
+					}
+				}))
+			})
+			.chain(labels.iter().filter_map(|l| {
+				if !l.is_measurable() {
+					return None;
+				}
+
+				let tr = l.as_tr();
+
+				Some(quote!({
+					#api::leaderboard::Leaderboard {
+						kind: #api::leaderboard::Kind::#game_ident(
+							#mode_enum::#overall_ident,
+							#kind_enum::#l,
+						),
+						game: #hypixel::game::r#type::Type::#game_ident,
+						name: format!(
+							"{} {}",
+							#translate::tr(ctx, #overall_ident::tr()),
+							#tr,
+						),
+						display_name: format!(
+							"{} {} {}",
+							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#translate::tr(ctx, #overall_ident::tr()),
+							#tr,
+						),
+						display_name_lower: format!(
+							"{} {} {}",
+							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#translate::tr(ctx, #overall_ident::tr()),
+							#tr,
+						)
+						.replace(' ', "")
+						.to_lowercase(),
+					}
+				}))
+			}))
+			.chain(std::iter::once(quote!({
+				#api::leaderboard::Leaderboard {
+					kind: #api::leaderboard::Kind::#game_ident(
+						#mode_enum::#overall_ident,
+						#kind_enum::level,
+					),
+					game: #hypixel::game::r#type::Type::#game_ident,
+					name: format!(
+						"{} {}",
+						#translate::tr(ctx, #overall_ident::tr()),
+						#translate::tr(ctx, "experience"),
+					),
+					display_name: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #overall_ident::tr()),
+						#translate::tr(ctx, "experience"),
+					),
+					display_name_lower: format!(
+						"{} {} {}",
+						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#translate::tr(ctx, #overall_ident::tr()),
+						#translate::tr(ctx, "experience"),
+					)
+					.replace(' ', "")
+					.to_lowercase(),
+				}
+			})));
+
+		let leaderboard_kind_match = blocks
+			.iter()
+			.filter_map(|b| {
+				if !b.is_measurable() {
+					return None;
+				}
+
+				let value = b.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+
+				Some(quote!(#kind_enum::#b => {
+					canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
+					);
+				}))
+			})
+			.chain(labels.iter().filter_map(|l| {
+				if !l.is_measurable() {
+					return None;
+				}
+
+				let value = l.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+
+				Some(quote!(#kind_enum::#l => {
+					canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
+					);
+				}))
+			}))
+			.chain(std::iter::once(quote!(#kind_enum::level => {
+				let xp = #calc::convert(&#xp);
+
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#calc::get_total_xp(xp)),
+				);
+			})));
+
 		let embed = blocks
 			.iter()
 			.filter_map(|b| {
@@ -972,6 +1148,64 @@ impl ToTokens for GameInputReceiver {
 			}
 
 			impl #overall_ident {
+				pub fn add_to_pipeline(pipeline: &mut #redis::Pipeline, data: &#api::player::data::Data) {
+					#(#add_to_pipeline)*
+				}
+
+				pub fn leaderboards(ctx: &#translate::context::Context<'_>) -> Vec<#api::leaderboard::Leaderboard> {
+					vec![
+						#(#leaderboards),*
+					]
+				}
+
+				pub fn leaderboard<'c>(
+					ctx: &#translate::context::Context<'_>,
+					start: usize,
+					players: &[::std::sync::Arc<#api::player::data::Data>],
+					kind: &#kind_enum,
+					family: #minecraft::style::Family,
+					background: Option<#skia::Color>,
+					mut canvas: #api::canvas::Canvas<'c>,
+				) -> Result<#api::canvas::Canvas<'c>, #translate::Error> {
+					for (idx, data) in players.iter().enumerate() {
+						let game = &data.stats.#path_to_game;
+
+						let level = {
+							let xp = #calc::convert(&#xp);
+							let level = #calc::get_level(xp);
+
+							level
+						};
+
+						canvas = canvas
+							.push_down_start(
+								&#api::canvas::shape::LeaderboardPlace,
+								#api::canvas::shape::LeaderboardPlace::from_usize(family, start + idx + 1),
+							)
+							.push_right(
+								&#api::canvas::shape::LeaderboardName,
+								#api::canvas::body::Body::build_slice(
+									family,
+									#api::canvas::text::from_data_with_level(
+										&data,
+										&data.username,
+										None,
+										&#calc::get_level_format(level)
+									).as_slice(),
+									20.,
+									#skia::textlayout::TextAlign::Left,
+								),
+							);
+
+						match kind {
+							#(#leaderboard_kind_match)*
+							_ => return Err(#translate::Error::NotImplemented),
+						}
+					}
+
+					Ok(canvas)
+				}
+
 				#[inline]
 				pub fn tr() -> &'static str {
 					"Overall"
@@ -1412,6 +1646,30 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
+			let add_to_pipeline = modes.iter().map(|mode| {
+				let ty = mode.ty();
+
+				quote! {
+					#ty::add_to_pipeline(pipeline, data);
+				}
+			});
+
+			let leaderboards = modes.iter().map(|mode| {
+				let ty = mode.ty();
+
+				quote! {
+					leaderboards.extend(#ty::leaderboards(ctx).into_iter());
+				}
+			});
+
+			let leaderboard_match = modes.iter().map(|mode| {
+				let ty = mode.ty();
+
+				quote! {
+					#mode_enum::#ty => #ty::leaderboard(ctx, start, players, kind, family, background, canvas),
+				}
+			});
+
 			let embed_game = overall_modes.iter().map(|mode| {
 				quote!(embed = game.#mode.embed(ctx, embed, data);)
 			});
@@ -1443,6 +1701,48 @@ impl ToTokens for GameInputReceiver {
 
 			quote! {
 				impl #game_ident {
+					pub fn add_to_pipeline(pipeline: &mut #redis::Pipeline, data: &#api::player::data::Data) {
+						#overall_ident::add_to_pipeline(pipeline, data);
+						#(#add_to_pipeline)*
+					}
+
+					pub fn leaderboards(ctx: &#translate::context::Context<'_>, leaderboards: &mut Vec<#api::leaderboard::Leaderboard>) {
+						leaderboards.extend(#overall_ident::leaderboards(ctx).into_iter());
+						#(#leaderboards)*
+					}
+
+					#[allow(clippy::too_many_arguments)]
+					pub fn leaderboard(
+						ctx: &#translate::context::Context<'_>,
+						start: usize,
+						players: &[::std::sync::Arc<#api::player::data::Data>],
+						mode: &#mode_enum,
+						kind: &#kind_enum,
+						leaderboard: &#api::leaderboard::Leaderboard,
+						family: #minecraft::style::Family,
+						background: Option<#skia::Color>,
+					) -> Result<#skia::Surface, #translate::Error> {
+						let mut canvas = #api::canvas::Canvas::new(720., family).gap(7.).push_down(
+							&#api::canvas::shape::LeaderboardTitle,
+							#api::canvas::body::Body::new(24., #skia::textlayout::TextAlign::Center, family)
+								.extend(leaderboard.game.as_text())
+								.append(#minecraft::text::Text::SPACE)
+								.extend(&[#minecraft::text::Text {
+									text: &leaderboard.name,
+									paint: #minecraft::paint::Paint::White,
+									..Default::default()
+								}])
+								.build(),
+						);
+
+						let canvas = match mode {
+							#mode_enum::#overall_ident => #overall_ident::leaderboard(ctx, start, players, kind, family, background, canvas),
+							#(#leaderboard_match)*
+						}?;
+
+						Ok(canvas.build(None, background).unwrap())
+					}
+
 					pub fn from_kind<'t, 'c: 't>(
 						ctx: &'c #translate::context::Context<'c>,
 						data: &'t #api::player::data::Data,
@@ -1473,42 +1773,40 @@ impl ToTokens for GameInputReceiver {
 						})
 					}
 
-					pub async fn autocomplete<'a>(ctx: #translate::Context<'a>, partial: String) -> impl #futures::Stream<Item = #poise::AutocompleteChoice<u32>> + 'a {
-						use #futures::StreamExt as _;
-
-						#futures::stream::iter(#mode_enum::slice())
+					pub async fn autocomplete<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::AutocompleteChoice<u32>> + 'a {
+						#mode_enum::slice()
+							.iter()
 							.filter_map(move |mode| {
 								let name = #translate::tr(&ctx, mode.tr());
 								let mode: u32 = mode.into();
 
-								#futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
+								if name.to_ascii_lowercase().contains(&partial) {
 									Some(#poise::AutocompleteChoice {
 										name: name.to_string(),
 										value: mode,
 									})
 								} else {
 									None
-								})
+								}
 							})
 							.take(10)
 					}
 
-					pub async fn autocomplete_kind<'a>(ctx: #translate::Context<'a>, partial: String) -> impl #futures::Stream<Item = #poise::AutocompleteChoice<u32>> + 'a {
-						use #futures::StreamExt as _;
-
-						#futures::stream::iter(#kind_enum::slice())
+					pub async fn autocomplete_kind<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::AutocompleteChoice<u32>> +'a {
+						#kind_enum::slice()
+							.iter()
 							.filter_map(move |kind| {
 								let name = #translate::tr(&ctx, kind.tr());
 								let kind: u32 = kind.into();
 
-								#futures::future::ready(if name.to_ascii_lowercase().contains(&partial) {
+								if name.to_ascii_lowercase().contains(&partial) {
 									Some(#poise::AutocompleteChoice {
 										name: name.to_string(),
 										value: kind,
 									})
 								} else {
 									None
-								})
+								}
 							})
 							.take(10)
 					}

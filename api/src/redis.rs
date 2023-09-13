@@ -2,34 +2,16 @@ use std::sync::Arc;
 
 use chrono::Utc;
 #[cfg(feature = "database")]
-use database::schema::{leaderboard, schedule};
+use database::schema::schedule;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
-use once_cell::sync::Lazy;
-use redis::{aio::Connection, AsyncCommands, Client, RedisError};
+use redis::AsyncCommands;
 use translate::context;
 
 use crate::{
 	player::{data::Data, Player},
 	Error,
 };
-
-static REDIS: Lazy<Client> = Lazy::new(|| {
-	#[cfg(not(feature = "runtime_env"))]
-	let url = dotenvy_macro::dotenv!("REDIS_URL");
-
-	#[cfg(feature = "runtime_env")]
-	let url = std::env::var("REDIS_URL").expect("REDIS_URL not set");
-
-	#[cfg(feature = "runtime_env")]
-	let url = url.as_str();
-
-	Client::open(url).expect("failed to connect to Redis")
-});
-
-async fn get_connection() -> Result<Connection, RedisError> {
-	REDIS.get_async_connection().await
-}
 
 impl Player {
 	/// # Errors
@@ -47,11 +29,7 @@ impl Player {
 		&self,
 		ctx: &context::Context<'_>,
 	) -> Result<String, Arc<Error>> {
-		let mut conn = get_connection()
-			.await
-			.map_err(|e| Arc::new(Error::Redis(e)))?;
-
-		if let Ok(display) = conn.get(self.uuid.as_bytes()).await {
+		if let Ok(display) = ctx.data().redis().get(self.uuid.as_bytes()).await {
 			return Ok(display);
 		}
 
@@ -62,7 +40,9 @@ impl Player {
 			format!("§7{}", data.username)
 		};
 
-		conn.set(self.uuid.as_bytes(), &display)
+		ctx.data()
+			.redis()
+			.set(self.uuid.as_bytes(), &display)
 			.await
 			.map_err(|e| Arc::new(Error::Redis(e)))?;
 
@@ -71,16 +51,21 @@ impl Player {
 
 	/// # Errors
 	/// Returns an error if the Redis cache is unavailable
-	pub async fn set_display_str(&self, data: &Data) -> Result<(), Error> {
-		let mut conn = get_connection().await?;
-
+	pub async fn set_display_str(
+		&self,
+		ctx: &context::Context<'_>,
+		data: &Data,
+	) -> Result<(), Error> {
 		let display = if let Some(display) = data.get_rank().as_coloured_str() {
 			format!("{} {}", display, data.username)
 		} else {
 			format!("§7{}", data.username)
 		};
 
-		conn.set(self.uuid.as_bytes(), &display).await?;
+		ctx.data()
+			.redis()
+			.set(self.uuid.as_bytes(), &display)
+			.await?;
 
 		Ok(())
 	}
@@ -93,18 +78,13 @@ impl Player {
 		ctx: &context::Context<'_>,
 		data: &Data,
 	) -> Result<(), Error> {
-		let value = serde_json::to_value(data)?;
+		let mut pipeline = redis::pipe();
 
-		diesel::insert_into(leaderboard::table)
-			.values((
-				leaderboard::uuid.eq(&self.uuid),
-				leaderboard::data.eq(&value),
-			))
-			.on_conflict(leaderboard::uuid)
-			.do_update()
-			.set(leaderboard::data.eq(&value))
-			.execute(&mut ctx.data().pool.get().await?)
-			.await?;
+		// Add all player data to the pipeline
+		data.add_to_pipeline(&mut pipeline);
+
+		// Push everything to their respective leaderboards
+		pipeline.query_async(&mut ctx.data().redis()).await?;
 
 		Ok(())
 	}

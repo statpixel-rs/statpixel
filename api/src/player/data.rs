@@ -1,5 +1,6 @@
 #[cfg(feature = "game")]
 use crate::canvas::diff::DiffLog;
+use crate::leaderboard::Leaderboard;
 
 use chrono::{DateTime, Utc};
 use extra::minutes::Minutes;
@@ -71,38 +72,51 @@ pub struct Data {
 	pub socials: hypixel::socials::Socials,
 }
 
+// Executes the given code, passing in $left and $right on the left and right of each game
+macro_rules! execute_for_games {
+	([$($left:tt)*], [$($right:tt)*]) => {
+		$($left)* $crate::player::stats::arcade::Arcade $($right)*
+		$($left)* $crate::player::stats::arena::Arena $($right)*
+		$($left)* $crate::player::stats::bed_wars::BedWars $($right)*
+		$($left)* $crate::player::stats::blitz_sg::BlitzSg $($right)*
+		$($left)* $crate::player::stats::build_battle::BuildBattle $($right)*
+		$($left)* $crate::player::stats::cops_and_crims::CopsAndCrims $($right)*
+		$($left)* $crate::player::stats::duels::Duels $($right)*
+		$($left)* $crate::player::stats::fishing::Fishing $($right)*
+		$($left)* $crate::player::stats::mega_walls::MegaWalls $($right)*
+		$($left)* $crate::player::stats::murder_mystery::MurderMystery $($right)*
+		$($left)* $crate::player::stats::paintball::Paintball $($right)*
+		$($left)* $crate::player::stats::pit::Pit $($right)*
+		$($left)* $crate::player::stats::quake::Quake $($right)*
+		$($left)* $crate::player::stats::sky_wars::SkyWars $($right)*
+		$($left)* $crate::player::stats::smash_heroes::SmashHeroes $($right)*
+		$($left)* $crate::player::stats::speed_uhc::SpeedUhc $($right)*
+		$($left)* $crate::player::stats::tnt_games::TntGames $($right)*
+		$($left)* $crate::player::stats::turbo_kart_racers::TurboKartRacers $($right)*
+		$($left)* $crate::player::stats::uhc::Uhc $($right)*
+		$($left)* $crate::player::stats::vampire_z::VampireZ $($right)*
+		$($left)* $crate::player::stats::walls::Walls $($right)*
+		$($left)* $crate::player::stats::warlords::Warlords $($right)*
+		$($left)* $crate::player::stats::wool_wars::WoolWars $($right)*
+
+	};
+}
+
 #[cfg(feature = "game")]
 impl DiffLog for Data {
+	#[allow(clippy::let_and_return)]
 	fn diff_log(
 		data_lhs: &Data,
 		data_rhs: &Data,
 		ctx: &context::Context<'_>,
 		embed: Embed,
 	) -> Embed {
-		use super::stats::*;
+		execute_for_games!(
+			[let embed = ],
+			[::diff_log(data_lhs, data_rhs, ctx, embed);]
+		);
 
-		let embed = arcade::Arcade::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = arena::Arena::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = bed_wars::BedWars::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = blitz_sg::BlitzSg::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = build_battle::BuildBattle::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = cops_and_crims::CopsAndCrims::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = duels::Duels::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = mega_walls::MegaWalls::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = murder_mystery::MurderMystery::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = paintball::Paintball::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = pit::Pit::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = quake::Quake::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = sky_wars::SkyWars::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = smash_heroes::SmashHeroes::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = speed_uhc::SpeedUhc::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = tnt_games::TntGames::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = turbo_kart_racers::TurboKartRacers::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = uhc::Uhc::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = vampire_z::VampireZ::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = walls::Walls::diff_log(data_lhs, data_rhs, ctx, embed);
-		let embed = warlords::Warlords::diff_log(data_lhs, data_rhs, ctx, embed);
-		wool_wars::WoolWars::diff_log(data_lhs, data_rhs, ctx, embed)
+		embed
 	}
 }
 
@@ -125,6 +139,21 @@ pub struct Gifting {
 }
 
 impl Data {
+	pub fn add_to_pipeline(&self, pipeline: &mut redis::Pipeline) {
+		execute_for_games!(
+			[],
+			[::add_to_pipeline(pipeline, self);]
+		);
+	}
+
+	pub fn leaderboards(ctx: &context::Context<'_>) -> Vec<Leaderboard> {
+		let mut leaderboards = Vec::new();
+
+		execute_for_games!([], [::leaderboards(ctx, &mut leaderboards);]);
+
+		leaderboards
+	}
+
 	#[must_use]
 	pub fn placeholder() -> Self {
 		Self {

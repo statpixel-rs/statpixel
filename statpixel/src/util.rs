@@ -433,7 +433,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 			tr_fmt!(ctx, "error-skyblock-profile-not-found", name: name.as_str())
 		}
 		Error::LeaderboardNotFound(ref name) => {
-			tr_fmt!(ctx, "error-leaderboard-not-found", name: name.as_str())
+			tr_fmt!(ctx, "error-leaderboard-not-found", name: name)
 		}
 		Error::IdentifierTooLong => tr(ctx, "error-identifier-too-long"),
 		Error::UserTrackLimitReached(ref limit) => {

@@ -293,12 +293,12 @@ pub mod milliseconds {
 	impl_time_unit_opt!(MillisecondsOption, *, 1);
 }
 
-pub mod minutes {
-	impl_time_unit!(Minutes, *, 60 * 1_000);
-	impl_time_unit_opt!(MinutesOption, *, 60 * 1_000);
-}
-
 pub mod seconds {
 	impl_time_unit!(Seconds, *, 1_000);
 	impl_time_unit_opt!(SecondsOption, *, 1_000);
+}
+
+pub mod minutes {
+	impl_time_unit!(Minutes, *, 60 * 1_000);
+	impl_time_unit_opt!(MinutesOption, *, 60 * 1_000);
 }

@@ -1,6 +1,6 @@
 use minecraft::{
 	paint::Paint,
-	text::{parse::minecraft_string, Text},
+	text::{parse::minecraft_string, rank::Rank, Text},
 };
 
 use crate::player::data::Data;
@@ -79,7 +79,7 @@ pub fn from_data_with_level<'u>(
 		text.reserve_exact(usize::from(suffix.is_some()) * 2 + 1);
 	};
 
-	if !text.is_empty() {
+	if rank != Rank::Default {
 		text.push(Text {
 			text: " ",
 			..Default::default()
