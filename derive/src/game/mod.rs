@@ -784,7 +784,16 @@ impl ToTokens for GameInputReceiver {
 
 					pipeline.zadd(key, data.uuid.as_bytes(), #value);
 				}))
-			}));
+			}))
+			.chain(std::iter::once(quote!({
+				let key = #api::leaderboard::encode(&#api::leaderboard::Kind::#game_ident(
+					#mode_enum::#overall_ident,
+					#kind_enum::level,
+				));
+				let game = &data.stats.#path_to_game;
+
+				pipeline.zadd(key, data.uuid.as_bytes(), #calc::get_total_xp(#calc::convert(&#xp)));
+			})));
 
 		let leaderboards = blocks
 			.iter()
