@@ -811,17 +811,15 @@ impl ToTokens for GameInputReceiver {
 							#kind_enum::#b,
 						),
 						game: #hypixel::game::r#type::Type::#game_ident,
-						name: format!("{} {}", #translate::tr(ctx, #overall_ident::tr()), #tr),
+						name: format!("{}", #tr),
 						display_name: format!(
-							"{} {} {}",
+							"{} {}",
 							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-							#translate::tr(ctx, #overall_ident::tr()),
 							#tr,
 						),
 						display_name_lower: format!(
-							"{} {} {}",
+							"{} {}",
 							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-							#translate::tr(ctx, #overall_ident::tr()),
 							#tr,
 						)
 						.replace(' ', "")
