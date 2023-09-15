@@ -77,7 +77,7 @@ pub async fn top(
 	for (idx, (_, name, xp)) in members.iter().enumerate().take(limit / 2) {
 		canvas = canvas
 			.push_down_start(
-				&shape::LeaderboardPlace,
+				&shape::GuildLeaderboardPlace,
 				shape::LeaderboardPlace::from_usize(family, idx + 1),
 			)
 			.push_right(
@@ -92,7 +92,7 @@ pub async fn top(
 		if let Some((_, name, xp)) = members.get(idx + limit / 2) {
 			canvas = canvas
 				.push_right(
-					&shape::LeaderboardPlace,
+					&shape::GuildLeaderboardPlace,
 					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
 				.push_right(
@@ -106,7 +106,7 @@ pub async fn top(
 		} else {
 			canvas = canvas
 				.push_right(
-					&shape::LeaderboardPlace,
+					&shape::GuildLeaderboardPlace,
 					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
 				.push_right(
@@ -124,7 +124,7 @@ pub async fn top(
 		for idx in members.len()..(limit / 2) {
 			canvas = canvas
 				.push_down_start(
-					&shape::LeaderboardPlace,
+					&shape::GuildLeaderboardPlace,
 					shape::LeaderboardPlace::from_usize(family, idx + 1),
 				)
 				.push_right(
@@ -136,7 +136,7 @@ pub async fn top(
 					shape::LeaderboardValue::from_value(ctx, family, &0),
 				)
 				.push_right(
-					&shape::LeaderboardPlace,
+					&shape::GuildLeaderboardPlace,
 					shape::LeaderboardPlace::from_usize(family, idx + limit / 2 + 1),
 				)
 				.push_right(

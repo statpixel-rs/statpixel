@@ -820,6 +820,8 @@ impl_rect_shape!(LeaderboardPlace, 150., 35., true);
 impl_rect_shape!(LeaderboardValue, 150., 35., true);
 impl_rect_shape!(LeaderboardNameLabel, 406., 35., true);
 
+impl_rect_shape!(GuildLeaderboardPlace, 50., 35., true);
+
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
 
