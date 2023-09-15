@@ -77,6 +77,26 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 	info!(id = ?id, "dispatching command");
 
 	match id {
+		Id::Leaderboard {
+			board,
+			input,
+			filter,
+			order,
+		} => {
+			let leaderboard = crate::commands::leaderboard::LEADERBOARDS
+				.get(board as usize)
+				.ok_or(Error::NotImplemented)?;
+
+			crate::commands::leaderboard::run::command(
+				ctx,
+				leaderboard,
+				board,
+				input,
+				filter,
+				order,
+			)
+			.await
+		}
 		Id::Session { .. } => Err(crate::Error::NotImplemented),
 		Id::SessionPage { uuid, page } => {
 			let player = if let Some(uuid) = uuid {

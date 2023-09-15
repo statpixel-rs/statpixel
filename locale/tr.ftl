@@ -397,16 +397,27 @@ bank-balance = Banka Bakiyesi
 
 # /leaderboard
 
-leaderboard = liderlik-tablosu
-  .description = Farklı oyunlar için liderlik tablosunu görüntüle
+Ascending = Artan (Düşükten Yükseğe)
+Descending = Azalan (Yüksekten Düşüğe)
+
+player = Oyuncu
+
+leaderboard = leaderboard
+  .description = Çeşitli oyunlar için lider tablolarını görüntüle
   .board = tablo
-  .board-description = Görüntülenecek liderlik tablosu
+  .board-description = Görüntülenecek lider tablosu
   .guild = sunucu
   .guild-description = Filtrelemek için sunucunun üyeleri
   .player = oyuncu
   .player-description = Atlanacak oyuncu
   .page = sayfa
   .page-description = Atlanacak sayfa
+  .position = pozisyon
+  .position-description = Atlanacak pozisyon
+  .value = değer
+  .value-description = Atlanacak değer
+  .order = sıra
+  .order-description = Sıralama şekli
 
 # /network
 

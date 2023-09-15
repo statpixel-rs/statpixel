@@ -2,14 +2,7 @@ use serde::Deserializer;
 use uuid::Uuid;
 
 #[derive(
-	serde::Deserialize,
-	serde::Serialize,
-	bincode::Encode,
-	bincode::Decode,
-	Default,
-	Debug,
-	Clone,
-	PartialEq,
+	serde::Deserialize, bincode::Encode, bincode::Decode, Default, Debug, Clone, PartialEq,
 )]
 pub struct SkyBlock {
 	#[serde(deserialize_with = "from_profile_map", skip_serializing)]
@@ -17,14 +10,7 @@ pub struct SkyBlock {
 }
 
 #[derive(
-	serde::Deserialize,
-	serde::Serialize,
-	bincode::Encode,
-	bincode::Decode,
-	Default,
-	Debug,
-	Clone,
-	PartialEq,
+	serde::Deserialize, bincode::Encode, bincode::Decode, Default, Debug, Clone, PartialEq,
 )]
 pub struct Profile {
 	#[serde(rename = "profile_id")]

@@ -1238,4 +1238,40 @@ pub enum Id {
 		uuid: Option<Uuid>,
 		page: u32,
 	},
+	Leaderboard {
+		board: u32,
+		input: LeaderboardInput,
+		filter: LeaderboardFilter,
+		order: LeaderboardOrder,
+	},
+}
+
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy, poise::ChoiceParameter, Default)]
+pub enum LeaderboardOrder {
+	Ascending,
+	#[default]
+	Descending,
+}
+
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+pub enum LeaderboardFilter {
+	None,
+	// Only show players in a certain guild
+	Guild(#[bitcode(with_serde)] Uuid),
+	// Only show players in a certain Discord server
+	Server(u64),
+	// Only show players that are friended to a user
+	Friends(u64),
+}
+
+#[derive(bitcode::Encode, bitcode::Decode, Debug, Clone, Copy)]
+pub enum LeaderboardInput {
+	// Skip to a player
+	Player(#[bitcode(with_serde)] Uuid),
+	// Skip to a page
+	Page(u32),
+	// Skip to a position
+	Position(u32),
+	// Skip to a certain value
+	Value(f32),
 }

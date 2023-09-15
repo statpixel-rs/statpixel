@@ -400,16 +400,27 @@ bank-balance = 銀行餘額
 
 # /leaderboard
 
+Ascending = 升序（低到高）
+Descending = 降序（高到低）
+
+player = 玩家
+
 leaderboard = 排行榜
   .description = 查看各種遊戲的排行榜
-  .board = 榜單
+  .board = 排行榜
   .board-description = 要查看的排行榜
   .guild = 公會
-  .guild-description = 要篩選的公會成員
+  .guild-description = 要過濾的公會成員
   .player = 玩家
-  .player-description = 要跳轉的玩家
-  .page = 頁數
-  .page-description = 要跳轉的頁數
+  .player-description = 要跳轉到的玩家
+  .page = 頁面
+  .page-description = 要跳轉到的頁面
+  .position = 位置
+  .position-description = 要跳轉到的位置
+  .value = 值
+  .value-description = 要跳轉到的值
+  .order = 排序
+  .order-description = 要排序的順序
 
 # /network
 

@@ -1,22 +1,22 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 pub struct Outer {
 	#[serde(default)]
 	pub fishing: Wrapper,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 pub struct Wrapper {
 	#[serde(default)]
 	pub stats: Stats,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 pub struct Stats {
 	#[serde(default)]
 	pub permanent: Fishing,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -52,7 +52,7 @@ pub struct Fishing {
 	pub ice: Ice,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Water {
 	pub fish: u32,
@@ -60,7 +60,7 @@ pub struct Water {
 	pub treasure: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Lava {
 	pub fish: u32,
@@ -68,7 +68,7 @@ pub struct Lava {
 	pub treasure: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Ice {
 	pub fish: u32,

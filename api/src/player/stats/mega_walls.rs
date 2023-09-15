@@ -1,6 +1,6 @@
 use extra::{meters, minutes};
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -47,7 +47,7 @@ pub struct MegaWalls {
 	pub brawl: Brawl,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	#[serde(rename = "wins_standard")]
@@ -76,7 +76,7 @@ pub struct Normal {
 	pub treasures_found: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct FaceOff {
 	#[serde(rename = "wins_face_off")]
@@ -105,7 +105,7 @@ pub struct FaceOff {
 	pub treasures_found: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Brawl {
 	#[serde(rename = "wins_gvg")]

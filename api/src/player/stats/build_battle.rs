@@ -1,4 +1,4 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -41,28 +41,28 @@ pub struct BuildBattle {
 	pub guess_the_build: GuessTheBuild,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "wins_solo_normal")]
 	pub wins: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloPro {
 	#[serde(rename = "wins_solo_pro")]
 	pub wins: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "wins_teams_normal")]
 	pub wins: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct GuessTheBuild {
 	#[serde(rename = "wins_guess_the_build")]

@@ -400,16 +400,27 @@ bank-balance = Stanje na banci
 
 # /leaderboard
 
-leaderboard = ljestvica
-  .description = Pregledaj ljestvicu za različite igre
+Ascending = Uzlazno (Nisko do Visoko)
+Descending = Silazno (Visoko do Nisko)
+
+player = Igrač
+
+leaderboard = leaderboard
+  .description = Pregledaj leaderboard za različite igre
   .board = ploča
-  .board-description = Ljestvica koju želite pregledati
+  .board-description = Leaderboard za pregled
   .guild = gilda
   .guild-description = Članovi gilde za filtriranje
   .player = igrač
   .player-description = Igrač za preskakanje
   .page = stranica
   .page-description = Stranica za preskakanje
+  .position = pozicija
+  .position-description = Pozicija za preskakanje
+  .value = vrijednost
+  .value-description = Vrijednost za preskakanje
+  .order = redoslijed
+  .order-description = Redoslijed za sortiranje
 
 # /network
 

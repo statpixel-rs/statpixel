@@ -400,16 +400,27 @@ bank-balance = ยอดคงเหลือในธนาคาร
 
 # /leaderboard
 
-leaderboard = ตารางการแข่งขัน
+Ascending = เรียงจากน้อยไปมาก
+Descending = เรียงจากมากไปน้อย
+
+player = ผู้เล่น
+
+leaderboard = leaderboard
   .description = ดูตารางการแข่งขันสำหรับเกมต่างๆ
   .board = ตาราง
-  .board-description = ตารางการแข่งขันที่ต้องการดู
+  .board-description = ตารางที่ต้องการดู
   .guild = กิลด์
   .guild-description = สมาชิกของกิลด์ที่ต้องการกรอง
   .player = ผู้เล่น
   .player-description = ผู้เล่นที่ต้องการข้ามไป
   .page = หน้า
   .page-description = หน้าที่ต้องการข้ามไป
+  .position = ตำแหน่ง
+  .position-description = ตำแหน่งที่ต้องการข้ามไป
+  .value = ค่า
+  .value-description = ค่าที่ต้องการข้ามไป
+  .order = ลำดับ
+  .order-description = ลำดับที่ต้องการเรียง
 
 # /network
 

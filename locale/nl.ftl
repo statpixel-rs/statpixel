@@ -400,16 +400,27 @@ bank-balance = Bank Balans
 
 # /leaderboard
 
-leaderboard = ranglijst
-  .description = Bekijk de ranglijst voor verschillende spellen
+Ascending = Oplopend (Laag naar Hoog)
+Descending = Aflopend (Hoog naar Laag)
+
+player = Speler
+
+leaderboard = leaderboard
+  .description = Bekijk leaderboards voor verschillende spellen
   .board = bord
-  .board-description = De te bekijken ranglijst
+  .board-description = Het leaderboard om te bekijken
   .guild = guild
   .guild-description = De leden van de guild om op te filteren
   .player = speler
   .player-description = De speler om naar over te slaan
   .page = pagina
   .page-description = De pagina om naar over te slaan
+  .position = positie
+  .position-description = De positie om naar over te slaan
+  .value = waarde
+  .value-description = De waarde om naar over te slaan
+  .order = volgorde
+  .order-description = De volgorde om op te sorteren
 
 # /network
 

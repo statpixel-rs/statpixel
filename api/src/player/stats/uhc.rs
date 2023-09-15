@@ -1,4 +1,4 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -48,7 +48,7 @@ pub struct Uhc {
 	pub double_brawl: DoubleBrawl,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(
@@ -69,7 +69,7 @@ pub struct Solo {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Team {
 	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
@@ -81,7 +81,7 @@ pub struct Team {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct RedVsBlue {
 	#[serde(
@@ -102,7 +102,7 @@ pub struct RedVsBlue {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct NoDiamonds {
 	#[serde(
@@ -123,7 +123,7 @@ pub struct NoDiamonds {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct VanillaDouble {
 	#[serde(
@@ -144,7 +144,7 @@ pub struct VanillaDouble {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Brawl {
 	#[serde(
@@ -165,7 +165,7 @@ pub struct Brawl {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloBrawl {
 	#[serde(
@@ -186,7 +186,7 @@ pub struct SoloBrawl {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleBrawl {
 	#[serde(

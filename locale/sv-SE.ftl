@@ -400,16 +400,27 @@ bank-balance = Bank Saldo
 
 # /leaderboard
 
-leaderboard = topplista
-  .description = Visa topplistor för olika spel
-  .board = tabell
-  .board-description = Topplistan att visa
+Ascending = Stigande (Låg till Hög)
+Descending = Fallande (Hög till Låg)
+
+player = Spelare
+
+leaderboard = leaderboard
+  .description = Visa leaderboard för olika spel
+  .board = leaderboard
+  .board-description = Leaderboard att visa
   .guild = guild
-  .guild-description = Gildet att filtrera efter
+  .guild-description = Gildets medlemmar att filtrera efter
   .player = spelare
   .player-description = Spelaren att hoppa till
   .page = sida
   .page-description = Sida att hoppa till
+  .position = position
+  .position-description = Position att hoppa till
+  .value = värde
+  .value-description = Värdet att hoppa till
+  .order = ordning
+  .order-description = Ordning att sortera efter
 
 # /network
 

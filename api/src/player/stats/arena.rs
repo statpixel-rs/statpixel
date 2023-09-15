@@ -1,4 +1,4 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 #[cfg_attr(
 	feature = "game",
@@ -40,7 +40,7 @@ pub struct Arena {
 	pub four: Four,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	#[serde(rename = "wins_1v1")]
@@ -55,7 +55,7 @@ pub struct Solo {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Double {
 	#[serde(rename = "wins_2v2")]
@@ -70,7 +70,7 @@ pub struct Double {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Four {
 	#[serde(rename = "wins_4v4")]

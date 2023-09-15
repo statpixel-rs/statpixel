@@ -23,7 +23,7 @@ pub mod walls;
 pub mod warlords;
 pub mod wool_wars;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
+#[derive(serde::Deserialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(rename_all = "PascalCase", default)]
 pub struct Stats {
 	pub quake: quake::Quake,

@@ -246,6 +246,20 @@ pub trait Field: Debug {
 		quote!(#translate ::tr(ctx, #tr))
 	}
 
+	fn as_tr_top(&self) -> proc_macro2::TokenStream {
+		let translate = crate_ident("translate");
+		let tr = self.tr_top().into_owned();
+
+		quote!(#translate ::tr(ctx, #tr))
+	}
+
+	fn as_tr_bottom(&self) -> Option<proc_macro2::TokenStream> {
+		let translate = crate_ident("translate");
+		let tr = self.tr_bottom()?.into_owned();
+
+		Some(quote!(#translate ::tr(ctx, #tr)))
+	}
+
 	fn var_id(&self) -> Cow<proc_macro2::TokenStream> {
 		if self.div().is_none() {
 			Cow::Borrowed(self.id())
@@ -256,6 +270,10 @@ pub trait Field: Debug {
 
 	/// Retrieves the translation key for the field.
 	fn tr(&self) -> Cow<str>;
+	fn tr_top(&self) -> Cow<str> {
+		self.tr()
+	}
+	fn tr_bottom(&self) -> Option<Cow<str>>;
 	fn id(&self) -> &proc_macro2::TokenStream;
 	fn div(&self) -> Option<&proc_macro2::TokenStream>;
 	fn kind(&self) -> &FieldKind;
@@ -599,6 +617,10 @@ pub trait Field: Debug {
 		modes: &[Mode<'_>],
 		access: Access<'_>,
 	) -> Option<proc_macro2::TokenStream> {
+		if self.key(side, access).is_some() {
+			return self.value_top(side, access);
+		}
+
 		let self_id = self.id();
 
 		let mut values = modes
@@ -631,6 +653,10 @@ pub trait Field: Debug {
 		modes: &[Mode<'_>],
 		access: Access<'_>,
 	) -> Option<proc_macro2::TokenStream> {
+		if self.key(side, access).is_some() {
+			return self.value_bottom(side, access);
+		}
+
 		if let Some(id) = self.div() {
 			let mut values = modes
 				.iter()

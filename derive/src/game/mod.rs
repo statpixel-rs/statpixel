@@ -814,12 +814,12 @@ impl ToTokens for GameInputReceiver {
 						name: format!("{}", #tr),
 						display_name: format!(
 							"{} {}",
-							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 							#tr,
 						),
 						display_name_lower: format!(
 							"{} {}",
-							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 							#tr,
 						)
 						.replace(' ', "")
@@ -847,12 +847,12 @@ impl ToTokens for GameInputReceiver {
 						),
 						display_name: format!(
 							"{} {}",
-							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 							#tr,
 						),
 						display_name_lower: format!(
 							"{} {}",
-							#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+							#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 							#tr,
 						)
 						.replace(' ', "")
@@ -869,17 +869,17 @@ impl ToTokens for GameInputReceiver {
 					game: #hypixel::game::r#type::Type::#game_ident,
 					name: format!(
 						"{}",
-						#translate::tr(ctx, "experience"),
+						#translate::tr(ctx, "level"),
 					),
 					display_name: format!(
 						"{} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, "experience"),
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
+						#translate::tr(ctx, "level"),
 					),
 					display_name_lower: format!(
 						"{} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, "experience"),
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
+						#translate::tr(ctx, "level"),
 					)
 					.replace(' ', "")
 					.to_lowercase(),
@@ -893,13 +893,33 @@ impl ToTokens for GameInputReceiver {
 					return None;
 				}
 
-				let value = b.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+				let value = b.value_sum(Side::None, &overall_modes, Access::None)?;
+				let (top, bottom) = if let Some(bottom) =
+					b.value_bottom_sum(Side::None, &overall_modes, Access::None)
+				{
+					let top = b.value_top_sum(Side::None, &overall_modes, Access::None)?;
+
+					(
+						quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#top),
+						);),
+						quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#bottom),
+						);),
+					)
+				} else {
+					(quote!(), quote!())
+				};
 
 				Some(quote!(#kind_enum::#b => {
 					canvas = canvas.push_right(
 						&#api::canvas::shape::LeaderboardValue,
 						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
 					);
+					#top
+					#bottom
 				}))
 			})
 			.chain(labels.iter().filter_map(|l| {
@@ -907,13 +927,33 @@ impl ToTokens for GameInputReceiver {
 					return None;
 				}
 
-				let value = l.value_sum(Side::None, &overall_modes, Access::NoneDiff)?;
+				let value = l.value_sum(Side::None, &overall_modes, Access::None)?;
+				let (top, bottom) = if let Some(bottom) =
+					l.value_bottom_sum(Side::None, &overall_modes, Access::None)
+				{
+					let top = l.value_top_sum(Side::None, &overall_modes, Access::None)?;
+
+					(
+						quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#top),
+						);),
+						quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#bottom),
+						);),
+					)
+				} else {
+					(quote!(), quote!())
+				};
 
 				Some(quote!(#kind_enum::#l => {
 					canvas = canvas.push_right(
 						&#api::canvas::shape::LeaderboardValue,
 						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
 					);
+					#top
+					#bottom
 				}))
 			}))
 			.chain(std::iter::once(quote!(#kind_enum::level => {
@@ -924,6 +964,101 @@ impl ToTokens for GameInputReceiver {
 					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#calc::get_total_xp(xp)),
 				);
 			})));
+
+		let leaderboard_kind_match_header = blocks
+			.iter()
+			.filter_map(|b| {
+				if !b.is_measurable() {
+					return None;
+				}
+
+				let tr = b.as_tr();
+				let (top, bottom) = if let Some(bottom) = b.as_tr_bottom() {
+					let top = b.as_tr_top();
+
+					(
+						quote!(canvas = canvas.push_right(
+								&#api::canvas::shape::LeaderboardValue,
+								#api::canvas::shape::LeaderboardValue::label(family, #top),
+							);),
+						quote!(canvas = canvas.push_right(
+								&#api::canvas::shape::LeaderboardValue,
+								#api::canvas::shape::LeaderboardValue::label(family, #bottom),
+							);),
+					)
+				} else {
+					(quote!(), quote!())
+				};
+
+				Some(quote!(#kind_enum::#b => {
+					canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::label(family, #tr),
+					);
+					#top
+					#bottom
+				}))
+			})
+			.chain(labels.iter().filter_map(|l| {
+				if !l.is_measurable() {
+					return None;
+				}
+
+				let tr = l.as_tr();
+				let (top, bottom) = if let Some(bottom) = l.as_tr_bottom() {
+					let top = l.as_tr_top();
+
+					(
+						quote!(canvas = canvas.push_right(
+								&#api::canvas::shape::LeaderboardValue,
+								#api::canvas::shape::LeaderboardValue::label(family, #top),
+							);),
+						quote!(canvas = canvas.push_right(
+								&#api::canvas::shape::LeaderboardValue,
+								#api::canvas::shape::LeaderboardValue::label(family, #bottom),
+							);),
+					)
+				} else {
+					(quote!(), quote!())
+				};
+
+				Some(quote!(#kind_enum::#l => {
+					canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::label(family, #tr),
+					);
+					#top
+					#bottom
+				}))
+			}))
+			.chain(std::iter::once(quote!(#kind_enum::level => {
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::label(family, #translate::tr(ctx, "level")),
+				);
+			})));
+
+		let leaderboard_kind_match_extras = blocks
+			.iter()
+			.filter_map(|b| {
+				if !b.is_measurable() {
+					return None;
+				}
+
+				let extras = if b.tr_bottom().is_some() { 2u8 } else { 0 };
+
+				Some(quote!(#kind_enum::#b => #extras))
+			})
+			.chain(labels.iter().filter_map(|l| {
+				if !l.is_measurable() {
+					return None;
+				}
+
+				let extras = if l.tr_bottom().is_some() { 2u8 } else { 0 };
+
+				Some(quote!(#kind_enum::#l => #extras))
+			}))
+			.chain(std::iter::once(quote!(#kind_enum::level => 0)));
 
 		let embed = blocks
 			.iter()
@@ -1159,6 +1294,13 @@ impl ToTokens for GameInputReceiver {
 					]
 				}
 
+				pub fn get_extras(kind: &#kind_enum) -> u8 {
+					match kind {
+						#(#leaderboard_kind_match_extras,)*
+						_ => 0,
+					}
+				}
+
 				pub fn leaderboard<'c>(
 					ctx: &#translate::context::Context<'_>,
 					start: usize,
@@ -1168,6 +1310,11 @@ impl ToTokens for GameInputReceiver {
 					background: Option<#skia::Color>,
 					mut canvas: #api::canvas::Canvas<'c>,
 				) -> Result<#api::canvas::Canvas<'c>, #translate::Error> {
+					match kind {
+						#(#leaderboard_kind_match_header)*
+						_ => return Err(#translate::Error::NotImplemented),
+					}
+
 					for (idx, data) in players.iter().enumerate() {
 						let game = &data.stats.#path_to_game;
 
@@ -1671,6 +1818,14 @@ impl ToTokens for GameInputReceiver {
 				}
 			});
 
+			let leaderboard_extras_match = modes.iter().map(|mode| {
+				let ty = mode.ty();
+
+				quote! {
+					#mode_enum::#ty => #ty::get_extras(kind),
+				}
+			});
+
 			let embed_game = overall_modes.iter().map(|mode| {
 				quote!(embed = game.#mode.embed(ctx, embed, data);)
 			});
@@ -1724,7 +1879,12 @@ impl ToTokens for GameInputReceiver {
 						background: Option<#skia::Color>,
 					) -> Result<#skia::Surface, #translate::Error> {
 						let mut canvas = #api::canvas::Canvas::new(720., family).gap(7.).push_down(
-							&#api::canvas::shape::LeaderboardTitle,
+							&#api::canvas::shape::LeaderboardTitle {
+								extras: match mode {
+									#mode_enum::#overall_ident => #overall_ident::get_extras(kind),
+									#(#leaderboard_extras_match)*
+								},
+							},
 							#api::canvas::body::Body::new(24., #skia::textlayout::TextAlign::Center, family)
 								.extend(leaderboard.game.as_text())
 								.append(#minecraft::text::Text::SPACE)
@@ -1734,6 +1894,14 @@ impl ToTokens for GameInputReceiver {
 									..Default::default()
 								}])
 								.build(),
+						)
+						.push_down_start(
+							&#api::canvas::shape::LeaderboardPlace,
+							#api::canvas::shape::LeaderboardPlace::label(ctx, family),
+						)
+						.push_right(
+							&#api::canvas::shape::LeaderboardNameLabel,
+							#api::canvas::shape::LeaderboardName::label(ctx, family),
 						);
 
 						let canvas = match mode {

@@ -1,4 +1,4 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Progression {
 	#[serde(rename = "available_layers")]
@@ -10,7 +10,7 @@ pub struct Progression {
 	pub xp: u64,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Outer {
 	#[serde(rename = "wool_wars")]
@@ -20,13 +20,13 @@ pub struct Outer {
 	pub progression: Progression,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Inner {
 	pub stats: WoolWars,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -69,7 +69,7 @@ pub struct WoolWars {
 	pub normal: Normal,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	pub wins: u32,

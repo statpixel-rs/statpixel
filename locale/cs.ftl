@@ -404,6 +404,11 @@ bank-balance = Zůstatek banky
 
 # /leaderboard
 
+Ascending = Vzestupně (Od nejnižšího k nejvyššímu)
+Descending = Sestupně (Od nejvyššího k nejnižšímu)
+
+player = Hráč
+
 leaderboard = žebříček
   .description = Zobrazit žebříček pro různé hry
   .board = žebříček
@@ -414,6 +419,12 @@ leaderboard = žebříček
   .player-description = Hráč, na kterého se má přeskočit
   .page = stránka
   .page-description = Stránka, na kterou se má přeskočit
+  .position = pozice
+  .position-description = Pozice, na kterou se má přeskočit
+  .value = hodnota
+  .value-description = Hodnota, na kterou se má přeskočit
+  .order = pořadí
+  .order-description = Pořadí, podle kterého se má řadit
 
 # /network
 

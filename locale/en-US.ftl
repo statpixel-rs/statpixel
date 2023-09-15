@@ -404,6 +404,11 @@ bank-balance = Bank Balance
 
 # /leaderboard
 
+Ascending = Ascending (Low to High)
+Descending = Descending (High to Low)
+
+player = Player
+
 leaderboard = leaderboard
   .description = View the leaderboard for various games
   .board = board
@@ -414,11 +419,12 @@ leaderboard = leaderboard
   .player-description = The player to skip to
   .page = page
   .page-description = The page to skip to
-
-lleaderboard = lleaderboard
-  .description = View the locally-created leaderboard for various games
-  .board = board
-  .board-description = The leaderboard to view
+  .position = position
+  .position-description = The position to skip to
+  .value = value
+  .value-description = The value to skip to
+  .order = order
+  .order-description = The order to sort by
 
 # /network
 

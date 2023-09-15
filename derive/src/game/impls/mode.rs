@@ -168,18 +168,18 @@ pub(crate) fn impl_mode(
 						#kind_enum::#b,
 					),
 					game: #hypixel::game::r#type::Type::#game_ident,
-					name: format!("{} {}", #translate::tr(ctx, #ty::tr()), #tr),
+					name: format!("{} ({})", #tr, #translate::tr(ctx, #ty::tr())),
 					display_name: format!(
-						"{} {} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, #ty::tr()),
+						"{} {} ({})",
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 						#tr,
+						#translate::tr(ctx, #ty::tr()),
 					),
 					display_name_lower: format!(
 						"{} {} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
-						#translate::tr(ctx, #ty::tr()),
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 						#tr,
+						#translate::tr(ctx, #ty::tr()),
 					)
 					.replace(' ', "")
 					.to_lowercase(),
@@ -207,13 +207,13 @@ pub(crate) fn impl_mode(
 					),
 					display_name: format!(
 						"{} {} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 						#translate::tr(ctx, #ty::tr()),
 						#tr,
 					),
 					display_name_lower: format!(
 						"{} {} {}",
-						#hypixel::game::r#type::Type::#game_ident.as_short_clean_name(),
+						#hypixel::game::r#type::Type::#game_ident.as_clean_name(),
 						#translate::tr(ctx, #ty::tr()),
 						#tr,
 					)
@@ -428,13 +428,32 @@ pub(crate) fn impl_mode(
 				return None;
 			}
 
-			let value = b.value(Side::None, Access::ModeDiff(mode))?;
+			let value = b.value(Side::None, Access::Mode(mode))?;
+			let (top, bottom) = if let Some(bottom) = b.value_bottom(Side::None, Access::Mode(mode))
+			{
+				let top = b.value_top(Side::None, Access::Mode(mode))?;
+
+				(
+					quote!(canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#top),
+					);),
+					quote!(canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#bottom),
+					);),
+				)
+			} else {
+				(quote!(), quote!())
+			};
 
 			Some(quote!(#kind_enum::#b => {
 				canvas = canvas.push_right(
 					&#api::canvas::shape::LeaderboardValue,
 					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
 				);
+				#top
+				#bottom
 			}))
 		})
 		.chain(game_labels.iter().filter_map(|l| {
@@ -442,13 +461,122 @@ pub(crate) fn impl_mode(
 				return None;
 			}
 
-			let value = l.value(Side::None, Access::ModeDiff(mode))?;
+			let value = l.value(Side::None, Access::Mode(mode))?;
+			let (top, bottom) = if let Some(bottom) = l.value_bottom(Side::None, Access::Mode(mode))
+			{
+				let top = l.value_top(Side::None, Access::Mode(mode))?;
+
+				(
+					quote!(canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#top),
+					);),
+					quote!(canvas = canvas.push_right(
+						&#api::canvas::shape::LeaderboardValue,
+						#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#bottom),
+					);),
+				)
+			} else {
+				(quote!(), quote!())
+			};
 
 			Some(quote!(#kind_enum::#l => {
 				canvas = canvas.push_right(
 					&#api::canvas::shape::LeaderboardValue,
 					#api::canvas::shape::LeaderboardValue::from_value(ctx, family, &#value),
 				);
+				#top
+				#bottom
+			}))
+		}));
+
+	let leaderboard_kind_match_extras = game_blocks
+		.iter()
+		.chain(mode_blocks.iter())
+		.filter_map(|b| {
+			if !b.is_measurable() {
+				return None;
+			}
+
+			let extras = if b.tr_bottom().is_some() { 2u8 } else { 0 };
+
+			Some(quote!(#kind_enum::#b => #extras))
+		})
+		.chain(game_labels.iter().filter_map(|l| {
+			if !l.is_measurable() {
+				return None;
+			}
+
+			let extras = if l.tr_bottom().is_some() { 2u8 } else { 0 };
+
+			Some(quote!(#kind_enum::#l => #extras))
+		}));
+
+	let leaderboard_kind_match_header = game_blocks
+		.iter()
+		.chain(mode_blocks.iter())
+		.filter_map(|b| {
+			if !b.is_measurable() {
+				return None;
+			}
+
+			let tr = b.as_tr();
+			let (top, bottom) = if let Some(bottom) = b.as_tr_bottom() {
+				let top = b.as_tr_top();
+
+				(
+					quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::label(family, #top),
+						);),
+					quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::label(family, #bottom),
+						);),
+				)
+			} else {
+				(quote!(), quote!())
+			};
+
+			Some(quote!(#kind_enum::#b => {
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::label(family, #tr),
+				);
+				#top
+				#bottom
+			}))
+		})
+		.chain(game_labels.iter().filter_map(|l| {
+			if !l.is_measurable() {
+				return None;
+			}
+
+			let tr = l.as_tr();
+			let (top, bottom) = if let Some(bottom) = l.as_tr_bottom() {
+				let top = l.as_tr_top();
+
+				(
+					quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::label(family, #top),
+						);),
+					quote!(canvas = canvas.push_right(
+							&#api::canvas::shape::LeaderboardValue,
+							#api::canvas::shape::LeaderboardValue::label(family, #bottom),
+						);),
+				)
+			} else {
+				(quote!(), quote!())
+			};
+
+			Some(quote!(#kind_enum::#l => {
+				canvas = canvas.push_right(
+					&#api::canvas::shape::LeaderboardValue,
+					#api::canvas::shape::LeaderboardValue::label(family, #tr),
+				);
+				#top
+				#bottom
 			}))
 		}));
 
@@ -494,6 +622,13 @@ pub(crate) fn impl_mode(
 				]
 			}
 
+			pub fn get_extras(kind: &#kind_enum) -> u8 {
+				match kind {
+					#(#leaderboard_kind_match_extras,)*
+					_ => 0,
+				}
+			}
+
 			pub fn leaderboard<'c>(
 				ctx: &#translate::context::Context<'_>,
 				start: usize,
@@ -503,6 +638,11 @@ pub(crate) fn impl_mode(
 				background: Option<#skia::Color>,
 				mut canvas: #api::canvas::Canvas<'c>,
 			) -> Result<#api::canvas::Canvas<'c>, #translate::Error> {
+				match kind {
+					#(#leaderboard_kind_match_header)*
+					_ => return Err(#translate::Error::NotImplemented),
+				}
+
 				for (idx, data) in players.iter().enumerate() {
 					let game = &data.stats.#path_to_game;
 					let stats = &data.stats.#path_to_game.#id;

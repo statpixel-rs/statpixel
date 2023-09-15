@@ -1,6 +1,6 @@
 use extra::seconds::Seconds;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -71,7 +71,7 @@ pub struct TntGames {
 	pub tnt_tag: TntTag,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TntRun {
 	#[serde(rename = "wins_tntrun")]
@@ -82,7 +82,7 @@ pub struct TntRun {
 	pub record: Seconds,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TntTag {
 	#[serde(rename = "wins_tntag")]
@@ -93,7 +93,7 @@ pub struct TntTag {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct PvpRun {
 	#[serde(rename = "wins_pvprun")]
@@ -108,7 +108,7 @@ pub struct PvpRun {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct BowSpleef {
 	#[serde(rename = "wins_bowspleef")]
@@ -119,7 +119,7 @@ pub struct BowSpleef {
 	pub tags: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Wizard {
 	#[serde(rename = "wins_capture")]

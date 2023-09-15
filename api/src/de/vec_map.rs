@@ -38,7 +38,17 @@ where
 	{
 		let mut values = Vec::with_capacity(std::cmp::min(access.size_hint().unwrap_or(0), 4096));
 
-		while let Some((key, value)) = access.next_entry()? {
+		loop {
+			// if the entry can't be parsed, skip it
+			let Some(next) = access.next_entry().ok() else {
+				continue;
+			};
+
+			// if there are no more entries, stop
+			let Some((key, value)) = next else {
+				break;
+			};
+
 			values.push((key, value));
 		}
 

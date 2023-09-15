@@ -1,4 +1,4 @@
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -58,7 +58,7 @@ pub struct Warlords {
 	pub team_deathmatch: TeamDeathmatch,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct CaptureTheFlag {
 	#[serde(rename = "wins_capturetheflag_blu")]
@@ -69,7 +69,7 @@ pub struct CaptureTheFlag {
 	pub kills: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Domination {
 	#[serde(rename = "wins_domination_blu")]
@@ -80,7 +80,7 @@ pub struct Domination {
 	pub kills: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamDeathmatch {
 	#[serde(rename = "wins_teamdeathmatch_blu")]

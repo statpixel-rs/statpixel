@@ -400,16 +400,27 @@ bank-balance = Balanță bancară
 
 # /leaderboard
 
+Ascending = Ascendent (De la mic la mare)
+Descending = Descendent (De la mare la mic)
+
+player = Jucător
+
 leaderboard = clasament
-  .description = Vizualizați clasamentul pentru diferite jocuri
-  .board = tablă
+  .description = Vizualizați clasamentele pentru diferite jocuri
+  .board = clasament
   .board-description = Clasamentul de vizualizat
   .guild = guild
   .guild-description = Membrii guild-ului pentru a filtra după
   .player = jucător
-  .player-description = Jucătorul la care să sari
+  .player-description = Jucătorul la care să se treacă
   .page = pagină
-  .page-description = Pagina la care să sari
+  .page-description = Pagina la care să se treacă
+  .position = poziție
+  .position-description = Poziția la care să se treacă
+  .value = valoare
+  .value-description = Valoarea la care să se treacă
+  .order = ordine
+  .order-description = Ordinea după care să se sorteze
 
 # /network
 

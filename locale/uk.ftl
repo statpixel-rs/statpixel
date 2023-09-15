@@ -400,16 +400,27 @@ bank-balance = Баланс банку
 
 # /leaderboard
 
-leaderboard = таблиця-лідерів
-  .description = Переглянути таблицю лідерів різних ігор
-  .board = дошка
-  .board-description = Таблиця лідерів для перегляду
-  .guild = гільдія
+Ascending = За зростанням (від низького до високого)
+Descending = За спаданням (від високого до низького)
+
+player = Гравець
+
+leaderboard = лідерборд
+  .description = Переглянути лідерборд для різних ігор
+  .board = board
+  .board-description = Лідерборд для перегляду
+  .guild = guild
   .guild-description = Члени гільдії для фільтрації
-  .player = гравець
+  .player = player
   .player-description = Гравець для переходу
-  .page = сторінка
+  .page = page
   .page-description = Сторінка для переходу
+  .position = position
+  .position-description = Позиція для переходу
+  .value = value
+  .value-description = Значення для переходу
+  .order = order
+  .order-description = Порядок сортування
 
 # /network
 

@@ -4,7 +4,7 @@ fn default_level_fmt() -> String {
 	"§71".to_string()
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -192,7 +192,7 @@ impl Default for SkyWars {
 	}
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloNormal {
 	#[serde(rename = "losses_solo_normal")]
@@ -215,7 +215,7 @@ pub struct SoloNormal {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloInsane {
 	#[serde(rename = "losses_solo_insane")]
@@ -228,7 +228,7 @@ pub struct SoloInsane {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamNormal {
 	#[serde(rename = "losses_team_normal")]
@@ -251,7 +251,7 @@ pub struct TeamNormal {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamInsane {
 	#[serde(rename = "losses_team_insane")]
@@ -264,7 +264,7 @@ pub struct TeamInsane {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct MegaDouble {
 	#[serde(rename = "losses_mega_doubles")]
@@ -285,7 +285,7 @@ pub struct MegaDouble {
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct MegaNormal {
 	#[serde(rename = "losses_mega")]
@@ -306,7 +306,7 @@ pub struct MegaNormal {
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Ranked {
 	#[serde(rename = "losses_ranked")]
@@ -327,7 +327,7 @@ pub struct Ranked {
 	pub fastest_win: SecondsOption,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloLab {
 	#[serde(rename = "losses_lab_solo")]
@@ -350,7 +350,7 @@ pub struct SoloLab {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct TeamLab {
 	#[serde(rename = "losses_lab_team")]
@@ -373,7 +373,7 @@ pub struct TeamLab {
 	pub win_streak: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Tourney {
 	#[serde(rename = "losses_tourney")]

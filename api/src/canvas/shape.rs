@@ -98,9 +98,12 @@ pub struct Gutter;
 pub struct Status<'s>(pub &'s Session, pub &'s Image);
 pub struct PreferredGames<'g>(pub &'g [Type]);
 
-pub struct LeaderboardTitle;
+pub struct LeaderboardTitle {
+	pub extras: u8,
+}
 pub struct LeaderboardPlace;
 pub struct LeaderboardName;
+pub struct LeaderboardNameLabel;
 pub struct LeaderboardValue;
 
 pub struct GuildXpName;
@@ -672,27 +675,57 @@ impl WideBubbleProgress {
 }
 
 impl LeaderboardPlace {
+	pub fn label(ctx: &Context<'_>, family: Family) -> Paragraph {
+		Body::build_slice(
+			family,
+			&[Text {
+				text: tr(ctx, "position").as_ref(),
+				font: MinecraftFont::Bold,
+				..Default::default()
+			}],
+			17.,
+			TextAlign::Center,
+		)
+	}
+
 	#[must_use]
 	pub fn from_usize(family: Family, value: usize) -> Paragraph {
-		let text = value.to_string();
+		let text = format!("#{value}");
 
-		Body::new(20., TextAlign::Center, family)
-			.extend(&[Text {
-				text: &text,
-				font: MinecraftFont::Bold,
-				paint: match value {
-					1 => Paint::Gold,
-					2 => Paint::Gray,
-					3 => Paint::Bronze,
-					_ => Paint::White,
-				},
-				..Default::default()
-			}])
-			.build()
+		Body::new(
+			if value > 100_000 { 17. } else { 20. },
+			TextAlign::Center,
+			family,
+		)
+		.extend(&[Text {
+			text: &text,
+			font: MinecraftFont::Bold,
+			paint: match value {
+				1 => Paint::Gold,
+				2 => Paint::Gray,
+				3 => Paint::Bronze,
+				_ => Paint::White,
+			},
+			..Default::default()
+		}])
+		.build()
 	}
 }
 
 impl LeaderboardName {
+	pub fn label(ctx: &Context<'_>, family: Family) -> Paragraph {
+		Body::build_slice(
+			family,
+			&[Text {
+				text: tr(ctx, "player").as_ref(),
+				font: MinecraftFont::Bold,
+				..Default::default()
+			}],
+			17.,
+			TextAlign::Center,
+		)
+	}
+
 	#[must_use]
 	pub fn from_text(family: Family, text: &str) -> Paragraph {
 		Body::new(20., TextAlign::Left, family)
@@ -702,6 +735,18 @@ impl LeaderboardName {
 }
 
 impl LeaderboardValue {
+	#[must_use]
+	pub fn label(family: Family, label: Cow<str>) -> Paragraph {
+		Body::new(17., TextAlign::Center, family)
+			.extend(&[Text {
+				text: label.as_ref(),
+				paint: Paint::White,
+				font: MinecraftFont::Bold,
+				..Default::default()
+			}])
+			.build()
+	}
+
 	#[must_use]
 	pub fn from_value(ctx: &Context<'_>, family: Family, value: &impl ToFormatted) -> Paragraph {
 		Body::new(20., TextAlign::Center, family)
@@ -771,9 +816,9 @@ impl_rect_shape!(
 	true
 );
 
-impl_rect_shape!(LeaderboardTitle, BUBBLE_WIDTH * 3. + GAP * 2., 50., true);
 impl_rect_shape!(LeaderboardPlace, 150., 35., true);
 impl_rect_shape!(LeaderboardValue, 150., 35., true);
+impl_rect_shape!(LeaderboardNameLabel, 406., 35., true);
 
 impl_rect_shape!(GuildXpTitle, (50. + 300. + 125.) * 2. + GAP * 5., 45., true);
 impl_rect_shape!(GuildXpValue, 125., 35., true);
@@ -993,6 +1038,19 @@ impl Shape for WideTallBubble {
 
 	fn insets(&self) -> Point {
 		(17., 20.).into()
+	}
+}
+
+impl Shape for LeaderboardTitle {
+	fn size(&self) -> Size {
+		Size {
+			width: BUBBLE_WIDTH * 3. + GAP * 2. + self.extras as f32 * (150. + GAP),
+			height: 50.,
+		}
+	}
+
+	fn v_align(&self) -> bool {
+		true
 	}
 }
 

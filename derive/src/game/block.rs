@@ -17,6 +17,8 @@ pub struct Block<'a> {
 	pub ident: proc_macro2::TokenStream,
 	pub div: Option<proc_macro2::TokenStream>,
 	pub tr: Cow<'a, str>,
+	pub tr_top: Cow<'a, str>,
+	pub tr_bottom: Option<Cow<'a, str>>,
 	pub paint: &'a Paint,
 	pub kind: FieldKind,
 	pub measurable: bool,
@@ -174,6 +176,14 @@ impl Field for Block<'_> {
 		self.tr.clone()
 	}
 
+	fn tr_top(&self) -> Cow<str> {
+		self.tr_top.clone()
+	}
+
+	fn tr_bottom(&self) -> Option<Cow<str>> {
+		self.tr_bottom.clone()
+	}
+
 	fn paint(&self) -> &Paint {
 		self.paint
 	}
@@ -236,6 +246,11 @@ impl<'a> TryFrom<&'a OverallFieldData> for Block<'a> {
 				quote!(#path #id)
 			}),
 			tr: get_tr_with_fallback(value.tr.as_deref(), Some(&value.ident)),
+			tr_top: get_tr_with_fallback(None, Some(&value.ident)),
+			tr_bottom: value
+				.div
+				.as_ref()
+				.map(|id| get_tr_with_fallback(None, Some(id))),
 			paint: &value.colour,
 			kind: if let Some(ref id) = value.percent {
 				FieldKind::Percent(Percent::from(id.as_str()))
@@ -280,6 +295,11 @@ impl<'a> From<&'a ModeFieldData> for Block<'a> {
 				quote!(#path #id)
 			}),
 			tr: get_tr_with_fallback(value.tr.as_deref(), Some(&value.ident)),
+			tr_top: get_tr_with_fallback(None, Some(&value.ident)),
+			tr_bottom: value
+				.div
+				.as_ref()
+				.map(|id| get_tr_with_fallback(None, Some(id))),
 			paint: &value.colour,
 			kind: if let Some(ref id) = value.percent {
 				FieldKind::Percent(Percent::from(id.as_str()))

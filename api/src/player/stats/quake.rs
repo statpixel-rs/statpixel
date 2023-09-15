@@ -1,7 +1,7 @@
 use extra::meters::Meters;
 use minecraft::colour::Colour;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -48,7 +48,7 @@ pub struct Quake {
 	pub solo_tournament: SoloTournament,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Solo {
 	pub wins: u32,
@@ -61,7 +61,7 @@ pub struct Solo {
 	pub headshots: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Team {
 	#[serde(rename = "wins_teams")]
@@ -80,7 +80,7 @@ pub struct Team {
 	pub headshots: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct SoloTournament {
 	#[serde(rename = "wins_solo_tourney")]

@@ -401,16 +401,27 @@ bank-balance = Bank Egyenleg
 
 # /leaderboard
 
+Ascending = Növekvő (Alacsony -> Magas)
+Descending = Csökkenő (Magas -> Alacsony)
+
+player = Játékos
+
 leaderboard = ranglista
-  .description = Tekintse meg a ranglistát különböző játékokhoz
-  .board = tábla
+  .description = Tekintse meg a különböző játékok ranglistáját
+  .board = ranglista
   .board-description = A megtekintendő ranglista
   .guild = guild
   .guild-description = A guild tagjai, amelyekre szűrni kell
   .player = játékos
-  .player-description = A játékos, amelyre ugorjon
+  .player-description = A megtekintendő játékos
   .page = oldal
   .page-description = Az oldal, amelyre ugorjon
+  .position = pozíció
+  .position-description = A pozíció, amelyre ugorjon
+  .value = érték
+  .value-description = Az érték, amelyre ugorjon
+  .order = sorrend
+  .order-description = A sorrend, amely szerint rendezni kell
 
 # /network
 

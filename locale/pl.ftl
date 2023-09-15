@@ -400,16 +400,27 @@ bank-balance = Saldo Bankowe
 
 # /leaderboard
 
+Ascending = Rosnąco (Od najniższej do najwyższej)
+Descending = Malejąco (Od najwyższej do najniższej)
+
+player = Gracz
+
 leaderboard = tabela-wyników
-  .description = Wyświetl tabelę wyników dla różnych gier
+  .description = Wyświetl tabele wyników dla różnych gier
   .board = tabela
   .board-description = Tabela wyników do wyświetlenia
   .guild = gildia
   .guild-description = Członkowie gildii do filtrowania
   .player = gracz
-  .player-description = Gracz do pominięcia
+  .player-description = Gracz Minecraft lub sesja
   .page = strona
-  .page-description = Strona do pominięcia
+  .page-description = Strona do przeskoczenia
+  .position = pozycja
+  .position-description = Pozycja do przeskoczenia
+  .value = wartość
+  .value-description = Wartość do przeskoczenia
+  .order = kolejność
+  .order-description = Kolejność sortowania
 
 # /network
 

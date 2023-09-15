@@ -404,16 +404,27 @@ bank-balance = Saldo del Banco
 
 # /clasificación
 
-leaderboard = clasificación
-  .description = Ver la clasificación para varios juegos
+Ascending = Ascendente (Bajo a Alto)
+Descending = Descendente (Alto a Bajo)
+
+player = Jugador
+
+leaderboard = tabla-de-clasificación
+  .description = Ver la tabla de clasificación de varios juegos
   .board = tabla
-  .board-description = La tabla de clasificación a ver
+  .board-description = La tabla de clasificación para ver
   .guild = gremio
   .guild-description = Los miembros del gremio para filtrar
   .player = jugador
-  .player-description = El jugador para saltar
+  .player-description = El jugador al que saltar
   .page = página
-  .page-description = La página para saltar
+  .page-description = La página a la que saltar
+  .position = posición
+  .position-description = La posición a la que saltar
+  .value = valor
+  .value-description = El valor al que saltar
+  .order = orden
+  .order-description = El orden para ordenar
 
 # /red
 

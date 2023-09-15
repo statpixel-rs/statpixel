@@ -400,16 +400,27 @@ bank-balance = Bankguthaben
 
 # /leaderboard
 
-leaderboard = bestenliste
+Ascending = Aufsteigend (Niedrig zu Hoch)
+Descending = Absteigend (Hoch zu Niedrig)
+
+player = Spieler
+
+leaderboard = leaderboard
   .description = Zeigt die Bestenliste für verschiedene Spiele an
-  .board = tafel
+  .board = bestenliste
   .board-description = Die Bestenliste, die angezeigt werden soll
   .guild = gilde
-  .guild-description = Die Mitglieder der Gilde, nach denen gefiltert werden soll
+  .guild-description = Die Gildenmitglieder, nach denen gefiltert werden soll
   .player = spieler
   .player-description = Der Spieler, zu dem gesprungen werden soll
   .page = seite
   .page-description = Die Seite, zu der gesprungen werden soll
+  .position = position
+  .position-description = Die Position, zu der gesprungen werden soll
+  .value = wert
+  .value-description = Der Wert, zu dem gesprungen werden soll
+  .order = reihenfolge
+  .order-description = Die Reihenfolge, nach der sortiert werden soll
 
 # /network
 

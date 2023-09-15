@@ -1,6 +1,6 @@
 use extra::seconds;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -57,7 +57,7 @@ pub struct MurderMystery {
 	pub infection: Infection,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Assassins {
 	#[serde(rename = "wins_MURDER_ASSASSINS")]
@@ -70,7 +70,7 @@ pub struct Assassins {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Classic {
 	#[serde(rename = "wins_MURDER_CLASSIC")]
@@ -83,7 +83,7 @@ pub struct Classic {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct DoubleUp {
 	#[serde(rename = "wins_MURDER_DOUBLE_UP")]
@@ -96,7 +96,7 @@ pub struct DoubleUp {
 	pub deaths: u32,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Infection {
 	#[serde(rename = "wins_MURDER_INFECTION")]

@@ -395,16 +395,27 @@ bank-balance = 은행 잔고
 
 # /leaderboard
 
+Ascending = 오름차순 (낮은 순)
+Descending = 내림차순 (높은 순)
+
+player = 플레이어
+
 leaderboard = 리더보드
-  .description = 다양한 게임 리더보드 보기
-  .board = 보드
-  .board-description = 보려는 리더보드
+  .description = 다양한 게임의 리더보드 보기
+  .board = 리더보드
+  .board-description = 보기 위한 리더보드
   .guild = 길드
-  .guild-description = 필터링할 길드 멤버
+  .guild-description = 필터링할 길드의 멤버
   .player = 플레이어
   .player-description = 건너뛸 플레이어
   .page = 페이지
   .page-description = 건너뛸 페이지
+  .position = 위치
+  .position-description = 건너뛸 위치
+  .value = 값
+  .value-description = 건너뛸 값
+  .order = 순서
+  .order-description = 정렬할 순서
 
 # /network
 

@@ -142,6 +142,8 @@ pub struct Label<'a> {
 	pub ident: proc_macro2::TokenStream,
 	pub div: Option<proc_macro2::TokenStream>,
 	pub tr: Cow<'a, str>,
+	pub tr_top: Cow<'a, str>,
+	pub tr_bottom: Option<Cow<'a, str>>,
 	pub paint: &'a Paint,
 	pub kind: FieldKind,
 	pub is_static: bool,
@@ -296,6 +298,14 @@ impl Field for Label<'_> {
 		self.tr.clone()
 	}
 
+	fn tr_top(&self) -> Cow<str> {
+		self.tr_top.clone()
+	}
+
+	fn tr_bottom(&self) -> Option<Cow<str>> {
+		self.tr_bottom.clone()
+	}
+
 	fn paint(&self) -> &Paint {
 		self.paint
 	}
@@ -335,6 +345,11 @@ impl<'a> TryFrom<&'a GameFieldReceiver> for Label<'a> {
 				quote!(#id)
 			}),
 			tr: get_tr_with_fallback(label.tr.as_deref(), Some(ident)),
+			tr_top: get_tr_with_fallback(None, Some(ident)),
+			tr_bottom: label
+				.div
+				.as_ref()
+				.map(|id| get_tr_with_fallback(None, Some(id))),
 			paint: &label.colour,
 			kind: if label.percent.is_present() {
 				FieldKind::Percent(Percent::U32)
@@ -375,6 +390,11 @@ impl<'a> From<&'a InfoFieldData> for Label<'a> {
 				quote!(#path #id)
 			}),
 			tr: get_tr_with_fallback(value.tr.as_deref(), Some(&value.ident)),
+			tr_top: get_tr_with_fallback(None, Some(&value.ident)),
+			tr_bottom: value
+				.div
+				.as_ref()
+				.map(|id| get_tr_with_fallback(None, Some(id))),
 			paint: &value.colour,
 			kind: if let Some(ref id) = value.percent {
 				FieldKind::Percent(Percent::from(id.as_str()))

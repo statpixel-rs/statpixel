@@ -1,5 +1,6 @@
 pub mod data;
 pub mod games;
+pub mod parkour;
 pub mod stats;
 
 pub use hypixel::player::status;
@@ -25,7 +26,7 @@ use crate::cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE};
 
 use self::status::Status;
 
-pub const VERSION: i16 = 17;
+pub const VERSION: i16 = 18;
 pub static DEFAULT_SKIN: Lazy<image::Image> =
 	image::include_image!("../../../assets/skins/steve.png");
 
@@ -84,7 +85,7 @@ impl Player {
 	}
 
 	/// Creates a new player from a uuid without any validation.
-	/// The username will not be set propertly.
+	/// The username and session will be [`None`].
 	#[must_use]
 	pub fn from_uuid_unchecked(uuid: Uuid) -> Self {
 		Self {

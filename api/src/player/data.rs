@@ -12,7 +12,7 @@ use serde::{Deserialize, Deserializer};
 use translate::context;
 use uuid::Uuid;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Encode, bincode::Decode, Default)]
+#[derive(serde::Deserialize, bincode::Encode, bincode::Decode, Default)]
 #[serde(default)]
 pub struct Data {
 	#[serde(rename(deserialize = "displayname"))]
@@ -70,6 +70,8 @@ pub struct Data {
 	pub language: hypixel::language::Language,
 	#[serde(rename(deserialize = "socialMedia"), default, skip_serializing)]
 	pub socials: hypixel::socials::Socials,
+	#[serde(with = "crate::de::vec_map", default)]
+	pub parkour: Vec<(hypixel::game::r#type::Type, Vec<super::parkour::Completion>)>,
 }
 
 // Executes the given code, passing in $left and $right on the left and right of each game
@@ -98,7 +100,6 @@ macro_rules! execute_for_games {
 		$($left)* $crate::player::stats::walls::Walls $($right)*
 		$($left)* $crate::player::stats::warlords::Warlords $($right)*
 		$($left)* $crate::player::stats::wool_wars::WoolWars $($right)*
-
 	};
 }
 

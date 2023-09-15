@@ -402,16 +402,27 @@ bank-balance = Bank Saldo
 
 # /leaderboard
 
-leaderboard = rangliste
-  .description = Se ranglisten for forskellige spil
-  .board = rangliste
-  .board-description = Ranglisten der skal ses
+Ascending = Stigende (Lav til Høj)
+Descending = Faldende (Høj til Lav)
+
+player = Spiller
+
+leaderboard = leaderboard
+  .description = Se leaderboard for forskellige spil
+  .board = leaderboard
+  .board-description = Leaderboardet der skal ses
   .guild = guild
   .guild-description = Guild-medlemmerne der skal filtreres efter
   .player = spiller
   .player-description = Spilleren der skal springes til
   .page = side
   .page-description = Siden der skal springes til
+  .position = position
+  .position-description = Positionen der skal springes til
+  .value = værdi
+  .value-description = Værdien der skal springes til
+  .order = rækkefølge
+  .order-description = Rækkefølgen der skal sorteres efter
 
 # /network
 

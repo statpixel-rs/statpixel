@@ -11,16 +11,6 @@ node scripts/materials.js
 node scripts/heads.js
 ```
 
-## Setting up leaderboards
-
-This step must be done *after* starting the bot for the first time and querying a player.
-
-To set up leaderboards, generate them all with the following command:
-
-```bash
-node scripts/generate_leaderboards.js
-```
-
 ## Setting up the database
 
 StatPixel uses PostgreSQL as its database. Ensure you also have the [diesel cli](https://diesel.rs/) installed:

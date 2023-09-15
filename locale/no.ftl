@@ -400,16 +400,27 @@ bank-balance = Bankbalanse
 
 # /leaderboard
 
-leaderboard = rangering
-  .description = Se rangeringen for ulike spill
-  .board = liste
-  .board-description = Rangeringslisten som skal vises
+Ascending = Stigende (lav til høy)
+Descending = Synkende (høy til lav)
+
+player = Spiller
+
+leaderboard = leaderboard
+  .description = Vis ledertavler for ulike spill
+  .board = tavle
+  .board-description = Ledertavlen å vise
   .guild = guild
   .guild-description = Guild-medlemmene å filtrere etter
   .player = spiller
   .player-description = Spilleren å hoppe til
   .page = side
   .page-description = Siden å hoppe til
+  .position = posisjon
+  .position-description = Posisjonen å hoppe til
+  .value = verdi
+  .value-description = Verdien å hoppe til
+  .order = rekkefølge
+  .order-description = Rekkefølgen å sortere etter
 
 # /network
 

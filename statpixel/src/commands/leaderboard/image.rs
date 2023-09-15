@@ -1,120 +1,85 @@
 use std::borrow::Cow;
 
-use api::{canvas, player::Player};
+use api::{canvas, command, player::Player};
 use futures::StreamExt;
-use once_cell::sync::Lazy;
-use poise::serenity_prelude::CreateAttachment;
 use redis::AsyncCommands;
-use translate::{context, Context, Error};
-use uuid::Uuid;
+use translate::{context, Error};
 
-use crate::util;
+use super::RedisUuid;
 
-static LEADERBOARDS: Lazy<Vec<api::leaderboard::Leaderboard>> = Lazy::new(|| {
-	let ctx = context::Context::external(crate::DATA.get().unwrap());
-	let mut leaderboards = api::Data::leaderboards(&ctx);
-
-	leaderboards.sort_by(|a, b| a.display_name.cmp(&b.display_name));
-	leaderboards
-});
-
-struct RedisUuid(Uuid);
-
-impl redis::FromRedisValue for RedisUuid {
-	fn from_redis_value(v: &redis::Value) -> redis::RedisResult<Self> {
-		match v {
-			redis::Value::Data(data) => Ok(Self(Uuid::from_slice(data).map_err(|_| {
-				redis::RedisError::from((
-					redis::ErrorKind::TypeError,
-					"expected slice of length 16",
-				))
-			})?)),
-			_ => Err(redis::RedisError::from((
-				redis::ErrorKind::TypeError,
-				"unexpected type",
-			))),
-		}
-	}
-}
-
-#[allow(clippy::unused_async)]
-async fn autocomplete_board(
-	_ctx: Context<'_>,
-	partial: &str,
-) -> impl Iterator<Item = poise::AutocompleteChoice<usize>> {
-	let mut lower = partial.replace(' ', "");
-
-	lower.make_ascii_lowercase();
-
-	LEADERBOARDS
-		.iter()
-		.enumerate()
-		.filter_map(|(value, board)| {
-			if !board.display_name_lower.contains(&lower) {
-				return None;
-			}
-
-			Some(poise::AutocompleteChoice {
-				name: board.display_name.clone(),
-				value,
-			})
-		})
-		.take(10)
-		.collect::<Vec<_>>()
-		.into_iter()
-}
+const ITEMS_PER_PAGE: isize = 10;
 
 #[allow(clippy::too_many_lines)]
-#[allow(clippy::cast_sign_loss)]
-#[poise::command(
-	on_error = "crate::util::error_handler",
-	slash_command,
-	required_bot_permissions = "ATTACH_FILES"
-)]
-pub async fn leaderboard(
-	ctx: Context<'_>,
-	#[autocomplete = "autocomplete_board"] board: usize,
-	#[max_length = 36]
-	#[autocomplete = "crate::commands::autocomplete_username"]
-	player: Option<String>,
-	#[min = 1] page: Option<isize>,
-) -> Result<(), Error> {
-	ctx.defer().await?;
-
-	let ctx = &context::Context::from_poise(&ctx);
-
-	let (_, family, background) = crate::util::get_image_options_from_input(ctx).await;
-	let leaderboard = {
-		let Some(leaderboard) = LEADERBOARDS.get(board) else {
-			return Err(Error::LeaderboardNotFound(board));
-		};
-
-		leaderboard
-	};
-
+pub async fn command(
+	ctx: &context::Context<'_>,
+	leaderboard: &api::leaderboard::Leaderboard,
+	input: command::LeaderboardInput,
+	_filter: command::LeaderboardFilter,
+	order: command::LeaderboardOrder,
+	family: minecraft::style::Family,
+	background: Option<skia_safe::Color>,
+) -> Result<(Cow<'static, [u8]>, u32), Error> {
 	let key = api::leaderboard::encode(&leaderboard.kind);
 
-	let rank = if let Some(player) = player {
-		let uuid = util::parse_uuid(Some(player.as_str()));
-		let player = util::get_player_from_input(ctx, uuid, Some(player)).await?;
+	let rank = match input {
+		command::LeaderboardInput::Page(page) => page as isize * ITEMS_PER_PAGE,
+		command::LeaderboardInput::Player(uuid) => {
+			let rank: isize = match order {
+				command::LeaderboardOrder::Descending => ctx
+					.data()
+					.redis()
+					.zrevrank(&key, uuid.as_bytes())
+					.await
+					.map_err(api::Error::from)?,
+				command::LeaderboardOrder::Ascending => ctx
+					.data()
+					.redis()
+					.zrank(&key, uuid.as_bytes())
+					.await
+					.map_err(api::Error::from)?,
+			};
 
-		ctx.data()
-			.redis()
-			.zrevrank(&key, player.uuid.as_bytes())
-			.await
-			.map_err(api::Error::from)?
-	} else {
-		page.unwrap_or(1) * 10 - 10
+			rank / ITEMS_PER_PAGE * ITEMS_PER_PAGE
+		}
+		command::LeaderboardInput::Position(position) => {
+			(position as isize - 1) / ITEMS_PER_PAGE * ITEMS_PER_PAGE
+		}
+		command::LeaderboardInput::Value(value) => {
+			let rank: isize = match order {
+				command::LeaderboardOrder::Descending => ctx
+					.data()
+					.redis()
+					.zcount(&key, value, f64::INFINITY)
+					.await
+					.map_err(api::Error::from)?,
+				command::LeaderboardOrder::Ascending => ctx
+					.data()
+					.redis()
+					.zcount(&key, f64::NEG_INFINITY, value)
+					.await
+					.map_err(api::Error::from)?,
+			};
+
+			rank / ITEMS_PER_PAGE * ITEMS_PER_PAGE
+		}
 	};
 
-	let top: Vec<RedisUuid> = ctx
-		.data()
-		.redis()
-		.zrevrange(&key, rank, rank + 9)
-		.await
-		.map_err(api::Error::from)?;
-	let top = top.into_iter().map(|r| r.0).collect::<Vec<_>>();
+	let top: Vec<RedisUuid> = match order {
+		command::LeaderboardOrder::Descending => ctx
+			.data()
+			.redis()
+			.zrevrange(&key, rank, rank + 9)
+			.await
+			.map_err(api::Error::from)?,
+		command::LeaderboardOrder::Ascending => ctx
+			.data()
+			.redis()
+			.zrange(&key, rank, rank + 9)
+			.await
+			.map_err(api::Error::from)?,
+	};
 
+	let top = top.into_iter().map(|r| r.0).collect::<Vec<_>>();
 	let players = futures::stream::iter(
 		top.into_iter()
 			.map(Player::from_uuid_unchecked)
@@ -125,20 +90,22 @@ pub async fn leaderboard(
 	.collect::<Vec<_>>()
 	.await;
 
-	let png: Cow<_> = {
+	let mut surface = {
+		#[allow(clippy::cast_sign_loss)]
+		let rank = rank as usize;
+
+		#[allow(clippy::enum_glob_use)]
 		use api::leaderboard::Kind::*;
 		use api::player::stats::*;
 
-		let rank = rank as usize;
-
-		let mut surface = match leaderboard.kind {
+		match leaderboard.kind {
 			Arcade(mode, kind) => arcade::Arcade::leaderboard(
 				ctx,
 				rank,
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -148,7 +115,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -158,7 +125,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -168,7 +135,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -178,7 +145,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -188,7 +155,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -198,7 +165,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -208,7 +175,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -218,7 +185,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -228,7 +195,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -238,7 +205,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -248,7 +215,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -258,7 +225,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -268,7 +235,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -278,7 +245,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -288,7 +255,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -298,7 +265,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -308,7 +275,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -318,7 +285,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -328,7 +295,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -338,7 +305,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -348,7 +315,7 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
@@ -358,21 +325,15 @@ pub async fn leaderboard(
 				&players,
 				&mode,
 				&kind,
-				&leaderboard,
+				leaderboard,
 				family,
 				background,
 			),
-		}?;
-
-		canvas::to_png(&mut surface).into()
+		}?
 	};
 
-	ctx.send(
-		poise::CreateReply::new()
-			.content(crate::tip::random(ctx))
-			.attachment(CreateAttachment::bytes(png, crate::IMAGE_NAME)),
-	)
-	.await?;
-
-	Ok(())
+	Ok((
+		canvas::to_png(&mut surface).into(),
+		(rank / ITEMS_PER_PAGE).try_into().unwrap_or(0),
+	))
 }

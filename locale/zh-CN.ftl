@@ -399,16 +399,27 @@ bank-balance = 银行余额
 
 # /leaderboard
 
+Ascending = 升序（从低到高）
+Descending = 降序（从高到低）
+
+player = 玩家
+
 leaderboard = 排行榜
   .description = 查看各种游戏的排行榜
-  .board = 榜单
+  .board = 排行榜
   .board-description = 要查看的排行榜
   .guild = 公会
   .guild-description = 要筛选的公会成员
   .player = 玩家
   .player-description = 要跳转到的玩家
-  .page = 页数
-  .page-description = 要跳转到的页数
+  .page = 页
+  .page-description = 要跳转到的页
+  .position = 位置
+  .position-description = 要跳转到的位置
+  .value = 值
+  .value-description = 要跳转到的值
+  .order = 排序
+  .order-description = 要排序的顺序
 
 # /network
 

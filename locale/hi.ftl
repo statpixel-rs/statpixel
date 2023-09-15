@@ -396,6 +396,11 @@ bank-balance = बैंक बैलेंस
 
 # /leaderboard
 
+Ascending = आरोही (कम से कम)
+Descending = अवरोही (उच्च से कम)
+
+player = खिलाड़ी
+
 leaderboard = लीडरबोर्ड
   .description = विभिन्न खेलों के लिए लीडरबोर्ड देखें
   .board = बोर्ड
@@ -406,6 +411,12 @@ leaderboard = लीडरबोर्ड
   .player-description = छोड़ने के लिए खिलाड़ी
   .page = पृष्ठ
   .page-description = छोड़ने के लिए पृष्ठ
+  .position = स्थिति
+  .position-description = छोड़ने के लिए स्थिति
+  .value = मूल्य
+  .value-description = छोड़ने के लिए मूल्य
+  .order = आदेश
+  .order-description = क्रमबद्ध करने के लिए आदेश
 
 # /network
 

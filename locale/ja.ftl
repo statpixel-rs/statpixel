@@ -399,8 +399,13 @@ bank-balance = 銀行残高
 
 # /leaderboard
 
+Ascending = 昇順（低い順）
+Descending = 降順（高い順）
+
+player = プレイヤー
+
 leaderboard = リーダーボード
-  .description = 様々なゲームのリーダーボードを表示します
+  .description = さまざまなゲームのリーダーボードを表示します
   .board = ボード
   .board-description = 表示するリーダーボード
   .guild = ギルド
@@ -409,6 +414,12 @@ leaderboard = リーダーボード
   .player-description = スキップするプレイヤー
   .page = ページ
   .page-description = スキップするページ
+  .position = 位置
+  .position-description = スキップする位置
+  .value = 値
+  .value-description = スキップする値
+  .order = 順序
+  .order-description = ソートする順序
 
 # /network
 

@@ -400,16 +400,27 @@ bank-balance = Υπόλοιπο Τραπέζης
 
 # /leaderboard
 
+Ascending = Αύξουσα (Χαμηλή σε Υψηλή)
+Descending = Φθίνουσα (Υψηλή σε Χαμηλή)
+
+player = Παίκτης
+
 leaderboard = κατάταξη
   .description = Δείτε την κατάταξη για διάφορα παιχνίδια
   .board = πίνακας
-  .board-description = Ο πίνακας κατάταξης που θέλετε να δείτε
-  .guild = σύνδεσμος
-  .guild-description = Τα μέλη του συνδέσμου για φιλτράρισμα
+  .board-description = Ο πίνακας κατάταξης προς προβολή
+  .guild = σύλλογος
+  .guild-description = Τα μέλη του συλλόγου για φιλτράρισμα
   .player = παίκτης
-  .player-description = Ο παίκτης που θέλετε να προσπεράσετε
+  .player-description = Ο παίκτης προς προβολή
   .page = σελίδα
-  .page-description = Η σελίδα που θέλετε να προσπεράσετε
+  .page-description = Η σελίδα προς προβολή
+  .position = θέση
+  .position-description = Η θέση προς προβολή
+  .value = τιμή
+  .value-description = Η τιμή προς προβολή
+  .order = σειρά
+  .order-description = Η σειρά προς ταξινόμηση
 
 # /network
 

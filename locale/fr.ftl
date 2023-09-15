@@ -400,9 +400,14 @@ bank-balance = Solde de la banque
 
 # /leaderboard
 
+Ascending = Ascendant (Bas à Haut)
+Descending = Descendant (Haut à Bas)
+
+player = Joueur
+
 leaderboard = classement
-  .description = Voir le classement pour différents jeux
-  .board = tableau
+  .description = Voir le classement de divers jeux
+  .board = classement
   .board-description = Le classement à afficher
   .guild = guilde
   .guild-description = Les membres de la guilde à filtrer
@@ -410,6 +415,12 @@ leaderboard = classement
   .player-description = Le joueur à sauter
   .page = page
   .page-description = La page à sauter
+  .position = position
+  .position-description = La position à sauter
+  .value = valeur
+  .value-description = La valeur à sauter
+  .order = ordre
+  .order-description = L'ordre de tri
 
 # /network
 

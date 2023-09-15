@@ -400,9 +400,14 @@ bank-balance = Banko Balansas
 
 # /leaderboard
 
-leaderboard = lyderių-lentelė
-  .description = Peržiūrėti lyderių lentelę skirtingiems žaidimams
-  .board = lentelė
+Ascending = Didėjimo tvarka (nuo mažiausio iki didžiausio)
+Descending = Mažėjimo tvarka (nuo didžiausio iki mažiausio)
+
+player = žaidėjas
+
+leaderboard = lentele
+  .description = Peržiūrėti lyderių lentelę įvairiems žaidimams
+  .board = lenta
   .board-description = Lyderių lentelė, kurią peržiūrėti
   .guild = gildija
   .guild-description = Gildijos nariai, kuriuos filtruoti
@@ -410,6 +415,12 @@ leaderboard = lyderių-lentelė
   .player-description = Žaidėjas, kurį praleisti
   .page = puslapis
   .page-description = Puslapis, kurį praleisti
+  .position = pozicija
+  .position-description = Pozicija, kuria praleisti
+  .value = reikšmė
+  .value-description = Reikšmė, kuria praleisti
+  .order = tvarka
+  .order-description = Tvarka, pagal kurią rūšiuoti
 
 # /network
 

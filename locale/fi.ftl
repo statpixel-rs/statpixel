@@ -398,16 +398,27 @@ bank-balance = Pankkisaldo
 
 # /leaderboard
 
-leaderboard = tuloslista
-  .description = Näytä tuloslista eri peleille
-  .board = taulu
-  .board-description = Tuloslista, jonka haluat nähdä
+Ascending = Nouseva (Pienimmästä suurimpaan)
+Descending = Laskeva (Suurimmasta pienimpään)
+
+player = Pelaaja
+
+leaderboard = top
+  .description = Näytä top-lista eri peleille
+  .board = lista
+  .board-description = Top-lista, jota haluat tarkastella
   .guild = kilta
-  .guild-description = Kilta, jonka jäsenet haluat nähdä
+  .guild-description = Killan jäsenet, joita haluat suodattaa
   .player = pelaaja
-  .player-description = Pelaaja, jonka haluat nähdä
+  .player-description = Pelaaja, johon haluat hypätä
   .page = sivu
-  .page-description = Sivu, jonka haluat nähdä
+  .page-description = Sivu, johon haluat hypätä
+  .position = sijainti
+  .position-description = Sijainti, johon haluat hypätä
+  .value = arvo
+  .value-description = Arvo, johon haluat hypätä
+  .order = järjestys
+  .order-description = Järjestys, johon haluat järjestää
 
 # /network
 

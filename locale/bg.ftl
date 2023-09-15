@@ -404,16 +404,27 @@ bank-balance = Баланс на банката
 
 # /leaderboard
 
-leaderboard = класация
-  .description = Преглед на класацията за различни игри
-  .board = дъска
-  .board-description = Класацията за преглед
+Ascending = Възходящ (Ниски към Високи)
+Descending = Низходящ (Високи към Ниски)
+
+player = Играч
+
+leaderboard = класиране
+  .description = Преглед на класирането за различни игри
+  .board = класиране
+  .board-description = Класирането за преглед
   .guild = гилдия
   .guild-description = Членовете на гилдията за филтриране
   .player = играч
-  .player-description = Играчът за прескачане
+  .player-description = Играч в Minecraft или сесия
   .page = страница
   .page-description = Страницата за прескачане
+  .position = позиция
+  .position-description = Позицията за прескачане
+  .value = стойност
+  .value-description = Стойността за прескачане
+  .order = ред
+  .order-description = Редът за сортиране
 
 # /network
 

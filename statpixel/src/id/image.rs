@@ -12,6 +12,8 @@ use minecraft::style::Family;
 use skia_safe::Color;
 use translate::context::Context;
 
+use crate::Error;
+
 macro_rules! impl_root {
 	($ctx: expr, $family: expr, $uuid: expr, $mode: expr, $game: ty, $bg: expr) => {{
 		let (_, data, session, skin, suffix) =
@@ -152,8 +154,30 @@ pub async fn map(
 	id: Id,
 	background: Option<Color>,
 	family: Family,
-) -> Result<Cow<'static, [u8]>, crate::Error> {
+) -> Result<Cow<'static, [u8]>, Error> {
 	match id {
+		Id::Leaderboard {
+			board,
+			input,
+			filter,
+			order,
+		} => {
+			let leaderboard = crate::commands::leaderboard::LEADERBOARDS
+				.get(board as usize)
+				.ok_or(Error::NotImplemented)?;
+
+			Ok(crate::commands::leaderboard::image::command(
+				ctx,
+				leaderboard,
+				input,
+				filter,
+				order,
+				family,
+				background,
+			)
+			.await?
+			.0)
+		}
 		Id::Between { .. } | Id::Session { .. } | Id::SessionPage { .. } => {
 			Err(crate::Error::NotImplemented)
 		}

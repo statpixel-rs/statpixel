@@ -1,7 +1,7 @@
 use extra::minutes;
 use minecraft::calc::pit::Level;
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Outer {
 	#[serde(rename = "pit_stats_ptl")]
@@ -9,7 +9,7 @@ pub struct Outer {
 	pub profile: Profile,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Profile {
 	pub cash: f32,
@@ -17,7 +17,7 @@ pub struct Profile {
 	pub level: Level,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[cfg_attr(
 	feature = "game",
 	derive(derive::Game),
@@ -80,7 +80,7 @@ pub struct Pit {
 	pub normal: Normal,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, bincode::Decode, bincode::Encode, Default)]
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
 #[serde(default)]
 pub struct Normal {
 	pub kills: u32,

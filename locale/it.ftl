@@ -400,16 +400,27 @@ bank-balance = Saldo della Banca
 
 # /leaderboard
 
+Ascending = Crescente (Basso ad Alto)
+Descending = Decrescente (Alto a Basso)
+
+player = Giocatore
+
 leaderboard = classifica
   .description = Visualizza la classifica per vari giochi
-  .board = tabellone
+  .board = classifica
   .board-description = La classifica da visualizzare
-  .guild = gremio
-  .guild-description = Los miembros del gremio para filtrar por
-  .player = jugador
-  .player-description = El jugador al que saltar
-  .page = página
-  .page-description = La página a la que saltar
+  .guild = gilda
+  .guild-description = I membri della gilda da filtrare
+  .player = giocatore
+  .player-description = Il giocatore a cui saltare
+  .page = pagina
+  .page-description = La pagina a cui saltare
+  .position = posizione
+  .position-description = La posizione a cui saltare
+  .value = valore
+  .value-description = Il valore a cui saltare
+  .order = ordine
+  .order-description = L'ordine per ordinare
 
 # /network
 

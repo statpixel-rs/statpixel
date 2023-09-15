@@ -5,7 +5,7 @@ use uuid::Uuid;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 16;
+pub const VERSION: i16 = 17;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
@@ -13,7 +13,7 @@ pub struct Data {
 	#[bincode(with_serde)]
 	pub uuid: Uuid,
 	#[serde(skip)]
-	pub stats: super::stats::Stats,
+	pub stats: crate::player::stats::Stats,
 	pub(crate) status_rank: Option<String>,
 	pub(crate) rank: Option<String>,
 	pub(crate) package_rank: Option<String>,
@@ -44,7 +44,7 @@ impl From<Data> for crate::player::data::Data {
 		Self {
 			username: value.username,
 			uuid: value.uuid,
-			stats: value.stats.into(),
+			stats: value.stats,
 			status_rank: value.status_rank,
 			rank: value.rank,
 			package_rank: value.package_rank,
@@ -64,6 +64,7 @@ impl From<Data> for crate::player::data::Data {
 			achivement_points: value.achivement_points,
 			language: value.language,
 			socials: value.socials,
+			parkour: Vec::new(),
 		}
 	}
 }

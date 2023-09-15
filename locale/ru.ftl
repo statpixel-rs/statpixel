@@ -402,16 +402,27 @@ bank-balance = Баланс банка
 
 # /leaderboard
 
+Ascending = Возрастание (от меньшего к большему)
+Descending = Убывание (от большего к меньшему)
+
+player = игрок
+
 leaderboard = таблица-лидеров
-  .description = Просмотр таблицы лидеров различных игр
-  .board = доска
+  .description = Просмотр таблицы лидеров для различных игр
+  .board = таблица
   .board-description = Таблица лидеров для просмотра
   .guild = гильдия
   .guild-description = Участники гильдии для фильтрации
   .player = игрок
-  .player-description = Игрок для пропуска
+  .player-description = Игрок Minecraft или сессия
   .page = страница
   .page-description = Страница для пропуска
+  .position = позиция
+  .position-description = Позиция для пропуска
+  .value = значение
+  .value-description = Значение для пропуска
+  .order = порядок
+  .order-description = Порядок сортировки
 
 # /network
 
