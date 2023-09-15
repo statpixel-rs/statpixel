@@ -109,6 +109,7 @@ pub struct LeaderboardValue;
 pub struct GuildXpName;
 pub struct GuildXpValue;
 pub struct GuildXpTitle;
+pub struct GuildLeaderboardPlace;
 
 pub struct WideBubbleProgress(pub f32, pub [Color; 2], pub bool);
 
