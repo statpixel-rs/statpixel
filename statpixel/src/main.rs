@@ -203,13 +203,11 @@ async fn main() {
 		async move {
 			let ctx = context::Context::automated(&data);
 
-			let mut players = autocomplete::table
+			let players = autocomplete::table
 				.select(autocomplete::uuid)
 				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
 				.await
 				.unwrap();
-
-			players.drain(0..134000);
 
 			let players_len = players.len();
 			#[allow(clippy::cast_precision_loss)]

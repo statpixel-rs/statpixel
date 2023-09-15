@@ -129,7 +129,8 @@ pub(crate) fn impl_mode(
 				let game = &data.stats.#path_to_game;
 				let stats = &data.stats.#path_to_game.#id;
 
-				pipeline.zadd(key, data.uuid.as_bytes(), #value);
+				pipeline.zadd(&key, data.uuid.as_bytes(), #value);
+				pipeline.zremrangebyrank(&key, 50_000, -50_000);
 			}))
 		})
 		.chain(game_labels.iter().filter_map(|l| {
@@ -147,7 +148,8 @@ pub(crate) fn impl_mode(
 				let game = &data.stats.#path_to_game;
 				let stats = &data.stats.#path_to_game.#id;
 
-				pipeline.zadd(key, data.uuid.as_bytes(), #value);
+				pipeline.zadd(&key, data.uuid.as_bytes(), #value);
+				pipeline.zremrangebyrank(&key, 50_000, -50_000);
 			}))
 		}));
 

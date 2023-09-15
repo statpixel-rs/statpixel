@@ -1047,7 +1047,7 @@ impl Shape for WideTallBubble {
 impl Shape for LeaderboardTitle {
 	fn size(&self) -> Size {
 		Size {
-			width: BUBBLE_WIDTH * 3. + GAP * 2. + self.extras as f32 * (150. + GAP),
+			width: BUBBLE_WIDTH * 3. + GAP * 2. + f32::from(self.extras) * (150. + GAP),
 			height: 50.,
 		}
 	}
