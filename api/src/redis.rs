@@ -42,7 +42,7 @@ impl Player {
 
 		ctx.data()
 			.redis()
-			.set(self.uuid.as_bytes(), &display)
+			.set_ex(self.uuid.as_bytes(), &display, 60 * 60 * 24 * 7)
 			.await
 			.map_err(|e| Arc::new(Error::Redis(e)))?;
 
@@ -64,7 +64,7 @@ impl Player {
 
 		ctx.data()
 			.redis()
-			.set(self.uuid.as_bytes(), &display)
+			.set_ex(self.uuid.as_bytes(), &display, 60 * 60 * 24 * 7)
 			.await?;
 
 		Ok(())
