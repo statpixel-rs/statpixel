@@ -195,7 +195,7 @@ async fn main() {
 		}
 	});
 
-	/*tokio::task::spawn({
+	tokio::task::spawn({
 		let data = data.clone();
 		let pool = get_pool(1);
 
@@ -203,11 +203,13 @@ async fn main() {
 		async move {
 			let ctx = context::Context::automated(&data);
 
-			let players = autocomplete::table
+			let mut players = autocomplete::table
 				.select(autocomplete::uuid)
 				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
 				.await
 				.unwrap();
+
+			players.drain(0..134000);
 
 			let players_len = players.len();
 			#[allow(clippy::cast_precision_loss)]
@@ -231,7 +233,7 @@ async fn main() {
 				tokio::time::sleep(std::time::Duration::from_millis(600)).await;
 			}
 		}
-	});*/
+	});
 
 	tokio::task::spawn(async move {
 		let pool = get_pool(2);
