@@ -766,7 +766,7 @@ impl ToTokens for GameInputReceiver {
 					let game = &data.stats.#path_to_game;
 
 					pipeline.zadd(&key, data.uuid.as_bytes(), #value);
-					pipeline.zremrangebyrank(&key, 50_000, -50_000);
+					pipeline.zremrangebyrank(&key, 15_000, -15_000);
 				}))
 			})
 			.chain(labels.iter().filter_map(|l| {
@@ -784,7 +784,7 @@ impl ToTokens for GameInputReceiver {
 					let game = &data.stats.#path_to_game;
 
 					pipeline.zadd(&key, data.uuid.as_bytes(), #value);
-					pipeline.zremrangebyrank(&key, 50_000, -50_000);
+					pipeline.zremrangebyrank(&key, 15_000, -15_000);
 				}))
 			}))
 			.chain(std::iter::once(quote!({
@@ -795,7 +795,7 @@ impl ToTokens for GameInputReceiver {
 				let game = &data.stats.#path_to_game;
 
 				pipeline.zadd(&key, data.uuid.as_bytes(), #calc::get_total_xp(#calc::convert(&#xp)));
-				pipeline.zremrangebyrank(&key, 50_000, -50_000);
+				pipeline.zremrangebyrank(&key, 15_000, -15_000);
 			})));
 
 		let leaderboards = blocks
