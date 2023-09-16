@@ -1,18 +1,7 @@
 [workspace]
-members = [
-	"api",
-	"database",
-	"statpixel",
-	"translate",
-	"minecraft",
-	"label",
-	"image",
-	"hypixel",
-	"extra",
-	"derive",
-]
+members = ["crates/*"]
 resolver = "2"
-default-members = ["statpixel"]
+default-members = ["crates/statpixel"]
 
 [profile.release]
 strip = true
