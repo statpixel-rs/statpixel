@@ -58,4 +58,4 @@ optional = true
 criterion = "0.5"
 
 [features]
-runtime_env = ["api/runtime_env", "dep:dotenvy"]
+runtime_env = ["api/runtime_env", "database/runtime_env", "dep:dotenvy"]

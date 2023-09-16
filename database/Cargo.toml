@@ -17,4 +17,6 @@ optional = true
 
 [features]
 default = ["util"]
-util = ["dep:dotenvy_macro"]
+
+runtime_env = ["dep:dotenvy_macro"]
+util = []

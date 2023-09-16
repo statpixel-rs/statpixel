@@ -52,11 +52,6 @@ jobs:
             ext: .tar.gz
             os: ubuntu-latest
             bin: ''
-          - target: x86_64-apple-darwin
-            archive: zip
-            ext: .zip
-            os: macos-latest
-            bin: ''
     steps:
       - uses: actions/checkout@v3
         with:
