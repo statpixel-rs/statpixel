@@ -5,7 +5,7 @@ use chrono::{DateTime, Utc};
 use database::schema::session;
 use diesel::{ExpressionMethods, QueryDsl};
 use diesel_async::RunQueryDsl;
-use poise::serenity_prelude::{CreateActionRow, CreateButton, CreateEmbed, ReactionType};
+use poise::serenity_prelude::{CreateActionRow, CreateButton, CreateEmbed};
 use translate::{context, tr, tr_fmt};
 
 use crate::Error;
