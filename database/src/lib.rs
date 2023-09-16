@@ -21,7 +21,8 @@ pub fn get_pool(max_size: usize) -> PostgresPool {
 	#[cfg(feature = "runtime_env")]
 	let url = std::env::var("DATABASE_URL")
 		.expect("DATABASE_URL not set")
-		.as_str();
+	#[cfg(feature = "runtime_env")]
+	let url = url.as_str();
 
 	let manager = AsyncDieselConnectionManager::<AsyncPgConnection>::new(url);
 
