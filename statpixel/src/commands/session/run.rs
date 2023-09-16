@@ -76,7 +76,7 @@ pub async fn list(
 				uuid: player.as_ref().map(|p| p.uuid),
 				page: page - 1,
 			}))
-			.emoji(ReactionType::Unicode("⬅️".to_string())),
+			.emoji(crate::emoji::ARROW_LEFT),
 		);
 	}
 
@@ -85,7 +85,7 @@ pub async fn list(
 			uuid: player.as_ref().map(|p| p.uuid),
 			page: page + 1,
 		}))
-		.emoji(ReactionType::Unicode("➡️".to_string())),
+		.emoji(crate::emoji::ARROW_RIGHT),
 	);
 
 	ctx.send(

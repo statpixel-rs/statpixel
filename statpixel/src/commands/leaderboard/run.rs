@@ -34,8 +34,8 @@ pub async fn command(
 				order,
 				input: api::command::LeaderboardInput::Page(page - 1),
 			}))
-			.emoji(serenity::ReactionType::Unicode("⬅️".to_string()))
-			.style(serenity::ButtonStyle::Primary),
+			.emoji(crate::emoji::ARROW_LEFT)
+			.style(serenity::ButtonStyle::Secondary),
 		);
 	}
 
@@ -46,8 +46,8 @@ pub async fn command(
 			order,
 			input: api::command::LeaderboardInput::Page(page + 1),
 		}))
-		.emoji(serenity::ReactionType::Unicode("➡️".to_string()))
-		.style(serenity::ButtonStyle::Primary),
+		.emoji(crate::emoji::ARROW_RIGHT)
+		.style(serenity::ButtonStyle::Secondary),
 	);
 
 	let row = serenity::CreateActionRow::Buttons(buttons);

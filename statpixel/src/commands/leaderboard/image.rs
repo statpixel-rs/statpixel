@@ -91,12 +91,13 @@ pub async fn command(
 	.await;
 
 	let mut surface = {
-		#[allow(clippy::cast_sign_loss)]
-		let rank = rank as usize;
-
 		#[allow(clippy::enum_glob_use)]
+		#[allow(clippy::items_after_statements)]
 		use api::leaderboard::Kind::*;
 		use api::player::stats::*;
+
+		#[allow(clippy::cast_sign_loss)]
+		let rank = rank as usize;
 
 		match leaderboard.kind {
 			Arcade(mode, kind) => arcade::Arcade::leaderboard(

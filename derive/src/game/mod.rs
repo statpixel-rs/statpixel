@@ -1037,7 +1037,7 @@ impl ToTokens for GameInputReceiver {
 			.chain(std::iter::once(quote!(#kind_enum::level => {
 				canvas = canvas.push_right(
 					&#api::canvas::shape::LeaderboardValue,
-					#api::canvas::shape::LeaderboardValue::label(family, #translate::tr(ctx, "level")),
+					#api::canvas::shape::LeaderboardValue::label(family, #translate::tr(ctx, "experience")),
 				);
 			})));
 
