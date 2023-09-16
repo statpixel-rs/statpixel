@@ -1,7 +1,7 @@
 # StatPixel
 
-![test status](https://github.com/matteopolak/statpixel/actions/workflows/test.yml/badge.svg)
-![release status](https://github.com/matteopolak/statpixel/actions/workflows/release.yml/badge.svg)
+![test status](https://github.com/statpixel-rs/statpixel/actions/workflows/test.yml/badge.svg)
+![release status](https://github.com/statpixel-rs/statpixel/actions/workflows/release.yml/badge.svg)
 
 ## Documentation
 
