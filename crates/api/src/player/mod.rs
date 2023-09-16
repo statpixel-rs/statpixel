@@ -28,7 +28,7 @@ use self::status::Status;
 
 pub const VERSION: i16 = 18;
 pub static DEFAULT_SKIN: Lazy<image::Image> =
-	image::include_image!("../../../assets/skins/steve.png");
+	image::include_image!("../../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());

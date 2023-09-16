@@ -352,114 +352,119 @@ impl Type {
 	pub fn as_image_bytes(&self) -> Option<&Image> {
 		Some(match self {
 			Self::Quake => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/quakecraft.png");
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../../assets/games/quakecraft.png");
 				&IMAGE
 			}
 			Self::Walls => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/walls.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/walls.png");
 				&IMAGE
 			}
 			Self::Paintball => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/paintball.png");
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../../assets/games/paintball.png");
 				&IMAGE
 			}
 			Self::BlitzSg => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/blitz_sg.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/blitz_sg.png");
 				&IMAGE
 			}
 			Self::TntGames => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/tntgames.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/tntgames.png");
 				&IMAGE
 			}
 			Self::VampireZ => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/vampirez.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/vampirez.png");
 				&IMAGE
 			}
 			Self::MegaWalls => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/megawalls.png");
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../../assets/games/megawalls.png");
 				&IMAGE
 			}
 			Self::Arcade => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/arcade.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/arcade.png");
 				&IMAGE
 			}
 			Self::Arena => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/arena.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/arena.png");
 				&IMAGE
 			}
 			Self::Uhc => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/uhc.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/uhc.png");
 				&IMAGE
 			}
 			Self::CopsAndCrims => {
 				static IMAGE: Lazy<Image> =
-					include_image!("../../../assets/games/copsandcrims.png");
+					include_image!("../../../../assets/games/copsandcrims.png");
 				&IMAGE
 			}
 			Self::Warlords => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/warlords.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/warlords.png");
 				&IMAGE
 			}
 			Self::SmashHeroes => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/smash.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/smash.png");
 				&IMAGE
 			}
 			Self::TurboKartRacers => {
 				static IMAGE: Lazy<Image> =
-					include_image!("../../../assets/games/turbokartracers.png");
+					include_image!("../../../../assets/games/turbokartracers.png");
 				&IMAGE
 			}
 			Self::SkyWars => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skywars.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/skywars.png");
 				&IMAGE
 			}
 			Self::BedWars => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/bedwars.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/bedwars.png");
 				&IMAGE
 			}
 			Self::MurderMystery => {
 				static IMAGE: Lazy<Image> =
-					include_image!("../../../assets/games/murdermystery.png");
+					include_image!("../../../../assets/games/murdermystery.png");
 				&IMAGE
 			}
 			Self::BuildBattle => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/buildbattle.png");
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../../assets/games/buildbattle.png");
 				&IMAGE
 			}
 			Self::Duels => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/duels.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/duels.png");
 				&IMAGE
 			}
 			Self::SkyClash => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skyclash.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/skyclash.png");
 				&IMAGE
 			}
 			Self::SpeedUhc => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/speeduhc.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/speeduhc.png");
 				&IMAGE
 			}
 			Self::Smp => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/smp.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/smp.png");
 				&IMAGE
 			}
 			Self::CrazyWalls => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/crazywalls.png");
+				static IMAGE: Lazy<Image> =
+					include_image!("../../../../assets/games/crazywalls.png");
 				&IMAGE
 			}
 			Self::SkyBlock => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/skyblock.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/skyblock.png");
 				&IMAGE
 			}
 			Self::Housing => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/housing.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/housing.png");
 				&IMAGE
 			}
 			Self::Pit => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/thepit.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/thepit.png");
 				&IMAGE
 			}
 			Self::WoolWars => {
-				static IMAGE: Lazy<Image> = include_image!("../../../assets/games/woolwars.png");
+				static IMAGE: Lazy<Image> = include_image!("../../../../assets/games/woolwars.png");
 				&IMAGE
 			}
 			_ => return None,
