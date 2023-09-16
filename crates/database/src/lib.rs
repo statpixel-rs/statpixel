@@ -19,8 +19,7 @@ pub fn get_pool(max_size: usize) -> PostgresPool {
 	let url = dotenvy_macro::dotenv!("DATABASE_URL");
 
 	#[cfg(feature = "runtime_env")]
-	let url = std::env::var("DATABASE_URL")
-		.expect("DATABASE_URL not set")
+	let url = std::env::var("DATABASE_URL").expect("DATABASE_URL not set");
 	#[cfg(feature = "runtime_env")]
 	let url = url.as_str();
 

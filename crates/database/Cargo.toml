@@ -10,13 +10,10 @@ chrono.workspace = true
 diesel.workspace = true
 diesel-async.workspace = true
 uuid.workspace = true
-
-[dependencies.dotenvy_macro]
-workspace = true
-optional = true
+dotenvy_macro.workspace = true
 
 [features]
 default = ["util"]
 
-runtime_env = ["dep:dotenvy_macro"]
+runtime_env = []
 util = []
