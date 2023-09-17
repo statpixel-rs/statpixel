@@ -220,28 +220,25 @@ pub async fn login(
 	WithRejection(query, _): super::extract::Query<Code>,
 ) -> Result<impl IntoResponse, StatusCode> {
 	#[cfg(not(feature = "runtime_env"))]
-	const client_id: &[u8] = dotenvy_macro::dotenv!("CLIENT_ID").as_bytes();
+	#[allow(non_upper_case_globals)]
+	const client_id: &str = dotenvy_macro::dotenv!("CLIENT_ID");
 
 	#[cfg(feature = "runtime_env")]
 	let client_id = std::env::var("CLIENT_ID").expect("CLIENT_ID not set");
-	#[cfg(feature = "runtime_env")]
-	let client_id = client_id.as_bytes();
 
 	#[cfg(not(feature = "runtime_env"))]
-	const client_secret: &[u8] = dotenvy_macro::dotenv!("CLIENT_SECRET").as_bytes();
+	#[allow(non_upper_case_globals)]
+	const client_secret: &str = dotenvy_macro::dotenv!("CLIENT_SECRET");
 
 	#[cfg(feature = "runtime_env")]
 	let client_secret = std::env::var("CLIENT_SECRET").expect("CLIENT_SECRET not set");
-	#[cfg(feature = "runtime_env")]
-	let client_secret = client_id.as_bytes();
 
 	#[cfg(not(feature = "runtime_env"))]
-	const redirect_uri: &[u8] = dotenvy_macro::dotenv!("REDIRECT_URI").as_bytes();
+	#[allow(non_upper_case_globals)]
+	const redirect_uri: &str = dotenvy_macro::dotenv!("REDIRECT_URI");
 
 	#[cfg(feature = "runtime_env")]
 	let redirect_uri = std::env::var("REDIRECT_URI").expect("REDIRECT_URI not set");
-	#[cfg(feature = "runtime_env")]
-	let redirect_uri = client_id.as_bytes();
 
 	let access = HTTP
 		.post(URL.clone())
