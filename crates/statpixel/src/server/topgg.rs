@@ -42,14 +42,21 @@ pub struct Vote {
 	pub is_weekend: bool,
 }
 
-const SECRET: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
-
 pub async fn add_vote(
 	State(state): State<Arc<super::Data>>,
 	TypedHeader(bearer): TypedHeader<Authorization<authorization::Bearer>>,
 	WithRejection(Json(vote), _): super::extract::Json<Vote>,
 ) -> Result<impl IntoResponse, StatusCode> {
-	if bearer.token() != SECRET {
+	#[cfg(not(feature = "runtime_env"))]
+	const secret: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
+
+	#[cfg(feature = "runtime_env")]
+	let secret = std::env::var("REDIRECT_URI")
+		.expect("REDIRECT_URI not set");
+	#[cfg(feature = "runtime_env")]
+	let secret = secret.as_str();
+
+	if bearer.token() != secret {
 		return Err(StatusCode::UNAUTHORIZED);
 	}
 

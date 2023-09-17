@@ -1,4 +1,5 @@
 /target
+/crates/*/target
 .env
 /*.json
 /scripts/*.json
@@ -10,3 +11,4 @@
 !package.json
 /scripts/chunks
 /generated
+.idea
