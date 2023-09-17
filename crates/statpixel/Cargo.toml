@@ -9,7 +9,7 @@ readme = "https://github.com/matteopolak/statpixel/blob/main/README.md"
 
 [[bench]]
 name = "bench_main"
-path = "../benches/bench_main.rs"
+path = "../../benches/bench_main.rs"
 harness = false
 
 [dependencies]
