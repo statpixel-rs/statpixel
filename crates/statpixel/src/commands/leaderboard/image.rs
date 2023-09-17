@@ -24,7 +24,7 @@ pub async fn command(
 	let rank = match input {
 		command::LeaderboardInput::Page(page) => page as isize * ITEMS_PER_PAGE,
 		command::LeaderboardInput::Player(uuid) => {
-			let rank: isize = match order {
+			let rank: Option<isize> = match order {
 				command::LeaderboardOrder::Descending => ctx
 					.data()
 					.redis()
@@ -39,7 +39,11 @@ pub async fn command(
 					.map_err(api::Error::from)?,
 			};
 
-			rank / ITEMS_PER_PAGE * ITEMS_PER_PAGE
+			if let Some(rank) = rank {
+				rank / ITEMS_PER_PAGE * ITEMS_PER_PAGE
+			} else {
+				return Err(Error::LeaderboardPlayerNotFound);
+			}
 		}
 		command::LeaderboardInput::Position(position) => {
 			(position as isize - 1) / ITEMS_PER_PAGE * ITEMS_PER_PAGE

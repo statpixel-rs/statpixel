@@ -44,6 +44,7 @@ error-time-expected-number = Laiko argumente pozicijoje **`{$position}`** turi b
 error-time-unknown-unit = Nežinoma laiko vienetai **`{$unit}`** pozicijoje **`{$position}`** su reikšme **`{$value}`**.
 error-time-empty = Laiko argumentas negali būti tuščias.
 error-time-overflow = Laiko argumento trukmė pernelyg ilga. Bandykite, kad ji neviršytų 3,000 metų.
+error-leaderboard-player-not-found = Pateiktas žaidėjas nerastas lyderių lentelės pirmose arba paskutinėse 15,000 pozicijų.
 
 # Greitos patarimai
 

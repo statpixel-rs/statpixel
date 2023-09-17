@@ -44,6 +44,7 @@ error-time-expected-number = È previsto un numero nell'argomento del tempo in p
 error-time-unknown-unit = Unità di tempo sconosciuta **`{$unit}`** in posizione **`{$position}`** con valore **`{$value}`**.
 error-time-empty = L'argomento del tempo non può essere vuoto.
 error-time-overflow = La durata dell'argomento del tempo è troppo lunga. Prova a mantenerla al di sotto di 3.000 anni.
+error-leaderboard-player-not-found = Il giocatore fornito non è stato trovato nelle prime o ultime 15.000 posizioni della classifica.
 
 # Suggerimenti rapidi
 

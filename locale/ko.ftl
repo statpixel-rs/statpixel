@@ -43,6 +43,7 @@ error-time-expected-number = 시간 인수에서 숫자를 입력해야 합니�
 error-time-unknown-unit = 알 수 없는 시간 단위: **`{$unit}`**. 위치: **`{$position}`**, 값: **`{$value}`**.
 error-time-empty = 시간 인수는 비워둘 수 없습니다.
 error-time-overflow = 시간 인수의 기간이 너무 깁니다. 3,000년 이하로 설정하세요.
+error-leaderboard-player-not-found = 제공된 플레이어가 리더보드의 처음 또는 마지막 15,000위 안에 없습니다.
 
 # Quick tips
 tip-background = <:knowledge_book:1117179094556233828> 생성된 이미지의 배경을 변경하려면 </background:1117174166056075335>를 사용하세요.

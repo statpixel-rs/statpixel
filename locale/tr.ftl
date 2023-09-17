@@ -43,6 +43,7 @@ error-time-expected-number = Zaman argümanında **`{$position}`**. pozisyonda b
 error-time-unknown-unit = **`{$position}`**. pozisyonda **`{$value}`** değerinde bilinmeyen bir zaman birimi **`{$unit}`**.
 error-time-empty = Zaman argümanı boş olamaz.
 error-time-overflow = Zaman argümanının süresi çok uzun. 3,000 yılın altında tutmaya çalışın.
+error-leaderboard-player-not-found = Sağlanan oyuncu, lider tablosunun ilk veya son 15.000 pozisyonu içinde bulunamadı.
 
 # Hızlı ipuçları
 

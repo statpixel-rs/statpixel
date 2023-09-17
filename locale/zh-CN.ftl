@@ -43,6 +43,8 @@ error-time-expected-number = 时间参数在位置**`{$position}`**应为一个�
 error-time-unknown-unit = 未知的时间单位**`{$unit}`** 在位置**`{$position}`** 的值为**`{$value}`**。
 error-time-empty = 时间参数不能为空。
 error-time-overflow = 时间参数的持续时间太长。尝试将其保持在3,000年以下。
+error-leaderboard-player-not-found = 提供的玩家在排行榜的前 15,000 个或后 15,000 个位置中未找到。
+
 
 # Quick tips
 tip-background = <:knowledge_book:1117179094556233828> 使用</background:1117174166056075335> 更改生成图像的背景。

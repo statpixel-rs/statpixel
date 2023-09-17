@@ -43,6 +43,7 @@ error-time-expected-number = An der Position **`{$position}`** im Zeitargument w
 error-time-unknown-unit = Unbekannte Zeiteinheit **`{$unit}`** an Position **`{$position}`** mit Wert **`{$value}`**.
 error-time-empty = Das Zeitargument darf nicht leer sein.
 error-time-overflow = Die Dauer des Zeitarguments ist zu lang. Versuche sie auf unter 3.000 Jahre zu begrenzen.
+error-leaderboard-player-not-found-description = Der angegebene Spieler wurde nicht innerhalb der ersten oder letzten 15.000 Positionen der Bestenliste gefunden.
 
 # Schnelle Tipps
 tip-background = <:knowledge_book:1117179094556233828> Ändere den Hintergrund der generierten Bilder mit </background:1117174166056075335>.

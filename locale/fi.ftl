@@ -43,6 +43,7 @@ error-time-expected-number = Aikamääreessä oletettiin numero sijainnissa **`{
 error-time-unknown-unit = Tuntematon aikayksikkö **`{$unit}`** sijainnissa **`{$position}`** arvolla **`{$value}`**.
 error-time-empty = Aikamääre ei voi olla tyhjä.
 error-time-overflow = Aikamääreen kesto on liian pitkä. Yritä pitää se alle 3 000 vuotta.
+error-leaderboard-player-not-found = Annettu pelaaja ei löytynyt top-listan ensimmäisestä tai viimeisestä 15 000 sijasta.
 
 # Pikavinkit
 tip-background = <:knowledge_book:1117179094556233828> Vaihda luotujen kuvien taustaa komennolla </background:1117174166056075335>.

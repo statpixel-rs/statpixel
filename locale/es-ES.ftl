@@ -44,6 +44,7 @@ error-time-expected-number = Se esperaba un número en el argumento de tiempo en
 error-time-unknown-unit = Unidad de tiempo desconocida **`{$unit}`** en la posición **`{$position}`** con valor **`{$value}`**.
 error-time-empty = El argumento de tiempo no puede estar vacío.
 error-time-overflow = La duración del argumento de tiempo es demasiado larga. Intenta mantenerla por debajo de 3,000 años.
+error-leaderboard-player-not-found = El jugador proporcionado no se encontró dentro de las primeras o últimas 15,000 posiciones de la tabla de clasificación.
 
 # Consejos rápidos
 

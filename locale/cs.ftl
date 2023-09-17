@@ -44,6 +44,7 @@ error-time-expected-number = Očekáváno číslo v časovém argumentu v pozici
 error-time-unknown-unit = Neznámá časová jednotka **`{$unit}`** v pozici **`{$position}`** s hodnotou **`{$value}`**.
 error-time-empty = Časový argument nemůže být prázdný.
 error-time-overflow = Doba trvání časového argumentu je příliš dlouhá. Zkuste ji udržet pod 3000 let.
+error-leaderboard-player-not-found = Poskytnutý hráč nebyl nalezen v prvních nebo posledních 15 000 pozicích žebříčku.
 
 # Rychlé tipy
 

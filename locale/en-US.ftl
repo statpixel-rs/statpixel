@@ -44,6 +44,7 @@ error-time-expected-number = Expected a number in the time argument in position 
 error-time-unknown-unit = Unknown time unit **`{$unit}`** in position **`{$position}`** with value **`{$value}`**.
 error-time-empty = The time argument cannot be empty.
 error-time-overflow = The duration of the time argument is too long. Try keeping it under 3,000 years.
+error-leaderboard-player-not-found = The provided player was not found within the first or last 15,000 positions of the leaderboard.
 
 # Quick tips
 

@@ -44,6 +44,7 @@ error-time-expected-number = 時間引数の位置**`{$position}`**には数値�
 error-time-unknown-unit = 時間引数の位置**`{$position}`**にて不明な時間単位**`{$unit}`**が使用されました。値は**`{$value}`**です。
 error-time-empty = 時間引数は空にできません。
 error-time-overflow = 時間引数の期間が長すぎます。3000年以下にしてください。
+error-leaderboard-player-not-found = 提供されたプレイヤーは、リーダーボードの最初または最後の15,000の位置に見つかりませんでした。
 
 # Quick tips
 

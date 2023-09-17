@@ -44,6 +44,7 @@ error-time-expected-number = Očekivani broj u vremenskom argumentu na poziciji 
 error-time-unknown-unit = Nepoznata vremenska jedinica **`{$unit}`** na poziciji **`{$position}`** s vrijednošću **`{$value}`**.
 error-time-empty = Vremenski argument ne može biti prazan.
 error-time-overflow = Trajanje vremenskog argumenta je predugo. Pokušajte da ostane ispod 3000 godina.
+error-leaderboard-player-not-found = Navedeni igrač nije pronađen unutar prvih ili zadnjih 15.000 pozicija leaderboarda.
 
 # Quick tips
 

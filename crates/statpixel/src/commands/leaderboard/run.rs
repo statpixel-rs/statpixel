@@ -27,7 +27,15 @@ pub async fn command(
 	let mut buttons = vec![];
 
 	if page > 0 {
-		buttons.push(
+		buttons.extend([
+			serenity::CreateButton::new(api::id::command(api::command::Id::Leaderboard {
+				board,
+				filter,
+				order,
+				input: api::command::LeaderboardInput::Page(0),
+			}))
+			.emoji(crate::emoji::ARROW_START)
+			.style(serenity::ButtonStyle::Secondary),
 			serenity::CreateButton::new(api::id::command(api::command::Id::Leaderboard {
 				board,
 				filter,
@@ -36,10 +44,10 @@ pub async fn command(
 			}))
 			.emoji(crate::emoji::ARROW_LEFT)
 			.style(serenity::ButtonStyle::Secondary),
-		);
+		]);
 	}
 
-	buttons.push(
+	buttons.extend([
 		serenity::CreateButton::new(api::id::command(api::command::Id::Leaderboard {
 			board,
 			filter,
@@ -48,7 +56,15 @@ pub async fn command(
 		}))
 		.emoji(crate::emoji::ARROW_RIGHT)
 		.style(serenity::ButtonStyle::Secondary),
-	);
+		serenity::CreateButton::new(api::id::command(api::command::Id::Leaderboard {
+			board,
+			filter,
+			order,
+			input: api::command::LeaderboardInput::Position(29_999),
+		}))
+		.emoji(crate::emoji::ARROW_END)
+		.style(serenity::ButtonStyle::Secondary),
+	]);
 
 	let row = serenity::CreateActionRow::Buttons(buttons);
 

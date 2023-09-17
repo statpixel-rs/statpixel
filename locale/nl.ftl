@@ -44,6 +44,7 @@ error-time-expected-number = Een nummer werd verwacht in het tijdsargument op po
 error-time-unknown-unit = Onbekende tijdsunit **`{$unit}`** op positie **`{$position}`** met waarde **`{$value}`**.
 error-time-empty = Het tijdsargument kan niet leeg zijn.
 error-time-overflow = De duur van het tijdsargument is te lang. Probeer het onder de 3000 jaar te houden.
+error-leaderboard-player-not-found = De opgegeven speler is niet gevonden binnen de eerste of laatste 15.000 posities van het leaderboard.
 
 # Snelle tips
 

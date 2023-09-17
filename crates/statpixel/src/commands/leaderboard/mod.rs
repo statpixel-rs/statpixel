@@ -75,8 +75,12 @@ pub async fn leaderboard(
 	#[max_length = 36]
 	#[autocomplete = "crate::commands::autocomplete_username"]
 	player: Option<String>,
-	#[min = 1] page: Option<u32>,
-	#[min = 1] position: Option<u32>,
+	#[min = 1]
+	#[max = 3_000]
+	page: Option<u32>,
+	#[min = 1]
+	#[max = 30_000]
+	position: Option<u32>,
 	#[min = 0.0] value: Option<f32>,
 	order: Option<command::LeaderboardOrder>,
 ) -> Result<(), Error> {

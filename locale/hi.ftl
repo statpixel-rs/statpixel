@@ -43,6 +43,7 @@ error-time-expected-number = समय तर्क में स्थान **
 error-time-unknown-unit = स्थान **`{$position}`** में अज्ञात समय इकाई **`{$unit}`** और मूल्य **`{$value}`**।
 error-time-empty = समय तर्क खाली नहीं हो सकता।
 error-time-overflow = समय तर्क की अवधि बहुत लंबी है। इसे 3,000 साल से कम रखने का प्रयास करें।
+error-leaderboard-player-not-found = प्रदान किया गया खिलाड़ी लीडरबोर्ड के पहले या अंतिम 15,000 स्थानों में नहीं मिला।
 
 # Quick tips
 tip-background = <:knowledge_book:1117179094556233828> जेनरेटेड छवि के पृष्ठभूमि को बदलें: </background:1117174166056075335>।

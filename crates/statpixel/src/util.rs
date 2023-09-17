@@ -435,6 +435,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 		Error::LeaderboardNotFound(ref name) => {
 			tr_fmt!(ctx, "error-leaderboard-not-found", name: name)
 		}
+		Error::LeaderboardPlayerNotFound => tr(ctx, "error-leaderboard-player-not-found"),
 		Error::IdentifierTooLong => tr(ctx, "error-identifier-too-long"),
 		Error::UserTrackLimitReached(ref limit) => {
 			tr_fmt!(ctx, "error-user-track-limit-reached", limit: limit)

@@ -107,6 +107,8 @@ pub enum Error {
 	SessionNotFound,
 	#[error("The provided session name already exists.")]
 	SessionAlreadyExists,
+	#[error("The provided player was not found in our leaderboards.")]
+	LeaderboardPlayerNotFound,
 }
 
 #[derive(Debug, thiserror::Error)]

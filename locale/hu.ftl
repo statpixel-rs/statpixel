@@ -45,6 +45,7 @@ error-time-expected-number = Egy számot vártunk a megadott időben a(z) **`{$p
 error-time-unknown-unit = Ismeretlen időegység: **`{$unit}`**, a(z) **`{$position}`**. pozícióban, érték: **`{$value}`**.
 error-time-empty = Az idő argumentum nem lehet üres.
 error-time-overflow = Az idő argumentum időtartama túl hosszú. Próbáld meg 3000 év alatt tartani.
+error-leaderboard-player-not-found = A megadott játékos nem található a ranglista első vagy utolsó 15 000 pozíciójában.
 
 # Gyors tippek
 

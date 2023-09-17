@@ -44,6 +44,7 @@ error-time-expected-number = S-aștepta un număr în argumentul de timp la pozi
 error-time-unknown-unit = Unitate de timp necunoscută **`{$unit}`** la poziția **`{$position}`** cu valoarea **`{$value}`**.
 error-time-empty = Argumentul de timp nu poate fi gol.
 error-time-overflow = Durata argumentului de timp este prea mare. Încearcă să o ții sub 3,000 de ani.
+error-leaderboard-player-not-found = Jucătorul furnizat nu a fost găsit în primele sau ultimele 15.000 de poziții ale clasamentului.  
 
 # Sfaturi rapide
 
