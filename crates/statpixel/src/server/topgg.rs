@@ -51,8 +51,7 @@ pub async fn add_vote(
 	const secret: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
 
 	#[cfg(feature = "runtime_env")]
-	let secret = std::env::var("REDIRECT_URI")
-		.expect("REDIRECT_URI not set");
+	let secret = std::env::var("REDIRECT_URI").expect("REDIRECT_URI not set");
 	#[cfg(feature = "runtime_env")]
 	let secret = secret.as_str();
 
