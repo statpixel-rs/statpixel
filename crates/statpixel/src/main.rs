@@ -170,9 +170,9 @@ async fn main() {
 	let token = dotenvy_macro::dotenv!("DISCORD_TOKEN");
 
 	#[cfg(feature = "runtime_env")]
-	let token = std::env::var("DISCORD_TOKEN")
-		.expect("DISCORD_TOKEN not set")
-		.as_str();
+	let token = std::env::var("DISCORD_TOKEN").expect("DISCORD_TOKEN not set");
+	#[cfg(feature = "runtime_env")]
+	let token = token.as_str();
 
 	let mut client = serenity::Client::builder(token, GatewayIntents::GUILDS)
 		.framework(framework)
@@ -268,9 +268,9 @@ async fn main() {
 		let token = dotenvy_macro::dotenv!("TOPGG_TOKEN");
 
 		#[cfg(feature = "runtime_env")]
-		let token = std::env::var("TOPGG_TOKEN")
-			.expect("TOPGG_TOKEN not set")
-			.as_str();
+		let token = std::env::var("TOPGG_TOKEN").expect("TOPGG_TOKEN not set");
+		#[cfg(feature = "runtime_env")]
+		let token = token.as_str();
 
 		let token = HeaderValue::from_str(&format!("Bearer {}", token)).unwrap();
 

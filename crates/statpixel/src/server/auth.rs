@@ -108,9 +108,9 @@ static KEYS: Lazy<Keys> = Lazy::new(|| {
 	let secret = dotenvy_macro::dotenv!("JWT_SECRET").as_bytes();
 
 	#[cfg(feature = "runtime_env")]
-	let secret = std::env::var("JWT_SECRET")
-		.expect("JWT_SECRET not set")
-		.as_bytes();
+	let secret = std::env::var("JWT_SECRET").expect("JWT_SECRET not set");
+	#[cfg(feature = "runtime_env")]
+	let secret = secret.as_bytes();
 
 	Keys::new(secret)
 });
