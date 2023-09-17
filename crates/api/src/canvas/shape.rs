@@ -737,6 +737,7 @@ impl LeaderboardName {
 
 impl LeaderboardValue {
 	#[must_use]
+	#[allow(clippy::needless_pass_by_value)]
 	pub fn label(family: Family, label: Cow<str>) -> Paragraph {
 		Body::new(17., TextAlign::Center, family)
 			.extend(&[Text {
