@@ -48,6 +48,7 @@ pub async fn add_vote(
 	WithRejection(Json(vote), _): super::extract::Json<Vote>,
 ) -> Result<impl IntoResponse, StatusCode> {
 	#[cfg(not(feature = "runtime_env"))]
+	#[allow(non_upper_case_globals)]
 	const secret: &str = dotenvy_macro::dotenv!("TOPGG_SECRET");
 
 	#[cfg(feature = "runtime_env")]

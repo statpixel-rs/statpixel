@@ -225,6 +225,8 @@ pub async fn login(
 
 	#[cfg(feature = "runtime_env")]
 	let client_id = std::env::var("CLIENT_ID").expect("CLIENT_ID not set");
+	#[cfg(feature = "runtime_env")]
+	let client_id = client_id.as_str();
 
 	#[cfg(not(feature = "runtime_env"))]
 	#[allow(non_upper_case_globals)]
@@ -232,6 +234,8 @@ pub async fn login(
 
 	#[cfg(feature = "runtime_env")]
 	let client_secret = std::env::var("CLIENT_SECRET").expect("CLIENT_SECRET not set");
+	#[cfg(feature = "runtime_env")]
+	let client_secret = client_secret.as_str();
 
 	#[cfg(not(feature = "runtime_env"))]
 	#[allow(non_upper_case_globals)]
@@ -239,6 +243,8 @@ pub async fn login(
 
 	#[cfg(feature = "runtime_env")]
 	let redirect_uri = std::env::var("REDIRECT_URI").expect("REDIRECT_URI not set");
+	#[cfg(feature = "runtime_env")]
+	let redirect_uri = redirect_uri.as_str();
 
 	let access = HTTP
 		.post(URL.clone())
