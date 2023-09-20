@@ -107,7 +107,7 @@ invalid-identifier-command-description = L'identificatore fornito non è un coma
 
 deprecated-interaction = Interazione deprecata
 deprecated-interaction-description = Questa interazione è deprecata e non funzionerà. Esegui nuovamente il comando originale.
-identifier = <:id:1125971775755407390> Identificatore: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identificatore: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

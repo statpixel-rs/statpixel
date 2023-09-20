@@ -107,7 +107,7 @@ invalid-identifier-command-description = 提供的識別碼不是指令。
 
 deprecated-interaction = 互動已被棄用
 deprecated-interaction-description = 這個互動已被棄用，將不再運作。請再次執行原始指令。
-identifier = <:id:1125971775755407390> 識別碼：**`{$identifier}`**
+identifier = <:id:1125971775755407390> 識別碼：**[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

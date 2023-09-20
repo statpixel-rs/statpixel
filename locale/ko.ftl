@@ -103,7 +103,7 @@ invalid-identifier-command-description = 제공된 식별자는 명령이 아닙
 
 deprecated-interaction = 상호 작용이 더 이상 지원되지 않습니다
 deprecated-interaction-description = 이 상호 작용은 더 이상 지원되지 않으며 작동하지 않습니다. 원래 명령을 다시 실행하세요.
-identifier = <:id:1125971775755407390> 식별자: **`{$identifier}`**
+identifier = <:id:1125971775755407390> 식별자: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

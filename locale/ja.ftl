@@ -107,7 +107,7 @@ invalid-identifier-command-description = 提供された識別子はコマンド
 
 deprecated-interaction = 古いバージョンのインタラクション
 deprecated-interaction-description = このインタラクションは古いバージョンであり動作しません。元のコマンドを再度実行してください。
-identifier = <:id:1125971775755407390> 識別子： **`{$identifier}`**
+identifier = <:id:1125971775755407390> 識別子： **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

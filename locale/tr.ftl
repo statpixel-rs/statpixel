@@ -106,7 +106,7 @@ invalid-identifier-command-description = Sağlanan kimlik bir komut değil.
 
 deprecated-interaction = Etkileşim kullanılmıyor
 deprecated-interaction-description = Bu etkileşim kullanılmıyor ve çalışmayacak. Lütfen orijinal komutu tekrar çalıştırın.
-identifier = <:id:1125971775755407390> Kimlik: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Kimlik: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

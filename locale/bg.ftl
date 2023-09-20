@@ -108,7 +108,7 @@ invalid-identifier-command-description = Предоставеният идент
 
 deprecated-interaction = Взаимодействието е остаряло
 deprecated-interaction-description = Това взаимодействие е остаряло и няма да работи. Моля, изпълнете отново оригиналната команда.
-identifier = <:id:1125971775755407390> Идентификатор: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Идентификатор: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

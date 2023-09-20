@@ -107,7 +107,7 @@ invalid-identifier-command-description = L'identifiant fourni n'est pas une comm
 
 deprecated-interaction = Interaction obsolète
 deprecated-interaction-description = Cette interaction est obsolète et ne fonctionnera pas. Veuillez exécuter à nouveau la commande d'origine.
-identifier = <:id:1125971775755407390> Identifiant : **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifiant : **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

@@ -107,7 +107,7 @@ invalid-identifier-command-description = Το παρεχόμενο αναγνω�
 
 deprecated-interaction = Παρωχημένη αλληλεπίδραση
 deprecated-interaction-description = Αυτή η αλληλεπίδραση έχει παραταθεί και δεν θα λειτουργεί. Εκτελέστε ξανά την αρχική εντολή.
-identifier = <:id:1125971775755407390> Αναγνωριστικό: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Αναγνωριστικό: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

@@ -108,7 +108,7 @@ invalid-identifier-command-description = Poskytnutý identifikátor není platn�
 
 deprecated-interaction = Interakce již není podporována
 deprecated-interaction-description = Tato interakce je zastaralá a nebude fungovat. Prosím, opakujte původní příkaz znovu.
-identifier = <:id:1125971775755407390> Identifikátor: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifikátor: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

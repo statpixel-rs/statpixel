@@ -107,7 +107,7 @@ invalid-identifier-command-description = Die angegebene Kennung ist kein Befehl.
 
 deprecated-interaction = Veraltete Interaktion
 deprecated-interaction-description = Diese Interaktion ist veraltet und funktioniert nicht mehr. Bitte führen Sie den ursprünglichen Befehl erneut aus.
-identifier = <:id:1125971775755407390> Kennung: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Kennung: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

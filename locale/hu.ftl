@@ -108,7 +108,7 @@ invalid-identifier-command-description = A megadott azonosító nem parancs.
 
 deprecated-interaction = A kapcsolat elavult
 deprecated-interaction-description = Ez a kapcsolat elavult és nem fog működni. Futtassa újra az eredeti parancsot.
-identifier = <:id:1125971775755407390> Azonosító: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Azonosító: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

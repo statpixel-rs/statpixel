@@ -106,7 +106,7 @@ invalid-identifier-command-description = 提供的标识符不是一个命令。
 
 deprecated-interaction = 交互已过时
 deprecated-interaction-description = 此交互已过时且不起作用。请再次运行原始命令。
-identifier = <:id:1125971775755407390> 标识符：**`{$identifier}`**
+identifier = <:id:1125971775755407390> 标识符：**[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

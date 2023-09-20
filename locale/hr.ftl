@@ -107,7 +107,7 @@ invalid-identifier-command-description = Navedeni identifikator nije naredba.
 
 deprecated-interaction = Interakcija zastarjela
 deprecated-interaction-description = Ova interakcija je zastarjela i neće raditi. Ponovno pokrenite originalnu naredbu.
-identifier = <:id:1125971775755407390> Identifikator: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifikator: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

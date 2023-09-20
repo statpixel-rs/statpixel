@@ -107,7 +107,7 @@ invalid-identifier-command-description = Den angivna identifieraren är inte ett
 
 deprecated-interaction = Åtgärden är föråldrad
 deprecated-interaction-description = Denna interaktion är föråldrad och fungerar inte längre. Kör det ursprungliga kommandot igen.
-identifier = <:id:1125971775755407390> Identifierare: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifierare: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

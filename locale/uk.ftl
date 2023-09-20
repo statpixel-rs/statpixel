@@ -107,7 +107,7 @@ invalid-identifier-command-description = Наданий ідентифікато
 
 deprecated-interaction = Взаємодія застаріла
 deprecated-interaction-description = Ця взаємодія застаріла і не працюватиме. Будь ласка, запустіть оригінальну команду знову.
-identifier = <:id:1125971775755407390> Ідентифікатор: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Ідентифікатор: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

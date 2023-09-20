@@ -105,7 +105,7 @@ invalid-identifier-command-description = Annettu tunniste ei ole komento.
 
 deprecated-interaction = Toiminto poistunut käytöstä
 deprecated-interaction-description = Tämä toiminto on poistunut käytöstä eikä se toimi. Suorita alkuperäinen komento uudelleen.
-identifier = <:id:1125971775755407390> Tunniste: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Tunniste: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

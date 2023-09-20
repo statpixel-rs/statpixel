@@ -107,7 +107,7 @@ invalid-identifier-command-description = ตัวแทนที่ระบุ
 
 deprecated-interaction = ปฏิเสธการใช้งานแล้ว
 deprecated-interaction-description = การปฏิเสธการใช้งานนี้ถูกยกเลิกและจะไม่ทำงาน กรุณาเรียกใช้คำสั่งต้นฉบับอีกครั้ง
-identifier = <:id:1125971775755407390> ตัวแทน: **`{$identifier}`**
+identifier = <:id:1125971775755407390> ตัวแทน: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

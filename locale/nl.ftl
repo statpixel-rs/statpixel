@@ -107,7 +107,7 @@ invalid-identifier-command-description = De opgegeven identifier is geen geldig 
 
 deprecated-interaction = Interactie verouderd
 deprecated-interaction-description = Deze interactie is verouderd en werkt niet meer. Voer het oorspronkelijke commando opnieuw uit.
-identifier = <:id:1125971775755407390> Identifier: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifier: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 

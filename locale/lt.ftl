@@ -107,7 +107,7 @@ invalid-identifier-command-description = Pateiktas identifikatorius nėra komand
 
 deprecated-interaction = Interakcija pasenusi
 deprecated-interaction-description = Ši interakcija yra pasenusi ir neveiks. Prašome paleisti originalią komandą dar kartą.
-identifier = <:id:1125971775755407390> Identifikatorius: **`{$identifier}`**
+identifier = <:id:1125971775755407390> Identifikatorius: **[`{$identifier}`](https://api.statpixel.xyz/image/{$identifier})**
 
 # /builder
 
