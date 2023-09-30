@@ -14,9 +14,9 @@ use api::skyblock;
 use database::{
 	get_pool,
 	models::MetricKind,
-	schema::{autocomplete, metric, usage},
+	schema::{metric, usage},
 };
-use diesel::{ExpressionMethods, QueryDsl};
+use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
 use poise::serenity_prelude::{
@@ -191,44 +191,6 @@ async fn main() {
 				error!(error = ?e, "error in user snapshot update loop");
 
 				tokio::time::sleep(std::time::Duration::from_secs(60)).await;
-			}
-		}
-	});
-
-	tokio::task::spawn({
-		let data = data.clone();
-		let pool = get_pool(1);
-
-		#[allow(clippy::cast_precision_loss)]
-		async move {
-			let ctx = context::Context::automated(&data);
-
-			let players = autocomplete::table
-				.select(autocomplete::uuid)
-				.get_results::<uuid::Uuid>(&mut pool.get().await.unwrap())
-				.await
-				.unwrap();
-
-			let players_len = players.len();
-			#[allow(clippy::cast_precision_loss)]
-			let players_len_f = players_len as f64;
-
-			for (i, player) in players.into_iter().enumerate() {
-				if let Err(e) = api::player::Player::from_uuid_unchecked(player)
-					.get_data(&ctx)
-					.await
-				{
-					warn!(error = ?e, "error in leaderboard update loop");
-				}
-
-				info!(
-					"{} / {} ({:.4})",
-					i,
-					players_len,
-					(i as f64 * 100. / players_len_f)
-				);
-
-				tokio::time::sleep(std::time::Duration::from_millis(600)).await;
 			}
 		}
 	});

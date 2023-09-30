@@ -12,7 +12,7 @@ use diesel::{ExpressionMethods, QueryDsl};
 #[cfg(feature = "database")]
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
-use reqwest::{Request, StatusCode, Url};
+use reqwest::{Request, RequestBuilder, StatusCode, Url};
 use serde::Deserialize;
 use std::{borrow::Cow, str::FromStr, sync::Arc, time::Duration};
 use tracing::error;
@@ -164,30 +164,33 @@ impl Player {
 
 	async fn from_username_raw(username: &str) -> Result<Player, Error> {
 		let url = MINETOOLS_API_ENDPOINT.join(username).unwrap();
-
 		let req = Request::new(reqwest::Method::GET, url);
-		let response = HTTP.perform_bare(req).await?;
+		let req = RequestBuilder::from_parts(HTTP.client.clone(), req)
+			.timeout(Duration::from_millis(1_000))
+			.build()?;
 
-		if response.status() != StatusCode::OK {
-			return Err(Error::UsernameNotFound(username.to_string()));
-		}
+		if let Ok(response) = HTTP.perform_bare(req).await {
+			if response.status() != StatusCode::OK {
+				return Err(Error::UsernameNotFound(username.to_string()));
+			}
 
-		let response = response.json::<MineToolsResponse>().await?;
+			let response = response.json::<MineToolsResponse>().await?;
 
-		if let Some((id, name)) = response.id.zip(response.name) {
-			let player = Self::new(id, Some(name));
+			if let Some((id, name)) = response.id.zip(response.name) {
+				let player = Self::new(id, Some(name));
 
-			#[cfg(feature = "cache")]
-			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
+				#[cfg(feature = "cache")]
+				PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
 
-			return Ok(player);
+				return Ok(player);
+			}
 		}
 
 		// If the id or name was not present in the above response, the username
 		// may or may not be invalid. Therefore, we still need to check with Mojang.
 		let url = MOJANG_USERNAME_TO_UUID_API_ENDPOINT.join(username).unwrap();
-
 		let req = Request::new(reqwest::Method::GET, url);
+
 		let response = HTTP.perform_mojang(req.into()).await?;
 
 		if response.status() != StatusCode::OK {
@@ -220,30 +223,33 @@ impl Player {
 
 	async fn from_uuid_raw(uuid: &Uuid) -> Result<Player, Error> {
 		let url = MINETOOLS_API_ENDPOINT.join(&uuid.to_string()).unwrap();
-
 		let req = Request::new(reqwest::Method::GET, url);
-		let response = HTTP.perform_bare(req).await?;
+		let req = RequestBuilder::from_parts(HTTP.client.clone(), req)
+			.timeout(Duration::from_millis(1_000))
+			.build()?;
 
-		if response.status() != StatusCode::OK {
-			return Err(Error::UuidNotFound(*uuid));
-		}
+		if let Ok(response) = HTTP.perform_bare(req).await {
+			if response.status() != StatusCode::OK {
+				return Err(Error::UuidNotFound(*uuid));
+			}
 
-		let response = response.json::<MineToolsResponse>().await?;
+			let response = response.json::<MineToolsResponse>().await?;
 
-		if let Some((id, name)) = response.id.zip(response.name) {
-			let player = Self::new(id, Some(name));
+			if let Some((id, name)) = response.id.zip(response.name) {
+				let player = Self::new(id, Some(name));
 
-			#[cfg(feature = "cache")]
-			PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
+				#[cfg(feature = "cache")]
+				PLAYER_CACHE.insert(id.to_string(), player.clone()).await;
 
-			return Ok(player);
+				return Ok(player);
+			}
 		}
 
 		let url = MOJANG_UUID_TO_USERNAME_API_ENDPOINT
 			.join(&uuid.to_string())
 			.unwrap();
-
 		let req = Request::new(reqwest::Method::GET, url);
+
 		let response = HTTP.perform_mojang(req.into()).await?;
 
 		if response.status() != StatusCode::OK {

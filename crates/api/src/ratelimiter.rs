@@ -41,7 +41,7 @@ pub struct RatelimitInfo {
 }
 
 pub struct Ratelimiter {
-	client: Client,
+	pub client: Client,
 	token: HeaderValue,
 	routes: Arc<RwLock<Routes>>,
 }
