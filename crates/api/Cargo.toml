@@ -8,6 +8,7 @@ authors = ["Matthew Polak <contact@matteopolak.com>"]
 [dependencies]
 minecraft.path = "../minecraft"
 image.path = "../image"
+skin_renderer.path = "../skin-renderer"
 base64.workspace = true
 bincode.workspace = true
 chrono.workspace = true

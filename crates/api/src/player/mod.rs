@@ -46,9 +46,6 @@ static MOJANG_UUID_TO_USERNAME_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
 	Url::from_str("https://sessionserver.mojang.com/session/minecraft/profile/").unwrap()
 });
 
-static PLAYER_SKIN_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://visage.surgeplay.com/full/157/").unwrap());
-
 #[derive(Deserialize)]
 pub struct Response {
 	pub player: Option<data::Data>,
@@ -72,6 +69,39 @@ pub struct Player {
 	pub uuid: Uuid,
 	pub username: Option<String>,
 	pub session: Option<(Uuid, i64)>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct SkinDataResponse {
+	pub properties: Vec<SkinData>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct SkinData {
+	#[serde(deserialize_with = "crate::de::base64::json")]
+	pub value: DecodedSkin,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct DecodedSkin {
+	pub textures: DecodedTexture,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct DecodedTexture {
+	#[serde(rename = "SKIN")]
+	pub skin: Skin,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct Skin {
+	pub url: String,
+	pub metadata: Option<Metadata>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct Metadata {
+	pub model: String,
 }
 
 impl Player {
@@ -134,15 +164,13 @@ impl Player {
 			return None;
 		};
 
-		match user::table
+		user::table
 			.filter(user::uuid.eq(&self.uuid))
 			.select(user::suffix)
 			.first::<Option<String>>(&mut connnection)
 			.await
-		{
-			Ok(suffix) => suffix,
-			Err(_) => None,
-		}
+			.ok()
+			.flatten()
 	}
 
 	/// # Errors
@@ -364,6 +392,7 @@ impl Player {
 
 		#[cfg(feature = "redis")]
 		self.set_display_str(ctx, &player).await?;
+
 		#[cfg(feature = "database")]
 		self.update_leaderboard(ctx, &player).await?;
 
@@ -388,8 +417,8 @@ impl Player {
 	/// # Panics
 	/// Will not panic.
 	pub async fn get_skin(&self) -> Cow<'static, image::Image<'static>> {
-		let url = PLAYER_SKIN_ENDPOINT
-			.join(&format!("{}.png", self.uuid))
+		let url = MOJANG_UUID_TO_USERNAME_API_ENDPOINT
+			.join(&self.uuid.to_string())
 			.unwrap();
 
 		let response = HTTP
@@ -398,13 +427,40 @@ impl Player {
 			.send()
 			.await;
 
-		match response {
-			Ok(response) if response.status() == StatusCode::OK => match response.bytes().await {
-				Ok(bytes) => Cow::Owned(image::from_bytes_copy(&bytes).unwrap()),
-				Err(_) => Cow::Borrowed(&DEFAULT_SKIN),
-			},
-			_ => Cow::Borrowed(&DEFAULT_SKIN),
-		}
+		let resp = match response {
+			Ok(response) if response.status() == StatusCode::OK => {
+				match response.json::<SkinDataResponse>().await {
+					Ok(response) => {
+						let Some((url, is_slim)) = response.properties.get(0).map(|p| {
+							(
+								p.value.textures.skin.url.as_str(),
+								p.value
+									.textures
+									.skin
+									.metadata
+									.as_ref()
+									.map(|m| m.model == "slim")
+									.unwrap_or_default(),
+							)
+						}) else {
+							return Cow::Borrowed(&*DEFAULT_SKIN);
+						};
+
+						let skin = skin_renderer::render_skin(url, is_slim).await;
+
+						if let Ok(skin) = skin {
+							Cow::Owned(image::from_bytes_copy(skin.as_slice()).unwrap())
+						} else {
+							Cow::Borrowed(&*DEFAULT_SKIN)
+						}
+					}
+					Err(_) => Cow::Borrowed(&*DEFAULT_SKIN),
+				}
+			}
+			_ => Cow::Borrowed(&*DEFAULT_SKIN),
+		};
+
+		resp
 	}
 
 	/// # Errors
