@@ -255,7 +255,7 @@ async fn pre_command(ctx: Context<'_>) {
 
 	diesel::insert_into(usage::table)
 		.values((
-			usage::user_id.eq(ctx.author().id.0.get() as i64),
+			usage::user_id.eq(ctx.author().id.get() as i64),
 			usage::command_name.eq(&ctx.command().qualified_name),
 			usage::count.eq(1),
 		))
@@ -283,7 +283,7 @@ async fn event_handler(
 			GUILDS
 				.write()
 				.await
-				.extend(ready.guilds.iter().map(|g| g.id.0.get()));
+				.extend(ready.guilds.iter().map(|g| g.id.get()));
 
 			ctx.set_activity(Some(serenity::ActivityData {
 				name: format!("statpixel.xyz | v{VERSION}"),
@@ -364,14 +364,14 @@ async fn event_handler(
 			}
 		}
 		FullEvent::GuildCreate { guild, .. } => {
-			if GUILDS.write().await.insert(guild.id.0.get()) && tracing::enabled!(Level::INFO) {
+			if GUILDS.write().await.insert(guild.id.get()) && tracing::enabled!(Level::INFO) {
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
 
 				diesel::insert_into(metric::table)
 					.values((
-						metric::discord_id.eq(guild.id.0.get() as i64),
+						metric::discord_id.eq(guild.id.get() as i64),
 						metric::kind.eq(i16::from(MetricKind::GuildJoin)),
 					))
 					.execute(&mut data.pool.get().await?)
@@ -382,14 +382,14 @@ async fn event_handler(
 		FullEvent::GuildDelete {
 			incomplete: guild, ..
 		} => {
-			if GUILDS.write().await.remove(&guild.id.0.get()) && tracing::enabled!(Level::INFO) {
+			if GUILDS.write().await.remove(&guild.id.get()) && tracing::enabled!(Level::INFO) {
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
 
 				diesel::insert_into(metric::table)
 					.values((
-						metric::discord_id.eq(guild.id.0.get() as i64),
+						metric::discord_id.eq(guild.id.get() as i64),
 						metric::kind.eq(i16::from(MetricKind::GuildLeave)),
 					))
 					.execute(&mut data.pool.get().await?)

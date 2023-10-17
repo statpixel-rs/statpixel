@@ -68,7 +68,7 @@ pub async fn get_image_options_from_input(
 	};
 
 	let result = schema::user::table
-		.filter(schema::user::id.eq(author.id.0.get() as i64))
+		.filter(schema::user::id.eq(author.id.get() as i64))
 		.select((
 			schema::user::display,
 			schema::user::font,
@@ -122,7 +122,7 @@ pub async fn get_player_from_input(
 			let session = session::table
 				.filter(
 					session::user_id
-						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.0.get() as i64),
+						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.get() as i64),
 				)
 				.filter(session::name.eq(&name[1..]))
 				.select((session::uuid, session::id, session::snapshot_id))
@@ -139,7 +139,7 @@ pub async fn get_player_from_input(
 		_ => {
 			let uuid = schema::user::table
 				.filter(
-					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64),
 				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
@@ -187,7 +187,7 @@ pub async fn get_player_with_username_from_input(
 			let session = session::table
 				.filter(
 					session::user_id
-						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.0.get() as i64),
+						.eq(ctx.author().ok_or(Error::NotImplemented)?.id.get() as i64),
 				)
 				.filter(session::name.eq(&name[1..]))
 				.select((session::uuid, session::id, session::snapshot_id))
@@ -204,7 +204,7 @@ pub async fn get_player_with_username_from_input(
 		_ => {
 			let uuid = schema::user::table
 				.filter(
-					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64),
 				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
@@ -250,7 +250,7 @@ pub async fn get_guild_with_member_opt_from_input(
 		_ => {
 			let uuid = schema::user::table
 				.filter(
-					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64),
 				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
@@ -296,7 +296,7 @@ pub async fn get_guild_from_input(
 		_ => {
 			let uuid = schema::user::table
 				.filter(
-					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64),
 				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
@@ -336,7 +336,7 @@ pub async fn get_guild_with_member_from_input(
 		_ => {
 			let uuid = schema::user::table
 				.filter(
-					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.0.get() as i64),
+					schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64),
 				)
 				.select(schema::user::uuid)
 				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)

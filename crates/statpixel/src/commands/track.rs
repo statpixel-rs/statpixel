@@ -39,10 +39,10 @@ pub async fn track(
 			async move {
 				match diesel::insert_into(track::table)
 					.values((
-						track::user_id.eq(ctx.author().id.0.get() as i64),
+						track::user_id.eq(ctx.author().id.get() as i64),
 						track::uuid.eq(player.uuid),
-						track::guild_id.eq(guild_id.map(|g| g.0.get() as i64)),
-						track::channel_id.eq(channel_id.0.get() as i64),
+						track::guild_id.eq(guild_id.map(|g| g.get() as i64)),
+						track::channel_id.eq(channel_id.get() as i64),
 					))
 					.execute(connection)
 					.await
@@ -59,14 +59,14 @@ pub async fn track(
 
 				if let Some(guild_id) = guild_id {
 					let is_premium: i64 = boost::table
-						.filter(boost::guild_id.eq(guild_id.0.get() as i64))
+						.filter(boost::guild_id.eq(guild_id.get() as i64))
 						.count()
 						.get_result(connection)
 						.await?;
 
 					if is_premium == 0 {
 						let tracks: i64 = track::table
-							.filter(track::guild_id.eq(guild_id.0.get() as i64))
+							.filter(track::guild_id.eq(guild_id.get() as i64))
 							.count()
 							.get_result(connection)
 							.await?;
@@ -79,7 +79,7 @@ pub async fn track(
 
 				let (tracks, max_tracks, premium_until) = diesel::insert_into(user::table)
 					.values((
-						user::id.eq(ctx.author().id.0.get() as i64),
+						user::id.eq(ctx.author().id.get() as i64),
 						user::tracks.eq(1),
 					))
 					.on_conflict(user::id)

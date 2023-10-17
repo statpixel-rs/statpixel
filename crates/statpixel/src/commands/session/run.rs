@@ -38,7 +38,7 @@ pub async fn list(
 					session::uuid,
 					session::created_at,
 				))
-				.filter(session::user_id.eq(ctx.author().unwrap().id.0.get() as i64))
+				.filter(session::user_id.eq(ctx.author().unwrap().id.get() as i64))
 				.order(session::created_at.desc())
 				.limit(10)
 				.offset(i64::from(page) * 10)

@@ -68,7 +68,7 @@ pub async fn delete(
 	let result = diesel::delete(
 		session::table
 			.filter(session::id.eq(id))
-			.filter(session::user_id.eq(ctx.author().id.0.get() as i64)),
+			.filter(session::user_id.eq(ctx.author().id.get() as i64)),
 	)
 	.execute(&mut ctx.data().pool.get().await?)
 	.await?;

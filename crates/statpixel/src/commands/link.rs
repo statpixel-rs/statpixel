@@ -48,7 +48,7 @@ pub async fn link(
 	if let Ok(player) = player {
 		diesel::insert_into(schema::user::table)
 			.values((
-				schema::user::id.eq(ctx.author().unwrap().id.0.get() as i64),
+				schema::user::id.eq(ctx.author().unwrap().id.get() as i64),
 				schema::user::uuid.eq(player.uuid),
 			))
 			.on_conflict(schema::user::id)

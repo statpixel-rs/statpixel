@@ -39,7 +39,7 @@ pub async fn display(ctx: Context<'_>, format: Format) -> Result<(), Error> {
 		.values((
 			schema::user::display.eq(&display),
 			schema::user::font.eq(&font),
-			schema::user::id.eq(u.id.0.get() as i64),
+			schema::user::id.eq(u.id.get() as i64),
 		))
 		.on_conflict(schema::user::id)
 		.do_update()

@@ -21,8 +21,8 @@ pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 			async move {
 				match diesel::insert_into(boost::table)
 					.values((
-						boost::user_id.eq(ctx.author().id.0.get() as i64),
-						boost::guild_id.eq(guild.id.0.get() as i64),
+						boost::user_id.eq(ctx.author().id.get() as i64),
+						boost::guild_id.eq(guild.id.get() as i64),
 					))
 					.execute(connection)
 					.await
@@ -39,7 +39,7 @@ pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 
 				let (boosts, max_boosts, premium_until) = diesel::insert_into(user::table)
 					.values((
-						user::id.eq(ctx.author().id.0.get() as i64),
+						user::id.eq(ctx.author().id.get() as i64),
 						user::boosts.eq(1),
 					))
 					.on_conflict(user::id)

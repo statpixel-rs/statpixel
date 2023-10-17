@@ -150,7 +150,7 @@ pub async fn background(
 
 	diesel::insert_into(schema::user::table)
 		.values((
-			schema::user::id.eq(u.id.0.get() as i64),
+			schema::user::id.eq(u.id.get() as i64),
 			schema::user::colour.eq(colour as i32),
 		))
 		.on_conflict(schema::user::id)

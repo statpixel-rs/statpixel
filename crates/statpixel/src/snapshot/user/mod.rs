@@ -351,7 +351,7 @@ pub async fn begin(
 														.filter(track::uuid.eq(uuid))
 														.filter(
 															track::channel_id
-																.eq(channel.0.get() as i64),
+																.eq(channel.get() as i64),
 														)
 														.set(track::state.eq(i16::from(
 															if s == serenity::StatusCode::NOT_FOUND
@@ -610,7 +610,7 @@ pub async fn insert_with_session(
 				let id = diesel::insert_into(session::table)
 					.values((
 						session::snapshot_id.eq(id),
-						session::user_id.eq(ctx.author().unwrap().id.0.get() as i64),
+						session::user_id.eq(ctx.author().unwrap().id.get() as i64),
 						session::kind.eq(0),
 						session::uuid.eq(player.uuid),
 						session::name.eq(name),
