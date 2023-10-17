@@ -88,7 +88,7 @@ checksum = "b84bf0a05bbb2a83e5eb6fa36bb6e87baa08193c35ff52bbf6b38d8af2890e46"
 
 [[package]]
 name = "api"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "base64 0.21.4",
  "bincode",
@@ -105,7 +105,7 @@ dependencies = [
  "flate2",
  "futures",
  "hypixel",
- "image 0.35.0",
+ "image 0.36.0",
  "label",
  "minecraft",
  "moka",
@@ -1017,7 +1017,7 @@ checksum = "c2e66c9d817f1720209181c316d28635c050fa304f9c79e47a520882661b7308"
 
 [[package]]
 name = "database"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "chrono",
  "diesel",
@@ -1067,7 +1067,7 @@ dependencies = [
 
 [[package]]
 name = "derive"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "darling 0.20.3",
  "minecraft",
@@ -1285,7 +1285,7 @@ dependencies = [
 
 [[package]]
 name = "extra"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "bincode",
  "label",
@@ -2027,11 +2027,11 @@ dependencies = [
 
 [[package]]
 name = "hypixel"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "bincode",
  "chrono",
- "image 0.35.0",
+ "image 0.36.0",
  "label",
  "minecraft",
  "once_cell",
@@ -2101,7 +2101,7 @@ dependencies = [
 
 [[package]]
 name = "image"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "once_cell",
  "skia-safe",
@@ -2285,7 +2285,7 @@ checksum = "4e28ab1dc35e09d60c2b8c90d12a9a8d9666c876c10a3739a3196db0103b6043"
 
 [[package]]
 name = "label"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "chrono",
  "minecraft",
@@ -2457,7 +2457,7 @@ dependencies = [
 
 [[package]]
 name = "minecraft"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "bincode",
  "bitcode",
@@ -3864,7 +3864,7 @@ dependencies = [
 
 [[package]]
 name = "skin_renderer"
-version = "0.1.0"
+version = "0.36.0"
 dependencies = [
  "async_once",
  "bytemuck",
@@ -3959,7 +3959,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
 name = "statpixel"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "api",
  "axum",
@@ -3978,7 +3978,7 @@ dependencies = [
  "fxhash",
  "humantime",
  "hypixel",
- "image 0.35.0",
+ "image 0.36.0",
  "jsonwebtoken",
  "minecraft",
  "once_cell",
@@ -4483,7 +4483,7 @@ dependencies = [
 
 [[package]]
 name = "translate"
-version = "0.35.0"
+version = "0.36.0"
 dependencies = [
  "base64 0.21.4",
  "bincode",
