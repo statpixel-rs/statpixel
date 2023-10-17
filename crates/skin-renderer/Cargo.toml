@@ -14,11 +14,11 @@ futures-intrusive = "0.5.0"
 image = "0.24.7"
 tobj = { version = "4.0.0", features = ["async"] }
 wgpu = "0.17.0"
-thiserror = "1.0.48"
-tokio = { version = "1.32.0", features = ["full"] }
+thiserror.workspace = true
+tokio.workspace = true
 lazy_static = "1.4.0"
 async_once = "0.2.6"
-reqwest = "0.11.20"
+reqwest.workspace = true
 
 [build-dependencies]
 napi-build = "2.0.1"
