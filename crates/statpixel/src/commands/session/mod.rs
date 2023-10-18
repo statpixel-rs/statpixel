@@ -45,7 +45,7 @@ pub async fn create(
 			tr_fmt!(
 				ctx, "session-created",
 				username: data.username.as_str(),
-				player: name.map_or_else(|| id.to_string(), |n| format!("#{}", n))
+				player: name.map_or_else(|| id.to_string(), |n| format!("#{n}"))
 			),
 		)
 		.content(crate::tip::random(ctx)),
