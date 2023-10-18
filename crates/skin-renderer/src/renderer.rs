@@ -44,7 +44,7 @@ pub struct SkinRenderer {
 
 impl SkinRenderer {
 	pub async fn new(width: u32, height: u32) -> SkinRendererResult<Self> {
-		let backends = wgpu::Backends::GL;
+		let backends = wgpu::util::backend_bits_from_env().unwrap_or_else(wgpu::Backends::all);
 		let dx12_shader_compiler = wgpu::util::dx12_shader_compiler_from_env().unwrap_or_default();
 
 		let instance = wgpu::Instance::new(wgpu::InstanceDescriptor {
@@ -62,7 +62,7 @@ impl SkinRenderer {
 				&wgpu::DeviceDescriptor {
 					label: None,
 					features: wgpu::Features::empty(),
-					limits: wgpu::Limits::default(),
+					limits: wgpu::Limits::downlevel_defaults(),
 				},
 				None,
 			)
