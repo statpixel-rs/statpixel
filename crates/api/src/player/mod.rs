@@ -446,7 +446,15 @@ impl Player {
 							return Cow::Borrowed(&*DEFAULT_SKIN);
 						};
 
-						let skin = skin_renderer::render_skin(url, is_slim).await;
+						let skin = skin_renderer::render_skin(
+							if is_slim {
+								skin_renderer::SkinKind::Slim
+							} else {
+								skin_renderer::SkinKind::Classic
+							},
+							Some(url),
+						)
+						.await;
 
 						if let Ok(skin) = skin {
 							Cow::Owned(image::from_bytes_copy(skin.as_slice()).unwrap())

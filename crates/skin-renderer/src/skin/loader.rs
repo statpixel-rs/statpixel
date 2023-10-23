@@ -19,7 +19,8 @@ impl SkinLoader {
 		if response.status().is_success() {
 			let bytes = response.bytes().await?;
 			let image = image::load_from_memory_with_format(&bytes, image::ImageFormat::Png)?;
-			// TODO: Automatically detect skin type (slim or classic) from transparency of first layer
+
+			// TODO: Implement automatic detection of skin type (slim or classic) based on the transparency of the first layer.
 			let mut skin = Skin::new(image, SkinKind::Classic)
 				.ok_or(error::Error::InvalidTextureDimensions)?
 				.into_modern();

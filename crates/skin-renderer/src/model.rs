@@ -1,7 +1,9 @@
-use crate::texture::Texture;
 use bytemuck::{Pod, Zeroable};
-use std::mem::size_of;
+use std::mem;
 
+use crate::texture::Texture;
+
+// Define the ModelVertex structure with proper data alignment for the GPU
 #[repr(C)]
 #[derive(Copy, Clone, Debug, Pod, Zeroable)]
 pub struct ModelVertex {
@@ -11,9 +13,10 @@ pub struct ModelVertex {
 }
 
 impl ModelVertex {
+	// Describe the memory layout of the ModelVertex structure for the GPU
 	pub fn desc<'a>() -> wgpu::VertexBufferLayout<'a> {
 		wgpu::VertexBufferLayout {
-			array_stride: size_of::<ModelVertex>() as wgpu::BufferAddress,
+			array_stride: mem::size_of::<Self>() as wgpu::BufferAddress,
 			step_mode: wgpu::VertexStepMode::Vertex,
 			attributes: &[
 				wgpu::VertexAttribute {
@@ -22,12 +25,13 @@ impl ModelVertex {
 					format: wgpu::VertexFormat::Float32x3,
 				},
 				wgpu::VertexAttribute {
-					offset: size_of::<[f32; 3]>() as wgpu::BufferAddress,
+					offset: (mem::size_of::<[f32; 3]>() as wgpu::BufferAddress),
 					shader_location: 1,
 					format: wgpu::VertexFormat::Float32x2,
 				},
 				wgpu::VertexAttribute {
-					offset: size_of::<[f32; 5]>() as wgpu::BufferAddress,
+					offset: (mem::size_of::<[f32; 3]>() + mem::size_of::<[f32; 2]>())
+						as wgpu::BufferAddress,
 					shader_location: 2,
 					format: wgpu::VertexFormat::Float32x3,
 				},
@@ -37,11 +41,11 @@ impl ModelVertex {
 }
 
 pub struct Material {
-	pub diffuse_texture: Texture,
-	pub bind_group: wgpu::BindGroup,
+	bind_group: wgpu::BindGroup,
 }
 
 impl Material {
+	// Create a new Material instance
 	pub fn new(
 		device: &wgpu::Device,
 		diffuse_texture: Texture,
@@ -62,13 +66,11 @@ impl Material {
 			label: None,
 		});
 
-		Self {
-			diffuse_texture,
-			bind_group,
-		}
+		Self { bind_group }
 	}
 }
 
+// Define the Mesh structure, which includes information about the geometry to be drawn
 pub struct Mesh {
 	pub name: String,
 	pub vertex_buffer: wgpu::Buffer,
@@ -77,11 +79,13 @@ pub struct Mesh {
 	pub material: usize,
 }
 
+// Define the Model structure, which includes a list of meshes and materials
 pub struct Model {
 	pub meshes: Vec<Mesh>,
 	pub materials: Vec<Material>,
 }
 
+// Define a trait for drawing models
 pub trait DrawModel<'a> {
 	fn draw_mesh(
 		&mut self,
@@ -100,7 +104,9 @@ pub trait DrawModel<'a> {
 	);
 }
 
+// Implement the DrawModel trait for wgpu::RenderPass
 impl<'a> DrawModel<'a> for wgpu::RenderPass<'a> {
+	// Draw a single mesh
 	fn draw_mesh(
 		&mut self,
 		mesh: &'a Mesh,
@@ -116,6 +122,7 @@ impl<'a> DrawModel<'a> for wgpu::RenderPass<'a> {
 		self.draw_indexed(0..mesh.num_elements, 0, 0..1);
 	}
 
+	// Draw an entire model
 	fn draw_model(
 		&mut self,
 		model: &'a Model,

@@ -41,94 +41,134 @@ pub struct SkinRenderer {
 
 impl SkinRenderer {
 	pub async fn new(width: u32, height: u32) -> error::Result<Self> {
-		let backends = wgpu::util::backend_bits_from_env().unwrap_or_else(wgpu::Backends::all);
-		let dx12_shader_compiler = wgpu::util::dx12_shader_compiler_from_env().unwrap_or_default();
-
-		let instance = wgpu::Instance::new(wgpu::InstanceDescriptor {
-			backends,
-			dx12_shader_compiler,
-		});
-
-		let adapter = instance
-			.request_adapter(&wgpu::RequestAdapterOptions::default())
-			.await
-			.unwrap();
-
-		let (device, queue) = adapter
-			.request_device(
-				&wgpu::DeviceDescriptor {
-					label: None,
-					features: wgpu::Features::empty(),
-					limits: wgpu::Limits::downlevel_defaults(),
-				},
-				None,
-			)
-			.await
-			.unwrap();
-
+		// Initialize WGPU and create dimensions.
+		let (device, queue) = Self::initialize_wgpu().await?;
 		let dimensions = Dimensions::new(width, height);
 
-		let texture_extent = wgpu::Extent3d {
+		// Configure textures and bind groups.
+		let texture_extent = Self::create_texture_extent(dimensions);
+		let (texture, resolve_texture) = Self::create_textures(&device, texture_extent);
+		let config = Self::create_surface_config(texture.format(), dimensions);
+
+		let texture_bind_group_layout = Self::create_texture_bind_group_layout(&device);
+		let (camera_bind_group, instance_buffer, camera_bind_group_layout) =
+			Self::setup_camera_and_instance(&device, &config);
+
+		let (light_bind_group, light_bind_group_layout) = Self::setup_lighting(&device);
+
+		// Set up rendering pipeline and models.
+		let render_pipeline = Self::setup_render_pipeline(
+			&device,
+			&texture_bind_group_layout,
+			&config,
+			&camera_bind_group_layout,
+			&light_bind_group_layout,
+		);
+		let depth_texture = Texture::create_depth_texture(&device, &config, "depth_texture");
+
+		let (classic_model, slim_model) =
+			Self::load_models(&device, &queue, &texture_bind_group_layout)?;
+
+		Ok(Self {
+			device,
+			queue,
+			dimensions,
+			camera_bind_group,
+			light_bind_group,
+			render_pipeline,
+			instance_buffer,
+			classic_model,
+			slim_model,
+			depth_texture,
+			texture,
+			resolve_texture,
+			texture_extent,
+			texture_bind_group_layout,
+			loader: SkinLoader::new(),
+		})
+	}
+
+	// Helper functions for readability. Please define each with the appropriate logic.
+
+	fn create_texture_extent(dimensions: Dimensions) -> wgpu::Extent3d {
+		wgpu::Extent3d {
 			width: dimensions.width,
 			height: dimensions.height,
 			depth_or_array_layers: 1,
-		};
+		}
+	}
 
-		let texture = device.create_texture(&wgpu::TextureDescriptor {
-			label: None,
-			size: texture_extent,
-			mip_level_count: 1,
-			sample_count: 4,
-			dimension: wgpu::TextureDimension::D2,
-			format: wgpu::TextureFormat::Rgba8UnormSrgb,
-			usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::COPY_SRC,
-			view_formats: &[],
-		});
+	fn create_textures(
+		device: &wgpu::Device,
+		texture_extent: wgpu::Extent3d,
+	) -> (wgpu::Texture, wgpu::Texture) {
+		(
+			device.create_texture(&wgpu::TextureDescriptor {
+				label: None,
+				size: texture_extent,
+				mip_level_count: 1,
+				sample_count: 4,
+				dimension: wgpu::TextureDimension::D2,
+				format: wgpu::TextureFormat::Rgba8UnormSrgb,
+				usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::COPY_SRC,
+				view_formats: &[],
+			}),
+			device.create_texture(&wgpu::TextureDescriptor {
+				label: None,
+				size: texture_extent,
+				mip_level_count: 1,
+				sample_count: 1,
+				dimension: wgpu::TextureDimension::D2,
+				format: wgpu::TextureFormat::Rgba8UnormSrgb,
+				usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::COPY_SRC,
+				view_formats: &[],
+			}),
+		)
+	}
 
-		let resolve_texture = device.create_texture(&wgpu::TextureDescriptor {
-			label: None,
-			size: texture_extent,
-			mip_level_count: 1,
-			sample_count: 1,
-			dimension: wgpu::TextureDimension::D2,
-			format: wgpu::TextureFormat::Rgba8UnormSrgb,
-			usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::COPY_SRC,
-			view_formats: &[],
-		});
-
-		let config = wgpu::SurfaceConfiguration {
+	fn create_surface_config(
+		format: wgpu::TextureFormat,
+		dimensions: Dimensions,
+	) -> wgpu::SurfaceConfiguration {
+		wgpu::SurfaceConfiguration {
 			usage: wgpu::TextureUsages::empty(),
-			format: texture.format(),
+			format,
 			width: dimensions.width,
 			height: dimensions.height,
 			present_mode: wgpu::PresentMode::default(),
 			alpha_mode: wgpu::CompositeAlphaMode::default(),
 			view_formats: vec![],
-		};
+		}
+	}
 
-		let texture_bind_group_layout =
-			device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
-				entries: &[
-					wgpu::BindGroupLayoutEntry {
-						binding: 0,
-						visibility: wgpu::ShaderStages::FRAGMENT,
-						ty: wgpu::BindingType::Texture {
-							multisampled: false,
-							view_dimension: wgpu::TextureViewDimension::D2,
-							sample_type: wgpu::TextureSampleType::Float { filterable: true },
-						},
-						count: None,
+	fn create_texture_bind_group_layout(device: &wgpu::Device) -> wgpu::BindGroupLayout {
+		device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
+			entries: &[
+				wgpu::BindGroupLayoutEntry {
+					binding: 0,
+					visibility: wgpu::ShaderStages::FRAGMENT,
+					ty: wgpu::BindingType::Texture {
+						multisampled: false,
+						view_dimension: wgpu::TextureViewDimension::D2,
+						sample_type: wgpu::TextureSampleType::Float { filterable: true },
 					},
-					wgpu::BindGroupLayoutEntry {
-						binding: 1,
-						visibility: wgpu::ShaderStages::FRAGMENT,
-						ty: wgpu::BindingType::Sampler(wgpu::SamplerBindingType::Filtering),
-						count: None,
-					},
-				],
-				label: Some("texture_bind_group_layout"),
-			});
+					count: None,
+				},
+				wgpu::BindGroupLayoutEntry {
+					binding: 1,
+					visibility: wgpu::ShaderStages::FRAGMENT,
+					ty: wgpu::BindingType::Sampler(wgpu::SamplerBindingType::Filtering),
+					count: None,
+				},
+			],
+			label: Some("texture_bind_group_layout"),
+		})
+	}
 
+	fn setup_camera_and_instance(
+		device: &wgpu::Device,
+		config: &wgpu::SurfaceConfiguration,
+	) -> (wgpu::BindGroup, wgpu::Buffer, wgpu::BindGroupLayout) {
 		let camera = Camera::new(config.width as f32, config.height as f32);
 		let camera_uniform = CameraUniform::new(&camera);
 
@@ -171,6 +211,10 @@ impl SkinRenderer {
 			label: Some("camera_bind_group"),
 		});
 
+		(camera_bind_group, instance_buffer, camera_bind_group_layout)
+	}
+
+	fn setup_lighting(device: &wgpu::Device) -> (wgpu::BindGroup, wgpu::BindGroupLayout) {
 		let light_uniform = LightUniform::default();
 
 		let light_buffer = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
@@ -203,62 +247,83 @@ impl SkinRenderer {
 			label: None,
 		});
 
-		let render_pipeline = {
-			let shader = wgpu::ShaderModuleDescriptor {
-				label: Some("shader.wgsl"),
-				source: wgpu::ShaderSource::Wgsl(include_str!("../shader.wgsl").into()),
-			};
+		(light_bind_group, light_bind_group_layout)
+	}
 
-			let layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
-				label: Some("Render Pipeline Layout"),
-				bind_group_layouts: &[
-					&texture_bind_group_layout,
-					&camera_bind_group_layout,
-					&light_bind_group_layout,
-				],
-				push_constant_ranges: &[],
-			});
-
-			Self::create_render_pipeline(&device, &layout, &config, shader)
+	fn setup_render_pipeline(
+		device: &wgpu::Device,
+		texture_bind_group_layout: &wgpu::BindGroupLayout,
+		config: &wgpu::SurfaceConfiguration,
+		camera_bind_group_layout: &wgpu::BindGroupLayout,
+		light_bind_group_layout: &wgpu::BindGroupLayout,
+	) -> wgpu::RenderPipeline {
+		let shader = wgpu::ShaderModuleDescriptor {
+			label: Some("shader.wgsl"),
+			source: wgpu::ShaderSource::Wgsl(include_str!("../shader.wgsl").into()),
 		};
 
-		let depth_texture = Texture::new_depth_texture(&device, &config, "depth_texture");
+		let layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
+			label: Some("Render Pipeline Layout"),
+			bind_group_layouts: &[
+				&texture_bind_group_layout,
+				&camera_bind_group_layout,
+				&light_bind_group_layout,
+			],
+			push_constant_ranges: &[],
+		});
 
+		Self::create_render_pipeline(device, &layout, config, shader)
+	}
+
+	fn load_models(
+		device: &wgpu::Device,
+		queue: &wgpu::Queue,
+		texture_bind_group_layout: &wgpu::BindGroupLayout,
+	) -> error::Result<(Model, Model)> {
 		let classic_model = load_model(
 			include_bytes!("../models/classic.obj"),
-			&device,
-			&queue,
-			&texture_bind_group_layout,
+			device,
+			queue,
+			texture_bind_group_layout,
 		)?;
 
 		let slim_model = load_model(
 			include_bytes!("../models/slim.obj"),
-			&device,
-			&queue,
-			&texture_bind_group_layout,
-		)?;
-
-		Ok(Self {
 			device,
 			queue,
-
-			dimensions,
-			camera_bind_group,
-			light_bind_group,
-			render_pipeline,
-			instance_buffer,
-
-			classic_model,
-			slim_model,
-
-			depth_texture,
-			texture,
-			resolve_texture,
-			texture_extent,
 			texture_bind_group_layout,
+		)?;
 
-			loader: SkinLoader::new(),
-		})
+		Ok((classic_model, slim_model))
+	}
+
+	async fn initialize_wgpu() -> error::Result<(wgpu::Device, wgpu::Queue)> {
+		let backends = wgpu::util::backend_bits_from_env().unwrap_or_else(wgpu::Backends::all);
+		let dx12_shader_compiler = wgpu::util::dx12_shader_compiler_from_env().unwrap_or_default();
+
+		let instance = wgpu::Instance::new(wgpu::InstanceDescriptor {
+			backends,
+			dx12_shader_compiler,
+		});
+
+		let adapter = instance
+			.request_adapter(&wgpu::RequestAdapterOptions::default())
+			.await
+			.expect("Failed to find an appropriate adapter");
+
+		let (device, queue) = adapter
+			.request_device(
+				&wgpu::DeviceDescriptor {
+					label: None,
+					features: wgpu::Features::empty(),
+					limits: wgpu::Limits::downlevel_defaults(),
+				},
+				None,
+			)
+			.await
+			.expect("failed to create device and queue");
+
+		Ok((device, queue))
 	}
 
 	pub async fn render(
@@ -333,123 +398,148 @@ impl SkinRenderer {
 	}
 
 	async fn render_material(&self, kind: SkinKind, material: &Material) -> error::Result<Vec<u8>> {
-		let model = match kind {
-			SkinKind::Classic => &self.classic_model,
-			SkinKind::Slim => &self.slim_model,
-		};
+		let model = self.get_model(kind);
+		let output_buffer = self.create_output_buffer();
+		let command_buffer = self.create_command_buffer(model, material, &output_buffer)?;
 
-		let output_buf = self.device.create_buffer(&wgpu::BufferDescriptor {
-			label: None,
-			size: (self.dimensions.padded_bytes_per_row * self.dimensions.height) as u64,
-			usage: wgpu::BufferUsages::MAP_READ | wgpu::BufferUsages::COPY_DST,
-			mapped_at_creation: false,
-		});
+		let index = self.queue.submit(Some(command_buffer));
 
-		let command_buf = {
-			let view = self
-				.texture
-				.create_view(&wgpu::TextureViewDescriptor::default());
-
-			let resolve_view = self
-				.resolve_texture
-				.create_view(&wgpu::TextureViewDescriptor::default());
-
-			let mut encoder = self
-				.device
-				.create_command_encoder(&wgpu::CommandEncoderDescriptor {
-					label: Some("Render Encoder"),
-				});
-
-			let mut render_pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
-				label: Some("Render Pass"),
-				color_attachments: &[Some(wgpu::RenderPassColorAttachment {
-					view: &view,
-					resolve_target: Some(&resolve_view),
-					ops: wgpu::Operations {
-						load: wgpu::LoadOp::Clear(wgpu::Color::TRANSPARENT),
-						store: true,
-					},
-				})],
-				depth_stencil_attachment: Some(wgpu::RenderPassDepthStencilAttachment {
-					view: &self.depth_texture.view,
-					depth_ops: Some(wgpu::Operations {
-						load: wgpu::LoadOp::Clear(1.0),
-						store: true,
-					}),
-					stencil_ops: None,
-				}),
-			});
-
-			render_pass.set_vertex_buffer(1, self.instance_buffer.slice(..));
-			render_pass.set_pipeline(&self.render_pipeline);
-			render_pass.draw_model(
-				model,
-				material,
-				&self.camera_bind_group,
-				&self.light_bind_group,
-			);
-
-			drop(render_pass);
-
-			encoder.copy_texture_to_buffer(
-				self.resolve_texture.as_image_copy(),
-				wgpu::ImageCopyBuffer {
-					buffer: &output_buf,
-					layout: wgpu::ImageDataLayout {
-						offset: 0,
-						bytes_per_row: Some(self.dimensions.padded_bytes_per_row),
-						rows_per_image: Some(self.dimensions.height),
-					},
-				},
-				self.texture_extent,
-			);
-
-			encoder.finish()
-		};
-
-		let index = self.queue.submit(Some(command_buf));
-
-		let buf_slice = output_buf.slice(..);
-		let (sender, receiver) = tokio::sync::oneshot::channel();
-
-		buf_slice.map_async(wgpu::MapMode::Read, move |result| {
-			if sender.send(result).is_err() {
-				tracing::error!("failed to send through the channel");
-			}
-		});
+		let buffer_slice = output_buffer.slice(..);
+		let result_receiver = self.map_buffer_async(&buffer_slice);
 
 		self.device
 			.poll(wgpu::Maintain::WaitForSubmissionIndex(index));
 
-		if let Ok(Ok(())) = receiver.await {
-			let padded_buf = buf_slice.get_mapped_range();
-
-			let buf = padded_buf
-				.chunks(self.dimensions.padded_bytes_per_row as usize)
-				.take(self.dimensions.height as usize)
-				.flat_map(|row| &row[..self.dimensions.unpadded_bytes_per_row as usize])
-				.copied()
-				.collect::<Vec<u8>>();
-
-			let image = ImageBuffer::<Rgba<u8>, _>::from_vec(
-				self.dimensions.width,
-				self.dimensions.height,
-				buf,
-			)
-			.expect("buffer not large enough for image");
-
-			let mut writer = BufWriter::new(Cursor::new(Vec::new()));
-
-			image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
-
-			let bytes = writer
-				.into_inner()
-				.map_err(|_| error::Error::RenderFailure)?
-				.into_inner();
-
-			Ok(bytes)
-		} else {
-			Err(error::Error::RenderFailure)
+		match result_receiver.await {
+			Ok(Ok(())) => self.extract_image(&buffer_slice),
+			_ => Err(error::Error::RenderFailure),
 		}
+	}
+
+	fn get_model(&self, kind: SkinKind) -> &Model {
+		match kind {
+			SkinKind::Classic => &self.classic_model,
+			SkinKind::Slim => &self.slim_model,
+		}
+	}
+
+	fn create_output_buffer(&self) -> wgpu::Buffer {
+		self.device.create_buffer(&wgpu::BufferDescriptor {
+			label: None,
+			size: (self.dimensions.padded_bytes_per_row * self.dimensions.height) as u64,
+			usage: wgpu::BufferUsages::MAP_READ | wgpu::BufferUsages::COPY_DST,
+			mapped_at_creation: false,
+		})
+	}
+
+	fn create_command_buffer(
+		&self,
+		model: &Model,
+		material: &Material,
+		output_buffer: &wgpu::Buffer,
+	) -> error::Result<wgpu::CommandBuffer> {
+		let mut encoder = self
+			.device
+			.create_command_encoder(&wgpu::CommandEncoderDescriptor {
+				label: Some("Render Encoder"),
+			});
+
+		let view = self
+			.texture
+			.create_view(&wgpu::TextureViewDescriptor::default());
+
+		let resolve_target = self
+			.resolve_texture
+			.create_view(&wgpu::TextureViewDescriptor::default());
+
+		let mut render_pass = encoder.begin_render_pass(&wgpu::RenderPassDescriptor {
+			label: Some("Render Pass"),
+			color_attachments: &[Some(wgpu::RenderPassColorAttachment {
+				view: &view,
+				resolve_target: Some(&resolve_target),
+				ops: wgpu::Operations {
+					load: wgpu::LoadOp::Clear(wgpu::Color::TRANSPARENT),
+					store: true,
+				},
+			})],
+			depth_stencil_attachment: Some(wgpu::RenderPassDepthStencilAttachment {
+				view: &self.depth_texture.view,
+				depth_ops: Some(wgpu::Operations {
+					load: wgpu::LoadOp::Clear(1.0),
+					store: true,
+				}),
+				stencil_ops: None,
+			}),
+		});
+
+		render_pass.set_vertex_buffer(1, self.instance_buffer.slice(..));
+		render_pass.set_pipeline(&self.render_pipeline);
+		render_pass.draw_model(
+			model,
+			material,
+			&self.camera_bind_group,
+			&self.light_bind_group,
+		);
+
+		drop(render_pass);
+
+		encoder.copy_texture_to_buffer(
+			wgpu::ImageCopyTexture {
+				texture: &self.resolve_texture,
+				mip_level: 0,
+				origin: wgpu::Origin3d::ZERO,
+				aspect: wgpu::TextureAspect::All,
+			},
+			wgpu::ImageCopyBuffer {
+				buffer: output_buffer,
+				layout: wgpu::ImageDataLayout {
+					offset: 0,
+					bytes_per_row: Some(self.dimensions.padded_bytes_per_row),
+					rows_per_image: None,
+				},
+			},
+			self.texture_extent,
+		);
+
+		Ok(encoder.finish())
+	}
+
+	fn map_buffer_async(
+		&self,
+		buffer_slice: &wgpu::BufferSlice,
+	) -> tokio::sync::oneshot::Receiver<Result<(), wgpu::BufferAsyncError>> {
+		let (sender, receiver) = tokio::sync::oneshot::channel();
+
+		buffer_slice.map_async(wgpu::MapMode::Read, move |result| {
+			if sender.send(result).is_err() {
+				tracing::error!("Failed to send through the channel");
+			}
+		});
+
+		receiver
+	}
+
+	fn extract_image(&self, buffer_slice: &wgpu::BufferSlice) -> error::Result<Vec<u8>> {
+		let padded_buffer = buffer_slice.get_mapped_range();
+		let buffer = padded_buffer
+			.chunks_exact(self.dimensions.padded_bytes_per_row as usize)
+			.flat_map(|row| &row[..self.dimensions.unpadded_bytes_per_row as usize])
+			.copied()
+			.collect::<Vec<_>>();
+
+		let image = ImageBuffer::<Rgba<u8>, _>::from_vec(
+			self.dimensions.width,
+			self.dimensions.height,
+			buffer,
+		)
+		.expect("Buffer not large enough for image");
+
+		let mut writer = BufWriter::new(Cursor::new(Vec::new()));
+		image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
+
+		Ok(writer
+			.into_inner()
+			.map_err(|_| error::Error::RenderFailure)?
+			.into_inner())
 	}
 }

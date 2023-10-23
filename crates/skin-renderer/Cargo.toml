@@ -1,9 +1,6 @@
 [package]
 name = "skin_renderer"
-authors = [
-	"Jacob Koshy <jababakoshy@gmail.com>",
-	"Matthew Polak <contact@matteopolak.com>",
-]
+authors = ["Matthew Polak <contact@matteopolak.com>"]
 edition = "2021"
 version = "0.37.0"
 

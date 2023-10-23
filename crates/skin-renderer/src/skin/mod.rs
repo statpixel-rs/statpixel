@@ -2,6 +2,10 @@ pub mod loader;
 
 use image::{DynamicImage, GenericImage, GenericImageView, Rgba};
 
+const LEGACY_SKIN_HEIGHT: u32 = 32;
+const MODERN_SKIN_HEIGHT: u32 = 64;
+const SKIN_WIDTH: u32 = 64;
+
 macro_rules! rect_slice {
 	($([$x:expr, $y:expr, $width:expr, $height:expr]),*) => {
 		&[
@@ -53,9 +57,7 @@ impl Skin {
 			return self;
 		}
 
-		self.format = SkinFormat::Modern;
-
-		let mut skin = DynamicImage::new_rgba8(self.format.width(), self.format.height());
+		let mut skin = DynamicImage::new_rgba8(SKIN_WIDTH, MODERN_SKIN_HEIGHT);
 
 		// This should never panic, as legacy skins are always 64x32
 		skin.copy_from(&self.image, 0, 0)
@@ -83,6 +85,7 @@ impl Skin {
 		);
 
 		self.image = skin;
+		self.format = SkinFormat::Modern;
 		self
 	}
 
@@ -121,18 +124,23 @@ impl Skin {
 			[36, 48, 8, 4]
 		];
 
-		for region in OOB_REGIONS {
-			unsafe { self.image.unsafe_fill_rect(region, FILL) };
-		}
-
-		if self.is_modern() {
-			for region in OOB_REGIONS_MODERN {
-				unsafe { self.image.unsafe_fill_rect(region, FILL) };
+		// SAFETY: The following unsafe blocks are used for performance reasons,
+		// allowing pixel manipulation without bounds checking.
+		// The coordinates used here are guaranteed to be within the bounds of the image.
+		unsafe {
+			for region in OOB_REGIONS {
+				self.image.unsafe_fill_rect(region, FILL);
 			}
-		}
 
-		for region in REQUIRED_REGIONS {
-			unsafe { self.image.unsafe_strip_transparency_rect(region) };
+			if self.is_modern() {
+				for region in OOB_REGIONS_MODERN {
+					self.image.unsafe_fill_rect(region, FILL);
+				}
+			}
+
+			for region in REQUIRED_REGIONS {
+				self.image.unsafe_strip_transparency_rect(region);
+			}
 		}
 	}
 }
@@ -140,23 +148,9 @@ impl Skin {
 impl SkinFormat {
 	pub fn from_height(height: u32) -> Option<Self> {
 		match height {
-			32 => Some(Self::Legacy),
-			64 => Some(Self::Modern),
+			LEGACY_SKIN_HEIGHT => Some(Self::Legacy),
+			MODERN_SKIN_HEIGHT => Some(Self::Modern),
 			_ => None,
-		}
-	}
-
-	pub fn height(&self) -> u32 {
-		match self {
-			SkinFormat::Legacy => 32,
-			SkinFormat::Modern => 64,
-		}
-	}
-
-	pub fn width(&self) -> u32 {
-		match self {
-			SkinFormat::Legacy => 64,
-			SkinFormat::Modern => 64,
 		}
 	}
 }
