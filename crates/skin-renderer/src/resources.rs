@@ -1,13 +1,16 @@
-use crate::error::{SkinRendererError, SkinRendererResult};
-use crate::model::{Material, Mesh, Model, ModelVertex};
-use crate::texture::Texture;
+use crate::{
+	error,
+	model::{Material, Mesh, Model, ModelVertex},
+	texture::Texture,
+};
+
 use bytemuck::cast_slice;
 use std::fmt::Debug;
 use std::io::{BufReader, Cursor};
 use std::path::Path;
 use wgpu::util::DeviceExt;
 
-pub async fn load_string(file_name: impl AsRef<Path>) -> SkinRendererResult<String> {
+pub async fn load_string(file_name: impl AsRef<Path>) -> error::Result<String> {
 	let path = std::path::Path::new(env!("OUT_DIR"))
 		.join("models")
 		.join(file_name);
@@ -17,60 +20,60 @@ pub async fn load_string(file_name: impl AsRef<Path>) -> SkinRendererResult<Stri
 	Ok(txt)
 }
 
-pub async fn load_binary(file_name: &str) -> SkinRendererResult<Vec<u8>> {
+pub fn load_binary(file_name: &str) -> error::Result<Vec<u8>> {
 	let path = std::path::Path::new(env!("OUT_DIR"))
 		.join("models")
 		.join(file_name);
 
-	std::fs::read(path).map_err(|e| e.into())
+	Ok(std::fs::read(path)?)
 }
 
-pub async fn load_texture(
+pub fn load_texture(
 	file_name: &str,
 	device: &wgpu::Device,
 	queue: &wgpu::Queue,
-) -> SkinRendererResult<Texture> {
-	let data = load_binary(file_name).await?;
-	Texture::from_bytes(device, queue, &data)
+) -> error::Result<Texture> {
+	let data = load_binary(file_name)?;
+	Texture::try_from_bytes(device, queue, &data)
 }
 
 pub async fn load_model(
-	file_name: impl AsRef<Path> + Debug,
+	path: impl AsRef<Path> + Debug,
 	device: &wgpu::Device,
 	queue: &wgpu::Queue,
 	layout: &wgpu::BindGroupLayout,
-) -> SkinRendererResult<Model> {
-	let file_name = file_name.as_ref();
+) -> error::Result<Model> {
+	let content = load_string(path.as_ref()).await?;
+	let mut reader = BufReader::new(Cursor::new(content));
 
-	let obj_text = load_string(file_name).await?;
-	let obj_cursor = Cursor::new(obj_text);
-	let mut obj_reader = BufReader::new(obj_cursor);
-
-	let (models, obj_materials) = tobj::load_obj_buf_async(
-		&mut obj_reader,
+	let (models, materials) = tobj::load_obj_buf_async(
+		&mut reader,
 		&tobj::LoadOptions {
 			triangulate: true,
 			single_index: true,
 			..Default::default()
 		},
 		|p| async move {
-			let mat_text = load_string(&p).await.expect("Failed to load material");
+			let mat_text = load_string(&p).await.expect("could not load material");
+
 			tobj::load_mtl_buf(&mut BufReader::new(Cursor::new(mat_text)))
 		},
 	)
 	.await?;
 
-	let mut materials = Vec::new();
+	let materials = materials?
+		.into_iter()
+		.map(|m| {
+			let texture = m
+				.diffuse_texture
+				.ok_or(error::Error::MissingDiffuseTexture)?;
 
-	for m in obj_materials? {
-		let diffuse_texture = m
-			.diffuse_texture
-			.ok_or(SkinRendererError::MissingDiffuseTexture)?;
+			let texture = load_texture(&texture, device, queue)?;
+			let material = Material::new(device, texture, layout);
 
-		let diffuse_texture = load_texture(&diffuse_texture, device, queue).await?;
-		let material = Material::new(device, diffuse_texture, layout);
-		materials.push(material);
-	}
+			Ok(material)
+		})
+		.collect::<error::Result<Vec<_>>>()?;
 
 	let mut meshes = models
 		.into_iter()
@@ -83,7 +86,7 @@ pub async fn load_model(
 						m.mesh.positions[i * 3 + 1],
 						m.mesh.positions[i * 3 + 2],
 					],
-					tex_coords: [m.mesh.texcoords[i * 2], 1.0 - m.mesh.texcoords[i * 2 + 1]],
+					coords: [m.mesh.texcoords[i * 2], 1.0 - m.mesh.texcoords[i * 2 + 1]],
 					normal: [
 						m.mesh.normals[i * 3],
 						m.mesh.normals[i * 3 + 1],
@@ -93,13 +96,13 @@ pub async fn load_model(
 				.collect::<Vec<_>>();
 
 			let vertex_buffer = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
-				label: Some(&format!("{:?} Vertex Buffer", file_name)),
+				label: Some(&format!("{:?} Vertex Buffer", path)),
 				contents: cast_slice(&vertices),
 				usage: wgpu::BufferUsages::VERTEX,
 			});
 
 			let index_buffer = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
-				label: Some(&format!("{:?} Index Buffer", file_name)),
+				label: Some(&format!("{:?} Index Buffer", path)),
 				contents: cast_slice(&m.mesh.indices),
 				usage: wgpu::BufferUsages::INDEX,
 			});
@@ -109,7 +112,7 @@ pub async fn load_model(
 				vertex_buffer,
 				index_buffer,
 				num_elements: m.mesh.indices.len() as u32,
-				material: m.mesh.material_id.unwrap_or(0),
+				material: m.mesh.material_id.unwrap_or_default(),
 			}
 		})
 		.collect::<Vec<_>>();

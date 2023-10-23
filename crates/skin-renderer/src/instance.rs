@@ -1,7 +1,5 @@
-use crate::model::Vertex;
 use bytemuck::{Pod, Zeroable};
 use cgmath::{Deg, Matrix3, Matrix4, Quaternion, Rotation3, Vector3};
-use std::mem::size_of;
 
 pub struct Instance {
 	position: Vector3<f32>,
@@ -33,8 +31,10 @@ pub struct InstanceRaw {
 	normal: [[f32; 3]; 3],
 }
 
-impl Vertex for InstanceRaw {
-	fn desc<'a>() -> wgpu::VertexBufferLayout<'a> {
+impl InstanceRaw {
+	pub fn desc<'a>() -> wgpu::VertexBufferLayout<'a> {
+		use std::mem::size_of;
+
 		wgpu::VertexBufferLayout {
 			array_stride: size_of::<InstanceRaw>() as wgpu::BufferAddress,
 			step_mode: wgpu::VertexStepMode::Instance,

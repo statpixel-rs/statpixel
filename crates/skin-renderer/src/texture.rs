@@ -1,5 +1,6 @@
-use crate::error::SkinRendererResult;
 use image::GenericImageView;
+
+use crate::error;
 
 pub struct Texture {
 	pub texture: wgpu::Texture,
@@ -10,7 +11,7 @@ pub struct Texture {
 impl Texture {
 	pub const DEPTH_FORMAT: wgpu::TextureFormat = wgpu::TextureFormat::Depth32Float;
 
-	pub fn create_depth_texture(
+	pub fn new_depth_texture(
 		device: &wgpu::Device,
 		config: &wgpu::SurfaceConfiguration,
 		label: &str,
@@ -31,6 +32,7 @@ impl Texture {
 			usage: wgpu::TextureUsages::RENDER_ATTACHMENT,
 			view_formats: &[Self::DEPTH_FORMAT],
 		};
+
 		let texture = device.create_texture(&desc);
 		let view = texture.create_view(&wgpu::TextureViewDescriptor::default());
 		let sampler = device.create_sampler(&wgpu::SamplerDescriptor {
@@ -51,22 +53,22 @@ impl Texture {
 		}
 	}
 
-	pub fn from_bytes(
+	pub fn try_from_bytes(
 		device: &wgpu::Device,
 		queue: &wgpu::Queue,
 		bytes: &[u8],
-	) -> SkinRendererResult<Self> {
-		let img = image::load_from_memory(bytes)?;
-		Self::from_image(device, queue, &img)
+	) -> error::Result<Self> {
+		Self::try_from_image(device, queue, &image::load_from_memory(bytes)?)
 	}
 
-	pub fn from_image(
+	pub fn try_from_image(
 		device: &wgpu::Device,
 		queue: &wgpu::Queue,
-		img: &image::DynamicImage,
-	) -> SkinRendererResult<Self> {
-		let dimensions = img.dimensions();
-		let rgba = img.to_rgba8();
+		image: &image::DynamicImage,
+	) -> error::Result<Self> {
+		let dimensions = image.dimensions();
+		// TODO: remove this clone
+		let rgba = image.to_rgba8();
 
 		let size = wgpu::Extent3d {
 			width: dimensions.0,

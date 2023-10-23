@@ -1,26 +1,24 @@
-use crate::buffer_dimensions::BufferDimensions;
-use crate::camera::{Camera, CameraUniform};
-use crate::error::SkinRendererError;
-use crate::error::SkinRendererResult;
-use crate::instance::{Instance, InstanceRaw};
-use crate::light::LightUniform;
-use crate::model::{DrawModel, Material, Model, ModelVertex, Vertex};
-use crate::resources::load_model;
-use crate::skin_loader::SkinLoader;
-use crate::texture::Texture;
+use crate::{
+	camera::{Camera, CameraUniform},
+	dimensions::Dimensions,
+	error,
+	instance::{Instance, InstanceRaw},
+	light::LightUniform,
+	model::{DrawModel, Material, Model, ModelVertex},
+	resources::load_model,
+	skin::loader::SkinLoader,
+	texture::Texture,
+	SkinKind,
+};
+
 use bytemuck::cast_slice;
 use futures_intrusive::channel;
 use image::{ImageBuffer, Rgba};
 use std::io::{BufWriter, Cursor};
 use wgpu::util::DeviceExt;
 
-pub enum SkinModelType {
-	Classic,
-	Slim,
-}
-
 pub struct SkinRenderer {
-	dimensions: BufferDimensions,
+	dimensions: Dimensions,
 
 	device: wgpu::Device,
 	queue: wgpu::Queue,
@@ -43,7 +41,7 @@ pub struct SkinRenderer {
 }
 
 impl SkinRenderer {
-	pub async fn new(width: u32, height: u32) -> SkinRendererResult<Self> {
+	pub async fn new(width: u32, height: u32) -> error::Result<Self> {
 		let backends = wgpu::util::backend_bits_from_env().unwrap_or_else(wgpu::Backends::all);
 		let dx12_shader_compiler = wgpu::util::dx12_shader_compiler_from_env().unwrap_or_default();
 
@@ -69,7 +67,7 @@ impl SkinRenderer {
 			.await
 			.unwrap();
 
-		let dimensions = BufferDimensions::new(width, height);
+		let dimensions = Dimensions::new(width, height);
 
 		let texture_extent = wgpu::Extent3d {
 			width: dimensions.width,
@@ -209,7 +207,7 @@ impl SkinRenderer {
 		let render_pipeline = {
 			let shader = wgpu::ShaderModuleDescriptor {
 				label: Some("shader.wgsl"),
-				source: wgpu::ShaderSource::Wgsl(include_str!("shader.wgsl").into()),
+				source: wgpu::ShaderSource::Wgsl(include_str!("../shader.wgsl").into()),
 			};
 
 			let layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
@@ -225,7 +223,7 @@ impl SkinRenderer {
 			Self::create_render_pipeline(&device, &layout, &config, shader)
 		};
 
-		let depth_texture = Texture::create_depth_texture(&device, &config, "depth_texture");
+		let depth_texture = Texture::new_depth_texture(&device, &config, "depth_texture");
 
 		let (classic_model, slim_model) = tokio::try_join!(
 			load_model("classic.obj", &device, &queue, &texture_bind_group_layout),
@@ -257,26 +255,24 @@ impl SkinRenderer {
 
 	pub async fn render(
 		&self,
-		model_type: SkinModelType,
-		model_texture_url: &str,
-	) -> SkinRendererResult<Vec<u8>> {
-		let model_texture_image = self.loader.get_skin(model_texture_url).await?;
-		let model_texture = Texture::from_image(&self.device, &self.queue, &model_texture_image)?;
-		let material = Material::new(&self.device, model_texture, &self.texture_bind_group_layout);
+		kind: SkinKind,
+		url: Option<impl reqwest::IntoUrl>,
+	) -> error::Result<Vec<u8>> {
+		if let Some(url) = url {
+			let skin = self.loader.load_from_url(url).await?;
+			let texture = Texture::try_from_image(&self.device, &self.queue, &skin.image)?;
+			let material = Material::new(&self.device, texture, &self.texture_bind_group_layout);
 
-		self.render_material(model_type, &material).await
-	}
+			return self.render_material(kind, &material).await;
+		}
 
-	pub async fn render_default_texture(
-		&self,
-		model_type: SkinModelType,
-	) -> SkinRendererResult<Vec<u8>> {
-		let material = match model_type {
-			SkinModelType::Classic => self.classic_model.materials.get(0),
-			SkinModelType::Slim => self.slim_model.materials.get(0),
-		};
+		let material = match kind {
+			SkinKind::Classic => self.classic_model.materials.get(0),
+			SkinKind::Slim => self.slim_model.materials.get(0),
+		}
+		.expect("at least one material in the slim and classic models");
 
-		self.render_material(model_type, material.unwrap()).await
+		self.render_material(kind, material).await
 	}
 
 	fn create_render_pipeline(
@@ -328,24 +324,20 @@ impl SkinRenderer {
 		})
 	}
 
-	async fn render_material(
-		&self,
-		model_type: SkinModelType,
-		material: &Material,
-	) -> SkinRendererResult<Vec<u8>> {
-		let model = match model_type {
-			SkinModelType::Classic => &self.classic_model,
-			SkinModelType::Slim => &self.slim_model,
+	async fn render_material(&self, kind: SkinKind, material: &Material) -> error::Result<Vec<u8>> {
+		let model = match kind {
+			SkinKind::Classic => &self.classic_model,
+			SkinKind::Slim => &self.slim_model,
 		};
 
-		let output_buffer = self.device.create_buffer(&wgpu::BufferDescriptor {
+		let output_buf = self.device.create_buffer(&wgpu::BufferDescriptor {
 			label: None,
 			size: (self.dimensions.padded_bytes_per_row * self.dimensions.height) as u64,
 			usage: wgpu::BufferUsages::MAP_READ | wgpu::BufferUsages::COPY_DST,
 			mapped_at_creation: false,
 		});
 
-		let command_buffer = {
+		let command_buf = {
 			let view = self
 				.texture
 				.create_view(&wgpu::TextureViewDescriptor::default());
@@ -394,7 +386,7 @@ impl SkinRenderer {
 			encoder.copy_texture_to_buffer(
 				self.resolve_texture.as_image_copy(),
 				wgpu::ImageCopyBuffer {
-					buffer: &output_buffer,
+					buffer: &output_buf,
 					layout: wgpu::ImageDataLayout {
 						offset: 0,
 						bytes_per_row: Some(self.dimensions.padded_bytes_per_row),
@@ -407,19 +399,24 @@ impl SkinRenderer {
 			encoder.finish()
 		};
 
-		let index = self.queue.submit(Some(command_buffer));
+		let index = self.queue.submit(Some(command_buf));
 
-		let buffer_slice = output_buffer.slice(..);
+		let buf_slice = output_buf.slice(..);
 		let (sender, receiver) = channel::shared::oneshot_channel();
-		buffer_slice.map_async(wgpu::MapMode::Read, move |v| sender.send(v).unwrap());
+
+		buf_slice.map_async(wgpu::MapMode::Read, move |result| {
+			if sender.send(result).is_err() {
+				tracing::error!("failed to send through the channel");
+			}
+		});
 
 		self.device
 			.poll(wgpu::Maintain::WaitForSubmissionIndex(index));
 
 		if let Some(Ok(())) = receiver.receive().await {
-			let padded_buffer = buffer_slice.get_mapped_range();
+			let padded_buf = buf_slice.get_mapped_range();
 
-			let buffer = padded_buffer
+			let buf = padded_buf
 				.chunks(self.dimensions.padded_bytes_per_row as usize)
 				.take(self.dimensions.height as usize)
 				.flat_map(|row| &row[..self.dimensions.unpadded_bytes_per_row as usize])
@@ -429,19 +426,22 @@ impl SkinRenderer {
 			let image = ImageBuffer::<Rgba<u8>, _>::from_vec(
 				self.dimensions.width,
 				self.dimensions.height,
-				buffer,
+				buf,
 			)
-			.expect("Failed to create image buffer");
+			.expect("buffer not large enough for image");
 
 			let mut writer = BufWriter::new(Cursor::new(Vec::new()));
 
 			image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
 
-			let bytes = writer.into_inner().unwrap().into_inner();
+			let bytes = writer
+				.into_inner()
+				.map_err(|_| error::Error::RenderFailure)?
+				.into_inner();
 
 			Ok(bytes)
 		} else {
-			Err(SkinRendererError::RenderFailure)
+			Err(error::Error::RenderFailure)
 		}
 	}
 }

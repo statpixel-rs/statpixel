@@ -22,6 +22,7 @@ thiserror = "1"
 # tokio.workspace = true
 lazy_static = "1.4.0"
 async_once = "0.2.6"
+tracing.workspace = true
 # reqwest.workspace = true
 
 [dependencies.tokio]

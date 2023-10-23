@@ -1,20 +1,22 @@
 #![feature(iter_array_chunks)]
 
-mod buffer_dimensions;
 mod camera;
+mod dimensions;
 mod error;
 mod instance;
 mod light;
 mod model;
 mod renderer;
 mod resources;
-mod skin_loader;
+mod skin;
 mod texture;
 
+pub use reqwest::IntoUrl;
+pub use skin::SkinKind;
+
 use async_once::AsyncOnce;
-use error::SkinRendererResult;
 use lazy_static::lazy_static;
-use renderer::{SkinModelType, SkinRenderer};
+use renderer::SkinRenderer;
 
 lazy_static! {
 	static ref SKIN_RENDERER: AsyncOnce<SkinRenderer> = AsyncOnce::new(async {
@@ -25,22 +27,8 @@ lazy_static! {
 }
 
 pub async fn render_skin(
-	skin: impl Into<Option<&str>>,
-	is_slim: bool,
-) -> SkinRendererResult<Vec<u8>> {
-	let renderer = SKIN_RENDERER.get().await;
-
-	let model_type = if is_slim {
-		SkinModelType::Slim
-	} else {
-		SkinModelType::Classic
-	};
-
-	let skin_render = if let Some(skin) = skin.into() {
-		renderer.render(model_type, skin).await?
-	} else {
-		renderer.render_default_texture(model_type).await?
-	};
-
-	Ok(skin_render)
+	kind: SkinKind,
+	skin: Option<impl reqwest::IntoUrl>,
+) -> error::Result<Vec<u8>> {
+	SKIN_RENDERER.get().await.render(kind, skin).await
 }
