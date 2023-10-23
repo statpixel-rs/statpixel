@@ -5,6 +5,7 @@ on:
       - '**.toml'
       - '**.yml'
       - '.git*'
+      - 'Cargo.lock'
     branches:
       - main
 
