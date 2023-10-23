@@ -28,7 +28,7 @@ impl Texture {
 			sample_count: 4,
 			dimension: wgpu::TextureDimension::D2,
 			format: Self::DEPTH_FORMAT,
-			usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::TEXTURE_BINDING,
+			usage: wgpu::TextureUsages::RENDER_ATTACHMENT,
 			view_formats: &[Self::DEPTH_FORMAT],
 		};
 		let texture = device.create_texture(&desc);
@@ -41,8 +41,6 @@ impl Texture {
 			min_filter: wgpu::FilterMode::Linear,
 			mipmap_filter: wgpu::FilterMode::Nearest,
 			compare: Some(wgpu::CompareFunction::LessEqual),
-			lod_min_clamp: 0.0,
-			lod_max_clamp: 100.0,
 			..Default::default()
 		});
 
@@ -76,15 +74,13 @@ impl Texture {
 			depth_or_array_layers: 1,
 		};
 
-		let format = wgpu::TextureFormat::Rgba8UnormSrgb;
-
 		let texture = device.create_texture(&wgpu::TextureDescriptor {
 			label: None,
 			size,
 			mip_level_count: 1,
 			sample_count: 1,
 			dimension: wgpu::TextureDimension::D2,
-			format,
+			format: wgpu::TextureFormat::Rgba8UnormSrgb,
 			usage: wgpu::TextureUsages::TEXTURE_BINDING | wgpu::TextureUsages::COPY_DST,
 			view_formats: &[],
 		});

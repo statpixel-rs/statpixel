@@ -2,7 +2,6 @@ use crate::error::{SkinRendererError, SkinRendererResult};
 use crate::model::{Material, Mesh, Model, ModelVertex};
 use crate::texture::Texture;
 use bytemuck::cast_slice;
-use std::cmp::Ordering;
 use std::fmt::Debug;
 use std::io::{BufReader, Cursor};
 use std::path::Path;
@@ -115,16 +114,15 @@ pub async fn load_model(
 		})
 		.collect::<Vec<_>>();
 
-	meshes.sort_by(|a, b| {
-		let is_a_2nd_layer = a.name.contains("layer");
-		let is_b_2nd_layer = b.name.contains("layer");
+	// The meshes are in the following order:
+	// ["Head", "Body", "RArm", "LArm", "LLeg", "RLeg", "HeadOut", "BodyOut", "RArmOut", "LArmOut", "LLegOut", "RLegOut"]
 
-		match (is_a_2nd_layer, is_b_2nd_layer) {
-			(true, false) => Ordering::Greater,
-			(false, true) => Ordering::Less,
-			_ => Ordering::Equal,
-		}
-	});
+	meshes.swap(0, 5); // Head <-> RLeg
+	meshes.swap(1, 4); // Body <-> LLeg
+	meshes.swap(2, 3); // RArm <-> LArm
+	meshes.swap(6, 11); // HeadOut <-> RLegOut
+	meshes.swap(7, 10); // BodyOut <-> LLegOut
+	meshes.swap(8, 9); // RArmOut <-> LArmOut
 
 	Ok(Model { meshes, materials })
 }

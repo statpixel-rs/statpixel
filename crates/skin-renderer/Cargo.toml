@@ -1,6 +1,9 @@
 [package]
 name = "skin_renderer"
-authors = ["Jacob Koshy <jababakoshy@gmail.com>"]
+authors = [
+	"Jacob Koshy <jababakoshy@gmail.com>",
+	"Matthew Polak <contact@matteopolak.com>",
+]
 edition = "2021"
 version = "0.36.0"
 
@@ -14,11 +17,20 @@ futures-intrusive = "0.5.0"
 image = "0.24.7"
 tobj = { version = "4.0.0", features = ["async"] }
 wgpu = "0.17.0"
-thiserror.workspace = true
-tokio.workspace = true
+# thiserror.workspace = true
+thiserror = "1"
+# tokio.workspace = true
 lazy_static = "1.4.0"
 async_once = "0.2.6"
-reqwest.workspace = true
+# reqwest.workspace = true
+
+[dependencies.tokio]
+version = "1"
+features = ["macros", "rt-multi-thread", "parking_lot"]
+
+[dependencies.reqwest]
+version = "0.11"
+features = ["json"]
 
 [build-dependencies]
 napi-build = "2.0.1"

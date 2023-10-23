@@ -18,7 +18,7 @@ use renderer::{SkinModelType, SkinRenderer};
 
 lazy_static! {
 	static ref SKIN_RENDERER: AsyncOnce<SkinRenderer> = AsyncOnce::new(async {
-		SkinRenderer::new(97, 157)
+		SkinRenderer::new(97 * 10, 157 * 10)
 			.await
 			.expect("Failed to initialize skin renderer")
 	});

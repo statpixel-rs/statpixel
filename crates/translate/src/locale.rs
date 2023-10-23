@@ -12,7 +12,7 @@ use crate::prelude::GetLocale;
 use crate::Data;
 
 // use once_cell::sync::Lazy;
-use tracing::warn;
+use tracing::{error, warn};
 
 type Bundle = fluent::bundle::FluentBundle<
 	fluent::FluentResource,
@@ -310,7 +310,7 @@ impl Locale {
 			if let Some(description) = description {
 				command.description = Some(description);
 			} else {
-				panic!(
+				error!(
 					"missing command description localization for `{}` in en-US",
 					command_name
 				);
@@ -318,10 +318,12 @@ impl Locale {
 
 			for parameter in &mut command.parameters {
 				let Some(name) = format(bundle, &command_name, Some(&parameter.name), None) else {
-					panic!(
+					error!(
 						"missing parameter localization for `{}` for (command `{}`) in en-US",
 						parameter.name, command_name
 					);
+
+					continue;
 				};
 
 				let description = format(
@@ -334,7 +336,7 @@ impl Locale {
 				if let Some(description) = description {
 					parameter.description = Some(description);
 				} else {
-					panic!(
+					error!(
 						"missing parameter description localization for `{}` (command `{}`) in en-US",
 						parameter.name, command_name
 					);
@@ -347,7 +349,7 @@ impl Locale {
 					if let Some(name) = name {
 						choice.name = name;
 					} else {
-						panic!("missing choice localization for `{}` in en-US", choice.name);
+						error!("missing choice localization for `{}` in en-US", choice.name);
 					}
 				}
 

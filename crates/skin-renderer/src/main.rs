@@ -4,7 +4,9 @@ async fn main() {
 	let url = url.as_str();
 
 	let start = std::time::Instant::now();
-	let png = skin_renderer::render_skin(Some(url), false).await.unwrap();
+	let png = skin_renderer::render_skin(if url == "none" { None } else { Some(url) }, true)
+		.await
+		.unwrap();
 	let end = std::time::Instant::now();
 	println!("Rendered in {:?}", end - start);
 

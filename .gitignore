@@ -12,3 +12,4 @@
 /scripts/chunks
 /generated
 .idea
+/crates/skin-renderer/*.png

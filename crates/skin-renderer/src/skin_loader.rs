@@ -1,4 +1,6 @@
-use image::{DynamicImage, GenericImage, GenericImageView, ImageResult, Rgba};
+use std::{fs::File, io::BufWriter};
+
+use image::{DynamicImage, GenericImage, GenericImageView, ImageBuffer, ImageResult, Rgba};
 use reqwest::Client;
 
 use crate::error::{SkinRendererError, SkinRendererResult};
@@ -39,11 +41,16 @@ impl SkinSize for SkinFormat {
 impl SkinLoader {
 	pub fn new() -> Self {
 		Self {
-			client: Client::new(),
+			client: Client::builder().user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0").build().unwrap(),
 		}
 	}
 
 	pub async fn get_skin(&self, url: &str) -> SkinRendererResult<DynamicImage> {
+		if url == "input" {
+			let skin = image::open("input.png")?;
+			return Ok(skin);
+		}
+
 		let response = self.client.get(url).send().await?;
 
 		if response.status().is_success() {
@@ -68,6 +75,17 @@ impl SkinLoader {
 		Self::fix_opaque_skin(&mut skin, format);
 		Self::fix_transparent_skin(&mut skin);
 
+		let image = ImageBuffer::<Rgba<u8>, _>::from_vec(
+			skin.dimensions().0,
+			skin.dimensions().1,
+			skin.to_rgba8().into_vec(),
+		)
+		.expect("Failed to create image buffer");
+
+		let mut writer = BufWriter::new(File::create("post.png").unwrap());
+
+		image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
+
 		Ok(skin)
 	}
 
@@ -87,11 +105,27 @@ impl SkinLoader {
 
 		skin.copy_from(&legacy_skin, 0, 0)?;
 
-		// Copy right leg to left leg position
-		skin.copy_from(&legacy_skin.crop_imm(0, 16, 16, 16), 16, 48)?;
+		skin.copy_within(
+			image::math::Rect {
+				x: 0,
+				y: 16,
+				width: 16,
+				height: 16,
+			},
+			16,
+			48,
+		);
 
-		// Copy right arm to left arm position
-		skin.copy_from(&legacy_skin.crop_imm(40, 16, 16, 16), 32, 48)?;
+		skin.copy_within(
+			image::math::Rect {
+				x: 40,
+				y: 16,
+				width: 16,
+				height: 16,
+			},
+			32,
+			48,
+		);
 
 		Ok(skin)
 	}
@@ -99,61 +133,28 @@ impl SkinLoader {
 	// See https://github.com/bs-community/skinview3d/issues/93
 	/// Fixes skins with opaque backgrounds by making the background transparent.
 	fn fix_opaque_skin(skin: &mut DynamicImage, original_format: SkinFormat) {
-		// if the skin has any transparent pixels then it's not an opaque skin
-		let width = original_format.width();
-		let height = original_format.height();
-
-		for x in 0..width {
-			for y in 0..height {
-				let pixel = skin.get_pixel(x, y);
-				let opacity = pixel[3];
-
-				if opacity == 0 {
-					return;
-				}
-			}
-		}
-
 		let transparent = Rgba([0, 0, 0, 0]);
 
-		fill_rect(skin, 40, 0, 8, 8, transparent); // Helm Top
-		fill_rect(skin, 48, 0, 8, 8, transparent); // Helm Bottom
-		fill_rect(skin, 32, 8, 8, 8, transparent); // Helm Right
-		fill_rect(skin, 40, 8, 8, 8, transparent); // Helm Front
-		fill_rect(skin, 48, 8, 8, 8, transparent); // Helm Left
-		fill_rect(skin, 56, 8, 8, 8, transparent); // Helm Back
+		// force all out-of-bounds locations to be transparent
+		fill_rect(skin, 0, 0, 8, 8, transparent);
+		fill_rect(skin, 24, 0, 16, 8, transparent);
+		fill_rect(skin, 56, 0, 8, 8, transparent);
+		fill_rect(skin, 0, 16, 4, 4, transparent);
+		fill_rect(skin, 12, 16, 8, 4, transparent);
+		fill_rect(skin, 36, 16, 8, 4, transparent);
+		fill_rect(skin, 52, 16, 12, 4, transparent);
+		fill_rect(skin, 56, 20, 8, 28, transparent);
 
 		if matches!(original_format, SkinFormat::Modern) {
-			fill_rect(skin, 4, 32, 4, 4, transparent); // Right Leg Layer 2 Top
-			fill_rect(skin, 8, 32, 4, 4, transparent); // Right Leg Layer 2 Bottom
-			fill_rect(skin, 0, 36, 4, 12, transparent); // Right Leg Layer 2 Right
-			fill_rect(skin, 4, 36, 4, 12, transparent); // Right Leg Layer 2 Front
-			fill_rect(skin, 8, 36, 4, 12, transparent); // Right Leg Layer 2 Left
-			fill_rect(skin, 12, 36, 4, 12, transparent); // Right Leg Layer 2 Back
-			fill_rect(skin, 20, 32, 8, 4, transparent); // Torso Layer 2 Top
-			fill_rect(skin, 28, 32, 8, 4, transparent); // Torso Layer 2 Bottom
-			fill_rect(skin, 16, 36, 4, 12, transparent); // Torso Layer 2 Right
-			fill_rect(skin, 20, 36, 8, 12, transparent); // Torso Layer 2 Front
-			fill_rect(skin, 28, 36, 4, 12, transparent); // Torso Layer 2 Left
-			fill_rect(skin, 32, 36, 8, 12, transparent); // Torso Layer 2 Back
-			fill_rect(skin, 44, 32, 4, 4, transparent); // Right Arm Layer 2 Top
-			fill_rect(skin, 48, 32, 4, 4, transparent); // Right Arm Layer 2 Bottom
-			fill_rect(skin, 40, 36, 4, 12, transparent); // Right Arm Layer 2 Right
-			fill_rect(skin, 44, 36, 4, 12, transparent); // Right Arm Layer 2 Front
-			fill_rect(skin, 48, 36, 4, 12, transparent); // Right Arm Layer 2 Left
-			fill_rect(skin, 52, 36, 12, 12, transparent); // Right Arm Layer 2 Back
-			fill_rect(skin, 4, 48, 4, 4, transparent); // Left Leg Layer 2 Top
-			fill_rect(skin, 8, 48, 4, 4, transparent); // Left Leg Layer 2 Bottom
-			fill_rect(skin, 0, 52, 4, 12, transparent); // Left Leg Layer 2 Right
-			fill_rect(skin, 4, 52, 4, 12, transparent); // Left Leg Layer 2 Front
-			fill_rect(skin, 8, 52, 4, 12, transparent); // Left Leg Layer 2 Left
-			fill_rect(skin, 12, 52, 4, 12, transparent); // Left Leg Layer 2 Back
-			fill_rect(skin, 52, 48, 4, 4, transparent); // Left Arm Layer 2 Top
-			fill_rect(skin, 56, 48, 4, 4, transparent); // Left Arm Layer 2 Bottom
-			fill_rect(skin, 48, 52, 4, 12, transparent); // Left Arm Layer 2 Right
-			fill_rect(skin, 52, 52, 4, 12, transparent); // Left Arm Layer 2 Front
-			fill_rect(skin, 56, 52, 4, 12, transparent); // Left Arm Layer 2 Left
-			fill_rect(skin, 60, 52, 4, 12, transparent); // Left Arm Layer 2 Back
+			fill_rect(skin, 0, 32, 4, 4, transparent);
+			fill_rect(skin, 12, 32, 8, 4, transparent);
+			fill_rect(skin, 36, 32, 8, 4, transparent);
+			fill_rect(skin, 52, 32, 4, 4, transparent);
+			fill_rect(skin, 0, 48, 4, 4, transparent);
+			fill_rect(skin, 12, 48, 8, 4, transparent);
+			fill_rect(skin, 28, 48, 8, 4, transparent);
+			fill_rect(skin, 44, 48, 8, 4, transparent);
+			fill_rect(skin, 60, 48, 4, 4, transparent);
 		}
 	}
 
@@ -184,7 +185,7 @@ fn remove_transparency(image: &mut DynamicImage, x: u32, y: u32, width: u32, hei
 			let mut pixel = image.get_pixel(x, y);
 			let opacity = pixel[3];
 
-			if opacity == 255 {
+			if opacity == u8::MAX {
 				continue;
 			}
 
