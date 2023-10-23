@@ -250,12 +250,12 @@ impl Guild {
 	async fn from_uuid_raw(uuid: Uuid) -> Result<Arc<Guild>, Error> {
 		let n = uuid.as_u128();
 		// format as hex, left-pad with 0s to 24 characters
-		let id = format!("{:024x}", n);
+		let id = format!("{n:024x}");
 
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
 
-			url.set_query(Some(&format!("id={}", id)));
+			url.set_query(Some(&format!("id={id}")));
 			url
 		};
 
@@ -293,7 +293,7 @@ impl Guild {
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
 
-			url.set_query(Some(&format!("name={}", name)));
+			url.set_query(Some(&format!("name={name}")));
 			url
 		};
 
@@ -331,7 +331,7 @@ impl Guild {
 		let url = {
 			let mut url = HYPIXEL_GUILD_API_ENDPOINT.clone();
 
-			url.set_query(Some(&format!("player={}", uuid)));
+			url.set_query(Some(&format!("player={uuid}")));
 			url
 		};
 

@@ -286,7 +286,7 @@ mod tests {
 
 	// Macro tests
 	#[test]
-	#[should_panic]
+	#[should_panic(expected = "expected `§`")]
 	fn test_plain_string_macro() {
 		let _: [Text; 1] = minecraft_text("Hello, world!");
 	}
