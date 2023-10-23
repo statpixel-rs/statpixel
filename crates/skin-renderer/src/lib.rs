@@ -11,24 +11,31 @@ mod resources;
 mod skin;
 mod texture;
 
+use std::sync::Arc;
+
 pub use reqwest::IntoUrl;
 pub use skin::SkinKind;
 
-use async_once::AsyncOnce;
-use lazy_static::lazy_static;
 use renderer::SkinRenderer;
+use tokio::sync::OnceCell;
 
-lazy_static! {
-	static ref SKIN_RENDERER: AsyncOnce<SkinRenderer> = AsyncOnce::new(async {
-		SkinRenderer::new(97, 157)
-			.await
-			.expect("Failed to initialize skin renderer")
-	});
-}
+pub static SKIN_RENDERER: OnceCell<Arc<SkinRenderer>> = OnceCell::const_new();
 
 pub async fn render_skin(
 	kind: SkinKind,
 	skin: Option<impl reqwest::IntoUrl>,
 ) -> error::Result<Vec<u8>> {
-	SKIN_RENDERER.get().await.render(kind, skin).await
+	SKIN_RENDERER
+		.get_or_init(create_renderer)
+		.await
+		.render(kind, skin)
+		.await
+}
+
+pub async fn create_renderer() -> Arc<SkinRenderer> {
+	Arc::new(
+		SkinRenderer::new(97, 157)
+			.await
+			.expect("failed to create renderer"),
+	)
 }

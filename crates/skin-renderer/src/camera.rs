@@ -1,11 +1,11 @@
 use bytemuck::{Pod, Zeroable};
-use cgmath::{Deg, Matrix4, Point3, Vector3};
+use glam::{vec3, Mat4, Vec3, Vec4};
 
 #[derive(Debug)]
 pub struct Camera {
-	eye: Point3<f32>,
-	target: Point3<f32>,
-	up: Vector3<f32>,
+	eye: Vec3,
+	target: Vec3,
+	up: Vec3,
 	aspect: f32,
 	fovy: f32,
 	znear: f32,
@@ -15,9 +15,9 @@ pub struct Camera {
 impl Camera {
 	pub fn new(width: f32, height: f32) -> Self {
 		Self {
-			eye: (0.0, 50.0, 310.0).into(),
-			target: (0.0, 0.0, 0.0).into(),
-			up: Vector3::unit_y(),
+			eye: vec3(0.0, 50.0, 310.0),
+			target: Vec3::ZERO,
+			up: Vec3::Y,
 			aspect: width / height,
 			fovy: 40.0,
 			znear: 0.1,
@@ -25,9 +25,10 @@ impl Camera {
 		}
 	}
 
-	fn build_view_projection_matrix(&self) -> Matrix4<f32> {
-		let view = Matrix4::look_at_rh(self.eye, self.target, self.up);
-		let proj = cgmath::perspective(Deg(self.fovy), self.aspect, self.znear, self.zfar);
+	fn build_view_projection_matrix(&self) -> Mat4 {
+		let view = Mat4::look_at_rh(self.eye, self.target, self.up);
+		let proj =
+			Mat4::perspective_rh_gl(self.fovy.to_radians(), self.aspect, self.znear, self.zfar);
 
 		proj * view
 	}
@@ -42,9 +43,10 @@ pub struct CameraUniform {
 
 impl CameraUniform {
 	pub fn new(camera: &Camera) -> Self {
+		let vp_matrix = camera.build_view_projection_matrix();
 		Self {
-			view_position: camera.eye.to_homogeneous().into(),
-			view_proj: camera.build_view_projection_matrix().into(),
+			view_position: Vec4::from((camera.eye, 1.0)).into(),
+			view_proj: vp_matrix.to_cols_array_2d(),
 		}
 	}
 }

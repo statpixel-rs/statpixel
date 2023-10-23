@@ -16,6 +16,8 @@ pub enum Error {
 	Image(#[from] image::ImageError),
 	#[error("Failed to render skin")]
 	RenderFailure,
+	#[error("The renderer has not been initialized")]
+	Uninitialized,
 }
 
 pub type Result<T> = std::result::Result<T, Error>;

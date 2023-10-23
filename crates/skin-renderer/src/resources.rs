@@ -5,61 +5,32 @@ use crate::{
 };
 
 use bytemuck::cast_slice;
-use std::fmt::Debug;
 use std::io::{BufReader, Cursor};
-use std::path::Path;
 use wgpu::util::DeviceExt;
 
-pub async fn load_string(file_name: impl AsRef<Path>) -> error::Result<String> {
-	let path = std::path::Path::new(env!("OUT_DIR"))
-		.join("models")
-		.join(file_name);
-
-	let txt = std::fs::read_to_string(path)?;
-
-	Ok(txt)
-}
-
-pub fn load_binary(file_name: &str) -> error::Result<Vec<u8>> {
-	let path = std::path::Path::new(env!("OUT_DIR"))
-		.join("models")
-		.join(file_name);
-
-	Ok(std::fs::read(path)?)
-}
-
-pub fn load_texture(
-	file_name: &str,
-	device: &wgpu::Device,
-	queue: &wgpu::Queue,
-) -> error::Result<Texture> {
-	let data = load_binary(file_name)?;
-	Texture::try_from_bytes(device, queue, &data)
-}
-
-pub async fn load_model(
-	path: impl AsRef<Path> + Debug,
+pub fn load_model(
+	bytes: &[u8],
 	device: &wgpu::Device,
 	queue: &wgpu::Queue,
 	layout: &wgpu::BindGroupLayout,
 ) -> error::Result<Model> {
-	let content = load_string(path.as_ref()).await?;
-	let mut reader = BufReader::new(Cursor::new(content));
+	let mut reader = BufReader::new(Cursor::new(bytes));
 
-	let (models, materials) = tobj::load_obj_buf_async(
+	let (models, materials) = tobj::load_obj_buf(
 		&mut reader,
 		&tobj::LoadOptions {
 			triangulate: true,
 			single_index: true,
 			..Default::default()
 		},
-		|p| async move {
-			let mat_text = load_string(&p).await.expect("could not load material");
-
-			tobj::load_mtl_buf(&mut BufReader::new(Cursor::new(mat_text)))
+		|p| {
+			tobj::load_mtl_buf(&mut match p.file_name().and_then(|f| f.to_str()) {
+				Some("classic.mtl") => include_bytes!("../models/classic.mtl").as_slice(),
+				Some("slim.mtl") => include_bytes!("../models/slim.mtl").as_slice(),
+				o => unreachable!("unknown material file: {o:?}"),
+			})
 		},
-	)
-	.await?;
+	)?;
 
 	let materials = materials?
 		.into_iter()
@@ -68,7 +39,15 @@ pub async fn load_model(
 				.diffuse_texture
 				.ok_or(error::Error::MissingDiffuseTexture)?;
 
-			let texture = load_texture(&texture, device, queue)?;
+			let texture = Texture::try_from_bytes(
+				device,
+				queue,
+				match texture.as_str() {
+					"alex.png" => include_bytes!("../models/alex.png").as_slice(),
+					"steve.png" => include_bytes!("../models/steve.png").as_slice(),
+					o => unreachable!("unknown texture: {o:?}"),
+				},
+			)?;
 			let material = Material::new(device, texture, layout);
 
 			Ok(material)
@@ -96,13 +75,13 @@ pub async fn load_model(
 				.collect::<Vec<_>>();
 
 			let vertex_buffer = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
-				label: Some(&format!("{:?} Vertex Buffer", path)),
+				label: Some("Vertex Buffer"),
 				contents: cast_slice(&vertices),
 				usage: wgpu::BufferUsages::VERTEX,
 			});
 
 			let index_buffer = device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
-				label: Some(&format!("{:?} Index Buffer", path)),
+				label: Some("Index Buffer"),
 				contents: cast_slice(&m.mesh.indices),
 				usage: wgpu::BufferUsages::INDEX,
 			});

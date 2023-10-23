@@ -12,7 +12,6 @@ use crate::{
 };
 
 use bytemuck::cast_slice;
-use futures_intrusive::channel;
 use image::{ImageBuffer, Rgba};
 use std::io::{BufWriter, Cursor};
 use wgpu::util::DeviceExt;
@@ -225,9 +224,18 @@ impl SkinRenderer {
 
 		let depth_texture = Texture::new_depth_texture(&device, &config, "depth_texture");
 
-		let (classic_model, slim_model) = tokio::try_join!(
-			load_model("classic.obj", &device, &queue, &texture_bind_group_layout),
-			load_model("slim.obj", &device, &queue, &texture_bind_group_layout)
+		let classic_model = load_model(
+			include_bytes!("../models/classic.obj"),
+			&device,
+			&queue,
+			&texture_bind_group_layout,
+		)?;
+
+		let slim_model = load_model(
+			include_bytes!("../models/slim.obj"),
+			&device,
+			&queue,
+			&texture_bind_group_layout,
 		)?;
 
 		Ok(Self {
@@ -402,7 +410,7 @@ impl SkinRenderer {
 		let index = self.queue.submit(Some(command_buf));
 
 		let buf_slice = output_buf.slice(..);
-		let (sender, receiver) = channel::shared::oneshot_channel();
+		let (sender, receiver) = tokio::sync::oneshot::channel();
 
 		buf_slice.map_async(wgpu::MapMode::Read, move |result| {
 			if sender.send(result).is_err() {
@@ -413,7 +421,7 @@ impl SkinRenderer {
 		self.device
 			.poll(wgpu::Maintain::WaitForSubmissionIndex(index));
 
-		if let Some(Ok(())) = receiver.receive().await {
+		if let Ok(Ok(())) = receiver.await {
 			let padded_buf = buf_slice.get_mapped_range();
 
 			let buf = padded_buf

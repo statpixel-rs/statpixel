@@ -1,22 +1,20 @@
 #[repr(C)]
 #[derive(Debug, Copy, Clone, bytemuck::Pod, bytemuck::Zeroable)]
 pub struct LightUniform {
-	position: [f32; 3],
-	// Due to uniforms requiring 16 byte (4 float) spacing, we need to use a padding field here
-	_padding: u32,
-
-	color: [f32; 3],
-	// Due to uniforms requiring 16 byte (4 float) spacing, we need to use a padding field here
-	_padding2: u32,
+	position: [f32; 4],
+	color: [f32; 4],
 }
 
 impl LightUniform {
 	pub fn new(position: [f32; 3], color: [f32; 3]) -> Self {
 		Self {
-			position,
-			color,
-			_padding: 0,
-			_padding2: 0,
+			position: [
+				position[0],
+				position[1],
+				position[2],
+				/* padding */ 0.0,
+			],
+			color: [color[0], color[1], color[2], /* padding */ 0.0],
 		}
 	}
 }

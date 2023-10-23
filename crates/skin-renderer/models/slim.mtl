@@ -8,5 +8,5 @@ Ks 0.000000 0.000000 0.000000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 illum 1
-map_Kd ./alex.png
-map_d ./alex.png
+map_Kd alex.png
+map_d alex.png
