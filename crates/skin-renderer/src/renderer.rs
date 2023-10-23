@@ -13,7 +13,7 @@ use crate::{
 
 use bytemuck::cast_slice;
 use image::{ImageBuffer, Rgba};
-use std::io::{BufWriter, Cursor};
+use std::io::Cursor;
 use wgpu::util::DeviceExt;
 
 pub struct SkinRenderer {
@@ -534,12 +534,9 @@ impl SkinRenderer {
 		)
 		.expect("Buffer not large enough for image");
 
-		let mut writer = BufWriter::new(Cursor::new(Vec::new()));
+		let mut writer = Cursor::new(Vec::new());
 		image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
 
-		Ok(writer
-			.into_inner()
-			.map_err(|_| error::Error::RenderFailure)?
-			.into_inner())
+		Ok(writer.into_inner())
 	}
 }

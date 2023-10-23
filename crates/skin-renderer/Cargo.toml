@@ -8,12 +8,12 @@ version = "0.37.0"
 name = "skin_renderer"
 
 [dependencies]
-bytemuck = { version = "1", features = ["derive"] }
-image = "0.24"
-tobj = { version = "4", features = ["async"] }
-wgpu = "0.17"
+bytemuck.workspace = true
+image.workspace = true
+tobj.workspace = true
+wgpu.workspace = true
 thiserror.workspace = true
 tracing.workspace = true
 reqwest.workspace = true
 tokio.workspace = true
-glam = "0.24"
+glam.workspace = true
