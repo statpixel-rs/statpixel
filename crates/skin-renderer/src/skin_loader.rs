@@ -1,6 +1,4 @@
-use std::{fs::File, io::BufWriter};
-
-use image::{DynamicImage, GenericImage, GenericImageView, ImageBuffer, ImageResult, Rgba};
+use image::{DynamicImage, GenericImage, GenericImageView, ImageResult, Rgba};
 use reqwest::Client;
 
 use crate::error::{SkinRendererError, SkinRendererResult};
@@ -74,17 +72,6 @@ impl SkinLoader {
 
 		Self::fix_opaque_skin(&mut skin, format);
 		Self::fix_transparent_skin(&mut skin);
-
-		let image = ImageBuffer::<Rgba<u8>, _>::from_vec(
-			skin.dimensions().0,
-			skin.dimensions().1,
-			skin.to_rgba8().into_vec(),
-		)
-		.expect("Failed to create image buffer");
-
-		let mut writer = BufWriter::new(File::create("post.png").unwrap());
-
-		image.write_to(&mut writer, image::ImageOutputFormat::Png)?;
 
 		Ok(skin)
 	}
