@@ -13,7 +13,7 @@ use minecraft::{
 use skia_safe::Color;
 use translate::{context, tr};
 
-const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
+pub const LABEL: [Text; 1] = minecraft_text("§f§lNetwork");
 
 #[allow(clippy::too_many_lines)]
 #[allow(clippy::too_many_arguments)]

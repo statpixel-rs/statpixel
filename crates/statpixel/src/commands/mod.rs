@@ -30,6 +30,7 @@ pub mod history;
 pub mod leaderboard;
 pub mod link;
 pub mod network;
+pub mod parkour;
 pub mod project;
 pub mod recent;
 pub mod session;

@@ -125,6 +125,7 @@ async fn main() {
 		commands::games::warlords::parent(),
 		commands::winstreaks::winstreaks(),
 		commands::games::woolwars::parent(),
+		commands::parkour::parkour(),
 	];
 
 	let locale = translate::read_ftl().unwrap();

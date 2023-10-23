@@ -126,6 +126,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			Ok(())
 		}
 		Id::Root { kind, uuid } => match kind {
+			Mode::Parkour => super::commands::parkour::run::parkour(ctx, None, Some(uuid)).await,
 			Mode::BedWarsPractice => {
 				super::commands::bedwars::run::practice(ctx, None, Some(uuid)).await
 			}
@@ -391,7 +392,8 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			| Mode::Network
 			| Mode::BedWarsShop
 			| Mode::BedWarsPractice
-			| Mode::BedWarsHotbar => Ok(()),
+			| Mode::BedWarsHotbar
+			| Mode::Parkour => Ok(()),
 		},
 		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
@@ -530,7 +532,8 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 			| Mode::Network
 			| Mode::BedWarsShop
 			| Mode::BedWarsPractice
-			| Mode::BedWarsHotbar => Ok(()),
+			| Mode::BedWarsHotbar
+			| Mode::Parkour => Ok(()),
 		},
 		Id::Between { .. } => Ok(()),
 	}

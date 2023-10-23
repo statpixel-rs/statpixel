@@ -4,7 +4,7 @@
 	derive(derive::Game),
 	game(
 		path = "arcade",
-		pretty = "§6§lArcade",
+		pretty = "§6§lA§e§lr§a§lc§b§la§3§ld§c§le",
 		plain = "Arcade",
 		field(ident = "wins", colour = "green"),
 		field(ident = "games", colour = "red"),

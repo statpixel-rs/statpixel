@@ -70,7 +70,7 @@ pub struct Data {
 	pub language: hypixel::language::Language,
 	#[serde(rename(deserialize = "socialMedia"), default, skip_serializing)]
 	pub socials: hypixel::socials::Socials,
-	#[serde(with = "crate::de::vec_map", default)]
+	#[serde(with = "crate::de::vec_map", default, rename = "parkourCompletions")]
 	pub parkour: Vec<(hypixel::game::r#type::Type, Vec<super::parkour::Completion>)>,
 }
 

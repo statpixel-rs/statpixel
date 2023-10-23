@@ -1124,6 +1124,8 @@ pub enum Mode {
 	BedWarsPractice,
 	BedWarsShop,
 	BedWarsHotbar,
+
+	Parkour,
 }
 
 #[derive(bitcode::Encode, bitcode::Decode, Debug)]

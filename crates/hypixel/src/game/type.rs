@@ -476,11 +476,11 @@ impl Type {
 	pub fn as_text(&self) -> &'static [Text<'static>] {
 		match self {
 			Self::Limbo => {
-				const TEXT: [Text; 1] = minecraft_text("§4§lLimbo");
+				const TEXT: [Text; 1] = minecraft_text("§d§lLimbo");
 				&TEXT
 			}
 			Self::Lobby => {
-				const TEXT: [Text; 1] = minecraft_text("§4§lLobby");
+				const TEXT: [Text; 1] = minecraft_text("§d§lLobby");
 				&TEXT
 			}
 			Self::Quake => {
@@ -512,7 +512,7 @@ impl Type {
 				&TEXT
 			}
 			Self::Arcade => {
-				const TEXT: [Text; 1] = minecraft_text("§6§lArcade");
+				const TEXT: [Text; 1] = minecraft_text("§6§lA§e§lr§a§lc§b§la§3§ld§c§le");
 				&TEXT
 			}
 			Self::Arena => {
@@ -635,13 +635,14 @@ impl From<&str> for Type {
 			"SUPER_SMASH" | "SuperSmash" => Self::SmashHeroes,
 			"GINGERBREAD" | "GingerBread" => Self::TurboKartRacers,
 			"HOUSING" | "Housing" => Self::Housing,
-			"SKYWARS" | "SkyWars" => Self::SkyWars,
+			"SKYWARS" | "SkyWars" | "Skywars" => Self::SkyWars,
 			"TRUE_COMBAT" | "TrueCombat" => Self::CrazyWalls,
 			"SPEED_UHC" | "SpeedUHC" => Self::SpeedUhc,
 			"SKYCLASH" | "SkyClash" => Self::SkyClash,
 			"LEGACY" | "Legacy" => Self::Classic,
 			"PROTOTYPE" | "Prototype" => Self::Prototype,
-			"BEDWARS" | "Bedwars" => Self::BedWars,
+			// TODO: Handle this different so it can be used with parkour
+			"BEDWARS" | "Bedwars" | "BedwarsSpring2023" => Self::BedWars,
 			"MURDER_MYSTERY" | "MurderMystery" => Self::MurderMystery,
 			"BUILD_BATTLE" | "BuildBattle" => Self::BuildBattle,
 			"DUELS" | "Duels" => Self::Duels,

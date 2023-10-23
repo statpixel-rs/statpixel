@@ -191,6 +191,22 @@ pub async fn map(
 			Ok(bytes)
 		}
 		Id::Root { kind, uuid } => match kind {
+			Mode::Parkour => {
+				let (_, data, session, skin, suffix) =
+					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
+						.await?;
+				let bytes = crate::commands::parkour::image::parkour(
+					ctx,
+					family,
+					background,
+					&data,
+					&session,
+					skin.image(),
+					suffix.as_deref(),
+				);
+
+				Ok(bytes)
+			}
 			Mode::BedWarsPractice => {
 				let (_, data, session, skin, suffix) =
 					crate::commands::get_player_data_session_skin_suffix(ctx, Some(uuid), None)
@@ -885,7 +901,8 @@ pub async fn map(
 				| Mode::Network
 				| Mode::BedWarsShop
 				| Mode::BedWarsPractice
-				| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
+				| Mode::BedWarsHotbar
+				| Mode::Parkour => Err(crate::Error::NotImplemented),
 			}
 		}
 		Id::At { kind, uuid, past } => {
@@ -1064,7 +1081,8 @@ pub async fn map(
 				| Mode::Network
 				| Mode::BedWarsShop
 				| Mode::BedWarsPractice
-				| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
+				| Mode::BedWarsHotbar
+				| Mode::Parkour => Err(crate::Error::NotImplemented),
 			}
 		}
 		Id::History { kind, uuid } => match kind {
@@ -1167,7 +1185,8 @@ pub async fn map(
 			| Mode::Network
 			| Mode::BedWarsShop
 			| Mode::BedWarsPractice
-			| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
+			| Mode::BedWarsHotbar
+			| Mode::Parkour => Err(crate::Error::NotImplemented),
 		},
 		Id::Project { kind, uuid } => match kind {
 			ProjectMode::Arcade(mode, kind) => {
@@ -1587,7 +1606,8 @@ pub async fn map(
 			| Mode::Network
 			| Mode::BedWarsShop
 			| Mode::BedWarsPractice
-			| Mode::BedWarsHotbar => Err(crate::Error::NotImplemented),
+			| Mode::BedWarsHotbar
+			| Mode::Parkour => Err(crate::Error::NotImplemented),
 		},
 	}
 }
