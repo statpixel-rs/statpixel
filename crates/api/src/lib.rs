@@ -6,6 +6,7 @@
 #![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
 #![feature(associated_type_defaults)]
+#![feature(return_position_impl_trait_in_trait)]
 // Temporarily suppress a few clippy warnings
 // See: https://github.com/SoftbearStudios/bitcode/issues/7
 // TODO: Remember to remove this once it has been fixed
