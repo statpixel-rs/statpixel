@@ -2916,3 +2916,10 @@ fishing-compare = palyginti
   .to-description = Minecraft žaidėjas, su kuo norite palyginti
   .mode = režimas
   .mode-description = Žvejybos režimas, kurį norite peržiūrėti
+
+parkour-label = Parkouras
+
+parkour = parkour
+  .description = Peržiūrėti parkouro statistiką
+  .player = žaidėjas
+  .player-description = Minecraft žaidėjas arba seansas

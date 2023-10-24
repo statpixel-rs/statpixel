@@ -2914,3 +2914,10 @@ fishing-compare = 比較
   .to-description = 比較するMinecraftプレイヤー
   .mode = モード
   .mode-description = 表示する釣りモード
+
+parkour-label = パルクール
+
+parkour = parkour
+  .description = パルクール統計を表示する
+  .player = プレイヤー
+  .player-description = Minecraft プレイヤーまたはセッション

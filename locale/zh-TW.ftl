@@ -2915,3 +2915,10 @@ fishing-compare = 比較
   .to-description = 要比較的 Minecraft 玩家
   .mode = 模式
   .mode-description = 要查看的釣魚模式
+
+parkour-label = 跑酷
+
+parkour = parkour
+  .description = 查看跑酷統計數據
+  .player = 玩家
+  .player-description = Minecraft 玩家或會話

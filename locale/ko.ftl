@@ -2911,3 +2911,10 @@ fishing-compare = 비교
   .to-description = 비교할 마인크래프트 플레이어
   .mode = 모드
   .mode-description = 보려는 낚시 모드
+
+parkour-label = 파쿠르
+
+parkour = parkour
+  .description = 파쿠르 통계 보기
+  .player = 플레이어
+  .player-description = 마인크래프트 플레이어 또는 세션

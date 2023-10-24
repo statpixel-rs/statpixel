@@ -2915,3 +2915,10 @@ fishing-compare = usporedi
   .to-description = Minecraft igrač za usporedbu
   .mode = način
   .mode-description = Način ribolova za pregled
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Pregled statistike parkoura
+  .player = igrač
+  .player-description = Minecraft igrač ili sesija

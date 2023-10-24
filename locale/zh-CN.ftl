@@ -2936,3 +2936,10 @@ fishing-compare = 比较
   .to-description = 要比较的 Minecraft 玩家
   .mode = 模式
   .mode-description = 要查看的钓鱼模式
+
+parkour-label = 跑酷
+
+parkour = 跑酷
+  .description = 查看跑酷统计数据
+  .player = 玩家
+  .player-description = Minecraft 玩家或会话

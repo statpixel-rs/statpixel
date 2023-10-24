@@ -2931,3 +2931,10 @@ fishing-compare = сравни
   .to-description = Играч в Minecraft за сравнение
   .mode = режим
   .mode-description = Режим на риболов
+
+parkour-label = Паркур
+
+parkour = паркур
+  .description = Преглед на статистиката за паркур
+  .player = играч
+  .player-description = Играч в Minecraft или сесия

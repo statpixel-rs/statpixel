@@ -2932,3 +2932,10 @@ fishing-compare = compare
   .to-description = Minecraft player to compare to
   .mode = mode
   .mode-description = The Fishing mode to view
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = View Parkour statistics
+  .player = player
+  .player-description = Minecraft player or session

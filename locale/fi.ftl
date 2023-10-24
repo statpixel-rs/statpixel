@@ -2915,3 +2915,10 @@ fishing-compare = vertaa
   .to-description = Minecraft-pelaaja, jota verrataan
   .mode = tila
   .mode-description = Kalastustila näytettäväksi
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Näytä Parkour-tilastot
+  .player = pelaaja
+  .player-description = Minecraft-pelaaja tai istunto

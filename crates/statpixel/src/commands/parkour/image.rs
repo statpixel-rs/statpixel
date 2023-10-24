@@ -37,7 +37,7 @@ pub fn parkour(
 				ctx,
 				family,
 				&crate::commands::network::image::LABEL,
-				"parkour",
+				"parkour-label",
 			),
 		)
 		.push_down_post_draw(

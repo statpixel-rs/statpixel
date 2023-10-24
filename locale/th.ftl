@@ -2915,3 +2915,10 @@ fishing-compare = เปรียบเทียบ
   .to-description = ผู้เล่น Minecraft ที่ต้องการเปรียบเทียบ
   .mode = โหมด
   .mode-description = โหมดการตกปลาที่ต้องการดู
+
+parkour-label = ปาร์คอัพ
+
+parkour = ปาร์คอัพ
+  .description = ดูสถิติปาร์คอัพ
+  .player = ผู้เล่น
+  .player-description = ผู้เล่น Minecraft หรือเซสชัน

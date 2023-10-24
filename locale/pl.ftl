@@ -2915,3 +2915,10 @@ fishing-compare = porównaj
   .to-description = Gracz Minecraft do porównania
   .mode = tryb
   .mode-description = Tryb wędkarstwa do wyświetlenia
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Wyświetl statystyki Parkour
+  .player = gracz
+  .player-description = Gracz Minecraft lub sesja

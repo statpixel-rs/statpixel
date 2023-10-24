@@ -2907,3 +2907,10 @@ fishing-compare = तुलना
   .to-description = तुलना करने के लिए माइनक्राफ्ट खिलाड़ी
   .mode = मोड
   .mode-description = देखने के लिए मछली मोड
+
+parkour-label = पार्कूर
+
+parkour = पार्कूर
+  .description = पार्कूर आँकड़े देखें
+  .player = खिलाड़ी
+  .player-description = माइनक्राफ्ट खिलाड़ी या सत्र

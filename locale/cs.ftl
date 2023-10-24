@@ -2932,3 +2932,10 @@ fishing-compare = porovnat
   .to-description = Minecraft hráč ke srovnání
   .mode = režim
   .mode-description = Režim rybaření k zobrazení
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Zobrazit statistiky parkouru
+  .player = hráč
+  .player-description = Minecraft hráč nebo relace

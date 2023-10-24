@@ -2915,3 +2915,10 @@ fishing-compare = jämför
   .to-description = Minecraft-spelare att jämföra med
   .mode = läge
   .mode-description = Fiskeläge att visa
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Visa Parkour-statistik
+  .player = spelare
+  .player-description = Minecraft-spelare eller session

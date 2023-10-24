@@ -2911,3 +2911,10 @@ fishing-compare = összehasonlítás
   .to-description = Minecraft játékos, amivel össze akarod hasonlítani
   .mode = mód
   .mode-description = A megtekintendő Horgászati mód
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Nézze meg a Parkour statisztikákat
+  .player = játékos
+  .player-description = Minecraft játékos vagy session

@@ -2915,3 +2915,10 @@ fishing-compare = comparați
   .to-description = Jucător Minecraft pentru comparație
   .mode = mod
   .mode-description = Modul de Pescuit de vizualizat
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Vizualizați statisticile de Parkour
+  .player = jucător
+  .player-description = Jucător Minecraft sau sesiune

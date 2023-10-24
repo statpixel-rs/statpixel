@@ -2915,3 +2915,10 @@ fishing-compare = σύγκριση
   .to-description = Minecraft παίκτης για σύγκριση
   .mode = λειτουργία
   .mode-description = Η λειτουργία ψαρέματος προς προβολή
+
+parkour-label = Parkour
+
+parkour = parkour
+  .description = Προβολή στατιστικών Parkour
+  .player = παίκτης
+  .player-description = Παίκτης Minecraft ή συνεδρία

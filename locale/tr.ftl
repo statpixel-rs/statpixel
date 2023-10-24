@@ -2913,3 +2913,10 @@ fishing-compare = karşılaştır
   .to-description = Karşılaştırılacak Minecraft oyuncusu
   .mode = mod
   .mode-description = Görüntülenecek Balıkçılık modu
+
+parkour-label = Parkur
+
+parkour = parkur
+  .description = Parkur istatistiklerini görüntüle
+  .player = oyuncu
+  .player-description = Minecraft oyuncusu veya oturum
