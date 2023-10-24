@@ -323,7 +323,7 @@ async fn event_handler(
 						),
 					)
 					.await
-					.unwrap();
+					.ok();
 			}
 
 			ctx.set_activity(Some(serenity::ActivityData {
@@ -429,7 +429,7 @@ async fn event_handler(
 						),
 					)
 					.await
-					.unwrap();
+					.ok();
 			}
 		}
 		FullEvent::GuildDelete {
