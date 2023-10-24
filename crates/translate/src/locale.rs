@@ -178,10 +178,16 @@ impl Locale {
 		commands: &mut [poise::Command<Data, crate::error::Error>],
 		parent: Option<&str>,
 	) {
-		for command in commands {
+		for (idx, command) in commands.iter_mut().enumerate() {
 			let command_name = match parent {
 				Some(parent) => format!("{}-{}", parent, command.name),
-				None => command.name.clone(),
+				None => {
+					if parent.is_none() && idx < super::GAMES {
+						format!("{}-{}", command.name, "general")
+					} else {
+						command.name.clone()
+					}
+				}
 			};
 
 			if !command.subcommands.is_empty() {
@@ -198,6 +204,7 @@ impl Locale {
 
 				// Insert localized command name and description
 				let localized_command_name = match format(bundle, &command_name, None, None) {
+					Some(_) if parent.is_none() && idx < super::GAMES => command.name.clone(),
 					Some(x) => x,
 					None => {
 						warn!(

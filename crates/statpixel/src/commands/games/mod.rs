@@ -38,7 +38,28 @@ macro_rules! large_command {
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES"
 			)]
-			async fn general(
+			pub async fn general(
+				ctx: $crate::Context<'_>,
+				#[max_length = 36]
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
+				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+			) -> Result<(), Error> {
+				let mode: ::std::option::Option<<$game as api::canvas::prelude::Game>::Mode> =
+					mode.map(Into::into);
+				let uuid = util::parse_uuid(player.as_deref());
+				let ctx = &context::Context::from_poise(&ctx);
+
+				run::command::<$game>(ctx, player, uuid, mode).await
+			}
+
+			#[poise::command(
+				on_error = "crate::util::error_handler",
+				slash_command,
+				required_bot_permissions = "ATTACH_FILES",
+				rename = $name
+			)]
+			pub async fn basic(
 				ctx: $crate::Context<'_>,
 				#[max_length = 36]
 				#[autocomplete = "crate::commands::autocomplete_username"]
@@ -88,7 +109,26 @@ macro_rules! command {
 				slash_command,
 				required_bot_permissions = "ATTACH_FILES"
 			)]
-			async fn general(
+			pub async fn general(
+				ctx: $crate::Context<'_>,
+				#[max_length = 36]
+				#[autocomplete = "crate::commands::autocomplete_username"]
+				player: Option<String>,
+				mode: Option<<$game as api::canvas::prelude::Game>::Mode>,
+			) -> Result<(), Error> {
+				let uuid = util::parse_uuid(player.as_deref());
+				let ctx = &context::Context::from_poise(&ctx);
+
+				run::command::<$game>(ctx, player, uuid, mode).await
+			}
+
+			#[poise::command(
+				on_error = "crate::util::error_handler",
+				slash_command,
+				required_bot_permissions = "ATTACH_FILES",
+				rename = $name
+			)]
+			pub async fn basic(
 				ctx: $crate::Context<'_>,
 				#[max_length = 36]
 				#[autocomplete = "crate::commands::autocomplete_username"]
@@ -178,7 +218,28 @@ pub mod bedwars {
 		slash_command,
 		required_bot_permissions = "ATTACH_FILES"
 	)]
-	async fn general(
+	pub async fn general(
+		ctx: Context<'_>,
+		#[max_length = 36]
+		#[autocomplete = "crate::commands::autocomplete_username"]
+		player: Option<String>,
+		#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+	) -> ::std::result::Result<(), ::translate::Error> {
+		let mode: Option<<stats::bed_wars::BedWars as api::canvas::prelude::Game>::Mode> =
+			mode.map(Into::into);
+		let uuid = util::parse_uuid(player.as_deref());
+		let ctx = &context::Context::from_poise(&ctx);
+
+		run::command::<stats::bed_wars::BedWars>(ctx, player, uuid, mode).await
+	}
+
+	#[poise::command(
+		on_error = "crate::util::error_handler",
+		slash_command,
+		required_bot_permissions = "ATTACH_FILES",
+		rename = "bedwars"
+	)]
+	pub async fn basic(
 		ctx: Context<'_>,
 		#[max_length = 36]
 		#[autocomplete = "crate::commands::autocomplete_username"]

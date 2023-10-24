@@ -85,6 +85,31 @@ async fn main() {
 	dotenvy::dotenv().ok();
 
 	let mut commands = vec![
+		// These commands are registered per-server, so we can handle the "base" separately
+		commands::games::arcade::basic(),
+		commands::games::arena::basic(),
+		commands::games::bedwars::basic(),
+		commands::games::blitz::basic(),
+		commands::games::buildbattle::basic(),
+		commands::games::copsandcrims::basic(),
+		commands::games::duels::basic(),
+		commands::games::fishing::basic(),
+		commands::games::megawalls::basic(),
+		commands::games::murdermystery::basic(),
+		commands::games::paintball::basic(),
+		commands::games::pit::basic(),
+		commands::games::quake::basic(),
+		commands::games::skywars::basic(),
+		commands::games::smash::basic(),
+		commands::games::speeduhc::basic(),
+		commands::games::tntgames::basic(),
+		commands::games::turbokartracers::basic(),
+		commands::games::uhc::basic(),
+		commands::games::vampirez::basic(),
+		commands::games::walls::basic(),
+		commands::games::warlords::basic(),
+		commands::games::woolwars::basic(),
+		//
 		commands::about::about(),
 		commands::games::arcade::parent(),
 		commands::games::arena::parent(),
@@ -156,7 +181,9 @@ async fn main() {
 				Box::pin(async move {
 					serenity::Command::set_global_commands(
 						&ctx.http,
-						poise::builtins::create_application_commands(&framework.options().commands),
+						poise::builtins::create_application_commands(
+							&framework.options().commands[translate::GAMES..],
+						),
 					)
 					.await
 					.unwrap();
@@ -271,7 +298,7 @@ async fn pre_command(ctx: Context<'_>) {
 #[allow(clippy::too_many_lines)]
 async fn event_handler(
 	event: &FullEvent,
-	_framework: poise::FrameworkContext<'_, Data, Error>,
+	framework: poise::FrameworkContext<'_, Data, Error>,
 	data: &Data,
 ) -> Result<(), Error> {
 	match event {
@@ -285,6 +312,19 @@ async fn event_handler(
 				.write()
 				.await
 				.extend(ready.guilds.iter().map(|g| g.id.get()));
+
+			for guild in &ready.guilds {
+				guild
+					.id
+					.set_commands(
+						&ctx.http,
+						poise::builtins::create_application_commands(
+							&framework.options().commands[..translate::GAMES],
+						),
+					)
+					.await
+					.unwrap();
+			}
 
 			ctx.set_activity(Some(serenity::ActivityData {
 				name: format!("statpixel.xyz | v{VERSION}"),
@@ -364,7 +404,7 @@ async fn event_handler(
 				}
 			}
 		}
-		FullEvent::GuildCreate { guild, .. } => {
+		FullEvent::GuildCreate { ctx, guild, .. } => {
 			if GUILDS.write().await.insert(guild.id.get()) && tracing::enabled!(Level::INFO) {
 				let guilds = GUILDS.read().await.len();
 
@@ -378,6 +418,18 @@ async fn event_handler(
 					.execute(&mut data.pool.get().await?)
 					.await
 					.ok();
+
+				info!(name = guild.name, "joined guild");
+
+				guild
+					.set_commands(
+						&ctx.http,
+						poise::builtins::create_application_commands(
+							&framework.options().commands[..translate::GAMES],
+						),
+					)
+					.await
+					.unwrap();
 			}
 		}
 		FullEvent::GuildDelete {

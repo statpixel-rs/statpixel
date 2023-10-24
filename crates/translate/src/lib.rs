@@ -14,6 +14,8 @@ pub mod context {
 	}
 }
 
+pub const GAMES: usize = 23;
+
 #[cfg(all(feature = "locale", feature = "context", feature = "data"))]
 pub mod prelude;
 
