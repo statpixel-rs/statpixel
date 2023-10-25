@@ -25,7 +25,6 @@ pub struct Track {
 
 #[derive(Deserialize)]
 pub struct TrackInput {
-	pub guild_id: Option<u64>,
 	pub channel_id: u64,
 	pub uuid: Uuid,
 }
@@ -93,8 +92,7 @@ pub async fn delete(
 						track::user_id
 							.eq(claims.id as i64)
 							.and(track::uuid.eq(track.uuid))
-							.and(track::channel_id.eq(track.channel_id as i64))
-							.and(track::guild_id.eq(track.guild_id.map(|i| i as i64))),
+							.and(track::channel_id.eq(track.channel_id as i64)),
 					),
 				)
 				.execute(&mut state.pool.get().await?)
