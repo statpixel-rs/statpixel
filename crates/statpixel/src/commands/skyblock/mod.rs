@@ -28,7 +28,8 @@ async fn autocomplete_product(
 ) -> impl Iterator<Item = String> + Send {
 	tracing::debug!("Autocompleting username `{partial}`");
 
-	if let Ok(mut connection) = ctx.data().pool.get().await {
+	let ctx = &context::Context::from_poise(&ctx);
+	if let Ok(mut connection) = ctx.connection().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result: Result<_, _> = bazaar_item::table
 				.order(bazaar_item::name.asc())

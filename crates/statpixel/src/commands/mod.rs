@@ -47,7 +47,8 @@ pub async fn autocomplete_username(
 ) -> Box<dyn Iterator<Item = String> + Send> {
 	tracing::debug!("Autocompleting username `{partial}`");
 
-	if let Ok(mut connection) = ctx.data().pool.get().await {
+	let ctx = &context::Context::from_poise(&ctx);
+	if let Ok(mut connection) = ctx.connection().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::autocomplete::table
 				.order(schema::autocomplete::searches.desc())
@@ -87,7 +88,9 @@ pub async fn autocomplete_guild_name(
 ) -> Box<dyn Iterator<Item = String> + Send> {
 	tracing::debug!("Autocompleting guild name `{partial}`");
 
-	if let Ok(mut connection) = ctx.data().pool.get().await {
+	let ctx = &context::Context::from_poise(&ctx);
+
+	if let Ok(mut connection) = ctx.connection().await {
 		if partial.is_empty() || partial.contains('%') {
 			let result = schema::guild_autocomplete::table
 				.filter(schema::guild_autocomplete::name.is_not_null())

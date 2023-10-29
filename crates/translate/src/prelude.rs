@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use crate::context::{Context, Locale};
 #[cfg(feature = "data")]
 use crate::Data;
@@ -81,46 +83,39 @@ impl GetChronoLocale for Context<'_> {
 
 #[cfg(feature = "data")]
 pub trait GetLocale {
-	fn locale(&self) -> Option<&Locale>;
-	fn data(&self) -> &Data;
+	fn locale(&self) -> Option<Locale>;
+	fn data(&self) -> Option<&Data>;
 }
 
 #[cfg(feature = "data")]
 impl GetLocale for &'_ Context<'_> {
-	fn locale(&self) -> Option<&Locale> {
-		(*self).locale()
+	fn locale(&self) -> Option<Locale> {
+		Context::locale(self)
 	}
 
-	fn data(&self) -> &Data {
-		(*self).data()
+	fn data(&self) -> Option<&Data> {
+		self.data_opt()
 	}
 }
 
 #[cfg(feature = "data")]
 impl GetLocale for Context<'_> {
-	fn locale(&self) -> Option<&Locale> {
+	fn locale(&self) -> Option<Locale> {
 		self.locale()
 	}
 
-	fn data(&self) -> &Data {
-		self.data()
+	fn data(&self) -> Option<&Data> {
+		self.data_opt()
 	}
 }
 
 #[cfg(feature = "error")]
 impl GetLocale for crate::Context<'_> {
-	fn locale(&self) -> Option<&Locale> {
-		Some(match (*self).locale() {
-			Some("de") => &Locale::de,
-			Some("es-ES") => &Locale::es_ES,
-			Some("fr") => &Locale::fr,
-			Some("ja") => &Locale::ja,
-			Some("ru") => &Locale::ru,
-			_ => &Locale::en_US,
-		})
+	fn locale(&self) -> Option<Locale> {
+		Locale::from_str(self.locale()?).ok()
 	}
 
-	fn data(&self) -> &crate::Data {
-		(*self).data()
+	fn data(&self) -> Option<&crate::Data> {
+		Some(self.data())
 	}
 }

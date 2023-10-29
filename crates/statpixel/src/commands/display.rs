@@ -2,7 +2,7 @@ use database::schema;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use minecraft::style::Family;
-use translate::tr;
+use translate::{context, tr};
 
 use crate::{format::Display, util::success_embed, Context, Error};
 
@@ -25,6 +25,8 @@ pub enum Format {
 )]
 pub async fn display(ctx: Context<'_>, format: Format) -> Result<(), Error> {
 	let u = ctx.author();
+	let ctx = &context::Context::from_poise(&ctx);
+
 	let (display, font) = match format {
 		Format::Image => (Display::Image, Family::Minecraft),
 		Format::ImageFaithful => (Display::Image, Family::Faithful),
@@ -48,7 +50,7 @@ pub async fn display(ctx: Context<'_>, format: Format) -> Result<(), Error> {
 			schema::user::font.eq(&font),
 			schema::user::updated_at.eq(chrono::Utc::now()),
 		))
-		.execute(&mut ctx.data().pool.get().await?)
+		.execute(&mut ctx.connection().await?)
 		.await?;
 
 	ctx.send(success_embed(

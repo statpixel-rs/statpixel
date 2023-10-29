@@ -64,16 +64,16 @@ pub async fn delete(
 	id: String,
 ) -> Result<(), Error> {
 	let id = util::parse_uuid(Some(&id)).ok_or_else(|| Error::InvalidUuid(id))?;
+	let author = ctx.author();
+	let ctx = &context::Context::from_poise(&ctx);
 
 	let result = diesel::delete(
 		session::table
 			.filter(session::id.eq(id))
-			.filter(session::user_id.eq(ctx.author().id.get() as i64)),
+			.filter(session::user_id.eq(author.id.get() as i64)),
 	)
-	.execute(&mut ctx.data().pool.get().await?)
+	.execute(&mut ctx.connection().await?)
 	.await?;
-
-	let ctx = &context::Context::from_poise(&ctx);
 
 	if result == 0 {
 		return Err(Error::SessionNotFound);
@@ -150,14 +150,14 @@ macro_rules! command {
 					session::table
 						.filter(session::id.eq(id))
 						.select((session::uuid, session::id))
-						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
+						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.connection().await?)
 						.await
 						.optional()?
 				} else {
 					session::table
 						.filter(session::name.eq(&session.as_str()[1..]))
 						.select((session::uuid, session::id))
-						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.data().pool.get().await?)
+						.get_result::<(uuid::Uuid, uuid::Uuid)>(&mut ctx.connection().await?)
 						.await
 						.optional()?
 				};
@@ -209,7 +209,7 @@ macro_rules! large_command {
 				let Some(player_uuid) = session::table
 					.filter(session::id.eq(uuid))
 					.select(session::uuid)
-					.get_result::<uuid::Uuid>(&mut ctx.data().pool.get().await?)
+					.get_result::<uuid::Uuid>(&mut ctx.connection().await?)
 					.await
 					.optional()?
 				else {

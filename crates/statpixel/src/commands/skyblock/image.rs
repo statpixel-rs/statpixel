@@ -1018,7 +1018,7 @@ pub async fn bazaar(
 		bazaar_item::table
 			.filter(bazaar_item::name.eq(product))
 			.select(bazaar_item::id),
-		&mut ctx.data().pool.get().await?,
+		&mut ctx.connection().await?,
 	)
 	.await?;
 
@@ -1034,7 +1034,7 @@ pub async fn bazaar(
 			))
 			.order(bazaar::created_at.asc())
 			.limit(60 * 24 * 7),
-		&mut ctx.data().pool.get().await?,
+		&mut ctx.connection().await?,
 	)
 	.await?;
 

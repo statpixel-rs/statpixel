@@ -145,13 +145,13 @@ impl Player {
 					autocomplete::name.eq(username),
 					autocomplete::searches.eq(autocomplete::searches + 1),
 				))
-				.execute(&mut ctx.data().pool.get().await?)
+				.execute(&mut ctx.connection().await?)
 				.await?;
 		} else {
 			diesel::update(autocomplete::table)
 				.filter(autocomplete::uuid.eq(&self.uuid))
 				.set((autocomplete::searches.eq(autocomplete::searches + 1),))
-				.execute(&mut ctx.data().pool.get().await?)
+				.execute(&mut ctx.connection().await?)
 				.await?;
 		}
 
@@ -160,7 +160,7 @@ impl Player {
 
 	#[cfg(feature = "database")]
 	pub async fn get_suffix(&self, ctx: &context::Context<'_>) -> Option<String> {
-		let Ok(mut connnection) = ctx.data().pool.get().await else {
+		let Ok(mut connnection) = ctx.connection().await else {
 			return None;
 		};
 
@@ -338,7 +338,7 @@ impl Player {
 				let data = snapshot::table
 					.filter(snapshot::id.eq(snapshot_id))
 					.select(snapshot::data)
-					.first::<Vec<u8>>(&mut ctx.data().pool.get().await?)
+					.first::<Vec<u8>>(&mut ctx.connection().await?)
 					.await?;
 
 				crate::snapshot::user::decode(data.as_slice())

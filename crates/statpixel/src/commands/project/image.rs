@@ -26,7 +26,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 		.filter(schema::snapshot::uuid.eq(player.uuid))
 		.order(schema::snapshot::created_at.asc())
 		.select((schema::snapshot::created_at, schema::snapshot::data))
-		.get_results::<(DateTime<Utc>, Vec<u8>)>(&mut ctx.data().pool.get().await?)
+		.get_results::<(DateTime<Utc>, Vec<u8>)>(&mut ctx.connection().await?)
 		.await?;
 
 	if snapshots.is_empty() {

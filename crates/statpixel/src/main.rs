@@ -277,7 +277,7 @@ async fn main() {
 }
 
 async fn pre_command(ctx: Context<'_>) {
-	let Ok(mut connection) = ctx.data().pool.get().await else {
+	let Ok(mut connection) = context::Context::from_poise(&ctx).connection().await else {
 		return;
 	};
 

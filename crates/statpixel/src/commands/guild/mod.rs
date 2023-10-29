@@ -29,7 +29,7 @@ pub async fn get_snapshots_multiple_of_weekday(
 		.select(guild_snapshot::data)
 		.order(guild_snapshot::days_since_epoch.desc())
 		.distinct_on(guild_snapshot::days_since_epoch)
-		.get_results::<Vec<u8>>(&mut ctx.data().pool.get().await?)
+		.get_results::<Vec<u8>>(&mut ctx.connection().await?)
 		.await?;
 
 	Ok(result

@@ -419,7 +419,7 @@ pub async fn get(
 		.filter(snapshot::uuid.eq(player.uuid))
 		.select((snapshot::data, snapshot::created_at))
 		.order(snapshot::created_at.asc())
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.connection().await?)
 		.await;
 
 	// Get the newest snapshot before the timeframe
@@ -428,7 +428,7 @@ pub async fn get(
 		.filter(snapshot::uuid.eq(player.uuid))
 		.select((snapshot::data, snapshot::created_at))
 		.order(snapshot::created_at.desc())
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.connection().await?)
 		.await;
 
 	// Use the one that is closest to the timeframe
@@ -463,7 +463,7 @@ pub async fn get_snapshot_by_session_id(
 	let snapshot_id = match session::table
 		.filter(session::id.eq(id))
 		.select(session::snapshot_id)
-		.first::<i64>(&mut ctx.data().pool.get().await?)
+		.first::<i64>(&mut ctx.connection().await?)
 		.await
 	{
 		Ok(id) => id,
@@ -474,7 +474,7 @@ pub async fn get_snapshot_by_session_id(
 	let snapshot = snapshot::table
 		.filter(snapshot::id.eq(snapshot_id))
 		.select((snapshot::data, snapshot::created_at))
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.connection().await?)
 		.await;
 
 	match snapshot {
@@ -504,7 +504,7 @@ pub async fn get_or_insert(
 pub async fn insert(ctx: &Context<'_>, player: &Player, data: &Data) -> Result<(), Error> {
 	let encoded = encode(data)?;
 	let hash = fxhash::hash64(&encoded) as i64;
-	let mut connection = ctx.data().pool.get().await?;
+	let mut connection = ctx.connection().await?;
 
 	connection
 		.transaction::<(), Error, _>(|conn| {
@@ -564,7 +564,7 @@ pub async fn insert_with_session(
 ) -> Result<Uuid, Error> {
 	let encoded = encode(data)?;
 	let hash = fxhash::hash64(&encoded) as i64;
-	let mut connection = ctx.data().pool.get().await?;
+	let mut connection = ctx.connection().await?;
 
 	connection
 		.transaction::<_, Error, _>(|conn| {

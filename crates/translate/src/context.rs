@@ -1,7 +1,8 @@
 use std::str::FromStr;
-
 use std::sync::atomic::{AtomicBool, Ordering};
 
+use diesel_async::pooled_connection::deadpool::{self, Object};
+use diesel_async::AsyncPgConnection;
 use poise::serenity_prelude as serenity;
 
 #[allow(non_camel_case_types)]
@@ -140,6 +141,7 @@ pub enum ContextInteraction<'c> {
 		ctx: &'c serenity::Context,
 	},
 	External(&'c super::Data),
+	Empty,
 }
 
 pub struct Context<'c> {
@@ -149,6 +151,20 @@ pub struct Context<'c> {
 }
 
 impl<'c> Context<'c> {
+	pub const EMPTY: Self = Self {
+		locale: None,
+		interaction: ContextInteraction::Empty,
+		automated: true,
+	};
+
+	pub async fn connection(&self) -> Result<Object<AsyncPgConnection>, deadpool::PoolError> {
+		self.data_opt()
+			.ok_or(deadpool::PoolError::Closed)?
+			.pool
+			.get()
+			.await
+	}
+
 	pub fn from_component(
 		ctx: &'c serenity::Context,
 		data: &'c super::Data,
@@ -219,8 +235,8 @@ impl<'c> Context<'c> {
 		self.automated
 	}
 
-	pub fn locale(&self) -> Option<&Locale> {
-		self.locale.as_ref()
+	pub fn locale(&self) -> Option<Locale> {
+		self.locale
 	}
 
 	pub fn author(&self) -> Option<&serenity::User> {
@@ -235,32 +251,44 @@ impl<'c> Context<'c> {
 				..
 			} => Some(&interaction.user),
 			Self {
-				interaction: ContextInteraction::External(..) | ContextInteraction::Modal { .. },
+				interaction:
+					ContextInteraction::External(..)
+					| ContextInteraction::Modal { .. }
+					| ContextInteraction::Empty,
+				..
+			} => None,
+		}
+	}
+
+	pub fn data_opt(&self) -> Option<&super::Data> {
+		match self {
+			#[cfg(feature = "error")]
+			Self {
+				interaction: ContextInteraction::Command(ctx),
+				..
+			} => Some(ctx.data()),
+			Self {
+				interaction: ContextInteraction::Component { data, .. },
+				..
+			} => Some(data),
+			Self {
+				interaction: ContextInteraction::Modal { data, .. },
+				..
+			} => Some(data),
+			Self {
+				interaction: ContextInteraction::External(data),
+				..
+			} => Some(data),
+			Self {
+				interaction: ContextInteraction::Empty,
 				..
 			} => None,
 		}
 	}
 
 	pub fn data(&self) -> &super::Data {
-		match self {
-			#[cfg(feature = "error")]
-			Self {
-				interaction: ContextInteraction::Command(ctx),
-				..
-			} => ctx.data(),
-			Self {
-				interaction: ContextInteraction::Component { data, .. },
-				..
-			} => data,
-			Self {
-				interaction: ContextInteraction::Modal { data, .. },
-				..
-			} => data,
-			Self {
-				interaction: ContextInteraction::External(data),
-				..
-			} => data,
-		}
+		self.data_opt()
+			.expect("Context::data() called on empty context")
 	}
 
 	pub fn discord(&self) -> &serenity::Context {
@@ -272,6 +300,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::discord() called on external context")
 			}
+			ContextInteraction::Empty => unreachable!("Context::discord() called on empty context"),
 		}
 	}
 
@@ -294,7 +323,9 @@ impl<'c> Context<'c> {
 
 				Ok(())
 			}
-			ContextInteraction::External(..) | ContextInteraction::Modal { .. } => Ok(()),
+			ContextInteraction::External(..)
+			| ContextInteraction::Modal { .. }
+			| ContextInteraction::Empty => Ok(()),
 		}
 	}
 
@@ -314,6 +345,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
+			ContextInteraction::Empty => unreachable!("Context::send() called on empty context"),
 		}
 	}
 
@@ -333,6 +365,7 @@ impl<'c> Context<'c> {
 			ContextInteraction::External(..) => {
 				unreachable!("Context::send() called on external context")
 			}
+			ContextInteraction::Empty => unreachable!("Context::send() called on empty context"),
 		}
 	}
 

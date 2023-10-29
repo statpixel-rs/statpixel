@@ -25,21 +25,22 @@ pub async fn track(
 ) -> Result<(), Error> {
 	ctx.defer().await?;
 
+	let author = ctx.author();
 	let guild_id = ctx.guild_id();
 	let channel_id = ctx.channel_id();
 
 	let uuid = util::parse_uuid(player.as_deref());
-	let lctx = &context::Context::from_poise(&ctx);
-	let player = util::get_player_with_username_from_input(lctx, uuid, player).await?;
+	let ctx = &context::Context::from_poise(&ctx);
+	let player = util::get_player_with_username_from_input(ctx, uuid, player).await?;
 
-	let mut connection = ctx.data().pool.get().await?;
+	let mut connection = ctx.connection().await?;
 
 	connection
 		.transaction::<(), Error, _>(|connection| {
 			async move {
 				match diesel::insert_into(track::table)
 					.values((
-						track::user_id.eq(ctx.author().id.get() as i64),
+						track::user_id.eq(author.id.get() as i64),
 						track::uuid.eq(player.uuid),
 						track::guild_id.eq(guild_id.map(|g| g.get() as i64)),
 						track::channel_id.eq(channel_id.get() as i64),
@@ -78,10 +79,7 @@ pub async fn track(
 				}
 
 				let (tracks, max_tracks, premium_until) = diesel::insert_into(user::table)
-					.values((
-						user::id.eq(ctx.author().id.get() as i64),
-						user::tracks.eq(1),
-					))
+					.values((user::id.eq(author.id.get() as i64), user::tracks.eq(1)))
 					.on_conflict(user::id)
 					.do_update()
 					.set(user::tracks.eq(user::tracks + 1))
@@ -101,10 +99,10 @@ pub async fn track(
 
 	ctx.send(
 		success_embed(
-			tr_fmt!(lctx, "track-success-title", username: player.username.unwrap()),
-			tr(lctx, "track-success-description"),
+			tr_fmt!(ctx, "track-success-title", username: player.username.unwrap()),
+			tr(ctx, "track-success-description"),
 		)
-		.content(crate::tip::random(lctx)),
+		.content(crate::tip::random(ctx)),
 	)
 	.await?;
 

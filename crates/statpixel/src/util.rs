@@ -59,7 +59,7 @@ pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply {
 pub async fn get_image_options_from_input(
 	ctx: &Context<'_>,
 ) -> (format::Display, Family, Option<Color>) {
-	let Ok(mut connection) = ctx.data().pool.get().await else {
+	let Ok(mut connection) = ctx.connection().await else {
 		return (format::Display::default(), Family::default(), None);
 	};
 
@@ -104,7 +104,7 @@ pub async fn get_player_from_input(
 			let session = session::table
 				.filter(session::id.eq(id))
 				.select((session::uuid, session::snapshot_id))
-				.get_result::<(Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.get_result::<(Uuid, i64)>(&mut ctx.connection().await?)
 				.await
 				.optional()?;
 
@@ -125,7 +125,7 @@ pub async fn get_player_from_input(
 				)
 				.filter(session::name.eq(&name[1..]))
 				.select((session::uuid, session::id, session::snapshot_id))
-				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.connection().await?)
 				.await?;
 
 			let mut player = Player::from_uuid(&session.0).await?;
@@ -139,7 +139,7 @@ pub async fn get_player_from_input(
 			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64))
 				.select(schema::user::uuid)
-				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.get_result::<Option<Uuid>>(&mut ctx.connection().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {
@@ -167,7 +167,7 @@ pub async fn get_player_with_username_from_input(
 			let session = session::table
 				.filter(session::id.eq(id))
 				.select((session::uuid, session::snapshot_id))
-				.get_result::<(Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.get_result::<(Uuid, i64)>(&mut ctx.connection().await?)
 				.await
 				.optional()?;
 
@@ -187,7 +187,7 @@ pub async fn get_player_with_username_from_input(
 				)
 				.filter(session::name.eq(&name[1..]))
 				.select((session::uuid, session::id, session::snapshot_id))
-				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.data().pool.get().await?)
+				.get_result::<(Uuid, Uuid, i64)>(&mut ctx.connection().await?)
 				.await?;
 
 			let mut player = Player::from_uuid(&session.0).await?;
@@ -201,7 +201,7 @@ pub async fn get_player_with_username_from_input(
 			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64))
 				.select(schema::user::uuid)
-				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.get_result::<Option<Uuid>>(&mut ctx.connection().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {
@@ -245,7 +245,7 @@ pub async fn get_guild_with_member_opt_from_input(
 			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64))
 				.select(schema::user::uuid)
-				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.get_result::<Option<Uuid>>(&mut ctx.connection().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {
@@ -289,7 +289,7 @@ pub async fn get_guild_from_input(
 			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64))
 				.select(schema::user::uuid)
-				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.get_result::<Option<Uuid>>(&mut ctx.connection().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {
@@ -327,7 +327,7 @@ pub async fn get_guild_with_member_from_input(
 			let uuid = schema::user::table
 				.filter(schema::user::id.eq(ctx.author().ok_or(Error::NotLinked)?.id.get() as i64))
 				.select(schema::user::uuid)
-				.get_result::<Option<Uuid>>(&mut ctx.data().pool.get().await?)
+				.get_result::<Option<Uuid>>(&mut ctx.connection().await?)
 				.await;
 
 			if let Ok(Some(uuid)) = uuid {

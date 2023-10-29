@@ -28,7 +28,7 @@ pub async fn list(
 				.order(session::created_at.desc())
 				.limit(10)
 				.offset(i64::from(page) * 10)
-				.get_results(&mut ctx.data().pool.get().await?)
+				.get_results(&mut ctx.connection().await?)
 				.await?
 		} else {
 			session::table
@@ -42,7 +42,7 @@ pub async fn list(
 				.order(session::created_at.desc())
 				.limit(10)
 				.offset(i64::from(page) * 10)
-				.get_results(&mut ctx.data().pool.get().await?)
+				.get_results(&mut ctx.connection().await?)
 				.await?
 		};
 

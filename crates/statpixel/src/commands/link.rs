@@ -57,7 +57,7 @@ pub async fn link(
 				schema::user::uuid.eq(player.uuid),
 				schema::user::updated_at.eq(chrono::Utc::now()),
 			))
-			.execute(&mut ctx.data().pool.get().await?)
+			.execute(&mut ctx.connection().await?)
 			.await?;
 
 		ctx.send(success_embed(

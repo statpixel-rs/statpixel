@@ -176,7 +176,7 @@ pub async fn get(
 		.filter(guild_snapshot::uuid.eq(Uuid::from_u128(guild.id)))
 		.select((guild_snapshot::data, guild_snapshot::created_at))
 		.order(guild_snapshot::created_at.asc())
-		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.data().pool.get().await?)
+		.first::<(Vec<u8>, DateTime<Utc>)>(&mut ctx.connection().await?)
 		.await;
 
 	match result {
@@ -205,7 +205,7 @@ pub async fn get_or_insert(
 pub async fn insert(ctx: &Context<'_>, guild: &Guild) -> Result<(), Error> {
 	let encoded = encode(guild)?;
 	let hash = fxhash::hash64(&encoded) as i64;
-	let mut connection = ctx.data().pool.get().await?;
+	let mut connection = ctx.connection().await?;
 
 	let uuid = Uuid::from_u128(guild.id);
 

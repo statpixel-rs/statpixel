@@ -27,12 +27,12 @@ pub struct English<'c>(&'c Data);
 
 #[cfg(feature = "data")]
 impl GetLocale for English<'_> {
-	fn data(&self) -> &Data {
-		self.0
+	fn data(&self) -> Option<&Data> {
+		Some(self.0)
 	}
 
-	fn locale(&self) -> Option<&crate::context::Locale> {
-		Some(&crate::context::Locale::en_US)
+	fn locale(&self) -> Option<crate::context::Locale> {
+		Some(crate::context::Locale::en_US)
 	}
 }
 
@@ -82,10 +82,13 @@ pub fn format(
 
 #[cfg(feature = "data")]
 pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
-	let locale = &ctx.data().locale;
+	let Some(locale) = ctx.data() else {
+		return Cow::Borrowed(id);
+	};
+	let locale = &locale.locale;
 
 	ctx.locale()
-		.and_then(|l| get_locale_str(locale.other.get(l)?, id))
+		.and_then(|l| get_locale_str(locale.other.get(&l)?, id))
 		.or_else(|| get_locale_str(&locale.main, id))
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);
@@ -94,10 +97,13 @@ pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, s
 }
 
 pub fn has_tr(ctx: &impl GetLocale, id: &str) -> bool {
-	let locale = &ctx.data().locale;
+	let Some(locale) = ctx.data() else {
+		return false;
+	};
+	let locale = &locale.locale;
 
 	ctx.locale()
-		.and_then(|l| locale.other.get(l))
+		.and_then(|l| locale.other.get(&l))
 		.map(|bundle| bundle.has_message(id))
 		.or_else(|| Some(locale.main.has_message(id)))
 		.unwrap_or(false)
@@ -119,10 +125,13 @@ pub fn get<'i>(
 	attr: Option<&str>,
 	args: Option<&fluent::FluentArgs<'_>>,
 ) -> Cow<'i, str> {
-	let locale = &ctx.data().locale;
+	let Some(locale) = ctx.data() else {
+		return Cow::Borrowed(id);
+	};
+	let locale = &locale.locale;
 
 	ctx.locale()
-		.and_then(|l| format(locale.other.get(l)?, id, attr, args).map(Cow::Owned))
+		.and_then(|l| format(locale.other.get(&l)?, id, attr, args).map(Cow::Owned))
 		.or_else(|| format(&locale.main, id, attr, args).map(Cow::Owned))
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);

@@ -3,7 +3,7 @@ use database::schema;
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use poise::serenity_prelude as serenity;
-use translate::{tr, tr_fmt};
+use translate::{context, tr, tr_fmt};
 
 use crate::{util::error_embed, Context, Error};
 const COLOURS: &[[&str; 2]] = &[
@@ -147,6 +147,7 @@ pub async fn background(
 	};
 
 	let u = ctx.author();
+	let ctx = &context::Context::from_poise(&ctx);
 
 	diesel::insert_into(schema::user::table)
 		.values((
@@ -159,7 +160,7 @@ pub async fn background(
 			schema::user::colour.eq(colour as i32),
 			schema::user::updated_at.eq(chrono::Utc::now()),
 		))
-		.execute(&mut ctx.data().pool.get().await?)
+		.execute(&mut ctx.connection().await?)
 		.await?;
 
 	ctx.send(

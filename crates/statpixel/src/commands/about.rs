@@ -13,7 +13,7 @@ const TITLE: &str = concat!("StatPixel | v", env!("CARGO_PKG_VERSION"));
 pub async fn about(ctx: Context<'_>) -> Result<(), Error> {
 	let ctx = &context::Context::from_poise(&ctx);
 	let (guilds, profiles, users, snapshots) = {
-		let connection = &mut ctx.data().pool.get().await?;
+		let connection = &mut ctx.connection().await?;
 
 		let users = schema::usage::table
 			.select(count_distinct(schema::usage::user_id))

@@ -205,7 +205,7 @@ impl Guild {
 				guild_autocomplete::searches.eq(guild_autocomplete::searches + 1),
 				guild_autocomplete::xp.eq(self.xp as i32),
 			))
-			.execute(&mut ctx.data().pool.get().await?)
+			.execute(&mut ctx.connection().await?)
 			.await?;
 
 		Ok(())

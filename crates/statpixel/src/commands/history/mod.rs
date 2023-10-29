@@ -106,7 +106,7 @@ pub async fn network(
 			.filter(snapshot::uuid.eq(player.uuid))
 			.order(snapshot::created_at.asc())
 			.select((snapshot::created_at, snapshot::data)),
-		&mut ctx.data().pool.get().await?,
+		&mut ctx.connection().await?,
 	)
 	.await?;
 

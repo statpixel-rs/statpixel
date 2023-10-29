@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use database::schema::{boost, user};
 use diesel::ExpressionMethods;
 use diesel_async::{scoped_futures::ScopedFutureExt, AsyncConnection, RunQueryDsl};
-use translate::{tr, tr_fmt};
+use translate::{context, tr, tr_fmt};
 
 use crate::{util::success_embed, Context, Error};
 
@@ -11,17 +11,20 @@ use crate::{util::success_embed, Context, Error};
 pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 	ctx.defer().await?;
 
-	let mut connection = ctx.data().pool.get().await?;
 	let Some(guild) = ctx.partial_guild().await else {
 		return Err(Error::NotInAGuild);
 	};
+
+	let author = ctx.author();
+	let ctx = &context::Context::from_poise(&ctx);
+	let mut connection = ctx.connection().await?;
 
 	connection
 		.transaction::<(), Error, _>(|connection| {
 			async move {
 				match diesel::insert_into(boost::table)
 					.values((
-						boost::user_id.eq(ctx.author().id.get() as i64),
+						boost::user_id.eq(author.id.get() as i64),
 						boost::guild_id.eq(guild.id.get() as i64),
 					))
 					.execute(connection)
@@ -38,10 +41,7 @@ pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 				};
 
 				let (boosts, max_boosts, premium_until) = diesel::insert_into(user::table)
-					.values((
-						user::id.eq(ctx.author().id.get() as i64),
-						user::boosts.eq(1),
-					))
+					.values((user::id.eq(author.id.get() as i64), user::boosts.eq(1)))
 					.on_conflict(user::id)
 					.do_update()
 					.set(user::boosts.eq(user::boosts + 1))
