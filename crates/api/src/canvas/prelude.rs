@@ -226,6 +226,7 @@ pub struct ImageInput<'c, M: Mode> {
 	pub background: Option<skia_safe::Color>,
 }
 
+/*
 pub trait Image {
 	type Mode: Mode;
 
@@ -430,6 +431,7 @@ pub trait Command {
 	where
 		Self: CondensedImage<Mode = <Self as Command>::Mode>;
 }
+*/
 
 // TODO: implement defaults for all of these, so we can implement a command like so:
 // impl Command for stats::bed_wars::BedWars {
