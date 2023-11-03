@@ -536,6 +536,15 @@ EasterSimulator = Προσομοίωση Πάσχα
 ScubaSimulator = Προσομοίωση Κατάδυσης
 HalloweenSimulator = Προσομοίωση Χάλ
 GrinchSimulator = Προσομοίωση Γκριντς
+Dropper = Πτώση
+PixelParty = Pixel Party
+
+flawless-games = Άψογα παιχνίδια
+fails = Αποτυγχάνει
+fastest-game = Γρηγορότερο παιχνίδι
+power-ups = Ενισχύσεις
+rounds-completed = Πλήρεις γύροι
+highest-round = Υψηλότερος γύρος
 
 mystery-gifts = Μυστήρια Δώρα
 

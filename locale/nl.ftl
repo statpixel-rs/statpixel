@@ -536,6 +536,15 @@ EasterSimulator = Paas Simulator
 ScubaSimulator = Duik Simulator
 HalloweenSimulator = Halloween Simulator
 GrinchSimulator = Grinch Simulator
+Dropper = Vallen
+PixelParty = Pixel Feest
+
+flawless-games = Perfecte Spellen
+fails = Mislukkingen
+fastest-game = Snelste Spel
+power-ups = Power-ups
+rounds-completed = Rondes Voltooid
+highest-round = Hoogste Ronde
 
 mystery-gifts = Mysterie Geschenken
 

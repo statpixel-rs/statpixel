@@ -533,6 +533,15 @@ EasterSimulator = Paskalya Simülatörü
 ScubaSimulator = Tüplü Dalış Simülatörü
 HalloweenSimulator = Cadılar Bayramı Simülatörü
 GrinchSimulator = Grinch Simülatörü
+Dropper = Düşürücü
+PixelParty = Piksel Parti
+
+flawless-games = Kusursuz Oyunlar
+fails = Başarısızlıklar
+fastest-game = En Hızlı Oyun
+power-ups = Güçlendiriciler
+rounds-completed = Tamamlanan Tur Sayısı
+highest-round = En Yüksek Tur
 
 mystery-gifts = Gizemli Hediyeler
 

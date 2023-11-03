@@ -536,6 +536,15 @@ EasterSimulator = Simulatore di Pasqua
 ScubaSimulator = Simulatore Subacqueo
 HalloweenSimulator = Simulatore di Halloween
 GrinchSimulator = Simulatore di Grinch
+Dropper = Caduta Libera
+PixelParty = Festa Pixel
+
+flawless-games = Partite Perfette
+fails = Fallimenti
+fastest-game = Partita più Veloce
+power-ups = Potenziamenti
+rounds-completed = Round Completati
+highest-round = Round più Alto
 
 mystery-gifts = Regali Misteriosi
 

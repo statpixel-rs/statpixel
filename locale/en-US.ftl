@@ -546,6 +546,16 @@ GrinchSimulator = Grinch Simulator
 
 mystery-gifts = Mystery Gifts
 
+Dropper = Dropper
+PixelParty = Pixel Party
+
+flawless-games = Flawless Games
+fails = Fails
+fastest-game = Fastest Game
+power-ups = Power-ups
+rounds-completed = Rounds Completed
+highest-round = Highest Round
+
 arcade-general = general
   .description = View Arcade statistics
   .player = player
@@ -1053,6 +1063,9 @@ BridgeThreeDuel = Bridge 3v3
 
 melee-accuracy = Melee Accuracy
 health-regenerated = Regenerated
+
+melee-hits = Melee Hits
+melee-swings = Melee Swings
 
 duels-general = general
   .description = View Duels statistics
@@ -2046,7 +2059,7 @@ warlords-monthly = monthly
 # /woolwars
 
 layers = Layers
-powerups-collected = Powerups Collected
+powerups-collected = Power-ups Collected
 wool-placed = Wool Placed
 
 woolwars-general = general

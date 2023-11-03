@@ -543,6 +543,15 @@ EasterSimulator = Симулатор на Великден
 ScubaSimulator = Симулатор на Водолаз
 HalloweenSimulator = Симулатор на Хелоуин
 GrinchSimulator = Симулатор на Гринч
+Dropper = Капачка
+PixelParty = Пиксел Парти
+
+flawless-games = Безупречни Игри
+fails = Грешки
+fastest-game = Най-Бърза Игра
+power-ups = Усилвания
+rounds-completed = Завършени Рундове
+highest-round = Най-Висок Рунд
 
 mystery-gifts = Тайни Подаръци
 

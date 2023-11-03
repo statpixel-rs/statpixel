@@ -531,6 +531,15 @@ EasterSimulator = 이스터 시뮬레이터
 ScubaSimulator = 스쿠버 시뮬레이터
 HalloweenSimulator = 할로윈 시뮬레이터
 GrinchSimulator = 그린치 시뮬레이터
+Dropper = 드롭퍼
+PixelParty = 픽셀 파티
+
+flawless-games = 완벽한 게임
+fails = 실패
+fastest-game = 가장 빠른 게임
+power-ups = 강화
+rounds-completed = 완료된 라운드
+highest-round = 최고 라운드
 
 mystery-gifts = 미스터리 기프트
 

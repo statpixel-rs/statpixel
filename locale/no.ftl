@@ -536,6 +536,15 @@ EasterSimulator = Påske-simulator
 ScubaSimulator = Dykker-simulator
 HalloweenSimulator = Halloween-simulator
 GrinchSimulator = Grinchen-simulator
+Dropper = Dropper
+PixelParty = Pikselfest
+
+flawless-games = Feilfrie spill
+fails = Feil
+fastest-game = Raskeste spill
+power-ups = Power-ups
+rounds-completed = Runder fullført
+highest-round = Høyeste runde
 
 mystery-gifts = Mystiske gaver
 

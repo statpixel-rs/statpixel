@@ -537,6 +537,15 @@ EasterSimulator = Húsvét Szimulátor
 ScubaSimulator = Búvár Szimulátor
 HalloweenSimulator = Halloween Szimulátor
 GrinchSimulator = Grincs Szimulátor
+Dropper = Csepp
+PixelParty = Pixel Party
+
+flawless-games = Hibátlan Játékok
+fails = Hibák
+fastest-game = Leggyorsabb Játék
+power-ups = Erő Fokozók
+rounds-completed = Körök Befejezve
+highest-round = Legmagasabb Kör
 
 mystery-gifts = Rejtélyes Ajándékok
 

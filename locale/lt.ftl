@@ -536,6 +536,15 @@ EasterSimulator = Velykų Simuliatorius
 ScubaSimulator = Nardymo Simuliatorius
 HalloweenSimulator = Halloween Simuliatorius
 GrinchSimulator = Grinčo Simuliatorius
+Dropper = Dropperis
+PixelParty = Pixelių Šventė
+
+flawless-games = Be Klaidų Žaidimai
+fails = Klaidos
+fastest-game = Greičiausias Žaidimas
+power-ups = Power-up'ai
+rounds-completed = Baigti Raundai
+highest-round = Aukščiausias Raundas
 
 mystery-gifts = Paslėptos Dovanos
 

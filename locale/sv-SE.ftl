@@ -536,6 +536,15 @@ EasterSimulator = Påsk Simulator
 ScubaSimulator = Dyk Simulator
 HalloweenSimulator = Halloween Simulator
 GrinchSimulator = Grinch Simulator
+Dropper = Dropper
+PixelParty = Pixel Party
+
+flawless-games = Flawless Spel
+fails = Misslyckanden
+fastest-game = Snabbaste Spel
+power-ups = Kraftuppgraderingar
+rounds-completed = Rundor Slutförda
+highest-round = Högsta Runda
 
 mystery-gifts = Gåvor av Mysterium
 

@@ -15,9 +15,26 @@
 			colour = "gold",
 			percent = "u32"
 		),
-		field(ident = "kills", colour = "green"),
-		field(ident = "deaths", colour = "red"),
-		field(tr = "kdr", ident = "kills", div = "deaths", colour = "gold")
+		field(
+			ident = "kills",
+			colour = "green",
+			skip_mode = "dropper",
+			skip_mode = "pixel_party"
+		),
+		field(
+			ident = "deaths",
+			colour = "red",
+			skip_mode = "dropper",
+			skip_mode = "pixel_party"
+		),
+		field(
+			tr = "kdr",
+			ident = "kills",
+			div = "deaths",
+			colour = "gold",
+			skip_mode = "dropper",
+			skip_mode = "pixel_party"
+		)
 	)
 )]
 #[serde(default)]
@@ -89,6 +106,145 @@ pub struct Arcade {
 	#[serde(flatten)]
 	#[cfg_attr(feature = "game", game(mode()))]
 	pub grinch_simulator: GrinchSimulator,
+	#[cfg_attr(
+		feature = "game",
+		game(mode(
+			field(
+				ident = "fastest_game",
+				colour = "green",
+				path = "stats.arcade.dropper"
+			),
+			field(ident = "fails", colour = "red", path = "stats.arcade.dropper"),
+			field(
+				ident = "flawless_games",
+				colour = "gold",
+				path = "stats.arcade.dropper"
+			),
+		))
+	)]
+	pub dropper: Dropper,
+	#[cfg_attr(
+		feature = "game",
+		game(mode(
+			field(
+				ident = "power_ups",
+				colour = "green",
+				path = "stats.arcade.pixel_party"
+			),
+			field(
+				ident = "rounds_completed",
+				colour = "blue",
+				path = "stats.arcade.pixel_party"
+			),
+			field(
+				ident = "highest_round",
+				colour = "gold",
+				path = "stats.arcade.pixel_party"
+			),
+		))
+	)]
+	pub pixel_party: PixelParty,
+}
+
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(default)]
+pub struct PixelParty {
+	pub wins: u32,
+	#[serde(rename = "games_played")]
+	pub games: u32,
+	#[serde(rename = "power_ups_collected")]
+	pub power_ups: u32,
+	pub rounds_completed: u32,
+	pub highest_round: u32,
+}
+
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode)]
+#[serde(rename_all = "snake_case")]
+pub enum DropperMap {
+	Atlantis,
+	Balloons,
+	Bbq,
+	Cabin,
+	City,
+	Distance,
+	Factory,
+	Gears,
+	Mineshaft,
+	Retro,
+	Sewer,
+	Time,
+	Toilet,
+	Western,
+	Mainframe,
+	Paradigm,
+	Beanstalk,
+	Castle,
+	Raindrops,
+	#[serde(rename = "upsidedown")]
+	UpsideDown,
+	Vortex,
+	Mushroom,
+	Ocean,
+	Ravine,
+	Birdcage,
+	Emoji,
+	Painted,
+	Vintage,
+	#[serde(rename = "kingdommines")]
+	KingdomMines,
+	Tangle,
+	Bridges,
+	Glacier,
+	Maelstrom,
+	Butterflies,
+	Geometry,
+	#[serde(rename = "floatingislands")]
+	FlaotingIslands,
+	Nightlife,
+	Well,
+	Space,
+	Ufo,
+	Warp,
+	Iris,
+	#[serde(rename = "boardgames")]
+	BoardGames,
+	Drainage,
+	#[serde(rename = "launchzone")]
+	LaunchZone,
+	Sandworm,
+	Distortion,
+	Sweets,
+	#[serde(other)]
+	Unknown,
+}
+
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode)]
+pub struct DropperData {
+	pub best_time: extra::milliseconds::Milliseconds,
+	pub completions: u32,
+}
+
+impl Default for DropperData {
+	fn default() -> Self {
+		Self {
+			best_time: extra::milliseconds::Milliseconds::default(),
+			completions: 1,
+		}
+	}
+}
+
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(default)]
+pub struct Dropper {
+	#[serde(rename = "games_completed")]
+	pub wins: u32,
+	#[serde(rename = "games_played")]
+	pub games: u32,
+	pub fastest_game: extra::milliseconds::Milliseconds,
+	pub fails: u32,
+	pub flawless_games: u32,
+	#[serde(rename = "map_stats", with = "crate::de::vec_map")]
+	pub maps: Vec<(DropperMap, DropperData)>,
 }
 
 #[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]

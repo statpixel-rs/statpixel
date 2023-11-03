@@ -2,7 +2,7 @@
 name = "skin_renderer"
 authors = ["Matthew Polak <contact@matteopolak.com>"]
 edition = "2021"
-version = "0.38.0"
+version = "0.39.0"
 
 [[bin]]
 name = "skin_renderer"

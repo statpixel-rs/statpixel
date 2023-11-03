@@ -535,6 +535,15 @@ EasterSimulator = イースターシミュレーター
 ScubaSimulator = スキューバシミュレーター
 HalloweenSimulator = ハロウィンシミュレーター
 GrinchSimulator = グリンチシミュレーター
+Dropper = ドロッパー
+PixelParty = ピクセルパーティー
+
+flawless-games = 完璧なゲーム
+fails = 失敗
+fastest-game = 最速ゲーム
+power-ups = パワーアップ
+rounds-completed = 完了したラウンド
+highest-round = 最高ラウンド
 
 mystery-gifts = ミステリーギフト
 

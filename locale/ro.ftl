@@ -536,6 +536,15 @@ EasterSimulator = Simulator de Paști
 ScubaSimulator = Simulator de Scubadiving
 HalloweenSimulator = Simulator de Halloween
 GrinchSimulator = Simulator de Grinch
+Dropper = Picător
+PixelParty = Petrecere Pixel
+
+flawless-games = Jocuri Fără Greșeală
+fails = Eșecuri
+fastest-game = Cel Mai Rapid Joc
+power-ups = Power-ups
+rounds-completed = Runde Completate
+highest-round = Cea Mai Mare Rundă
 
 mystery-gifts = Cadouri Misterioase
 

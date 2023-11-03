@@ -5,7 +5,7 @@ use uuid::Uuid;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 17;
+pub const VERSION: i16 = 18;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {
@@ -13,7 +13,7 @@ pub struct Data {
 	#[bincode(with_serde)]
 	pub uuid: Uuid,
 	#[serde(skip)]
-	pub stats: crate::player::stats::Stats,
+	pub stats: super::stats::Stats,
 	pub(crate) status_rank: Option<String>,
 	pub(crate) rank: Option<String>,
 	pub(crate) package_rank: Option<String>,
@@ -37,6 +37,10 @@ pub struct Data {
 	pub achivement_points: u32,
 	pub language: hypixel::language::Language,
 	pub socials: hypixel::socials::Socials,
+	pub parkour: Vec<(
+		hypixel::game::r#type::Type,
+		Vec<crate::player::parkour::Completion>,
+	)>,
 }
 
 impl From<Data> for crate::player::data::Data {
@@ -44,7 +48,7 @@ impl From<Data> for crate::player::data::Data {
 		Self {
 			username: value.username,
 			uuid: value.uuid,
-			stats: value.stats,
+			stats: value.stats.into(),
 			status_rank: value.status_rank,
 			rank: value.rank,
 			package_rank: value.package_rank,
@@ -64,7 +68,7 @@ impl From<Data> for crate::player::data::Data {
 			achivement_points: value.achivement_points,
 			language: value.language,
 			socials: value.socials,
-			parkour: Vec::new(),
+			parkour: value.parkour,
 		}
 	}
 }

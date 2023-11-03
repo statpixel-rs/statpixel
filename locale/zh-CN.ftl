@@ -536,6 +536,15 @@ EasterSimulator = 复活节模拟器
 ScubaSimulator = 潜水模拟器
 HalloweenSimulator = 万圣节模拟器
 GrinchSimulator = 鬼怪模拟器
+Dropper = 掉落
+PixelParty = 像素派对
+
+flawless-games = 完美游戏
+fails = 失败
+fastest-game = 最快游戏
+power-ups = 动力提升
+rounds-completed = 完成回合
+highest-round = 最高回合
 
 mystery-gifts = 神秘礼物
 

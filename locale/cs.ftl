@@ -543,6 +543,15 @@ EasterSimulator = Velikonoční simulátor
 ScubaSimulator = Potápěčský simulátor
 HalloweenSimulator = Halloweenský simulátor
 GrinchSimulator = Grinchův simulátor
+Dropper = Padák
+PixelParty = Pixelová párty
+
+flawless-games = Bezchybné hry
+fails = Neúspěchy
+fastest-game = Nejrychlejší hra
+power-ups = Power-upy
+rounds-completed = Dokončené kola
+highest-round = Nejvyšší kolo
 
 mystery-gifts = Tajemné dárky
 

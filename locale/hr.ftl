@@ -536,6 +536,15 @@ EasterSimulator = Uskršnji simulator
 ScubaSimulator = Roniočki simulator
 HalloweenSimulator = Noć vještica simulator
 GrinchSimulator = Grinch simulator
+Dropper = Dropper
+PixelParty = Piksel party
+
+flawless-games = Savršene igre
+fails = Neuspjesi
+fastest-game = Najbrža igra
+power-ups = Power-upovi
+rounds-completed = Završeni krugovi
+highest-round = Najviši krug
 
 mystery-gifts = Misteriozni darovi
 

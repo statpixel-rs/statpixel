@@ -537,6 +537,16 @@ ScubaSimulator = 水肺潛水模擬器
 HalloweenSimulator = 萬聖節模擬器
 GrinchSimulator = 鬼靈模擬器
 
+Dropper = 掉落者
+PixelParty = 像素派對
+
+flawless-games = 完美遊戲
+fails = 失敗
+fastest-game = 最快遊戲
+power-ups = 功能卡
+rounds-completed = 完成回合
+highest-round = 最高回合
+
 mystery-gifts = 神秘禮物
 
 arcade-general = 一般

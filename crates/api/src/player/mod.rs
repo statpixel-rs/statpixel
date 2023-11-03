@@ -26,7 +26,7 @@ use crate::cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE};
 
 use self::status::Status;
 
-pub const VERSION: i16 = 18;
+pub const VERSION: i16 = 19;
 pub static DEFAULT_SKIN: Lazy<image::Image> =
 	image::include_image!("../../../../assets/skins/steve.png");
 

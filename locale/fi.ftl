@@ -534,6 +534,15 @@ EasterSimulator = Pääsiäis-simulaattori
 ScubaSimulator = Sukellus-simulaattori
 HalloweenSimulator = Halloween-simulaattori
 GrinchSimulator = Grinch-simulaattori
+Dropper = Tiputtaja
+PixelParty = Pikseli juhlat
+
+flawless-games = Virheettömät pelit
+fails = Epäonnistumiset
+fastest-game = Nopein peli
+power-ups = Voimakkuudet
+rounds-completed = Kierrokset suoritettu
+highest-round = Korkein kierros
 
 mystery-gifts = Arvoitukselliset lahjat
 

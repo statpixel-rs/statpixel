@@ -536,6 +536,15 @@ EasterSimulator = Easter Simulator
 ScubaSimulator = Scuba Simulator
 HalloweenSimulator = Halloween Simulator
 GrinchSimulator = Grinch Simulator
+Dropper = Dropper
+PixelParty = Pixel Party
+
+flawless-games = Perfekte Spiele
+fails = Fehlschläge
+fastest-game = Schnellstes Spiel
+power-ups = Power-ups
+rounds-completed = Runden abgeschlossen
+highest-round = Höchste Runde
 
 mystery-gifts = Überraschungsgeschenke
 
