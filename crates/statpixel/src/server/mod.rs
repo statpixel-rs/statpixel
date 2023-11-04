@@ -68,7 +68,7 @@ pub async fn run(data: Data) {
 		.route("/tracks/:uuid", post(tracks::create))
 		.route("/boosts", get(boosts::get).delete(boosts::delete))
 		.route("/boosts/:guildId", post(boosts::create))
-		.route_layer(
+		.layer(
 			ServiceBuilder::new()
 				.layer(HandleErrorLayer::new(|e: BoxError| async move {
 					display_error(e)
@@ -95,7 +95,7 @@ pub async fn run(data: Data) {
 	let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 
 	axum::Server::bind(&addr)
-		.serve(app.into_make_service())
+		.serve(app.into_make_service_with_connect_info::<SocketAddr>())
 		.await
 		.unwrap();
 }

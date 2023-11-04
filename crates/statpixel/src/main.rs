@@ -313,6 +313,13 @@ async fn event_handler(
 				.await
 				.extend(ready.guilds.iter().map(|g| g.id.get()));
 
+			ctx.set_activity(Some(serenity::ActivityData {
+				name: format!("statpixel.xyz | v{VERSION}"),
+				kind: serenity::ActivityType::Custom,
+				state: Some(format!("statpixel.xyz | v{VERSION}")),
+				url: None,
+			}));
+
 			for guild in &ready.guilds {
 				guild
 					.id
@@ -325,13 +332,6 @@ async fn event_handler(
 					.await
 					.ok();
 			}
-
-			ctx.set_activity(Some(serenity::ActivityData {
-				name: format!("statpixel.xyz | v{VERSION}"),
-				kind: serenity::ActivityType::Custom,
-				state: Some(format!("statpixel.xyz | v{VERSION}")),
-				url: None,
-			}));
 		}
 		FullEvent::InteractionCreate {
 			ctx,
