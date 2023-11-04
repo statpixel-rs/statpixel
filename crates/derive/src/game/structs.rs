@@ -129,7 +129,13 @@ impl GameInputReceiver {
 			.fields
 			.into_iter()
 			.filter_map(|f| {
-				if let Some(ref mode) = f.mode && !mode.skip_overall.is_present() { f.try_into().ok() } else { None }
+				if let Some(ref mode) = f.mode
+					&& !mode.skip_overall.is_present()
+				{
+					f.try_into().ok()
+				} else {
+					None
+				}
 			})
 			.collect::<Vec<_>>()
 	}

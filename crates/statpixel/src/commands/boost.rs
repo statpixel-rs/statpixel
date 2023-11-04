@@ -49,7 +49,9 @@ pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 					.get_result::<(i16, i16, Option<DateTime<Utc>>)>(connection)
 					.await?;
 
-				if let Some(premium_until) = premium_until && premium_until < Utc::now() {
+				if let Some(premium_until) = premium_until
+					&& premium_until < Utc::now()
+				{
 					return Err(Error::NotPremium);
 				}
 

@@ -436,11 +436,15 @@ impl Item {
 			price = price.max(worth);
 		}
 
-		if let Some(worth) = self.price && price == 0. {
+		if let Some(worth) = self.price
+			&& price == 0.
+		{
 			price = worth * 0.85;
 		}
 
-		if worth == 0. && let Some(prestiges) = PRESTIGES.get(id.as_ref()) {
+		if worth == 0.
+			&& let Some(prestiges) = PRESTIGES.get(id.as_ref())
+		{
 			for data in prestiges.iter().filter_map(|p| ITEMS.get(*p)) {
 				if let Some(ref upgrades) = data.upgrades {
 					for upgrades in upgrades {
@@ -458,7 +462,9 @@ impl Item {
 			}
 		}
 
-		if let Some(worth) = self.price && self.auction {
+		if let Some(worth) = self.price
+			&& self.auction
+		{
 			let worth = worth * worth::SHENS_AUCTION_PRICE;
 
 			price = price.max(worth);
@@ -569,7 +575,9 @@ impl Item {
 				* worth::MANA_DISINTEGRATOR;
 		}
 
-		if let Some(count) = self.thunder_charge && id == "PULSE_RING" {
+		if let Some(count) = self.thunder_charge
+			&& id == "PULSE_RING"
+		{
 			price += prices
 				.get("THUNDER_IN_A_BOTTLE")
 				.copied()
@@ -630,7 +638,9 @@ impl Item {
 			}
 		}
 
-		if let Some(ref rune) = self.rune && !id.starts_with("RUNE") {
+		if let Some(ref rune) = self.rune
+			&& !id.starts_with("RUNE")
+		{
 			price += rune.worth(prices).unwrap_or_default() * worth::RUNES;
 		}
 
@@ -668,7 +678,9 @@ impl Item {
 		// TODO: stars
 		// TODO: upgrade costs
 
-		if let Some(id) = self.modifier.as_ref().and_then(Modifier::reforge_id) && data.map(|d| d.category != ItemCategory::Accessory) != Some(false) {
+		if let Some(id) = self.modifier.as_ref().and_then(Modifier::reforge_id)
+			&& data.map(|d| d.category != ItemCategory::Accessory) != Some(false)
+		{
 			price += prices.get(id).copied().unwrap_or_default() * worth::REFORGE;
 		}
 
@@ -706,15 +718,21 @@ impl Item {
 	#[must_use]
 	#[inline]
 	pub fn id(&self, prices: &Prices) -> Cow<str> {
-		if let Some(ref rune) = self.rune && self.id == "RUNE" {
+		if let Some(ref rune) = self.rune
+			&& self.id == "RUNE"
+		{
 			return rune.id().into();
 		}
 
-		if let Some(cake) = self.cake && self.id == "NEW_YEAR_CAKE" {
+		if let Some(cake) = self.cake
+			&& self.id == "NEW_YEAR_CAKE"
+		{
 			return format!("NEW_YEAR_CAKE_{cake}").into();
 		}
 
-		if let Some(ref colour) = self.party_hat.colour && self.id.starts_with("PARTY_HAT_CRAB") {
+		if let Some(ref colour) = self.party_hat.colour
+			&& self.id.starts_with("PARTY_HAT_CRAB")
+		{
 			return format!("{}_{}", self.id, colour).into();
 		}
 
@@ -738,7 +756,9 @@ impl Item {
 			}
 		}
 
-		if let Some(ref emoji) = self.party_hat.emoji && self.id == "PARTY_HAT_SLOTH" {
+		if let Some(ref emoji) = self.party_hat.emoji
+			&& self.id == "PARTY_HAT_SLOTH"
+		{
 			let id = format!("{}_{emoji}", self.id);
 
 			if prices.contains_key(&id) {

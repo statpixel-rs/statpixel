@@ -97,7 +97,9 @@ impl Player {
 			.execute(&mut ctx.connection().await?)
 			.await;
 
-		if let Err(e) = result && e != diesel::result::Error::NotFound {
+		if let Err(e) = result
+			&& e != diesel::result::Error::NotFound
+		{
 			return Err(e.into());
 		}
 

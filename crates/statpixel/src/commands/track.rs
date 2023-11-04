@@ -87,7 +87,10 @@ pub async fn track(
 					.get_result::<(i16, i16, Option<DateTime<Utc>>)>(connection)
 					.await?;
 
-				if let Some(premium_until) = premium_until && premium_until < Utc::now() && tracks > max_tracks {
+				if let Some(premium_until) = premium_until
+					&& premium_until < Utc::now()
+					&& tracks > max_tracks
+				{
 					return Err(Error::UserTrackLimitReached(max_tracks));
 				}
 
