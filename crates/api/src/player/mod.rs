@@ -26,7 +26,7 @@ use crate::cache::{PLAYER_CACHE, PLAYER_DATA_CACHE, PLAYER_SESSION_CACHE};
 
 use self::status::Status;
 
-pub const VERSION: i16 = 19;
+pub const VERSION: i16 = 20;
 pub static DEFAULT_SKIN: Lazy<image::Image> =
 	image::include_image!("../../../../assets/skins/steve.png");
 
@@ -136,10 +136,10 @@ impl Player {
 			diesel::insert_into(autocomplete::table)
 				.values((
 					autocomplete::name.eq(username),
-					autocomplete::uuid.eq(&self.uuid),
+					autocomplete::id.eq(&self.uuid),
 					autocomplete::searches.eq(1),
 				))
-				.on_conflict(autocomplete::uuid)
+				.on_conflict(autocomplete::id)
 				.do_update()
 				.set((
 					autocomplete::name.eq(username),
@@ -149,7 +149,7 @@ impl Player {
 				.await?;
 		} else {
 			diesel::update(autocomplete::table)
-				.filter(autocomplete::uuid.eq(&self.uuid))
+				.filter(autocomplete::id.eq(&self.uuid))
 				.set((autocomplete::searches.eq(autocomplete::searches + 1),))
 				.execute(&mut ctx.connection().await?)
 				.await?;

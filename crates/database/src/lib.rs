@@ -23,6 +23,8 @@ pub fn get_pool(max_size: usize) -> PostgresPool {
 	#[cfg(feature = "runtime_env")]
 	let url = url.as_str();
 
+	tracing::info!(url = ?url, "connecting to database");
+
 	let manager = AsyncDieselConnectionManager::<AsyncPgConnection>::new(url);
 
 	Pool::builder(manager)

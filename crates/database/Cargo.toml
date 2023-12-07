@@ -11,6 +11,7 @@ diesel.workspace = true
 diesel-async.workspace = true
 uuid.workspace = true
 dotenvy_macro.workspace = true
+tracing.workspace = true
 
 [features]
 default = ["util"]

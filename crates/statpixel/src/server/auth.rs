@@ -216,6 +216,12 @@ pub async fn update_me(
 	Ok(StatusCode::OK)
 }
 
+fn log_internal_error(e: impl std::error::Error + std::fmt::Debug) -> StatusCode {
+	tracing::error!(error = %e, "internal error");
+
+	StatusCode::INTERNAL_SERVER_ERROR
+}
+
 pub async fn login(
 	WithRejection(query, _): super::extract::Query<Code>,
 ) -> Result<impl IntoResponse, StatusCode> {
@@ -258,10 +264,10 @@ pub async fn login(
 		])
 		.send()
 		.await
-		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
+		.map_err(log_internal_error)?
 		.json::<Access>()
 		.await
-		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+		.map_err(log_internal_error)?;
 
 	let user = HTTP
 		.get("https://discord.com/api/v10/users/@me".try_into().unwrap())
@@ -271,15 +277,12 @@ pub async fn login(
 		)
 		.send()
 		.await
-		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
+		.map_err(log_internal_error)?
 		.json::<DiscordUser>()
 		.await
-		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+		.map_err(log_internal_error)?;
 
-	let id = user
-		.id
-		.parse::<u64>()
-		.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+	let id = user.id.parse::<u64>().map_err(log_internal_error)?;
 
 	let token = create_token(
 		id,

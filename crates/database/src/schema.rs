@@ -1,6 +1,6 @@
 diesel::table! {
-	autocomplete (uuid) {
-		uuid -> Uuid,
+	autocomplete (id) {
+		id -> Uuid,
 		#[max_length = 16]
 		name -> Varchar,
 		searches -> Int4,

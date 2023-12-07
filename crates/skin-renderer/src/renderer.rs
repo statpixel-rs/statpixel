@@ -340,8 +340,8 @@ impl SkinRenderer {
 		}
 
 		let material = match kind {
-			SkinKind::Classic => self.classic_model.materials.get(0),
-			SkinKind::Slim => self.slim_model.materials.get(0),
+			SkinKind::Classic => self.classic_model.materials.first(),
+			SkinKind::Slim => self.slim_model.materials.first(),
 		}
 		.expect("at least one material in the slim and classic models");
 

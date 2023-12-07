@@ -185,7 +185,13 @@ where
 		label(ident = "gold_collected", colour = "gold"),
 		label(ident = "diamond_collected", colour = "aqua"),
 		label(ident = "emerald_collected", colour = "dark_green"),
-		label(ident = "items_purchased", colour = "red")
+		label(ident = "items_purchased", colour = "red"),
+		label(
+			tr = "tickets",
+			ident = "tickets",
+			path = "stats.bed_wars.slumber",
+			colour = "blue"
+		),
 	)
 )]
 pub struct BedWars {
@@ -324,6 +330,16 @@ pub struct BedWars {
 		game(mode(hypixel = "BEDWARS_FOUR_FOUR_SWAP", skip_overall))
 	)]
 	pub four_swap: FourSwap,
+
+	pub slumber: Slumber,
+}
+
+#[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]
+#[serde(default)]
+pub struct Slumber {
+	pub tickets: u32,
+	#[serde(rename = "tickets_given_doorman")]
+	pub tickets_given: u32,
 }
 
 #[derive(serde::Deserialize, bincode::Decode, bincode::Encode, Default)]

@@ -987,6 +987,7 @@ dependencies = [
  "diesel",
  "diesel-async",
  "dotenvy_macro",
+ "tracing",
  "uuid",
 ]
 

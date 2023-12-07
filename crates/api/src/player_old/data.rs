@@ -5,7 +5,7 @@ use uuid::Uuid;
 
 use crate::minutes::Minutes;
 
-pub const VERSION: i16 = 18;
+pub const VERSION: i16 = 19;
 
 #[derive(Deserialize, bincode::Encode, bincode::Decode)]
 pub struct Data {

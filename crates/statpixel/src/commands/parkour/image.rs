@@ -100,7 +100,7 @@ pub fn parkour(
 				.extend(&[
 					Text::NEW_LINE,
 					Text {
-						text: &time.get(0).map(|t| t.time).to_formatted(ctx),
+						text: &time.first().map(|t| t.time).to_formatted(ctx),
 						size: Some(40.),
 						..Default::default()
 					},
