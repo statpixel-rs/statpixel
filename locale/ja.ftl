@@ -664,6 +664,7 @@ arena-monthly = マンスリー
   .mode-description = 表示するアリーナモード
 
 # /bedwars
+tickets = チケット
 
 Solo = ソロ
 Double = ダブル

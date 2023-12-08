@@ -672,6 +672,7 @@ arena-monthly = měsíčně
   .mode-description = Režim Arény k zobrazení
 
 # /bedwars
+tickets = Vstupenky
 
 Solo = Solo
 Double = Doubles

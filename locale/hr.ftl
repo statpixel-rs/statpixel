@@ -665,6 +665,7 @@ arena-monthly = mjesečno
   .mode-description = Način Arene za pregled
 
 # /bedwars
+tickets = Ulaznice
 
 Solo = Solo
 Double = Duo

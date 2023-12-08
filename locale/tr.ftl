@@ -662,6 +662,7 @@ arena-monthly = aylık
   .mode-description = Görüntülenecek Arena modu
 
 # /bedwars
+tickets = Biletler
 
 Solo = Tekli
 Double = İkili

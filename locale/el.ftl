@@ -665,6 +665,7 @@ arena-monthly = μηνιαία
   .mode-description = Η λειτουργία Arena προς προβολή
 
 # /bedwars
+tickets = Εισιτήρια
 
 Solo = Μονός
 Double = Διπλός

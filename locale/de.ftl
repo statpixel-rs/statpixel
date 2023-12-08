@@ -665,6 +665,7 @@ arena-monthly = monatlich
   .mode-description = Der Arena-Modus, den Sie anzeigen möchten
 
 # /bedwars
+tickets = Tickets
 
 Solo = Solo
 Double = Doppel

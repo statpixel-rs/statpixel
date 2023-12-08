@@ -665,6 +665,7 @@ arena-monthly = รายเดือน
   .mode-description = โหมด Arena ที่ต้องการดู
 
 # /bedwars
+tickets = ตั๋ว
 
 Solo = โหมดเดี่ยว
 Double = โหมดคู่

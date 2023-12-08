@@ -660,6 +660,7 @@ arena-monthly = 월간
   .mode-description = 보고자 하는 아레나 모드
 
 # /bedwars
+tickets = 티켓
 
 Solo = 솔로
 Double = 듀오

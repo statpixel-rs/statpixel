@@ -666,6 +666,7 @@ arena-monthly = havi
   .mode-description = Az Aréna mód, amit meg szeretnél nézni
 
 # /bedwars
+tickets = Jegyek
 
 Solo = Egyéni
 Double = Páros

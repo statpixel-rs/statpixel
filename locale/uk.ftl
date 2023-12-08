@@ -665,6 +665,7 @@ arena-monthly = щомісячно
   .mode-description = Режим арени для перегляду
 
 # /bedwars
+tickets = Квитки
 
 Solo = Соло
 Double = Двоє

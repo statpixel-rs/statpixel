@@ -661,6 +661,7 @@ arena-monthly = मासिक
   .mode-description = देखने के लिए एरीना मोड
 
 # /bedwars
+tickets = टिकट
 
 Solo = सोलो
 Double = डबल्स

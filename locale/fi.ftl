@@ -663,6 +663,7 @@ arena-monthly = kuukausittainen
   .mode-description = Näytettävä Arena-tila
 
 # /bedwars
+tickets = Liput
 
 Solo = Yksin
 Double = Kaksinpeli

@@ -667,6 +667,7 @@ arena-monthly = månedlig
   .mode-description = Arena tilstand at se
 
 # /bedwars
+tickets = Billetter
 
 Solo = Solo
 Double = Doubles

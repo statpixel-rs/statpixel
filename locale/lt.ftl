@@ -665,6 +665,7 @@ arena-monthly = mėnesio
   .mode-description = Arena režimas, kurį norite peržiūrėti
 
 # /bedwars
+tickets = Bilietai
 
 Solo = Solo
 Double = Poros

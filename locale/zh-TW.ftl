@@ -666,6 +666,7 @@ arena-monthly = 每月
   .mode-description = 要查看的 Arena 模式
 
 # /bedwars
+tickets = 票券
 
 Solo = 單人
 Double = 雙人

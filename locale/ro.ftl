@@ -665,6 +665,7 @@ arena-monthly = lunar
   .mode-description = Modul Arenei de vizualizat
 
 # /bedwars
+tickets = Bilete
 
 Solo = Solo
 Double = Duble

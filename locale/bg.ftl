@@ -672,6 +672,7 @@ arena-monthly = месечно
   .mode-description = Режимът на Arena, който да се покаже
 
 # /bedwars
+tickets = Билети
 
 Solo = Самостоятелно
 Double = Двойки
