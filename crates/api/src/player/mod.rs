@@ -197,7 +197,9 @@ impl Player {
 			.timeout(Duration::from_millis(1_000))
 			.build()?;
 
-		if let Ok(response) = HTTP.perform_bare(req).await {
+		if let Ok(response) = HTTP.perform_bare(req).await
+			&& response.status() != StatusCode::SERVICE_UNAVAILABLE
+		{
 			if response.status() != StatusCode::OK {
 				return Err(Error::UsernameNotFound(username.to_string()));
 			}
@@ -256,7 +258,9 @@ impl Player {
 			.timeout(Duration::from_millis(1_000))
 			.build()?;
 
-		if let Ok(response) = HTTP.perform_bare(req).await {
+		if let Ok(response) = HTTP.perform_bare(req).await
+			&& response.status() != StatusCode::SERVICE_UNAVAILABLE
+		{
 			if response.status() != StatusCode::OK {
 				return Err(Error::UuidNotFound(*uuid));
 			}
