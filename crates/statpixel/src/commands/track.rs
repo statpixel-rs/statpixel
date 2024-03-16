@@ -102,7 +102,7 @@ pub async fn track(
 
 	ctx.send(
 		success_embed(
-			tr_fmt!(ctx, "track-success-title", username: player.username.unwrap()),
+			tr_fmt!(ctx, "track-success-title", name: player.username.unwrap()),
 			tr(ctx, "track-success-description"),
 		)
 		.content(crate::tip::random(ctx)),

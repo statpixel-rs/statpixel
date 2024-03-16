@@ -85,7 +85,7 @@ boost = boost
 
 # /track
 
-track-success-title = Urmărești pe {$username}
+track-success-title = Urmărești pe {$name}
 track-success-description =
   Statisticile acestui jucător vor fi acum urmărite și trimise pe acest canal.
   Pentru a opri urmărirea lor, scoate-le pe tabloul de bord la https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = conectare
   .player-description = Jucător Minecraft sau sesiune
 linking-failed = Conectare eșuată
 linking-failed-uuid-description = UUID-ul **`{$uuid}`** nu aparține unui cont Minecraft.
-linking-failed-username-description = Numele utilizator **`{$username}`** nu aparține unui cont Minecraft.
+linking-failed-username-description = Numele utilizator **`{$name}`** nu aparține unui cont Minecraft.
 linking-failed-description = Trebuie să furnizați un UUID sau un nume de utilizator valid.
 linking-succeeded = Conectare cu succes
 linking-succeeded-description = Contul dvs. Discord este acum conectat la contul Minecraft **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = O sesiune cu numele furnizat a fost deja creată 
 
 session-deleted = Sesiunea cu ID-ul **`{$id}`** a fost ștearsă.
 session-created-title = Sesiune creată
-session-created = Sesiunea cu ID-ul **`{$id}`** a fost creată pentru **`{$username}`**.
+session-created = Sesiunea cu ID-ul **`{$id}`** a fost creată pentru **`{$name}`**.
   Înlocuiți locul oricărui jucător cu ID-ul sesiunii pentru a utiliza datele în orice comandă.
 
   Testați acum: </bedwars general:1113624864272683060>

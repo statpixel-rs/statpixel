@@ -85,7 +85,7 @@ boost = stiprinimas
 
 # /track
 
-track-success-title = Sekamas {$username}
+track-success-title = Sekamas {$name}
 track-success-description =
   Šio žaidėjo statistika dabar bus sekiama ir siunčiama į šį kanalą.
   Norėdami nutraukti stebėjimą, jį pašalinkite skyde: https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = susieti
   .player-description = "Minecraft" žaidėjas arba sesija
 linking-failed = Sujungimas nepavyko
 linking-failed-uuid-description = UUID **`{$uuid}`** nepriklauso Minecraft paskyrai.
-linking-failed-username-description = Naudotojas **`{$username}`** nepriklauso Minecraft paskyrai.
+linking-failed-username-description = Naudotojas **`{$name}`** nepriklauso Minecraft paskyrai.
 linking-failed-description = Turite pateikti galiojantį UUID arba naudotojo vardą.
 linking-succeeded = Sujungimas sėkmingas
 linking-succeeded-description = Jūsų Discord paskyra dabar susieta su Minecraft paskyra **`{$name}`**.
@@ -2654,7 +2654,7 @@ error-session-already-exists = Sesija su pateiktu pavadinimu jau buvo sukurta j�
 
 session-deleted = Sesiija su ID **`{$id}`** buvo ištrinta.
 session-created-title = Sukurta sesija
-session-created = Sesiija su ID **`{$id}`** buvo sukurta naudotojui **`{$username}`**.
+session-created = Sesiija su ID **`{$id}`** buvo sukurta naudotojui **`{$name}`**.
   Naudokite sesijos ID vietą norėdami panaudoti jos duomenis bet kurioje komandoje, pakeisdami vietą žaidėjo duomenis sesijos ID.
 
   Išbandykite tai: </bedwars general:1113624864272683060>

@@ -381,6 +381,12 @@ pub async fn begin(
 							Err(e) => {
 								warn!("Failed to update player {uuid}: {e}");
 
+								if let Some(api) = e.api() {
+									if matches!(api, ApiError::PlayerNotFound(_)) {
+										break;
+									}
+								}
+
 								tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
 							}
 						}

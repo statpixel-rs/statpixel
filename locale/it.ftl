@@ -85,7 +85,7 @@ boost = potenziamento
 
 # /track
 
-track-success-title = Tracciamento di {$username}
+track-success-title = Tracciamento di {$name}
 track-success-description =
   Le statistiche di questo giocatore saranno ora tracciate e inviate in questo canale.
   Per smettere di tracciare questo giocatore, rimuovilo dalla dashboard su https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = collegamento
   .player-description = Giocatore di Minecraft o sessione
 linking-failed = Collegamento fallito
 linking-failed-uuid-description = L'UUID **`{$uuid}`** non appartiene a un account Minecraft.
-linking-failed-username-description = Il nome utente **`{$username}`** non appartiene a un account Minecraft.
+linking-failed-username-description = Il nome utente **`{$name}`** non appartiene a un account Minecraft.
 linking-failed-description = Devi fornire un UUID o nome utente valido.
 linking-succeeded = Collegamento riuscito
 linking-succeeded-description = Il tuo account Discord è ora collegato all'account Minecraft **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Una sessione con il nome fornito è già stata cr
 
 session-deleted = La sessione con l'ID **`{$id}`** è stata eliminata.
 session-created-title = Sessione creata
-session-created = La sessione con l'ID **`{$id}`** è stata creata per **`{$username}`**.
+session-created = La sessione con l'ID **`{$id}`** è stata creata per **`{$name}`**.
   Sostituisci il posto di qualsiasi giocatore con l'ID della sessione per utilizzare i suoi dati in qualsiasi comando.
 
   Provalo: </bedwars general:1113624864272683060>

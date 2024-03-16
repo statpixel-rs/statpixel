@@ -85,7 +85,7 @@ boost = ενίσχυση
 
 # /track
 
-track-success-title = Παρακολουθείτε τον {$username}
+track-success-title = Παρακολουθείτε τον {$name}
 track-success-description =
   Τα στατιστικά αυτού του παίκτη θα παρακολουθούνται τώρα και θα αποστέλλονται σε αυτό το κανάλι.
   Για να σταματήσετε να τον παρακολουθείτε, αφαιρέστε τον στον πίνακα ελέγχου στη διεύθυνση https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = σύνδεση
   .player-description = Παίκτης Minecraft ή συνεδρία
 linking-failed = Η σύνδεση απέτυχε
 linking-failed-uuid-description = Το UUID **`{$uuid}`** δεν ανήκει σε λογαριασμό Minecraft.
-linking-failed-username-description = Το όνομα χρήστη **`{$username}`** δεν ανήκει σε λογαριασμό Minecraft.
+linking-failed-username-description = Το όνομα χρήστη **`{$name}`** δεν ανήκει σε λογαριασμό Minecraft.
 linking-failed-description = Πρέπει να παρέχετε ένα έγκυρο UUID ή όνομα χρήστη.
 linking-succeeded = Η σύνδεση ήταν επιτυχής
 linking-succeeded-description = Ο λογαριασμός Discord σας είναι πλέον συνδεδεμένος με το λογαριασμό Minecraft **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Μια συνεδρία με το παρεχόμ�
 
 session-deleted = Η συνεδρία με το αναγνωριστικό **`{$id}`** έχει διαγραφεί.
 session-created-title = Δημιουργήθηκε συνεδρία
-session-created = Η συνεδρία με το αναγνωριστικό **`{$id}`** δημιουργήθηκε για τον **`{$username}`**.
+session-created = Η συνεδρία με το αναγνωριστικό **`{$id}`** δημιουργήθηκε για τον **`{$name}`**.
   Αντικαταστήστε τη θέση οποιουδήποτε παίκτη με το αναγνωριστικό της συνεδρίας για να χρησιμοποιήσετε τα δεδομένα της σε οποιαδήποτε εντολή.
 
   Δοκιμάστε το: </bedwars general:1113624864272683060>

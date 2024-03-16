@@ -44,7 +44,7 @@ pub async fn create(
 			tr(ctx, "session-created-title"),
 			tr_fmt!(
 				ctx, "session-created",
-				username: data.username.as_str(),
+				name: data.username.as_str(),
 				player: name.map_or_else(|| id.to_string(), |n| format!("#{n}"))
 			),
 		)

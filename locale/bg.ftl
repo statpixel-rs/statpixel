@@ -85,7 +85,7 @@ boost = усилене
 
 # /track
 
-track-success-title = Профилът на {$username} се проследява
+track-success-title = Профилът на {$name} се проследява
 track-success-description =
   Статистиката на този играч вече ще бъде проследявана и изпращана към този канал.
   За да спрете проследяването им, го премахнете от контролния панел на https://statpixel.xyz/dashboard/track.
@@ -516,7 +516,7 @@ link = свързване
 
 linking-failed = Свързването неуспешно
 linking-failed-uuid-description = UUID **`{$uuid}`** не принадлежи на Minecraft акаунт.
-linking-failed-username-description = Потребителското име **`{$username}`** не принадлежи на Minecraft акаунт.
+linking-failed-username-description = Потребителското име **`{$name}`** не принадлежи на Minecraft акаунт.
 linking-failed-description = Трябва да предоставите валиден UUID или потребителско име.
 linking-succeeded = Свързване успешно
 linking-succeeded-description = Вашият Discord акаунт е свързан с Minecraft акаунта **`{$name}`**.
@@ -2669,7 +2669,7 @@ error-session-already-exists = Сесия с предоставеното име
 
 session-deleted = Сесията с идентификационен номер **`{$id}`** беше изтрита.
 session-created-title = Създадена сесия
-session-created = Сесията с идентификационен номер **`{$id}`** беше създадена за **`{$username}`**.
+session-created = Сесията с идентификационен номер **`{$id}`** беше създадена за **`{$name}`**.
   Заменете мястото на всеки играч с идентификационния номер на сесията, за да използвате данните му във всяка команда.
 
   Опитайте: </bedwars general:1113624864272683060>

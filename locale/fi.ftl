@@ -83,7 +83,7 @@ boost = paranna
 
 # /track
 
-track-success-title = Pelaajan {$username} seuranta onnistui
+track-success-title = Pelaajan {$name} seuranta onnistui
 track-success-description =
   Tämän pelaajan tilastotiedot seurataan nyt ja lähetetään tähän kanavaan.
   Lopettaaksesi seurannan, poista se hallintapaneelista osoitteessa https://statpixel.xyz/dashboard/track.
@@ -507,7 +507,7 @@ link = linkki
   .player-description = Minecraft-pelaaja tai sessio
 linking-failed = Linkitys epäonnistui
 linking-failed-uuid-description = UUID **`{$uuid}`** ei kuulu Minecraft-tiliin.
-linking-failed-username-description = Käyttäjänimi **`{$username}`** ei kuulu Minecraft-tiliin.
+linking-failed-username-description = Käyttäjänimi **`{$name}`** ei kuulu Minecraft-tiliin.
 linking-failed-description = Sinun on annettava voimassa oleva UUID tai käyttäjänimi.
 linking-succeeded = Linkitys onnistui
 linking-succeeded-description = Discord-tilisi on nyt linkitetty Minecraft-tiliin **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Istunto annetulla nimellä on jo luotu sinun toim
 
 session-deleted = Istunto tunnisteella **`{$id}`** on poistettu.
 session-created-title = Istunto luotu
-session-created = Istunto tunnisteella **`{$id}`** on luotu käyttäjälle **`{$username}`**.
+session-created = Istunto tunnisteella **`{$id}`** on luotu käyttäjälle **`{$name}`**.
   Korvaa minkä tahansa pelaajan paikka istunnon tunnisteella käyttääksesi sen tietoja missä tahansa komennossa.
 
   Kokeile sitä: </bedwars yleinen:1113624864272683060>

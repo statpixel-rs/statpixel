@@ -86,7 +86,7 @@ boost = fokoz
 
 # /track
 
-track-success-title = {$username} nyomon követve
+track-success-title = {$name} nyomon követve
 track-success-description =
   Ez a játékos statisztikái most követve lesznek és elküldve erre a csatornára.
   A nyomon követés leállításához távolítsd el a vezérlőpulton: https://statpixel.xyz/dashboard/track.
@@ -510,7 +510,7 @@ link = kapcsolat
   .player-description = Minecraft játékos vagy session
 linking-failed = Kapcsolat létrehozása sikertelen
 linking-failed-uuid-description = A megadott uuid **`{$uuid}`** nem tartozik egy Minecraft fiókhoz.
-linking-failed-username-description = A megadott felhasználónév **`{$username}`** nem tartozik egy Minecraft fiókhoz.
+linking-failed-username-description = A megadott felhasználónév **`{$name}`** nem tartozik egy Minecraft fiókhoz.
 linking-failed-description = Érvényes UUID-t vagy felhasználónevet kell megadnia.
 linking-succeeded = Kapcsolat létrehozása sikeres
 linking-succeeded-description = A Discord fiókja mostantól kapcsolódva van a Minecraft fiókhoz: **`{$name}`**.
@@ -2649,7 +2649,7 @@ error-session-already-exists = Egy munkamenet már létezik ezzel a névvel.
 
 session-deleted = A(z) **`{$id}`** azonosítójú munkamenet törölve lett.
 session-created-title = Munkamenet létrehozva
-session-created = A(z) **`{$id}`** azonosítójú munkamenet létrehozva **`{$username}`** számára.
+session-created = A(z) **`{$id}`** azonosítójú munkamenet létrehozva **`{$name}`** számára.
   Helyettesítse a játékos helyét a munkamenet azonosítójával, hogy adatait bármelyik parancsban használhassa.
 
   Próbáld ki itt: </bedwars general:1113624864272683060>

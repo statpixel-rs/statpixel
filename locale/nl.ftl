@@ -85,7 +85,7 @@ boost = boost
 
 # /track
 
-track-success-title = {$username} wordt gevolgd
+track-success-title = {$name} wordt gevolgd
 track-success-description =
   De statistieken van deze speler worden nu gevolgd en naar dit kanaal gestuurd.
   Om het volgen te stoppen, verwijder het op het dashboard op https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = koppelen
   .player-description = Minecraft speler of sessie
 linking-failed = Koppelen mislukt
 linking-failed-uuid-description = De UUID **`{$uuid}`** behoort niet toe aan een Minecraft-account.
-linking-failed-username-description = De gebruikersnaam **`{$username}`** behoort niet toe aan een Minecraft-account.
+linking-failed-username-description = De gebruikersnaam **`{$name}`** behoort niet toe aan een Minecraft-account.
 linking-failed-description = U moet een geldige UUID of gebruikersnaam opgeven.
 linking-succeeded = Koppelen gelukt
 linking-succeeded-description = Uw Discord-account is nu gekoppeld aan het Minecraft-account **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Er is al een sessie met de opgegeven naam door jo
 
 session-deleted = De sessie met id **`{$id}`** is verwijderd.
 session-created-title = Sessie aangemaakt
-session-created = De sessie met id **`{$id}`** is aangemaakt voor **`{$username}`**.
+session-created = De sessie met id **`{$id}`** is aangemaakt voor **`{$name}`**.
   Plaats de gegevens van een speler in een opdracht door de sessie-id te gebruiken.
 
   Probeer het uit: </bedwars general:1113624864272683060>

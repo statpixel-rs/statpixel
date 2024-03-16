@@ -83,7 +83,7 @@ boost = boost
 
 # /track
 
-track-success-title = Verfolge {$username}
+track-success-title = Verfolge {$name}
 track-success-description =
   Die Statistiken dieses Spielers werden jetzt verfolgt und in diesem Kanal gesendet.
   Um die Verfolgung zu beenden, entferne sie auf dem Dashboard unter https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = verlinken
   .player-description = Minecraft-Spieler oder Sitzung
 linking-failed = Verlinken fehlgeschlagen
 linking-failed-uuid-description = Die UUID **`{$uuid}`** gehört nicht zu einem Minecraft-Konto.
-linking-failed-username-description = Der Benutzername **`{$username}`** gehört nicht zu einem Minecraft-Konto.
+linking-failed-username-description = Der Benutzername **`{$name}`** gehört nicht zu einem Minecraft-Konto.
 linking-failed-description = Du musst eine gültige UUID oder Benutzernamen angeben.
 linking-succeeded = Verlinken erfolgreich
 linking-succeeded-description = Dein Discord-Konto ist jetzt mit dem Minecraft-Konto **`{$name}`** verknüpft.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Eine Sitzung mit dem angegebenen Namen wurde bere
 
 session-deleted = Die Sitzung mit der ID **`{$id}`** wurde gelöscht.
 session-created-title = Sitzung erstellt
-session-created = Die Sitzung mit der ID **`{$id}`** wurde für **`{$username}`** erstellt.
+session-created = Die Sitzung mit der ID **`{$id}`** wurde für **`{$name}`** erstellt.
   Ersetzen Sie den Platz eines beliebigen Spielers durch die Sitzungs-ID, um seine Daten in einem Befehl zu verwenden.
 
   Probieren Sie es aus: </bedwars general:1113624864272683060>

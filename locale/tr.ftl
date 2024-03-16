@@ -84,7 +84,7 @@ boost = yükselt
 
 # /track
 
-track-success-title = {$username} Takip Ediliyor
+track-success-title = {$name} Takip Ediliyor
 track-success-description =
   Bu oyuncunun istatistikleri artık takip edilecek ve bu kanala gönderilecek.
   Takibi durdurmak için şu adreste kaldırabilirsiniz: https://statpixel.xyz/dashboard/track.
@@ -506,7 +506,7 @@ link = bağlantı
   .player-description = Minecraft oyuncusu veya oturum
 linking-failed = Bağlantı Başarısız
 linking-failed-uuid-description = Verilen UUID **`{$uuid}`** bir Minecraft hesabına ait değil.
-linking-failed-username-description = Verilen kullanıcı adı **`{$username}`** bir Minecraft hesabına ait değil.
+linking-failed-username-description = Verilen kullanıcı adı **`{$name}`** bir Minecraft hesabına ait değil.
 linking-failed-description = Geçerli bir UUID veya kullanıcı adı sağlamalısınız.
 linking-succeeded = Bağlantı Başarılı
 linking-succeeded-description = Discord hesabınız şimdi Minecraft hesabı **`{$name}`** ile bağlantılıdır.
@@ -2651,7 +2651,7 @@ error-session-already-exists = Sağlanan isimle zaten sizin tarafınızdan oluş
 
 session-deleted = Kimlik **`{$id}`** olan oturum silindi.
 session-created-title = Oturum oluşturuldu
-session-created = Kimlik **`{$id}`** olan oturum **`{$username}`** için oluşturuldu.
+session-created = Kimlik **`{$id}`** olan oturum **`{$name}`** için oluşturuldu.
   Herhangi bir oyuncunun kimliğini oturum kimliğiyle değiştirerek verilerini herhangi bir komutta kullanabilirsiniz.
 
   Deneyin: </bedwars general:1113624864272683060>

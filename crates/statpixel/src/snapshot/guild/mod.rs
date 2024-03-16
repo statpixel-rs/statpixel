@@ -1,6 +1,9 @@
 use std::{ops::Mul, sync::Arc};
 
-use api::guild::{Guild, VERSION};
+use api::{
+	guild::{Guild, VERSION},
+	Error,
+};
 use chrono::{DateTime, Utc};
 use database::{
 	schema::{guild_schedule, guild_snapshot},
@@ -132,6 +135,12 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 
 				// This will never fail since it's an md5 hash.
 				while let Err(e) = update(&mut connection, uuid, update_at, hash).await {
+					if let Some(api) = e.api() {
+						if matches!(api, ApiError::GuildNotFound(_)) {
+							break;
+						}
+					}
+
 					warn!("Failed to update guild {uuid}: {e}");
 
 					tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;

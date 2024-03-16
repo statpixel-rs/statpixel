@@ -81,7 +81,7 @@ boost = 강화
   .description = 길드를 강화하여 추적 제한을 높이고 더 많은 기능을 해제합니다.
 
 # /track
-track-success-title = {$username}을(를) 추적합니다.
+track-success-title = {$name}을(를) 추적합니다.
 track-success-description =
   이제 이 플레이어의 통계가 추적되고 이 채널로 전송됩니다.
   추적을 중단하려면 대시보드에서 https://statpixel.xyz/dashboard/track에서 제거하세요.
@@ -504,7 +504,7 @@ link = 연결
   .player-description = 마인크래프트 플레이어 또는 세션
 linking-failed = 연결 실패
 linking-failed-uuid-description = UUID **`{$uuid}`**는 Minecraft 계정에 속하지 않습니다.
-linking-failed-username-description = 사용자 이름 **`{$username}`**은 Minecraft 계정에 속하지 않습니다.
+linking-failed-username-description = 사용자 이름 **`{$name}`**은 Minecraft 계정에 속하지 않습니다.
 linking-failed-description = 유효한 UUID 또는 사용자 이름을 제공해야 합니다.
 linking-succeeded = 연결 성공
 linking-succeeded-description = 이제 Discord 계정이 Minecraft 계정 **`{$name}`**에 연결되었습니다.
@@ -2649,7 +2649,7 @@ error-session-already-exists = 제공된 이름으로 세션이 이미 생성되
 
 session-deleted = ID가 **`{$id}`** 인 세션이 삭제되었습니다.
 session-created-title = 세션이 생성되었습니다
-session-created = ID가 **`{$id}`** 인 세션이 **`{$username}`** 님을 위해 생성되었습니다.
+session-created = ID가 **`{$id}`** 인 세션이 **`{$name}`** 님을 위해 생성되었습니다.
   아무 명령에서 세션 ID로 플레이어의 데이터를 사용하려면 플레이어의 자리를 세션 ID로 대체하세요.
 
   이렇게 해보세요: </bedwars general:1113624864272683060>

@@ -85,7 +85,7 @@ boost = potenciar
 
 # /track
 
-track-success-title = Siguiendo a {$username}
+track-success-title = Siguiendo a {$name}
 track-success-description =
   Las estadísticas de este jugador ahora se seguirán y se enviarán a este canal.
   Para dejar de seguirlo, elimínalo en el panel de control en https://statpixel.xyz/dashboard/track.
@@ -513,7 +513,7 @@ link = vincular
   .player-description = Jugador de Minecraft o sesión
 linking-failed = Vinculación Fallida
 linking-failed-uuid-description = El UUID **`{$uuid}`** no pertenece a una cuenta de Minecraft.
-linking-failed-username-description = El nombre de usuario **`{$username}`** no pertenece a una cuenta de Minecraft.
+linking-failed-username-description = El nombre de usuario **`{$name}`** no pertenece a una cuenta de Minecraft.
 linking-failed-description = Debes proporcionar un UUID o nombre de usuario válido.
 linking-succeeded = Vinculación Exitosa
 linking-succeeded-description = Tu cuenta de Discord ahora está vinculada a la cuenta de Minecraft **`{$name}`**.
@@ -2678,7 +2678,7 @@ error-session-already-exists = Ya has creado una sesión con el nombre proporcio
 
 session-deleted = La sesión con el ID **`{$id}`** ha sido eliminada.
 session-created-title = Sesión creada
-session-created = Se ha creado la sesión con el ID **`{$id}`** para **`{$username}`**.
+session-created = Se ha creado la sesión con el ID **`{$id}`** para **`{$name}`**.
   Sustituye el lugar de cualquier jugador con el ID de la sesión para usar sus datos en cualquier comando.
 
   Pruébalo: </bedwars general:1113624864272683060>

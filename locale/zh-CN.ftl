@@ -82,7 +82,7 @@ boost = 提升
   .description = 提升一个公会以增加其追踪限制并解锁更多功能
 
 # /track
-track-success-title = 正在追踪{$username}
+track-success-title = 正在追踪{$name}
 track-success-description =
   此玩家的统计数据将被追踪并发送到该频道。
   要停止追踪，请在仪表板上移除：https://statpixel.xyz/dashboard/track。
@@ -509,7 +509,7 @@ link = 关联账号
   .player-description = Minecraft 玩家或会话
 linking-failed = 关联失败
 linking-failed-uuid-description = UUID **`{$uuid}`** 不属于 Minecraft 账号。
-linking-failed-username-description = 用户名 **`{$username}`** 不属于 Minecraft 账号。
+linking-failed-username-description = 用户名 **`{$name}`** 不属于 Minecraft 账号。
 linking-failed-description = 您必须提供有效的 UUID 或用户名。
 linking-succeeded = 关联成功
 linking-succeeded-description = 您的 Discord 账号现在关联到 Minecraft 账号 **`{$name}`**。
@@ -2674,7 +2674,7 @@ error-session-already-exists = 您已经创建了一个具有提供的名称的�
 
 session-deleted = ID 为 **`{$id}`** 的会话已被删除。
 session-created-title = 创建会话
-session-created = 已为 **`{$username}`** 创建 ID 为 **`{$id}`** 的会话。
+session-created = 已为 **`{$name}`** 创建 ID 为 **`{$id}`** 的会话。
   在任何命令中使用会话 ID 替代任何玩家的位置以使用其数据。
 
   试一试： </bedwars general:1113624864272683060>

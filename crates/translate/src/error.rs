@@ -120,3 +120,13 @@ pub enum HttpError {
 	#[error("http error")]
 	Http(#[from] reqwest::Error),
 }
+
+impl Error {
+	pub fn api(&self) -> Option<&ApiError> {
+		match self {
+			Error::Api(e) => Some(e),
+			Error::ApiRaw(e) => Some(e),
+			_ => None,
+		}
+	}
+}

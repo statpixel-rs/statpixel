@@ -85,7 +85,7 @@ boost = aumentar
 
 # /track
 
-track-success-title = Rastreando {$username}
+track-success-title = Rastreando {$name}
 track-success-description =
   As estatísticas deste jogador serão rastreadas e enviadas para este canal.
   Para parar de rastreá-lo, remova-o no painel em https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = vincular
   .player-description = Jogador de Minecraft ou sessão
 linking-failed = Vinculação falhou
 linking-failed-uuid-description = O UUID **`{$uuid}`** não pertence a uma conta do Minecraft.
-linking-failed-username-description = O nome de usuário **`{$username}`** não pertence a uma conta do Minecraft.
+linking-failed-username-description = O nome de usuário **`{$name}`** não pertence a uma conta do Minecraft.
 linking-failed-description = Você deve fornecer um UUID ou nome de usuário válido.
 linking-succeeded = Vinculação bem-sucedida
 linking-succeeded-description = Sua conta do Discord agora está vinculada à conta do Minecraft **`{$name}`**.
@@ -2652,7 +2652,7 @@ error-session-already-exists = Uma sessão com o nome fornecido já foi criada p
 
 session-deleted = A sessão com o ID **`{$id}`** foi excluída.
 session-created-title = Sessão criada
-session-created = A sessão com o ID **`{$id}`** foi criada para **`{$username}`**.
+session-created = A sessão com o ID **`{$id}`** foi criada para **`{$name}`**.
   Substitua o local de qualquer jogador pelo ID da sessão para usar os dados dela em qualquer comando.
 
   Experimente: </bedwars geral:1113624864272683060>

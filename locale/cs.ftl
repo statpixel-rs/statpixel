@@ -85,7 +85,7 @@ boost = povzbudit
 
 # /track
 
-track-success-title = Sleduji hráče {$username}
+track-success-title = Sleduji hráče {$name}
 track-success-description =
   Statistiky tohoto hráče budou nyní sledovány a odesílány do tohoto kanálu.
   Chcete-li sledování zastavit, odstraňte ho na ovládacím panelu na adrese https://statpixel.xyz/dashboard/track.
@@ -516,7 +516,7 @@ link = propojení
 
 linking-failed = Propojení selhalo
 linking-failed-uuid-description = UUID **`{$uuid}`** nepatří k účtu Minecraftu.
-linking-failed-username-description = Uživatelské jméno **`{$username}`** nepatří k účtu Minecraftu.
+linking-failed-username-description = Uživatelské jméno **`{$name}`** nepatří k účtu Minecraftu.
 linking-failed-description = Musíte poskytnout platné UUID nebo uživatelské jméno.
 linking-succeeded = Propojení bylo úspěšné
 linking-succeeded-description = Váš Discord účet je nyní propojen s účtem Minecraftu **`{$name}`**.
@@ -2670,7 +2670,7 @@ error-session-already-exists = Relace s poskytnutým jménem již byla vytvořen
 
 session-deleted = Relace s id **`{$id}`** byla smazána.
 session-created-title = Relace vytvořena
-session-created = Relace s id **`{$id}`** byla vytvořena pro **`{$username}`**.
+session-created = Relace s id **`{$id}`** byla vytvořena pro **`{$name}`**.
   Nahraďte místo jakéhokoli hráče id relace, abyste mohli použít jeho údaje v jakémkoli příkazu.
 
   Vyzkoušejte to: </bedwars general:1113624864272683060>

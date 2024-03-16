@@ -85,7 +85,7 @@ boost = pojačaj
 
 # /track
 
-track-success-title = Pratite igrača {$username}
+track-success-title = Pratite igrača {$name}
 track-success-description =
   Statistika ovog igrača sada će se pratiti i slati na ovaj kanal.
   Da biste prestali pratiti, uklonite praćenje na nadzornoj ploči na https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = povezi
   .player-description = Minecraft igrač ili sesija
 linking-failed = Povezivanje nije uspjelo
 linking-failed-uuid-description = UUID **`{$uuid}`** ne pripada Minecraft računu.
-linking-failed-username-description = Korisničko ime **`{$username}`** ne pripada Minecraft računu.
+linking-failed-username-description = Korisničko ime **`{$name}`** ne pripada Minecraft računu.
 linking-failed-description = Morate pružiti valjani UUID ili korisničko ime.
 linking-succeeded = Uspješno povezivanje
 linking-succeeded-description = Vaš Discord račun sada je povezan s Minecraft računom **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Sjednica s navedenim imenom već je stvorena od s
 
 session-deleted = Sjednica s identifikatorom **`{$id}`** je izbrisana.
 session-created-title = Sjednica stvorena
-session-created = Sjednica s identifikatorom **`{$id}`** je stvorena za **`{$username}`**.
+session-created = Sjednica s identifikatorom **`{$id}`** je stvorena za **`{$name}`**.
   Zamijenite mjesto bilo kojeg igrača s identifikatorom sjednice kako biste koristili njegove podatke u bilo kojoj naredbi.
 
   Isprobajte to: </bedwars general:1113624864272683060>

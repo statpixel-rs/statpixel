@@ -85,7 +85,7 @@ boost = wzmocnienie
 
 # /track
 
-track-success-title = Śledzenie {$username}
+track-success-title = Śledzenie {$name}
 track-success-description =
   Statystyki tego gracza będą teraz śledzone i wysyłane na ten kanał.
   Aby zatrzymać śledzenie, usuń je w panelu na stronie https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = połącz
   .player-description = Gracz Minecraft lub sesja
 linking-failed = Połączenie nie powiodło się
 linking-failed-uuid-description = UUID **`{$uuid}`** nie należy do konta Minecraft.
-linking-failed-username-description = Nazwa użytkownika **`{$username}`** nie należy do konta Minecraft.
+linking-failed-username-description = Nazwa użytkownika **`{$name}`** nie należy do konta Minecraft.
 linking-failed-description = Musisz podać prawidłowe UUID lub nazwę użytkownika.
 linking-succeeded = Połączenie powiodło się
 linking-succeeded-description = Twoje konto Discord jest teraz połączone z kontem Minecraft **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = Sesja o podanej nazwie została już utworzona pr
 
 session-deleted = Sesja o identyfikatorze **`{$id}`** została usunięta.
 session-created-title = Utworzono sesję
-session-created = Sesja o identyfikatorze **`{$id}`** została utworzona dla gracza **`{$username}`**.
+session-created = Sesja o identyfikatorze **`{$id}`** została utworzona dla gracza **`{$name}`**.
   Zastąp miejsce dowolnego gracza identyfikatorem sesji, aby użyć jego danych w dowolnym poleceniu.
 
   Wypróbuj to: </bedwars general:1113624864272683060>

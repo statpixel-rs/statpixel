@@ -85,7 +85,7 @@ boost = boost
 
 # /track
 
-track-success-title = Tracking {$username}
+track-success-title = Tracking {$name}
 track-success-description =
   This player's statistics will now be tracked and sent to this channel.
   To stop tracking them, remove it on the dashboard at https://statpixel.xyz/dashboard/track.
@@ -516,7 +516,7 @@ link = link
 
 linking-failed = Linking failed
 linking-failed-uuid-description = The uuid **`{$uuid}`** does not belong to a Minecraft account.
-linking-failed-username-description = The username **`{$username}`** does not belong to a Minecraft account.
+linking-failed-username-description = The username **`{$name}`** does not belong to a Minecraft account.
 linking-failed-description = You must provide a valid UUID or username.
 linking-succeeded = Linking successful
 linking-succeeded-description = Your Discord account is now linked to the Minecraft account **`{$name}`**.
@@ -2674,7 +2674,7 @@ error-session-already-exists = A session with the provided name has already been
 
 session-deleted = The session with id **`{$id}`** has been deleted.
 session-created-title = Session created
-session-created = The session with id **`{$id}`** has been created for **`{$username}`**.
+session-created = The session with id **`{$id}`** has been created for **`{$name}`**.
   Substitute the place of any player with the session id to use it's data in any command.
 
   Try it out: </bedwars general:1113624864272683060>

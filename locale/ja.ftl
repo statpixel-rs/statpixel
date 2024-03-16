@@ -85,7 +85,7 @@ boost = ブースト
 
 # /track
 
-track-success-title = {$username}のトラッキングに成功しました
+track-success-title = {$name}のトラッキングに成功しました
 track-success-description =
   このプレイヤーの統計情報がトラックされ、このチャンネルに送信されるようになりました。
   トラッキングを解除するには、ダッシュボードで以下のURLにアクセスしてください：https://statpixel.xyz/dashboard/track。
@@ -508,7 +508,7 @@ link = リンク
   .player-description = Minecraft プレイヤーまたはセッション
 linking-failed = リンクに失敗しました
 linking-failed-uuid-description = UUID **`{$uuid}`**はMinecraftアカウントに属していません。
-linking-failed-username-description = ユーザー名 **`{$username}`** はMinecraftアカウントに属していません。
+linking-failed-username-description = ユーザー名 **`{$name}`** はMinecraftアカウントに属していません。
 linking-failed-description = 有効なUUIDまたはユーザー名を提供する必要があります。
 linking-succeeded = リンクに成功しました
 linking-succeeded-description = DiscordアカウントがMinecraftアカウント **`{$name}`** にリンクされました。
@@ -2652,7 +2652,7 @@ error-session-already-exists = 指定された名前のセッションはすで�
 
 session-deleted = ID **`{$id}`** のセッションは削除されました。
 session-created-title = セッションが作成されました
-session-created = ID **`{$id}`** のセッションが **`{$username}`** によって作成されました。
+session-created = ID **`{$id}`** のセッションが **`{$name}`** によって作成されました。
   任意のプレーヤーの場所をセッションIDで置き換えて、コマンド内でデータを使用できます。
 
   試してみる： </bedwars general:1113624864272683060>

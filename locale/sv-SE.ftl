@@ -85,7 +85,7 @@ boost = förstärkning
 
 # /track
 
-track-success-title = Spårar {$username}
+track-success-title = Spårar {$name}
 track-success-description =
   Denna spelares statistik kommer nu spåras och skickas till denna kanal.
   För att sluta spåra dem, ta bort det på instrumentpanelen på https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = länka
   .player-description = Minecraft-spelare eller session
 linking-failed = Länkning misslyckades
 linking-failed-uuid-description = UUID:n **`{$uuid}`** tillhör inte ett Minecraft-konto.
-linking-failed-username-description = Användarnamnet **`{$username}`** tillhör inte ett Minecraft-konto.
+linking-failed-username-description = Användarnamnet **`{$name}`** tillhör inte ett Minecraft-konto.
 linking-failed-description = Du måste ange en giltig UUID eller användarnamn.
 linking-succeeded = Länkning lyckades
 linking-succeeded-description = Ditt Discord-konto är nu länkat till Minecraft-kontot **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = En session med det angivna namnet har redan skapa
 
 session-deleted = Sessionen med ID **`{$id}`** har blivit raderad.
 session-created-title = Skapad session
-session-created = Sessionen med ID **`{$id}`** har skapats för **`{$username}`**.
+session-created = Sessionen med ID **`{$id}`** har skapats för **`{$name}`**.
   Byt ut platsen för en spelare med sessionens ID för att använda dess data i något kommando.
 
   Testa det här: </bedwars general:1113624864272683060>

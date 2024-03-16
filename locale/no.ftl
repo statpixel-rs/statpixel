@@ -85,7 +85,7 @@ boost = boost
 
 # /track
 
-track-success-title = Sporer {$username}
+track-success-title = Sporer {$name}
 track-success-description =
   Statistikken til denne spilleren vil nå bli sporet og sendt til denne kanalen.
   For å slutte å spore dem, fjern sporingen på kontrollpanelet på https://statpixel.xyz/dashboard/track.
@@ -509,7 +509,7 @@ link = kobling
   .player-description = Minecraft-spiller eller økt
 linking-failed = Kobling mislyktes
 linking-failed-uuid-description = UUID-en **`{$uuid}`** tilhører ikke en Minecraft-konto.
-linking-failed-username-description = Brukernavnet **`{$username}`** tilhører ikke en Minecraft-konto.
+linking-failed-username-description = Brukernavnet **`{$name}`** tilhører ikke en Minecraft-konto.
 linking-failed-description = Du må oppgi en gyldig UUID eller brukernavn.
 linking-succeeded = Kobling vellykket
 linking-succeeded-description = Discord-kontoen din er nå koblet til Minecraft-kontoen **`{$name}`**.
@@ -2653,7 +2653,7 @@ error-session-already-exists = En økt med det angitte navnet har allerede blitt
 
 session-deleted = Økten med IDen **`{$id}`** har blitt slettet.
 session-created-title = Økt opprettet
-session-created = Økten med IDen **`{$id}`** har blitt opprettet for **`{$username}`**.
+session-created = Økten med IDen **`{$id}`** har blitt opprettet for **`{$name}`**.
   Bytt ut plassen til en hvilken som helst spiller med økt-IDen for å bruke dataen i hvilken som helst kommando.
 
   Prøv det ut: </bedwars general:1113624864272683060>
