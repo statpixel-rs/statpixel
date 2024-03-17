@@ -35,12 +35,12 @@ pub enum GuildMode {
 
 impl SkyBlockMode {
 	#[allow(clippy::too_many_lines)]
-	pub fn as_root(
-		ctx: &context::Context<'_>,
+	pub fn as_root<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -150,7 +150,8 @@ impl SkyBlockMode {
 							uuid,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)
@@ -170,13 +171,13 @@ impl SkyBlockMode {
 	}
 
 	#[allow(clippy::too_many_lines)]
-	pub fn as_snapshot(
-		ctx: &context::Context<'_>,
+	pub fn as_snapshot<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		past: i64,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -301,7 +302,8 @@ impl SkyBlockMode {
 							past,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)
@@ -322,13 +324,13 @@ impl SkyBlockMode {
 	}
 
 	#[allow(clippy::too_many_lines)]
-	pub fn as_at(
-		ctx: &context::Context<'_>,
+	pub fn as_at<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		past: i64,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -453,7 +455,8 @@ impl SkyBlockMode {
 							past,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)
@@ -474,12 +477,12 @@ impl SkyBlockMode {
 	}
 
 	#[allow(clippy::too_many_lines)]
-	pub fn as_history(
-		ctx: &context::Context<'_>,
+	pub fn as_history<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -589,7 +592,8 @@ impl SkyBlockMode {
 							uuid,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)
@@ -609,13 +613,13 @@ impl SkyBlockMode {
 	}
 
 	#[allow(clippy::too_many_lines)]
-	pub fn as_project(
-		ctx: &context::Context<'_>,
+	pub fn as_project<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		profile: Option<Uuid>,
 		kind: SkyBlockKind,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -725,7 +729,8 @@ impl SkyBlockMode {
 							uuid,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)
@@ -746,14 +751,14 @@ impl SkyBlockMode {
 }
 
 impl GuildMode {
-	pub fn as_root(
-		ctx: &context::Context<'_>,
+	pub fn as_root<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		limit: Option<usize>,
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -793,7 +798,9 @@ impl GuildMode {
 
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
-			serenity::CreateSelectMenuKind::String { options },
+			serenity::CreateSelectMenuKind::String {
+				options: options.into(),
+			},
 		)
 		.min_values(1)
 		.max_values(1);
@@ -811,15 +818,15 @@ impl GuildMode {
 		)
 	}
 
-	pub fn as_snapshot(
-		ctx: &context::Context<'_>,
+	pub fn as_snapshot<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		past: i64,
 		limit: Option<usize>,
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -863,7 +870,9 @@ impl GuildMode {
 
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
-			serenity::CreateSelectMenuKind::String { options },
+			serenity::CreateSelectMenuKind::String {
+				options: options.into(),
+			},
 		)
 		.min_values(1)
 		.max_values(1);
@@ -882,15 +891,15 @@ impl GuildMode {
 		)
 	}
 
-	pub fn as_at(
-		ctx: &context::Context<'_>,
+	pub fn as_at<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		past: i64,
 		limit: Option<usize>,
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -934,7 +943,9 @@ impl GuildMode {
 
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
-			serenity::CreateSelectMenuKind::String { options },
+			serenity::CreateSelectMenuKind::String {
+				options: options.into(),
+			},
 		)
 		.min_values(1)
 		.max_values(1);
@@ -953,14 +964,14 @@ impl GuildMode {
 		)
 	}
 
-	pub fn as_history(
-		ctx: &context::Context<'_>,
+	pub fn as_history<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		limit: Option<usize>,
 		past_nanos: Option<i64>,
 		member: Option<Uuid>,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut options = Vec::with_capacity(if member.is_some() { 4 } else { 3 });
 
 		options.push(serenity::CreateSelectMenuOption::new(
@@ -1000,7 +1011,9 @@ impl GuildMode {
 
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
-			serenity::CreateSelectMenuKind::String { options },
+			serenity::CreateSelectMenuKind::String {
+				options: options.into(),
+			},
 		)
 		.min_values(1)
 		.max_values(1);
@@ -1018,12 +1031,12 @@ impl GuildMode {
 		)
 	}
 
-	pub fn as_project(
-		ctx: &context::Context<'_>,
+	pub fn as_project<'c>(
+		ctx: &'c context::Context<'_>,
 		uuid: Uuid,
 		kind: GuildKind,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id) {
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id) {
 		let mut menu = serenity::CreateSelectMenu::new(
 			"select",
 			serenity::CreateSelectMenuKind::String {
@@ -1049,7 +1062,8 @@ impl GuildMode {
 							uuid,
 						}),
 					),
-				],
+				]
+				.into(),
 			},
 		)
 		.min_values(1)

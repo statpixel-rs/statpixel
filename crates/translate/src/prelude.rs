@@ -84,17 +84,12 @@ impl GetChronoLocale for Context<'_> {
 #[cfg(feature = "data")]
 pub trait GetLocale {
 	fn locale(&self) -> Option<Locale>;
-	fn data(&self) -> Option<&Data>;
 }
 
 #[cfg(feature = "data")]
 impl GetLocale for &'_ Context<'_> {
 	fn locale(&self) -> Option<Locale> {
 		Context::locale(self)
-	}
-
-	fn data(&self) -> Option<&Data> {
-		self.data_opt()
 	}
 }
 
@@ -103,19 +98,18 @@ impl GetLocale for Context<'_> {
 	fn locale(&self) -> Option<Locale> {
 		self.locale()
 	}
-
-	fn data(&self) -> Option<&Data> {
-		self.data_opt()
-	}
 }
 
 #[cfg(feature = "error")]
 impl GetLocale for crate::Context<'_> {
 	fn locale(&self) -> Option<Locale> {
-		Locale::from_str(self.locale()?).ok()
+		Locale::from_str(crate::Context::locale(*self)?).ok()
 	}
+}
 
-	fn data(&self) -> Option<&crate::Data> {
-		Some(self.data())
+#[cfg(feature = "data")]
+impl GetLocale for Option<Locale> {
+	fn locale(&self) -> Option<Locale> {
+		*self
 	}
 }

@@ -3,7 +3,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 
 use diesel_async::pooled_connection::deadpool::{self, Object};
 use diesel_async::AsyncPgConnection;
-use poise::serenity_prelude as serenity;
+use poise::serenity_prelude::{self as serenity, CacheHttp};
 
 #[allow(non_camel_case_types)]
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Default)]
@@ -148,6 +148,7 @@ pub struct Context<'c> {
 	locale: Option<Locale>,
 	interaction: ContextInteraction<'c>,
 	automated: bool,
+	data: Option<&'c super::Data>,
 }
 
 impl<'c> Context<'c> {
@@ -155,6 +156,7 @@ impl<'c> Context<'c> {
 		locale: None,
 		interaction: ContextInteraction::Empty,
 		automated: true,
+		data: None,
 	};
 
 	pub async fn connection(&self) -> Result<Object<AsyncPgConnection>, deadpool::PoolError> {
@@ -179,6 +181,7 @@ impl<'c> Context<'c> {
 				deferred: AtomicBool::new(false),
 			},
 			automated: false,
+			data: Some(data),
 		}
 	}
 
@@ -195,15 +198,17 @@ impl<'c> Context<'c> {
 				ctx,
 			},
 			automated: false,
+			data: Some(data),
 		}
 	}
 
 	#[cfg(feature = "error")]
-	pub fn from_poise(ctx: &'c super::Context<'c>) -> Self {
+	pub fn from_poise(ctx: &'c super::Context<'c>, data: &'c super::Data) -> Self {
 		Self {
 			locale: ctx.locale().and_then(|l| Locale::from_str(l).ok()),
 			interaction: ContextInteraction::Command(ctx),
 			automated: false,
+			data: Some(data),
 		}
 	}
 
@@ -212,6 +217,7 @@ impl<'c> Context<'c> {
 			locale: None,
 			interaction: ContextInteraction::External(data),
 			automated: false,
+			data: Some(data),
 		}
 	}
 
@@ -220,6 +226,7 @@ impl<'c> Context<'c> {
 			locale,
 			interaction: ContextInteraction::External(data),
 			automated: false,
+			data: Some(data),
 		}
 	}
 
@@ -228,6 +235,7 @@ impl<'c> Context<'c> {
 			locale: None,
 			interaction: ContextInteraction::External(data),
 			automated: true,
+			data: Some(data),
 		}
 	}
 
@@ -261,29 +269,7 @@ impl<'c> Context<'c> {
 	}
 
 	pub fn data_opt(&self) -> Option<&super::Data> {
-		match self {
-			#[cfg(feature = "error")]
-			Self {
-				interaction: ContextInteraction::Command(ctx),
-				..
-			} => Some(ctx.data()),
-			Self {
-				interaction: ContextInteraction::Component { data, .. },
-				..
-			} => Some(data),
-			Self {
-				interaction: ContextInteraction::Modal { data, .. },
-				..
-			} => Some(data),
-			Self {
-				interaction: ContextInteraction::External(data),
-				..
-			} => Some(data),
-			Self {
-				interaction: ContextInteraction::Empty,
-				..
-			} => None,
-		}
+		self.data
 	}
 
 	pub fn data(&self) -> &super::Data {
@@ -294,7 +280,7 @@ impl<'c> Context<'c> {
 	pub fn discord(&self) -> &serenity::Context {
 		match self.interaction {
 			#[cfg(feature = "error")]
-			ContextInteraction::Command(ctx) => ctx.discord(),
+			ContextInteraction::Command(ctx) => ctx.serenity_context(),
 			ContextInteraction::Component { ctx, .. } => ctx,
 			ContextInteraction::Modal { ctx, .. } => ctx,
 			ContextInteraction::External(..) => {
@@ -319,7 +305,7 @@ impl<'c> Context<'c> {
 				}
 
 				deferred.store(true, Ordering::SeqCst);
-				interaction.defer(ctx).await?;
+				interaction.defer(ctx.http()).await?;
 
 				Ok(())
 			}
@@ -329,7 +315,7 @@ impl<'c> Context<'c> {
 		}
 	}
 
-	pub async fn send(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
+	pub async fn send(&self, reply: poise::CreateReply<'c>) -> Result<(), serenity::Error> {
 		match &self.interaction {
 			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
@@ -349,7 +335,7 @@ impl<'c> Context<'c> {
 		}
 	}
 
-	pub async fn reply(&self, reply: poise::CreateReply) -> Result<(), serenity::Error> {
+	pub async fn reply(&self, reply: poise::CreateReply<'c>) -> Result<(), serenity::Error> {
 		match &self.interaction {
 			#[cfg(feature = "error")]
 			ContextInteraction::Command(ctx) => ctx.send(reply).await.map(|_| ()),
@@ -373,7 +359,7 @@ impl<'c> Context<'c> {
 		&self,
 		ctx: &serenity::Context,
 		interaction: &serenity::ModalInteraction,
-		data: poise::CreateReply,
+		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
 		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
 
@@ -389,7 +375,7 @@ impl<'c> Context<'c> {
 
 		interaction
 			.create_response(
-				ctx,
+				ctx.http(),
 				serenity::CreateInteractionResponse::UpdateMessage(edit),
 			)
 			.await?;
@@ -401,7 +387,7 @@ impl<'c> Context<'c> {
 		&self,
 		ctx: &serenity::Context,
 		interaction: &serenity::ModalInteraction,
-		data: poise::CreateReply,
+		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
 		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
 
@@ -416,7 +402,10 @@ impl<'c> Context<'c> {
 		edit = edit.files(data.attachments);
 
 		interaction
-			.create_response(ctx, serenity::CreateInteractionResponse::Message(edit))
+			.create_response(
+				ctx.http(),
+				serenity::CreateInteractionResponse::Message(edit),
+			)
 			.await?;
 
 		Ok(())
@@ -427,7 +416,7 @@ impl<'c> Context<'c> {
 		ctx: &serenity::Context,
 		interaction: &serenity::ComponentInteraction,
 		deferred: &AtomicBool,
-		data: poise::CreateReply,
+		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
 		if deferred.load(Ordering::SeqCst) {
 			let mut edit = serenity::EditInteractionResponse::new().embeds(data.embeds);
@@ -441,14 +430,14 @@ impl<'c> Context<'c> {
 			}
 
 			if !data.attachments.is_empty() {
-				edit = edit.clear_existing_attachments();
+				edit = edit.clear_attachments();
 			}
 
 			for attachment in data.attachments {
 				edit = edit.new_attachment(attachment);
 			}
 
-			interaction.edit_response(ctx, edit).await?;
+			interaction.edit_response(ctx.http(), edit).await?;
 		} else {
 			let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
 
@@ -464,7 +453,7 @@ impl<'c> Context<'c> {
 
 			interaction
 				.create_response(
-					ctx,
+					ctx.http(),
 					serenity::CreateInteractionResponse::UpdateMessage(edit),
 				)
 				.await?;

@@ -41,6 +41,8 @@ mod data {
 
 	use database::PostgresPool;
 
+	pub static DATA: std::sync::OnceLock<Arc<Data>> = std::sync::OnceLock::new();
+
 	#[derive(Clone)]
 	pub struct Data {
 		pub pool: PostgresPool,

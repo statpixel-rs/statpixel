@@ -48,7 +48,7 @@ macro_rules! large_command {
 			async fn autocomplete_mode<'a>(
 				ctx: $crate::Context<'a>,
 				partial: &'a str,
-			) -> impl Iterator<Item = poise::AutocompleteChoice<u32>> + 'a {
+			) -> impl Iterator<Item = poise::serenity_prelude::AutocompleteChoice<'a>> + 'a {
 				let partial = partial.to_ascii_lowercase();
 
 				<$game>::autocomplete(ctx, partial).await

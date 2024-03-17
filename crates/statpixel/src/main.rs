@@ -53,7 +53,7 @@ pub const IMAGE_NAME: &str = "statpixel.png";
 #[cfg(not(target_os = "linux"))]
 pub const IMAGE_NAME: &str = "statpixel.png";
 
-pub static DATA: std::sync::OnceLock<Arc<translate::Data>> = std::sync::OnceLock::new();
+pub use translate::DATA;
 
 async fn create_redis_manager() -> redis::aio::ConnectionManager {
 	#[cfg(not(feature = "runtime_env"))]
@@ -165,34 +165,16 @@ async fn main() {
 
 	DATA.set(Arc::new(data.clone())).unwrap();
 
-	let framework = poise::Framework::new(
-		poise::FrameworkOptions {
+	let framework = poise::Framework::builder()
+		.options(poise::FrameworkOptions {
 			commands,
-			listener: |event, framework, user_data| {
-				Box::pin(event_handler(event, framework, user_data))
+			listener: |ctx, event, framework, user_data| {
+				Box::pin(event_handler(ctx, event, framework, user_data))
 			},
 			pre_command: |ctx| Box::pin(pre_command(ctx)),
 			..Default::default()
-		},
-		{
-			let data = data.clone();
-
-			move |ctx, _ready, framework| {
-				Box::pin(async move {
-					serenity::Command::set_global_commands(
-						&ctx.http,
-						poise::builtins::create_application_commands(
-							&framework.options().commands[translate::GAMES..],
-						),
-					)
-					.await
-					.unwrap();
-
-					Ok(data)
-				})
-			}
-		},
-	);
+		})
+		.build();
 
 	#[cfg(not(feature = "runtime_env"))]
 	let token = dotenvy_macro::dotenv!("DISCORD_TOKEN");
@@ -277,7 +259,10 @@ async fn main() {
 }
 
 async fn pre_command(ctx: Context<'_>) {
-	let Ok(mut connection) = context::Context::from_poise(&ctx).connection().await else {
+	let Ok(mut connection) = context::Context::from_poise(&ctx, &ctx.data())
+		.connection()
+		.await
+	else {
 		return;
 	};
 
@@ -297,16 +282,25 @@ async fn pre_command(ctx: Context<'_>) {
 
 #[allow(clippy::too_many_lines)]
 async fn event_handler(
+	ctx: poise::Context<'_, Data, Error>,
 	event: &FullEvent,
 	framework: poise::FrameworkContext<'_, Data, Error>,
 	data: &Data,
 ) -> Result<(), Error> {
 	match event {
 		FullEvent::Ready {
-			ctx,
 			data_about_bot: ready,
 		} => {
 			info!(user = ?ready.user.tag(), guilds = ready.guilds.len(), "logged in");
+
+			serenity::Command::set_global_commands(
+				&ctx.http(),
+				&poise::builtins::create_application_commands(
+					&framework.options().commands[translate::GAMES..],
+				),
+			)
+			.await
+			.unwrap();
 
 			GUILDS
 				.write()
@@ -325,7 +319,7 @@ async fn event_handler(
 					.id
 					.set_commands(
 						&ctx.http,
-						poise::builtins::create_application_commands(
+						&poise::builtins::create_application_commands(
 							&framework.options().commands[..translate::GAMES],
 						),
 					)
@@ -334,7 +328,6 @@ async fn event_handler(
 			}
 		}
 		FullEvent::InteractionCreate {
-			ctx,
 			interaction: Interaction::Modal(interaction),
 		} => {
 			let Some(id) = api::id::decode(&interaction.data.custom_id) else {
@@ -355,7 +348,6 @@ async fn event_handler(
 			}
 		}
 		FullEvent::InteractionCreate {
-			ctx,
 			interaction: Interaction::Component(interaction),
 		} => {
 			let ctx = context::Context::from_component(ctx, data, interaction);
@@ -404,7 +396,7 @@ async fn event_handler(
 				}
 			}
 		}
-		FullEvent::GuildCreate { ctx, guild, .. } => {
+		FullEvent::GuildCreate { guild, .. } => {
 			if GUILDS.write().await.insert(guild.id.get()) && tracing::enabled!(Level::INFO) {
 				let guilds = GUILDS.read().await.len();
 
@@ -424,7 +416,7 @@ async fn event_handler(
 				guild
 					.set_commands(
 						&ctx.http,
-						poise::builtins::create_application_commands(
+						&poise::builtins::create_application_commands(
 							&framework.options().commands[..translate::GAMES],
 						),
 					)

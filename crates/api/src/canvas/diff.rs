@@ -5,7 +5,7 @@ use minecraft::{
 	calc::pit::{Level, Prestige},
 	colour::Colour,
 };
-use poise::serenity_prelude::Embed;
+use poise::serenity_prelude::CreateEmbed;
 
 pub trait Diff {
 	#[must_use]
@@ -14,12 +14,12 @@ pub trait Diff {
 
 #[allow(clippy::module_name_repetitions)]
 pub trait DiffLog {
-	fn diff_log(
+	fn diff_log<'e>(
 		data_lhs: &crate::player::data::Data,
 		data_rhs: &crate::player::data::Data,
 		ctx: &translate::context::Context<'_>,
-		embed: Embed,
-	) -> Embed;
+		embed: CreateEmbed<'e>,
+	) -> CreateEmbed<'e>;
 }
 
 macro_rules! impl_to_formatted_for_number {

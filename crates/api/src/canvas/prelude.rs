@@ -79,62 +79,62 @@ pub trait Game {
 		background: Option<skia_safe::Color>,
 	) -> Result<(Vec<u8>, Self::Mode), Error>;
 
-	fn embed(
-		ctx: &context::Context,
+	fn embed<'c>(
+		ctx: &'c context::Context,
 		player: &player::Player,
 		data: &data::Data,
-	) -> serenity::CreateEmbed;
+	) -> serenity::CreateEmbed<'c>;
 
-	fn embed_diff(
-		ctx: &context::Context,
+	fn embed_diff<'c>(
+		ctx: &'c context::Context,
 		player: &player::Player,
 		data_lhs: &data::Data,
 		data_rhs: &data::Data,
-	) -> serenity::CreateEmbed;
+	) -> serenity::CreateEmbed<'c>;
 }
 
 pub trait Mode: Sized + Copy {
 	type Kind: Copy + Default;
 
-	fn as_root(
-		ctx: &context::Context,
+	fn as_root<'c>(
+		ctx: &'c context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 
-	fn as_snapshot(
-		ctx: &context::Context,
+	fn as_snapshot<'c>(
+		ctx: &'c context::Context,
 		uuid: Uuid,
 		past: i64,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 
-	fn as_history(
-		ctx: &context::Context,
+	fn as_history<'c>(
+		ctx: &'c context::Context,
 		uuid: Uuid,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 
-	fn as_project(
-		ctx: &context::Context,
+	fn as_project<'c>(
+		ctx: &'c context::Context,
 		uuid: Uuid,
 		kind: Self::Kind,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 
-	fn as_compare(
-		ctx: &context::Context,
+	fn as_compare<'c>(
+		ctx: &'c context::Context,
 		uuid_lhs: Uuid,
 		uuid_rhs: Uuid,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 
-	fn as_at(
-		ctx: &context::Context,
+	fn as_at<'c>(
+		ctx: &'c context::Context,
 		uuid: Uuid,
 		past: i64,
 		selected: Option<Self>,
-	) -> (serenity::CreateActionRow, crate::id::Id);
+	) -> (serenity::CreateActionRow<'c>, crate::id::Id);
 }
 
 pub struct PlayerInput<'d> {

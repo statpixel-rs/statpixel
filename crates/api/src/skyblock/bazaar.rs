@@ -76,9 +76,9 @@ pub async fn update<S: std::hash::BuildHasher>(
 		.json::<Response>()
 		.await?;
 
-	diesel::delete(
-		bazaar::table.filter(bazaar::created_at.lt(Utc::now() - chrono::Duration::days(14))),
-	)
+	diesel::delete(bazaar::table.filter(
+		bazaar::created_at.lt(Utc::now() - chrono::Duration::try_days(14).unwrap_or_default()),
+	))
 	.execute(&mut pool.get().await?)
 	.await?;
 

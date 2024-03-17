@@ -6,7 +6,7 @@ use chrono::{DateTime, Utc};
 use extra::minutes::Minutes;
 use minecraft::{colour::Colour, text::rank::Rank};
 #[cfg(feature = "game")]
-use poise::serenity_prelude::Embed;
+use poise::serenity_prelude::CreateEmbed;
 use serde::{Deserialize, Deserializer};
 #[cfg(feature = "game")]
 use translate::context;
@@ -106,12 +106,12 @@ macro_rules! execute_for_games {
 #[cfg(feature = "game")]
 impl DiffLog for Data {
 	#[allow(clippy::let_and_return)]
-	fn diff_log(
+	fn diff_log<'e>(
 		data_lhs: &Data,
 		data_rhs: &Data,
 		ctx: &context::Context<'_>,
-		embed: Embed,
-	) -> Embed {
+		embed: CreateEmbed<'e>,
+	) -> CreateEmbed<'e> {
 		execute_for_games!(
 			[let embed = ],
 			[::diff_log(data_lhs, data_rhs, ctx, embed);]

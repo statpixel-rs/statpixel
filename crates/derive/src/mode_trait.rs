@@ -106,16 +106,16 @@ impl ToTokens for ModeTraitInputReceiver {
 			impl #api::canvas::prelude::Mode for #ident #generics {
 				type Kind = #kind;
 
-				fn as_root(
-					ctx: &::translate::context::Context<'_>,
+				fn as_root<'c>(
+					ctx: &'c ::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid, selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> ::poise::serenity_prelude::CreateActionRow<'c> {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						ctx.id().to_string(),
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
 								#(#options_root),*
-							]
+							].into()
 						}
 					);
 
@@ -128,18 +128,18 @@ impl ToTokens for ModeTraitInputReceiver {
 					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
-				fn as_snapshot(
-					ctx: &::translate::context::Context<'_>,
+				fn as_snapshot<'c>(
+					ctx: &'c ::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					past: i64,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> ::poise::serenity_prelude::CreateActionRow<'c> {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						ctx.id().to_string(),
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
 								#(#options_snapshot),*
-							]
+							].into()
 						}
 					);
 
@@ -152,17 +152,17 @@ impl ToTokens for ModeTraitInputReceiver {
 					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
-				fn as_history(
-					ctx: &::translate::context::Context<'_>,
+				fn as_history<'c>(
+					ctx: &'c ::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> ::poise::serenity_prelude::CreateActionRow<'c> {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						ctx.id().to_string(),
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
 								#(#options_history),*
-							]
+							].into()
 						}
 					);
 
@@ -175,18 +175,18 @@ impl ToTokens for ModeTraitInputReceiver {
 					::poise::serenity_prelude::CreateActionRow::SelectMenu(menu)
 				}
 
-				fn as_project(
-					ctx: &::translate::context::Context<'_>,
+				fn as_project<'c>(
+					ctx: &'c ::translate::context::Context<'_>,
 					uuid: ::uuid::Uuid,
 					kind: Self::Kind,
 					selected: Option<Self>
-				) -> ::poise::serenity_prelude::CreateActionRow {
+				) -> ::poise::serenity_prelude::CreateActionRow<'c> {
 					let mut menu = ::poise::serenity_prelude::CreateSelectMenu::new(
 						ctx.id().to_string(),
 						::poise::serenity_prelude::CreateSelectMenuKind::String {
 							options: ::std::vec![
 								#(#options_project),*
-							]
+							].into()
 						}
 					);
 

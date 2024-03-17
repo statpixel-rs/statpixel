@@ -19,12 +19,13 @@ use diesel_async::{
 };
 use futures::StreamExt;
 use poise::serenity_prelude::{
-	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage, Embed,
+	self as serenity, ChannelId, CreateEmbed, CreateEmbedAuthor, CreateMessage,
 };
 use tracing::{info, warn};
 use translate::{
 	context::{self, Context},
 	Error,
+	ApiError,
 };
 use uuid::Uuid;
 
@@ -318,13 +319,17 @@ pub async fn begin(
 
 						match result {
 							Ok(Some((channels, data_lhs, data_rhs))) if !channels.is_empty() => {
-								let embed =
-									Data::diff_log(&data_lhs, &data_rhs, ctx, Embed::default());
+								let embed = Data::diff_log(
+									&data_lhs,
+									&data_rhs,
+									ctx,
+									CreateEmbed::default(),
+								);
 
 								if !embed.fields.is_empty() {
 									let player = Player::new(uuid, None);
 									let message = CreateMessage::default().embed(
-										<Embed as Into<CreateEmbed>>::into(embed)
+										embed
 											.author(
 												CreateEmbedAuthor::new(&data_rhs.username)
 													.icon_url(player.get_head_url()),

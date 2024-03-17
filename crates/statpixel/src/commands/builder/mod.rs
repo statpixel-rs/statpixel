@@ -344,10 +344,10 @@ pub async fn finish(ctx: &context::Context<'_>, state: State, uuid: Uuid) -> Res
 		.await?)
 }
 
-pub fn create_subtitle_modal(
-	ctx: &context::Context<'_>,
+pub fn create_subtitle_modal<'c>(
+	ctx: &'c context::Context<'_>,
 	state: State,
-) -> Result<CreateModal, Error> {
+) -> Result<CreateModal<'c>, Error> {
 	Ok(CreateModal::new(
 		builder::set_subtitle_data(state)?,
 		tr(ctx, "subtitle-modal-title"),
@@ -363,7 +363,7 @@ pub fn create_subtitle_modal(
 	)]))
 }
 
-pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+pub fn create_level_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
 	Ok(CreateModal::new(
 		builder::set_level_data(state)?,
 		tr(ctx, "level-modal-title"),
@@ -379,7 +379,7 @@ pub fn create_level_modal(ctx: &context::Context<'_>, state: State) -> Result<Cr
 	)]))
 }
 
-pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+pub fn create_bubble_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
 	Ok(CreateModal::new(
 		builder::set_bubble_data(state)?,
 		tr(ctx, "bubble-modal-title"),
@@ -404,7 +404,7 @@ pub fn create_bubble_modal(ctx: &context::Context<'_>, state: State) -> Result<C
 	]))
 }
 
-pub fn create_create_modal(ctx: &context::Context<'_>, state: State) -> Result<CreateModal, Error> {
+pub fn create_create_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
 	Ok(
 		CreateModal::new(builder::create(state)?, tr(ctx, "create-modal-title")).components(vec![
 			CreateActionRow::InputText(

@@ -240,7 +240,7 @@ impl FieldGroup for GameInputReceiver {
 			.filter_map(|f| f.try_into().ok())
 			.collect();
 
-		labels.extend(self.label.iter().filter_map(|f| f.try_into().ok()));
+		labels.extend(self.label.iter().map(|f| f.into()));
 		Cow::Owned(labels)
 	}
 }

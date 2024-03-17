@@ -26,7 +26,7 @@ konst = "0.3"
 once_cell = "1"
 proc-macro2 = "1"
 proc-macro-crate = "1"
-pure-rust-locales = "0.7"
+pure-rust-locales = "0.8"
 quote = "1"
 rand = "0.8"
 serde_json = "1"
@@ -50,7 +50,7 @@ features = ["serde"]
 
 [workspace.dependencies.bitcode]
 git = "https://github.com/SoftbearStudios/bitcode"
-branch = "main"
+rev = "3140043"
 features = ["serde"]
 
 [workspace.dependencies.bytemuck]
@@ -146,3 +146,6 @@ features = [
 [workspace.dependencies.uuid]
 version = "1"
 features = ["serde"]
+
+[patch.crates-io]
+pathfinder_simd = { git = "https://github.com/servo/pathfinder.git" }

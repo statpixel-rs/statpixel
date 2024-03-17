@@ -12,7 +12,7 @@ use uuid::Uuid;
 
 use crate::{context::Context, format, Error};
 
-pub fn success_embed<S, D>(title: S, description: D) -> CreateReply
+pub fn success_embed<S, D>(title: S, description: D) -> CreateReply<'static>
 where
 	S: Into<String>,
 	D: Into<String>,
@@ -25,7 +25,7 @@ where
 	)
 }
 
-pub fn error_embed<S, D>(title: S, description: D) -> CreateReply
+pub fn error_embed<S, D>(title: S, description: D) -> CreateReply<'static>
 where
 	S: Into<String>,
 	D: Into<String>,
@@ -38,7 +38,7 @@ where
 	)
 }
 
-pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply {
+pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply<'static> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "deprecated-interaction"))
@@ -47,7 +47,7 @@ pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply {
 	)
 }
 
-pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply {
+pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply<'static> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "invalid-identifier"))

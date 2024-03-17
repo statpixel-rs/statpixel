@@ -1,9 +1,6 @@
 use std::{ops::Mul, sync::Arc};
 
-use api::{
-	guild::{Guild, VERSION},
-	Error,
-};
+use api::guild::{Guild, VERSION};
 use chrono::{DateTime, Utc};
 use database::{
 	schema::{guild_schedule, guild_snapshot},
@@ -16,7 +13,7 @@ use diesel_async::{
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
 use tracing::warn;
-use translate::{context::Context, Error};
+use translate::{context::Context, Error, ApiError};
 use uuid::Uuid;
 
 const GUILD_BATCH_LIMIT: i64 = 1_000;

@@ -523,11 +523,11 @@ impl ToTokens for GameInputReceiver {
 			impl #api::canvas::prelude::Mode for #mode_enum {
 				type Kind = #kind_enum;
 
-				fn as_root(
-					ctx: &#translate::context::Context<'_>,
+				fn as_root<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid: #uuid::Uuid,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -537,12 +537,12 @@ impl ToTokens for GameInputReceiver {
 									uuid,
 								})),
 								#(#as_root),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -556,12 +556,12 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				fn as_snapshot(
-					ctx: &#translate::context::Context<'_>,
+				fn as_snapshot<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid: #uuid::Uuid,
 					past: i64,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -572,12 +572,12 @@ impl ToTokens for GameInputReceiver {
 									past,
 								})),
 								#(#as_snapshot),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -592,12 +592,12 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				fn as_at(
-					ctx: &#translate::context::Context<'_>,
+				fn as_at<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid: #uuid::Uuid,
 					past: i64,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -608,12 +608,12 @@ impl ToTokens for GameInputReceiver {
 									past,
 								})),
 								#(#as_at),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -628,11 +628,11 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				fn as_history(
-					ctx: &#translate::context::Context<'_>,
+				fn as_history<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid: #uuid::Uuid,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -642,12 +642,12 @@ impl ToTokens for GameInputReceiver {
 									uuid,
 								})),
 								#(#as_history),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -661,12 +661,12 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				fn as_project(
-					ctx: &#translate::context::Context<'_>,
+				fn as_project<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid: #uuid::Uuid,
 					kind: Self::Kind,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -676,12 +676,12 @@ impl ToTokens for GameInputReceiver {
 									uuid,
 								})),
 								#(#as_project),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -695,12 +695,12 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				fn as_compare(
-					ctx: &#translate::context::Context<'_>,
+				fn as_compare<'c>(
+					ctx: &'c #translate::context::Context<'_>,
 					uuid_lhs: #uuid::Uuid,
 					uuid_rhs: #uuid::Uuid,
 					selected: Option<#mode_enum>
-				) -> (#poise::serenity_prelude::CreateActionRow, #api::id::Id) {
+				) -> (#poise::serenity_prelude::CreateActionRow<'c>, #api::id::Id) {
 					let mut menu = #poise::serenity_prelude::CreateSelectMenu::new(
 						"select",
 						#poise::serenity_prelude::CreateSelectMenuKind::String {
@@ -711,12 +711,12 @@ impl ToTokens for GameInputReceiver {
 									uuid_rhs,
 								})),
 								#(#as_compare),*
-							]
+							].into()
 						}
 					);
 
 					if let Some(selected) = selected {
-						menu = menu.placeholder(#translate::tr(ctx, selected.tr()));
+						menu = menu.placeholder(#translate::tr(ctx, selected.tr()).into_owned());
 					}
 
 					menu = menu.max_values(1).min_values(1);
@@ -1259,12 +1259,12 @@ impl ToTokens for GameInputReceiver {
 			pub struct #overall_ident;
 
 			impl #api::canvas::diff::DiffLog for #overall_ident {
-				fn diff_log(
+				fn diff_log<'e>(
 					data_lhs: &#api::player::data::Data,
 					data_rhs: &#api::player::data::Data,
 					ctx: &#translate::context::Context<'_>,
-					mut embed: #poise::serenity_prelude::Embed,
-				) -> #poise::serenity_prelude::Embed {
+					mut embed: #poise::serenity_prelude::CreateEmbed<'e>,
+				) -> #poise::serenity_prelude::CreateEmbed<'e> {
 					let mut log = String::new();
 					let game_lhs = &data_lhs.stats.#path_to_game;
 					let game_rhs = &data_rhs.stats.#path_to_game;
@@ -1278,8 +1278,7 @@ impl ToTokens for GameInputReceiver {
 						title.push(' ');
 						title.push_str(#translate::tr(ctx, Overall::tr()).as_ref());
 
-						embed.fields.push(#poise::serenity_prelude::EmbedField::new(title, log, true));
-						embed
+						embed.field(title, log, true)
 					} else {
 						embed
 					}
@@ -1362,12 +1361,12 @@ impl ToTokens for GameInputReceiver {
 					"Overall"
 				}
 
-				pub fn embed(
+				pub fn embed<'e>(
 					&self,
-					ctx: &#translate::context::Context<'_>,
-					embed: #poise::serenity_prelude::CreateEmbed,
+					ctx: &'e #translate::context::Context<'_>,
+					embed: #poise::serenity_prelude::CreateEmbed<'e>,
 					data: &#api::player::data::Data,
-				) -> #poise::serenity_prelude::CreateEmbed {
+				) -> #poise::serenity_prelude::CreateEmbed<'e> {
 					let game = &data.stats.#path_to_game;
 					let mut field = String::new();
 
@@ -1380,12 +1379,12 @@ impl ToTokens for GameInputReceiver {
 					)
 				}
 
-				pub fn embed_diff(
-					ctx: &#translate::context::Context<'_>,
-					embed: #poise::serenity_prelude::CreateEmbed,
+				pub fn embed_diff<'e>(
+					ctx: &'e #translate::context::Context<'_>,
+					embed: #poise::serenity_prelude::CreateEmbed<'e>,
 					data_lhs: &#api::player::data::Data,
 					data_rhs: &#api::player::data::Data,
-				) -> #poise::serenity_prelude::CreateEmbed {
+				) -> #poise::serenity_prelude::CreateEmbed<'e> {
 					let mut field = String::new();
 					let game_lhs = &data_lhs.stats.#path_to_game;
 					let game_rhs = &data_rhs.stats.#path_to_game;
@@ -1945,39 +1944,43 @@ impl ToTokens for GameInputReceiver {
 						})
 					}
 
-					pub async fn autocomplete<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::AutocompleteChoice<u32>> + 'a {
+					pub async fn autocomplete<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::serenity_prelude::AutocompleteChoice<'a>> + 'a {
+						let locale = #translate::prelude::GetLocale::locale(&ctx);
+
 						#mode_enum::slice()
 							.iter()
-							.filter_map(move |mode| {
-								let name = #translate::tr(&ctx, mode.tr());
-								let mode: u32 = mode.into();
-
-								if name.to_ascii_lowercase().contains(&partial) {
-									Some(#poise::AutocompleteChoice {
-										name: name.to_string(),
-										value: mode,
-									})
-								} else {
-									None
+							.filter_map({
+								move |mode| {
+									let name = #translate::tr(&locale, mode.tr());
+									let mode: u32 = mode.into();
+									let name: String = name.into_owned();
+	
+									if name.to_ascii_lowercase().contains(&partial) {
+										Some(#poise::serenity_prelude::AutocompleteChoice::new(name, mode))
+									} else {
+										None
+									}
 								}
 							})
 							.take(10)
 					}
 
-					pub async fn autocomplete_kind<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::AutocompleteChoice<u32>> +'a {
+					pub async fn autocomplete_kind<'a>(ctx: #translate::Context<'a>, partial: String) -> impl Iterator<Item = #poise::serenity_prelude::AutocompleteChoice<'a>> + 'a {
+						let locale = #translate::prelude::GetLocale::locale(&ctx);
+
 						#kind_enum::slice()
 							.iter()
-							.filter_map(move |kind| {
-								let name = #translate::tr(&ctx, kind.tr());
-								let kind: u32 = kind.into();
-
-								if name.to_ascii_lowercase().contains(&partial) {
-									Some(#poise::AutocompleteChoice {
-										name: name.to_string(),
-										value: kind,
-									})
-								} else {
-									None
+							.filter_map({
+								move |kind| {
+									let name = #translate::tr(&locale, kind.tr());
+									let kind: u32 = kind.into();
+									let name: String = name.into_owned();
+	
+									if name.to_ascii_lowercase().contains(&partial) {
+										Some(#poise::serenity_prelude::AutocompleteChoice::new(name, kind))
+									} else {
+										None
+									}
 								}
 							})
 							.take(10)
@@ -1985,12 +1988,12 @@ impl ToTokens for GameInputReceiver {
 				}
 
 				impl #api::canvas::diff::DiffLog for #game_ident {
-					fn diff_log(
+					fn diff_log<'e>(
 						data_lhs: &#api::player::data::Data,
 						data_rhs: &#api::player::data::Data,
 						ctx: &#translate::context::Context<'_>,
-						embed: #poise::serenity_prelude::Embed,
-					) -> #poise::serenity_prelude::Embed {
+						embed: #poise::serenity_prelude::CreateEmbed<'e>,
+					) -> #poise::serenity_prelude::CreateEmbed<'e> {
 						let embed = <#overall_ident as #api::canvas::diff::DiffLog>::diff_log(data_lhs, data_rhs, ctx, embed);
 						#(#diff_log)*
 						embed
@@ -2316,11 +2319,11 @@ impl ToTokens for GameInputReceiver {
 						}?, mode))
 					}
 
-					fn embed(
-						ctx: &#translate::context::Context<'_>,
+					fn embed<'e>(
+						ctx: &'e #translate::context::Context<'_>,
 						player: &#api::player::Player,
 						data: &#api::player::data::Data,
-					) -> #poise::serenity_prelude::CreateEmbed {
+					) -> #poise::serenity_prelude::CreateEmbed<'e> {
 						let game = &data.stats.#path_to_game;
 						let mut embed = #poise::serenity_prelude::CreateEmbed::default()
 							.thumbnail(player.get_body_url());
@@ -2353,12 +2356,12 @@ impl ToTokens for GameInputReceiver {
 						embed
 					}
 
-					fn embed_diff(
-						ctx: &#translate::context::Context<'_>,
+					fn embed_diff<'e>(
+						ctx: &'e #translate::context::Context<'_>,
 						player: &#api::player::Player,
 						data_lhs: &#api::player::data::Data,
 						data_rhs: &#api::player::data::Data,
-					) -> #poise::serenity_prelude::CreateEmbed {
+					) -> #poise::serenity_prelude::CreateEmbed<'e> {
 						let mut embed = #poise::serenity_prelude::CreateEmbed::default()
 							.thumbnail(player.get_body_url());
 

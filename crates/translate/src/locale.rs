@@ -27,10 +27,6 @@ pub struct English<'c>(&'c Data);
 
 #[cfg(feature = "data")]
 impl GetLocale for English<'_> {
-	fn data(&self) -> Option<&Data> {
-		Some(self.0)
-	}
-
 	fn locale(&self) -> Option<crate::context::Locale> {
 		Some(crate::context::Locale::en_US)
 	}
@@ -82,14 +78,11 @@ pub fn format(
 
 #[cfg(feature = "data")]
 pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, str> {
-	let Some(locale) = ctx.data() else {
-		return Cow::Borrowed(id);
-	};
-	let locale = &locale.locale;
+	let locale = crate::DATA.get().unwrap();
 
 	ctx.locale()
-		.and_then(|l| get_locale_str(locale.other.get(&l)?, id))
-		.or_else(|| get_locale_str(&locale.main, id))
+		.and_then(|l| get_locale_str(locale.locale.other.get(&l)?, id))
+		.or_else(|| get_locale_str(&locale.locale.main, id))
 		.unwrap_or_else(|| {
 			warn!("unknown fluent message identifier `{}`", id);
 			Cow::Borrowed(id)
@@ -97,9 +90,7 @@ pub fn tr<'t, 'c: 't, 'i: 't>(ctx: &'c impl GetLocale, id: &'i str) -> Cow<'t, s
 }
 
 pub fn has_tr(ctx: &impl GetLocale, id: &str) -> bool {
-	let Some(locale) = ctx.data() else {
-		return false;
-	};
+	let locale = crate::DATA.get().unwrap();
 	let locale = &locale.locale;
 
 	ctx.locale()
@@ -125,9 +116,7 @@ pub fn get<'i>(
 	attr: Option<&str>,
 	args: Option<&fluent::FluentArgs<'_>>,
 ) -> Cow<'i, str> {
-	let Some(locale) = ctx.data() else {
-		return Cow::Borrowed(id);
-	};
+	let locale = crate::DATA.get().unwrap();
 	let locale = &locale.locale;
 
 	ctx.locale()
@@ -306,7 +295,7 @@ impl Locale {
 						if let Some(name) = name {
 							choice
 								.localizations
-								.insert(locale.as_str().to_string(), name);
+								.insert(locale.as_str().into(), name.into());
 						} else {
 							warn!(
 								"missing choice name localization for `{}` in {} for command `{}`",
@@ -363,7 +352,7 @@ impl Locale {
 					let name = format(bundle, &choice.name.replace('_', "-"), None, None);
 
 					if let Some(name) = name {
-						choice.name = name;
+						choice.name = name.into();
 					} else {
 						error!("missing choice localization for `{}` in en-US", choice.name);
 					}

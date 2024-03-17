@@ -39,7 +39,7 @@ impl redis::FromRedisValue for RedisUuid {
 async fn autocomplete_board(
 	_ctx: Context<'_>,
 	partial: &str,
-) -> impl Iterator<Item = poise::AutocompleteChoice<usize>> {
+) -> impl Iterator<Item = poise::serenity_prelude::AutocompleteChoice<'static>> {
 	let mut lower = partial.replace(' ', "");
 
 	lower.make_ascii_lowercase();
@@ -52,10 +52,7 @@ async fn autocomplete_board(
 				return None;
 			}
 
-			Some(poise::AutocompleteChoice {
-				name: board.display_name.clone(),
-				value,
-			})
+			Some(poise::serenity_prelude::AutocompleteChoice::new(board.display_name.clone(), value))
 		})
 		.take(10)
 		.collect::<Vec<_>>()

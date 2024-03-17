@@ -584,12 +584,12 @@ pub(crate) fn impl_mode(
 
 	tokens.extend(quote! {
 		impl #api::canvas::diff::DiffLog for #ty {
-			fn diff_log(
+			fn diff_log<'e>(
 				data_lhs: &#api::player::data::Data,
 				data_rhs: &#api::player::data::Data,
 				ctx: &#translate::context::Context<'_>,
-				mut embed: #poise::serenity_prelude::Embed,
-			) -> #poise::serenity_prelude::Embed {
+				mut embed: #poise::serenity_prelude::CreateEmbed<'e>,
+			) -> #poise::serenity_prelude::CreateEmbed<'e> {
 				let mut log = String::new();
 				let game_lhs = &data_lhs.stats.#path_to_game;
 				let game_rhs = &data_rhs.stats.#path_to_game;
@@ -605,8 +605,7 @@ pub(crate) fn impl_mode(
 					title.push(' ');
 					title.push_str(#translate::tr(ctx, Self::tr()).as_ref());
 
-					embed.fields.push(#poise::serenity_prelude::EmbedField::new(title, log, true));
-					embed
+					embed.field(title, log, true)
 				} else {
 					embed
 				}
@@ -690,12 +689,12 @@ pub(crate) fn impl_mode(
 				#tr
 			}
 
-			pub fn embed(
+			pub fn embed<'e>(
 				&self,
-				ctx: &#translate::context::Context<'_>,
-				embed: #poise::serenity_prelude::CreateEmbed,
+				ctx: &'e #translate::context::Context<'_>,
+				embed: #poise::serenity_prelude::CreateEmbed<'e>,
 				data: &#api::player::data::Data,
-			) -> #poise::serenity_prelude::CreateEmbed {
+			) -> #poise::serenity_prelude::CreateEmbed<'e> {
 				let mut field = String::new();
 				let game = &data.stats.#path_to_game;
 				let stats = &data.stats.#path_to_game.#id;
@@ -705,12 +704,12 @@ pub(crate) fn impl_mode(
 				embed.field(#translate::tr(ctx, Self::tr()), field, true)
 			}
 
-			pub fn embed_diff(
-				ctx: &#translate::context::Context<'_>,
-				embed: #poise::serenity_prelude::CreateEmbed,
+			pub fn embed_diff<'e>(
+				ctx: &'e #translate::context::Context<'_>,
+				embed: #poise::serenity_prelude::CreateEmbed<'e>,
 				data_lhs: &#api::player::data::Data,
 				data_rhs: &#api::player::data::Data,
-			) -> #poise::serenity_prelude::CreateEmbed {
+			) -> #poise::serenity_prelude::CreateEmbed<'e> {
 				let mut field = String::new();
 				let game_lhs = &data_lhs.stats.#path_to_game;
 				let game_rhs = &data_rhs.stats.#path_to_game;

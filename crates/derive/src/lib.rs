@@ -36,7 +36,7 @@ pub fn derive_game(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
 			w.write_all(tokens.to_string().as_bytes()).unwrap();
 
-			if id == "__" {
+			if id == "Arcade" {
 				proc_macro2::TokenStream::new().into()
 			} else {
 				tokens.into()
