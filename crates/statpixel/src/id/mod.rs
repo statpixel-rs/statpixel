@@ -193,7 +193,7 @@ pub async fn map(ctx: &Context<'_>, id: Id) -> Result<(), Error> {
 						None,
 						None,
 						member_id,
-						nanos.map_or(chrono::Duration::days(30), chrono::Duration::nanoseconds),
+						nanos.map_or(chrono::Duration::try_days(30).unwrap(), chrono::Duration::nanoseconds),
 						limit.unwrap_or(30),
 						Some(uuid),
 					)

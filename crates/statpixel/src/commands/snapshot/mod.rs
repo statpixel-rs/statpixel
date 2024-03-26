@@ -263,6 +263,6 @@ macro_rules! commands {
 	};
 }
 
-commands!(daily, ::chrono::Duration::days(1), "daily");
-commands!(weekly, ::chrono::Duration::weeks(1), "weekly");
-commands!(monthly, ::chrono::Duration::days(30), "monthly");
+commands!(daily, ::chrono::Duration::try_days(1).unwrap(), "daily");
+commands!(weekly, ::chrono::Duration::try_weeks(1).unwrap(), "weekly");
+commands!(monthly, ::chrono::Duration::try_days(30).unwrap(), "monthly");

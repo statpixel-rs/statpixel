@@ -68,7 +68,7 @@ pub async fn add_vote(
 		.values((
 			user::id.eq(id as i64),
 			user::votes.eq(1),
-			user::premium_until.eq(Utc::now() + Duration::days(3)),
+			user::premium_until.eq(Utc::now() + Duration::try_days(3).unwrap()),
 		))
 		.on_conflict(user::id)
 		.do_update()

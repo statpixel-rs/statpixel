@@ -199,7 +199,7 @@ pub async fn guild_command(
 
 	let png: Option<Cow<_>> = if let snapshot::guild::Status::Found((ref guild, _)) = status {
 		let guilds =
-			get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
+			get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
 				.await?;
 		let monthly_xp = get_monthly_xp(guild, &guilds);
 

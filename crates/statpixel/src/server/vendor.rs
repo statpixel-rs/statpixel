@@ -17,7 +17,7 @@ pub async fn post(
 	let prev_hash = diesel::update(
 		schedule::table
 			.filter(schedule::uuid.eq(data.uuid))
-			.filter(schedule::vendor_update_at.lt(Utc::now() - Duration::minutes(15))),
+			.filter(schedule::vendor_update_at.lt(Utc::now() - Duration::try_minutes(15).unwrap())),
 	)
 	.set((
 		schedule::vendor_update_at.eq(Utc::now()),

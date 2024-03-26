@@ -308,7 +308,7 @@ pub fn create_token(id: u64, name: String) -> String {
 	#[allow(clippy::cast_possible_truncation)]
 	#[allow(clippy::cast_sign_loss)]
 	let claims = Claims {
-		exp: (now + Duration::days(30)).timestamp() as usize,
+		exp: (now + Duration::try_days(30).unwrap()).timestamp() as usize,
 		iat: now.timestamp() as usize,
 		iss: "https://statpixel.xyz".to_string(),
 		id,

@@ -274,7 +274,7 @@ pub async fn general(
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
 	let guilds =
-		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
+		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
 			.await?;
 	let monthly_xp = get_monthly_xp(guild, &guilds);
 
@@ -452,7 +452,7 @@ pub async fn member(
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
 	let guilds =
-		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::days(30))
+		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
 			.await?;
 
 	let member_xp = get_member_monthly_xp(guild, &guilds);

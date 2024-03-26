@@ -38,7 +38,7 @@ async fn update(
 	let days = (now.timestamp() / 60 / 60 / 24) as i32;
 
 	let next = {
-		let increase = chrono::Duration::hours(12);
+		let increase = chrono::Duration::try_hours(12).unwrap();
 		let next = timestamp + increase;
 
 		if next > now {
@@ -229,7 +229,7 @@ pub async fn insert(ctx: &Context<'_>, guild: &Guild) -> Result<(), Error> {
 						// Schedule the first update for one hour from now.
 						// The first few updates should be more frequent to calculate the
 						// timezone of the player.
-						guild_schedule::update_at.eq(now + chrono::Duration::hours(12)),
+						guild_schedule::update_at.eq(now + chrono::Duration::try_hours(12).unwrap()),
 						// Set the number of snapshots to 1, since we just inserted one.
 						guild_schedule::snapshots.eq(1),
 						guild_schedule::hash.eq(hash),

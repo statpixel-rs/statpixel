@@ -6,10 +6,6 @@
 #![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
 #![feature(associated_type_defaults)]
-// Temporarily suppress a few clippy warnings
-// See: https://github.com/SoftbearStudios/bitcode/issues/7
-// TODO: Remember to remove this once it has been fixed
-#![allow(clippy::verbose_bit_mask)]
 
 mod extras;
 
