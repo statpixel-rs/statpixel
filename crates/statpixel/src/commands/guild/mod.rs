@@ -201,7 +201,9 @@ async fn top(
 		name,
 		player,
 		uuid,
-		days.map_or(chrono::Duration::try_days(30).unwrap(), |d| chrono::Duration::try_days(d).unwrap()),
+		days.map_or(chrono::Duration::try_days(30).unwrap(), |d| {
+			chrono::Duration::try_days(d).unwrap()
+		}),
 		limit,
 		None,
 	)

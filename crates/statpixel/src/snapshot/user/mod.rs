@@ -91,7 +91,8 @@ async fn update(
 		|| (snapshots - CALCULATION_PERIOD_SNAPSHOTS) % FULL_PERIOD_SNAPSHOTS
 			> REGULAR_PERIOD_SNAPSHOTS
 	{
-		let increase = chrono::Duration::try_hours(i64::from(CALCULATION_WEEK_TIME_STEP_HOURS)).unwrap();
+		let increase =
+			chrono::Duration::try_hours(i64::from(CALCULATION_WEEK_TIME_STEP_HOURS)).unwrap();
 		let next = timestamp + increase;
 
 		if next > now {
@@ -526,7 +527,8 @@ pub async fn insert(ctx: &Context<'_>, player: &Player, data: &Data) -> Result<(
 						// Schedule the first update for one hour from now.
 						// The first few updates should be more frequent to calculate the
 						// timezone of the player.
-						schedule::update_at.eq(Utc::now() + chrono::Duration::try_hours(3).unwrap()),
+						schedule::update_at
+							.eq(Utc::now() + chrono::Duration::try_hours(3).unwrap()),
 						// Set the number of snapshots to 1, since we just inserted one.
 						schedule::snapshots.eq(1),
 						schedule::hash.eq(hash),
@@ -586,7 +588,8 @@ pub async fn insert_with_session(
 						// Schedule the first update for one hour from now.
 						// The first few updates should be more frequent to calculate the
 						// timezone of the player.
-						schedule::update_at.eq(Utc::now() + chrono::Duration::try_hours(3).unwrap()),
+						schedule::update_at
+							.eq(Utc::now() + chrono::Duration::try_hours(3).unwrap()),
 						// Set the number of snapshots to 1, since we just inserted one.
 						schedule::snapshots.eq(1),
 						schedule::hash.eq(hash),

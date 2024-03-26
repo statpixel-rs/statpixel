@@ -198,9 +198,12 @@ pub async fn guild_command(
 	guild.increase_searches(ctx).await?;
 
 	let png: Option<Cow<_>> = if let snapshot::guild::Status::Found((ref guild, _)) = status {
-		let guilds =
-			get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
-				.await?;
+		let guilds = get_snapshots_multiple_of_weekday(
+			ctx,
+			guild,
+			Utc::now() - chrono::Duration::try_days(30).unwrap(),
+		)
+		.await?;
 		let monthly_xp = get_monthly_xp(guild, &guilds);
 
 		let daily_xp = guild.members.iter().map(|g| g.xp_history[1].1).sum::<u32>();

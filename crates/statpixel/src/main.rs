@@ -1,6 +1,9 @@
 #![warn(clippy::pedantic)]
 #![allow(clippy::cast_possible_wrap)]
 #![allow(clippy::wildcard_imports)]
+// diesel_async::RunQueryDsl overshadows <[]>::first
+// and overflows the requirement evaluator
+#![allow(clippy::get_first)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
@@ -331,7 +334,7 @@ async fn event_handler(
 			interaction: Interaction::Modal(interaction),
 		} => {
 			let Some(id) = api::id::decode(&interaction.data.custom_id) else {
-				let ctx = context::Context::from_modal(&ctx, data, interaction);
+				let ctx = context::Context::from_modal(ctx, data, interaction);
 				return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 			};
 
@@ -340,7 +343,7 @@ async fn event_handler(
 					if let Err(e) =
 						commands::builder::modal_handler(ctx, interaction, data, id).await
 					{
-						let ctx = context::Context::from_modal(&ctx, data, interaction);
+						let ctx = context::Context::from_modal(ctx, data, interaction);
 						util::error(&ctx, e).await;
 					}
 				}
@@ -350,7 +353,7 @@ async fn event_handler(
 		FullEvent::InteractionCreate {
 			interaction: Interaction::Component(interaction),
 		} => {
-			let ctx = context::Context::from_component(&ctx, data, interaction);
+			let ctx = context::Context::from_component(ctx, data, interaction);
 			let values = match &interaction.data.kind {
 				serenity::ComponentInteractionDataKind::StringSelect { ref values } => values,
 				serenity::ComponentInteractionDataKind::Button => {

@@ -273,9 +273,12 @@ pub async fn general(
 	guild: &Guild,
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let guilds =
-		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
-			.await?;
+	let guilds = get_snapshots_multiple_of_weekday(
+		ctx,
+		guild,
+		Utc::now() - chrono::Duration::try_days(30).unwrap(),
+	)
+	.await?;
 	let monthly_xp = get_monthly_xp(guild, &guilds);
 
 	let members = futures::stream::iter(
@@ -451,9 +454,12 @@ pub async fn member(
 	player: &Player,
 	background: Option<Color>,
 ) -> Result<Cow<'static, [u8]>, Error> {
-	let guilds =
-		get_snapshots_multiple_of_weekday(ctx, guild, Utc::now() - chrono::Duration::try_days(30).unwrap())
-			.await?;
+	let guilds = get_snapshots_multiple_of_weekday(
+		ctx,
+		guild,
+		Utc::now() - chrono::Duration::try_days(30).unwrap(),
+	)
+	.await?;
 
 	let member_xp = get_member_monthly_xp(guild, &guilds);
 	let member = player.get_display_string(ctx).await?;

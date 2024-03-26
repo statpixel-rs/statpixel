@@ -216,7 +216,7 @@ pub async fn update_me(
 	Ok(StatusCode::OK)
 }
 
-fn log_internal_error(e: impl std::error::Error + std::fmt::Debug) -> StatusCode {
+fn log_internal_error(e: impl std::error::Error) -> StatusCode {
 	tracing::error!(error = %e, "internal error");
 
 	StatusCode::INTERNAL_SERVER_ERROR

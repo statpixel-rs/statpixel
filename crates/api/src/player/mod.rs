@@ -443,8 +443,7 @@ impl Player {
 									.skin
 									.metadata
 									.as_ref()
-									.map(|m| m.model == "slim")
-									.unwrap_or_default(),
+									.is_some_and(|m| m.model == "slim"),
 							)
 						}) else {
 							return Cow::Borrowed(&*DEFAULT_SKIN);

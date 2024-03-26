@@ -14,26 +14,25 @@ pub async fn post(
 	let data = decode(&body_bytes[..]).map_err(|_| StatusCode::BAD_REQUEST)?;
 	let hash = fxhash::hash64(&body_bytes[..]) as i64;
 
-	let prev_hash = diesel::update(
-		schedule::table
-			.filter(schedule::uuid.eq(data.uuid))
-			.filter(schedule::vendor_update_at.lt(Utc::now() - Duration::try_minutes(15).unwrap())),
-	)
-	.set((
-		schedule::vendor_update_at.eq(Utc::now()),
-		schedule::vendor_prev_hash.eq(schedule::vendor_hash),
-		schedule::vendor_hash.eq(hash),
-	))
-	.returning(schedule::vendor_prev_hash)
-	.get_result::<Option<i64>>(
-		&mut state
-			.pool
-			.get()
-			.await
-			.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?,
-	)
-	.await
-	.map_err(|_| StatusCode::NOT_FOUND)?;
+	let prev_hash =
+		diesel::update(schedule::table.filter(schedule::uuid.eq(data.uuid)).filter(
+			schedule::vendor_update_at.lt(Utc::now() - Duration::try_minutes(15).unwrap()),
+		))
+		.set((
+			schedule::vendor_update_at.eq(Utc::now()),
+			schedule::vendor_prev_hash.eq(schedule::vendor_hash),
+			schedule::vendor_hash.eq(hash),
+		))
+		.returning(schedule::vendor_prev_hash)
+		.get_result::<Option<i64>>(
+			&mut state
+				.pool
+				.get()
+				.await
+				.map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?,
+		)
+		.await
+		.map_err(|_| StatusCode::NOT_FOUND)?;
 
 	diesel::insert_into(snapshot::table)
 		.values((

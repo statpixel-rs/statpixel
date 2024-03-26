@@ -374,7 +374,8 @@ pub async fn map(
 						family,
 						&guild,
 						limit.unwrap_or(30),
-						Utc::now() - nanos.map_or(Duration::try_days(30).unwrap(), Duration::nanoseconds),
+						Utc::now()
+							- nanos.map_or(Duration::try_days(30).unwrap(), Duration::nanoseconds),
 						background,
 					)
 					.await

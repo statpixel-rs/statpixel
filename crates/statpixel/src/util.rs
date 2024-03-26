@@ -38,7 +38,7 @@ where
 	)
 }
 
-pub fn deprecated_interaction<'c>(ctx: &'c impl GetLocale) -> CreateReply<'c> {
+pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply<'_> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "deprecated-interaction"))
@@ -47,7 +47,7 @@ pub fn deprecated_interaction<'c>(ctx: &'c impl GetLocale) -> CreateReply<'c> {
 	)
 }
 
-pub fn invalid_identifier<'c>(ctx: &'c impl GetLocale) -> CreateReply<'c> {
+pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply<'_> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "invalid-identifier"))

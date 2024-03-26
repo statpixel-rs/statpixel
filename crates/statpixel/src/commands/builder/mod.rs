@@ -57,7 +57,8 @@ pub fn create_components<'c>(
 							.description(tr(ctx, "right-description")),
 						CreateSelectMenuOption::new(tr(ctx, "right-start"), "right_start")
 							.description(tr(ctx, "right-start-description")),
-					].into(),
+					]
+					.into(),
 				},
 			)
 			.placeholder(match state.next.location {
@@ -83,7 +84,8 @@ pub fn create_components<'c>(
 							.description(tr(ctx, "bubble-description")),
 						CreateSelectMenuOption::new(tr(ctx, "subtitle"), "subtitle")
 							.description(tr(ctx, "subtitle-description")),
-					].into(),
+					]
+					.into(),
 				},
 			)
 			.placeholder(match state.next.kind {
@@ -116,7 +118,8 @@ pub fn create_components<'c>(
 						CreateSelectMenuOption::new(tr(ctx, "red"), "RED"),
 						CreateSelectMenuOption::new(tr(ctx, "white"), "WHITE"),
 						CreateSelectMenuOption::new(tr(ctx, "yellow"), "YELLOW"),
-					].into(),
+					]
+					.into(),
 				},
 			)
 			.placeholder(match state.next.colour {
@@ -493,7 +496,9 @@ pub async fn modal_handler(
 			id.state.shapes.push(builder::Shape {
 				location: *location,
 				colour: *colour,
-				data: ShapeData::Subtitle { text: subtitle.to_string() },
+				data: ShapeData::Subtitle {
+					text: subtitle.to_string(),
+				},
 			});
 		}
 		(

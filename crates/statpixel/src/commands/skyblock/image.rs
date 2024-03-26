@@ -812,7 +812,7 @@ pub async fn networth(
 	let default = (&Category::default(), vec![]);
 
 	for i in categories.chunks(2) {
-		let (left, left_items) = i.get(0).unwrap();
+		let (left, left_items) = i.first().unwrap();
 		let (right, right_items) = i.get(1).unwrap_or(&default);
 
 		let rows = left_items.len().max(right_items.len());

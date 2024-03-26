@@ -265,4 +265,8 @@ macro_rules! commands {
 
 commands!(daily, ::chrono::Duration::try_days(1).unwrap(), "daily");
 commands!(weekly, ::chrono::Duration::try_weeks(1).unwrap(), "weekly");
-commands!(monthly, ::chrono::Duration::try_days(30).unwrap(), "monthly");
+commands!(
+	monthly,
+	::chrono::Duration::try_days(30).unwrap(),
+	"monthly"
+);

@@ -89,7 +89,7 @@ checksum = "8901269c6307e8d93993578286ac0edf7f195079ffff5ebdeea6a59ffb7e36bc"
 
 [[package]]
 name = "api"
-version = "0.39.0"
+version = "0.40.0"
 dependencies = [
  "base64 0.21.7",
  "bincode",
@@ -992,7 +992,7 @@ dependencies = [
 
 [[package]]
 name = "derive"
-version = "0.39.0"
+version = "0.40.0"
 dependencies = [
  "darling",
  "minecraft",
@@ -3857,7 +3857,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
 name = "statpixel"
-version = "0.39.0"
+version = "0.40.0"
 dependencies = [
  "api",
  "axum",

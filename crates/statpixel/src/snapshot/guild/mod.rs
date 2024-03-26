@@ -229,7 +229,8 @@ pub async fn insert(ctx: &Context<'_>, guild: &Guild) -> Result<(), Error> {
 						// Schedule the first update for one hour from now.
 						// The first few updates should be more frequent to calculate the
 						// timezone of the player.
-						guild_schedule::update_at.eq(now + chrono::Duration::try_hours(12).unwrap()),
+						guild_schedule::update_at
+							.eq(now + chrono::Duration::try_hours(12).unwrap()),
 						// Set the number of snapshots to 1, since we just inserted one.
 						guild_schedule::snapshots.eq(1),
 						guild_schedule::hash.eq(hash),
