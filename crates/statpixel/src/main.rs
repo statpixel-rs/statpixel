@@ -185,6 +185,7 @@ async fn main() {
 
 	let mut client = serenity::Client::builder(token, GatewayIntents::GUILDS)
 		.framework(framework)
+		.data(Arc::new(data.clone()))
 		.await
 		.unwrap();
 
@@ -307,7 +308,9 @@ async fn event_handler(
 			ctx.set_activity(Some(serenity::ActivityData {
 				name: FixedString::from_string_trunc(format!("statpixel.xyz | v{VERSION}")),
 				kind: serenity::ActivityType::Custom,
-				state: Some(FixedString::from_string_trunc(format!("statpixel.xyz | v{VERSION}"))),
+				state: Some(FixedString::from_string_trunc(format!(
+					"statpixel.xyz | v{VERSION}"
+				))),
 				url: None,
 			}));
 
