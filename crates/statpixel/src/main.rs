@@ -19,6 +19,7 @@ use database::{
 use diesel::ExpressionMethods;
 use diesel_async::RunQueryDsl;
 use once_cell::sync::Lazy;
+use poise::serenity_prelude::small_fixed_array::FixedString;
 use poise::serenity_prelude::{
 	self as serenity, ConnectionStage, FullEvent, GatewayIntents, Interaction,
 };
@@ -168,9 +169,7 @@ async fn main() {
 	let framework = poise::Framework::builder()
 		.options(poise::FrameworkOptions {
 			commands,
-			listener: |ctx, event, framework, user_data| {
-				Box::pin(event_handler(ctx, event, framework, user_data))
-			},
+			event_handler: |framework, event| Box::pin(event_handler(framework, event)),
 			pre_command: |ctx| Box::pin(pre_command(ctx)),
 			..Default::default()
 		})
@@ -259,10 +258,7 @@ async fn main() {
 }
 
 async fn pre_command(ctx: Context<'_>) {
-	let Ok(mut connection) = context::Context::from_poise(&ctx, &ctx.data())
-		.connection()
-		.await
-	else {
+	let Ok(mut connection) = context::Context::from_poise(&ctx).connection().await else {
 		return;
 	};
 
@@ -282,11 +278,12 @@ async fn pre_command(ctx: Context<'_>) {
 
 #[allow(clippy::too_many_lines)]
 async fn event_handler(
-	ctx: poise::Context<'_, Data, Error>,
-	event: &FullEvent,
 	framework: poise::FrameworkContext<'_, Data, Error>,
-	data: &Data,
+	event: &FullEvent,
 ) -> Result<(), Error> {
+	let ctx = framework.serenity_context;
+	let data = &framework.user_data();
+
 	match event {
 		FullEvent::Ready {
 			data_about_bot: ready,
@@ -294,7 +291,7 @@ async fn event_handler(
 			info!(user = ?ready.user.tag(), guilds = ready.guilds.len(), "logged in");
 
 			serenity::Command::set_global_commands(
-				&ctx.http(),
+				&ctx.http,
 				&poise::builtins::create_application_commands(
 					&framework.options().commands[translate::GAMES..],
 				),
@@ -308,9 +305,9 @@ async fn event_handler(
 				.extend(ready.guilds.iter().map(|g| g.id.get()));
 
 			ctx.set_activity(Some(serenity::ActivityData {
-				name: format!("statpixel.xyz | v{VERSION}"),
+				name: FixedString::from_string_trunc(format!("statpixel.xyz | v{VERSION}")),
 				kind: serenity::ActivityType::Custom,
-				state: Some(format!("statpixel.xyz | v{VERSION}")),
+				state: Some(FixedString::from_string_trunc(format!("statpixel.xyz | v{VERSION}"))),
 				url: None,
 			}));
 
@@ -331,7 +328,7 @@ async fn event_handler(
 			interaction: Interaction::Modal(interaction),
 		} => {
 			let Some(id) = api::id::decode(&interaction.data.custom_id) else {
-				let ctx = context::Context::from_modal(ctx, data, interaction);
+				let ctx = context::Context::from_modal(&ctx, data, interaction);
 				return Ok(ctx.send(deprecated_interaction(&ctx)).await?);
 			};
 
@@ -340,7 +337,7 @@ async fn event_handler(
 					if let Err(e) =
 						commands::builder::modal_handler(ctx, interaction, data, id).await
 					{
-						let ctx = context::Context::from_modal(ctx, data, interaction);
+						let ctx = context::Context::from_modal(&ctx, data, interaction);
 						util::error(&ctx, e).await;
 					}
 				}
@@ -350,7 +347,7 @@ async fn event_handler(
 		FullEvent::InteractionCreate {
 			interaction: Interaction::Component(interaction),
 		} => {
-			let ctx = context::Context::from_component(ctx, data, interaction);
+			let ctx = context::Context::from_component(&ctx, data, interaction);
 			let values = match &interaction.data.kind {
 				serenity::ComponentInteractionDataKind::StringSelect { ref values } => values,
 				serenity::ComponentInteractionDataKind::Button => {
@@ -411,7 +408,7 @@ async fn event_handler(
 					.await
 					.ok();
 
-				info!(name = guild.name, "joined guild");
+				info!(name = guild.name.as_str(), "joined guild");
 
 				guild
 					.set_commands(

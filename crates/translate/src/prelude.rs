@@ -1,8 +1,6 @@
 use std::str::FromStr;
 
 use crate::context::{Context, Locale};
-#[cfg(feature = "data")]
-use crate::Data;
 
 pub trait GetNumFormatLocale {
 	fn get_num_format_locale(&self) -> num_format::Locale;

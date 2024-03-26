@@ -67,7 +67,7 @@ pub async fn boost(ctx: Context<'_>) -> Result<(), Error> {
 
 	ctx.send(
 		success_embed(
-			tr_fmt!(&ctx, "boost-success-title", name: guild.name),
+			tr_fmt!(&ctx, "boost-success-title", name: guild.name.as_str()),
 			tr(&ctx, "boost-success-description"),
 		)
 		.content(crate::tip::random(&ctx)),

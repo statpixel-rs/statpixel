@@ -20,13 +20,13 @@ type Bundle = fluent::bundle::FluentBundle<
 >;
 
 #[cfg(feature = "data")]
-pub struct English<'c>(&'c Data);
+pub struct English;
 
 // static NAME_REGEX: Lazy<regex::Regex> =
 // 	Lazy::new(|| regex::Regex::new(r"^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$").unwrap());
 
 #[cfg(feature = "data")]
-impl GetLocale for English<'_> {
+impl GetLocale for English {
 	fn locale(&self) -> Option<crate::context::Locale> {
 		Some(crate::context::Locale::en_US)
 	}

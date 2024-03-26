@@ -281,9 +281,6 @@ where
 		completions: u32,
 	}
 
-	#[derive(serde::Deserialize)]
-	struct Quests(#[serde(with = "crate::de::vec_map_no_key")] Vec<Quest>);
-
 	struct V;
 
 	impl<'de> serde::de::Visitor<'de> for V {

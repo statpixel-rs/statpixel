@@ -134,24 +134,20 @@ pub fn minecraft_string(text: &str) -> impl Iterator<Item = Text<'_>> {
 
 		let (paint, font) = if let Ok(paint) = paint::Paint::try_from(hex) {
 			prev_paint = paint;
-			// When the paint changes, the text effects are reset
-			prev_font = style::MinecraftFont::Normal;
 
 			(paint, prev_font)
 		} else {
-			match style::MinecraftFont::try_from(hex) {
-				Ok(font @ style::MinecraftFont::Normal) => {
-					prev_font = font;
+			match style::MinecraftFont::from(hex) {
+				font @ style::MinecraftFont::Normal => {
 					prev_paint = paint::Paint::White;
 
 					(prev_paint, font)
 				}
-				Ok(font) => {
+				font => {
 					prev_font = font;
 
 					(prev_paint, prev_font)
 				}
-				Err(_) => (prev_paint, prev_font),
 			}
 		};
 

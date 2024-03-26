@@ -1,4 +1,3 @@
-use minecraft::paint::Paint;
 use quote::quote;
 use std::{borrow::Cow, fmt::Debug};
 
@@ -277,7 +276,6 @@ pub trait Field: Debug {
 	fn id(&self) -> &proc_macro2::TokenStream;
 	fn div(&self) -> Option<&proc_macro2::TokenStream>;
 	fn kind(&self) -> &FieldKind;
-	fn paint(&self) -> &Paint;
 	/// `mode` is only present for the current mode in a sum.
 	/// For fields that are not sums, it is [`None`]
 	fn key<'m>(&self, side: Side, access: Access<'m>) -> Option<Key<'m>>;

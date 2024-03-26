@@ -184,10 +184,6 @@ impl Field for Block<'_> {
 		self.tr_bottom.clone()
 	}
 
-	fn paint(&self) -> &Paint {
-		self.paint
-	}
-
 	fn id(&self) -> &proc_macro2::TokenStream {
 		&self.ident
 	}

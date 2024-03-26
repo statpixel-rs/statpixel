@@ -5,17 +5,17 @@ use diesel_async::RunQueryDsl;
 use minecraft::{style::Family, username::Username};
 use poise::{serenity_prelude as serenity, CreateReply};
 use skia_safe::Color;
-use std::sync::Arc;
+use std::{borrow::Cow, sync::Arc};
 use tracing::error;
 use translate::{context, prelude::GetLocale, tr, tr_fmt, ApiError, Data};
 use uuid::Uuid;
 
 use crate::{context::Context, format, Error};
 
-pub fn success_embed<S, D>(title: S, description: D) -> CreateReply<'static>
+pub fn success_embed<'c, S, D>(title: S, description: D) -> CreateReply<'c>
 where
-	S: Into<String>,
-	D: Into<String>,
+	S: Into<Cow<'c, str>>,
+	D: Into<Cow<'c, str>>,
 {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
@@ -25,10 +25,10 @@ where
 	)
 }
 
-pub fn error_embed<S, D>(title: S, description: D) -> CreateReply<'static>
+pub fn error_embed<'c, S, D>(title: S, description: D) -> CreateReply<'c>
 where
-	S: Into<String>,
-	D: Into<String>,
+	S: Into<Cow<'c, str>>,
+	D: Into<Cow<'c, str>>,
 {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
@@ -38,7 +38,7 @@ where
 	)
 }
 
-pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply<'static> {
+pub fn deprecated_interaction<'c>(ctx: &'c impl GetLocale) -> CreateReply<'c> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "deprecated-interaction"))
@@ -47,7 +47,7 @@ pub fn deprecated_interaction(ctx: &impl GetLocale) -> CreateReply<'static> {
 	)
 }
 
-pub fn invalid_identifier(ctx: &impl GetLocale) -> CreateReply<'static> {
+pub fn invalid_identifier<'c>(ctx: &'c impl GetLocale) -> CreateReply<'c> {
 	CreateReply::new().embed(
 		serenity::CreateEmbed::new()
 			.title(tr(ctx, "invalid-identifier"))
@@ -471,7 +471,7 @@ pub async fn error(ctx: &context::Context<'_>, error: Error) {
 }
 
 pub async fn error_handler(e: poise::FrameworkError<'_, Data, Error>) {
-	if let poise::FrameworkError::Command { error: e, ctx } = e {
+	if let poise::FrameworkError::Command { error: e, ctx, .. } = e {
 		let ctx = &context::Context::from_poise(&ctx);
 
 		error(ctx, e).await;

@@ -13,7 +13,7 @@ use diesel_async::{
 use flate2::{read::ZlibDecoder, write::ZlibEncoder, Compression};
 use futures::StreamExt;
 use tracing::warn;
-use translate::{context::Context, Error, ApiError};
+use translate::{context::Context, ApiError, Error};
 use uuid::Uuid;
 
 const GUILD_BATCH_LIMIT: i64 = 1_000;

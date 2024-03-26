@@ -24,8 +24,7 @@ use poise::serenity_prelude::{
 use tracing::{info, warn};
 use translate::{
 	context::{self, Context},
-	Error,
-	ApiError,
+	ApiError, Error,
 };
 use uuid::Uuid;
 

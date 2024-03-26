@@ -1954,7 +1954,7 @@ impl ToTokens for GameInputReceiver {
 									let name = #translate::tr(&locale, mode.tr());
 									let mode: u32 = mode.into();
 									let name: String = name.into_owned();
-	
+
 									if name.to_ascii_lowercase().contains(&partial) {
 										Some(#poise::serenity_prelude::AutocompleteChoice::new(name, mode))
 									} else {
@@ -1975,7 +1975,7 @@ impl ToTokens for GameInputReceiver {
 									let name = #translate::tr(&locale, kind.tr());
 									let kind: u32 = kind.into();
 									let name: String = name.into_owned();
-	
+
 									if name.to_ascii_lowercase().contains(&partial) {
 										Some(#poise::serenity_prelude::AutocompleteChoice::new(name, kind))
 									} else {

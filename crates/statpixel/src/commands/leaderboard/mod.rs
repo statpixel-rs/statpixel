@@ -52,7 +52,10 @@ async fn autocomplete_board(
 				return None;
 			}
 
-			Some(poise::serenity_prelude::AutocompleteChoice::new(board.display_name.clone(), value))
+			Some(poise::serenity_prelude::AutocompleteChoice::new(
+				board.display_name.clone(),
+				value,
+			))
 		})
 		.take(10)
 		.collect::<Vec<_>>()

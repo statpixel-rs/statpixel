@@ -203,12 +203,12 @@ impl<'c> Context<'c> {
 	}
 
 	#[cfg(feature = "error")]
-	pub fn from_poise(ctx: &'c super::Context<'c>, data: &'c super::Data) -> Self {
+	pub fn from_poise(ctx: &'c super::Context<'c>) -> Self {
 		Self {
 			locale: ctx.locale().and_then(|l| Locale::from_str(l).ok()),
 			interaction: ContextInteraction::Command(ctx),
 			automated: false,
-			data: Some(data),
+			data: Some(crate::DATA.get().unwrap()),
 		}
 	}
 

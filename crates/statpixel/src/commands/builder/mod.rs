@@ -37,10 +37,10 @@ pub async fn builder(ctx: Context<'_>) -> Result<(), Error> {
 }
 
 #[allow(clippy::too_many_lines)]
-pub fn create_components(
-	ctx: &context::Context<'_>,
+pub fn create_components<'c>(
+	ctx: &'c context::Context<'_>,
 	state: State,
-) -> Result<Vec<CreateActionRow>, Error> {
+) -> Result<Vec<CreateActionRow<'c>>, Error> {
 	let empty = state.shapes.is_empty();
 
 	Ok(vec![
@@ -57,7 +57,7 @@ pub fn create_components(
 							.description(tr(ctx, "right-description")),
 						CreateSelectMenuOption::new(tr(ctx, "right-start"), "right_start")
 							.description(tr(ctx, "right-start-description")),
-					],
+					].into(),
 				},
 			)
 			.placeholder(match state.next.location {
@@ -83,7 +83,7 @@ pub fn create_components(
 							.description(tr(ctx, "bubble-description")),
 						CreateSelectMenuOption::new(tr(ctx, "subtitle"), "subtitle")
 							.description(tr(ctx, "subtitle-description")),
-					],
+					].into(),
 				},
 			)
 			.placeholder(match state.next.kind {
@@ -116,7 +116,7 @@ pub fn create_components(
 						CreateSelectMenuOption::new(tr(ctx, "red"), "RED"),
 						CreateSelectMenuOption::new(tr(ctx, "white"), "WHITE"),
 						CreateSelectMenuOption::new(tr(ctx, "yellow"), "YELLOW"),
-					],
+					].into(),
 				},
 			)
 			.placeholder(match state.next.colour {
@@ -219,7 +219,7 @@ pub async fn handler(
 						builder::ShapeKind::Subtitle if colour.is_some() => {
 							return Ok(interaction
 								.create_response(
-									ctx.discord(),
+									&ctx.discord().http,
 									serenity::CreateInteractionResponse::Modal(
 										create_subtitle_modal(ctx, id.state)?,
 									),
@@ -229,7 +229,7 @@ pub async fn handler(
 						builder::ShapeKind::Level => {
 							return Ok(interaction
 								.create_response(
-									ctx.discord(),
+									&ctx.discord().http,
 									serenity::CreateInteractionResponse::Modal(create_level_modal(
 										ctx, id.state,
 									)?),
@@ -248,7 +248,7 @@ pub async fn handler(
 						builder::ShapeKind::Bubble if colour.is_some() => {
 							return Ok(interaction
 								.create_response(
-									ctx.discord(),
+									&ctx.discord().http,
 									serenity::CreateInteractionResponse::Modal(
 										create_bubble_modal(ctx, id.state)?,
 									),
@@ -267,7 +267,7 @@ pub async fn handler(
 				(Action::Create, ..) => {
 					return Ok(interaction
 						.create_response(
-							ctx.discord(),
+							&ctx.discord().http,
 							serenity::CreateInteractionResponse::Modal(create_create_modal(
 								ctx, id.state,
 							)?),
@@ -363,7 +363,10 @@ pub fn create_subtitle_modal<'c>(
 	)]))
 }
 
-pub fn create_level_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
+pub fn create_level_modal<'c>(
+	ctx: &'c context::Context<'_>,
+	state: State,
+) -> Result<CreateModal<'c>, Error> {
 	Ok(CreateModal::new(
 		builder::set_level_data(state)?,
 		tr(ctx, "level-modal-title"),
@@ -379,7 +382,10 @@ pub fn create_level_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Re
 	)]))
 }
 
-pub fn create_bubble_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
+pub fn create_bubble_modal<'c>(
+	ctx: &'c context::Context<'_>,
+	state: State,
+) -> Result<CreateModal<'c>, Error> {
 	Ok(CreateModal::new(
 		builder::set_bubble_data(state)?,
 		tr(ctx, "bubble-modal-title"),
@@ -404,7 +410,10 @@ pub fn create_bubble_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> R
 	]))
 }
 
-pub fn create_create_modal<'c>(ctx: &'c context::Context<'_>, state: State) -> Result<CreateModal<'c>, Error> {
+pub fn create_create_modal<'c>(
+	ctx: &'c context::Context<'_>,
+	state: State,
+) -> Result<CreateModal<'c>, Error> {
 	Ok(
 		CreateModal::new(builder::create(state)?, tr(ctx, "create-modal-title")).components(vec![
 			CreateActionRow::InputText(
@@ -426,7 +435,7 @@ macro_rules! impl_type_branch {
 				<$kind>::try_from_str_lower(&$statistic.to_ascii_lowercase())
 			else {
 				return Ok($interaction.create_response(
-					$ctx.discord(),
+					&$ctx.discord().http,
 					serenity::CreateInteractionResponse::Message(
 						CreateInteractionResponseMessage::new()
 							.content(tr_fmt!($ctx, "invalid-statistic", statistic: $statistic.as_str(), game: $game_type.as_clean_name()))
@@ -484,7 +493,7 @@ pub async fn modal_handler(
 			id.state.shapes.push(builder::Shape {
 				location: *location,
 				colour: *colour,
-				data: ShapeData::Subtitle { text: subtitle },
+				data: ShapeData::Subtitle { text: subtitle.to_string() },
 			});
 		}
 		(
@@ -512,7 +521,7 @@ pub async fn modal_handler(
 				_ => {
 					return Ok(interaction
 						.create_response(
-							ctx,
+							&ctx.http,
 							serenity::CreateInteractionResponse::Message(
 								CreateInteractionResponseMessage::new()
 									.content(tr_fmt!(local_ctx, "invalid-level-type", kind: level))
@@ -558,7 +567,7 @@ pub async fn modal_handler(
 			else {
 				return Ok(interaction
 					.create_response(
-						ctx,
+						&ctx.http,
 						serenity::CreateInteractionResponse::Message(
 							CreateInteractionResponseMessage::new()
 								.content(
