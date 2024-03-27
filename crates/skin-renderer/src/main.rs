@@ -7,6 +7,17 @@ async fn main() {
 		.get_or_init(skin_renderer::create_renderer)
 		.await;
 
+	// save the output to a file
+	let output = renderer
+		.render(
+			skin_renderer::SkinKind::Classic,
+			if url == "none" { None } else { Some(url) },
+		)
+		.await
+		.unwrap();
+
+	std::fs::write("output.png", output).unwrap();
+
 	for _ in 0..1_000 {
 		// Warmup
 		let _ = renderer
