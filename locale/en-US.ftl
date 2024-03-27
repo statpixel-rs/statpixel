@@ -2678,7 +2678,7 @@ error-session-already-exists = A session with the provided name has already been
 session-deleted = The session with id **`{$id}`** has been deleted.
 session-created-title = Session created
 session-created = The session with id **`{$id}`** has been created for **`{$name}`**.
-  Substitute the place of any player with the session id to use it's data in any command.
+  Substitute the place of any player with the session id to use its data in any command.
 
   Try it out: </bedwars general:1113624864272683060>
 

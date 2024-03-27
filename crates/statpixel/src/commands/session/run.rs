@@ -58,7 +58,7 @@ pub async fn list(
 					.map(|(id, name, uuid, created_at)| {
 						format!(
 							"- [**`{}`**](https://namemc.com/profile/{}) - <t:{}:R>",
-							name.unwrap_or_else(|| id.to_string()),
+							name.map_or_else(|| id.to_string(), |n| format!("#{n}")),
 							uuid,
 							created_at.timestamp()
 						)
