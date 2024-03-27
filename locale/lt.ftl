@@ -7,6 +7,9 @@ showing-guild-statistics = Rodo gildijos statistikos pokyčius nuo {$from} iki {
 no-previous-guild-statistics = Gildijos **`{$name}`** statistikos duomenų nerasta, todėl jie buvo įterpti.
 showing-comparison = <a:clock:1113624864272683060> Rodo **`{$from}`** statistiką, palygintą su **`{$to}`**.
 
+credits = Padėkos
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Klaidos
 
 error-player-not-found = Profilis priklausantis **`{$name}`** nebuvo rastas.

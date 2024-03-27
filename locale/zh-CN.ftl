@@ -7,6 +7,9 @@ showing-guild-statistics = 正在显示从{$from}到{$to}的公会统计数据�
 no-previous-guild-statistics = 未找到以前的公会**`{$name}`**的数据，因此已被插入。
 showing-comparison = <a:clock:1113624864272683060> 正在显示**`{$from}`**与**`{$to}`**的统计数据比较。
 
+credits = 鸣谢
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 error-player-not-found = 未找到属于**`{$name}`**的配置文件。
 error-snapshot-not-found = 未找到属于**`{$name}`**的会话。

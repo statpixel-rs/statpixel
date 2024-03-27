@@ -7,6 +7,9 @@ showing-guild-statistics = Näytetään killan tilastotietoja ajalta {$from} - {
 no-previous-guild-statistics = Ei aiempia tietoja killalle **`{$name}`**, joten ne on lisätty.
 showing-comparison = <a:clock:1113624864272683060> Näytetään tilastotietoja pelaajalta **`{$from}`** pelaajalle **`{$to}`**.
 
+credits = Kiitokset
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Virheet
 error-player-not-found = Profiilia nimellä **`{$name}`** ei löytynyt.
 error-snapshot-not-found = Istuntoa nimellä **`{$name}`** ei löytynyt.

@@ -7,6 +7,9 @@ showing-guild-statistics = Egy guild statisztika megjelenítése innen: {$from} 
 no-previous-guild-statistics = Nincsenek előző adatok találhatók **`{$name}`** guildhez, ezért beillesztve lett.
 showing-comparison = <a:clock:1113624864272683060> Statisztikák megjelenítése: **`{$from}`** összehasonlítva: **`{$to}`**.
 
+credits = Köszönetnyilvánítás
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Hibák
 
 error-player-not-found = A(z) **`{$name}`** nevű játékos profilja nem található.

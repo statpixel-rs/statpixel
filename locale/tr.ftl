@@ -7,6 +7,9 @@ showing-guild-statistics = <a:clock:1113624864272683060> Sunucu istatistikleri {
 no-previous-guild-statistics = **`{$name}`** sunucusu için önceki veriler bulunamadığından dolayı eklendi.
 showing-comparison = <a:clock:1113624864272683060> **`{$from}`** ile **`{$to}`** arasındaki istatistik karşılaştırması gösteriliyor.
 
+credits = Teşekkürler
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Hatalar
 
 error-player-not-found = **`{$name}`** adlı bir profille ilgili bilgi bulunamadı.

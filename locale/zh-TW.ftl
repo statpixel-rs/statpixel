@@ -7,6 +7,9 @@ showing-guild-statistics = 正在显示公会 {$from} 到 {$to} 的统计数据�
 no-previous-guild-statistics = 未找到有关公会 **`{$name}`** 的历史数据，因此已插入新数据。
 showing-comparison = <a:clock:1113624864272683060> 正在显示 **`{$from}`** 和 **`{$to}`** 的统计数据对比。
 
+credits = 鳴謝
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 
 error-player-not-found = 未找到属于 **`{$name}`** 的个人资料。

@@ -7,6 +7,9 @@ showing-guild-statistics = Zeige Gildenstatistikänderungen von {$from} bis {$to
 no-previous-guild-statistics = Keine früheren Daten gefunden für die Gilde **`{$name}`**, daher wurde sie eingefügt.
 showing-comparison = <a:clock:1113624864272683060> Zeige Statistiken von **`{$from}`** im Vergleich zu **`{$to}`**.
 
+credits = Danksagungen
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Fehlermeldungen
 error-player-not-found = Ein Profil mit dem Namen **`{$name}`** wurde nicht gefunden.
 error-snapshot-not-found = Eine Sitzung mit dem Namen **`{$name}`** wurde nicht gefunden.

@@ -7,6 +7,9 @@ showing-guild-statistics = Mostrando cambios en estadísticas del gremio de {$fr
 no-previous-guild-statistics = No se encontraron datos anteriores para el gremio **`{$name}`**, así que se han insertado.
 showing-comparison = <a:clock:1113624864272683060> Mostrando estadísticas de **`{$from}`** en comparación con **`{$to}`**.
 
+credits = Créditos
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errores
 
 error-player-not-found = No se encontró un perfil perteneciente a **`{$name}`**.

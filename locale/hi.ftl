@@ -7,6 +7,9 @@ showing-guild-statistics = <a:clock:1113624864272683060> गिल्ड आं�
 no-previous-guild-statistics = गिल्ड **`{$name}`** के लिए कोई पिछले डेटा नहीं मिला, इसलिए यह जोड़ दिया गया है।
 showing-comparison = <a:clock:1113624864272683060> **`{$from}`** की तुलना में **`{$to}`** के आंकड़े दिखाएं।
 
+credits = श्रेय
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 error-player-not-found = **`{$name}`** के लिए प्रोफ़ाइल नहीं मिली।
 error-snapshot-not-found = **`{$name}`** के लिए सत्र नहीं मिला।

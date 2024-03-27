@@ -7,6 +7,9 @@ showing-guild-statistics = Zobrazuji statistiky změny cechu od {$from} do {$to}
 no-previous-guild-statistics = Pro cech **`{$name}`** nebyly nalezeny žádné předchozí údaje, takže byly vloženy nové.
 showing-comparison = <a:clock:1113624864272683060> Zobrazuji statistiky hráče **`{$from}`** ve srovnání s hráčem **`{$to}`**.
 
+credits = Poděkování
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Chyby
 
 error-player-not-found = Profil hráče **`{$name}`** nebyl nalezen.

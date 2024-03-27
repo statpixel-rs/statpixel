@@ -7,6 +7,9 @@ showing-guild-statistics = Se afișează statisticile guild-ului de la {$from} l
 no-previous-guild-statistics = Nu s-au găsit date anterioare pentru guild-ul **`{$name}`**, așa că a fost adăugat.
 showing-comparison = <a:clock:1113624864272683060> Se afișează statisticile lui **`{$from}`** în comparație cu cele ale lui **`{$to}`**.
 
+credits = Credite
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Erori
 
 error-player-not-found = Profilul aparținând lui **`{$name}`** nu a fost găsit.

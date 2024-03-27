@@ -7,6 +7,9 @@ showing-guild-statistics = Prikaz statistike promjene za gildu od {$from} do {$t
 no-previous-guild-statistics = Nisu pronađeni prethodni podaci za gildu **`{$name}`**, pa je unesena nova.
 showing-comparison = <a:clock:1113624864272683060> Prikaz statistike za **`{$from}`** u usporedbi s **`{$to}`**.
 
+credits = Zahvale
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 
 error-player-not-found = Profil pripadajući korisniku **`{$name}`** nije pronađen.

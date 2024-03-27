@@ -7,6 +7,9 @@ showing-guild-statistics = Mostrando le statistiche di gilda dal {$from} al {$to
 no-previous-guild-statistics = Nessun dato precedente trovato per la gilda **`{$name}`**, quindi è stata inserita.
 showing-comparison = <a:clock:1113624864272683060> Mostrando le statistiche di **`{$from}`** rispetto a **`{$to}`**.
 
+credits = Crediti
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errori
 
 error-player-not-found = Profilo appartenente a **`{$name}`** non trovato.

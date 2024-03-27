@@ -7,6 +7,9 @@ showing-guild-statistics = <a:clock:1113624864272683060> {$from}から{$to}ま�
 no-previous-guild-statistics = ギルド**`{$name}`**に関する以前のデータが見つからなかったため、挿入されました。
 showing-comparison = <a:clock:1113624864272683060> **`{$from}`**の統計情報を**`{$to}`**と比較して表示中。
 
+credits = クレジット
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 
 error-player-not-found = **`{$name}`**のプロフィールが見つかりませんでした。

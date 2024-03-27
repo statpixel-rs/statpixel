@@ -7,6 +7,9 @@ showing-guild-statistics = Viser statistikkendringer for guild fra {$from} til {
 no-previous-guild-statistics = Ingen tidligere data funnet for guild **`{$name}`**, så det har blitt lagt til.
 showing-comparison = <a:clock:1113624864272683060> Viser statistikk for **`{$from}`** sammenlignet med **`{$to}`**.
 
+credits = Krediteringer
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Feil
 
 error-player-not-found = Profilen til **`{$name}`** ble ikke funnet.

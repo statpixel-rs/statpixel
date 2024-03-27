@@ -7,6 +7,9 @@ showing-guild-statistics = Εμφάνιση αλλαγής στατιστικώ�
 no-previous-guild-statistics = Δεν βρέθηκαν προηγούμενα δεδομένα για την ομάδα **`{$name}`**, οπότε προστέθηκε.
 showing-comparison = <a:clock:1113624864272683060> Εμφάνιση στατιστικών του **`{$from}`** συγκρινόμενα με το **`{$to}`**.
 
+credits = Ευχαριστίες
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Σφάλματα
 
 error-player-not-found = Δεν βρέθηκε προφίλ για τον χρήστη **`{$name}`**.

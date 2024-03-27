@@ -7,6 +7,9 @@ showing-guild-statistics = Показване на статистиката на
 no-previous-guild-statistics = Не са намерени предишни данни за гилдия **`{$name}`**, затова са били вмъкнати.
 showing-comparison = <a:clock:1113624864272683060> Показване на статистиката на **`{$from}`** спрямо **`{$to}`**.
 
+credits = Благодарности
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Грешки
 
 error-player-not-found = Не е намерен профил, принадлежащ на **`{$name}`**.

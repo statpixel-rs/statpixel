@@ -7,6 +7,9 @@ showing-guild-statistics = <a:clock:1113624864272683060> 길드 **{$name}**의 �
 no-previous-guild-statistics = 길드 **`{$name}`**에 대한 이전 데이터가 없으므로 새로 삽입되었습니다.
 showing-comparison = <a:clock:1113624864272683060> **`{$from}`**의 통계를 **`{$to}`**와 비교하여 표시합니다.
 
+credits = 크레딧
+credits-description = SkyHelper-Networth, FurfSky Reborn, Hypixel+, PacksHQ, RNBW, Vanilla+, Worlds and Beyond
+
 # Errors
 error-player-not-found = **`{$name}`** 님의 프로필을 찾을 수 없습니다.
 error-snapshot-not-found = **`{$name}`** 님의 세션을 찾을 수 없습니다.
