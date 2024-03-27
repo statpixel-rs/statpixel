@@ -85,9 +85,9 @@ pub enum MinecraftFont {
 #[cfg_attr(feature = "serde", derive(serde::Deserialize))]
 #[cfg_attr(feature = "diesel", derive(diesel::AsExpression, diesel::FromSqlRow), diesel(sql_type = SmallInt))]
 pub enum Family {
-	#[default]
 	#[cfg_attr(feature = "serde", serde(rename = "minecraft"))]
 	Minecraft,
+	#[default]
 	#[cfg_attr(feature = "serde", serde(rename = "faithful"))]
 	Faithful,
 	#[cfg_attr(feature = "serde", serde(rename = "roboto"))]
