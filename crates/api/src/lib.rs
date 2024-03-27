@@ -2,6 +2,7 @@
 #![allow(clippy::similar_names)]
 #![allow(clippy::enum_glob_use)]
 #![allow(clippy::wildcard_imports)]
+#![allow(clippy::get_first)]
 #![feature(let_chains)]
 #![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
