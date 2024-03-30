@@ -9,8 +9,8 @@
 #![feature(iter_intersperse)]
 #![feature(iter_array_chunks)]
 
-use std::collections::HashSet;
 use std::sync::Arc;
+use std::{collections::HashSet, sync::atomic};
 
 pub use api::command::Id;
 use api::skyblock;
@@ -50,7 +50,7 @@ use util::deprecated_interaction;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub static GUILDS: Lazy<tokio::sync::RwLock<HashSet<u64>>> = Lazy::new(Default::default);
-pub static SHARDS: Lazy<tokio::sync::RwLock<u64>> = Lazy::new(Default::default);
+pub static SHARDS: atomic::AtomicU64 = atomic::AtomicU64::new(0);
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";
@@ -90,6 +90,7 @@ async fn main() {
 
 	let mut commands = vec![
 		// These commands are registered per-server, so we can handle the "base" separately
+		// NOTE: When changing these, also modify translate::GAMES
 		commands::games::arcade::basic(),
 		commands::games::arena::basic(),
 		commands::games::bedwars::basic(),
@@ -316,19 +317,6 @@ async fn event_handler(
 				))),
 				url: None,
 			}));
-
-			for guild in &ready.guilds {
-				guild
-					.id
-					.set_commands(
-						&ctx.http,
-						&poise::builtins::create_application_commands(
-							&framework.options().commands[..translate::GAMES],
-						),
-					)
-					.await
-					.ok();
-			}
 		}
 		FullEvent::InteractionCreate {
 			interaction: Interaction::Modal(interaction),
@@ -400,7 +388,7 @@ async fn event_handler(
 			}
 		}
 		FullEvent::GuildCreate { guild, .. } => {
-			if GUILDS.write().await.insert(guild.id.get()) && tracing::enabled!(Level::INFO) {
+			if GUILDS.write().await.insert(guild.id.get()) {
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
@@ -430,7 +418,7 @@ async fn event_handler(
 		FullEvent::GuildDelete {
 			incomplete: guild, ..
 		} => {
-			if GUILDS.write().await.remove(&guild.id.get()) && tracing::enabled!(Level::INFO) {
+			if GUILDS.write().await.remove(&guild.id.get()) {
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
@@ -447,9 +435,9 @@ async fn event_handler(
 		}
 		FullEvent::ShardStageUpdate { event, .. } => {
 			if event.new == ConnectionStage::Connected {
-				*SHARDS.write().await += 1;
+				SHARDS.fetch_add(1, atomic::Ordering::Relaxed);
 			} else if event.old == ConnectionStage::Connected {
-				*SHARDS.write().await -= 1;
+				SHARDS.fetch_sub(1, atomic::Ordering::Relaxed);
 			}
 		}
 		_ => {}

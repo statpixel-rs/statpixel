@@ -2,6 +2,7 @@ use api::http::HTTP;
 use once_cell::sync::Lazy;
 use reqwest::{header::HeaderValue, Url};
 use serde::Serialize;
+use std::sync::atomic;
 
 static URL: Lazy<Url> =
 	Lazy::new(|| Url::parse("https://top.gg/api/bots/718687348883193916/stats").unwrap());
@@ -9,20 +10,20 @@ static URL: Lazy<Url> =
 #[derive(Debug, Serialize)]
 pub struct Payload {
 	#[serde(rename = "server_count")]
-	pub guilds: u64,
-	#[serde(rename = "shard_count")]
-	pub shards: u64,
+	pub shards: Vec<u64>,
 }
 
 pub async fn post(token: &HeaderValue) -> Result<(), api::Error> {
-	let payload = Payload {
-		guilds: crate::GUILDS.read().await.len() as u64,
-		shards: *crate::SHARDS.read().await,
-	};
+	let guilds = crate::GUILDS.read().await.len() as u64;
+	let shards = crate::SHARDS.load(atomic::Ordering::Relaxed);
 
-	if payload.shards == 0 || payload.guilds == 0 {
+	if guilds == 0 || shards == 0 {
 		return Ok(());
 	}
+
+	let payload = Payload {
+		shards: vec![guilds / shards; shards as usize],
+	};
 
 	HTTP.post(URL.clone())
 		.json(&payload)
