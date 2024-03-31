@@ -1,0 +1,3 @@
+-- Your SQL goes here
+ALTER TABLE "user" ALTER COLUMN "display" SET DEFAULT 0;
+ALTER TABLE "user" ALTER COLUMN "font" SET DEFAULT 1;
