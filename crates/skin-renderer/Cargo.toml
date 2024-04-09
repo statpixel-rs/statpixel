@@ -9,11 +9,11 @@ name = "skin_renderer"
 
 [dependencies]
 bytemuck.workspace = true
-image.workspace = true
-tobj.workspace = true
-wgpu.workspace = true
-thiserror.workspace = true
-tracing.workspace = true
-reqwest.workspace = true
-tokio.workspace = true
 glam.workspace = true
+image.workspace = true
+reqwest.workspace = true
+thiserror.workspace = true
+tobj.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+wgpu.workspace = true

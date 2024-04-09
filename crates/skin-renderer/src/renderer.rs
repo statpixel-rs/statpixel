@@ -88,8 +88,6 @@ impl SkinRenderer {
 		})
 	}
 
-	// Helper functions for readability. Please define each with the appropriate logic.
-
 	fn create_texture_extent(dimensions: Dimensions) -> wgpu::Extent3d {
 		wgpu::Extent3d {
 			width: dimensions.width,

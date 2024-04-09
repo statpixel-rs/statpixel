@@ -1,3 +1,5 @@
+//! Partially derived from <https://sotrh.github.io/learn-wgpu/beginner/tutorial6-uniforms/#a-perspective-camera>
+
 use bytemuck::{Pod, Zeroable};
 use glam::{Mat4, Vec3};
 
@@ -39,7 +41,7 @@ impl Camera {
 }
 
 #[repr(C)]
-#[derive(Copy, Clone, Debug, Pod, Zeroable)] // Added Debug for consistency
+#[derive(Copy, Clone, Debug, Pod, Zeroable)]
 pub struct CameraUniform {
 	view_position: [f32; 4],
 	view_proj: [[f32; 4]; 4],
@@ -49,7 +51,7 @@ impl CameraUniform {
 	pub fn new(camera: &Camera) -> Self {
 		let vp_matrix = camera.build_view_projection_matrix();
 		Self {
-			view_position: camera.eye.extend(1.0).into(), // More explicit about the w component
+			view_position: camera.eye.extend(1.0).into(),
 			view_proj: vp_matrix.to_cols_array_2d(),
 		}
 	}
