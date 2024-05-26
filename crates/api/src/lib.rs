@@ -4,7 +4,6 @@
 #![allow(clippy::wildcard_imports)]
 #![allow(clippy::get_first)]
 #![feature(let_chains)]
-#![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
 #![feature(associated_type_defaults)]
 

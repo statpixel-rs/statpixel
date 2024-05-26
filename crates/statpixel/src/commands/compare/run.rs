@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::canvas::{self, prelude::Mode};
-use poise::serenity_prelude::CreateAttachment;
+use poise::serenity_prelude::{CacheHttp, CreateAttachment, CreateMessage};
 use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
 
@@ -100,7 +100,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				to: data_lhs.username.as_str(),
 			);
 
-			let attachments = G::condensed_diff(
+			let mut attachments = G::condensed_diff(
 				ctx,
 				family,
 				&data_lhs,
@@ -116,14 +116,28 @@ pub async fn command<G: api::canvas::prelude::Game>(
 
 			let (_, id) = G::Mode::as_compare(ctx, player_lhs.uuid, player_rhs.uuid, None);
 
-			let mut reply = poise::CreateReply::new().content(format!(
-				"{}\n{content}",
-				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
-			));
-
-			reply.attachments = attachments;
+			let reply = poise::CreateReply::new()
+				.content(format!(
+					"{}\n{content}",
+					tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				))
+				.attachment(attachments.remove(0));
 
 			ctx.send(reply).await?;
+
+			let Some(channel_id) = ctx.channel_id() else {
+				return Ok(());
+			};
+
+			for attachment in attachments {
+				channel_id
+					.send_files(
+						ctx.discord().http(),
+						Some(attachment),
+						CreateMessage::default(),
+					)
+					.await?;
+			}
 		}
 		format::Display::Text => {
 			let (player_rhs, data_rhs) = commands::get_player_data(

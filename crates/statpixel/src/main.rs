@@ -5,7 +5,6 @@
 // and overflows the requirement evaluator
 #![allow(clippy::get_first)]
 #![feature(let_chains)]
-#![feature(exclusive_range_pattern)]
 #![feature(iter_intersperse)]
 #![feature(iter_array_chunks)]
 

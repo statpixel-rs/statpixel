@@ -355,6 +355,16 @@ impl<'c> Context<'c> {
 		}
 	}
 
+	pub fn channel_id(&self) -> Option<serenity::ChannelId> {
+		match &self.interaction {
+			#[cfg(feature = "error")]
+			ContextInteraction::Command(ctx) => Some(ctx.channel_id()),
+			ContextInteraction::Component { interaction, .. } => Some(interaction.channel_id),
+			ContextInteraction::Modal { interaction, .. } => Some(interaction.channel_id),
+			ContextInteraction::External(..) | ContextInteraction::Empty => None,
+		}
+	}
+
 	async fn send_modal(
 		&self,
 		ctx: &serenity::Context,

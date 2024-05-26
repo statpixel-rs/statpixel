@@ -1,5 +1,3 @@
-#![feature(exclusive_range_pattern)]
-
 pub mod inverse_bool;
 pub mod meters;
 pub mod percent;

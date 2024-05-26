@@ -2,7 +2,7 @@ use std::borrow::Cow;
 
 use api::canvas;
 use chrono::Utc;
-use poise::serenity_prelude::CreateAttachment;
+use poise::serenity_prelude::{CacheHttp, CreateAttachment, CreateMessage};
 use translate::{context, tr_fmt, Error};
 use uuid::Uuid;
 
@@ -77,7 +77,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				to: format!("<t:{}:f>", Utc::now().timestamp()),
 			);
 
-			let attachments = G::condensed_diff(
+			let mut attachments = G::condensed_diff(
 				ctx,
 				family,
 				data_lhs,
@@ -91,11 +91,25 @@ pub async fn command<G: api::canvas::prelude::Game>(
 			})
 			.collect::<Vec<_>>();
 
-			let mut reply = poise::CreateReply::new().content(content);
-
-			reply.attachments = attachments;
+			let reply = poise::CreateReply::new()
+				.content(content)
+				.attachment(attachments.remove(0));
 
 			ctx.send(reply).await?;
+
+			let Some(channel_id) = ctx.channel_id() else {
+				return Ok(());
+			};
+
+			for attachment in attachments {
+				channel_id
+					.send_files(
+						ctx.discord().http(),
+						Some(attachment),
+						CreateMessage::default(),
+					)
+					.await?;
+			}
 		}
 		format::Display::Text => {
 			let (player, data_rhs) = commands::get_player_data(ctx, Some(uuid_rhs), None).await?;

@@ -1,5 +1,4 @@
 #![warn(clippy::pedantic)]
-#![feature(exclusive_range_pattern)]
 #![feature(assert_matches)]
 #![feature(const_precise_live_drops)]
 #![feature(const_mut_refs)]

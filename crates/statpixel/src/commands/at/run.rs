@@ -13,7 +13,7 @@ use minecraft::{
 	text::{parse, Text},
 	Colour,
 };
-use poise::serenity_prelude::CreateAttachment;
+use poise::serenity_prelude::{CacheHttp, CreateAttachment, CreateMessage};
 use skia_safe::textlayout::TextAlign;
 use translate::{context, tr, tr_fmt, Error};
 use uuid::Uuid;
@@ -119,15 +119,16 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				at: format!("<t:{}:f>", created_at.timestamp()),
 			);
 
-			let attachments = G::condensed(ctx, family, data_lhs, suffix.as_deref(), background)
-				.into_iter()
-				.map(|mut surface| {
-					CreateAttachment::bytes(
-						Cow::Owned(canvas::to_png(&mut surface)),
-						crate::IMAGE_NAME,
-					)
-				})
-				.collect::<Vec<_>>();
+			let mut attachments =
+				G::condensed(ctx, family, data_lhs, suffix.as_deref(), background)
+					.into_iter()
+					.map(|mut surface| {
+						CreateAttachment::bytes(
+							Cow::Owned(canvas::to_png(&mut surface)),
+							crate::IMAGE_NAME,
+						)
+					})
+					.collect::<Vec<_>>();
 
 			let (_, id) = G::Mode::as_at(
 				ctx,
@@ -136,14 +137,28 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				None,
 			);
 
-			let mut reply = poise::CreateReply::new().content(format!(
-				"{}\n{content}",
-				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
-			));
-
-			reply.attachments = attachments;
+			let reply = poise::CreateReply::new()
+				.content(format!(
+					"{}\n{content}",
+					tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+				))
+				.attachment(attachments.remove(0));
 
 			ctx.send(reply).await?;
+
+			let Some(channel_id) = ctx.channel_id() else {
+				return Ok(());
+			};
+
+			for attachment in attachments {
+				channel_id
+					.send_files(
+						ctx.discord().http(),
+						Some(attachment),
+						CreateMessage::default(),
+					)
+					.await?;
+			}
 		}
 		format::Display::Text => {
 			let (player, data_rhs) = commands::get_player_data(ctx, uuid, username).await?;

@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 
 use api::canvas::{self, prelude::Mode};
-use poise::serenity_prelude::CreateAttachment;
+use poise::serenity_prelude::{CacheHttp, CreateAttachment, CreateMessage};
 use translate::{context, tr_fmt};
 use uuid::Uuid;
 
@@ -22,7 +22,8 @@ pub async fn command<G: api::canvas::prelude::Game>(
 
 			player.increase_searches(ctx).await?;
 
-			let attachments = G::condensed(ctx, family, &data, suffix.as_deref(), background)
+			// guaranteed to have >= 1 element
+			let mut attachments = G::condensed(ctx, family, &data, suffix.as_deref(), background)
 				.into_iter()
 				.map(|mut surface| {
 					CreateAttachment::bytes(
@@ -33,15 +34,29 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				.collect::<Vec<_>>();
 
 			let (_, id) = G::Mode::as_root(ctx, player.uuid, None);
-			let mut reply = poise::CreateReply::new().content(format!(
-				"{}\n{}",
-				tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
-				crate::tip::random(ctx),
-			));
-
-			reply.attachments = attachments;
+			let reply = poise::CreateReply::new()
+				.content(format!(
+					"{}\n{}",
+					tr_fmt!(ctx, "identifier", identifier: api::id::encode(&id)),
+					crate::tip::random(ctx),
+				))
+				.attachment(attachments.remove(0));
 
 			ctx.send(reply).await?;
+
+			let Some(channel_id) = ctx.channel_id() else {
+				return Ok(());
+			};
+
+			for attachment in attachments {
+				channel_id
+					.send_files(
+						ctx.discord().http(),
+						Some(attachment),
+						CreateMessage::default(),
+					)
+					.await?;
+			}
 		}
 		format::Display::Image | format::Display::Compact => {
 			let (player, data, session, skin, suffix) =
