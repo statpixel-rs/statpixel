@@ -1264,7 +1264,7 @@ impl ToTokens for GameInputReceiver {
 					data_rhs: &#api::player::data::Data,
 					ctx: &#translate::context::Context<'_>,
 					mut embed: #poise::serenity_prelude::CreateEmbed<'e>,
-				) -> #poise::serenity_prelude::CreateEmbed<'e> {
+				) -> Result<#poise::serenity_prelude::CreateEmbed<'e>, #poise::serenity_prelude::CreateEmbed<'e>> {
 					let mut log = String::new();
 					let game_lhs = &data_lhs.stats.#path_to_game;
 					let game_rhs = &data_rhs.stats.#path_to_game;
@@ -1278,9 +1278,9 @@ impl ToTokens for GameInputReceiver {
 						title.push(' ');
 						title.push_str(#translate::tr(ctx, Overall::tr()).as_ref());
 
-						embed.field(title, log, true)
+						Ok(embed.field(title, log, true))
 					} else {
-						embed
+						Err(embed)
 					}
 				}
 			}
@@ -1792,7 +1792,13 @@ impl ToTokens for GameInputReceiver {
 				let ty = mode.ty();
 
 				quote! {
-					let embed = <#ty as #api::canvas::diff::DiffLog>::diff_log(data_lhs, data_rhs, ctx, embed);
+					let embed = match <#ty as #api::canvas::diff::DiffLog>::diff_log(data_lhs, data_rhs, ctx, embed) {
+						Err(embed) => embed,
+						Ok(embed) => {
+							is_modified = true;
+							embed
+						},
+					};
 				}
 			});
 
@@ -1993,10 +1999,23 @@ impl ToTokens for GameInputReceiver {
 						data_rhs: &#api::player::data::Data,
 						ctx: &#translate::context::Context<'_>,
 						embed: #poise::serenity_prelude::CreateEmbed<'e>,
-					) -> #poise::serenity_prelude::CreateEmbed<'e> {
-						let embed = <#overall_ident as #api::canvas::diff::DiffLog>::diff_log(data_lhs, data_rhs, ctx, embed);
+					) -> Result<#poise::serenity_prelude::CreateEmbed<'e>, #poise::serenity_prelude::CreateEmbed<'e>> {
+						let mut is_modified = false;
+						let embed = match <#overall_ident as #api::canvas::diff::DiffLog>::diff_log(data_lhs, data_rhs, ctx, embed) {
+							Err(embed) => embed,
+							Ok(embed) => {
+								is_modified = true;
+								embed
+							},
+						};
+
 						#(#diff_log)*
-						embed
+
+						if is_modified {
+							Ok(embed)
+						} else {
+							Err(embed)
+						}
 					}
 				}
 

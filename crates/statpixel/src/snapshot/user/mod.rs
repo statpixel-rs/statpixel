@@ -326,7 +326,7 @@ pub async fn begin(
 									CreateEmbed::default(),
 								);
 
-								if !embed.fields.is_empty() {
+								if let Ok(embed) = embed {
 									let player = Player::new(uuid, None);
 									let message = CreateMessage::default().embed(
 										embed

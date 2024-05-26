@@ -589,7 +589,7 @@ pub(crate) fn impl_mode(
 				data_rhs: &#api::player::data::Data,
 				ctx: &#translate::context::Context<'_>,
 				mut embed: #poise::serenity_prelude::CreateEmbed<'e>,
-			) -> #poise::serenity_prelude::CreateEmbed<'e> {
+			) -> Result<#poise::serenity_prelude::CreateEmbed<'e>, #poise::serenity_prelude::CreateEmbed<'e>> {
 				let mut log = String::new();
 				let game_lhs = &data_lhs.stats.#path_to_game;
 				let game_rhs = &data_rhs.stats.#path_to_game;
@@ -605,9 +605,9 @@ pub(crate) fn impl_mode(
 					title.push(' ');
 					title.push_str(#translate::tr(ctx, Self::tr()).as_ref());
 
-					embed.field(title, log, true)
+					Ok(embed.field(title, log, true))
 				} else {
-					embed
+					Err(embed)
 				}
 			}
 		}

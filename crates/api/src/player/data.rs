@@ -111,13 +111,27 @@ impl DiffLog for Data {
 		data_rhs: &Data,
 		ctx: &context::Context<'_>,
 		embed: CreateEmbed<'e>,
-	) -> CreateEmbed<'e> {
+	) -> Result<CreateEmbed<'e>, CreateEmbed<'e>> {
+		let mut is_modified = false;
+
 		execute_for_games!(
-			[let embed = ],
-			[::diff_log(data_lhs, data_rhs, ctx, embed);]
+			[let embed = match],
+			[
+			::diff_log(data_lhs, data_rhs, ctx, embed) {
+				Ok(embed) => {
+					is_modified = true;
+					embed
+				}
+					Err(embed) => embed
+				};
+			]
 		);
 
-		embed
+		if is_modified {
+			Ok(embed)
+		} else {
+			Err(embed)
+		}
 	}
 }
 

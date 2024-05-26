@@ -14,12 +14,14 @@ pub trait Diff {
 
 #[allow(clippy::module_name_repetitions)]
 pub trait DiffLog {
+	/// Appends the difference between two game modes as a new field.
+	/// If no difference is found, the embed is returned as is as an Err.
 	fn diff_log<'e>(
 		data_lhs: &crate::player::data::Data,
 		data_rhs: &crate::player::data::Data,
 		ctx: &translate::context::Context<'_>,
 		embed: CreateEmbed<'e>,
-	) -> CreateEmbed<'e>;
+	) -> Result<CreateEmbed<'e>, CreateEmbed<'e>>;
 }
 
 macro_rules! impl_to_formatted_for_number {

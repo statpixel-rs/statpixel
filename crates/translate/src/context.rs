@@ -371,22 +371,14 @@ impl<'c> Context<'c> {
 		interaction: &serenity::ModalInteraction,
 		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
-		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
-
-		if let Some(content) = data.content {
-			edit = edit.content(content);
-		}
-
-		if let Some(components) = data.components {
-			edit = edit.components(components);
-		}
-
-		edit = edit.files(data.attachments);
+		let message = data.to_slash_initial_response(
+			serenity::CreateInteractionResponseMessage::new().add_files([]),
+		);
 
 		interaction
 			.create_response(
 				ctx.http(),
-				serenity::CreateInteractionResponse::UpdateMessage(edit),
+				serenity::CreateInteractionResponse::UpdateMessage(message),
 			)
 			.await?;
 
@@ -399,22 +391,14 @@ impl<'c> Context<'c> {
 		interaction: &serenity::ModalInteraction,
 		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
-		let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
-
-		if let Some(content) = data.content {
-			edit = edit.content(content);
-		}
-
-		if let Some(components) = data.components {
-			edit = edit.components(components);
-		}
-
-		edit = edit.files(data.attachments);
+		let message = data.to_slash_initial_response(
+			serenity::CreateInteractionResponseMessage::new().add_files([]),
+		);
 
 		interaction
 			.create_response(
 				ctx.http(),
-				serenity::CreateInteractionResponse::Message(edit),
+				serenity::CreateInteractionResponse::Message(message),
 			)
 			.await?;
 
@@ -429,42 +413,20 @@ impl<'c> Context<'c> {
 		data: poise::CreateReply<'_>,
 	) -> Result<(), serenity::Error> {
 		if deferred.load(Ordering::SeqCst) {
-			let mut edit = serenity::EditInteractionResponse::new().embeds(data.embeds);
+			let message = data.to_slash_initial_response_edit(
+				serenity::EditInteractionResponse::new().clear_attachments(),
+			);
 
-			if let Some(content) = data.content {
-				edit = edit.content(content);
-			}
-
-			if let Some(components) = data.components {
-				edit = edit.components(components);
-			}
-
-			if !data.attachments.is_empty() {
-				edit = edit.clear_attachments();
-			}
-
-			for attachment in data.attachments {
-				edit = edit.new_attachment(attachment);
-			}
-
-			interaction.edit_response(ctx.http(), edit).await?;
+			interaction.edit_response(ctx.http(), message).await?;
 		} else {
-			let mut edit = serenity::CreateInteractionResponseMessage::new().embeds(data.embeds);
-
-			if let Some(content) = data.content {
-				edit = edit.content(content);
-			}
-
-			if let Some(components) = data.components {
-				edit = edit.components(components);
-			}
-
-			edit = edit.files(data.attachments);
+			let message = data.to_slash_initial_response(
+				serenity::CreateInteractionResponseMessage::new().files([]),
+			);
 
 			interaction
 				.create_response(
 					ctx.http(),
-					serenity::CreateInteractionResponse::UpdateMessage(edit),
+					serenity::CreateInteractionResponse::UpdateMessage(message),
 				)
 				.await?;
 		}
