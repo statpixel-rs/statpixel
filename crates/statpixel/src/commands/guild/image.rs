@@ -398,7 +398,7 @@ pub async fn general(
 				ctx,
 				family,
 				&format!("{}/125", guild.members.len()),
-				tr(ctx, "members_label").as_ref(),
+				tr(ctx, "members").as_ref(),
 				Paint::LightPurple,
 			),
 		)
@@ -559,7 +559,7 @@ pub async fn member(
 				ctx,
 				family,
 				&format!("{}/125", guild.members.len()),
-				tr(ctx, "members_label").as_ref(),
+				tr(ctx, "members").as_ref(),
 				Paint::LightPurple,
 			),
 		)
