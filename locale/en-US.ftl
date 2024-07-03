@@ -2893,6 +2893,8 @@ session-list = list
   .page-description = The page to view
 
 arcade-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Arcade progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2900,6 +2902,8 @@ arcade-session = session
   .mode-description = The Arcade mode to view
 
 arena-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Arena progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2907,6 +2911,8 @@ arena-session = session
   .mode-description = The Arena mode to view
 
 bedwars-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Bed Wars progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2914,6 +2920,8 @@ bedwars-session = session
   .mode-description = The Bed Wars mode to view
 
 blitz-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Blitz Survival Games progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2921,6 +2929,8 @@ blitz-session = session
   .mode-description = The Blitz Survival Games mode to view
 
 buildbattle-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Build Battle progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2928,6 +2938,8 @@ buildbattle-session = session
   .mode-description = The Build Battle mode to view
 
 copsandcrims-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Cops and Crims progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2935,6 +2947,8 @@ copsandcrims-session = session
   .mode-description = The Cops and Crims mode to view
 
 duels-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Duels progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2942,6 +2956,8 @@ duels-session = session
   .mode-description = The Duels mode to view
 
 megawalls-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Mega Walls progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2949,6 +2965,8 @@ megawalls-session = session
   .mode-description = The Mega Walls mode to view
 
 murdermystery-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Murder Mystery progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2956,6 +2974,8 @@ murdermystery-session = session
   .mode-description = The Murder Mystery mode to view
 
 paintball-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Paintball progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2963,6 +2983,8 @@ paintball-session = session
   .mode-description = The Paintball mode to view
 
 pit-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show The Pit progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2970,6 +2992,8 @@ pit-session = session
   .mode-description = The Pit mode to view
 
 quake-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Quakecraft progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2977,6 +3001,8 @@ quake-session = session
   .mode-description = The Quakecraft mode to view
 
 skywars-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the SkyWars progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2984,6 +3010,8 @@ skywars-session = session
   .mode-description = The SkyWars mode to view
 
 smash-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Smash Heroes progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2991,6 +3019,8 @@ smash-session = session
   .mode-description = The Smash Heroes mode to view
 
 speeduhc-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the SpeedUHC progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -2998,6 +3028,8 @@ speeduhc-session = session
   .mode-description = The SpeedUHC mode to view
 
 tntgames-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the TNT Games progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3005,6 +3037,8 @@ tntgames-session = session
   .mode-description = The TNT Games mode to view
 
 turbokartracers-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Turbo Kart Racers progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3012,6 +3046,8 @@ turbokartracers-session = session
   .mode-description = The Turbo Kart Racers mode to view
 
 uhc-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the UHC Champions progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3019,6 +3055,8 @@ uhc-session = session
   .mode-description = The UHC Champions mode to view
 
 vampirez-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the VampireZ progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3026,6 +3064,8 @@ vampirez-session = session
   .mode-description = The VampireZ mode to view
 
 walls-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show The Walls progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3033,6 +3073,8 @@ walls-session = session
   .mode-description = The Walls mode to view
 
 warlords-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Warlords progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3040,6 +3082,8 @@ warlords-session = session
   .mode-description = The Warlords mode to view
 
 woolwars-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Wool Wars progression of a player since the session started
   .session = session
   .session-description = A session id
@@ -3118,6 +3162,8 @@ fishing-monthly = monthly
   .mode-description = The Fishing mode to view
 
 fishing-session = session
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = Show the Fishing progression of a player since the session started
   .session = session
   .session-description = A session id

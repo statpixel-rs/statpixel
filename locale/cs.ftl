@@ -2705,6 +2705,8 @@ session-list = seznam
   .page-description = Stránka k zobrazení
 
 arcade-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Arcade hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2712,6 +2714,8 @@ arcade-session = relace
   .mode-description = Režim Arcade k zobrazení
 
 arena-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Arény hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2719,6 +2723,8 @@ arena-session = relace
   .mode-description = Režim Arény k zobrazení
 
 bedwars-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Bed Wars hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2726,6 +2732,8 @@ bedwars-session = relace
   .mode-description = Režim Bed Wars k zobrazení
 
 blitz-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Blitz Survival Games hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2733,6 +2741,8 @@ blitz-session = relace
   .mode-description = Režim Blitz Survival Games k zobrazení
 
 buildbattle-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Build Battle hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2740,6 +2750,8 @@ buildbattle-session = relace
   .mode-description = Režim Build Battle k zobrazení
 
 copsandcrims-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Cops and Crims hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2747,6 +2759,8 @@ copsandcrims-session = relace
   .mode-description = Režim Cops and Crims k zobrazení
 
 duels-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Duels hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2754,6 +2768,8 @@ duels-session = relace
   .mode-description = Režim Duels k zobrazení
 
 megawalls-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Mega Walls hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2761,6 +2777,8 @@ megawalls-session = relace
   .mode-description = Režim Mega Walls k zobrazení
 
 murdermystery-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Murder Mystery hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2768,6 +2786,8 @@ murdermystery-session = relace
   .mode-description = Režim Murder Mystery k zobrazení
 
 paintball-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Paintball hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2775,6 +2795,8 @@ paintball-session = relace
   .mode-description = Režim Paintball k zobrazení
 
 pit-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu The Pit hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2782,6 +2804,8 @@ pit-session = relace
   .mode-description = Režim The Pit k zobrazení
 
 quake-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Quakecraft hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2789,6 +2813,8 @@ quake-session = relace
   .mode-description = Režim Quakecraft k zobrazení
 
 skywars-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu SkyWars hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2796,6 +2822,8 @@ skywars-session = relace
   .mode-description = Režim SkyWars k zobrazení
 
 smash-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Smash Heroes hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2803,6 +2831,8 @@ smash-session = relace
   .mode-description = Režim Smash Heroes k zobrazení
 
 speeduhc-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu SpeedUHC hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2810,6 +2840,8 @@ speeduhc-session = relace
   .mode-description = Režim SpeedUHC k zobrazení
 
 tntgames-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu TNT Games hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2817,6 +2849,8 @@ tntgames-session = relace
   .mode-description = Režim TNT Games k zobrazení
 
 turbokartracers-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Turbo Kart Racers hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2824,6 +2858,8 @@ turbokartracers-session = relace
   .mode-description = Režim Turbo Kart Racers k zobrazení
 
 uhc-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu UHC Champions hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2831,6 +2867,8 @@ uhc-session = relace
   .mode-description = Režim UHC Champions k zobrazení
 
 vampirez-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu VampireZ hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2838,6 +2876,8 @@ vampirez-session = relace
   .mode-description = Režim VampireZ k zobrazení
 
 walls-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu The Walls hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2845,6 +2885,8 @@ walls-session = relace
   .mode-description = Režim The Walls k zobrazení
 
 warlords-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Warlords hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2852,6 +2894,8 @@ warlords-session = relace
   .mode-description = Režim Warlords k zobrazení
 
 woolwars-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup v režimu Wool Wars hráče od zahájení relace
   .session = relace
   .session-description = ID relace
@@ -2922,6 +2966,8 @@ fishing-monthly = měsíčně
   .mode-description = Režim rybaření k zobrazení
 
 fishing-session = relace
+  .relative-ratios = relativní poměry
+  .relative-ratios-description = Zda zobrazit relativní poměry
   .description = Zobrazit postup rybaření hráče od zahájení relace
   .session = relace
   .session-description = ID relace
