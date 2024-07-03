@@ -567,6 +567,8 @@ arcade-general = general
   .mode-description = The Arcade mode to view
 
 arcade-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arcade statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -594,6 +596,8 @@ arcade-project = project
   .value-description = The value of the statistic to project to
 
 arcade-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arcade statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -601,6 +605,8 @@ arcade-daily = daily
   .mode-description = The Arcade mode to view
 
 arcade-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arcade statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -608,6 +614,8 @@ arcade-weekly = weekly
   .mode-description = The Arcade mode to view
 
 arcade-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arcade statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -628,6 +636,8 @@ arena-general = general
   .mode-description = The Arena mode to view
 
 arena-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arena statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -655,6 +665,8 @@ arena-project = project
   .value-description = The value of the statistic to project to
 
 arena-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arena statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -662,6 +674,8 @@ arena-daily = daily
   .mode-description = The Arena mode to view
 
 arena-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arena statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -669,6 +683,8 @@ arena-weekly = weekly
   .mode-description = The Arena mode to view
 
 arena-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Arena statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -769,6 +785,8 @@ bedwars-practice = practice
   .player-description = Minecraft player or session
 
 bedwars-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Bed Wars statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -796,6 +814,8 @@ bedwars-project = project
   .value-description = The value of the statistic to project to
 
 bedwars-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Bed Wars statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -803,6 +823,8 @@ bedwars-daily = daily
   .mode-description = The Bed Wars mode to view
 
 bedwars-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Bed Wars statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -810,6 +832,8 @@ bedwars-weekly = weekly
   .mode-description = The Bed Wars mode to view
 
 bedwars-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Bed Wars statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -855,6 +879,8 @@ blitz-general = general
   .mode-description = The Blitz Survival Games mode to view
 
 blitz-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Blitz Survival Games statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -882,6 +908,8 @@ blitz-project = project
   .value-description = The value of the statistic to project to
 
 blitz-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Blitz Survival Games statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -889,6 +917,8 @@ blitz-daily = daily
   .mode-description = The Blitz Survival Games mode to view
 
 blitz-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Blitz Survival Games statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -896,6 +926,8 @@ blitz-weekly = weekly
   .mode-description = The Blitz Survival Games mode to view
 
 blitz-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Blitz Survival Games statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -919,6 +951,8 @@ buildbattle-general = general
   .mode-description = The Build Battle mode to view
 
 buildbattle-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Build Battle statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -946,6 +980,8 @@ buildbattle-project = project
   .value-description = The value of the statistic to project to
 
 buildbattle-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Build Battle statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -953,6 +989,8 @@ buildbattle-daily = daily
   .mode-description = The Build Battle mode to view
 
 buildbattle-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Build Battle statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -960,6 +998,8 @@ buildbattle-weekly = weekly
   .mode-description = The Build Battle mode to view
 
 buildbattle-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Build Battle statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -987,6 +1027,8 @@ copsandcrims-general = general
   .mode-description = The Cops and Crims mode to view
 
 copsandcrims-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Cops and Crims statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1014,6 +1056,8 @@ copsandcrims-project = project
   .value-description = The value of the statistic to project to
 
 copsandcrims-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Cops and Crims statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1021,6 +1065,8 @@ copsandcrims-daily = daily
   .mode-description = The Cops and Crims mode to view
 
 copsandcrims-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Cops and Crims statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1028,6 +1074,8 @@ copsandcrims-weekly = weekly
   .mode-description = The Cops and Crims mode to view
 
 copsandcrims-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Cops and Crims statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1079,6 +1127,8 @@ duels-general = general
   .mode-description = The Duels mode to view
 
 duels-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Duels statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1106,6 +1156,8 @@ duels-project = project
   .value-description = The value of the statistic to project to
 
 duels-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Duels statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1113,6 +1165,8 @@ duels-daily = daily
   .mode-description = The Duels mode to view
 
 duels-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Duels statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1120,6 +1174,8 @@ duels-weekly = weekly
   .mode-description = The Duels mode to view
 
 duels-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Duels statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1144,6 +1200,8 @@ megawalls-general = general
   .mode-description = The Mega Walls mode to view
 
 megawalls-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Mega Walls statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1171,6 +1229,8 @@ megawalls-project = project
   .value-description = The value of the statistic to project to
 
 megawalls-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Mega Walls statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1178,6 +1238,8 @@ megawalls-daily = daily
   .mode-description = The Mega Walls mode to view
 
 megawalls-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Mega Walls statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1185,6 +1247,8 @@ megawalls-weekly = weekly
   .mode-description = The Mega Walls mode to view
 
 megawalls-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Mega Walls statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1210,6 +1274,8 @@ murdermystery-general = general
   .mode-description = The Murder Mystery mode to view
 
 murdermystery-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Murder Mystery statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1237,6 +1303,8 @@ murdermystery-project = project
   .value-description = The value of the statistic to project to
 
 murdermystery-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Murder Mystery statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1244,6 +1312,8 @@ murdermystery-daily = daily
   .mode-description = The Murder Mystery mode to view
 
 murdermystery-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Murder Mystery statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1251,6 +1321,8 @@ murdermystery-weekly = weekly
   .mode-description = The Murder Mystery mode to view
 
 murdermystery-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Murder Mystery statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1284,6 +1356,8 @@ paintball-general = general
   .mode-description = The Paintball mode to view
 
 paintball-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Paintball statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1311,6 +1385,8 @@ paintball-project = project
   .value-description = The value of the statistic to project to
 
 paintball-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Paintball statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1318,6 +1394,8 @@ paintball-daily = daily
   .mode-description = The Paintball mode to view
 
 paintball-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Paintball statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1325,6 +1403,8 @@ paintball-weekly = weekly
   .mode-description = The Paintball mode to view
 
 paintball-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Paintball statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1349,6 +1429,8 @@ pit-general = general
   .mode-description = The Pit mode to view
 
 pit-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Pit statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1376,6 +1458,8 @@ pit-project = project
   .value-description = The value of the statistic to project to
 
 pit-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Pit statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1383,6 +1467,8 @@ pit-daily = daily
   .mode-description = The Pit mode to view
 
 pit-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Pit statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1390,6 +1476,8 @@ pit-weekly = weekly
   .mode-description = The Pit mode to view
 
 pit-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Pit statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1412,6 +1500,8 @@ quake-general = general
   .mode-description = The Quakecraft mode to view
 
 quake-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Quakecraft statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1439,6 +1529,8 @@ quake-project = project
   .value-description = The value of the statistic to project to
 
 quake-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Quakecraft statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1446,6 +1538,8 @@ quake-daily = daily
   .mode-description = The Quakecraft mode to view
 
 quake-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Quakecraft statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1453,6 +1547,8 @@ quake-weekly = weekly
   .mode-description = The Quakecraft mode to view
 
 quake-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Quakecraft statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1488,6 +1584,8 @@ skywars-general = general
   .mode-description = The SkyWars mode to view
 
 skywars-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SkyWars statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1515,6 +1613,8 @@ skywars-project = project
   .value-description = The value of the statistic to project to
 
 skywars-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SkyWars statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1522,6 +1622,8 @@ skywars-daily = daily
   .mode-description = The SkyWars mode to view
 
 skywars-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SkyWars statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1529,6 +1631,8 @@ skywars-weekly = weekly
   .mode-description = The SkyWars mode to view
 
 skywars-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SkyWars statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1549,6 +1653,8 @@ smash-general = general
   .mode-description = The Smash Heroes mode to view
 
 smash-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Smash Heroes statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1576,6 +1682,8 @@ smash-project = project
   .value-description = The value of the statistic to project to
 
 smash-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Smash Heroes statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1583,6 +1691,8 @@ smash-daily = daily
   .mode-description = The Smash Heroes mode to view
 
 smash-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Smash Heroes statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1590,6 +1700,8 @@ smash-weekly = weekly
   .mode-description = The Smash Heroes mode to view
 
 smash-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Smash Heroes statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1609,6 +1721,8 @@ speeduhc-general = general
   .mode-description = The SpeedUHC mode to view
 
 speeduhc-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SpeedUHC statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1636,6 +1750,8 @@ speeduhc-project = project
   .value-description = The value of the statistic to project to
 
 speeduhc-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SpeedUHC statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1643,6 +1759,8 @@ speeduhc-daily = daily
   .mode-description = The SpeedUHC mode to view
 
 speeduhc-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SpeedUHC statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1650,6 +1768,8 @@ speeduhc-weekly = weekly
   .mode-description = The SpeedUHC mode to view
 
 speeduhc-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of SpeedUHC statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1678,6 +1798,8 @@ tntgames-general = general
   .mode-description = The TNT Games mode to view
 
 tntgames-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of TNT Games statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1705,6 +1827,8 @@ tntgames-project = project
   .value-description = The value of the statistic to project to
 
 tntgames-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of TNT Games statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1712,6 +1836,8 @@ tntgames-daily = daily
   .mode-description = The TNT Games mode to view
 
 tntgames-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of TNT Games statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1719,6 +1845,8 @@ tntgames-weekly = weekly
   .mode-description = The TNT Games mode to view
 
 tntgames-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of TNT Games statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1744,6 +1872,8 @@ turbokartracers-general = general
   .mode-description = The Turbo Kart Racers mode to view
 
 turbokartracers-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Turbo Kart Racers statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1771,6 +1901,8 @@ turbokartracers-project = project
   .value-description = The value of the statistic to project to
 
 turbokartracers-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Turbo Kart Racers statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1778,6 +1910,8 @@ turbokartracers-daily = daily
   .mode-description = The Turbo Kart Racers mode to view
 
 turbokartracers-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Turbo Kart Racers statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1785,6 +1919,8 @@ turbokartracers-weekly = weekly
   .mode-description = The Turbo Kart Racers mode to view
 
 turbokartracers-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Turbo Kart Racers statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1811,6 +1947,8 @@ uhc-general = general
   .mode-description = The UHC Champions mode to view
 
 uhc-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of UHC Champions statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1838,6 +1976,8 @@ uhc-project = project
   .value-description = The value of the statistic to project to
 
 uhc-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of UHC Champions statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1845,6 +1985,8 @@ uhc-daily = daily
   .mode-description = The UHC Champions mode to view
 
 uhc-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of UHC Champions statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1852,6 +1994,8 @@ uhc-weekly = weekly
   .mode-description = The UHC Champions mode to view
 
 uhc-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of UHC Champions statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1884,6 +2028,8 @@ vampirez-general = general
   .mode-description = The VampireZ mode to view
 
 vampirez-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of VampireZ statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1911,6 +2057,8 @@ vampirez-project = project
   .value-description = The value of the statistic to project to
 
 vampirez-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of VampireZ statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1918,6 +2066,8 @@ vampirez-daily = daily
   .mode-description = The VampireZ mode to view
 
 vampirez-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of VampireZ statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1925,6 +2075,8 @@ vampirez-weekly = weekly
   .mode-description = The VampireZ mode to view
 
 vampirez-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of VampireZ statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -1946,6 +2098,8 @@ walls-general = general
   .mode-description = The Walls mode to view
 
 walls-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Walls statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -1973,6 +2127,8 @@ walls-project = project
   .value-description = The value of the statistic to project to
 
 walls-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Walls statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -1980,6 +2136,8 @@ walls-daily = daily
   .mode-description = The Walls mode to view
 
 walls-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Walls statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -1987,6 +2145,8 @@ walls-weekly = weekly
   .mode-description = The Walls mode to view
 
 walls-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of The Walls statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -2013,6 +2173,8 @@ warlords-general = general
   .mode-description = The Warlords mode to view
 
 warlords-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Warlords statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -2040,6 +2202,8 @@ warlords-project = project
   .value-description = The value of the statistic to project to
 
 warlords-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Warlords statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -2047,6 +2211,8 @@ warlords-daily = daily
   .mode-description = The Warlords mode to view
 
 warlords-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Warlords statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -2054,6 +2220,8 @@ warlords-weekly = weekly
   .mode-description = The Warlords mode to view
 
 warlords-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Warlords statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -2074,6 +2242,8 @@ woolwars-general = general
   .mode-description = The Wool Wars mode to view
 
 woolwars-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Wool Wars statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -2101,6 +2271,8 @@ woolwars-project = project
   .value-description = The value of the statistic to project to
 
 woolwars-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Wool Wars statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -2108,6 +2280,8 @@ woolwars-daily = daily
   .mode-description = The Wool Wars mode to view
 
 woolwars-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Wool Wars statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -2115,6 +2289,8 @@ woolwars-weekly = weekly
   .mode-description = The Wool Wars mode to view
 
 woolwars-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Wool Wars statistics over the last month
   .player = player
   .player-description = Minecraft player or session
@@ -2146,6 +2322,8 @@ guild-general = general
   .player-description = The player of the guild member's guild to view
 
 guild-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of guild statistics since a specific time
   .name = name
   .name-description = The name of the guild to view
@@ -2178,6 +2356,8 @@ guild-top = top
   .limit-description = The number of members to show
 
 guild-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of guild statistics over the last day
   .name = name
   .name-description = The name of the guild to view
@@ -2185,6 +2365,8 @@ guild-daily = daily
   .player-description = The player of the guild member's guild to view
 
 guild-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of guild statistics over the last week
   .name = name
   .name-description = The name of the guild to view
@@ -2192,6 +2374,8 @@ guild-weekly = weekly
   .player-description = The player of the guild member's guild to view
 
 guild-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of guild statistics over the last month
   .name = name
   .name-description = The name of the guild to view
@@ -2878,6 +3062,8 @@ fishing-general = general
   .mode-description = The Fishing mode to view
 
 fishing-from = from
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Fishing statistics since a specific time
   .player = player
   .player-description = Minecraft player or session
@@ -2905,6 +3091,8 @@ fishing-project = project
   .value-description = The value of the statistic to project to
 
 fishing-daily = daily
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Fishing statistics over the last day
   .player = player
   .player-description = Minecraft player or session
@@ -2912,6 +3100,8 @@ fishing-daily = daily
   .mode-description = The Fishing mode to view
 
 fishing-weekly = weekly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Fishing statistics over the last week
   .player = player
   .player-description = Minecraft player or session
@@ -2919,6 +3109,8 @@ fishing-weekly = weekly
   .mode-description = The Fishing mode to view
 
 fishing-monthly = monthly
+  .relative-ratios = relative-ratios
+  .relative-ratios-description = Whether to display relative ratios
   .description = View the development of Fishing statistics over the last month
   .player = player
   .player-description = Minecraft player or session

@@ -31,6 +31,7 @@ macro_rules! impl_snapshot {
 			Some($uuid),
 			Some($mode),
 			$from,
+			false,
 		)
 		.await
 	};
@@ -66,6 +67,7 @@ macro_rules! impl_compare {
 			Some($mode),
 			Some($lhs),
 			Some($rhs),
+			false,
 		)
 		.await
 	};

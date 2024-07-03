@@ -26,11 +26,12 @@ macro_rules! command {
 				#[autocomplete = "crate::commands::autocomplete_username"]
 				player: Option<String>,
 				mode: Option<$mode>,
+				relative_ratios: Option<bool>,
 			) -> Result<(), ::translate::Error> {
 				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 
-				run::command::<$game>(ctx, player, uuid, mode, $duration).await
+				run::command::<$game>(ctx, player, uuid, mode, $duration, relative_ratios.unwrap_or_default()).await
 			}
 		}
 	};
@@ -64,12 +65,13 @@ macro_rules! large_command {
 				#[autocomplete = "crate::commands::autocomplete_username"]
 				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+				relative_ratios: Option<bool>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 				let uuid = util::parse_uuid(player.as_deref());
 				let ctx = &context::Context::from_poise(&ctx);
 	
-				run::command::<$game>(ctx, player, uuid, mode, $duration).await
+				run::command::<$game>(ctx, player, uuid, mode, $duration, relative_ratios.unwrap_or_default()).await
 			}
 		}
 	};

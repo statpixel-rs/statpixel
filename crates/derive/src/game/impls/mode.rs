@@ -709,6 +709,7 @@ pub(crate) fn impl_mode(
 				embed: #poise::serenity_prelude::CreateEmbed<'e>,
 				data_lhs: &#api::player::data::Data,
 				data_rhs: &#api::player::data::Data,
+				relative_ratios: bool,
 			) -> #poise::serenity_prelude::CreateEmbed<'e> {
 				let mut field = String::new();
 				let game_lhs = &data_lhs.stats.#path_to_game;
@@ -849,6 +850,7 @@ pub(crate) fn impl_mode(
 				session: &'c #hypixel::player::status::Session,
 				status: &'c #api::canvas::shape::Status,
 				progress: &'c #api::canvas::shape::WideBubbleProgress,
+				relative_ratios: bool,
 			) -> #api::canvas::Canvas<'c> {
 				let stats_lhs = &data_lhs.stats.#path_to_game.#id;
 				let stats_rhs = &data_rhs.stats.#path_to_game.#id;
@@ -935,6 +937,7 @@ pub(crate) fn impl_mode(
 				mut canvas: #api::canvas::Canvas<'c>,
 				data_lhs: &'c #api::player::data::Data,
 				data_rhs: &'c #api::player::data::Data,
+				relative_ratios: bool,
 			) -> #api::canvas::Canvas<'c> {
 				use #api::canvas::label::ToFormatted;
 

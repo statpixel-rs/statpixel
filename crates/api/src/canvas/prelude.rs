@@ -8,6 +8,37 @@ use uuid::Uuid;
 
 use crate::player::{self, data, status};
 
+#[derive(Clone, Copy)]
+pub struct Div(pub f64, pub f64);
+
+impl From<Div> for f64 {
+	fn from(div: Div) -> Self {
+		div.0 / div.1
+	}
+}
+
+impl From<Div> for u32 {
+	fn from(div: Div) -> Self {
+		(f64::from(div) * 100.).round() as u32
+	}
+}
+
+#[cfg(feature = "redis")]
+impl redis::ToRedisArgs for Div {
+	fn write_redis_args<W>(&self, out: &mut W)
+	where
+		W: ?Sized + redis::RedisWrite,
+	{
+		f64::from(*self).write_redis_args(out)
+	}
+}
+
+impl label::ToFormatted for Div {
+	fn to_formatted<'t, 'c: 't>(&'t self, ctx: &'c context::Context<'c>) -> Cow<'t, str> {
+		f64::from(*self).to_formatted(ctx).into_owned().into()
+	}
+}
+
 #[allow(clippy::too_many_arguments)]
 pub trait Game {
 	const HAS_COMPACT: bool;
@@ -23,6 +54,7 @@ pub trait Game {
 		mode: Option<Self::Mode>,
 		suffix: Option<&str>,
 		background: Option<skia_safe::Color>,
+		relative_ratios: bool,
 	) -> (skia_safe::Surface, Self::Mode);
 
 	fn canvas(
@@ -43,6 +75,7 @@ pub trait Game {
 		data_rhs: &data::Data,
 		suffix: Option<&str>,
 		background: Option<skia_safe::Color>,
+		relative_ratios: bool,
 	) -> Vec<skia_safe::Surface>;
 
 	fn condensed(
@@ -90,6 +123,7 @@ pub trait Game {
 		player: &player::Player,
 		data_lhs: &data::Data,
 		data_rhs: &data::Data,
+		relative_ratios: bool,
 	) -> serenity::CreateEmbed<'c>;
 }
 

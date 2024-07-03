@@ -134,6 +134,7 @@ macro_rules! command {
 				ctx: $crate::Context<'_>,
 				#[max_length = 36] session: String,
 				mode: Option<$mode>,
+				relative_ratios: Option<bool>,
 			) -> Result<(), ::translate::Error> {
 				let ctx = &context::Context::from_poise(&ctx);
 				let id = if session.starts_with('#') {
@@ -166,8 +167,14 @@ macro_rules! command {
 					return Err(Error::SessionNotFound);
 				};
 
-				crate::commands::snapshot::session::command::<$game>(ctx, session_id, uuid, mode)
-					.await
+				crate::commands::snapshot::session::command::<$game>(
+					ctx,
+					session_id,
+					uuid,
+					mode,
+					relative_ratios.unwrap_or_default(),
+				)
+				.await
 			}
 		}
 	};
@@ -200,6 +207,7 @@ macro_rules! large_command {
 				#[max_length = 36]
 				session: ::std::string::String,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
+				relative_ratios: Option<bool>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let mode: ::std::option::Option<$mode> = mode.map(|m| m.into());
 				let ctx = &context::Context::from_poise(&ctx);
@@ -216,8 +224,14 @@ macro_rules! large_command {
 					return Err(Error::SessionNotFound);
 				};
 
-				crate::commands::snapshot::session::command::<$game>(ctx, uuid, player_uuid, mode)
-					.await
+				crate::commands::snapshot::session::command::<$game>(
+					ctx,
+					uuid,
+					player_uuid,
+					mode,
+					relative_ratios.unwrap_or_default(),
+				)
+				.await
 			}
 		}
 	};

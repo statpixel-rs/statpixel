@@ -1384,6 +1384,7 @@ impl ToTokens for GameInputReceiver {
 					embed: #poise::serenity_prelude::CreateEmbed<'e>,
 					data_lhs: &#api::player::data::Data,
 					data_rhs: &#api::player::data::Data,
+					relative_ratios: bool,
 				) -> #poise::serenity_prelude::CreateEmbed<'e> {
 					let mut field = String::new();
 					let game_lhs = &data_lhs.stats.#path_to_game;
@@ -1562,6 +1563,7 @@ impl ToTokens for GameInputReceiver {
 					mut canvas: #api::canvas::Canvas<'c>,
 					data_lhs: &'c #api::player::data::Data,
 					data_rhs: &'c #api::player::data::Data,
+					relative_ratios: bool,
 				) -> #api::canvas::Canvas<'c> {
 					use #api::canvas::label::ToFormatted;
 
@@ -1601,6 +1603,7 @@ impl ToTokens for GameInputReceiver {
 					session: &'c #api::player::status::Session,
 					status: &'c #api::canvas::shape::Status,
 					progress: &'c #api::canvas::shape::WideBubbleProgress,
+					relative_ratios: bool,
 				) -> #api::canvas::Canvas<'c> {
 					let game_lhs = &data_lhs.stats.#path_to_game;
 					let game_rhs = &data_rhs.stats.#path_to_game;
@@ -1733,6 +1736,7 @@ impl ToTokens for GameInputReceiver {
 						#canvas,
 						data_lhs,
 						data_rhs,
+						relative_ratios,
 					);
 				}
 			});
@@ -1750,6 +1754,7 @@ impl ToTokens for GameInputReceiver {
 						session,
 						&status,
 						&progress,
+						relative_ratios,
 					),
 				}
 			});
@@ -1841,7 +1846,7 @@ impl ToTokens for GameInputReceiver {
 			let embed_diff_game = overall_modes.iter().map(|mode| {
 				let ty = mode.ty();
 
-				quote!(embed = #ty::embed_diff(ctx, embed, data_lhs, data_rhs);)
+				quote!(embed = #ty::embed_diff(ctx, embed, data_lhs, data_rhs, relative_ratios);)
 			});
 
 			let buffer_fields = match overall_modes.len() % 3 {
@@ -1926,6 +1931,7 @@ impl ToTokens for GameInputReceiver {
 						kind: &#kind_enum
 					) -> Result<::std::borrow::Cow<'static, str>, #translate::Error> {
 						let game = &data.stats.#path_to_game;
+						let relative_ratios = true;
 
 						let value: String = match kind {
 							#(#from_kind_match,)*
@@ -1943,6 +1949,7 @@ impl ToTokens for GameInputReceiver {
 					) -> Result<String, #translate::Error> {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
+						let relative_ratios = true;
 
 						Ok(match kind {
 							#(#from_kind_diff_match,)*
@@ -2030,6 +2037,7 @@ impl ToTokens for GameInputReceiver {
 						data_rhs: &#api::player::data::Data,
 						suffix: Option<&str>,
 						background: Option<#skia::Color>,
+						relative_ratios: bool,
 					) -> Vec<#skia::Surface> {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
@@ -2105,6 +2113,7 @@ impl ToTokens for GameInputReceiver {
 							canvas_0,
 							data_lhs,
 							data_rhs,
+							relative_ratios,
 						);
 
 						#(#condensed_mode_diff)*
@@ -2172,6 +2181,7 @@ impl ToTokens for GameInputReceiver {
 						mode: Option<Self::Mode>,
 						suffix: Option<&str>,
 						background: Option<#skia::Color>,
+						relative_ratios: bool,
 					) -> (#skia::Surface, Self::Mode) {
 						let game_lhs = &data_lhs.stats.#path_to_game;
 						let game_rhs = &data_rhs.stats.#path_to_game;
@@ -2224,6 +2234,7 @@ impl ToTokens for GameInputReceiver {
 									session,
 									&status,
 									&progress,
+									relative_ratios,
 								)
 							}
 							#(#canvas_diff_mode)*
@@ -2380,6 +2391,7 @@ impl ToTokens for GameInputReceiver {
 						player: &#api::player::Player,
 						data_lhs: &#api::player::data::Data,
 						data_rhs: &#api::player::data::Data,
+						relative_ratios: bool,
 					) -> #poise::serenity_prelude::CreateEmbed<'e> {
 						let mut embed = #poise::serenity_prelude::CreateEmbed::default()
 							.thumbnail(player.get_body_url());
@@ -2405,6 +2417,7 @@ impl ToTokens for GameInputReceiver {
 							embed,
 							data_lhs,
 							data_rhs,
+							relative_ratios,
 						);
 
 						#(#embed_diff_game)*

@@ -236,6 +236,12 @@ pub enum FieldKind {
 	Min,
 }
 
+impl FieldKind {
+	pub fn is_percent(&self) -> bool {
+		matches!(self, FieldKind::Percent(_))
+	}
+}
+
 pub trait Field: Debug {
 	/// Translates the field according to the language in the assumed [`ctx`].
 	fn as_tr(&self) -> proc_macro2::TokenStream {
@@ -292,11 +298,20 @@ pub trait Field: Debug {
 		let rhs = self.value(Side::Rhs, Access::ModeDiff(mode))?;
 		let tr = self.as_tr();
 
+		let (lhs_f, rhs_f) = if self.div().is_some() && !self.kind().is_percent() {
+			(quote!(lhs.0 / lhs.1), quote!(rhs.0 / rhs.1))
+		} else {
+			(quote!(lhs), quote!(rhs))
+		};
+
 		Some(quote!({
 			use crate::canvas::label::ToFormatted;
 
 			let lhs = #lhs;
 			let rhs = #rhs;
+
+			let lhs = #lhs_f;
+			let rhs = #rhs_f;
 
 			if rhs > lhs {
 				#log.push_str("- ");
@@ -327,11 +342,20 @@ pub trait Field: Debug {
 		let rhs = self.value_sum(Side::Rhs, modes, Access::NoneDiff)?;
 		let tr = self.as_tr();
 
+		let (lhs_f, rhs_f) = if self.div().is_some() && !self.kind().is_percent() {
+			(quote!(lhs.0 / lhs.1), quote!(rhs.0 / rhs.1))
+		} else {
+			(quote!(lhs), quote!(rhs))
+		};
+
 		Some(quote!({
 			use crate::canvas::label::ToFormatted;
 
 			let lhs = #lhs;
 			let rhs = #rhs;
+
+			let lhs = #lhs_f;
+			let rhs = #rhs_f;
 
 			if rhs > lhs {
 				#log.push_str("- ");
@@ -367,19 +391,44 @@ pub trait Field: Debug {
 		let lhs = self.value(Side::Lhs, Access::ModeDiff(mode))?;
 		let rhs = self.value(Side::Rhs, Access::ModeDiff(mode))?;
 
+		let ratio = if self.div().is_some() && !self.kind().is_percent() {
+			quote! {
+				if !relative_ratios {
+					let bottom = rhs.1 - lhs.1;
+					let value = (rhs.0 - lhs.0) / if bottom == 0. { 1. } else { bottom };
+
+					format!("{}", value.to_formatted(ctx))
+				} else {
+					let (lhs, rhs) = (lhs.0 / lhs.1, rhs.0 / rhs.1);
+
+					if rhs > lhs {
+						format!("+{}", (rhs - lhs).to_formatted(ctx))
+					} else if rhs < lhs {
+						format!("-{}", (lhs - rhs).to_formatted(ctx))
+					} else {
+						format!("±{}", (rhs - lhs).to_formatted(ctx))
+					}
+				}
+			}
+		} else {
+			quote! {
+				if rhs > lhs {
+					format!("+{}", (rhs - lhs).to_formatted(ctx))
+				} else if rhs < lhs {
+					format!("-{}", (lhs - rhs).to_formatted(ctx))
+				} else {
+					format!("±{}", (rhs - lhs).to_formatted(ctx))
+				}
+			}
+		};
+
 		Some(quote!({
 			use crate::canvas::label::ToFormatted;
 
 			let lhs = #lhs;
 			let rhs = #rhs;
 
-			if rhs > lhs {
-				format!("+{}", (rhs - lhs).to_formatted(ctx))
-			} else if rhs < lhs {
-				format!("-{}", (lhs - rhs).to_formatted(ctx))
-			} else {
-				format!("±{}", (rhs - lhs).to_formatted(ctx))
-			}
+			#ratio
 		}))
 	}
 
@@ -387,19 +436,44 @@ pub trait Field: Debug {
 		let lhs = self.value_sum(Side::Lhs, modes, Access::NoneDiff)?;
 		let rhs = self.value_sum(Side::Rhs, modes, Access::NoneDiff)?;
 
+		let ratio = if self.div().is_some() && !self.kind().is_percent() {
+			quote! {
+				if !relative_ratios {
+					let bottom = rhs.1 - lhs.1;
+					let value = (rhs.0 - lhs.0) / if bottom == 0. { 1. } else { bottom };
+
+					format!("{}", value.to_formatted(ctx))
+				} else {
+					let (lhs, rhs) = (lhs.0 / lhs.1, rhs.0 / rhs.1);
+
+					if rhs > lhs {
+						format!("+{}", (rhs - lhs).to_formatted(ctx))
+					} else if rhs < lhs {
+						format!("-{}", (lhs - rhs).to_formatted(ctx))
+					} else {
+						format!("±{}", (rhs - lhs).to_formatted(ctx))
+					}
+				}
+			}
+		} else {
+			quote! {
+				if rhs > lhs {
+					format!("+{}", (rhs - lhs).to_formatted(ctx))
+				} else if rhs < lhs {
+					format!("-{}", (lhs - rhs).to_formatted(ctx))
+				} else {
+					format!("±{}", (rhs - lhs).to_formatted(ctx))
+				}
+			}
+		};
+
 		Some(quote!({
 			use crate::canvas::label::ToFormatted;
 
 			let lhs = #lhs;
 			let rhs = #rhs;
 
-			if rhs > lhs {
-				format!("+{}", (rhs - lhs).to_formatted(ctx))
-			} else if rhs < lhs {
-				format!("-{}", (lhs - rhs).to_formatted(ctx))
-			} else {
-				format!("±{}", (rhs - lhs).to_formatted(ctx))
-			}
+			#ratio
 		}))
 	}
 
@@ -409,15 +483,21 @@ pub trait Field: Debug {
 		// if `div` is present, divide the value by the value of the field,
 		// casting both to f64 beforehand
 		if let Some(bottom) = self.value_bottom(side, access) {
+			let api = crate_ident("api");
+
 			let top = self.value_top(side, access)?;
 			let value = quote!({
 				let bottom = #bottom as f64;
 
-				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
+				#api::canvas::prelude::Div((#top) as f64, if bottom == 0. { 1. } else { bottom })
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
-				quote!({ #percent ((#value * 100.) as u32) })
+				quote!({
+					let v = #value;
+
+					#percent ((v.0 / v.1 * 100.) as u32)
+				})
 			} else {
 				value
 			})
@@ -430,17 +510,22 @@ pub trait Field: Debug {
 		// if `div` is present, divide the value by the value of the field,
 		// casting both to f64 beforehand
 		if let Some(bottom) = self.value_bottom(side, access) {
+			let api = crate_ident("api");
 			let top = self.value_top(side, access)?;
 			let value = quote!({
 				let bottom = #bottom as f64;
 
-				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
+				#api::canvas::prelude::Div((#top) as f64, if bottom == 0. { 1. } else { bottom })
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
-				quote!({ #percent ((#value * 100.) as u32) })
+				quote!({
+					let v = #value;
+
+					#percent ((v.0 / v.1 * 100.) as u32)
+				})
 			} else {
-				quote!({ (#value) as u32 })
+				quote!({ u32::from(#value) })
 			})
 		} else {
 			self.value_top(side, access)
@@ -464,7 +549,7 @@ pub trait Field: Debug {
 				.iter()
 				.filter_map(|m| self.value(side, access.with_mode(m)));
 
-			let mut stream: proc_macro2::TokenStream = {
+			let mut stream = {
 				let Some(value) = values.next() else {
 					return self.value(side, access);
 				};
@@ -492,15 +577,21 @@ pub trait Field: Debug {
 		// if `div` is present, divide the value by the value of the field,
 		// casting both to f64 beforehand
 		else if let Some(bottom) = self.value_bottom_sum(side, modes, access) {
+			let api = crate_ident("api");
+
 			let top = self.value_top_sum(side, modes, access)?;
 			let value = quote!({
 				let bottom = #bottom as f64;
 
-				((#top) as f64) / if bottom == 0. { 1. } else { bottom }
+				#api::canvas::prelude::Div((#top) as f64, if bottom == 0. { 1. } else { bottom })
 			});
 
 			Some(if let FieldKind::Percent(percent) = self.kind() {
-				quote!({ #percent ((#value * 100.) as u32) })
+				quote!({
+					let v = #value;
+
+					#percent ((v.0 / v.1 * 100.) as u32)
+				})
 			} else {
 				value
 			})

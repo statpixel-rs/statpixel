@@ -69,6 +69,7 @@ macro_rules! impl_compare {
 			Some($mode),
 			suffix.as_deref(),
 			$bg,
+			false,
 		);
 
 		Ok(api::canvas::to_png(&mut surface).into())
@@ -95,6 +96,7 @@ macro_rules! impl_snapshot {
 			Some($mode),
 			suffix.as_deref(),
 			$bg,
+			false,
 		);
 
 		Ok(api::canvas::to_png(&mut surface).into())

@@ -147,7 +147,8 @@ impl ToFormatted for f64 {
 		};
 
 		if *self < 1_000. {
-			let mut string = format!("{self:.2}");
+			let rounded = (*self * 100.).trunc() / 100.;
+			let mut string = format!("{rounded:.2}");
 
 			if sep != "." {
 				let len = string.len();
@@ -177,7 +178,8 @@ impl ToFormatted for f32 {
 		};
 
 		if *self < 1_000. {
-			let mut string = format!("{self:.2}");
+			let rounded = (*self * 100.).trunc() / 100.;
+			let mut string = format!("{rounded:.2}");
 
 			if sep != "." {
 				let len = string.len();

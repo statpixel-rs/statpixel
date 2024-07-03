@@ -18,6 +18,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 	mode: Option<G::Mode>,
 	uuid_lhs: Option<Uuid>,
 	uuid_rhs: Option<Uuid>,
+	relative_ratios: bool,
 ) -> Result<(), Error> {
 	let (format, family, background) = util::get_image_options_from_input(ctx).await;
 
@@ -58,6 +59,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 					mode,
 					suffix.as_deref(),
 					background,
+					relative_ratios,
 				);
 
 				(canvas::to_png(&mut surface).into(), mode)
@@ -107,6 +109,7 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				&data_rhs,
 				suffix.as_deref(),
 				background,
+				relative_ratios,
 			)
 			.into_iter()
 			.map(|mut surface| {
@@ -163,8 +166,8 @@ pub async fn command<G: api::canvas::prelude::Game>(
 				to: data_lhs.username.as_str(),
 			);
 
-			let embed =
-				G::embed_diff(ctx, &player_rhs, &data_lhs, &data_rhs).colour(crate::EMBED_COLOUR);
+			let embed = G::embed_diff(ctx, &player_rhs, &data_lhs, &data_rhs, relative_ratios)
+				.colour(crate::EMBED_COLOUR);
 
 			ctx.send(poise::CreateReply::new().content(content).embed(embed))
 				.await?;

@@ -24,6 +24,7 @@ macro_rules! command {
 				player: Option<String>,
 				mode: Option<$mode>,
 				time: String,
+				relative_ratios: Option<bool>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let ctx = &context::Context::from_poise(&ctx);
 
@@ -31,8 +32,15 @@ macro_rules! command {
 				let duration =
 					chrono::Duration::from_std(humantime::parse_duration(&time)?).unwrap();
 
-				crate::commands::snapshot::run::command::<$game>(ctx, player, uuid, mode, duration)
-					.await
+				crate::commands::snapshot::run::command::<$game>(
+					ctx,
+					player,
+					uuid,
+					mode,
+					duration,
+					relative_ratios.unwrap_or_default(),
+				)
+				.await
 			}
 		}
 	};
@@ -67,6 +75,7 @@ macro_rules! large_command {
 				player: Option<String>,
 				#[autocomplete = "autocomplete_mode"] mode: Option<u32>,
 				time: String,
+				relative_ratios: Option<bool>,
 			) -> ::std::result::Result<(), ::translate::Error> {
 				let ctx = &context::Context::from_poise(&ctx);
 
@@ -75,8 +84,15 @@ macro_rules! large_command {
 				let duration =
 					::chrono::Duration::from_std(humantime::parse_duration(&time)?).unwrap();
 
-				crate::commands::snapshot::run::command::<$game>(ctx, player, uuid, mode, duration)
-					.await
+				crate::commands::snapshot::run::command::<$game>(
+					ctx,
+					player,
+					uuid,
+					mode,
+					duration,
+					relative_ratios.unwrap_or_default(),
+				)
+				.await
 			}
 		}
 	};
