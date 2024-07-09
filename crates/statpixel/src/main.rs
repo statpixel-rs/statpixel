@@ -192,7 +192,7 @@ async fn main() {
 		.await
 		.unwrap();
 
-	tokio::task::spawn({
+	/*tokio::task::spawn({
 		let http = Arc::clone(&client.http);
 		let data = data.clone();
 
@@ -229,7 +229,7 @@ async fn main() {
 
 			tokio::time::sleep(std::time::Duration::from_secs(60)).await;
 		}
-	});
+	});*/
 
 	tokio::task::spawn(async move {
 		server::run(data).await;

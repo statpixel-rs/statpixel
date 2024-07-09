@@ -101,7 +101,7 @@ git = "https://github.com/matteopolak/plotters.git"
 branch = "next-release-devel"
 
 [workspace.dependencies.poise]
-git = "https://github.com/serenity-rs/poise"
+git = "https://github.com/matteopolak/poise"
 branch = "serenity-next"
 
 [workspace.dependencies.redis]

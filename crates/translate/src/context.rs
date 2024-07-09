@@ -419,9 +419,8 @@ impl<'c> Context<'c> {
 
 			interaction.edit_response(ctx.http(), message).await?;
 		} else {
-			let message = data.to_slash_initial_response(
-				serenity::CreateInteractionResponseMessage::new().files([]),
-			);
+			let message =
+				data.to_slash_initial_response(serenity::CreateInteractionResponseMessage::new());
 
 			interaction
 				.create_response(
