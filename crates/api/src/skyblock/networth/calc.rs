@@ -357,8 +357,10 @@ impl Attribute {
 		{
 			if (prefix == "HOT" || prefix == "FIERY" || prefix == "BURNING" || prefix == "INFERNAL")
 				&& (tier == "AURORA"
-					|| tier == "CRIMSON" || tier == "TERROR"
-					|| tier == "HOLLOW" || tier == "FERVOR")
+					|| tier == "CRIMSON"
+					|| tier == "TERROR"
+					|| tier == "HOLLOW"
+					|| tier == "FERVOR")
 			{
 				let price = match piece {
 					"HELMET" => prices.get(&format!("KUUDRA_HELMET_{}", self.id)).copied(),
@@ -591,14 +593,16 @@ impl Item {
 				price += prices
 					.get("FUMING_POTATO_BOOK")
 					.copied()
-					.unwrap_or_default() * f64::from(count - 10)
+					.unwrap_or_default()
+					* f64::from(count - 10)
 					* worth::FUMING_POTATO_BOOK;
 
 				price += prices.get("HOT_POTATO_BOOK").copied().unwrap_or_default()
 					* f64::from(10) * worth::HOT_POTATO_BOOK;
 			} else {
 				price += prices.get("HOT_POTATO_BOOK").copied().unwrap_or_default()
-					* f64::from(count) * worth::HOT_POTATO_BOOK;
+					* f64::from(count)
+					* worth::HOT_POTATO_BOOK;
 			}
 		}
 
@@ -650,19 +654,22 @@ impl Item {
 					matches!(
 						d.category,
 						ItemCategory::Accessory
-							| ItemCategory::Necklace | ItemCategory::Gloves
-							| ItemCategory::Bracelet | ItemCategory::Belt
-							| ItemCategory::Cloak
+							| ItemCategory::Necklace
+							| ItemCategory::Gloves
+							| ItemCategory::Bracelet
+							| ItemCategory::Belt | ItemCategory::Cloak
 					)
-				}) == Some(true) || matches!(
-				id.as_ref(),
-				"DIVIAN_HELMET"
-					| "DIVIAN_CHESTPLATE"
-					| "DIVIAN_LEGGINGS" | "DIVIAN_BOOTS"
-					| "FERMENTO_HELMET" | "FERMENTO_CHESTPLATE"
-					| "FERMENTO_LEGGINGS"
-					| "FERMENTO_BOOTS"
-			)) {
+				}) == Some(true)
+				|| matches!(
+					id.as_ref(),
+					"DIVIAN_HELMET"
+						| "DIVIAN_CHESTPLATE"
+						| "DIVIAN_LEGGINGS"
+						| "DIVIAN_BOOTS" | "FERMENTO_HELMET"
+						| "FERMENTO_CHESTPLATE"
+						| "FERMENTO_LEGGINGS"
+						| "FERMENTO_BOOTS"
+				)) {
 			price += prices
 				.get("RECOMBOBULATOR_3000")
 				.copied()

@@ -97,11 +97,9 @@ pub fn build(
 						let xp = calc::duels::overall::convert(
 							&(data.stats.duels.arena_solo.wins
 								+ data.stats.duels.blitz_solo.wins
-								+ data.stats.duels.bow_solo.wins + data
-								.stats
-								.duels
-								.bow_spleef_solo
-								.wins + data.stats.duels.boxing_solo.wins
+								+ data.stats.duels.bow_solo.wins
+								+ data.stats.duels.bow_spleef_solo.wins
+								+ data.stats.duels.boxing_solo.wins
 								+ data.stats.duels.bridge_double.wins
 								+ data.stats.duels.bridge_double_duel.wins
 								+ data.stats.duels.bridge_four.wins
@@ -113,7 +111,8 @@ pub fn build(
 								+ data.stats.duels.combo_solo.wins
 								+ data.stats.duels.mega_walls_solo.wins
 								+ data.stats.duels.op_double.wins
-								+ data.stats.duels.op_solo.wins + data.stats.duels.parkour.wins
+								+ data.stats.duels.op_solo.wins
+								+ data.stats.duels.parkour.wins
 								+ data.stats.duels.potion_solo.wins
 								+ data.stats.duels.sky_wars_double.wins
 								+ data.stats.duels.sky_wars_solo.wins
@@ -121,7 +120,8 @@ pub fn build(
 								+ data.stats.duels.sumo_solo.wins
 								+ data.stats.duels.sumo_tournament.wins
 								+ data.stats.duels.uhc_double.wins
-								+ data.stats.duels.uhc_four.wins + data.stats.duels.uhc_meetup.wins
+								+ data.stats.duels.uhc_four.wins
+								+ data.stats.duels.uhc_meetup.wins
 								+ data.stats.duels.uhc_solo.wins),
 						);
 						let level = calc::duels::overall::get_level(xp);
