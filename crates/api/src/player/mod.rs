@@ -31,10 +31,10 @@ pub static DEFAULT_SKIN: Lazy<image::Image> =
 	image::include_image!("../../../../assets/skins/steve.png");
 
 static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/player").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/player").unwrap());
 
 static HYPIXEL_STATUS_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/status").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/status").unwrap());
 
 static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.mojang.com/users/profiles/minecraft/").unwrap());

@@ -16,7 +16,7 @@ use tracing::{error, info};
 use crate::http::HTTP;
 
 static BAZAAR_URL: Lazy<Url> =
-	Lazy::new(|| Url::parse("https://api.hypixel.net/skyblock/bazaar").unwrap());
+	Lazy::new(|| Url::parse("https://api.hypixel.net/v2/skyblock/bazaar").unwrap());
 
 #[derive(Debug, Deserialize)]
 pub struct Product {

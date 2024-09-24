@@ -41,7 +41,7 @@ pub struct Response {
 }
 
 static HYPIXEL_AUCTION_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/skyblock/auction").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/skyblock/auction").unwrap());
 
 impl Player {
 	/// # Errors

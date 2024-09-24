@@ -17,7 +17,7 @@ pub static GAMES_CACHE: Lazy<Cache<Uuid, Arc<Vec<Game>>>> = Lazy::new(|| {
 });
 
 static HYPIXEL_RECENT_GAMES_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/recentgames").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/recentgames").unwrap());
 
 #[derive(Deserialize, Default, Debug)]
 #[serde(default)]

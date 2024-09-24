@@ -27,7 +27,7 @@ use self::member::Member;
 pub const VERSION: i16 = 0;
 
 static HYPIXEL_GUILD_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/guild").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/guild").unwrap());
 
 #[derive(serde::Deserialize)]
 pub struct Response {

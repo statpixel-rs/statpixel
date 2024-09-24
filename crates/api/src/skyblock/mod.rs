@@ -28,7 +28,7 @@ use crate::cache::SKYBLOCK_PROFILE_CACHE;
 use self::profile::Profile;
 
 static HYPIXEL_SKYBLOCK_PROFILE_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.hypixel.net/skyblock/profile").unwrap());
+	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/skyblock/profile").unwrap());
 
 #[derive(Debug, Deserialize)]
 pub enum ProfileName {
