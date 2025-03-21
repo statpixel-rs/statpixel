@@ -50,6 +50,7 @@ use util::deprecated_interaction;
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub static GUILDS: Lazy<tokio::sync::RwLock<HashSet<u64>>> = Lazy::new(Default::default);
 pub static SHARDS: atomic::AtomicU64 = atomic::AtomicU64::new(0);
+pub static START_TIME: atomic::AtomicU64 = atomic::AtomicU64::new(0);
 
 #[cfg(target_os = "linux")]
 pub const IMAGE_NAME: &str = "statpixel.png";
@@ -294,6 +295,14 @@ async fn event_handler(
 		} => {
 			info!(user = ?ready.user.tag(), guilds = ready.guilds.len(), "logged in");
 
+			START_TIME.store(
+				std::time::SystemTime::now()
+					.duration_since(std::time::UNIX_EPOCH)
+					.unwrap()
+					.as_secs(),
+				atomic::Ordering::Relaxed,
+			);
+
 			serenity::Command::set_global_commands(
 				&ctx.http,
 				&poise::builtins::create_application_commands(
@@ -388,6 +397,18 @@ async fn event_handler(
 		}
 		FullEvent::GuildCreate { guild, .. } => {
 			if GUILDS.write().await.insert(guild.id.get()) {
+				// if it's been less than 5 minutes, don't count it
+				let now = std::time::SystemTime::now()
+					.duration_since(std::time::UNIX_EPOCH)
+					.unwrap()
+					.as_secs();
+				let last = atomic::AtomicU64::load(&START_TIME, atomic::Ordering::Relaxed);
+
+				if now - last < 300 || last == 0 {
+					warn!(name = guild.name.as_str(), "skipping guild join metric");
+					return Ok(());
+				}
+
 				let guilds = GUILDS.read().await.len();
 
 				info!(guilds = guilds, "guild count");
