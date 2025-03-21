@@ -165,7 +165,8 @@ where
 			let mut vec = Vec::with_capacity(map.size_hint().unwrap_or(0));
 
 			while let Some((game, xp)) = map.next_entry()? {
-				vec.push((game, Xp(xp)));
+				let xp: u64 = xp;
+				vec.push((game, Xp(xp.min(u32::MAX as u64) as u32)));
 			}
 
 			vec.sort_unstable_by_key(|g| g.1);
