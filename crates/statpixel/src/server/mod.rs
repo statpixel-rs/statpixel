@@ -10,6 +10,7 @@ mod vendor;
 
 use axum::{
 	error_handling::HandleErrorLayer,
+	extract::DefaultBodyLimit,
 	http::header::{AUTHORIZATION, CONTENT_TYPE},
 	routing::{get, post},
 	Router,
@@ -81,7 +82,10 @@ pub async fn run(data: Data) {
 		.merge(image_router)
 		// the /vendor endpoint is not rate-limited, but is instead throttled by
 		// only allowing 1 update globally per user, every 15 minutes
-		.route("/vendor", post(vendor::post))
+		.route(
+			"/vendor",
+			post(vendor::post).layer(DefaultBodyLimit::max(1024 * 1024)),
+		)
 		.layer(
 			ServiceBuilder::new().layer(CompressionLayer::new()).layer(
 				CorsLayer::new()

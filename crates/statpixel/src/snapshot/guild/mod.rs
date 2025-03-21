@@ -123,12 +123,14 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 					match pool.get().await {
 						Ok(connection) => break connection,
 						Err(e) => {
-							warn!("Failed to get connection: {}", e);
+							warn!("Failed to get connection: {e:?}");
 
 							tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
 						}
 					}
 				};
+
+				let mut tries = 0;
 
 				// This will never fail since it's an md5 hash.
 				while let Err(e) = update(&mut connection, uuid, update_at, hash).await {
@@ -138,7 +140,13 @@ pub async fn begin(pool: &PostgresPool) -> Result<(), Error> {
 						}
 					}
 
-					warn!("Failed to update guild {uuid}: {e}");
+					warn!("Failed to update guild {uuid}: {e:?}");
+
+					tries += 1;
+
+					if tries >= 3 {
+						break;
+					}
 
 					tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
 				}

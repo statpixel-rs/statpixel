@@ -298,12 +298,14 @@ pub async fn begin(
 						match pool.get().await {
 							Ok(connection) => break connection,
 							Err(e) => {
-								warn!("Failed to get connection: {}", e);
+								warn!("Failed to get connection: {e:?}");
 
 								tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
 							}
 						}
 					};
+
+					let mut tries = 0;
 
 					loop {
 						let result = Box::pin(update(
@@ -371,7 +373,7 @@ pub async fn begin(
 														.ok();
 												}
 												e => {
-													warn!("Failed to send message: {}", e);
+													warn!("Failed to send message: {e:?}");
 												}
 											}
 										}
@@ -384,12 +386,18 @@ pub async fn begin(
 								break;
 							}
 							Err(e) => {
-								warn!("Failed to update player {uuid}: {e}");
+								warn!("Failed to update player {uuid}: {e:?}");
 
 								if let Some(api) = e.api() {
 									if matches!(api, ApiError::PlayerNotFound(_)) {
 										break;
 									}
+								}
+
+								tries += 1;
+
+								if tries >= 3 {
+									break;
 								}
 
 								tokio::time::sleep(tokio::time::Duration::from_secs(5)).await;
