@@ -21,3 +21,12 @@ where
 
 	Ok(if s < 0.0 { 0 } else { s as u64 })
 }
+
+pub(crate) fn u64_to_u32_saturated<'de, D>(deserializer: D) -> Result<u32, D::Error>
+where
+	D: Deserializer<'de>,
+{
+	let s: u64 = Deserialize::deserialize(deserializer)?;
+
+	Ok(s.min(u32::MAX as u64) as u32)
+}

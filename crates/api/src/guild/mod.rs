@@ -43,7 +43,10 @@ pub struct Guild {
 	pub name: String,
 	#[serde(deserialize_with = "crate::de::from::f32_to_u32")]
 	pub coins: u32,
-	#[serde(rename = "exp")]
+	#[serde(
+		rename = "exp",
+		deserialize_with = "crate::de::from::u64_to_u32_saturated"
+	)]
 	pub xp: u32,
 	#[bincode(with_serde)]
 	#[serde(rename = "created", with = "chrono::serde::ts_milliseconds")]
