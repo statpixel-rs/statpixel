@@ -36,8 +36,9 @@ static HYPIXEL_PLAYER_API_ENDPOINT: Lazy<Url> =
 static HYPIXEL_STATUS_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.hypixel.net/v2/status").unwrap());
 
-static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> =
-	Lazy::new(|| Url::from_str("https://api.mojang.com/users/profiles/minecraft/").unwrap());
+static MOJANG_USERNAME_TO_UUID_API_ENDPOINT: Lazy<Url> = Lazy::new(|| {
+	Url::from_str("https://api.minecraftservices.com/minecraft/profile/lookup/name/").unwrap()
+});
 
 static MINETOOLS_API_ENDPOINT: Lazy<Url> =
 	Lazy::new(|| Url::from_str("https://api.minetools.eu/uuid/").unwrap());
