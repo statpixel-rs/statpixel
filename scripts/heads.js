@@ -55,9 +55,9 @@ await bufferUnordered(items, async item => {
 
 await bufferUnordered(heads, async item => {
 	if (!item.texture || await fs.promises.stat(`./assets/textures/${item.id}.png`).then(() => true).catch(e => false))
-		return console.log(`Skipped "${item.name}" ${++i}/${items.length}...`);
+		return console.log(`Skipped "${item.name}" ${++i}/${heads.length}...`);
 
-	const { data: buf } = await axios.get(`https://sky.shiiyu.moe/head/${item.texture}`, {
+	const { data: buf } = await axios.get(`https://sky.shiiiyu.moe/head/${item.texture}`, {
 		responseType: 'arraybuffer'
 	});
 

@@ -18,6 +18,7 @@ const ORDER = [
 ];
 
 const ANIMATE_REGEX = /_(\d+)\.[^.]+$/;
+const MAX_HEAD_DOWNLOAD_ATTEMPTS = 3;
 
 fs.mkdirSync('./assets/materials', { recursive: true });
 fs.mkdirSync('./assets/textures', { recursive: true });
@@ -68,11 +69,9 @@ for (const name of ORDER) {
 					const texture = data.textures.SKIN.url;
 					const id = texture.slice(texture.lastIndexOf('/') + 1);
 
-					let tryagain = true;
-
-					while (tryagain) {
+					for (let attempt = 1; attempt <= MAX_HEAD_DOWNLOAD_ATTEMPTS; attempt++) {
 						try {
-							const { data: buf } = await axios.get(`https://sky.shiiyu.moe/head/${id}`, {
+							const { data: buf } = await axios.get(`https://sky.shiiiyu.moe/head/${id}`, {
 								responseType: 'arraybuffer'
 							});
 
@@ -83,10 +82,14 @@ for (const name of ORDER) {
 								})
 								.toFile(`./assets/materials/${name.replace(/:/g, ';').toUpperCase()}.png`);
 
-							tryagain = false;
-
 							console.log(`[MATERIAL] Processed "${name}" (${path})`);
+							break;
 						} catch (e) {
+							if (attempt === MAX_HEAD_DOWNLOAD_ATTEMPTS) {
+								console.error(`Failed to download head texture "${id}" after ${attempt} attempts`, e);
+								break;
+							}
+
 							console.error(e);
 						}
 					}
